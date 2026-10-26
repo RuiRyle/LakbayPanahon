@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Adaptive Practice | LakbayPanahon</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/student.css"
+    >
+
+    <link 
+    rel="stylesheet" 
+    href="../css/practice.css"
+    >
+</head>
+
+
+<body
+    class="auth-checking"
+    data-role="student"
+>
+
+<div class="student-app">
+
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+
+    <aside class="sidebar">
+
+        <a
+            href="student-dashboard.html"
+            class="sidebar-logo"
+        >
+
+            <div class="logo-mark">
+                LP
+            </div>
+
+            <div class="logo-name">
+                <strong>LakbayPanahon</strong>
+                <span>Philippine History</span>
+            </div>
+
+        </a>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="student-dashboard.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">⌂</span>
+                <span>Home</span>
+            </a>
+
+
+            <a
+                href="student-dashboard.html#journey"
+                class="nav-link active"
+            >
+                <span class="nav-icon">📖</span>
+                <span>My Journey</span>
+            </a>
+
+
+            <a
+                href="chapters.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">🗺</span>
+                <span>Explore Chapters</span>
+            </a>
+
+
+            <a
+                href="#"
+                class="nav-link"
+            >
+                <span class="nav-icon">🏫</span>
+                <span>My Class</span>
+            </a>
+
+
+            <a
+                href="student-dashboard.html#dailyChallenge"
+                class="nav-link"
+            >
+                <span class="nav-icon">⚡</span>
+                <span>Daily Challenge</span>
+            </a>
+
+
+            <a
+                href="achievements.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">🏆</span>
+                <span>Achievements</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                class="nav-link logout-button"
+            >
+                <span class="nav-icon">↪</span>
+                <span>Log Out</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =====================================
+             TOPBAR
+        ====================================== -->
+
+        <header class="topbar">
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+
+            <div class="topbar-title">
+                <span>Adaptive Practice</span>
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="xp-pill">
+
+                    <span>⭐</span>
+
+                    <strong id="topXp">
+                        0 XP
+                    </strong>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="profile-button"
+                    id="profileButton"
+                >
+
+                    <div
+                        class="profile-avatar"
+                        id="profileAvatar"
+                    >
+                        S
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <strong id="topStudentName">
+                            Student
+                        </strong>
+
+                        <span id="topStudentLevel">
+                            Level 1
+                        </span>
+
+                    </div>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             PRACTICE PAGE
+        ====================================== -->
+
+        <div class="practice-page">
+
+
+            <!-- LOADING -->
+
+            <div
+                id="practiceLoading"
+                class="learning-message"
+            >
+                Preparing your practice challenge...
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div
+                id="practiceError"
+                class="learning-message error-message"
+                hidden
+            >
+                We could not load this practice challenge.
+            </div>
+
+
+            <!-- =====================================
+                 PRACTICE CONTENT
+            ====================================== -->
+
+            <div
+                id="practiceContent"
+                class="practice-container"
+                hidden
+            >
+
+
+                <section class="practice-review-panel" aria-labelledby="practiceReviewTitle">
+                    <h2 id="practiceReviewTitle">Your Practice Review</h2>
+                    <p id="practiceReviewMode" role="status"></p>
+                    <div id="practiceReviewTopics" class="practice-review-grid"></div>
+                </section>
+                <!-- HEADER -->
+
+                <section class="practice-header">
+
+                    <span class="eyebrow">
+                        ADAPTIVE PRACTICE
+                    </span>
+
+
+                    <h1>
+                        Strengthen Your Knowledge
+                    </h1>
+
+
+                    <p>
+    Answer the practice question and learn from
+    the explanation before trying the mission quiz again.
+</p>
+
+                </section>
+
+
+                <!-- =====================================
+                     PRACTICE QUESTION
+                ====================================== -->
+
+                <section
+                    class="practice-card"
+                    id="practiceQuestionCard"
+                >
+
+                    <div class="practice-card-top">
+
+                        <span>
+                            Practice Question
+                        </span>
+
+
+                        <span id="practiceProgress">
+                            1 of 1
+                        </span>
+
+                    </div>
+
+
+                    <h2 id="practiceQuestion">
+                        Practice Question
+                    </h2>
+
+
+                    <!-- =====================================
+     AI LEARNING HINT
+====================================== -->
+
+<div class="practice-ai-assistance">
+
+    <button
+        type="button"
+        id="practiceAiHintButton"
+        class="practice-ai-hint-button"
+        disabled
+    >
+        <span aria-hidden="true">&#x2728;</span>
+        <span>Bayani AI Hint</span>
+    </button>
+
+    <div
+        id="practiceAiHintResponse"
+        class="practice-ai-hint-response"
+        role="status"
+        aria-live="polite"
+        hidden
+    ></div>
+
+</div>
+
+
+
+                    <div
+                        class="practice-options"
+                        id="practiceOptions"
+                    ></div>
+
+
+                    <!-- FEEDBACK / EXPLANATION -->
+
+                    <div
+                        class="practice-feedback"
+                        id="practiceFeedback"
+                        hidden
+                    >
+
+                        <strong id="practiceFeedbackTitle">
+                            Historical Review
+                        </strong>
+
+
+                        <p id="practiceExplanation"></p>
+
+                    </div>
+
+
+                    <!-- ACTION -->
+
+                    <div class="practice-actions">
+
+                        <button
+                            type="button"
+                            class="begin-mission-button"
+                            id="checkAnswerButton"
+                        >
+                            Check Answer
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================
+                     PRACTICE COMPLETE
+                ====================================== -->
+
+                <section
+                    class="practice-complete-card"
+                    id="practiceComplete"
+                    hidden
+                >
+
+                    <div class="practice-complete-icon">
+                        ✓
+                    </div>
+
+
+                    <span class="eyebrow">
+                        REVIEW COMPLETE
+                    </span>
+
+
+                    <h2>
+                        Practice Complete!
+                    </h2>
+
+                    <p id="practiceSaveStatus" role="status" aria-live="polite"></p>
+                    <button type="button" class="begin-mission-button"
+                        id="retryPracticeSaveButton" hidden>Retry Saving Progress</button>
+
+
+                    <p>
+                        You reviewed another important idea from
+                        this mission. Try the mission quiz again
+                        and apply what you learned.
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="begin-mission-button"
+                        id="retryMissionQuizButton"
+                    >
+                        Retry Mission Quiz →
+                    </button>
+
+                </section>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================
+     SCRIPTS
+====================================== -->
+
+<script
+    type="module"
+    src="../js/auth-guard.js"
+></script>
+
+<script
+    type="module"
+    src="../js/student.js"
+></script>
+
+<script
+    type="module"
+    src="../js/logout.js"
+></script>
+
+<script
+    type="module"
+    src="../js/practice.js"
+></script>
+
+</body>
+</html>

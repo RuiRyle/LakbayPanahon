@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Registration | LakbayPanahon</title>
+
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+
+
+<body>
+
+<main class="auth-page">
+
+    <!-- ======================================
+         LEFT SIDE
+    ======================================= -->
+
+    <section class="auth-showcase">
+
+        <a href="../index.html" class="auth-logo">
+
+            <div class="logo-icon">
+                LP
+            </div>
+
+            <div class="logo-text">
+
+                <span>LakbayPanahon</span>
+
+                <small>
+                    Learn • Explore • Discover
+                </small>
+
+            </div>
+
+        </a>
+
+
+        <div class="showcase-content">
+
+            <span class="showcase-label">
+                BEGIN YOUR ADVENTURE
+            </span>
+
+
+            <h1>
+                Your journey through
+                <span>history starts here.</span>
+            </h1>
+
+
+            <p>
+                Create your student account and explore
+                Philippine History through interactive lessons,
+                story based missions, quizzes, achievements,
+                and AI assisted learning.
+            </p>
+
+
+            <div class="register-benefits">
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Explore History
+                        </strong>
+
+                        <span>
+                            Discover Philippine History through
+                            interactive learning experiences.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Complete Missions
+                        </strong>
+
+                        <span>
+                            Experience historical topics through
+                            missions and quizzes.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Earn Achievements
+                        </strong>
+
+                        <span>
+                            Earn XP, unlock badges, and collect
+                            historical artifacts.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="showcase-decoration decoration-one"></div>
+        <div class="showcase-decoration decoration-two"></div>
+
+
+        <p class="showcase-footer">
+            LakbayPanahon • Philippine History Learning
+        </p>
+
+    </section>
+
+
+
+    <!-- ======================================
+         STUDENT REGISTRATION
+    ======================================= -->
+
+    <section class="auth-form-section register-form-section">
+
+        <div class="auth-form-container register-container">
+
+            <a href="../index.html" class="back-home">
+                ← Back to Home
+            </a>
+
+
+            <div class="form-heading">
+
+                <span class="form-label">
+                    STUDENT REGISTRATION
+                </span>
+
+                <h2>
+                    Create your student account
+                </h2>
+
+                <p>
+                    Enter your information below to begin
+                    your LakbayPanahon learning journey.
+                </p>
+
+            </div>
+
+
+            <form
+                id="studentRegisterForm"
+                class="auth-form"
+            >
+
+                <!-- This is fixed. Students cannot choose roles. -->
+
+                <input
+                    type="hidden"
+                    id="accountRole"
+                    value="student"
+                >
+
+
+                <!-- NAME -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="firstName">
+                            First Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <input
+                                type="text"
+                                id="firstName"
+                                placeholder="First name"
+                                autocomplete="given-name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="lastName">
+                            Last Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <input
+                                type="text"
+                                id="lastName"
+                                placeholder="Last name"
+                                autocomplete="family-name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MIDDLE NAME -->
+
+                <div class="form-group">
+
+                    <label for="middleName">
+
+                        Middle Name
+
+                        <span class="optional">
+                            Optional
+                        </span>
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <input
+                            type="text"
+                            id="middleName"
+                            placeholder="Middle name"
+                            autocomplete="additional-name"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="studentEmail">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ✉
+                        </span>
+
+                        <input
+                            type="email"
+                            id="studentEmail"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="studentPassword">
+                        Password
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="studentPassword"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="studentPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+
+                    <small class="input-help">
+                        Use at least 6 characters.
+                    </small>
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="studentConfirmPassword">
+                        Confirm Password
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="studentConfirmPassword"
+                            placeholder="Enter your password again"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="studentConfirmPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <label class="checkbox-container terms">
+
+                    <input
+                        type="checkbox"
+                        id="studentTerms"
+                        required
+                    >
+
+                    <span>
+                        I agree to the Terms of Use and
+                        Privacy Policy of LakbayPanahon.
+                    </span>
+
+                </label>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="studentRegisterMessage"
+                    class="form-message"
+                ></div>
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="auth-button"
+                >
+
+                    Create Student Account
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <div class="login-prompt">
+
+                <span>
+                    Already have an account?
+                </span>
+
+                <a href="login.html">
+                    Log In
+                </a>
+
+            </div>
+
+
+            <div class="teacher-registration-link">
+
+                <span>
+                    Are you an Araling Panlipunan teacher?
+                </span>
+
+                <a href="teacher-register.html">
+                    Register as a Teacher
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script type="module" src="../js/auth-ui.js"></script>
+</body>
+
+</html>

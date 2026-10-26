@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Explore History | LakbayPanahon</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/student.css"
+    >
+    
+    <link 
+    rel="stylesheet"
+     href="../css/chapters.css"
+    >
+
+</head>
+
+<body
+    class="auth-checking"
+    data-role="student"
+>
+
+
+    <div class="student-app">
+
+
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
+
+        <aside class="sidebar">
+
+
+            <a
+                href="student-dashboard.html"
+                class="sidebar-logo"
+            >
+
+                <div class="logo-mark">
+                    LP
+                </div>
+
+
+                <div class="logo-name">
+
+                    <strong>
+                        LakbayPanahon
+                    </strong>
+
+                    <span>
+                        Philippine History
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <nav class="sidebar-nav">
+
+
+                <!-- HOME -->
+
+                <a
+                    href="student-dashboard.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">⌂</span>
+                    <span>Home</span>
+                </a>
+
+
+                <!-- MY JOURNEY -->
+
+                <a
+                    href="student-dashboard.html#journey"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">📖</span>
+                    <span>My Journey</span>
+                </a>
+
+
+                <!-- EXPLORE CHAPTERS -->
+
+                <a
+                    href="chapters.html"
+                    class="nav-link active"
+                >
+                    <span class="nav-icon">🗺</span>
+                    <span>Explore Chapters</span>
+                </a>
+
+
+                <!-- MY CLASS -->
+
+                <a
+                    href="#"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">🏫</span>
+                    <span>My Class</span>
+                </a>
+
+
+                <!-- DAILY CHALLENGE -->
+
+                <a
+                    href="student-dashboard.html#dailyChallenge"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">⚡</span>
+                    <span>Daily Challenge</span>
+                </a>
+
+
+                <!-- ACHIEVEMENTS -->
+
+                <a
+                    href="achievements.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">🏆</span>
+                    <span>Achievements</span>
+                </a>
+
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="nav-link logout-button"
+                >
+                    <span class="nav-icon">↪</span>
+                    <span>Log Out</span>
+                </button>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =====================================
+             MAIN
+        ====================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =================================
+                 TOP BAR
+            ================================== -->
+
+            <header class="topbar">
+
+
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topbar-title">
+                    Explore Philippine History
+                </div>
+
+
+                <a
+                    href="student-dashboard.html"
+                    class="text-button"
+                >
+                    ← Home
+                </a>
+
+
+            </header>
+
+
+
+            <div class="dashboard-content">
+
+
+                <!-- =================================
+                     PAGE INTRODUCTION
+                ================================== -->
+
+                <section class="explore-header">
+
+
+                    <span class="eyebrow">
+                        TRAVEL THROUGH TIME
+                    </span>
+
+
+                    <h1>
+                        Explore Philippine History
+                    </h1>
+
+
+                    <p>
+                        Choose a historical era and continue your
+                        journey through the stories of the Philippines.
+                    </p>
+
+
+                </section>
+
+
+
+                <!-- =================================
+                     LOADING
+                ================================== -->
+
+                <div
+                    id="eraLoading"
+                    class="learning-message"
+                >
+                    Loading your journey...
+                </div>
+
+
+
+                <!-- =================================
+                     ERROR
+                ================================== -->
+
+                <div
+                    id="eraError"
+                    class="learning-message error-message"
+                    hidden
+                >
+                    Unable to load the historical eras.
+                </div>
+
+
+
+                <!-- =================================
+                     ERA LIST
+                ================================== -->
+
+                <section
+                    id="eraList"
+                    class="era-grid"
+                ></section>
+
+
+
+                <!-- =================================
+                     CHAPTER AREA
+                ================================== -->
+
+                <section
+                    id="chapterSection"
+                    class="chapter-section"
+                    hidden
+                >
+
+
+                    <div class="section-heading">
+
+
+                        <div>
+
+                            <span class="eyebrow">
+                                SELECT A CHAPTER
+                            </span>
+
+
+                            <h2 id="selectedEraTitle">
+                                Historical Era
+                            </h2>
+
+
+                            <p>
+                                Choose a chapter to begin your mission.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div
+                        id="chapterLoading"
+                        class="learning-message"
+                        hidden
+                    >
+                        Loading chapters...
+                    </div>
+
+
+                    <div
+                        id="chapterList"
+                        class="chapter-grid"
+                    ></div>
+
+
+                </section>
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script
+        type="module"
+        src="../js/auth-guard.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/chapters.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/logout.js"
+    ></script>
+
+    <script
+    type="module"
+    src="../js/page-transition.js"
+></script>
+
+
+</body>
+
+</html>

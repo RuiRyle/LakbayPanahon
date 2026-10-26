@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LakbayPanahon — Metadata Update Preview</title>
+  <style>
+    body { font: 15px/1.5 system-ui, sans-serif; max-width: 1150px; margin: 35px auto; padding: 0 20px; color: #142943; }
+    h1 { margin-bottom: 5px; } p { color: #44566b; }
+    table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+    th,td { border: 1px solid #d7dce3; padding: 9px; text-align: left; vertical-align: top; }
+    th { background: #f3f5f8; } .ok { color: #147d49; } .bad { color: #b42318; }
+    .info { background: #f5f7fa; padding: 12px; border-radius: 6px; }
+    input { margin: 10px 0; } code { overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <h1>Practice metadata — dry-run preview</h1>
+  <p>This page only reads Firestore and compares it with the approved proposal. It never writes to Firestore.</p>
+  <label for="file">Choose <code>lakbaypanahon-adaptive-metadata-proposal.json</code>:</label>
+  <input id="file" type="file" accept=".json,application/json">
+  <div id="status" class="info">Waiting for login and proposal file…</div>
+  <table><thead><tr><th>Question ID</th><th>Current → Proposed</th><th>Validation</th></tr></thead><tbody id="rows"></tbody></table>
+  <script type="module">
+    import { auth, db } from '../js/firebase-config.js';
+    import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
+    import { collection, getDocs } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
+    const fileInput = document.getElementById('file');
+    const status = document.getElementById('status');
+    const rows = document.getElementById('rows');
+    let user = null;
+    onAuthStateChanged(auth, u => { user = u; status.textContent = u ? 'Signed in. Choose the approved proposal JSON file.' : 'Please log in to LakbayPanahon first.'; });
+    fileInput.addEventListener('change', async () => {
+      rows.replaceChildren();
+      if (!user) { status.textContent = 'Please log in first.'; return; }
+      const file = fileInput.files?.[0];
+      if (!file) return;
+      try {
+        status.textContent = 'Validating proposal against live Firestore (read-only)…';
+        const proposal = JSON.parse(await file.text());
+        if (proposal.projectId !== 'lakbaypanahon-1797e' || !Array.isArray(proposal.proposals) || proposal.proposals.length !== 20 || proposal.questionCount !== 20) throw Error('Unexpected proposal project or question count.');
+        const snapshot = await getDocs(collection(db, 'practiceQuestions'));
+        const live = new Map(snapshot.docs.map(d => [d.id, d.data()]));
+        const ids = new Set();
+        let ready = 0, blocked = 0;
+        for (const entry of proposal.proposals) {
+          const existing = live.get(entry.id);
+          const proposed = entry.proposed;
+          const valid = Boolean(entry.id && !ids.has(entry.id) && existing && existing.status === 'active' && existing.missionId === entry.missionId && existing.question === entry.question &&
+            ['easy','medium','hard'].includes(proposed?.difficulty) && typeof proposed.topic === 'string' && proposed.topic.trim() && typeof proposed.topicLabel === 'string' && proposed.topicLabel.trim() &&
+            (existing.difficulty == null || existing.difficulty === '') && (existing.topic == null || existing.topic === '') && (existing.topicLabel == null || existing.topicLabel === ''));
+          ids.add(entry.id);
+          valid ? ready++ : blocked++;
+          const tr = document.createElement('tr');
+          const cells = [entry.id, `difficulty: ${existing?.difficulty ?? 'MISSING'} → ${proposed?.difficulty}; topic: ${existing?.topic ?? 'MISSING'} → ${proposed?.topic}; label: ${existing?.topicLabel ?? 'MISSING'} → ${proposed?.topicLabel}`, valid ? 'READY' : 'BLOCKED — inspect existing document or proposal'];
+          for (const value of cells) { const td = document.createElement('td'); td.textContent = value; tr.append(td); }
+          tr.lastElementChild.className = valid ? 'ok' : 'bad';
+          rows.append(tr);
+        }
+        status.textContent = `Preview complete: ${ready} ready, ${blocked} blocked, ${snapshot.size} live question documents read. No writes performed.`;
+      } catch (error) { status.textContent = `Preview failed: ${error.message}`; console.error(error); }
+    });
+  </script>
+</body>
+</html>

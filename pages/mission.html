@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mission | LakbayPanahon</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/student.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/mission.css"
+    >
+</head>
+
+
+<body
+    class="auth-checking"
+    data-role="student"
+>
+
+    <div class="student-app">
+
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside class="sidebar">
+
+            <a
+                href="student-dashboard.html"
+                class="sidebar-logo"
+            >
+
+                <div class="logo-mark">
+                    LP
+                </div>
+
+                <div class="logo-name">
+
+                    <strong>
+                        LakbayPanahon
+                    </strong>
+
+                    <span>
+                        Philippine History
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="student-dashboard.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">⌂</span>
+                    <span>Home</span>
+                </a>
+
+
+                <a
+                    href="student-dashboard.html#journey"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">📖</span>
+                    <span>My Journey</span>
+                </a>
+
+
+                <a
+                    href="chapters.html"
+                    class="nav-link active"
+                >
+                    <span class="nav-icon">🗺</span>
+                    <span>Explore Chapters</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">🏫</span>
+                    <span>My Class</span>
+                </a>
+
+
+                <a
+                    href="student-dashboard.html#dailyChallenge"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">⚡</span>
+                    <span>Daily Challenge</span>
+                </a>
+
+
+                <a
+                    href="achievements.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">🏆</span>
+                    <span>Achievements</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="nav-link logout-button"
+                >
+                    <span class="nav-icon">↪</span>
+                    <span>Log Out</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =====================================
+                 TOPBAR
+            ====================================== -->
+
+            <header class="topbar">
+
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topbar-title">
+                    <span>
+                        Historical Journey
+                    </span>
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <div class="xp-pill">
+
+                        <span>⭐</span>
+
+                        <strong id="topXp">
+                            0 XP
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="profile-button"
+                        id="profileButton"
+                    >
+
+                        <div
+                            class="profile-avatar"
+                            id="profileAvatar"
+                        >
+                            S
+                        </div>
+
+
+                        <div class="profile-info">
+
+                            <strong id="topStudentName">
+                                Student
+                            </strong>
+
+                            <span id="topStudentLevel">
+                                Level 1
+                            </span>
+
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =====================================
+                 MISSION CONTENT
+            ====================================== -->
+
+            <div class="mission-page">
+
+
+                <a
+                    href="chapters.html"
+                    class="mission-back"
+                >
+                    ← Back to Chapters
+                </a>
+
+
+                <!-- LOADING -->
+
+                <div
+                    id="missionLoading"
+                    class="learning-message"
+                >
+                    Preparing your journey through history...
+                </div>
+
+
+                <!-- ERROR -->
+
+                <div
+                    id="missionError"
+                    class="learning-message error-message"
+                    hidden
+                >
+                    We could not load this mission.
+                </div>
+
+
+                <!-- MISSION -->
+
+                <div
+                    id="missionContent"
+                    hidden
+                >
+
+
+                    <!-- CHAPTER -->
+
+                    <section class="mission-chapter-header">
+
+                        <span class="mission-chapter-label">
+                            CURRENT CHAPTER
+                        </span>
+
+                        <h2 id="chapterTitle">
+                            Chapter
+                        </h2>
+
+                        <p id="chapterDescription"></p>
+
+                    </section>
+
+
+                    <div class="mission-divider">
+                        <span>✦</span>
+                    </div>
+
+
+                    <!-- =================================
+                         MISSION INTRODUCTION
+                    ================================== -->
+
+                    <section class="mission-introduction-card">
+
+                        <div class="mission-compass">
+                            🧭
+                        </div>
+
+
+                        <span
+    class="mission-number"
+    id="missionStatusLabel"
+>
+    YOUR NEXT MISSION
+</span>
+
+
+                        <h2 id="missionTitle">
+                            Mission
+                        </h2>
+
+
+                        <p
+                            id="missionIntroduction"
+                            class="mission-introduction-text"
+                        ></p>
+
+
+                        <!-- LEARNING GOAL -->
+
+                        <div
+                            id="missionLearningGoal"
+                            class="mission-learning-goal"
+                            hidden
+                        >
+
+                            <div class="mission-learning-goal-icon">
+                                🎯
+                            </div>
+
+                            <div class="mission-learning-goal-content">
+
+                                <span>
+                                    LEARNING GOAL
+                                </span>
+
+                                <p id="missionLearningObjective"></p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- HOW TO COMPLETE THE MISSION -->
+<div class="mission-how-to-play">
+
+    <h3>🧭 How to Complete This Mission</h3>
+
+    <div class="mission-steps">
+
+        <div class="mission-step">
+            <span class="mission-step-number">1</span>
+
+            <div>
+                <strong>Explore the Story</strong>
+                <p>
+                    Investigate historical clues and discover
+                    how early Filipinos lived.
+                </p>
+            </div>
+        </div>
+
+        <div class="mission-step">
+            <span class="mission-step-number">2</span>
+
+            <div>
+                <strong>Make Decisions</strong>
+                <p>
+                    Answer Quick Checks and make thoughtful
+                    historical decisions.
+                </p>
+            </div>
+        </div>
+
+        <div class="mission-step">
+            <span class="mission-step-number">3</span>
+
+            <div>
+                <strong>Complete the Mission Trial</strong>
+                <p>
+                    Finish five checkpoints to test what
+                    you learned and earn your mission reward.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+                        <!-- MISSION INFORMATION -->
+
+                        <div class="mission-information">
+
+
+                            <div>
+
+                                <span>📖</span>
+
+                                <div>
+
+                                    <strong>
+                                        Story Mission
+                                    </strong>
+
+                                    <small>
+                                        Explore history through a guided story
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>⭐</span>
+
+                                <div>
+
+                                    <strong id="missionXp">
+                                        +0 XP
+                                    </strong>
+
+                                    <small>
+                                        Mission reward
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="beginMissionButton"
+                            class="begin-mission-button"
+                        >
+                            Begin Mission →
+                        </button>
+
+                    </section>
+
+
+                    <!-- =================================
+                         MISSION PATH
+                    ================================== -->
+
+                    <section class="mission-path-section">
+
+                        <div class="section-heading">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    YOUR JOURNEY
+                                </span>
+
+                                <h2>
+                                    Mission Path
+                                </h2>
+
+                                <p>
+                                    Complete missions to continue your
+                                    journey through this chapter.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="missionPath"
+                            class="mission-path"
+                        ></div>
+
+                    </section>
+
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script
+        type="module"
+        src="../js/auth-guard.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/student.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/logout.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/mission.js"
+    ></script>
+
+</body>
+
+</html>

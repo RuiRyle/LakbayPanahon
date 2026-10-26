@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Achievements | LakbayPanahon
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/student.css"
+    >
+
+    <link
+    rel="stylesheet"
+    href="../css/achievements.css"  
+    >
+
+</head>
+
+
+<body
+    class="auth-checking"
+    data-role="student"
+>
+
+    <div class="student-app">
+
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside class="sidebar">
+
+            <a
+                href="student-dashboard.html"
+                class="sidebar-logo"
+            >
+
+                <div class="logo-mark">
+                    LP
+                </div>
+
+                <div class="logo-name">
+
+                    <strong>
+                        LakbayPanahon
+                    </strong>
+
+                    <span>
+                        Philippine History
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="student-dashboard.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">⌂</span>
+                    <span>Home</span>
+                </a>
+
+
+                <a
+                    href="student-dashboard.html#journey"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">📖</span>
+                    <span>My Journey</span>
+                </a>
+
+
+                <a
+                    href="chapters.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">🗺</span>
+                    <span>Explore Chapters</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">🏫</span>
+                    <span>My Class</span>
+                </a>
+
+
+                <a
+                    href="student-dashboard.html#dailyChallenge"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">⚡</span>
+                    <span>Daily Challenge</span>
+                </a>
+
+
+                <a
+                    href="achievements.html"
+                    class="nav-link active"
+                >
+                    <span class="nav-icon">🏆</span>
+                    <span>Achievements</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="nav-link logout-button"
+                >
+                    <span class="nav-icon">↪</span>
+                    <span>Log Out</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN AREA
+        ========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =====================================
+                 TOP BAR
+            ====================================== -->
+
+            <header class="topbar">
+
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topbar-title">
+
+                    <span>
+                        Student Journey
+                    </span>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <div class="xp-pill">
+
+                        <span>
+                            🏆
+                        </span>
+
+                        <strong>
+                            Achievements
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =====================================
+                 ACHIEVEMENTS CONTENT
+            ====================================== -->
+
+            <div class="achievements-content">
+
+
+                <!-- =================================
+                     PAGE INTRO
+                ================================== -->
+
+                <section class="achievements-hero">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            YOUR ACHIEVEMENTS
+                        </span>
+
+                        <h1>
+                            Achievement Collection
+                        </h1>
+
+                        <p>
+                            Celebrate the milestones you earn
+                            as you explore Philippine History.
+                        </p>
+
+                    </div>
+
+
+                    <div class="achievements-hero-icon">
+                        🏅
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     SUMMARY
+                ================================== -->
+
+                <section class="achievement-summary-grid">
+
+                    <article class="achievement-summary-card">
+
+                        <div class="achievement-summary-icon">
+                            🏆
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Badges Earned
+                            </span>
+
+                            <strong id="earnedBadgeCount">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================
+                     BADGE COLLECTION
+                ================================== -->
+
+                <section class="achievement-section">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                BADGE COLLECTION
+                            </span>
+
+                            <h2>
+                                Your Badges
+                            </h2>
+
+                            <p>
+                                Special badges are earned by
+                                completing important milestones
+                                in your historical journey.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="achievementLoading"
+                        class="learning-message"
+                    >
+                        Loading your achievements...
+                    </div>
+
+
+                    <div
+                        id="achievementEmpty"
+                        class="achievement-empty-state"
+                        hidden
+                    >
+
+                        <div class="achievement-empty-icon">
+                            🏅
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                No badges earned yet
+                            </strong>
+
+                            <p>
+                                Complete Chapter Challenges to
+                                earn special achievement badges.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="badgeCollection"
+                        class="badge-collection"
+                    ></div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script
+        type="module"
+        src="../js/auth-guard.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/achievements.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/logout.js"
+    ></script>
+
+    <script
+    type="module"
+    src="../js/page-transition.js"
+></script>
+
+</body>
+
+</html>

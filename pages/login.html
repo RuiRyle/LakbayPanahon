@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Log In | LakbayPanahon</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/auth.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="auth-page">
+
+
+        <!-- ==================================
+             LEFT SIDE
+        =================================== -->
+
+        <section class="auth-showcase">
+
+
+            <!-- LOGO -->
+
+            <a
+                href="../index.html"
+                class="auth-logo"
+            >
+
+                <div class="logo-icon">
+                    LP
+                </div>
+
+
+                <div class="logo-text">
+
+                    <span>
+                        LakbayPanahon
+                    </span>
+
+                    <small>
+                        Learn • Explore • Discover
+                    </small>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- SHOWCASE CONTENT -->
+
+            <div class="showcase-content">
+
+
+                <span class="showcase-label">
+                    CONTINUE YOUR JOURNEY
+                </span>
+
+
+                <h1>
+
+                    History is waiting
+
+                    <span>
+                        to be discovered.
+                    </span>
+
+                </h1>
+
+
+                <p>
+                    Return to your learning journey and continue
+                    exploring the people, places, and events that
+                    shaped Philippine History.
+                </p>
+
+
+
+                <div class="journey-card">
+
+
+                    <div class="journey-icon">
+                        📖
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Your Journey Continues
+                        </strong>
+
+                        <span>
+                            Learn, complete missions, earn rewards,
+                            and discover history.
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- DECORATIONS -->
+
+            <div
+                class="showcase-decoration decoration-one"
+            ></div>
+
+            <div
+                class="showcase-decoration decoration-two"
+            ></div>
+
+
+
+            <p class="showcase-footer">
+                LakbayPanahon • Philippine History Learning
+            </p>
+
+
+        </section>
+
+
+
+        <!-- ==================================
+             RIGHT SIDE
+        =================================== -->
+
+        <section class="auth-form-section">
+
+
+            <div class="auth-form-container">
+
+
+                <!-- BACK HOME -->
+
+                <a
+                    href="../index.html"
+                    class="back-home"
+                >
+                    ← Back to Home
+                </a>
+
+
+
+                <!-- ==================================
+                     LOGIN CONTENT
+                =================================== -->
+
+                <div id="loginContent">
+
+
+                    <!-- HEADING -->
+
+                    <div class="form-heading">
+
+
+                        <span class="form-label">
+                            WELCOME BACK
+                        </span>
+
+
+                        <h2>
+                            Log in to your account
+                        </h2>
+
+
+                        <p>
+                            Enter your account details to continue
+                            your LakbayPanahon journey.
+                        </p>
+
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         LOGIN FORM
+                    =================================== -->
+
+                    <form
+                        id="loginForm"
+                        class="auth-form"
+                    >
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+
+                            <label for="loginEmail">
+                                Email Address
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+
+                                <span class="input-icon">
+                                    ✉
+                                </span>
+
+
+                                <input
+                                    type="email"
+                                    id="loginEmail"
+                                    name="email"
+                                    placeholder="Enter your email address"
+                                    autocomplete="email"
+                                    required
+                                >
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- PASSWORD -->
+
+                        <div class="form-group">
+
+
+                            <div class="label-row">
+
+
+                                <label for="loginPassword">
+                                    Password
+                                </label>
+
+
+                                <button
+                                    type="button"
+                                    id="forgotPasswordButton"
+                                    class="forgot-link"
+                                >
+                                    Forgot Password?
+                                </button>
+
+
+                            </div>
+
+
+
+                            <div class="input-wrapper">
+
+
+                                <span class="input-icon">
+                                    🔒
+                                </span>
+
+
+                                <input
+                                    type="password"
+                                    id="loginPassword"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    autocomplete="current-password"
+                                    required
+                                >
+
+
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    data-target="loginPassword"
+                                    aria-label="Show password"
+                                >
+                                    Show
+                                </button>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- REMEMBER ME -->
+
+                        <div class="remember-row">
+
+
+                            <label class="checkbox-container">
+
+
+                                <input
+                                    type="checkbox"
+                                    id="rememberMe"
+                                >
+
+
+                                <span>
+                                    Remember me
+                                </span>
+
+
+                            </label>
+
+
+                        </div>
+
+
+
+                        <!-- LOGIN MESSAGE -->
+
+                        <div
+                            id="loginMessage"
+                            class="form-message"
+                            aria-live="polite"
+                        ></div>
+
+
+
+                        <!-- LOGIN BUTTON -->
+
+                        <button
+                            type="submit"
+                            class="auth-button"
+                        >
+
+                            Log In
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+
+                    </form>
+
+
+
+                    <!-- ==================================
+                         NEW ACCOUNT
+                    =================================== -->
+
+                    <div class="auth-divider">
+
+
+                        <span></span>
+
+
+                        <p>
+                            New to LakbayPanahon?
+                        </p>
+
+
+                        <span></span>
+
+
+                    </div>
+
+
+
+                    <a
+                        href="register.html"
+                        class="secondary-button"
+                    >
+                        Create Student Account
+                    </a>
+
+
+
+                    <!-- TEACHER REGISTRATION -->
+
+                    <p class="teacher-registration-link">
+
+                        Are you an Araling Panlipunan teacher?
+
+                        <a href="teacher-register.html">
+                            Register as Teacher
+                        </a>
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     FORGOT PASSWORD CONTENT
+                =================================== -->
+
+                <div
+                    id="forgotPasswordSection"
+                    class="forgot-password-section"
+                    hidden
+                >
+
+
+                    <!-- RESET HEADING -->
+
+                    <div class="forgot-password-header">
+
+
+                        <span class="form-label">
+                            PASSWORD RECOVERY
+                        </span>
+
+
+                        <h2>
+                            Reset your password
+                        </h2>
+
+
+                        <p>
+                            Enter the email address connected to
+                            your LakbayPanahon account. We will
+                            send you a password reset link.
+                        </p>
+
+
+                    </div>
+
+
+
+                    <!-- ==================================
+                         RESET FORM
+                    =================================== -->
+
+                    <form
+                        id="forgotPasswordForm"
+                        class="auth-form"
+                    >
+
+
+                        <!-- RESET EMAIL -->
+
+                        <div class="form-group">
+
+
+                            <label for="resetEmail">
+                                Email Address
+                            </label>
+
+
+                            <div class="input-wrapper">
+
+
+                                <span class="input-icon">
+                                    ✉
+                                </span>
+
+
+                                <input
+                                    type="email"
+                                    id="resetEmail"
+                                    name="resetEmail"
+                                    placeholder="Enter your email address"
+                                    autocomplete="email"
+                                    required
+                                >
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- RESET MESSAGE -->
+
+                        <div
+                            id="resetPasswordMessage"
+                            class="form-message"
+                            aria-live="polite"
+                        ></div>
+
+
+
+                        <!-- SEND RESET BUTTON -->
+
+                        <button
+                            type="submit"
+                            class="auth-button"
+                        >
+
+                            Send Reset Link
+
+                            <span>
+                                →
+                            </span>
+
+                        </button>
+
+
+
+                        <!-- BACK TO LOGIN -->
+
+                        <button
+                            type="button"
+                            id="backToLoginButton"
+                            class="reset-back-button"
+                        >
+                            ← Back to Log In
+                        </button>
+
+
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==================================
+         JAVASCRIPT
+    =================================== -->
+
+    <script
+        type="module"
+        src="../js/auth-ui.js"
+    ></script>
+
+
+</body>
+
+</html>

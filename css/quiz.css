@@ -1,0 +1,1817 @@
+/* Keep quiz symbols centered and allow long answers to wrap. */
+.quiz-result-icon,
+.artifact-reward-icon,
+.mission-trial-note-icon,
+.historical-clue-icon,
+.mission-checkpoint-dot,
+.quiz-review-status-icon {
+    flex-shrink: 0;
+    font-family: Arial, "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+    line-height: 1;
+}
+
+.quiz-option-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   LAKBAYPANAHON — QUIZ PAGE
+   Page-specific styles extracted from student.css.
+   Shared Student layout/components remain in student.css.
+   ========================================================= */
+
+
+/* ==========================================
+   QUIZ PAGE
+========================================== */
+
+.quiz-page {
+    width: min(900px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 40px 0 70px;
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.quiz-header {
+    max-width: 720px;
+    margin: 0 auto 32px;
+
+    text-align: center;
+}
+
+.quiz-header h1 {
+    margin: 7px 0 10px;
+
+    color: var(--navy);
+
+    font-size: clamp(
+        32px,
+        5vw,
+        46px
+    );
+}
+
+.quiz-header p {
+    margin: 0;
+
+    color: var(--text-light);
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   PROGRESS
+========================================== */
+
+.quiz-progress,
+.quiz-progress-card {
+    max-width: 720px;
+
+    margin: 0 auto 24px;
+}
+
+.quiz-progress-info {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 9px;
+
+    color: var(--text-light);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.quiz-progress-track {
+    width: 100%;
+    height: 8px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: var(--cream-dark);
+}
+
+.quiz-progress-fill {
+    width: 0;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: var(--gold);
+
+    transition:
+        width 0.3s ease;
+}
+
+
+/* ==========================================
+   QUESTION
+========================================== */
+
+.quiz-question-card {
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    padding: 40px;
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    background: var(--white);
+
+    box-shadow: var(--shadow);
+}
+
+.quiz-question-number {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--red);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+.quiz-question-card h2 {
+    margin: 0 0 28px;
+
+    color: var(--navy);
+
+    font-size: 24px;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   OPTIONS
+========================================== */
+
+.quiz-options {
+    display: grid;
+
+    gap: 12px;
+}
+
+.quiz-option {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 15px 17px;
+
+    border: 2px solid var(--border);
+    border-radius: 14px;
+
+    background: var(--white);
+
+    color: var(--text);
+
+    font: inherit;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.quiz-option:hover {
+    border-color: var(--gold);
+
+    transform:
+        translateY(-1px);
+}
+
+.quiz-option.selected {
+    border-color: var(--gold);
+
+    background: var(--cream);
+
+    box-shadow:
+        0 5px 14px
+        rgba(214, 168, 75, 0.10);
+}
+
+.quiz-option-letter {
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: var(--cream-dark);
+
+    color: var(--navy);
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.quiz-option.selected
+.quiz-option-letter {
+    background: var(--gold);
+
+    color: var(--navy);
+}
+
+.quiz-option-text {
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   SECONDARY BUTTON
+========================================== */
+
+.quiz-secondary-button {
+    padding: 12px 18px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: var(--white);
+
+    color: var(--navy);
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.quiz-secondary-button:hover:not(:disabled) {
+    background: var(--cream);
+
+    border-color: var(--gold);
+}
+
+.quiz-secondary-button:disabled {
+    opacity: 0.4;
+
+    cursor: not-allowed;
+}
+
+
+/* ==========================================
+   QUIZ ACTION BUTTON ALIGNMENT
+   Keep Previous on the left and
+   Next / Submit on the right.
+========================================== */
+
+.quiz-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-top: 28px;
+
+    width: 100%;
+}
+
+.quiz-actions
+.quiz-secondary-button {
+    min-width: 150px;
+    height: 54px;
+
+    padding: 0 24px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+}
+
+.quiz-actions
+.begin-mission-button {
+    width: auto;
+
+    min-width: 180px;
+    height: 54px;
+
+    padding: 0 28px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;
+
+    border-radius: 12px;
+}
+
+.quiz-actions
+.quiz-secondary-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+/* ==========================================
+   RESULT CARD
+========================================== */
+
+.quiz-result-card {
+    position: relative;
+
+    overflow: hidden;
+
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    padding: 48px 45px;
+
+    text-align: center;
+
+    border: 1px solid #e5dccb;
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fffdf8
+        );
+
+    box-shadow:
+        0 18px 45px
+        rgba(24, 49, 83, 0.10);
+}
+
+
+/*
+ * Small decorative glow behind
+ * the result content.
+ */
+
+.quiz-result-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -110px;
+    right: -110px;
+
+    width: 230px;
+    height: 230px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            214,
+            168,
+            75,
+            0.10
+        );
+
+    pointer-events: none;
+}
+
+.quiz-result-card > * {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* ==========================================
+   RESULT ICON
+========================================== */
+
+.quiz-result-icon {
+    width: 76px;
+    height: 76px;
+
+    display: grid;
+    place-items: center;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f6df9f,
+            #d6a84b
+        );
+
+    color: var(--navy);
+
+    font-size: 34px;
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 22px
+        rgba(214, 168, 75, 0.25);
+}
+
+
+/* ==========================================
+   RESULT TITLE
+========================================== */
+
+.quiz-result-card h2 {
+    margin: 8px 0 18px;
+
+    color: var(--navy);
+
+    font-size: clamp(
+        26px,
+        5vw,
+        34px
+    );
+}
+
+
+/* ==========================================
+   RESULT SCORE
+========================================== */
+
+.quiz-result-score {
+    margin-top: 8px;
+
+    color: var(--gold);
+
+    font-size: clamp(
+        46px,
+        8vw,
+        64px
+    );
+
+    font-weight: 800;
+    line-height: 1;
+}
+
+.quiz-result-score-label {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--text-light);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+
+/* ==========================================
+   RESULT MESSAGE
+========================================== */
+
+.quiz-result-message,
+.quiz-result-card > p {
+    max-width: 520px;
+
+    margin: 22px auto 0;
+
+    color: var(--text-light);
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   MISSION REWARD CARD
+========================================== */
+
+.mission-reward-card {
+    position: relative;
+
+    max-width: 560px;
+
+    margin: 30px auto 0;
+
+    padding: 25px;
+
+    border: 1px solid #ead8ad;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #fff4d7
+        );
+
+    box-shadow:
+        0 10px 25px
+        rgba(214, 168, 75, 0.12);
+}
+
+.mission-reward-label {
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: #76551c;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+
+/* ==========================================
+   XP REWARD
+========================================== */
+
+.mission-xp-reward {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 10px 20px;
+
+    border-radius: 999px;
+
+    background: var(--navy);
+
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    box-shadow:
+        0 7px 18px
+        rgba(24, 49, 83, 0.15);
+}
+
+
+/* ==========================================
+   ARTIFACT REWARD
+========================================== */
+
+.artifact-reward {
+    margin-top: 22px;
+
+    padding: 22px;
+
+    border: 1px solid #e4c982;
+    border-radius: 16px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+}
+
+.artifact-reward-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--red);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+.artifact-reward-icon {
+    width: 66px;
+    height: 66px;
+
+    display: grid;
+    place-items: center;
+
+    margin: 0 auto 12px;
+
+    border-radius: 50%;
+
+    background: var(--cream);
+
+    border:
+        1px solid
+        #ead8ad;
+
+    font-size: 32px;
+}
+
+.artifact-reward h3 {
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 18px;
+}
+
+.artifact-reward p {
+    max-width: 410px;
+
+    margin: 8px auto 0;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.artifact-collected-status {
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: 14px;
+
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    background: #eef5ec;
+
+    color: #42633f;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.05em;
+}
+
+
+/* ==========================================
+   REWARD PLAYER PROGRESS
+========================================== */
+
+.mission-reward-progress {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 12px;
+
+    margin-top: 22px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(
+            118,
+            85,
+            28,
+            0.16
+        );
+}
+
+.mission-reward-stat {
+    padding: 14px 12px;
+
+    border: 1px solid #eadfc8;
+    border-radius: 13px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+}
+
+.mission-reward-stat span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--text-light);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+}
+
+.mission-reward-stat strong {
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 20px;
+}
+
+
+/* ==========================================
+   RESULT ACTIONS
+========================================== */
+
+.quiz-result-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+.quiz-result-actions
+.begin-mission-button {
+    min-width: 210px;
+}
+
+.quiz-result-actions
+.quiz-secondary-button {
+    min-width: 150px;
+}
+
+
+/* ==========================================
+   SUBTLE REWARD ENTRANCE
+========================================== */
+
+@keyframes missionRewardReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+.mission-reward-card:not([hidden]) {
+    animation:
+        missionRewardReveal
+        0.35s ease both;
+}
+
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .quiz-option,
+    .quiz-progress-fill,
+    .mission-reward-card {
+        transition: none;
+        animation: none;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 760px) {
+
+    .quiz-page {
+        width:
+            min(
+                100% - 30px,
+                900px
+            );
+
+        padding-top: 25px;
+    }
+
+
+    .quiz-question-card,
+    .quiz-result-card {
+        padding:
+            30px
+            20px;
+    }
+
+
+    .quiz-result-card {
+        border-radius: 20px;
+    }
+
+
+    .mission-reward-card {
+        padding:
+            21px
+            16px;
+    }
+
+
+    .artifact-reward {
+        padding:
+            20px
+            15px;
+    }
+
+
+    .quiz-result-actions {
+        flex-direction: column;
+    }
+
+
+    .quiz-result-actions button {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE QUIZ ACTIONS
+========================================== */
+
+@media (max-width: 600px) {
+
+    .quiz-actions {
+        flex-direction:
+            column-reverse;
+
+        gap: 12px;
+    }
+
+
+    .quiz-actions
+    .quiz-secondary-button,
+
+    .quiz-actions
+    .begin-mission-button {
+        width: 100%;
+
+        min-width: 0;
+
+        margin-left: 0;
+    }
+
+
+    .mission-reward-progress {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+/* =========================================================
+   11.7C — QUIZ LEARNING REVIEW
+   ========================================================= */
+
+
+/* ==========================================
+   ANSWER REVIEW
+========================================== */
+
+.quiz-answer-review {
+    max-width: 590px;
+
+    margin:
+        30px auto
+        0;
+
+    padding-top: 28px;
+
+    border-top:
+        1px solid
+        #e8e1d4;
+
+    text-align: left;
+}
+
+.quiz-answer-review[hidden] {
+    display: none;
+}
+
+
+/* ==========================================
+   REVIEW HEADER
+========================================== */
+
+.quiz-answer-review-header {
+    margin-bottom: 18px;
+
+    text-align: center;
+}
+
+.quiz-answer-review-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--red);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+.quiz-answer-review-header h3 {
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 22px;
+}
+
+.quiz-answer-review-header p {
+    max-width: 470px;
+
+    margin:
+        8px auto
+        0;
+
+    color: var(--text-light);
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   REVIEW LIST
+========================================== */
+
+.quiz-answer-review-list {
+    display: grid;
+
+    gap: 14px;
+}
+
+
+/* ==========================================
+   REVIEW ITEM
+========================================== */
+
+.quiz-review-item {
+    padding: 20px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 16px;
+
+    background: #ffffff;
+}
+
+.quiz-review-item.correct {
+    border-color: #b9d8bc;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f7fcf7
+        );
+}
+
+.quiz-review-item.incorrect {
+    border-color: #e1b7b5;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fff8f7
+        );
+}
+
+
+/* ==========================================
+   QUESTION NUMBER
+========================================== */
+
+.quiz-review-number {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--text-light);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+
+/* ==========================================
+   REVIEW STATUS
+========================================== */
+
+.quiz-review-status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 12px;
+
+    font-size: 12px;
+}
+
+.quiz-review-item.correct
+.quiz-review-status {
+    color: #35633a;
+}
+
+.quiz-review-item.incorrect
+.quiz-review-status {
+    color: #8a403d;
+}
+
+.quiz-review-status-icon {
+    width: 24px;
+    height: 24px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.quiz-review-item.correct
+.quiz-review-status-icon {
+    background: #dceedd;
+}
+
+.quiz-review-item.incorrect
+.quiz-review-status-icon {
+    background: #f3d9d7;
+}
+
+
+/* ==========================================
+   REVIEW QUESTION
+========================================== */
+
+.quiz-review-item h4 {
+    margin:
+        0
+        0
+        15px;
+
+    color: var(--navy);
+
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   ANSWER ROWS
+========================================== */
+
+.quiz-review-answers {
+    display: grid;
+
+    gap: 8px;
+}
+
+.quiz-review-answer {
+    display: grid;
+
+    grid-template-columns:
+        110px
+        minmax(0, 1fr);
+
+    gap: 12px;
+
+    padding:
+        10px
+        12px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+}
+
+.quiz-review-answer span {
+    color: var(--text-light);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.quiz-review-answer strong {
+    line-height: 1.5;
+}
+
+.quiz-review-answer.correct {
+    background: #edf7ee;
+
+    color: #315c35;
+}
+
+.quiz-review-answer.incorrect {
+    background: #fff0ef;
+
+    color: #813d3a;
+}
+
+
+/* ==========================================
+   EXPLANATION
+========================================== */
+
+.quiz-review-explanation {
+    margin-top: 14px;
+
+    padding:
+        13px
+        14px;
+
+    border-left:
+        3px solid
+        var(--gold);
+
+    border-radius:
+        0
+        10px
+        10px
+        0;
+
+    background: var(--cream);
+}
+
+.quiz-review-explanation strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--navy);
+
+    font-size: 12px;
+}
+
+.quiz-review-explanation p {
+    margin: 0;
+
+    color: var(--text-light);
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .quiz-answer-review {
+        margin-top: 25px;
+    }
+
+
+    .quiz-review-item {
+        padding:
+            17px
+            14px;
+    }
+
+
+    .quiz-review-answer {
+        grid-template-columns:
+            1fr;
+
+        gap: 4px;
+    }
+
+}
+
+
+/* =========================================================
+   11.10B — MISSION TRIAL EXPERIENCE
+   ========================================================= */
+
+
+/* ==========================================
+   MISSION TRIAL INTRO
+========================================== */
+
+.mission-trial-note {
+    max-width: 620px;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    margin: 24px auto 0;
+    padding: 16px 18px;
+
+    border: 1px solid #ead8ad;
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #fff5dc
+        );
+
+    text-align: left;
+
+    box-shadow:
+        0 7px 18px
+        rgba(214, 168, 75, 0.08);
+}
+
+
+.mission-trial-note-icon {
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: var(--navy);
+
+    font-size: 20px;
+}
+
+
+.mission-trial-note strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--navy);
+
+    font-size: 13px;
+}
+
+
+.mission-trial-note p {
+    margin: 0;
+
+    color: var(--text-light);
+
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+
+/* ==========================================
+   CHECKPOINT TRAIL
+========================================== */
+
+.mission-checkpoints {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-top: 15px;
+}
+
+
+.mission-checkpoint {
+    position: relative;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.mission-checkpoint-dot {
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    border: 2px solid #ddd3c2;
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    color: var(--text-light);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.mission-checkpoint-label {
+    color: var(--text-light);
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: 0.05em;
+
+    text-transform: uppercase;
+}
+
+
+.mission-checkpoint.current
+.mission-checkpoint-dot {
+    border-color: var(--gold);
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 4px 12px
+        rgba(214, 168, 75, 0.22);
+}
+
+
+.mission-checkpoint.answered
+.mission-checkpoint-dot {
+    border-color: var(--navy);
+
+    background: var(--navy);
+
+    color: #ffffff;
+}
+
+
+.mission-checkpoint.current
+.mission-checkpoint-label {
+    color: var(--navy);
+}
+
+
+/* ==========================================
+   STRONGER CHECKPOINT CARD
+========================================== */
+
+.quiz-question-card {
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.quiz-question-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            #e8c978
+        );
+}
+
+
+.quiz-question-number {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    background: var(--cream);
+
+    color: var(--red);
+}
+
+
+/* ==========================================
+   MOBILE MISSION TRIAL
+========================================== */
+
+@media (max-width: 600px) {
+
+    .mission-trial-note {
+        padding: 14px;
+    }
+
+
+    .mission-trial-note-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .mission-checkpoints {
+        gap: 4px;
+    }
+
+
+    .mission-checkpoint-dot {
+        width: 27px;
+        height: 27px;
+
+        font-size: 9px;
+    }
+
+
+    .mission-checkpoint-label {
+        display: none;
+    }
+
+}
+
+/* =========================================================
+   11.10B — HISTORICAL CLUE DISCOVERY
+   ========================================================= */
+
+
+/* ==========================================
+   CLUE CARD
+========================================== */
+
+.historical-clue-card {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-top: 24px;
+    padding: 18px;
+
+    border: 1px solid #dfc27a;
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #fff3d2
+        );
+
+    box-shadow:
+        0 8px 20px
+        rgba(214, 168, 75, 0.10);
+
+    animation:
+        historicalClueReveal
+        0.3s ease both;
+}
+
+
+.historical-clue-card[hidden] {
+    display: none;
+}
+
+
+.historical-clue-icon {
+    flex-shrink: 0;
+
+    width: 46px;
+    height: 46px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    background: var(--navy);
+
+    font-size: 22px;
+
+    box-shadow:
+        0 5px 12px
+        rgba(24, 49, 83, 0.14);
+}
+
+
+.historical-clue-content {
+    min-width: 0;
+}
+
+
+.historical-clue-label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #76551c;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+
+.historical-clue-content p {
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+
+/* ==========================================
+   LOCKED ANSWER
+========================================== */
+
+.quiz-option.answer-locked {
+    cursor: default;
+}
+
+
+.quiz-option.answer-locked:not(.selected) {
+    opacity: 0.62;
+}
+
+
+.quiz-option.answer-locked:hover {
+    transform: none;
+
+    border-color: var(--border);
+}
+
+
+.quiz-option.answer-locked.selected {
+    border-color: var(--gold);
+
+    background: var(--cream);
+
+    opacity: 1;
+}
+
+
+/* ==========================================
+   CLUE REVEAL
+========================================== */
+
+@keyframes historicalClueReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .historical-clue-card {
+        gap: 12px;
+
+        padding: 15px;
+    }
+
+
+    .historical-clue-icon {
+        width: 40px;
+        height: 40px;
+
+        font-size: 19px;
+    }
+
+}
+
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .historical-clue-card {
+        animation: none;
+    }
+
+}
+
+
+/* =========================================================
+   11.10B — MISSION TRIAL RESULT POLISH
+   ========================================================= */
+
+
+/* ==========================================
+   RESULT STATUS
+========================================== */
+
+.quiz-result-card .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 12px;
+
+    border-radius: 999px;
+
+    background: var(--cream);
+
+    color: var(--red);
+}
+
+
+/* ==========================================
+   RESULT SCORE EMPHASIS
+========================================== */
+
+.quiz-result-score {
+    margin-top: 22px;
+}
+
+
+.quiz-result-score::after {
+    content: "";
+
+    display: block;
+
+    width: 48px;
+    height: 3px;
+
+    margin: 16px auto 0;
+
+    border-radius: 999px;
+
+    background: var(--gold);
+}
+
+
+/* ==========================================
+   RESULT ICON
+========================================== */
+
+.quiz-result-icon {
+    animation:
+        missionTrialResultReveal
+        0.45s ease both;
+}
+
+
+@keyframes missionTrialResultReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-8px)
+            scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* ==========================================
+   RESULT CARD ENTRANCE
+========================================== */
+
+.quiz-result-card:not([hidden]) {
+    animation:
+        missionTrialCardReveal
+        0.35s ease both;
+}
+
+
+@keyframes missionTrialCardReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .quiz-result-icon,
+    .quiz-result-card:not([hidden]) {
+        animation: none;
+    }
+
+}

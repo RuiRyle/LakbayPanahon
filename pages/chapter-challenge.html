@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Chapter Challenge | LakbayPanahon
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/student.css"
+    >
+
+    <link 
+    rel="stylesheet" 
+    href="../css/chapter-challenge.css"
+    >
+</head>
+
+<body data-role="student">
+
+    <main class="chapter-challenge-page">
+
+        <section class="chapter-challenge-intro">
+
+            <div class="chapter-challenge-icon">
+                🏆
+            </div>
+
+            <span class="card-label">
+                CHAPTER CHALLENGE
+            </span>
+
+            <h1 id="challengeChapterTitle">
+                Loading Chapter...
+            </h1>
+
+           <p id="challengeDescription">
+    You completed every mission in this chapter.
+    Answer the questions to show what you learned.
+</p>
+
+
+            <div class="chapter-challenge-info">
+
+                <div>
+                    <strong>10</strong>
+                    <span>Questions</span>
+                </div>
+
+                <div>
+                    <strong>70%</strong>
+                    <span>Passing Score</span>
+                </div>
+
+                <div>
+                    <strong>🏅</strong>
+                    <span>Chapter Reward</span>
+                </div>
+
+            </div>
+
+
+            <button
+                id="beginChallengeButton"
+                type="button"
+                disabled
+            >
+                Begin Challenge →
+            </button>
+
+
+            <button
+                id="backToMissionsButton"
+                type="button"
+            >
+                ← Back to Missions
+            </button>
+
+
+            <p
+                id="challengeStatus"
+                role="status"
+            >
+                Checking your progress...
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script
+        type="module"
+        src="../js/auth-guard.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/chapter-challenge.js"
+    ></script>
+
+</body>
+
+</html>

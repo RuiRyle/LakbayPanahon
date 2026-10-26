@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mission Trial | LakbayPanahon</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/student.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/quiz.css"
+    >
+</head>
+
+
+<body
+    class="auth-checking"
+    data-role="student"
+>
+
+<div class="student-app">
+
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+
+    <aside class="sidebar">
+
+        <a
+            href="student-dashboard.html"
+            class="sidebar-logo"
+        >
+
+            <div class="logo-mark">
+                LP
+            </div>
+
+            <div class="logo-name">
+                <strong>LakbayPanahon</strong>
+                <span>Philippine History</span>
+            </div>
+
+        </a>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="student-dashboard.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">⌂</span>
+                <span>Home</span>
+            </a>
+
+
+            <a
+                href="student-dashboard.html#journey"
+                class="nav-link active"
+            >
+                <span class="nav-icon">📖</span>
+                <span>My Journey</span>
+            </a>
+
+
+            <a
+                href="chapters.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">🗺</span>
+                <span>Explore Chapters</span>
+            </a>
+
+
+            <a
+                href="#"
+                class="nav-link"
+            >
+                <span class="nav-icon">🏫</span>
+                <span>My Class</span>
+            </a>
+
+
+            <a
+                href="student-dashboard.html#dailyChallenge"
+                class="nav-link"
+            >
+                <span class="nav-icon">⚡</span>
+                <span>Daily Challenge</span>
+            </a>
+
+
+            <a
+                href="achievements.html"
+                class="nav-link"
+            >
+                <span class="nav-icon">🏆</span>
+                <span>Achievements</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                class="nav-link logout-button"
+            >
+                <span class="nav-icon">↪</span>
+                <span>Log Out</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =====================================
+             TOPBAR
+        ====================================== -->
+
+        <header class="topbar">
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+
+            <div class="topbar-title">
+                <span>Mission Trial</span>
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="xp-pill">
+
+                    <span>⭐</span>
+
+                    <strong id="topXp">
+                        0 XP
+                    </strong>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="profile-button"
+                    id="profileButton"
+                >
+
+                    <div
+                        class="profile-avatar"
+                        id="profileAvatar"
+                    >
+                        S
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <strong id="topStudentName">
+                            Student
+                        </strong>
+
+                        <span id="topStudentLevel">
+                            Level 1
+                        </span>
+
+                    </div>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             QUIZ PAGE
+        ====================================== -->
+
+        <div class="quiz-page">
+
+
+            <!-- LOADING -->
+
+            <div
+                id="quizLoading"
+                class="learning-message"
+            >
+                Preparing your mission quiz...
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div
+                id="quizError"
+                class="learning-message error-message"
+                hidden
+            >
+                We could not load this quiz.
+            </div>
+
+
+            <!-- =====================================
+                 QUIZ CONTENT
+            ====================================== -->
+
+            <div
+                id="quizContent"
+                class="quiz-container"
+                hidden
+            >
+
+
+                <!-- =====================================
+                     QUIZ HEADER
+                ====================================== -->
+
+              <section class="quiz-header">
+
+    <span class="eyebrow">
+        ⚔ MISSION TRIAL
+    </span>
+
+    <h1 id="quizTitle">
+        Mission Trial
+    </h1>
+
+    <p id="quizDescription">
+        Use what you discovered during your journey to complete each checkpoint.
+    </p>
+
+    <div class="mission-trial-note">
+        <span class="mission-trial-note-icon">🧭</span>
+
+        <div>
+            <strong>Complete the Trial</strong>
+            <p>
+                Answer every checkpoint. You need at least 60% to complete the mission.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+
+                <!-- =====================================
+                     QUIZ PROGRESS
+                ====================================== -->
+
+                <section class="quiz-progress-card">
+
+                    <div class="quiz-progress-info">
+
+                        <span id="questionProgress">
+                            Question 1 of 1
+                        </span>
+
+                        <span id="answeredProgress">
+                            0 answered
+                        </span>
+
+                    </div>
+
+
+                    <div class="quiz-progress-track">
+
+                        <div
+                            class="quiz-progress-fill"
+                            id="quizProgressFill"
+                        ></div>
+
+                    </div>
+
+
+                    <div
+    class="mission-checkpoints"
+    id="missionCheckpoints"
+    aria-label="Mission trial checkpoints"
+></div>
+
+                </section>
+
+
+                <!-- =====================================
+                     QUESTION
+                ====================================== -->
+
+                <section
+                    class="quiz-question-card"
+                    id="questionCard"
+                >
+
+                    <span
+                        class="quiz-question-number"
+                        id="questionNumber"
+                    >
+                        CHECKPOINT 1
+                    </span>
+
+
+                    <h2
+                        class="quiz-question-text"
+                        id="questionText"
+                    >
+                        Question
+                    </h2>
+
+
+                    <!-- =====================================
+     HISTORICAL CLUE DISCOVERY
+====================================== -->
+
+<div
+    class="historical-clue-card"
+    id="historicalClueCard"
+    hidden
+>
+
+    <div class="historical-clue-icon">
+        📜
+    </div>
+
+    <div class="historical-clue-content">
+
+        <span class="historical-clue-label">
+            HISTORICAL CLUE DISCOVERED
+        </span>
+
+        <p id="historicalClueText">
+            Historical clue
+        </p>
+
+    </div>
+
+</div>
+
+
+                    <div
+                    
+                        class="quiz-options"
+                        id="quizOptions"
+                    ></div>
+
+
+                    <!-- =====================================
+                         QUESTION ACTIONS
+                    ====================================== -->
+
+                    <div class="quiz-actions">
+
+                        <button
+                            type="button"
+                            class="quiz-secondary-button"
+                            id="previousQuestionButton"
+                        >
+                            ← Previous
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="begin-mission-button"
+                            id="nextQuestionButton"
+                        >
+                            Submit Quiz
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =====================================
+                     QUIZ RESULT
+                ====================================== -->
+
+                <section
+                    class="quiz-result-card"
+                    id="quizResult"
+                    hidden
+                >
+
+                    <!-- RESULT ICON -->
+
+                    <div
+                        class="quiz-result-icon"
+                        id="quizResultIcon"
+                    >
+                        ★
+                    </div>
+
+
+                    <!-- RESULT LABEL -->
+
+                   <span
+    class="eyebrow"
+    id="quizResultEyebrow"
+>
+    MISSION TRIAL RESULT
+</span>
+
+
+                    <!-- RESULT TITLE -->
+
+                    <h2 id="quizResultTitle">
+                        Mission Complete!
+                    </h2>
+
+
+                    <!-- SCORE -->
+
+                    <div
+                        class="quiz-result-score"
+                        id="quizScore"
+                    >
+                        100%
+                    </div>
+
+
+                    <span class="quiz-result-score-label">
+                        Your Score
+                    </span>
+
+
+                    <!-- RESULT MESSAGE -->
+
+                    <p
+                        class="quiz-result-message"
+                        id="quizResultMessage"
+                    >
+                        You completed the mission quiz.
+                    </p>
+
+
+                    <!-- =====================================
+                         ANSWER REVIEW
+                    ====================================== -->
+
+                    <section
+                        class="quiz-answer-review"
+                        id="quizAnswerReview"
+                        aria-labelledby="quizAnswerReviewTitle"
+                    >
+
+                        <div class="quiz-answer-review-header">
+
+                            <span class="quiz-answer-review-label">
+                                LEARNING REVIEW
+                            </span>
+
+                            <h3 id="quizAnswerReviewTitle">
+                                Review Your Answers
+                            </h3>
+
+                            <p>
+                                   Review your answers and read each explanation
+                                    before continuing.
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="quiz-answer-review-list"
+                            id="quizAnswerReviewList"
+                        ></div>
+
+                    </section>
+
+
+                    <!-- =====================================
+                         MISSION REWARDS
+                    ====================================== -->
+
+                    <div
+                        class="mission-reward-card"
+                        id="missionRewardCard"
+                        hidden
+                    >
+
+                        <span class="mission-reward-label">
+                            MISSION REWARD
+                        </span>
+
+
+                        <div
+                            class="mission-xp-reward"
+                            id="missionXpReward"
+                            hidden
+                        >
+                            ⭐ +0 XP
+                        </div>
+
+
+                        <!-- ARTIFACT REWARD -->
+
+                        <div
+                            class="artifact-reward"
+                            id="artifactReward"
+                            hidden
+                        >
+
+                            <span class="artifact-reward-label">
+                                ARTIFACT DISCOVERED
+                            </span>
+
+
+                            <div
+                                class="artifact-reward-icon"
+                                id="artifactRewardIcon"
+                            >
+                                🏺
+                            </div>
+
+
+                            <h3 id="artifactRewardName">
+                                Historical Artifact
+                            </h3>
+
+
+                            <p id="artifactRewardDescription">
+                                A new artifact has been added
+                                to your collection.
+                            </p>
+
+
+                            <span class="artifact-collected-status">
+                                ✓ Added to Artifact Collection
+                            </span>
+
+                        </div>
+
+
+                        <!-- PLAYER PROGRESS -->
+
+                        <div
+                            class="mission-reward-progress"
+                            id="missionRewardProgress"
+                            hidden
+                        >
+
+                            <div class="mission-reward-stat">
+
+                                <span>
+                                    TOTAL XP
+                                </span>
+
+                                <strong id="missionTotalXp">
+                                    0 XP
+                                </strong>
+
+                            </div>
+
+
+                            <div class="mission-reward-stat">
+
+                                <span>
+                                    LEVEL
+                                </span>
+
+                                <strong id="missionResultLevel">
+                                    1
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         RESULT ACTIONS
+                    ====================================== -->
+
+                    <div class="quiz-result-actions">
+
+                        <button
+                            type="button"
+                            class="quiz-secondary-button"
+                            id="retryQuizButton"
+                            hidden
+                        >
+                            Try Again
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="begin-mission-button"
+                            id="continueResultButton"
+                        >
+                            Continue Journey →
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================
+     FIREBASE / PAGE SCRIPTS
+====================================== -->
+
+<script
+    type="module"
+    src="../js/auth-guard.js"
+></script>
+
+<script
+    type="module"
+    src="../js/logout.js"
+></script>
+
+<script
+    type="module"
+    src="../js/quiz.js"
+></script>
+
+<script
+    src="../js/page-transition.js"
+></script>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+    body {
+        visibility: hidden;
+    }
+
+    body.authenticated {
+        visibility: visible;
+    }
+</style>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Teacher Dashboard | LakbayPanahon
+    </title>
+</head>
+
+<body data-role="teacher">
+
+    
+
+    <h1>Teacher Dashboard</h1>
+
+    <p>
+        Welcome to the LakbayPanahon Teacher Dashboard.
+    </p>
+
+    <p>
+        Your teacher account has been successfully authenticated.
+    </p>
+
+    <button
+    type="button"
+    class="logout-button"
+>
+    Log Out
+</button>
+
+<script
+    type="module"
+    src="../js/auth-guard.js"
+></script>
+
+<script
+    type="module"
+    src="../js/logout.js"
+></script>
+
+</body>
+
+</html>

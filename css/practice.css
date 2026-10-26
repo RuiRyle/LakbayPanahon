@@ -1,0 +1,933 @@
+/* Keep completion symbols centered and long answers inside their cards. */
+.practice-complete-icon {
+    flex-shrink: 0;
+    font-family: Arial, "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+    line-height: 1;
+}
+
+.practice-option-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.practice-ai-hint-button {
+    gap: 8px;
+}
+
+/* =========================================================
+   LAKBAYPANAHON — PRACTICE PAGE
+   Page-specific styles extracted from student.css.
+   Shared Student layout/components remain in student.css.
+   ========================================================= */
+
+
+
+.practice-page {
+        padding: 40px;
+    }
+
+    .practice-container,
+    .practice-loading,
+    .practice-error {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    .practice-loading,
+    .practice-error {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 18px;
+        box-shadow: 0 8px 24px rgba(24, 49, 83, 0.08);
+    }
+
+    .practice-error {
+        color: #a94442;
+    }
+
+    .practice-header {
+        margin-bottom: 24px;
+    }
+
+    .practice-label {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: #a94442;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 1.4px;
+    }
+
+    .practice-header h1 {
+        margin: 0 0 10px;
+        color: #183153;
+    }
+
+    .practice-header p {
+        margin: 0;
+        line-height: 1.7;
+        color: #5f6670;
+    }
+
+    .practice-card,
+    .practice-complete-card {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(24, 49, 83, 0.1);
+    }
+
+    .practice-card-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 22px;
+        color: #777;
+        font-size: 0.88rem;
+        font-weight: 700;
+    }
+
+    .practice-card h2 {
+        margin-bottom: 24px;
+        color: #183153;
+        line-height: 1.45;
+    }
+
+    .practice-options {
+        display: grid;
+        gap: 12px;
+    }
+
+    .practice-option {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px;
+        border: 2px solid #e3e5e8;
+        border-radius: 14px;
+        background: #ffffff;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    .practice-option:hover {
+        border-color: #d6a84b;
+    }
+
+    .practice-option.selected {
+        border-color: #183153;
+        background: #f3f6fa;
+    }
+
+    .practice-option.correct {
+        border-color: #3f8a5b;
+        background: #eef8f1;
+    }
+
+    .practice-option.incorrect {
+        border-color: #a94442;
+        background: #fff1f1;
+    }
+
+    .practice-option:disabled {
+        cursor: default;
+        opacity: 1;
+    }
+
+    .practice-option-letter {
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        background: #183153;
+        color: #ffffff;
+        font-weight: 800;
+    }
+
+    .practice-option-text {
+        color: #333333;
+        font-weight: 600;
+    }
+
+    .practice-feedback {
+        margin-top: 22px;
+        padding: 18px;
+        border-left: 4px solid #d6a84b;
+        border-radius: 10px;
+        background: #fff8e7;
+    }
+
+    .practice-feedback strong {
+        color: #183153;
+    }
+
+    .practice-feedback p {
+        margin: 8px 0 0;
+        line-height: 1.6;
+        color: #555555;
+    }
+
+    .practice-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 24px;
+    }
+
+    .practice-actions .primary-button,
+    .practice-complete-card .primary-button {
+        border: none;
+        border-radius: 12px;
+        padding: 13px 22px;
+        background: #183153;
+        color: #ffffff;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .practice-complete-card {
+        text-align: center;
+    }
+
+    .practice-complete-icon {
+        width: 64px;
+        height: 64px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        background: #d6a84b;
+        color: #ffffff;
+        font-size: 1.8rem;
+        font-weight: 800;
+    }
+
+    .practice-complete-card h2 {
+        color: #183153;
+    }
+
+    .practice-complete-card p {
+        max-width: 520px;
+        margin: 10px auto 24px;
+        line-height: 1.7;
+        color: #5f6670;
+    }
+
+    @media (max-width: 768px) {
+
+        .practice-page {
+            padding: 24px 16px;
+        }
+
+        .practice-card,
+        .practice-complete-card {
+            padding: 22px;
+        }
+
+    }
+
+    /* ==========================================
+    QUIZ ACTION BUTTON ALIGNMENT
+    ========================================== */
+
+    .quiz-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 28px;
+        width: 100%;
+    }
+
+    /* Previous button */
+    .quiz-actions .quiz-secondary-button {
+        min-width: 150px;
+        height: 54px;
+        padding: 0 24px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 12px;
+    }
+
+    /* Next / Submit button */
+    .quiz-actions .begin-mission-button {
+        width: auto;
+        min-width: 180px;
+        height: 54px;
+        padding: 0 28px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-left: auto;
+
+        border-radius: 12px;
+    }
+
+    /* Disabled Previous */
+    .quiz-actions .quiz-secondary-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+
+    /* ==========================================
+    MOBILE QUIZ ACTIONS
+    ========================================== */
+
+    @media (max-width: 600px) {
+
+        .quiz-actions {
+            flex-direction: column-reverse;
+            gap: 12px;
+        }
+
+        .quiz-actions .quiz-secondary-button,
+        .quiz-actions .begin-mission-button {
+            width: 100%;
+            min-width: 0;
+            margin-left: 0;
+        }
+
+    }
+
+    /* ==========================================
+    MISSION REWARD CARD
+    ========================================== */
+
+    .mission-reward-card {
+        max-width: 520px;
+        margin: 28px auto 0;
+        padding: 24px;
+
+        border: 1px solid var(--border);
+        border-radius: 18px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #fffdf6,
+                #fff8e7
+            );
+
+        box-shadow:
+            0 10px 30px
+            rgba(24, 49, 83, 0.08);
+    }
+
+
+    .mission-reward-label {
+        display: block;
+
+        margin-bottom: 12px;
+
+        color: var(--red);
+
+        font-size: 10px;
+        font-weight: 800;
+
+        letter-spacing: 1.4px;
+    }
+
+
+    .mission-xp-reward {
+        color: var(--navy);
+
+        font-size: 24px;
+        font-weight: 800;
+    }
+
+
+    /* ==========================================
+    ARTIFACT REWARD
+    ========================================== */
+
+    .artifact-reward {
+        margin-top: 22px;
+        padding-top: 22px;
+
+        border-top:
+            1px solid
+            var(--border);
+    }
+
+
+    .artifact-reward-label {
+        display: block;
+
+        margin-bottom: 14px;
+
+        color: var(--gold);
+
+        font-size: 11px;
+        font-weight: 800;
+
+        letter-spacing: 1.3px;
+    }
+
+
+    .artifact-reward-icon {
+        width: 82px;
+        height: 82px;
+
+        display: grid;
+        place-items: center;
+
+        margin:
+            0 auto
+            15px;
+
+        border-radius: 22px;
+
+        background:
+            var(--gold-light);
+
+        font-size: 40px;
+
+        box-shadow:
+            0 8px 20px
+            rgba(24, 49, 83, 0.1);
+    }
+
+
+    .artifact-reward h3 {
+        margin-bottom: 8px;
+
+        color: var(--navy);
+
+        font-size: 20px;
+    }
+
+
+    .artifact-reward p {
+        max-width: 400px;
+
+        margin:
+            0 auto
+            17px;
+
+        color: var(--text-light);
+
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+
+    .artifact-collected-status {
+        display: inline-block;
+
+        padding:
+            7px
+            12px;
+
+        border-radius: 999px;
+
+        background:
+            rgba(214, 168, 75, 0.18);
+
+        color: var(--navy);
+
+        font-size: 10px;
+        font-weight: 800;
+
+        letter-spacing: 0.8px;
+    }
+
+
+    /* ==========================================
+    MOBILE REWARD CARD
+    ========================================== */
+
+    @media (max-width: 600px) {
+
+        .mission-reward-card {
+            padding: 20px 16px;
+        }
+
+
+        .artifact-reward-icon {
+            width: 72px;
+            height: 72px;
+
+            font-size: 34px;
+        }
+
+    }
+
+
+    /* ==========================================
+    ARTIFACT COLLECTION
+    ========================================== */
+
+    .artifact-collection {
+        margin-top: 22px;
+        padding: 25px;
+
+        background: var(--white);
+
+        border:
+            1px solid
+            var(--border);
+
+        border-radius:
+            var(--radius);
+
+        box-shadow:
+            var(--shadow);
+    }
+
+
+    .artifact-collection-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        gap: 25px;
+
+        margin-bottom: 24px;
+    }
+
+
+    .artifact-collection-header h3 {
+        margin-bottom: 6px;
+
+        color: var(--navy);
+
+        font-size: 21px;
+    }
+
+
+    .artifact-collection-header p {
+        color: var(--text-light);
+
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+
+    .artifact-count {
+        min-width: 90px;
+
+        padding: 12px 16px;
+
+        text-align: center;
+
+        border-radius: 14px;
+
+        background:
+            var(--cream);
+    }
+
+
+    .artifact-count strong {
+        display: block;
+
+        color: var(--navy);
+
+        font-size: 23px;
+    }
+
+
+    .artifact-count span {
+        display: block;
+
+        margin-top: 2px;
+
+        color: var(--text-light);
+
+        font-size: 10px;
+        font-weight: 700;
+    }
+
+
+    /* ==========================================
+    ARTIFACT GRID
+    ========================================== */
+
+    .artifact-grid {
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 16px;
+    }
+
+
+    /* ==========================================
+    ARTIFACT CARD
+    ========================================== */
+
+    .artifact-card {
+        padding: 22px 18px;
+
+        text-align: center;
+
+        border:
+            1px solid
+            var(--border);
+
+        border-radius: 16px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #fffdf6,
+                #fff8e7
+            );
+    }
+
+
+    .artifact-card-icon {
+        width: 64px;
+        height: 64px;
+
+        display: grid;
+        place-items: center;
+
+        margin:
+            0 auto
+            14px;
+
+        border-radius: 18px;
+
+        background:
+            var(--gold-light);
+
+        font-size: 31px;
+    }
+
+
+    .artifact-card h4 {
+        margin-bottom: 7px;
+
+        color: var(--navy);
+
+        font-size: 15px;
+    }
+
+
+    .artifact-card p {
+        color: var(--text-light);
+
+        font-size: 12px;
+        line-height: 1.55;
+    }
+
+
+    .artifact-rarity {
+        display: inline-block;
+
+        margin-top: 13px;
+
+        padding: 5px 9px;
+
+        border-radius: 999px;
+
+        background:
+            rgba(214, 168, 75, 0.18);
+
+        color: var(--navy);
+
+        font-size: 9px;
+        font-weight: 800;
+
+        letter-spacing: 0.8px;
+
+        text-transform: uppercase;
+    }
+
+
+    /* ==========================================
+    EMPTY COLLECTION
+    ========================================== */
+
+    .artifact-empty {
+        grid-column: 1 / -1;
+
+        display: flex;
+        align-items: center;
+
+        gap: 15px;
+
+        padding: 20px;
+
+        border:
+            1px dashed
+            var(--border);
+
+        border-radius: 14px;
+
+        background:
+            var(--cream);
+    }
+
+
+    .artifact-empty-icon {
+        width: 50px;
+        height: 50px;
+
+        flex-shrink: 0;
+
+        display: grid;
+        place-items: center;
+
+        border-radius: 13px;
+
+        background:
+            var(--gold-light);
+
+        font-size: 23px;
+    }
+
+
+    .artifact-empty strong {
+        display: block;
+
+        margin-bottom: 4px;
+
+        color: var(--navy);
+    }
+
+
+    .artifact-empty p {
+        color: var(--text-light);
+
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+
+    /* ==========================================
+    ARTIFACT COLLECTION RESPONSIVE
+    ========================================== */
+
+    @media (max-width: 900px) {
+
+        .artifact-grid {
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+        }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+        .artifact-collection-header {
+            flex-direction: column;
+        }
+
+
+        .artifact-count {
+            width: 100%;
+        }
+
+
+        .artifact-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+    /* =========================================================
+   11.7D — PRACTICE & RETRY LEARNING LOOP
+   ========================================================= */
+
+
+/* ==========================================
+   PRACTICE FEEDBACK STATES
+========================================== */
+
+.practice-feedback {
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.practice-feedback.correct {
+    border-left-color: #3f8a5b;
+
+    background: #eef8f1;
+}
+
+
+.practice-feedback.incorrect {
+    border-left-color: #d6a84b;
+
+    background: #fff8e7;
+}
+
+
+.practice-feedback.correct strong {
+    color: #315c35;
+}
+
+
+.practice-feedback.incorrect strong {
+    color: #7a5a1d;
+}
+
+
+/* ==========================================
+   INCORRECT ANSWER — RETRY STATE
+========================================== */
+
+.practice-option.incorrect {
+    border-color: #a94442;
+
+    background: #fff1f1;
+}
+
+
+.practice-option.incorrect
+.practice-option-letter {
+    background: #a94442;
+}
+
+
+/* ==========================================
+   CORRECT / MASTERED STATE
+========================================== */
+
+.practice-option.correct {
+    border-color: #3f8a5b;
+
+    background: #eef8f1;
+}
+
+
+.practice-option.correct
+.practice-option-letter {
+    background: #3f8a5b;
+}
+
+
+/* ==========================================
+   TRY AGAIN FEEL
+========================================== */
+
+.practice-option:not(:disabled):hover {
+    transform: translateY(-1px);
+}
+
+
+.practice-option:disabled {
+    transform: none;
+}
+
+
+/* ==========================================
+   PRACTICE COMPLETE
+========================================== */
+
+.practice-complete-card {
+    animation:
+        practiceCompleteIn
+        0.35s ease;
+}
+
+
+@keyframes practiceCompleteIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .practice-feedback,
+    .practice-option,
+    .practice-complete-card {
+        transition: none;
+        animation: none;
+    }
+
+}
+
+/* ==========================================
+   AI LEARNING HINT
+========================================== */
+
+.practice-ai-assistance {
+    margin: 18px 0 22px;
+}
+
+.practice-ai-hint-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 18px;
+
+    border: 1px solid #d6c8ed;
+    border-radius: 10px;
+
+    background: #f5efff;
+    color: #65438e;
+
+    font: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.practice-ai-hint-button:not(:disabled):hover {
+    background: #eadcfb;
+    transform: translateY(-1px);
+}
+
+.practice-ai-hint-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.practice-ai-hint-response {
+    margin-top: 14px;
+    padding: 15px 17px;
+
+    border-left: 4px solid #9875c5;
+    border-radius: 8px;
+
+    background: #faf7ff;
+    color: #40334e;
+
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+/* Keep the response hidden until requested. */
+.practice-ai-hint-response[hidden] {
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .practice-ai-hint-button {
+        transition: none;
+    }
+}

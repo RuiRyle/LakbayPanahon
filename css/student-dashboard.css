@@ -1,0 +1,2224 @@
+
+
+    .welcome-section {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 30px;
+
+        margin-bottom: 28px;
+    }
+
+
+    .card-label {
+        display: block;
+
+        margin-bottom: 8px;
+
+        color: var(--red);
+
+        font-size: 11px;
+
+        font-weight: 800;
+
+        letter-spacing: 1.3px;
+    }
+
+
+    .welcome-text h1 {
+        font-size: clamp(
+            28px,
+            4vw,
+            42px
+        );
+
+        color: var(--navy);
+
+        margin-bottom: 9px;
+    }
+
+
+    .welcome-text h1 span {
+        color: var(--red);
+    }
+
+
+    .welcome-text p {
+        max-width: 650px;
+
+        color: var(--text-light);
+
+        line-height: 1.65;
+    }
+
+
+    .level-card {
+        min-width: 175px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        padding: 16px;
+
+        border-radius: 16px;
+
+        background: var(--white);
+
+        border: 1px solid var(--border);
+
+        box-shadow: var(--shadow);
+    }
+
+
+    .level-icon {
+        width: 42px;
+        height: 42px;
+
+        display: grid;
+
+        place-items: center;
+
+        border-radius: 12px;
+
+        background: var(--gold-light);
+    }
+
+
+    .level-card div:last-child {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 4px;
+    }
+
+
+    .level-card span {
+        color: var(--text-light);
+
+        font-size: 11px;
+    }
+
+
+    .level-card strong {
+        color: var(--navy);
+    }
+
+
+    /* =========================================
+    STAT CARDS
+    ========================================= */
+
+    .stats-grid {
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 16px;
+
+        margin-bottom: 24px;
+    }
+
+
+    .stat-card {
+        display: flex;
+
+        align-items: center;
+
+        gap: 13px;
+
+        padding: 18px;
+
+        border-radius: var(--radius);
+
+        background: var(--white);
+
+        border: 1px solid var(--border);
+
+        box-shadow: var(--shadow);
+    }
+
+
+    .stat-icon {
+        width: 46px;
+        height: 46px;
+
+        display: grid;
+
+        place-items: center;
+
+        border-radius: 13px;
+
+        background: var(--cream);
+
+        font-size: 20px;
+    }
+
+
+    .stat-card div:last-child {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 4px;
+    }
+
+
+    .stat-card span {
+        color: var(--text-light);
+
+        font-size: 11px;
+    }
+
+
+    .stat-card strong {
+        color: var(--navy);
+
+        font-size: 20px;
+    }
+
+
+    /* =========================================
+    DASHBOARD CARDS
+    ========================================= */
+
+    .dashboard-grid {
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 2fr)
+            minmax(280px, 1fr);
+
+        gap: 20px;
+
+        margin-bottom: 38px;
+    }
+
+
+    .dashboard-card {
+        padding: 25px;
+
+        background: var(--white);
+
+        border: 1px solid var(--border);
+
+        border-radius: var(--radius);
+
+        box-shadow: var(--shadow);
+    }
+
+
+    .card-heading h2,
+    .challenge-top h2 {
+        color: var(--navy);
+
+        font-size: 21px;
+    }
+
+
+    /* =========================================
+    JOURNEY
+    ========================================= */
+
+    .journey-content {
+        margin-top: 22px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 24px;
+
+        padding: 24px;
+
+        border-radius: 16px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #fff7df,
+                #f5ead0
+            );
+    }
+
+
+    .journey-illustration {
+        width: 110px;
+        height: 110px;
+
+        flex-shrink: 0;
+
+        display: grid;
+
+        place-items: center;
+
+        border-radius: 50%;
+
+        background: var(--white);
+
+        font-size: 48px;
+    }
+
+
+    .journey-status {
+        display: inline-block;
+
+        margin-bottom: 7px;
+
+        color: var(--red);
+
+        font-size: 10px;
+
+        font-weight: 800;
+
+        letter-spacing: 1px;
+    }
+
+
+    .journey-details h3 {
+        margin-bottom: 8px;
+
+        color: var(--navy);
+
+        font-size: 21px;
+    }
+
+
+    .journey-details p {
+        max-width: 500px;
+
+        margin-bottom: 17px;
+
+        color: var(--text-light);
+
+        line-height: 1.55;
+
+        font-size: 13px;
+    }
+
+
+    /* =========================================
+    DAILY CHALLENGE
+    ========================================= */
+
+    .challenge-top {
+        display: flex;
+
+        align-items: flex-start;
+
+        justify-content: space-between;
+
+        gap: 20px;
+    }
+
+
+    .challenge-icon {
+        width: 50px;
+        height: 50px;
+
+        display: grid;
+
+        place-items: center;
+
+        border-radius: 14px;
+
+        background: var(--gold-light);
+
+        font-size: 23px;
+    }
+
+
+    .challenge-card > p {
+        margin: 18px 0;
+
+        color: var(--text-light);
+
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+
+    .challenge-reward {
+        display: flex;
+
+        justify-content: space-between;
+
+        margin-bottom: 18px;
+
+        padding: 12px 0;
+
+        border-top: 1px solid var(--border);
+
+        border-bottom: 1px solid var(--border);
+
+        font-size: 13px;
+    }
+
+
+    .challenge-reward strong {
+        color: var(--red);
+    }
+
+
+
+    /* =========================================
+    ACHIEVEMENTS
+    ========================================= */
+
+    .achievement-empty {
+        display: flex;
+
+        align-items: center;
+
+        gap: 18px;
+
+        padding: 24px;
+
+        border-radius: var(--radius);
+
+        background: var(--white);
+
+        border: 1px solid var(--border);
+
+        box-shadow: var(--shadow);
+    }
+
+
+    .achievement-empty-icon {
+        width: 60px;
+        height: 60px;
+
+        flex-shrink: 0;
+
+        display: grid;
+
+        place-items: center;
+
+        border-radius: 16px;
+
+        background: var(--gold-light);
+
+        font-size: 28px;
+    }
+
+
+    .achievement-empty h3 {
+        margin-bottom: 5px;
+
+        color: var(--navy);
+    }
+
+
+    .achievement-empty p {
+        color: var(--text-light);
+
+        line-height: 1.5;
+
+        font-size: 13px;
+    }
+
+
+    /* =========================================
+    TABLET
+    ========================================= */
+
+    @media (max-width: 1050px) {
+
+        .stats-grid {
+            grid-template-columns:
+                repeat(2, 1fr);
+        }
+
+
+        .dashboard-grid {
+            grid-template-columns: 1fr;
+        }
+}
+
+
+/* =========================================
+   DASHBOARD MOBILE
+   ========================================= */
+
+@media (max-width: 760px) {
+.welcome-section {
+            align-items: flex-start;
+
+            flex-direction: column;
+        }
+
+
+        .level-card {
+            width: 100%;
+        }
+
+
+        .stats-grid {
+            grid-template-columns:
+                repeat(2, 1fr);
+        }
+
+
+        .journey-content {
+            flex-direction: column;
+
+            align-items: flex-start;
+        }
+}
+
+@media (max-width: 450px) {
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+        .welcome-text h1 {
+            font-size: 28px;
+        }
+}
+
+/* ==========================================
+   DAILY CHALLENGE CARD
+========================================== */
+
+.daily-challenge-card-text {
+    margin: 14px 0 18px;
+    color: #667085;
+    line-height: 1.65;
+}
+
+
+.daily-challenge-start {
+    width: 100%;
+    margin-top: 18px;
+}
+
+
+.daily-challenge-card-completed {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 12px;
+    background: #fff8e7;
+}
+
+
+.daily-complete-check {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #183153;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+
+.daily-challenge-card-completed strong {
+    color: #183153;
+}
+
+
+.daily-challenge-card-completed p {
+    margin: 3px 0 0;
+    color: #667085;
+    font-size: 0.88rem;
+}
+
+
+/* ==========================================
+   DAILY CHALLENGE MODAL
+========================================== */
+
+body.daily-modal-open {
+    overflow: hidden;
+}
+
+
+.daily-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+
+    padding: 32px 24px;
+
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background: rgba(16, 36, 63, 0.68);
+    backdrop-filter: blur(5px);
+
+    opacity: 0;
+
+    transition:
+        opacity 180ms ease;
+}
+
+.daily-modal-backdrop[hidden] {
+    display: none;
+}
+
+
+.daily-modal-backdrop.open {
+    opacity: 1;
+}
+
+
+.daily-modal {
+    width: min(620px, 100%);
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+
+    background: #fffdf7;
+
+    border: 1px solid #eadfca;
+    border-radius: 22px;
+
+    box-shadow:
+        0 28px 80px
+        rgba(16, 36, 63, 0.28);
+
+    transform:
+        translateY(18px)
+        scale(0.98);
+
+    transition:
+        transform 220ms
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.daily-modal-backdrop.open
+.daily-modal {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* ==========================================
+   MODAL HEADER
+========================================== */
+
+.daily-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    border-bottom:
+        1px solid #eee4d1;
+}
+
+
+.daily-modal-title-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+
+.daily-modal-title-group h2 {
+    margin: 4px 0 0;
+    color: #183153;
+}
+
+
+.daily-modal-icon {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    background: #fff1c7;
+
+    font-size: 1.35rem;
+}
+
+
+.daily-modal-close {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: transparent;
+    color: #667085;
+
+    font-size: 1.7rem;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 150ms ease,
+        color 150ms ease;
+}
+
+
+.daily-modal-close:hover {
+    background: #f2eadb;
+    color: #183153;
+}
+
+
+/* ==========================================
+   MODAL CONTENT
+========================================== */
+
+.daily-modal-content {
+    padding: 26px 24px 24px;
+}
+
+
+.daily-question-number {
+    margin-bottom: 10px;
+
+    color: #a47a25;
+
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+
+.daily-challenge-question {
+    margin: 0 0 22px;
+
+    color: #183153;
+
+    font-size: 1.12rem;
+    font-weight: 700;
+    line-height: 1.65;
+}
+
+
+.daily-challenge-options {
+    display: grid;
+    gap: 11px;
+}
+
+
+.daily-challenge-option {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 13px 15px;
+
+    border: 1px solid #e3d8bf;
+    border-radius: 13px;
+
+    background: #ffffff;
+    color: #183153;
+
+    font: inherit;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 150ms ease,
+        background 150ms ease,
+        transform 150ms ease,
+        box-shadow 150ms ease;
+}
+
+
+.daily-challenge-option:hover {
+    border-color: #d6a84b;
+    transform: translateY(-1px);
+}
+
+
+.daily-challenge-option.selected {
+    border-color: #d6a84b;
+    background: #fff4d8;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(214, 168, 75, 0.12);
+}
+
+
+.daily-option-letter {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+
+    background: #183153;
+    color: #ffffff;
+
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+
+.daily-challenge-option.selected
+.daily-option-letter {
+    background: #d6a84b;
+    color: #10243f;
+}
+
+
+/* ==========================================
+   FEEDBACK
+========================================== */
+
+.daily-challenge-feedback {
+    margin-top: 16px;
+    padding: 13px 15px;
+
+    border-radius: 11px;
+
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+
+.daily-challenge-feedback.correct {
+    background: #edf7ee;
+    color: #32673a;
+}
+
+
+.daily-challenge-feedback.incorrect {
+    background: #fbeeee;
+    color: #93413f;
+}
+
+
+/* ==========================================
+   MODAL FOOTER
+========================================== */
+
+.daily-modal-footer {
+    margin-top: 22px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid #eee4d1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+
+.daily-modal-reward {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+
+.daily-modal-reward span {
+    color: #8a7350;
+
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+
+.daily-modal-reward strong {
+    color: #183153;
+    font-size: 1rem;
+}
+
+
+.daily-submit-button {
+    border: 0;
+    cursor: pointer;
+}
+
+
+.daily-submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* ==========================================
+   LOADING / EMPTY / COMPLETE
+========================================== */
+
+.daily-modal-loading,
+.daily-challenge-empty,
+.daily-challenge-completed {
+    padding: 38px 24px;
+
+    text-align: center;
+}
+
+
+.daily-loading-icon,
+.daily-empty-icon {
+    margin-bottom: 12px;
+    font-size: 2rem;
+}
+
+
+.daily-modal-loading p,
+.daily-challenge-empty p {
+    margin: 7px 0 0;
+    color: #667085;
+}
+
+
+.daily-challenge-empty strong {
+    color: #183153;
+}
+
+
+.daily-challenge-completed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.daily-challenge-completed-icon {
+    width: 60px;
+    height: 60px;
+
+    margin-bottom: 14px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #183153;
+    color: #ffffff;
+
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+
+.daily-challenge-completed strong {
+    color: #183153;
+    font-size: 1.05rem;
+}
+
+
+.daily-challenge-completed p {
+    max-width: 390px;
+    margin: 7px auto 0;
+
+    color: #667085;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+
+    .daily-modal-backdrop {
+        padding: 14px;
+    }
+
+
+    .daily-modal {
+        max-height:
+            calc(100vh - 28px);
+
+        border-radius: 18px;
+    }
+
+
+    .daily-modal-header {
+        padding: 18px;
+    }
+
+
+    .daily-modal-content {
+        padding: 22px 18px 18px;
+    }
+
+
+    .daily-modal-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+
+    .daily-submit-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+}
+
+/* =========================================================
+   STUDENT DASHBOARD — MAIN QUEST POLISH
+   ========================================================= */
+
+.journey-quest-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(214, 168, 75, 0.38);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 248, 231, 0.98),
+            rgba(255, 255, 255, 0.98)
+        );
+}
+
+
+/* Decorative historical glow */
+
+.journey-quest-card::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    right: -90px;
+    top: -100px;
+    background: rgba(214, 168, 75, 0.10);
+    pointer-events: none;
+}
+
+
+/* Header */
+
+.journey-quest-header {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+
+    margin-bottom: 24px;
+}
+
+
+.journey-quest-header h2 {
+    margin-top: 6px;
+    margin-bottom: 0;
+    color: #183153;
+}
+
+
+.quest-badge {
+    flex-shrink: 0;
+
+    padding: 7px 12px;
+
+    border-radius: 999px;
+
+    background: #183153;
+    color: #ffffff;
+
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+
+/* Main quest content */
+
+.journey-quest-content {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Compass / historical journey icon */
+
+.quest-compass {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 92px;
+    height: 92px;
+
+    flex-shrink: 0;
+
+    border-radius: 24px;
+
+    background: #fff8e7;
+    border: 2px solid rgba(214, 168, 75, 0.45);
+
+    font-size: 2.8rem;
+
+    box-shadow:
+        0 8px 20px rgba(24, 49, 83, 0.08);
+}
+
+
+/* Mission objective */
+
+.quest-objective {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 18px;
+    margin-bottom: 20px;
+
+    padding: 13px 15px;
+
+    border-radius: 14px;
+
+    background: rgba(24, 49, 83, 0.055);
+    border-left: 4px solid #d6a84b;
+}
+
+
+.quest-objective-icon {
+    font-size: 1.45rem;
+}
+
+
+.quest-objective div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+.quest-objective small {
+    color: #6c7685;
+
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+
+.quest-objective strong {
+    color: #183153;
+    font-size: 0.9rem;
+}
+
+
+/* Main CTA */
+
+.journey-action-button {
+    box-shadow:
+        0 7px 16px rgba(24, 49, 83, 0.14);
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.journey-action-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 20px rgba(24, 49, 83, 0.18);
+}
+
+
+/* Mobile */
+
+@media (max-width: 640px) {
+
+    .journey-quest-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+
+    .journey-quest-content {
+        align-items: flex-start;
+    }
+
+
+    .quest-compass {
+        width: 72px;
+        height: 72px;
+        font-size: 2.2rem;
+    }
+
+
+    .journey-action-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+}   
+/* =========================================================
+   DYNAMIC CURRENT JOURNEY
+   ========================================================= */
+
+.journey-chapter-label {
+    display: block;
+    margin: 8px 0 4px;
+
+    color: #6c7685;
+
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+
+.journey-progress-box {
+    margin-top: 18px;
+}
+
+
+.journey-progress-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-bottom: 8px;
+
+    color: #183153;
+
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+
+.journey-progress-track {
+    width: 100%;
+    height: 9px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: rgba(24, 49, 83, 0.10);
+}
+
+
+.journey-progress-fill {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: #d6a84b;
+
+    transition: width 0.4s ease;
+}
+
+
+@media (max-width: 640px) {
+
+    .journey-progress-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+}
+/* =========================================================
+   PLAYER LEVEL PROGRESS
+   ========================================================= */
+
+.player-progress-card {
+    min-width: 340px;
+    align-items: center;
+}
+
+.player-progress-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.player-progress-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.player-progress-heading > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-progress-heading span {
+    color: #6c7685;
+
+    font-size: 0.7rem;
+    font-weight: 800;
+
+    letter-spacing: 0.06em;
+}
+
+.player-progress-heading #studentLevel {
+    margin-top: 3px;
+
+    color: #183153;
+
+    font-size: 1.05rem;
+}
+
+.player-progress-xp {
+    color: #d6a84b;
+
+    font-size: 0.82rem;
+
+    white-space: nowrap;
+}
+
+.player-xp-track {
+    width: 100%;
+    height: 8px;
+
+    margin-top: 10px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        rgba(24, 49, 83, 0.12);
+}
+
+.player-xp-fill {
+    width: 0%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: #d6a84b;
+
+    transition:
+        width 0.4s ease;
+}
+
+.player-next-level {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #6c7685;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+
+@media (max-width: 640px) {
+
+    .player-progress-card {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .player-progress-heading {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 4px;
+    }
+
+}
+
+/* =========================================================
+   DAILY CHALLENGE - GAME POLISH
+   ========================================================= */
+
+/* Answer option transition */
+
+.daily-challenge-option {
+    position: relative;
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.daily-challenge-option:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+.daily-challenge-option.selected {
+    border-color: #d6a84b;
+    background: #fff8e7;
+    box-shadow:
+        0 0 0 3px
+        rgba(214, 168, 75, 0.12);
+}
+
+
+/* =========================================================
+   CORRECT ANSWER
+   ========================================================= */
+
+.daily-challenge-option.correct {
+    border-color: #4f8a5b;
+    background: #eef8f0;
+    box-shadow:
+        0 0 0 3px
+        rgba(79, 138, 91, 0.12);
+}
+
+.daily-challenge-option.correct::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    color: #4f8a5b;
+    font-size: 1.1rem;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   INCORRECT ANSWER
+   ========================================================= */
+
+.daily-challenge-option.incorrect {
+    border-color: #a94442;
+    background: #fff1f0;
+    box-shadow:
+        0 0 0 3px
+        rgba(169, 68, 66, 0.10);
+}
+
+.daily-challenge-option.incorrect::after {
+    content: "✕";
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    color: #a94442;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   FEEDBACK BOX
+   ========================================================= */
+
+.daily-challenge-feedback {
+    margin-top: 18px;
+    padding: 16px 18px;
+    border-radius: 14px;
+}
+
+.daily-challenge-feedback strong,
+.daily-challenge-feedback span {
+    display: block;
+}
+
+.daily-challenge-feedback strong {
+    margin-bottom: 7px;
+    font-size: 0.95rem;
+}
+
+.daily-challenge-feedback span {
+    margin-top: 5px;
+    line-height: 1.55;
+}
+
+.daily-challenge-feedback.correct {
+    border: 1px solid
+        rgba(79, 138, 91, 0.28);
+
+    background: #eef8f0;
+    color: #315f3a;
+}
+
+.daily-challenge-feedback.incorrect {
+    border: 1px solid
+        rgba(169, 68, 66, 0.22);
+
+    background: #fff1f0;
+    color: #853735;
+}
+
+
+/* =========================================================
+   COMPLETION CELEBRATION
+   ========================================================= */
+
+.daily-complete-icon {
+    margin-bottom: 10px;
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.daily-complete-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #4f8a5b;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+}
+
+.daily-complete-rewards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.daily-complete-rewards strong {
+    padding: 9px 13px;
+    border: 1px solid
+        rgba(214, 168, 75, 0.28);
+    border-radius: 999px;
+    background: #fff8e7;
+    color: #183153;
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   DISABLED OPTIONS AFTER COMPLETION
+   ========================================================= */
+
+.daily-challenge-option:disabled {
+    cursor: default;
+}
+
+.daily-challenge-option:disabled:not(.correct):not(.incorrect) {
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+    .daily-challenge-feedback {
+        padding: 14px;
+    }
+
+    .daily-complete-rewards {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .daily-complete-rewards strong {
+        text-align: center;
+    }
+}
+
+/* ==========================================
+   DASHBOARD — ARTIFACT COLLECTION
+   Restored after page-specific CSS split.
+   ========================================== */
+
+.artifact-collection {
+    margin-top: 22px;
+    padding: 25px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.artifact-collection-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 24px;
+}
+
+.artifact-collection-header h3 {
+    margin-bottom: 6px;
+    color: var(--navy);
+    font-size: 21px;
+}
+
+.artifact-collection-header p {
+    color: var(--text-light);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.artifact-count {
+    min-width: 90px;
+    padding: 12px 16px;
+    text-align: center;
+    border-radius: 14px;
+    background: var(--cream);
+}
+
+.artifact-count strong {
+    display: block;
+    color: var(--navy);
+    font-size: 23px;
+}
+
+.artifact-count span {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-light);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.artifact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.artifact-card {
+    padding: 22px 18px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: linear-gradient(145deg, #fffdf6, #fff8e7);
+}
+
+.artifact-card-icon {
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 14px;
+    border-radius: 18px;
+    background: var(--gold-light);
+    font-size: 31px;
+}
+
+.artifact-card h4 {
+    margin-bottom: 7px;
+    color: var(--navy);
+    font-size: 15px;
+}
+
+.artifact-card p {
+    color: var(--text-light);
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.artifact-rarity {
+    display: inline-block;
+    margin-top: 13px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: rgba(214, 168, 75, 0.18);
+    color: var(--navy);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.artifact-empty {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+    background: var(--cream);
+}
+
+.artifact-empty-icon {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: var(--gold-light);
+    font-size: 23px;
+}
+
+.artifact-empty strong {
+    color: var(--navy);
+}
+
+.artifact-empty p {
+    margin-top: 4px;
+    color: var(--text-light);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+    .artifact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .artifact-collection-header {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .artifact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .artifact-collection {
+        padding: 20px;
+    }
+}
+
+/* =========================================================
+   STUDENT DASHBOARD — PROGRESSION FEEDBACK
+   Step 11.6D Game Experience Polish
+   ========================================================= */
+
+
+/* ==========================================
+   SHARED INTERACTIVE CARD FEEDBACK
+========================================== */
+
+.stat-card,
+.dashboard-card,
+.artifact-card {
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
+
+
+/*
+ * Keep dashboard movement restrained.
+ * Important progression cards receive
+ * feedback without making the page busy.
+ */
+
+.stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 22px
+        rgba(24, 49, 83, 0.08);
+}
+
+
+/* ==========================================
+   CURRENT JOURNEY — MAIN OBJECTIVE
+========================================== */
+
+.journey-quest-card {
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
+
+
+.journey-quest-card:hover {
+    border-color:
+        rgba(214, 168, 75, 0.58);
+
+    box-shadow:
+        0 12px 30px
+        rgba(24, 49, 83, 0.09);
+}
+
+
+/*
+ * Gives the compass a little more visual
+ * importance as the student's main journey.
+ */
+
+.quest-compass {
+    transition:
+        transform 200ms ease,
+        box-shadow 200ms ease;
+}
+
+
+.journey-quest-card:hover
+.quest-compass {
+    transform:
+        translateY(-2px)
+        rotate(-2deg);
+
+    box-shadow:
+        0 10px 24px
+        rgba(24, 49, 83, 0.11);
+}
+
+
+/* ==========================================
+   JOURNEY PROGRESS BAR
+========================================== */
+
+.journey-progress-track {
+    position: relative;
+}
+
+
+.journey-progress-fill {
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        width 550ms
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/*
+ * Soft highlight makes filled progress
+ * easier to read without adding another
+ * game mechanic.
+ */
+
+.journey-progress-fill::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.32),
+            transparent
+        );
+
+    transform:
+        translateX(-100%);
+
+    animation:
+        journeyProgressSweep
+        900ms ease
+        350ms
+        1 both;
+}
+
+
+@keyframes journeyProgressSweep {
+
+    from {
+        transform:
+            translateX(-100%);
+    }
+
+    to {
+        transform:
+            translateX(100%);
+    }
+
+}
+
+
+/* ==========================================
+   PLAYER XP PROGRESS
+========================================== */
+
+.player-progress-card {
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
+
+
+.player-progress-card:hover {
+    border-color:
+        rgba(214, 168, 75, 0.42);
+
+    box-shadow:
+        0 8px 22px
+        rgba(24, 49, 83, 0.08);
+}
+
+
+.player-xp-fill {
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        width 550ms
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.player-xp-fill::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.38),
+            transparent
+        );
+
+    transform:
+        translateX(-100%);
+
+    animation:
+        xpProgressSweep
+        850ms ease
+        450ms
+        1 both;
+}
+
+
+@keyframes xpProgressSweep {
+
+    from {
+        transform:
+            translateX(-100%);
+    }
+
+    to {
+        transform:
+            translateX(100%);
+    }
+
+}
+
+
+/* ==========================================
+   LEVEL ICON FEEDBACK
+========================================== */
+
+.player-progress-card
+.level-icon {
+    transition:
+        transform 200ms ease,
+        box-shadow 200ms ease;
+}
+
+
+.player-progress-card:hover
+.level-icon {
+    transform:
+        scale(1.05);
+
+    box-shadow:
+        0 5px 14px
+        rgba(214, 168, 75, 0.15);
+}
+
+
+/* ==========================================
+   DAILY CHALLENGE CARD
+========================================== */
+
+.challenge-card {
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
+
+
+.challenge-card:hover {
+    border-color:
+        rgba(214, 168, 75, 0.38);
+
+    box-shadow:
+        0 8px 22px
+        rgba(24, 49, 83, 0.08);
+}
+
+
+.challenge-icon {
+    transition:
+        transform 200ms ease;
+}
+
+
+.challenge-card:hover
+.challenge-icon {
+    transform:
+        rotate(-3deg)
+        scale(1.04);
+}
+
+
+/* ==========================================
+   DAILY CHALLENGE COMPLETED STATE
+========================================== */
+
+.daily-challenge-card-completed {
+    border:
+        1px solid
+        rgba(79, 138, 91, 0.16);
+
+    transition:
+        border-color 180ms ease,
+        background 180ms ease;
+}
+
+
+.daily-complete-check {
+    transition:
+        transform 180ms ease;
+}
+
+
+.daily-challenge-card-completed:hover
+.daily-complete-check {
+    transform:
+        scale(1.06);
+}
+
+
+/* ==========================================
+   ARTIFACT COLLECTION
+========================================== */
+
+.artifact-collection {
+    transition:
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
+
+
+.artifact-collection:hover {
+    border-color:
+        rgba(214, 168, 75, 0.32);
+
+    box-shadow:
+        0 9px 24px
+        rgba(24, 49, 83, 0.08);
+}
+
+
+.artifact-card {
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.artifact-card:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(214, 168, 75, 0.48);
+
+    box-shadow:
+        0 9px 20px
+        rgba(24, 49, 83, 0.08);
+}
+
+
+.artifact-card-icon {
+    transition:
+        transform 200ms ease,
+        box-shadow 200ms ease;
+}
+
+
+.artifact-card:hover
+.artifact-card-icon {
+    transform:
+        translateY(-2px)
+        scale(1.04);
+
+    box-shadow:
+        0 6px 15px
+        rgba(214, 168, 75, 0.16);
+}
+
+
+/* ==========================================
+   DASHBOARD ENTRANCE
+========================================== */
+
+@keyframes dashboardProgressReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(7px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/*
+ * Only major progression areas animate.
+ * Individual text and every small element
+ * intentionally do not animate.
+ */
+
+.journey-quest-card,
+.player-progress-card,
+.challenge-card,
+.artifact-collection {
+    animation:
+        dashboardProgressReveal
+        320ms ease both;
+}
+
+
+.player-progress-card {
+    animation-delay:
+        40ms;
+}
+
+
+.challenge-card {
+    animation-delay:
+        80ms;
+}
+
+
+.artifact-collection {
+    animation-delay:
+        120ms;
+}
+
+
+/* ==========================================
+   ACCESSIBILITY — REDUCED MOTION
+========================================== */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .stat-card,
+    .dashboard-card,
+    .journey-quest-card,
+    .quest-compass,
+    .journey-progress-fill,
+    .player-progress-card,
+    .player-progress-card .level-icon,
+    .player-xp-fill,
+    .challenge-card,
+    .challenge-icon,
+    .daily-complete-check,
+    .artifact-collection,
+    .artifact-card,
+    .artifact-card-icon {
+        animation: none;
+
+        transition: none;
+    }
+
+
+    .journey-progress-fill::after,
+    .player-xp-fill::after {
+        animation: none;
+
+        display: none;
+    }
+
+}
+
+
+/* ==========================================
+   TOUCH DEVICES
+========================================== */
+
+/*
+ * Hover elevation is useful with a mouse,
+ * but unnecessary on touch-only devices.
+ */
+
+@media (hover: none) {
+
+    .stat-card:hover,
+    .journey-quest-card:hover,
+    .player-progress-card:hover,
+    .challenge-card:hover,
+    .artifact-card:hover {
+        transform: none;
+    }
+
+
+    .journey-quest-card:hover
+    .quest-compass,
+    .player-progress-card:hover
+    .level-icon,
+    .challenge-card:hover
+    .challenge-icon,
+    .daily-challenge-card-completed:hover
+    .daily-complete-check,
+    .artifact-card:hover
+    .artifact-card-icon {
+        transform: none;
+    }
+
+}
+

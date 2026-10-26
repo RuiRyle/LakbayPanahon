@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Story Mission | LakbayPanahon</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/student.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/story.css"
+    >
+</head>
+
+
+<body
+    class="auth-checking"
+    data-role="student"
+>
+
+    <div class="student-app">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <a
+                href="student-dashboard.html"
+                class="sidebar-logo"
+            >
+
+                <div class="logo-mark">
+                    LP
+                </div>
+
+                <div class="logo-name">
+
+                    <strong>
+                        LakbayPanahon
+                    </strong>
+
+                    <span>
+                        Philippine History
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="student-dashboard.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">⌂</span>
+                    <span>Home</span>
+                </a>
+
+
+                <a
+                    href="student-dashboard.html#journey"
+                    class="nav-link active"
+                >
+                    <span class="nav-icon">📖</span>
+                    <span>My Journey</span>
+                </a>
+
+
+                <a
+                    href="chapters.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">🗺</span>
+                    <span>Explore Chapters</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">🏫</span>
+                    <span>My Class</span>
+                </a>
+
+
+                <a
+                    href="student-dashboard.html#dailyChallenge"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">⚡</span>
+                    <span>Daily Challenge</span>
+                </a>
+
+
+                <a
+                    href="achievements.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon">🏆</span>
+                    <span>Achievements</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="nav-link logout-button"
+                >
+                    <span class="nav-icon">↪</span>
+                    <span>Log Out</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+
+            <!-- TOPBAR -->
+
+            <header class="topbar">
+
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topbar-title">
+                    <span>Story Mission</span>
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <div class="xp-pill">
+
+                        <span>⭐</span>
+
+                        <strong id="topXp">
+                            0 XP
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="profile-button"
+                        id="profileButton"
+                    >
+
+                        <div
+                            class="profile-avatar"
+                            id="profileAvatar"
+                        >
+                            S
+                        </div>
+
+
+                        <div class="profile-info">
+
+                            <strong id="topStudentName">
+                                Student
+                            </strong>
+
+                            <span id="topStudentLevel">
+                                Level 1
+                            </span>
+
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- STORY CONTENT -->
+
+            <div class="story-page">
+
+
+                <button
+                    type="button"
+                    id="backToMissionButton"
+                    class="story-back"
+                >
+                    ← Back to Mission
+                </button>
+
+
+                <!-- LOADING -->
+
+                <div
+                    id="storyLoading"
+                    class="learning-message"
+                >
+                    Preparing your historical journey...
+                </div>
+
+
+                <!-- ERROR -->
+
+                <div
+                    id="storyError"
+                    class="learning-message error-message"
+                    hidden
+                >
+                    We could not load this story mission.
+                </div>
+
+
+                <!-- STORY -->
+
+                <div
+                    id="storyContent"
+                    hidden
+                >
+
+
+                    <!-- MISSION HEADER -->
+
+                    <section class="story-header">
+
+                        <span class="eyebrow">
+                            STORY MISSION
+                        </span>
+
+                        <h1 id="storyMissionTitle">
+                            Mission
+                        </h1>
+
+                        <p id="storyChapterTitle">
+                            Chapter
+                        </p>
+
+                    </section>
+
+
+                    <!-- PROGRESS -->
+
+                    <section class="story-progress">
+
+                        <div class="story-progress-info">
+
+                            <span>
+                                Mission Progress
+                            </span>
+
+                            <strong id="sceneProgressText">
+                                Scene 1 of 1
+                            </strong>
+
+                        </div>
+
+
+                        <div class="story-progress-track">
+
+                            <div
+                                class="story-progress-fill"
+                                id="storyProgressFill"
+                            ></div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- STORY CARD -->
+
+                    <section
+                        class="story-reading-card"
+                        id="storyReadingCard"
+                    >
+
+                        <div class="story-visual" id="storyVisual">
+                            <img id="storySceneImage" class="story-scene-image" alt="" hidden>
+                            <div class="story-visual-fallback" id="storyVisualFallback">
+                                <div class="story-visual-icon">🛖</div>
+                                <span>Travel back in time</span>
+                            </div>
+                            <span class="story-visual-caption" id="storyVisualCaption" hidden></span>
+                        </div>
+
+
+                        <div class="story-reading-content">
+
+                            <span
+                                class="story-scene-label"
+                                id="sceneLabel"
+                            >
+                                SCENE 1
+                            </span>
+
+
+                            <h2 id="sceneTitle">
+                                Your Journey Begins
+                            </h2>
+
+
+                          <div
+    id="storyText"
+    class="story-text"
+></div>
+
+<!-- =====================================
+     AI STORY EXPLANATION
+====================================== -->
+
+<div class="story-ai-assistance">
+
+    <button
+        type="button"
+        id="storyAiExplainButton"
+        class="story-ai-explain-button"
+        disabled
+    >
+        ✨ Explain This
+    </button>
+
+    <div
+        id="storyAiExplainResponse"
+        class="story-ai-explain-response"
+        role="status"
+        aria-live="polite"
+        hidden
+    ></div>
+
+</div>
+
+
+<!-- =====================================
+     EXPLORE THE SCENE
+====================================== -->
+
+<section
+    id="storyExplore"
+    class="story-explore"
+    hidden
+>
+
+    <div class="story-learning-heading">
+
+        <div class="story-learning-icon">
+            🔎
+        </div>
+
+        <div>
+
+            <span>
+                EXPLORE THE SCENE
+            </span>
+
+            <strong>
+                What can you discover?
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <p
+        id="storyExploreIntroduction"
+        class="story-explore-introduction"
+    ></p>
+
+
+    <div
+        id="storyExploreChoices"
+        class="story-explore-choices"
+    ></div>
+
+</section>
+
+
+<!-- =====================================
+     WHAT YOU DISCOVERED
+====================================== -->
+
+<section
+    id="storyDiscovery"
+    class="story-discovery"
+    hidden
+>
+
+    <div class="story-learning-heading">
+
+        <div class="story-learning-icon">
+            📜
+        </div>
+
+        <div>
+
+            <span>
+                WHAT YOU DISCOVERED
+            </span>
+
+            <strong id="storyDiscoveryTitle">
+                A Closer Look
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="storyDiscoveryText"
+        class="story-discovery-text"
+    ></div>
+
+</section>
+
+
+<!-- =====================================
+     KEY HISTORY TERM
+====================================== -->
+
+<section
+    id="storyKeyTerm"
+    class="story-key-term"
+    hidden
+>
+
+    <div class="story-key-term-icon">
+        🔑
+    </div>
+
+    <div class="story-key-term-content">
+
+        <span>
+            KEY HISTORY TERM
+        </span>
+
+        <strong id="storyKeyTermName"></strong>
+
+        <p id="storyKeyTermDefinition"></p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     HISTORICAL DECISION
+====================================== -->
+
+<section
+    id="storyDecision"
+    class="story-decision"
+    hidden
+>
+
+    <div class="story-learning-heading">
+
+        <div class="story-learning-icon">
+            ⚖️
+        </div>
+
+        <div>
+
+            <span>
+                HISTORICAL DECISION
+            </span>
+
+            <strong>
+                What would you do?
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- Situation -->
+
+    <div
+        id="storyDecisionSituation"
+        class="story-decision-situation"
+    ></div>
+
+
+    <!-- Question -->
+
+    <p
+        id="storyDecisionQuestion"
+        class="story-decision-question"
+    ></p>
+
+
+    <!-- Choices -->
+
+    <div
+        id="storyDecisionChoices"
+        class="story-decision-choices"
+        role="group"
+        aria-label="Historical decision choices"
+    ></div>
+
+
+    <!-- Feedback shown after a choice -->
+
+    <div
+        id="storyDecisionFeedback"
+        class="story-decision-feedback"
+        aria-live="polite"
+        hidden
+    >
+
+        <strong
+            id="storyDecisionFeedbackTitle"
+        ></strong>
+
+        <p
+            id="storyDecisionExplanation"
+        ></p>
+
+    </div>
+
+</section>
+
+
+<!-- HISTORICAL INSIGHT -->
+
+
+                            <!-- HISTORICAL INSIGHT -->
+
+                            <div
+                                class="historical-insight"
+                                id="historicalInsight"
+                                hidden
+                            >
+
+                                <div class="historical-insight-icon">
+                                    💡
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Historical Insight
+                                    </strong>
+
+                                    <p id="historicalInsightText"></p>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- QUICK CHECK -->
+
+                            <section
+                                class="story-quick-check"
+                                id="storyQuickCheck"
+                                hidden
+                                aria-labelledby="quickCheckQuestion"
+                            >
+
+                                <div class="quick-check-heading">
+
+                                    <div class="quick-check-icon">
+                                        🧠
+                                    </div>
+
+                                    <div>
+
+                                        <span>
+                                            QUICK CHECK
+                                        </span>
+
+                                        <strong>
+                                           Choose the best answer
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+                                <p
+                                    class="quick-check-question"
+                                    id="quickCheckQuestion"
+                                ></p>
+
+
+                                <div
+                                    class="quick-check-choices"
+                                    id="quickCheckChoices"
+                                ></div>
+
+
+                                <div
+                                    class="quick-check-feedback"
+                                    id="quickCheckFeedback"
+                                    role="status"
+                                    aria-live="polite"
+                                    hidden
+                                >
+
+                                    <strong
+                                        id="quickCheckFeedbackTitle"
+                                    ></strong>
+
+                                    <p
+                                        id="quickCheckFeedbackText"
+                                    ></p>
+
+                                </div>
+
+                            </section>
+
+
+                            <!-- ACTION -->
+
+                            <div class="story-actions">
+
+                                <button
+                                    type="button"
+                                    id="continueStoryButton"
+                                    class="begin-mission-button"
+                                >
+                                    Continue →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- STORY COMPLETE -->
+
+                    <section
+                        id="storyCompleteSection"
+                        class="story-complete-card"
+                        hidden
+                    >
+
+                        <div class="story-complete-icon">
+                            ✓
+                        </div>
+
+                        <span class="eyebrow">
+                            STORY COMPLETE
+                        </span>
+
+                        <h2>
+                            Story Mission Complete!
+                        </h2>
+
+                        <p>
+                            You explored the important ideas in this
+                            mission and checked your understanding.
+                            Now use what you learned in the Mission Quiz.
+                        </p>
+
+                        <button
+                            type="button"
+                            id="quizButton"
+                            class="begin-mission-button"
+                        >
+                            Continue to Mission Quiz →
+                        </button>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script
+        type="module"
+        src="../js/auth-guard.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/student.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/logout.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/story.js"
+    ></script>
+
+</body>
+
+</html>

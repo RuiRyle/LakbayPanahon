@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LakbayPanahon - Practice Audit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th { background: #f2f2f2; }
+        .ready { color: green; }
+        .missing { color: #b45309; }
+    </style>
+</head>
+<body>
+    <h1>LakbayPanahon Practice Questions Audit</h1>
+    <p>Read-only report. No Firestore documents will be modified.</p>
+    <p id="status">Checking authentication...</p>
+
+    <button id="exportQuestions" disabled>
+    Export Practice Questions JSON
+</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Mission ID</th>
+                <th>Active Questions</th>
+                <th>Invalid Difficulty</th>
+                <th>Missing Topic</th>
+                <th>Adaptive Ready</th>
+            </tr>
+        </thead>
+        <tbody id="results"></tbody>
+    </table>
+
+    <h2>Questions Needing Attention</h2>
+    <pre id="details"></pre>
+
+    <script type="module">
+        import { auth, db } from "../js/firebase-config.js";
+
+        import {
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
+        import {
+            collection,
+            getDocs
+        } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+        const status = document.getElementById("status");
+        const results = document.getElementById("results");
+        const details = document.getElementById("details");
+
+        const exportButton = document.getElementById("exportQuestions");
+let exportData = [];
+
+exportButton.addEventListener("click", () => {
+    const blob = new Blob(
+        [JSON.stringify(exportData, null, 2)],
+        { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "practice-questions-before-adaptive-update.json";
+    link.click();
+
+    URL.revokeObjectURL(url);
+});
+
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                status.textContent =
+                    "Please log in to LakbayPanahon first.";
+                return;
+            }
+
+            try {
+                status.textContent = "Reading practice questions...";
+
+                const snapshot = await getDocs(
+                    collection(db, "practiceQuestions")
+                );
+
+                const missions = new Map();
+                const issues = [];
+
+                snapshot.forEach((docSnapshot) => {
+                    const question = docSnapshot.data();
+exportData.push({
+    id: docSnapshot.id,
+    ...question
+});
+
+                    if (question.status !== "active") return;
+
+                    const missionId = question.missionId || "UNKNOWN";
+
+                    if (!missions.has(missionId)) {
+                        missions.set(missionId, {
+                            total: 0,
+                            invalidDifficulty: 0,
+                            missingTopic: 0
+                        });
+                    }
+
+                    const mission = missions.get(missionId);
+                    mission.total++;
+
+                    const difficulty = String(
+                        question.difficulty || ""
+                    ).trim().toLowerCase();
+
+                    const validDifficulty = [
+                        "easy", "medium", "hard"
+                    ].includes(difficulty);
+
+                    const validTopic =
+                        typeof question.topic === "string" &&
+                        question.topic.trim().length > 0;
+
+                    if (!validDifficulty) mission.invalidDifficulty++;
+                    if (!validTopic) mission.missingTopic++;
+
+                    if (!validDifficulty || !validTopic) {
+                        issues.push({
+                            id: docSnapshot.id,
+                            missionId,
+                            difficulty: question.difficulty ?? "MISSING",
+                            topic: question.topic ?? "MISSING"
+                        });
+                    }
+                });
+
+                for (const [missionId, data] of
+                    [...missions.entries()].sort()) {
+
+                    const row = document.createElement("tr");
+                    const ready =
+                        data.invalidDifficulty === 0 &&
+                        data.missingTopic === 0;
+
+                    for (const value of [
+                        missionId,
+                        data.total,
+                        data.invalidDifficulty,
+                        data.missingTopic,
+                        ready ? "YES" : "NO"
+                    ]) {
+                        const cell = document.createElement("td");
+                        cell.textContent = value;
+                        row.appendChild(cell);
+                    }
+
+                    row.lastChild.className =
+                        ready ? "ready" : "missing";
+
+                    results.appendChild(row);
+                }
+
+                details.textContent =
+                    JSON.stringify(issues, null, 2);
+
+                status.textContent =
+                    `Audit complete: ${snapshot.size} documents read, ` +
+                    `${missions.size} missions found, ` +
+                    `${issues.length} questions needing attention.`;
+
+                    exportButton.disabled = false;
+
+            } catch (error) {
+                console.error("Practice audit failed:", error);
+                status.textContent =
+                    `Audit failed: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

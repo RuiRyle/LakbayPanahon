@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Teacher Registration | LakbayPanahon
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../css/auth.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<main class="auth-page">
+
+
+    <!-- ==================================
+         LEFT
+    =================================== -->
+
+    <section class="auth-showcase">
+
+        <a
+            href="teacher.html"
+            class="auth-logo"
+        >
+
+            <div class="logo-icon">
+                LP
+            </div>
+
+            <div class="logo-text">
+
+                <span>
+                    LakbayPanahon
+                </span>
+
+                <small>
+                    FOR EDUCATORS
+                </small>
+
+            </div>
+
+        </a>
+
+
+        <div class="showcase-content">
+
+            <span class="showcase-label">
+                TEACHER REGISTRATION
+            </span>
+
+
+            <h1>
+                Support learning.
+                <span>
+                    Guide the journey.
+                </span>
+            </h1>
+
+
+            <p>
+                Connect with your students through
+                LakbayPanahon and monitor their journey
+                through Philippine History.
+            </p>
+
+
+            <div class="register-benefits">
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Create Private Classes
+                        </strong>
+
+                        <span>
+                            Generate class codes that students
+                            can use to join.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Monitor Learning
+                        </strong>
+
+                        <span>
+                            View the progress of students
+                            connected to your class.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Review Quiz Results
+                        </strong>
+
+                        <span>
+                            Review available quiz results
+                            from your students.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="showcase-decoration decoration-one"></div>
+        <div class="showcase-decoration decoration-two"></div>
+
+
+        <p class="showcase-footer">
+            LakbayPanahon • Teacher Platform
+        </p>
+
+    </section>
+
+
+
+    <!-- ==================================
+         FORM
+    =================================== -->
+
+    <section class="auth-form-section register-form-section">
+
+        <div class="auth-form-container register-container">
+
+
+            <a
+                href="teacher.html"
+                class="back-home"
+            >
+                ← Back to Teacher Site
+            </a>
+
+
+            <div class="form-heading">
+
+                <span class="form-label">
+                    TEACHER ACCOUNT
+                </span>
+
+                <h2>
+                    Register as a teacher
+                </h2>
+
+                <p>
+                    Enter your information below.
+                    Your account will require Administrator
+                    verification before classroom features
+                    become available.
+                </p>
+
+            </div>
+
+
+
+            <!-- VERIFICATION NOTICE -->
+
+            <div
+                class="teacher-notice active"
+                style="margin-top: 25px;"
+            >
+
+                <div class="notice-icon">
+                    i
+                </div>
+
+                <p>
+                    After registration, your account will
+                    have a pending status until it is
+                    verified by the LakbayPanahon
+                    Administrator.
+                </p>
+
+            </div>
+
+
+
+            <form
+                id="teacherRegisterForm"
+                class="auth-form"
+            >
+
+                <!-- Role is fixed -->
+
+                <input
+                    type="hidden"
+                    id="teacherRole"
+                    value="teacher"
+                >
+
+
+                <!-- NAME -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="teacherFirstName">
+                            First Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <input
+                                type="text"
+                                id="teacherFirstName"
+                                placeholder="First name"
+                                autocomplete="given-name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="teacherLastName">
+                            Last Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <input
+                                type="text"
+                                id="teacherLastName"
+                                placeholder="Last name"
+                                autocomplete="family-name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MIDDLE -->
+
+                <div class="form-group">
+
+                    <label for="teacherMiddleName">
+
+                        Middle Name
+
+                        <span class="optional">
+                            Optional
+                        </span>
+
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input
+                            type="text"
+                            id="teacherMiddleName"
+                            placeholder="Middle name"
+                            autocomplete="additional-name"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="teacherEmail">
+                        Email Address
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ✉
+                        </span>
+
+                        <input
+                            type="email"
+                            id="teacherEmail"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="teacherPassword">
+                        Password
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="teacherPassword"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="teacherPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+
+                    <small class="input-help">
+                        Use at least 6 characters.
+                    </small>
+
+                </div>
+
+
+                <!-- CONFIRM -->
+
+                <div class="form-group">
+
+                    <label for="teacherConfirmPassword">
+                        Confirm Password
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="teacherConfirmPassword"
+                            placeholder="Enter your password again"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="teacherConfirmPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <label class="checkbox-container terms">
+
+                    <input
+                        type="checkbox"
+                        id="teacherTerms"
+                        required
+                    >
+
+                    <span>
+                        I agree to the Terms of Use and
+                        Privacy Policy of LakbayPanahon.
+                    </span>
+
+                </label>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="teacherRegisterMessage"
+                    class="form-message"
+                ></div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="auth-button"
+                >
+
+                    Register as Teacher
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <div class="login-prompt">
+
+                <span>
+                    Already have an account?
+                </span>
+
+                <a href="login.html">
+                    Log In
+                </a>
+
+            </div>
+
+
+            <div class="teacher-registration-link">
+
+                <span>
+                    Are you a student?
+                </span>
+
+                <a href="../index.html">
+                    Go to Student Site
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script type="module" src="../js/auth-ui.js"></script>
+
+
+</body>
+
+</html>

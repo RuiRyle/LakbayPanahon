@@ -1,0 +1,1467 @@
+/* =========================================================
+   LAKBAYPANAHON — MISSION PAGE
+   Page-specific styles extracted from student.css.
+   Shared Student layout/components remain in student.css.
+   ========================================================= */
+
+
+/* ==========================================
+   MISSION PAGE
+========================================== */
+
+.mission-page {
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    padding: 32px;
+}
+
+
+.mission-back {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 28px;
+
+    color: #183153;
+
+    font-weight: 700;
+    text-decoration: none;
+
+    transition:
+        transform 180ms ease,
+        color 180ms ease;
+}
+
+
+.mission-back:hover {
+    color: #a94442;
+
+    transform:
+        translateX(-2px);
+}
+
+
+/* ==========================================
+   CHAPTER HEADER
+========================================== */
+
+.mission-chapter-header {
+    max-width: 760px;
+
+    margin: 20px auto 0;
+
+    text-align: center;
+}
+
+
+.mission-chapter-label {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: #a94442;
+
+    font-size: 0.78rem;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+}
+
+
+.mission-chapter-header h2 {
+    margin: 0 0 12px;
+
+    color: #183153;
+
+    font-size:
+        clamp(
+            1.8rem,
+            4vw,
+            2.8rem
+        );
+}
+
+
+.mission-chapter-header p {
+    margin: 0;
+
+    color: #667085;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   DIVIDER
+========================================== */
+
+.mission-divider {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    max-width: 700px;
+
+    margin: 35px auto;
+
+    color: #d6a84b;
+}
+
+
+.mission-divider::before,
+.mission-divider::after {
+    content: "";
+
+    height: 1px;
+
+    flex: 1;
+
+    background: #e4d7bd;
+}
+
+
+/* ==========================================
+   INTRODUCTION CARD
+========================================== */
+
+.mission-introduction-card {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    padding: 48px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf6,
+            #fff8e7
+        );
+
+    border:
+        1px solid
+        #eadfc8;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 18px 50px
+        rgba(24, 49, 83, 0.09);
+}
+
+
+.mission-introduction-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    right: -90px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            214,
+            168,
+            75,
+            0.12
+        );
+
+    pointer-events: none;
+}
+
+
+.mission-introduction-card > * {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+/* ==========================================
+   MISSION COMPASS
+========================================== */
+
+.mission-compass {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 72px;
+    height: 72px;
+
+    margin: 0 auto 22px;
+
+    border-radius: 50%;
+
+    background: #183153;
+
+    font-size: 2rem;
+
+    box-shadow:
+        0 8px 20px
+        rgba(24, 49, 83, 0.18);
+}
+
+
+/* ==========================================
+   MISSION TITLE
+========================================== */
+
+.mission-number {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #a94442;
+
+    font-size: 0.78rem;
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+}
+
+
+.mission-introduction-card h2 {
+    margin: 0;
+
+    color: #183153;
+
+    font-size:
+        clamp(
+            2rem,
+            5vw,
+            3rem
+        );
+}
+
+
+.mission-introduction-text {
+    max-width: 610px;
+
+    margin:
+        18px auto
+        30px;
+
+    color: #5f6875;
+
+    font-size: 1.02rem;
+    line-height: 1.8;
+}
+
+
+/* ==========================================
+   MISSION INFORMATION
+========================================== */
+
+.mission-information {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 14px;
+
+    max-width: 570px;
+
+    margin:
+        0 auto
+        30px;
+}
+
+
+.mission-information > div {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    text-align: left;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.75
+        );
+
+    border:
+        1px solid
+        #eadfc8;
+
+    border-radius: 14px;
+}
+
+
+.mission-information > div > span {
+    font-size: 1.6rem;
+}
+
+
+.mission-information strong,
+.mission-information small {
+    display: block;
+}
+
+
+.mission-information strong {
+    color: #183153;
+}
+
+
+.mission-information small {
+    margin-top: 3px;
+
+    color: #7b8490;
+}
+
+
+/* ==========================================
+   MISSION PATH SECTION
+========================================== */
+
+.mission-path-section {
+    width: 100%;
+    max-width: 760px;
+
+    margin:
+        55px auto
+        0;
+}
+
+
+.mission-path-section
+.section-heading {
+    display: block;
+
+    width: 100%;
+
+    margin-bottom: 24px;
+
+    text-align: left;
+}
+
+
+.mission-path-section
+.section-heading > div {
+    width: 100%;
+}
+
+
+.mission-path-section
+.section-heading
+.eyebrow {
+    margin-bottom: 8px;
+}
+
+
+.mission-path-section
+.section-heading h2 {
+    margin:
+        0 0
+        8px;
+
+    color: var(--navy);
+
+    font-size: 28px;
+}
+
+
+.mission-path-section
+.section-heading p {
+    margin: 0;
+
+    color: var(--text-light);
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   MISSION PATH
+========================================== */
+
+.mission-path {
+    position: relative;
+
+    display: grid;
+
+    gap: 14px;
+
+    width: 100%;
+
+    max-width: none;
+
+    margin: 0;
+}
+
+
+/*
+ * Journey line connecting the
+ * mission progression nodes.
+ */
+
+.mission-path::before {
+    content: "";
+
+    position: absolute;
+
+    top: 30px;
+    bottom: 30px;
+    left: 43px;
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #d6a84b 0%,
+            #e8dfcf 28%,
+            #e8dfcf 100%
+        );
+
+    z-index: 0;
+}
+
+
+/* ==========================================
+   MISSION PATH CARD
+========================================== */
+
+.mission-path-item {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    width: 100%;
+    min-height: 88px;
+
+    padding:
+        18px
+        20px;
+
+    background: #ffffff;
+
+    border:
+        1px solid
+        #e8e1d5;
+
+    border-radius: 16px;
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease;
+}
+
+
+/* ==========================================
+   COMPLETED MISSION
+========================================== */
+
+.mission-path-item.completed {
+    background:
+        linear-gradient(
+            135deg,
+            #fbfcfa,
+            #f7faf6
+        );
+
+    border-color:
+        #d8e2d7;
+}
+
+
+.mission-path-item.completed:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        #b9cbb7;
+
+    box-shadow:
+        0 8px 20px
+        rgba(24, 49, 83, 0.07);
+}
+
+
+/* ==========================================
+   CURRENT MISSION
+========================================== */
+
+.mission-path-item.current {
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf7,
+            #fff8e7
+        );
+
+    border:
+        2px solid
+        #d6a84b;
+
+    box-shadow:
+        0 12px 30px
+        rgba(24, 49, 83, 0.11);
+}
+
+
+/*
+ * Clearly marks the student's
+ * immediate next objective.
+ */
+
+.mission-path-item.current::after {
+    content: "NEXT";
+
+    position: absolute;
+
+    top: -10px;
+    right: 18px;
+
+    padding:
+        4px
+        9px;
+
+    color: #ffffff;
+
+    background: #a94442;
+
+    border-radius: 999px;
+
+    font-size: 0.65rem;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    box-shadow:
+        0 4px 10px
+        rgba(169, 68, 66, 0.16);
+}
+
+
+/*
+ * Current missions receive a small
+ * amount of interactive emphasis.
+ */
+
+.mission-path-item.current:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 15px 34px
+        rgba(24, 49, 83, 0.13);
+}
+
+
+/* ==========================================
+   UNLOCKED MISSION
+========================================== */
+
+.mission-path-item.unlocked:not(
+    .chapter-challenge
+) {
+    border-color:
+        #ddd3bf;
+}
+
+
+.mission-path-item.unlocked:not(
+    .chapter-challenge
+):hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        #d6a84b;
+
+    box-shadow:
+        0 8px 20px
+        rgba(24, 49, 83, 0.07);
+}
+
+
+/* ==========================================
+   LOCKED MISSION
+========================================== */
+
+.mission-path-item.locked {
+    opacity: 0.58;
+
+    background: #f7f7f6;
+
+    border-style: dashed;
+
+    box-shadow: none;
+}
+
+
+/* ==========================================
+   MISSION NODE
+========================================== */
+
+.mission-path-node {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex:
+        0 0
+        48px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    background: #fff8e7;
+
+    border:
+        2px solid
+        #eadfc8;
+
+    font-size: 1.25rem;
+
+    transition:
+        transform 180ms ease,
+        background 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+/* ==========================================
+   COMPLETED NODE
+========================================== */
+
+.mission-path-item.completed
+.mission-path-node {
+    background: #eef5ec;
+
+    border-color: #b9cbb7;
+}
+
+
+.mission-path-item.completed:hover
+.mission-path-node {
+    transform:
+        scale(1.04);
+}
+
+
+/* ==========================================
+   CURRENT NODE
+========================================== */
+
+.mission-path-item.current
+.mission-path-node {
+    background: #183153;
+
+    border-color: #183153;
+
+    box-shadow:
+        0 0 0 5px
+        rgba(
+            214,
+            168,
+            75,
+            0.18
+        );
+}
+
+
+.mission-path-item.current:hover
+.mission-path-node {
+    transform:
+        scale(1.05);
+}
+
+
+/* ==========================================
+   LOCKED NODE
+========================================== */
+
+.mission-path-item.locked
+.mission-path-node {
+    background: #efefed;
+
+    border-color: #d9d9d5;
+}
+
+
+/* ==========================================
+   MISSION PATH CONTENT
+========================================== */
+
+.mission-path-content {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.mission-path-content span,
+.mission-path-content strong,
+.mission-path-content small {
+    display: block;
+}
+
+
+/*
+ * First span is the mission number /
+ * Chapter Challenge label.
+ */
+
+.mission-path-content
+> span:first-child {
+    margin-bottom: 3px;
+
+    color: #a94442;
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+
+.mission-path-content strong {
+    color: #183153;
+
+    font-size: 1rem;
+
+    line-height: 1.35;
+}
+
+
+.mission-path-content small {
+    margin-top: 5px;
+
+    color: #7b8490;
+
+    line-height: 1.45;
+}
+
+
+/* ==========================================
+   MISSION STATE CHIPS
+========================================== */
+
+.mission-path-content
+.mission-state-chip {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    margin-top: 9px;
+
+    padding:
+        5px
+        9px;
+
+    border-radius: 999px;
+
+    font-size: 0.68rem;
+    font-weight: 800;
+
+    letter-spacing: 0.02em;
+
+    text-transform: none;
+}
+
+
+/* Completed */
+
+.completed-chip {
+    color:
+        #42633f !important;
+
+    background:
+        #eef5ec;
+}
+
+
+/* Current */
+
+.current-chip {
+    color:
+        #183153 !important;
+
+    background:
+        #f3dfad;
+}
+
+
+/* Unlocked */
+
+.unlocked-chip {
+    color:
+        #76551c !important;
+
+    background:
+        #fff3d6;
+}
+
+
+/* Locked */
+
+.locked-chip {
+    color:
+        #707070 !important;
+
+    background:
+        #ececea;
+}
+
+
+/* ==========================================
+   CHAPTER CHALLENGE
+========================================== */
+
+.mission-path-item.chapter-challenge {
+    margin-top: 10px;
+
+    border-width: 2px;
+}
+
+
+/*
+ * Unlocked final challenge.
+ * This fixes the old descendant-selector bug.
+ */
+
+.mission-path-item.chapter-challenge.unlocked {
+    background:
+        linear-gradient(
+            135deg,
+            #fff9e9,
+            #fff3cf
+        );
+
+    border-color:
+        #d6a84b;
+
+    box-shadow:
+        0 10px 26px
+        rgba(
+            214,
+            168,
+            75,
+            0.14
+        );
+}
+
+
+.mission-path-item.chapter-challenge.unlocked:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(
+            24,
+            49,
+            83,
+            0.10
+        );
+}
+
+
+.mission-path-item.chapter-challenge.unlocked
+.mission-path-node {
+    background:
+        #d6a84b;
+
+    border-color:
+        #c29439;
+
+    box-shadow:
+        0 0 0 5px
+        rgba(
+            214,
+            168,
+            75,
+            0.14
+        );
+}
+
+
+.mission-path-item.chapter-challenge.unlocked:hover
+.mission-path-node {
+    transform:
+        scale(1.06);
+}
+
+
+/* ==========================================
+   COMPLETED CHAPTER CHALLENGE
+========================================== */
+
+.mission-path-item.chapter-challenge.completed {
+    background:
+        linear-gradient(
+            135deg,
+            #f8fbf7,
+            #eef5ec
+        );
+
+    border-color:
+        #b9cbb7;
+}
+
+
+.mission-path-item.chapter-challenge.completed
+.mission-path-node {
+    background:
+        #eef5ec;
+
+    border-color:
+        #9fb99c;
+}
+
+
+/* ==========================================
+   CHALLENGE CHIP
+========================================== */
+
+.challenge-chip {
+    color:
+        #6d4b10 !important;
+
+    background:
+        rgba(
+            214,
+            168,
+            75,
+            0.20
+        );
+}
+
+
+/* ==========================================
+   SUBTLE GAME-FEEL ENTRANCE
+========================================== */
+
+@keyframes missionPathReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(7px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+.mission-path-item {
+    animation:
+        missionPathReveal
+        300ms ease both;
+}
+
+
+.mission-path-item:nth-child(2) {
+    animation-delay:
+        40ms;
+}
+
+
+.mission-path-item:nth-child(3) {
+    animation-delay:
+        80ms;
+}
+
+
+.mission-path-item:nth-child(4) {
+    animation-delay:
+        120ms;
+}
+
+
+.mission-path-item:nth-child(5) {
+    animation-delay:
+        160ms;
+}
+
+
+.mission-path-item:nth-child(6) {
+    animation-delay:
+        200ms;
+}
+
+
+/* ==========================================
+   CURRENT OBJECTIVE EMPHASIS
+========================================== */
+
+@keyframes currentMissionRing {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 5px
+            rgba(
+                214,
+                168,
+                75,
+                0.14
+            );
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 8px
+            rgba(
+                214,
+                168,
+                75,
+                0.07
+            );
+    }
+
+}
+
+
+.mission-path-item.current
+.mission-path-node {
+    animation:
+        currentMissionRing
+        2.4s ease-in-out
+        infinite;
+}
+
+
+/*
+ * The Final Challenge uses the same
+ * restrained emphasis when it becomes
+ * the next available objective.
+ */
+
+.mission-path-item.chapter-challenge.unlocked
+.mission-path-node {
+    animation:
+        currentMissionRing
+        2.4s ease-in-out
+        infinite;
+}
+
+
+/* ==========================================
+   ACCESSIBILITY — REDUCED MOTION
+========================================== */
+
+@media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .mission-back,
+    .mission-path-item,
+    .mission-path-node {
+        transition: none;
+
+        animation: none;
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 700px) {
+
+    .mission-page {
+        padding: 20px;
+    }
+
+
+    .mission-introduction-card {
+        padding:
+            35px
+            22px;
+    }
+
+
+    .mission-information {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .begin-mission-button {
+        width: 100%;
+    }
+
+
+    /*
+     * Reposition path line for
+     * smaller mission nodes.
+     */
+
+    .mission-path::before {
+        left: 35px;
+    }
+
+
+    .mission-path-item {
+        gap: 13px;
+
+        padding:
+            17px
+            15px;
+    }
+
+
+    .mission-path-node {
+        flex-basis: 40px;
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 1.05rem;
+    }
+
+
+    .mission-path-item.current::after {
+        right: 12px;
+    }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+
+    .mission-page {
+        padding:
+            18px 12px;
+    }
+
+
+    .mission-introduction-card {
+        padding:
+            30px 16px;
+
+        border-radius:
+            19px;
+    }
+
+
+    .mission-path-section {
+        margin-top:
+            42px;
+    }
+
+
+    .mission-path-section
+    .section-heading h2 {
+        font-size:
+            24px;
+    }
+
+
+    .mission-path-item {
+        min-height:
+            82px;
+    }
+
+
+    .mission-path-content strong {
+        font-size:
+            0.95rem;
+    }
+
+
+    .mission-path-content small {
+        font-size:
+            0.78rem;
+    }
+
+}
+
+/* =========================================================
+   MISSION — LEARNING GOAL
+   Step 11.7A Learning Experience Polish
+   ========================================================= */
+
+.mission-learning-goal {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    max-width: 610px;
+
+    margin:
+        0 auto
+        24px;
+
+    padding:
+        16px
+        18px;
+
+    text-align: left;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.72
+        );
+
+    border:
+        1px solid
+        #e6d8b8;
+
+    border-left:
+        4px solid
+        #d6a84b;
+
+    border-radius:
+        14px;
+}
+
+
+.mission-learning-goal[hidden] {
+    display: none;
+}
+
+
+.mission-learning-goal-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex:
+        0 0
+        42px;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius:
+        12px;
+
+    background:
+        #fff1c7;
+
+    font-size:
+        1.25rem;
+}
+
+
+.mission-learning-goal-content {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.mission-learning-goal-content span {
+    display: block;
+
+    margin-bottom:
+        5px;
+
+    color:
+        #a94442;
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.09em;
+}
+
+
+.mission-learning-goal-content p {
+    margin: 0;
+
+    color:
+        #183153;
+
+    font-size:
+        0.92rem;
+
+    font-weight:
+        650;
+
+    line-height:
+        1.55;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 500px) {
+
+    .mission-learning-goal {
+        gap:
+            11px;
+
+        padding:
+            14px;
+    }
+
+
+    .mission-learning-goal-icon {
+        flex-basis:
+            38px;
+
+        width:
+            38px;
+        height:
+            38px;
+
+        font-size:
+            1.1rem;
+    }
+
+
+    .mission-learning-goal-content p {
+        font-size:
+            0.86rem;
+    }
+
+}
+
+/* ==========================================
+   STUDENT ACCESSIBILITY — READABILITY
+   Step 11.9C
+========================================== */
+
+/* Keep supporting mission text comfortably readable */
+
+.mission-information small,
+.mission-path-content small {
+    font-size: 0.85rem;
+}
+
+
+/* Improve readability of the learning goal on phones */
+
+@media (max-width: 500px) {
+
+    .mission-learning-goal-content p {
+        font-size: 0.92rem;
+    }
+
+}
+
+
+/* ==========================================
+   MISSION — HOW TO PLAY
+========================================== */
+
+.mission-how-to-play {
+    max-width: 610px;
+    margin: 0 auto 26px;
+    padding: 22px;
+    text-align: left;
+    background: #ffffff;
+    border: 1px solid #eadfc8;
+    border-radius: 16px;
+}
+
+.mission-how-to-play h3 {
+    margin: 0 0 18px;
+    color: #183153;
+    font-size: 1rem;
+}
+
+.mission-steps {
+    display: grid;
+    gap: 18px;
+}
+
+.mission-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.mission-step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    color: #ffffff;
+    background: #183153;
+    border-radius: 50%;
+    font-weight: 800;
+}
+
+.mission-step strong {
+    display: block;
+    color: #183153;
+    font-size: 0.9rem;
+}
+
+.mission-step p {
+    margin: 5px 0 0;
+    color: #667085;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+    .mission-how-to-play {
+        padding: 18px 15px;
+    }
+}
