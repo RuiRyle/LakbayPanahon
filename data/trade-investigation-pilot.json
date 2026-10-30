@@ -1,0 +1,136 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "reviewStatus": "Fictional Grade 5 investigation; teacher/student review pending",
+  "path": "storyScenes/mission2-scene4",
+  "expectedFirestoreFields": {
+    "content": {
+      "stringValue": "As your visit ends, you realize that livelihood and trade helped communities meet their needs. The work of farmers, fishers, craftspeople, and traders contributed to community life."
+    },
+    "decisionSituation": {
+      "stringValue": "A community has a good harvest of crops but needs more clay pots to store food. Another nearby community makes pottery and needs additional food. The people are discussing how they could help meet each other's needs."
+    },
+    "decisionQuestion": {
+      "stringValue": "What would be a useful way for these communities to meet their different needs?"
+    },
+    "decisionChoices": {
+      "arrayValue": {
+        "values": [
+          {
+            "stringValue": "The communities exchange some crops for clay pots so both can meet their needs."
+          },
+          {
+            "stringValue": "Both communities refuse to exchange anything, even though each has something the other needs."
+          },
+          {
+            "stringValue": "The farming community stops growing food because the other community makes pottery."
+          },
+          {
+            "stringValue": "The communities ignore their different needs and wait for the goods to appear."
+          }
+        ]
+      }
+    },
+    "decisionCorrectAnswer": {
+      "stringValue": "The communities exchange some crops for clay pots so both can meet their needs."
+    },
+    "decisionExplanation": {
+      "stringValue": "Trade helped early Filipino communities obtain goods they needed or valued. A community with extra crops could exchange some of its produce for pottery made by another community. Both communities could benefit because they had different resources, products, and skills."
+    }
+  },
+  "fields": {
+    "content": "Bayani brings you to the final investigation. Your community has extra grain but needs pots for storing food. Visitors have pots and need grain.\n\nIn this made-up exchange, the two groups agree to swap 3 baskets of grain for 2 pots. This agreement is part of the classroom activity. It is not a fixed price used by all early communities.\n\nFirst inspect what each group has and needs. Record the clues in your evidence journal. Then choose what to offer and what to receive. Check whether both needs are met and whether the plan follows the agreement.\n\nAfter checking your plan, explain why it helps both communities. No real goods or game XP are spent in this activity.",
+    "exploreIntroduction": "Investigate the two communities and their agreement. Open all three clues before planning an exchange.",
+    "exploreItems": [
+      {
+        "title": "Our community",
+        "icon": "🌾",
+        "hint": "What do we have, and what do we need?",
+        "discovery": "We have 8 baskets of grain and 3 woven baskets available for exchange. We need 2 pots for storing food."
+      },
+      {
+        "title": "The visiting community",
+        "icon": "🏺",
+        "hint": "What can the visitors offer, and what do they need?",
+        "discovery": "The visitors have 4 pots and 2 mats available. They need 3 baskets of grain."
+      },
+      {
+        "title": "The agreement",
+        "icon": "🤝",
+        "hint": "What exchange have both groups agreed on?",
+        "discovery": "For this made-up activity, both groups agree on 3 baskets of grain for 2 pots. Trading another good or changing just one side does not follow this agreement. These quantities are not a historical price list."
+      }
+    ],
+    "tradeActivity": {
+      "title": "Plan an Exchange That Helps Both Sides",
+      "instructions": "Use your evidence journal. Choose the good and amount we offer, then the good and amount we receive. Check both communities' needs and the agreed exchange.",
+      "ownGoods": [
+        {
+          "id": "grain",
+          "name": "baskets of grain",
+          "quantity": 8
+        },
+        {
+          "id": "basket",
+          "name": "woven baskets",
+          "quantity": 3
+        }
+      ],
+      "partnerGoods": [
+        {
+          "id": "pot",
+          "name": "pots",
+          "quantity": 4
+        },
+        {
+          "id": "mat",
+          "name": "mats",
+          "quantity": 2
+        }
+      ],
+      "ownNeed": {
+        "goodId": "pot",
+        "quantity": 2
+      },
+      "partnerNeed": {
+        "goodId": "grain",
+        "quantity": 3
+      },
+      "agreement": {
+        "offerGoodId": "grain",
+        "offerQuantity": 3,
+        "receiveGoodId": "pot",
+        "receiveQuantity": 2
+      },
+      "journalEntries": [
+        "Our supplies: 8 baskets of grain and 3 woven baskets. Our need: 2 pots.",
+        "Visitors' supplies: 4 pots and 2 mats. Their need: 3 baskets of grain.",
+        "Activity agreement: 3 baskets of grain for 2 pots. This is a fictional learning agreement, not a historical price."
+      ]
+    },
+    "decisionSituation": "You have checked an exchange plan. Now use the evidence about resources and needs to explain your decision.",
+    "decisionQuestion": "Why does the agreed exchange help both communities?",
+    "decisionChoices": [
+      "Each community gives a good the other needs and receives a useful good.",
+      "Only the community receiving grain can benefit.",
+      "Trade makes both communities have exactly the same resources.",
+      "After one exchange, neither community will need to produce goods again."
+    ],
+    "decisionCorrectAnswer": "Each community gives a good the other needs and receives a useful good.",
+    "decisionExplanation": "Our community receives pots for storing food. The visitors receive grain they need. Different resources and skills can connect communities through trade. The quantities in this activity do not describe every historical exchange.",
+    "learningHelp": {
+      "explanation": "An exchange can help both groups when each receives something it needs. Count the goods, check the agreement, and then explain the benefit. A plan can fail because of the wrong good, too few goods, too many goods, or an exchange that does not match the agreement.",
+      "vocabulary": [
+        {
+          "term": "Barter",
+          "definition": "Exchanging goods or services directly without money."
+        },
+        {
+          "term": "Agreement",
+          "definition": "A plan that the people involved accept."
+        }
+      ],
+      "example": "If one group needs a storage container and another needs food, compare the goods each group can offer.",
+      "guidingQuestion": "What does each group still need? Does your plan meet both needs without using more goods than either group has?"
+    }
+  }
+}

@@ -13,6 +13,8 @@
     .info { background: #f5f7fa; padding: 12px; border-radius: 6px; }
     input { margin: 10px 0; } code { overflow-wrap: anywhere; }
   </style>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
 </head>
 <body>
   <h1>Practice metadata — dry-run preview</h1>
@@ -61,5 +63,7 @@
       } catch (error) { status.textContent = `Preview failed: ${error.message}`; console.error(error); }
     });
   </script>
+
+    <script type="module" src="../js/page-transition.js"></script>
 </body>
 </html>

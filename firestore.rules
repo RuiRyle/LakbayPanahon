@@ -23,6 +23,115 @@ service cloud.firestore {
         : resource.data.get('lastStreakDate', '') == dayKey(request.time - duration.value(1, 'd'))
           ? resource.data.get('learningStreak', 0) + 1 : 1;
     }
+    function progressionLevel(xp) {
+      let policy = get(/databases/$(database)/documents/learningSettings/progression).data;
+      return policy.xpPerLevel is int && policy.xpPerLevel > 0 && policy.version is int && policy.version > 0
+        ? int(xp / policy.xpPerLevel) + 1 : -1;
+    }
+    function classMember(classId) {
+      let path = /databases/$(database)/documents/classMembers/$(request.auth.uid + '_' + classId);
+      return exists(path) && get(path).data.userId == request.auth.uid && get(path).data.status == 'active';
+    }
+    match /classJoinCodes/{code} {
+      allow get: if activeStudent();
+      allow list, write: if false;
+    }
+    match /classes/{classId} {
+      allow get: if activeStudent() && classMember(classId);
+      allow list, write: if false;
+    }
+    match /classMembers/{membershipId} {
+      allow get: if activeStudent() && (!exists(/databases/$(database)/documents/classMembers/$(membershipId)) || ownRecord());
+      allow list: if activeStudent() && ownRecord();
+      allow create: if activeStudent()
+        && request.resource.data.keys().hasOnly(['userId','classId','joinCode','status','joinedAt'])
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.classId is string && request.resource.data.joinCode is string
+        && request.resource.data.joinCode.matches('^[A-Z0-9]{12}$')
+        && membershipId == request.auth.uid + '_' + request.resource.data.classId
+        && request.resource.data.status == 'active' && request.resource.data.joinedAt == request.time
+        && get(/databases/$(database)/documents/classJoinCodes/$(request.resource.data.joinCode)).data.classId == request.resource.data.classId
+        && get(/databases/$(database)/documents/classJoinCodes/$(request.resource.data.joinCode)).data.status == 'active'
+        && get(/databases/$(database)/documents/classJoinCodes/$(request.resource.data.joinCode)).data.get('expiresAt', request.time + duration.value(1,'s')) > request.time
+        && get(/databases/$(database)/documents/classes/$(request.resource.data.classId)).data.status == 'active';
+      allow delete: if activeStudent() && ownRecord();
+      allow update: if false;
+    }
+    match /classAssignments/{assignmentId} {
+      allow read: if activeStudent() && classMember(resource.data.classId) && resource.data.status == 'published';
+      allow write: if false;
+    }
+
+    match /studentEvidenceJournal/{entryId} {
+      allow get: if activeStudent() && (resource == null || ownRecord());
+      allow list: if activeStudent() && ownRecord();
+      allow delete: if activeStudent() && ownRecord();
+      allow update: if false;
+      allow create: if activeStudent()
+        && request.resource.data.keys().hasOnly(['userId','chapterId','missionId','sceneId','clueIndex','savedAt'])
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.chapterId is string && request.resource.data.missionId is string
+        && request.resource.data.sceneId is string && request.resource.data.clueIndex is int
+        && request.resource.data.clueIndex >= 0
+        && entryId == request.auth.uid + '_' + request.resource.data.sceneId + '_' + string(request.resource.data.clueIndex)
+        && request.resource.data.savedAt == request.time
+        && get(/databases/$(database)/documents/chapters/$(request.resource.data.chapterId)).data.status == 'active'
+        && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.chapterId == request.resource.data.chapterId
+        && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.status == 'active'
+        && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneId)).data.missionId == request.resource.data.missionId
+        && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneId)).data.status == 'active'
+        && request.resource.data.clueIndex < get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneId)).data.exploreItems.size();
+    }
+
+    match /studentReviewEvents/{eventId} {
+      allow read: if activeStudent() && ownRecord();
+      allow create: if activeStudent()
+        && request.resource.data.keys().hasOnly(['userId','chapterId','missionId','topic','sceneIds','kind','completedAt'])
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.kind == 'lesson-review'
+        && request.resource.data.chapterId is string && request.resource.data.missionId is string
+        && request.resource.data.topic is string && request.resource.data.topic.size() > 0 && request.resource.data.topic.size() <= 160
+        && request.resource.data.sceneIds is list && request.resource.data.sceneIds.size() > 0 && request.resource.data.sceneIds.size() <= 50
+        && request.resource.data.sceneIds[0] is string
+        && request.resource.data.completedAt == request.time
+        && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.chapterId == request.resource.data.chapterId
+        && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.status == 'active'
+        && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneIds[0])).data.missionId == request.resource.data.missionId
+        && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneIds[0])).data.status == 'active'
+        && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneIds[0])).data.reviewTopics.hasAny([request.resource.data.topic]);
+      allow update, delete: if false;
+    }
+    match /studentLearningDrafts/{draftId} {
+      function validDraft() {
+        let data = request.resource.data;
+        let chapter = get(/databases/$(database)/documents/chapters/$(data.chapterId)).data;
+        return data.keys().hasOnly(['userId','kind','chapterId','missionId','state','updatedAt'])
+          && data.userId == request.auth.uid
+          && data.kind in ['story','quiz','practice','chapter']
+          && draftId == request.auth.uid + '_' + data.kind + '_' + (data.kind == 'chapter' ? data.chapterId : data.missionId)
+          && data.chapterId is string && chapter.status == 'active'
+          && chapter.get('contentReady', true) != false
+          && data.state is map && data.updatedAt == request.time
+          && ((data.kind == 'chapter' && data.missionId == null)
+            || (data.kind != 'chapter' && data.missionId is string
+              && get(/databases/$(database)/documents/missions/$(data.missionId)).data.chapterId == data.chapterId
+              && get(/databases/$(database)/documents/missions/$(data.missionId)).data.status == 'active'));
+      }
+      allow get: if activeStudent() && (!exists(/databases/$(database)/documents/studentLearningDrafts/$(draftId)) || resource.data.userId == request.auth.uid);
+      allow list: if activeStudent() && resource.data.userId == request.auth.uid;
+      allow create: if activeStudent() && validDraft();
+      allow update: if activeStudent() && ownRecord() && validDraft();
+      allow delete: if activeStudent() && resource.data.userId == request.auth.uid;
+    }
+
+    match /learningSettings/bayaniAI {
+      allow read: if activeStudent();
+      allow write: if false;
+    }
+    match /learningSettings/progression {
+      allow read: if activeStudent();
+      allow write: if false;
+    }
     function rewardUpdate() {
       let next = request.resource.data;
       let kind = next.lastRewardKind;
@@ -35,7 +144,7 @@ service cloud.firestore {
           ? ['xp', 'level', 'updatedAt', 'lastRewardKind', 'lastRewardId', 'learningStreak', 'lastStreakDate']
           : ['xp', 'level', 'updatedAt', 'lastRewardKind', 'lastRewardId'])
         && next.xp is int && next.xp == resource.data.get('xp', 0) + completion.xpEarned
-        && next.level == int(next.xp / 100) + 1 && next.updatedAt == request.time
+        && next.level == progressionLevel(next.xp) && next.updatedAt == request.time
         && (kind != 'daily' || (next.lastStreakDate == dayKey(request.time)
           && next.learningStreak == expectedStreak()));
     }
@@ -58,6 +167,16 @@ service cloud.firestore {
         && request.resource.data.bestScore is int
         && request.resource.data.bestScore >= resource.data.bestScore
         && request.resource.data.bestScore <= 100 && request.resource.data.updatedAt == request.time;
+    }
+    function validAvatarChange() {
+      let selected = request.resource.data.get('avatarId', null);
+      return selected == resource.data.get('avatarId', null)
+        || (selected is string && selected.size() > 0 && selected.size() <= 128 && !selected.matches('.*[/].*')
+          && get(/databases/$(database)/documents/avatars/$(selected)).data.status == 'active');
+    }
+    match /avatars/{avatarId} {
+      allow read: if activeStudent();
+      allow write: if false;
     }
     match /users/{userId} {
       allow read: if signedIn() && request.auth.uid == userId;
@@ -82,7 +201,7 @@ service cloud.firestore {
       allow update: if signedIn() && request.auth.uid == userId && rewardUpdate();
       allow update: if signedIn() && request.auth.uid == userId
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
-          'firstName', 'middleName', 'lastName', 'avatarId', 'updatedAt'
+          'firstName', 'middleName', 'lastName', 'avatarId', 'updatedAt', 'profileSetupCompletedAt'
         ])
         && request.resource.data.firstName is string
         && request.resource.data.firstName.size() > 0 && request.resource.data.firstName.size() <= 100
@@ -90,9 +209,15 @@ service cloud.firestore {
         && request.resource.data.lastName.size() > 0 && request.resource.data.lastName.size() <= 100
         && request.resource.data.get('middleName', '') is string
         && request.resource.data.get('middleName', '').size() <= 100
-        && request.resource.data.get('avatarId', 'initials') in [
-          'initials', 'compass', 'book', 'sun', 'star', 'turtle', 'eagle', 'cat', 'rocket'
-        ]
+        && validAvatarChange()
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['profileSetupCompletedAt'])
+          || (activeStudent() && resource.data.get('profileSetupCompletedAt',null) == null
+            && request.resource.data.profileSetupCompletedAt == request.time))
+        && request.resource.data.updatedAt == request.time;
+      allow update: if activeStudent() && request.auth.uid == userId
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['profileSetupDismissedAt','updatedAt'])
+        && resource.data.get('profileSetupDismissedAt',null) == null
+        && request.resource.data.profileSetupDismissedAt == request.time
         && request.resource.data.updatedAt == request.time;
     }
     match /{catalog}/{contentId} {
@@ -105,7 +230,7 @@ service cloud.firestore {
     match /{records}/{recordId} {
       function protectedRecords() {
         return records in ['studentProgress', 'studentChapterProgress', 'studentArtifacts',
-          'studentBadges', 'studentDailyChallenges'];
+          'studentBadges', 'studentDailyChallenges', 'studentQuizAttempts'];
       }
       // Allow an owner to check a not-yet-created completion; lists still require userId filters.
       allow get: if protectedRecords() && activeStudent()
@@ -113,6 +238,7 @@ service cloud.firestore {
       allow list: if protectedRecords() && activeStudent() && ownRecord();
       // Writes are allowed only by the specific rules below.
     }
+    // Free-plan submissions validate structure and reward amounts; grading is in the browser.
     match /studentProgress/{progressId} {
       function validMission() {
         let data = request.resource.data;
@@ -125,12 +251,53 @@ service cloud.firestore {
           && mission.status == 'active' && mission.chapterId == data.chapterId
           && chapter.status == 'active' && chapter.get('contentReady', true) != false
           && quiz.status == 'active' && quiz.missionId == data.missionId
-          && data.bestScore >= quiz.get('passingScore', 60)
+          && quiz.passingScore is number && quiz.passingScore >= 0 && quiz.passingScore <= 100
+          && data.bestScore >= quiz.passingScore
           && data.xpEarned is int && data.xpEarned >= 0 && data.xpEarned == mission.get('xpReward', 0)
           && pairedReward('mission', data.missionId);
       }
       allow create: if activeStudent() && validCompletion() && validMission();
       allow update: if activeStudent() && scoreReplay();
+    }
+    match /studentQuizAttempts/{attemptId} {
+      function firstAttemptCompletion(data) {
+        let path = completionPath('mission', data.missionId);
+        let progress = getAfter(path).data;
+        return !exists(path) && progress.userId == request.auth.uid
+          && progress.chapterId == data.chapterId && progress.missionId == data.missionId
+          && progress.quizId == data.quizId && progress.completed == true
+          && progress.completedAt == request.time && progress.updatedAt == request.time
+          && progress.bestScore == data.score && progress.xpEarned == data.response.xpReward;
+      }
+      function validAttempt() {
+        let data = request.resource.data;
+        let quiz = get(/databases/$(database)/documents/quizzes/$(data.quizId)).data;
+        let mission = get(/databases/$(database)/documents/missions/$(data.missionId)).data;
+        return data.keys().hasOnly(['userId', 'chapterId', 'missionId', 'quizId', 'attemptId',
+            'questionIds', 'answers', 'score', 'correctAnswers', 'totalQuestions', 'passed', 'topicsForReview', 'completedAt', 'response'])
+          && data.keys().hasAll(['userId', 'chapterId', 'missionId', 'quizId', 'attemptId', 'questionIds',
+            'answers', 'score', 'correctAnswers', 'totalQuestions', 'passed', 'topicsForReview', 'completedAt', 'response'])
+          && data.userId == request.auth.uid && attemptId == request.auth.uid + '_' + data.attemptId
+          && quiz.status == 'active' && quiz.missionId == data.missionId
+          && mission.status == 'active' && mission.chapterId == data.chapterId
+          && data.totalQuestions is int && data.totalQuestions > 0 && data.totalQuestions <= 200
+          && data.totalQuestions == quiz.questionCount && data.questionIds is list
+          && data.questionIds.size() == data.totalQuestions && data.questionIds.toSet().size() == data.totalQuestions
+          && data.answers is map && data.answers.keys().hasAll(data.questionIds) && data.answers.size() == data.totalQuestions
+          && data.correctAnswers is int && data.correctAnswers >= 0 && data.correctAnswers <= data.totalQuestions
+          && data.score is int && data.score == math.round(data.correctAnswers * 100.0 / data.totalQuestions)
+          && data.passed == (data.score >= quiz.passingScore)
+          && data.topicsForReview is list && data.topicsForReview.size() <= data.totalQuestions
+          && data.completedAt == request.time && data.response is map
+          && data.response.score == data.score && data.response.correctAnswers == data.correctAnswers
+          && data.response.passed == data.passed && data.response.topicsForReview == data.topicsForReview
+          && data.response.firstCompletion is bool && (!data.response.firstCompletion || data.passed)
+          && data.response.xpReward is int && data.response.xpReward >= 0
+          && data.response.xpReward == (data.response.firstCompletion ? mission.get('xpReward', 0) : 0)
+          && (!data.response.firstCompletion || firstAttemptCompletion(data));
+      }
+      allow create: if activeStudent() && validAttempt();
+      allow update, delete: if false;
     }
     match /studentChapterProgress/{progressId} {
       function validChapter() {
@@ -142,7 +309,8 @@ service cloud.firestore {
           && progressId == request.auth.uid + '_' + data.chapterId
           && chapter.status == 'active' && chapter.get('contentReady', true) != false
           && challenge.status == 'active' && challenge.chapterId == data.chapterId
-          && data.bestScore >= challenge.get('passingScore', 70);
+          && challenge.passingScore is number && challenge.passingScore >= 0 && challenge.passingScore <= 100
+          && data.bestScore >= challenge.passingScore;
       }
       allow create: if activeStudent() && validCompletion() && validChapter();
       allow update: if activeStudent() && scoreReplay();
@@ -219,9 +387,14 @@ match /studentPracticeProgress/{progressId} {
                 ])
                 && request.resource.data.chapterId is string
                 && request.resource.data.missionId is string
+                && get(/databases/$(database)/documents/chapters/$(request.resource.data.chapterId)).data.status == 'active'
+                && get(/databases/$(database)/documents/chapters/$(request.resource.data.chapterId)).data.get('contentReady', true) != false
+                && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.chapterId == request.resource.data.chapterId
+                && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.status == 'active'
                 && request.resource.data.completedAt == request.time
                 && request.resource.data.totalQuestions is int
                 && request.resource.data.totalQuestions > 0
+                && request.resource.data.totalQuestions <= 200
                 && request.resource.data.firstTryCorrectCount is int
                 && request.resource.data.firstTryCorrectCount >= 0
                 && request.resource.data.firstTryCorrectCount
@@ -229,7 +402,8 @@ match /studentPracticeProgress/{progressId} {
                 && request.resource.data.questionResults is list
                 && request.resource.data.questionResults.size()
                    == request.resource.data.totalQuestions
-                && request.resource.data.topicsForReview is list;
+                && request.resource.data.topicsForReview is list
+                && request.resource.data.topicsForReview.size() <= request.resource.data.totalQuestions;
 
   // Practice session records are append-only.
   allow update, delete: if false;

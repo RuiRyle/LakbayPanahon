@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#081629">
+    <title>LakbayPanahon | Student Journey</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+    <style>
+        * { box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #081629; }
+        #studentRouteFrame { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: #081629; }
+        #shellLoading { position: fixed; inset: 0; z-index: 2; display: grid; place-content: center; gap: 18px; justify-items: center; background: #081629; color: #e7edf4; font: 600 14px/1.5 "Segoe UI", Arial, sans-serif; }
+        #shellLoading[hidden] { display: none; }
+        .shell-compass { width: 52px; height: 52px; border: 1px solid #bda36577; border-radius: 50%; display: grid; place-items: center; color: #ecd9a6; animation: shell-turn 7s linear infinite; }
+        .shell-compass svg { width: 28px; height: 28px; fill: currentColor; }
+        @keyframes shell-turn { to { transform: rotate(360deg); } }
+        @media (prefers-reduced-motion: reduce) { .shell-compass { animation: none; } }
+    </style>
+</head>
+<body>
+    <div id="shellLoading" role="status"><span class="shell-compass" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z"/></svg></span><span>Opening your learning journey…</span></div>
+    <iframe id="studentRouteFrame" title="LakbayPanahon student workspace" allow="autoplay; fullscreen" referrerpolicy="same-origin"></iframe>
+    <script type="module" src="../js/student-shell.js"></script>
+</body>
+</html>

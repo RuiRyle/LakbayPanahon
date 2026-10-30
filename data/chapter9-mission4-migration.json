@@ -1,0 +1,1309 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 9 Mission 4 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+    "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/",
+    "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-8",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-8",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/community-belief-investigator",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter8-mission1",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter8-mission2",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter8-mission3",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter8-mission4",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter9-mission1",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter9-mission2",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter9-mission3",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 3
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter9-mission4",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-9",
+        "title": "The Manila-Acapulco Galleon Trade",
+        "order": 4,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate the Pacific connection, goods, workers, voyage records and different effects of galleon trade.",
+        "learningObjective": "Explain the galleon trading network using evidence about routes, goods, work and different outcomes.",
+        "learningObjectives": [
+          "Explain follow the pacific connection using lesson evidence.",
+          "Explain goods and silver moved through a network using lesson evidence.",
+          "Explain look beyond the cargo using lesson evidence.",
+          "Explain a departure was not an arrival using lesson evidence.",
+          "Explain connections did not mean equal benefits using lesson evidence."
+        ],
+        "lessonRecap": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed. The outcome of that same voyage. One outcome does not establish the result of every crossing. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "sourceUrls": [
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter9-quiz4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission4",
+        "title": "Galleon Trade - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 4,
+        "questionBlueprint": [
+          {
+            "topic": "galleon-route",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "galleon-goods",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "galleon-workers",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "galleon-voyage-evidence",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "galleon-effects",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission4-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission4",
+        "status": "active",
+        "order": 1,
+        "title": "Follow the Pacific Connection",
+        "content": "The Manila-Acapulco galleon trade connected the Philippines and Mexico across the Pacific Ocean. Acapulco was a port in New Spain, in what is now Mexico. The trade is commonly dated 1565-1815. These dates describe this trading connection, not the beginning or end of all Philippine trade. Earlier lessons already showed people exchanging goods before Spanish rule.\n\nOur route diagram connects named places with arrows. It is a relationship guide, not a navigation chart: real voyages did not follow a straight line across a small page. Wind, currents and the direction of travel mattered. Trace Manila to Acapulco, then trace the connection back. A line can show a link between ports without telling us the time, cargo or outcome of every crossing. To investigate a particular voyage, look for its own dated records.\n\nOpen the three clues and choose the explanation they support. Use Explain for help, or revisit the lesson before targeted practice if a topic needs review.",
+        "reviewTopics": [
+          "galleon-route"
+        ],
+        "imageUrl": "../assets/story/galleon-network-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern schematic linking Manila in the Philippines and Acapulco in present-day Mexico across the Pacific: Asian goods toward the Americas and silver toward Manila; arrows are not exact sailing tracks.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Ports",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Manila and Acapulco were linked across the Pacific.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Period",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "1565-1815 identifies this trade connection, not all Philippine exchange.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Diagram limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A schematic link is not the exact sailing track of every voyage.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does a line linking Manila and Acapulco most directly show?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A connection across the Pacific, not every exact sailing track",
+          "A route across the Atlantic only",
+          "The beginning of all Philippine trade",
+          "A guarantee that every crossing succeeded"
+        ],
+        "decisionCorrectAnswer": "A connection across the Pacific, not every exact sailing track",
+        "decisionExplanation": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "keyTerm": "Galleon",
+        "keyTermDefinition": "A large sailing ship used in long-distance voyages and trade.",
+        "historicalInsight": "A schematic link is not the exact sailing track of every voyage.",
+        "learningHelp": {
+          "explanation": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "vocabulary": [
+            {
+              "term": "Galleon",
+              "definition": "A large sailing ship used in long-distance voyages and trade."
+            }
+          ],
+          "example": "Manila and Acapulco were linked across the Pacific.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission4-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission4",
+        "status": "active",
+        "order": 2,
+        "title": "Goods and Silver Moved Through a Network",
+        "content": "Asian goods such as silk and porcelain traveled through Manila toward Acapulco. Silver moved from the Americas toward Manila, helping pay for goods. Manila was a meeting point within a wider network: goods leaving its port were not necessarily all made in the Philippines. Ask where an item was produced as well as which port shipped it.\n\nTry a fictional cargo-card sort. A card says porcelain was loaded in Manila, but does not name its maker. Another card identifies an item as made in China. The loading port and production place answer different questions. Our symbols stand for examples, not the complete contents of a particular ship. A cargo list also cannot prove that every item arrived, that every voyage carried the same mixture, or that all people shared the proceeds. Compare departure and arrival records when the question concerns delivery.\n\nOpen the three clues and choose the explanation they support. Use Explain for help, or revisit the lesson before targeted practice if a topic needs review.",
+        "reviewTopics": [
+          "galleon-goods"
+        ],
+        "imageUrl": "../assets/story/galleon-network-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Goods and Silver Moved Through a Network. Labelled clues identify a trade relationship and its limits; not an original navigation chart or cargo record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Direction",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Asian goods went toward the Americas while silver moved toward Manila.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Origin",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A loading port is not necessarily the place an object was made.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Cargo limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Examples do not establish every ships complete cargo or successful delivery.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An item was loaded in Manila. What does that alone establish?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "That every item was Philippine-made",
+          "That it certainly reached every destination",
+          "That all ships carried identical goods",
+          "Its loading port, not necessarily its place of manufacture"
+        ],
+        "decisionCorrectAnswer": "Its loading port, not necessarily its place of manufacture",
+        "decisionExplanation": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "keyTerm": "Cargo",
+        "keyTermDefinition": "Goods carried by a ship or another vehicle.",
+        "historicalInsight": "Examples do not establish every ships complete cargo or successful delivery.",
+        "learningHelp": {
+          "explanation": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "vocabulary": [
+            {
+              "term": "Cargo",
+              "definition": "Goods carried by a ship or another vehicle."
+            }
+          ],
+          "example": "Asian goods went toward the Americas while silver moved toward Manila.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission4-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission4",
+        "status": "active",
+        "order": 3,
+        "title": "Look Beyond the Cargo",
+        "content": "A ship and its cargo depended on people. Makers produced goods, workers prepared supplies, crews handled voyages, and traders arranged exchange. Obispados study of the sixteenth-century trade discusses household production, weaving and work related to moving cargo. Seeing a valuable object should lead us to ask about the work behind it, not only its selling price.\n\nOur fictional task cards identify making cloth, preparing a ship and recording cargo. These are different roles in a connected system. One person could perform more than one role, and the work should not be described as identical for every place and period. An account naming a merchant may leave other workers unnamed. Do not conclude that unnamed people did no work. Earlier lessons also showed that colonial labor demands could be compulsory; a cargo value alone tells us neither consent nor fair payment.\n\nOpen the three clues and choose the explanation they support. Use Explain for help, or revisit the lesson before targeted practice if a topic needs review.",
+        "reviewTopics": [
+          "galleon-workers"
+        ],
+        "imageUrl": "../assets/story/galleon-network-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Look Beyond the Cargo. Labelled clues identify a trade relationship and its limits; not an original navigation chart or cargo record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Making",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Goods depended on materials, skills and work.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Moving",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Crews and other workers helped prepare and move supplies and cargo.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Missing voices",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A merchant account may not name everyone who contributed.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A trade account names a merchant but no makers. Which conclusion is careful?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The merchant personally made every object",
+          "Every worker was paid fairly",
+          "The account may leave workers unnamed; it does not prove they did no work",
+          "No maker contributed"
+        ],
+        "decisionCorrectAnswer": "The account may leave workers unnamed; it does not prove they did no work",
+        "decisionExplanation": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "keyTerm": "Trade network",
+        "keyTermDefinition": "Connected people and places involved in making, moving and exchanging goods.",
+        "historicalInsight": "A merchant account may not name everyone who contributed.",
+        "learningHelp": {
+          "explanation": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "vocabulary": [
+            {
+              "term": "Trade network",
+              "definition": "Connected people and places involved in making, moving and exchanging goods."
+            }
+          ],
+          "example": "Goods depended on materials, skills and work.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission4-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission4",
+        "status": "active",
+        "order": 4,
+        "title": "A Departure Was Not an Arrival",
+        "content": "A long sea crossing involved uncertainty. Weather, ship condition, supplies and other dangers could affect a voyage. A departure entry records a ship leaving; it does not guarantee arrival or show the whole journey. The National Archives account of the Nuestra Senora de Covadonga illustrates how a particular ships papers can open questions about cargo and a voyage affected by capture.\n\nWe do not reenact an attack or award points for harm. Instead, use a fictional source desk: a departure note, a cargo list and a later arrival entry. Check that they concern the same vessel and journey before connecting them. A successful arrival does not prove that every crossing was safe; a loss does not prove every voyage failed. The teaching ship is a symbol, not a reconstruction of that named vessel. Your task is to explain what each record supports and what remains unknown.\n\nOpen the three clues and choose the explanation they support. Use Explain for help, or revisit the lesson before targeted practice if a topic needs review.",
+        "reviewTopics": [
+          "galleon-voyage-evidence"
+        ],
+        "imageUrl": "../assets/story/galleon-network-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Departure Was Not an Arrival. Labelled clues identify a trade relationship and its limits; not an original navigation chart or cargo record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Departure",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A ship leaving port is one recorded stage.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Follow-up",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Check arrival or other later evidence for the same journey.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Case limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One outcome does not establish the result of every crossing.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A departure entry and cargo list are supplied. What still needs checking?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Whether all people shared one belief",
+          "The outcome of that same voyage",
+          "Nothing because departure guarantees arrival",
+          "Whether every crossing was identical"
+        ],
+        "decisionCorrectAnswer": "The outcome of that same voyage",
+        "decisionExplanation": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "keyTerm": "Voyage record",
+        "keyTermDefinition": "A record about a ships journey, such as its departure or arrival.",
+        "historicalInsight": "One outcome does not establish the result of every crossing.",
+        "learningHelp": {
+          "explanation": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "vocabulary": [
+            {
+              "term": "Voyage record",
+              "definition": "A record about a ships journey, such as its departure or arrival."
+            }
+          ],
+          "example": "A ship leaving port is one recorded stage.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission4-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission4",
+        "status": "active",
+        "order": 5,
+        "title": "Connections Did Not Mean Equal Benefits",
+        "content": "The trading connection moved objects, money and ideas across places. The Metropolitan Museum discusses how Asian goods could influence art in the Americas. A connection can change what people make and use. But the presence of valuable cargo is not proof that every person or community became wealthy. Benefits, costs and choices need evidence about the people involved.\n\nImagine a fictional comparison desk. A merchant card records receipts, while a worker card lists time spent and payment owed. The first does not answer the second. To compare effects, ask what each person received, what costs they faced and how much choice they had. A modern collection object may help investigate design and exchange, but it is not a complete household budget. Nor did the end of the galleon connection in 1815 mean all Philippine trade stopped. Keep the network and its limits visible together.\n\nOpen the three clues and choose the explanation they support. Use Explain for help, or revisit the lesson before targeted practice if a topic needs review.",
+        "reviewTopics": [
+          "galleon-effects"
+        ],
+        "imageUrl": "../assets/story/galleon-network-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Connections Did Not Mean Equal Benefits. Labelled clues identify a trade relationship and its limits; not an original navigation chart or cargo record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Connections",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Objects and designs could move through exchange networks.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Different outcomes",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Cargo value alone does not prove equal benefits for all people.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Continuity",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ending this route did not end all Philippine trade.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A valuable cargo is used as proof everyone became wealthy. What should a report add?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Evidence about different peoples receipts, costs and choices",
+          "A bigger universal claim",
+          "A rule that all labor was voluntary",
+          "A claim that all trade stopped in 1815"
+        ],
+        "decisionCorrectAnswer": "Evidence about different peoples receipts, costs and choices",
+        "decisionExplanation": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "keyTerm": "Uneven effects",
+        "keyTermDefinition": "Different outcomes for different people or communities.",
+        "historicalInsight": "Ending this route did not end all Philippine trade.",
+        "learningHelp": {
+          "explanation": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "vocabulary": [
+            {
+              "term": "Uneven effects",
+              "definition": "Different outcomes for different people or communities."
+            }
+          ],
+          "example": "Objects and designs could move through exchange networks.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission4-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission4",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Galleon Evidence Report",
+        "content": "Review five ideas. Manila and Acapulco were linked across the Pacific. Goods and silver moved through a wider network. Production places and loading ports were not always the same. People worked to make and move cargo. Departure and arrival were different stages, and valuable trade did not prove equal benefits for everyone.\n\nPrepare a fictional exhibit report for another Grade 5 learner. Name the connection, identify a supporting clue and explain a limit. If you use the route diagram, call it a schematic rather than an exact sailing track. Keep workers visible alongside cargo, and compare peoples receipts, costs and choices before describing effects. Do not turn one journey into every voyage or treat 1815 as the end of all Philippine exchange.\n\nThe main quiz has five questions and three correct passes. If you need help, revisit the linked lesson before practice and a retry. This mission awards its configured reward once. It does not complete Chapter 9: Mission 5 and the chapter challenge are still being prepared.",
+        "reviewTopics": [
+          "galleon-route",
+          "galleon-goods",
+          "galleon-workers",
+          "galleon-voyage-evidence",
+          "galleon-effects"
+        ],
+        "imageUrl": "../assets/story/galleon-network-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Connections Did Not Mean Equal Benefits. Labelled clues identify a trade relationship and its limits; not an original navigation chart or cargo record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Connections",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Objects and designs could move through exchange networks.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Different outcomes",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Cargo value alone does not prove equal benefits for all people.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Continuity",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ending this route did not end all Philippine trade.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best explains this trading connection?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Say all goods loaded in Manila were made there",
+          "Treat departure as guaranteed arrival",
+          "Claim every person gained equally",
+          "Name the route, connect goods and work with evidence, and state limits"
+        ],
+        "decisionCorrectAnswer": "Name the route, connect goods and work with evidence, and state limits",
+        "decisionExplanation": "Explain the route, goods, work and different outcomes using evidence rather than universal claims.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain the route, goods, work and different outcomes using evidence rather than universal claims.",
+        "keyTerm": "Uneven effects",
+        "keyTermDefinition": "Different outcomes for different people or communities.",
+        "historicalInsight": "Ending this route did not end all Philippine trade.",
+        "learningHelp": {
+          "explanation": "Explain the route, goods, work and different outcomes using evidence rather than universal claims.",
+          "vocabulary": [
+            {
+              "term": "Uneven effects",
+              "definition": "Different outcomes for different people or communities."
+            }
+          ],
+          "example": "Objects and designs could move through exchange networks.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz4-question1",
+      "create": true,
+      "fields": {
+        "question": "Which ocean did the Manila-Acapulco connection cross?",
+        "optionA": "Pacific Ocean",
+        "optionB": "Atlantic Ocean only",
+        "optionC": "Arctic Ocean only",
+        "optionD": "No ocean",
+        "correctAnswer": "A",
+        "explanation": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "learningPoint": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "historicalClue": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "answerExplanations": {
+          "A": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "B": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "C": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "D": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage."
+        },
+        "quizId": "chapter9-quiz4",
+        "order": 1,
+        "status": "active",
+        "topic": "galleon-route",
+        "topicLabel": "Follow the Pacific Connection",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz4-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Acapulco belonged to New Spain. Where is it today?",
+        "optionA": "A second name for Manila",
+        "optionB": "A fictional island",
+        "optionC": "Northern Europe",
+        "optionD": "Mexico",
+        "correctAnswer": "D",
+        "explanation": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "learningPoint": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "historicalClue": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "B": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "C": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "D": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage."
+        },
+        "quizId": "chapter9-quiz4",
+        "order": 101,
+        "status": "active",
+        "topic": "galleon-route",
+        "topicLabel": "Follow the Pacific Connection",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission4-galleon-route-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does a line linking Manila and Acapulco most directly show?",
+        "optionA": "A route across the Atlantic only",
+        "optionB": "The beginning of all Philippine trade",
+        "optionC": "A guarantee that every crossing succeeded",
+        "optionD": "A connection across the Pacific, not every exact sailing track",
+        "correctAnswer": "D",
+        "explanation": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "learningPoint": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "historicalClue": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "B": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "C": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "D": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage."
+        },
+        "missionId": "chapter9-mission4",
+        "topic": "galleon-route",
+        "topicLabel": "Follow the Pacific Connection",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A large sailing ship used in long-distance voyages and trade.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission4-galleon-route-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption calls a straight teaching arrow the exact course of every galleon. How should it change?",
+        "optionA": "Remove the named ports",
+        "optionB": "Say currents and winds never mattered",
+        "optionC": "Label the arrow as a schematic connection and check voyage records for actual tracks",
+        "optionD": "Keep it as exact for all crossings",
+        "correctAnswer": "C",
+        "explanation": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "learningPoint": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "historicalClue": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "B": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "C": "A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage.",
+          "D": "Review the lesson clues. A connection across the Pacific, not every exact sailing track. A schematic link is not the exact sailing track of every voyage."
+        },
+        "missionId": "chapter9-mission4",
+        "topic": "galleon-route",
+        "topicLabel": "Follow the Pacific Connection",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A large sailing ship used in long-distance voyages and trade.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz4-question2",
+      "create": true,
+      "fields": {
+        "question": "Which goods are examples in this lesson?",
+        "optionA": "Only modern computers",
+        "optionB": "Only goods made by every Manila resident",
+        "optionC": "No goods at all",
+        "optionD": "Silk and porcelain",
+        "correctAnswer": "D",
+        "explanation": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "learningPoint": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "historicalClue": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "B": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "C": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "D": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery."
+        },
+        "quizId": "chapter9-quiz4",
+        "order": 2,
+        "status": "active",
+        "topic": "galleon-goods",
+        "topicLabel": "Goods and Silver Moved Through a Network",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz4-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "What moved from the Americas toward Manila in this trading network?",
+        "optionA": "Modern bank cards",
+        "optionB": "Nothing of value",
+        "optionC": "Silver used in exchange",
+        "optionD": "Every Asian object in the opposite direction only",
+        "correctAnswer": "C",
+        "explanation": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "learningPoint": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "historicalClue": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "B": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "C": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "D": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery."
+        },
+        "quizId": "chapter9-quiz4",
+        "order": 102,
+        "status": "active",
+        "topic": "galleon-goods",
+        "topicLabel": "Goods and Silver Moved Through a Network",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission4-galleon-goods-practice1",
+      "create": true,
+      "fields": {
+        "question": "An item was loaded in Manila. What does that alone establish?",
+        "optionA": "That it certainly reached every destination",
+        "optionB": "That all ships carried identical goods",
+        "optionC": "Its loading port, not necessarily its place of manufacture",
+        "optionD": "That every item was Philippine-made",
+        "correctAnswer": "C",
+        "explanation": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "learningPoint": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "historicalClue": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "B": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "C": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "D": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery."
+        },
+        "missionId": "chapter9-mission4",
+        "topic": "galleon-goods",
+        "topicLabel": "Goods and Silver Moved Through a Network",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Goods carried by a ship or another vehicle.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission4-galleon-goods-practice2",
+      "create": true,
+      "fields": {
+        "question": "A manifest lists goods leaving a port but a report claims all arrived safely. What is missing?",
+        "optionA": "Proof that all goods had one maker",
+        "optionB": "Arrival evidence for that voyage",
+        "optionC": "A guess that lists guarantee delivery",
+        "optionD": "Only the name of the ocean",
+        "correctAnswer": "B",
+        "explanation": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "learningPoint": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "historicalClue": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "B": "Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "C": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery.",
+          "D": "Review the lesson clues. Its loading port, not necessarily its place of manufacture. Examples do not establish every ships complete cargo or successful delivery."
+        },
+        "missionId": "chapter9-mission4",
+        "topic": "galleon-goods",
+        "topicLabel": "Goods and Silver Moved Through a Network",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Goods carried by a ship or another vehicle.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz4-question3",
+      "create": true,
+      "fields": {
+        "question": "Why ask who made and moved a cargo?",
+        "optionA": "Only the selling price matters",
+        "optionB": "Every worker had one identical role",
+        "optionC": "Trade depended on peoples work as well as goods",
+        "optionD": "Goods appeared without work",
+        "correctAnswer": "C",
+        "explanation": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "learningPoint": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "historicalClue": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "B": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "C": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "D": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed."
+        },
+        "quizId": "chapter9-quiz4",
+        "order": 3,
+        "status": "active",
+        "topic": "galleon-workers",
+        "topicLabel": "Look Beyond the Cargo",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz4-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Which pair describes different contributions to trade?",
+        "optionA": "A prize and a modern tax",
+        "optionB": "Making cloth and handling a voyage",
+        "optionC": "A route and a guarantee of equal profit",
+        "optionD": "Two names for one private belief",
+        "correctAnswer": "B",
+        "explanation": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "learningPoint": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "historicalClue": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "B": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "C": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "D": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed."
+        },
+        "quizId": "chapter9-quiz4",
+        "order": 103,
+        "status": "active",
+        "topic": "galleon-workers",
+        "topicLabel": "Look Beyond the Cargo",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission4-galleon-workers-practice1",
+      "create": true,
+      "fields": {
+        "question": "A trade account names a merchant but no makers. Which conclusion is careful?",
+        "optionA": "Every worker was paid fairly",
+        "optionB": "The account may leave workers unnamed; it does not prove they did no work",
+        "optionC": "No maker contributed",
+        "optionD": "The merchant personally made every object",
+        "correctAnswer": "B",
+        "explanation": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "learningPoint": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "historicalClue": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "B": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "C": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "D": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed."
+        },
+        "missionId": "chapter9-mission4",
+        "topic": "galleon-workers",
+        "topicLabel": "Look Beyond the Cargo",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Connected people and places involved in making, moving and exchanging goods.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission4-galleon-workers-practice2",
+      "create": true,
+      "fields": {
+        "question": "A cargo value is used as proof that every worker freely agreed and received fair pay. What should change?",
+        "optionA": "Investigate labor conditions and payment separately",
+        "optionB": "Treat value as proof of consent",
+        "optionC": "Assume unnamed workers did not exist",
+        "optionD": "Use one merchants income for every household",
+        "correctAnswer": "A",
+        "explanation": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "learningPoint": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "historicalClue": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+        "answerExplanations": {
+          "A": "The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "B": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "C": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed.",
+          "D": "Review the lesson clues. The account may leave workers unnamed; it does not prove they did no work. A merchant account may not name everyone who contributed."
+        },
+        "missionId": "chapter9-mission4",
+        "topic": "galleon-workers",
+        "topicLabel": "Look Beyond the Cargo",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Connected people and places involved in making, moving and exchanging goods.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz4-question4",
+      "create": true,
+      "fields": {
+        "question": "Which source most directly checks arrival?",
+        "optionA": "A model arrow without a date",
+        "optionB": "An arrival entry for the same voyage",
+        "optionC": "Only a departure wish",
+        "optionD": "An unrelated illustration",
+        "correctAnswer": "B",
+        "explanation": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "learningPoint": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "historicalClue": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "B": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "C": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "D": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing."
+        },
+        "quizId": "chapter9-quiz4",
+        "order": 4,
+        "status": "active",
+        "topic": "galleon-voyage-evidence",
+        "topicLabel": "A Departure Was Not an Arrival",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz4-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why match a ships name and voyage date across records?",
+        "optionA": "To avoid joining records from different journeys",
+        "optionB": "Every ship made only one crossing",
+        "optionC": "Dates never affect evidence",
+        "optionD": "A name guarantees safe travel",
+        "correctAnswer": "A",
+        "explanation": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "learningPoint": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "historicalClue": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "answerExplanations": {
+          "A": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "B": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "C": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "D": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing."
+        },
+        "quizId": "chapter9-quiz4",
+        "order": 104,
+        "status": "active",
+        "topic": "galleon-voyage-evidence",
+        "topicLabel": "A Departure Was Not an Arrival",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission4-galleon-voyage-evidence-practice1",
+      "create": true,
+      "fields": {
+        "question": "A departure entry and cargo list are supplied. What still needs checking?",
+        "optionA": "The outcome of that same voyage",
+        "optionB": "Nothing because departure guarantees arrival",
+        "optionC": "Whether every crossing was identical",
+        "optionD": "Whether all people shared one belief",
+        "correctAnswer": "A",
+        "explanation": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "learningPoint": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "historicalClue": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "answerExplanations": {
+          "A": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "B": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "C": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "D": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing."
+        },
+        "missionId": "chapter9-mission4",
+        "topic": "galleon-voyage-evidence",
+        "topicLabel": "A Departure Was Not an Arrival",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A record about a ships journey, such as its departure or arrival.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission4-galleon-voyage-evidence-practice2",
+      "create": true,
+      "fields": {
+        "question": "One named vessel was captured. Which conclusion stays within the evidence?",
+        "optionA": "All galleons were captured",
+        "optionB": "No voyage ever arrived",
+        "optionC": "Every cargo list is false",
+        "optionD": "Investigate that case without assuming every voyage had the same outcome",
+        "correctAnswer": "D",
+        "explanation": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "learningPoint": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "historicalClue": "The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "B": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "C": "Review the lesson clues. The outcome of that same voyage. One outcome does not establish the result of every crossing.",
+          "D": "The outcome of that same voyage. One outcome does not establish the result of every crossing."
+        },
+        "missionId": "chapter9-mission4",
+        "topic": "galleon-voyage-evidence",
+        "topicLabel": "A Departure Was Not an Arrival",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A record about a ships journey, such as its departure or arrival.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz4-question5",
+      "create": true,
+      "fields": {
+        "question": "What are uneven effects?",
+        "optionA": "Different outcomes for different people or communities",
+        "optionB": "Identical gains for all people",
+        "optionC": "Proof that exchange had no effects",
+        "optionD": "One price for every object",
+        "correctAnswer": "A",
+        "explanation": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "learningPoint": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "historicalClue": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "answerExplanations": {
+          "A": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "B": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "C": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "D": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade."
+        },
+        "quizId": "chapter9-quiz4",
+        "order": 5,
+        "status": "active",
+        "topic": "galleon-effects",
+        "topicLabel": "Connections Did Not Mean Equal Benefits",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz4-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "What does the end of the galleon connection in 1815 mean in this lesson?",
+        "optionA": "All farming and trade ended everywhere",
+        "optionB": "People stopped making objects",
+        "optionC": "Every household had identical losses",
+        "optionD": "This trading connection ended, not all Philippine exchange",
+        "correctAnswer": "D",
+        "explanation": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "learningPoint": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "historicalClue": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "B": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "C": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "D": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade."
+        },
+        "quizId": "chapter9-quiz4",
+        "order": 105,
+        "status": "active",
+        "topic": "galleon-effects",
+        "topicLabel": "Connections Did Not Mean Equal Benefits",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission4-galleon-effects-practice1",
+      "create": true,
+      "fields": {
+        "question": "A valuable cargo is used as proof everyone became wealthy. What should a report add?",
+        "optionA": "A bigger universal claim",
+        "optionB": "A rule that all labor was voluntary",
+        "optionC": "A claim that all trade stopped in 1815",
+        "optionD": "Evidence about different peoples receipts, costs and choices",
+        "correctAnswer": "D",
+        "explanation": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "learningPoint": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "historicalClue": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "B": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "C": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "D": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade."
+        },
+        "missionId": "chapter9-mission4",
+        "topic": "galleon-effects",
+        "topicLabel": "Connections Did Not Mean Equal Benefits",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Different outcomes for different people or communities.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission4-galleon-effects-practice2",
+      "create": true,
+      "fields": {
+        "question": "A merchant account and a workers unpaid-payment record are compared. What is the strongest approach?",
+        "optionA": "Assume both received identical benefits",
+        "optionB": "Ignore the work because it is not cargo",
+        "optionC": "Explain their distinct experiences with evidence for each",
+        "optionD": "Use only the merchants receipts to describe everyone",
+        "correctAnswer": "C",
+        "explanation": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "learningPoint": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "historicalClue": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "B": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "C": "Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade.",
+          "D": "Review the lesson clues. Evidence about different peoples receipts, costs and choices. Ending this route did not end all Philippine trade."
+        },
+        "missionId": "chapter9-mission4",
+        "topic": "galleon-effects",
+        "topicLabel": "Connections Did Not Mean Equal Benefits",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Different outcomes for different people or communities.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter9-mission4-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission4",
+        "name": "Galleon Network Evidence Journal",
+        "description": "A learning-game token for connecting trade routes, cargo and peoples work.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 4,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Connect ports, production, voyage evidence and different peoples experiences.",
+          "reflectionQuestion": "Which clue helped you distinguish a loading port from a production place?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-9",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-3 investigate tribute, labor, produce demands and agricultural policies. Missions 4-5 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-4 investigate tribute, labor, agricultural policies and the galleon network. Mission 5 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapter 9 offers Missions 1-3 on tribute, labor, produce demands and agricultural policies. Later missions and Chapters 10-11 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 9 offers Missions 1-4 on colonial economic demands, agriculture and the galleon network. Later missions and Chapters 10-11 are being prepared."
+      }
+    }
+  ]
+}

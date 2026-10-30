@@ -8,9 +8,24 @@ import {
 } from "./firebase-config.js";
 
 import {
-    signOut
+    signOut,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
+import { clearStudentSessionData } from "./student-session-storage.js";
+
+function clearDepartingSession(uid) {
+    try { clearStudentSessionData(window.sessionStorage, uid); } catch {}
+}
+
+let previousUid = auth.currentUser?.uid || null;
+onAuthStateChanged(auth, user => {
+    const uid = user?.uid || null;
+    if (previousUid && previousUid !== uid) clearDepartingSession(previousUid);
+    previousUid = uid;
+});
+
+let loggingOut = false;
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -24,11 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             async () => {
 
+                if (loggingOut) return;
+                loggingOut = true;
+                const uid = auth.currentUser?.uid;
+
                 // Prevent multiple clicks
                 button.disabled = true;
 
-                const originalText =
-                    button.textContent;
+                const originalChildren = [...button.childNodes];
 
                 button.textContent =
                     "Logging out...";
@@ -37,10 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 try {
 
                     await signOut(auth);
+                    clearDepartingSession(uid);
 
                     console.log(
                         "User logged out successfully."
                     );
+
+                    try { window.parent?.LakbayStudentAudio?.stop(); } catch {}
 
 
                     // Dashboard pages are inside /pages/
@@ -58,9 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                     button.disabled = false;
-
-                    button.textContent =
-                        originalText;
+                    loggingOut = false;
+                    button.replaceChildren(...originalChildren);
 
 
                     alert(

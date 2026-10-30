@@ -1,0 +1,1317 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 10 Mission 4 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/",
+    "https://whc.unesco.org/en/list/677/",
+    "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-9",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-9",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/community-economy-investigator",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter9-mission1",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter9-mission2",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter9-mission3",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter9-mission4",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter9-mission5",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 5
+      }
+    },
+    {
+      "path": "missions/chapter10-mission1",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter10-mission2",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter10-mission3",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 3
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter10-mission4",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-10",
+        "title": "Arts, Architecture, and Cultural Practices",
+        "order": 4,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate makers, painting dates, architectural adaptation, living textile heritage and source purpose.",
+        "learningObjective": "Explain cultural works through dated evidence, makers, adaptation, use and source limits.",
+        "learningObjectives": [
+          "Explain keep makers in the story using lesson evidence.",
+          "Explain a painting has its own date using lesson evidence.",
+          "Explain buildings could adapt design traditions using lesson evidence.",
+          "Explain a textile can carry a later story using lesson evidence.",
+          "Explain ask what a source was made to do using lesson evidence."
+        ],
+        "lessonRecap": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/",
+          "https://whc.unesco.org/en/list/677/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter10-quiz4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission4",
+        "title": "Arts and Culture - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 4,
+        "questionBlueprint": [
+          {
+            "topic": "cultural-makers",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "painting-event-dates",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "architecture-local-adaptation",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "textile-living-heritage",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "cultural-source-purpose",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission4-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission4",
+        "status": "active",
+        "order": 1,
+        "title": "Keep Makers in the Story",
+        "content": "Art and buildings did not appear without people. Painters, builders, carvers, weavers and other workers used materials and skills. Patrons could commission work: ask someone to make it for a purpose. A patron and a maker were not necessarily the same person. Studying a work means asking about both, not giving all credit to a ruler or an institution.\n\nUNESCO identifies Chinese and Philippine craftspeople in its account of the Baroque Churches of the Philippines. This gives us a reason to keep makers visible alongside design traditions. Our fictional workshop card separates a requested purpose, the making process and later use. It is not an actual workshop contract. An object may help us investigate work and use without revealing every makers private beliefs or the names of every worker. A missing name does not prove no one contributed.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice when the topic needs review.",
+        "reviewTopics": [
+          "cultural-makers"
+        ],
+        "imageUrl": "../assets/story/arts-cultural-evidence-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Keep Makers in the Story. Labelled clues distinguish making, use, dates and source limits; not a reproduced historical artwork.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "People and work",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Objects and buildings depend on materials, skills and work.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Different roles",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A patron who requests work is not necessarily the person who makes it.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Missing names",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A record may leave some contributors unnamed.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A label credits only a commissioner and says no makers mattered. What should change?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Investigate the makers and work as well as the commission",
+          "Assume the commissioner personally made every part",
+          "Treat unnamed workers as nonexistent",
+          "Use the object to invent every private belief"
+        ],
+        "decisionCorrectAnswer": "Investigate the makers and work as well as the commission",
+        "decisionExplanation": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "keyTerm": "Craftsperson",
+        "keyTermDefinition": "A person who uses knowledge and skill to make or work on objects or buildings.",
+        "historicalInsight": "A record may leave some contributors unnamed.",
+        "learningHelp": {
+          "explanation": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "vocabulary": [
+            {
+              "term": "Craftsperson",
+              "definition": "A person who uses knowledge and skill to make or work on objects or buildings."
+            }
+          ],
+          "example": "Objects and buildings depend on materials, skills and work.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/",
+          "https://whc.unesco.org/en/list/677/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission4-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission4",
+        "status": "active",
+        "order": 2,
+        "title": "A Painting Has Its Own Date",
+        "content": "The National Museum describes fourteen oil paintings showing the Basi Revolt of 1807. The paintings were made in 1821 and are attributed to Esteban Pichay Villanueva. The event date and the making date answer different questions. A picture of an event is not automatically an image made while that event was happening.\n\nOur timeline places the event and the later paintings at separate points. It does not reproduce scenes of fighting or show graphic details. Use the dates to ask what the work represents, when it was made and what viewpoint it might present. A painting is a useful historical source, but not a camera recording of every action, sound or private thought. Compare it with other appropriate evidence before writing a complete account. We study the series as art and representation; no activity asks students to drink alcohol or reenact conflict.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice when the topic needs review.",
+        "reviewTopics": [
+          "painting-event-dates"
+        ],
+        "imageUrl": "../assets/story/arts-cultural-evidence-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Painting Has Its Own Date. Labelled clues distinguish making, use, dates and source limits; not a reproduced historical artwork.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Event",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The named revolt occurred in 1807.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Work",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Museum dates the painting series to 1821 and attributes it to Villanueva.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A later depiction is not an automatic eyewitness record of every event detail.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A caption dates the paintings to 1807 solely because they show that revolt. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Use one date for every stage",
+          "Call every painting a camera record",
+          "Assume every private thought is visible",
+          "Separate the 1807 event from the 1821 paintings"
+        ],
+        "decisionCorrectAnswer": "Separate the 1807 event from the 1821 paintings",
+        "decisionExplanation": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "keyTerm": "Depiction",
+        "keyTermDefinition": "A representation of a person, event or idea in an image or other work.",
+        "historicalInsight": "A later depiction is not an automatic eyewitness record of every event detail.",
+        "learningHelp": {
+          "explanation": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "vocabulary": [
+            {
+              "term": "Depiction",
+              "definition": "A representation of a person, event or idea in an image or other work."
+            }
+          ],
+          "example": "The named revolt occurred in 1807.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/",
+          "https://whc.unesco.org/en/list/677/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission4-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission4",
+        "status": "active",
+        "order": 3,
+        "title": "Buildings Could Adapt Design Traditions",
+        "content": "The UNESCO Baroque Churches listing includes examples in Manila, Santa Maria, Paoay and Miag-ao. It describes European design reworked with local materials and decorative features by Chinese and Philippine craftspeople. This is not a story of one unchanged foreign model simply appearing everywhere. Local work and conditions were part of the buildings history.\n\nA fictional comparison card separates design ideas, materials and making. It is a teaching model, not a measured plan of any of the four churches. The named group does not represent every building or every religious community. We can investigate a church as architecture without requiring a prayer or judging the beliefs of its makers and visitors. Nor does adaptation prove that every person involved had equal power. Ask what particular evidence supports a feature, its construction and later changes.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice when the topic needs review.",
+        "reviewTopics": [
+          "architecture-local-adaptation"
+        ],
+        "imageUrl": "../assets/story/arts-cultural-evidence-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Buildings Could Adapt Design Traditions. Labelled clues distinguish making, use, dates and source limits; not a reproduced historical artwork.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Named group",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The listing identifies four churches in separate places.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Adaptation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Building ideas were reworked with local materials, features and skills.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A named group is not every building or every communitys experience.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A caption calls the listed churches identical copies with no local contribution. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat every Philippine building as identical",
+          "Require students to adopt the religion",
+          "Describe adaptation and the contribution of local materials and craftspeople",
+          "Erase all makers from the account"
+        ],
+        "decisionCorrectAnswer": "Describe adaptation and the contribution of local materials and craftspeople",
+        "decisionExplanation": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "keyTerm": "Architectural adaptation",
+        "keyTermDefinition": "Changing or reworking building ideas for a particular setting.",
+        "historicalInsight": "A named group is not every building or every communitys experience.",
+        "learningHelp": {
+          "explanation": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "vocabulary": [
+            {
+              "term": "Architectural adaptation",
+              "definition": "Changing or reworking building ideas for a particular setting."
+            }
+          ],
+          "example": "The listing identifies four churches in separate places.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/",
+          "https://whc.unesco.org/en/list/677/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission4-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission4",
+        "status": "active",
+        "order": 4,
+        "title": "A Textile Can Carry a Later Story",
+        "content": "The Field Museums community heritage entry describes an Abel Iloko textile belonging to Edwin P. Abaya and dates its making to the early to mid-1960s. Its story connects a woven object with personal memory and Ilocos weaving. This is a modern example of heritage and use, not a textile automatically made during Spanish rule.\n\nWhy include a later object in this chapter? It teaches us to check the date before using heritage as evidence for an earlier period. Continuing skills and changing uses can exist together. Our diagram labels object date, use and a historical question; it does not copy the textile design or claim to reproduce an authentic pattern. A community account deserves careful attribution, but one owners story cannot describe every weaver, family or century. To establish a colonial-era detail, find evidence for that earlier period.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice when the topic needs review.",
+        "reviewTopics": [
+          "textile-living-heritage"
+        ],
+        "imageUrl": "../assets/story/arts-cultural-evidence-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Textile Can Carry a Later Story. Labelled clues distinguish making, use, dates and source limits; not a reproduced historical artwork.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Object date",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Field Museum entry dates this named textile to the early to mid-1960s.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Living story",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An object can connect skills, use and memory in a later period.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Earlier claims",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A modern heritage object alone does not prove every colonial-era detail.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A 1960s textile is presented as direct proof of every colonial pattern. What should change?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Use one owners story for every family",
+          "Keep its dated story and seek earlier evidence for colonial claims",
+          "Erase its modern date",
+          "Assume every pattern never changed"
+        ],
+        "decisionCorrectAnswer": "Keep its dated story and seek earlier evidence for colonial claims",
+        "decisionExplanation": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "keyTerm": "Living heritage",
+        "keyTermDefinition": "Knowledge and practices people continue, share and sometimes change.",
+        "historicalInsight": "A modern heritage object alone does not prove every colonial-era detail.",
+        "learningHelp": {
+          "explanation": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "vocabulary": [
+            {
+              "term": "Living heritage",
+              "definition": "Knowledge and practices people continue, share and sometimes change."
+            }
+          ],
+          "example": "The Field Museum entry dates this named textile to the early to mid-1960s.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/",
+          "https://whc.unesco.org/en/list/677/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission4-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission4",
+        "status": "active",
+        "order": 5,
+        "title": "Ask What a Source Was Made to Do",
+        "content": "A painting, building description and heritage entry can answer different questions. The painting represents a subject through an image; the building account describes selected features; the community entry connects an object with a story. Ask who made the source, when, for whom and for what purpose. A later exhibition label is not automatically the objects original label or complete history.\n\nUse a fictional museum desk with three cards. One identifies a making date, another describes a feature, and a third gives an owners later account. Match the card to the question it can support. Then state a limit rather than combine all three into one invented biography. Different evidence can help us notice continuity and change without claiming that everything stayed the same or everything earlier vanished. Students are historians comparing evidence, not judges of a persons religion or cultural worth.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice when the topic needs review.",
+        "reviewTopics": [
+          "cultural-source-purpose"
+        ],
+        "imageUrl": "../assets/story/arts-cultural-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Ask What a Source Was Made to Do. Labelled clues distinguish making, use, dates and source limits; not a reproduced historical artwork.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Purpose",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask why a source was made and what it directly records.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Match the question",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A date, a feature and an owners account support different kinds of claims.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A display label does not automatically reveal an objects full earlier history.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Three cards give a date, a feature and a later owners account. What should a report do?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Match each source to its supported claim and identify its limits",
+          "Treat all three as one complete original biography",
+          "Erase the dates to simplify the story",
+          "Rank cultures by their display labels"
+        ],
+        "decisionCorrectAnswer": "Match each source to its supported claim and identify its limits",
+        "decisionExplanation": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "keyTerm": "Source purpose",
+        "keyTermDefinition": "The reason a record or work was produced or used.",
+        "historicalInsight": "A display label does not automatically reveal an objects full earlier history.",
+        "learningHelp": {
+          "explanation": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "vocabulary": [
+            {
+              "term": "Source purpose",
+              "definition": "The reason a record or work was produced or used."
+            }
+          ],
+          "example": "Ask why a source was made and what it directly records.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/",
+          "https://whc.unesco.org/en/list/677/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission4-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission4",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Arts and Culture Report",
+        "content": "Review five ideas. Makers and patrons had different roles. The Basi Revolt event of 1807 and its painting series of 1821 have different dates. Named buildings show adaptation rather than identical copying. A twentieth-century textile has its own living-heritage story. Different sources have different purposes and limits.\n\nPrepare a fictional museum report for another Grade 5 learner. Identify a work or case, connect a claim to its supporting clue and explain what remains uncertain. Keep makers visible. Label teaching diagrams as models rather than original patterns or exact building plans. Do not treat an event date as the date of every depiction, a modern object as proof of every earlier detail, or a building as every visitors belief.\n\nThe main quiz has five questions and three correct passes. Return to linked learning content before practice and a retry if needed. This mission earns its configured reward once, but does not complete Chapter 10. Mission 5 and the chapter challenge are still being prepared.",
+        "reviewTopics": [
+          "cultural-makers",
+          "painting-event-dates",
+          "architecture-local-adaptation",
+          "textile-living-heritage",
+          "cultural-source-purpose"
+        ],
+        "imageUrl": "../assets/story/arts-cultural-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Ask What a Source Was Made to Do. Labelled clues distinguish making, use, dates and source limits; not a reproduced historical artwork.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Purpose",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask why a source was made and what it directly records.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Match the question",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A date, a feature and an owners account support different kinds of claims.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A display label does not automatically reveal an objects full earlier history.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best uses arts and culture evidence?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Date every depiction to its event",
+          "Treat a modern textile as proof of all colonial details",
+          "Describe adaptation as identical copying everywhere",
+          "Identify makers, dates, purposes and limits without turning one example into everyones history"
+        ],
+        "decisionCorrectAnswer": "Identify makers, dates, purposes and limits without turning one example into everyones history",
+        "decisionExplanation": "Explain cultural works through makers, dated evidence, use and purpose while respecting differences and source limits.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain cultural works through makers, dated evidence, use and purpose while respecting differences and source limits.",
+        "keyTerm": "Source purpose",
+        "keyTermDefinition": "The reason a record or work was produced or used.",
+        "historicalInsight": "A display label does not automatically reveal an objects full earlier history.",
+        "learningHelp": {
+          "explanation": "Explain cultural works through makers, dated evidence, use and purpose while respecting differences and source limits.",
+          "vocabulary": [
+            {
+              "term": "Source purpose",
+              "definition": "The reason a record or work was produced or used."
+            }
+          ],
+          "example": "Ask why a source was made and what it directly records.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/",
+          "https://whc.unesco.org/en/list/677/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz4-question1",
+      "create": true,
+      "fields": {
+        "question": "What is a craftsperson?",
+        "optionA": "A person who uses knowledge and skill in making or working on things",
+        "optionB": "Only the person who pays for a work",
+        "optionC": "A guarantee that every maker is named",
+        "optionD": "A rank of human worth",
+        "correctAnswer": "A",
+        "explanation": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "learningPoint": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "historicalClue": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "answerExplanations": {
+          "A": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "B": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "C": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "D": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed."
+        },
+        "quizId": "chapter10-quiz4",
+        "order": 1,
+        "status": "active",
+        "topic": "cultural-makers",
+        "topicLabel": "Keep Makers in the Story",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz4-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish a patron from a maker?",
+        "optionA": "Every patron made every part personally",
+        "optionB": "Only the patron contributed",
+        "optionC": "Roles reveal every private motive",
+        "optionD": "Requesting work and making it are different roles",
+        "correctAnswer": "D",
+        "explanation": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "learningPoint": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "historicalClue": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "B": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "C": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "D": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed."
+        },
+        "quizId": "chapter10-quiz4",
+        "order": 101,
+        "status": "active",
+        "topic": "cultural-makers",
+        "topicLabel": "Keep Makers in the Story",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission4-cultural-makers-practice1",
+      "create": true,
+      "fields": {
+        "question": "A label credits only a commissioner and says no makers mattered. What should change?",
+        "optionA": "Assume the commissioner personally made every part",
+        "optionB": "Treat unnamed workers as nonexistent",
+        "optionC": "Use the object to invent every private belief",
+        "optionD": "Investigate the makers and work as well as the commission",
+        "correctAnswer": "D",
+        "explanation": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "learningPoint": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "historicalClue": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "B": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "C": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "D": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed."
+        },
+        "missionId": "chapter10-mission4",
+        "topic": "cultural-makers",
+        "topicLabel": "Keep Makers in the Story",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A person who uses knowledge and skill to make or work on objects or buildings.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission4-cultural-makers-practice2",
+      "create": true,
+      "fields": {
+        "question": "A building record names no carvers. What is a careful conclusion?",
+        "optionA": "The commissioner carved every detail",
+        "optionB": "Every worker had identical beliefs",
+        "optionC": "The record may omit contributors; further evidence is needed",
+        "optionD": "No carving work happened",
+        "correctAnswer": "C",
+        "explanation": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "learningPoint": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "historicalClue": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "B": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "C": "Investigate the makers and work as well as the commission. A record may leave some contributors unnamed.",
+          "D": "Review the lesson clues. Investigate the makers and work as well as the commission. A record may leave some contributors unnamed."
+        },
+        "missionId": "chapter10-mission4",
+        "topic": "cultural-makers",
+        "topicLabel": "Keep Makers in the Story",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A person who uses knowledge and skill to make or work on objects or buildings.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz4-question2",
+      "create": true,
+      "fields": {
+        "question": "Which year does the Museum give for the painting series?",
+        "optionA": "1807 because every image shares its events date",
+        "optionB": "The date of every later exhibition",
+        "optionC": "No making date is given",
+        "optionD": "1821",
+        "correctAnswer": "D",
+        "explanation": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "learningPoint": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "historicalClue": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "B": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "C": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "D": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail."
+        },
+        "quizId": "chapter10-quiz4",
+        "order": 2,
+        "status": "active",
+        "topic": "painting-event-dates",
+        "topicLabel": "A Painting Has Its Own Date",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz4-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why keep a depicted event and a paintings creation date separate?",
+        "optionA": "Dates never affect interpretation",
+        "optionB": "Every image is an eyewitness photograph",
+        "optionC": "The image may have been made later than the event",
+        "optionD": "All depictions were made at the exact moment",
+        "correctAnswer": "C",
+        "explanation": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "learningPoint": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "historicalClue": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "B": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "C": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "D": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail."
+        },
+        "quizId": "chapter10-quiz4",
+        "order": 102,
+        "status": "active",
+        "topic": "painting-event-dates",
+        "topicLabel": "A Painting Has Its Own Date",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission4-painting-event-dates-practice1",
+      "create": true,
+      "fields": {
+        "question": "A caption dates the paintings to 1807 solely because they show that revolt. What correction fits?",
+        "optionA": "Call every painting a camera record",
+        "optionB": "Assume every private thought is visible",
+        "optionC": "Separate the 1807 event from the 1821 paintings",
+        "optionD": "Use one date for every stage",
+        "correctAnswer": "C",
+        "explanation": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "learningPoint": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "historicalClue": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "B": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "C": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "D": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail."
+        },
+        "missionId": "chapter10-mission4",
+        "topic": "painting-event-dates",
+        "topicLabel": "A Painting Has Its Own Date",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A representation of a person, event or idea in an image or other work.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission4-painting-event-dates-practice2",
+      "create": true,
+      "fields": {
+        "question": "A later painting is used to invent an exact historical conversation. What should a reviewer ask?",
+        "optionA": "Can the event date replace all other sources?",
+        "optionB": "What evidence supports the words beyond the image?",
+        "optionC": "Which invented speech sounds best?",
+        "optionD": "Why assume every face reveals a thought?",
+        "correctAnswer": "B",
+        "explanation": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "learningPoint": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "historicalClue": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "B": "Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "C": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail.",
+          "D": "Review the lesson clues. Separate the 1807 event from the 1821 paintings. A later depiction is not an automatic eyewitness record of every event detail."
+        },
+        "missionId": "chapter10-mission4",
+        "topic": "painting-event-dates",
+        "topicLabel": "A Painting Has Its Own Date",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A representation of a person, event or idea in an image or other work.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz4-question3",
+      "create": true,
+      "fields": {
+        "question": "What does architectural adaptation involve?",
+        "optionA": "Proving every visitors belief",
+        "optionB": "A guarantee that all workers had equal power",
+        "optionC": "Reworking building ideas for a setting",
+        "optionD": "Copying every detail unchanged everywhere",
+        "correctAnswer": "C",
+        "explanation": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "learningPoint": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "historicalClue": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "B": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "C": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "D": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience."
+        },
+        "quizId": "chapter10-quiz4",
+        "order": 3,
+        "status": "active",
+        "topic": "architecture-local-adaptation",
+        "topicLabel": "Buildings Could Adapt Design Traditions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz4-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why name the four places in the UNESCO group?",
+        "optionA": "To show that no later changes occurred",
+        "optionB": "To keep claims tied to particular examples",
+        "optionC": "To prove every town had the same building",
+        "optionD": "To erase regional differences",
+        "correctAnswer": "B",
+        "explanation": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "learningPoint": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "historicalClue": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "B": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "C": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "D": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience."
+        },
+        "quizId": "chapter10-quiz4",
+        "order": 103,
+        "status": "active",
+        "topic": "architecture-local-adaptation",
+        "topicLabel": "Buildings Could Adapt Design Traditions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission4-architecture-local-adaptation-practice1",
+      "create": true,
+      "fields": {
+        "question": "A caption calls the listed churches identical copies with no local contribution. What correction fits?",
+        "optionA": "Require students to adopt the religion",
+        "optionB": "Describe adaptation and the contribution of local materials and craftspeople",
+        "optionC": "Erase all makers from the account",
+        "optionD": "Treat every Philippine building as identical",
+        "correctAnswer": "B",
+        "explanation": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "learningPoint": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "historicalClue": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "B": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "C": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "D": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience."
+        },
+        "missionId": "chapter10-mission4",
+        "topic": "architecture-local-adaptation",
+        "topicLabel": "Buildings Could Adapt Design Traditions",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Changing or reworking building ideas for a particular setting.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission4-architecture-local-adaptation-practice2",
+      "create": true,
+      "fields": {
+        "question": "A teaching diagram is used as an exact measured plan of Paoay Church. What revision fits?",
+        "optionA": "Label the model and seek measured evidence for the actual building",
+        "optionB": "Keep the diagram as exact without checking",
+        "optionC": "Apply it to every religious building",
+        "optionD": "Assume all dimensions are universal",
+        "correctAnswer": "A",
+        "explanation": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "learningPoint": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "historicalClue": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+        "answerExplanations": {
+          "A": "Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "B": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "C": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience.",
+          "D": "Review the lesson clues. Describe adaptation and the contribution of local materials and craftspeople. A named group is not every building or every communitys experience."
+        },
+        "missionId": "chapter10-mission4",
+        "topic": "architecture-local-adaptation",
+        "topicLabel": "Buildings Could Adapt Design Traditions",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Changing or reworking building ideas for a particular setting.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz4-question4",
+      "create": true,
+      "fields": {
+        "question": "What does living heritage allow us to consider?",
+        "optionA": "One object explains every community",
+        "optionB": "Knowledge can continue while uses or forms change",
+        "optionC": "Every practice stays identical forever",
+        "optionD": "All objects were made in the colonial period",
+        "correctAnswer": "B",
+        "explanation": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "learningPoint": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "historicalClue": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "B": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "C": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "D": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail."
+        },
+        "quizId": "chapter10-quiz4",
+        "order": 4,
+        "status": "active",
+        "topic": "textile-living-heritage",
+        "topicLabel": "A Textile Can Carry a Later Story",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz4-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why check the date of a heritage object before making an earlier claim?",
+        "optionA": "Its date limits what it directly shows about that earlier period",
+        "optionB": "Looking old proves an exact colonial date",
+        "optionC": "All traditional work has one age",
+        "optionD": "A personal memory replaces every historical record",
+        "correctAnswer": "A",
+        "explanation": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "learningPoint": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "historicalClue": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "answerExplanations": {
+          "A": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "B": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "C": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "D": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail."
+        },
+        "quizId": "chapter10-quiz4",
+        "order": 104,
+        "status": "active",
+        "topic": "textile-living-heritage",
+        "topicLabel": "A Textile Can Carry a Later Story",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission4-textile-living-heritage-practice1",
+      "create": true,
+      "fields": {
+        "question": "A 1960s textile is presented as direct proof of every colonial pattern. What should change?",
+        "optionA": "Keep its dated story and seek earlier evidence for colonial claims",
+        "optionB": "Erase its modern date",
+        "optionC": "Assume every pattern never changed",
+        "optionD": "Use one owners story for every family",
+        "correctAnswer": "A",
+        "explanation": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "learningPoint": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "historicalClue": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "answerExplanations": {
+          "A": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "B": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "C": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "D": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail."
+        },
+        "missionId": "chapter10-mission4",
+        "topic": "textile-living-heritage",
+        "topicLabel": "A Textile Can Carry a Later Story",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Knowledge and practices people continue, share and sometimes change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission4-textile-living-heritage-practice2",
+      "create": true,
+      "fields": {
+        "question": "A community heritage entry describes one owners object. What is a careful use?",
+        "optionA": "Treat it as every owners experience",
+        "optionB": "Invent earlier makers and dates",
+        "optionC": "Dismiss the object because it is modern",
+        "optionD": "Attribute the story and keep wider claims within supporting evidence",
+        "correctAnswer": "D",
+        "explanation": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "learningPoint": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "historicalClue": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "B": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "C": "Review the lesson clues. Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail.",
+          "D": "Keep its dated story and seek earlier evidence for colonial claims. A modern heritage object alone does not prove every colonial-era detail."
+        },
+        "missionId": "chapter10-mission4",
+        "topic": "textile-living-heritage",
+        "topicLabel": "A Textile Can Carry a Later Story",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Knowledge and practices people continue, share and sometimes change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz4-question5",
+      "create": true,
+      "fields": {
+        "question": "What is source purpose?",
+        "optionA": "The reason a record or work was produced or used",
+        "optionB": "Proof that every viewer agreed",
+        "optionC": "The exact thoughts of all makers",
+        "optionD": "A single date for all historical stages",
+        "correctAnswer": "A",
+        "explanation": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "learningPoint": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "historicalClue": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "answerExplanations": {
+          "A": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "B": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "C": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "D": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history."
+        },
+        "quizId": "chapter10-quiz4",
+        "order": 5,
+        "status": "active",
+        "topic": "cultural-source-purpose",
+        "topicLabel": "Ask What a Source Was Made to Do",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz4-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why ask whether a caption is a later museum label?",
+        "optionA": "All labels were written when the object was made",
+        "optionB": "A caption always contains every earlier use",
+        "optionC": "Modern labels cannot support any question",
+        "optionD": "Its date and purpose differ from the objects original making",
+        "correctAnswer": "D",
+        "explanation": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "learningPoint": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "historicalClue": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "B": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "C": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "D": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history."
+        },
+        "quizId": "chapter10-quiz4",
+        "order": 105,
+        "status": "active",
+        "topic": "cultural-source-purpose",
+        "topicLabel": "Ask What a Source Was Made to Do",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission4-cultural-source-purpose-practice1",
+      "create": true,
+      "fields": {
+        "question": "Three cards give a date, a feature and a later owners account. What should a report do?",
+        "optionA": "Treat all three as one complete original biography",
+        "optionB": "Erase the dates to simplify the story",
+        "optionC": "Rank cultures by their display labels",
+        "optionD": "Match each source to its supported claim and identify its limits",
+        "correctAnswer": "D",
+        "explanation": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "learningPoint": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "historicalClue": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "B": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "C": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "D": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history."
+        },
+        "missionId": "chapter10-mission4",
+        "topic": "cultural-source-purpose",
+        "topicLabel": "Ask What a Source Was Made to Do",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The reason a record or work was produced or used.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission4-cultural-source-purpose-practice2",
+      "create": true,
+      "fields": {
+        "question": "A modern display label is used to prove every original makers motive. What is needed?",
+        "optionA": "An assumption that every motive was identical",
+        "optionB": "Only a modern exhibition date",
+        "optionC": "Appropriate evidence about making and motive beyond the display label",
+        "optionD": "A more confident guess",
+        "correctAnswer": "C",
+        "explanation": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "learningPoint": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "historicalClue": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "B": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "C": "Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history.",
+          "D": "Review the lesson clues. Match each source to its supported claim and identify its limits. A display label does not automatically reveal an objects full earlier history."
+        },
+        "missionId": "chapter10-mission4",
+        "topic": "cultural-source-purpose",
+        "topicLabel": "Ask What a Source Was Made to Do",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The reason a record or work was produced or used.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter10-mission4-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission4",
+        "name": "Arts and Culture Evidence Journal",
+        "description": "A learning-game token for connecting cultural works with makers, dates and uses.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 4,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish events, depictions, makers, uses and later heritage accounts.",
+          "reflectionQuestion": "Which clue helped you distinguish a work from the event or period it represents?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-10",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-3 investigate housing, learning histories and social experiences. Missions 4-5 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-4 investigate housing, learning, social experiences and cultural works. Mission 5 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapter 9 offers five missions and an evidence challenge. Chapter 10 offers Missions 1-3 on housing, learning and social experiences; later content is being prepared."
+      },
+      "fields": {
+        "description": "Chapter 9 offers five missions and an evidence challenge. Chapter 10 offers Missions 1-4 on social and cultural transformation; later content is being prepared."
+      }
+    }
+  ]
+}

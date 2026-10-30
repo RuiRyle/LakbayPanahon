@@ -1,0 +1,73 @@
+.landing-audio-card {
+    position: fixed;
+    z-index: 1200;
+    right: 22px;
+    bottom: 22px;
+    width: min(326px, calc(100vw - 32px));
+    padding: 15px;
+    color: #f8f5eb;
+    background: linear-gradient(145deg, rgba(16, 43, 79, .97), rgba(8, 27, 56, .98));
+    border: 1px solid rgba(229, 182, 79, .48);
+    border-radius: 17px;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, .32), inset 0 1px rgba(255, 255, 255, .06);
+    backdrop-filter: blur(14px);
+}
+
+.landing-audio-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.landing-audio-mark {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    flex: 0 0 auto;
+    border: 1px solid rgba(246, 217, 139, .48);
+    border-radius: 11px;
+    color: #ffe39a;
+    background: rgba(229, 182, 79, .12);
+    font-size: 1.25rem;
+}
+
+.landing-audio-heading strong,
+.landing-audio-heading small { display: block; }
+.landing-audio-heading strong { color: #fff8e5; font-size: .84rem; letter-spacing: .01em; }
+.landing-audio-heading small { margin-top: 2px; color: #b8c8dc; font-size: .7rem; }
+
+.landing-audio-actions { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.landing-audio-card button {
+    min-height: 40px;
+    border: 1px solid rgba(229, 182, 79, .4);
+    border-radius: 10px;
+    color: #f8f5eb;
+    background: rgba(255, 255, 255, .045);
+    font: inherit;
+    font-size: .76rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.landing-audio-card button:hover { transform: translateY(-2px); border-color: #f6d98b; background: rgba(229, 182, 79, .12); }
+.landing-audio-card button:active { transform: translateY(0) scale(.98); }
+.landing-audio-card button:focus-visible { outline: 3px solid #f6d98b; outline-offset: 3px; }
+.landing-audio-music { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; color: #10233d !important; background: #e5b64f !important; border-color: #f6d98b !important; }
+.landing-audio-music:hover { background: #f6d98b !important; box-shadow: 0 7px 18px rgba(229, 182, 79, .2); }
+.landing-audio-effects { display: flex; align-items: center; gap: 9px; padding: 0 10px; white-space: nowrap; }
+.landing-audio-state { color: #f6d98b; }
+.landing-audio-card p { margin: 10px 2px 0; color: #b8c8dc; font-size: .68rem; line-height: 1.45; }
+
+@media (max-width: 560px) {
+    .landing-audio-card { right: 12px; bottom: 12px; width: min(326px, calc(100vw - 24px)); padding: 12px; }
+    .landing-audio-heading { margin-bottom: 9px; }
+    .landing-audio-card p { font-size: .65rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .landing-audio-card button { transition: none; }
+    .landing-audio-card button:hover,
+    .landing-audio-card button:active { transform: none; }
+}

@@ -1,3 +1,9 @@
+import {renderEvidenceDecision,evidenceDecisionCorrect} from "./evidence-decision.js";
+let restoredEvidenceChoice=null;
+import { stableDraftVersion } from "./quiz-draft-policy.js";
+import { learningDraft, draftStatus, restartControl } from "./learning-draft.js";
+import { nextChapterAfterCompletion, nextChapterCandidate } from "./chapter-continuation.js";
+import { requirePassingScore } from "./activity-policy.js";
 import { submitStudentActivity } from "./student-rewards-client.js";
 import { requireLearningAccess, LearningAccessError } from "./learning-access.js";
 import {
@@ -81,7 +87,7 @@ let selectedAnswer = null;
 let selectedMatches = {};
 
 /* ==========================================
-   TRADE SIMULATION â€” GAME STATE
+   TRADE SIMULATION — GAME STATE
 ========================================== */
 
 let selectedTradeQuantity = 0;
@@ -92,7 +98,7 @@ let correctAnswers = 0;
 let studentAnswers = {};
 
 /* ==========================================
-   CHAPTER CHALLENGE â€” GAME TYPES
+   CHAPTER CHALLENGE — GAME TYPES
 ========================================== */
 
 function getChallengeGameType(question) {
@@ -122,7 +128,35 @@ let currentChapter = null;
    LOAD CHAPTER CHALLENGE
 ========================================== */
 
+let chapterDraft = null, chapterDraftReady = false, chapterDraftVersion = "";
+const chapterDraftStatus = draftStatus(document.querySelector(".chapter-challenge-intro"));
+const restartChapterButton = restartControl(document.querySelector(".chapter-challenge-intro"),"Start Challenge Over",async()=>{
+    if(!auth.currentUser || chapterLoadPending || chapterResultPending)return;
+    const generation=chapterSessionGeneration;
+    chapterDraftReady=false;
+    try {
+        await chapterDraft.clear();
+        if(generation!==chapterSessionGeneration)return;
+        challengeStarted=false;
+        document.getElementById("chapterChallengeQuiz")?.remove();
+        document.getElementById("chapterChallengeResult")?.remove();
+        document.querySelector(".chapter-challenge-intro")?.classList.remove("challenge-active");
+        beginChallengeButton.hidden=false;backToMissionsButton.hidden=false;
+        await loadChapterChallenge();
+    } catch {
+        if(generation!==chapterSessionGeneration)return;
+        chapterDraft=learningDraft("chapter",chapterId,null,chapterDraftStatus);chapterDraftReady=true;
+        chapterDraftStatus.textContent="Could not restart the challenge. Your answers are still available; try again.";
+    }
+});
+let chapterSessionGeneration = 0;
+let chapterUserId = null;
+let chapterLoadPending = false;
+const retryChapterLoadButton = document.getElementById("retryChapterLoadButton");
 async function loadChapterChallenge() {
+    if (chapterLoadPending) return;
+    const generation = chapterSessionGeneration;
+    const isCurrent = () => generation === chapterSessionGeneration;
 
     if (!chapterId) {
 
@@ -148,8 +182,14 @@ async function loadChapterChallenge() {
     }
 
 
+    chapterLoadPending = true;
+    beginChallengeButton.disabled = true;
+    beginChallengeButton.onclick = null;
+    challengeStatus.textContent = "Loading chapter challenge...";
+    if (retryChapterLoadButton) retryChapterLoadButton.hidden = true;
     try {
         await requireLearningAccess(chapterId);
+        if (!isCurrent()) return;
 
         /* ==================================
            LOAD CHAPTER
@@ -163,6 +203,7 @@ async function loadChapterChallenge() {
                     chapterId
                 )
             );
+        if (!isCurrent()) return;
 
 
         if (!chapterSnapshot.exists()) {
@@ -196,11 +237,9 @@ async function loadChapterChallenge() {
 
         const missionSnapshot =
             await getDocs(
-                collection(
-                    db,
-                    "missions"
-                )
+                query(collection(db,"missions"),where("chapterId","==",chapterId))
             );
+        if (!isCurrent()) return;
 
 
         const chapterMissions = [];
@@ -266,6 +305,7 @@ async function loadChapterChallenge() {
                     )
                 )
             );
+        if (!isCurrent()) return;
 
 
         const completedMissionIds =
@@ -310,14 +350,14 @@ async function loadChapterChallenge() {
             );
 
 
-        if (!challengeUnlocked) {
+        if (!challengeUnlocked && globalThis.__lakbayExplorationPreview!==true) {
 
             beginChallengeButton.disabled =
                 true;
 
 
             challengeStatus.textContent =
-                "ðŸ”’ Complete all chapter missions to unlock this challenge.";
+                "🔒 Complete all chapter missions to unlock this challenge.";
 
 
             return;
@@ -330,11 +370,9 @@ async function loadChapterChallenge() {
 
         const challengeSnapshot =
             await getDocs(
-                collection(
-                    db,
-                    "chapterChallenges"
-                )
+                query(collection(db,"chapterChallenges"),where("chapterId","==",chapterId))
             );
+        if (!isCurrent()) return;
 
 
         const matchingChallenges = [];
@@ -393,6 +431,8 @@ async function loadChapterChallenge() {
         activeChallenge =
             matchingChallenges[0];
 
+        requirePassingScore(activeChallenge);
+
 
         /* ==================================
            LOAD QUESTIONS
@@ -400,11 +440,9 @@ async function loadChapterChallenge() {
 
         const questionSnapshot =
             await getDocs(
-                collection(
-                    db,
-                    "chapterChallengeQuestions"
-                )
+                query(collection(db,"chapterChallengeQuestions"),where("challengeId","==",activeChallenge.id))
             );
+        if (!isCurrent()) return;
 
 
         challengeQuestions = [];
@@ -487,6 +525,12 @@ async function loadChapterChallenge() {
         }
 
 
+        chapterDraft?.close();chapterDraftReady=false;
+        chapterDraft=learningDraft("chapter",chapterId,null,chapterDraftStatus);
+        const savedDraft=await chapterDraft.read();
+        restartChapterButton.hidden = !savedDraft;
+        if(!isCurrent())return;
+        chapterDraftVersion=stableDraftVersion({id:activeChallenge.id,passingScore:activeChallenge.passingScore,questions:challengeQuestions});
         updateChallengeInfo();
 
 
@@ -495,15 +539,40 @@ async function loadChapterChallenge() {
 
 
         challengeStatus.textContent =
-            "ðŸ† Chapter Challenge unlocked!";
+            "🏆 Chapter Challenge unlocked!";
 
 
-        beginChallengeButton.onclick =
-            startChallenge;
+        beginChallengeButton.onclick = startChallenge;
+        if(savedDraft?.version===chapterDraftVersion && Number.isInteger(savedDraft.index) && savedDraft.index>=0 && savedDraft.index<=challengeQuestions.length && savedDraft.answers && typeof savedDraft.answers==='object') {
+            challengeStarted=false;startChallenge(false);
+            currentQuestionIndex=savedDraft.index;
+            studentAnswers=savedDraft.answers;
+            correctAnswers=challengeQuestions.slice(0,currentQuestionIndex).filter(question=>{
+                const answer=studentAnswers[question.id],kind=getChallengeGameType(question);
+                if(question.evidenceTask)return evidenceDecisionCorrect(question,answer);
+                if(kind==="matching")return question.matchingPairs?.length>0&&question.matchingPairs.every(pair=>answer?.matches?.[pair.left]===pair.right);
+                if(kind==="tradeSimulation")return answer?.quantity===Number(question.requiredQuantity);
+                return typeof answer==="string"&&answer.trim().toUpperCase()===String(question.correctAnswer).trim().toUpperCase();
+            }).length;
+            if(currentQuestionIndex<challengeQuestions.length) {
+                const partialMatchesQuestion = savedDraft.partialQuestionId === challengeQuestions[currentQuestionIndex].id;
+                restoredEvidenceChoice=partialMatchesQuestion&&savedDraft.choice?.gameType==="evidenceDecision"?savedDraft.choice:null;
+                displayCurrentQuestion();
+                if(partialMatchesQuestion && ["A","B","C","D"].includes(savedDraft.choice)) document.querySelector('.challenge-option[data-answer="'+savedDraft.choice+'"]')?.click();
+                for(const select of document.querySelectorAll('.matching-select')) {
+                    const label=select.closest('.matching-row')?.querySelector('.matching-label')?.textContent.trim();
+                    if(partialMatchesQuestion && label && savedDraft.matches?.[label]) {select.value=savedDraft.matches[label];select.dispatchEvent(new Event('change'));}
+                }
+                const max=Number(challengeQuestions[currentQuestionIndex].startingQuantity)||0;
+                for(let count=0;count<Math.min(partialMatchesQuestion ? Number(savedDraft.quantity)||0 : 0,max);count++)document.querySelectorAll('.trade-quantity-button')[1]?.click();
+                chapterDraftReady=true;saveChapterDraft();
+            } else {chapterDraftReady=true;showChallengeResult();}
+        } else chapterDraftReady=true;
 
 
     } catch (error) {
 
+        if (!isCurrent()) return;
         console.error(
             "Unable to load Chapter Challenge:",
             error
@@ -514,6 +583,8 @@ async function loadChapterChallenge() {
             error instanceof LearningAccessError ? error.message : "We could not load the Chapter Challenge."
         );
 
+    } finally {
+        if (isCurrent()) chapterLoadPending = false;
     }
 
 }
@@ -563,10 +634,7 @@ function updateChallengeInfo() {
 
         passingScore.textContent =
             `${
-                Number(
-                    activeChallenge
-                        .passingScore
-                ) || 70
+                requirePassingScore(activeChallenge)
             }%`;
 
     }
@@ -578,7 +646,7 @@ function updateChallengeInfo() {
    START CHALLENGE
 ========================================== */
 
-function startChallenge() {
+function startChallenge(saveInitialDraft = true) {
 
     if (
         challengeStarted ||
@@ -591,6 +659,12 @@ function startChallenge() {
 
     challengeStarted =
         true;
+
+    if (saveInitialDraft !== false) {
+        document.dispatchEvent(new CustomEvent("lakbay:chapter-challenge-started"));
+    }
+
+    document.querySelector(".chapter-challenge-intro")?.classList.add("challenge-active");
 
 
     currentQuestionIndex =
@@ -624,6 +698,9 @@ beginChallengeButton.hidden =
     createQuestionInterface();
 
     displayCurrentQuestion();
+    if (saveInitialDraft !== false) {
+        chapterDraftReady=true;saveChapterDraft();
+    }
 
 }
 
@@ -723,6 +800,7 @@ function createQuestionInterface() {
     intro.appendChild(
         quizContainer
     );
+    for(const event of ["click","change"])quizContainer.addEventListener(event,()=>queueMicrotask(saveChapterDraft),true);
 
 
     const submitButton =
@@ -741,7 +819,7 @@ function createQuestionInterface() {
 
 
 /* ==========================================
-   MATCHING GAME â€” FIRESTORE-DRIVEN
+   MATCHING GAME — FIRESTORE-DRIVEN
 ========================================== */
 
 function renderMatchingGame(question, optionsContainer, submitButton) {
@@ -863,7 +941,7 @@ function renderMatchingGame(question, optionsContainer, submitButton) {
 
 
 /* ==========================================
-   TRADE SIMULATION â€” FIRESTORE-DRIVEN
+   TRADE SIMULATION — FIRESTORE-DRIVEN
 ========================================== */
 
 function renderTradeSimulation(
@@ -979,7 +1057,7 @@ function renderTradeSimulation(
     const minusButton = document.createElement("button");
     minusButton.type = "button";
     minusButton.className = "trade-quantity-button";
-    minusButton.textContent = "âˆ’";
+    minusButton.textContent = "−";
 
     const quantityDisplay = document.createElement("strong");
     quantityDisplay.className = "trade-quantity-value";
@@ -1076,6 +1154,8 @@ function displayCurrentQuestion() {
 
     selectedAnswer =
         null;
+    selectedMatches = {};
+    selectedTradeQuantity = 0;
 
 
     const questionProgress =
@@ -1140,6 +1220,7 @@ questionText.textContent =
     question.question ||
     "Question";
 
+optionsContainer.evidenceRequest=null;
 optionsContainer.innerHTML =
     "";
 
@@ -1162,7 +1243,7 @@ if (gameType === "historicalDecision") {
         "historical-decision-icon";
 
     decisionIcon.textContent =
-        "âš–ï¸";
+        "⚖️";
 
     const decisionLabel =
         document.createElement("strong");
@@ -1225,6 +1306,7 @@ if (gameType === "historicalDecision") {
    MATCHING GAME DISPLAY
 ========================================== */
 
+if(question.evidenceTask){selectedAnswer=restoredEvidenceChoice;renderEvidenceDecision({question,host:optionsContainer,submitButton,initialAnswer:restoredEvidenceChoice,onChange:answer=>{selectedAnswer=answer;saveChapterDraft();}});restoredEvidenceChoice=null;submitButton.textContent=currentQuestionIndex===challengeQuestions.length-1?'Finish Investigation':'Confirm Evidence and Answer';return;}
 if (gameType === "matching") {
 
     renderMatchingGame(
@@ -1410,12 +1492,13 @@ function submitCurrentAnswer() {
 
     const gameType =
         getChallengeGameType(question);
+    let answerWasCorrect = false;
 
     /* ======================================
        MATCHING GAME
     ====================================== */
 
-    if (gameType === "matching") {
+    if(question.evidenceTask){if(selectedAnswer?.gameType!=='evidenceDecision'||!question.evidenceTask.cards.some(c=>c.id===selectedAnswer.evidenceId)||!['A','B','C','D'].includes(selectedAnswer.conclusion))return;studentAnswers[question.id]={...selectedAnswer};if(evidenceDecisionCorrect(question,selectedAnswer)){correctAnswers++;answerWasCorrect=true;}} else if (gameType === "matching") {
 
         const pairs =
             Array.isArray(question.matchingPairs)
@@ -1449,6 +1532,7 @@ function submitCurrentAnswer() {
 
                if (allCorrect) {
             correctAnswers += 1;
+            answerWasCorrect = true;
         }
 
     } else if (gameType === "tradeSimulation") {
@@ -1486,6 +1570,7 @@ function submitCurrentAnswer() {
             selectedTradeQuantity === requiredQuantity
         ) {
             correctAnswers += 1;
+            answerWasCorrect = true;
         }
 
     } else {
@@ -1513,8 +1598,13 @@ function submitCurrentAnswer() {
 
         if (submittedAnswer === correctAnswer) {
             correctAnswers += 1;
+            answerWasCorrect = true;
         }
 
+    }
+
+    if (answerWasCorrect) {
+        document.dispatchEvent(new CustomEvent("lakbay:answer-correct"));
     }
 
     /* ======================================
@@ -1527,13 +1617,14 @@ function submitCurrentAnswer() {
         currentQuestionIndex >=
         challengeQuestions.length
     ) {
-
+        saveChapterDraft();
         showChallengeResult();
         return;
 
     }
 
     displayCurrentQuestion();
+    saveChapterDraft();
 
 }
 
@@ -1654,7 +1745,7 @@ let studentAnswerText = "";
 
 let correctAnswerText = "";
 
-if (isMatching) {
+if(question.evidenceTask){const answer=studentAnswers[question.id];isCorrect=evidenceDecisionCorrect(question,answer);studentAnswerText='Clue: '+(question.evidenceTask.cards.find(c=>c.id===answer?.evidenceId)?.label||answer?.evidenceId||'Not selected')+'; conclusion: '+getChallengeOptionText(question,answer?.conclusion);correctAnswerText='Clue: '+(question.evidenceTask.cards.find(c=>c.id===question.evidenceTask.correctEvidenceId)?.label||question.evidenceTask.correctEvidenceId)+'; conclusion: '+getChallengeOptionText(question,question.correctAnswer);} else if (isMatching) {
 
     const pairs =
         Array.isArray(question.matchingPairs)
@@ -1680,12 +1771,12 @@ if (isMatching) {
             const answer =
                 matches[pair.left] || "No match";
 
-            return `${pair.left} â†’ ${answer}`;
+            return `${pair.left} → ${answer}`;
         }).join("\n");
 
     correctAnswerText =
         pairs.map(pair =>
-            `${pair.left} â†’ ${pair.right}`
+            `${pair.left} → ${pair.right}`
         ).join("\n");
 
 } else if (gameType === "tradeSimulation") {
@@ -1809,8 +1900,8 @@ if (isMatching) {
 
             statusIcon.textContent =
                 isCorrect
-                    ? "âœ“"
-                    : "âœ•";
+                    ? "✓"
+                    : "✕";
 
 
             const statusText =
@@ -2219,12 +2310,18 @@ function insertChallengeLearningReview(
 
 let validatedChapterReward = null;
 async function completeChapter() {
+    const generation = chapterSessionGeneration;
     validatedChapterReward = null;
     const result = await submitStudentActivity({
         kind: "chapter", chapterId, challengeId: activeChallenge.id,
         answers: studentAnswers
     });
+    if (generation !== chapterSessionGeneration) return null;
     if (!result.passed) throw new Error("A passing score could not be confirmed.");
+    chapterDraftReady=false;
+    restartChapterButton.hidden=true;
+    await chapterDraft?.clear().catch(()=>{});
+    if(generation!==chapterSessionGeneration)return null;
     validatedChapterReward = result.badgeResult;
     return { firstCompletion: result.firstCompletion };
 }
@@ -2232,7 +2329,21 @@ async function completeChapter() {
 async function awardChapterBadge() {
     return validatedChapterReward || { badge: null, newlyEarned: false };
 }
+let chapterResultPending = false;
 async function showChallengeResult() {
+    if (!auth.currentUser || chapterResultPending) return;
+    const generation = chapterSessionGeneration;
+    chapterResultPending = true;
+    const retryButton = document.getElementById("challengeResultPrimaryButton");
+    if (retryButton) retryButton.disabled = true;
+    try {
+        await renderChallengeResult();
+    } finally {
+        if (generation === chapterSessionGeneration) chapterResultPending = false;
+    }
+}
+async function renderChallengeResult() {
+    const generation = chapterSessionGeneration;
 
     const quizContainer =
         document.getElementById(
@@ -2265,9 +2376,7 @@ async function showChallengeResult() {
 
 
     const passingScore =
-        Number(
-            activeChallenge.passingScore
-        ) || 70;
+        requirePassingScore(activeChallenge);
 
 
     const passed =
@@ -2277,6 +2386,22 @@ async function showChallengeResult() {
 
     let chapterCompletion =
         null;
+
+    if(globalThis.__lakbayExplorationPreview===true){
+        chapterDraftReady=false;
+        await chapterDraft?.clear().catch(()=>{});
+        if(generation!==chapterSessionGeneration||!auth.currentUser)return;
+        const intro=document.querySelector('.chapter-challenge-intro');
+        document.getElementById('chapterChallengeResult')?.remove();
+        const result=document.createElement('section');result.id='chapterChallengeResult';result.className='chapter-challenge-result';
+        const heading=document.createElement('h2');heading.textContent=passed?'Preview: passing score':'Preview: try again';
+        const note=document.createElement('p');note.textContent=correctAnswers+' of '+totalQuestions+' correct ('+score+'%). Preview only: no chapter completion or badge was saved.';
+        const again=document.createElement('button');again.type='button';again.className='begin-mission-button';again.textContent='Try This Challenge Again';again.addEventListener('click',()=>window.location.reload());
+        const back=document.createElement('a');back.className='text-button';back.textContent='Back to Missions';back.href='mission.html?'+new URLSearchParams({chapter:chapterId});
+        result.append(heading,note,createChallengeLearningReview(),again,back);intro?.append(result);
+        challengeStatus.textContent='Preview result only. Your saved chapter progress is unchanged.';
+        heading.tabIndex=-1;heading.focus();return;
+    }
 
 
     let badgeResult =
@@ -2299,10 +2424,11 @@ async function showChallengeResult() {
                 await completeChapter(
                     score
                 );
+            if (generation !== chapterSessionGeneration) return;
 
 
         } catch (error) {
-
+            if (generation !== chapterSessionGeneration) return;
             console.error(
                 "Unable to save chapter completion:",
                 error
@@ -2337,6 +2463,7 @@ async function showChallengeResult() {
 
             badgeResult =
                 await awardChapterBadge();
+            if (generation !== chapterSessionGeneration) return;
 
 
         } catch (error) {
@@ -2444,7 +2571,7 @@ async function showChallengeResult() {
         resultContainer.innerHTML = `
 
             <div class="challenge-result-icon">
-                ðŸ†
+                🏆
             </div>
 
 
@@ -2495,7 +2622,7 @@ async function showChallengeResult() {
                         <div class="chapter-completion-banner">
 
                             <span class="chapter-completion-check">
-                                âœ“
+                                ✓
                             </span>
 
                             <div>
@@ -2518,7 +2645,7 @@ async function showChallengeResult() {
                         <div class="chapter-review-banner">
 
                             <span>
-                                âœ“
+                                ✓
                             </span>
 
                             <p>
@@ -2544,7 +2671,7 @@ async function showChallengeResult() {
                         <div class="chapter-next-unlock">
 
                             <div class="chapter-next-unlock-icon">
-                                ðŸ—º
+                                🗺
                             </div>
 
                             <div>
@@ -2554,12 +2681,12 @@ async function showChallengeResult() {
                                 </span>
 
                                 <h3>
-                                    Next Chapter Unlocked
+                                    Explore Available Chapters
                                 </h3>
 
                                 <p>
-                                    A new part of your historical
-                                    journey is now available.
+                                    Open the chapter map to see available lessons
+                                    or review chapters you have completed.
                                 </p>
 
                             </div>
@@ -2579,8 +2706,8 @@ async function showChallengeResult() {
                 >
                     ${
                         firstCompletion
-                            ? "Continue Your Journey â†’"
-                            : "Back to Journey â†’"
+                            ? "Continue Your Journey →"
+                            : "Back to Journey →"
                     }
                 </button>
 
@@ -2589,7 +2716,7 @@ async function showChallengeResult() {
                     type="button"
                     id="challengeResultBackButton"
                 >
-                    â† Back to Missions
+                    ← Back to Missions
                 </button>
 
             </div>
@@ -2609,6 +2736,10 @@ async function showChallengeResult() {
 insertChallengeLearningReview(
     resultContainer
 );
+
+        if (firstCompletion) {
+            document.dispatchEvent(new CustomEvent("lakbay:chapter-completed"));
+        }
 
 
 /* ==================================
@@ -2676,7 +2807,7 @@ insertChallengeLearningReview(
 
 
                         <span class="chapter-badge-status">
-                            âœ“ ADDED TO ACHIEVEMENTS
+                            ✓ ADDED TO ACHIEVEMENTS
                         </span>
 
                     </div>
@@ -2706,7 +2837,7 @@ insertChallengeLearningReview(
 
                     badgeIcon.textContent =
                         badge.icon ||
-                        "ðŸ…";
+                        "🏅";
 
                 }
 
@@ -2776,7 +2907,7 @@ insertChallengeLearningReview(
 
                     smallIcon.textContent =
                         badge.icon ||
-                        "ðŸ…";
+                        "🏅";
 
                 }
 
@@ -2831,16 +2962,90 @@ insertChallengeLearningReview(
             );
 
 
-        primaryButton.addEventListener(
-            "click",
-            goBackToMissions
-        );
-
-
+        let continuationChapter = null;
+        const resultEraId = typeof currentChapter?.eraId === 'string' && currentChapter.eraId ? currentChapter.eraId : null;
+        const fallbackDestination = resultEraId ? 'era.html?' + new URLSearchParams({era:resultEraId}) : 'chapters.html';
+        const fallbackLabel = resultEraId ? 'Return to Era' : 'Explore Chapters';
+        const continuationUserId = auth.currentUser?.uid;
+        const continuationStatus = document.createElement('p');
+        continuationStatus.className = 'chapter-continuation-status';
+        continuationStatus.setAttribute('role', 'status');
+        const retryContinuationButton = document.createElement('button');
+        retryContinuationButton.id = 'retryChapterContinuationButton';
+        retryContinuationButton.type = 'button';
+        retryContinuationButton.className = 'text-button chapter-continuation-retry';
+        retryContinuationButton.textContent = 'Check Next Chapter Again';
+        retryContinuationButton.hidden = true;
+        primaryButton.parentElement.before(continuationStatus);
+        primaryButton.parentElement.append(retryContinuationButton);
+        let continuationLookupPending = false;
+        const continuationIsCurrent = () => generation === chapterSessionGeneration &&
+            auth.currentUser?.uid === continuationUserId &&
+            document.getElementById('challengeResultPrimaryButton') === primaryButton;
+        primaryButton.addEventListener("click", () => {
+            if (!continuationIsCurrent() || continuationLookupPending) return;
+            window.location.href = continuationChapter ? "mission.html?" + new URLSearchParams({chapter:continuationChapter.id}) : fallbackDestination;
+        });
         resultBackButton.addEventListener(
             "click",
             goBackToMissions
         );
+        async function loadChapterContinuation() {
+            if (!continuationIsCurrent() || continuationLookupPending) return;
+            const restoreActionFocus = document.activeElement === retryContinuationButton;
+            continuationLookupPending = true;
+            continuationChapter = null;
+            primaryButton.disabled = true;
+            primaryButton.setAttribute('aria-busy', 'true');
+            primaryButton.textContent = 'Checking Your Next Step...';
+            retryContinuationButton.hidden = true;
+            continuationStatus.textContent = 'Your chapter is saved. Checking where you can go next.';
+            continuationStatus.dataset.state = 'loading';
+            try {
+                const chapterQuery = resultEraId ? query(collection(db,"chapters"),where("eraId","==",resultEraId)) : collection(db,"chapters");
+                const [chapterRows, progressRows] = await Promise.all([
+                    getDocs(chapterQuery),
+                    getDocs(query(collection(db,"studentChapterProgress"),where("userId","==",continuationUserId)))
+                ]);
+                if (!continuationIsCurrent()) return;
+                const rows = snapshot => snapshot.docs.map(row=>({...row.data(),id:row.id}));
+                const chapters = rows(chapterRows), progress = rows(progressRows);
+                const candidate = nextChapterCandidate(chapterId,chapters,progress,continuationUserId);
+                if (candidate) {
+                    const missionRows = await getDocs(query(collection(db,"missions"),where("chapterId","==",candidate.id),where("status","==","active")));
+                    if (!continuationIsCurrent()) return;
+                    continuationChapter = nextChapterAfterCompletion(chapterId,chapters,progress,rows(missionRows),continuationUserId);
+                }
+                continuationStatus.dataset.state = 'ready';
+                if (continuationChapter) {
+                    primaryButton.textContent = 'Continue to Next Chapter';
+                    continuationStatus.textContent = 'Next chapter: ' + (continuationChapter.title || 'Historical Chapter');
+                } else {
+                    primaryButton.textContent = fallbackLabel;
+                    continuationStatus.textContent = resultEraId
+                        ? 'Your chapter is saved. Return to this era to choose what to explore next.'
+                        : 'Your chapter is saved. Explore the chapter map to choose your next step.';
+                }
+            } catch (error) {
+                // Retrying navigation must not resubmit the completed challenge or rewards.
+                if (!continuationIsCurrent()) return;
+                primaryButton.textContent = fallbackLabel;
+                continuationStatus.dataset.state = 'error';
+                continuationStatus.textContent = 'Your chapter is saved. We could not check the next chapter. Try again, or return to the map.';
+                retryContinuationButton.hidden = false;
+            } finally {
+                if (continuationIsCurrent()) {
+                    continuationLookupPending = false;
+                    primaryButton.disabled = false;
+                    primaryButton.removeAttribute('aria-busy');
+                    if (restoreActionFocus && (document.activeElement === document.body || document.activeElement === retryContinuationButton)) {
+                        primaryButton.focus({preventScroll:true});
+                    }
+                }
+            }
+        }
+        retryContinuationButton.addEventListener('click', loadChapterContinuation);
+        await loadChapterContinuation();
 
 
         return;
@@ -2855,7 +3060,7 @@ insertChallengeLearningReview(
     resultContainer.innerHTML = `
 
         <div class="challenge-result-icon">
-            ðŸ“š
+            📚
         </div>
 
 
@@ -2915,7 +3120,7 @@ insertChallengeLearningReview(
                 type="button"
                 id="challengeResultBackButton"
             >
-                â† Back to Missions
+                ← Back to Missions
             </button>
 
         </div>
@@ -2926,6 +3131,10 @@ insertChallengeLearningReview(
     intro.appendChild(
         resultContainer
     );
+
+    document.dispatchEvent(new CustomEvent("lakbay:needs-practice", {
+        detail: { delayMs: 320 }
+    }));
 
 
     document
@@ -3006,7 +3215,7 @@ function showSaveErrorResult(
     resultContainer.innerHTML = `
 
         <div class="challenge-result-icon">
-            âš ï¸
+            ⚠️
         </div>
 
 
@@ -3048,7 +3257,7 @@ function showSaveErrorResult(
 
             <span>
                 Your chapter completion was not saved.
-                Please try the challenge again.
+                Retry saving to keep this result without retaking the challenge.
             </span>
 
         </div>
@@ -3060,7 +3269,7 @@ function showSaveErrorResult(
                 type="button"
                 id="challengeResultPrimaryButton"
             >
-                Try Again
+                Retry Saving Completion
             </button>
 
 
@@ -3068,7 +3277,7 @@ function showSaveErrorResult(
                 type="button"
                 id="challengeResultBackButton"
             >
-                â† Back to Missions
+                ← Back to Missions
             </button>
 
         </div>
@@ -3097,7 +3306,7 @@ insertChallengeLearningReview(
         )
         .addEventListener(
             "click",
-            restartChallenge
+            showChallengeResult
         );
 
 
@@ -3151,6 +3360,7 @@ studentAnswers =
 createQuestionInterface();
 
     displayCurrentQuestion();
+    chapterDraftReady=true;saveChapterDraft();
 
 }
 
@@ -3197,6 +3407,7 @@ backToMissionsButton.addEventListener(
 function showError(
     message
 ) {
+    if (retryChapterLoadButton) retryChapterLoadButton.hidden = !auth.currentUser || !chapterId;
 
     challengeStatus.textContent =
         message;
@@ -3217,15 +3428,28 @@ onAuthStateChanged(
     (user) => {
 
         if (user) {
+            if (chapterUserId === user.uid) return;
+            chapterUserId = user.uid;
+            chapterSessionGeneration++;
+            chapterResultPending = false;
+            chapterLoadPending = false;
             loadChapterChallenge();
             return;
         }
 
+        chapterSessionGeneration++;
+        chapterUserId = null;
+        chapterDraft?.close();chapterDraftReady=false;
+        chapterLoadPending = false;
+        chapterResultPending = false;
+        validatedChapterReward = null;
+        studentAnswers = {};
         // Clear challenge state when signed out.
         activeChallenge = null;
         challengeQuestions = [];
         currentChapter = null;
         challengeStarted = false;
+        document.querySelector(".chapter-challenge-intro")?.classList.remove("challenge-active");
 
         beginChallengeButton.onclick = null;
 
@@ -3253,3 +3477,12 @@ onAuthStateChanged(
         }
     }
 );
+
+retryChapterLoadButton?.addEventListener("click", () => loadChapterChallenge());
+
+function saveChapterDraft() {
+    if(!chapterDraftReady || !challengeStarted || !activeChallenge || chapterResultPending)return;
+    chapterDraft?.save({version:chapterDraftVersion,index:currentQuestionIndex,answers:studentAnswers,
+        partialQuestionId:challengeQuestions[currentQuestionIndex]?.id || null,
+        choice:selectedAnswer,matches:selectedMatches,quantity:selectedTradeQuantity});
+}

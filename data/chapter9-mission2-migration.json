@@ -1,0 +1,1293 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 9 Mission 2 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+    "https://philippineculturaleducation.com.ph/sumuroy/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-8",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-8",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/community-belief-investigator",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter8-mission1",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter8-mission2",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter8-mission3",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter8-mission4",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter9-mission1",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 1
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter9-mission2",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-9",
+        "title": "Polo y Servicios and Bandala",
+        "order": 2,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Compare required labor and compulsory produce delivery, their burdens and evidence of payment and response.",
+        "learningObjective": "Distinguish labor and produce demands, their effects and the evidence needed to explain outcomes.",
+        "learningObjectives": [
+          "Explain polo: required work using lesson evidence.",
+          "Explain time away had consequences using lesson evidence.",
+          "Explain bandala: compulsory produce delivery using lesson evidence.",
+          "Explain a promise is not a payment using lesson evidence.",
+          "Explain a named response: sumuroy in samar using lesson evidence."
+        ],
+        "lessonRecap": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery. Whether payment was actually received. A promise of future payment does not prove payment was received. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "sourceUrls": [
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter9-quiz2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission2",
+        "title": "Labor and Produce - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 2,
+        "questionBlueprint": [
+          {
+            "topic": "polo-labor",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "labor-time-cost",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "bandala-produce",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "delivery-payment",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "sumuroy-response",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission2-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission2",
+        "status": "active",
+        "order": 1,
+        "title": "Polo: Required Work",
+        "content": "Polo y servicios was a system of required labor during Spanish colonial rule. An authority could call on people to carry out work. Required service is different from choosing to volunteer. To explain a case, ask who ordered the work, who had to do it, where it took place and which rules applied then. Rules, exemptions and actual practice should not be treated as identical throughout the whole colonial period.\n\nA fictional source card orders workers to report for a project. It tells us about a demand for labor. It does not prove that every worker agreed or that every person named actually arrived. We are studying how authority affected people. This is not a classroom work order: students will not assign forced work to classmates or earn rewards for doing so. Read the instruction, then ask what evidence would show the work actually carried out.\n\nOpen the three clues and choose the explanation they support. Use Explain for help. If this topic needs review, revisit its lesson before targeted practice.",
+        "reviewTopics": [
+          "polo-labor"
+        ],
+        "imageUrl": "../assets/story/labor-produce-evidence-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Polo: Required Work. Labelled clues compare demands and evidence, not an original work order or delivery record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "The demand",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Polo concerned required labor service, not simply a freely chosen gift.",
+            "icon": "🔎"
+          },
+          {
+            "title": "The setting",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask who was called, where and under which dated rules.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Action needs evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An order alone does not prove attendance, agreement or completed work.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A colonial order requires workers to report. Which idea fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "It records a labor demand; attendance and agreement need more evidence",
+          "It proves every worker volunteered",
+          "It proves all work was finished",
+          "It is a produce-delivery receipt"
+        ],
+        "decisionCorrectAnswer": "It records a labor demand; attendance and agreement need more evidence",
+        "decisionExplanation": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "keyTerm": "Polo y servicios",
+        "keyTermDefinition": "Required labor service under colonial authority.",
+        "historicalInsight": "An order alone does not prove attendance, agreement or completed work.",
+        "learningHelp": {
+          "explanation": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "vocabulary": [
+            {
+              "term": "Polo y servicios",
+              "definition": "Required labor service under colonial authority."
+            }
+          ],
+          "example": "Polo concerned required labor service, not simply a freely chosen gift.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission2-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission2",
+        "status": "active",
+        "order": 2,
+        "title": "Time Away Had Consequences",
+        "content": "Required labor could take time away from household work and other needs. Travel could add to the time spent on a task. The effect depended on the work, distance, season and support available at home. We should investigate those conditions rather than assume that every household experienced the same burden. A project could serve colonial aims while placing demands on the people who worked on it.\n\nTry a fictional schedule model. A household has six task slots. If two are assigned to travel and required work, four remain for other tasks. The slots are not historical days or a universal legal requirement. They show that time used in one place is unavailable for another task at the same moment. Compare the model with evidence about an actual case before describing what families lost or how they responded. Do not ask classmates to disclose private family problems.\n\nOpen the three clues and choose the explanation they support. Use Explain for help. If this topic needs review, revisit its lesson before targeted practice.",
+        "reviewTopics": [
+          "labor-time-cost"
+        ],
+        "imageUrl": "../assets/story/labor-produce-evidence-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Time Away Had Consequences. Labelled clues compare demands and evidence, not an original work order or delivery record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Time",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Required work and travel could take time from other tasks.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Conditions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Distance, season and household support can change the burden.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Model limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Six task slots illustrate a relationship, not a historical labor quota.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the six-slot model illustrate?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every worker served exactly six historical days",
+          "All households had identical burdens",
+          "Travel never takes time",
+          "Required work can reduce time available for other tasks"
+        ],
+        "decisionCorrectAnswer": "Required work can reduce time available for other tasks",
+        "decisionExplanation": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "keyTerm": "Time cost",
+        "keyTermDefinition": "Time used for one task that cannot also be used for another.",
+        "historicalInsight": "Six task slots illustrate a relationship, not a historical labor quota.",
+        "learningHelp": {
+          "explanation": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "vocabulary": [
+            {
+              "term": "Time cost",
+              "definition": "Time used for one task that cannot also be used for another."
+            }
+          ],
+          "example": "Required work and travel could take time from other tasks.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission2-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission2",
+        "status": "active",
+        "order": 3,
+        "title": "Bandala: Compulsory Produce Delivery",
+        "content": "Bandala concerned agricultural products that people were required to supply to the colonial government. It is often described as a forced sale. The word sale must not make us assume the producer freely chose the transaction. A requirement to deliver produce is different from a requirement to provide labor, even though one household could face more than one kind of demand.\n\nImagine two fictional records. One calls workers to a project. The other orders a delivery of rice. Classify the demand first: labor service or produce delivery. Then ask how it was carried out. A delivery order does not establish that every producer delivered, that a promised price was paid, or that the transaction was fair. We use a labelled teaching bundle rather than an authentic delivery document or a universal quota. The details need a particular place and period.\n\nOpen the three clues and choose the explanation they support. Use Explain for help. If this topic needs review, revisit its lesson before targeted practice.",
+        "reviewTopics": [
+          "bandala-produce"
+        ],
+        "imageUrl": "../assets/story/labor-produce-evidence-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Bandala: Compulsory Produce Delivery. Labelled clues compare demands and evidence, not an original work order or delivery record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "The product",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Bandala required agricultural produce for the colonial government.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Choice matters",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A compulsory sale is not the same as a freely chosen market sale.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare demands",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Polo concerned labor; bandala concerned produce delivery.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "One record calls workers and another requires rice delivery. How should they be distinguished?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Both prove that payment arrived",
+          "Both describe only classroom rewards",
+          "Labor service and compulsory produce delivery are different demands",
+          "Both are necessarily voluntary gifts"
+        ],
+        "decisionCorrectAnswer": "Labor service and compulsory produce delivery are different demands",
+        "decisionExplanation": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "keyTerm": "Bandala",
+        "keyTermDefinition": "A colonial system of compulsory sale or delivery of agricultural products to the government.",
+        "historicalInsight": "Polo concerned labor; bandala concerned produce delivery.",
+        "learningHelp": {
+          "explanation": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "vocabulary": [
+            {
+              "term": "Bandala",
+              "definition": "A colonial system of compulsory sale or delivery of agricultural products to the government."
+            }
+          ],
+          "example": "Bandala required agricultural produce for the colonial government.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission2-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission2",
+        "status": "active",
+        "order": 4,
+        "title": "A Promise Is Not a Payment",
+        "content": "When investigating compulsory produce delivery, separate the demand, the delivery and the payment. A promise to pay is not the same as payment received. A delivery receipt can show goods were handed over without proving that the producer received the promised money. A complaint may report a problem, but the final outcome needs follow-up evidence.\n\nOur fictional evidence desk contains a rice order, a delivery note and a promise of later payment. Together they support an account of what was demanded and recorded as delivered. They do not establish that the promise was fulfilled. Ask for an appropriate payment record and compare dates and amounts for the same transaction. Do not invent a price or assume that every bandala transaction ended in the same way. Learning points reward a supported explanation, not taking produce from other people.\n\nOpen the three clues and choose the explanation they support. Use Explain for help. If this topic needs review, revisit its lesson before targeted practice.",
+        "reviewTopics": [
+          "delivery-payment"
+        ],
+        "imageUrl": "../assets/story/labor-produce-evidence-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Promise Is Not a Payment. Labelled clues compare demands and evidence, not an original work order or delivery record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Demand",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An order identifies what was required.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Delivery",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A receipt can record goods handed over.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Payment",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A promise of future payment does not prove payment was received.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A delivery note and a promise to pay are supplied. What remains to check?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Whether a receipt shows every private belief",
+          "Whether payment was actually received",
+          "Nothing, since a promise proves payment",
+          "Whether every producer volunteered"
+        ],
+        "decisionCorrectAnswer": "Whether payment was actually received",
+        "decisionExplanation": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "keyTerm": "Payment record",
+        "keyTermDefinition": "Evidence describing money or other agreed payment actually received.",
+        "historicalInsight": "A promise of future payment does not prove payment was received.",
+        "learningHelp": {
+          "explanation": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "vocabulary": [
+            {
+              "term": "Payment record",
+              "definition": "Evidence describing money or other agreed payment actually received."
+            }
+          ],
+          "example": "An order identifies what was required.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission2-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission2",
+        "status": "active",
+        "order": 5,
+        "title": "A Named Response: Sumuroy in Samar",
+        "content": "The NHCP registry identifies Agustin Sumuroy with Palapag, Samar, and an uprising beginning on 1 June 1649 against forced labor and abuses. This gives us a named case of opposition to colonial demands. It does not mean every worker everywhere responded in the same way. Keep a leader, location, period and stated issue connected in your explanation.\n\nThe NCCA CulturEd account connects the workers problem with being compelled to go to Cavite for shipbuilding. Distance matters here: a demand could involve leaving the home area. We do not need to invent speeches or act out fighting to understand why the demand mattered. Our source guide is a modern learning aid, not a diary written by a worker. Explain the connection between labor, distance and protest, and identify what these short accounts do not tell us about each persons experience.\n\nOpen the three clues and choose the explanation they support. Use Explain for help. If this topic needs review, revisit its lesson before targeted practice.",
+        "reviewTopics": [
+          "sumuroy-response"
+        ],
+        "imageUrl": "../assets/story/labor-produce-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Named Response: Sumuroy in Samar. Labelled clues compare demands and evidence, not an original work order or delivery record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A named case",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP marker connects Sumuroy and Palapag with protest against forced labor and abuses in 1649.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Distance",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "CulturEd describes a demand for workers to go to Cavite for shipbuilding.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A named uprising does not establish every workers response or private motive.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the Sumuroy example help explain?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A named protest against forced labor and abuses in a particular setting",
+          "Every worker had an identical response",
+          "All details of every workers life are known",
+          "Fighting earns extra learning points"
+        ],
+        "decisionCorrectAnswer": "A named protest against forced labor and abuses in a particular setting",
+        "decisionExplanation": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "keyTerm": "Protest",
+        "keyTermDefinition": "An action expressing opposition to a demand or treatment.",
+        "historicalInsight": "A named uprising does not establish every workers response or private motive.",
+        "learningHelp": {
+          "explanation": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "vocabulary": [
+            {
+              "term": "Protest",
+              "definition": "An action expressing opposition to a demand or treatment."
+            }
+          ],
+          "example": "The NHCP marker connects Sumuroy and Palapag with protest against forced labor and abuses in 1649.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission2-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission2",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Labor and Produce Report",
+        "content": "Review the five ideas from this mission. Polo concerned required labor service. Time and travel could affect other household tasks. Bandala concerned compulsory produce delivery. A demand, a delivery and a payment promise are different stages. Sumuroys case shows a named response to forced labor and abuses.\n\nImagine a fictional museum desk with a work order, a rice-delivery note and a payment promise. Classify each one, explain what it supports and say what still needs checking. Do not call forced work volunteering or treat a promise as money already received. The six-slot schedule is a model, not a legal quota. Keep actual claims tied to their place and period.\n\nThe main quiz has five questions and three correct passes. If you need help, the review path leads back to learning content before targeted practice and a retry. Completing this mission gives its reward once; it does not complete Chapter 9. Missions 3-5 and the final challenge are still being prepared.",
+        "reviewTopics": [
+          "polo-labor",
+          "labor-time-cost",
+          "bandala-produce",
+          "delivery-payment",
+          "sumuroy-response"
+        ],
+        "imageUrl": "../assets/story/labor-produce-evidence-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Bandala: Compulsory Produce Delivery. Labelled clues compare demands and evidence, not an original work order or delivery record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "The product",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Bandala required agricultural produce for the colonial government.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Choice matters",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A compulsory sale is not the same as a freely chosen market sale.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare demands",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Polo concerned labor; bandala concerned produce delivery.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best uses these lesson clues?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Call all demands voluntary gifts",
+          "Treat a payment promise as a receipt",
+          "Use six model slots as a universal legal quota",
+          "Separate labor, produce delivery and payment, using evidence for each stage"
+        ],
+        "decisionCorrectAnswer": "Separate labor, produce delivery and payment, using evidence for each stage",
+        "decisionExplanation": "Distinguish the kind of demand and use evidence for its actual effects and outcomes.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Distinguish the kind of demand and use evidence for its actual effects and outcomes.",
+        "keyTerm": "Bandala",
+        "keyTermDefinition": "A colonial system of compulsory sale or delivery of agricultural products to the government.",
+        "historicalInsight": "Polo concerned labor; bandala concerned produce delivery.",
+        "learningHelp": {
+          "explanation": "Distinguish the kind of demand and use evidence for its actual effects and outcomes.",
+          "vocabulary": [
+            {
+              "term": "Bandala",
+              "definition": "A colonial system of compulsory sale or delivery of agricultural products to the government."
+            }
+          ],
+          "example": "Bandala required agricultural produce for the colonial government.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz2-question1",
+      "create": true,
+      "fields": {
+        "question": "What did polo y servicios concern?",
+        "optionA": "Required labor service",
+        "optionB": "Only voluntary gifts",
+        "optionC": "Only the sale of crops",
+        "optionD": "A reward for students",
+        "correctAnswer": "A",
+        "explanation": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "learningPoint": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "historicalClue": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "answerExplanations": {
+          "A": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "B": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "C": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "D": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work."
+        },
+        "quizId": "chapter9-quiz2",
+        "order": 1,
+        "status": "active",
+        "topic": "polo-labor",
+        "topicLabel": "Polo: Required Work",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz2-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Which detail helps explain a labor-service order?",
+        "optionA": "Only a modern game score",
+        "optionB": "An assumption that every century had one rule",
+        "optionC": "A guess that all workers volunteered",
+        "optionD": "Its date, place, demand and people affected",
+        "correctAnswer": "D",
+        "explanation": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "learningPoint": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "historicalClue": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "B": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "C": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "D": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work."
+        },
+        "quizId": "chapter9-quiz2",
+        "order": 101,
+        "status": "active",
+        "topic": "polo-labor",
+        "topicLabel": "Polo: Required Work",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission2-polo-labor-practice1",
+      "create": true,
+      "fields": {
+        "question": "A colonial order requires workers to report. Which idea fits?",
+        "optionA": "It proves every worker volunteered",
+        "optionB": "It proves all work was finished",
+        "optionC": "It is a produce-delivery receipt",
+        "optionD": "It records a labor demand; attendance and agreement need more evidence",
+        "correctAnswer": "D",
+        "explanation": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "learningPoint": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "historicalClue": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "B": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "C": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "D": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work."
+        },
+        "missionId": "chapter9-mission2",
+        "topic": "polo-labor",
+        "topicLabel": "Polo: Required Work",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Required labor service under colonial authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission2-polo-labor-practice2",
+      "create": true,
+      "fields": {
+        "question": "An order lists workers but no attendance. What can you report?",
+        "optionA": "All workers freely volunteered",
+        "optionB": "A list proves every household benefited",
+        "optionC": "The demand is recorded; actual attendance is not yet established",
+        "optionD": "Every listed person completed the project",
+        "correctAnswer": "C",
+        "explanation": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "learningPoint": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "historicalClue": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "B": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "C": "It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work.",
+          "D": "Review the lesson clues. It records a labor demand; attendance and agreement need more evidence. An order alone does not prove attendance, agreement or completed work."
+        },
+        "missionId": "chapter9-mission2",
+        "topic": "polo-labor",
+        "topicLabel": "Polo: Required Work",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Required labor service under colonial authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz2-question2",
+      "create": true,
+      "fields": {
+        "question": "What helps explain the burden of required labor?",
+        "optionA": "Only the project name",
+        "optionB": "An assumption that travel was instant",
+        "optionC": "A classroom prize",
+        "optionD": "Work time, travel and household conditions",
+        "correctAnswer": "D",
+        "explanation": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "learningPoint": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "historicalClue": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "B": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "C": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "D": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota."
+        },
+        "quizId": "chapter9-quiz2",
+        "order": 2,
+        "status": "active",
+        "topic": "labor-time-cost",
+        "topicLabel": "Time Away Had Consequences",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz2-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why ask whether a work demand fell during planting?",
+        "optionA": "All work happened at the same time everywhere",
+        "optionB": "Dates never matter",
+        "optionC": "The timing could affect other household tasks",
+        "optionD": "The season proves universal agreement",
+        "correctAnswer": "C",
+        "explanation": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "learningPoint": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "historicalClue": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "B": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "C": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "D": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota."
+        },
+        "quizId": "chapter9-quiz2",
+        "order": 102,
+        "status": "active",
+        "topic": "labor-time-cost",
+        "topicLabel": "Time Away Had Consequences",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission2-labor-time-cost-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the six-slot model illustrate?",
+        "optionA": "All households had identical burdens",
+        "optionB": "Travel never takes time",
+        "optionC": "Required work can reduce time available for other tasks",
+        "optionD": "Every worker served exactly six historical days",
+        "correctAnswer": "C",
+        "explanation": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "learningPoint": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "historicalClue": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "B": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "C": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "D": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota."
+        },
+        "missionId": "chapter9-mission2",
+        "topic": "labor-time-cost",
+        "topicLabel": "Time Away Had Consequences",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Time used for one task that cannot also be used for another.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission2-labor-time-cost-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption calls the six-slot model a real colonial labor quota. What is the correction?",
+        "optionA": "Assume every household had six workers",
+        "optionB": "Label it as a fictional model and use dated evidence for actual requirements",
+        "optionC": "Keep six as the rule for all centuries",
+        "optionD": "Replace evidence with a score",
+        "correctAnswer": "B",
+        "explanation": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "learningPoint": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "historicalClue": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "B": "Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "C": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota.",
+          "D": "Review the lesson clues. Required work can reduce time available for other tasks. Six task slots illustrate a relationship, not a historical labor quota."
+        },
+        "missionId": "chapter9-mission2",
+        "topic": "labor-time-cost",
+        "topicLabel": "Time Away Had Consequences",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Time used for one task that cannot also be used for another.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz2-question3",
+      "create": true,
+      "fields": {
+        "question": "What distinguishes bandala from polo in this mission?",
+        "optionA": "Only volunteering",
+        "optionB": "A guarantee of prompt payment",
+        "optionC": "Produce delivery rather than labor service",
+        "optionD": "No connection with colonial authority",
+        "correctAnswer": "C",
+        "explanation": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "learningPoint": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "historicalClue": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "B": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "C": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "D": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery."
+        },
+        "quizId": "chapter9-quiz2",
+        "order": 3,
+        "status": "active",
+        "topic": "bandala-produce",
+        "topicLabel": "Bandala: Compulsory Produce Delivery",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz2-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why is a forced sale different from an ordinary freely chosen sale?",
+        "optionA": "It always concerns labor instead of goods",
+        "optionB": "The producer is required to supply the product",
+        "optionC": "Every producer can always refuse without consequences",
+        "optionD": "The term sale proves equal bargaining",
+        "correctAnswer": "B",
+        "explanation": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "learningPoint": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "historicalClue": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "B": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "C": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "D": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery."
+        },
+        "quizId": "chapter9-quiz2",
+        "order": 103,
+        "status": "active",
+        "topic": "bandala-produce",
+        "topicLabel": "Bandala: Compulsory Produce Delivery",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission2-bandala-produce-practice1",
+      "create": true,
+      "fields": {
+        "question": "One record calls workers and another requires rice delivery. How should they be distinguished?",
+        "optionA": "Both describe only classroom rewards",
+        "optionB": "Labor service and compulsory produce delivery are different demands",
+        "optionC": "Both are necessarily voluntary gifts",
+        "optionD": "Both prove that payment arrived",
+        "correctAnswer": "B",
+        "explanation": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "learningPoint": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "historicalClue": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "B": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "C": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "D": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery."
+        },
+        "missionId": "chapter9-mission2",
+        "topic": "bandala-produce",
+        "topicLabel": "Bandala: Compulsory Produce Delivery",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A colonial system of compulsory sale or delivery of agricultural products to the government.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission2-bandala-produce-practice2",
+      "create": true,
+      "fields": {
+        "question": "A bandala order lists rice but no receipt or payment record. What is established?",
+        "optionA": "A produce demand, with delivery and payment still needing evidence",
+        "optionB": "Completed payment to every producer",
+        "optionC": "Every producer freely chose the sale",
+        "optionD": "Identical rules for all islands",
+        "correctAnswer": "A",
+        "explanation": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "learningPoint": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "historicalClue": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+        "answerExplanations": {
+          "A": "Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "B": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "C": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery.",
+          "D": "Review the lesson clues. Labor service and compulsory produce delivery are different demands. Polo concerned labor; bandala concerned produce delivery."
+        },
+        "missionId": "chapter9-mission2",
+        "topic": "bandala-produce",
+        "topicLabel": "Bandala: Compulsory Produce Delivery",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A colonial system of compulsory sale or delivery of agricultural products to the government.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz2-question4",
+      "create": true,
+      "fields": {
+        "question": "Which evidence best checks whether a payment promise was fulfilled?",
+        "optionA": "An undated guess",
+        "optionB": "A payment record for the same transaction",
+        "optionC": "Only the original promise",
+        "optionD": "An unrelated illustration",
+        "correctAnswer": "B",
+        "explanation": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "learningPoint": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "historicalClue": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "B": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "C": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "D": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received."
+        },
+        "quizId": "chapter9-quiz2",
+        "order": 4,
+        "status": "active",
+        "topic": "delivery-payment",
+        "topicLabel": "A Promise Is Not a Payment",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz2-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why keep demand, delivery and payment separate?",
+        "optionA": "Each describes a different stage needing evidence",
+        "optionB": "All three are proved by an order alone",
+        "optionC": "A delivery always proves fairness",
+        "optionD": "Promises always mean cash was received",
+        "correctAnswer": "A",
+        "explanation": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "learningPoint": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "historicalClue": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "answerExplanations": {
+          "A": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "B": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "C": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "D": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received."
+        },
+        "quizId": "chapter9-quiz2",
+        "order": 104,
+        "status": "active",
+        "topic": "delivery-payment",
+        "topicLabel": "A Promise Is Not a Payment",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission2-delivery-payment-practice1",
+      "create": true,
+      "fields": {
+        "question": "A delivery note and a promise to pay are supplied. What remains to check?",
+        "optionA": "Whether payment was actually received",
+        "optionB": "Nothing, since a promise proves payment",
+        "optionC": "Whether every producer volunteered",
+        "optionD": "Whether a receipt shows every private belief",
+        "correctAnswer": "A",
+        "explanation": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "learningPoint": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "historicalClue": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "answerExplanations": {
+          "A": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "B": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "C": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "D": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received."
+        },
+        "missionId": "chapter9-mission2",
+        "topic": "delivery-payment",
+        "topicLabel": "A Promise Is Not a Payment",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Evidence describing money or other agreed payment actually received.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission2-delivery-payment-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption treats a delivery note as proof of a fair, completed sale. Which revision fits?",
+        "optionA": "Assume every promise was fulfilled",
+        "optionB": "Ignore the date and transaction",
+        "optionC": "Treat all complaints as already resolved",
+        "optionD": "Record the delivery and seek evidence of payment and conditions",
+        "correctAnswer": "D",
+        "explanation": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "learningPoint": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "historicalClue": "Whether payment was actually received. A promise of future payment does not prove payment was received.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "B": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "C": "Review the lesson clues. Whether payment was actually received. A promise of future payment does not prove payment was received.",
+          "D": "Whether payment was actually received. A promise of future payment does not prove payment was received."
+        },
+        "missionId": "chapter9-mission2",
+        "topic": "delivery-payment",
+        "topicLabel": "A Promise Is Not a Payment",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Evidence describing money or other agreed payment actually received.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz2-question5",
+      "create": true,
+      "fields": {
+        "question": "Which place is connected with Sumuroy in the NHCP marker?",
+        "optionA": "Palapag, Samar",
+        "optionB": "Every town at once",
+        "optionC": "An unnamed fictional island",
+        "optionD": "No place is identified",
+        "correctAnswer": "A",
+        "explanation": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "learningPoint": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "historicalClue": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "answerExplanations": {
+          "A": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "B": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "C": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "D": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive."
+        },
+        "quizId": "chapter9-quiz2",
+        "order": 5,
+        "status": "active",
+        "topic": "sumuroy-response",
+        "topicLabel": "A Named Response: Sumuroy in Samar",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz2-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why include the demand to go to Cavite when explaining this case?",
+        "optionA": "It proves every household agreed",
+        "optionB": "It proves all labor rules were identical",
+        "optionC": "It makes evidence unnecessary",
+        "optionD": "It connects labor service with distance from the home area",
+        "correctAnswer": "D",
+        "explanation": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "learningPoint": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "historicalClue": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "B": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "C": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "D": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive."
+        },
+        "quizId": "chapter9-quiz2",
+        "order": 105,
+        "status": "active",
+        "topic": "sumuroy-response",
+        "topicLabel": "A Named Response: Sumuroy in Samar",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission2-sumuroy-response-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the Sumuroy example help explain?",
+        "optionA": "Every worker had an identical response",
+        "optionB": "All details of every workers life are known",
+        "optionC": "Fighting earns extra learning points",
+        "optionD": "A named protest against forced labor and abuses in a particular setting",
+        "correctAnswer": "D",
+        "explanation": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "learningPoint": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "historicalClue": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "B": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "C": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "D": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive."
+        },
+        "missionId": "chapter9-mission2",
+        "topic": "sumuroy-response",
+        "topicLabel": "A Named Response: Sumuroy in Samar",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An action expressing opposition to a demand or treatment.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission2-sumuroy-response-practice2",
+      "create": true,
+      "fields": {
+        "question": "A report says Sumuroys case proves every laborer had one motive. How should it change?",
+        "optionA": "Invent workers speeches",
+        "optionB": "Remove the place and date",
+        "optionC": "Keep the named protest and limit claims about other people",
+        "optionD": "Use the case to replace all other evidence",
+        "correctAnswer": "C",
+        "explanation": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "learningPoint": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "historicalClue": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "B": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "C": "A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive.",
+          "D": "Review the lesson clues. A named protest against forced labor and abuses in a particular setting. A named uprising does not establish every workers response or private motive."
+        },
+        "missionId": "chapter9-mission2",
+        "topic": "sumuroy-response",
+        "topicLabel": "A Named Response: Sumuroy in Samar",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An action expressing opposition to a demand or treatment.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter9-mission2-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission2",
+        "name": "Labor and Produce Evidence Journal",
+        "description": "A learning-game token for distinguishing labor, produce and payment evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 2,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Separate labor service, compulsory produce delivery, actual payment and community responses.",
+          "reflectionQuestion": "Which clue helped you distinguish a demand from its collection or effect?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-9",
+      "create": false,
+      "expected": {
+        "description": "Mission 1 investigates tribute and colonial taxation. Missions 2-5 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-2 investigate tribute, required labor and compulsory produce delivery. Missions 3-5 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapter 9 begins with tribute and colonial taxation. Later missions and Chapters 10-11 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 9 offers Missions 1-2 on tribute, labor and produce demands. Later missions and Chapters 10-11 are being prepared."
+      }
+    }
+  ]
+}

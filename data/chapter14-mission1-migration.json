@@ -1,0 +1,1287 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 14 Mission 1 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+    "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-13",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-13",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/reforms-ideas-investigator",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter13-mission1",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter13-mission2",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter13-mission3",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter13-mission4",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 4
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter14-mission1",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-14",
+        "title": "Contributions and Lessons of Early Resistance",
+        "order": 1,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate organization, continuing leadership and remembrance through named cases.",
+        "learningObjective": "Explain supported contributions without confusing outcomes, remembrance and later national aims.",
+        "learningObjectives": [
+          "Explain more than a win or a loss using lesson evidence.",
+          "Explain organization could continue using lesson evidence.",
+          "Explain gabriela continued the leadership using lesson evidence.",
+          "Explain remembrance is part of the story using lesson evidence.",
+          "Explain build a lesson from evidence using lesson evidence."
+        ],
+        "lessonRecap": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter14-quiz1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission1",
+        "title": "Contributions and Lessons - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "contribution-outcome",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "community-organization",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "leadership-continuity",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "memory-evidence",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "lessons-connection",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission1-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission1",
+        "status": "active",
+        "order": 1,
+        "title": "More Than a Win or a Loss",
+        "content": "A contribution is an action or effort we can identify in a historical account. It might concern organizing a community, continuing leadership or expressing a concern. An outcome is what followed. Keep them separate: a contribution can be studied even when a particular aim was not achieved. A battle result alone does not tell the whole history of a movement.\n\nIn this chapter you will connect earlier evidence with questions about a wider sense of belonging. Do not begin by assuming that all early movements shared one national plan. First ask what people actually did in a named place and period. Then explain what that action helps us understand. A learning journal can contain three boxes: recorded contribution, supported outcome and later remembrance. These boxes are modern teaching tools. They help you appreciate effort without inventing a victory, a speech or a motive that the source does not supply.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then revisit the evidence before practice.",
+        "reviewTopics": [
+          "contribution-outcome"
+        ],
+        "imageUrl": "../assets/story/resistance-lessons-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for More Than a Win or a Loss. Evidence guide, not an original historical source.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Identify what people are recorded as doing.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Outcome",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask separately what followed the action.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Value",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A battle result alone does not explain a movements historical importance.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "How should a journal examine a contribution?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Name a recorded action and examine its outcome separately",
+          "Count only battles won",
+          "Invent an aim for everyone",
+          "Assume every effort achieved all its aims"
+        ],
+        "decisionCorrectAnswer": "Name a recorded action and examine its outcome separately",
+        "decisionExplanation": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "keyTerm": "Contribution",
+        "keyTermDefinition": "An action or effort that forms part of a larger story.",
+        "historicalInsight": "A battle result alone does not explain a movements historical importance.",
+        "learningHelp": {
+          "explanation": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "vocabulary": [
+            {
+              "term": "Contribution",
+              "definition": "An action or effort that forms part of a larger story."
+            }
+          ],
+          "example": "Identify what people are recorded as doing.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission1-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission1",
+        "status": "active",
+        "order": 2,
+        "title": "Organization Could Continue",
+        "content": "The movement associated with Francisco Dagohoy in Bohol is dated 1744-1829. CulturEd describes communities and local government linked with it. These details let us investigate organization, not just a single encounter. A movement can involve keeping people and activities together through changing circumstances.\n\nThe same account says the movement continued beyond its founder, whose death date is uncertain. The movement dates are not his lifespan. Do not say that he personally led every year or that every resident had the same role. A useful contribution statement is specific: the account records community organization and continuation. That is different from claiming permanent independence throughout the Philippines. Ask what kind of achievement your evidence supports and which area it concerns. This lesson values sustained organization without turning duration into proof that every aim succeeded.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then revisit the evidence before practice.",
+        "reviewTopics": [
+          "community-organization"
+        ],
+        "imageUrl": "../assets/story/resistance-lessons-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for Organization Could Continue. Evidence guide, not an original historical source.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Place",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "This case concerns Bohol.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Organization",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The account describes communities and local government.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Continuation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The movement continued beyond its founder.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which contribution fits the account?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One founder personally led every year",
+          "Every resident had one identical role",
+          "All colonial rule ended permanently",
+          "Community organization continued through changing stages"
+        ],
+        "decisionCorrectAnswer": "Community organization continued through changing stages",
+        "decisionExplanation": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "keyTerm": "Organization",
+        "keyTermDefinition": "People and activities arranged to work together.",
+        "historicalInsight": "The movement continued beyond its founder.",
+        "learningHelp": {
+          "explanation": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "vocabulary": [
+            {
+              "term": "Organization",
+              "definition": "People and activities arranged to work together."
+            }
+          ],
+          "example": "This case concerns Bohol.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission1-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission1",
+        "status": "active",
+        "order": 3,
+        "title": "Gabriela Continued the Leadership",
+        "content": "The NHCP registry records that Gabriela Silang continued the Ilocos uprising after Diego Silang. This is a specific example of leadership continuing through a change. It helps us see a contribution that would be missed if a report stopped with only one leader. Keep the named action and its setting together rather than turning a biography into a list of every participant.\n\nThe registry describes a marker installed in 1963 about an earlier life and uprising. A later marker can preserve a public account; it is not a transcript of every meeting. We use the supported continuation claim without inventing dialogue or the thoughts of unnamed residents. Nor does one example mean that all women had the same role or opportunity. Recognizing a named contribution can open further questions about people whose actions need other records. Later missions will examine participation more closely; you do not need to assign roles from gender, religion or ancestry.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then revisit the evidence before practice.",
+        "reviewTopics": [
+          "leadership-continuity"
+        ],
+        "imageUrl": "../assets/story/resistance-lessons-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for Gabriela Continued the Leadership. Evidence guide, not an original historical source.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Gabriela continued the Ilocos uprising after Diego.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Contribution",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Leadership could continue through a change.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A later marker is not a complete participant record.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What contribution does this source identify?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The marker records every meeting word for word",
+          "Only one person ever participated",
+          "Gabriela continued the uprising after Diego",
+          "Every woman had an identical role"
+        ],
+        "decisionCorrectAnswer": "Gabriela continued the uprising after Diego",
+        "decisionExplanation": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "keyTerm": "Continuity",
+        "keyTermDefinition": "Something continuing across a change.",
+        "historicalInsight": "A later marker is not a complete participant record.",
+        "learningHelp": {
+          "explanation": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "vocabulary": [
+            {
+              "term": "Continuity",
+              "definition": "Something continuing across a change."
+            }
+          ],
+          "example": "Gabriela continued the Ilocos uprising after Diego.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission1-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission1",
+        "status": "active",
+        "order": 4,
+        "title": "Remembrance Is Part of the Story",
+        "content": "The National Museum describes paintings of the Basi Revolt of 1807 that were made in 1821. The series received National Cultural Treasure recognition in 2009. These dates show different stages: an event, a later representation and later recognition. Studying remembrance helps us ask how an event has been kept in public memory.\n\nLater recognition is not proof that the participants achieved every demand in the revolt. A painting is also not a photograph taken during the event. Ask when a representation was made, what kind of source it is and what question it can answer. Our diagram is a modern timeline, not one of the historical paintings. You can value a preserved work while checking its limits as evidence. Remembering resistance and establishing its immediate outcome are different tasks. Keep both in your journal so that appreciation does not replace careful historical explanation.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then revisit the evidence before practice.",
+        "reviewTopics": [
+          "memory-evidence"
+        ],
+        "imageUrl": "../assets/story/resistance-lessons-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for Remembrance Is Part of the Story. Evidence guide, not an original historical source.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "1807",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The revolt took place.",
+            "icon": "🔎"
+          },
+          {
+            "title": "1821",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The paintings were made after the event.",
+            "icon": "🔎"
+          },
+          {
+            "title": "2009",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Later recognition concerns cultural value, not proof of immediate victory.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does later recognition directly tell us?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The paintings were eyewitness photographs",
+          "The paintings received cultural recognition",
+          "Every demand was achieved in 1807",
+          "The revolt took place in 2009"
+        ],
+        "decisionCorrectAnswer": "The paintings received cultural recognition",
+        "decisionExplanation": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "keyTerm": "Remembrance",
+        "keyTermDefinition": "How people later represent or remember the past.",
+        "historicalInsight": "Later recognition concerns cultural value, not proof of immediate victory.",
+        "learningHelp": {
+          "explanation": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "vocabulary": [
+            {
+              "term": "Remembrance",
+              "definition": "How people later represent or remember the past."
+            }
+          ],
+          "example": "The revolt took place.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission1-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission1",
+        "status": "active",
+        "order": 5,
+        "title": "Build a Lesson from Evidence",
+        "content": "Across these cases, you can investigate organization, changing leadership and remembrance. They offer different kinds of evidence about early resistance. A fair historical lesson names a case, identifies an action or source and explains what it helps us understand. It does not reduce people to winners and losers or rank communities as better than others.\n\nFor a fictional classroom example, a history club compares two dated reports and notices that similar concerns led to different responses. Its useful lesson is to examine local conditions rather than assume one response fits every place. This does not prove that the historical groups coordinated a national program. Later national consciousness needs its own evidence of wider belonging and shared political aims. Early resistance belongs in that longer investigation, but the later outcome was not guaranteed. Your next missions will compare regions, participation, unity and changing identity through more specific questions.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then revisit the evidence before practice.",
+        "reviewTopics": [
+          "lessons-connection"
+        ],
+        "imageUrl": "../assets/story/resistance-lessons-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for Build a Lesson from Evidence. Evidence guide, not an original historical source.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Explain",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Connect a named case with an insight its evidence supports.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Similar concerns can be examined alongside different responses.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Early resistance does not by itself prove a coordinated national program.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which statement makes a supported historical lesson?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Name the case and explain what its evidence helps us understand",
+          "Rank communities only by battles won",
+          "Assume a later outcome was guaranteed",
+          "Give every early movement one national plan"
+        ],
+        "decisionCorrectAnswer": "Name the case and explain what its evidence helps us understand",
+        "decisionExplanation": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "keyTerm": "Historical lesson",
+        "keyTermDefinition": "An insight supported by examining the past carefully.",
+        "historicalInsight": "Early resistance does not by itself prove a coordinated national program.",
+        "learningHelp": {
+          "explanation": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "vocabulary": [
+            {
+              "term": "Historical lesson",
+              "definition": "An insight supported by examining the past carefully."
+            }
+          ],
+          "example": "Connect a named case with an insight its evidence supports.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission1-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission1",
+        "status": "active",
+        "order": 6,
+        "title": "Your Contributions Evidence Journal",
+        "content": "A contribution is an action or effort we can identify in a historical account. It might concern organizing a community, continuing leadership or expressing a concern. An outcome is what followed. Keep them separate: a contribution can be studied even when a particular aim was not achieved. A battle result alone does not tell the whole history of a movement.\n\nFor a fictional classroom example, a history club compares two dated reports and notices that similar concerns led to different responses. Its useful lesson is to examine local conditions rather than assume one response fits every place. This does not prove that the historical groups coordinated a national program. Later national consciousness needs its own evidence of wider belonging and shared political aims. Early resistance belongs in that longer investigation, but the later outcome was not guaranteed. Your next missions will compare regions, participation, unity and changing identity through more specific questions.\n\nReview community organization in Bohol, leadership continuation in Ilocos and the later remembrance of Basi. Keep contributions, outcomes and remembrance separate before the quiz. Missions 2-5 and the chapter challenge are being prepared. Completing one mission does not complete the chapter.",
+        "reviewTopics": [
+          "contribution-outcome",
+          "community-organization",
+          "leadership-continuity",
+          "memory-evidence",
+          "lessons-connection"
+        ],
+        "imageUrl": "../assets/story/resistance-lessons-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for Build a Lesson from Evidence. Evidence guide, not an original historical source.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Explain",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Connect a named case with an insight its evidence supports.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Similar concerns can be examined alongside different responses.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Early resistance does not by itself prove a coordinated national program.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which journal is ready for review?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One that invents a shared national program",
+          "One that treats recognition as immediate victory",
+          "One that ranks communities by harm",
+          "One that separates contributions, outcomes and remembrance"
+        ],
+        "decisionCorrectAnswer": "One that separates contributions, outcomes and remembrance",
+        "decisionExplanation": "Use named cases and supported contributions. Distinguish outcomes from later remembrance and wider political claims.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Use named cases and supported contributions. Distinguish outcomes from later remembrance and wider political claims.",
+        "keyTerm": "Historical lesson",
+        "keyTermDefinition": "An insight supported by examining the past carefully.",
+        "historicalInsight": "Early resistance does not by itself prove a coordinated national program.",
+        "learningHelp": {
+          "explanation": "Use named cases and supported contributions. Distinguish outcomes from later remembrance and wider political claims.",
+          "vocabulary": [
+            {
+              "term": "Historical lesson",
+              "definition": "An insight supported by examining the past carefully."
+            }
+          ],
+          "example": "Connect a named case with an insight its evidence supports.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-ilocos-regional-museum-complex/the-basi-revolt/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz1-question1",
+      "create": true,
+      "fields": {
+        "question": "What is a contribution here?",
+        "optionA": "An action or effort within a larger story",
+        "optionB": "Proof of universal victory",
+        "optionC": "Only the final battle result",
+        "optionD": "Every persons private motive",
+        "correctAnswer": "A",
+        "explanation": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "learningPoint": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "historicalClue": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "answerExplanations": {
+          "A": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "B": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "C": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "D": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance."
+        },
+        "quizId": "chapter14-quiz1",
+        "order": 1,
+        "status": "active",
+        "topic": "contribution-outcome",
+        "topicLabel": "More Than a Win or a Loss",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz1-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Which question concerns an outcome?",
+        "optionA": "Who is the modern illustrator?",
+        "optionB": "What color is the game token?",
+        "optionC": "Can every motive be guessed?",
+        "optionD": "What followed the action?",
+        "correctAnswer": "D",
+        "explanation": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "learningPoint": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "historicalClue": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "B": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "C": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "D": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance."
+        },
+        "quizId": "chapter14-quiz1",
+        "order": 101,
+        "status": "active",
+        "topic": "contribution-outcome",
+        "topicLabel": "More Than a Win or a Loss",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission1-contribution-outcome-practice1",
+      "create": true,
+      "fields": {
+        "question": "How should a journal examine a contribution?",
+        "optionA": "Count only battles won",
+        "optionB": "Invent an aim for everyone",
+        "optionC": "Assume every effort achieved all its aims",
+        "optionD": "Name a recorded action and examine its outcome separately",
+        "correctAnswer": "D",
+        "explanation": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "learningPoint": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "historicalClue": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "B": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "C": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "D": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance."
+        },
+        "missionId": "chapter14-mission1",
+        "topic": "contribution-outcome",
+        "topicLabel": "More Than a Win or a Loss",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An action or effort that forms part of a larger story.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission1-contribution-outcome-practice2",
+      "create": true,
+      "fields": {
+        "question": "A movement did not achieve one aim. What can still be investigated?",
+        "optionA": "Identical motives for all residents",
+        "optionB": "A shared plan without evidence",
+        "optionC": "Its recorded actions and historical importance",
+        "optionD": "A victory that the record does not show",
+        "correctAnswer": "C",
+        "explanation": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "learningPoint": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "historicalClue": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "B": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "C": "Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance.",
+          "D": "Review the lesson clues. Identify what people are recorded as doing. Ask separately what followed the action. A battle result alone does not explain a movements historical importance."
+        },
+        "missionId": "chapter14-mission1",
+        "topic": "contribution-outcome",
+        "topicLabel": "More Than a Win or a Loss",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An action or effort that forms part of a larger story.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz1-question2",
+      "create": true,
+      "fields": {
+        "question": "What do 1744-1829 describe here?",
+        "optionA": "A certain lifespan",
+        "optionB": "Dates of a later painting series",
+        "optionC": "The founding of every community",
+        "optionD": "The movement period",
+        "correctAnswer": "D",
+        "explanation": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "learningPoint": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "historicalClue": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "B": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "C": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "D": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder."
+        },
+        "quizId": "chapter14-quiz1",
+        "order": 2,
+        "status": "active",
+        "topic": "community-organization",
+        "topicLabel": "Organization Could Continue",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz1-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "What does organization concern?",
+        "optionA": "A guarantee of equal beliefs",
+        "optionB": "An exact lifespan",
+        "optionC": "Arranging people and activities to work together",
+        "optionD": "Only one battle result",
+        "correctAnswer": "C",
+        "explanation": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "learningPoint": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "historicalClue": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "B": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "C": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "D": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder."
+        },
+        "quizId": "chapter14-quiz1",
+        "order": 102,
+        "status": "active",
+        "topic": "community-organization",
+        "topicLabel": "Organization Could Continue",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission1-community-organization-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which contribution fits the account?",
+        "optionA": "Every resident had one identical role",
+        "optionB": "All colonial rule ended permanently",
+        "optionC": "Community organization continued through changing stages",
+        "optionD": "One founder personally led every year",
+        "correctAnswer": "C",
+        "explanation": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "learningPoint": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "historicalClue": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "B": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "C": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "D": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder."
+        },
+        "missionId": "chapter14-mission1",
+        "topic": "community-organization",
+        "topicLabel": "Organization Could Continue",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "People and activities arranged to work together.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission1-community-organization-practice2",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish a founder from a continuing movement?",
+        "optionA": "Continuation proves every aim was achieved",
+        "optionB": "Other people and later stages also need investigation",
+        "optionC": "Only a founder can ever act",
+        "optionD": "Movement dates prove the founder lived throughout",
+        "correctAnswer": "B",
+        "explanation": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "learningPoint": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "historicalClue": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "B": "This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "C": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder.",
+          "D": "Review the lesson clues. This case concerns Bohol. The account describes communities and local government. The movement continued beyond its founder."
+        },
+        "missionId": "chapter14-mission1",
+        "topic": "community-organization",
+        "topicLabel": "Organization Could Continue",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "People and activities arranged to work together.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz1-question3",
+      "create": true,
+      "fields": {
+        "question": "What does continuity mean here?",
+        "optionA": "A promise of victory",
+        "optionB": "An event with no dates",
+        "optionC": "Something continuing across a change",
+        "optionD": "Every person having the same motive",
+        "correctAnswer": "C",
+        "explanation": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "learningPoint": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "historicalClue": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "B": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "C": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "D": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record."
+        },
+        "quizId": "chapter14-quiz1",
+        "order": 3,
+        "status": "active",
+        "topic": "leadership-continuity",
+        "topicLabel": "Gabriela Continued the Leadership",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz1-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why include Gabriela in a leadership account?",
+        "optionA": "It proves all movements shared one leader",
+        "optionB": "The source records her continuation of the uprising",
+        "optionC": "All roles can be inferred from gender",
+        "optionD": "It supplies every participant name",
+        "correctAnswer": "B",
+        "explanation": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "learningPoint": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "historicalClue": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "B": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "C": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "D": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record."
+        },
+        "quizId": "chapter14-quiz1",
+        "order": 103,
+        "status": "active",
+        "topic": "leadership-continuity",
+        "topicLabel": "Gabriela Continued the Leadership",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission1-leadership-continuity-practice1",
+      "create": true,
+      "fields": {
+        "question": "What contribution does this source identify?",
+        "optionA": "Only one person ever participated",
+        "optionB": "Gabriela continued the uprising after Diego",
+        "optionC": "Every woman had an identical role",
+        "optionD": "The marker records every meeting word for word",
+        "correctAnswer": "B",
+        "explanation": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "learningPoint": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "historicalClue": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "B": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "C": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "D": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record."
+        },
+        "missionId": "chapter14-mission1",
+        "topic": "leadership-continuity",
+        "topicLabel": "Gabriela Continued the Leadership",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Something continuing across a change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission1-leadership-continuity-practice2",
+      "create": true,
+      "fields": {
+        "question": "What additional evidence would a complete participant list require?",
+        "optionA": "Records concerning other participants",
+        "optionB": "Only the later marker date",
+        "optionC": "A guess from the leaders name",
+        "optionD": "A modern journal icon",
+        "correctAnswer": "A",
+        "explanation": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "learningPoint": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "historicalClue": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+        "answerExplanations": {
+          "A": "Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "B": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "C": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record.",
+          "D": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. Leadership could continue through a change. A later marker is not a complete participant record."
+        },
+        "missionId": "chapter14-mission1",
+        "topic": "leadership-continuity",
+        "topicLabel": "Gabriela Continued the Leadership",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Something continuing across a change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz1-question4",
+      "create": true,
+      "fields": {
+        "question": "What does remembrance concern?",
+        "optionA": "A guarantee of identical memory",
+        "optionB": "Later ways of representing or remembering the past",
+        "optionC": "Only the original outcome",
+        "optionD": "Every participants private belief",
+        "correctAnswer": "B",
+        "explanation": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "learningPoint": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "historicalClue": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "B": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "C": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "D": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory."
+        },
+        "quizId": "chapter14-quiz1",
+        "order": 4,
+        "status": "active",
+        "topic": "memory-evidence",
+        "topicLabel": "Remembrance Is Part of the Story",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz1-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Which sequence fits this evidence?",
+        "optionA": "Revolt, later paintings, later recognition",
+        "optionB": "Recognition, revolt, paintings",
+        "optionC": "All three happened together",
+        "optionD": "Paintings, recognition, revolt",
+        "correctAnswer": "A",
+        "explanation": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "learningPoint": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "historicalClue": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "answerExplanations": {
+          "A": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "B": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "C": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "D": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory."
+        },
+        "quizId": "chapter14-quiz1",
+        "order": 104,
+        "status": "active",
+        "topic": "memory-evidence",
+        "topicLabel": "Remembrance Is Part of the Story",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission1-memory-evidence-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does later recognition directly tell us?",
+        "optionA": "The paintings received cultural recognition",
+        "optionB": "Every demand was achieved in 1807",
+        "optionC": "The revolt took place in 2009",
+        "optionD": "The paintings were eyewitness photographs",
+        "correctAnswer": "A",
+        "explanation": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "learningPoint": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "historicalClue": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "answerExplanations": {
+          "A": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "B": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "C": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "D": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory."
+        },
+        "missionId": "chapter14-mission1",
+        "topic": "memory-evidence",
+        "topicLabel": "Remembrance Is Part of the Story",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "How people later represent or remember the past.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission1-memory-evidence-practice2",
+      "create": true,
+      "fields": {
+        "question": "How should a journal use a later representation?",
+        "optionA": "Treat it as proof of every outcome",
+        "optionB": "Assume it records every private motive",
+        "optionC": "Remove its date to simplify the story",
+        "optionD": "Keep its date and source type separate from the event",
+        "correctAnswer": "D",
+        "explanation": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "learningPoint": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "historicalClue": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "B": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "C": "Review the lesson clues. The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory.",
+          "D": "The revolt took place. The paintings were made after the event. Later recognition concerns cultural value, not proof of immediate victory."
+        },
+        "missionId": "chapter14-mission1",
+        "topic": "memory-evidence",
+        "topicLabel": "Remembrance Is Part of the Story",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "How people later represent or remember the past.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz1-question5",
+      "create": true,
+      "fields": {
+        "question": "What makes a historical lesson useful here?",
+        "optionA": "An insight tied to evidence",
+        "optionB": "A slogan without a case",
+        "optionC": "An invented speech",
+        "optionD": "A score for each community",
+        "correctAnswer": "A",
+        "explanation": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "learningPoint": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "historicalClue": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "answerExplanations": {
+          "A": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "B": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "C": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "D": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program."
+        },
+        "quizId": "chapter14-quiz1",
+        "order": 5,
+        "status": "active",
+        "topic": "lessons-connection",
+        "topicLabel": "Build a Lesson from Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz1-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "What does a claim about a shared national program require?",
+        "optionA": "Only similar complaints",
+        "optionB": "Only a later painting",
+        "optionC": "Only a modern chapter title",
+        "optionD": "Evidence of wider shared aims or coordination",
+        "correctAnswer": "D",
+        "explanation": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "learningPoint": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "historicalClue": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "B": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "C": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "D": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program."
+        },
+        "quizId": "chapter14-quiz1",
+        "order": 105,
+        "status": "active",
+        "topic": "lessons-connection",
+        "topicLabel": "Build a Lesson from Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission1-lessons-connection-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which statement makes a supported historical lesson?",
+        "optionA": "Rank communities only by battles won",
+        "optionB": "Assume a later outcome was guaranteed",
+        "optionC": "Give every early movement one national plan",
+        "optionD": "Name the case and explain what its evidence helps us understand",
+        "correctAnswer": "D",
+        "explanation": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "learningPoint": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "historicalClue": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "B": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "C": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "D": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program."
+        },
+        "missionId": "chapter14-mission1",
+        "topic": "lessons-connection",
+        "topicLabel": "Build a Lesson from Evidence",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An insight supported by examining the past carefully.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission1-lessons-connection-practice2",
+      "create": true,
+      "fields": {
+        "question": "Two cases have different responses to similar concerns. What is a careful next step?",
+        "optionA": "Ignore their differences",
+        "optionB": "Make the later outcome inevitable",
+        "optionC": "Investigate local conditions and recorded choices",
+        "optionD": "Assume every group had the same plan",
+        "correctAnswer": "C",
+        "explanation": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "learningPoint": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "historicalClue": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "B": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "C": "Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program.",
+          "D": "Review the lesson clues. Connect a named case with an insight its evidence supports. Similar concerns can be examined alongside different responses. Early resistance does not by itself prove a coordinated national program."
+        },
+        "missionId": "chapter14-mission1",
+        "topic": "lessons-connection",
+        "topicLabel": "Build a Lesson from Evidence",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An insight supported by examining the past carefully.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter14-mission1-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission1",
+        "name": "Contributions Evidence Journal",
+        "description": "A learning-game token for examining contributions and historical lessons.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish contributions, supported outcomes and later remembrance.",
+          "reflectionQuestion": "Which clue helped you separate a contribution from a later remembrance?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-14",
+      "create": true,
+      "fields": {
+        "eraId": "resistance-national-consciousness",
+        "title": "Emergence of Filipino National Consciousness",
+        "description": "Mission 1 examines contributions and lessons of early resistance. Missions 2-5 and the chapter challenge are being prepared.",
+        "order": 14,
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapter 12 offers five missions and an evidence challenge. Chapter 13 offers four missions and a reforms and ideas evidence challenge. Chapter 14 is being prepared."
+      },
+      "fields": {
+        "description": "Chapters 12-13 offer missions and evidence challenges. Chapter 14 begins with contributions and lessons of early resistance; later missions and its challenge are being prepared."
+      }
+    }
+  ]
+}

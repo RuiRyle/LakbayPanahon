@@ -1,0 +1,1333 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 15 Mission 5; preserve prior missions and learner records; no chapter badge",
+  "curriculumBasis": "User-confirmed MATATAG Grade 5",
+  "sourceUrls": [
+    "https://philippineculturaleducation.com.ph/la-solidaridad/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/graciano-lopez-jaena/",
+    "https://bulacan.gov.ph/general-info/marcelo-h-del-pilar/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/la-liga-filipina/",
+    "https://www.gutenberg.org/cache/epub/14839/pg14839-images.html"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-15",
+      "expected": {
+        "status": "active",
+        "contentReady": true,
+        "eraId": "resistance-national-consciousness"
+      }
+    },
+    {
+      "path": "missions/chapter15-mission1",
+      "expected": {
+        "chapterId": "chapter-15",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter15-mission2",
+      "expected": {
+        "chapterId": "chapter-15",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter15-mission3",
+      "expected": {
+        "chapterId": "chapter-15",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter15-mission4",
+      "expected": {
+        "chapterId": "chapter-15",
+        "status": "active",
+        "order": 4
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter15-mission5",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-15",
+        "title": "Voices for Reform: La Solidaridad and La Liga Filipina",
+        "order": 5,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Build a reform field guide connecting goals, newspaper contributions and organized cooperation.",
+        "learningObjective": "Explain reform goals, identify contributions to La Solidaridad, distinguish La Liga Filipina and compare methods with results.",
+        "learningObjectives": [
+          "Explain reform goals using lesson evidence.",
+          "Explain la solidaridad and publication using lesson evidence.",
+          "Explain people and contributions using lesson evidence.",
+          "Explain la liga filipina using lesson evidence.",
+          "Explain methods, goals and results using lesson evidence."
+        ],
+        "lessonRecap": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/la-solidaridad/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/graciano-lopez-jaena/",
+          "https://bulacan.gov.ph/general-info/marcelo-h-del-pilar/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/la-liga-filipina/",
+          "https://www.gutenberg.org/cache/epub/14839/pg14839-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter15-quiz5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission5",
+        "title": "Voices for Reform - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "reform-goals",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "solidaridad-publication",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "reform-contributors",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "liga-purpose",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "methods-and-results",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission5-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission5",
+        "status": "active",
+        "order": 1,
+        "title": "What Change Did Reformers Seek?",
+        "content": "The Propaganda Movement brought together reform advocates who used writing, speeches and public arguments to seek changes under Spanish colonial rule. In this historical name, propaganda refers to spreading ideas for a cause. It does not mean we should accept every message without checking it.\n\nGoals included representation in the Spanish Cortes, freedom of expression and fairer treatment. The Cortes was Spain's lawmaking assembly. Representation meant having people speak for Philippine interests there. Some reformers sought the Philippines' treatment as a province of Spain with corresponding rights; that goal was different from immediately creating a separate independent country.\n\nRecall parish reform from the earlier mission. Calls for Filipino participation in parish administration also appeared in reform demands. People did not always agree on every goal or method. A list of demands tells us what advocates wanted, not that those changes were granted.",
+        "reviewTopics": [
+          "reform-goals"
+        ],
+        "imageUrl": "../assets/story/reform-voices-goals.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards: What Change Did Reformers Seek?. Not a reproduction of a historic document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A voice",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Representation meant a voice for Philippine interests in the Spanish Cortes.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Rights and participation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Advocates sought freedoms and fairer treatment, including Filipino participation in public life.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Goal versus result",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Requesting a reform does not show that it was granted.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which demand asks for a voice in making laws?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Representation for Philippine interests in the Spanish Cortes.",
+          "Replacing every newspaper with a private diary.",
+          "Declaring every requested change already achieved.",
+          "Treating the Cortes as a ship arriving at Cavite."
+        ],
+        "decisionCorrectAnswer": "Representation for Philippine interests in the Spanish Cortes.",
+        "decisionExplanation": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "keyTerm": "Reform",
+        "keyTermDefinition": "A change intended to improve a rule, institution or condition.",
+        "historicalInsight": "Requesting a reform does not show that it was granted.",
+        "learningHelp": {
+          "explanation": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "vocabulary": [
+            {
+              "term": "Reform",
+              "definition": "A change intended to improve a rule, institution or condition."
+            }
+          ],
+          "example": "Representation meant a voice for Philippine interests in the Spanish Cortes.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/la-solidaridad/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/graciano-lopez-jaena/",
+          "https://bulacan.gov.ph/general-info/marcelo-h-del-pilar/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/la-liga-filipina/",
+          "https://www.gutenberg.org/cache/epub/14839/pg14839-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission5-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission5",
+        "status": "active",
+        "order": 2,
+        "title": "Open the Reform Newspaper",
+        "content": "La Solidaridad was a newspaper associated with the Propaganda Movement. Its first issue appeared on 15 February 1889. It began in Barcelona, Spain, and was later published in Madrid. Writing in Spain allowed advocates to bring Philippine concerns to readers and officials there.\n\nThe newspaper discussed conditions and argued for reforms. NCCA's account describes demands for representation, freedoms and Filipino participation in parish and government affairs. In an essay associated with this reform writing, Rizal explained why free expression and representatives could help bring Philippine concerns to a distant government.\n\nA newspaper can carry an argument to readers, but printing does not automatically change a law. Nor does one article prove that everyone read or agreed with it. Our modern newspaper diagram is a teaching aid, not a copy of a historical issue.",
+        "reviewTopics": [
+          "solidaridad-publication"
+        ],
+        "imageUrl": "../assets/story/reform-voices-paper.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards: Open the Reform Newspaper. Not a reproduction of a historic document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Date and setting",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "La Solidaridad first appeared in 1889 in Spain.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Method",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Publication helped carry Philippine concerns and reform arguments to readers.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Publication is a method of advocacy, not proof that a demand became law.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which caption explains the newspaper's role?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "La Solidaridad was a military fort in Cavite.",
+          "Every article automatically became a law in the Philippines.",
+          "The newspaper was the same organization as La Liga Filipina.",
+          "La Solidaridad published Philippine concerns and arguments for reform."
+        ],
+        "decisionCorrectAnswer": "La Solidaridad published Philippine concerns and arguments for reform.",
+        "decisionExplanation": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "keyTerm": "Publication",
+        "keyTermDefinition": "Writing made available for readers, such as a newspaper.",
+        "historicalInsight": "Publication is a method of advocacy, not proof that a demand became law.",
+        "learningHelp": {
+          "explanation": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "vocabulary": [
+            {
+              "term": "Publication",
+              "definition": "Writing made available for readers, such as a newspaper."
+            }
+          ],
+          "example": "La Solidaridad first appeared in 1889 in Spain.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/la-solidaridad/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/graciano-lopez-jaena/",
+          "https://bulacan.gov.ph/general-info/marcelo-h-del-pilar/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/la-liga-filipina/",
+          "https://www.gutenberg.org/cache/epub/14839/pg14839-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission5-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission5",
+        "status": "active",
+        "order": 3,
+        "title": "Connect People with Contributions",
+        "content": "Three familiar names made different contributions. Graciano Lopez Jaena was the first editor of La Solidaridad. Marcelo H. del Pilar later took over its editorship. Jose Rizal contributed writing, including discussion of Philippine conditions and needed changes. They were not the only contributors.\n\nIn Filipinas dentro de cien anos, known in English as The Philippines a Century Hence, Rizal argued for a free press and Philippine representatives. Our lesson paraphrases the idea: a distant government needs ways to hear what people experience. This is an argument made by a writer, not a notice that the government had already granted those rights.\n\nAn editor and a contributor are roles, not interchangeable names for the newspaper itself. Connect a person with a documented contribution rather than assuming one person wrote every article.",
+        "reviewTopics": [
+          "reform-contributors"
+        ],
+        "imageUrl": "../assets/story/reform-voices-people.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards: Connect People with Contributions. Not a reproduction of a historic document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "First editor",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Graciano Lopez Jaena was the first editor of La Solidaridad.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Later editor",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Marcelo H. del Pilar later became its editor.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Writer",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Rizal contributed arguments for changes, including press freedom and representation.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which contribution card is accurate?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Del Pilar founded a military arsenal instead of editing a newspaper.",
+          "Lopez Jaena was the name of the Spanish lawmaking assembly.",
+          "Lopez Jaena was first editor, del Pilar later editor, and Rizal contributed reform writing.",
+          "Rizal alone wrote every article and was the only reform advocate."
+        ],
+        "decisionCorrectAnswer": "Lopez Jaena was first editor, del Pilar later editor, and Rizal contributed reform writing.",
+        "decisionExplanation": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "keyTerm": "Editor",
+        "keyTermDefinition": "A person who helps select, prepare and organize material for publication.",
+        "historicalInsight": "Rizal contributed arguments for changes, including press freedom and representation.",
+        "learningHelp": {
+          "explanation": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "vocabulary": [
+            {
+              "term": "Editor",
+              "definition": "A person who helps select, prepare and organize material for publication."
+            }
+          ],
+          "example": "Graciano Lopez Jaena was the first editor of La Solidaridad.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/la-solidaridad/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/graciano-lopez-jaena/",
+          "https://bulacan.gov.ph/general-info/marcelo-h-del-pilar/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/la-liga-filipina/",
+          "https://www.gutenberg.org/cache/epub/14839/pg14839-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission5-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission5",
+        "status": "active",
+        "order": 4,
+        "title": "Discover La Liga Filipina",
+        "content": "On 3 July 1892, Jose Rizal founded La Liga Filipina in Manila. The NHCP marker describes aims including unity, protection against injustice, education, agriculture, commerce and studying social changes. Mutual protection means members helping protect one another.\n\nThe Liga was an association, not another name for a newspaper. Its purpose connected public concerns with organized cooperation among people. Think of the difference: a newspaper publishes an argument; an association brings people together around shared work. Both can support a reform effort in different ways.\n\nThe marker records that the association weakened after Rizal's arrest and deportation to Dapitan in July 1892. Deported means sent away by the authorities. This interruption helps explain why goals and results must be examined separately. La Liga Filipina should not be confused with the separate Katipunan.",
+        "reviewTopics": [
+          "liga-purpose"
+        ],
+        "imageUrl": "../assets/story/reform-voices-liga.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards: Discover La Liga Filipina. Not a reproduction of a historic document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Foundation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Rizal founded La Liga Filipina in Manila on 3 July 1892.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Shared purposes",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Its aims included unity, mutual protection, education, agriculture and commerce.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Interruption",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The association weakened after Rizal was arrested and sent to Dapitan.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which description belongs to La Liga Filipina?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A law proving every reform goal was achieved.",
+          "An association founded by Rizal for unity, mutual protection and social improvement.",
+          "The first issue of the newspaper published in 1889.",
+          "Another name for every member of the Katipunan."
+        ],
+        "decisionCorrectAnswer": "An association founded by Rizal for unity, mutual protection and social improvement.",
+        "decisionExplanation": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "keyTerm": "Association",
+        "keyTermDefinition": "An organized group working toward shared purposes.",
+        "historicalInsight": "The association weakened after Rizal was arrested and sent to Dapitan.",
+        "learningHelp": {
+          "explanation": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "vocabulary": [
+            {
+              "term": "Association",
+              "definition": "An organized group working toward shared purposes."
+            }
+          ],
+          "example": "Rizal founded La Liga Filipina in Manila on 3 July 1892.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/la-solidaridad/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/graciano-lopez-jaena/",
+          "https://bulacan.gov.ph/general-info/marcelo-h-del-pilar/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/la-liga-filipina/",
+          "https://www.gutenberg.org/cache/epub/14839/pg14839-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission5-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission5",
+        "status": "active",
+        "order": 5,
+        "title": "Build Your Reform Field Guide",
+        "content": "Our museum needs a clear guide. Match the newspaper, the association and the evidence-check card with their roles. The cards are modern summaries, not original documents.\n\nLa Solidaridad shows advocacy through publication. La Liga Filipina shows organized cooperation for shared aims. A reform demand names a desired change. To establish a result, we need evidence showing what followed, such as a change in a rule or a record of an activity.\n\nImagine a fictional museum label: \"Because a newspaper requested representation, representatives were certainly elected immediately.\" Repair it. The request is evidence of a goal; it does not establish that result. The contribution of reform advocacy also includes making concerns and political ideas available for discussion. Do not confuse limited success in winning demands with having no historical importance.",
+        "reviewTopics": [
+          "methods-and-results"
+        ],
+        "imageUrl": "../assets/story/reform-voices-board.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards: Build Your Reform Field Guide. Not a reproduction of a historic document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Publish",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A newspaper can present arguments and make concerns known.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Organize",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An association can bring people together around shared purposes.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Check",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A stated goal needs evidence of what followed before it can be called an achieved result.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation distinguishes method, goal and result?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Publishing and organizing are methods; a demand states a goal; a result needs evidence of what happened afterward.",
+          "Every published demand proves that the government granted it immediately.",
+          "A newspaper and an association must be the same institution.",
+          "An unfulfilled demand proves that the discussion had no importance."
+        ],
+        "decisionCorrectAnswer": "Publishing and organizing are methods; a demand states a goal; a result needs evidence of what happened afterward.",
+        "decisionExplanation": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "keyTerm": "Advocacy",
+        "keyTermDefinition": "Working to gain support for a cause or proposed change.",
+        "historicalInsight": "A stated goal needs evidence of what followed before it can be called an achieved result.",
+        "learningHelp": {
+          "explanation": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "vocabulary": [
+            {
+              "term": "Advocacy",
+              "definition": "Working to gain support for a cause or proposed change."
+            }
+          ],
+          "example": "A newspaper can present arguments and make concerns known.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/la-solidaridad/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/graciano-lopez-jaena/",
+          "https://bulacan.gov.ph/general-info/marcelo-h-del-pilar/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/la-liga-filipina/",
+          "https://www.gutenberg.org/cache/epub/14839/pg14839-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+        "exhibitActivity": {
+          "title": "Connect the Reform Methods",
+          "eyebrow": "BUILD YOUR REFORM FIELD GUIDE",
+          "matchPrompt": "What role does this card explain?",
+          "instructions": "Open the clues. Match each modern summary with its role, then explain your connection.",
+          "successMessage": "Your field guide separates publication, association and evidence of a result. Now explain the connection.",
+          "retryMessage": "Check whether the card publishes arguments, organizes people or asks for evidence of an outcome.",
+          "effects": [
+            {
+              "id": "publish",
+              "label": "Publication: share concerns and arguments with readers."
+            },
+            {
+              "id": "organize",
+              "label": "Association: bring people together around shared purposes."
+            },
+            {
+              "id": "check",
+              "label": "Evidence check: a goal alone does not prove an achieved result."
+            }
+          ],
+          "pairs": [
+            {
+              "id": "paper",
+              "label": "La Solidaridad",
+              "action": "A newspaper carries arguments about Philippine conditions and reforms.",
+              "effectId": "publish",
+              "feedback": "The newspaper is a means of presenting arguments, not a lawmaking assembly."
+            },
+            {
+              "id": "liga",
+              "label": "La Liga Filipina",
+              "action": "An association aims at unity, mutual protection and shared improvement.",
+              "effectId": "organize",
+              "feedback": "The Liga brought people together around purposes; it was not a newspaper."
+            },
+            {
+              "id": "result",
+              "label": "Museum evidence card",
+              "action": "A demand names a desired change. Ask what actually happened afterward.",
+              "effectId": "check",
+              "feedback": "A goal and evidence that it was achieved are different things."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission5-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission5",
+        "status": "active",
+        "order": 6,
+        "title": "Report Your Reform Discoveries",
+        "content": "Connect your discoveries. Reform advocates asked for changes such as representation and freedoms. La Solidaridad carried concerns and arguments through print. Lopez Jaena, del Pilar and Rizal made different contributions. La Liga Filipina organized people around unity, mutual protection and shared improvement.\n\nReform advocacy and revolution are not the same method. Some demands sought changes within Spanish rule. Do not assume every advocate held one unchanging opinion, or that one newspaper alone caused all later events. Ideas, associations, policies and people's responses must be studied together.\n\nUse this report frame: \"The concern was ___. A requested reform was ___. One method was ___, used by ___. This shows ___, but it does not prove ___.\" The five-question mission quiz checks these lesson topics. If one is difficult, revisit its scene before targeted practice.",
+        "reviewTopics": [
+          "reform-goals",
+          "solidaridad-publication",
+          "reform-contributors",
+          "liga-purpose",
+          "methods-and-results"
+        ],
+        "imageUrl": "../assets/story/reform-voices-recap.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards: Report Your Reform Discoveries. Not a reproduction of a historic document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Goals",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Representation and freedoms were desired changes, not automatic results.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Contributions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Connect people with writing or editing, and distinguish newspaper from association.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Explanation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Explain the contribution and show what the evidence does not establish.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which museum report fits the lesson?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "La Liga Filipina was the newspaper's first issue in 1889.",
+          "All reform demands immediately became law.",
+          "One contributor alone caused every later historical event.",
+          "Reform advocates used writing and association to seek changes; their goals and actual results must be distinguished."
+        ],
+        "decisionCorrectAnswer": "Reform advocates used writing and association to seek changes; their goals and actual results must be distinguished.",
+        "decisionExplanation": "Connect reform goals, distinct contributions and methods while checking the difference between a demand and an achieved change.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Connect reform goals, distinct contributions and methods while checking the difference between a demand and an achieved change.",
+        "keyTerm": "Historical contribution",
+        "keyTermDefinition": "An action or idea that helps explain how events or public thinking developed.",
+        "historicalInsight": "Explain the contribution and show what the evidence does not establish.",
+        "learningHelp": {
+          "explanation": "Connect reform goals, distinct contributions and methods while checking the difference between a demand and an achieved change.",
+          "vocabulary": [
+            {
+              "term": "Historical contribution",
+              "definition": "An action or idea that helps explain how events or public thinking developed."
+            }
+          ],
+          "example": "Representation and freedoms were desired changes, not automatic results.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/la-solidaridad/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/graciano-lopez-jaena/",
+          "https://bulacan.gov.ph/general-info/marcelo-h-del-pilar/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/la-liga-filipina/",
+          "https://www.gutenberg.org/cache/epub/14839/pg14839-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz5-question1",
+      "create": true,
+      "fields": {
+        "question": "What did representation in the Spanish Cortes mean?",
+        "optionA": "Having people speak for Philippine interests in Spain's lawmaking assembly.",
+        "optionB": "Every demand automatically became law.",
+        "optionC": "The Cortes was another name for a newspaper.",
+        "optionD": "Representation meant only shipping goods to Spain.",
+        "correctAnswer": "A",
+        "explanation": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "learningPoint": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "historicalClue": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "answerExplanations": {
+          "A": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "B": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "C": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "D": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success."
+        },
+        "quizId": "chapter15-quiz5",
+        "order": 1,
+        "status": "active",
+        "topic": "reform-goals",
+        "topicLabel": "Reform Goals",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz5-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Which goal sought a voice for Philippine interests in making laws?",
+        "optionA": "Every demand automatically became law.",
+        "optionB": "The Cortes was another name for a newspaper.",
+        "optionC": "Representation meant only shipping goods to Spain.",
+        "optionD": "Representation in the Spanish Cortes.",
+        "correctAnswer": "D",
+        "explanation": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "learningPoint": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "historicalClue": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "B": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "C": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "D": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success."
+        },
+        "quizId": "chapter15-quiz5",
+        "order": 101,
+        "status": "active",
+        "topic": "reform-goals",
+        "topicLabel": "Reform Goals",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission5-reform-goals-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which demand asks for a voice in making laws?",
+        "optionA": "Replacing every newspaper with a private diary.",
+        "optionB": "Declaring every requested change already achieved.",
+        "optionC": "Treating the Cortes as a ship arriving at Cavite.",
+        "optionD": "Representation for Philippine interests in the Spanish Cortes.",
+        "correctAnswer": "D",
+        "explanation": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "learningPoint": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "historicalClue": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "B": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "C": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "D": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success."
+        },
+        "missionId": "chapter15-mission5",
+        "topic": "reform-goals",
+        "topicLabel": "Reform Goals",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A change intended to improve a rule, institution or condition.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission5-reform-goals-practice2",
+      "create": true,
+      "fields": {
+        "question": "A label says requests for representation prove that the reform was granted. What should change?",
+        "optionA": "The Cortes was another name for a newspaper.",
+        "optionB": "Representation meant only shipping goods to Spain.",
+        "optionC": "Call it a desired reform and look for separate evidence of what followed.",
+        "optionD": "Every demand automatically became law.",
+        "correctAnswer": "C",
+        "explanation": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "learningPoint": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "historicalClue": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "B": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "C": "Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success.",
+          "D": "Review the lesson clues. Representation in the Cortes was a reform goal: a voice for Philippine interests in the Spanish lawmaking assembly. A demand is not proof of success."
+        },
+        "missionId": "chapter15-mission5",
+        "topic": "reform-goals",
+        "topicLabel": "Reform Goals",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A change intended to improve a rule, institution or condition.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz5-question2",
+      "create": true,
+      "fields": {
+        "question": "What role did La Solidaridad play in the reform movement?",
+        "optionA": "It was a military fort supplying equipment.",
+        "optionB": "Its first issue automatically granted every reform.",
+        "optionC": "It was another name for La Liga Filipina.",
+        "optionD": "It published concerns and arguments for reform.",
+        "correctAnswer": "D",
+        "explanation": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "learningPoint": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "historicalClue": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "B": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "C": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "D": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms."
+        },
+        "quizId": "chapter15-quiz5",
+        "order": 2,
+        "status": "active",
+        "topic": "solidaridad-publication",
+        "topicLabel": "La Solidaridad and Publication",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz5-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why publish arguments about Philippine conditions in a newspaper?",
+        "optionA": "Its first issue automatically granted every reform.",
+        "optionB": "It was another name for La Liga Filipina.",
+        "optionC": "To bring concerns and proposed changes to readers.",
+        "optionD": "It was a military fort supplying equipment.",
+        "correctAnswer": "C",
+        "explanation": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "learningPoint": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "historicalClue": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "B": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "C": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "D": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms."
+        },
+        "quizId": "chapter15-quiz5",
+        "order": 102,
+        "status": "active",
+        "topic": "solidaridad-publication",
+        "topicLabel": "La Solidaridad and Publication",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission5-solidaridad-publication-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which caption explains the newspaper's role?",
+        "optionA": "Every article automatically became a law in the Philippines.",
+        "optionB": "The newspaper was the same organization as La Liga Filipina.",
+        "optionC": "La Solidaridad published Philippine concerns and arguments for reform.",
+        "optionD": "La Solidaridad was a military fort in Cavite.",
+        "correctAnswer": "C",
+        "explanation": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "learningPoint": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "historicalClue": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "B": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "C": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "D": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms."
+        },
+        "missionId": "chapter15-mission5",
+        "topic": "solidaridad-publication",
+        "topicLabel": "La Solidaridad and Publication",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Writing made available for readers, such as a newspaper.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission5-solidaridad-publication-practice2",
+      "create": true,
+      "fields": {
+        "question": "A student calls La Solidaridad an association that automatically changed laws. Which correction fits?",
+        "optionA": "It was another name for La Liga Filipina.",
+        "optionB": "It was a newspaper for reform arguments; publication alone did not make a demand law.",
+        "optionC": "It was a military fort supplying equipment.",
+        "optionD": "Its first issue automatically granted every reform.",
+        "correctAnswer": "B",
+        "explanation": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "learningPoint": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "historicalClue": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "B": "La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "C": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms.",
+          "D": "Review the lesson clues. La Solidaridad used publication to present Philippine concerns and reform arguments; publication alone did not grant reforms."
+        },
+        "missionId": "chapter15-mission5",
+        "topic": "solidaridad-publication",
+        "topicLabel": "La Solidaridad and Publication",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Writing made available for readers, such as a newspaper.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz5-question3",
+      "create": true,
+      "fields": {
+        "question": "Which person was the first editor of La Solidaridad?",
+        "optionA": "Jose Rizal.",
+        "optionB": "Pedro Pelaez.",
+        "optionC": "Graciano Lopez Jaena.",
+        "optionD": "Marcelo H. del Pilar.",
+        "correctAnswer": "C",
+        "explanation": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "learningPoint": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "historicalClue": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "B": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "C": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "D": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct."
+        },
+        "quizId": "chapter15-quiz5",
+        "order": 3,
+        "status": "active",
+        "topic": "reform-contributors",
+        "topicLabel": "People and Contributions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz5-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Which person later took over La Solidaridad's editorship after Lopez Jaena?",
+        "optionA": "Pedro Pelaez.",
+        "optionB": "Marcelo H. del Pilar.",
+        "optionC": "Graciano Lopez Jaena.",
+        "optionD": "Jose Rizal.",
+        "correctAnswer": "B",
+        "explanation": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "learningPoint": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "historicalClue": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "B": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "C": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "D": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct."
+        },
+        "quizId": "chapter15-quiz5",
+        "order": 103,
+        "status": "active",
+        "topic": "reform-contributors",
+        "topicLabel": "People and Contributions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission5-reform-contributors-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which contribution card is accurate?",
+        "optionA": "Lopez Jaena was the name of the Spanish lawmaking assembly.",
+        "optionB": "Lopez Jaena was first editor, del Pilar later editor, and Rizal contributed reform writing.",
+        "optionC": "Rizal alone wrote every article and was the only reform advocate.",
+        "optionD": "Del Pilar founded a military arsenal instead of editing a newspaper.",
+        "correctAnswer": "B",
+        "explanation": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "learningPoint": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "historicalClue": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "B": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "C": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "D": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct."
+        },
+        "missionId": "chapter15-mission5",
+        "topic": "reform-contributors",
+        "topicLabel": "People and Contributions",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A person who helps select, prepare and organize material for publication.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission5-reform-contributors-practice2",
+      "create": true,
+      "fields": {
+        "question": "Which set of contribution labels fits the lesson?",
+        "optionA": "Lopez Jaena first editor; del Pilar later editor; Rizal a contributor of reform writing.",
+        "optionB": "Rizal first editor; Pelaez later editor; Lopez Jaena the name of the Cortes.",
+        "optionC": "Del Pilar first editor; Rizal later editor; Lopez Jaena wrote every article alone.",
+        "optionD": "Lopez Jaena, del Pilar and Rizal were all names for one person.",
+        "correctAnswer": "A",
+        "explanation": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "learningPoint": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "historicalClue": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+        "answerExplanations": {
+          "A": "Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "B": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "C": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct.",
+          "D": "Review the lesson clues. Lopez Jaena first edited La Solidaridad, del Pilar later edited it, and Rizal contributed reform writing; their roles were distinct."
+        },
+        "missionId": "chapter15-mission5",
+        "topic": "reform-contributors",
+        "topicLabel": "People and Contributions",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A person who helps select, prepare and organize material for publication.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz5-question4",
+      "create": true,
+      "fields": {
+        "question": "What was La Liga Filipina?",
+        "optionA": "Another name for the separate Katipunan.",
+        "optionB": "An association Rizal founded in Manila on 3 July 1892.",
+        "optionC": "The first issue of La Solidaridad in 1889.",
+        "optionD": "A rule proving every requested reform succeeded.",
+        "correctAnswer": "B",
+        "explanation": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "learningPoint": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "historicalClue": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "B": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "C": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "D": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan."
+        },
+        "quizId": "chapter15-quiz5",
+        "order": 4,
+        "status": "active",
+        "topic": "liga-purpose",
+        "topicLabel": "La Liga Filipina",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz5-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Which aims belong to La Liga Filipina?",
+        "optionA": "Unity, mutual protection, education, agriculture and commerce.",
+        "optionB": "The first issue of La Solidaridad in 1889.",
+        "optionC": "A rule proving every requested reform succeeded.",
+        "optionD": "Another name for the separate Katipunan.",
+        "correctAnswer": "A",
+        "explanation": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "learningPoint": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "historicalClue": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "answerExplanations": {
+          "A": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "B": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "C": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "D": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan."
+        },
+        "quizId": "chapter15-quiz5",
+        "order": 104,
+        "status": "active",
+        "topic": "liga-purpose",
+        "topicLabel": "La Liga Filipina",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission5-liga-purpose-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which description belongs to La Liga Filipina?",
+        "optionA": "An association founded by Rizal for unity, mutual protection and social improvement.",
+        "optionB": "The first issue of the newspaper published in 1889.",
+        "optionC": "Another name for every member of the Katipunan.",
+        "optionD": "A law proving every reform goal was achieved.",
+        "correctAnswer": "A",
+        "explanation": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "learningPoint": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "historicalClue": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "answerExplanations": {
+          "A": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "B": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "C": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "D": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan."
+        },
+        "missionId": "chapter15-mission5",
+        "topic": "liga-purpose",
+        "topicLabel": "La Liga Filipina",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An organized group working toward shared purposes.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission5-liga-purpose-practice2",
+      "create": true,
+      "fields": {
+        "question": "A museum label calls the Liga the 1889 newspaper. What should replace it?",
+        "optionA": "The first issue of La Solidaridad in 1889.",
+        "optionB": "A rule proving every requested reform succeeded.",
+        "optionC": "Another name for the separate Katipunan.",
+        "optionD": "An association founded in 1892 for shared improvement, distinct from the newspaper.",
+        "correctAnswer": "D",
+        "explanation": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "learningPoint": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "historicalClue": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "B": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "C": "Review the lesson clues. La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan.",
+          "D": "La Liga Filipina was an association founded in 1892 for shared improvement; it was distinct from La Solidaridad and the Katipunan."
+        },
+        "missionId": "chapter15-mission5",
+        "topic": "liga-purpose",
+        "topicLabel": "La Liga Filipina",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An organized group working toward shared purposes.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz5-question5",
+      "create": true,
+      "fields": {
+        "question": "How do publication and association differ?",
+        "optionA": "Publication carries arguments to readers; association organizes people around shared purposes.",
+        "optionB": "A demand alone proves it was granted immediately.",
+        "optionC": "A newspaper and an association must be the same institution.",
+        "optionD": "A limited result means the discussion had no historical importance.",
+        "correctAnswer": "A",
+        "explanation": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "learningPoint": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "historicalClue": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "answerExplanations": {
+          "A": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "B": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "C": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "D": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed."
+        },
+        "quizId": "chapter15-quiz5",
+        "order": 5,
+        "status": "active",
+        "topic": "methods-and-results",
+        "topicLabel": "Methods, Goals and Results",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz5-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "What evidence is needed before calling a reform goal an achieved result?",
+        "optionA": "A demand alone proves it was granted immediately.",
+        "optionB": "A newspaper and an association must be the same institution.",
+        "optionC": "A limited result means the discussion had no historical importance.",
+        "optionD": "Evidence showing what actually happened after the request.",
+        "correctAnswer": "D",
+        "explanation": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "learningPoint": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "historicalClue": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "B": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "C": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "D": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed."
+        },
+        "quizId": "chapter15-quiz5",
+        "order": 105,
+        "status": "active",
+        "topic": "methods-and-results",
+        "topicLabel": "Methods, Goals and Results",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission5-methods-and-results-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which explanation distinguishes method, goal and result?",
+        "optionA": "Every published demand proves that the government granted it immediately.",
+        "optionB": "A newspaper and an association must be the same institution.",
+        "optionC": "An unfulfilled demand proves that the discussion had no importance.",
+        "optionD": "Publishing and organizing are methods; a demand states a goal; a result needs evidence of what happened afterward.",
+        "correctAnswer": "D",
+        "explanation": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "learningPoint": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "historicalClue": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "B": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "C": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "D": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed."
+        },
+        "missionId": "chapter15-mission5",
+        "topic": "methods-and-results",
+        "topicLabel": "Methods, Goals and Results",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Working to gain support for a cause or proposed change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission5-methods-and-results-practice2",
+      "create": true,
+      "fields": {
+        "question": "A newspaper requests a reform, but the card contains no record of a changed rule. What can you conclude?",
+        "optionA": "A newspaper and an association must be the same institution.",
+        "optionB": "A limited result means the discussion had no historical importance.",
+        "optionC": "The card shows a desired change and a method, but does not establish that the change was granted.",
+        "optionD": "A demand alone proves it was granted immediately.",
+        "correctAnswer": "C",
+        "explanation": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "learningPoint": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "historicalClue": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "B": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "C": "Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed.",
+          "D": "Review the lesson clues. Publication and association are different methods. Goals state desired changes; results need evidence of what actually followed."
+        },
+        "missionId": "chapter15-mission5",
+        "topic": "methods-and-results",
+        "topicLabel": "Methods, Goals and Results",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Working to gain support for a cause or proposed change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter15-mission5-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission5",
+        "name": "Reform Voices Field Guide",
+        "description": "A learning-game token for connecting reform goals with publication, association and evidence of results.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish reform goals, newspaper contributions and organized cooperation.",
+          "reflectionQuestion": "How does a requested change differ from evidence that it happened?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-15",
+      "create": false,
+      "expected": {
+        "description": "Investigate connections, public participation, parish reform and Cavite/GOMBURZA. Missions 1-4 are available; the remaining content and final challenge are not yet available."
+      },
+      "fields": {
+        "description": "Investigate connections, participation, parish reform, Cavite/GOMBURZA and voices for reform. Missions 1-5 are available; the final challenge is not yet available."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapters 12-14 offer missions and evidence challenges. Chapter 15 offers four missions on connections, participation, parish reform and Cavite/GOMBURZA; further content and its final challenge are not yet available."
+      },
+      "fields": {
+        "description": "Chapters 12-14 offer missions and evidence challenges. Chapter 15 offers five missions on connections, participation, parish reform, Cavite/GOMBURZA and voices for reform; its final challenge is not yet available."
+      }
+    }
+  ]
+}

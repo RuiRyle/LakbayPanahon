@@ -1,0 +1,632 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Chapter 15 Mission 4 source comparison enrichment; preserve order, topic IDs, question count, rewards and earned records",
+  "curriculumBasis": "User-confirmed MATATAG Grade 5",
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "sourceUrls": [
+    "https://www.boe.es/gazeta/dias/1872/03/24/pdfs/GMD-1872-84.pdf",
+    "https://fr.wikisource.org/wiki/L%E2%80%99Archipel_des_Philippines/03"
+  ],
+  "prerequisites": [
+    {
+      "path": "missions/chapter15-mission4",
+      "expected": {
+        "chapterId": "chapter-15",
+        "order": 4,
+        "status": "active"
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "storyScenes/chapter15-mission4-scene1",
+      "create": false,
+      "expected": {
+        "title": "Locate the Cavite Event",
+        "content": "Our new case starts at Cavite on 20 January 1872. A mutiny is a military uprising against authority. The NHCP execution-site marker links the later accusation against three priests with this January event.\n\nKeep two places separate: Cavite is linked with the uprising; Bagumbayan in Manila is linked with the later execution. Related events in the same year are not necessarily the same event. This introductory timeline does not settle every disagreement about the causes or extent of the uprising.\n\nYour museum task is to locate the event accurately. We study what happened without acting as fighters.",
+        "imageUrl": "../assets/story/cavite-event.svg",
+        "imageAlt": "Modern labelled case diagram: Locate the Cavite Event. No violence or original document is depicted.",
+        "exploreItems": [
+          {
+            "title": "Clue 1",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Date: 20 January 1872.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 2",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Event: a military uprising.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 3",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Place: Cavite, separate from the later Manila event.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which label starts this case timeline?",
+        "decisionChoices": [
+          "20 January 1872: military uprising in Cavite.",
+          "17 February 1872: publication of a newspaper.",
+          "20 January 1872: dedication of a novel.",
+          "17 February 1872: opening of the Suez Canal."
+        ],
+        "decisionCorrectAnswer": "20 January 1872: military uprising in Cavite.",
+        "decisionExplanation": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "discoveryText": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "keyTerm": "Mutiny",
+        "keyTermDefinition": "A military uprising against authority.",
+        "historicalInsight": "Place: Cavite, separate from the later Manila event.",
+        "learningHelp": {
+          "explanation": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "vocabulary": [
+            {
+              "term": "Mutiny",
+              "definition": "A military uprising against authority."
+            }
+          ],
+          "example": "Date: 20 January 1872.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ]
+      },
+      "expectedAbsent": [],
+      "fields": {
+        "title": "Locate the Event and a Reported Cause",
+        "content": "Our case starts at Cavite on 20 January 1872. A mutiny is a military uprising against authority. Fort San Felipe and the nearby naval arsenal belonged to this setting. An arsenal is a place supplying military equipment and work.\n\nWhy were people unhappy? French writer Edmond Plauchut, writing in 1877, connected the uprising with workers losing exemptions from tax and required labor. He described privileges connected with their retirement. An exemption means a person does not have to pay a certain tax or perform a duty. Removing it can change what that person owes. This is a reported cause in his account, not a statement from every worker.\n\nImagine a classroom example: a rule changes what a person is required to pay. Understanding that change helps explain a complaint. It does not tell us everyone had the same goal. Our next source comparison asks whether the accounts agree about how widely the uprising was planned. Keep Cavite separate from the later execution at Bagumbayan in Manila.",
+        "imageUrl": "../assets/story/cavite-causes.svg",
+        "imageAlt": "Modern labelled source-comparison diagram: Locate the Event and a Reported Cause. Paraphrased teaching cards, not original documents.",
+        "exploreItems": [
+          {
+            "title": "Event and place",
+            "hint": "Keep the source name, idea and limit together.",
+            "discovery": "20 January 1872: a military uprising in Cavite, at Fort San Felipe.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Reported grievance",
+            "hint": "Keep the source name, idea and limit together.",
+            "discovery": "Plauchut's 1877 account connects the uprising with the loss of tax and required-labor exemptions, including retirement privileges.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Meaning",
+            "hint": "Keep the source name, idea and limit together.",
+            "discovery": "An exemption removes a duty for someone. Losing it can create a grievance, or complaint.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the reported loss of an exemption mean?",
+        "decisionChoices": [
+          "Workers would lose permission not to pay a tax or perform a required duty.",
+          "Every worker received a new payment from the government.",
+          "The arsenal became a school open to everyone.",
+          "An accusation automatically became proof of mutiny leadership."
+        ],
+        "decisionCorrectAnswer": "Workers would lose permission not to pay a tax or perform a required duty.",
+        "decisionExplanation": "Plauchut connected the uprising with lost exemptions: a change in what workers owed. This explains a reported grievance, not every participant's goal.",
+        "discoveryText": "Plauchut connected the uprising with lost exemptions: a change in what workers owed. This explains a reported grievance, not every participant's goal.",
+        "keyTerm": "Exemption",
+        "keyTermDefinition": "Permission not to pay a certain tax or perform a required duty.",
+        "historicalInsight": "An exemption removes a duty for someone. Losing it can create a grievance, or complaint.",
+        "learningHelp": {
+          "explanation": "Plauchut connected the uprising with lost exemptions: a change in what workers owed. This explains a reported grievance, not every participant's goal.",
+          "vocabulary": [
+            {
+              "term": "Exemption",
+              "definition": "Permission not to pay a certain tax or perform a required duty."
+            },
+            {
+              "term": "Grievance",
+              "definition": "A complaint about treatment or conditions."
+            },
+            {
+              "term": "Extent",
+              "definition": "How widely something reached or was planned."
+            }
+          ],
+          "example": "20 January 1872: a military uprising in Cavite, at Fort San Felipe.",
+          "guidingQuestion": "Who made this account? What does it explain, and what does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm",
+          "https://www.boe.es/gazeta/dias/1872/03/24/pdfs/GMD-1872-84.pdf",
+          "https://fr.wikisource.org/wiki/L%E2%80%99Archipel_des_Philippines/03"
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission4-scene3",
+      "create": false,
+      "expected": {
+        "title": "Read the Accusation Carefully",
+        "content": "After the uprising, colonial authorities accused the priests of involvement. The NHCP marker describes their involvement as alleged. Alleged means claimed, rather than proven merely by saying it. The National Museum describes suspected treason: a charge of acting against the government to which a person owes allegiance.\n\nA caption should distinguish the accusation from proof. A serious punishment does not by itself prove that an accusation was true. Our classroom cards cannot replace examination of historical records.\n\nRepair this fictional label: \"They were accused, so they must have organized the mutiny.\" An accusation and a proven action are different. You are not asked to decide guilt from three short clues.",
+        "imageUrl": "../assets/story/cavite-claim.svg",
+        "imageAlt": "Modern labelled case diagram: Read the Accusation Carefully. No violence or original document is depicted.",
+        "exploreItems": [
+          {
+            "title": "Clue 1",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Claim: authorities linked the priests with the uprising.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 2",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Language: alleged involvement means claimed involvement.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 3",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Reasoning: punishment alone cannot prove the accused action.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which caption handles the accusation carefully?",
+        "decisionChoices": [
+          "A later monument proves that no uprising took place.",
+          "Anyone supporting reform must have led the mutiny.",
+          "Authorities accused the priests; the accusation itself is not proof they organized the mutiny.",
+          "An accusation automatically proves every detail of a case."
+        ],
+        "decisionCorrectAnswer": "Authorities accused the priests; the accusation itself is not proof they organized the mutiny.",
+        "decisionExplanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "discoveryText": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "keyTerm": "Accusation",
+        "keyTermDefinition": "A claim of wrongdoing that must be examined using evidence.",
+        "historicalInsight": "Reasoning: punishment alone cannot prove the accused action.",
+        "learningHelp": {
+          "explanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "vocabulary": [
+            {
+              "term": "Accusation",
+              "definition": "A claim of wrongdoing that must be examined using evidence."
+            }
+          ],
+          "example": "Claim: authorities linked the priests with the uprising.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ]
+      },
+      "expectedAbsent": [
+        "exhibitActivity"
+      ],
+      "fields": {
+        "title": "Compare Two Accounts, Then Check the Claim",
+        "content": "Read two modern summaries of historical accounts. These are our paraphrases, not quotations.\n\nAccount A: Edmond Plauchut wrote in 1877. He linked the uprising with lost tax and required-labor exemptions. He also described mutineers expecting support that did not arrive. A worker complaint and an expectation of support can both appear in an account. Calling his account only a complaint with no plans would leave out that detail.\n\nAccount B: Governor Rafael de Izquierdo reported on 31 January 1872. He described the suppression as stopping plans prepared in advance against Spanish rule. This tells us how a colonial official presented the event, not that every accusation in his report is automatically true.\n\nCompare the emphasis: a reported grievance and failed support in A; organized plans in B. A cause is why someone may act. The extent asks how widely action was planned or supported. These are different questions. A wider plan does not by itself prove that Gomes, Burgos and Zamora organized it. Authorities accused the priests, but keep the accusation separate from proof.\n\nConnect the source cards and explain what they support. We do not label either summary the opinion of every French, Spanish or Filipino person.",
+        "imageUrl": "../assets/story/cavite-accounts.svg",
+        "imageAlt": "Modern labelled source-comparison diagram: Compare Two Accounts, Then Check the Claim. Paraphrased teaching cards, not original documents.",
+        "exploreItems": [
+          {
+            "title": "Plauchut, 1877",
+            "hint": "Keep the source name, idea and limit together.",
+            "discovery": "His account links lost exemptions with the uprising and describes expected support that did not arrive.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Izquierdo, 31 January 1872",
+            "hint": "Keep the source name, idea and limit together.",
+            "discovery": "His official report presents the suppression as stopping plans prepared in advance against Spanish rule.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare, do not jump",
+            "hint": "Keep the source name, idea and limit together.",
+            "discovery": "An account of a grievance or a wider plan does not by itself prove that the priests organized the event.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which comparison fits the two source summaries?",
+        "decisionChoices": [
+          "Izquierdo says the event was only a change in retirement benefits.",
+          "Both summaries prove every accused person organized the uprising.",
+          "Plauchut discusses lost exemptions and failed support; Izquierdo stresses plans prepared in advance.",
+          "Plauchut says no one expected support anywhere."
+        ],
+        "decisionCorrectAnswer": "Plauchut discusses lost exemptions and failed support; Izquierdo stresses plans prepared in advance.",
+        "decisionExplanation": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "discoveryText": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "keyTerm": "Historical account",
+        "keyTermDefinition": "A description or explanation of the past made by a person or group.",
+        "historicalInsight": "An account of a grievance or a wider plan does not by itself prove that the priests organized the event.",
+        "learningHelp": {
+          "explanation": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "vocabulary": [
+            {
+              "term": "Historical account",
+              "definition": "A description or explanation of the past made by a person or group."
+            },
+            {
+              "term": "Grievance",
+              "definition": "A complaint about treatment or conditions."
+            },
+            {
+              "term": "Extent",
+              "definition": "How widely something reached or was planned."
+            }
+          ],
+          "example": "His account links lost exemptions with the uprising and describes expected support that did not arrive.",
+          "guidingQuestion": "Who made this account? What does it explain, and what does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm",
+          "https://www.boe.es/gazeta/dias/1872/03/24/pdfs/GMD-1872-84.pdf",
+          "https://fr.wikisource.org/wiki/L%E2%80%99Archipel_des_Philippines/03"
+        ],
+        "exhibitActivity": {
+          "title": "Match the Source with Its Emphasis",
+          "eyebrow": "COMPARE THE HISTORY ACCOUNTS",
+          "matchPrompt": "What does this source summary support?",
+          "instructions": "Open the clues. Connect each summary with its meaning. Then explain the difference.",
+          "successMessage": "Your source labels match. Now explain the difference between a reported cause, advance planning and proof of an accusation.",
+          "retryMessage": "Keep the source names attached. Find the lost-exemption clue, the advance-plan clue and the limit on both.",
+          "effects": [
+            {
+              "id": "grievance",
+              "label": "Plauchut: lost exemptions and support that did not arrive."
+            },
+            {
+              "id": "planning",
+              "label": "Izquierdo: plans prepared in advance against Spanish rule."
+            },
+            {
+              "id": "limit",
+              "label": "Limit: these summaries alone do not prove that the priests organized the event."
+            }
+          ],
+          "pairs": [
+            {
+              "id": "plauchut",
+              "label": "Plauchut, 1877",
+              "action": "A later published account discusses changed duties and hoped-for support.",
+              "effectId": "grievance",
+              "feedback": "His account includes a reported grievance and an expectation of support, not just one of those ideas."
+            },
+            {
+              "id": "izquierdo",
+              "label": "Izquierdo, January 1872",
+              "action": "An official report describes stopping plans prepared beforehand.",
+              "effectId": "planning",
+              "feedback": "This is the official report's interpretation, which still needs examination."
+            },
+            {
+              "id": "comparison",
+              "label": "Our comparison rule",
+              "action": "Ask what the accounts show before making a claim about who organized the uprising.",
+              "effectId": "limit",
+              "feedback": "A cause, a plan and proof about a named person are different questions."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission4-scene6",
+      "create": false,
+      "expected": {
+        "title": "Explain the Whole Case",
+        "content": "Your case has three parts. Locate the Cavite Mutiny on 20 January 1872. Explain that authorities accused Gomes, Burgos and Zamora, and that the priests were executed at Bagumbayan on 17 February. Then identify later remembrance, such as Rizal's dedication.\n\nThe sequence connects events without confusing them. Punishment does not turn an accusation into proof. Later remembrance helps explain why the case remained important in concerns about justice and the country.\n\nComplete this report frame silently or with a trusted adult: \"The event was ___. The accusation was ___. A later response was ___. It shows ___, but does not prove ___.\" The quiz checks five lesson topics. If one is difficult, review its scene before targeted practice.",
+        "imageAlt": "Modern labelled case diagram: Explain the Whole Case. No violence or original document is depicted.",
+        "exploreItems": [
+          {
+            "title": "Clue 1",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Distinguish: an event and the people accused are different subjects.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 2",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Sequence: January mutiny, February execution, later remembrance.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 3",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Explain: connect a response with justice and state its limits.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionExplanation": "A sound explanation distinguishes the event, accusation, execution and later remembrance.",
+        "discoveryText": "A sound explanation distinguishes the event, accusation, execution and later remembrance.",
+        "keyTermDefinition": "An account connecting events and responses while showing what evidence supports.",
+        "historicalInsight": "Explain: connect a response with justice and state its limits.",
+        "learningHelp": {
+          "explanation": "A sound explanation distinguishes the event, accusation, execution and later remembrance.",
+          "vocabulary": [
+            {
+              "term": "Historical explanation",
+              "definition": "An account connecting events and responses while showing what evidence supports."
+            }
+          ],
+          "example": "Distinguish: an event and the people accused are different subjects.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ]
+      },
+      "expectedAbsent": [],
+      "fields": {
+        "title": "Explain Causes, Claims and Responses",
+        "content": "Your case now connects a reported cause, an event, a claim and a later response. Plauchut links the uprising with lost exemptions and describes support that did not arrive. Izquierdo presents plans prepared in advance. Their different emphases do not settle who organized the event merely by naming an accused person.\n\nLocate the Cavite Mutiny on 20 January 1872. Explain that authorities accused Gomes, Burgos and Zamora, and that the priests were executed at Bagumbayan on 17 February. Then identify later remembrance, such as Rizal's dedication. Punishment does not turn an accusation into proof.\n\nTry this report frame: \"According to ___, a cause or plan was ___. The other account emphasizes ___. The January event was followed by ___. A later response was ___. Our cards do not prove ___.\" Use the source names rather than saying all people held one view. Review a difficult topic before targeted practice.",
+        "imageAlt": "Modern labelled source-comparison diagram: Explain Causes, Claims and Responses. Paraphrased teaching cards, not original documents.",
+        "exploreItems": [
+          {
+            "title": "Cause and extent",
+            "hint": "Keep the source name, idea and limit together.",
+            "discovery": "Explain both the reported loss of exemptions and the question of planned or expected support.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Sequence",
+            "hint": "Keep the source name, idea and limit together.",
+            "discovery": "January mutiny, February execution, later remembrance.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Reasoning",
+            "hint": "Keep the source name, idea and limit together.",
+            "discovery": "Comparing accounts does not turn an accusation into proof.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionExplanation": "Connect a reported cause, competing emphases about plans, the event sequence and later remembrance without treating an accusation as proof.",
+        "discoveryText": "Connect a reported cause, competing emphases about plans, the event sequence and later remembrance without treating an accusation as proof.",
+        "keyTermDefinition": "An account connecting causes, events and responses while showing what evidence supports.",
+        "historicalInsight": "Comparing accounts does not turn an accusation into proof.",
+        "learningHelp": {
+          "explanation": "Connect a reported cause, competing emphases about plans, the event sequence and later remembrance without treating an accusation as proof.",
+          "vocabulary": [
+            {
+              "term": "Historical explanation",
+              "definition": "An account connecting causes, events and responses while showing what evidence supports."
+            },
+            {
+              "term": "Grievance",
+              "definition": "A complaint about treatment or conditions."
+            },
+            {
+              "term": "Extent",
+              "definition": "How widely something reached or was planned."
+            }
+          ],
+          "example": "Explain both the reported loss of exemptions and the question of planned or expected support.",
+          "guidingQuestion": "Who made this account? What does it explain, and what does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm",
+          "https://www.boe.es/gazeta/dias/1872/03/24/pdfs/GMD-1872-84.pdf",
+          "https://fr.wikisource.org/wiki/L%E2%80%99Archipel_des_Philippines/03"
+        ]
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question3",
+      "create": false,
+      "expected": {
+        "question": "What does alleged involvement mean?",
+        "optionA": "A monument replaces the need for evidence.",
+        "optionB": "Reform support always proves military leadership.",
+        "optionC": "Involvement was claimed; the claim itself is not proof.",
+        "optionD": "An accusation automatically proves every detail.",
+        "explanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "learningPoint": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "historicalClue": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "B": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "C": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "D": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement."
+        },
+        "topicLabel": "Accusations and Evidence"
+      },
+      "expectedAbsent": [],
+      "fields": {
+        "question": "How do the two source summaries differ in emphasis?",
+        "optionA": "Plauchut is the colonial governor who wrote the January report.",
+        "optionB": "Both summaries prove that every accused priest organized the mutiny.",
+        "optionC": "Plauchut discusses lost exemptions and failed support; Izquierdo stresses advance planning.",
+        "optionD": "Both accounts say no one had a complaint or expected support.",
+        "explanation": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "learningPoint": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "historicalClue": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "answerExplanations": {
+          "A": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "B": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "C": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "D": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof."
+        },
+        "topicLabel": "Accounts, Causes and Evidence"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question3-retry",
+      "create": false,
+      "expected": {
+        "question": "Why distinguish an accusation from proof?",
+        "optionA": "Reform support always proves military leadership.",
+        "optionB": "A claim of wrongdoing must be examined using evidence.",
+        "optionC": "An accusation automatically proves every detail.",
+        "optionD": "A monument replaces the need for evidence.",
+        "explanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "learningPoint": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "historicalClue": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "B": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "C": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "D": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement."
+        },
+        "topicLabel": "Accusations and Evidence"
+      },
+      "expectedAbsent": [],
+      "fields": {
+        "question": "Which caption compares the accounts without overstating the evidence?",
+        "optionA": "The two authors spoke for every person of their nationality.",
+        "optionB": "Plauchut links lost exemptions and failed support; Izquierdo presents advance plans, but neither summary alone proves the priests organized the event.",
+        "optionC": "A grievance proves that no one planned anything in advance.",
+        "optionD": "An official report automatically proves every accusation it contains.",
+        "explanation": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "learningPoint": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "historicalClue": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "answerExplanations": {
+          "A": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "B": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "C": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "D": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof."
+        },
+        "topicLabel": "Accounts, Causes and Evidence"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-accusation-and-evidence-practice1",
+      "create": false,
+      "expected": {
+        "question": "Which caption handles the accusation carefully?",
+        "optionA": "Anyone supporting reform must have led the mutiny.",
+        "optionB": "Authorities accused the priests; the accusation itself is not proof they organized the mutiny.",
+        "optionC": "An accusation automatically proves every detail of a case.",
+        "optionD": "A later monument proves that no uprising took place.",
+        "explanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "learningPoint": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "historicalClue": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "B": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "C": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "D": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement."
+        },
+        "topicLabel": "Accusations and Evidence",
+        "hint": "A claim of wrongdoing that must be examined using evidence."
+      },
+      "expectedAbsent": [],
+      "fields": {
+        "question": "Which comparison fits the two source summaries?",
+        "optionA": "Both summaries prove every accused person organized the uprising.",
+        "optionB": "Plauchut discusses lost exemptions and failed support; Izquierdo stresses plans prepared in advance.",
+        "optionC": "Plauchut says no one expected support anywhere.",
+        "optionD": "Izquierdo says the event was only a change in retirement benefits.",
+        "explanation": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "learningPoint": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "historicalClue": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "answerExplanations": {
+          "A": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "B": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "C": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "D": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof."
+        },
+        "topicLabel": "Accounts, Causes and Evidence",
+        "hint": "Keep the source names attached: a grievance, an advance plan and proof about a person are different ideas."
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-accusation-and-evidence-practice2",
+      "create": false,
+      "expected": {
+        "question": "A student says punishment alone proves the priests organized the mutiny. Which reply uses evidence carefully?",
+        "optionA": "Punishment records what authorities did; it does not by itself prove the accused action.",
+        "optionB": "An accusation automatically proves every detail.",
+        "optionC": "A monument replaces the need for evidence.",
+        "optionD": "Reform support always proves military leadership.",
+        "explanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "learningPoint": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "historicalClue": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "answerExplanations": {
+          "A": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "B": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "C": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "D": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement."
+        },
+        "topicLabel": "Accusations and Evidence",
+        "hint": "A claim of wrongdoing that must be examined using evidence."
+      },
+      "expectedAbsent": [],
+      "fields": {
+        "question": "A student says lost exemptions prove the event had no plans, while advance planning proves the priests led it. What should change?",
+        "optionA": "A grievance and plans can both be discussed; neither idea alone proves who organized the uprising.",
+        "optionB": "Keep both claims because a single cause proves every detail.",
+        "optionC": "Treat a later account as a statement from every worker.",
+        "optionD": "Ignore the named sources and choose the longer summary.",
+        "explanation": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "learningPoint": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "historicalClue": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "answerExplanations": {
+          "A": "Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "B": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "C": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+          "D": "Compare the named source summaries. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof."
+        },
+        "topicLabel": "Accounts, Causes and Evidence",
+        "hint": "Keep the source names attached: a grievance, an advance plan and proof about a person are different ideas."
+      }
+    },
+    {
+      "path": "missions/chapter15-mission4",
+      "create": false,
+      "expected": {
+        "learningObjective": "Identify GOMBURZA, explain the 1872 sequence and distinguish an accusation from evidence and later remembrance.",
+        "learningObjectives": [
+          "Explain the cavite event using lesson evidence.",
+          "Explain the three priests using lesson evidence.",
+          "Explain accusations and evidence using lesson evidence.",
+          "Explain the 1872 sequence using lesson evidence.",
+          "Explain remembrance and wider concern using lesson evidence."
+        ],
+        "lessonRecap": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ]
+      },
+      "expectedAbsent": [],
+      "fields": {
+        "learningObjective": "Identify GOMBURZA, compare attributed causes and plans, explain the 1872 sequence and distinguish accusations from proof and later remembrance.",
+        "learningObjectives": [
+          "Explain the cavite event using lesson evidence.",
+          "Explain the three priests using lesson evidence.",
+          "Explain accusations and evidence using lesson evidence.",
+          "Explain the 1872 sequence using lesson evidence.",
+          "Explain remembrance and wider concern using lesson evidence.",
+          "Compare Plauchut's reported grievance and failed support with Izquierdo's advance-plan interpretation."
+        ],
+        "lessonRecap": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response. Plauchut emphasizes lost exemptions and describes failed support; Izquierdo stresses advance planning. Compare the emphasis without turning an accusation into proof.",
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm",
+          "https://www.boe.es/gazeta/dias/1872/03/24/pdfs/GMD-1872-84.pdf",
+          "https://fr.wikisource.org/wiki/L%E2%80%99Archipel_des_Philippines/03"
+        ]
+      }
+    }
+  ]
+}

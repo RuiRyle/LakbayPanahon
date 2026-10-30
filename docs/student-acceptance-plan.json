@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "scope": "Fixed student finish audit; original Firebase unavailable, all checks here local/mocked. No emulator or live checks.",
+  "suiteGroups": [
+    {
+      "criterion": "A01",
+      "tests": [
+        "student-auth-guard.test.cjs",
+        "student-auth-persistence.test.cjs",
+        "student-session-storage.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A02",
+      "tests": [
+        "student-shell-route.test.cjs",
+        "student-journey.test.cjs",
+        "student-journey-action.test.cjs",
+        "student-journey-loading.test.cjs",
+        "student-dashboard-recovery.test.cjs",
+        "student-dashboard-session.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A03",
+      "tests": [
+        "story-route.test.cjs",
+        "story-exhibit.test.cjs",
+        "story-trade.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A04",
+      "tests": [
+        "mission-flow.test.cjs",
+        "quiz-draft-policy.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A05",
+      "tests": [
+        "student-review.test.cjs",
+        "student-review-session.test.cjs",
+        "review-evidence.test.cjs",
+        "return-to-learn.test.cjs",
+        "easy-review-recovery.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A06",
+      "tests": [
+        "learning-draft.test.cjs",
+        "student-recovery-action.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A07",
+      "tests": [
+        "era-progression.test.cjs",
+        "journey-path.test.cjs",
+        "progression.test.cjs",
+        "exploration-preview.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A08",
+      "tests": [
+        "daily-policy.test.cjs",
+        "chapter-continuation.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A09",
+      "tests": [
+        "evidence-journal.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A10",
+      "tests": [
+        "student-profile.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A12",
+      "tests": [
+        "student-class-client.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A13",
+      "tests": [
+        "bayani-debug.test.cjs",
+        "bayani-backend-client.test.cjs",
+        "bayani-bridge-integration.test.cjs",
+        "bayani-backend.test.cjs",
+        "bayani-request.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A14",
+      "tests": [
+        "trusted-assessment.test.cjs",
+        "trusted-assessment-rules-candidate.test.cjs",
+        "firestore-read-scope.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A15",
+      "tests": [
+        "chapter2-family-learning-polish.test.cjs",
+        "chapter2-women-role-learning.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A16",
+      "tests": [
+        "web-release-boundary.test.cjs",
+        "student-hosting-config.test.cjs"
+      ]
+    },
+    {
+      "criterion": "A17",
+      "tests": [
+        "student-account-inventory.test.cjs"
+      ]
+    }
+  ],
+  "browserFixtures": [
+    "student-dashboard-browser.cjs",
+    "mission-quiz-browser.cjs",
+    "story-browser.cjs",
+    "student-navigation-browser.cjs",
+    "student-profile-browser.cjs",
+    "my-class-browser.cjs",
+    "my-journey-browser.cjs",
+    "student-collections-browser.cjs",
+    "bayani-ai-browser.cjs",
+    "student-review-browser.cjs",
+    "student-registration-browser.cjs",
+    "student-settings-browser.cjs"
+  ],
+  "sourceFiles": [
+    "js/auth-guard.js",
+    "js/student.js",
+    "js/my-journey.js",
+    "js/story.js",
+    "js/quiz.js",
+    "js/practice.js",
+    "js/practice-review.js",
+    "js/learning-draft.js",
+    "js/mission-assessment-client.js",
+    "js/student-rewards-client.js",
+    "js/student-class-client.js",
+    "js/my-class.js",
+    "js/student-profile.js",
+    "js/page-transition.js",
+    "js/bayani-client.js",
+    "pages/settings.html",
+    "pages/register.html",
+    "firestore.rules"
+  ]
+}

@@ -1,0 +1,1309 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 2 Chapter 8 Mission 4 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philippineculturaleducation.com.ph/tamblot/",
+    "https://www.nationalmuseum.gov.ph/our-museums/regional-area-and-site-museums/cordillera/",
+    "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-7",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-7",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/government-community-investigator",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter7-mission1",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter7-mission2",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter7-mission3",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter7-mission4",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter8-mission1",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter8-mission2",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter8-mission3",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 3
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter8-mission4",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-8",
+        "title": "Indigenous Responses, Adaptation, and Resistance",
+        "order": 4,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate different responses to colonial changes using actions, dated cases and source limits.",
+        "learningObjective": "Explain adaptation, continuity and resistance using particular cases and evidence.",
+        "learningObjectives": [
+          "Explain different ways to respond using lesson evidence.",
+          "Explain change and continuity can go together using lesson evidence.",
+          "Explain a named case: tamblot in bohol using lesson evidence.",
+          "Explain living traditions need dated evidence using lesson evidence.",
+          "Explain build an explanation with evidence using lesson evidence."
+        ],
+        "lessonRecap": "Explain each action and the situation it answered. One action cannot speak for every family. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief. Some people in Bohol organized opposition in 1621. A named case cannot describe every community. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture. Explain each case with its own support and limits. Say what still needs evidence.",
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://www.nationalmuseum.gov.ph/our-museums/regional-area-and-site-museums/cordillera/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter8-quiz4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission4",
+        "title": "Community Responses - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 4,
+        "questionBlueprint": [
+          {
+            "topic": "community-responses",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "adaptation-continuity",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "tamblot-bohol",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "living-heritage-limits",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "response-evidence",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission4-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission4",
+        "status": "active",
+        "order": 1,
+        "title": "Different Ways to Respond",
+        "content": "Colonial demands affected communities in different ways. Some people worked with new institutions, some changed selected practices, and others opposed demands. A community could also respond differently as conditions changed. Working with an institution does not prove agreement with every rule. Opposing a demand does not mean rejecting every new tool or idea.\n\nImagine a fictional village report: one family helps repair a meeting place while another asks leaders to change a demand. These actions need separate explanations. Ask what happened, who was involved and what choices were possible. A record of an action may leave the reasons uncertain.\n\nOpen all three evidence clues, then choose the explanation they support. You may review the clues or use Explain before answering. We assess the explanation, never your own religion or family identity.",
+        "reviewTopics": [
+          "community-responses"
+        ],
+        "imageUrl": "../assets/story/responses-evidence-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide: Different Ways to Respond. Three labelled evidence clues; not an original historical object.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "An action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Describe what people did before guessing why.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A setting",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask which demand or change people faced.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One action cannot speak for every family.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A village record lists different actions. What should your report do?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Explain each action and the situation it answered",
+          "Give every resident one motive",
+          "Assume all cooperation meant full agreement",
+          "Assume every disagreement meant the same response"
+        ],
+        "decisionCorrectAnswer": "Explain each action and the situation it answered",
+        "decisionExplanation": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "keyTerm": "Response",
+        "keyTermDefinition": "What a person or group does when facing a situation.",
+        "historicalInsight": "One action cannot speak for every family.",
+        "learningHelp": {
+          "explanation": "Explain each action and the situation it answered. One action cannot speak for every family.",
+          "vocabulary": [
+            {
+              "term": "Response",
+              "definition": "What a person or group does when facing a situation."
+            }
+          ],
+          "example": "Describe what people did before guessing why.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://www.nationalmuseum.gov.ph/our-museums/regional-area-and-site-museums/cordillera/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission4-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission4",
+        "status": "active",
+        "order": 2,
+        "title": "Change and Continuity Can Go Together",
+        "content": "Adaptation means adjusting to new conditions. Continuity means that something carries on. People may learn a new skill while keeping another practice. We should look for evidence of both change and continuity rather than assume that one new practice replaced a whole culture.\n\nThe earlier lesson considered local makers working on religious art. That example helps us ask how existing skills could be used for a new purpose. A commissioned object tells us about work and use; it does not reveal everything its maker believed. Our fictional comparison card shows a maker using a familiar carving skill for a new commission. It is a teaching model, not a surviving workshop record.\n\nOpen all three evidence clues, then choose the explanation they support. You may review the clues or use Explain before answering. We assess the explanation, never your own religion or family identity.",
+        "reviewTopics": [
+          "adaptation-continuity"
+        ],
+        "imageUrl": "../assets/story/responses-evidence-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide: Change and Continuity Can Go Together. Three labelled evidence clues; not an original historical object.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Change",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A new purpose may change how a skill is used.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Continuity",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An existing skill may continue during change.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An object alone cannot reveal every private belief.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A maker uses an existing skill for a new commission. Which idea fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every older skill disappeared",
+          "The object reveals every thought",
+          "All communities made the same choice",
+          "Change in purpose can occur alongside continuity in skill"
+        ],
+        "decisionCorrectAnswer": "Change in purpose can occur alongside continuity in skill",
+        "decisionExplanation": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "keyTerm": "Adaptation",
+        "keyTermDefinition": "Changing a way of doing something in response to new conditions.",
+        "historicalInsight": "An object alone cannot reveal every private belief.",
+        "learningHelp": {
+          "explanation": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "vocabulary": [
+            {
+              "term": "Adaptation",
+              "definition": "Changing a way of doing something in response to new conditions."
+            }
+          ],
+          "example": "A new purpose may change how a skill is used.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://www.nationalmuseum.gov.ph/our-museums/regional-area-and-site-museums/cordillera/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission4-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission4",
+        "status": "active",
+        "order": 3,
+        "title": "A Named Case: Tamblot in Bohol",
+        "content": "The NCCA CulturEd account describes Tamblot as a babaylan who led an uprising in Bohol in 1621. A babaylan was a spiritual leader in the setting discussed. This case shows that religious change could meet organized opposition. Name the place and period: it is not evidence that all communities reacted in the same way.\n\nThe account also reminds us that little is known about much of Tamblots life. Keep a distinction between a documented historical account and details we do not know. We do not need to invent private conversations, make claims about supernatural events, or reenact conflict to learn from this example. Fighting affected people and communities; this learning game awards understanding, not harm.\n\nOpen all three evidence clues, then choose the explanation they support. You may review the clues or use Explain before answering. We assess the explanation, never your own religion or family identity.",
+        "reviewTopics": [
+          "tamblot-bohol"
+        ],
+        "imageUrl": "../assets/story/responses-evidence-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide: A Named Case: Tamblot in Bohol. Three labelled evidence clues; not an original historical object.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Place",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "This example concerns Bohol.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Time",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The account dates the beginning of the uprising to 1621.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A named case cannot describe every community.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the Tamblot example support?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "All details of Tamblots life are known",
+          "Violence earns more learning points",
+          "Some people in Bohol organized opposition in 1621",
+          "Every community reacted identically"
+        ],
+        "decisionCorrectAnswer": "Some people in Bohol organized opposition in 1621",
+        "decisionExplanation": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "keyTerm": "Resistance",
+        "keyTermDefinition": "Action that opposes a demand or authority.",
+        "historicalInsight": "A named case cannot describe every community.",
+        "learningHelp": {
+          "explanation": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "vocabulary": [
+            {
+              "term": "Resistance",
+              "definition": "Action that opposes a demand or authority."
+            }
+          ],
+          "example": "This example concerns Bohol.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://www.nationalmuseum.gov.ph/our-museums/regional-area-and-site-museums/cordillera/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission4-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission4",
+        "status": "active",
+        "order": 4,
+        "title": "Living Traditions Need Dated Evidence",
+        "content": "The National Museum Cordillera describes textiles from different groups and recognizes people who keep weaving knowledge alive. Its exhibition includes traditional and contemporary work. This is a useful reminder that Indigenous communities have living histories. They are not people frozen in one time or one shared way of life.\n\nA museum textile can help us ask about a maker, material and date. It cannot automatically prove that every detail existed unchanged during Spanish rule. This mission uses a modern teaching diagram rather than copying a sacred object or claiming to reproduce an authentic pattern. Compare what a source actually dates with the claim you want to make. Continuing knowledge and new materials can belong to the same living tradition.\n\nOpen all three evidence clues, then choose the explanation they support. You may review the clues or use Explain before answering. We assess the explanation, never your own religion or family identity.",
+        "reviewTopics": [
+          "living-heritage-limits"
+        ],
+        "imageUrl": "../assets/story/responses-evidence-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide: Living Traditions Need Dated Evidence. Three labelled evidence clues; not an original historical object.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Living knowledge",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "People pass on knowledge and can also make changes.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Dates matter",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask when an object was made or collected.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Respect difference",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Different groups should not be treated as one identical culture.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A modern textile is shown beside a colonial-history claim. What must you check?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Whether a modern image proves every earlier practice",
+          "Whether dated evidence supports the claim about the earlier period",
+          "Whether every feature must be centuries old",
+          "Whether all groups use one design"
+        ],
+        "decisionCorrectAnswer": "Whether dated evidence supports the claim about the earlier period",
+        "decisionExplanation": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "keyTerm": "Heritage",
+        "keyTermDefinition": "Things and knowledge people receive, care for and pass on.",
+        "historicalInsight": "Different groups should not be treated as one identical culture.",
+        "learningHelp": {
+          "explanation": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "vocabulary": [
+            {
+              "term": "Heritage",
+              "definition": "Things and knowledge people receive, care for and pass on."
+            }
+          ],
+          "example": "People pass on knowledge and can also make changes.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://www.nationalmuseum.gov.ph/our-museums/regional-area-and-site-museums/cordillera/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission4-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission4",
+        "status": "active",
+        "order": 5,
+        "title": "Build an Explanation with Evidence",
+        "content": "A strong explanation connects a response with evidence and a limit. Try three steps: name the action, give a clue that supports it, and say what the clue does not tell you. Different sources can answer different questions. A dated account may describe an event; an object may help explain work or use. Neither automatically supplies every persons reasons.\n\nIn this fictional investigation, one card records work on a new commission and another describes opposition to a demand. You can explain two different actions. You cannot combine them into a claim that all residents agreed, or that every person resisted. Ask whether the source identifies the same people, place and time. If it does not, keep the cases separate. Saying we need more evidence is a useful finding, not a failure.\n\nOpen all three evidence clues, then choose the explanation they support. You may review the clues or use Explain before answering. We assess the explanation, never your own religion or family identity.",
+        "reviewTopics": [
+          "response-evidence"
+        ],
+        "imageUrl": "../assets/story/responses-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide: Build an Explanation with Evidence. Three labelled evidence clues; not an original historical object.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Claim",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "State the action you are explaining.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Support",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Point to a clue that fits that action.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Say what still needs evidence.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Two cards concern different places and actions. What should a report do?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Explain each case with its own support and limits",
+          "Merge them into one universal motive",
+          "Ignore the dates and places",
+          "Invent a conversation linking them"
+        ],
+        "decisionCorrectAnswer": "Explain each case with its own support and limits",
+        "decisionExplanation": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "keyTerm": "Evidence",
+        "keyTermDefinition": "Information that helps support or check a claim.",
+        "historicalInsight": "Say what still needs evidence.",
+        "learningHelp": {
+          "explanation": "Explain each case with its own support and limits. Say what still needs evidence.",
+          "vocabulary": [
+            {
+              "term": "Evidence",
+              "definition": "Information that helps support or check a claim."
+            }
+          ],
+          "example": "State the action you are explaining.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://www.nationalmuseum.gov.ph/our-museums/regional-area-and-site-museums/cordillera/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission4-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission4",
+        "status": "active",
+        "order": 6,
+        "title": "Complete Your Community Response Report",
+        "content": "You have investigated different responses to colonial change. Review five ideas: people could respond differently; change and continuity could go together; Tamblots case belongs to a named place and period; living heritage needs dated evidence; and explanations need support and limits.\n\nImagine you are preparing a report for another Grade 5 learner. Choose one case and describe the action. Add a supporting clue, then say what you still cannot know. Do not invent private thoughts or treat one community as all communities. You do not need to disclose a belief or act out a conflict.\n\nThe main quiz checks five topics. Pass with at least three correct to finish this mission and receive its reward once. If you need help, review the linked lesson before targeted practice and a retry. Completing this mission does not complete the chapter while its final challenge is still being prepared.",
+        "reviewTopics": [
+          "community-responses",
+          "adaptation-continuity",
+          "tamblot-bohol",
+          "living-heritage-limits",
+          "response-evidence"
+        ],
+        "imageUrl": "../assets/story/responses-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide: Build an Explanation with Evidence. Three labelled evidence clues; not an original historical object.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Claim",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "State the action you are explaining.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Support",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Point to a clue that fits that action.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Say what still needs evidence.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which final report best uses this mission?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Give every community the same motive",
+          "Present a modern object as proof of every earlier detail",
+          "Earn points by acting out harm",
+          "Name a response, connect it to evidence and state a limit"
+        ],
+        "decisionCorrectAnswer": "Name a response, connect it to evidence and state a limit",
+        "decisionExplanation": "Name the response, support it with evidence and say what remains uncertain.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Name the response, support it with evidence and say what remains uncertain.",
+        "keyTerm": "Evidence",
+        "keyTermDefinition": "Information that helps support or check a claim.",
+        "historicalInsight": "Say what still needs evidence.",
+        "learningHelp": {
+          "explanation": "Name the response, support it with evidence and say what remains uncertain.",
+          "vocabulary": [
+            {
+              "term": "Evidence",
+              "definition": "Information that helps support or check a claim."
+            }
+          ],
+          "example": "State the action you are explaining.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://www.nationalmuseum.gov.ph/our-museums/regional-area-and-site-museums/cordillera/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz4-question1",
+      "create": true,
+      "fields": {
+        "question": "What is a community response?",
+        "optionA": "An action taken when facing a situation",
+        "optionB": "A belief shared by everyone",
+        "optionC": "A promise that nobody changes",
+        "optionD": "A label that explains every motive",
+        "correctAnswer": "A",
+        "explanation": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "learningPoint": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "historicalClue": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "answerExplanations": {
+          "A": "Explain each action and the situation it answered. One action cannot speak for every family.",
+          "B": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family.",
+          "C": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family.",
+          "D": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family."
+        },
+        "quizId": "chapter8-quiz4",
+        "order": 1,
+        "status": "active",
+        "topic": "community-responses",
+        "topicLabel": "Different Ways to Respond",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz4-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Two families act differently under a new demand. What is the best next step?",
+        "optionA": "Choose one family to represent everyone",
+        "optionB": "Ignore the demand they faced",
+        "optionC": "Treat both actions as identical",
+        "optionD": "Check each action and the conditions around it",
+        "correctAnswer": "D",
+        "explanation": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "learningPoint": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "historicalClue": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family.",
+          "B": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family.",
+          "C": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family.",
+          "D": "Explain each action and the situation it answered. One action cannot speak for every family."
+        },
+        "quizId": "chapter8-quiz4",
+        "order": 101,
+        "status": "active",
+        "topic": "community-responses",
+        "topicLabel": "Different Ways to Respond",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission4-community-responses-practice1",
+      "create": true,
+      "fields": {
+        "question": "A village record lists different actions. What should your report do?",
+        "optionA": "Give every resident one motive",
+        "optionB": "Assume all cooperation meant full agreement",
+        "optionC": "Assume every disagreement meant the same response",
+        "optionD": "Explain each action and the situation it answered",
+        "correctAnswer": "D",
+        "explanation": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "learningPoint": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "historicalClue": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family.",
+          "B": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family.",
+          "C": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family.",
+          "D": "Explain each action and the situation it answered. One action cannot speak for every family."
+        },
+        "missionId": "chapter8-mission4",
+        "topic": "community-responses",
+        "topicLabel": "Different Ways to Respond",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "What a person or group does when facing a situation.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission4-community-responses-practice2",
+      "create": true,
+      "fields": {
+        "question": "A repair record proves work occurred but gives no reason. Which caption fits?",
+        "optionA": "No worker had any choice at all",
+        "optionB": "The record reveals every private belief",
+        "optionC": "The work is recorded; the workers motives need further evidence",
+        "optionD": "All workers accepted every colonial rule",
+        "correctAnswer": "C",
+        "explanation": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "learningPoint": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "historicalClue": "Explain each action and the situation it answered. One action cannot speak for every family.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family.",
+          "B": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family.",
+          "C": "Explain each action and the situation it answered. One action cannot speak for every family.",
+          "D": "Review the lesson clues. Explain each action and the situation it answered. One action cannot speak for every family."
+        },
+        "missionId": "chapter8-mission4",
+        "topic": "community-responses",
+        "topicLabel": "Different Ways to Respond",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "What a person or group does when facing a situation.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz4-question2",
+      "create": true,
+      "fields": {
+        "question": "What does continuity mean in this lesson?",
+        "optionA": "Nothing can ever change",
+        "optionB": "Every practice has one origin",
+        "optionC": "Every person agrees",
+        "optionD": "Something carries on even when other things change",
+        "correctAnswer": "D",
+        "explanation": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "learningPoint": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "historicalClue": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "B": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "C": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "D": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief."
+        },
+        "quizId": "chapter8-quiz4",
+        "order": 2,
+        "status": "active",
+        "topic": "adaptation-continuity",
+        "topicLabel": "Change and Continuity Can Go Together",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz4-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a makers skill with the purpose of a commission?",
+        "optionA": "To rank communities by worth",
+        "optionB": "To discover all private thoughts",
+        "optionC": "To notice what continued and what changed",
+        "optionD": "To prove every belief was replaced",
+        "correctAnswer": "C",
+        "explanation": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "learningPoint": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "historicalClue": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "B": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "C": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "D": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief."
+        },
+        "quizId": "chapter8-quiz4",
+        "order": 102,
+        "status": "active",
+        "topic": "adaptation-continuity",
+        "topicLabel": "Change and Continuity Can Go Together",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission4-adaptation-continuity-practice1",
+      "create": true,
+      "fields": {
+        "question": "A maker uses an existing skill for a new commission. Which idea fits?",
+        "optionA": "The object reveals every thought",
+        "optionB": "All communities made the same choice",
+        "optionC": "Change in purpose can occur alongside continuity in skill",
+        "optionD": "Every older skill disappeared",
+        "correctAnswer": "C",
+        "explanation": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "learningPoint": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "historicalClue": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "B": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "C": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "D": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief."
+        },
+        "missionId": "chapter8-mission4",
+        "topic": "adaptation-continuity",
+        "topicLabel": "Change and Continuity Can Go Together",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Changing a way of doing something in response to new conditions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission4-adaptation-continuity-practice2",
+      "create": true,
+      "fields": {
+        "question": "A fictional workshop card shows an old skill used for a new purpose. What can you explain?",
+        "optionA": "The teaching card is an original colonial object",
+        "optionB": "The card models adaptation but cannot prove every makers beliefs",
+        "optionC": "All beliefs changed in exactly the same way",
+        "optionD": "No skill continued",
+        "correctAnswer": "B",
+        "explanation": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "learningPoint": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "historicalClue": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "B": "Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "C": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief.",
+          "D": "Review the lesson clues. Change in purpose can occur alongside continuity in skill. An object alone cannot reveal every private belief."
+        },
+        "missionId": "chapter8-mission4",
+        "topic": "adaptation-continuity",
+        "topicLabel": "Change and Continuity Can Go Together",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Changing a way of doing something in response to new conditions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz4-question3",
+      "create": true,
+      "fields": {
+        "question": "Where does this lesson place Tamblots uprising?",
+        "optionA": "Every town at the same moment",
+        "optionB": "No place is identified",
+        "optionC": "Bohol",
+        "optionD": "A fictional island with no location",
+        "correctAnswer": "C",
+        "explanation": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "learningPoint": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "historicalClue": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "B": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "C": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "D": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community."
+        },
+        "quizId": "chapter8-quiz4",
+        "order": 3,
+        "status": "active",
+        "topic": "tamblot-bohol",
+        "topicLabel": "A Named Case: Tamblot in Bohol",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz4-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why name Bohol and 1621 when discussing Tamblot?",
+        "optionA": "They make other evidence unnecessary",
+        "optionB": "They keep the explanation tied to a particular case",
+        "optionC": "They prove all communities shared one response",
+        "optionD": "They reveal every private conversation",
+        "correctAnswer": "B",
+        "explanation": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "learningPoint": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "historicalClue": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "B": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "C": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "D": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community."
+        },
+        "quizId": "chapter8-quiz4",
+        "order": 103,
+        "status": "active",
+        "topic": "tamblot-bohol",
+        "topicLabel": "A Named Case: Tamblot in Bohol",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission4-tamblot-bohol-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the Tamblot example support?",
+        "optionA": "Violence earns more learning points",
+        "optionB": "Some people in Bohol organized opposition in 1621",
+        "optionC": "Every community reacted identically",
+        "optionD": "All details of Tamblots life are known",
+        "correctAnswer": "B",
+        "explanation": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "learningPoint": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "historicalClue": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "B": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "C": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "D": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community."
+        },
+        "missionId": "chapter8-mission4",
+        "topic": "tamblot-bohol",
+        "topicLabel": "A Named Case: Tamblot in Bohol",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Action that opposes a demand or authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission4-tamblot-bohol-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption says Tamblots case proves everyone opposed every change. How should it be revised?",
+        "optionA": "Describe the named opposition and leave wider claims for more evidence",
+        "optionB": "Keep the claim because one case proves all",
+        "optionC": "Remove the location and date",
+        "optionD": "Invent speeches to fill the gaps",
+        "correctAnswer": "A",
+        "explanation": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "learningPoint": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "historicalClue": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+        "answerExplanations": {
+          "A": "Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "B": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "C": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community.",
+          "D": "Review the lesson clues. Some people in Bohol organized opposition in 1621. A named case cannot describe every community."
+        },
+        "missionId": "chapter8-mission4",
+        "topic": "tamblot-bohol",
+        "topicLabel": "A Named Case: Tamblot in Bohol",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Action that opposes a demand or authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz4-question4",
+      "create": true,
+      "fields": {
+        "question": "Why ask when a heritage object was made?",
+        "optionA": "Dates never affect historical claims",
+        "optionB": "Its date limits what it directly shows about the past",
+        "optionC": "All objects belong to one period",
+        "optionD": "The oldest-looking object explains everyone",
+        "correctAnswer": "B",
+        "explanation": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "learningPoint": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "historicalClue": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "B": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "C": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "D": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture."
+        },
+        "quizId": "chapter8-quiz4",
+        "order": 4,
+        "status": "active",
+        "topic": "living-heritage-limits",
+        "topicLabel": "Living Traditions Need Dated Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz4-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "What does a living tradition allow us to consider?",
+        "optionA": "Knowledge can continue while materials or uses change",
+        "optionB": "People never change anything",
+        "optionC": "Every group has the same history",
+        "optionD": "Modern objects prove all colonial details",
+        "correctAnswer": "A",
+        "explanation": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "learningPoint": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "historicalClue": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "answerExplanations": {
+          "A": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "B": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "C": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "D": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture."
+        },
+        "quizId": "chapter8-quiz4",
+        "order": 104,
+        "status": "active",
+        "topic": "living-heritage-limits",
+        "topicLabel": "Living Traditions Need Dated Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission4-living-heritage-limits-practice1",
+      "create": true,
+      "fields": {
+        "question": "A modern textile is shown beside a colonial-history claim. What must you check?",
+        "optionA": "Whether dated evidence supports the claim about the earlier period",
+        "optionB": "Whether every feature must be centuries old",
+        "optionC": "Whether all groups use one design",
+        "optionD": "Whether a modern image proves every earlier practice",
+        "correctAnswer": "A",
+        "explanation": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "learningPoint": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "historicalClue": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "answerExplanations": {
+          "A": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "B": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "C": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "D": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture."
+        },
+        "missionId": "chapter8-mission4",
+        "topic": "living-heritage-limits",
+        "topicLabel": "Living Traditions Need Dated Evidence",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Things and knowledge people receive, care for and pass on.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission4-living-heritage-limits-practice2",
+      "create": true,
+      "fields": {
+        "question": "An exhibition includes old and contemporary work. Which conclusion is supported?",
+        "optionA": "All designs existed unchanged in 1621",
+        "optionB": "Contemporary work has no heritage value",
+        "optionC": "One object represents every Indigenous group",
+        "optionD": "Compare the works dates before making a claim about continuity",
+        "correctAnswer": "D",
+        "explanation": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "learningPoint": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "historicalClue": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "B": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "C": "Review the lesson clues. Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture.",
+          "D": "Whether dated evidence supports the claim about the earlier period. Different groups should not be treated as one identical culture."
+        },
+        "missionId": "chapter8-mission4",
+        "topic": "living-heritage-limits",
+        "topicLabel": "Living Traditions Need Dated Evidence",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Things and knowledge people receive, care for and pass on.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz4-question5",
+      "create": true,
+      "fields": {
+        "question": "Which report structure is strongest?",
+        "optionA": "Action, supporting clue and limit",
+        "optionB": "Guess, bigger guess and reward",
+        "optionC": "One label for all people",
+        "optionD": "A conclusion with no support",
+        "correctAnswer": "A",
+        "explanation": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "learningPoint": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "historicalClue": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "answerExplanations": {
+          "A": "Explain each case with its own support and limits. Say what still needs evidence.",
+          "B": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence.",
+          "C": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence.",
+          "D": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence."
+        },
+        "quizId": "chapter8-quiz4",
+        "order": 5,
+        "status": "active",
+        "topic": "response-evidence",
+        "topicLabel": "Build an Explanation with Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz4-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "A source does not record a persons reason. What should you write?",
+        "optionA": "The reason must match my guess",
+        "optionB": "Every missing detail means agreement",
+        "optionC": "The source is useless for every question",
+        "optionD": "The action is recorded but the reason needs more evidence",
+        "correctAnswer": "D",
+        "explanation": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "learningPoint": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "historicalClue": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence.",
+          "B": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence.",
+          "C": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence.",
+          "D": "Explain each case with its own support and limits. Say what still needs evidence."
+        },
+        "quizId": "chapter8-quiz4",
+        "order": 105,
+        "status": "active",
+        "topic": "response-evidence",
+        "topicLabel": "Build an Explanation with Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission4-response-evidence-practice1",
+      "create": true,
+      "fields": {
+        "question": "Two cards concern different places and actions. What should a report do?",
+        "optionA": "Merge them into one universal motive",
+        "optionB": "Ignore the dates and places",
+        "optionC": "Invent a conversation linking them",
+        "optionD": "Explain each case with its own support and limits",
+        "correctAnswer": "D",
+        "explanation": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "learningPoint": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "historicalClue": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence.",
+          "B": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence.",
+          "C": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence.",
+          "D": "Explain each case with its own support and limits. Say what still needs evidence."
+        },
+        "missionId": "chapter8-mission4",
+        "topic": "response-evidence",
+        "topicLabel": "Build an Explanation with Evidence",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Information that helps support or check a claim.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission4-response-evidence-practice2",
+      "create": true,
+      "fields": {
+        "question": "One object and one event account concern different dates. What is a careful comparison?",
+        "optionA": "Use the object to invent a speech",
+        "optionB": "Erase the dates to simplify the claim",
+        "optionC": "Explain what each supports without assuming identical motives",
+        "optionD": "Treat them as the same event",
+        "correctAnswer": "C",
+        "explanation": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "learningPoint": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "historicalClue": "Explain each case with its own support and limits. Say what still needs evidence.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence.",
+          "B": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence.",
+          "C": "Explain each case with its own support and limits. Say what still needs evidence.",
+          "D": "Review the lesson clues. Explain each case with its own support and limits. Say what still needs evidence."
+        },
+        "missionId": "chapter8-mission4",
+        "topic": "response-evidence",
+        "topicLabel": "Build an Explanation with Evidence",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Information that helps support or check a claim.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter8-mission4-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission4",
+        "name": "Community Response Evidence Journal",
+        "description": "A learning-game token for comparing community practices and dated material evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 4,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Compare responses, continuity and resistance with dated evidence.",
+          "reflectionQuestion": "Which clue helped you avoid projecting a modern feature unchanged into the past?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-8",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-3 cover missionaries, patronage and changes in community life. Mission 4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Four missions cover missionary history, religious authority, community changes and Indigenous responses. The chapter challenge is being prepared."
+      }
+    },
+    {
+      "path": "eras/spanish-exploration-colonial-rule",
+      "create": false,
+      "expected": {
+        "description": "Chapters 5-7 offer four missions and an evidence challenge each. Chapter 8 offers Missions 1-3 on missionary history, patronage and community changes; later content is being prepared."
+      },
+      "fields": {
+        "description": "Chapters 5-7 offer four missions and an evidence challenge each. Chapter 8 offers four missions on missionary history, religious authority, community changes and Indigenous responses; its challenge is being prepared."
+      }
+    }
+  ]
+}

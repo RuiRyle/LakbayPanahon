@@ -22,7 +22,10 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
-    signOut
+    signOut,
+    setPersistence,
+    browserLocalPersistence,
+    browserSessionPersistence
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
 
@@ -34,9 +37,21 @@ import {
     doc,
     setDoc,
     getDoc,
+    getDocFromServer,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
+// Apply the student's device choice before authentication, rather than silently
+// keeping Firebase's durable default on a shared computer.
+async function prepareAuthPersistence(remember = false) {
+    try {
+        await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);
+    } catch {
+        throw Object.assign(new Error("Unable to apply sign-in persistence."), {
+            code: "auth/session-persistence-unavailable"
+        });
+    }
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -108,6 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (studentForm) {
+        let registrationBusy=false, registrationComplete=false;
+        let createdStudent=null;
 
         console.log(
             "Student registration form detected."
@@ -119,6 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
             async (event) => {
 
                 event.preventDefault();
+                if (registrationBusy || registrationComplete) return;
+                if (!studentForm.reportValidity()) return;
 
 
                 // --------------------------
@@ -205,6 +224,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
+                if ([firstName,middleName,lastName].some(name=>name.length>100)) {
+                    showMessage(message,"Names must be 100 characters or fewer.","error");return;
+                }
+                if (!document.getElementById("studentTerms").checked) {
+                    showMessage(message,"Please read the test-version account notice and check the box to continue.","error");return;
+                }
+                if (createdStudent && createdStudent.email?.toLowerCase()!==email.toLowerCase()) {
+                    showMessage(message,"Finish saving the account you just created before changing the email.","error");return;
+                }
                 if (password.length < 6) {
 
                     showMessage(
@@ -233,6 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // START REGISTRATION
                 // ==================================
 
+                registrationBusy=true;
                 setButtonLoading(
                     submitButton,
                     true,
@@ -247,54 +276,31 @@ document.addEventListener("DOMContentLoaded", () => {
                     // CREATE FIREBASE AUTH ACCOUNT
                     // ==================================
 
-                    const userCredential =
-                        await createUserWithEmailAndPassword(
-                            auth,
-                            email,
-                            password
-                        );
-
-
-                    const user =
-                        userCredential.user;
-
-
-                    console.log(
-                        "Student Authentication account created:",
-                        user.uid
-                    );
-
-
-                    // ==================================
-                    // CREATE FIRESTORE PROFILE
-                    // ==================================
-
-                    await setDoc(
-                        doc(
-                            db,
-                            "users",
-                            user.uid
-                        ),
-                        {
-
-                            firstName: firstName,
-
-                            middleName: middleName,
-
-                            lastName: lastName,
-
-                            email: email,
-
-                            role: "student",
-
-                            status: "active",
-
-                            createdAt:
-                                serverTimestamp()
-
+                    await prepareAuthPersistence();
+                    let user=createdStudent;
+                    if (!user && auth.currentUser?.email?.toLowerCase()===email.toLowerCase()) user=auth.currentUser;
+                    if (!user) user=(await createUserWithEmailAndPassword(auth,email,password)).user;
+                    createdStudent=user;
+                    if (auth.currentUser?.uid!==user.uid) throw new Error("Sign in again before finishing your profile.");
+                    const profileRef=doc(db,"users",user.uid);
+                    const existing=await getDocFromServer(profileRef);
+                    if (existing.exists()) {
+                        const profile=existing.data();
+                        if (profile.role!=="student" || profile.status!=="active" || profile.email?.toLowerCase()!==email.toLowerCase()) {
+                            throw new Error("This account cannot be registered as a student.");
                         }
-                    );
-
+                    } else {
+                        try {
+                            await setDoc(profileRef,{firstName,middleName,lastName,email:user.email || email,role:"student",status:"active",createdAt:serverTimestamp()});
+                        } catch (error) {
+                            // A lost acknowledgement must not recreate or overwrite an accepted profile.
+                            const saved=await getDocFromServer(profileRef).catch(()=>null);
+                            if (!saved?.exists() || saved.data().role!=="student" || saved.data().status!=="active") throw error;
+                        }
+                    }
+                    registrationComplete=true;
+                    const continueLink=document.getElementById("studentRegistrationContinue");
+                    if (continueLink) continueLink.hidden=false;
 
                     console.log(
                         "Student Firestore profile created."
@@ -326,14 +332,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     showMessage(
                         message,
-                        getRegistrationErrorMessage(
-                            error.code
-                        ),
+                        error.code === "auth/session-persistence-unavailable" ? getRegistrationErrorMessage(error.code) : createdStudent ? "Your sign-in account is ready, but the profile could not be confirmed. Retry Create Student Account to finish, or sign in again if your session expired." : getRegistrationErrorMessage(error.code),
                         "error"
                     );
 
 
                 } finally {
+                    registrationBusy=false;
 
 
                     setButtonLoading(
@@ -341,6 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         false,
                         "Create Student Account"
                     );
+                    submitButton.disabled=registrationComplete;
 
 
                 }
@@ -517,6 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     // CREATE FIREBASE AUTH ACCOUNT
                     // ==================================
 
+                    await prepareAuthPersistence();
                     const userCredential =
                         await createUserWithEmailAndPassword(
                             auth,
@@ -633,6 +640,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (loginForm) {
+        let loginBusy = false;
 
         console.log(
             "Login form detected."
@@ -644,6 +652,7 @@ document.addEventListener("DOMContentLoaded", () => {
             async (event) => {
 
                 event.preventDefault();
+                if (loginBusy) return;
 
 
                 // --------------------------
@@ -703,6 +712,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // START LOGIN
                 // ==================================
 
+                loginBusy = true;
                 setButtonLoading(
                     submitButton,
                     true,
@@ -717,6 +727,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     // FIREBASE AUTHENTICATION
                     // ==================================
 
+                    await prepareAuthPersistence(document.getElementById("rememberMe")?.checked === true);
                     const userCredential =
                         await signInWithEmailAndPassword(
                             auth,
@@ -829,7 +840,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                         window.location.href =
-                            "student-dashboard.html";
+                            window.self === window.top ? "student-shell.html" : "student-dashboard.html";
 
 
                         return;
@@ -939,6 +950,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 } finally {
+                    loginBusy = false;
 
 
                     setButtonLoading(
@@ -1397,6 +1409,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         switch (errorCode) {
 
+            case "auth/session-persistence-unavailable":
+                return "Your browser could not set up a sign-in session. Check its privacy settings, then try again.";
+
 
             case "auth/email-already-in-use":
 
@@ -1444,6 +1459,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         switch (errorCode) {
+
+            case "auth/session-persistence-unavailable":
+                return "Your browser could not apply your sign-in choice. Check its privacy settings, then try again.";
 
 
             case "auth/invalid-email":

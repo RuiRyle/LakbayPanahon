@@ -1,0 +1,17 @@
+# Chapter 4 Mission 1 — writing examples and source reading
+
+Published to original Firestore on 27 October 2026. Four existing documents changed: scenes 2, 3 and 5 and mission teaching metadata. The communication and living-script scenes, scene order, assessment banks, rewards and student completions remain unchanged.
+
+The Baybayin scene works through the character KA, U+1703, read **ka** in the supplied basic example. It distinguishes a syllable from an English letter, script from language, and modern typesetting from an ancient artifact. It does not teach a complete orthography, compose an invented ancient sentence or claim one sign can translate every inscription.
+
+The copperplate comparison identifies Kawi-related writing and the date read as 900 CE, without implying one script or universal literacy across the archipelago. The source-reading task asks students to check object history, script identification and the basis for a translation. The recap maps all five topics and connects to the next making/technology mission. Three observation cards, applied decisions and authored help accompany every revised scene.
+
+Two complete SVGs in `assets/story/` supply the modern sign and a source comparison. The sign uses the character as text with system-font fallbacks; its romanized reading and accessible description remain available if a glyph font is missing. Its rendering was visually checked in local Chrome. No Unicode chart artwork or font files were copied into the project. The comparison does not reproduce or translate the original copperplate.
+
+Sources: [National Museum writing gallery](https://www.nationalmuseum.gov.ph/2022/10/21/baybayin-ancient-and-traditional-scripts-of-the-philippines-gallery/), [Unicode Tagalog character identification](https://www.unicode.org/charts/PDF/U1700.pdf), and [National Museum discussion of the copperplate](https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/). Typeset forms are illustrative rather than prescriptions for every historical handwriting style. Teacher/script-specialist review and Grade 5 comprehension remain pending.
+
+Authoring input: `data/writing-learning-pilot.json`. Builder: `functions/build-writing-learning.cjs`. Migration: `functions/apply-writing-learning.cjs`, dry-run by default, with backed-up atomic `--apply` and field readback. Runtime teaching and image references remain in Firestore. Include SVG assets with normal website deployment; Hosting was not deployed. Content-version checks can restart unfinished lessons; completed rewards were not migrated.
+
+133 local non-emulator unit tests passed. Chrome loaded the illustrations and completed all three revised scenes, decisions and authored help with recovery checks. The sign preview is `docs/validation/writing-ka-preview.png`. Firestore readback verified all four documents. A full authenticated walkthrough of this revised mission, teacher/current-curriculum alignment and Grade 5 learning validation remain pending.
+
+Subsequent authenticated full-Chapter 4 acceptance passed on 28 October 2026 (Asia/Manila): all 20 scenes, four quizzes, fail/review/practice/fresh retry, journal, four artifacts, 100% challenge, badge, correct available-content continuation, refresh and replay protection. Both temporary runs were cleaned. See validation/chapter4-revised-live-2026-10-28.md. Teacher and Grade 5 learning review remain pending.

@@ -1,0 +1,1309 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 2 Chapter 7 Mission 4 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://ncca.gov.ph/wp-content/uploads/2021/09/PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf",
+    "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-cultural-heritagesch/historical-research/ethnic-history-cordillera/",
+    "https://erecciones.nationalarchives.gov.ph/oprequest"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-6",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-6",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/colonial-history-investigator",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter6-mission1",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter6-mission2",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter6-mission3",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter6-mission4",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter7-mission1",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter7-mission2",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter7-mission3",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 3
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter7-mission4",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-7",
+        "title": "Reduccion and the Reorganization of Settlements",
+        "order": 4,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Compare settlement policy and proposed layouts with actual residence, daily effects and local responses.",
+        "learningObjective": "Explain settlement reorganization by distinguishing aims, plans, implementation, household effects and evidence limits.",
+        "learningObjectives": [
+          "Explain meaning of reduccion using lesson evidence.",
+          "Explain aims and effects using lesson evidence.",
+          "Explain plans and practice using lesson evidence.",
+          "Explain daily life using lesson evidence.",
+          "Explain local responses using lesson evidence."
+        ],
+        "lessonRecap": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "sourceUrls": [
+          "https://ncca.gov.ph/wp-content/uploads/2021/09/PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-cultural-heritagesch/historical-research/ethnic-history-cordillera/",
+          "https://erecciones.nationalarchives.gov.ph/oprequest"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter7-quiz4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission4",
+        "title": "Settlement Reorganization - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 4,
+        "questionBlueprint": [
+          {
+            "topic": "reduccion-meaning",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "reduccion-aims",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "reduccion-layout",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "reduccion-daily-life",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "reduccion-responses",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission4-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission4",
+        "status": "active",
+        "order": 1,
+        "title": "What Did Reduccion Change?",
+        "content": "Reduccion was a colonial policy of gathering or relocating people into more concentrated settlements. The word could also refer to the settlement itself. A pueblo is a town. This lesson investigates reorganization, not a claim that communities first appeared when a town was established.\n\nPeople already had homes, work, relationships and knowledge of their surroundings. An official plan to gather them changed the relationship between settlement and colonial institutions. A planned move does not show that everyone moved, agreed or had the same experience.\n\nTry a fictional record check. One card orders a group to move nearer a center. Another shows a proposed settlement. These support a plan, not every family's actual location afterward. Seek separate evidence of implementation and effects.\n\nThe diagram is a teaching model, not a reconstruction of a particular town. Do not read its houses as a count of real residents or its lines as exact historical routes.",
+        "reviewTopics": [
+          "reduccion-meaning"
+        ],
+        "imageUrl": "../assets/story/reduccion-layout-model.svg",
+        "imageFit": "contain",
+        "imageAlt": "A conceptual teaching guide for What Did Reduccion Change?. It does not establish a real town layout, household count, travel time or every community's experience.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A settlement policy",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Reduccion involved gathering or relocating people into more concentrated settlements.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Earlier communities",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "People and their histories existed before the colonial settlement plan.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Plan versus result",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An instruction or proposed layout does not establish everyone's actual movement or consent.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation keeps the policy separate from its result?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A plan to concentrate settlement needs further evidence of actual moves and local responses",
+          "A planned town proves everyone moved willingly",
+          "People had no communities before the policy",
+          "A diagram gives the exact number of all historical residents"
+        ],
+        "decisionCorrectAnswer": "A plan to concentrate settlement needs further evidence of actual moves and local responses",
+        "decisionExplanation": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "keyTerm": "Reduccion",
+        "keyTermDefinition": "A colonial policy of concentrating or relocating people into settlements; also a name used for those settlements.",
+        "historicalInsight": "An instruction or proposed layout does not establish everyone's actual movement or consent.",
+        "learningHelp": {
+          "explanation": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "vocabulary": [
+            {
+              "term": "Reduccion",
+              "definition": "A colonial policy of concentrating or relocating people into settlements; also a name used for those settlements."
+            }
+          ],
+          "example": "Reduccion involved gathering or relocating people into more concentrated settlements.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/wp-content/uploads/2021/09/PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-cultural-heritagesch/historical-research/ethnic-history-cordillera/",
+          "https://erecciones.nationalarchives.gov.ph/oprequest"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission4-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission4",
+        "status": "active",
+        "order": 2,
+        "title": "Why Concentrate a Settlement?",
+        "content": "Colonial officials and missionaries sought settlements that made administration, religious instruction and collection easier to organize. These are aims to investigate, not proof that everyone benefited or that every aim was fulfilled. A religious purpose can be studied historically without requiring students to practise a faith.\n\nNCCA's discussion of Cordillera history connects settlement concentration with conversion and tribute collection in that setting. It is one regional discussion, not a single unchanged rule for all communities. Avoid turning the officials' purposes into everyone's wishes.\n\nWatch how to classify a fictional planning statement: officials want households closer to institutions so contact can be organized. The statement supports an administrative aim. A later claim that every household found life easier needs evidence about those households.\n\nExplain why an authority sought a change while keeping its actual effects and the people's responses separate. Naming an aim does not justify coercion or show that a move was freely chosen.",
+        "reviewTopics": [
+          "reduccion-aims"
+        ],
+        "imageUrl": "../assets/story/reduccion-plan-evidence.svg",
+        "imageFit": "contain",
+        "imageAlt": "A conceptual teaching guide for Why Concentrate a Settlement?. It does not establish a real town layout, household count, travel time or every community's experience.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "An administrative aim",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A concentrated settlement could make contact, instruction or collection easier for authorities to organize.",
+            "icon": "🔎"
+          },
+          {
+            "title": "An aim is not consent",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Officials' reasons do not establish that all affected people shared those reasons.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Check actual effects",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Evidence about households is needed before claiming universal benefit or harm.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An official says a move will simplify collection. What does this establish most directly?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Proof every family wanted to move",
+          "Proof all residents gained equally",
+          "A justification for every use of force",
+          "An administrative aim, not everyone's consent or an achieved benefit"
+        ],
+        "decisionCorrectAnswer": "An administrative aim, not everyone's consent or an achieved benefit",
+        "decisionExplanation": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "keyTerm": "Administrative aim",
+        "keyTermDefinition": "A purpose connected with organizing governing tasks.",
+        "historicalInsight": "Evidence about households is needed before claiming universal benefit or harm.",
+        "learningHelp": {
+          "explanation": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "vocabulary": [
+            {
+              "term": "Administrative aim",
+              "definition": "A purpose connected with organizing governing tasks."
+            }
+          ],
+          "example": "A concentrated settlement could make contact, instruction or collection easier for authorities to organize.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/wp-content/uploads/2021/09/PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-cultural-heritagesch/historical-research/ethnic-history-cordillera/",
+          "https://erecciones.nationalarchives.gov.ph/oprequest"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission4-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission4",
+        "status": "active",
+        "order": 3,
+        "title": "Read a Town Plan Carefully",
+        "content": "A plan can show how a settlement was intended to be arranged. A central open space and nearby institutions can help explain the organizing idea of a town center. But a simplified teaching layout is not a survey of every actual pueblo.\n\nThe NCCA source book presents translated colonial legislation about settlements. A rule or design instruction tells us what an authority prescribed. It is different from a later record of what was built, where people stayed or how spaces were used. Dates matter: a law compiled in one period does not automatically describe every earlier settlement.\n\nIn this fictional map-reading exercise, identify the center, houses and paths. Ask what each symbol represents, then state what is absent: scale, actual travel times and complete household evidence. Do not convert an easy-looking line into proof that every family could reach work conveniently.\n\nTo investigate a named place, compare plans with records of buildings, residence and daily activity. The design alone cannot answer every question.",
+        "reviewTopics": [
+          "reduccion-layout"
+        ],
+        "imageUrl": "../assets/story/reduccion-layout-model.svg",
+        "imageFit": "contain",
+        "imageAlt": "A conceptual teaching guide for Read a Town Plan Carefully. It does not establish a real town layout, household count, travel time or every community's experience.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A proposed arrangement",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A layout can show intended relationships between a center, institutions and residences.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Prescription and practice",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A rule about settlement design is not by itself a record of what was built or occupied.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Diagram limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Our model has no exact scale, household count or actual travel time.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What further evidence is needed after reading a proposed town plan?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "An assumption that every line was built exactly",
+          "A claim that a rule reveals every resident's feeling",
+          "Records of what was built, occupied and used in the particular place",
+          "Only a larger picture of the same proposal"
+        ],
+        "decisionCorrectAnswer": "Records of what was built, occupied and used in the particular place",
+        "decisionExplanation": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "keyTerm": "Prescription",
+        "keyTermDefinition": "A rule or instruction stating what should be done.",
+        "historicalInsight": "Our model has no exact scale, household count or actual travel time.",
+        "learningHelp": {
+          "explanation": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "vocabulary": [
+            {
+              "term": "Prescription",
+              "definition": "A rule or instruction stating what should be done."
+            }
+          ],
+          "example": "A layout can show intended relationships between a center, institutions and residences.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/wp-content/uploads/2021/09/PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-cultural-heritagesch/historical-research/ethnic-history-cordillera/",
+          "https://erecciones.nationalarchives.gov.ph/oprequest"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission4-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission4",
+        "status": "active",
+        "order": 4,
+        "title": "A Move Can Affect Daily Work",
+        "content": "Where people live can affect access to fields, water, fishing, paths and relatives. To investigate a settlement move, ask about daily routines as well as the location of institutions. A change that helps one task may complicate another.\n\nTry a fictional household example. A new residence is nearer an office but farther from the family's usual work site. This illustrates two possible relationships; it is not a recovered family history or evidence that all households faced identical distances. Without a scale or travel record, do not invent minutes or kilometers.\n\nCompare the authority's aim with the household's circumstances. Ask who moved, what resources were available and how work was maintained. Effects need evidence about particular people, place and time. The policy label alone cannot establish whether a family experienced an advantage, a burden or both.\n\nA report should keep missing information visible rather than assign one experience to all people. This activity examines consequences; students do not earn points for displacing households.",
+        "reviewTopics": [
+          "reduccion-daily-life"
+        ],
+        "imageUrl": "../assets/story/reduccion-household-questions.svg",
+        "imageFit": "contain",
+        "imageAlt": "A conceptual teaching guide for A Move Can Affect Daily Work. It does not establish a real town layout, household count, travel time or every community's experience.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Different activities",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A residence connects with work, water, relatives and institutions, not only a town center.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A fictional comparison",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Nearer one place can mean farther from another in a teaching example, not every historical family.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Evidence of effects",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Actual distances, routines and consequences require evidence in the named setting.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A fictional move puts a home nearer an office but farther from work. Which conclusion fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A line on the model proves exact travel minutes",
+          "The example illustrates different possible effects that need local evidence in historical cases",
+          "All historical families had exactly the same journey",
+          "The policy guaranteed universal convenience"
+        ],
+        "decisionCorrectAnswer": "The example illustrates different possible effects that need local evidence in historical cases",
+        "decisionExplanation": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "keyTerm": "Daily routine",
+        "keyTermDefinition": "The recurring activities through which people work and live.",
+        "historicalInsight": "Actual distances, routines and consequences require evidence in the named setting.",
+        "learningHelp": {
+          "explanation": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "vocabulary": [
+            {
+              "term": "Daily routine",
+              "definition": "The recurring activities through which people work and live."
+            }
+          ],
+          "example": "A residence connects with work, water, relatives and institutions, not only a town center.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/wp-content/uploads/2021/09/PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-cultural-heritagesch/historical-research/ethnic-history-cordillera/",
+          "https://erecciones.nationalarchives.gov.ph/oprequest"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission4-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission4",
+        "status": "active",
+        "order": 5,
+        "title": "People Responded to Reorganization",
+        "content": "A settlement policy was not a machine that moved everyone in the same way. People could negotiate, adapt, resist or maintain connections outside a proposed center. What they actually did needs evidence about their setting. Do not assume all communities accepted a plan, or that every response was identical.\n\nTown records and requests preserved by the National Archives can help investigate local changes and participation. A petition asking for a change is evidence of a request, not proof of the decision or that every resident shared it. A colonial official's report may emphasize compliance while other evidence raises questions about actual residence.\n\nUse a fictional source comparison: one record gives an order and another asks to revise it. Identify the plan and the response before judging the outcome. If no reply or later residence evidence is supplied, do not invent it.\n\nThe aim is to explain human choices and the policy's limits, without describing people who maintained other settlement patterns as less worthy or without organization.",
+        "reviewTopics": [
+          "reduccion-responses"
+        ],
+        "imageUrl": "../assets/story/reduccion-plan-evidence.svg",
+        "imageFit": "contain",
+        "imageAlt": "A conceptual teaching guide for People Responded to Reorganization. It does not establish a real town layout, household count, travel time or every community's experience.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A response is an action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Negotiation, adaptation and resistance are possibilities to investigate, not permanent labels for whole peoples.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A request has limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A petition records an attempt to seek change, not necessarily a successful change or universal agreement.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Check later evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Orders and reports should be compared with evidence of actual residence and local activity.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A community petition asks to change a settlement plan, but no decision is shown. What can be said?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The request is recorded; its outcome and actual residence still need evidence",
+          "The petition necessarily succeeded",
+          "Every person willingly followed the original order",
+          "No local participant acted"
+        ],
+        "decisionCorrectAnswer": "The request is recorded; its outcome and actual residence still need evidence",
+        "decisionExplanation": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "keyTerm": "Settlement evidence",
+        "keyTermDefinition": "Records or material traces used to investigate where and how people lived.",
+        "historicalInsight": "Orders and reports should be compared with evidence of actual residence and local activity.",
+        "learningHelp": {
+          "explanation": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "vocabulary": [
+            {
+              "term": "Settlement evidence",
+              "definition": "Records or material traces used to investigate where and how people lived."
+            }
+          ],
+          "example": "Negotiation, adaptation and resistance are possibilities to investigate, not permanent labels for whole peoples.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/wp-content/uploads/2021/09/PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-cultural-heritagesch/historical-research/ethnic-history-cordillera/",
+          "https://erecciones.nationalarchives.gov.ph/oprequest"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission4-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission4",
+        "status": "active",
+        "order": 6,
+        "title": "Your Settlement Change Report",
+        "content": "Explain settlement reorganization by connecting the plan with people. Define reduccion without erasing earlier communities. Identify an authority's aim, then separate it from the proposed layout and the evidence of what actually happened.\n\nAsk how residence connected with work, resources, relatives and institutions. Include local responses without giving every community a single opinion. A proposed map, rule and petition answer different questions; none automatically establishes universal consent or complete implementation.\n\nUse this fictional report frame in your own words: Authorities planned [change] for [stated aim]. Evidence from [place and period] shows [action or response]. To assess daily effects and actual residence, we still need [further evidence]. This is a classroom tool, not an original quotation.\n\nThe five-question quiz checks these ideas. Revisit difficult topics and use targeted practice before retrying. Passing earns the mission reward once. The Chapter 7 challenge is still being prepared; completing the four missions alone does not grant the chapter badge.",
+        "reviewTopics": [
+          "reduccion-meaning",
+          "reduccion-aims",
+          "reduccion-layout",
+          "reduccion-daily-life",
+          "reduccion-responses"
+        ],
+        "imageUrl": "../assets/story/reduccion-household-questions.svg",
+        "imageFit": "contain",
+        "imageAlt": "A report checklist connects policy aims, proposed layout, actual residence, household effects and local responses. Completing the mission is not passing a chapter challenge.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Connect the categories",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Separate policy, intended layout, implementation and effects.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Include households",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask about daily work and local choices, not only institutions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "State the uncertainty",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Do not turn a plan or petition into evidence of everyone's movement and consent.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best explains settlement change?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat every proposed map as a complete record of all moves",
+          "Assume every household had identical effects",
+          "Call every request proof that its outcome succeeded",
+          "Link colonial aims and plans with evidence of actual residence, daily effects and local responses"
+        ],
+        "decisionCorrectAnswer": "Link colonial aims and plans with evidence of actual residence, daily effects and local responses",
+        "decisionExplanation": "A supported explanation compares plans with actual residence and people's actions, while keeping evidence limits clear.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A supported explanation compares plans with actual residence and people's actions, while keeping evidence limits clear.",
+        "keyTerm": "Reorganization",
+        "keyTermDefinition": "Changing how places, activities or institutions are arranged.",
+        "historicalInsight": "Do not turn a plan or petition into evidence of everyone's movement and consent.",
+        "learningHelp": {
+          "explanation": "A supported explanation compares plans with actual residence and people's actions, while keeping evidence limits clear.",
+          "vocabulary": [
+            {
+              "term": "Reorganization",
+              "definition": "Changing how places, activities or institutions are arranged."
+            }
+          ],
+          "example": "Separate policy, intended layout, implementation and effects.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/wp-content/uploads/2021/09/PHILIPPINE-HISTORY-SOURCE-BOOK-FINAL-SEP022021.pdf",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-cultural-heritagesch/historical-research/ethnic-history-cordillera/",
+          "https://erecciones.nationalarchives.gov.ph/oprequest"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz4-question1",
+      "create": true,
+      "fields": {
+        "question": "What did reduccion concern in this lesson?",
+        "optionA": "Concentrating or relocating people into settlements",
+        "optionB": "Creating people with no earlier history",
+        "optionC": "A guaranteed voluntary move by every family",
+        "optionD": "A modern census with exact travel times",
+        "correctAnswer": "A",
+        "explanation": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "learningPoint": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "historicalClue": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "answerExplanations": {
+          "A": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "B": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "C": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "D": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities."
+        },
+        "quizId": "chapter7-quiz4",
+        "order": 1,
+        "status": "active",
+        "topic": "reduccion-meaning",
+        "topicLabel": "Meaning of reduccion",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz4-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "What does a relocation instruction establish by itself?",
+        "optionA": "Complete implementation everywhere",
+        "optionB": "Everyone's private agreement",
+        "optionC": "A complete record of actual residence",
+        "optionD": "A planned change, not proof of every household's move",
+        "correctAnswer": "D",
+        "explanation": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "learningPoint": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "historicalClue": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "B": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "C": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "D": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities."
+        },
+        "quizId": "chapter7-quiz4",
+        "order": 101,
+        "status": "active",
+        "topic": "reduccion-meaning",
+        "topicLabel": "Meaning of reduccion",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission4-reduccion-meaning-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which explanation keeps the policy separate from its result?",
+        "optionA": "A planned town proves everyone moved willingly",
+        "optionB": "People had no communities before the policy",
+        "optionC": "A diagram gives the exact number of all historical residents",
+        "optionD": "A plan to concentrate settlement needs further evidence of actual moves and local responses",
+        "correctAnswer": "D",
+        "explanation": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "learningPoint": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "historicalClue": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "B": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "C": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "D": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities."
+        },
+        "missionId": "chapter7-mission4",
+        "topic": "reduccion-meaning",
+        "topicLabel": "Meaning of reduccion",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A colonial policy of concentrating or relocating people into settlements; also a name used for those settlements.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission4-reduccion-meaning-practice2",
+      "create": true,
+      "fields": {
+        "question": "A report says a proposed center proves all residents moved. What is missing?",
+        "optionA": "An assumption that all plans succeed",
+        "optionB": "A fictional speech of universal approval",
+        "optionC": "Evidence of actual residence and local responses",
+        "optionD": "Only a larger label on the plan",
+        "correctAnswer": "C",
+        "explanation": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "learningPoint": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "historicalClue": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "B": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "C": "Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities.",
+          "D": "Review the lesson clues. Reduccion concerned settlement reorganization. A plan does not establish complete implementation or erase earlier communities."
+        },
+        "missionId": "chapter7-mission4",
+        "topic": "reduccion-meaning",
+        "topicLabel": "Meaning of reduccion",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A colonial policy of concentrating or relocating people into settlements; also a name used for those settlements.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz4-question2",
+      "create": true,
+      "fields": {
+        "question": "Which statement identifies an administrative aim rather than an observed result?",
+        "optionA": "A particular household moved according to a dated record",
+        "optionB": "A later petition requested a change",
+        "optionC": "A building was documented as occupied",
+        "optionD": "Officials wanted contact and collection easier to organize",
+        "correctAnswer": "D",
+        "explanation": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "learningPoint": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "historicalClue": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "B": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "C": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "D": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience."
+        },
+        "quizId": "chapter7-quiz4",
+        "order": 2,
+        "status": "active",
+        "topic": "reduccion-aims",
+        "topicLabel": "Aims and effects",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz4-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why keep an official aim separate from local consent?",
+        "optionA": "A purpose proves all results",
+        "optionB": "A religious aim shows everyone shared one belief",
+        "optionC": "An authority's purpose is not everyone's wishes",
+        "optionD": "All people always wanted what officials wanted",
+        "correctAnswer": "C",
+        "explanation": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "learningPoint": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "historicalClue": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "B": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "C": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "D": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience."
+        },
+        "quizId": "chapter7-quiz4",
+        "order": 102,
+        "status": "active",
+        "topic": "reduccion-aims",
+        "topicLabel": "Aims and effects",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission4-reduccion-aims-practice1",
+      "create": true,
+      "fields": {
+        "question": "An official says a move will simplify collection. What does this establish most directly?",
+        "optionA": "Proof all residents gained equally",
+        "optionB": "A justification for every use of force",
+        "optionC": "An administrative aim, not everyone's consent or an achieved benefit",
+        "optionD": "Proof every family wanted to move",
+        "correctAnswer": "C",
+        "explanation": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "learningPoint": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "historicalClue": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "B": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "C": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "D": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience."
+        },
+        "missionId": "chapter7-mission4",
+        "topic": "reduccion-aims",
+        "topicLabel": "Aims and effects",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A purpose connected with organizing governing tasks.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission4-reduccion-aims-practice2",
+      "create": true,
+      "fields": {
+        "question": "An account claims a move was beneficial because officials intended easier administration. What is needed?",
+        "optionA": "An invented family story presented as original",
+        "optionB": "Evidence of actual effects on affected households",
+        "optionC": "Only a repeated statement of the intention",
+        "optionD": "A claim that intentions guarantee results",
+        "correctAnswer": "B",
+        "explanation": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "learningPoint": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "historicalClue": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "B": "Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "C": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience.",
+          "D": "Review the lesson clues. Distinguish colonial aims from consent, implementation and actual consequences. An intended administrative benefit is not everyone's experience."
+        },
+        "missionId": "chapter7-mission4",
+        "topic": "reduccion-aims",
+        "topicLabel": "Aims and effects",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A purpose connected with organizing governing tasks.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz4-question3",
+      "create": true,
+      "fields": {
+        "question": "What does a proposed layout most directly show?",
+        "optionA": "Proof all design rules were followed everywhere",
+        "optionB": "Universal agreement to move",
+        "optionC": "An intended arrangement, not complete evidence of later buildings and residence",
+        "optionD": "Every resident's exact daily journey",
+        "correctAnswer": "C",
+        "explanation": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "learningPoint": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "historicalClue": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "B": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "C": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "D": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence."
+        },
+        "quizId": "chapter7-quiz4",
+        "order": 3,
+        "status": "active",
+        "topic": "reduccion-layout",
+        "topicLabel": "Plans and practice",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz4-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why should a teaching diagram without scale not supply travel minutes?",
+        "optionA": "A town name makes every line exact",
+        "optionB": "It lacks the evidence needed for actual distance and travel time",
+        "optionC": "All journeys take identical time",
+        "optionD": "Every path represents a fixed number of minutes",
+        "correctAnswer": "B",
+        "explanation": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "learningPoint": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "historicalClue": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "B": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "C": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "D": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence."
+        },
+        "quizId": "chapter7-quiz4",
+        "order": 103,
+        "status": "active",
+        "topic": "reduccion-layout",
+        "topicLabel": "Plans and practice",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission4-reduccion-layout-practice1",
+      "create": true,
+      "fields": {
+        "question": "What further evidence is needed after reading a proposed town plan?",
+        "optionA": "A claim that a rule reveals every resident's feeling",
+        "optionB": "Records of what was built, occupied and used in the particular place",
+        "optionC": "Only a larger picture of the same proposal",
+        "optionD": "An assumption that every line was built exactly",
+        "correctAnswer": "B",
+        "explanation": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "learningPoint": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "historicalClue": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "B": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "C": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "D": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence."
+        },
+        "missionId": "chapter7-mission4",
+        "topic": "reduccion-layout",
+        "topicLabel": "Plans and practice",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A rule or instruction stating what should be done.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission4-reduccion-layout-practice2",
+      "create": true,
+      "fields": {
+        "question": "A settlement rule describes what should be built. Which additional record helps check implementation?",
+        "optionA": "Evidence of what was built and occupied in that place and period",
+        "optionB": "Only another copy of the rule",
+        "optionC": "Only an official's favorable label",
+        "optionD": "An assumption that every prescription was fulfilled",
+        "correctAnswer": "A",
+        "explanation": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "learningPoint": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "historicalClue": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+        "answerExplanations": {
+          "A": "Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "B": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "C": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence.",
+          "D": "Review the lesson clues. Plans and rules describe intended arrangements. Actual buildings, residence and use require separate evidence."
+        },
+        "missionId": "chapter7-mission4",
+        "topic": "reduccion-layout",
+        "topicLabel": "Plans and practice",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A rule or instruction stating what should be done.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz4-question4",
+      "create": true,
+      "fields": {
+        "question": "What should be included when studying a residence change?",
+        "optionA": "A universal claim about all families",
+        "optionB": "Connections to work, water, relatives and institutions",
+        "optionC": "Only the location of an office",
+        "optionD": "Only the policy name",
+        "correctAnswer": "B",
+        "explanation": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "learningPoint": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "historicalClue": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "B": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "C": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "D": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects."
+        },
+        "quizId": "chapter7-quiz4",
+        "order": 4,
+        "status": "active",
+        "topic": "reduccion-daily-life",
+        "topicLabel": "Daily life",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz4-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "What can the fictional nearer-office/farther-work example establish?",
+        "optionA": "Different possible relationships, not every historical household's distances",
+        "optionB": "One authentic journey time for every family",
+        "optionC": "Guaranteed improvement in every activity",
+        "optionD": "A complete historical map",
+        "correctAnswer": "A",
+        "explanation": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "learningPoint": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "historicalClue": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "answerExplanations": {
+          "A": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "B": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "C": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "D": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects."
+        },
+        "quizId": "chapter7-quiz4",
+        "order": 104,
+        "status": "active",
+        "topic": "reduccion-daily-life",
+        "topicLabel": "Daily life",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission4-reduccion-daily-life-practice1",
+      "create": true,
+      "fields": {
+        "question": "A fictional move puts a home nearer an office but farther from work. Which conclusion fits?",
+        "optionA": "The example illustrates different possible effects that need local evidence in historical cases",
+        "optionB": "All historical families had exactly the same journey",
+        "optionC": "The policy guaranteed universal convenience",
+        "optionD": "A line on the model proves exact travel minutes",
+        "correctAnswer": "A",
+        "explanation": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "learningPoint": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "historicalClue": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "answerExplanations": {
+          "A": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "B": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "C": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "D": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects."
+        },
+        "missionId": "chapter7-mission4",
+        "topic": "reduccion-daily-life",
+        "topicLabel": "Daily life",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The recurring activities through which people work and live.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission4-reduccion-daily-life-practice2",
+      "create": true,
+      "fields": {
+        "question": "A plan shortens one connection but has no work-site evidence. What remains to investigate?",
+        "optionA": "Why all effects must be positive",
+        "optionB": "Which invented distance applies everywhere",
+        "optionC": "Why local routines no longer matter",
+        "optionD": "How the actual household maintained work and resources",
+        "correctAnswer": "D",
+        "explanation": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "learningPoint": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "historicalClue": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "B": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "C": "Review the lesson clues. Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects.",
+          "D": "Investigate daily activities and resources alongside official aims. A fictional household cannot establish universal historical effects."
+        },
+        "missionId": "chapter7-mission4",
+        "topic": "reduccion-daily-life",
+        "topicLabel": "Daily life",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The recurring activities through which people work and live.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz4-question5",
+      "create": true,
+      "fields": {
+        "question": "What does a petition requesting a settlement change establish?",
+        "optionA": "A request was made, not necessarily granted",
+        "optionB": "Everyone supported the same outcome",
+        "optionC": "All households moved willingly",
+        "optionD": "No local person took action",
+        "correctAnswer": "A",
+        "explanation": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "learningPoint": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "historicalClue": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "answerExplanations": {
+          "A": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "B": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "C": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "D": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent."
+        },
+        "quizId": "chapter7-quiz4",
+        "order": 5,
+        "status": "active",
+        "topic": "reduccion-responses",
+        "topicLabel": "Local responses",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz4-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare an official report with residence evidence?",
+        "optionA": "All official records are useless",
+        "optionB": "A title guarantees complete knowledge",
+        "optionC": "A map supplies every person's viewpoint",
+        "optionD": "Reported compliance may not establish actual residence or all local experiences",
+        "correctAnswer": "D",
+        "explanation": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "learningPoint": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "historicalClue": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "B": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "C": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "D": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent."
+        },
+        "quizId": "chapter7-quiz4",
+        "order": 105,
+        "status": "active",
+        "topic": "reduccion-responses",
+        "topicLabel": "Local responses",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission4-reduccion-responses-practice1",
+      "create": true,
+      "fields": {
+        "question": "A community petition asks to change a settlement plan, but no decision is shown. What can be said?",
+        "optionA": "The petition necessarily succeeded",
+        "optionB": "Every person willingly followed the original order",
+        "optionC": "No local participant acted",
+        "optionD": "The request is recorded; its outcome and actual residence still need evidence",
+        "correctAnswer": "D",
+        "explanation": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "learningPoint": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "historicalClue": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "B": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "C": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "D": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent."
+        },
+        "missionId": "chapter7-mission4",
+        "topic": "reduccion-responses",
+        "topicLabel": "Local responses",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Records or material traces used to investigate where and how people lived.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission4-reduccion-responses-practice2",
+      "create": true,
+      "fields": {
+        "question": "An order and a request to revise it survive, but no reply does. What is careful?",
+        "optionA": "Assume no response occurred",
+        "optionB": "Invent a final decision and present it as original",
+        "optionC": "Identify both actions and state that the outcome needs more evidence",
+        "optionD": "Declare the request successful",
+        "correctAnswer": "C",
+        "explanation": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "learningPoint": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "historicalClue": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "B": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "C": "Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent.",
+          "D": "Review the lesson clues. Separate the plan, local response and documented outcome. A request or official claim alone cannot establish everyone's residence or consent."
+        },
+        "missionId": "chapter7-mission4",
+        "topic": "reduccion-responses",
+        "topicLabel": "Local responses",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Records or material traces used to investigate where and how people lived.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter7-mission4-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission4",
+        "name": "Settlement Evidence Journal",
+        "description": "A learning-game token for comparing settlement plans with evidence of local lives.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 4,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish plans from actual settlement and investigate effects on households and community choices.",
+          "reflectionQuestion": "Which clue helped you distinguish a proposed layout from actual residence?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-7",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-3 cover central government, local leadership and encomienda/tribute. Mission 4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-4 cover central and local government, tribute and settlement reorganization. The chapter challenge is being prepared."
+      }
+    },
+    {
+      "path": "eras/spanish-exploration-colonial-rule",
+      "create": false,
+      "expected": {
+        "description": "Chapters 5-6 offer four missions and a challenge each. Chapter 7 offers Missions 1-3 on government, local leadership and tribute; later content is being prepared."
+      },
+      "fields": {
+        "description": "Chapters 5-6 offer four missions and a challenge each. Chapter 7 offers four missions on government, local leadership, tribute and settlement reorganization; its challenge and later content are being prepared."
+      }
+    }
+  ]
+}

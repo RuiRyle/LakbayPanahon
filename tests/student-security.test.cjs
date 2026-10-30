@@ -153,6 +153,7 @@ function freeClient(uid = 'alice') {
             throw new Error('Concurrent write did not settle.');
         }
     });
+    context.getDocFromServer=context.getDoc;context.getDocsFromServer=context.getDocs;
     for (const name of ['learning-access.js', 'student-rewards-client.js']) {
         const source = fs.readFileSync(path.join(__dirname, '../js', name), 'utf8')
             .replace(/import[\s\S]*?from\s+"[^"]+";/g, '').replace(/export /g, '');

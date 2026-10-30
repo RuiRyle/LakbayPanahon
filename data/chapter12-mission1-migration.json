@@ -1,0 +1,1289 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 12 Mission 1 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+    "https://epa.culturalcenter.gov.ph/3/82/2142/",
+    "https://history.upd.edu.ph/publications/they-are-not-foreigners/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-11",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-11",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/autonomy-community-investigator",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter11-mission1",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter11-mission2",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter11-mission3",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter11-mission4",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 4
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter12-mission1",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-12",
+        "title": "Causes and Forms of Resistance",
+        "order": 1,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate named grievances, policy effects, different forms of opposition, participation and outcome evidence.",
+        "learningObjective": "Explain causes and forms of resistance without assuming identical motives, actions or outcomes.",
+        "learningObjectives": [
+          "Explain start with the reported problem using lesson evidence.",
+          "Explain a policy could affect work and choices using lesson evidence.",
+          "Explain a request was not the same as an uprising using lesson evidence.",
+          "Explain participants could have different concerns using lesson evidence.",
+          "Explain keep causes, actions and outcomes separate using lesson evidence."
+        ],
+        "lessonRecap": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter12-quiz1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission1",
+        "title": "Causes and Forms - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "grievance-cause",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "policy-local-effects",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "forms-opposition",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "participation-difference",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "cause-action-outcome",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission1-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission1",
+        "status": "active",
+        "order": 1,
+        "title": "Start with the Reported Problem",
+        "content": "A grievance is a complaint or concern. A cause is a factor that helps explain why something happened. A source may report a grievance without revealing every participants motive. To investigate resistance, ask what demand or treatment was challenged, who was involved and what evidence connects the concern with a recorded action.\n\nThe NHCP marker connects Sumuroys uprising in Palapag, Samar, beginning on 1 June 1649, with forced labor and abuses. This is a named connection between a concern and opposition, not a complete account of every participants thoughts. Our fictional report card separates a demand, a reported problem and an action. It is not an original testimony or an invented speech. Keep the place and period visible. Finding one grievance does not mean that every uprising elsewhere had the same cause or that the concern affected every household identically.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "grievance-cause"
+        ],
+        "imageUrl": "../assets/story/early-resistance-causes-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Start with the Reported Problem. Labelled clues distinguish concerns, actions and outcome evidence; not an original testimony or a battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Reported problem",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A grievance concerns treatment, conditions or a demand.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Named case",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP marker connects the Palapag uprising of 1649 with forced labor and abuses.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A stated grievance does not reveal every participants motive or every revolts cause.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A marker names forced labor and abuses in the Palapag case. What does that support?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A named grievance-action connection, not every participants full motive",
+          "Every revolt everywhere had one cause",
+          "Every household thought identically",
+          "The marker is a transcript of every conversation"
+        ],
+        "decisionCorrectAnswer": "A named grievance-action connection, not every participants full motive",
+        "decisionExplanation": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "keyTerm": "Grievance",
+        "keyTermDefinition": "A complaint or concern about treatment, conditions or a demand.",
+        "historicalInsight": "A stated grievance does not reveal every participants motive or every revolts cause.",
+        "learningHelp": {
+          "explanation": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "vocabulary": [
+            {
+              "term": "Grievance",
+              "definition": "A complaint or concern about treatment, conditions or a demand."
+            }
+          ],
+          "example": "A grievance concerns treatment, conditions or a demand.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission1-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission1",
+        "status": "active",
+        "order": 2,
+        "title": "A Policy Could Affect Work and Choices",
+        "content": "A policy could affect work, income and choices. To explain a protest, connect the rule with evidence of how it affected people. Do not replace that investigation with a claim that everyone automatically reacted the same way. A policy, a reported grievance and an uprising are related but different parts of the explanation.\n\nThe CCP account of the Basi Revolt connects the Ilocos uprising of 1807 with government monopoly over basi, a sugarcane wine. Here the historical question concerns regulation and control of production and sale. It is not an invitation to drink, make or handle alcohol. Our cause-and-action card does not reproduce graphic paintings or reconstruct every event of the revolt. The later painting series has its own making date and viewpoint. Use the source for the bounded policy connection, then seek further evidence for particular participants, motives and outcomes.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "policy-local-effects"
+        ],
+        "imageUrl": "../assets/story/early-resistance-causes-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Policy Could Affect Work and Choices. Labelled clues distinguish concerns, actions and outcome evidence; not an original testimony or a battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Rule and livelihood",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A policy can shape production and selling choices.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Named example",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The 1807 Basi case is connected with a government monopoly.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Evidence limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A policy connection does not establish every persons motive or the full chronology.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the Basi example help investigate in this lesson?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A reason students should use alcohol",
+          "A universal cause for every revolt",
+          "Every participants private thoughts",
+          "A connection between government monopoly and a named protest"
+        ],
+        "decisionCorrectAnswer": "A connection between government monopoly and a named protest",
+        "decisionExplanation": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "keyTerm": "Monopoly",
+        "keyTermDefinition": "Exclusive control over a particular trade or activity.",
+        "historicalInsight": "A policy connection does not establish every persons motive or the full chronology.",
+        "learningHelp": {
+          "explanation": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "vocabulary": [
+            {
+              "term": "Monopoly",
+              "definition": "Exclusive control over a particular trade or activity."
+            }
+          ],
+          "example": "A policy can shape production and selling choices.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission1-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission1",
+        "status": "active",
+        "order": 3,
+        "title": "A Request Was Not the Same as an Uprising",
+        "content": "People could express opposition or seek changed terms in different ways. A petition asks an authority for something. An uprising involves collective opposition that can include armed conflict. These are different actions. A request for relief is not automatically a demand to end all colonial rule, and a complaint is not proof that fighting occurred.\n\nThe UP Diliman summary describes a 1698 Bacolor petition about tribute-collection duties. Compare that recorded request with the named uprising examples. This comparison does not turn every petition into a revolt or make petitions harmless in every possible setting. Ask what was requested and what action the source records. Our fictional sorting cards identify request, reported complaint and collective uprising without asking students to act out violence. Filing a petition also does not establish that every request was granted; its outcome needs separate evidence.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "forms-opposition"
+        ],
+        "imageUrl": "../assets/story/early-resistance-causes-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Request Was Not the Same as an Uprising. Labelled clues distinguish concerns, actions and outcome evidence; not an original testimony or a battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Action type",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A formal request and a collective uprising are different recorded actions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Named request",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Bacolor case concerns a petition about tribute-collection duties in 1698.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Aim and result",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A petition requests relief from duties. Which conclusion stays within the action described?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every petitioner sought the same end as every revolt",
+          "Fighting necessarily occurred",
+          "A request for changed terms was made; wider aims and results need evidence",
+          "The request automatically succeeded"
+        ],
+        "decisionCorrectAnswer": "A request for changed terms was made; wider aims and results need evidence",
+        "decisionExplanation": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "keyTerm": "Petition",
+        "keyTermDefinition": "A formal request made to an authority.",
+        "historicalInsight": "Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "learningHelp": {
+          "explanation": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "vocabulary": [
+            {
+              "term": "Petition",
+              "definition": "A formal request made to an authority."
+            }
+          ],
+          "example": "A formal request and a collective uprising are different recorded actions.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission1-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission1",
+        "status": "active",
+        "order": 4,
+        "title": "Participants Could Have Different Concerns",
+        "content": "An uprising or petition could involve people with different roles, concerns and degrees of choice. A named leader is not every participants complete story. A place name also does not mean that every resident joined. To explain participation, ask which people are actually recorded and what the source says about their actions.\n\nOur fictional source desk contains a leader summary, a list of participants and an account of affected households. They can answer different questions. Being affected is not necessarily the same as taking part. A list can establish a recorded name without explaining everything that person wanted. Do not assign a motive from a persons religion, ancestry or occupation. The model is not an authentic participant register for Sumuroy, Bacolor or Basi. Students do not disclose family identity or choose targets; the task is to interpret the evidence and its limits.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "participation-difference"
+        ],
+        "imageUrl": "../assets/story/early-resistance-causes-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Participants Could Have Different Concerns. Labelled clues distinguish concerns, actions and outcome evidence; not an original testimony or a battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Roles",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Leaders, participants and affected residents need not be the same people.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Recorded action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask who is identified and what action the source actually describes.",
+            "icon": "🔎"
+          },
+          {
+            "title": "No automatic motive",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A name, religion or occupation does not reveal every concern or reason.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A report says every resident joined because an uprising is named after the place. What should be checked?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Whether every household had one religion",
+          "Evidence about who participated and how others were affected",
+          "Only the size of the place name",
+          "An assumption that location determines motives"
+        ],
+        "decisionCorrectAnswer": "Evidence about who participated and how others were affected",
+        "decisionExplanation": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "keyTerm": "Participation",
+        "keyTermDefinition": "Taking part in an activity or action.",
+        "historicalInsight": "A name, religion or occupation does not reveal every concern or reason.",
+        "learningHelp": {
+          "explanation": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "vocabulary": [
+            {
+              "term": "Participation",
+              "definition": "Taking part in an activity or action."
+            }
+          ],
+          "example": "Leaders, participants and affected residents need not be the same people.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission1-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission1",
+        "status": "active",
+        "order": 5,
+        "title": "Keep Causes, Actions and Outcomes Separate",
+        "content": "A historical explanation connects causes, actions and outcomes without treating them as identical. A grievance can help explain an action; an aim describes what people sought; an outcome concerns what followed. Failure to achieve one aim does not make the grievance unreal, and recording a grievance does not prove that the action succeeded.\n\nUse a fictional evidence chain: a reported demand, an account of opposition and a later record. Ask what each link supports. If the later record is missing, state uncertainty rather than invent success or failure. A later commemorative marker and a painting can preserve important interpretations, but they are not automatically eyewitness testimony of every stage. This mission introduces the questions; later missions will study named uprisings, participation and significance more closely. No points are awarded for harm, and no fighting or punishment is reenacted.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "cause-action-outcome"
+        ],
+        "imageUrl": "../assets/story/early-resistance-causes-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Keep Causes, Actions and Outcomes Separate. Labelled clues distinguish concerns, actions and outcome evidence; not an original testimony or a battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Explain links",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A cause, an action and what followed are different parts of a report.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Evidence for outcomes",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An aim or complaint does not by itself establish success.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Later representations need their own dates and perspectives.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An action is called successful only because its grievance was recorded. What is missing?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Evidence of what followed and whether the aim was achieved",
+          "Only a more dramatic story",
+          "An assumption that every protest succeeds",
+          "Nothing because a complaint proves its outcome"
+        ],
+        "decisionCorrectAnswer": "Evidence of what followed and whether the aim was achieved",
+        "decisionExplanation": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "keyTerm": "Outcome",
+        "keyTermDefinition": "What followed an action or process, as supported by evidence.",
+        "historicalInsight": "Later representations need their own dates and perspectives.",
+        "learningHelp": {
+          "explanation": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "vocabulary": [
+            {
+              "term": "Outcome",
+              "definition": "What followed an action or process, as supported by evidence."
+            }
+          ],
+          "example": "A cause, an action and what followed are different parts of a report.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission1-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission1",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Causes and Forms Report",
+        "content": "Review five ideas. A grievance is a reported concern, not every persons complete motive. Economic rules could affect work and choices in particular settings. Petitions and uprisings were different forms of action. Leaders, participants and affected residents were not automatically the same people. Causes, aims, actions and outcomes need their own supporting evidence.\n\nPrepare a fictional report for another Grade 5 learner. Name the case, place and period. Identify a concern, the recorded action and a supporting clue. Explain what remains uncertain. Do not label every request an independence uprising, assign motives from religion or ancestry, or treat a later painting as every participants testimony. Keep harm visible without reenacting it or earning points for it.\n\nThe main quiz has five questions and three correct passes. Review linked learning content before practice and a retry if needed. Only Chapter 12 Mission 1 is ready in this release. Completing it does not complete the chapter or award its final badge: Missions 2-5 and the chapter challenge are still being prepared.",
+        "reviewTopics": [
+          "grievance-cause",
+          "policy-local-effects",
+          "forms-opposition",
+          "participation-difference",
+          "cause-action-outcome"
+        ],
+        "imageUrl": "../assets/story/early-resistance-causes-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Keep Causes, Actions and Outcomes Separate. Labelled clues distinguish concerns, actions and outcome evidence; not an original testimony or a battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Explain links",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A cause, an action and what followed are different parts of a report.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Evidence for outcomes",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An aim or complaint does not by itself establish success.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Later representations need their own dates and perspectives.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best introduces causes and forms of resistance?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat every complaint as the same battle",
+          "Use one leader as every persons motive",
+          "Assume every protest had identical aims and results",
+          "Connect a dated grievance, recorded action and outcome evidence with stated limits"
+        ],
+        "decisionCorrectAnswer": "Connect a dated grievance, recorded action and outcome evidence with stated limits",
+        "decisionExplanation": "Explain particular concerns and forms of action through dated evidence while distinguishing participation, aims and outcomes.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain particular concerns and forms of action through dated evidence while distinguishing participation, aims and outcomes.",
+        "keyTerm": "Outcome",
+        "keyTermDefinition": "What followed an action or process, as supported by evidence.",
+        "historicalInsight": "Later representations need their own dates and perspectives.",
+        "learningHelp": {
+          "explanation": "Explain particular concerns and forms of action through dated evidence while distinguishing participation, aims and outcomes.",
+          "vocabulary": [
+            {
+              "term": "Outcome",
+              "definition": "What followed an action or process, as supported by evidence."
+            }
+          ],
+          "example": "A cause, an action and what followed are different parts of a report.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz1-question1",
+      "create": true,
+      "fields": {
+        "question": "What is a grievance?",
+        "optionA": "A complaint or concern about treatment, conditions or a demand",
+        "optionB": "Proof that every request succeeded",
+        "optionC": "A measure of human worth",
+        "optionD": "A complete biography",
+        "correctAnswer": "A",
+        "explanation": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "learningPoint": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "historicalClue": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "answerExplanations": {
+          "A": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "B": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "C": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "D": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause."
+        },
+        "quizId": "chapter12-quiz1",
+        "order": 1,
+        "status": "active",
+        "topic": "grievance-cause",
+        "topicLabel": "Start with the Reported Problem",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz1-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why identify place and period when discussing a grievance?",
+        "optionA": "Every revolt had one identical cause",
+        "optionB": "Dates reveal all private thoughts",
+        "optionC": "One leader explains every household",
+        "optionD": "A concern needs its particular setting rather than a universal claim",
+        "correctAnswer": "D",
+        "explanation": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "learningPoint": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "historicalClue": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "B": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "C": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "D": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause."
+        },
+        "quizId": "chapter12-quiz1",
+        "order": 101,
+        "status": "active",
+        "topic": "grievance-cause",
+        "topicLabel": "Start with the Reported Problem",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission1-grievance-cause-practice1",
+      "create": true,
+      "fields": {
+        "question": "A marker names forced labor and abuses in the Palapag case. What does that support?",
+        "optionA": "Every revolt everywhere had one cause",
+        "optionB": "Every household thought identically",
+        "optionC": "The marker is a transcript of every conversation",
+        "optionD": "A named grievance-action connection, not every participants full motive",
+        "correctAnswer": "D",
+        "explanation": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "learningPoint": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "historicalClue": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "B": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "C": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "D": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause."
+        },
+        "missionId": "chapter12-mission1",
+        "topic": "grievance-cause",
+        "topicLabel": "Start with the Reported Problem",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A complaint or concern about treatment, conditions or a demand.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission1-grievance-cause-practice2",
+      "create": true,
+      "fields": {
+        "question": "A source names one concern but a report claims to know every participants motives. What is missing?",
+        "optionA": "An invented speech",
+        "optionB": "Nothing because all participants always agree",
+        "optionC": "Evidence for the wider claims about different people",
+        "optionD": "Only a more confident title",
+        "correctAnswer": "C",
+        "explanation": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "learningPoint": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "historicalClue": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "B": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "C": "A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause.",
+          "D": "Review the lesson clues. A named grievance-action connection, not every participants full motive. A stated grievance does not reveal every participants motive or every revolts cause."
+        },
+        "missionId": "chapter12-mission1",
+        "topic": "grievance-cause",
+        "topicLabel": "Start with the Reported Problem",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A complaint or concern about treatment, conditions or a demand.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz1-question2",
+      "create": true,
+      "fields": {
+        "question": "What is a monopoly?",
+        "optionA": "A freely chosen gift in every case",
+        "optionB": "Proof of identical benefits for everyone",
+        "optionC": "A classroom reward",
+        "optionD": "Exclusive control over a particular trade or activity",
+        "correctAnswer": "D",
+        "explanation": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "learningPoint": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "historicalClue": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "B": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "C": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "D": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology."
+        },
+        "quizId": "chapter12-quiz1",
+        "order": 2,
+        "status": "active",
+        "topic": "policy-local-effects",
+        "topicLabel": "A Policy Could Affect Work and Choices",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz1-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a policy with evidence about local work and choices?",
+        "optionA": "All protests had one cause",
+        "optionB": "A policy gives every participants speech",
+        "optionC": "Rules and their effects need to be connected with evidence",
+        "optionD": "A rule proves everyone reacted identically",
+        "correctAnswer": "C",
+        "explanation": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "learningPoint": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "historicalClue": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "B": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "C": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "D": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology."
+        },
+        "quizId": "chapter12-quiz1",
+        "order": 102,
+        "status": "active",
+        "topic": "policy-local-effects",
+        "topicLabel": "A Policy Could Affect Work and Choices",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission1-policy-local-effects-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the Basi example help investigate in this lesson?",
+        "optionA": "A universal cause for every revolt",
+        "optionB": "Every participants private thoughts",
+        "optionC": "A connection between government monopoly and a named protest",
+        "optionD": "A reason students should use alcohol",
+        "correctAnswer": "C",
+        "explanation": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "learningPoint": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "historicalClue": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "B": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "C": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "D": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology."
+        },
+        "missionId": "chapter12-mission1",
+        "topic": "policy-local-effects",
+        "topicLabel": "A Policy Could Affect Work and Choices",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Exclusive control over a particular trade or activity.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission1-policy-local-effects-practice2",
+      "create": true,
+      "fields": {
+        "question": "A government rule is used as proof of every households identical response. What should change?",
+        "optionA": "Treat a later painting as every private motive",
+        "optionB": "Investigate particular effects and recorded actions",
+        "optionC": "Keep the universal response",
+        "optionD": "Erase the date and place",
+        "correctAnswer": "B",
+        "explanation": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "learningPoint": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "historicalClue": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "B": "A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "C": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology.",
+          "D": "Review the lesson clues. A connection between government monopoly and a named protest. A policy connection does not establish every persons motive or the full chronology."
+        },
+        "missionId": "chapter12-mission1",
+        "topic": "policy-local-effects",
+        "topicLabel": "A Policy Could Affect Work and Choices",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Exclusive control over a particular trade or activity.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz1-question3",
+      "create": true,
+      "fields": {
+        "question": "What is a petition?",
+        "optionA": "Automatic success",
+        "optionB": "A complete account of every motive",
+        "optionC": "A formal request to an authority",
+        "optionD": "Proof of an armed battle",
+        "correctAnswer": "C",
+        "explanation": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "learningPoint": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "historicalClue": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "B": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "C": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "D": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected."
+        },
+        "quizId": "chapter12-quiz1",
+        "order": 3,
+        "status": "active",
+        "topic": "forms-opposition",
+        "topicLabel": "A Request Was Not the Same as an Uprising",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz1-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish petitions from uprisings?",
+        "optionA": "The distinction removes the need to study outcomes",
+        "optionB": "They are different forms of action that need their own evidence",
+        "optionC": "All complaints were battles",
+        "optionD": "Every request sought identical goals",
+        "correctAnswer": "B",
+        "explanation": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "learningPoint": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "historicalClue": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "B": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "C": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "D": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected."
+        },
+        "quizId": "chapter12-quiz1",
+        "order": 103,
+        "status": "active",
+        "topic": "forms-opposition",
+        "topicLabel": "A Request Was Not the Same as an Uprising",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission1-forms-opposition-practice1",
+      "create": true,
+      "fields": {
+        "question": "A petition requests relief from duties. Which conclusion stays within the action described?",
+        "optionA": "Fighting necessarily occurred",
+        "optionB": "A request for changed terms was made; wider aims and results need evidence",
+        "optionC": "The request automatically succeeded",
+        "optionD": "Every petitioner sought the same end as every revolt",
+        "correctAnswer": "B",
+        "explanation": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "learningPoint": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "historicalClue": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "B": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "C": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "D": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected."
+        },
+        "missionId": "chapter12-mission1",
+        "topic": "forms-opposition",
+        "topicLabel": "A Request Was Not the Same as an Uprising",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A formal request made to an authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission1-forms-opposition-practice2",
+      "create": true,
+      "fields": {
+        "question": "A report labels every complaint an independence uprising. What correction fits?",
+        "optionA": "Describe the recorded request and use evidence for any broader aim",
+        "optionB": "Keep the label for every complaint",
+        "optionC": "Invent a battle to connect the terms",
+        "optionD": "Assume every grievance had the same outcome",
+        "correctAnswer": "A",
+        "explanation": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "learningPoint": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "historicalClue": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+        "answerExplanations": {
+          "A": "A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "B": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "C": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected.",
+          "D": "Review the lesson clues. A request for changed terms was made; wider aims and results need evidence. Seeking changed terms does not automatically mean every demand was granted or all rule was rejected."
+        },
+        "missionId": "chapter12-mission1",
+        "topic": "forms-opposition",
+        "topicLabel": "A Request Was Not the Same as an Uprising",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A formal request made to an authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz1-question4",
+      "create": true,
+      "fields": {
+        "question": "What does participation mean?",
+        "optionA": "Sharing every leaders private motive",
+        "optionB": "Taking part in an activity or action",
+        "optionC": "Merely living in a named place",
+        "optionD": "Being affected in every case",
+        "correctAnswer": "B",
+        "explanation": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "learningPoint": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "historicalClue": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "B": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "C": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "D": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason."
+        },
+        "quizId": "chapter12-quiz1",
+        "order": 4,
+        "status": "active",
+        "topic": "participation-difference",
+        "topicLabel": "Participants Could Have Different Concerns",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz1-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a leader summary with a participant list?",
+        "optionA": "A leaders actions and wider participation are different questions",
+        "optionB": "One leader supplies every persons story",
+        "optionC": "All residents automatically joined",
+        "optionD": "Names reveal every private thought",
+        "correctAnswer": "A",
+        "explanation": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "learningPoint": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "historicalClue": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "answerExplanations": {
+          "A": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "B": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "C": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "D": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason."
+        },
+        "quizId": "chapter12-quiz1",
+        "order": 104,
+        "status": "active",
+        "topic": "participation-difference",
+        "topicLabel": "Participants Could Have Different Concerns",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission1-participation-difference-practice1",
+      "create": true,
+      "fields": {
+        "question": "A report says every resident joined because an uprising is named after the place. What should be checked?",
+        "optionA": "Evidence about who participated and how others were affected",
+        "optionB": "Only the size of the place name",
+        "optionC": "An assumption that location determines motives",
+        "optionD": "Whether every household had one religion",
+        "correctAnswer": "A",
+        "explanation": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "learningPoint": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "historicalClue": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "answerExplanations": {
+          "A": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "B": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "C": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "D": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason."
+        },
+        "missionId": "chapter12-mission1",
+        "topic": "participation-difference",
+        "topicLabel": "Participants Could Have Different Concerns",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Taking part in an activity or action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission1-participation-difference-practice2",
+      "create": true,
+      "fields": {
+        "question": "A person is named in a list but no reason is given. What is a careful report?",
+        "optionA": "The person shared every leaders aim",
+        "optionB": "Religion supplies the missing motive",
+        "optionC": "The list is a complete biography",
+        "optionD": "Participation is recorded; the persons motives need further evidence",
+        "correctAnswer": "D",
+        "explanation": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "learningPoint": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "historicalClue": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "B": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "C": "Review the lesson clues. Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason.",
+          "D": "Evidence about who participated and how others were affected. A name, religion or occupation does not reveal every concern or reason."
+        },
+        "missionId": "chapter12-mission1",
+        "topic": "participation-difference",
+        "topicLabel": "Participants Could Have Different Concerns",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Taking part in an activity or action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz1-question5",
+      "create": true,
+      "fields": {
+        "question": "What is an outcome?",
+        "optionA": "What followed an action, supported by evidence",
+        "optionB": "Only what someone hoped for",
+        "optionC": "The same thing as a complaint",
+        "optionD": "A guarantee of permanent success",
+        "correctAnswer": "A",
+        "explanation": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "learningPoint": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "historicalClue": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "answerExplanations": {
+          "A": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "B": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "C": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "D": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives."
+        },
+        "quizId": "chapter12-quiz1",
+        "order": 5,
+        "status": "active",
+        "topic": "cause-action-outcome",
+        "topicLabel": "Keep Causes, Actions and Outcomes Separate",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz1-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why separate a reported grievance from a later result?",
+        "optionA": "Every cause guarantees one outcome",
+        "optionB": "Uncertainty means no grievance existed",
+        "optionC": "All later representations are eyewitness transcripts",
+        "optionD": "A concern and what followed require different evidence",
+        "correctAnswer": "D",
+        "explanation": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "learningPoint": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "historicalClue": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "B": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "C": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "D": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives."
+        },
+        "quizId": "chapter12-quiz1",
+        "order": 105,
+        "status": "active",
+        "topic": "cause-action-outcome",
+        "topicLabel": "Keep Causes, Actions and Outcomes Separate",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission1-cause-action-outcome-practice1",
+      "create": true,
+      "fields": {
+        "question": "An action is called successful only because its grievance was recorded. What is missing?",
+        "optionA": "Only a more dramatic story",
+        "optionB": "An assumption that every protest succeeds",
+        "optionC": "Nothing because a complaint proves its outcome",
+        "optionD": "Evidence of what followed and whether the aim was achieved",
+        "correctAnswer": "D",
+        "explanation": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "learningPoint": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "historicalClue": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "B": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "C": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "D": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives."
+        },
+        "missionId": "chapter12-mission1",
+        "topic": "cause-action-outcome",
+        "topicLabel": "Keep Causes, Actions and Outcomes Separate",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "What followed an action or process, as supported by evidence.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission1-cause-action-outcome-practice2",
+      "create": true,
+      "fields": {
+        "question": "The evidence chain has no later outcome record. What should a report do?",
+        "optionA": "Assume failure without evidence",
+        "optionB": "Use a source gap as every persons motive",
+        "optionC": "State what is known and identify the missing evidence",
+        "optionD": "Invent success to finish the story",
+        "correctAnswer": "C",
+        "explanation": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "learningPoint": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "historicalClue": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "B": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "C": "Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives.",
+          "D": "Review the lesson clues. Evidence of what followed and whether the aim was achieved. Later representations need their own dates and perspectives."
+        },
+        "missionId": "chapter12-mission1",
+        "topic": "cause-action-outcome",
+        "topicLabel": "Keep Causes, Actions and Outcomes Separate",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "What followed an action or process, as supported by evidence.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter12-mission1-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission1",
+        "name": "Causes and Forms Evidence Journal",
+        "description": "A learning-game token for explaining concerns, actions and outcome evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish grievances, policies, forms of opposition, participation and results.",
+          "reflectionQuestion": "Which clue helped you distinguish a reported grievance from an outcome?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": true,
+      "fields": {
+        "title": "Resistance and the Beginnings of National Consciousness",
+        "description": "Chapter 12 begins with causes and forms of resistance. Later missions and Chapters 13-14 are being prepared.",
+        "order": 4,
+        "status": "active",
+        "theme": "forest",
+        "dateRange": "Spanish colonial period"
+      }
+    },
+    {
+      "path": "chapters/chapter-12",
+      "create": true,
+      "fields": {
+        "eraId": "resistance-national-consciousness",
+        "title": "Early Resistance to Spanish Colonial Rule",
+        "description": "Mission 1 introduces causes and forms of resistance through named cases. Missions 2-5 and the chapter challenge are being prepared.",
+        "order": 12,
+        "status": "active",
+        "contentReady": true
+      }
+    }
+  ]
+}

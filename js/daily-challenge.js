@@ -1,3 +1,5 @@
+import { learningDateKey, selectDailyChallenge, millisecondsUntilLearningMidnight } from "./daily-policy.js";
+import { progressionState } from "./progression-policy.js";
 import { submitStudentActivity } from "./student-rewards-client.js";
 // ==========================================
 // LAKBAYPANAHON
@@ -19,6 +21,8 @@ import {
 import {
     collection,
     getDocs,
+    query,
+    where,
     doc,
     getDoc
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
@@ -153,6 +157,11 @@ let selectedAnswer = null;
 let completedToday = false;
 
 let isSubmitting = false;
+let currentChallengeDate = null;
+let dailyLoad = null;
+let dailyLoadOwner = null;
+let midnightTimer = null;
+let closeTimer = null;
 
 
 // ==========================================
@@ -164,12 +173,14 @@ onAuthStateChanged(
     async (user) => {
 
         if (!user) {
+            currentUser=null;currentChallenge=null;currentChallengeDate=null;completedToday=false;
+            clearTimeout(midnightTimer);clearTimeout(closeTimer);
             return;
         }
 
         currentUser = user;
 
-        await loadDailyChallenge();
+        await refreshDailyChallenge(true);
     }
 );
 
@@ -198,7 +209,7 @@ function getDateKey(
     date
 ) {
 
-    return new Date(date.getTime() + 8 * 3600000).toISOString().slice(0, 10);
+    return learningDateKey(date);
 }
 
 
@@ -243,159 +254,68 @@ function getCompletionId() {
 // ==========================================
 
 async function loadDailyChallenge() {
-
+    const uid = currentUser?.uid;
+    if (!uid) return false;
+    currentChallenge = null; currentChallengeDate = null; completedToday = false;
+    resetSelection();
+    if (cardReward) cardReward.textContent="";
+    if (cardReward?.parentElement) cardReward.parentElement.hidden=true;
+    if (rewardElement) rewardElement.textContent="";
+    if (startButton) { startButton.hidden=false; startButton.disabled=true; startButton.textContent="Loading Daily Challenge..."; }
+    if (cardCompleted) cardCompleted.hidden=true;
     try {
-
-        const challengeSnapshot =
-            await getDocs(
-                collection(
-                    db,
-                    "dailyChallenges"
-                )
-            );
-
-
-        const challenges = [];
-
-
-        challengeSnapshot.forEach(
-            (challengeDocument) => {
-
-                const challenge =
-                    challengeDocument.data();
-
-
-                if (
-                    challenge.status ===
-                    "active"
-                ) {
-
-                    challenges.push({
-                        id:
-                            challengeDocument.id,
-
-                        ...challenge
-                    });
-                }
-            }
-        );
-
-
-        // ==================================
-        // NO ACTIVE CHALLENGE
-        // ==================================
-
-        if (
-            challenges.length === 0
-        ) {
-
-            currentChallenge = null;
-
-
-            if (startButton) {
-
-                startButton.disabled =
-                    true;
-
-                startButton.textContent =
-                    "Challenge Unavailable";
-            }
-
-
-            return;
+        const snapshot=await getDocs(query(collection(db,"dailyChallenges"),where('status','==','active')));
+        if (auth.currentUser?.uid!==uid || currentUser?.uid!==uid) return false;
+        const now=new Date();
+        currentChallenge=selectDailyChallenge(snapshot.docs.map(item=>({...item.data(),id:item.id})),now);
+        currentChallengeDate=learningDateKey(now);
+        if (!currentChallenge) {
+            if (startButton) { startButton.disabled=false; startButton.textContent="Check Daily Challenge"; }
+            return true;
         }
-
-
-        // ==================================
-        // SORT CHALLENGES
-        // ==================================
-
-        challenges.sort(
-    (a, b) =>
-        (Number(a.order) || 0) -
-        (Number(b.order) || 0)
-);
-
-
-/* ==================================
-   DAILY CHALLENGE ROTATION
-   Uses the Philippines calendar date so
-   every student gets one stable
-   challenge for the whole day.
-================================== */
-
-const todayKey = getTodayDateKey();
-const dayOfYear = Math.floor((Date.parse(todayKey) -
-    Date.UTC(Number(todayKey.slice(0, 4)), 0, 1)) / 86400000) + 1;
-
-
-const challengeIndex =
-    (
-        dayOfYear - 1
-    ) %
-    challenges.length;
-
-
-currentChallenge =
-    challenges[
-        challengeIndex
-    ];
-
-        const reward =
-            Number(
-                currentChallenge.xpReward
-            ) || 0;
-
-
-        if (cardReward) {
-
-            cardReward.textContent =
-                `+${reward} XP`;
-        }
-
-
-        if (rewardElement) {
-
-            rewardElement.textContent =
-                `+${reward} XP`;
-        }
-
-
+        const reward=Number(currentChallenge.xpReward)||0;
+        if (cardReward) cardReward.textContent='+'+reward+' XP';
+        if (cardReward?.parentElement) cardReward.parentElement.hidden=false;
+        if (rewardElement) rewardElement.textContent='+'+reward+' XP';
         prepareChallengeUI();
-
-
         await checkTodayCompletion();
-
-
-        console.log(
-            "Daily Challenge ready:",
-            currentChallenge
-        );
-
-
+        return true;
     } catch (error) {
-
-        console.error(
-            "Unable to load Daily Challenge:",
-            error
-        );
-
-
-        if (startButton) {
-
-            startButton.disabled =
-                true;
-
-            startButton.textContent =
-                "Challenge Unavailable";
-        }
+        if (auth.currentUser?.uid!==uid) return false;
+        console.warn("Daily challenge unavailable:",error);
+        currentChallenge=null; currentChallengeDate=null;
+        if (startButton) { startButton.hidden=false; startButton.disabled=false; startButton.textContent="Retry Daily Challenge"; }
+        return false;
     }
 }
-
-
-// ==========================================
-// CHECK TODAY'S COMPLETION
-// ==========================================
+function scheduleDailyRefresh() {
+    clearTimeout(midnightTimer);
+    if (!currentUser) return;
+    midnightTimer=setTimeout(async()=>{
+        await refreshDailyChallenge(true);
+        if (modal && !modal.hidden) showModalState(completedToday?"completed":currentChallenge?"content":"empty");
+    },currentChallengeDate && currentChallengeDate!==getTodayDateKey()?100:millisecondsUntilLearningMidnight()+100);
+}
+async function refreshDailyChallenge(force=false) {
+    const uid=currentUser?.uid;
+    if (!uid || isSubmitting) return false;
+    if (!force && currentChallenge && currentChallengeDate===getTodayDateKey()) return true;
+    if (dailyLoad && dailyLoadOwner===uid) return dailyLoad;
+    dailyLoadOwner=uid;
+    const pending=loadDailyChallenge().finally(()=>{
+        if (dailyLoad===pending) dailyLoad=null;
+        if (currentUser?.uid===uid) scheduleDailyRefresh();
+    });
+    dailyLoad=pending;
+    return pending;
+}
+document.addEventListener("visibilitychange",()=>{
+    if (document.visibilityState==="visible" && currentChallengeDate!==getTodayDateKey()) {
+        refreshDailyChallenge(true).then(()=>{if(modal&&!modal.hidden)showModalState(completedToday?"completed":currentChallenge?"content":"empty");});
+    }
+});
+window.addEventListener("pageshow",event=>{if(event.persisted)refreshDailyChallenge(true);});
+window.addEventListener("pagehide",()=>clearTimeout(midnightTimer));
 
 async function checkTodayCompletion() {
 
@@ -407,6 +327,7 @@ async function checkTodayCompletion() {
     }
 
 
+    const uid=currentUser.uid, date=currentChallengeDate;
     const completionId =
         getCompletionId();
 
@@ -424,6 +345,8 @@ async function checkTodayCompletion() {
             completionReference
         );
 
+
+    if (auth.currentUser?.uid!==uid || currentUser?.uid!==uid || currentChallengeDate!==date) return;
 
     if (
         completionSnapshot.exists() &&
@@ -565,7 +488,8 @@ function prepareChallengeUI() {
 // OPEN MODAL
 // ==========================================
 
-function openModal() {
+async function openModal() {
+    clearTimeout(closeTimer);
 
     if (!modal) {
         return;
@@ -579,7 +503,11 @@ function openModal() {
     document.body.classList.add(
         "daily-modal-open"
     );
+    document.dispatchEvent(new CustomEvent("lakbay:daily-focus", { detail: { active: true } }));
 
+
+    showModalState("loading");
+    await refreshDailyChallenge();
 
     if (completedToday) {
 
@@ -635,9 +563,10 @@ function closeModal() {
     document.body.classList.remove(
         "daily-modal-open"
     );
+    document.dispatchEvent(new CustomEvent("lakbay:daily-focus", { detail: { active: false } }));
 
 
-    setTimeout(
+    closeTimer = setTimeout(
         () => {
 
             modal.hidden =
@@ -789,6 +718,15 @@ if (submitButton) {
             }
 
 
+            if (currentChallengeDate!==getTodayDateKey()) {
+                await refreshDailyChallenge(true);
+                showModalState(completedToday?"completed":currentChallenge?"content":"empty");
+                if (feedbackElement && currentChallenge && !completedToday) {
+                    feedbackElement.hidden=false;
+                    feedbackElement.textContent="A new daily challenge is ready. Choose an answer for today's question.";
+                }
+                return;
+            }
             const correctAnswer =
                 String(
                     currentChallenge
@@ -850,6 +788,7 @@ async function completeDailyChallenge(
     }
 
 
+    const submissionUid=currentUser.uid, submissionDate=currentChallengeDate;
     isSubmitting = true;
 
 
@@ -869,6 +808,8 @@ async function completeDailyChallenge(
             kind: "daily", challengeId: currentChallenge.id, answer: studentAnswer
         });
         if (!result.passed) throw new Error("The answer could not be confirmed.");
+        if (auth.currentUser?.uid!==submissionUid) return;
+        document.dispatchEvent(new CustomEvent("lakbay:answer-correct"));
         const xpAwarded = result.xpReward;
         const updatedXp = result.totalXp;
         const updatedLevel = result.level;
@@ -889,7 +830,8 @@ async function completeDailyChallenge(
             updateDisplayedProgress(
                 updatedXp,
                 updatedLevel,
-                updatedStreak
+                updatedStreak,
+                result.progressionPolicy
             );
         }
 
@@ -904,7 +846,7 @@ async function completeDailyChallenge(
 
         setTimeout(
             () => {
-
+                if (auth.currentUser?.uid!==submissionUid || getTodayDateKey()!==submissionDate || currentChallengeDate!==submissionDate) return;
                 showCompletedCard();
 
                 updateCompletedModal(
@@ -983,8 +925,11 @@ async function completeDailyChallenge(
 
     } finally {
 
-        isSubmitting =
-            false;
+        isSubmitting = false;
+        if (currentChallengeDate!==getTodayDateKey()) {
+            await refreshDailyChallenge(true);
+            if (modal&&!modal.hidden)showModalState(completedToday?"completed":currentChallenge?"content":"empty");
+        }
     }
 }
 
@@ -996,7 +941,8 @@ async function completeDailyChallenge(
 function updateDisplayedProgress(
     newXp,
     level,
-    streak
+    streak,
+    policy
 ) {
 
     // ==================================
@@ -1053,50 +999,7 @@ function updateDisplayedProgress(
     // PLAYER PROGRESS BAR
     // ==================================
 
-    const xpPerLevel = 100;
-
-
-    const currentLevelStartXp =
-        (level - 1) *
-        xpPerLevel;
-
-
-    const nextLevelXp =
-        level *
-        xpPerLevel;
-
-
-    const xpInsideCurrentLevel =
-        Math.max(
-            0,
-            newXp -
-            currentLevelStartXp
-        );
-
-
-    const progressPercent =
-        Math.max(
-            0,
-            Math.min(
-                100,
-                Math.round(
-                    (
-                        xpInsideCurrentLevel /
-                        xpPerLevel
-                    ) *
-                    100
-                )
-            )
-        );
-
-
-    const xpUntilNextLevel =
-        Math.max(
-            0,
-            nextLevelXp -
-            newXp
-        );
-
+    const {xpPerLevel, xpInLevel: xpInsideCurrentLevel, percent: progressPercent, xpUntilNextLevel} = progressionState(newXp, policy);
 
     setText(
         "levelProgressXp",
@@ -1167,30 +1070,11 @@ function showCorrectFeedback(
         "daily-challenge-feedback correct";
 
 
-    feedbackElement.innerHTML = `
-        <strong>
-            ✓ Correct!
-        </strong>
-
-        <span>
-            ${explanation}
-        </span>
-
-        <span>
-            ${rewardMessage}
-        </span>
-
-        ${
-            streakMessage
-                ? `
-                    <span>
-                        ${streakMessage}
-                    </span>
-                `
-                : ""
-        }
-    `;
-
+    feedbackElement.replaceChildren();
+    const title=document.createElement("strong");title.textContent="\u2713 Correct!";feedbackElement.append(title);
+    for (const message of [explanation,rewardMessage,streakMessage].filter(Boolean)) {
+        const line=document.createElement("span");line.textContent=message;feedbackElement.append(line);
+    }
 
     markCorrectOption();
 

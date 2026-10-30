@@ -1,12 +1,7 @@
 
-import {
-    app,
-    isLocalTestMode
-} from "./firebase-config.js";
+import { functions } from "./firebase-config.js";
 
 import {
-    getFunctions,
-    connectFunctionsEmulator,
     httpsCallable
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-functions.js";
 
@@ -15,29 +10,9 @@ import {
 // SHARED AI LEARNING ASSISTANCE CLIENT
 // ==========================================
 
-// AI assistance remains disabled outside
-// explicit local emulator testing.
-
-export const aiAssistanceLocalOnly =
-    isLocalTestMode;
-
-const functions = getFunctions(
-    app,
-    "asia-southeast1"
-);
-
-if (isLocalTestMode && !globalThis.lakbayFunctionsEmulatorConnected) {
-    connectFunctionsEmulator(
-        functions,
-        "127.0.0.1",
-        5001
-    );
-    globalThis.lakbayFunctionsEmulatorConnected = true;
-
-    console.log(
-        "LAKBAYPANAHON: AI FUNCTIONS EMULATOR CONNECTED"
-    );
-}
+// The backend currently reports AI generation as unavailable.
+// Enable this capability only when the deployed implementation supports it.
+export const aiAssistanceAvailable = false;
 
 // ==========================================
 // CALLABLE FUNCTION
@@ -54,7 +29,7 @@ const getLearningAssistance = httpsCallable(
 
 export async function requestAiAssistance(data) {
 
-    if (!isLocalTestMode) {
+    if (!aiAssistanceAvailable) {
         return "Hindi pa available ang AI learning assistance.";
     }
 
@@ -79,7 +54,7 @@ export async function requestAiAssistance(data) {
             error.code === "functions/unauthenticated" ||
             error.code === "functions/permission-denied"
         ) {
-            return "Hindi ma-verify ang iyong local test account. Pakisuri ang iyong emulator sign-in.";
+            return "Hindi ma-verify ang iyong account. Pakisubukang mag-sign in muli.";
         }
 
         if (

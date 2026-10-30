@@ -1,17 +1,20 @@
 
+import { initializeExplorationPreview } from "./exploration-preview.js";
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
 
 import {
-    getAuth,
-    connectAuthEmulator
+    getAuth
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
 import {
-    getFirestore,
-    connectFirestoreEmulator
+    getFirestore
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+import {
+    getFunctions
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-functions.js";
 
 // ==========================================
 // LAKBAYPANAHON FIREBASE CONFIGURATION
@@ -31,68 +34,9 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 const db = getFirestore(app);
+const functions = getFunctions(app, "asia-southeast1");
+initializeExplorationPreview();
 
-// ==========================================
-// EXPLICIT LOCAL TESTING MODE
-// ==========================================
-
-// Only enable local emulators when the URL contains
-// ?localTest=1 or &localTest=1.
-//
-// Example:
-// http://127.0.0.1:5500/pages/login.html?localTest=1
-//
-// This flag is for development testing only.
-
-const isLocalHost = [
-    "localhost",
-    "127.0.0.1"
-].includes(window.location.hostname);
-
-// Remember local testing mode across page navigation.
-// This setting is restricted to localhost / 127.0.0.1.
-
-const localTestParameter =
-    new URLSearchParams(window.location.search)
-        .get("localTest");
-
-if (isLocalHost) {
-    if (localTestParameter === "1") {
-        sessionStorage.setItem(
-            "lakbayLocalTest",
-            "1"
-        );
-    } else if (localTestParameter === "0") {
-        sessionStorage.removeItem(
-            "lakbayLocalTest"
-        );
-    }
-}
-
-export const isLocalTestMode =
-    isLocalHost &&
-    sessionStorage.getItem("lakbayLocalTest") === "1";
-
-if (isLocalTestMode) {
-    connectAuthEmulator(
-        auth,
-        "http://127.0.0.1:9099",
-        { disableWarnings: true }
-    );
-
-    connectFirestoreEmulator(
-        db,
-        "127.0.0.1",
-        8080
-    );
-
-    console.log(
-        "LAKBAYPANAHON: LOCAL FIREBASE EMULATOR MODE"
-    );
-}
-
-export {
-    app,
-    auth,
-    db
-};
+// Local development and hosted pages use the same Firebase project.
+// Legacy localTest URL parameters and session flags no longer affect routing.
+export { app, auth, db, functions };

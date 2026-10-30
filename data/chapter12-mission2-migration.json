@@ -1,0 +1,1293 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 12 Mission 2 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philippineculturaleducation.com.ph/tamblot/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+    "https://epa.culturalcenter.gov.ph/3/82/2142/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-11",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-11",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/autonomy-community-investigator",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter11-mission1",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter11-mission2",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter11-mission3",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter11-mission4",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter12-mission1",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 1
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter12-mission2",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-12",
+        "title": "Early Regional Uprisings",
+        "order": 2,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Compare selected Bohol, Samar and Ilocos cases through their dates, concerns, actions and source limits.",
+        "learningObjective": "Compare named regional uprisings without assuming identical motives, participation or coordination.",
+        "learningObjectives": [
+          "Explain put each case in its setting using lesson evidence.",
+          "Explain tamblot: a named bohol case using lesson evidence.",
+          "Explain sumuroy: forced labor and abuses using lesson evidence.",
+          "Explain basi: monopoly and local livelihoods using lesson evidence.",
+          "Explain compare similarities without erasing differences using lesson evidence."
+        ],
+        "lessonRecap": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter12-quiz2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission2",
+        "title": "Regional Uprisings - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 2,
+        "questionBlueprint": [
+          {
+            "topic": "regional-place-time",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "tamblot-regional-case",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "sumuroy-regional-case",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "basi-regional-case",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "regional-comparison-evidence",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission2-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission2",
+        "status": "active",
+        "order": 1,
+        "title": "Put Each Case in Its Setting",
+        "content": "Regional uprisings occurred in different places and periods. A comparison should begin with the case name, location and date before describing causes or actions. This mission studies three selected examples: Tamblot in Bohol in 1621, Sumuroy in Palapag, Samar, beginning in 1649, and the Basi Revolt in Ilocos in 1807. These are not all early uprisings, and their dates do not make them one coordinated event.\n\nOur timeline puts the named cases in order. It is a modern teaching guide, not a map of every participant or a complete chronology of each case. Earlier does not mean less important, and a later event was not automatically caused by the earlier one. To establish a connection between cases, look for evidence of communication, influence or shared action. Similar opposition to colonial demands alone does not prove the same program, leadership or private motives.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "regional-place-time"
+        ],
+        "imageUrl": "../assets/story/regional-uprisings-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Put Each Case in Its Setting. Labelled clues keep case, place, period and source limits visible; not an original testimony or battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Locate",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Keep a named uprising attached to its place and period.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Order",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The selected beginnings are 1621, 1649 and 1807.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connection needs evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Chronological order alone does not prove coordination or causation.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Three cases appear in date order. What does that establish most directly?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Their sequence, not proof that they were one coordinated event",
+          "One shared command for all cases",
+          "That each earlier case caused every later one",
+          "Every participants identical motive"
+        ],
+        "decisionCorrectAnswer": "Their sequence, not proof that they were one coordinated event",
+        "decisionExplanation": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "keyTerm": "Chronology",
+        "keyTermDefinition": "The order in which events happened.",
+        "historicalInsight": "Chronological order alone does not prove coordination or causation.",
+        "learningHelp": {
+          "explanation": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "vocabulary": [
+            {
+              "term": "Chronology",
+              "definition": "The order in which events happened."
+            }
+          ],
+          "example": "Keep a named uprising attached to its place and period.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission2-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission2",
+        "status": "active",
+        "order": 2,
+        "title": "Tamblot: A Named Bohol Case",
+        "content": "NCCA CulturEd identifies Tamblot as a babaylan who led an uprising in Bohol in 1621. Its account connects his movement with a wish to return to earlier religious practices. This introduces a particular religious concern within colonial change. It does not establish the thoughts or beliefs of every person in Bohol.\n\nThe entry also notes that much of Tamblots life is poorly documented. Do not fill those gaps with invented speeches, supernatural claims presented as verified events, or a complete biography. We study religious history without ranking faiths or requiring a student to adopt one. The uprising involved conflict and harm; no activity asks learners to perform a ritual or reenact an attack. Our source card keeps the named role, place, beginning and source limit visible. A leader and a concern are starting evidence, not every participants full motive or a universal explanation of all revolts.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "tamblot-regional-case"
+        ],
+        "imageUrl": "../assets/story/regional-uprisings-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Tamblot: A Named Bohol Case. Labelled clues keep case, place, period and source limits visible; not an original testimony or battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Role and place",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "CulturEd names Tamblot, a babaylan, in Bohol.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Period and concern",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The entry dates the uprising to 1621 and connects it with earlier religious practices.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Limited biographical records do not justify invented conversations or universal motives.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the Tamblot case support in this comparison?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every Bohol resident had identical beliefs",
+          "All uprisings had the same cause",
+          "The source records every conversation",
+          "A named Bohol uprising connected with a religious concern in 1621"
+        ],
+        "decisionCorrectAnswer": "A named Bohol uprising connected with a religious concern in 1621",
+        "decisionExplanation": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "keyTerm": "Babaylan",
+        "keyTermDefinition": "A spiritual leader in the community setting discussed in this case.",
+        "historicalInsight": "Limited biographical records do not justify invented conversations or universal motives.",
+        "learningHelp": {
+          "explanation": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "vocabulary": [
+            {
+              "term": "Babaylan",
+              "definition": "A spiritual leader in the community setting discussed in this case."
+            }
+          ],
+          "example": "CulturEd names Tamblot, a babaylan, in Bohol.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission2-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission2",
+        "status": "active",
+        "order": 3,
+        "title": "Sumuroy: Forced Labor and Abuses",
+        "content": "The NHCP marker identifies Agustin Sumuroy with Palapag, Samar, and an uprising beginning on 1 June 1649 against forced labor and abuses. The marker also describes the uprising spreading beyond its initial setting. This connects a labor grievance with a named action and period; it does not describe every local experience in places later affected.\n\nCompare the initial case with any claim about wider participation. Spreading to another place is not proof that every resident joined, that every participant had one motive, or that every local action was identical. A later commemorative marker can preserve important information without being a transcript of every event. Our labelled source card is not an authentic participant list. Ask what particular action is recorded and what further evidence would help explain conditions, roles and outcomes. We acknowledge harm without graphic detail or points for fighting.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "sumuroy-regional-case"
+        ],
+        "imageUrl": "../assets/story/regional-uprisings-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Sumuroy: Forced Labor and Abuses. Labelled clues keep case, place, period and source limits visible; not an original testimony or battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Named beginning",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The marker links Palapag and 1 June 1649 with Sumuroys uprising.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Grievance",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Forced labor and abuses are named concerns.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Spread and scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A wider affected area does not prove universal participation or identical local experience.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A marker describes spread beyond Palapag. What should not be assumed?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "That the source identifies labor concerns",
+          "That further local evidence could help",
+          "That every resident in each affected place joined with an identical motive",
+          "That Palapag is a named starting setting"
+        ],
+        "decisionCorrectAnswer": "That every resident in each affected place joined with an identical motive",
+        "decisionExplanation": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "keyTerm": "Labor grievance",
+        "keyTermDefinition": "A concern or complaint about required work or working conditions.",
+        "historicalInsight": "A wider affected area does not prove universal participation or identical local experience.",
+        "learningHelp": {
+          "explanation": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "vocabulary": [
+            {
+              "term": "Labor grievance",
+              "definition": "A concern or complaint about required work or working conditions."
+            }
+          ],
+          "example": "The marker links Palapag and 1 June 1649 with Sumuroys uprising.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission2-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission2",
+        "status": "active",
+        "order": 4,
+        "title": "Basi: Monopoly and Local Livelihoods",
+        "content": "The CCP account connects the Basi Revolt in Ilocos in 1807 with a government monopoly over basi, a sugarcane wine. The historical question concerns control of production and sale and its connection with opposition. This is a different setting and concern from the selected Bohol and Samar cases. It is not an invitation to use or make alcohol.\n\nThe account describes the later painting series by Esteban Villanueva, made in 1821, representing the 1807 revolt. Keep the event and the making of its depiction separate. The paintings were not cameras recording every word or motive. Our comparison uses a dated source guide rather than graphic images, drinking activities or a complete battle chronology. A monopoly connection does not explain every participants reasons or every households resources. Later lessons will explore outcomes and significance more closely, using evidence rather than assigning identical results to all early resistance.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "basi-regional-case"
+        ],
+        "imageUrl": "../assets/story/regional-uprisings-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Basi: Monopoly and Local Livelihoods. Labelled clues keep case, place, period and source limits visible; not an original testimony or battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Named case",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Basi example concerns Ilocos in 1807 and opposition to a monopoly.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Separate dates",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The event of 1807 and the painting series of 1821 are different stages.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A policy concern and later depiction do not reveal every participants motives.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A caption calls the 1821 paintings images made during the 1807 uprising. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Infer every exact speech from the images",
+          "Separate the event date from the later making of its depiction",
+          "Use 1807 as every images making date",
+          "Treat the paintings as cameras"
+        ],
+        "decisionCorrectAnswer": "Separate the event date from the later making of its depiction",
+        "decisionExplanation": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "keyTerm": "Monopoly",
+        "keyTermDefinition": "Exclusive control of a particular trade or activity.",
+        "historicalInsight": "A policy concern and later depiction do not reveal every participants motives.",
+        "learningHelp": {
+          "explanation": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "vocabulary": [
+            {
+              "term": "Monopoly",
+              "definition": "Exclusive control of a particular trade or activity."
+            }
+          ],
+          "example": "The Basi example concerns Ilocos in 1807 and opposition to a monopoly.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission2-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission2",
+        "status": "active",
+        "order": 5,
+        "title": "Compare Similarities Without Erasing Differences",
+        "content": "The selected cases share opposition within Spanish colonial rule, but that similarity does not make their causes, people and actions identical. Tamblot, Sumuroy and Basi belong to distinct places and periods. Compare the same questions: where and when, which concern, what recorded action, whose participation and what evidence remains limited.\n\nOur fictional comparison desk separates a CulturEd entry, a commemorative marker and an art-history account. These sources have different purposes and dates. A later account is not automatically an eyewitness record, and one leader is not a full participant list. Do not label every early uprising as already sharing one modern national program without evidence. Similar grievances can coexist with different local aims. If the source leaves an outcome or motive uncertain, name the limit instead of inventing unity, success or failure. The comparison cards are teaching aids, not original documents.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "regional-comparison-evidence"
+        ],
+        "imageUrl": "../assets/story/regional-uprisings-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Compare Similarities Without Erasing Differences. Labelled clues keep case, place, period and source limits visible; not an original testimony or battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Shared question",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask the same clear questions of each named case.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Differences",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Similar opposition does not establish identical aims, people or coordination.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source perspective",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Entries, markers and art accounts support different claims and have their own limits.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Three cases opposed colonial demands. What is the strongest comparison?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Compare their distinct settings, concerns and recorded actions without assuming one program",
+          "Treat all as the same event",
+          "Assign every participant one modern national aim",
+          "Ignore source dates and purposes"
+        ],
+        "decisionCorrectAnswer": "Compare their distinct settings, concerns and recorded actions without assuming one program",
+        "decisionExplanation": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "keyTerm": "Historical comparison",
+        "keyTermDefinition": "Examining similarities and differences using evidence from particular settings.",
+        "historicalInsight": "Entries, markers and art accounts support different claims and have their own limits.",
+        "learningHelp": {
+          "explanation": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "vocabulary": [
+            {
+              "term": "Historical comparison",
+              "definition": "Examining similarities and differences using evidence from particular settings."
+            }
+          ],
+          "example": "Ask the same clear questions of each named case.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission2-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission2",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Regional Comparison Report",
+        "content": "Review five ideas. Chronology puts cases in order without proving coordination. Tamblots 1621 Bohol case includes a religious concern and limited biographical evidence. Sumuroys Palapag case begins in 1649 and names forced labor and abuses. The 1807 Basi case connects with monopoly; the 1821 paintings are later depictions. Similar opposition does not establish identical causes or one shared command.\n\nPrepare a fictional comparison report for another Grade 5 learner. Name each case, place and period, compare a documented concern and recorded action, and identify a source limit. Do not assume every resident joined, use religion as every persons motive, or invent speeches and meetings. Keep harm visible without reenacting it or gaining points for it.\n\nThe main quiz has five questions and three correct passes. Review linked learning content before practice and a retry if needed. Completing this mission earns its configured reward once, but does not complete Chapter 12. Missions 3-5 and the chapter challenge are still being prepared.",
+        "reviewTopics": [
+          "regional-place-time",
+          "tamblot-regional-case",
+          "sumuroy-regional-case",
+          "basi-regional-case",
+          "regional-comparison-evidence"
+        ],
+        "imageUrl": "../assets/story/regional-uprisings-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Compare Similarities Without Erasing Differences. Labelled clues keep case, place, period and source limits visible; not an original testimony or battle scene.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Shared question",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask the same clear questions of each named case.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Differences",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Similar opposition does not establish identical aims, people or coordination.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source perspective",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Entries, markers and art accounts support different claims and have their own limits.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best compares early regional uprisings?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat every uprising as one coordinated event",
+          "Use one leader as every residents full story",
+          "Date every later depiction to its event",
+          "Keep cases and sources distinct while comparing documented concerns and actions"
+        ],
+        "decisionCorrectAnswer": "Keep cases and sources distinct while comparing documented concerns and actions",
+        "decisionExplanation": "Compare named regional cases through place, period, concerns, recorded actions and source limits without assuming identical participation or aims.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Compare named regional cases through place, period, concerns, recorded actions and source limits without assuming identical participation or aims.",
+        "keyTerm": "Historical comparison",
+        "keyTermDefinition": "Examining similarities and differences using evidence from particular settings.",
+        "historicalInsight": "Entries, markers and art accounts support different claims and have their own limits.",
+        "learningHelp": {
+          "explanation": "Compare named regional cases through place, period, concerns, recorded actions and source limits without assuming identical participation or aims.",
+          "vocabulary": [
+            {
+              "term": "Historical comparison",
+              "definition": "Examining similarities and differences using evidence from particular settings."
+            }
+          ],
+          "example": "Ask the same clear questions of each named case.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz2-question1",
+      "create": true,
+      "fields": {
+        "question": "What does chronology describe?",
+        "optionA": "The order in which events happened",
+        "optionB": "A guarantee that one event caused the next",
+        "optionC": "A measure of human worth",
+        "optionD": "Every participants private thoughts",
+        "correctAnswer": "A",
+        "explanation": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "learningPoint": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "historicalClue": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "answerExplanations": {
+          "A": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "B": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "C": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "D": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation."
+        },
+        "quizId": "chapter12-quiz2",
+        "order": 1,
+        "status": "active",
+        "topic": "regional-place-time",
+        "topicLabel": "Put Each Case in Its Setting",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz2-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why name place and period before comparing uprisings?",
+        "optionA": "All cases happened at the same moment",
+        "optionB": "Dates reveal every motive",
+        "optionC": "Locations prove every resident joined",
+        "optionD": "They keep explanations tied to distinct historical settings",
+        "correctAnswer": "D",
+        "explanation": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "learningPoint": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "historicalClue": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "B": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "C": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "D": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation."
+        },
+        "quizId": "chapter12-quiz2",
+        "order": 101,
+        "status": "active",
+        "topic": "regional-place-time",
+        "topicLabel": "Put Each Case in Its Setting",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission2-regional-place-time-practice1",
+      "create": true,
+      "fields": {
+        "question": "Three cases appear in date order. What does that establish most directly?",
+        "optionA": "One shared command for all cases",
+        "optionB": "That each earlier case caused every later one",
+        "optionC": "Every participants identical motive",
+        "optionD": "Their sequence, not proof that they were one coordinated event",
+        "correctAnswer": "D",
+        "explanation": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "learningPoint": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "historicalClue": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "B": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "C": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "D": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation."
+        },
+        "missionId": "chapter12-mission2",
+        "topic": "regional-place-time",
+        "topicLabel": "Put Each Case in Its Setting",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The order in which events happened.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission2-regional-place-time-practice2",
+      "create": true,
+      "fields": {
+        "question": "A timeline is used as proof of a shared command across all cases. What is missing?",
+        "optionA": "Only another date",
+        "optionB": "An assumption that similarity proves one organization",
+        "optionC": "Evidence of communication or coordinated action",
+        "optionD": "A larger timeline title",
+        "correctAnswer": "C",
+        "explanation": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "learningPoint": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "historicalClue": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "B": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "C": "Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation.",
+          "D": "Review the lesson clues. Their sequence, not proof that they were one coordinated event. Chronological order alone does not prove coordination or causation."
+        },
+        "missionId": "chapter12-mission2",
+        "topic": "regional-place-time",
+        "topicLabel": "Put Each Case in Its Setting",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The order in which events happened.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz2-question2",
+      "create": true,
+      "fields": {
+        "question": "Where is Tamblots case located in this mission?",
+        "optionA": "Palapag as another name for Bohol",
+        "optionB": "Every town in Ilocos",
+        "optionC": "No named place",
+        "optionD": "Bohol",
+        "correctAnswer": "D",
+        "explanation": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "learningPoint": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "historicalClue": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "B": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "C": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "D": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives."
+        },
+        "quizId": "chapter12-quiz2",
+        "order": 2,
+        "status": "active",
+        "topic": "tamblot-regional-case",
+        "topicLabel": "Tamblot: A Named Bohol Case",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz2-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why keep the limited biographical evidence visible?",
+        "optionA": "The source is a complete transcript",
+        "optionB": "Missing details prove every later claim",
+        "optionC": "Unknown details should not become invented historical facts",
+        "optionD": "A leader name supplies every private motive",
+        "correctAnswer": "C",
+        "explanation": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "learningPoint": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "historicalClue": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "B": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "C": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "D": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives."
+        },
+        "quizId": "chapter12-quiz2",
+        "order": 102,
+        "status": "active",
+        "topic": "tamblot-regional-case",
+        "topicLabel": "Tamblot: A Named Bohol Case",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission2-tamblot-regional-case-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the Tamblot case support in this comparison?",
+        "optionA": "All uprisings had the same cause",
+        "optionB": "The source records every conversation",
+        "optionC": "A named Bohol uprising connected with a religious concern in 1621",
+        "optionD": "Every Bohol resident had identical beliefs",
+        "correctAnswer": "C",
+        "explanation": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "learningPoint": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "historicalClue": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "B": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "C": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "D": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives."
+        },
+        "missionId": "chapter12-mission2",
+        "topic": "tamblot-regional-case",
+        "topicLabel": "Tamblot: A Named Bohol Case",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A spiritual leader in the community setting discussed in this case.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission2-tamblot-regional-case-practice2",
+      "create": true,
+      "fields": {
+        "question": "A report turns Tamblots concern into every Bohol residents belief. What correction fits?",
+        "optionA": "Assume every resident participated",
+        "optionB": "Keep the documented concern and seek evidence for wider claims",
+        "optionC": "Rank residents by religion",
+        "optionD": "Require students to perform the practice",
+        "correctAnswer": "B",
+        "explanation": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "learningPoint": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "historicalClue": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "B": "A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "C": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives.",
+          "D": "Review the lesson clues. A named Bohol uprising connected with a religious concern in 1621. Limited biographical records do not justify invented conversations or universal motives."
+        },
+        "missionId": "chapter12-mission2",
+        "topic": "tamblot-regional-case",
+        "topicLabel": "Tamblot: A Named Bohol Case",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A spiritual leader in the community setting discussed in this case.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz2-question3",
+      "create": true,
+      "fields": {
+        "question": "Which concern is named in the Sumuroy marker?",
+        "optionA": "Only a classroom dispute",
+        "optionB": "No concern is identified",
+        "optionC": "Forced labor and abuses",
+        "optionD": "A universal crop-price rule for all centuries",
+        "correctAnswer": "C",
+        "explanation": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "learningPoint": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "historicalClue": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "B": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "C": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "D": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience."
+        },
+        "quizId": "chapter12-quiz2",
+        "order": 3,
+        "status": "active",
+        "topic": "sumuroy-regional-case",
+        "topicLabel": "Sumuroy: Forced Labor and Abuses",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz2-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish the named beginning from wider local participation?",
+        "optionA": "A place name proves identical motives",
+        "optionB": "Spread and participation in particular places are different questions",
+        "optionC": "Every affected resident automatically joined",
+        "optionD": "One leader supplies all local stories",
+        "correctAnswer": "B",
+        "explanation": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "learningPoint": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "historicalClue": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "B": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "C": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "D": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience."
+        },
+        "quizId": "chapter12-quiz2",
+        "order": 103,
+        "status": "active",
+        "topic": "sumuroy-regional-case",
+        "topicLabel": "Sumuroy: Forced Labor and Abuses",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission2-sumuroy-regional-case-practice1",
+      "create": true,
+      "fields": {
+        "question": "A marker describes spread beyond Palapag. What should not be assumed?",
+        "optionA": "That further local evidence could help",
+        "optionB": "That every resident in each affected place joined with an identical motive",
+        "optionC": "That Palapag is a named starting setting",
+        "optionD": "That the source identifies labor concerns",
+        "correctAnswer": "B",
+        "explanation": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "learningPoint": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "historicalClue": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "B": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "C": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "D": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience."
+        },
+        "missionId": "chapter12-mission2",
+        "topic": "sumuroy-regional-case",
+        "topicLabel": "Sumuroy: Forced Labor and Abuses",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A concern or complaint about required work or working conditions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission2-sumuroy-regional-case-practice2",
+      "create": true,
+      "fields": {
+        "question": "A later marker is used to invent every participants exact words. What is needed?",
+        "optionA": "Evidence for those words beyond the commemorative summary",
+        "optionB": "A dramatic speech written now",
+        "optionC": "An assumption that every voice was the same",
+        "optionD": "Only the date the marker was installed",
+        "correctAnswer": "A",
+        "explanation": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "learningPoint": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "historicalClue": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+        "answerExplanations": {
+          "A": "That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "B": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "C": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience.",
+          "D": "Review the lesson clues. That every resident in each affected place joined with an identical motive. A wider affected area does not prove universal participation or identical local experience."
+        },
+        "missionId": "chapter12-mission2",
+        "topic": "sumuroy-regional-case",
+        "topicLabel": "Sumuroy: Forced Labor and Abuses",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A concern or complaint about required work or working conditions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz2-question4",
+      "create": true,
+      "fields": {
+        "question": "Which economic concern is linked to the Basi case here?",
+        "optionA": "No economic issue",
+        "optionB": "Government monopoly over production and sale",
+        "optionC": "A rule that all trade stopped in every place",
+        "optionD": "A school-attendance policy",
+        "correctAnswer": "B",
+        "explanation": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "learningPoint": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "historicalClue": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "B": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "C": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "D": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives."
+        },
+        "quizId": "chapter12-quiz2",
+        "order": 4,
+        "status": "active",
+        "topic": "basi-regional-case",
+        "topicLabel": "Basi: Monopoly and Local Livelihoods",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz2-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish 1807 from 1821?",
+        "optionA": "The depicted event and the paintings were not made at the same time",
+        "optionB": "Every depiction shares its events date",
+        "optionC": "Later representations cannot support any question",
+        "optionD": "The difference proves every private motive",
+        "correctAnswer": "A",
+        "explanation": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "learningPoint": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "historicalClue": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "answerExplanations": {
+          "A": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "B": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "C": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "D": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives."
+        },
+        "quizId": "chapter12-quiz2",
+        "order": 104,
+        "status": "active",
+        "topic": "basi-regional-case",
+        "topicLabel": "Basi: Monopoly and Local Livelihoods",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission2-basi-regional-case-practice1",
+      "create": true,
+      "fields": {
+        "question": "A caption calls the 1821 paintings images made during the 1807 uprising. What correction fits?",
+        "optionA": "Separate the event date from the later making of its depiction",
+        "optionB": "Use 1807 as every images making date",
+        "optionC": "Treat the paintings as cameras",
+        "optionD": "Infer every exact speech from the images",
+        "correctAnswer": "A",
+        "explanation": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "learningPoint": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "historicalClue": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "answerExplanations": {
+          "A": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "B": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "C": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "D": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives."
+        },
+        "missionId": "chapter12-mission2",
+        "topic": "basi-regional-case",
+        "topicLabel": "Basi: Monopoly and Local Livelihoods",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Exclusive control of a particular trade or activity.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission2-basi-regional-case-practice2",
+      "create": true,
+      "fields": {
+        "question": "A policy connection is presented as the complete motive of every participant. What remains to investigate?",
+        "optionA": "Only a larger universal caption",
+        "optionB": "Whether a painting can invent a conversation",
+        "optionC": "Nothing because all motives are identical",
+        "optionD": "Particular peoples roles, concerns and circumstances",
+        "correctAnswer": "D",
+        "explanation": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "learningPoint": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "historicalClue": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "B": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "C": "Review the lesson clues. Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives.",
+          "D": "Separate the event date from the later making of its depiction. A policy concern and later depiction do not reveal every participants motives."
+        },
+        "missionId": "chapter12-mission2",
+        "topic": "basi-regional-case",
+        "topicLabel": "Basi: Monopoly and Local Livelihoods",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Exclusive control of a particular trade or activity.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz2-question5",
+      "create": true,
+      "fields": {
+        "question": "What makes a historical comparison useful?",
+        "optionA": "Clear shared questions and evidence for each setting",
+        "optionB": "Erasing all differences",
+        "optionC": "Assuming similarity proves coordination",
+        "optionD": "Treating one source as every persons story",
+        "correctAnswer": "A",
+        "explanation": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "learningPoint": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "historicalClue": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "answerExplanations": {
+          "A": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "B": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "C": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "D": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits."
+        },
+        "quizId": "chapter12-quiz2",
+        "order": 5,
+        "status": "active",
+        "topic": "regional-comparison-evidence",
+        "topicLabel": "Compare Similarities Without Erasing Differences",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz2-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why note that one source is a marker and another an art account?",
+        "optionA": "Every source is an eyewitness transcript",
+        "optionB": "All later sources have identical viewpoints",
+        "optionC": "Source form makes dates unnecessary",
+        "optionD": "Their purposes and evidence limits differ",
+        "correctAnswer": "D",
+        "explanation": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "learningPoint": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "historicalClue": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "B": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "C": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "D": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits."
+        },
+        "quizId": "chapter12-quiz2",
+        "order": 105,
+        "status": "active",
+        "topic": "regional-comparison-evidence",
+        "topicLabel": "Compare Similarities Without Erasing Differences",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission2-regional-comparison-evidence-practice1",
+      "create": true,
+      "fields": {
+        "question": "Three cases opposed colonial demands. What is the strongest comparison?",
+        "optionA": "Treat all as the same event",
+        "optionB": "Assign every participant one modern national aim",
+        "optionC": "Ignore source dates and purposes",
+        "optionD": "Compare their distinct settings, concerns and recorded actions without assuming one program",
+        "correctAnswer": "D",
+        "explanation": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "learningPoint": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "historicalClue": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "B": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "C": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "D": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits."
+        },
+        "missionId": "chapter12-mission2",
+        "topic": "regional-comparison-evidence",
+        "topicLabel": "Compare Similarities Without Erasing Differences",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Examining similarities and differences using evidence from particular settings.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission2-regional-comparison-evidence-practice2",
+      "create": true,
+      "fields": {
+        "question": "Evidence does not establish a shared command between cases. What should a report say?",
+        "optionA": "Erase all regional names",
+        "optionB": "Treat date order as proof of common leadership",
+        "optionC": "Describe similarities while leaving coordination unproved",
+        "optionD": "Invent a meeting to explain unity",
+        "correctAnswer": "C",
+        "explanation": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "learningPoint": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "historicalClue": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "B": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "C": "Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits.",
+          "D": "Review the lesson clues. Compare their distinct settings, concerns and recorded actions without assuming one program. Entries, markers and art accounts support different claims and have their own limits."
+        },
+        "missionId": "chapter12-mission2",
+        "topic": "regional-comparison-evidence",
+        "topicLabel": "Compare Similarities Without Erasing Differences",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Examining similarities and differences using evidence from particular settings.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter12-mission2-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission2",
+        "name": "Regional Uprisings Evidence Journal",
+        "description": "A learning-game token for comparing named regional cases through evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 2,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Compare cases, chronology, concerns and source perspectives without erasing regional differences.",
+          "reflectionQuestion": "Which clue helped you distinguish a shared concern from proof of coordinated action?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-12",
+      "create": false,
+      "expected": {
+        "description": "Mission 1 introduces causes and forms of resistance through named cases. Missions 2-5 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-2 introduce causes, forms and selected regional uprisings. Missions 3-5 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapter 12 begins with causes and forms of resistance. Later missions and Chapters 13-14 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 12 offers Missions 1-2 on causes, forms and regional cases of resistance. Later missions and Chapters 13-14 are being prepared."
+      }
+    }
+  ]
+}

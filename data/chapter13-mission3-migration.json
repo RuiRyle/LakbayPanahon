@@ -1,0 +1,1317 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 13 Mission 3 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://www.nps.gov/common/uploads/teachers/lessonplans/Thomas%20Jefferson%20Presentation.pdf",
+    "https://www.presidence-de-la-republique.fr/hist/10/ang/instit/text1.html",
+    "https://www.senado.es/web/conocersenado/senadohistoria/periodosconstitucionales/detalle/index.html?id=CONSTITUCION_DE_1812",
+    "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/literary-arts/philippine-literature-in-spanish/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-12",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-12",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/early-resistance-investigator",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter12-mission1",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter12-mission2",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter12-mission3",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter12-mission4",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter12-mission5",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 5
+      }
+    },
+    {
+      "path": "missions/chapter13-mission1",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter13-mission2",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 2
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter13-mission3",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-13",
+        "title": "International Events and the Spread of New Ideas",
+        "order": 3,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate reason, rights, constitutional rules and the evidence needed to trace circulation and response.",
+        "learningObjective": "Distinguish expressed political ideas from evidence of access, response and local influence.",
+        "learningObjectives": [
+          "Explain ask why a rule is fair using lesson evidence.",
+          "Explain a declaration about rights using lesson evidence.",
+          "Explain rules for governing: cadiz, 1812 using lesson evidence.",
+          "Explain a newspaper is a channel using lesson evidence.",
+          "Explain follow an idea with evidence using lesson evidence."
+        ],
+        "lessonRecap": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "sourceUrls": [
+          "https://www.nps.gov/common/uploads/teachers/lessonplans/Thomas%20Jefferson%20Presentation.pdf",
+          "https://www.presidence-de-la-republique.fr/hist/10/ang/instit/text1.html",
+          "https://www.senado.es/web/conocersenado/senadohistoria/periodosconstitucionales/detalle/index.html?id=CONSTITUCION_DE_1812",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/literary-arts/philippine-literature-in-spanish/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter13-quiz3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission3",
+        "title": "New Ideas - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 3,
+        "questionBlueprint": [
+          {
+            "topic": "reason-rights",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "french-declaration",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "cadiz-constitution",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "print-access",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "trace-influence",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission3-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission3",
+        "status": "active",
+        "order": 1,
+        "title": "Ask Why a Rule Is Fair",
+        "content": "During the Enlightenment, writers debated reason, learning and the rights of people. They asked questions about government and authority rather than treating every existing rule as beyond discussion. The National Park Service teaching resource describes arguments about freedom of thought, speech and religion. These are examples of ideas to investigate, not a claim that everyone thought alike.\n\nA useful classroom question is: What reason supports this rule, and whom does it affect? Our example is fictional: a reading club must explain why each member may ask a question. This helps you understand an argument about participation without pretending to be a historical speech. A reasoned argument and an actual change in government are different things. Writings can present an ideal while real societies fall short of it. Do not assume an idea was entirely new to every society or that one European writer invented all ideas about fairness.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then review your evidence before practice.",
+        "reviewTopics": [
+          "reason-rights"
+        ],
+        "imageUrl": "../assets/story/ideas-evidence-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for Ask Why a Rule Is Fair. Labelled evidence guide, not an original historical document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Debate",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Writers discussed reason and rights.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Example",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A classroom rule can be examined through reasons and effects.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An ideal in writing is not proof of equal treatment in practice.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A writer supports freedom of thought. What does that alone establish?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The idea was expressed, not that everyone enjoyed it",
+          "Everyone had equal rights immediately",
+          "Every government changed at once",
+          "All readers agreed"
+        ],
+        "decisionCorrectAnswer": "The idea was expressed, not that everyone enjoyed it",
+        "decisionExplanation": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "keyTerm": "Reason",
+        "keyTermDefinition": "Thinking carefully about an explanation and its evidence.",
+        "historicalInsight": "An ideal in writing is not proof of equal treatment in practice.",
+        "learningHelp": {
+          "explanation": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "vocabulary": [
+            {
+              "term": "Reason",
+              "definition": "Thinking carefully about an explanation and its evidence."
+            }
+          ],
+          "example": "Writers discussed reason and rights.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nps.gov/common/uploads/teachers/lessonplans/Thomas%20Jefferson%20Presentation.pdf",
+          "https://www.presidence-de-la-republique.fr/hist/10/ang/instit/text1.html",
+          "https://www.senado.es/web/conocersenado/senadohistoria/periodosconstitucionales/detalle/index.html?id=CONSTITUCION_DE_1812",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/literary-arts/philippine-literature-in-spanish/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission3-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission3",
+        "status": "active",
+        "order": 2,
+        "title": "A Declaration About Rights",
+        "content": "In France, the National Assembly adopted the Declaration of the Rights of Man and of the Citizen in August 1789 during the French Revolution. It stated ideas about liberty and equality before the law. It also addressed representation and the separation of powers. A formal statement allows us to investigate what its authors claimed government should protect.\n\nEquality before the law means that legal treatment should not depend simply on a privileged social position. Separation of powers means dividing government responsibilities rather than putting every task in one pair of hands. These are simplified explanations of the ideas, not a translation of every article. Keep the place and date with the document. A declaration adopted in France was not automatically a law in the Philippines. Nor does its adoption prove that every person gained equal treatment in daily life. Ask how a principle was applied and who could actually take part.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then review your evidence before practice.",
+        "reviewTopics": [
+          "french-declaration"
+        ],
+        "imageUrl": "../assets/story/ideas-evidence-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for A Declaration About Rights. Labelled evidence guide, not an original historical document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Place and date",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The declaration was adopted in France in 1789.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Ideas",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "It addressed liberty and equality before the law.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A declaration in France was not automatically Philippine law.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which claim fits this declaration?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "It instantly became a Philippine law",
+          "It proves everyone was treated equally",
+          "It records every Filipino readers opinion",
+          "It stated rights ideas in France in 1789"
+        ],
+        "decisionCorrectAnswer": "It stated rights ideas in France in 1789",
+        "decisionExplanation": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "keyTerm": "Declaration",
+        "keyTermDefinition": "A formal public statement.",
+        "historicalInsight": "A declaration in France was not automatically Philippine law.",
+        "learningHelp": {
+          "explanation": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "vocabulary": [
+            {
+              "term": "Declaration",
+              "definition": "A formal public statement."
+            }
+          ],
+          "example": "The declaration was adopted in France in 1789.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nps.gov/common/uploads/teachers/lessonplans/Thomas%20Jefferson%20Presentation.pdf",
+          "https://www.presidence-de-la-republique.fr/hist/10/ang/instit/text1.html",
+          "https://www.senado.es/web/conocersenado/senadohistoria/periodosconstitucionales/detalle/index.html?id=CONSTITUCION_DE_1812",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/literary-arts/philippine-literature-in-spanish/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission3-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission3",
+        "status": "active",
+        "order": 3,
+        "title": "Rules for Governing: Cadiz, 1812",
+        "content": "The Cadiz Constitution was promulgated in Spain in 1812. This date belongs to the 19th century, after the 18th-century changes in Mission 1. The Spanish Senate preserves its text. It divided responsibilities for making laws, carrying them out and deciding legal cases among different institutions. This helps us investigate an alternative to placing all government tasks under unlimited personal authority.\n\nThe text also listed the Philippine islands in its description of Spanish territory. This shows a connection between a Spanish constitutional document and the colonial setting of the Philippines. It does not establish effective control in every community or prove that every resident had the same political rights. The constitution contained restrictions as well as principles. Treat it as a historical document, not the current Philippine Constitution. Ask separately what a text states, when it operated and what happened locally. One document cannot answer every question about everyday experience.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then review your evidence before practice.",
+        "reviewTopics": [
+          "cadiz-constitution"
+        ],
+        "imageUrl": "../assets/story/ideas-evidence-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for Rules for Governing: Cadiz, 1812. Labelled evidence guide, not an original historical document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Document",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Cadiz Constitution belongs to 1812.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Government",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "It divided lawmaking, execution and legal judgement.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connection",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Its territorial description included the Philippine islands.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the territorial description directly show?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Everyone had identical political rights",
+          "The text is the current Philippine Constitution",
+          "The islands were named in the constitutional text",
+          "Every community was effectively controlled"
+        ],
+        "decisionCorrectAnswer": "The islands were named in the constitutional text",
+        "decisionExplanation": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "keyTerm": "Constitution",
+        "keyTermDefinition": "A basic set of rules organizing government.",
+        "historicalInsight": "Its territorial description included the Philippine islands.",
+        "learningHelp": {
+          "explanation": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "vocabulary": [
+            {
+              "term": "Constitution",
+              "definition": "A basic set of rules organizing government."
+            }
+          ],
+          "example": "The Cadiz Constitution belongs to 1812.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nps.gov/common/uploads/teachers/lessonplans/Thomas%20Jefferson%20Presentation.pdf",
+          "https://www.presidence-de-la-republique.fr/hist/10/ang/instit/text1.html",
+          "https://www.senado.es/web/conocersenado/senadohistoria/periodosconstitucionales/detalle/index.html?id=CONSTITUCION_DE_1812",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/literary-arts/philippine-literature-in-spanish/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission3-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission3",
+        "status": "active",
+        "order": 4,
+        "title": "A Newspaper Is a Channel",
+        "content": "The NCCA account of Philippine literature dates the newspaper Del Superior Gobierno to 1811. Newspapers are one way information can be printed and shared. Printing, circulation, reading and agreement are separate steps. A publication date establishes a printed outlet; it does not identify every reader or tell us that each reader accepted an idea.\n\nThe same NCCA account describes colonial regulation of literary production and circulation. Restrictions on materials could affect access to ideas. We should not assume that all writing moved freely. A person might receive a text, hear a discussion about it or have no access to it. Those are possibilities to investigate, not invented biographies of named students or historical residents. We do not have the contents of a specific 1811 issue in this scene, so do not claim that it printed a particular rights text. Check an actual issue before making a claim about its contents.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then review your evidence before practice.",
+        "reviewTopics": [
+          "print-access"
+        ],
+        "imageUrl": "../assets/story/ideas-evidence-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for A Newspaper Is a Channel. Labelled evidence guide, not an original historical document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Outlet",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Del Superior Gobierno appeared in 1811.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Access",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Colonial regulation could restrict circulation.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Contents",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A publication date does not prove which ideas a particular issue contained.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What should you check before saying an issue printed a rights text?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A guess from another country",
+          "The contents of that issue",
+          "Only the newspaper founding date",
+          "Only the paper title"
+        ],
+        "decisionCorrectAnswer": "The contents of that issue",
+        "decisionExplanation": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "keyTerm": "Circulation",
+        "keyTermDefinition": "The movement or distribution of written material.",
+        "historicalInsight": "A publication date does not prove which ideas a particular issue contained.",
+        "learningHelp": {
+          "explanation": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "vocabulary": [
+            {
+              "term": "Circulation",
+              "definition": "The movement or distribution of written material."
+            }
+          ],
+          "example": "Del Superior Gobierno appeared in 1811.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nps.gov/common/uploads/teachers/lessonplans/Thomas%20Jefferson%20Presentation.pdf",
+          "https://www.presidence-de-la-republique.fr/hist/10/ang/instit/text1.html",
+          "https://www.senado.es/web/conocersenado/senadohistoria/periodosconstitucionales/detalle/index.html?id=CONSTITUCION_DE_1812",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/literary-arts/philippine-literature-in-spanish/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission3-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission3",
+        "status": "active",
+        "order": 5,
+        "title": "Follow an Idea with Evidence",
+        "content": "Build an idea trail with four cards: a statement is written, a copy travels, someone receives it, and a response is recorded. These are modern teaching cards, not four surviving records supplied by this scene. They show the evidence you would seek before claiming that an international idea influenced a particular person or group. A possible route is not yet proof of a specific influence.\n\nFor a fictional example, a club receives a booklet and later writes minutes discussing one of its proposals. The delivery note supports receipt. The minutes support a response. Neither proves that every member agreed or that the booklet alone caused every later decision. Historical investigations need similar care with real records. Keep the dates, language and audience in view. People can adapt, question or reject an idea. New ideas interacted with local concerns; they did not erase the histories and choices of Philippine communities. Mission 4 will examine local grievances and growing political awareness.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then review your evidence before practice.",
+        "reviewTopics": [
+          "trace-influence"
+        ],
+        "imageUrl": "../assets/story/ideas-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for Follow an Idea with Evidence. Labelled evidence guide, not an original historical document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Receipt",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A delivery record can support that material reached someone.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Response",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A dated discussion can support how people responded.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Receiving a text does not prove agreement or a single cause for later action.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which evidence best supports a recorded response?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Dated minutes discussing a proposal",
+          "Only a possible shipping route",
+          "Only a foreign publication date",
+          "Only a modern clue icon"
+        ],
+        "decisionCorrectAnswer": "Dated minutes discussing a proposal",
+        "decisionExplanation": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "keyTerm": "Influence",
+        "keyTermDefinition": "An effect on how someone thinks or acts.",
+        "historicalInsight": "Receiving a text does not prove agreement or a single cause for later action.",
+        "learningHelp": {
+          "explanation": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "vocabulary": [
+            {
+              "term": "Influence",
+              "definition": "An effect on how someone thinks or acts."
+            }
+          ],
+          "example": "A delivery record can support that material reached someone.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nps.gov/common/uploads/teachers/lessonplans/Thomas%20Jefferson%20Presentation.pdf",
+          "https://www.presidence-de-la-republique.fr/hist/10/ang/instit/text1.html",
+          "https://www.senado.es/web/conocersenado/senadohistoria/periodosconstitucionales/detalle/index.html?id=CONSTITUCION_DE_1812",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/literary-arts/philippine-literature-in-spanish/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission3-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission3",
+        "status": "active",
+        "order": 6,
+        "title": "Your Ideas Evidence Journal",
+        "content": "During the Enlightenment, writers debated reason, learning and the rights of people. They asked questions about government and authority rather than treating every existing rule as beyond discussion. The National Park Service teaching resource describes arguments about freedom of thought, speech and religion. These are examples of ideas to investigate, not a claim that everyone thought alike.\n\nFor a fictional example, a club receives a booklet and later writes minutes discussing one of its proposals. The delivery note supports receipt. The minutes support a response. Neither proves that every member agreed or that the booklet alone caused every later decision. Historical investigations need similar care with real records. Keep the dates, language and audience in view. People can adapt, question or reject an idea. New ideas interacted with local concerns; they did not erase the histories and choices of Philippine communities. Mission 4 will examine local grievances and growing political awareness.\n\nSort the French declaration of 1789, the newspaper outlet of 1811 and the Cadiz Constitution of 1812 on a timeline. They are different types of evidence. Review the difference between publication, receipt and response before your quiz. Mission 4 and the chapter challenge are being prepared. Completing this mission alone does not complete the chapter.",
+        "reviewTopics": [
+          "reason-rights",
+          "french-declaration",
+          "cadiz-constitution",
+          "print-access",
+          "trace-influence"
+        ],
+        "imageUrl": "../assets/story/ideas-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for Follow an Idea with Evidence. Labelled evidence guide, not an original historical document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Receipt",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A delivery record can support that material reached someone.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Response",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A dated discussion can support how people responded.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Receiving a text does not prove agreement or a single cause for later action.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which journal is ready for review?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One that assumes every reader agreed",
+          "One that invents a newspapers contents",
+          "One that treats all dates as simultaneous",
+          "One that separates an expressed idea, receipt and response"
+        ],
+        "decisionCorrectAnswer": "One that separates an expressed idea, receipt and response",
+        "decisionExplanation": "Separate expressed ideas, circulation, receipt and response. Check dates, place and the limits of each source.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Separate expressed ideas, circulation, receipt and response. Check dates, place and the limits of each source.",
+        "keyTerm": "Influence",
+        "keyTermDefinition": "An effect on how someone thinks or acts.",
+        "historicalInsight": "Receiving a text does not prove agreement or a single cause for later action.",
+        "learningHelp": {
+          "explanation": "Separate expressed ideas, circulation, receipt and response. Check dates, place and the limits of each source.",
+          "vocabulary": [
+            {
+              "term": "Influence",
+              "definition": "An effect on how someone thinks or acts."
+            }
+          ],
+          "example": "A delivery record can support that material reached someone.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nps.gov/common/uploads/teachers/lessonplans/Thomas%20Jefferson%20Presentation.pdf",
+          "https://www.presidence-de-la-republique.fr/hist/10/ang/instit/text1.html",
+          "https://www.senado.es/web/conocersenado/senadohistoria/periodosconstitucionales/detalle/index.html?id=CONSTITUCION_DE_1812",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/literary-arts/philippine-literature-in-spanish/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz3-question1",
+      "create": true,
+      "fields": {
+        "question": "What does reason mean here?",
+        "optionA": "Careful thinking about explanations and evidence",
+        "optionB": "Accepting every statement without a question",
+        "optionC": "Guessing what everyone believed",
+        "optionD": "Only remembering a name",
+        "correctAnswer": "A",
+        "explanation": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "learningPoint": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "historicalClue": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "answerExplanations": {
+          "A": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "B": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "C": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "D": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice."
+        },
+        "quizId": "chapter13-quiz3",
+        "order": 1,
+        "status": "active",
+        "topic": "reason-rights",
+        "topicLabel": "Ask Why a Rule Is Fair",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz3-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Which question examines a rule using reasons?",
+        "optionA": "Must every old rule be fair?",
+        "optionB": "Can evidence always be skipped?",
+        "optionC": "Did everyone agree automatically?",
+        "optionD": "Why does this rule exist and whom does it affect?",
+        "correctAnswer": "D",
+        "explanation": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "learningPoint": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "historicalClue": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "B": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "C": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "D": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice."
+        },
+        "quizId": "chapter13-quiz3",
+        "order": 101,
+        "status": "active",
+        "topic": "reason-rights",
+        "topicLabel": "Ask Why a Rule Is Fair",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission3-reason-rights-practice1",
+      "create": true,
+      "fields": {
+        "question": "A writer supports freedom of thought. What does that alone establish?",
+        "optionA": "Everyone had equal rights immediately",
+        "optionB": "Every government changed at once",
+        "optionC": "All readers agreed",
+        "optionD": "The idea was expressed, not that everyone enjoyed it",
+        "correctAnswer": "D",
+        "explanation": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "learningPoint": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "historicalClue": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "B": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "C": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "D": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice."
+        },
+        "missionId": "chapter13-mission3",
+        "topic": "reason-rights",
+        "topicLabel": "Ask Why a Rule Is Fair",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Thinking carefully about an explanation and its evidence.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission3-reason-rights-practice2",
+      "create": true,
+      "fields": {
+        "question": "A book describes a fair ideal. What evidence helps examine its practice?",
+        "optionA": "Only its cover color",
+        "optionB": "A guessed response from every reader",
+        "optionC": "Records of how people were treated",
+        "optionD": "Only the book title",
+        "correctAnswer": "C",
+        "explanation": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "learningPoint": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "historicalClue": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "B": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "C": "Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice.",
+          "D": "Review the lesson clues. Writers discussed reason and rights. A classroom rule can be examined through reasons and effects. An ideal in writing is not proof of equal treatment in practice."
+        },
+        "missionId": "chapter13-mission3",
+        "topic": "reason-rights",
+        "topicLabel": "Ask Why a Rule Is Fair",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Thinking carefully about an explanation and its evidence.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz3-question2",
+      "create": true,
+      "fields": {
+        "question": "What is a declaration?",
+        "optionA": "A household census",
+        "optionB": "A personal lifespan",
+        "optionC": "A complete travel record",
+        "optionD": "A formal public statement",
+        "correctAnswer": "D",
+        "explanation": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "learningPoint": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "historicalClue": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "B": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "C": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "D": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law."
+        },
+        "quizId": "chapter13-quiz3",
+        "order": 2,
+        "status": "active",
+        "topic": "french-declaration",
+        "topicLabel": "A Declaration About Rights",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz3-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Which idea belongs to this example?",
+        "optionA": "One person doing every government task",
+        "optionB": "An end to the need for evidence",
+        "optionC": "Equality before the law",
+        "optionD": "Automatic agreement by all readers",
+        "correctAnswer": "C",
+        "explanation": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "learningPoint": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "historicalClue": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "B": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "C": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "D": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law."
+        },
+        "quizId": "chapter13-quiz3",
+        "order": 102,
+        "status": "active",
+        "topic": "french-declaration",
+        "topicLabel": "A Declaration About Rights",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission3-french-declaration-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which claim fits this declaration?",
+        "optionA": "It proves everyone was treated equally",
+        "optionB": "It records every Filipino readers opinion",
+        "optionC": "It stated rights ideas in France in 1789",
+        "optionD": "It instantly became a Philippine law",
+        "correctAnswer": "C",
+        "explanation": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "learningPoint": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "historicalClue": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "B": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "C": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "D": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law."
+        },
+        "missionId": "chapter13-mission3",
+        "topic": "french-declaration",
+        "topicLabel": "A Declaration About Rights",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A formal public statement.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission3-french-declaration-practice2",
+      "create": true,
+      "fields": {
+        "question": "How should a report distinguish ideal and practice?",
+        "optionA": "Treat every later event as inevitable",
+        "optionB": "Name the principle, then examine evidence of its application",
+        "optionC": "Assume a statement proves perfect application",
+        "optionD": "Ignore the date and place",
+        "correctAnswer": "B",
+        "explanation": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "learningPoint": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "historicalClue": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "B": "The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "C": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law.",
+          "D": "Review the lesson clues. The declaration was adopted in France in 1789. It addressed liberty and equality before the law. A declaration in France was not automatically Philippine law."
+        },
+        "missionId": "chapter13-mission3",
+        "topic": "french-declaration",
+        "topicLabel": "A Declaration About Rights",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A formal public statement.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz3-question3",
+      "create": true,
+      "fields": {
+        "question": "What does a constitution organize?",
+        "optionA": "Only a travel diary",
+        "optionB": "Every persons private beliefs",
+        "optionC": "Basic rules of government",
+        "optionD": "Only a household shopping list",
+        "correctAnswer": "C",
+        "explanation": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "learningPoint": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "historicalClue": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "B": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "C": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "D": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands."
+        },
+        "quizId": "chapter13-quiz3",
+        "order": 3,
+        "status": "active",
+        "topic": "cadiz-constitution",
+        "topicLabel": "Rules for Governing: Cadiz, 1812",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz3-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Which century includes 1812?",
+        "optionA": "The 20th century",
+        "optionB": "The 19th century",
+        "optionC": "The 18th century",
+        "optionD": "The 17th century",
+        "correctAnswer": "B",
+        "explanation": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "learningPoint": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "historicalClue": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "B": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "C": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "D": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands."
+        },
+        "quizId": "chapter13-quiz3",
+        "order": 103,
+        "status": "active",
+        "topic": "cadiz-constitution",
+        "topicLabel": "Rules for Governing: Cadiz, 1812",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission3-cadiz-constitution-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the territorial description directly show?",
+        "optionA": "The text is the current Philippine Constitution",
+        "optionB": "The islands were named in the constitutional text",
+        "optionC": "Every community was effectively controlled",
+        "optionD": "Everyone had identical political rights",
+        "correctAnswer": "B",
+        "explanation": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "learningPoint": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "historicalClue": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "B": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "C": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "D": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands."
+        },
+        "missionId": "chapter13-mission3",
+        "topic": "cadiz-constitution",
+        "topicLabel": "Rules for Governing: Cadiz, 1812",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A basic set of rules organizing government.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission3-cadiz-constitution-practice2",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish a constitutional rule from a local experience?",
+        "optionA": "A text alone does not establish how everyone experienced it",
+        "optionB": "All rules were applied identically everywhere",
+        "optionC": "A date proves universal agreement",
+        "optionD": "A territorial list is a household survey",
+        "correctAnswer": "A",
+        "explanation": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "learningPoint": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "historicalClue": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+        "answerExplanations": {
+          "A": "The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "B": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "C": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands.",
+          "D": "Review the lesson clues. The Cadiz Constitution belongs to 1812. It divided lawmaking, execution and legal judgement. Its territorial description included the Philippine islands."
+        },
+        "missionId": "chapter13-mission3",
+        "topic": "cadiz-constitution",
+        "topicLabel": "Rules for Governing: Cadiz, 1812",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A basic set of rules organizing government.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz3-question4",
+      "create": true,
+      "fields": {
+        "question": "What does circulation mean here?",
+        "optionA": "A kind of crop quota",
+        "optionB": "Distribution of written material",
+        "optionC": "Universal agreement",
+        "optionD": "An official lifespan",
+        "correctAnswer": "B",
+        "explanation": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "learningPoint": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "historicalClue": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "B": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "C": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "D": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained."
+        },
+        "quizId": "chapter13-quiz3",
+        "order": 4,
+        "status": "active",
+        "topic": "print-access",
+        "topicLabel": "A Newspaper Is a Channel",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz3-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "What does the 1811 example establish?",
+        "optionA": "A newspaper outlet existed",
+        "optionB": "Every resident read it",
+        "optionC": "It printed every foreign declaration",
+        "optionD": "All restrictions disappeared",
+        "correctAnswer": "A",
+        "explanation": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "learningPoint": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "historicalClue": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "answerExplanations": {
+          "A": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "B": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "C": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "D": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained."
+        },
+        "quizId": "chapter13-quiz3",
+        "order": 104,
+        "status": "active",
+        "topic": "print-access",
+        "topicLabel": "A Newspaper Is a Channel",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission3-print-access-practice1",
+      "create": true,
+      "fields": {
+        "question": "What should you check before saying an issue printed a rights text?",
+        "optionA": "The contents of that issue",
+        "optionB": "Only the newspaper founding date",
+        "optionC": "Only the paper title",
+        "optionD": "A guess from another country",
+        "correctAnswer": "A",
+        "explanation": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "learningPoint": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "historicalClue": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "answerExplanations": {
+          "A": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "B": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "C": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "D": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained."
+        },
+        "missionId": "chapter13-mission3",
+        "topic": "print-access",
+        "topicLabel": "A Newspaper Is a Channel",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The movement or distribution of written material.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission3-print-access-practice2",
+      "create": true,
+      "fields": {
+        "question": "Why investigate access as well as publication?",
+        "optionA": "All printed texts reach everyone",
+        "optionB": "Every reader agrees automatically",
+        "optionC": "Restrictions never affect circulation",
+        "optionD": "A printed text does not prove everyone could receive or read it",
+        "correctAnswer": "D",
+        "explanation": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "learningPoint": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "historicalClue": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "B": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "C": "Review the lesson clues. Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained.",
+          "D": "Del Superior Gobierno appeared in 1811. Colonial regulation could restrict circulation. A publication date does not prove which ideas a particular issue contained."
+        },
+        "missionId": "chapter13-mission3",
+        "topic": "print-access",
+        "topicLabel": "A Newspaper Is a Channel",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The movement or distribution of written material.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz3-question5",
+      "create": true,
+      "fields": {
+        "question": "What does influence concern here?",
+        "optionA": "An effect on thinking or action",
+        "optionB": "Automatic agreement by everyone",
+        "optionC": "Only where a book was printed",
+        "optionD": "A date without an audience",
+        "correctAnswer": "A",
+        "explanation": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "learningPoint": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "historicalClue": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "answerExplanations": {
+          "A": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "B": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "C": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "D": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action."
+        },
+        "quizId": "chapter13-quiz3",
+        "order": 5,
+        "status": "active",
+        "topic": "trace-influence",
+        "topicLabel": "Follow an Idea with Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz3-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "A delivery note records a booklet arriving. What remains unproven?",
+        "optionA": "That delivery was recorded",
+        "optionB": "That a booklet is mentioned",
+        "optionC": "That the note concerns receipt",
+        "optionD": "Whether its recipient agreed with it",
+        "correctAnswer": "D",
+        "explanation": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "learningPoint": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "historicalClue": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "B": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "C": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "D": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action."
+        },
+        "quizId": "chapter13-quiz3",
+        "order": 105,
+        "status": "active",
+        "topic": "trace-influence",
+        "topicLabel": "Follow an Idea with Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission3-trace-influence-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which evidence best supports a recorded response?",
+        "optionA": "Only a possible shipping route",
+        "optionB": "Only a foreign publication date",
+        "optionC": "Only a modern clue icon",
+        "optionD": "Dated minutes discussing a proposal",
+        "correctAnswer": "D",
+        "explanation": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "learningPoint": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "historicalClue": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "B": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "C": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "D": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action."
+        },
+        "missionId": "chapter13-mission3",
+        "topic": "trace-influence",
+        "topicLabel": "Follow an Idea with Evidence",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An effect on how someone thinks or acts.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission3-trace-influence-practice2",
+      "create": true,
+      "fields": {
+        "question": "Which explanation traces influence carefully?",
+        "optionA": "Use a route map to prove every belief",
+        "optionB": "Make one text the certain cause of all later events",
+        "optionC": "Use records of receipt and response, allowing different reactions",
+        "optionD": "Assume every reader agreed",
+        "correctAnswer": "C",
+        "explanation": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "learningPoint": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "historicalClue": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "B": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "C": "A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action.",
+          "D": "Review the lesson clues. A delivery record can support that material reached someone. A dated discussion can support how people responded. Receiving a text does not prove agreement or a single cause for later action."
+        },
+        "missionId": "chapter13-mission3",
+        "topic": "trace-influence",
+        "topicLabel": "Follow an Idea with Evidence",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An effect on how someone thinks or acts.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter13-mission3-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission3",
+        "name": "Ideas Evidence Journal",
+        "description": "A learning-game token for tracing ideas, circulation and recorded responses.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 3,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish a statement, its circulation and evidence of reception or influence.",
+          "reflectionQuestion": "Which clue helped you distinguish receiving an idea from agreeing with it?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-13",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-2 examine 18th-century changes and colonial reforms. Missions 3-4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-3 examine changes, reforms and international ideas. Mission 4 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapter 12 offers five missions and an evidence challenge. Chapter 13 offers Missions 1-2 on changes and reforms; later missions and Chapter 14 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 12 offers five missions and an evidence challenge. Chapter 13 offers Missions 1-3 on changes, reforms and ideas; Mission 4, its challenge and Chapter 14 are being prepared."
+      }
+    }
+  ]
+}

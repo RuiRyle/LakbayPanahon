@@ -1,0 +1,1309 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 2 Chapter 6 Mission 2 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+    "https://intramuros.gov.ph/2015/01/04/intramuros/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/unang-kasunduan-ng-kapyapaan-sa-pilipinas/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/memorare-bangkusay/",
+    "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-5",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-5",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/first-encounters-investigator",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter5-mission1",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter5-mission2",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter5-mission3",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter5-mission4",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter6-mission1",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 1
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter6-mission2",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-6",
+        "title": "Spanish Settlements in Cebu and Manila",
+        "order": 2,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Compare the two places through earlier communities, colonial developments, trade connections, local responses and the reach of governing bases.",
+        "learningObjective": "Compare Cebu and Manila using dated colonial developments, existing communities, trade, local responses and evidence of authority.",
+        "learningObjectives": [
+          "Explain settlement chronology using lesson evidence.",
+          "Explain existing communities using lesson evidence.",
+          "Explain trade and place using lesson evidence.",
+          "Explain different local responses using lesson evidence.",
+          "Explain institutions and reach using lesson evidence."
+        ],
+        "lessonRecap": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "sourceUrls": [
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/unang-kasunduan-ng-kapyapaan-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/memorare-bangkusay/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter6-quiz2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission2",
+        "title": "Cebu and Manila - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 2,
+        "questionBlueprint": [
+          {
+            "topic": "cebu-manila-chronology",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "settlements-existing-communities",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "settlements-trade-connections",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "settlements-local-responses",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "settlements-institutions-and-reach",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission2-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission2",
+        "status": "active",
+        "order": 1,
+        "title": "Two Settlements, Two Dates",
+        "content": "In Mission 1, you investigated Legazpi's expedition. Now compare two places where a continuing Spanish presence developed: Cebu and Manila. Comparing means using the same questions for both places, rather than treating them as identical.\n\nA Spanish settlement was established in Cebu in 1565. A Spanish city was established in Manila in 1571. These dates describe colonial developments in places where people already lived, traded and made decisions. They do not mean that the places or their histories began with Spanish arrival.\n\nWatch how to build a comparison. Put Cebu and Manila in separate columns. Under each, write the year of the colonial development. Next add a question about the existing community and another about local responses. This makes the date a starting point for explanation rather than the whole story.\n\nKeep the events in order: Cebu's 1565 settlement came before Manila's 1571 Spanish city. The diagram is a selected comparison, not a complete travel itinerary or proof that every island between the two came under control.",
+        "reviewTopics": [
+          "cebu-manila-chronology"
+        ],
+        "imageUrl": "../assets/story/settlements-comparison.svg",
+        "imageFit": "contain",
+        "imageAlt": "A comparison labels the Spanish settlement in Cebu in 1565 and the Spanish city established in Manila in 1571. Both places already had communities; the years do not mark the beginning of all local history.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Cebu's colonial development",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Spanish settlement in Cebu dates to 1565. This does not erase the community that existed earlier.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Manila's colonial development",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Spanish city in Manila dates to 1571. This is different from claiming that local settlement began in 1571.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A comparison limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Two dated developments establish a sequence, not a complete route or universal control of the archipelago.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which comparison keeps dates and their meaning clear?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Cebu's Spanish settlement came in 1565 and Manila's Spanish city in 1571, within places with earlier histories",
+          "Both places had no history before 1571",
+          "Manila's 1571 Spanish city came before Cebu's 1565 settlement",
+          "The two dates prove immediate control of every island"
+        ],
+        "decisionCorrectAnswer": "Cebu's Spanish settlement came in 1565 and Manila's Spanish city in 1571, within places with earlier histories",
+        "decisionExplanation": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "keyTerm": "Comparison",
+        "keyTermDefinition": "Examining similarities and differences using the same questions.",
+        "historicalInsight": "Two dated developments establish a sequence, not a complete route or universal control of the archipelago.",
+        "learningHelp": {
+          "explanation": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "vocabulary": [
+            {
+              "term": "Comparison",
+              "definition": "Examining similarities and differences using the same questions."
+            }
+          ],
+          "example": "The Spanish settlement in Cebu dates to 1565. This does not erase the community that existed earlier.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/unang-kasunduan-ng-kapyapaan-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/memorare-bangkusay/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission2-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission2",
+        "status": "active",
+        "order": 2,
+        "title": "The Communities Were Already There",
+        "content": "A phrase such as founding a city can hide an important question: whose city, and what existed before? People did not appear only when a colonial government was established.\n\nCebu already had a trading community and local leaders. A Cebu historical marker records Rajah Tupas in an agreement with Legazpi in 1565. In the Manila area, Maynila was associated with Rajah Sulayman, whose name is also written Soliman. The Intramuros Administration describes the later Spanish city as established on the site of the earlier polity. A polity is a community organized under political authority.\n\nTry a fictional museum-label task. A label says that Spanish officials created all leadership and trade in both places. Check the evidence of earlier communities and named leaders. Revise the label to distinguish an existing society from a new colonial institution.\n\nNaming a leader does not reveal every resident's views or tell the complete history of the community. It does help correct the idea that these were empty places waiting for outsiders to begin their history.",
+        "reviewTopics": [
+          "settlements-existing-communities"
+        ],
+        "imageUrl": "../assets/story/settlements-local-evidence.svg",
+        "imageFit": "contain",
+        "imageAlt": "Evidence cards name Tupas in Cebu and Sulayman in Maynila, and distinguish existing leadership from later colonial institutions. A name does not establish every resident's opinion.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A named Cebu participant",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Cebu agreement marker names Rajah Tupas. Leadership did not begin only with Spanish offices.",
+            "icon": "🔎"
+          },
+          {
+            "title": "An earlier Maynila",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Intramuros Administration links the Spanish city's site with the earlier polity of Rajah Sulayman, also written Soliman.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Keep people visible",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Earlier communities had their own histories. A later colonial institution did not create all local life or everyone's opinions.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which exhibit label respects the evidence of existing communities?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "All leadership and trade began when Spanish officials arrived",
+          "The two places were empty before colonial settlement",
+          "A leader's name tells every resident's private thoughts",
+          "Spanish institutions developed in places that already had people, leadership and histories"
+        ],
+        "decisionCorrectAnswer": "Spanish institutions developed in places that already had people, leadership and histories",
+        "decisionExplanation": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "keyTerm": "Polity",
+        "keyTermDefinition": "A community organized under political authority.",
+        "historicalInsight": "Earlier communities had their own histories. A later colonial institution did not create all local life or everyone's opinions.",
+        "learningHelp": {
+          "explanation": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "vocabulary": [
+            {
+              "term": "Polity",
+              "definition": "A community organized under political authority."
+            }
+          ],
+          "example": "The Cebu agreement marker names Rajah Tupas. Leadership did not begin only with Spanish offices.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/unang-kasunduan-ng-kapyapaan-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/memorare-bangkusay/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission2-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission2",
+        "status": "active",
+        "order": 3,
+        "title": "Why Location and Trade Mattered",
+        "content": "A port is a place where ships can arrive and exchange people or goods with the shore. A useful landing place matters, but trade also needs people, knowledge, supplies and relationships. Location alone does not do the trading.\n\nCebu was already connected with exchange before the Spanish base. Manila became important to Spanish plans because of its position and connections with Asian trade. The Library of Congress discussion explains how regional merchants helped connect Spanish newcomers with trade centered in Luzon. Existing traders were participants, not simply resources discovered by outsiders.\n\nWatch how to read the port model. Find the sea connection, the landing area and the community. Connect each feature to an action: goods must be carried, exchanged or stored by people. Then state the limit: this teaching model does not reconstruct either port's exact buildings or prove an uninterrupted route between them.\n\nFor your comparison, explain how connections and human activity mattered in both places. A promising location did not guarantee profit, local consent or control of every trading relationship.",
+        "reviewTopics": [
+          "settlements-trade-connections"
+        ],
+        "imageUrl": "../assets/story/settlements-port-model.svg",
+        "imageFit": "contain",
+        "imageAlt": "A conceptual port connects sea routes, a landing area, traders and a nearby community. It is not an exact map of Cebu or Manila, and a useful location does not guarantee consent or profit.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A place and its users",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A port needs connections and people who can move, supply and exchange goods. Geography is not the only factor.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Existing regional links",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Regional merchants helped connect Spanish newcomers to trade centered in Luzon. The networks were not created from nothing.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Avoid a guaranteed result",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A useful location can support trade without guaranteeing profit or agreement to foreign rule.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation connects location with the people involved?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Trade began only when Spanish newcomers appeared",
+          "A teaching diagram proves every exact voyage and building",
+          "Ports and regional connections mattered alongside merchants, supplies and local decisions",
+          "Location alone guaranteed profit and consent"
+        ],
+        "decisionCorrectAnswer": "Ports and regional connections mattered alongside merchants, supplies and local decisions",
+        "decisionExplanation": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "keyTerm": "Port",
+        "keyTermDefinition": "A place where ships connect with the shore to move people or goods.",
+        "historicalInsight": "A useful location can support trade without guaranteeing profit or agreement to foreign rule.",
+        "learningHelp": {
+          "explanation": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "vocabulary": [
+            {
+              "term": "Port",
+              "definition": "A place where ships connect with the shore to move people or goods."
+            }
+          ],
+          "example": "A port needs connections and people who can move, supply and exchange goods. Geography is not the only factor.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/unang-kasunduan-ng-kapyapaan-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/memorare-bangkusay/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission2-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission2",
+        "status": "active",
+        "order": 4,
+        "title": "Different Responses, More Than One Story",
+        "content": "A continuing colonial presence could meet negotiation, pressure and resistance. These responses could differ across places and change over time. A report should not give everyone one opinion.\n\nIn Cebu, the recorded agreement involving Tupas belongs alongside the conflict studied in Mission 1. Around Manila Bay, the NHCP Bangkusay marker records resistance by communities and a force led by a leader from Macabebe in 1571. This shows that establishing a Spanish city did not mean that all nearby communities accepted the newcomers' authority.\n\nBe careful with identities. Do not turn the Macabebe leader named by place in the marker into Rajah Sulayman merely because Sulayman is a familiar name in Manila's history. The evidence must support the identity as well as the event. No invented speech is needed to explain that communities resisted.\n\nTry a fictional report check. A student uses one agreement to claim everyone welcomed colonial rule. Another uses one battle to claim every community responded identically. Revise both: name the action, its participants and the limit on what it tells us.",
+        "reviewTopics": [
+          "settlements-local-responses"
+        ],
+        "imageUrl": "../assets/story/settlements-local-evidence.svg",
+        "imageFit": "contain",
+        "imageAlt": "A source guide distinguishes a recorded Cebu agreement, resistance around Manila Bay and the limits of treating one action as every community's decision.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "An agreement in context",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Cebu agreement involved named leaders. It does not establish every person's wishes or remove the earlier conflict.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Evidence of resistance",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP Bangkusay marker records resistance in 1571 and identifies a leader from Macabebe. It does not identify that leader as Rajah Sulayman.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A response has a scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An agreement or an act of resistance in one setting cannot be treated as the identical choice of every community.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report uses the local-response evidence carefully?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One act of resistance reveals every resident's exact motives",
+          "Name the participants and setting of each agreement or resistance, without claiming everyone responded the same way",
+          "One Cebu agreement proves every Manila Bay community agreed",
+          "Every familiar leader's name can be attached to any battle"
+        ],
+        "decisionCorrectAnswer": "Name the participants and setting of each agreement or resistance, without claiming everyone responded the same way",
+        "decisionExplanation": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "keyTerm": "Local response",
+        "keyTermDefinition": "An action taken by people in a place in response to events affecting them.",
+        "historicalInsight": "An agreement or an act of resistance in one setting cannot be treated as the identical choice of every community.",
+        "learningHelp": {
+          "explanation": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "vocabulary": [
+            {
+              "term": "Local response",
+              "definition": "An action taken by people in a place in response to events affecting them."
+            }
+          ],
+          "example": "The Cebu agreement involved named leaders. It does not establish every person's wishes or remove the earlier conflict.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/unang-kasunduan-ng-kapyapaan-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/memorare-bangkusay/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission2-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission2",
+        "status": "active",
+        "order": 5,
+        "title": "A Governing Base Has Limits",
+        "content": "A colonial settlement could provide a base for officials, supplies and armed forces. Manila became a center of Spanish colonial government. Legazpi established a city council there in 1571. A council is a group with responsibilities for governing a town or city.\n\nAn institution is an organized body with continuing duties. Establishing one is different from simply visiting a shore. But an official's claim of authority is also different from evidence that people followed it everywhere.\n\nUse a fictional worked example. A council records an order. To investigate its effects, ask where it was carried out, who supplied resources, how people responded and where it was resisted or could not be enforced. The written order proves the order was issued; it does not answer all these later questions.\n\nCompare Cebu and Manila as bases for the colonial presence without drawing a circle around every island and calling it controlled. Later missions examine expansion, methods and limits in more detail. Here, connect the purpose of a base with the people, resources and responses that shaped its actual reach.",
+        "reviewTopics": [
+          "settlements-institutions-and-reach"
+        ],
+        "imageUrl": "../assets/story/settlements-authority-model.svg",
+        "imageFit": "contain",
+        "imageAlt": "A governing-base model separates a council's decisions, resources needed to carry them out and evidence of their actual reach. No boundary claims universal authority.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A continuing institution",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Manila's Spanish city council was an organized governing body, not just a passing ship.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A claim is not its effect",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Issuing an order is different from showing where it was actually carried out.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Check actual reach",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Resources, enforcement and local responses mattered. A governing base did not establish immediate control of every island.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What evidence would help check the reach of an order issued from a colonial base?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Where it was carried out and how affected communities responded",
+          "Only the fact that an official wrote it",
+          "Only the date the first ship arrived",
+          "Only a large circle on a teaching diagram"
+        ],
+        "decisionCorrectAnswer": "Where it was carried out and how affected communities responded",
+        "decisionExplanation": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "keyTerm": "Institution",
+        "keyTermDefinition": "An organized body with continuing duties, such as a city council.",
+        "historicalInsight": "Resources, enforcement and local responses mattered. A governing base did not establish immediate control of every island.",
+        "learningHelp": {
+          "explanation": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "vocabulary": [
+            {
+              "term": "Institution",
+              "definition": "An organized body with continuing duties, such as a city council."
+            }
+          ],
+          "example": "Manila's Spanish city council was an organized governing body, not just a passing ship.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/unang-kasunduan-ng-kapyapaan-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/memorare-bangkusay/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission2-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission2",
+        "status": "active",
+        "order": 6,
+        "title": "Finish Your Two-Place Comparison",
+        "content": "Build a comparison that explains more than two dates. Start with Cebu's 1565 Spanish settlement and Manila's 1571 Spanish city. For each place, ask what existed earlier, which connections mattered and how local people took part.\n\nConnect a supported action to an explanation. A port and merchants help explain exchange. A council helps explain a governing base. A recorded agreement or resistance helps explain a particular local response. None alone establishes everyone's consent or effective authority over all islands.\n\nUse this classroom report frame in your own words: Both places had [supported similarity]. They differed in [dated development or setting]. Evidence about [named source or action] supports [specific claim], but does not establish [claim that goes too far]. The frame is a teaching tool, not an original historical speech.\n\nUse the mission quiz to check what you learned. If a topic is difficult, revisit its lesson and try targeted practice before another quiz attempt. Passing earns the mission reward once. Complete all missions, then pass the chapter challenge to earn the chapter badge.",
+        "reviewTopics": [
+          "cebu-manila-chronology",
+          "settlements-existing-communities",
+          "settlements-trade-connections",
+          "settlements-local-responses",
+          "settlements-institutions-and-reach"
+        ],
+        "imageUrl": "../assets/story/settlements-comparison.svg",
+        "imageFit": "contain",
+        "imageAlt": "Comparison prompts connect Cebu in 1565 and Manila in 1571 with earlier communities, trade, local responses and limits of colonial reach. The chapter remains unfinished.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Use shared questions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Compare both places through chronology, earlier communities, trade, local responses and the reach of institutions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Support the connection",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Explain what a source shows rather than only listing a leader, place or date.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Keep the limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One colonial development or one person's action cannot establish the same experience for everyone.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which comparison best connects the mission ideas?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Both places were empty until their colonial dates",
+          "A council or port proves every island freely accepted Spanish rule",
+          "The two settlement dates explain everyone's private thoughts",
+          "Both places had earlier communities; colonial developments involved trade, institutions and different local responses"
+        ],
+        "decisionCorrectAnswer": "Both places had earlier communities; colonial developments involved trade, institutions and different local responses",
+        "decisionExplanation": "A useful comparison connects dates with existing communities, trade, institutions and local responses while stating the evidence's limits.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A useful comparison connects dates with existing communities, trade, institutions and local responses while stating the evidence's limits.",
+        "keyTerm": "Supported comparison",
+        "keyTermDefinition": "A comparison that connects its similarities and differences with evidence.",
+        "historicalInsight": "One colonial development or one person's action cannot establish the same experience for everyone.",
+        "learningHelp": {
+          "explanation": "A useful comparison connects dates with existing communities, trade, institutions and local responses while stating the evidence's limits.",
+          "vocabulary": [
+            {
+              "term": "Supported comparison",
+              "definition": "A comparison that connects its similarities and differences with evidence."
+            }
+          ],
+          "example": "Compare both places through chronology, earlier communities, trade, local responses and the reach of institutions.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/unang-kasunduan-ng-kapyapaan-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/memorare-bangkusay/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz2-question1",
+      "create": true,
+      "fields": {
+        "question": "Which sequence correctly compares the colonial developments?",
+        "optionA": "Cebu: 1565 Spanish settlement; Manila: 1571 Spanish city",
+        "optionB": "Manila: 1571 before Cebu: 1565",
+        "optionC": "Both places began all local history in 1571",
+        "optionD": "Both developments happened during Magellan's 1521 voyage",
+        "correctAnswer": "A",
+        "explanation": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "learningPoint": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "historicalClue": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "answerExplanations": {
+          "A": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "B": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "C": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "D": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history."
+        },
+        "quizId": "chapter6-quiz2",
+        "order": 1,
+        "status": "active",
+        "topic": "cebu-manila-chronology",
+        "topicLabel": "Settlement chronology",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz2-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "What does the 1571 date for Manila describe in this lesson?",
+        "optionA": "The first time any person lived in the region",
+        "optionB": "The creation of every trading link in Asia",
+        "optionC": "Immediate effective control of all Philippine islands",
+        "optionD": "Establishment of the Spanish city within a place with earlier history",
+        "correctAnswer": "D",
+        "explanation": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "learningPoint": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "historicalClue": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "B": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "C": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "D": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history."
+        },
+        "quizId": "chapter6-quiz2",
+        "order": 101,
+        "status": "active",
+        "topic": "cebu-manila-chronology",
+        "topicLabel": "Settlement chronology",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission2-cebu-manila-chronology-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which comparison keeps dates and their meaning clear?",
+        "optionA": "Both places had no history before 1571",
+        "optionB": "Manila's 1571 Spanish city came before Cebu's 1565 settlement",
+        "optionC": "The two dates prove immediate control of every island",
+        "optionD": "Cebu's Spanish settlement came in 1565 and Manila's Spanish city in 1571, within places with earlier histories",
+        "correctAnswer": "D",
+        "explanation": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "learningPoint": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "historicalClue": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "B": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "C": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "D": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history."
+        },
+        "missionId": "chapter6-mission2",
+        "topic": "cebu-manila-chronology",
+        "topicLabel": "Settlement chronology",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Examining similarities and differences using the same questions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission2-cebu-manila-chronology-practice2",
+      "create": true,
+      "fields": {
+        "question": "A museum label says Cebu began in 1565. What is the strongest correction?",
+        "optionA": "Remove the date and claim the place had no earlier residents",
+        "optionB": "Say the date proves every resident agreed",
+        "optionC": "Specify the Spanish settlement, while acknowledging the earlier community",
+        "optionD": "Move all local history to Manila in 1571",
+        "correctAnswer": "C",
+        "explanation": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "learningPoint": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "historicalClue": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "B": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "C": "Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history.",
+          "D": "Review the lesson clues. Cebu's 1565 Spanish settlement preceded Manila's 1571 Spanish city. These colonial dates are not the beginning of all local history."
+        },
+        "missionId": "chapter6-mission2",
+        "topic": "cebu-manila-chronology",
+        "topicLabel": "Settlement chronology",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Examining similarities and differences using the same questions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz2-question2",
+      "create": true,
+      "fields": {
+        "question": "What evidence helps challenge the idea that Maynila was empty before the Spanish city?",
+        "optionA": "Only the date of the later colonial council",
+        "optionB": "Only an outsider's drawing of empty land",
+        "optionC": "The claim that colonial offices created all people",
+        "optionD": "The earlier polity associated with Rajah Sulayman",
+        "correctAnswer": "D",
+        "explanation": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "learningPoint": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "historicalClue": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "B": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "C": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "D": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history."
+        },
+        "quizId": "chapter6-quiz2",
+        "order": 2,
+        "status": "active",
+        "topic": "settlements-existing-communities",
+        "topicLabel": "Existing communities",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz2-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why should an exhibit name Tupas and Sulayman in their own settings?",
+        "optionA": "To prove all residents shared one opinion",
+        "optionB": "To replace evidence with a familiar name",
+        "optionC": "To recognize earlier leadership without treating one person as everyone",
+        "optionD": "To show that the names belong to one person",
+        "correctAnswer": "C",
+        "explanation": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "learningPoint": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "historicalClue": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "B": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "C": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "D": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history."
+        },
+        "quizId": "chapter6-quiz2",
+        "order": 102,
+        "status": "active",
+        "topic": "settlements-existing-communities",
+        "topicLabel": "Existing communities",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission2-settlements-existing-communities-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which exhibit label respects the evidence of existing communities?",
+        "optionA": "The two places were empty before colonial settlement",
+        "optionB": "A leader's name tells every resident's private thoughts",
+        "optionC": "Spanish institutions developed in places that already had people, leadership and histories",
+        "optionD": "All leadership and trade began when Spanish officials arrived",
+        "correctAnswer": "C",
+        "explanation": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "learningPoint": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "historicalClue": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "B": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "C": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "D": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history."
+        },
+        "missionId": "chapter6-mission2",
+        "topic": "settlements-existing-communities",
+        "topicLabel": "Existing communities",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A community organized under political authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission2-settlements-existing-communities-practice2",
+      "create": true,
+      "fields": {
+        "question": "A label says Spanish offices introduced every kind of leadership. What does it overlook?",
+        "optionA": "The need to make both dates identical",
+        "optionB": "Existing local leaders and organized communities",
+        "optionC": "Only the colour of arriving ships",
+        "optionD": "Only the later spelling of a place name",
+        "correctAnswer": "B",
+        "explanation": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "learningPoint": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "historicalClue": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "B": "Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "C": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history.",
+          "D": "Review the lesson clues. Cebu and Maynila had existing communities and leadership. New colonial institutions did not create all local history."
+        },
+        "missionId": "chapter6-mission2",
+        "topic": "settlements-existing-communities",
+        "topicLabel": "Existing communities",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A community organized under political authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz2-question3",
+      "create": true,
+      "fields": {
+        "question": "Which explanation best connects a port with trade?",
+        "optionA": "Every network began with Spanish newcomers",
+        "optionB": "A port makes local decisions irrelevant",
+        "optionC": "A landing place works with merchants, supplies and regional connections",
+        "optionD": "A useful location guarantees every transaction succeeds",
+        "correctAnswer": "C",
+        "explanation": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "learningPoint": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "historicalClue": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "B": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "C": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "D": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent."
+        },
+        "quizId": "chapter6-quiz2",
+        "order": 3,
+        "status": "active",
+        "topic": "settlements-trade-connections",
+        "topicLabel": "Trade and place",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz2-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "How did regional merchants matter to the Spanish presence?",
+        "optionA": "Their participation proved consent to every colonial demand",
+        "optionB": "They helped connect newcomers with existing trade centered in Luzon",
+        "optionC": "They had no role because geography alone traded goods",
+        "optionD": "They created all Philippine communities from nothing",
+        "correctAnswer": "B",
+        "explanation": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "learningPoint": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "historicalClue": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "B": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "C": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "D": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent."
+        },
+        "quizId": "chapter6-quiz2",
+        "order": 103,
+        "status": "active",
+        "topic": "settlements-trade-connections",
+        "topicLabel": "Trade and place",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission2-settlements-trade-connections-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which explanation connects location with the people involved?",
+        "optionA": "A teaching diagram proves every exact voyage and building",
+        "optionB": "Ports and regional connections mattered alongside merchants, supplies and local decisions",
+        "optionC": "Location alone guaranteed profit and consent",
+        "optionD": "Trade began only when Spanish newcomers appeared",
+        "correctAnswer": "B",
+        "explanation": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "learningPoint": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "historicalClue": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "B": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "C": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "D": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent."
+        },
+        "missionId": "chapter6-mission2",
+        "topic": "settlements-trade-connections",
+        "topicLabel": "Trade and place",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A place where ships connect with the shore to move people or goods.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission2-settlements-trade-connections-practice2",
+      "create": true,
+      "fields": {
+        "question": "A diagram shows a port beside a community. What further evidence would explain exchange?",
+        "optionA": "Who moved and supplied goods and how connections were maintained",
+        "optionB": "Only a larger arrow on the same diagram",
+        "optionC": "Only a claim that trade never required people",
+        "optionD": "Only the assumption that profit was guaranteed",
+        "correctAnswer": "A",
+        "explanation": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "learningPoint": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "historicalClue": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+        "answerExplanations": {
+          "A": "Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "B": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "C": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent.",
+          "D": "Review the lesson clues. Location and existing trade connections mattered alongside merchants and local decisions. A useful port did not guarantee profit or consent."
+        },
+        "missionId": "chapter6-mission2",
+        "topic": "settlements-trade-connections",
+        "topicLabel": "Trade and place",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A place where ships connect with the shore to move people or goods.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz2-question4",
+      "create": true,
+      "fields": {
+        "question": "Which statement fits the Bangkusay evidence used in this mission?",
+        "optionA": "One event shows the same choice by all communities",
+        "optionB": "Some communities resisted the Spanish presence in 1571",
+        "optionC": "Every nearby community accepted colonial rule without opposition",
+        "optionD": "The marker names every participant's private motive",
+        "correctAnswer": "B",
+        "explanation": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "learningPoint": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "historicalClue": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "B": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "C": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "D": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities."
+        },
+        "quizId": "chapter6-quiz2",
+        "order": 4,
+        "status": "active",
+        "topic": "settlements-local-responses",
+        "topicLabel": "Different local responses",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz2-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why is one Cebu agreement insufficient to describe every Manila Bay community's choice?",
+        "optionA": "The agreement had particular participants and did not decide for everyone elsewhere",
+        "optionB": "All communities had exactly the same leadership",
+        "optionC": "An agreement removes the need to study resistance",
+        "optionD": "Nearby places always share one opinion",
+        "correctAnswer": "A",
+        "explanation": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "learningPoint": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "historicalClue": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "answerExplanations": {
+          "A": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "B": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "C": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "D": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities."
+        },
+        "quizId": "chapter6-quiz2",
+        "order": 104,
+        "status": "active",
+        "topic": "settlements-local-responses",
+        "topicLabel": "Different local responses",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission2-settlements-local-responses-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which report uses the local-response evidence carefully?",
+        "optionA": "Name the participants and setting of each agreement or resistance, without claiming everyone responded the same way",
+        "optionB": "One Cebu agreement proves every Manila Bay community agreed",
+        "optionC": "Every familiar leader's name can be attached to any battle",
+        "optionD": "One act of resistance reveals every resident's exact motives",
+        "correctAnswer": "A",
+        "explanation": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "learningPoint": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "historicalClue": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "answerExplanations": {
+          "A": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "B": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "C": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "D": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities."
+        },
+        "missionId": "chapter6-mission2",
+        "topic": "settlements-local-responses",
+        "topicLabel": "Different local responses",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An action taken by people in a place in response to events affecting them.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission2-settlements-local-responses-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption attaches Rajah Sulayman's name to the Macabebe leader in the marker without evidence. What should a learner do?",
+        "optionA": "Use the familiar name because all leaders are interchangeable",
+        "optionB": "Invent a speech to confirm the name",
+        "optionC": "Ignore the source and copy the caption",
+        "optionD": "Keep the identity stated by the source and avoid substituting a familiar name",
+        "correctAnswer": "D",
+        "explanation": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "learningPoint": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "historicalClue": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "B": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "C": "Review the lesson clues. Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities.",
+          "D": "Use the evidence for each named setting. Agreements and resistance did not represent one identical response from all communities."
+        },
+        "missionId": "chapter6-mission2",
+        "topic": "settlements-local-responses",
+        "topicLabel": "Different local responses",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An action taken by people in a place in response to events affecting them.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz2-question5",
+      "create": true,
+      "fields": {
+        "question": "What is an institution in this lesson?",
+        "optionA": "An organized body with continuing duties, such as a city council",
+        "optionB": "Only a ship passing the shore",
+        "optionC": "A guarantee that every island obeys",
+        "optionD": "The exact feelings of all local people",
+        "correctAnswer": "A",
+        "explanation": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "learningPoint": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "historicalClue": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "answerExplanations": {
+          "A": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "B": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "C": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "D": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses."
+        },
+        "quizId": "chapter6-quiz2",
+        "order": 5,
+        "status": "active",
+        "topic": "settlements-institutions-and-reach",
+        "topicLabel": "Institutions and reach",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz2-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why does a written order not establish authority everywhere?",
+        "optionA": "Writing the order makes every person agree automatically",
+        "optionB": "All places were one household",
+        "optionC": "An institution eliminates all practical limits",
+        "optionD": "Its actual enforcement and local responses still need evidence",
+        "correctAnswer": "D",
+        "explanation": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "learningPoint": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "historicalClue": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "B": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "C": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "D": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses."
+        },
+        "quizId": "chapter6-quiz2",
+        "order": 105,
+        "status": "active",
+        "topic": "settlements-institutions-and-reach",
+        "topicLabel": "Institutions and reach",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission2-settlements-institutions-and-reach-practice1",
+      "create": true,
+      "fields": {
+        "question": "What evidence would help check the reach of an order issued from a colonial base?",
+        "optionA": "Only the fact that an official wrote it",
+        "optionB": "Only the date the first ship arrived",
+        "optionC": "Only a large circle on a teaching diagram",
+        "optionD": "Where it was carried out and how affected communities responded",
+        "correctAnswer": "D",
+        "explanation": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "learningPoint": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "historicalClue": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "B": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "C": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "D": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses."
+        },
+        "missionId": "chapter6-mission2",
+        "topic": "settlements-institutions-and-reach",
+        "topicLabel": "Institutions and reach",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An organized body with continuing duties, such as a city council.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission2-settlements-institutions-and-reach-practice2",
+      "create": true,
+      "fields": {
+        "question": "A report shows a council issued an order but claims control of all islands. What evidence is missing?",
+        "optionA": "Only a larger drawing of the town",
+        "optionB": "Only the date of an earlier voyage",
+        "optionC": "Where the order was carried out, with what resources and responses",
+        "optionD": "Only the council's name written a second time",
+        "correctAnswer": "C",
+        "explanation": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "learningPoint": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "historicalClue": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "B": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "C": "Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses.",
+          "D": "Review the lesson clues. Institutions could support colonial authority, but its reach needs evidence of resources, enforcement and local responses."
+        },
+        "missionId": "chapter6-mission2",
+        "topic": "settlements-institutions-and-reach",
+        "topicLabel": "Institutions and reach",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An organized body with continuing duties, such as a city council.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter6-mission2-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission2",
+        "name": "Two-Port Comparison Journal",
+        "description": "A learning-game token for comparing Cebu and Manila using evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 2,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Connect earlier communities, trade, institutions and local responses without treating colonial developments as the start of all history.",
+          "reflectionQuestion": "Which shared question helped you compare Cebu and Manila without erasing their earlier histories?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-6",
+      "create": false,
+      "expected": {
+        "description": "Mission 1: Legazpi's Expedition is available. Missions 2-4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-2 cover Legazpi's expedition and Spanish settlements in Cebu and Manila. Missions 3-4 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/spanish-exploration-colonial-rule",
+      "create": false,
+      "expected": {
+        "description": "Chapter 5 offers four missions and an evidence challenge. Chapter 6 begins with Legazpi's Expedition; its remaining missions and challenge are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 5 offers four missions and an evidence challenge. Chapter 6 offers Missions 1-2 on the expedition and settlements; later content is being prepared."
+      }
+    }
+  ]
+}

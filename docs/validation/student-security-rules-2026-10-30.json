@@ -1,0 +1,1073 @@
+{
+  "mode": "server-rules-test-synthetic-mocks-not-deployed",
+  "verifiedAt": "2026-10-30T02:21:22.002Z",
+  "sourceHash": "14e9ec4630a04b858baa18e5979b38728dc45d7fea76bb0fa339ef7421eeea11",
+  "issues": [],
+  "tests": [
+    {
+      "name": "owner reads profile",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "other student cannot read profile",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "anonymous cannot read profile",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": []
+    },
+    {
+      "name": "cannot self-change role",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "debugMessages": [
+        "Error: firestore.rules line [138], column [39]. Property lastRewardId is undefined on object."
+      ],
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/learningSettings/progression"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cannot self-change xp",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "debugMessages": [
+        "Error: firestore.rules line [138], column [39]. Property lastRewardId is undefined on object."
+      ],
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/learningSettings/progression"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cannot self-change status",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "valid practice remains writable",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "practice cannot name another chapter",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c2"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c2"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "practice cannot use an inactive mission",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "practice cannot use an unpublished chapter",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "practice cannot exceed storage bound",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "practice cannot inflate review topics",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "practice cannot write as another owner",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "valid story draft remains writable",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "valid chapter draft remains writable",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "draft cannot use an inactive mission",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "draft cannot use an unpublished chapter",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "draft cannot overwrite a foreign record",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "own draft can still update",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/chapters/c1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "valid failing attempt remains writable",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "valid passing replay remains writable",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fresh matching first completion is accepted",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "forged response pass",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "forged response score",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "inflated response reward",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "failed first completion",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "different response review topics",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "zero-question attempt",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "first completion cannot omit progress",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "debugMessages": [
+        "Error: firestore.rules line [265], column [24]. Service call error. Function: [getAfter], Argument: [path_value {\n  segments {\n    simple: \"databases\"\n  }\n  segments {\n    simple: \"(default)\"\n  }\n  segments {\n    simple: \"documents\"\n  }\n  segments {\n    simple: \"studentProgress\"\n  }\n  segments {\n    simple: \"alice_m1\"\n  }\n}\n]."
+      ],
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "first completion cannot reuse older progress",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "first completion cannot use another owner",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "first completion must match recorded score",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/quizzes/q1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/missions/m1"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Synthetic document mocks; no learner data is accessed.",
+    "Does not prove browser grades or progression claims truthful.",
+    "Does not emulate a multi-write SDK transaction or test App Check/hosting."
+  ]
+}

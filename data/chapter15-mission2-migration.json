@@ -1,0 +1,1299 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 15 Mission 2; preserve previous missions and earned records; no chapter badge",
+  "curriculumBasis": "User-confirmed MATATAG Grade 5",
+  "sourceUrls": [
+    "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/",
+    "https://philippineculturaleducation.com.ph/diariong-tagalog/",
+    "https://philippineculturaleducation.com.ph/de-los-reyes-isabelo/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/site-of-the-schoolhouse-of-the-women-of-malolos/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-15",
+      "expected": {
+        "status": "active",
+        "contentReady": true,
+        "eraId": "resistance-national-consciousness"
+      }
+    },
+    {
+      "path": "missions/chapter15-mission1",
+      "expected": {
+        "chapterId": "chapter-15",
+        "status": "active",
+        "order": 1
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter15-mission2",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-15",
+        "title": "The Emerging Middle Class and Public Participation",
+        "order": 2,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Build a contribution exhibit about resources, translation, regional publishing and women organizing for education.",
+        "learningObjective": "Connect resources and skills with distinct, sourced forms of public participation without ranking contributors by wealth.",
+        "learningObjectives": [
+          "Explain resources, skills and public work using lesson evidence.",
+          "Explain translation and readers using lesson evidence.",
+          "Explain regional publishing using lesson evidence.",
+          "Explain women organizing for education using lesson evidence.",
+          "Explain different forms of participation using lesson evidence."
+        ],
+        "lessonRecap": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "sourceUrls": [
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/",
+          "https://philippineculturaleducation.com.ph/diariong-tagalog/",
+          "https://philippineculturaleducation.com.ph/de-los-reyes-isabelo/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/site-of-the-schoolhouse-of-the-women-of-malolos/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter15-quiz2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission2",
+        "title": "Participation Exhibit - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "middle-class-opportunities",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "translation-and-readers",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "regional-publishing",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "women-and-education",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "contributions-and-concerns",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission2-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission2",
+        "status": "active",
+        "order": 1,
+        "title": "Who Could Support Public Work?",
+        "content": "The museum needs a new exhibit: who helped bring public concerns into discussion? Start with the emerging middle class. Some families involved in business, farming or professional work had resources to support study and public activities. The group was varied. Its members did not all have the same income, experience or opinion.\n\nResources could help pay for books, travel, printing or time to study. Education could develop skills used in writing, translation and organized requests. These are connections to investigate, not a rule that only wealthy people could think or contribute. Work and knowledge within local communities also mattered.\n\nYour exhibit will follow three actions: translating an article, producing a regional newspaper and requesting a school. Ask who acted, what skill or support the action needed, and which public concern it addressed.",
+        "reviewTopics": [
+          "middle-class-opportunities"
+        ],
+        "imageUrl": "../assets/story/participation-resources.svg",
+        "imageFit": "contain",
+        "imageAlt": "Three teaching cards connect work and resources, study and useful skills, and public participation. Resources are shown as opportunities, not a measure of human worth.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Resources",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Books, fees, travel and printing can require time, money or support.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Skills",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Writing and translation can help people participate in public discussion.",
+            "icon": "🔎"
+          },
+          {
+            "title": "People and contributions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Investigate actions and concerns instead of ranking people by wealth.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which connection should the new exhibit explain?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "How resources and skills could support writing, translation and organized requests.",
+          "How the price of a book measured its reader's human worth.",
+          "Why only people who travelled could discuss a public concern.",
+          "Why a profession made every person hold the same opinion."
+        ],
+        "decisionCorrectAnswer": "How resources and skills could support writing, translation and organized requests.",
+        "decisionExplanation": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "keyTerm": "Public participation",
+        "keyTermDefinition": "Taking part in matters affecting a wider community.",
+        "historicalInsight": "Investigate actions and concerns instead of ranking people by wealth.",
+        "learningHelp": {
+          "explanation": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "vocabulary": [
+            {
+              "term": "Public participation",
+              "definition": "Taking part in matters affecting a wider community."
+            }
+          ],
+          "example": "Books, fees, travel and printing can require time, money or support.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/",
+          "https://philippineculturaleducation.com.ph/diariong-tagalog/",
+          "https://philippineculturaleducation.com.ph/de-los-reyes-isabelo/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/site-of-the-schoolhouse-of-the-women-of-malolos/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission2-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission2",
+        "status": "active",
+        "order": 2,
+        "title": "A Translation Reaches More Readers",
+        "content": "In 1882, Diariong Tagalog published material in Tagalog and Spanish. It included Rizal's essay Amor Patrio and Marcelo H. del Pilar's Tagalog translation. A bilingual newspaper uses two languages.\n\nWhy translate? A reader who understands Tagalog but cannot read Spanish can use the Tagalog version. The action connects a text with a possible audience. It does not tell us exactly how many people read it or that every reader agreed. Think about the skill involved: the translator must understand a message and express its meaning for another audience.\n\nFor the museum task, choose the label that identifies del Pilar's action. Rizal wrote the essay; del Pilar supplied the Tagalog translation. Both roles matter, and they are different. We use a labelled teaching diagram rather than pretend that the cards are original newspaper pages.",
+        "reviewTopics": [
+          "translation-and-readers"
+        ],
+        "imageUrl": "../assets/story/participation-translation.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern diagram connects Rizal's Spanish-language Amor Patrio in 1882 with del Pilar's Tagalog translation and a Tagalog-reading audience. It is not a facsimile of a newspaper.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "The publication",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Diariong Tagalog printed Tagalog and Spanish material in 1882.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Different roles",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Rizal wrote Amor Patrio; del Pilar translated it into Tagalog.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Possible audience",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Translation made the ideas available in Tagalog to people able to read that language.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which contribution belongs with del Pilar's translation?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Opening an Iloilo shipping route to Melbourne.",
+          "Requesting permission for the Malolos school.",
+          "Founding the Suez Canal as a student project.",
+          "Making the essay available in Tagalog for Tagalog readers."
+        ],
+        "decisionCorrectAnswer": "Making the essay available in Tagalog for Tagalog readers.",
+        "decisionExplanation": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "keyTerm": "Translation",
+        "keyTermDefinition": "Expressing a message in another language.",
+        "historicalInsight": "Translation made the ideas available in Tagalog to people able to read that language.",
+        "learningHelp": {
+          "explanation": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "vocabulary": [
+            {
+              "term": "Translation",
+              "definition": "Expressing a message in another language."
+            }
+          ],
+          "example": "Diariong Tagalog printed Tagalog and Spanish material in 1882.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/",
+          "https://philippineculturaleducation.com.ph/diariong-tagalog/",
+          "https://philippineculturaleducation.com.ph/de-los-reyes-isabelo/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/site-of-the-schoolhouse-of-the-women-of-malolos/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission2-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission2",
+        "status": "active",
+        "order": 3,
+        "title": "A Regional Newspaper Is Public Work",
+        "content": "Another case brings regional experience into the exhibit. Isabelo de los Reyes was born in Vigan, Ilocos Sur. He founded El Ilocano in 1889. A newspaper needs writing, editing and production. Its creation is a concrete example of public work connected with education and communication.\n\nDo not merge two publications because both were newspapers. Diariong Tagalog belongs to the 1882 translation case. El Ilocano belongs to the 1889 publishing case involving de los Reyes. Give each its own name, person, date and action.\n\nA regional contribution need not happen in Europe to belong in the story of public discussion. At the same time, founding a newspaper is not evidence that everyone in a region read it. Our task is to identify what the record establishes and explain how publishing can create a space for written ideas.",
+        "reviewTopics": [
+          "regional-publishing"
+        ],
+        "imageUrl": "../assets/story/participation-regional.svg",
+        "imageFit": "contain",
+        "imageAlt": "Three modern cards identify Isabelo de los Reyes, El Ilocano in 1889, and the action of preparing a newspaper. They do not reproduce an original issue or claim universal readership.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Person and place",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Isabelo de los Reyes came from Vigan, Ilocos Sur.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Publication and year",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "He founded El Ilocano in 1889.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Publishing requires people to prepare and share written material.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which label correctly identifies this regional publishing case?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Del Pilar built the Suez Canal for the 1882 newspaper.",
+          "The Iloilo machinery shipment was an issue of El Ilocano.",
+          "Isabelo de los Reyes founded El Ilocano in 1889.",
+          "The Malolos women founded El Ilocano during their 1888 request."
+        ],
+        "decisionCorrectAnswer": "Isabelo de los Reyes founded El Ilocano in 1889.",
+        "decisionExplanation": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "keyTerm": "Editor",
+        "keyTermDefinition": "A person who prepares and organizes material for a publication.",
+        "historicalInsight": "Publishing requires people to prepare and share written material.",
+        "learningHelp": {
+          "explanation": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "vocabulary": [
+            {
+              "term": "Editor",
+              "definition": "A person who prepares and organizes material for a publication."
+            }
+          ],
+          "example": "Isabelo de los Reyes came from Vigan, Ilocos Sur.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/",
+          "https://philippineculturaleducation.com.ph/diariong-tagalog/",
+          "https://philippineculturaleducation.com.ph/de-los-reyes-isabelo/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/site-of-the-schoolhouse-of-the-women-of-malolos/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission2-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission2",
+        "status": "active",
+        "order": 4,
+        "title": "The Malolos Women Ask for Schooling",
+        "content": "In Malolos, Bulacan, women took an organized step for their education. The historical marker records their request to Governor-General Weyler on 12 December 1888 for permission to open a Spanish-language night school at their own expense.\n\nThe important action here is the request. The women were participants with an educational goal, not merely people waiting for someone else to think for them. Preparing a request and arranging support for schooling were forms of public action. This example also helps us ask how duties, costs and access shaped learning opportunities.\n\nThe marker records that Rizal later wrote to praise their initiative. A later letter of support is different from the women's earlier request. In your exhibit, give the initiative to the people who made it. This scene studies a documented request; it does not ask students to disclose family finances or imitate a historical petition to a real official.",
+        "reviewTopics": [
+          "women-and-education"
+        ],
+        "imageUrl": "../assets/story/participation-malolos.svg",
+        "imageFit": "contain",
+        "imageAlt": "A teaching sequence identifies Malolos women, a request dated 12 December 1888, and the aim of a self-funded Spanish-language night school. The request is distinguished from a proven outcome.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Place and action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Malolos women requested permission for a school in Bulacan.",
+            "icon": "🔎"
+          },
+          {
+            "title": "1888 request",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The marker dates their request to 12 December 1888 and describes their own funding.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Initiative and support",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Their request came before Rizal's later letter praising their initiative.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What action should the exhibit attribute to the Malolos women?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Opening Iloilo Port to international trade in 1855.",
+          "Organizing a request for permission to open their own Spanish-language school.",
+          "Translating Amor Patrio for Diariong Tagalog in 1882.",
+          "Founding El Ilocano in 1889."
+        ],
+        "decisionCorrectAnswer": "Organizing a request for permission to open their own Spanish-language school.",
+        "decisionExplanation": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "keyTerm": "Petition",
+        "keyTermDefinition": "A formal request asking an authority to act.",
+        "historicalInsight": "Their request came before Rizal's later letter praising their initiative.",
+        "learningHelp": {
+          "explanation": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "vocabulary": [
+            {
+              "term": "Petition",
+              "definition": "A formal request asking an authority to act."
+            }
+          ],
+          "example": "Malolos women requested permission for a school in Bulacan.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/",
+          "https://philippineculturaleducation.com.ph/diariong-tagalog/",
+          "https://philippineculturaleducation.com.ph/de-los-reyes-isabelo/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/site-of-the-schoolhouse-of-the-women-of-malolos/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission2-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission2",
+        "status": "active",
+        "order": 5,
+        "title": "Build the Contribution Exhibit",
+        "content": "You now have three sourced cases. Del Pilar translated a text so it could be available in Tagalog. De los Reyes founded El Ilocano. The Malolos women requested permission for a school. The cases show different ways people used skills, organization and support to take part in public life.\n\nBuild the exhibit by matching each action with its contribution. Match the evidence, not the person's fame or wealth. The translation concerns language access. The newspaper concerns preparing a publication. The request concerns an attempt to expand schooling.\n\nThese actions did not all happen in one year or guarantee the same result. A request is an action toward a goal; a publication makes material available but does not prove every reader's response. After the matches fit, explain why more than one kind of contribution belongs in the exhibit.",
+        "reviewTopics": [
+          "contributions-and-concerns"
+        ],
+        "imageUrl": "../assets/story/participation-exhibit.svg",
+        "imageFit": "contain",
+        "imageAlt": "Three modern exhibit cards identify translation, a regional newspaper and a school request as different actions. Students must connect each with its contribution before explaining.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Translation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Connect another language version with possible readers of that language.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Publication",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Connect founding a newspaper with creating a place for written material.",
+            "icon": "🔎"
+          },
+          {
+            "title": "School request",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Connect an organized educational request with an attempt to expand access.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Why should the exhibit include all three kinds of action?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "They show distinct ways people participated in public concerns.",
+          "Only the best-known writer should receive credit for every action.",
+          "A school request and a newspaper must have identical outcomes.",
+          "All contributors had to study abroad before they could act."
+        ],
+        "decisionCorrectAnswer": "They show distinct ways people participated in public concerns.",
+        "decisionExplanation": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "keyTerm": "Contribution",
+        "keyTermDefinition": "An action or support that helps a shared effort.",
+        "historicalInsight": "Connect an organized educational request with an attempt to expand access.",
+        "learningHelp": {
+          "explanation": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "vocabulary": [
+            {
+              "term": "Contribution",
+              "definition": "An action or support that helps a shared effort."
+            }
+          ],
+          "example": "Connect another language version with possible readers of that language.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/",
+          "https://philippineculturaleducation.com.ph/diariong-tagalog/",
+          "https://philippineculturaleducation.com.ph/de-los-reyes-isabelo/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/site-of-the-schoolhouse-of-the-women-of-malolos/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+        "exhibitActivity": {
+          "title": "Connect Each Action with Its Contribution",
+          "instructions": "Use the clues to match each action. You can revise the exhibit without losing points. Then explain why the contributions differ.",
+          "successMessage": "The exhibit connections fit. Explain the different contributions next.",
+          "retryMessage": "Use the action words and try another connection. No points are lost.",
+          "effects": [
+            {
+              "id": "school-access",
+              "label": "Request an opportunity to expand schooling"
+            },
+            {
+              "id": "language-access",
+              "label": "Make a text available to readers of another language"
+            },
+            {
+              "id": "regional-publication",
+              "label": "Create a newspaper for written public discussion"
+            }
+          ],
+          "pairs": [
+            {
+              "id": "translation",
+              "label": "Del Pilar - translation",
+              "action": "Supplies a Tagalog version of Amor Patrio in Diariong Tagalog.",
+              "effectId": "language-access",
+              "feedback": "The action concerns access to a written message in another language."
+            },
+            {
+              "id": "publishing",
+              "label": "De los Reyes - publication",
+              "action": "Founds El Ilocano in 1889.",
+              "effectId": "regional-publication",
+              "feedback": "Founding a newspaper creates a publication; actual readership needs its own evidence."
+            },
+            {
+              "id": "petition",
+              "label": "Malolos women - educational request",
+              "action": "Request permission for a self-funded school in 1888.",
+              "effectId": "school-access",
+              "feedback": "Their initiative seeks an educational opportunity; the request and its later outcome are different questions."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission2-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission2",
+        "status": "active",
+        "order": 6,
+        "title": "Explain the Exhibit to Another Learner",
+        "content": "Prepare a short explanation for another Grade 5 learner. Start with an action, then connect it with a public concern. Try: Del Pilar contributed by ___. De los Reyes contributed by ___. The Malolos women contributed by ___. Resources and education could help people ___.\n\nKeep the selected dates in order: the translation appeared in 1882, the Malolos request was made in 1888, and El Ilocano was founded in 1889. Explain the connection instead of only reciting years. Writers, translators and organized learners made different contributions. Their examples do not mean everyone had equal resources or that people without travel opportunities lacked knowledge.\n\nThe five-question quiz checks ideas taught in these scenes. Review a difficult scene, try targeted practice and retry when ready. Passing earns this mission's reward once. Chapter 15 remains partial; its final challenge is not available yet.",
+        "reviewTopics": [
+          "middle-class-opportunities",
+          "translation-and-readers",
+          "regional-publishing",
+          "women-and-education",
+          "contributions-and-concerns"
+        ],
+        "imageUrl": "../assets/story/participation-timeline.svg",
+        "imageFit": "contain",
+        "imageAlt": "A selected timeline orders the 1882 translation, the Malolos women's 1888 request and El Ilocano in 1889. The labels keep distinct contributors and actions attached to the dates.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "1882",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Diariong Tagalog includes the essay and Tagalog translation.",
+            "icon": "🔎"
+          },
+          {
+            "title": "1888",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Malolos women make their school request.",
+            "icon": "🔎"
+          },
+          {
+            "title": "1889",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "De los Reyes founds El Ilocano.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation gives contributors their distinct roles?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The same person performed all three actions in 1882.",
+          "Every contribution depended on studying in Madrid.",
+          "The school request proves every family had equal access to education.",
+          "A translator, a regional publisher and organized women learners used different actions for public concerns."
+        ],
+        "decisionCorrectAnswer": "A translator, a regional publisher and organized women learners used different actions for public concerns.",
+        "decisionExplanation": "Keep people, actions, dates and concerns connected. Different opportunities and forms of participation belong in the explanation.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Keep people, actions, dates and concerns connected. Different opportunities and forms of participation belong in the explanation.",
+        "keyTerm": "Initiative",
+        "keyTermDefinition": "Taking a step to begin or improve something.",
+        "historicalInsight": "De los Reyes founds El Ilocano.",
+        "learningHelp": {
+          "explanation": "Keep people, actions, dates and concerns connected. Different opportunities and forms of participation belong in the explanation.",
+          "vocabulary": [
+            {
+              "term": "Initiative",
+              "definition": "Taking a step to begin or improve something."
+            }
+          ],
+          "example": "Diariong Tagalog includes the essay and Tagalog translation.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/",
+          "https://philippineculturaleducation.com.ph/diariong-tagalog/",
+          "https://philippineculturaleducation.com.ph/de-los-reyes-isabelo/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/site-of-the-schoolhouse-of-the-women-of-malolos/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz2-question1",
+      "create": true,
+      "fields": {
+        "question": "How could resources and education support public participation?",
+        "optionA": "By helping people obtain materials and develop skills for public work.",
+        "optionB": "By giving every family identical income.",
+        "optionC": "By making travel the only source of knowledge.",
+        "optionD": "By measuring a person's worth through school fees.",
+        "correctAnswer": "A",
+        "explanation": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "learningPoint": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "historicalClue": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "answerExplanations": {
+          "A": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "B": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "C": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "D": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed."
+        },
+        "quizId": "chapter15-quiz2",
+        "order": 1,
+        "status": "active",
+        "topic": "middle-class-opportunities",
+        "topicLabel": "Resources, Skills and Public Work",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz2-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Which example connects resources with a public activity?",
+        "optionA": "An expensive cover proves every claim in a book.",
+        "optionB": "A professional title proves all readers agree.",
+        "optionC": "Lack of travel funds proves lack of useful knowledge.",
+        "optionD": "Time, support and printing materials help a group prepare a publication.",
+        "correctAnswer": "D",
+        "explanation": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "learningPoint": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "historicalClue": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "B": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "C": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "D": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed."
+        },
+        "quizId": "chapter15-quiz2",
+        "order": 101,
+        "status": "active",
+        "topic": "middle-class-opportunities",
+        "topicLabel": "Resources, Skills and Public Work",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission2-middle-class-opportunities-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which connection should the new exhibit explain?",
+        "optionA": "How the price of a book measured its reader's human worth.",
+        "optionB": "Why only people who travelled could discuss a public concern.",
+        "optionC": "Why a profession made every person hold the same opinion.",
+        "optionD": "How resources and skills could support writing, translation and organized requests.",
+        "correctAnswer": "D",
+        "explanation": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "learningPoint": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "historicalClue": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "B": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "C": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "D": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed."
+        },
+        "missionId": "chapter15-mission2",
+        "topic": "middle-class-opportunities",
+        "topicLabel": "Resources, Skills and Public Work",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Taking part in matters affecting a wider community.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission2-middle-class-opportunities-practice2",
+      "create": true,
+      "fields": {
+        "question": "A fictional group has funds for printing but needs a translator for its intended readers. What should its plan consider?",
+        "optionA": "Only travel abroad, because local skills cannot contribute.",
+        "optionB": "Only the fame of its wealthiest member.",
+        "optionC": "Both material resources and the language skills needed for the audience.",
+        "optionD": "Only the price of the paper, because language does not matter.",
+        "correctAnswer": "C",
+        "explanation": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "learningPoint": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "historicalClue": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "B": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "C": "Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed.",
+          "D": "Review the lesson clues. Resources and education could support public work. To understand a contribution, connect a person's action with the public concern it addressed."
+        },
+        "missionId": "chapter15-mission2",
+        "topic": "middle-class-opportunities",
+        "topicLabel": "Resources, Skills and Public Work",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Taking part in matters affecting a wider community.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz2-question2",
+      "create": true,
+      "fields": {
+        "question": "What did del Pilar contribute to the 1882 Amor Patrio case?",
+        "optionA": "The opening of El Ilocano in 1889.",
+        "optionB": "The Malolos school request in 1888.",
+        "optionC": "The construction of the Suez Canal.",
+        "optionD": "A Tagalog translation of Rizal's essay.",
+        "correctAnswer": "D",
+        "explanation": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "learningPoint": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "historicalClue": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "B": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "C": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "D": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors."
+        },
+        "quizId": "chapter15-quiz2",
+        "order": 2,
+        "status": "active",
+        "topic": "translation-and-readers",
+        "topicLabel": "Translation and Readers",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz2-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why can a Tagalog translation matter to a reader who cannot read Spanish?",
+        "optionA": "It changes the author into the founder of every newspaper.",
+        "optionB": "It guarantees that every household receives a copy.",
+        "optionC": "It makes the message available in a language the reader understands.",
+        "optionD": "It proves the reader must agree with every statement.",
+        "correctAnswer": "C",
+        "explanation": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "learningPoint": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "historicalClue": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "B": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "C": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "D": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors."
+        },
+        "quizId": "chapter15-quiz2",
+        "order": 102,
+        "status": "active",
+        "topic": "translation-and-readers",
+        "topicLabel": "Translation and Readers",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission2-translation-and-readers-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which contribution belongs with del Pilar's translation?",
+        "optionA": "Requesting permission for the Malolos school.",
+        "optionB": "Founding the Suez Canal as a student project.",
+        "optionC": "Making the essay available in Tagalog for Tagalog readers.",
+        "optionD": "Opening an Iloilo shipping route to Melbourne.",
+        "correctAnswer": "C",
+        "explanation": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "learningPoint": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "historicalClue": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "B": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "C": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "D": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors."
+        },
+        "missionId": "chapter15-mission2",
+        "topic": "translation-and-readers",
+        "topicLabel": "Translation and Readers",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Expressing a message in another language.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission2-translation-and-readers-practice2",
+      "create": true,
+      "fields": {
+        "question": "Which label correctly distinguishes the two roles?",
+        "optionA": "De los Reyes opened the Suez Canal; del Pilar recorded its route.",
+        "optionB": "Rizal wrote Amor Patrio; del Pilar translated it into Tagalog.",
+        "optionC": "Del Pilar wrote Amor Patrio; Rizal translated it for the Malolos request.",
+        "optionD": "The Malolos women wrote El Ilocano; Rizal opened its printing press.",
+        "correctAnswer": "B",
+        "explanation": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "learningPoint": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "historicalClue": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "B": "Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "C": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors.",
+          "D": "Review the lesson clues. Translation connects a written message with readers of another language. Identify the essay writer and translator as distinct contributors."
+        },
+        "missionId": "chapter15-mission2",
+        "topic": "translation-and-readers",
+        "topicLabel": "Translation and Readers",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Expressing a message in another language.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz2-question3",
+      "create": true,
+      "fields": {
+        "question": "Which publication belongs with Isabelo de los Reyes in 1889?",
+        "optionA": "The Malolos women's 1888 school request.",
+        "optionB": "The Iloilo Port opening record of 1855.",
+        "optionC": "El Ilocano.",
+        "optionD": "Diariong Tagalog in its 1882 translation case.",
+        "correctAnswer": "C",
+        "explanation": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "learningPoint": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "historicalClue": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "B": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "C": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "D": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines."
+        },
+        "quizId": "chapter15-quiz2",
+        "order": 3,
+        "status": "active",
+        "topic": "regional-publishing",
+        "topicLabel": "Regional Publishing",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz2-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "What action did de los Reyes take in the regional publishing case?",
+        "optionA": "Opened a canal between the Mediterranean and Red Seas.",
+        "optionB": "Founded a newspaper called El Ilocano.",
+        "optionC": "Translated Amor Patrio for Diariong Tagalog in 1882.",
+        "optionD": "Requested permission for the Malolos school in 1888.",
+        "correctAnswer": "B",
+        "explanation": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "learningPoint": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "historicalClue": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "B": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "C": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "D": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines."
+        },
+        "quizId": "chapter15-quiz2",
+        "order": 103,
+        "status": "active",
+        "topic": "regional-publishing",
+        "topicLabel": "Regional Publishing",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission2-regional-publishing-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which label correctly identifies this regional publishing case?",
+        "optionA": "The Iloilo machinery shipment was an issue of El Ilocano.",
+        "optionB": "Isabelo de los Reyes founded El Ilocano in 1889.",
+        "optionC": "The Malolos women founded El Ilocano during their 1888 request.",
+        "optionD": "Del Pilar built the Suez Canal for the 1882 newspaper.",
+        "correctAnswer": "B",
+        "explanation": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "learningPoint": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "historicalClue": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "B": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "C": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "D": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines."
+        },
+        "missionId": "chapter15-mission2",
+        "topic": "regional-publishing",
+        "topicLabel": "Regional Publishing",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A person who prepares and organizes material for a publication.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission2-regional-publishing-practice2",
+      "create": true,
+      "fields": {
+        "question": "What can founding El Ilocano most directly support in the exhibit?",
+        "optionA": "A named example of creating a regional publication.",
+        "optionB": "A count of every person who read the newspaper.",
+        "optionC": "Proof that every reader held the same opinion.",
+        "optionD": "Proof that regional work required a school in Madrid.",
+        "correctAnswer": "A",
+        "explanation": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "learningPoint": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "historicalClue": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+        "answerExplanations": {
+          "A": "Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "B": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "C": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines.",
+          "D": "Review the lesson clues. Keep the named person, publication and date together. Regional publishing is an example of public participation within the Philippines."
+        },
+        "missionId": "chapter15-mission2",
+        "topic": "regional-publishing",
+        "topicLabel": "Regional Publishing",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A person who prepares and organizes material for a publication.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz2-question4",
+      "create": true,
+      "fields": {
+        "question": "What did the Malolos women request in 1888?",
+        "optionA": "The return of Iloilo's sugar shipment from Melbourne.",
+        "optionB": "Permission to open a Spanish-language school at their own expense.",
+        "optionC": "Permission to translate the Suez Canal records into Tagalog.",
+        "optionD": "Ownership of El Ilocano in Vigan.",
+        "correctAnswer": "B",
+        "explanation": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "learningPoint": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "historicalClue": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "B": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "C": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "D": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request."
+        },
+        "quizId": "chapter15-quiz2",
+        "order": 4,
+        "status": "active",
+        "topic": "women-and-education",
+        "topicLabel": "Women Organizing for Education",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz2-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Who initiated the educational request in the Malolos example?",
+        "optionA": "The women who organized and made the request.",
+        "optionB": "A later letter that replaced the women's action.",
+        "optionC": "The founder of El Ilocano acting alone in 1889.",
+        "optionD": "An unnamed ship carrying sugar in 1859.",
+        "correctAnswer": "A",
+        "explanation": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "learningPoint": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "historicalClue": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "answerExplanations": {
+          "A": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "B": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "C": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "D": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request."
+        },
+        "quizId": "chapter15-quiz2",
+        "order": 104,
+        "status": "active",
+        "topic": "women-and-education",
+        "topicLabel": "Women Organizing for Education",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission2-women-and-education-practice1",
+      "create": true,
+      "fields": {
+        "question": "What action should the exhibit attribute to the Malolos women?",
+        "optionA": "Organizing a request for permission to open their own Spanish-language school.",
+        "optionB": "Translating Amor Patrio for Diariong Tagalog in 1882.",
+        "optionC": "Founding El Ilocano in 1889.",
+        "optionD": "Opening Iloilo Port to international trade in 1855.",
+        "correctAnswer": "A",
+        "explanation": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "learningPoint": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "historicalClue": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "answerExplanations": {
+          "A": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "B": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "C": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "D": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request."
+        },
+        "missionId": "chapter15-mission2",
+        "topic": "women-and-education",
+        "topicLabel": "Women Organizing for Education",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A formal request asking an authority to act.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission2-women-and-education-practice2",
+      "create": true,
+      "fields": {
+        "question": "How should the exhibit connect the women's request with Rizal's later supportive letter?",
+        "optionA": "Give the initiative entirely to the later letter writer.",
+        "optionB": "Treat the letter as proof that every requested school condition was fulfilled.",
+        "optionC": "Place both events in 1882 with the Diariong Tagalog translation.",
+        "optionD": "Present their initiative first and identify the later letter as support.",
+        "correctAnswer": "D",
+        "explanation": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "learningPoint": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "historicalClue": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "B": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "C": "Review the lesson clues. The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request.",
+          "D": "The women made the educational request themselves. A later supportive letter should not erase their initiative or be confused with the original request."
+        },
+        "missionId": "chapter15-mission2",
+        "topic": "women-and-education",
+        "topicLabel": "Women Organizing for Education",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A formal request asking an authority to act.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz2-question5",
+      "create": true,
+      "fields": {
+        "question": "Which pair correctly connects an action with its contribution?",
+        "optionA": "Translation - making a text available in another language.",
+        "optionB": "Founding a newspaper - opening a new canal.",
+        "optionC": "Requesting a school - exporting sugar from Iloilo.",
+        "optionD": "Writing a letter - proving all readers agree.",
+        "correctAnswer": "A",
+        "explanation": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "learningPoint": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "historicalClue": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "answerExplanations": {
+          "A": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "B": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "C": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "D": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed."
+        },
+        "quizId": "chapter15-quiz2",
+        "order": 5,
+        "status": "active",
+        "topic": "contributions-and-concerns",
+        "topicLabel": "Different Forms of Participation",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz2-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "What do the three exhibit cases show together?",
+        "optionA": "One famous person performed every action.",
+        "optionB": "All participants had the same income and opportunities.",
+        "optionC": "Public work could only happen outside the Philippines.",
+        "optionD": "Different people and groups used distinct actions for public concerns.",
+        "correctAnswer": "D",
+        "explanation": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "learningPoint": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "historicalClue": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "B": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "C": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "D": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed."
+        },
+        "quizId": "chapter15-quiz2",
+        "order": 105,
+        "status": "active",
+        "topic": "contributions-and-concerns",
+        "topicLabel": "Different Forms of Participation",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission2-contributions-and-concerns-practice1",
+      "create": true,
+      "fields": {
+        "question": "Why should the exhibit include all three kinds of action?",
+        "optionA": "Only the best-known writer should receive credit for every action.",
+        "optionB": "A school request and a newspaper must have identical outcomes.",
+        "optionC": "All contributors had to study abroad before they could act.",
+        "optionD": "They show distinct ways people participated in public concerns.",
+        "correctAnswer": "D",
+        "explanation": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "learningPoint": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "historicalClue": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "B": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "C": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "D": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed."
+        },
+        "missionId": "chapter15-mission2",
+        "topic": "contributions-and-concerns",
+        "topicLabel": "Different Forms of Participation",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An action or support that helps a shared effort.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission2-contributions-and-concerns-practice2",
+      "create": true,
+      "fields": {
+        "question": "Which exhibit explanation is strongest?",
+        "optionA": "Replace the three cases with one claim that everyone agreed.",
+        "optionB": "Treat the date order alone as proof of every action's result.",
+        "optionC": "Name the translator, publisher and petitioning group, then connect each action with its concern.",
+        "optionD": "List only the richest participant without explaining an action.",
+        "correctAnswer": "C",
+        "explanation": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "learningPoint": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "historicalClue": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "B": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "C": "Public participation took different forms. Explain each person or group's actual action and the concern it addressed.",
+          "D": "Review the lesson clues. Public participation took different forms. Explain each person or group's actual action and the concern it addressed."
+        },
+        "missionId": "chapter15-mission2",
+        "topic": "contributions-and-concerns",
+        "topicLabel": "Different Forms of Participation",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An action or support that helps a shared effort.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter15-mission2-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission2",
+        "name": "Participation Exhibit Card",
+        "description": "A learning-game token for explaining distinct contributions to public concerns.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Connect translation, publishing and educational requests with their public concerns.",
+          "reflectionQuestion": "How did the translator, publisher and women learners contribute in different ways?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-15",
+      "create": false,
+      "expected": {
+        "description": "Begin with Trade, Travel and the Sharing of Ideas. This is a partial chapter; further missions and its final challenge are not yet available."
+      },
+      "fields": {
+        "description": "Investigate trade and travel, then build an exhibit about the emerging middle class and public participation. Missions 1-2 are available; further missions and the final challenge are not yet available."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapters 12-14 offer missions and evidence challenges. Chapter 15 begins an investigation of trade, travel and the sharing of ideas; its remaining content and final challenge are not yet available."
+      },
+      "fields": {
+        "description": "Chapters 12-14 offer missions and evidence challenges. Chapter 15 offers two missions on connections and public participation; its remaining content and final challenge are not yet available."
+      }
+    }
+  ]
+}

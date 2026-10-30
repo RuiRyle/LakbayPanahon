@@ -1,0 +1,1245 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 2 Chapter 5 Mission 3 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/mactan-ruta-ng-ekspedisyon-magallanes-elcano-sa-pilipinas/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/lapulapu-2/",
+    "https://www.nqc.gov.ph/en/resources/battle-of-mactan-beyond-textbooks/",
+    "https://www.nqc.gov.ph/en/map/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/antonio-pigafetta/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "writes": [
+    {
+      "path": "missions/chapter5-mission3",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-5",
+        "title": "Lapulapu and the Battle of Mactan",
+        "order": 3,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate the dispute over authority, the conditions at Mactan and the evidence behind its remembrance.",
+        "learningObjective": "Explain the causes, conditions and outcome at Mactan while distinguishing evidence from retelling.",
+        "learningObjectives": [
+          "Explain local authority using lesson evidence.",
+          "Explain causes of conflict using lesson evidence.",
+          "Explain local conditions using lesson evidence.",
+          "Explain outcome and later history using lesson evidence.",
+          "Explain evidence and remembrance using lesson evidence."
+        ],
+        "lessonRecap": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/mactan-ruta-ng-ekspedisyon-magallanes-elcano-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/lapulapu-2/",
+          "https://www.nqc.gov.ph/en/resources/battle-of-mactan-beyond-textbooks/",
+          "https://www.nqc.gov.ph/en/map/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/antonio-pigafetta/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter5-quiz3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission3",
+        "title": "Mactan Investigation - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 3,
+        "questionBlueprint": [
+          {
+            "topic": "mactan-local-authority",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "mactan-causes",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "mactan-local-conditions",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "mactan-outcome",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "mactan-evidence-and-memory",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission3-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission3",
+        "status": "active",
+        "order": 1,
+        "title": "Mactan: Whose Decision?",
+        "content": "In the last mission, you learned that a meeting or agreement in Cebu did not decide the future of every island. Now investigate Mactan, near Cebu. Your task is to explain a conflict using evidence.\n\nLapulapu was a leader of Mactan. The NHCP Mactan marker records that he refused to recognize the king of Spain and the position claimed for Rajah Humabon over Cebu and Mactan. Magellan sought that recognition. This was a disagreement about authority: who could give orders and expect others to obey.\n\nNot all local leaders chose the same response. Zula, another leader in Mactan, sought Magellan's support against Lapulapu. Naming different choices helps us avoid describing all residents as if they had one opinion.\n\nRead the decision cards. Separate a demand from consent: asking people to accept a ruler does not show that they agreed. Use the clues to explain Lapulapu's refusal without inventing a speech or claiming he spoke for a modern nation-state.",
+        "reviewTopics": [
+          "mactan-local-authority"
+        ],
+        "imageUrl": "../assets/story/mactan-decisions.svg",
+        "imageFit": "contain",
+        "imageAlt": "Three distinct positions: Magellan demanded recognition of Spain and Humabon; Lapulapu refused; other leaders made different choices. No single decision represents every community.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A demand",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Magellan sought recognition of the Spanish king and Humabon's authority. A demand is not evidence of agreement.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A refusal",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP marker identifies Lapulapu as a leader who refused this recognition.",
+            "icon": "🔎"
+          },
+          {
+            "title": "More than one choice",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Zula and Lapulapu did not take the same position. One leader's action cannot represent everyone.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation best fits the disagreement over authority?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Lapulapu refused the authority demanded by Magellan; local leaders made different choices",
+          "Every local leader had already accepted the same ruler",
+          "Magellan's demand proved everyone consented",
+          "A meeting in Cebu made decisions for all islands"
+        ],
+        "decisionCorrectAnswer": "Lapulapu refused the authority demanded by Magellan; local leaders made different choices",
+        "decisionExplanation": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "keyTerm": "Authority",
+        "keyTermDefinition": "The power to make decisions and expect others to follow them.",
+        "historicalInsight": "Zula and Lapulapu did not take the same position. One leader's action cannot represent everyone.",
+        "learningHelp": {
+          "explanation": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "vocabulary": [
+            {
+              "term": "Authority",
+              "definition": "The power to make decisions and expect others to follow them."
+            }
+          ],
+          "example": "Magellan sought recognition of the Spanish king and Humabon's authority. A demand is not evidence of agreement.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/mactan-ruta-ng-ekspedisyon-magallanes-elcano-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/lapulapu-2/",
+          "https://www.nqc.gov.ph/en/resources/battle-of-mactan-beyond-textbooks/",
+          "https://www.nqc.gov.ph/en/map/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/antonio-pigafetta/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission3-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission3",
+        "status": "active",
+        "order": 2,
+        "title": "Trace the Cause of the Conflict",
+        "content": "A cause helps explain why something happened. To understand a battle, go beyond remembering its date. Ask which decisions brought people into conflict.\n\nMagellan joined local disputes and attempted to enforce demands for obedience. The NHCP marker also records that he ordered Buaya burned after its refusal to recognize authority. This was coercion: trying to make people obey through force or threats. The harm to a community is part of the history, even when we study it without graphic images.\n\nWatch how to build a cause chain. First, identify the demand about authority. Next, identify the refusal. Then identify the decision to use force. Connect the events without claiming that a refusal automatically makes an attack acceptable or inevitable.\n\nTry a fictional report check. A student writes that a gift exchange caused everyone to agree to foreign rule. Replace that explanation with evidence about the demands, local choices and the armed attempt to impose authority. Explaining violence is different from praising it.",
+        "reviewTopics": [
+          "mactan-causes"
+        ],
+        "imageUrl": "../assets/story/mactan-decisions.svg",
+        "imageFit": "contain",
+        "imageAlt": "A cause chain links demands for authority, refusal and an armed attempt to enforce the demand. The chain explains escalation, not an unavoidable outcome.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Name the issue",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The dispute involved demands for obedience and recognition, not simply the presence of unfamiliar visitors.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Identify coercion",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Threats and force were used to try to make communities obey. That is different from a freely accepted agreement.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connect decisions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Refusal was followed by an armed attempt to enforce demands. Explaining this sequence does not make an attack justified.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which cause chain explains the conflict most carefully?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A gift exchange proved universal consent, so no disagreement existed",
+          "All local leaders chose exactly the same response",
+          "A battle happened only because the place had a particular name",
+          "Demands for authority met refusal, and Magellan attempted to enforce them by force"
+        ],
+        "decisionCorrectAnswer": "Demands for authority met refusal, and Magellan attempted to enforce them by force",
+        "decisionExplanation": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "keyTerm": "Coercion",
+        "keyTermDefinition": "Trying to make someone obey by using force or threats.",
+        "historicalInsight": "Refusal was followed by an armed attempt to enforce demands. Explaining this sequence does not make an attack justified.",
+        "learningHelp": {
+          "explanation": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "vocabulary": [
+            {
+              "term": "Coercion",
+              "definition": "Trying to make someone obey by using force or threats."
+            }
+          ],
+          "example": "The dispute involved demands for obedience and recognition, not simply the presence of unfamiliar visitors.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/mactan-ruta-ng-ekspedisyon-magallanes-elcano-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/lapulapu-2/",
+          "https://www.nqc.gov.ph/en/resources/battle-of-mactan-beyond-textbooks/",
+          "https://www.nqc.gov.ph/en/map/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/antonio-pigafetta/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission3-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission3",
+        "status": "active",
+        "order": 3,
+        "title": "Read the Shoreline Clue",
+        "content": "Place can affect what people are able to do. A shoreline is not just a background picture. It can change how boats approach land and how people move.\n\nThe National Quincentennial Committee's discussion of Pigafetta's account describes low tide and coral that kept the boats from approaching the beach closely. Magellan's landing party had to cross shallow water. The people defending Mactan confronted that party. These conditions help explain why having ships did not automatically give an advantage on shore.\n\nRead the diagram from the water toward land. Find the boats, the shallow area and the beach. Then connect one feature to a practical effect: boats farther away could not bring people right onto the beach. This is a conceptual diagram, not an exact battle map. It does not supply distances, precise troop positions or everyone's movements.\n\nUse more than one factor in your explanation. Conditions mattered alongside decisions and the defenders' actions. Do not turn one shoreline feature into a rule that predicts the result of every battle.",
+        "reviewTopics": [
+          "mactan-local-conditions"
+        ],
+        "imageUrl": "../assets/story/mactan-shoreline.svg",
+        "imageFit": "contain",
+        "imageAlt": "Conceptual side view: boats remain offshore, shallow water and coral lie between them and the beach. The diagram has no exact distances, troop positions or scale.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Look at the water",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Low tide and coral limited how closely the boats could approach, according to the account discussed by the NQC.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connect place and action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The landing party had to cross shallow water rather than step straight from boats onto the beach.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Keep the limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A simplified shoreline explains a constraint. It does not establish every movement or make one factor the only cause.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the shoreline evidence help explain?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The diagram gives the exact position of every participant",
+          "Coral alone explains every decision and the whole outcome",
+          "Boats could not approach closely, affecting how the landing party reached the shore",
+          "Ships guaranteed success regardless of local conditions"
+        ],
+        "decisionCorrectAnswer": "Boats could not approach closely, affecting how the landing party reached the shore",
+        "decisionExplanation": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "keyTerm": "Constraint",
+        "keyTermDefinition": "A condition that limits what someone can do.",
+        "historicalInsight": "A simplified shoreline explains a constraint. It does not establish every movement or make one factor the only cause.",
+        "learningHelp": {
+          "explanation": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "vocabulary": [
+            {
+              "term": "Constraint",
+              "definition": "A condition that limits what someone can do."
+            }
+          ],
+          "example": "Low tide and coral limited how closely the boats could approach, according to the account discussed by the NQC.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/mactan-ruta-ng-ekspedisyon-magallanes-elcano-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/lapulapu-2/",
+          "https://www.nqc.gov.ph/en/resources/battle-of-mactan-beyond-textbooks/",
+          "https://www.nqc.gov.ph/en/map/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/antonio-pigafetta/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission3-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission3",
+        "status": "active",
+        "order": 4,
+        "title": "27 April: Result and Next Steps",
+        "content": "The Battle of Mactan took place on 27 April 1521. The defenders of Mactan defeated the attacking force led by Magellan. Magellan died in the battle. The NHCP marker identifies the warriors of Mactan in this outcome. We can name the result without showing injuries or treating deaths as points in a game.\n\nSeparate an immediate outcome from a later event. The immediate outcome concerns what happened at Mactan. Surviving members of the expedition continued the voyage afterward. Magellan's death did not mean that every member of the expedition died or that all later expeditions stopped.\n\nTry sorting a report into three parts: before the battle, the result, and what happened later. Demands and refusals belong before the battle. The attacking party's defeat belongs to the result. Continuing voyages belong afterward.\n\nThis victory is remembered as resistance to an attempt to impose authority. It was not the independence of a modern Philippine republic, and it did not end all later attempts to establish colonial rule. The next mission investigates later expeditions.",
+        "reviewTopics": [
+          "mactan-outcome"
+        ],
+        "imageUrl": "../assets/story/mactan-outcome.svg",
+        "imageFit": "contain",
+        "imageAlt": "Event sequence: battle at Mactan on 27 April 1521; the defenders repelled the attacking party and Magellan died; surviving expedition members continued afterward.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A specific event",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP Mactan marker dates the battle to 27 April 1521 and records Magellan's death at the hands of Mactan's warriors.",
+            "icon": "🔎"
+          },
+          {
+            "title": "An immediate outcome",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Mactan's defenders repelled the attacking party. The result should not be enlarged into a claim about every later event.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A later sequence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Surviving expedition members continued after Mactan. Later voyages still need to be studied.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which statement separates the outcome from later history?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The battle created a modern Philippine republic that day",
+          "Mactan's defenders won on 27 April 1521; survivors and later expeditions continued afterward",
+          "Magellan completed the whole voyage after dying at Mactan",
+          "The battle ended every future Spanish expedition"
+        ],
+        "decisionCorrectAnswer": "Mactan's defenders won on 27 April 1521; survivors and later expeditions continued afterward",
+        "decisionExplanation": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "keyTerm": "Outcome",
+        "keyTermDefinition": "A result of an event or decision.",
+        "historicalInsight": "Surviving expedition members continued after Mactan. Later voyages still need to be studied.",
+        "learningHelp": {
+          "explanation": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "vocabulary": [
+            {
+              "term": "Outcome",
+              "definition": "A result of an event or decision."
+            }
+          ],
+          "example": "The NHCP Mactan marker dates the battle to 27 April 1521 and records Magellan's death at the hands of Mactan's warriors.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/mactan-ruta-ng-ekspedisyon-magallanes-elcano-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/lapulapu-2/",
+          "https://www.nqc.gov.ph/en/resources/battle-of-mactan-beyond-textbooks/",
+          "https://www.nqc.gov.ph/en/map/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/antonio-pigafetta/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission3-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission3",
+        "status": "active",
+        "order": 5,
+        "title": "Evidence or Dramatic Retelling?",
+        "content": "A dramatic picture can help people remember a story. It cannot prove every detail it shows. Historical accounts, modern summaries and artistic retellings are different kinds of material.\n\nPigafetta took part in the expedition and witnessed the battle. His account is useful evidence, but it gives a participant's viewpoint. The NQC notes that he did not identify Lapulapu among the fighters. We should not turn a familiar picture of a one-on-one duel into a proven event. This uncertainty also does not prove that Lapulapu was absent.\n\nLapulapu is remembered for leading resistance, and the defenders' collective action mattered. A modern monument can express that memory without being an exact portrait made in 1521. Recognizing leadership does not require inventing a personal duel, exact age or speech.\n\nFor this fictional exhibit task, choose a responsible caption. Name the documented event and identify artistic choices as a retelling. Ask what the source supports, whose viewpoint it records, and what remains uncertain. Respectful remembrance includes checking claims.",
+        "reviewTopics": [
+          "mactan-evidence-and-memory"
+        ],
+        "imageUrl": "../assets/story/mactan-source-check.svg",
+        "imageFit": "contain",
+        "imageAlt": "Three source checks distinguish a participant account, a modern historical marker and an artistic retelling. A dramatic duel or invented speech is not established by an image.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A participant viewpoint",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Pigafetta witnessed the battle. An eyewitness still cannot supply every viewpoint or private thought.",
+            "icon": "🔎"
+          },
+          {
+            "title": "An uncertain detail",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NQC notes that Pigafetta did not identify Lapulapu among the combatants. A personal duel is not established by that account.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A form of remembrance",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A monument or modern illustration can honor resistance without establishing an exact appearance, speech or individual action.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which caption treats a dramatic battle picture responsibly?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "An artistic retelling of resistance at Mactan; its personal duel is not established by the account",
+          "An exact photograph taken during the battle in 1521",
+          "Proof of Lapulapu's exact speech and appearance",
+          "Proof that one person acted alone without any defenders"
+        ],
+        "decisionCorrectAnswer": "An artistic retelling of resistance at Mactan; its personal duel is not established by the account",
+        "decisionExplanation": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "keyTerm": "Commemoration",
+        "keyTermDefinition": "An act of remembering and honoring a person or event.",
+        "historicalInsight": "A monument or modern illustration can honor resistance without establishing an exact appearance, speech or individual action.",
+        "learningHelp": {
+          "explanation": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "vocabulary": [
+            {
+              "term": "Commemoration",
+              "definition": "An act of remembering and honoring a person or event."
+            }
+          ],
+          "example": "Pigafetta witnessed the battle. An eyewitness still cannot supply every viewpoint or private thought.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/mactan-ruta-ng-ekspedisyon-magallanes-elcano-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/lapulapu-2/",
+          "https://www.nqc.gov.ph/en/resources/battle-of-mactan-beyond-textbooks/",
+          "https://www.nqc.gov.ph/en/map/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/antonio-pigafetta/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission3-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission3",
+        "status": "active",
+        "order": 6,
+        "title": "Build Your Mactan Explanation",
+        "content": "Complete your investigation by connecting causes, conditions and outcome. Begin with the dispute over authority. Explain that Lapulapu refused recognition and that Magellan attempted to impose demands. Connect a local condition to its effect: shallow water and coral limited the boats' approach. Then state the outcome at Mactan on 27 April 1521.\n\nUse this report frame in your own words: The conflict involved [demand and response]. One condition that mattered was [feature and effect]. The result was [supported outcome]. We should not claim [unsupported detail]. This is a classroom thinking tool, not an original speech.\n\nBefore choosing your final explanation, check whether you have made every local leader agree, given credit to one person alone, or treated an artistic duel as proof. Revise any claim that goes beyond the evidence.\n\nUse the mission quiz to check what you learned. If a topic is difficult, revisit its lesson and try targeted practice before another quiz attempt. Passing earns the mission reward once. The reward recognizes learning, not harm. Complete all missions, then pass the chapter challenge to earn the chapter badge.",
+        "reviewTopics": [
+          "mactan-local-authority",
+          "mactan-causes",
+          "mactan-local-conditions",
+          "mactan-outcome",
+          "mactan-evidence-and-memory"
+        ],
+        "imageUrl": "../assets/story/mactan-outcome.svg",
+        "imageFit": "contain",
+        "imageAlt": "A report sequence distinguishes causes before the battle, the result on 27 April 1521 and the continuing voyage afterward. It does not claim the chapter is complete.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Explain the cause",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Connect a demand about authority, refusal and the decision to enforce it by force.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connect place and outcome",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Explain one constraint without making it the only cause. State the defenders' victory and the continuing history separately.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Check the evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Credit collective action, keep uncertain details uncertain, and identify fictional prompts as teaching tools.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation best combines the investigation?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One dramatic picture proves everyone's exact words and actions",
+          "The boats guaranteed success and every local leader agreed",
+          "Mactan's result ended all later expeditions and created a modern republic",
+          "A dispute over authority escalated; local conditions and defenders' actions mattered, and the evidence does not establish a personal duel"
+        ],
+        "decisionCorrectAnswer": "A dispute over authority escalated; local conditions and defenders' actions mattered, and the evidence does not establish a personal duel",
+        "decisionExplanation": "A supported explanation connects causes, local conditions and the outcome while keeping uncertain details separate from evidence.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A supported explanation connects causes, local conditions and the outcome while keeping uncertain details separate from evidence.",
+        "keyTerm": "Historical explanation",
+        "keyTermDefinition": "An account connecting events, causes and evidence while stating what remains uncertain.",
+        "historicalInsight": "Credit collective action, keep uncertain details uncertain, and identify fictional prompts as teaching tools.",
+        "learningHelp": {
+          "explanation": "A supported explanation connects causes, local conditions and the outcome while keeping uncertain details separate from evidence.",
+          "vocabulary": [
+            {
+              "term": "Historical explanation",
+              "definition": "An account connecting events, causes and evidence while stating what remains uncertain."
+            }
+          ],
+          "example": "Connect a demand about authority, refusal and the decision to enforce it by force.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/mactan-ruta-ng-ekspedisyon-magallanes-elcano-sa-pilipinas/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/lapulapu-2/",
+          "https://www.nqc.gov.ph/en/resources/battle-of-mactan-beyond-textbooks/",
+          "https://www.nqc.gov.ph/en/map/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/antonio-pigafetta/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz3-question1",
+      "create": true,
+      "fields": {
+        "question": "What did Lapulapu refuse to recognize in the dispute?",
+        "optionA": "The demanded authority of Spain and Humabon",
+        "optionB": "The fact that trading communities existed",
+        "optionC": "The need to distinguish accounts from art",
+        "optionD": "The location of the Pacific Ocean",
+        "correctAnswer": "A",
+        "explanation": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "learningPoint": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "historicalClue": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "answerExplanations": {
+          "A": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "B": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "C": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "D": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices."
+        },
+        "quizId": "chapter5-quiz3",
+        "order": 1,
+        "status": "active",
+        "topic": "mactan-local-authority",
+        "topicLabel": "Local authority",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz3-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why should a report distinguish Lapulapu from Zula?",
+        "optionA": "They were two names for a single recorded decision",
+        "optionB": "Both spoke for every island in the archipelago",
+        "optionC": "Their choices prove every community agreed",
+        "optionD": "They were local leaders who took different positions",
+        "correctAnswer": "D",
+        "explanation": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "learningPoint": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "historicalClue": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "B": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "C": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "D": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices."
+        },
+        "quizId": "chapter5-quiz3",
+        "order": 101,
+        "status": "active",
+        "topic": "mactan-local-authority",
+        "topicLabel": "Local authority",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission3-mactan-local-authority-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which explanation best fits the disagreement over authority?",
+        "optionA": "Every local leader had already accepted the same ruler",
+        "optionB": "Magellan's demand proved everyone consented",
+        "optionC": "A meeting in Cebu made decisions for all islands",
+        "optionD": "Lapulapu refused the authority demanded by Magellan; local leaders made different choices",
+        "correctAnswer": "D",
+        "explanation": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "learningPoint": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "historicalClue": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "B": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "C": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "D": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices."
+        },
+        "missionId": "chapter5-mission3",
+        "topic": "mactan-local-authority",
+        "topicLabel": "Local authority",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The power to make decisions and expect others to follow them.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission3-mactan-local-authority-practice2",
+      "create": true,
+      "fields": {
+        "question": "A student says Humabon's agreement settled Mactan's choice. What is the strongest correction?",
+        "optionA": "A foreign demand proves it was freely accepted",
+        "optionB": "Trading with visitors transfers authority automatically",
+        "optionC": "An agreement by one leader does not establish another leader's consent",
+        "optionD": "Nearby communities always make identical decisions",
+        "correctAnswer": "C",
+        "explanation": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "learningPoint": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "historicalClue": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "B": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "C": "The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices.",
+          "D": "Review the lesson clues. The disagreement concerned authority. Lapulapu refused the demanded recognition, while other leaders made different choices."
+        },
+        "missionId": "chapter5-mission3",
+        "topic": "mactan-local-authority",
+        "topicLabel": "Local authority",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The power to make decisions and expect others to follow them.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz3-question2",
+      "create": true,
+      "fields": {
+        "question": "Which action shows coercion rather than a freely accepted agreement?",
+        "optionA": "Asking what another person thinks without threatening them",
+        "optionB": "Comparing two historical sources",
+        "optionC": "Choosing to exchange goods by agreement",
+        "optionD": "Using threats or force to demand obedience",
+        "correctAnswer": "D",
+        "explanation": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "learningPoint": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "historicalClue": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "B": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "C": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "D": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion."
+        },
+        "quizId": "chapter5-quiz3",
+        "order": 2,
+        "status": "active",
+        "topic": "mactan-causes",
+        "topicLabel": "Causes of conflict",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz3-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Which explanation connects the demands with the conflict?",
+        "optionA": "The island name alone caused the battle",
+        "optionB": "A supply exchange removed all disagreement",
+        "optionC": "Refusal met an attempt to impose authority by force",
+        "optionD": "All leaders agreed, so there was no dispute",
+        "correctAnswer": "C",
+        "explanation": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "learningPoint": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "historicalClue": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "B": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "C": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "D": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion."
+        },
+        "quizId": "chapter5-quiz3",
+        "order": 102,
+        "status": "active",
+        "topic": "mactan-causes",
+        "topicLabel": "Causes of conflict",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission3-mactan-causes-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which cause chain explains the conflict most carefully?",
+        "optionA": "All local leaders chose exactly the same response",
+        "optionB": "A battle happened only because the place had a particular name",
+        "optionC": "Demands for authority met refusal, and Magellan attempted to enforce them by force",
+        "optionD": "A gift exchange proved universal consent, so no disagreement existed",
+        "correctAnswer": "C",
+        "explanation": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "learningPoint": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "historicalClue": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "B": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "C": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "D": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion."
+        },
+        "missionId": "chapter5-mission3",
+        "topic": "mactan-causes",
+        "topicLabel": "Causes of conflict",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Trying to make someone obey by using force or threats.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission3-mactan-causes-practice2",
+      "create": true,
+      "fields": {
+        "question": "Which report identifies both a cause and a limit?",
+        "optionA": "An invented speech is enough to establish all motives",
+        "optionB": "Demands and refusal help explain the conflict; they do not make an attack justified",
+        "optionC": "The date alone explains all decisions",
+        "optionD": "A battle result proves every earlier demand was accepted",
+        "correctAnswer": "B",
+        "explanation": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "learningPoint": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "historicalClue": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "B": "Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "C": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion.",
+          "D": "Review the lesson clues. Demands, refusal and the decision to use force help explain the conflict. An explanation does not justify coercion."
+        },
+        "missionId": "chapter5-mission3",
+        "topic": "mactan-causes",
+        "topicLabel": "Causes of conflict",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Trying to make someone obey by using force or threats.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz3-question3",
+      "create": true,
+      "fields": {
+        "question": "How did shallow water and coral affect the approach?",
+        "optionA": "They established every person's exact position",
+        "optionB": "They made human decisions irrelevant",
+        "optionC": "They kept boats from coming close to the beach",
+        "optionD": "They allowed boats to sail straight onto the beach",
+        "correctAnswer": "C",
+        "explanation": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "learningPoint": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "historicalClue": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "B": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "C": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "D": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions."
+        },
+        "quizId": "chapter5-quiz3",
+        "order": 3,
+        "status": "active",
+        "topic": "mactan-local-conditions",
+        "topicLabel": "Local conditions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz3-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Which explanation uses the shoreline evidence carefully?",
+        "optionA": "A teaching diagram shows every movement exactly",
+        "optionB": "Conditions constrained the landing alongside decisions and the defenders' actions",
+        "optionC": "Having ships guaranteed success on land",
+        "optionD": "Coral was the only cause of the battle",
+        "correctAnswer": "B",
+        "explanation": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "learningPoint": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "historicalClue": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "B": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "C": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "D": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions."
+        },
+        "quizId": "chapter5-quiz3",
+        "order": 103,
+        "status": "active",
+        "topic": "mactan-local-conditions",
+        "topicLabel": "Local conditions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission3-mactan-local-conditions-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the shoreline evidence help explain?",
+        "optionA": "Coral alone explains every decision and the whole outcome",
+        "optionB": "Boats could not approach closely, affecting how the landing party reached the shore",
+        "optionC": "Ships guaranteed success regardless of local conditions",
+        "optionD": "The diagram gives the exact position of every participant",
+        "correctAnswer": "B",
+        "explanation": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "learningPoint": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "historicalClue": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "B": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "C": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "D": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions."
+        },
+        "missionId": "chapter5-mission3",
+        "topic": "mactan-local-conditions",
+        "topicLabel": "Local conditions",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A condition that limits what someone can do.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission3-mactan-local-conditions-practice2",
+      "create": true,
+      "fields": {
+        "question": "A sketch has no scale but shows boats offshore. Which claim is supported?",
+        "optionA": "It illustrates an approach constraint, not an exact distance",
+        "optionB": "It proves the precise number of metres each person crossed",
+        "optionC": "It identifies the exact location of every defender",
+        "optionD": "It establishes every participant's private plan",
+        "correctAnswer": "A",
+        "explanation": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "learningPoint": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "historicalClue": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+        "answerExplanations": {
+          "A": "Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "B": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "C": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions.",
+          "D": "Review the lesson clues. Shallow water and coral constrained the approach. Conditions mattered alongside decisions and the defenders' actions."
+        },
+        "missionId": "chapter5-mission3",
+        "topic": "mactan-local-conditions",
+        "topicLabel": "Local conditions",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A condition that limits what someone can do.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz3-question4",
+      "create": true,
+      "fields": {
+        "question": "What was the immediate outcome at Mactan on 27 April 1521?",
+        "optionA": "All later voyages to the islands stopped permanently",
+        "optionB": "The defenders defeated the attacking party and Magellan died",
+        "optionC": "Every expedition member completed the world voyage that day",
+        "optionD": "A modern Philippine republic was established",
+        "correctAnswer": "B",
+        "explanation": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "learningPoint": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "historicalClue": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "B": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "C": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "D": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts."
+        },
+        "quizId": "chapter5-quiz3",
+        "order": 4,
+        "status": "active",
+        "topic": "mactan-outcome",
+        "topicLabel": "Outcome and later history",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz3-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why should Mactan's victory be separated from later events?",
+        "optionA": "Survivors and later expeditions continued after the battle",
+        "optionB": "Magellan led voyages after his death",
+        "optionC": "Every later colonial attempt ended that day",
+        "optionD": "No event occurred after 1521",
+        "correctAnswer": "A",
+        "explanation": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "learningPoint": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "historicalClue": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "answerExplanations": {
+          "A": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "B": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "C": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "D": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts."
+        },
+        "quizId": "chapter5-quiz3",
+        "order": 104,
+        "status": "active",
+        "topic": "mactan-outcome",
+        "topicLabel": "Outcome and later history",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission3-mactan-outcome-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which statement separates the outcome from later history?",
+        "optionA": "Mactan's defenders won on 27 April 1521; survivors and later expeditions continued afterward",
+        "optionB": "Magellan completed the whole voyage after dying at Mactan",
+        "optionC": "The battle ended every future Spanish expedition",
+        "optionD": "The battle created a modern Philippine republic that day",
+        "correctAnswer": "A",
+        "explanation": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "learningPoint": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "historicalClue": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "answerExplanations": {
+          "A": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "B": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "C": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "D": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts."
+        },
+        "missionId": "chapter5-mission3",
+        "topic": "mactan-outcome",
+        "topicLabel": "Outcome and later history",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A result of an event or decision.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission3-mactan-outcome-practice2",
+      "create": true,
+      "fields": {
+        "question": "A display says the victory ended all future colonial efforts. How should it be revised?",
+        "optionA": "Keep the claim because a victory always ends all future conflict",
+        "optionB": "Replace the date with the date of a modern republic",
+        "optionC": "Say the entire expedition disappeared at Mactan",
+        "optionD": "State the local victory, then distinguish later voyages and colonial attempts",
+        "correctAnswer": "D",
+        "explanation": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "learningPoint": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "historicalClue": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "B": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "C": "Review the lesson clues. The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts.",
+          "D": "The defenders won at Mactan and Magellan died. Survivors continued, so this result did not end all later voyages or colonial efforts."
+        },
+        "missionId": "chapter5-mission3",
+        "topic": "mactan-outcome",
+        "topicLabel": "Outcome and later history",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A result of an event or decision.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz3-question5",
+      "create": true,
+      "fields": {
+        "question": "What should a learner say about a picture showing a personal duel?",
+        "optionA": "The picture is a retelling; it does not establish that the duel occurred",
+        "optionB": "The picture proves the exact actions of both leaders",
+        "optionC": "Every artistic image is an eyewitness record",
+        "optionD": "A dramatic scene proves its dialogue is authentic",
+        "correctAnswer": "A",
+        "explanation": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "learningPoint": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "historicalClue": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "answerExplanations": {
+          "A": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "B": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "C": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "D": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance."
+        },
+        "quizId": "chapter5-quiz3",
+        "order": 5,
+        "status": "active",
+        "topic": "mactan-evidence-and-memory",
+        "topicLabel": "Evidence and remembrance",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz3-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "How can a report honor Lapulapu without inventing details?",
+        "optionA": "State an exact age without a source",
+        "optionB": "Quote a fictional classroom speech as original",
+        "optionC": "Credit one person and remove all other defenders",
+        "optionD": "Recognize leadership and the defenders' actions while identifying uncertain details",
+        "correctAnswer": "D",
+        "explanation": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "learningPoint": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "historicalClue": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "B": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "C": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "D": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance."
+        },
+        "quizId": "chapter5-quiz3",
+        "order": 105,
+        "status": "active",
+        "topic": "mactan-evidence-and-memory",
+        "topicLabel": "Evidence and remembrance",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission3-mactan-evidence-and-memory-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which caption treats a dramatic battle picture responsibly?",
+        "optionA": "An exact photograph taken during the battle in 1521",
+        "optionB": "Proof of Lapulapu's exact speech and appearance",
+        "optionC": "Proof that one person acted alone without any defenders",
+        "optionD": "An artistic retelling of resistance at Mactan; its personal duel is not established by the account",
+        "correctAnswer": "D",
+        "explanation": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "learningPoint": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "historicalClue": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "B": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "C": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "D": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance."
+        },
+        "missionId": "chapter5-mission3",
+        "topic": "mactan-evidence-and-memory",
+        "topicLabel": "Evidence and remembrance",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An act of remembering and honoring a person or event.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission3-mactan-evidence-and-memory-practice2",
+      "create": true,
+      "fields": {
+        "question": "Pigafetta did not identify Lapulapu among the fighters. What conclusion is careful?",
+        "optionA": "This proves Lapulapu was absent",
+        "optionB": "This makes every other fact about the battle unknowable",
+        "optionC": "That detail remains uncertain; neither a personal duel nor absence follows from it",
+        "optionD": "This proves a personal duel occurred",
+        "correctAnswer": "C",
+        "explanation": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "learningPoint": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "historicalClue": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "B": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "C": "Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance.",
+          "D": "Review the lesson clues. Separate evidence from retelling. Lapulapu's leadership and the defenders' victory do not establish a personal duel or exact appearance."
+        },
+        "missionId": "chapter5-mission3",
+        "topic": "mactan-evidence-and-memory",
+        "topicLabel": "Evidence and remembrance",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An act of remembering and honoring a person or event.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter5-mission3-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission3",
+        "name": "Mactan Evidence Journal",
+        "description": "A learning-game token for explaining Mactan through causes, conditions and evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 3,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Connect local authority, coercion, shoreline conditions and outcome; distinguish evidence from artistic retelling.",
+          "reflectionQuestion": "Which clue helped you correct an unsupported claim about Mactan?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "eras/spanish-exploration-colonial-rule",
+      "create": false,
+      "expected": {
+        "description": "Explore motives and early encounters in Chapter 5 Missions 1-2. Later missions and chapters are being prepared."
+      },
+      "fields": {
+        "description": "Explore motives, early encounters and Mactan in Chapter 5 Missions 1-3. Later content is being prepared."
+      }
+    },
+    {
+      "path": "chapters/chapter-5",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-2 cover exploration motives and early encounters. Missions 3-4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-3 cover motives, early encounters and Mactan. Mission 4 and the chapter challenge are being prepared."
+      }
+    }
+  ]
+}

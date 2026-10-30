@@ -1,0 +1,1317 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 13 Mission 4 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+    "https://www.nta.da.gov.ph/tobacco/",
+    "https://epa.culturalcenter.gov.ph/3/82/2142/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-12",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-12",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/early-resistance-investigator",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter12-mission1",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter12-mission2",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter12-mission3",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter12-mission4",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter12-mission5",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 5
+      }
+    },
+    {
+      "path": "missions/chapter13-mission1",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter13-mission2",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter13-mission3",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 3
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter13-mission4",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-13",
+        "title": "Local Grievances and Growing Political Awareness",
+        "order": 4,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate local concerns, different responses and evidence of political awareness.",
+        "learningObjective": "Connect specific grievances with recorded actions while distinguishing local aims from wider political claims.",
+        "learningObjectives": [
+          "Explain turn a problem into a question using lesson evidence.",
+          "Explain a petition asked an authority to act using lesson evidence.",
+          "Explain production rules could raise complaints using lesson evidence.",
+          "Explain basi: a local product and colonial control using lesson evidence.",
+          "Explain explain awareness without guessing using lesson evidence."
+        ],
+        "lessonRecap": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "sourceUrls": [
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter13-quiz4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission4",
+        "title": "Local Concerns - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 4,
+        "questionBlueprint": [
+          {
+            "topic": "local-grievance",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "petition-voice",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "production-complaints",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "basi-policy",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "political-awareness",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission4-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission4",
+        "status": "active",
+        "order": 1,
+        "title": "Turn a Problem into a Question",
+        "content": "A local grievance concerns a problem experienced or reported in a particular place. To investigate it, identify who raised the concern, which rule or action it involved, and what change was requested. A general label such as unfairness is a starting point, not a complete explanation. Ask what evidence gives the complaint its specific meaning.\n\nUse this fictional classroom example: a reading club says that one rule keeps some members from borrowing books. The club asks who made the rule and how it might be changed. This connects a practical problem with questions about authority and participation. It is a teaching example, not a historical petition. Historical grievances need their own records. A complaint may challenge one rule without rejecting every institution. Political awareness in this mission means thinking about rules, authority and participation; it is not a claim that everyone already supported one national program.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then review this lesson before practice.",
+        "reviewTopics": [
+          "local-grievance"
+        ],
+        "imageUrl": "../assets/story/local-awareness-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for Turn a Problem into a Question. Evidence guide, not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Problem",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Name the particular treatment, condition or demand.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Authority",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask who made or enforced the rule.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A complaint about one rule is not automatically rejection of every institution.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What makes a grievance report specific?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "It identifies the concern, rule and requested change",
+          "It calls everything unfair without details",
+          "It guesses every residents motive",
+          "It removes the place and date"
+        ],
+        "decisionCorrectAnswer": "It identifies the concern, rule and requested change",
+        "decisionExplanation": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "keyTerm": "Grievance",
+        "keyTermDefinition": "A complaint about treatment, conditions or a demand.",
+        "historicalInsight": "A complaint about one rule is not automatically rejection of every institution.",
+        "learningHelp": {
+          "explanation": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "vocabulary": [
+            {
+              "term": "Grievance",
+              "definition": "A complaint about treatment, conditions or a demand."
+            }
+          ],
+          "example": "Name the particular treatment, condition or demand.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission4-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission4",
+        "status": "active",
+        "order": 2,
+        "title": "A Petition Asked an Authority to Act",
+        "content": "Revisit Bacolor, Pampanga, as an earlier comparison. In 1698, Chinese mestizo chiefs petitioned the colonial government for relief from tribute-collection duties. The UP Diliman research summary connects their request with financial pressure from a land-regularization policy. In simple terms, that policy required payment to make landholding legally recognized. Keep the particular request and the people named by the source together.\n\nThe year 1698 is in the 17th century. This flashback shows that people could question burdens before the later international documents in Mission 3. It does not establish that they used those later texts or held every later political idea. A formal request was a way to address an authority; it was not the same action as an armed uprising. A petition also does not prove that its demands were granted. Do not assign a common motive to everyone from ancestry or a category label. Use the reported action and concern as your evidence.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then review this lesson before practice.",
+        "reviewTopics": [
+          "petition-voice"
+        ],
+        "imageUrl": "../assets/story/local-awareness-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for A Petition Asked an Authority to Act. Evidence guide, not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Case",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Bacolor petition is dated 1698.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Request",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The named petitioners sought relief from tribute-collection duties.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Chronology",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "This request preceded the later rights documents studied in Mission 3.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Why mark the Bacolor example as an earlier comparison?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "It proves the petition quoted a later document",
+          "It happened after 1812",
+          "It proves all requests were uprisings",
+          "It predates the later rights documents"
+        ],
+        "decisionCorrectAnswer": "It predates the later rights documents",
+        "decisionExplanation": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "keyTerm": "Petition",
+        "keyTermDefinition": "A formal request addressed to an authority.",
+        "historicalInsight": "This request preceded the later rights documents studied in Mission 3.",
+        "learningHelp": {
+          "explanation": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "vocabulary": [
+            {
+              "term": "Petition",
+              "definition": "A formal request addressed to an authority."
+            }
+          ],
+          "example": "The Bacolor petition is dated 1698.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission4-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission4",
+        "status": "active",
+        "order": 3,
+        "title": "Production Rules Could Raise Complaints",
+        "content": "The government tobacco monopoly, established in 1782, connects the reform questions in Mission 2 with local burdens. The National Tobacco Administration account describes compulsory planting, production quotas and complaints in affected areas. A quota could place a demand on producers even when officials described a policy as a way to raise government income. This is a connection between a rule and a reported difficulty, not proof that everyone had the same experience.\n\nAsk a precise question: What did the policy require, and whose account describes its effects? A government income record and a producers account can concern the same system while answering different questions. Compare them rather than treating income as every households wellbeing. Do not assume that every region grew the crop or every complaint had the same outcome. Tobacco appears only as historical evidence. This activity does not ask you to grow, buy or use it. Your task is to explain the relationship between policy and a supported concern.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then review this lesson before practice.",
+        "reviewTopics": [
+          "production-complaints"
+        ],
+        "imageUrl": "../assets/story/local-awareness-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for Production Rules Could Raise Complaints. Evidence guide, not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Rule",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A quota required an amount of production.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Concern",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The historical account describes complaints in affected areas.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Comparison",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Government income and household wellbeing are different questions.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which comparison helps investigate a production complaint?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Assume all regions grew the crop",
+          "Ignore the rule entirely",
+          "Compare the requirement with evidence of producers experiences",
+          "Use government income as proof of equal wellbeing"
+        ],
+        "decisionCorrectAnswer": "Compare the requirement with evidence of producers experiences",
+        "decisionExplanation": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "keyTerm": "Quota",
+        "keyTermDefinition": "A required amount to produce or supply.",
+        "historicalInsight": "Government income and household wellbeing are different questions.",
+        "learningHelp": {
+          "explanation": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "vocabulary": [
+            {
+              "term": "Quota",
+              "definition": "A required amount to produce or supply."
+            }
+          ],
+          "example": "A quota required an amount of production.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission4-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission4",
+        "status": "active",
+        "order": 4,
+        "title": "Basi: A Local Product and Colonial Control",
+        "content": "The Basi Revolt in Ilocos in 1807 opposed a government monopoly over basi, a sugarcane wine. The CCP account connects the policy with official control over makers and selling prices. A local product could therefore become part of a dispute about economic choices and colonial authority. Identify the policy connection rather than reducing the concern to a dislike of one official or guessing every persons private motive.\n\nThis case also helps distinguish forms of response. A petition is a formal request; the Basi case was an uprising. Similar concerns about burdens do not make the two actions identical or show that their participants coordinated a shared program. Keep the cases separate before comparing them. Basi is discussed as a historical product, not an invitation to make or drink alcohol. We do not reenact violence or award points for harm. Your investigation asks which evidence links a particular concern with a particular action, and what still needs more evidence.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then review this lesson before practice.",
+        "reviewTopics": [
+          "basi-policy"
+        ],
+        "imageUrl": "../assets/story/local-awareness-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for Basi: A Local Product and Colonial Control. Evidence guide, not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Setting",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Basi case concerns Ilocos in 1807.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Policy",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Opposition concerned government control of a local product.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An uprising and a formal petition are different responses.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation fits the Basi example?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The case proves one national program",
+          "A local product was connected with a dispute over government control",
+          "Every local concern was only a private disagreement",
+          "All petitioners joined this uprising"
+        ],
+        "decisionCorrectAnswer": "A local product was connected with a dispute over government control",
+        "decisionExplanation": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "keyTerm": "Monopoly",
+        "keyTermDefinition": "Exclusive control over an activity or trade.",
+        "historicalInsight": "An uprising and a formal petition are different responses.",
+        "learningHelp": {
+          "explanation": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "vocabulary": [
+            {
+              "term": "Monopoly",
+              "definition": "Exclusive control over an activity or trade."
+            }
+          ],
+          "example": "The Basi case concerns Ilocos in 1807.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission4-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission4",
+        "status": "active",
+        "order": 5,
+        "title": "Explain Awareness Without Guessing",
+        "content": "A recorded request can show people addressing authority about a concern. A reported uprising can show opposition to a policy. These are ways to investigate political awareness through actions and arguments. They do not reveal every private belief. To explain growing awareness over time, compare several dated records and ask what changed in the concerns expressed, the audiences addressed or the forms of participation.\n\nOne source cannot prove that everyone became aware at the same moment. Shared grievances do not automatically mean a shared national identity or a coordinated national plan. International writings could offer ideas to discuss, but claims about influence need evidence of receipt and response, as you learned in Mission 3. Local experiences also matter. Build a report with one supported connection and one honest limit. For example, distinguish a request for relief from a demand for complete independence. The next chapter will examine national consciousness more closely using its own evidence.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then review this lesson before practice.",
+        "reviewTopics": [
+          "political-awareness"
+        ],
+        "imageUrl": "../assets/story/local-awareness-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for Explain Awareness Without Guessing. Evidence guide, not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Recorded actions and arguments can help investigate awareness.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Change",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Claims about growth need comparison across dated records.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A shared grievance does not automatically establish one national plan.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report explains growing awareness carefully?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Compare dated records of concerns and participation",
+          "Assume everyone changed their ideas together",
+          "Use one source to reveal every belief",
+          "Treat every complaint as an independence program"
+        ],
+        "decisionCorrectAnswer": "Compare dated records of concerns and participation",
+        "decisionExplanation": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "keyTerm": "Political awareness",
+        "keyTermDefinition": "Thinking about rules, authority and participation in public life.",
+        "historicalInsight": "A shared grievance does not automatically establish one national plan.",
+        "learningHelp": {
+          "explanation": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "vocabulary": [
+            {
+              "term": "Political awareness",
+              "definition": "Thinking about rules, authority and participation in public life."
+            }
+          ],
+          "example": "Recorded actions and arguments can help investigate awareness.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission4-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission4",
+        "status": "active",
+        "order": 6,
+        "title": "Your Local Concerns Evidence Journal",
+        "content": "A local grievance concerns a problem experienced or reported in a particular place. To investigate it, identify who raised the concern, which rule or action it involved, and what change was requested. A general label such as unfairness is a starting point, not a complete explanation. Ask what evidence gives the complaint its specific meaning.\n\nOne source cannot prove that everyone became aware at the same moment. Shared grievances do not automatically mean a shared national identity or a coordinated national plan. International writings could offer ideas to discuss, but claims about influence need evidence of receipt and response, as you learned in Mission 3. Local experiences also matter. Build a report with one supported connection and one honest limit. For example, distinguish a request for relief from a demand for complete independence. The next chapter will examine national consciousness more closely using its own evidence.\n\nReview the Bacolor flashback, production complaints and Basi case. Keep people, dates, concerns and actions separate before comparing them. This mission brings together the chapter lessons; the chapter challenge will ask you to connect their evidence. Passing this mission alone does not complete the chapter.",
+        "reviewTopics": [
+          "local-grievance",
+          "petition-voice",
+          "production-complaints",
+          "basi-policy",
+          "political-awareness"
+        ],
+        "imageUrl": "../assets/story/local-awareness-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled teaching cards for Explain Awareness Without Guessing. Evidence guide, not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Recorded actions and arguments can help investigate awareness.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Change",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Claims about growth need comparison across dated records.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A shared grievance does not automatically establish one national plan.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which journal is ready for review?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One that assigns every complaint one national program",
+          "One that guesses every private belief",
+          "One that ignores local experiences",
+          "One that supports a connection and states its limits"
+        ],
+        "decisionCorrectAnswer": "One that supports a connection and states its limits",
+        "decisionExplanation": "Support connections with dated evidence. Distinguish local concerns, recorded actions and broader aims.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Support connections with dated evidence. Distinguish local concerns, recorded actions and broader aims.",
+        "keyTerm": "Political awareness",
+        "keyTermDefinition": "Thinking about rules, authority and participation in public life.",
+        "historicalInsight": "A shared grievance does not automatically establish one national plan.",
+        "learningHelp": {
+          "explanation": "Support connections with dated evidence. Distinguish local concerns, recorded actions and broader aims.",
+          "vocabulary": [
+            {
+              "term": "Political awareness",
+              "definition": "Thinking about rules, authority and participation in public life."
+            }
+          ],
+          "example": "Recorded actions and arguments can help investigate awareness.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://epa.culturalcenter.gov.ph/3/82/2142/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz4-question1",
+      "create": true,
+      "fields": {
+        "question": "What is a grievance?",
+        "optionA": "A complaint about treatment or conditions",
+        "optionB": "A complete national program",
+        "optionC": "A guaranteed victory",
+        "optionD": "A list of all private beliefs",
+        "correctAnswer": "A",
+        "explanation": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "learningPoint": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "historicalClue": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "answerExplanations": {
+          "A": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "B": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "C": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "D": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution."
+        },
+        "quizId": "chapter13-quiz4",
+        "order": 1,
+        "status": "active",
+        "topic": "local-grievance",
+        "topicLabel": "Turn a Problem into a Question",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz4-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Which question connects a local problem with authority?",
+        "optionA": "Must every resident think alike?",
+        "optionB": "Does a complaint prove every demand succeeded?",
+        "optionC": "Can we ignore who acted?",
+        "optionD": "Who made this rule and how can it be changed?",
+        "correctAnswer": "D",
+        "explanation": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "learningPoint": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "historicalClue": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "B": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "C": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "D": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution."
+        },
+        "quizId": "chapter13-quiz4",
+        "order": 101,
+        "status": "active",
+        "topic": "local-grievance",
+        "topicLabel": "Turn a Problem into a Question",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission4-local-grievance-practice1",
+      "create": true,
+      "fields": {
+        "question": "What makes a grievance report specific?",
+        "optionA": "It calls everything unfair without details",
+        "optionB": "It guesses every residents motive",
+        "optionC": "It removes the place and date",
+        "optionD": "It identifies the concern, rule and requested change",
+        "correctAnswer": "D",
+        "explanation": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "learningPoint": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "historicalClue": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "B": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "C": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "D": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution."
+        },
+        "missionId": "chapter13-mission4",
+        "topic": "local-grievance",
+        "topicLabel": "Turn a Problem into a Question",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A complaint about treatment, conditions or a demand.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission4-local-grievance-practice2",
+      "create": true,
+      "fields": {
+        "question": "A complaint challenges one collection rule. Which claim needs more evidence?",
+        "optionA": "That a demand is being questioned",
+        "optionB": "That a specific concern can be investigated",
+        "optionC": "That its authors rejected every institution",
+        "optionD": "That the complaint concerns a rule",
+        "correctAnswer": "C",
+        "explanation": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "learningPoint": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "historicalClue": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "B": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "C": "Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution.",
+          "D": "Review the lesson clues. Name the particular treatment, condition or demand. Ask who made or enforced the rule. A complaint about one rule is not automatically rejection of every institution."
+        },
+        "missionId": "chapter13-mission4",
+        "topic": "local-grievance",
+        "topicLabel": "Turn a Problem into a Question",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A complaint about treatment, conditions or a demand.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz4-question2",
+      "create": true,
+      "fields": {
+        "question": "What kind of action was recorded in Bacolor?",
+        "optionA": "A modern referendum",
+        "optionB": "A painting commission",
+        "optionC": "A declaration of universal agreement",
+        "optionD": "A petition for relief",
+        "correctAnswer": "D",
+        "explanation": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "learningPoint": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "historicalClue": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "B": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "C": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "D": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3."
+        },
+        "quizId": "chapter13-quiz4",
+        "order": 2,
+        "status": "active",
+        "topic": "petition-voice",
+        "topicLabel": "A Petition Asked an Authority to Act",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz4-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Which century includes 1698?",
+        "optionA": "The 19th century",
+        "optionB": "The 20th century",
+        "optionC": "The 17th century",
+        "optionD": "The 18th century",
+        "correctAnswer": "C",
+        "explanation": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "learningPoint": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "historicalClue": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "B": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "C": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "D": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3."
+        },
+        "quizId": "chapter13-quiz4",
+        "order": 102,
+        "status": "active",
+        "topic": "petition-voice",
+        "topicLabel": "A Petition Asked an Authority to Act",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission4-petition-voice-practice1",
+      "create": true,
+      "fields": {
+        "question": "Why mark the Bacolor example as an earlier comparison?",
+        "optionA": "It happened after 1812",
+        "optionB": "It proves all requests were uprisings",
+        "optionC": "It predates the later rights documents",
+        "optionD": "It proves the petition quoted a later document",
+        "correctAnswer": "C",
+        "explanation": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "learningPoint": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "historicalClue": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "B": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "C": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "D": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3."
+        },
+        "missionId": "chapter13-mission4",
+        "topic": "petition-voice",
+        "topicLabel": "A Petition Asked an Authority to Act",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A formal request addressed to an authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission4-petition-voice-practice2",
+      "create": true,
+      "fields": {
+        "question": "What should you check before claiming the petition succeeded?",
+        "optionA": "A later unrelated declaration",
+        "optionB": "Evidence about the response or outcome",
+        "optionC": "Only its filing date",
+        "optionD": "Only the petitioners category",
+        "correctAnswer": "B",
+        "explanation": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "learningPoint": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "historicalClue": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "B": "The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "C": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3.",
+          "D": "Review the lesson clues. The Bacolor petition is dated 1698. The named petitioners sought relief from tribute-collection duties. This request preceded the later rights documents studied in Mission 3."
+        },
+        "missionId": "chapter13-mission4",
+        "topic": "petition-voice",
+        "topicLabel": "A Petition Asked an Authority to Act",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A formal request addressed to an authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz4-question3",
+      "create": true,
+      "fields": {
+        "question": "What does quota mean here?",
+        "optionA": "A newspaper title",
+        "optionB": "A date of recognition",
+        "optionC": "A required amount of production",
+        "optionD": "A lifespan",
+        "correctAnswer": "C",
+        "explanation": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "learningPoint": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "historicalClue": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "B": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "C": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "D": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions."
+        },
+        "quizId": "chapter13-quiz4",
+        "order": 3,
+        "status": "active",
+        "topic": "production-complaints",
+        "topicLabel": "Production Rules Could Raise Complaints",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz4-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "What connects a policy with a local grievance?",
+        "optionA": "Only a distant document date",
+        "optionB": "Evidence of a requirement and a reported difficulty",
+        "optionC": "Only a modern icon",
+        "optionD": "A guess about every household",
+        "correctAnswer": "B",
+        "explanation": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "learningPoint": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "historicalClue": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "B": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "C": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "D": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions."
+        },
+        "quizId": "chapter13-quiz4",
+        "order": 103,
+        "status": "active",
+        "topic": "production-complaints",
+        "topicLabel": "Production Rules Could Raise Complaints",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission4-production-complaints-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which comparison helps investigate a production complaint?",
+        "optionA": "Ignore the rule entirely",
+        "optionB": "Compare the requirement with evidence of producers experiences",
+        "optionC": "Use government income as proof of equal wellbeing",
+        "optionD": "Assume all regions grew the crop",
+        "correctAnswer": "B",
+        "explanation": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "learningPoint": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "historicalClue": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "B": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "C": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "D": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions."
+        },
+        "missionId": "chapter13-mission4",
+        "topic": "production-complaints",
+        "topicLabel": "Production Rules Could Raise Complaints",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A required amount to produce or supply.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission4-production-complaints-practice2",
+      "create": true,
+      "fields": {
+        "question": "Two accounts describe income and production burdens. How should you use them?",
+        "optionA": "Ask what question each account answers",
+        "optionB": "Discard burdens if income rose",
+        "optionC": "Assume both are household surveys",
+        "optionD": "Treat every region as identical",
+        "correctAnswer": "A",
+        "explanation": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "learningPoint": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "historicalClue": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+        "answerExplanations": {
+          "A": "A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "B": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "C": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions.",
+          "D": "Review the lesson clues. A quota required an amount of production. The historical account describes complaints in affected areas. Government income and household wellbeing are different questions."
+        },
+        "missionId": "chapter13-mission4",
+        "topic": "production-complaints",
+        "topicLabel": "Production Rules Could Raise Complaints",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A required amount to produce or supply.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz4-question4",
+      "create": true,
+      "fields": {
+        "question": "Where and when does this example belong?",
+        "optionA": "Cadiz, 1812",
+        "optionB": "Ilocos, 1807",
+        "optionC": "Bacolor, 1698",
+        "optionD": "France, 1789",
+        "correctAnswer": "B",
+        "explanation": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "learningPoint": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "historicalClue": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "B": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "C": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "D": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses."
+        },
+        "quizId": "chapter13-quiz4",
+        "order": 4,
+        "status": "active",
+        "topic": "basi-policy",
+        "topicLabel": "Basi: A Local Product and Colonial Control",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz4-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "How does the Basi case differ from the Bacolor action?",
+        "optionA": "It was an uprising rather than a formal petition",
+        "optionB": "Both actions were identical",
+        "optionC": "Both happened in the same year",
+        "optionD": "Neither involved a reported concern",
+        "correctAnswer": "A",
+        "explanation": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "learningPoint": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "historicalClue": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "answerExplanations": {
+          "A": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "B": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "C": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "D": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses."
+        },
+        "quizId": "chapter13-quiz4",
+        "order": 104,
+        "status": "active",
+        "topic": "basi-policy",
+        "topicLabel": "Basi: A Local Product and Colonial Control",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission4-basi-policy-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which explanation fits the Basi example?",
+        "optionA": "A local product was connected with a dispute over government control",
+        "optionB": "Every local concern was only a private disagreement",
+        "optionC": "All petitioners joined this uprising",
+        "optionD": "The case proves one national program",
+        "correctAnswer": "A",
+        "explanation": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "learningPoint": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "historicalClue": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "answerExplanations": {
+          "A": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "B": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "C": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "D": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses."
+        },
+        "missionId": "chapter13-mission4",
+        "topic": "basi-policy",
+        "topicLabel": "Basi: A Local Product and Colonial Control",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Exclusive control over an activity or trade.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission4-basi-policy-practice2",
+      "create": true,
+      "fields": {
+        "question": "What requires additional evidence when comparing the two cases?",
+        "optionA": "That they involved different recorded actions",
+        "optionB": "That they had different dates",
+        "optionC": "That each can be investigated",
+        "optionD": "Whether their participants coordinated a shared program",
+        "correctAnswer": "D",
+        "explanation": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "learningPoint": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "historicalClue": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "B": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "C": "Review the lesson clues. The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses.",
+          "D": "The Basi case concerns Ilocos in 1807. Opposition concerned government control of a local product. An uprising and a formal petition are different responses."
+        },
+        "missionId": "chapter13-mission4",
+        "topic": "basi-policy",
+        "topicLabel": "Basi: A Local Product and Colonial Control",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Exclusive control over an activity or trade.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz4-question5",
+      "create": true,
+      "fields": {
+        "question": "What does political awareness concern here?",
+        "optionA": "Rules, authority and participation",
+        "optionB": "Only a battle score",
+        "optionC": "Only a persons ancestry",
+        "optionD": "A guaranteed national plan",
+        "correctAnswer": "A",
+        "explanation": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "learningPoint": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "historicalClue": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "answerExplanations": {
+          "A": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "B": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "C": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "D": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan."
+        },
+        "quizId": "chapter13-quiz4",
+        "order": 5,
+        "status": "active",
+        "topic": "political-awareness",
+        "topicLabel": "Explain Awareness Without Guessing",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz4-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "What supports a claim that concerns changed over time?",
+        "optionA": "One undated guess",
+        "optionB": "Only a modern reward",
+        "optionC": "An invented speech",
+        "optionD": "Comparison of dated records",
+        "correctAnswer": "D",
+        "explanation": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "learningPoint": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "historicalClue": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "B": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "C": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "D": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan."
+        },
+        "quizId": "chapter13-quiz4",
+        "order": 105,
+        "status": "active",
+        "topic": "political-awareness",
+        "topicLabel": "Explain Awareness Without Guessing",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission4-political-awareness-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which report explains growing awareness carefully?",
+        "optionA": "Assume everyone changed their ideas together",
+        "optionB": "Use one source to reveal every belief",
+        "optionC": "Treat every complaint as an independence program",
+        "optionD": "Compare dated records of concerns and participation",
+        "correctAnswer": "D",
+        "explanation": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "learningPoint": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "historicalClue": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "B": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "C": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "D": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan."
+        },
+        "missionId": "chapter13-mission4",
+        "topic": "political-awareness",
+        "topicLabel": "Explain Awareness Without Guessing",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Thinking about rules, authority and participation in public life.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission4-political-awareness-practice2",
+      "create": true,
+      "fields": {
+        "question": "A request seeks relief from one duty. What is a careful interpretation?",
+        "optionA": "It reveals every residents beliefs",
+        "optionB": "It proves all later ideas came from one foreign text",
+        "optionC": "It addresses that duty; broader aims need evidence",
+        "optionD": "It proves a complete independence demand",
+        "correctAnswer": "C",
+        "explanation": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "learningPoint": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "historicalClue": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "B": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "C": "Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan.",
+          "D": "Review the lesson clues. Recorded actions and arguments can help investigate awareness. Claims about growth need comparison across dated records. A shared grievance does not automatically establish one national plan."
+        },
+        "missionId": "chapter13-mission4",
+        "topic": "political-awareness",
+        "topicLabel": "Explain Awareness Without Guessing",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Thinking about rules, authority and participation in public life.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter13-mission4-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission4",
+        "name": "Local Concerns Evidence Journal",
+        "description": "A learning-game token for connecting local concerns, responses and evidence of political awareness.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 4,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish a grievance, a response and evidence supporting broader political aims.",
+          "reflectionQuestion": "Which clue helped you distinguish a request for relief from a broader political aim?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-13",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-3 examine changes, reforms and international ideas. Mission 4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "All four missions examine changes, reforms, international ideas and local political concerns. The chapter challenge is being prepared."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapter 12 offers five missions and an evidence challenge. Chapter 13 offers Missions 1-3 on changes, reforms and ideas; Mission 4, its challenge and Chapter 14 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 12 offers five missions and an evidence challenge. Chapter 13 offers all four missions on changes, reforms, ideas and local concerns; its challenge and Chapter 14 are being prepared."
+      }
+    }
+  ]
+}

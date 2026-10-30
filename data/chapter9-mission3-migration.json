@@ -1,0 +1,1301 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 9 Mission 3 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+    "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+    "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-8",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-8",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/community-belief-investigator",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter8-mission1",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter8-mission2",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter8-mission3",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter8-mission4",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter9-mission1",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter9-mission2",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 2
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter9-mission3",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-9",
+        "title": "Agriculture, Monopolies, and Economic Policies",
+        "order": 3,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate crop uses, economic rules, the tobacco monopoly and evidence about costs, choices and change.",
+        "learningObjective": "Explain how economic rules affected production and exchange without assuming equal experiences or guaranteed gains.",
+        "learningObjectives": [
+          "Explain crops had different uses using lesson evidence.",
+          "Explain rules could change economic choices using lesson evidence.",
+          "Explain a named policy: the tobacco monopoly using lesson evidence.",
+          "Explain compare income, costs and choices using lesson evidence.",
+          "Explain follow a policy through time using lesson evidence."
+        ],
+        "lessonRecap": "One crop can serve household and market needs. Sales received are not the same as income left after costs. The growers choice of buyer. Check the product, place and period covered by the rule. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter9-quiz3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission3",
+        "title": "Agriculture and Policy - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 3,
+        "questionBlueprint": [
+          {
+            "topic": "agriculture-household-market",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "economic-policy",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "tobacco-monopoly-case",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "grower-costs-choices",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "policy-change-evidence",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission3-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission3",
+        "status": "active",
+        "order": 1,
+        "title": "Crops Had Different Uses",
+        "content": "Agriculture supplied food, materials and products for sale. A household could use part of a harvest at home and exchange another part. A crop grown for sale is often called a cash crop. The name describes its purpose in a transaction, not a promise that the grower became wealthy. Food crops could also be sold. We should ask how a harvest was used instead of dividing all plants into two fixed groups.\n\nImagine a fictional harvest card showing rice kept for meals and rice offered for sale. The same crop serves different needs. Selling part of it may bring money, but a sales total alone does not tell us what the household spent on seed, tools or transport. Nor does it show the food left at home. This model is a teaching example, not a surviving farm account. Look for the use, the work and the resources involved before explaining a household economy.\n\nOpen the three evidence clues, then choose the explanation they support. Use Explain if you want help. Review this lesson before targeted practice when the topic needs another look.",
+        "reviewTopics": [
+          "agriculture-household-market"
+        ],
+        "imageUrl": "../assets/story/agriculture-policy-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Crops Had Different Uses. Three labelled clues distinguish uses, policy choices and evidence limits; not an original farm record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Uses",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Harvests could meet household needs and supply products for sale.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Cash crop",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The term concerns production for sale, not guaranteed wealth.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Ask about costs",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Sales received are not the same as income left after costs.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A fictional card shows rice kept for meals and rice sold. What does it illustrate?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One crop can serve household and market needs",
+          "A food crop can never be sold",
+          "Selling guarantees wealth",
+          "All households used harvests identically"
+        ],
+        "decisionCorrectAnswer": "One crop can serve household and market needs",
+        "decisionExplanation": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "keyTerm": "Agriculture",
+        "keyTermDefinition": "Growing crops and raising animals for food and other needs.",
+        "historicalInsight": "Sales received are not the same as income left after costs.",
+        "learningHelp": {
+          "explanation": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "vocabulary": [
+            {
+              "term": "Agriculture",
+              "definition": "Growing crops and raising animals for food and other needs."
+            }
+          ],
+          "example": "Harvests could meet household needs and supply products for sale.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission3-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission3",
+        "status": "active",
+        "order": 2,
+        "title": "Rules Could Change Economic Choices",
+        "content": "An economic policy can affect what people produce, who they may sell to and what resources an authority receives. A policy has an aim, but its aim is not proof of its actual results. To investigate one, connect the rule with records of what people did and how it affected them. Different groups might gain or lose in different ways.\n\nTry a fictional market comparison. In Card A, growers can choose among several buyers. In Card B, a rule requires delivery to one authorized buyer. Even without inventing a price, you can see a difference in choice. The cards are models, not descriptions of all markets during Spanish rule. For an actual policy, ask which product, place and period it covered. A rule about one crop does not establish control over every product everywhere.\n\nOpen the three evidence clues, then choose the explanation they support. Use Explain if you want help. Review this lesson before targeted practice when the topic needs another look.",
+        "reviewTopics": [
+          "economic-policy"
+        ],
+        "imageUrl": "../assets/story/agriculture-policy-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Rules Could Change Economic Choices. Three labelled clues distinguish uses, policy choices and evidence limits; not an original farm record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Rule",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A policy can shape production and exchange.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Choice",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A required buyer can limit where a grower sells.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Check the product, place and period covered by the rule.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "One fictional rule requires delivery to an authorized buyer. What changes most directly?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every persons private beliefs",
+          "The weather automatically",
+          "Every product in every place",
+          "The growers choice of buyer"
+        ],
+        "decisionCorrectAnswer": "The growers choice of buyer",
+        "decisionExplanation": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "keyTerm": "Economic policy",
+        "keyTermDefinition": "A rule or plan that shapes production, exchange or public income.",
+        "historicalInsight": "Check the product, place and period covered by the rule.",
+        "learningHelp": {
+          "explanation": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "vocabulary": [
+            {
+              "term": "Economic policy",
+              "definition": "A rule or plan that shapes production, exchange or public income."
+            }
+          ],
+          "example": "A policy can shape production and exchange.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission3-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission3",
+        "status": "active",
+        "order": 3,
+        "title": "A Named Policy: The Tobacco Monopoly",
+        "content": "The tobacco monopoly is a named example of colonial economic control. The NHCP historical marker dates its formal establishment to March 1782 under Governor Jose Basco y Vargas. It also records abolition in 1882. These dates identify this policy period; they do not mean tobacco farming itself began and ended on those dates.\n\nWolters describes compulsory cultivation in designated districts and government purchase of the crop at an officially determined price. This restricted growers choices about production and sale. Do not turn designated districts into a claim about every farm in all the islands. Our diagram shows a simplified relationship between growers and the government, not a map of every covered district. We study the crop to understand colonial power. This lesson does not encourage growing, handling or using tobacco.\n\nOpen the three evidence clues, then choose the explanation they support. Use Explain if you want help. Review this lesson before targeted practice when the topic needs another look.",
+        "reviewTopics": [
+          "tobacco-monopoly-case"
+        ],
+        "imageUrl": "../assets/story/agriculture-policy-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Named Policy: The Tobacco Monopoly. Three labelled clues distinguish uses, policy choices and evidence limits; not an original farm record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Named dates",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP marker dates formal establishment to March 1782 and abolition to 1882.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Control",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Designated districts faced compulsory cultivation and government purchase at an official price.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A monopoly period is not the whole history of a crop or every farms experience.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the tobacco monopoly example illustrate?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Farming began only in 1782",
+          "The activity asks students to use tobacco",
+          "Government control could restrict production and sale in designated districts",
+          "Every farmer everywhere grew only tobacco"
+        ],
+        "decisionCorrectAnswer": "Government control could restrict production and sale in designated districts",
+        "decisionExplanation": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "keyTerm": "Government monopoly",
+        "keyTermDefinition": "A system in which the government reserves control of a particular trade.",
+        "historicalInsight": "A monopoly period is not the whole history of a crop or every farms experience.",
+        "learningHelp": {
+          "explanation": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "vocabulary": [
+            {
+              "term": "Government monopoly",
+              "definition": "A system in which the government reserves control of a particular trade."
+            }
+          ],
+          "example": "The NHCP marker dates formal establishment to March 1782 and abolition to 1882.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission3-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission3",
+        "status": "active",
+        "order": 4,
+        "title": "Compare Income, Costs and Choices",
+        "content": "A policy could bring revenue to the government while placing burdens on growers. Revenue means income received; it is not the same as profit after expenses. To explain effects on a household, ask about work, materials, the price received and available choices. A large government collection alone cannot prove that all growers benefited.\n\nUse a fictional account model with no historical price claim. A grower receives eight tokens from a sale and has five tokens of costs. Three remain after those listed costs. Another card showing only eight received leaves the costs unknown. The tokens are not pesos, crop quotas or points earned by controlling other people. In an actual case, look for dated accounts and consider whether some costs or unpaid work are missing. A simple total cannot tell us every experience.\n\nOpen the three evidence clues, then choose the explanation they support. Use Explain if you want help. Review this lesson before targeted practice when the topic needs another look.",
+        "reviewTopics": [
+          "grower-costs-choices"
+        ],
+        "imageUrl": "../assets/story/agriculture-policy-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Compare Income, Costs and Choices. Three labelled clues distinguish uses, policy choices and evidence limits; not an original farm record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Two viewpoints",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Government revenue and a growers household outcome are different questions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Subtract listed costs",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Eight received minus five listed costs leaves three in the fictional model.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Missing information",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Check whether an account leaves out costs, work or payment delays.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "The model records eight received and five of costs. What remains after those listed costs?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Proof that every grower benefited",
+          "Three tokens in the fictional model",
+          "Eight tokens of guaranteed profit",
+          "A universal colonial price of three pesos"
+        ],
+        "decisionCorrectAnswer": "Three tokens in the fictional model",
+        "decisionExplanation": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "keyTerm": "Net income",
+        "keyTermDefinition": "What remains from income after the relevant costs are taken away.",
+        "historicalInsight": "Check whether an account leaves out costs, work or payment delays.",
+        "learningHelp": {
+          "explanation": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "vocabulary": [
+            {
+              "term": "Net income",
+              "definition": "What remains from income after the relevant costs are taken away."
+            }
+          ],
+          "example": "Government revenue and a growers household outcome are different questions.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission3-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission3",
+        "status": "active",
+        "order": 5,
+        "title": "Follow a Policy Through Time",
+        "content": "Policies could change or end. Abolition of the tobacco monopoly ended that particular government arrangement; it did not mean that all farming, trade or taxation stopped. A date tells us when an institutional change is recorded. To explain what followed, we need evidence about later activity as well as the earlier rule.\n\nImagine a fictional exhibit with three cards: an old monopoly instruction, a later abolition notice and a farm account after the change. The instruction helps explain a required arrangement. The notice records an institutional ending. The farm account helps investigate later production and exchange. Do not ask one card to answer every question. Keep an official aim separate from implementation, and compare how particular people experienced the transition instead of assuming everyone gained equally.\n\nOpen the three evidence clues, then choose the explanation they support. Use Explain if you want help. Review this lesson before targeted practice when the topic needs another look.",
+        "reviewTopics": [
+          "policy-change-evidence"
+        ],
+        "imageUrl": "../assets/story/agriculture-policy-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Follow a Policy Through Time. Three labelled clues distinguish uses, policy choices and evidence limits; not an original farm record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Ending a system",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Abolition concerns a particular rule or arrangement.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Before and after",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Compare records from each period to explain what changed and continued.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Effects need evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A reform date alone does not prove equal gains for everyone.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A caption says monopoly abolition ended all farming and taxation. Which correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A particular arrangement ended; later activity needs its own evidence",
+          "All agriculture stopped",
+          "Every tax disappeared forever",
+          "Every grower had identical gains"
+        ],
+        "decisionCorrectAnswer": "A particular arrangement ended; later activity needs its own evidence",
+        "decisionExplanation": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "keyTerm": "Abolition",
+        "keyTermDefinition": "The ending of a rule, institution or system.",
+        "historicalInsight": "A reform date alone does not prove equal gains for everyone.",
+        "learningHelp": {
+          "explanation": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "vocabulary": [
+            {
+              "term": "Abolition",
+              "definition": "The ending of a rule, institution or system."
+            }
+          ],
+          "example": "Abolition concerns a particular rule or arrangement.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission3-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission3",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Agriculture Policy Report",
+        "content": "Review five ideas. Harvests could serve household and market needs. Economic rules could affect choices about production and buyers. The tobacco monopoly is a named, dated example of government control. Revenue and income remaining after costs are different questions. A policy ending does not mean all economic activity ended.\n\nPrepare a fictional museum report for another Grade 5 learner. Name a policy, identify a supporting clue and explain its scope. Compare a government aim with evidence about growers experiences. If you use the eight-minus-five token model, label it as a teaching model rather than a historical crop price. Do not present every community as identical or treat every recorded receipt as profit.\n\nThe main quiz has five questions; three correct passes. Review linked learning content before practice and a retry if needed. Completing this mission earns its configured reward once. It does not finish Chapter 9: Missions 4-5 and the chapter challenge are still being prepared.",
+        "reviewTopics": [
+          "agriculture-household-market",
+          "economic-policy",
+          "tobacco-monopoly-case",
+          "grower-costs-choices",
+          "policy-change-evidence"
+        ],
+        "imageUrl": "../assets/story/agriculture-policy-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Follow a Policy Through Time. Three labelled clues distinguish uses, policy choices and evidence limits; not an original farm record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Ending a system",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Abolition concerns a particular rule or arrangement.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Before and after",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Compare records from each period to explain what changed and continued.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Effects need evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A reform date alone does not prove equal gains for everyone.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best explains a colonial economic policy?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Assume every receipt was pure profit",
+          "Apply one districts rule to every island",
+          "Treat abolition as the end of all farming",
+          "Name the rule, check its scope and compare evidence of different effects"
+        ],
+        "decisionCorrectAnswer": "Name the rule, check its scope and compare evidence of different effects",
+        "decisionExplanation": "Explain the policy with dated evidence, distinguish costs and choices, and identify limits.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain the policy with dated evidence, distinguish costs and choices, and identify limits.",
+        "keyTerm": "Abolition",
+        "keyTermDefinition": "The ending of a rule, institution or system.",
+        "historicalInsight": "A reform date alone does not prove equal gains for everyone.",
+        "learningHelp": {
+          "explanation": "Explain the policy with dated evidence, distinguish costs and choices, and identify limits.",
+          "vocabulary": [
+            {
+              "term": "Abolition",
+              "definition": "The ending of a rule, institution or system."
+            }
+          ],
+          "example": "Abolition concerns a particular rule or arrangement.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz3-question1",
+      "create": true,
+      "fields": {
+        "question": "What does cash crop mean here?",
+        "optionA": "A crop grown for sale",
+        "optionB": "A plant that grows coins",
+        "optionC": "A crop that guarantees wealth",
+        "optionD": "A crop never requiring work",
+        "correctAnswer": "A",
+        "explanation": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "learningPoint": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "historicalClue": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "answerExplanations": {
+          "A": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "B": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "C": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "D": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs."
+        },
+        "quizId": "chapter9-quiz3",
+        "order": 1,
+        "status": "active",
+        "topic": "agriculture-household-market",
+        "topicLabel": "Crops Had Different Uses",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz3-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "A grower sells part of a food crop. Which explanation fits?",
+        "optionA": "The crop stops being food",
+        "optionB": "Every household must sell all its food",
+        "optionC": "No production costs exist",
+        "optionD": "The same crop can have more than one use",
+        "correctAnswer": "D",
+        "explanation": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "learningPoint": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "historicalClue": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "B": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "C": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "D": "One crop can serve household and market needs. Sales received are not the same as income left after costs."
+        },
+        "quizId": "chapter9-quiz3",
+        "order": 101,
+        "status": "active",
+        "topic": "agriculture-household-market",
+        "topicLabel": "Crops Had Different Uses",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission3-agriculture-household-market-practice1",
+      "create": true,
+      "fields": {
+        "question": "A fictional card shows rice kept for meals and rice sold. What does it illustrate?",
+        "optionA": "A food crop can never be sold",
+        "optionB": "Selling guarantees wealth",
+        "optionC": "All households used harvests identically",
+        "optionD": "One crop can serve household and market needs",
+        "correctAnswer": "D",
+        "explanation": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "learningPoint": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "historicalClue": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "B": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "C": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "D": "One crop can serve household and market needs. Sales received are not the same as income left after costs."
+        },
+        "missionId": "chapter9-mission3",
+        "topic": "agriculture-household-market",
+        "topicLabel": "Crops Had Different Uses",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Growing crops and raising animals for food and other needs.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission3-agriculture-household-market-practice2",
+      "create": true,
+      "fields": {
+        "question": "A sales total is used as proof that a household became wealthy. What is missing?",
+        "optionA": "A guess that all sales are profit",
+        "optionB": "A rule that food is never sold",
+        "optionC": "Costs and the resources remaining for household needs",
+        "optionD": "Only the color of the crop",
+        "correctAnswer": "C",
+        "explanation": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "learningPoint": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "historicalClue": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "B": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "C": "One crop can serve household and market needs. Sales received are not the same as income left after costs.",
+          "D": "Review the lesson clues. One crop can serve household and market needs. Sales received are not the same as income left after costs."
+        },
+        "missionId": "chapter9-mission3",
+        "topic": "agriculture-household-market",
+        "topicLabel": "Crops Had Different Uses",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Growing crops and raising animals for food and other needs.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz3-question2",
+      "create": true,
+      "fields": {
+        "question": "What is an economic policy?",
+        "optionA": "A guarantee that every aim succeeds",
+        "optionB": "A record of every private opinion",
+        "optionC": "Only a classroom prize",
+        "optionD": "A rule or plan shaping production, exchange or public income",
+        "correctAnswer": "D",
+        "explanation": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "learningPoint": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "historicalClue": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "B": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "C": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "D": "The growers choice of buyer. Check the product, place and period covered by the rule."
+        },
+        "quizId": "chapter9-quiz3",
+        "order": 2,
+        "status": "active",
+        "topic": "economic-policy",
+        "topicLabel": "Rules Could Change Economic Choices",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz3-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why identify the product and place covered by a policy?",
+        "optionA": "Place cannot affect economic rules",
+        "optionB": "A policy reveals every households thoughts",
+        "optionC": "Its scope may not include every crop or community",
+        "optionD": "All policies apply identically everywhere",
+        "correctAnswer": "C",
+        "explanation": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "learningPoint": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "historicalClue": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "B": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "C": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "D": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule."
+        },
+        "quizId": "chapter9-quiz3",
+        "order": 102,
+        "status": "active",
+        "topic": "economic-policy",
+        "topicLabel": "Rules Could Change Economic Choices",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission3-economic-policy-practice1",
+      "create": true,
+      "fields": {
+        "question": "One fictional rule requires delivery to an authorized buyer. What changes most directly?",
+        "optionA": "The weather automatically",
+        "optionB": "Every product in every place",
+        "optionC": "The growers choice of buyer",
+        "optionD": "Every persons private beliefs",
+        "correctAnswer": "C",
+        "explanation": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "learningPoint": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "historicalClue": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "B": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "C": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "D": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule."
+        },
+        "missionId": "chapter9-mission3",
+        "topic": "economic-policy",
+        "topicLabel": "Rules Could Change Economic Choices",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A rule or plan that shapes production, exchange or public income.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission3-economic-policy-practice2",
+      "create": true,
+      "fields": {
+        "question": "A rule for one crop is described as control over all agriculture. Which correction fits?",
+        "optionA": "Treat the stated aim as a completed result",
+        "optionB": "Keep the rule within its documented product, place and period",
+        "optionC": "Assume all other crops had the same rule",
+        "optionD": "Erase the place and date",
+        "correctAnswer": "B",
+        "explanation": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "learningPoint": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "historicalClue": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "B": "The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "C": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule.",
+          "D": "Review the lesson clues. The growers choice of buyer. Check the product, place and period covered by the rule."
+        },
+        "missionId": "chapter9-mission3",
+        "topic": "economic-policy",
+        "topicLabel": "Rules Could Change Economic Choices",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A rule or plan that shapes production, exchange or public income.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz3-question3",
+      "create": true,
+      "fields": {
+        "question": "Which governor is linked with formal establishment in the NHCP marker?",
+        "optionA": "A fictional classroom leader",
+        "optionB": "No authority was involved",
+        "optionC": "Jose Basco y Vargas",
+        "optionD": "Every local grower together",
+        "correctAnswer": "C",
+        "explanation": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "learningPoint": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "historicalClue": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "B": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "C": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "D": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience."
+        },
+        "quizId": "chapter9-quiz3",
+        "order": 3,
+        "status": "active",
+        "topic": "tobacco-monopoly-case",
+        "topicLabel": "A Named Policy: The Tobacco Monopoly",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz3-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "What does the marker date to 1882?",
+        "optionA": "The disappearance of the crop everywhere",
+        "optionB": "Abolition of the government monopoly",
+        "optionC": "The end of all farming",
+        "optionD": "The beginning of every colonial tax",
+        "correctAnswer": "B",
+        "explanation": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "learningPoint": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "historicalClue": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "B": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "C": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "D": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience."
+        },
+        "quizId": "chapter9-quiz3",
+        "order": 103,
+        "status": "active",
+        "topic": "tobacco-monopoly-case",
+        "topicLabel": "A Named Policy: The Tobacco Monopoly",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission3-tobacco-monopoly-case-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the tobacco monopoly example illustrate?",
+        "optionA": "The activity asks students to use tobacco",
+        "optionB": "Government control could restrict production and sale in designated districts",
+        "optionC": "Every farmer everywhere grew only tobacco",
+        "optionD": "Farming began only in 1782",
+        "correctAnswer": "B",
+        "explanation": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "learningPoint": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "historicalClue": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "B": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "C": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "D": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience."
+        },
+        "missionId": "chapter9-mission3",
+        "topic": "tobacco-monopoly-case",
+        "topicLabel": "A Named Policy: The Tobacco Monopoly",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A system in which the government reserves control of a particular trade.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission3-tobacco-monopoly-case-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption says the monopoly covered every Philippine farm. What revision fits the lesson?",
+        "optionA": "Refer to designated districts and check coverage before extending the claim",
+        "optionB": "Keep every farm because one case proves all",
+        "optionC": "Say it controlled no farming at all",
+        "optionD": "Treat the diagram as an exact map",
+        "correctAnswer": "A",
+        "explanation": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "learningPoint": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "historicalClue": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+        "answerExplanations": {
+          "A": "Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "B": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "C": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience.",
+          "D": "Review the lesson clues. Government control could restrict production and sale in designated districts. A monopoly period is not the whole history of a crop or every farms experience."
+        },
+        "missionId": "chapter9-mission3",
+        "topic": "tobacco-monopoly-case",
+        "topicLabel": "A Named Policy: The Tobacco Monopoly",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A system in which the government reserves control of a particular trade.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz3-question4",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish revenue from net income?",
+        "optionA": "Revenue proves free choice",
+        "optionB": "Costs can reduce what remains",
+        "optionC": "Every cost is always zero",
+        "optionD": "All receipts are pure profit",
+        "correctAnswer": "B",
+        "explanation": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "learningPoint": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "historicalClue": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "B": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "C": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "D": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays."
+        },
+        "quizId": "chapter9-quiz3",
+        "order": 4,
+        "status": "active",
+        "topic": "grower-costs-choices",
+        "topicLabel": "Compare Income, Costs and Choices",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz3-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "A government report shows rising revenue. What still needs evidence?",
+        "optionA": "Effects on growers costs, payment and choices",
+        "optionB": "Whether every grower automatically became wealthy",
+        "optionC": "Whether all households thought alike",
+        "optionD": "Nothing about community effects",
+        "correctAnswer": "A",
+        "explanation": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "learningPoint": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "historicalClue": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "answerExplanations": {
+          "A": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "B": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "C": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "D": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays."
+        },
+        "quizId": "chapter9-quiz3",
+        "order": 104,
+        "status": "active",
+        "topic": "grower-costs-choices",
+        "topicLabel": "Compare Income, Costs and Choices",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission3-grower-costs-choices-practice1",
+      "create": true,
+      "fields": {
+        "question": "The model records eight received and five of costs. What remains after those listed costs?",
+        "optionA": "Three tokens in the fictional model",
+        "optionB": "Eight tokens of guaranteed profit",
+        "optionC": "A universal colonial price of three pesos",
+        "optionD": "Proof that every grower benefited",
+        "correctAnswer": "A",
+        "explanation": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "learningPoint": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "historicalClue": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "answerExplanations": {
+          "A": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "B": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "C": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "D": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays."
+        },
+        "missionId": "chapter9-mission3",
+        "topic": "grower-costs-choices",
+        "topicLabel": "Compare Income, Costs and Choices",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "What remains from income after the relevant costs are taken away.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission3-grower-costs-choices-practice2",
+      "create": true,
+      "fields": {
+        "question": "A fictional eight-token sale is used as an exact historical crop price. What should change?",
+        "optionA": "Use eight for every year",
+        "optionB": "Treat omitted costs as zero",
+        "optionC": "Call the teaching card an original account",
+        "optionD": "Label the model and use dated records for historical prices",
+        "correctAnswer": "D",
+        "explanation": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "learningPoint": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "historicalClue": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "B": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "C": "Review the lesson clues. Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays.",
+          "D": "Three tokens in the fictional model. Check whether an account leaves out costs, work or payment delays."
+        },
+        "missionId": "chapter9-mission3",
+        "topic": "grower-costs-choices",
+        "topicLabel": "Compare Income, Costs and Choices",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "What remains from income after the relevant costs are taken away.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz3-question5",
+      "create": true,
+      "fields": {
+        "question": "What does abolition mean?",
+        "optionA": "Ending a rule, institution or system",
+        "optionB": "Beginning all farming everywhere",
+        "optionC": "Making every person wealthy",
+        "optionD": "Proving every private motive",
+        "correctAnswer": "A",
+        "explanation": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "learningPoint": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "historicalClue": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "answerExplanations": {
+          "A": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "B": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "C": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "D": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone."
+        },
+        "quizId": "chapter9-quiz3",
+        "order": 5,
+        "status": "active",
+        "topic": "policy-change-evidence",
+        "topicLabel": "Follow a Policy Through Time",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz3-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a monopoly instruction with a later farm account?",
+        "optionA": "Both necessarily describe one unchanged rule",
+        "optionB": "The later account proves every earlier detail",
+        "optionC": "Dates do not matter",
+        "optionD": "They help investigate change and continuity across periods",
+        "correctAnswer": "D",
+        "explanation": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "learningPoint": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "historicalClue": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "B": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "C": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "D": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone."
+        },
+        "quizId": "chapter9-quiz3",
+        "order": 105,
+        "status": "active",
+        "topic": "policy-change-evidence",
+        "topicLabel": "Follow a Policy Through Time",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission3-policy-change-evidence-practice1",
+      "create": true,
+      "fields": {
+        "question": "A caption says monopoly abolition ended all farming and taxation. Which correction fits?",
+        "optionA": "All agriculture stopped",
+        "optionB": "Every tax disappeared forever",
+        "optionC": "Every grower had identical gains",
+        "optionD": "A particular arrangement ended; later activity needs its own evidence",
+        "correctAnswer": "D",
+        "explanation": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "learningPoint": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "historicalClue": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "B": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "C": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "D": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone."
+        },
+        "missionId": "chapter9-mission3",
+        "topic": "policy-change-evidence",
+        "topicLabel": "Follow a Policy Through Time",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The ending of a rule, institution or system.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission3-policy-change-evidence-practice2",
+      "create": true,
+      "fields": {
+        "question": "An abolition date is used as proof that everyone benefited equally. What is missing?",
+        "optionA": "Only the title of the notice",
+        "optionB": "Nothing because all reforms have identical effects",
+        "optionC": "Evidence about different peoples later conditions",
+        "optionD": "A bigger universal claim",
+        "correctAnswer": "C",
+        "explanation": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "learningPoint": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "historicalClue": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "B": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "C": "A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone.",
+          "D": "Review the lesson clues. A particular arrangement ended; later activity needs its own evidence. A reform date alone does not prove equal gains for everyone."
+        },
+        "missionId": "chapter9-mission3",
+        "topic": "policy-change-evidence",
+        "topicLabel": "Follow a Policy Through Time",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The ending of a rule, institution or system.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter9-mission3-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission3",
+        "name": "Agriculture Policy Evidence Journal",
+        "description": "A learning-game token for comparing economic rules, costs and choices.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 3,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Compare crop uses, government control, growers costs and changes in policy.",
+          "reflectionQuestion": "Which clue helped you distinguish a policy aim from its effects on growers?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-9",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-2 investigate tribute, required labor and compulsory produce delivery. Missions 3-5 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-3 investigate tribute, labor, produce demands and agricultural policies. Missions 4-5 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapter 9 offers Missions 1-2 on tribute, labor and produce demands. Later missions and Chapters 10-11 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 9 offers Missions 1-3 on tribute, labor, produce demands and agricultural policies. Later missions and Chapters 10-11 are being prepared."
+      }
+    }
+  ]
+}

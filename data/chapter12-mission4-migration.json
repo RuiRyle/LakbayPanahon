@@ -1,0 +1,1309 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 12 Mission 4 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+    "https://philippineculturaleducation.com.ph/dagohoy-francisco/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-11",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-11",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/autonomy-community-investigator",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter11-mission1",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter11-mission2",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter11-mission3",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter11-mission4",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter12-mission1",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter12-mission2",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter12-mission3",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 3
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter12-mission4",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-12",
+        "title": "Leaders, Communities, and Regional Participation",
+        "order": 4,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate leadership changes, regional reach, recorded roles and varied community participation.",
+        "learningObjective": "Distinguish leaders, participants and affected residents using dated evidence without assigning universal motives.",
+        "learningObjectives": [
+          "Explain a leader was not the whole community using lesson evidence.",
+          "Explain gabriela silang continued the movement using lesson evidence.",
+          "Explain spread was not everyone joining using lesson evidence.",
+          "Explain roles and conditions could differ using lesson evidence.",
+          "Explain build a participation portfolio using lesson evidence."
+        ],
+        "lessonRecap": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter12-quiz4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission4",
+        "title": "Leaders and Participation - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 4,
+        "questionBlueprint": [
+          {
+            "topic": "leadership-community",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "gabriela-continuation",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "spread-participation",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "roles-conditions",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "participation-source-portfolio",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission4-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission4",
+        "status": "active",
+        "order": 1,
+        "title": "A Leader Was Not the Whole Community",
+        "content": "A leader can guide an action, but a movement involves more than one biography. A leader summary may name an organizer without naming everyone who took part. It does not establish every participants wishes or make all residents participants. Ask which role and action the source actually records.\n\nCompare fictional cards for a leader summary, a participant list and an affected household. The first helps identify leadership. The second concerns recorded participation. The third concerns an experience that might not involve joining. These cards are teaching models, not surviving registers. One person might have more than one role, while some contributors remain unnamed. Do not invent particular historical jobs or speeches to fill the gaps. A missing name is not proof that no one contributed.\n\nOpen the three clues, then choose the explanation they support. Use Explain for help or return to this lesson before targeted practice.",
+        "reviewTopics": [
+          "leadership-community"
+        ],
+        "imageUrl": "../assets/story/regional-participation-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Leader Was Not the Whole Community. Labelled clues distinguish leadership, participation and source scope; not an original register.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Role",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A leader summary identifies a particular guiding or organizing role.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Wider participation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A named leader is not a complete participant list.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Being a resident or being affected does not automatically mean joining.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A leader is named but no participant list is supplied. What can you report?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Leadership is recorded; wider participation needs further evidence",
+          "Every resident joined",
+          "Only the leader did anything",
+          "Every participant shared identical wishes"
+        ],
+        "decisionCorrectAnswer": "Leadership is recorded; wider participation needs further evidence",
+        "decisionExplanation": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "keyTerm": "Leadership",
+        "keyTermDefinition": "Taking a role in guiding or organizing an action.",
+        "historicalInsight": "Being a resident or being affected does not automatically mean joining.",
+        "learningHelp": {
+          "explanation": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "vocabulary": [
+            {
+              "term": "Leadership",
+              "definition": "Taking a role in guiding or organizing an action."
+            }
+          ],
+          "example": "A leader summary identifies a particular guiding or organizing role.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission4-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission4",
+        "status": "active",
+        "order": 2,
+        "title": "Gabriela Silang Continued the Movement",
+        "content": "The NHCP Gabriela Silang marker identifies her continuation of the Ilocos uprising after Diego Silangs death in 1763. This keeps a womans recorded leadership visible rather than treating her only as a relationship in someone elses biography. The case also shows that a movement could continue through a change in leadership.\n\nThe later marker is not a transcript of meetings or a complete membership record. We use its bounded continuation claim without inventing speeches, exact participant numbers or a universal account of all womens roles. Our sequence guide separates Diego, the leadership change and Gabrielas continuation; it is not a battle plan. Conflict caused harm, but students do not reenact attacks or punishment or gain points for them. Recognizing a named womans action does not mean that only famous leaders mattered or that every participant shared one experience.\n\nOpen the three clues, then choose the explanation they support. Use Explain for help or return to this lesson before targeted practice.",
+        "reviewTopics": [
+          "gabriela-continuation"
+        ],
+        "imageUrl": "../assets/story/regional-participation-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Gabriela Silang Continued the Movement. Labelled clues distinguish leadership, participation and source scope; not an original register.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Named action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The marker records Gabrielas continuation of the Ilocos uprising.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Sequence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The leadership change belongs to 1763.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A later marker does not supply every meeting, member or private motive.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does Gabrielas continuation help show?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Only one person could ever participate",
+          "Every participant had an identical role",
+          "A marker records every meeting word for word",
+          "A movement could continue through a change in leadership"
+        ],
+        "decisionCorrectAnswer": "A movement could continue through a change in leadership",
+        "decisionExplanation": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "keyTerm": "Continuation",
+        "keyTermDefinition": "Carrying an activity forward after an earlier stage.",
+        "historicalInsight": "A later marker does not supply every meeting, member or private motive.",
+        "learningHelp": {
+          "explanation": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "vocabulary": [
+            {
+              "term": "Continuation",
+              "definition": "Carrying an activity forward after an earlier stage."
+            }
+          ],
+          "example": "The marker records Gabrielas continuation of the Ilocos uprising.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission4-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission4",
+        "status": "active",
+        "order": 3,
+        "title": "Spread Was Not Everyone Joining",
+        "content": "The Sumuroy marker describes an uprising beginning at Palapag in 1649 and spreading to other places. Spread is a historical claim about a wider reach, not proof that every resident of those places joined. Different local actions and degrees of involvement need their own evidence.\n\nOur fictional source desk compares a place mentioned in an account with a list of named people. A place entry helps locate a reported event; a name entry can support recorded participation. Neither reveals every private motive. Do not use a regional label as a vote by all households, or turn later administrative boundaries into exact historical areas of control. A movement may affect people who never joined. To explain a particular town, seek its dated records and compare the actions described. The desk is not a reconstruction of Sumuroys participant register.\n\nOpen the three clues, then choose the explanation they support. Use Explain for help or return to this lesson before targeted practice.",
+        "reviewTopics": [
+          "spread-participation"
+        ],
+        "imageUrl": "../assets/story/regional-participation-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Spread Was Not Everyone Joining. Labelled clues distinguish leadership, participation and source scope; not an original register.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Reach",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A source may describe a movement spreading beyond an initial place.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Joining",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Participation needs evidence about people and actions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Difference",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Affected residents and participants are not automatically the same people.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An account names another affected place. What must still be checked?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Whether place alone reveals motives",
+          "Whether all households had identical experiences",
+          "Who participated and what local actions occurred",
+          "Whether every resident automatically joined"
+        ],
+        "decisionCorrectAnswer": "Who participated and what local actions occurred",
+        "decisionExplanation": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "keyTerm": "Participation",
+        "keyTermDefinition": "Taking part in an activity or action.",
+        "historicalInsight": "Affected residents and participants are not automatically the same people.",
+        "learningHelp": {
+          "explanation": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "vocabulary": [
+            {
+              "term": "Participation",
+              "definition": "Taking part in an activity or action."
+            }
+          ],
+          "example": "A source may describe a movement spreading beyond an initial place.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission4-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission4",
+        "status": "active",
+        "order": 4,
+        "title": "Roles and Conditions Could Differ",
+        "content": "People in a community could face different resources, responsibilities and pressures. A leader, participant and affected resident did not necessarily have the same options. Historical agency means people could act within conditions, not that everyone had equal power or unlimited freedom.\n\nCompare fictional role cards: one records an organizing action and another records a household affected by events. Identify only what the cards support. Do not assign roles automatically from gender, religion, ancestry or occupation. Nor should a lack of a famous name make a persons experience unimportant. These cards do not invent a real historical family or ask learners to disclose family income or identity. To explain an actual case, keep the person, place, period, action and evidence together. Claims about voluntary participation or pressure require evidence rather than a guess from a label.\n\nOpen the three clues, then choose the explanation they support. Use Explain for help or return to this lesson before targeted practice.",
+        "reviewTopics": [
+          "roles-conditions"
+        ],
+        "imageUrl": "../assets/story/regional-participation-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Roles and Conditions Could Differ. Labelled clues distinguish leadership, participation and source scope; not an original register.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Different conditions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Resources and pressures could affect available choices.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Recorded role",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A source supports particular actions, not every part of a life.",
+            "icon": "🔎"
+          },
+          {
+            "title": "No stereotype",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Gender, religion or ancestry does not automatically determine a role or motive.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Two source cards describe different roles and pressures. What approach fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat only famous names as important",
+          "Explain each recorded action and condition without assigning roles by identity",
+          "Give everyone identical choices",
+          "Use gender as every persons motive"
+        ],
+        "decisionCorrectAnswer": "Explain each recorded action and condition without assigning roles by identity",
+        "decisionExplanation": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "keyTerm": "Constraint",
+        "keyTermDefinition": "A condition that limits available choices or actions.",
+        "historicalInsight": "Gender, religion or ancestry does not automatically determine a role or motive.",
+        "learningHelp": {
+          "explanation": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "vocabulary": [
+            {
+              "term": "Constraint",
+              "definition": "A condition that limits available choices or actions."
+            }
+          ],
+          "example": "Resources and pressures could affect available choices.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission4-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission4",
+        "status": "active",
+        "order": 5,
+        "title": "Build a Participation Portfolio",
+        "content": "A participation report should identify who is recorded, what action is described and what remains uncertain. A later marker can commemorate a leader without listing all participants. A movement span can extend beyond its founder. Sources about different places and stages should not be merged into one complete community biography.\n\nCulturEd notes that the Dagohoy movement continued after its founder, while the Gabriela marker records a specific leadership continuation in another case. These examples are not the same event or proof of a shared command. Our fictional portfolio separates leadership evidence, a participation record and an account of affected residents. Match the question to the source, check its date and purpose, and state a limit. Do not invent a universal national program, private conversations or membership where the evidence is incomplete. Later Mission 5 will examine outcomes and significance.\n\nOpen the three clues, then choose the explanation they support. Use Explain for help or return to this lesson before targeted practice.",
+        "reviewTopics": [
+          "participation-source-portfolio"
+        ],
+        "imageUrl": "../assets/story/regional-participation-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Build a Participation Portfolio. Labelled clues distinguish leadership, participation and source scope; not an original register.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Question",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask who is recorded and which action the source describes.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Stages",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Continuation does not mean one founder personally led every stage.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A source about one leader or place is not every participants complete story.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A later marker is presented as a full participant register. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Keep its commemorative scope and seek evidence of wider participation",
+          "Treat every resident as named",
+          "Invent missing members",
+          "Assume all cases shared one command"
+        ],
+        "decisionCorrectAnswer": "Keep its commemorative scope and seek evidence of wider participation",
+        "decisionExplanation": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "keyTerm": "Source scope",
+        "keyTermDefinition": "The people, period and questions a source can directly help explain.",
+        "historicalInsight": "A source about one leader or place is not every participants complete story.",
+        "learningHelp": {
+          "explanation": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "vocabulary": [
+            {
+              "term": "Source scope",
+              "definition": "The people, period and questions a source can directly help explain."
+            }
+          ],
+          "example": "Ask who is recorded and which action the source describes.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission4-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission4",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Leaders and Communities Report",
+        "content": "Review five ideas. A leader was not the whole community. Gabriela Silangs continuation keeps her leadership visible and illustrates a movement changing leaders. Spread did not mean every resident joined. Different roles came with different conditions and pressures. Sources have scope and cannot automatically supply every participants story.\n\nPrepare a fictional report for another Grade 5 learner. Name a person or community, place and period, give evidence of an action and identify a limit. Separate leaders, participants and affected residents. Do not invent member counts, assign roles from gender or ancestry, or make a modern map color prove historical participation. Keep movement stages distinct and do not turn harm into a reward.\n\nThe main quiz has five questions and three correct passes. Review linked learning content before practice and a retry if needed. Completing this mission earns its configured reward once, but does not complete Chapter 12. Mission 5 and the chapter challenge are still being prepared.",
+        "reviewTopics": [
+          "leadership-community",
+          "gabriela-continuation",
+          "spread-participation",
+          "roles-conditions",
+          "participation-source-portfolio"
+        ],
+        "imageUrl": "../assets/story/regional-participation-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Build a Participation Portfolio. Labelled clues distinguish leadership, participation and source scope; not an original register.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Question",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask who is recorded and which action the source describes.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Stages",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Continuation does not mean one founder personally led every stage.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A source about one leader or place is not every participants complete story.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best explains participation?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat a leader as the entire community",
+          "Assume every affected resident joined",
+          "Assign every role from gender or ancestry",
+          "Connect recorded roles, actions and conditions with dated evidence and limits"
+        ],
+        "decisionCorrectAnswer": "Connect recorded roles, actions and conditions with dated evidence and limits",
+        "decisionExplanation": "Explain leadership and wider participation with dated evidence, respecting varied roles, conditions and source limits.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain leadership and wider participation with dated evidence, respecting varied roles, conditions and source limits.",
+        "keyTerm": "Source scope",
+        "keyTermDefinition": "The people, period and questions a source can directly help explain.",
+        "historicalInsight": "A source about one leader or place is not every participants complete story.",
+        "learningHelp": {
+          "explanation": "Explain leadership and wider participation with dated evidence, respecting varied roles, conditions and source limits.",
+          "vocabulary": [
+            {
+              "term": "Source scope",
+              "definition": "The people, period and questions a source can directly help explain."
+            }
+          ],
+          "example": "Ask who is recorded and which action the source describes.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz4-question1",
+      "create": true,
+      "fields": {
+        "question": "What does leadership describe here?",
+        "optionA": "A guiding or organizing role",
+        "optionB": "Every residents private belief",
+        "optionC": "Automatic success",
+        "optionD": "A complete participant list",
+        "correctAnswer": "A",
+        "explanation": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "learningPoint": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "historicalClue": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "answerExplanations": {
+          "A": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "B": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "C": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "D": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining."
+        },
+        "quizId": "chapter12-quiz4",
+        "order": 1,
+        "status": "active",
+        "topic": "leadership-community",
+        "topicLabel": "A Leader Was Not the Whole Community",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz4-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a leader summary with a participant list?",
+        "optionA": "One leader supplies all names",
+        "optionB": "All residents must have joined",
+        "optionC": "Lists reveal every motive",
+        "optionD": "They answer different questions about roles and participation",
+        "correctAnswer": "D",
+        "explanation": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "learningPoint": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "historicalClue": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "B": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "C": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "D": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining."
+        },
+        "quizId": "chapter12-quiz4",
+        "order": 101,
+        "status": "active",
+        "topic": "leadership-community",
+        "topicLabel": "A Leader Was Not the Whole Community",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission4-leadership-community-practice1",
+      "create": true,
+      "fields": {
+        "question": "A leader is named but no participant list is supplied. What can you report?",
+        "optionA": "Every resident joined",
+        "optionB": "Only the leader did anything",
+        "optionC": "Every participant shared identical wishes",
+        "optionD": "Leadership is recorded; wider participation needs further evidence",
+        "correctAnswer": "D",
+        "explanation": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "learningPoint": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "historicalClue": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "B": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "C": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "D": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining."
+        },
+        "missionId": "chapter12-mission4",
+        "topic": "leadership-community",
+        "topicLabel": "A Leader Was Not the Whole Community",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Taking a role in guiding or organizing an action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission4-leadership-community-practice2",
+      "create": true,
+      "fields": {
+        "question": "A source leaves contributors unnamed. What is a careful conclusion?",
+        "optionA": "Invent a job for every resident",
+        "optionB": "Treat silence as a complete biography",
+        "optionC": "The source may omit contributors; investigate further",
+        "optionD": "No one else contributed",
+        "correctAnswer": "C",
+        "explanation": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "learningPoint": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "historicalClue": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "B": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "C": "Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining.",
+          "D": "Review the lesson clues. Leadership is recorded; wider participation needs further evidence. Being a resident or being affected does not automatically mean joining."
+        },
+        "missionId": "chapter12-mission4",
+        "topic": "leadership-community",
+        "topicLabel": "A Leader Was Not the Whole Community",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Taking a role in guiding or organizing an action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz4-question2",
+      "create": true,
+      "fields": {
+        "question": "What action is associated with Gabriela in this lesson?",
+        "optionA": "Writing every participants biography",
+        "optionB": "Founding every regional movement",
+        "optionC": "Recording every colonial conversation",
+        "optionD": "Continuing leadership of the Ilocos uprising",
+        "correctAnswer": "D",
+        "explanation": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "learningPoint": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "historicalClue": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "B": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "C": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "D": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive."
+        },
+        "quizId": "chapter12-quiz4",
+        "order": 2,
+        "status": "active",
+        "topic": "gabriela-continuation",
+        "topicLabel": "Gabriela Silang Continued the Movement",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz4-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why describe Gabrielas recorded action directly?",
+        "optionA": "To erase other participants",
+        "optionB": "To invent speeches missing from the source",
+        "optionC": "To keep her leadership visible beyond a family relationship",
+        "optionD": "To claim every woman had one role",
+        "correctAnswer": "C",
+        "explanation": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "learningPoint": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "historicalClue": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "B": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "C": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "D": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive."
+        },
+        "quizId": "chapter12-quiz4",
+        "order": 102,
+        "status": "active",
+        "topic": "gabriela-continuation",
+        "topicLabel": "Gabriela Silang Continued the Movement",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission4-gabriela-continuation-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does Gabrielas continuation help show?",
+        "optionA": "Every participant had an identical role",
+        "optionB": "A marker records every meeting word for word",
+        "optionC": "A movement could continue through a change in leadership",
+        "optionD": "Only one person could ever participate",
+        "correctAnswer": "C",
+        "explanation": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "learningPoint": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "historicalClue": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "B": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "C": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "D": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive."
+        },
+        "missionId": "chapter12-mission4",
+        "topic": "gabriela-continuation",
+        "topicLabel": "Gabriela Silang Continued the Movement",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Carrying an activity forward after an earlier stage.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission4-gabriela-continuation-practice2",
+      "create": true,
+      "fields": {
+        "question": "A marker names Gabriela but no member count. What should a report avoid?",
+        "optionA": "Seeking other evidence",
+        "optionB": "Inventing an exact membership total",
+        "optionC": "Naming the recorded leadership",
+        "optionD": "Keeping the source date visible",
+        "correctAnswer": "B",
+        "explanation": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "learningPoint": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "historicalClue": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "B": "A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "C": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive.",
+          "D": "Review the lesson clues. A movement could continue through a change in leadership. A later marker does not supply every meeting, member or private motive."
+        },
+        "missionId": "chapter12-mission4",
+        "topic": "gabriela-continuation",
+        "topicLabel": "Gabriela Silang Continued the Movement",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Carrying an activity forward after an earlier stage.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz4-question3",
+      "create": true,
+      "fields": {
+        "question": "What does participation mean?",
+        "optionA": "Sharing every leaders private motive",
+        "optionB": "Automatically agreeing with everyone",
+        "optionC": "Taking part in an activity or action",
+        "optionD": "Only living in an affected region",
+        "correctAnswer": "C",
+        "explanation": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "learningPoint": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "historicalClue": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "B": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "C": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "D": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people."
+        },
+        "quizId": "chapter12-quiz4",
+        "order": 3,
+        "status": "active",
+        "topic": "spread-participation",
+        "topicLabel": "Spread Was Not Everyone Joining",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz4-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish a place entry from a participant name?",
+        "optionA": "Boundaries never change",
+        "optionB": "Location and recorded personal action are different evidence questions",
+        "optionC": "A place entry lists every resident",
+        "optionD": "All names reveal motives",
+        "correctAnswer": "B",
+        "explanation": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "learningPoint": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "historicalClue": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "B": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "C": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "D": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people."
+        },
+        "quizId": "chapter12-quiz4",
+        "order": 103,
+        "status": "active",
+        "topic": "spread-participation",
+        "topicLabel": "Spread Was Not Everyone Joining",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission4-spread-participation-practice1",
+      "create": true,
+      "fields": {
+        "question": "An account names another affected place. What must still be checked?",
+        "optionA": "Whether all households had identical experiences",
+        "optionB": "Who participated and what local actions occurred",
+        "optionC": "Whether every resident automatically joined",
+        "optionD": "Whether place alone reveals motives",
+        "correctAnswer": "B",
+        "explanation": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "learningPoint": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "historicalClue": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "B": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "C": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "D": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people."
+        },
+        "missionId": "chapter12-mission4",
+        "topic": "spread-participation",
+        "topicLabel": "Spread Was Not Everyone Joining",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Taking part in an activity or action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission4-spread-participation-practice2",
+      "create": true,
+      "fields": {
+        "question": "A map shades a region and labels all residents participants. What correction fits?",
+        "optionA": "Limit the claim and investigate local participation",
+        "optionB": "Keep everyone joined as automatic",
+        "optionC": "Erase all dates",
+        "optionD": "Use a map color as proof of motives",
+        "correctAnswer": "A",
+        "explanation": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "learningPoint": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "historicalClue": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+        "answerExplanations": {
+          "A": "Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "B": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "C": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people.",
+          "D": "Review the lesson clues. Who participated and what local actions occurred. Affected residents and participants are not automatically the same people."
+        },
+        "missionId": "chapter12-mission4",
+        "topic": "spread-participation",
+        "topicLabel": "Spread Was Not Everyone Joining",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Taking part in an activity or action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz4-question4",
+      "create": true,
+      "fields": {
+        "question": "What is a constraint?",
+        "optionA": "A complete biography",
+        "optionB": "A condition limiting choices or actions",
+        "optionC": "Proof that nobody can act",
+        "optionD": "A measure of human worth",
+        "correctAnswer": "B",
+        "explanation": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "learningPoint": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "historicalClue": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "B": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "C": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "D": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive."
+        },
+        "quizId": "chapter12-quiz4",
+        "order": 4,
+        "status": "active",
+        "topic": "roles-conditions",
+        "topicLabel": "Roles and Conditions Could Differ",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz4-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why ask about conditions alongside actions?",
+        "optionA": "People could face different options and pressures",
+        "optionB": "All people had equal resources",
+        "optionC": "Every role was freely chosen",
+        "optionD": "Labels establish every private thought",
+        "correctAnswer": "A",
+        "explanation": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "learningPoint": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "historicalClue": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "answerExplanations": {
+          "A": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "B": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "C": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "D": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive."
+        },
+        "quizId": "chapter12-quiz4",
+        "order": 104,
+        "status": "active",
+        "topic": "roles-conditions",
+        "topicLabel": "Roles and Conditions Could Differ",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission4-roles-conditions-practice1",
+      "create": true,
+      "fields": {
+        "question": "Two source cards describe different roles and pressures. What approach fits?",
+        "optionA": "Explain each recorded action and condition without assigning roles by identity",
+        "optionB": "Give everyone identical choices",
+        "optionC": "Use gender as every persons motive",
+        "optionD": "Treat only famous names as important",
+        "correctAnswer": "A",
+        "explanation": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "learningPoint": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "historicalClue": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "answerExplanations": {
+          "A": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "B": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "C": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "D": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive."
+        },
+        "missionId": "chapter12-mission4",
+        "topic": "roles-conditions",
+        "topicLabel": "Roles and Conditions Could Differ",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A condition that limits available choices or actions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission4-roles-conditions-practice2",
+      "create": true,
+      "fields": {
+        "question": "A person is assigned a role solely from ancestry. What is missing?",
+        "optionA": "Only a stronger stereotype",
+        "optionB": "A classroom ancestry test",
+        "optionC": "Nothing because identity determines every role",
+        "optionD": "Evidence of the persons actual action and setting",
+        "correctAnswer": "D",
+        "explanation": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "learningPoint": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "historicalClue": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "B": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "C": "Review the lesson clues. Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive.",
+          "D": "Explain each recorded action and condition without assigning roles by identity. Gender, religion or ancestry does not automatically determine a role or motive."
+        },
+        "missionId": "chapter12-mission4",
+        "topic": "roles-conditions",
+        "topicLabel": "Roles and Conditions Could Differ",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A condition that limits available choices or actions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz4-question5",
+      "create": true,
+      "fields": {
+        "question": "What does source scope describe?",
+        "optionA": "Which people, period and questions a source helps explain",
+        "optionB": "A guarantee of complete knowledge",
+        "optionC": "Every private motive",
+        "optionD": "A ranking of leaders",
+        "correctAnswer": "A",
+        "explanation": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "learningPoint": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "historicalClue": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "answerExplanations": {
+          "A": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "B": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "C": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "D": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story."
+        },
+        "quizId": "chapter12-quiz4",
+        "order": 5,
+        "status": "active",
+        "topic": "participation-source-portfolio",
+        "topicLabel": "Build a Participation Portfolio",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz4-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why separate records from different stages of a movement?",
+        "optionA": "Every stage had identical people",
+        "optionB": "A founder personally led every year",
+        "optionC": "Dates are only decoration",
+        "optionD": "Leadership, participants and conditions could change",
+        "correctAnswer": "D",
+        "explanation": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "learningPoint": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "historicalClue": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "B": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "C": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "D": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story."
+        },
+        "quizId": "chapter12-quiz4",
+        "order": 105,
+        "status": "active",
+        "topic": "participation-source-portfolio",
+        "topicLabel": "Build a Participation Portfolio",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission4-participation-source-portfolio-practice1",
+      "create": true,
+      "fields": {
+        "question": "A later marker is presented as a full participant register. What correction fits?",
+        "optionA": "Treat every resident as named",
+        "optionB": "Invent missing members",
+        "optionC": "Assume all cases shared one command",
+        "optionD": "Keep its commemorative scope and seek evidence of wider participation",
+        "correctAnswer": "D",
+        "explanation": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "learningPoint": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "historicalClue": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "B": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "C": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "D": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story."
+        },
+        "missionId": "chapter12-mission4",
+        "topic": "participation-source-portfolio",
+        "topicLabel": "Build a Participation Portfolio",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The people, period and questions a source can directly help explain.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission4-participation-source-portfolio-practice2",
+      "create": true,
+      "fields": {
+        "question": "Sources leave some roles unknown. What should a portfolio do?",
+        "optionA": "Assume unnamed people did nothing",
+        "optionB": "Assign everyone one motive",
+        "optionC": "State the limit and identify useful further evidence",
+        "optionD": "Invent roles to complete the story",
+        "correctAnswer": "C",
+        "explanation": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "learningPoint": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "historicalClue": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "B": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "C": "Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story.",
+          "D": "Review the lesson clues. Keep its commemorative scope and seek evidence of wider participation. A source about one leader or place is not every participants complete story."
+        },
+        "missionId": "chapter12-mission4",
+        "topic": "participation-source-portfolio",
+        "topicLabel": "Build a Participation Portfolio",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The people, period and questions a source can directly help explain.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter12-mission4-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission4",
+        "name": "Participation Evidence Journal",
+        "description": "A learning-game token for examining leadership and community participation through evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 4,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish leadership, membership, affected residents and changing movement stages.",
+          "reflectionQuestion": "Which clue helped you distinguish regional reach from individual participation?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-12",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-3 introduce causes, regional cases and religious/political concerns. Missions 4-5 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-4 investigate causes, regional cases, religious/political concerns and community participation. Mission 5 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapter 12 offers Missions 1-3 on causes, regional cases and religious/political concerns. Later missions and Chapters 13-14 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 12 offers Missions 1-4 on early resistance and community participation. Later missions and Chapters 13-14 are being prepared."
+      }
+    }
+  ]
+}

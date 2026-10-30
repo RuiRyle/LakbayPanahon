@@ -12,10 +12,13 @@
     <title>Student Registration | LakbayPanahon</title>
 
     <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
 </head>
 
 
-<body>
+<body class="lakbay-theme">
 
 <main class="auth-page">
 
@@ -208,7 +211,7 @@
 
                             <input
                                 type="text"
-                                id="firstName"
+                                id="firstName" maxlength="100"
                                 placeholder="First name"
                                 autocomplete="given-name"
                                 required
@@ -229,7 +232,7 @@
 
                             <input
                                 type="text"
-                                id="lastName"
+                                id="lastName" maxlength="100"
                                 placeholder="Last name"
                                 autocomplete="family-name"
                                 required
@@ -261,7 +264,7 @@
 
                         <input
                             type="text"
-                            id="middleName"
+                            id="middleName" maxlength="100"
                             placeholder="Middle name"
                             autocomplete="additional-name"
                         >
@@ -379,23 +382,29 @@
                 </div>
 
 
-                <!-- TERMS -->
+                <aside class="registration-notice" aria-labelledby="studentAccountNoticeTitle">
+                    <h2 id="studentAccountNoticeTitle">Before you create an account</h2>
+                    <p>This capstone test version saves your name, sign-in email and learning progress to your account. Keep your password private. Ask the adult supervising your test if you need help.</p>
+                    <p>Final privacy notices and a support contact are still being prepared. This notice is not a completed Privacy Policy or Terms of Use.</p>
+                </aside>
 
                 <label class="checkbox-container terms">
 
                     <input
                         type="checkbox"
                         id="studentTerms"
+                        aria-describedby="studentAccountNoticeTitle"
                         required
                     >
 
                     <span>
-                        I agree to the Terms of Use and
-                        Privacy Policy of LakbayPanahon.
+                        I have read the test-version account notice above.
                     </span>
 
                 </label>
 
+
+                <p class="input-help">Your new sign-in lasts for this tab. Next time you log in, choose Remember me only on a device you do not share.</p>
 
                 <!-- MESSAGE -->
 
@@ -421,6 +430,7 @@
                 </button>
 
             </form>
+            <a id="studentRegistrationContinue" class="auth-button" href="student-dashboard.html" hidden>Start My Learning Journey</a>
 
 
             <div class="login-prompt">
@@ -456,6 +466,8 @@
 
 
 <script type="module" src="../js/auth-ui.js"></script>
+
+    <script type="module" src="../js/page-transition.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,30 @@
+{
+  "state": "unpublished-draft-not-an-activation-script",
+  "documentPath": "learningSettings/bayaniAI",
+  "setFields": {
+    "enabled": false,
+    "provider": "anthropic",
+    "minorsUseApproved": false,
+    "backendEndpoint": "",
+    "model": "",
+    "maxOutputTokens": 512,
+    "perMinuteLimit": 3,
+    "perStudentDailyLimit": 20,
+    "globalDailyLimit": 100
+  },
+  "preserveExistingFields": [
+    "systemInstruction",
+    "maxMessageCharacters",
+    "welcomeMessage",
+    "appCheckSiteKey"
+  ],
+  "requiredDecisions": [
+    "Confirm provider account terms and the intended Philippine under-13 audience.",
+    "Resolve privacy, retention, school/guardian arrangements and content safeguards.",
+    "Choose an approved model and review its specific retention terms.",
+    "Choose a backend host and real endpoint; keep provider and Firebase credentials outside the website workspace.",
+    "Approve API/hosting costs and configure provider-side spending controls.",
+    "Review request ceilings for the actual class size and budget; the draft values are not a spending guarantee.",
+    "Review and back up the existing settings before any intentional migration."
+  ]
+}

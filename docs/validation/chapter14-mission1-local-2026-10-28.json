@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-28",
+  "missionId": "chapter14-mission1",
+  "status": "local-only-unpublished",
+  "unitChecks": {
+    "passed": 330,
+    "failed": 0,
+    "emulator": false
+  },
+  "browser": {
+    "passed": true,
+    "scenes": 6,
+    "mockedFirestore": true,
+    "checks": [
+      "rendering",
+      "images",
+      "clue exploration",
+      "decisions",
+      "authored help",
+      "recovery"
+    ]
+  },
+  "applyScriptSyntax": "passed",
+  "publication": {
+    "writes": 31,
+    "creates": 30,
+    "guardedUpdates": 1,
+    "prerequisites": 7,
+    "executed": false
+  },
+  "pending": [
+    "Independent teacher and curriculum review",
+    "Ordered publication",
+    "Authenticated live walkthrough",
+    "Hosting deployment"
+  ]
+}

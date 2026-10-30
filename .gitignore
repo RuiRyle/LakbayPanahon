@@ -64,6 +64,19 @@ node_modules/
 
 # dotenv environment variables file
 .env
+.env.*
+!.env.example
+
+# Future backend secrets must live outside the Live Server workspace.
+# These patterns are only a Git safeguard, not web-server access control.
+**/*firebase-adminsdk*.json
+*.service-account.json
+/server/bayani/credentials/
 
 # dataconnect generated files
 .dataconnect
+
+# Generated local website staging packages
+/build/student-web-*/
+/build/student-review-*/
+/build/student-assessment-*/

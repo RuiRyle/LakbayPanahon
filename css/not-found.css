@@ -1,0 +1,9 @@
+:root{color-scheme:dark;font-family:Arial,Helvetica,sans-serif;background:#081629;color:#dfe9f4}
+*{box-sizing:border-box}body{margin:0;min-height:100dvh;display:grid;place-items:center;padding:32px;background:radial-gradient(ellipse at 50% 24%,#153650,transparent 65%)}
+main{width:min(100%,660px);text-align:center}.brand{display:inline-flex;align-items:center;gap:10px;color:#f0d18a;text-decoration:none;font-weight:800;letter-spacing:.01em}
+.compass{display:grid;place-items:center;width:140px;height:140px;margin:50px auto 30px;border:1px solid #aa905b;border-radius:50%;background:radial-gradient(circle,#1b3c57,#0b2038);box-shadow:0 0 0 10px #d7b5680b,0 18px 60px #02091455}
+.compass span{font-size:92px;line-height:1;color:#e9c879;animation:compass-arrive 1s cubic-bezier(.2,.8,.2,1) both}.eyebrow{color:#d7b568;font-size:.72rem;font-weight:800;letter-spacing:.13em}
+h1{margin:14px 0 18px;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.2;letter-spacing:-.03em}p{max-width:52ch;margin:0 auto;color:#b6c8d9;font-size:1rem;line-height:1.8}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:30px 0}nav a{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:46px;padding:12px 20px;border:1px solid #4a6278;border-radius:12px;background:#10283f;color:#dfe9f4;text-decoration:none;font-size:.9rem;font-weight:700}
+nav .primary{background:#e1bc68;border-color:#e1bc68;color:#10223b}a:hover{filter:brightness(1.1)}a:focus-visible{outline:3px solid #f1cf7c;outline-offset:5px}.note{font-size:.8rem;color:#9fb3c6}
+@keyframes compass-arrive{from{transform:rotate(-30deg);opacity:.5}to{transform:rotate(0);opacity:1}}@media(prefers-reduced-motion:reduce){.compass span{animation:none}}

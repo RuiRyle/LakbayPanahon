@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-30T04:08:21.185Z",
+  "status": "pass",
+  "error": null,
+  "mode": "loopback-real-shell-and-web-audio-with-simulated-child-auth",
+  "limits": "No Firebase/auth acceptance, speaker listening, waveform-quality judgment or fully populated learning screens",
+  "checks": [
+    "Trusted input starts one real running AudioContext",
+    "Shared player and music graph survive student-dashboard.html",
+    "Expected background gain target on student-dashboard.html",
+    "Shared player and music graph survive my-journey.html",
+    "Expected background gain target on my-journey.html",
+    "Shared player and music graph survive story.html",
+    "Expected background gain target on story.html",
+    "Shared player and music graph survive quiz.html",
+    "Expected background gain target on quiz.html",
+    "Shared player and music graph survive practice.html",
+    "Expected background gain target on practice.html",
+    "Shared player and music graph survive chapter-challenge.html",
+    "Expected background gain target on chapter-challenge.html",
+    "Shared player and music graph survive settings.html",
+    "Expected background gain target on settings.html",
+    "Audio timeline continues across child-page navigation",
+    "Daily focus attenuates background music without restarting it",
+    "Leaving Daily Challenge focus restores normal music gain",
+    "Settings music volume updates the shared player",
+    "Disabling Focus audio preserves the chosen volume on quiz entry",
+    "Music switch stops the shared player",
+    "Music remains off after another page loads",
+    "Restart after turning music off reuses the existing AudioContext",
+    "Removing authenticated state stops shared background playback",
+    "No uncaught parent audio or module errors"
+  ],
+  "sources": [
+    {
+      "file": "js/student-shell.js",
+      "sha256": "a91bf7254e641ea23cafa3698b5d5b8c2f08c5fe6f20a6f6d9a9c4320196bf13"
+    },
+    {
+      "file": "js/student-shell-route.js",
+      "sha256": "40c7dbf2b4f244cd5dcdd0b0006579ae463993a113737b04e066e223d4bfd9fe"
+    },
+    {
+      "file": "js/student-audio-host.js",
+      "sha256": "197a04cb9a489bc4ee722d3cc483ffedbc110780052bf86c257b9dd48f5ba288"
+    },
+    {
+      "file": "js/page-transition.js",
+      "sha256": "dc97f42639d5ce8af02e7924dea149da49ababc297657633f0d7d43c5c8f8f78"
+    },
+    {
+      "file": "pages/student-shell.html",
+      "sha256": "97446444ecb37265c88dbe9482d25d949fd513ccd4dde7a9f18bba1e6af7e056"
+    }
+  ]
+}

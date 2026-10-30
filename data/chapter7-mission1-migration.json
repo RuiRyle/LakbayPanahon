@@ -1,0 +1,1295 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 2 Chapter 7 Mission 1 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://sc.judiciary.gov.ph/10-3/",
+    "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+    "https://www.gutenberg.org/files/41443/41443-h/41443-h.htm",
+    "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-6",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-6",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/colonial-history-investigator",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter6-mission1",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter6-mission2",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter6-mission3",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter6-mission4",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 4
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter7-mission1",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-7",
+        "title": "The Governor-General and Central Government",
+        "order": 1,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate colonial offices, responsibilities, institutions and the evidence of how decisions affected people.",
+        "learningObjective": "Explain central colonial government while distinguishing offices, responsibilities, implementation and source limits.",
+        "learningObjectives": [
+          "Explain office and crown using lesson evidence.",
+          "Explain responsibilities using lesson evidence.",
+          "Explain decision and implementation using lesson evidence.",
+          "Explain audiencia and institutions using lesson evidence.",
+          "Explain source limits using lesson evidence."
+        ],
+        "lessonRecap": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "sourceUrls": [
+          "https://sc.judiciary.gov.ph/10-3/",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://www.gutenberg.org/files/41443/41443-h/41443-h.htm",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter7-quiz1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission1",
+        "title": "Central Government - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "governor-crown",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "governor-duties",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "central-local-links",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "audiencia-institution",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "government-source-check",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission1-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission1",
+        "status": "active",
+        "order": 1,
+        "title": "Who Did the Governor-General Represent?",
+        "content": "The governor-general was a leading official of the Spanish colonial government, acting under the authority of the Spanish Crown. The Crown means the monarchy and its authority, not only the object worn on a head. This office belonged to colonial government, not to a modern elected Philippine presidency.\n\nAn office and a person are different. Different people could hold the office at different times. Knowing one name does not explain all its responsibilities or establish that every holder acted identically. The arrangements of government also changed over the long colonial period.\n\nTry a fictional museum-caption task. A caption calls the governor-general the elected president of an independent Philippine republic. Correct the relationship: this was an official of an outside colonial monarchy. Do not replace one misleading title with a claim that the official could act without laws or other institutions.\n\nOur diagram is a simplified relationship guide, not a complete chart for every year.",
+        "reviewTopics": [
+          "governor-crown"
+        ],
+        "imageUrl": "../assets/story/government-authority.svg",
+        "imageFit": "contain",
+        "imageAlt": "A simplified teaching guide for Who Did the Governor-General Represent?. It shows relationships and evidence questions, not an unchanged structure for every year or an original historical order.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "The Crown",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Spanish monarchy was the source of colonial authority represented by the office.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Office and holder",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An office can have different holders. One person's actions do not describe every period.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Avoid a modern substitution",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A colonial governor-general was not the elected president of a modern independent Philippine republic.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which label fits the office in this mission?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A leading colonial official acting under the Spanish Crown",
+          "The elected president of a modern independent Philippine republic",
+          "A leader chosen identically by every local community",
+          "A person without any relationship to the monarchy"
+        ],
+        "decisionCorrectAnswer": "A leading colonial official acting under the Spanish Crown",
+        "decisionExplanation": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "keyTerm": "Crown",
+        "keyTermDefinition": "The monarchy and its authority.",
+        "historicalInsight": "A colonial governor-general was not the elected president of a modern independent Philippine republic.",
+        "learningHelp": {
+          "explanation": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "vocabulary": [
+            {
+              "term": "Crown",
+              "definition": "The monarchy and its authority."
+            }
+          ],
+          "example": "The Spanish monarchy was the source of colonial authority represented by the office.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://sc.judiciary.gov.ph/10-3/",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://www.gutenberg.org/files/41443/41443-h/41443-h.htm",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission1-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission1",
+        "status": "active",
+        "order": 2,
+        "title": "Responsibilities Were More Than a Title",
+        "content": "Central government involved administration, resources and defense. The governor-general held broad responsibilities, including the military role associated with captain-general. Broad responsibilities did not mean one person personally carried out every task. Officials, navigators, messengers and local participants all mattered.\n\nA responsibility tells what an office was meant to do. It does not prove how well a duty was performed. To investigate performance, ask what decisions were made, who acted and what consequences followed.\n\nWatch how to sort a fictional record. A description of an office's defense duty names a responsibility. A later report about supplies reaching a particular place concerns an action and its result. Keep those categories separate before evaluating the official.\n\nThe examples are classroom exercises, not recovered orders. Later missions examine local offices and particular systems; this scene introduces central responsibilities without claiming that one chart describes every year or that all communities experienced government identically.",
+        "reviewTopics": [
+          "governor-duties"
+        ],
+        "imageUrl": "../assets/story/government-duties.svg",
+        "imageFit": "contain",
+        "imageAlt": "A simplified teaching guide for Responsibilities Were More Than a Title. It shows relationships and evidence questions, not an unchanged structure for every year or an original historical order.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Administration",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Central officials made and coordinated governing decisions; many people were needed to carry them out.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Defense",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The office had military responsibilities associated with captain-general, alongside civil responsibilities.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Duty versus performance",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A responsibility does not establish that it was fulfilled fairly or effectively. Check actions and consequences.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation treats responsibilities carefully?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One official performed every task alone",
+          "A duty proves it was always performed fairly",
+          "A title reveals every resident's approval",
+          "The office had civil and military responsibilities carried out through many participants"
+        ],
+        "decisionCorrectAnswer": "The office had civil and military responsibilities carried out through many participants",
+        "decisionExplanation": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "keyTerm": "Responsibility",
+        "keyTermDefinition": "A duty an office or person is expected to carry out.",
+        "historicalInsight": "A responsibility does not establish that it was fulfilled fairly or effectively. Check actions and consequences.",
+        "learningHelp": {
+          "explanation": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "vocabulary": [
+            {
+              "term": "Responsibility",
+              "definition": "A duty an office or person is expected to carry out."
+            }
+          ],
+          "example": "Central officials made and coordinated governing decisions; many people were needed to carry them out.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://sc.judiciary.gov.ph/10-3/",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://www.gutenberg.org/files/41443/41443-h/41443-h.htm",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission1-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission1",
+        "status": "active",
+        "order": 3,
+        "title": "How Did a Central Decision Reach People?",
+        "content": "A central decision did not travel by itself. Written messages, officials and resources connected a governing center with particular places. An order's issue, delivery and implementation are separate events. Implementation means putting a decision into practice.\n\nYour earlier investigations showed why a colonial base did not establish immediate control everywhere. The same question applies here: where and when was a decision carried out, and how did people respond? A central-government chart describes relationships; it is not evidence that every arrow worked perfectly.\n\nTry a fictional worked example. A record shows an order was issued in Manila. A second record shows that a messenger delivered it elsewhere. Neither alone tells whether it was put into practice there. Seek evidence of the later action and local responses.\n\nDo not invent a universal response or treat distance as the only factor. Resources, relationships, knowledge and resistance could shape what happened. Local government and Indigenous leadership are the next mission's focus.",
+        "reviewTopics": [
+          "central-local-links"
+        ],
+        "imageUrl": "../assets/story/government-order-path.svg",
+        "imageFit": "contain",
+        "imageAlt": "A simplified teaching guide for How Did a Central Decision Reach People?. It shows relationships and evidence questions, not an unchanged structure for every year or an original historical order.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Issue",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An order being issued establishes a decision, not all later actions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Delivery",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Evidence of delivery differs from evidence that a decision was put into practice.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Implementation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Check actions in the affected place, together with local responses and limits.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An order was issued and delivered. What still needs checking?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Only the official's title written again",
+          "Every resident's thoughts can now be assumed",
+          "Whether and how it was put into practice in the affected place",
+          "Nothing, because delivery proves universal obedience"
+        ],
+        "decisionCorrectAnswer": "Whether and how it was put into practice in the affected place",
+        "decisionExplanation": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "keyTerm": "Implementation",
+        "keyTermDefinition": "Putting a decision or plan into practice.",
+        "historicalInsight": "Check actions in the affected place, together with local responses and limits.",
+        "learningHelp": {
+          "explanation": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "vocabulary": [
+            {
+              "term": "Implementation",
+              "definition": "Putting a decision or plan into practice."
+            }
+          ],
+          "example": "An order being issued establishes a decision, not all later actions.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://sc.judiciary.gov.ph/10-3/",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://www.gutenberg.org/files/41443/41443-h/41443-h.htm",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission1-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission1",
+        "status": "active",
+        "order": 4,
+        "title": "Another Institution: The Audiencia",
+        "content": "The Real Audiencia de Manila was an institution with judicial and other governmental functions. Judicial means connected with courts and judging legal matters. The Supreme Court's historical account describes it as a court with additional executive, advisory and administrative roles.\n\nThe governor-general also served as its presiding officer in the historical arrangement described by that account. Do not imagine two entirely unrelated boxes that never shared responsibilities. At the same time, a court and a governor's office are different concepts, and neither is the whole of government.\n\nFor this fictional exhibit task, compare a caption saying the governor was the only institution with a source naming the Audiencia. Correct the caption while keeping a limit: the existence of an institution does not prove that all decisions were fair or that every person had equal access to justice.\n\nThis is an introductory overview. Institutional powers and arrangements changed; our simple guide is not a modern separation-of-powers chart or an unchanged structure for every colonial year.",
+        "reviewTopics": [
+          "audiencia-institution"
+        ],
+        "imageUrl": "../assets/story/government-institutions.svg",
+        "imageFit": "contain",
+        "imageAlt": "A simplified teaching guide for Another Institution: The Audiencia. It shows relationships and evidence questions, not an unchanged structure for every year or an original historical order.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Judicial work",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Audiencia handled court matters and had additional governmental functions in the historical account.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Overlapping roles",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The governor-general could preside over the Audiencia. Responsibilities were not identical to a modern government chart.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A limit on conclusions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An institution's existence does not prove universal fairness, access or effective enforcement.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which caption uses the Audiencia evidence carefully?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Having a court guarantees every person equal access",
+          "It was a court with other governmental roles; its existence does not prove universal fairness",
+          "The governor was the only institution that existed",
+          "The Audiencia was identical to every modern government branch"
+        ],
+        "decisionCorrectAnswer": "It was a court with other governmental roles; its existence does not prove universal fairness",
+        "decisionExplanation": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "keyTerm": "Judicial",
+        "keyTermDefinition": "Connected with courts and judging legal matters.",
+        "historicalInsight": "An institution's existence does not prove universal fairness, access or effective enforcement.",
+        "learningHelp": {
+          "explanation": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "vocabulary": [
+            {
+              "term": "Judicial",
+              "definition": "Connected with courts and judging legal matters."
+            }
+          ],
+          "example": "The Audiencia handled court matters and had additional governmental functions in the historical account.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://sc.judiciary.gov.ph/10-3/",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://www.gutenberg.org/files/41443/41443-h/41443-h.htm",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission1-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission1",
+        "status": "active",
+        "order": 5,
+        "title": "An Order Is Not Everyone's Experience",
+        "content": "A record can tell us what an official ordered without telling us every effect. It may emphasize a duty, an intended result or the official's own explanation. Local accounts and evidence of actions can help test the claim.\n\nThe Library of Congress discussion of colonial relationships highlights local interests and connections. This helps us ask who participated and whose viewpoint is missing from a simple account of central power. It does not mean all official records are useless; it means their claims need careful reading.\n\nWork through a fictional report: the governor ordered supplies moved, so every household benefited equally. The first clause describes an order. The second needs separate evidence about delivery, implementation and effects on people. A good report states the gap rather than fills it with an invented speech.\n\nAsk what the record establishes and what remains uncertain. The office's broad power did not make every resident's experience identical, and criticism of a particular action does not make all people in a group the same.",
+        "reviewTopics": [
+          "government-source-check"
+        ],
+        "imageUrl": "../assets/story/government-order-path.svg",
+        "imageFit": "contain",
+        "imageAlt": "A simplified teaching guide for An Order Is Not Everyone's Experience. It shows relationships and evidence questions, not an unchanged structure for every year or an original historical order.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Identify the record",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An official account may describe an order or intention rather than the complete result.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Check consequences",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Evidence about implementation and affected people is needed for claims about benefits or harms.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Respect the limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One source does not reveal every person's thoughts or prove identical experiences.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A report says an order benefited everyone equally, but gives no outcome evidence. What should a learner do?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Separate the recorded order from the unproven claim about effects",
+          "Accept the effect because an official issued the order",
+          "Invent household statements to make the claim convincing",
+          "Treat the official's intention as every person's experience"
+        ],
+        "decisionCorrectAnswer": "Separate the recorded order from the unproven claim about effects",
+        "decisionExplanation": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "keyTerm": "Source limit",
+        "keyTermDefinition": "What the available evidence cannot establish by itself.",
+        "historicalInsight": "One source does not reveal every person's thoughts or prove identical experiences.",
+        "learningHelp": {
+          "explanation": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "vocabulary": [
+            {
+              "term": "Source limit",
+              "definition": "What the available evidence cannot establish by itself."
+            }
+          ],
+          "example": "An official account may describe an order or intention rather than the complete result.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://sc.judiciary.gov.ph/10-3/",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://www.gutenberg.org/files/41443/41443-h/41443-h.htm",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission1-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission1",
+        "status": "active",
+        "order": 6,
+        "title": "Build Your Central Government Report",
+        "content": "Explain central government without turning it into one person doing everything. Identify the governor-general's relationship to the Spanish Crown. Connect a responsibility with the people and resources needed to carry it out. Distinguish an issued decision, its delivery and its implementation.\n\nInclude the Audiencia as another institution with judicial and other roles. Do not force the arrangement into a modern government chart or assume the existence of a court proves fairness for all. Keep period, place and the limits of the source in your explanation.\n\nUse this fictional report frame in your own words: The office represented [authority]. Its responsibilities included [duty]. The evidence records [action], but we need [further evidence] to assess its effects on [affected people]. This is a classroom guide, not an original speech.\n\nThe five-question quiz checks these ideas. Revisit difficult topics and use targeted practice before retrying. Passing earns the mission reward once. Only Chapter 7 Mission 1 is prepared here; the remaining missions and chapter challenge still need to be built.",
+        "reviewTopics": [
+          "governor-crown",
+          "governor-duties",
+          "central-local-links",
+          "audiencia-institution",
+          "government-source-check"
+        ],
+        "imageUrl": "../assets/story/government-institutions.svg",
+        "imageFit": "contain",
+        "imageAlt": "A report guide distinguishes colonial authority, responsibilities and institutions from evidence of implementation and effects. The chapter is still partial.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Explain the office",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Distinguish the Crown, an office and its different holders.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Explain the process",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Connect duties and institutions with issue, delivery and implementation.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Explain the evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask whose account survives and what further evidence is needed for effects on people.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which final explanation fits the investigation?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One official acted alone and all decisions worked identically everywhere",
+          "A court's existence proves universal fairness",
+          "A delivered order reveals every household's private thoughts",
+          "Central offices represented colonial authority, while implementation and effects required many participants and further evidence"
+        ],
+        "decisionCorrectAnswer": "Central offices represented colonial authority, while implementation and effects required many participants and further evidence",
+        "decisionExplanation": "Explain colonial offices and responsibilities while distinguishing institutional relationships from evidence of actual effects.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain colonial offices and responsibilities while distinguishing institutional relationships from evidence of actual effects.",
+        "keyTerm": "Central government",
+        "keyTermDefinition": "Institutions responsible for governing decisions from a central level.",
+        "historicalInsight": "Ask whose account survives and what further evidence is needed for effects on people.",
+        "learningHelp": {
+          "explanation": "Explain colonial offices and responsibilities while distinguishing institutional relationships from evidence of actual effects.",
+          "vocabulary": [
+            {
+              "term": "Central government",
+              "definition": "Institutions responsible for governing decisions from a central level."
+            }
+          ],
+          "example": "Distinguish the Crown, an office and its different holders.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://sc.judiciary.gov.ph/10-3/",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://www.gutenberg.org/files/41443/41443-h/41443-h.htm",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz1-question1",
+      "create": true,
+      "fields": {
+        "question": "Which authority did the Spanish colonial governor-general represent?",
+        "optionA": "The Spanish Crown",
+        "optionB": "A modern independent Philippine republic",
+        "optionC": "Every local community through an identical election",
+        "optionD": "An institution with no connection to the monarchy",
+        "correctAnswer": "A",
+        "explanation": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "learningPoint": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "historicalClue": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "answerExplanations": {
+          "A": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "B": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "C": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "D": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder."
+        },
+        "quizId": "chapter7-quiz1",
+        "order": 1,
+        "status": "active",
+        "topic": "governor-crown",
+        "topicLabel": "Office and Crown",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz1-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish the office from its holder?",
+        "optionA": "Only one person ever held it",
+        "optionB": "A title reveals all outcomes",
+        "optionC": "Every holder had identical conduct",
+        "optionD": "Different people could hold the office and act differently over time",
+        "correctAnswer": "D",
+        "explanation": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "learningPoint": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "historicalClue": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "B": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "C": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "D": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder."
+        },
+        "quizId": "chapter7-quiz1",
+        "order": 101,
+        "status": "active",
+        "topic": "governor-crown",
+        "topicLabel": "Office and Crown",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission1-governor-crown-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which label fits the office in this mission?",
+        "optionA": "The elected president of a modern independent Philippine republic",
+        "optionB": "A leader chosen identically by every local community",
+        "optionC": "A person without any relationship to the monarchy",
+        "optionD": "A leading colonial official acting under the Spanish Crown",
+        "correctAnswer": "D",
+        "explanation": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "learningPoint": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "historicalClue": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "B": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "C": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "D": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder."
+        },
+        "missionId": "chapter7-mission1",
+        "topic": "governor-crown",
+        "topicLabel": "Office and Crown",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The monarchy and its authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission1-governor-crown-practice2",
+      "create": true,
+      "fields": {
+        "question": "An exhibit calls the governor-general a modern elected Philippine president. What correction fits?",
+        "optionA": "Say no other institution existed",
+        "optionB": "Treat the office as everyone's private wishes",
+        "optionC": "Identify the colonial office and its relationship to the Spanish monarchy",
+        "optionD": "Keep the modern title because all government offices are identical",
+        "correctAnswer": "C",
+        "explanation": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "learningPoint": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "historicalClue": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "B": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "C": "The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder.",
+          "D": "Review the lesson clues. The office represented Spanish colonial authority. Distinguish it from a modern presidency and from any one officeholder."
+        },
+        "missionId": "chapter7-mission1",
+        "topic": "governor-crown",
+        "topicLabel": "Office and Crown",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The monarchy and its authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz1-question2",
+      "create": true,
+      "fields": {
+        "question": "Which statement best describes the governor-general's responsibilities?",
+        "optionA": "Every regional task personally completed alone",
+        "optionB": "Only sailing a ship without officials",
+        "optionC": "A guarantee of identical outcomes everywhere",
+        "optionD": "Broad civil and military duties carried out through many participants",
+        "correctAnswer": "D",
+        "explanation": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "learningPoint": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "historicalClue": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "B": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "C": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "D": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title."
+        },
+        "quizId": "chapter7-quiz1",
+        "order": 2,
+        "status": "active",
+        "topic": "governor-duties",
+        "topicLabel": "Responsibilities",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz1-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "What does an office's defense duty establish by itself?",
+        "optionA": "Every resident's experience",
+        "optionB": "The absence of other duties",
+        "optionC": "A responsibility, not proof that it was fulfilled fairly or effectively",
+        "optionD": "Universal consent to every action",
+        "correctAnswer": "C",
+        "explanation": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "learningPoint": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "historicalClue": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "B": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "C": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "D": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title."
+        },
+        "quizId": "chapter7-quiz1",
+        "order": 102,
+        "status": "active",
+        "topic": "governor-duties",
+        "topicLabel": "Responsibilities",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission1-governor-duties-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which explanation treats responsibilities carefully?",
+        "optionA": "A duty proves it was always performed fairly",
+        "optionB": "A title reveals every resident's approval",
+        "optionC": "The office had civil and military responsibilities carried out through many participants",
+        "optionD": "One official performed every task alone",
+        "correctAnswer": "C",
+        "explanation": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "learningPoint": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "historicalClue": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "B": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "C": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "D": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title."
+        },
+        "missionId": "chapter7-mission1",
+        "topic": "governor-duties",
+        "topicLabel": "Responsibilities",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A duty an office or person is expected to carry out.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission1-governor-duties-practice2",
+      "create": true,
+      "fields": {
+        "question": "A record lists a duty but no actions. What further evidence helps evaluate performance?",
+        "optionA": "An invented speech by every resident",
+        "optionB": "Decisions, implementation and consequences in particular settings",
+        "optionC": "Only the title in larger letters",
+        "optionD": "A claim that duties always guarantee success",
+        "correctAnswer": "B",
+        "explanation": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "learningPoint": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "historicalClue": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "B": "Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "C": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title.",
+          "D": "Review the lesson clues. Broad duties involved administration and defense. Their actual performance requires evidence, not assumptions based on title."
+        },
+        "missionId": "chapter7-mission1",
+        "topic": "governor-duties",
+        "topicLabel": "Responsibilities",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A duty an office or person is expected to carry out.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz1-question3",
+      "create": true,
+      "fields": {
+        "question": "Which sequence distinguishes an order's stages?",
+        "optionA": "Delivery and universal consent are identical",
+        "optionB": "Every stage is the official's title",
+        "optionC": "Issue, delivery, then implementation to investigate",
+        "optionD": "Implementation is proven before any evidence exists",
+        "correctAnswer": "C",
+        "explanation": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "learningPoint": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "historicalClue": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "B": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "C": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "D": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked."
+        },
+        "quizId": "chapter7-quiz1",
+        "order": 3,
+        "status": "active",
+        "topic": "central-local-links",
+        "topicLabel": "Decision and implementation",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz1-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Does proof of delivery establish that an order was carried out?",
+        "optionA": "No; because delivery can never be recorded",
+        "optionB": "No; implementation still needs evidence",
+        "optionC": "Yes; all delivered orders work identically",
+        "optionD": "Yes; it reveals every household's feelings",
+        "correctAnswer": "B",
+        "explanation": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "learningPoint": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "historicalClue": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "B": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "C": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "D": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked."
+        },
+        "quizId": "chapter7-quiz1",
+        "order": 103,
+        "status": "active",
+        "topic": "central-local-links",
+        "topicLabel": "Decision and implementation",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission1-central-local-links-practice1",
+      "create": true,
+      "fields": {
+        "question": "An order was issued and delivered. What still needs checking?",
+        "optionA": "Every resident's thoughts can now be assumed",
+        "optionB": "Whether and how it was put into practice in the affected place",
+        "optionC": "Nothing, because delivery proves universal obedience",
+        "optionD": "Only the official's title written again",
+        "correctAnswer": "B",
+        "explanation": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "learningPoint": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "historicalClue": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "B": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "C": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "D": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked."
+        },
+        "missionId": "chapter7-mission1",
+        "topic": "central-local-links",
+        "topicLabel": "Decision and implementation",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Putting a decision or plan into practice.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission1-central-local-links-practice2",
+      "create": true,
+      "fields": {
+        "question": "An order was delivered but no later action is documented. Which statement is careful?",
+        "optionA": "Delivery is supported; its implementation and effects remain to be checked",
+        "optionB": "All communities certainly obeyed",
+        "optionC": "The order cannot have existed",
+        "optionD": "All local responses were identical",
+        "correctAnswer": "A",
+        "explanation": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "learningPoint": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "historicalClue": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+        "answerExplanations": {
+          "A": "Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "B": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "C": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked.",
+          "D": "Review the lesson clues. Issue, delivery and implementation are separate. Investigate what happened in particular places rather than assuming every decision worked."
+        },
+        "missionId": "chapter7-mission1",
+        "topic": "central-local-links",
+        "topicLabel": "Decision and implementation",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Putting a decision or plan into practice.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz1-question4",
+      "create": true,
+      "fields": {
+        "question": "What was the Real Audiencia de Manila in this overview?",
+        "optionA": "An identical copy of every modern government branch",
+        "optionB": "A court with additional governmental functions",
+        "optionC": "The only office in the entire colony",
+        "optionD": "A passing expedition without institutions",
+        "correctAnswer": "B",
+        "explanation": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "learningPoint": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "historicalClue": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "B": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "C": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "D": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone."
+        },
+        "quizId": "chapter7-quiz1",
+        "order": 4,
+        "status": "active",
+        "topic": "audiencia-institution",
+        "topicLabel": "Audiencia and institutions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz1-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "What does the governor-general's presiding role suggest about the historical arrangement?",
+        "optionA": "Some responsibilities overlapped rather than matching a modern chart exactly",
+        "optionB": "Courts and governors never had any connection",
+        "optionC": "One person personally completed every court task",
+        "optionD": "All institutions remained unchanged for every year",
+        "correctAnswer": "A",
+        "explanation": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "learningPoint": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "historicalClue": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "answerExplanations": {
+          "A": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "B": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "C": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "D": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone."
+        },
+        "quizId": "chapter7-quiz1",
+        "order": 104,
+        "status": "active",
+        "topic": "audiencia-institution",
+        "topicLabel": "Audiencia and institutions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission1-audiencia-institution-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which caption uses the Audiencia evidence carefully?",
+        "optionA": "It was a court with other governmental roles; its existence does not prove universal fairness",
+        "optionB": "The governor was the only institution that existed",
+        "optionC": "The Audiencia was identical to every modern government branch",
+        "optionD": "Having a court guarantees every person equal access",
+        "correctAnswer": "A",
+        "explanation": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "learningPoint": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "historicalClue": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "answerExplanations": {
+          "A": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "B": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "C": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "D": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone."
+        },
+        "missionId": "chapter7-mission1",
+        "topic": "audiencia-institution",
+        "topicLabel": "Audiencia and institutions",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Connected with courts and judging legal matters.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission1-audiencia-institution-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption says a court's existence proves equal justice for everyone. What is missing?",
+        "optionA": "Only the institution's name repeated",
+        "optionB": "Only a picture of an official",
+        "optionC": "A claim that offices always work perfectly",
+        "optionD": "Evidence of access, decisions and outcomes for people",
+        "correctAnswer": "D",
+        "explanation": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "learningPoint": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "historicalClue": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "B": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "C": "Review the lesson clues. The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone.",
+          "D": "The Audiencia had judicial and other roles, including institutional overlap. Its existence alone does not establish fair outcomes for everyone."
+        },
+        "missionId": "chapter7-mission1",
+        "topic": "audiencia-institution",
+        "topicLabel": "Audiencia and institutions",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Connected with courts and judging legal matters.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz1-question5",
+      "create": true,
+      "fields": {
+        "question": "What does a record of an order establish most directly?",
+        "optionA": "That the order was recorded, not every effect on people",
+        "optionB": "That every person benefited equally",
+        "optionC": "That all communities freely agreed",
+        "optionD": "That the official knew every private thought",
+        "correctAnswer": "A",
+        "explanation": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "learningPoint": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "historicalClue": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "answerExplanations": {
+          "A": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "B": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "C": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "D": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible."
+        },
+        "quizId": "chapter7-quiz1",
+        "order": 5,
+        "status": "active",
+        "topic": "government-source-check",
+        "topicLabel": "Source limits",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz1-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare an official account with evidence from affected places?",
+        "optionA": "Every official record is automatically useless",
+        "optionB": "Local evidence must always be identical",
+        "optionC": "A title guarantees fairness",
+        "optionD": "The official account may not show implementation or all local experiences",
+        "correctAnswer": "D",
+        "explanation": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "learningPoint": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "historicalClue": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "B": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "C": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "D": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible."
+        },
+        "quizId": "chapter7-quiz1",
+        "order": 105,
+        "status": "active",
+        "topic": "government-source-check",
+        "topicLabel": "Source limits",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission1-government-source-check-practice1",
+      "create": true,
+      "fields": {
+        "question": "A report says an order benefited everyone equally, but gives no outcome evidence. What should a learner do?",
+        "optionA": "Accept the effect because an official issued the order",
+        "optionB": "Invent household statements to make the claim convincing",
+        "optionC": "Treat the official's intention as every person's experience",
+        "optionD": "Separate the recorded order from the unproven claim about effects",
+        "correctAnswer": "D",
+        "explanation": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "learningPoint": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "historicalClue": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "B": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "C": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "D": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible."
+        },
+        "missionId": "chapter7-mission1",
+        "topic": "government-source-check",
+        "topicLabel": "Source limits",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "What the available evidence cannot establish by itself.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission1-government-source-check-practice2",
+      "create": true,
+      "fields": {
+        "question": "A report equates an intended benefit with everyone's actual experience. How should it change?",
+        "optionA": "Assume all affected people had identical interests",
+        "optionB": "Remove the need for evidence of implementation",
+        "optionC": "Distinguish intention from documented consequences and identify missing evidence",
+        "optionD": "Invent a speech confirming universal benefit",
+        "correctAnswer": "C",
+        "explanation": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "learningPoint": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "historicalClue": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "B": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "C": "A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible.",
+          "D": "Review the lesson clues. A recorded order needs separate evidence of implementation and effects. Keep source viewpoint and uncertainty visible."
+        },
+        "missionId": "chapter7-mission1",
+        "topic": "government-source-check",
+        "topicLabel": "Source limits",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "What the available evidence cannot establish by itself.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter7-mission1-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission1",
+        "name": "Central Government Evidence Journal",
+        "description": "A learning-game token for explaining colonial institutions and checking the effects of decisions.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Connect responsibilities and institutions with evidence about implementation and affected people.",
+          "reflectionQuestion": "Which clue helped you distinguish a recorded order from its effects?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-7",
+      "create": true,
+      "fields": {
+        "eraId": "spanish-exploration-colonial-rule",
+        "title": "Colonial Government and Administration",
+        "description": "Mission 1 introduces the governor-general and central government. Missions 2-4 and the chapter challenge are being prepared.",
+        "order": 7,
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "eras/spanish-exploration-colonial-rule",
+      "create": false,
+      "expected": {
+        "description": "Chapter 5 offers four missions and an evidence challenge. Chapter 6 offers four missions and the Colonial Rule Evidence Challenge. Later chapters are being prepared."
+      },
+      "fields": {
+        "description": "Chapters 5-6 offer four missions and a challenge each. Chapter 7 begins with central colonial government; remaining content is being prepared."
+      }
+    }
+  ]
+}

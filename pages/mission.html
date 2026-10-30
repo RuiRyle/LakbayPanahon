@@ -20,15 +20,24 @@
         rel="stylesheet"
         href="../css/mission.css"
     >
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
 </head>
 
 
 <body
-    class="auth-checking"
+    class="auth-checking lakbay-theme"
     data-role="student"
 >
+    <div class="student-loading-shell" role="status" aria-live="polite">
+        <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
+        <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p>Loading your learning space...</p><div class="student-loading-heading" aria-hidden="true"></div><div class="student-loading-cards" aria-hidden="true"><i></i><i></i><i></i></div><div class="student-loading-panel" aria-hidden="true"></div></div></div>
+    </div>
+
 
     <div class="student-app">
+        <a class="student-skip-link" href="#student-main">Skip to main content</a>
 
 
         <!-- =========================================
@@ -73,7 +82,7 @@
 
 
                 <a
-                    href="student-dashboard.html#journey"
+                    href="my-journey.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">📖</span>
@@ -91,7 +100,7 @@
 
 
                 <a
-                    href="#"
+                    href="my-class.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">🏫</span>
@@ -100,11 +109,11 @@
 
 
                 <a
-                    href="student-dashboard.html#dailyChallenge"
+                    href="bayani-ai.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">⚡</span>
-                    <span>Daily Challenge</span>
+                    <span>Bayani AI</span>
                 </a>
 
 
@@ -115,6 +124,7 @@
                     <span class="nav-icon">🏆</span>
                     <span>Achievements</span>
                 </a>
+                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 13.5 1.1.8-1.1 1.9-1.3-.5a7.8 7.8 0 0 1-1.5.9l-.2 1.4h-2.2l-.3-1.4a7.8 7.8 0 0 1-1.7 0l-.8 1.2-1.9-1.1.5-1.3a7.8 7.8 0 0 1-.9-1.5l-1.4-.2v-2.2l1.4-.3a7.8 7.8 0 0 1 0-1.7L7.9 8.7 9 6.8l1.3.5a7.8 7.8 0 0 1 1.5-.9l.2-1.4h2.2l.3 1.4a7.8 7.8 0 0 1 1.7 0l.8-1.2 1.9 1.1-.5 1.3a7.8 7.8 0 0 1 .9 1.5l1.4.2v2.2l-1.4.3a7.8 7.8 0 0 1 0 1.7Z"/></svg></span><span>Settings</span></a>
 
             </nav>
 
@@ -138,7 +148,7 @@
              MAIN CONTENT
         ========================================== -->
 
-        <main class="main-content">
+        <main tabindex="-1" id="student-main" class="main-content">
 
 
             <!-- =====================================
@@ -248,6 +258,8 @@
 
                 <!-- MISSION -->
 
+                <button id="retryMissionLoadButton" type="button" class="primary-button" hidden>Try Loading Again</button>
+
                 <div
                     id="missionContent"
                     hidden
@@ -256,7 +268,7 @@
 
                     <!-- CHAPTER -->
 
-                    <section class="mission-chapter-header">
+                    <section class="mission-chapter-header"><span class="expedition-chapter-emblem" aria-hidden="true">&#10022;</span>
 
                         <span class="mission-chapter-label">
                             CURRENT CHAPTER
@@ -280,13 +292,15 @@
                          MISSION INTRODUCTION
                     ================================== -->
 
-                    <section class="mission-introduction-card">
+                    <section class="mission-introduction-card" aria-label="Selected mission briefing">
+                        <div class="mission-briefing-heading">
 
                         <div class="mission-compass">
                             🧭
                         </div>
 
 
+                        <div class="mission-briefing-copy">
                         <span
     class="mission-number"
     id="missionStatusLabel"
@@ -304,6 +318,11 @@
                             id="missionIntroduction"
                             class="mission-introduction-text"
                         ></p>
+
+                        </div>
+                        </div>
+
+                        <div class="mission-briefing-body">
 
 
                         <!-- LEARNING GOAL -->
@@ -324,7 +343,7 @@
                                     LEARNING GOAL
                                 </span>
 
-                                <p id="missionLearningObjective"></p>
+                                <div id="missionLearningObjective"></div>
 
                             </div>
 
@@ -344,8 +363,7 @@
             <div>
                 <strong>Explore the Story</strong>
                 <p>
-                    Investigate historical clues and discover
-                    how early Filipinos lived.
+                    Look for clues about the people, place, and time.
                 </p>
             </div>
         </div>
@@ -356,8 +374,8 @@
             <div>
                 <strong>Make Decisions</strong>
                 <p>
-                    Answer Quick Checks and make thoughtful
-                    historical decisions.
+                    Try each Quick Check and think about what
+                    the clues tell you.
                 </p>
             </div>
         </div>
@@ -366,9 +384,9 @@
             <span class="mission-step-number">3</span>
 
             <div>
-                <strong>Complete the Mission Trial</strong>
+                <strong>Take the Mission Quiz</strong>
                 <p>
-                    Finish five checkpoints to test what
+                    Complete the mission quiz to check what
                     you learned and earn your mission reward.
                 </p>
             </div>
@@ -379,6 +397,9 @@
 </div>
 
 
+                        </div>
+
+                        <div class="mission-briefing-footer">
                         <!-- MISSION INFORMATION -->
 
                         <div class="mission-information">
@@ -432,6 +453,7 @@
                         >
                             Begin Mission →
                         </button>
+                        </div>
 
                     </section>
 
@@ -505,6 +527,7 @@
         src="../js/mission.js"
     ></script>
 
+<script type="module" src="../js/page-transition.js"></script>
 </body>
 
 </html>

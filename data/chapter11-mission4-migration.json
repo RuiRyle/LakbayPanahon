@@ -1,0 +1,1317 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 11 Mission 4 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+    "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+    "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-10",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-10",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/social-cultural-investigator",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter10-mission1",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter10-mission2",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter10-mission3",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter10-mission4",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter10-mission5",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 5
+      }
+    },
+    {
+      "path": "missions/chapter11-mission1",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter11-mission2",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter11-mission3",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 3
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter11-mission4",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-11",
+        "title": "Diplomacy, Adaptation, Conflict, and Resistance",
+        "order": 4,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Compare diplomacy, adaptation and resistance through particular situations, constraints and outcome evidence.",
+        "learningObjective": "Distinguish community responses and their outcomes using dated evidence without reducing resistance to fighting.",
+        "learningObjectives": [
+          "Explain negotiation was an action using lesson evidence.",
+          "Explain adapting could help defend local affairs using lesson evidence.",
+          "Explain resistance was broader than fighting using lesson evidence.",
+          "Explain choices had conditions and limits using lesson evidence.",
+          "Explain a response was not its guaranteed result using lesson evidence."
+        ],
+        "lessonRecap": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter11-quiz4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission4",
+        "title": "Community Responses - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 4,
+        "questionBlueprint": [
+          {
+            "topic": "diplomacy-commitments",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "adaptation-resistance",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "conflict-resistance",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "response-constraints",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "response-outcomes",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission4-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission4",
+        "status": "active",
+        "order": 1,
+        "title": "Negotiation Was an Action",
+        "content": "Diplomacy can involve messages, discussions and agreements between parties. It is an action rather than simply the absence of fighting. The NHCP marker for Sultan Kudarat identifies a peace agreement in 1645 alongside earlier opposition and alliances. This named case reminds us that relationships could change over time.\n\nAn agreement records commitments, not every later outcome. Our fictional evidence desk separates a proposal, a signed agreement and a later action record. Ask which stage each supports before claiming that peace lasted or that a term was carried out. Parties could negotiate under unequal conditions. Signing does not prove every household agreed or that every earlier harm disappeared. We do not invent speeches for Kudarat or use this case to settle present-day territorial questions. Compare the source dates and purposes, then explain what remains unknown.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "diplomacy-commitments"
+        ],
+        "imageUrl": "../assets/story/response-evidence-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Negotiation Was an Action. Labelled clues distinguish action, conditions and outcome evidence; not an original treaty or a battle reenactment.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Communication",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Diplomacy involves messages and negotiation, not only the absence of conflict.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Named agreement",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP marker identifies a Kudarat peace agreement in 1645.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Follow-up",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An agreement needs later evidence to establish implementation and outcomes.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A peace agreement is used to claim every later term was fulfilled. What should be checked?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Later evidence of implementation and actual relations",
+          "Nothing because signing guarantees every outcome",
+          "Whether every household had identical wishes",
+          "An invented speech describing permanent peace"
+        ],
+        "decisionCorrectAnswer": "Later evidence of implementation and actual relations",
+        "decisionExplanation": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "keyTerm": "Diplomacy",
+        "keyTermDefinition": "Managing relationships through communication and negotiation.",
+        "historicalInsight": "An agreement needs later evidence to establish implementation and outcomes.",
+        "learningHelp": {
+          "explanation": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "vocabulary": [
+            {
+              "term": "Diplomacy",
+              "definition": "Managing relationships through communication and negotiation."
+            }
+          ],
+          "example": "Diplomacy involves messages and negotiation, not only the absence of conflict.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission4-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission4",
+        "status": "active",
+        "order": 2,
+        "title": "Adapting Could Help Defend Local Affairs",
+        "content": "Adaptation and resistance were not always opposites. People could change an activity while defending important local decisions. The Ifugao research summarized by UCLA connects resistance to Spanish conquest with local strategies, economic opportunities and changing organization. It does not describe an isolated society that had to remain unchanged to retain its identity.\n\nUse a fictional comparison card: a community keeps a local decision but changes an exchange arrangement. The model shows two parts of a response, not one actual recorded transaction. Identify what changed, what continued and which aim the evidence supports. Exchange alone does not prove surrender of all authority, and continuing one practice does not prove no change elsewhere. Do not make terrain the sole cause or assume that every member had equal power. Historical explanation keeps the people, conditions and evidence connected.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "adaptation-resistance"
+        ],
+        "imageUrl": "../assets/story/response-evidence-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Adapting Could Help Defend Local Affairs. Labelled clues distinguish action, conditions and outcome evidence; not an original treaty or a battle reenactment.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Change and continuity",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An activity can change while local decisions continue.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Named research",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ifugao research connects resistance with active strategies and organization.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Adaptation does not automatically mean full surrender or equal power for everyone.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A community adjusts an activity while defending local decisions. Which explanation fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every change meant complete surrender",
+          "Autonomy required no outside contact",
+          "Every person had unlimited choice",
+          "Adaptation could form part of maintaining local affairs"
+        ],
+        "decisionCorrectAnswer": "Adaptation could form part of maintaining local affairs",
+        "decisionExplanation": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "keyTerm": "Adaptation",
+        "keyTermDefinition": "Adjusting activities or arrangements in response to conditions.",
+        "historicalInsight": "Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "learningHelp": {
+          "explanation": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "vocabulary": [
+            {
+              "term": "Adaptation",
+              "definition": "Adjusting activities or arrangements in response to conditions."
+            }
+          ],
+          "example": "An activity can change while local decisions continue.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission4-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission4",
+        "status": "active",
+        "order": 3,
+        "title": "Resistance Was Broader Than Fighting",
+        "content": "Resistance means opposing a demand or imposed authority. It can take different forms, including refusal, maintaining local decisions or organized opposition. Armed conflict is one form that can occur; it is not the definition of every response. An account of a battle does not describe every community activity or every persons reason for acting.\n\nEarlier lessons distinguished the Kudarat case, Ifugao strategies and limits on authority in Sulu. Keep those examples in their own settings rather than merge them into one universal event. Conflict could harm people, including people who did not decide to fight. We do not reenact attacks, assign targets or award points for harm. Our fictional source card asks what demand was opposed and what action was recorded. To call an action resistance, support that connection with evidence instead of treating every absence or change as deliberate opposition.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "conflict-resistance"
+        ],
+        "imageUrl": "../assets/story/response-evidence-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Resistance Was Broader Than Fighting. Labelled clues distinguish action, conditions and outcome evidence; not an original treaty or a battle reenactment.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Opposition",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Resistance concerns opposing a demand or imposed authority.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Different forms",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Not every form of resistance is armed fighting.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Evidence and harm",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Identify the recorded action and its context without rewarding or erasing harm.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A report defines every act of resistance as a battle. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Give points for harming opponents",
+          "Assume one battle explains every community",
+          "Investigate different actions opposing demands, including forms beyond armed conflict",
+          "Treat every absence as proof of deliberate resistance"
+        ],
+        "decisionCorrectAnswer": "Investigate different actions opposing demands, including forms beyond armed conflict",
+        "decisionExplanation": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "keyTerm": "Resistance",
+        "keyTermDefinition": "Actions that oppose a demand or an attempt to impose authority.",
+        "historicalInsight": "Identify the recorded action and its context without rewarding or erasing harm.",
+        "learningHelp": {
+          "explanation": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "vocabulary": [
+            {
+              "term": "Resistance",
+              "definition": "Actions that oppose a demand or an attempt to impose authority."
+            }
+          ],
+          "example": "Resistance concerns opposing a demand or imposed authority.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission4-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission4",
+        "status": "active",
+        "order": 4,
+        "title": "Choices Had Conditions and Limits",
+        "content": "Communities faced different conditions, resources and pressures. A response that appears in one setting was not automatically available to everyone elsewhere. Leadership, local relationships, distance and outside demands could affect choices. Having some ability to act did not mean unlimited freedom or equal power within a community.\n\nCompare two fictional response cards. One records a message requesting changed terms; another records an adjustment in exchange while local authority continues. They concern different actions, and neither is a universal best move for every historical person. Students are not asked to choose whether a real community should fight, surrender or change its faith. Instead, identify the recorded action and the conditions described. Do not infer every motive from a ruler, region or religion. Historical explanation evaluates evidence rather than judging people with information they may not have had.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "response-constraints"
+        ],
+        "imageUrl": "../assets/story/response-evidence-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Choices Had Conditions and Limits. Labelled clues distinguish action, conditions and outcome evidence; not an original treaty or a battle reenactment.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Conditions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Resources, relationships and pressures can affect choices.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare carefully",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One response in one place is not a universal option for everyone.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Agency with limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "People could act without equal power or unlimited freedom.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Two fictional cases describe different options under different pressures. What should a report do?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Assume all people had equal resources",
+          "Explain each action with its conditions rather than prescribe one move for everyone",
+          "Assign every community identical choices",
+          "Treat a religion as a universal motive"
+        ],
+        "decisionCorrectAnswer": "Explain each action with its conditions rather than prescribe one move for everyone",
+        "decisionExplanation": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "keyTerm": "Constraint",
+        "keyTermDefinition": "A condition that limits available choices or actions.",
+        "historicalInsight": "People could act without equal power or unlimited freedom.",
+        "learningHelp": {
+          "explanation": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "vocabulary": [
+            {
+              "term": "Constraint",
+              "definition": "A condition that limits available choices or actions."
+            }
+          ],
+          "example": "Resources, relationships and pressures can affect choices.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission4-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission4",
+        "status": "active",
+        "order": 5,
+        "title": "A Response Was Not Its Guaranteed Result",
+        "content": "A request, agreement or strategy has an aim; the outcome is what followed. An aim is not proof of success. A response might have different effects for different people, and its effects could change over time. An institution calling an area controlled does not by itself establish every local decision or daily experience.\n\nSaleebys History of Sulu distinguishes treaty accounts, colonial positions and limits on actual authority. The later author and the documents he presents have their own dates and perspectives. Our fictional portfolio separates an agreement text, a later action record and a community account. Use them for the questions they support, without treating one as a complete outcome for everyone. A source gap may leave a question unanswered; it is not permission to invent a victory, a motive or a universal failure. Keep historical findings separate from present-day legal claims.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit this lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "response-outcomes"
+        ],
+        "imageUrl": "../assets/story/response-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Response Was Not Its Guaranteed Result. Labelled clues distinguish action, conditions and outcome evidence; not an original treaty or a battle reenactment.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Aim and outcome",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "What people sought and what followed are different claims.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Follow the evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Later records can help investigate implementation and effects.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One account does not establish every persons result or a permanent outcome.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A strategy is described as successful solely because its aim is recorded. What should be checked?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Evidence of what followed and for whom",
+          "Nothing because aims guarantee success",
+          "Only a more dramatic title",
+          "An assumption that every effect was permanent"
+        ],
+        "decisionCorrectAnswer": "Evidence of what followed and for whom",
+        "decisionExplanation": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "keyTerm": "Outcome",
+        "keyTermDefinition": "What followed an action or process, as supported by evidence.",
+        "historicalInsight": "One account does not establish every persons result or a permanent outcome.",
+        "learningHelp": {
+          "explanation": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "vocabulary": [
+            {
+              "term": "Outcome",
+              "definition": "What followed an action or process, as supported by evidence."
+            }
+          ],
+          "example": "What people sought and what followed are different claims.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission4-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission4",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Community Response Report",
+        "content": "Connect the chapters four missions. Colonial claims were not effective control everywhere. Sulu and Maguindanao were distinct polities with different communities. Ifugao research shows active strategies rather than an unchanged isolated society. Diplomacy, adaptation and resistance could occur in changing relationships, while armed conflict was not every response.\n\nPrepare a fictional report for another Grade 5 learner. Name the people, place and period. Identify the demand or situation, the recorded action and its supporting clue. Explain the conditions and distinguish an aim from a documented outcome. Do not invent speeches, treat religion as every persons motive, or turn harm into a game reward. If the evidence leaves a question open, say so.\n\nThe main quiz has five questions and three correct passes. Review linked learning content before practice and a retry if needed. This is the fourth mission, but completing it does not yet complete Chapter 11 or award its final badge. The chapter evidence challenge is still being prepared.",
+        "reviewTopics": [
+          "diplomacy-commitments",
+          "adaptation-resistance",
+          "conflict-resistance",
+          "response-constraints",
+          "response-outcomes"
+        ],
+        "imageUrl": "../assets/story/response-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Response Was Not Its Guaranteed Result. Labelled clues distinguish action, conditions and outcome evidence; not an original treaty or a battle reenactment.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Aim and outcome",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "What people sought and what followed are different claims.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Follow the evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Later records can help investigate implementation and effects.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One account does not establish every persons result or a permanent outcome.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best explains a community response?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat every response as a battle",
+          "Assume every aim succeeded permanently",
+          "Use one religion as every persons motive",
+          "Connect the situation, action, conditions and outcome with dated evidence and limits"
+        ],
+        "decisionCorrectAnswer": "Connect the situation, action, conditions and outcome with dated evidence and limits",
+        "decisionExplanation": "Explain particular responses through situations, actions, constraints and outcome evidence without universal judgments or rewards for harm.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain particular responses through situations, actions, constraints and outcome evidence without universal judgments or rewards for harm.",
+        "keyTerm": "Outcome",
+        "keyTermDefinition": "What followed an action or process, as supported by evidence.",
+        "historicalInsight": "One account does not establish every persons result or a permanent outcome.",
+        "learningHelp": {
+          "explanation": "Explain particular responses through situations, actions, constraints and outcome evidence without universal judgments or rewards for harm.",
+          "vocabulary": [
+            {
+              "term": "Outcome",
+              "definition": "What followed an action or process, as supported by evidence."
+            }
+          ],
+          "example": "What people sought and what followed are different claims.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz4-question1",
+      "create": true,
+      "fields": {
+        "question": "What is diplomacy?",
+        "optionA": "Managing relationships through communication and negotiation",
+        "optionB": "Only fighting without communication",
+        "optionC": "Proof that all parties have equal power",
+        "optionD": "A guarantee that conflict never returns",
+        "correctAnswer": "A",
+        "explanation": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "learningPoint": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "historicalClue": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "answerExplanations": {
+          "A": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "B": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "C": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "D": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes."
+        },
+        "quizId": "chapter11-quiz4",
+        "order": 1,
+        "status": "active",
+        "topic": "diplomacy-commitments",
+        "topicLabel": "Negotiation Was an Action",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz4-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why separate a proposal from a signed agreement?",
+        "optionA": "Every proposal automatically became binding practice",
+        "optionB": "Dates never matter",
+        "optionC": "Both reveal every private motive",
+        "optionD": "They are different stages of negotiation and commitment",
+        "correctAnswer": "D",
+        "explanation": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "learningPoint": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "historicalClue": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "B": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "C": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "D": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes."
+        },
+        "quizId": "chapter11-quiz4",
+        "order": 101,
+        "status": "active",
+        "topic": "diplomacy-commitments",
+        "topicLabel": "Negotiation Was an Action",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission4-diplomacy-commitments-practice1",
+      "create": true,
+      "fields": {
+        "question": "A peace agreement is used to claim every later term was fulfilled. What should be checked?",
+        "optionA": "Nothing because signing guarantees every outcome",
+        "optionB": "Whether every household had identical wishes",
+        "optionC": "An invented speech describing permanent peace",
+        "optionD": "Later evidence of implementation and actual relations",
+        "correctAnswer": "D",
+        "explanation": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "learningPoint": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "historicalClue": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "B": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "C": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "D": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes."
+        },
+        "missionId": "chapter11-mission4",
+        "topic": "diplomacy-commitments",
+        "topicLabel": "Negotiation Was an Action",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Managing relationships through communication and negotiation.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission4-diplomacy-commitments-practice2",
+      "create": true,
+      "fields": {
+        "question": "A marker lists an agreement but no detailed meeting transcript. What can a report do?",
+        "optionA": "Assume every community signed",
+        "optionB": "Treat a later marker as a complete eyewitness diary",
+        "optionC": "Describe the recorded agreement without inventing exact words",
+        "optionD": "Invent a speech to explain every motive",
+        "correctAnswer": "C",
+        "explanation": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "learningPoint": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "historicalClue": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "B": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "C": "Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes.",
+          "D": "Review the lesson clues. Later evidence of implementation and actual relations. An agreement needs later evidence to establish implementation and outcomes."
+        },
+        "missionId": "chapter11-mission4",
+        "topic": "diplomacy-commitments",
+        "topicLabel": "Negotiation Was an Action",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Managing relationships through communication and negotiation.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz4-question2",
+      "create": true,
+      "fields": {
+        "question": "What does adaptation involve?",
+        "optionA": "Keeping every detail unchanged forever",
+        "optionB": "Automatically losing every local decision",
+        "optionC": "Ranking communities by worth",
+        "optionD": "Adjusting activities or arrangements to conditions",
+        "correctAnswer": "D",
+        "explanation": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "learningPoint": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "historicalClue": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "B": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "C": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "D": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone."
+        },
+        "quizId": "chapter11-quiz4",
+        "order": 2,
+        "status": "active",
+        "topic": "adaptation-resistance",
+        "topicLabel": "Adapting Could Help Defend Local Affairs",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz4-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why ask both what changed and what continued?",
+        "optionA": "Every community had the same response",
+        "optionB": "Only terrain explains actions",
+        "optionC": "A response can combine adjustment with maintained local affairs",
+        "optionD": "One new activity erases every earlier skill",
+        "correctAnswer": "C",
+        "explanation": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "learningPoint": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "historicalClue": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "B": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "C": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "D": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone."
+        },
+        "quizId": "chapter11-quiz4",
+        "order": 102,
+        "status": "active",
+        "topic": "adaptation-resistance",
+        "topicLabel": "Adapting Could Help Defend Local Affairs",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission4-adaptation-resistance-practice1",
+      "create": true,
+      "fields": {
+        "question": "A community adjusts an activity while defending local decisions. Which explanation fits?",
+        "optionA": "Autonomy required no outside contact",
+        "optionB": "Every person had unlimited choice",
+        "optionC": "Adaptation could form part of maintaining local affairs",
+        "optionD": "Every change meant complete surrender",
+        "correctAnswer": "C",
+        "explanation": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "learningPoint": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "historicalClue": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "B": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "C": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "D": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone."
+        },
+        "missionId": "chapter11-mission4",
+        "topic": "adaptation-resistance",
+        "topicLabel": "Adapting Could Help Defend Local Affairs",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Adjusting activities or arrangements in response to conditions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission4-adaptation-resistance-practice2",
+      "create": true,
+      "fields": {
+        "question": "A fictional exchange model is treated as an actual Ifugao transaction. What should change?",
+        "optionA": "Assume every household made the same choice",
+        "optionB": "Label the model and use appropriate evidence for a specific historical claim",
+        "optionC": "Invent a date and participants",
+        "optionD": "Treat the model as a surviving record",
+        "correctAnswer": "B",
+        "explanation": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "learningPoint": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "historicalClue": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "B": "Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "C": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone.",
+          "D": "Review the lesson clues. Adaptation could form part of maintaining local affairs. Adaptation does not automatically mean full surrender or equal power for everyone."
+        },
+        "missionId": "chapter11-mission4",
+        "topic": "adaptation-resistance",
+        "topicLabel": "Adapting Could Help Defend Local Affairs",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Adjusting activities or arrangements in response to conditions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz4-question3",
+      "create": true,
+      "fields": {
+        "question": "What does resistance mean here?",
+        "optionA": "Every change in clothing",
+        "optionB": "A guarantee that every aim succeeded",
+        "optionC": "Actions opposing a demand or imposed authority",
+        "optionD": "Only one particular weapon",
+        "correctAnswer": "C",
+        "explanation": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "learningPoint": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "historicalClue": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "B": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "C": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "D": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm."
+        },
+        "quizId": "chapter11-quiz4",
+        "order": 3,
+        "status": "active",
+        "topic": "conflict-resistance",
+        "topicLabel": "Resistance Was Broader Than Fighting",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz4-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why identify the demand opposed before describing resistance?",
+        "optionA": "A label explains every action",
+        "optionB": "The connection between action and opposition needs evidence",
+        "optionC": "Any missing record proves deliberate refusal",
+        "optionD": "Every private motive is obvious",
+        "correctAnswer": "B",
+        "explanation": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "learningPoint": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "historicalClue": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "B": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "C": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "D": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm."
+        },
+        "quizId": "chapter11-quiz4",
+        "order": 103,
+        "status": "active",
+        "topic": "conflict-resistance",
+        "topicLabel": "Resistance Was Broader Than Fighting",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission4-conflict-resistance-practice1",
+      "create": true,
+      "fields": {
+        "question": "A report defines every act of resistance as a battle. What correction fits?",
+        "optionA": "Assume one battle explains every community",
+        "optionB": "Investigate different actions opposing demands, including forms beyond armed conflict",
+        "optionC": "Treat every absence as proof of deliberate resistance",
+        "optionD": "Give points for harming opponents",
+        "correctAnswer": "B",
+        "explanation": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "learningPoint": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "historicalClue": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "B": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "C": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "D": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm."
+        },
+        "missionId": "chapter11-mission4",
+        "topic": "conflict-resistance",
+        "topicLabel": "Resistance Was Broader Than Fighting",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Actions that oppose a demand or an attempt to impose authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission4-conflict-resistance-practice2",
+      "create": true,
+      "fields": {
+        "question": "A source does not list attendance and a caption claims everyone deliberately resisted. What is missing?",
+        "optionA": "Evidence connecting absence with a particular opposed demand",
+        "optionB": "A stronger universal caption",
+        "optionC": "An invented speech",
+        "optionD": "Nothing because all silence proves refusal",
+        "correctAnswer": "A",
+        "explanation": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "learningPoint": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "historicalClue": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+        "answerExplanations": {
+          "A": "Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "B": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "C": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm.",
+          "D": "Review the lesson clues. Investigate different actions opposing demands, including forms beyond armed conflict. Identify the recorded action and its context without rewarding or erasing harm."
+        },
+        "missionId": "chapter11-mission4",
+        "topic": "conflict-resistance",
+        "topicLabel": "Resistance Was Broader Than Fighting",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Actions that oppose a demand or an attempt to impose authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz4-question4",
+      "create": true,
+      "fields": {
+        "question": "What is a constraint?",
+        "optionA": "Proof of identical motives",
+        "optionB": "A condition limiting available choices or actions",
+        "optionC": "A guarantee that no person can act",
+        "optionD": "A measure of human worth",
+        "correctAnswer": "B",
+        "explanation": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "learningPoint": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "historicalClue": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "B": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "C": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "D": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom."
+        },
+        "quizId": "chapter11-quiz4",
+        "order": 4,
+        "status": "active",
+        "topic": "response-constraints",
+        "topicLabel": "Choices Had Conditions and Limits",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz4-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare conditions alongside actions?",
+        "optionA": "The options people could use depended on their setting",
+        "optionB": "Everyone always had the same options",
+        "optionC": "Every ruler represented every private wish",
+        "optionD": "A region determines every action",
+        "correctAnswer": "A",
+        "explanation": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "learningPoint": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "historicalClue": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "answerExplanations": {
+          "A": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "B": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "C": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "D": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom."
+        },
+        "quizId": "chapter11-quiz4",
+        "order": 104,
+        "status": "active",
+        "topic": "response-constraints",
+        "topicLabel": "Choices Had Conditions and Limits",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission4-response-constraints-practice1",
+      "create": true,
+      "fields": {
+        "question": "Two fictional cases describe different options under different pressures. What should a report do?",
+        "optionA": "Explain each action with its conditions rather than prescribe one move for everyone",
+        "optionB": "Assign every community identical choices",
+        "optionC": "Treat a religion as a universal motive",
+        "optionD": "Assume all people had equal resources",
+        "correctAnswer": "A",
+        "explanation": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "learningPoint": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "historicalClue": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "answerExplanations": {
+          "A": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "B": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "C": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "D": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom."
+        },
+        "missionId": "chapter11-mission4",
+        "topic": "response-constraints",
+        "topicLabel": "Choices Had Conditions and Limits",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A condition that limits available choices or actions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission4-response-constraints-practice2",
+      "create": true,
+      "fields": {
+        "question": "A later writer calls one response the obvious choice for every community. What should be checked?",
+        "optionA": "Only the writers confidence",
+        "optionB": "An assumption that all resources were equal",
+        "optionC": "Whether every person shared one belief",
+        "optionD": "What options, knowledge and pressures existed in each setting",
+        "correctAnswer": "D",
+        "explanation": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "learningPoint": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "historicalClue": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "B": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "C": "Review the lesson clues. Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom.",
+          "D": "Explain each action with its conditions rather than prescribe one move for everyone. People could act without equal power or unlimited freedom."
+        },
+        "missionId": "chapter11-mission4",
+        "topic": "response-constraints",
+        "topicLabel": "Choices Had Conditions and Limits",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A condition that limits available choices or actions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz4-question5",
+      "create": true,
+      "fields": {
+        "question": "What is an outcome?",
+        "optionA": "What followed an action or process, supported by evidence",
+        "optionB": "Only what someone hoped would happen",
+        "optionC": "A complete motive read from a title",
+        "optionD": "A guaranteed reward for every historical action",
+        "correctAnswer": "A",
+        "explanation": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "learningPoint": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "historicalClue": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "answerExplanations": {
+          "A": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "B": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "C": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "D": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome."
+        },
+        "quizId": "chapter11-quiz4",
+        "order": 5,
+        "status": "active",
+        "topic": "response-outcomes",
+        "topicLabel": "A Response Was Not Its Guaranteed Result",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz4-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare an agreement with later action records?",
+        "optionA": "Signing proves every term worked forever",
+        "optionB": "Later evidence cannot change an interpretation",
+        "optionC": "Every community had identical results",
+        "optionD": "Written commitments and actual effects need different evidence",
+        "correctAnswer": "D",
+        "explanation": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "learningPoint": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "historicalClue": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "B": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "C": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "D": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome."
+        },
+        "quizId": "chapter11-quiz4",
+        "order": 105,
+        "status": "active",
+        "topic": "response-outcomes",
+        "topicLabel": "A Response Was Not Its Guaranteed Result",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission4-response-outcomes-practice1",
+      "create": true,
+      "fields": {
+        "question": "A strategy is described as successful solely because its aim is recorded. What should be checked?",
+        "optionA": "Nothing because aims guarantee success",
+        "optionB": "Only a more dramatic title",
+        "optionC": "An assumption that every effect was permanent",
+        "optionD": "Evidence of what followed and for whom",
+        "correctAnswer": "D",
+        "explanation": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "learningPoint": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "historicalClue": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "B": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "C": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "D": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome."
+        },
+        "missionId": "chapter11-mission4",
+        "topic": "response-outcomes",
+        "topicLabel": "A Response Was Not Its Guaranteed Result",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "What followed an action or process, as supported by evidence.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission4-response-outcomes-practice2",
+      "create": true,
+      "fields": {
+        "question": "The sources leave an outcome uncertain. What is a careful report?",
+        "optionA": "Invent failure because no detail survives",
+        "optionB": "Treat one official label as every persons full experience",
+        "optionC": "State the uncertainty and what evidence would help",
+        "optionD": "Invent success to complete the story",
+        "correctAnswer": "C",
+        "explanation": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "learningPoint": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "historicalClue": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "B": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "C": "Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome.",
+          "D": "Review the lesson clues. Evidence of what followed and for whom. One account does not establish every persons result or a permanent outcome."
+        },
+        "missionId": "chapter11-mission4",
+        "topic": "response-outcomes",
+        "topicLabel": "A Response Was Not Its Guaranteed Result",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "What followed an action or process, as supported by evidence.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter11-mission4-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission4",
+        "name": "Community Response Portfolio",
+        "description": "A learning-game token for comparing community responses and their documented outcomes.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 4,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Connect situations, actions, constraints and outcomes without rewarding harm.",
+          "reflectionQuestion": "Which clue helped you distinguish a response from its hoped-for result?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-11",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-3 investigate autonomy, Muslim polities and Cordillera community histories. Mission 4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Four missions investigate autonomy, Muslim polities, Cordillera histories and varied community responses. The chapter challenge is being prepared."
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapters 9-10 offer five missions and an evidence challenge each. Chapter 11 offers Missions 1-3 on autonomy, Muslim polities and Cordillera histories; later content is being prepared."
+      },
+      "fields": {
+        "description": "Chapters 9-10 offer five missions and an evidence challenge each. Chapter 11 offers four missions on autonomy and community responses; its challenge is being prepared."
+      }
+    }
+  ]
+}

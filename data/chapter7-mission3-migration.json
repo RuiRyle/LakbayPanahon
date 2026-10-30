@@ -1,0 +1,1309 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 2 Chapter 7 Mission 3 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://asj.upd.edu.ph/mediabox/archive/ASJ-14-2-1976/anderson-encomienda-philippine-history.pdf",
+    "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+    "https://alcoycebu.gov.ph/wp-content/uploads/2023/10/HISTORY-OF-ALCOY-CEBU.pdf",
+    "https://lrmds.deped.gov.ph/detail/19794"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-6",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-6",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/colonial-history-investigator",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter6-mission1",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter6-mission2",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter6-mission3",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter6-mission4",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter7-mission1",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter7-mission2",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 2
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter7-mission3",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-7",
+        "title": "The Encomienda System and Tribute",
+        "order": 3,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate collection rights, required payments, stated obligations and evidence of effects on communities.",
+        "learningObjective": "Explain encomienda and tribute while distinguishing rights, duties, actual practice and household evidence.",
+        "learningObjectives": [
+          "Explain encomienda meaning using lesson evidence.",
+          "Explain required payments using lesson evidence.",
+          "Explain obligations and practice using lesson evidence.",
+          "Explain household effects using lesson evidence.",
+          "Explain comparing records using lesson evidence."
+        ],
+        "lessonRecap": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience. Tribute was required. Its form and amount need context rather than one invented universal rule. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "sourceUrls": [
+          "https://asj.upd.edu.ph/mediabox/archive/ASJ-14-2-1976/anderson-encomienda-philippine-history.pdf",
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://alcoycebu.gov.ph/wp-content/uploads/2023/10/HISTORY-OF-ALCOY-CEBU.pdf",
+          "https://lrmds.deped.gov.ph/detail/19794"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter7-quiz3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission3",
+        "title": "Encomienda and Tribute - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 3,
+        "questionBlueprint": [
+          {
+            "topic": "encomienda-meaning",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "tribute-required-payment",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "encomienda-obligations",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "tribute-household-effects",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "encomienda-record-limits",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission3-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission3",
+        "status": "active",
+        "order": 1,
+        "title": "A Right to Collect, Not Automatic Land Ownership",
+        "content": "Encomienda was a colonial arrangement involving rights to collect tribute from specified people or communities, with stated obligations attached. An encomendero was a holder of such a grant. The name of the arrangement should not be read as an automatic deed transferring every piece of community land.\n\nDistinguish the questions: who could demand tribute, who lived in the area, and who held rights in land? They are connected but not identical. Records about collection do not alone settle every land claim. This introduction does not say that land dispossession never occurred; it says that the particular claim needs appropriate evidence.\n\nTry a fictional exhibit label. It calls an encomienda a private estate that automatically made every field and every person the holder's property. Correct the definition and identify what further records would be needed about land or treatment of people.\n\nThe diagram describes relationships, not an exact territorial map or a title deed.",
+        "reviewTopics": [
+          "encomienda-meaning"
+        ],
+        "imageUrl": "../assets/story/encomienda-relationships.svg",
+        "imageFit": "contain",
+        "imageAlt": "A teaching guide for A Right to Collect, Not Automatic Land Ownership. It distinguishes rights, obligations, actions and evidence limits, not an authentic deed or universal payment schedule.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "The arrangement",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An encomienda involved tribute-collection rights over specified people or communities and stated obligations.",
+            "icon": "🔎"
+          },
+          {
+            "title": "The holder",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An encomendero held the grant; the title alone does not establish every action that person took.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A separate land question",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Collection rights are not automatically ownership of every field. Land claims require their own evidence.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which description avoids confusing encomienda with a land deed?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A tribute-collection arrangement whose land and practice claims need separate evidence",
+          "Automatic ownership of every field and every resident",
+          "A voluntary gift freely chosen by every household",
+          "A modern land registry with identical rules everywhere"
+        ],
+        "decisionCorrectAnswer": "A tribute-collection arrangement whose land and practice claims need separate evidence",
+        "decisionExplanation": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "keyTerm": "Encomienda",
+        "keyTermDefinition": "A colonial grant involving tribute collection from specified people or communities, with stated obligations.",
+        "historicalInsight": "Collection rights are not automatically ownership of every field. Land claims require their own evidence.",
+        "learningHelp": {
+          "explanation": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "vocabulary": [
+            {
+              "term": "Encomienda",
+              "definition": "A colonial grant involving tribute collection from specified people or communities, with stated obligations."
+            }
+          ],
+          "example": "An encomienda involved tribute-collection rights over specified people or communities and stated obligations.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://asj.upd.edu.ph/mediabox/archive/ASJ-14-2-1976/anderson-encomienda-philippine-history.pdf",
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://alcoycebu.gov.ph/wp-content/uploads/2023/10/HISTORY-OF-ALCOY-CEBU.pdf",
+          "https://lrmds.deped.gov.ph/detail/19794"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission3-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission3",
+        "status": "active",
+        "order": 2,
+        "title": "Tribute Was Required, Not a Gift",
+        "content": "Tribute was a payment required under colonial authority. It could be demanded in money or goods according to the rules and circumstances involved. Do not call a demanded payment a voluntary gift simply because an account uses a favorable label.\n\nForms, rates and arrangements changed across periods and settings. This lesson does not give one universal amount, modern currency conversion or identical rule for every household. Ask the date, place and terms of the record before making a numerical claim.\n\nUse a fictional comparison. One person freely offers a present. Another household is told a payment is required by an authority. Identify what makes these different. The exercise is not a transaction that students must perform and does not award points for extracting resources from people.\n\nA payment record can help investigate collection, but its existence does not reveal every family's ability to pay or show that every person approved of the requirement.",
+        "reviewTopics": [
+          "tribute-required-payment"
+        ],
+        "imageUrl": "../assets/story/tribute-payment-check.svg",
+        "imageFit": "contain",
+        "imageAlt": "A teaching guide for Tribute Was Required, Not a Gift. It distinguishes rights, obligations, actions and evidence limits, not an authentic deed or universal payment schedule.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A requirement",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Tribute is a required payment under an authority, not automatically a voluntary present.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Forms and context",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Money or goods could be involved. Check the particular rules, place and period.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Do not invent a universal rate",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One amount in one record cannot supply every household's obligation across the colonial period.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which question best checks a tribute record before generalizing its amount?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Why must all households always pay the same amount?",
+          "Which modern price can be guessed without evidence?",
+          "Why does a favorable label make a required payment voluntary?",
+          "What place, period and rules does the payment belong to?"
+        ],
+        "decisionCorrectAnswer": "What place, period and rules does the payment belong to?",
+        "decisionExplanation": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "keyTerm": "Tribute",
+        "keyTermDefinition": "A payment required by an authority.",
+        "historicalInsight": "One amount in one record cannot supply every household's obligation across the colonial period.",
+        "learningHelp": {
+          "explanation": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "vocabulary": [
+            {
+              "term": "Tribute",
+              "definition": "A payment required by an authority."
+            }
+          ],
+          "example": "Tribute is a required payment under an authority, not automatically a voluntary present.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://asj.upd.edu.ph/mediabox/archive/ASJ-14-2-1976/anderson-encomienda-philippine-history.pdf",
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://alcoycebu.gov.ph/wp-content/uploads/2023/10/HISTORY-OF-ALCOY-CEBU.pdf",
+          "https://lrmds.deped.gov.ph/detail/19794"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission3-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission3",
+        "status": "active",
+        "order": 3,
+        "title": "Stated Duties and Actual Practice",
+        "content": "Colonial justifications connected tribute collection with obligations such as protection and religious instruction. A stated duty is evidence of what was expected or claimed, not proof that it was fulfilled. Students can study a religious obligation historically without being asked to practise the religion.\n\nLate-sixteenth-century discussions of tribute debated collection and obligations. These records help show that practice could be disputed even within colonial institutions. The debate is not a complete record of every local voice and does not establish identical conditions in all communities.\n\nWatch how to check a fictional report. A grant lists a duty, while another record describes an unfulfilled promise. Keep the formal expectation and evidence of performance separate. Do not assume the grant proves fair treatment or that a complaint proves the same event happened everywhere.\n\nAsk who wrote the claim, what action is recorded and what further evidence could show the experience of the people affected.",
+        "reviewTopics": [
+          "encomienda-obligations"
+        ],
+        "imageUrl": "../assets/story/encomienda-duty-practice.svg",
+        "imageFit": "contain",
+        "imageAlt": "A teaching guide for Stated Duties and Actual Practice. It distinguishes rights, obligations, actions and evidence limits, not an authentic deed or universal payment schedule.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A stated obligation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Protection and religious instruction appeared among stated duties connected with collection.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A practice to investigate",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A promise or written obligation does not prove that the promised action occurred.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A disputed relationship",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Historical debate about collection and duties is evidence of disagreement, not every community's complete experience.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A grant lists protection as a duty. What is still needed to evaluate practice?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A claim that every person approved",
+          "An invented speech saying the duty was always fulfilled",
+          "Evidence of what was actually done and how people were affected",
+          "Nothing, because a listed duty proves fair treatment"
+        ],
+        "decisionCorrectAnswer": "Evidence of what was actually done and how people were affected",
+        "decisionExplanation": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "keyTerm": "Obligation",
+        "keyTermDefinition": "A duty someone is expected or required to fulfill.",
+        "historicalInsight": "Historical debate about collection and duties is evidence of disagreement, not every community's complete experience.",
+        "learningHelp": {
+          "explanation": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "vocabulary": [
+            {
+              "term": "Obligation",
+              "definition": "A duty someone is expected or required to fulfill."
+            }
+          ],
+          "example": "Protection and religious instruction appeared among stated duties connected with collection.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://asj.upd.edu.ph/mediabox/archive/ASJ-14-2-1976/anderson-encomienda-philippine-history.pdf",
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://alcoycebu.gov.ph/wp-content/uploads/2023/10/HISTORY-OF-ALCOY-CEBU.pdf",
+          "https://lrmds.deped.gov.ph/detail/19794"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission3-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission3",
+        "status": "active",
+        "order": 4,
+        "title": "Follow the Effect on a Household",
+        "content": "Collection affects people, not only the totals recorded by officials. To examine an effect, ask what was demanded, what was collected and what resources remained for the people involved. A record of revenue and a record of household circumstances answer different questions.\n\nTry a fictional classroom example. A household has a supply of goods, and a required collection removes part of it. The example supports a change in those goods. It does not supply an authentic historical rate or show the circumstances of every family. No arithmetic amount in this exercise should be treated as a real tax schedule.\n\nThe burden would need evidence about resources and circumstances, not only an amount. People could seek relief, negotiate, adapt or resist. Identify a particular action rather than assume a single response from everyone.\n\nExplain the evidence without turning an official's total into every household's feelings or using a fictional family to stand for all communities.",
+        "reviewTopics": [
+          "tribute-household-effects"
+        ],
+        "imageUrl": "../assets/story/tribute-household-evidence.svg",
+        "imageFit": "contain",
+        "imageAlt": "A teaching guide for Follow the Effect on a Household. It distinguishes rights, obligations, actions and evidence limits, not an authentic deed or universal payment schedule.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Demand and collection",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A demanded amount is not automatically evidence that the same amount was collected.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Household circumstances",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An effect on resources needs evidence about the affected people and their setting.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A fictional example has limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A teaching household is not an original account or a universal historical payment schedule.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A fictional household example shows goods removed by a collection. Which conclusion fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "It means all requested payments were always collected fully",
+          "It illustrates a possible resource effect, not every family's historical burden",
+          "It proves one authentic rate for all colonial years",
+          "It reveals every resident's private feelings"
+        ],
+        "decisionCorrectAnswer": "It illustrates a possible resource effect, not every family's historical burden",
+        "decisionExplanation": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "keyTerm": "Burden",
+        "keyTermDefinition": "A demand or difficulty placed on someone, assessed in their circumstances.",
+        "historicalInsight": "A teaching household is not an original account or a universal historical payment schedule.",
+        "learningHelp": {
+          "explanation": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "vocabulary": [
+            {
+              "term": "Burden",
+              "definition": "A demand or difficulty placed on someone, assessed in their circumstances."
+            }
+          ],
+          "example": "A demanded amount is not automatically evidence that the same amount was collected.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://asj.upd.edu.ph/mediabox/archive/ASJ-14-2-1976/anderson-encomienda-philippine-history.pdf",
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://alcoycebu.gov.ph/wp-content/uploads/2023/10/HISTORY-OF-ALCOY-CEBU.pdf",
+          "https://lrmds.deped.gov.ph/detail/19794"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission3-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission3",
+        "status": "active",
+        "order": 5,
+        "title": "Check the Grant, Account and Complaint",
+        "content": "A grant, collection account and complaint are different kinds of evidence. The grant may describe rights and duties. The account may record receipts. The complaint may describe a disputed practice or request a change. Do not make one document answer every question.\n\nAn official account and a critic's argument both have purposes and viewpoints. Historical discussions of tribute preserve disagreements, but affected people's experiences may still be incompletely recorded. Compare claims and evidence rather than assuming an official title guarantees fairness or every complaint was resolved.\n\nTry a fictional source check. A complaint says a collection was excessive, while the available record contains no reply. You can report that the complaint was made. You cannot invent the final decision or treat the absence of a reply as proof of every person's consent.\n\nKeep place and time attached to the claim. This lesson introduces evidence questions; it does not settle every land dispute, collection rate or history of resistance.",
+        "reviewTopics": [
+          "encomienda-record-limits"
+        ],
+        "imageUrl": "../assets/story/encomienda-duty-practice.svg",
+        "imageFit": "contain",
+        "imageAlt": "A teaching guide for Check the Grant, Account and Complaint. It distinguishes rights, obligations, actions and evidence limits, not an authentic deed or universal payment schedule.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Different records",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A grant, receipt and complaint support different questions about the arrangement and its practice.",
+            "icon": "🔎"
+          },
+          {
+            "title": "An unresolved outcome",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A complaint or request does not establish that relief was granted or that everyone agreed.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Missing voices",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Compare purposes and viewpoints and state whose experience remains uncertain.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A complaint about collection has no surviving reply in the exercise. What should the report say?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The complaint is recorded; its resolution needs further evidence",
+          "The complaint definitely succeeded",
+          "Every affected resident agreed with every demand",
+          "A missing reply proves that no complaint existed"
+        ],
+        "decisionCorrectAnswer": "The complaint is recorded; its resolution needs further evidence",
+        "decisionExplanation": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "keyTerm": "Complaint",
+        "keyTermDefinition": "A statement raising a problem or asking for a remedy.",
+        "historicalInsight": "Compare purposes and viewpoints and state whose experience remains uncertain.",
+        "learningHelp": {
+          "explanation": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "vocabulary": [
+            {
+              "term": "Complaint",
+              "definition": "A statement raising a problem or asking for a remedy."
+            }
+          ],
+          "example": "A grant, receipt and complaint support different questions about the arrangement and its practice.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://asj.upd.edu.ph/mediabox/archive/ASJ-14-2-1976/anderson-encomienda-philippine-history.pdf",
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://alcoycebu.gov.ph/wp-content/uploads/2023/10/HISTORY-OF-ALCOY-CEBU.pdf",
+          "https://lrmds.deped.gov.ph/detail/19794"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter7-mission3-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission3",
+        "status": "active",
+        "order": 6,
+        "title": "Build Your Tribute Evidence Report",
+        "content": "Connect the arrangement with its practice. Define encomienda without converting it into automatic ownership of every field. Identify tribute as required payment, then ask which place, period and rules a record concerns. Separate collection rights and stated duties from what people actually did.\n\nNext investigate effects. What was demanded? What was collected? Whose resources and experiences are recorded? A grant, account and complaint may each help, but none automatically represents everyone. Do not invent a universal amount or an unrecorded outcome.\n\nUse this fictional report frame: The record describes [right, duty or action]. Evidence about [place and period] supports [specific claim]. To assess effects on [people], we still need [missing evidence]. This is a classroom tool, not an original quotation.\n\nThe five-question quiz checks these ideas. Revisit difficult topics and use targeted practice before retrying. Passing earns the mission reward once. Mission 4 and the Chapter 7 challenge remain unfinished; completing this mission does not complete the chapter.",
+        "reviewTopics": [
+          "encomienda-meaning",
+          "tribute-required-payment",
+          "encomienda-obligations",
+          "tribute-household-effects",
+          "encomienda-record-limits"
+        ],
+        "imageUrl": "../assets/story/encomienda-relationships.svg",
+        "imageFit": "contain",
+        "imageAlt": "A report guide separates a tribute arrangement, stated obligations, actual collection and effects on people. The chapter challenge remains unfinished.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Define the arrangement",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Distinguish collection rights from automatic land ownership and required payments from gifts.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Investigate practice",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Compare stated duties, demands, actual collection and effects on people.",
+            "icon": "🔎"
+          },
+          {
+            "title": "State the limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Keep historical context and source viewpoints visible instead of inventing a universal rate or outcome.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation best fits the investigation?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat an encomienda as automatic ownership of all land and people",
+          "Call every required payment a voluntary gift",
+          "Assume one complaint proves every final outcome",
+          "Separate collection rights, required payments, duties, actual practice and household evidence"
+        ],
+        "decisionCorrectAnswer": "Separate collection rights, required payments, duties, actual practice and household evidence",
+        "decisionExplanation": "A supported report distinguishes the arrangement, its rules, actual actions and evidence of effects without erasing uncertainty.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A supported report distinguishes the arrangement, its rules, actual actions and evidence of effects without erasing uncertainty.",
+        "keyTerm": "Collection account",
+        "keyTermDefinition": "A record of payments or goods received, whose context and completeness must be checked.",
+        "historicalInsight": "Keep historical context and source viewpoints visible instead of inventing a universal rate or outcome.",
+        "learningHelp": {
+          "explanation": "A supported report distinguishes the arrangement, its rules, actual actions and evidence of effects without erasing uncertainty.",
+          "vocabulary": [
+            {
+              "term": "Collection account",
+              "definition": "A record of payments or goods received, whose context and completeness must be checked."
+            }
+          ],
+          "example": "Distinguish collection rights from automatic land ownership and required payments from gifts.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://asj.upd.edu.ph/mediabox/archive/ASJ-14-2-1976/anderson-encomienda-philippine-history.pdf",
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://alcoycebu.gov.ph/wp-content/uploads/2023/10/HISTORY-OF-ALCOY-CEBU.pdf",
+          "https://lrmds.deped.gov.ph/detail/19794"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz3-question1",
+      "create": true,
+      "fields": {
+        "question": "What is the key relationship introduced by encomienda in this lesson?",
+        "optionA": "Tribute-collection rights with stated obligations",
+        "optionB": "Automatic ownership of every field and resident",
+        "optionC": "A voluntary gift from all households",
+        "optionD": "A modern land deed covering all islands",
+        "correctAnswer": "A",
+        "explanation": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "learningPoint": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "historicalClue": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "answerExplanations": {
+          "A": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "B": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "C": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "D": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience."
+        },
+        "quizId": "chapter7-quiz3",
+        "order": 1,
+        "status": "active",
+        "topic": "encomienda-meaning",
+        "topicLabel": "Encomienda meaning",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz3-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why should a land claim be checked separately from a tribute grant?",
+        "optionA": "Every payment record transfers all land",
+        "optionB": "No land dispossession could ever happen",
+        "optionC": "A collector's title proves every local right",
+        "optionD": "Collection rights alone do not establish ownership of every field",
+        "correctAnswer": "D",
+        "explanation": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "learningPoint": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "historicalClue": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "B": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "C": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "D": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience."
+        },
+        "quizId": "chapter7-quiz3",
+        "order": 101,
+        "status": "active",
+        "topic": "encomienda-meaning",
+        "topicLabel": "Encomienda meaning",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission3-encomienda-meaning-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which description avoids confusing encomienda with a land deed?",
+        "optionA": "Automatic ownership of every field and every resident",
+        "optionB": "A voluntary gift freely chosen by every household",
+        "optionC": "A modern land registry with identical rules everywhere",
+        "optionD": "A tribute-collection arrangement whose land and practice claims need separate evidence",
+        "correctAnswer": "D",
+        "explanation": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "learningPoint": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "historicalClue": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "B": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "C": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "D": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience."
+        },
+        "missionId": "chapter7-mission3",
+        "topic": "encomienda-meaning",
+        "topicLabel": "Encomienda meaning",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A colonial grant involving tribute collection from specified people or communities, with stated obligations.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission3-encomienda-meaning-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption says a grant automatically made all land private property. What correction fits?",
+        "optionA": "Treat every resident as the holder's property",
+        "optionB": "Replace evidence with an invented deed",
+        "optionC": "Distinguish collection rights and seek separate land evidence",
+        "optionD": "Keep the claim because all colonial arrangements are identical",
+        "correctAnswer": "C",
+        "explanation": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "learningPoint": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "historicalClue": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "B": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "C": "Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience.",
+          "D": "Review the lesson clues. Distinguish tribute-collection rights from land ownership. A grant alone does not establish every practice, land claim or household experience."
+        },
+        "missionId": "chapter7-mission3",
+        "topic": "encomienda-meaning",
+        "topicLabel": "Encomienda meaning",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A colonial grant involving tribute collection from specified people or communities, with stated obligations.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz3-question2",
+      "create": true,
+      "fields": {
+        "question": "What distinguishes tribute from a freely offered present?",
+        "optionA": "Its name proves every person freely chose it",
+        "optionB": "It always had one identical amount",
+        "optionC": "It reveals every household's resources",
+        "optionD": "It is required under an authority",
+        "correctAnswer": "D",
+        "explanation": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "learningPoint": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "historicalClue": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "B": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "C": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "D": "Tribute was required. Its form and amount need context rather than one invented universal rule."
+        },
+        "quizId": "chapter7-quiz3",
+        "order": 2,
+        "status": "active",
+        "topic": "tribute-required-payment",
+        "topicLabel": "Required payments",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz3-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "What should a learner check before applying a recorded payment elsewhere?",
+        "optionA": "A guessed modern price",
+        "optionB": "An assumption that all years had identical rates",
+        "optionC": "The place, period, rules and circumstances",
+        "optionD": "Only whether the number looks simple",
+        "correctAnswer": "C",
+        "explanation": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "learningPoint": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "historicalClue": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "B": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "C": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "D": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule."
+        },
+        "quizId": "chapter7-quiz3",
+        "order": 102,
+        "status": "active",
+        "topic": "tribute-required-payment",
+        "topicLabel": "Required payments",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission3-tribute-required-payment-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which question best checks a tribute record before generalizing its amount?",
+        "optionA": "Which modern price can be guessed without evidence?",
+        "optionB": "Why does a favorable label make a required payment voluntary?",
+        "optionC": "What place, period and rules does the payment belong to?",
+        "optionD": "Why must all households always pay the same amount?",
+        "correctAnswer": "C",
+        "explanation": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "learningPoint": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "historicalClue": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "B": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "C": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "D": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule."
+        },
+        "missionId": "chapter7-mission3",
+        "topic": "tribute-required-payment",
+        "topicLabel": "Required payments",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A payment required by an authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission3-tribute-required-payment-practice2",
+      "create": true,
+      "fields": {
+        "question": "A record lists goods paid in one setting. Which additional claim needs evidence?",
+        "optionA": "That the document has a particular setting",
+        "optionB": "That all households in every period owed identical goods and amounts",
+        "optionC": "That goods appear in the record",
+        "optionD": "That a payment can be investigated",
+        "correctAnswer": "B",
+        "explanation": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "learningPoint": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "historicalClue": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "B": "Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "C": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule.",
+          "D": "Review the lesson clues. Tribute was required. Its form and amount need context rather than one invented universal rule."
+        },
+        "missionId": "chapter7-mission3",
+        "topic": "tribute-required-payment",
+        "topicLabel": "Required payments",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A payment required by an authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz3-question3",
+      "create": true,
+      "fields": {
+        "question": "A grant names a duty. What does that establish most directly?",
+        "optionA": "Proof every official obeyed perfectly",
+        "optionB": "Every household's approval",
+        "optionC": "A stated expectation, not proof of fulfillment",
+        "optionD": "Proof every person was treated fairly",
+        "correctAnswer": "C",
+        "explanation": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "learningPoint": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "historicalClue": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "B": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "C": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "D": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints."
+        },
+        "quizId": "chapter7-quiz3",
+        "order": 3,
+        "status": "active",
+        "topic": "encomienda-obligations",
+        "topicLabel": "Obligations and practice",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz3-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "How should a learner use a debate about collection and obligations?",
+        "optionA": "As a substitute for examining actions",
+        "optionB": "As evidence of disputed claims in context, not every community's complete story",
+        "optionC": "As proof everyone agreed",
+        "optionD": "As proof that one voice represents all people",
+        "correctAnswer": "B",
+        "explanation": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "learningPoint": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "historicalClue": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "B": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "C": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "D": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints."
+        },
+        "quizId": "chapter7-quiz3",
+        "order": 103,
+        "status": "active",
+        "topic": "encomienda-obligations",
+        "topicLabel": "Obligations and practice",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission3-encomienda-obligations-practice1",
+      "create": true,
+      "fields": {
+        "question": "A grant lists protection as a duty. What is still needed to evaluate practice?",
+        "optionA": "An invented speech saying the duty was always fulfilled",
+        "optionB": "Evidence of what was actually done and how people were affected",
+        "optionC": "Nothing, because a listed duty proves fair treatment",
+        "optionD": "A claim that every person approved",
+        "correctAnswer": "B",
+        "explanation": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "learningPoint": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "historicalClue": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "B": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "C": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "D": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints."
+        },
+        "missionId": "chapter7-mission3",
+        "topic": "encomienda-obligations",
+        "topicLabel": "Obligations and practice",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A duty someone is expected or required to fulfill.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission3-encomienda-obligations-practice2",
+      "create": true,
+      "fields": {
+        "question": "A record promises protection but gives no account of action. What is needed?",
+        "optionA": "Evidence of performance and effects on the people concerned",
+        "optionB": "Only the promise repeated in larger letters",
+        "optionC": "An invented statement of universal approval",
+        "optionD": "A claim that promises always fulfill themselves",
+        "correctAnswer": "A",
+        "explanation": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "learningPoint": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "historicalClue": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+        "answerExplanations": {
+          "A": "Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "B": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "C": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints.",
+          "D": "Review the lesson clues. Separate stated obligations from evidence of performance. Disputes and complaints require their own context and viewpoints."
+        },
+        "missionId": "chapter7-mission3",
+        "topic": "encomienda-obligations",
+        "topicLabel": "Obligations and practice",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A duty someone is expected or required to fulfill.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz3-question4",
+      "create": true,
+      "fields": {
+        "question": "Which question distinguishes demand from collection?",
+        "optionA": "Which label guarantees fairness?",
+        "optionB": "What was required and what was actually received?",
+        "optionC": "Why were all amounts always identical?",
+        "optionD": "Why is a fictional amount an authentic rule?",
+        "correctAnswer": "B",
+        "explanation": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "learningPoint": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "historicalClue": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "B": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "C": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "D": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens."
+        },
+        "quizId": "chapter7-quiz3",
+        "order": 4,
+        "status": "active",
+        "topic": "tribute-household-effects",
+        "topicLabel": "Household effects",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz3-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "What can a fictional household example establish?",
+        "optionA": "An illustrated relationship, not an authentic universal tax rate",
+        "optionB": "Every family's exact historical burden",
+        "optionC": "One payment schedule for all colonial years",
+        "optionD": "Every person's thoughts",
+        "correctAnswer": "A",
+        "explanation": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "learningPoint": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "historicalClue": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "answerExplanations": {
+          "A": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "B": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "C": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "D": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens."
+        },
+        "quizId": "chapter7-quiz3",
+        "order": 104,
+        "status": "active",
+        "topic": "tribute-household-effects",
+        "topicLabel": "Household effects",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission3-tribute-household-effects-practice1",
+      "create": true,
+      "fields": {
+        "question": "A fictional household example shows goods removed by a collection. Which conclusion fits?",
+        "optionA": "It illustrates a possible resource effect, not every family's historical burden",
+        "optionB": "It proves one authentic rate for all colonial years",
+        "optionC": "It reveals every resident's private feelings",
+        "optionD": "It means all requested payments were always collected fully",
+        "correctAnswer": "A",
+        "explanation": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "learningPoint": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "historicalClue": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "answerExplanations": {
+          "A": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "B": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "C": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "D": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens."
+        },
+        "missionId": "chapter7-mission3",
+        "topic": "tribute-household-effects",
+        "topicLabel": "Household effects",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A demand or difficulty placed on someone, assessed in their circumstances.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission3-tribute-household-effects-practice2",
+      "create": true,
+      "fields": {
+        "question": "A receipt records goods received but gives no household information. What remains to investigate?",
+        "optionA": "Only a larger title on the receipt",
+        "optionB": "A claim that revenue equals everyone's wellbeing",
+        "optionC": "An assumption that all demands were voluntary",
+        "optionD": "Resources and circumstances needed to assess the household effect",
+        "correctAnswer": "D",
+        "explanation": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "learningPoint": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "historicalClue": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "B": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "C": "Review the lesson clues. Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens.",
+          "D": "Investigate demands, actual collection and household circumstances separately. A fictional illustration cannot establish universal historical burdens."
+        },
+        "missionId": "chapter7-mission3",
+        "topic": "tribute-household-effects",
+        "topicLabel": "Household effects",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A demand or difficulty placed on someone, assessed in their circumstances.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz3-question5",
+      "create": true,
+      "fields": {
+        "question": "Which record most directly raises a disputed practice or asks for a remedy?",
+        "optionA": "A complaint",
+        "optionB": "Only the title of an officeholder",
+        "optionC": "An unlabelled teaching arrow",
+        "optionD": "A definition without any recorded action",
+        "correctAnswer": "A",
+        "explanation": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "learningPoint": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "historicalClue": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "answerExplanations": {
+          "A": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "B": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "C": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "D": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience."
+        },
+        "quizId": "chapter7-quiz3",
+        "order": 5,
+        "status": "active",
+        "topic": "encomienda-record-limits",
+        "topicLabel": "Comparing records",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter7-quiz3-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "A complaint has no reply in the available evidence. What is careful?",
+        "optionA": "Assume relief was granted",
+        "optionB": "Assume every resident approved",
+        "optionC": "Invent a decision to fill the gap",
+        "optionD": "State the complaint and identify the unresolved outcome",
+        "correctAnswer": "D",
+        "explanation": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "learningPoint": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "historicalClue": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "B": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "C": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "D": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience."
+        },
+        "quizId": "chapter7-quiz3",
+        "order": 105,
+        "status": "active",
+        "topic": "encomienda-record-limits",
+        "topicLabel": "Comparing records",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission3-encomienda-record-limits-practice1",
+      "create": true,
+      "fields": {
+        "question": "A complaint about collection has no surviving reply in the exercise. What should the report say?",
+        "optionA": "The complaint definitely succeeded",
+        "optionB": "Every affected resident agreed with every demand",
+        "optionC": "A missing reply proves that no complaint existed",
+        "optionD": "The complaint is recorded; its resolution needs further evidence",
+        "correctAnswer": "D",
+        "explanation": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "learningPoint": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "historicalClue": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "B": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "C": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "D": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience."
+        },
+        "missionId": "chapter7-mission3",
+        "topic": "encomienda-record-limits",
+        "topicLabel": "Comparing records",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A statement raising a problem or asking for a remedy.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter7-mission3-encomienda-record-limits-practice2",
+      "create": true,
+      "fields": {
+        "question": "Why compare a grant, collection account and complaint?",
+        "optionA": "A grant alone proves all outcomes",
+        "optionB": "A missing reply proves no local person acted",
+        "optionC": "They can address different parts of rights, practice and disputed effects",
+        "optionD": "Each must contain every person's view",
+        "correctAnswer": "C",
+        "explanation": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "learningPoint": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "historicalClue": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "B": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "C": "Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience.",
+          "D": "Review the lesson clues. Identify what each record supports. A complaint, grant or receipt alone cannot establish the whole outcome or everyone's experience."
+        },
+        "missionId": "chapter7-mission3",
+        "topic": "encomienda-record-limits",
+        "topicLabel": "Comparing records",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A statement raising a problem or asking for a remedy.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter7-mission3-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter7-mission3",
+        "name": "Tribute Evidence Journal",
+        "description": "A learning-game token for examining collection, obligations and evidence of community effects.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 3,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish collection rights from land ownership and compare obligations with actual practice.",
+          "reflectionQuestion": "Which clue helped you distinguish a stated duty from actual practice?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-7",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-2 introduce central government, local offices and Indigenous leadership. Missions 3-4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-3 cover central government, local leadership and encomienda/tribute. Mission 4 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/spanish-exploration-colonial-rule",
+      "create": false,
+      "expected": {
+        "description": "Chapters 5-6 offer four missions and a challenge each. Chapter 7 offers Missions 1-2 on central and local government; later content is being prepared."
+      },
+      "fields": {
+        "description": "Chapters 5-6 offer four missions and a challenge each. Chapter 7 offers Missions 1-3 on government, local leadership and tribute; later content is being prepared."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1232 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 2 Chapter 5 Mission 1 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://www.cultura.gob.es/cultura/archivos/difusion/registro-memoria-unesco/2023/vuelta-mundo-magallanes-elcano.html",
+    "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/",
+    "https://www.nqc.gov.ph/en/map/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "writes": [
+    {
+      "path": "eras/spanish-exploration-colonial-rule",
+      "create": true,
+      "fields": {
+        "title": "Exploration and Spanish Colonial Rule",
+        "name": "Exploration and Spanish Colonial Rule",
+        "description": "Begin with exploration motives and routes. Only Chapter 5 Mission 1 is currently available; later lessons are being prepared.",
+        "order": 2,
+        "status": "active"
+      }
+    },
+    {
+      "path": "chapters/chapter-5",
+      "create": true,
+      "fields": {
+        "eraId": "spanish-exploration-colonial-rule",
+        "title": "European Exploration and Early Encounters",
+        "description": "Mission 1: motives and routes is available. Missions 2-4 and the chapter challenge are being prepared.",
+        "order": 5,
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "missions/chapter5-mission1",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-5",
+        "title": "European Exploration and Its Motives",
+        "order": 1,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate why a Spanish-backed expedition sailed westward. Read its route and compare different perspectives.",
+        "learningObjective": "Explain exploration motives, a broad route and the importance of local perspectives.",
+        "learningObjectives": [
+          "Explain spice trade motives using lesson evidence.",
+          "Explain sponsors and power using lesson evidence.",
+          "Explain reading the route using lesson evidence.",
+          "Explain motives and outcomes using lesson evidence.",
+          "Explain different perspectives using lesson evidence."
+        ],
+        "lessonRecap": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "sourceUrls": [
+          "https://www.cultura.gob.es/cultura/archivos/difusion/registro-memoria-unesco/2023/vuelta-mundo-magallanes-elcano.html",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/",
+          "https://www.nqc.gov.ph/en/map/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter5-quiz1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission1",
+        "title": "Exploration Motives - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "spice-trade-motives",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "sponsorship-and-power",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "westward-route",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "motives-and-outcomes",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "local-perspectives",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission1-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission1",
+        "status": "active",
+        "order": 1,
+        "title": "Why Seek Another Trade Route?",
+        "content": "You have studied Asian networks that existed before Europeans arrived. Era 2 begins by asking why European rulers and merchants wanted more access to those networks. The places they reached already had people, knowledge and histories.\n\nSpices such as cloves and nutmeg were valued trade goods in Europe. Merchants and rulers sought profitable access to products and the connections carrying them. Profit is money gained after costs; an expensive voyage did not guarantee it.\n\nWork through a fictional funding decision. A sponsor hears that another sea route might improve access to a valuable product. The sponsor must consider likely benefits, costs, supplies and uncertainty. Wanting profit is a motive, not proof that the voyage will succeed or that the sponsor owns the destination.\n\nThe Spanish Crown supported Magellan's 1519 expedition to seek a westward route to the Spice Islands, now part of Indonesia. This mission explains the motives and route idea; later missions study encounters and their consequences.",
+        "reviewTopics": [
+          "spice-trade-motives"
+        ],
+        "imageUrl": "../assets/story/exploration-motives.svg",
+        "imageFit": "contain",
+        "imageAlt": "Trade access, sponsorship and voyage uncertainty are distinct ideas.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "An existing network",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Spice-producing places were not empty. A new European route would meet societies and trading relationships that already existed.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A commercial motive",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Access to valuable goods could promise profit. A promise is not the same as a guaranteed result.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A funding question",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ships, supplies and labour cost resources. Considering a route includes costs and uncertainties, not the price of one spice alone.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation fits the commercial aim of the expedition?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Seek access to valuable spice trade through a westward route",
+          "Prove that Asian communities had no trade before Europeans",
+          "Guarantee profit without paying voyage costs",
+          "Acquire automatic ownership by drawing a route"
+        ],
+        "decisionCorrectAnswer": "Seek access to valuable spice trade through a westward route",
+        "decisionExplanation": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "keyTerm": "Trade motive",
+        "keyTermDefinition": "A reason connected with gaining access to goods or exchange.",
+        "historicalInsight": "Ships, supplies and labour cost resources. Considering a route includes costs and uncertainties, not the price of one spice alone.",
+        "learningHelp": {
+          "explanation": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "vocabulary": [
+            {
+              "term": "Trade motive",
+              "definition": "A reason connected with gaining access to goods or exchange."
+            }
+          ],
+          "example": "Spice-producing places were not empty. A new European route would meet societies and trading relationships that already existed.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.cultura.gob.es/cultura/archivos/difusion/registro-memoria-unesco/2023/vuelta-mundo-magallanes-elcano.html",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/",
+          "https://www.nqc.gov.ph/en/map/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission1-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission1",
+        "status": "active",
+        "order": 2,
+        "title": "Rulers, Rivalry and Different Goals",
+        "content": "A sponsor supplies support for an undertaking. The Spanish Crown backed the expedition; Magellan was a Portuguese navigator sailing in Spanish service. A person's birthplace and the ruler supporting a voyage are different facts.\n\nSpain and Portugal competed over overseas routes and claims. Rulers could seek influence and control as well as commercial benefits. Religious aims also formed part of European expansion, but not every participant had the same priorities. A crew member, merchant and ruler could want different things from the same voyage.\n\nCompare a fictional proposal with its claim. A ruler agrees to fund ships and expects advantage. That tells us the ruler's aim. It does not establish that residents of the destination agreed to foreign control. A claim made by a sponsor is different from a right accepted by the people affected.\n\nWhen reading a source, ask whose goals it records and whose voice is missing. We do not need to treat the voyage as automatically good for everyone or as an empty adventure with no political consequences.",
+        "reviewTopics": [
+          "sponsorship-and-power"
+        ],
+        "imageUrl": "../assets/story/exploration-motives.svg",
+        "imageFit": "contain",
+        "imageAlt": "Trade access, sponsorship and voyage uncertainty are distinct ideas.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Identify the sponsor",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A voyage in Spanish service could be commanded by a Portuguese-born navigator. Birthplace and sponsorship should not be confused.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Identify the aim",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A ruler might seek commercial access and influence. Different participants could have different priorities.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Identify the missing agreement",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A funding document records an intention. It cannot by itself show that local communities consented to the sponsor's claims.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does Spanish sponsorship establish?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "That every crew member had the same birthplace",
+          "That residents of every destination accepted Spanish authority",
+          "That every goal was automatically achieved",
+          "Who supported the expedition, not consent from every community it might reach"
+        ],
+        "decisionCorrectAnswer": "Who supported the expedition, not consent from every community it might reach",
+        "decisionExplanation": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "keyTerm": "Sponsor",
+        "keyTermDefinition": "A person or institution providing support for an undertaking.",
+        "historicalInsight": "A funding document records an intention. It cannot by itself show that local communities consented to the sponsor's claims.",
+        "learningHelp": {
+          "explanation": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "vocabulary": [
+            {
+              "term": "Sponsor",
+              "definition": "A person or institution providing support for an undertaking."
+            }
+          ],
+          "example": "A voyage in Spanish service could be commanded by a Portuguese-born navigator. Birthplace and sponsorship should not be confused.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.cultura.gob.es/cultura/archivos/difusion/registro-memoria-unesco/2023/vuelta-mundo-magallanes-elcano.html",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/",
+          "https://www.nqc.gov.ph/en/map/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission1-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission1",
+        "status": "active",
+        "order": 3,
+        "title": "Watch How: Read the Westward Route",
+        "content": "Read the simplified route diagram as a sequence of broad regions, not a precise ship track. Start in Spain, cross the Atlantic toward South America, pass through a southern strait, then cross the Pacific toward Asia. The expedition reached Philippine islands in 1521 while seeking the Spice Islands. The islands now called the Philippines and the Spice Islands are not the same destination.\n\nWorked example: Step 1. Find Spain and the Atlantic label. Step 2. Find southern South America and the passage toward the Pacific. Step 3. Continue westward across the Pacific toward the Philippines and Maluku. Follow the numbered arrows from left to right; the boxes represent places in a sequence, not positions on a map.\n\nThe diagram omits many stops and does not draw coastlines or distances. Its dashed line indicates a broad historical route outline, not exact navigation, sailing time or every crew member's experience. It is not a safe-travel guide.\n\nThe expedition eventually completed a circuit of the world under surviving leadership after Magellan's death. That outcome differs from the original aim of reaching spice trade; later missions examine the events in detail.",
+        "reviewTopics": [
+          "westward-route"
+        ],
+        "imageUrl": "../assets/story/exploration-route.svg",
+        "imageFit": "contain",
+        "imageAlt": "Broad route sequence: Spain, Atlantic, southern South America, Pacific, Philippine islands, distinct Maluku destination. Not a map or exact ship track.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Name the oceans",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Atlantic comes before the southern South American passage; the Pacific comes after it on this westward outline.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Keep destinations distinct",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Philippine islands were part of the journey, while Maluku was the spice destination sought. Modern labels help locate places, not define past political borders.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Read the model limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A broad dashed route does not supply exact ship positions, distances, risks or travel times.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which broad sequence fits the westward route outline?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Maluku and the Philippines are one identical island",
+          "A route line supplies the exact time of every stop",
+          "Spain, Atlantic, southern South America, Pacific, Asian islands",
+          "Spain, Pacific, Atlantic, southern South America, Asian islands"
+        ],
+        "decisionCorrectAnswer": "Spain, Atlantic, southern South America, Pacific, Asian islands",
+        "decisionExplanation": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "keyTerm": "Route outline",
+        "keyTermDefinition": "A simplified representation of the main places or regions along a journey.",
+        "historicalInsight": "A broad dashed route does not supply exact ship positions, distances, risks or travel times.",
+        "learningHelp": {
+          "explanation": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "vocabulary": [
+            {
+              "term": "Route outline",
+              "definition": "A simplified representation of the main places or regions along a journey."
+            }
+          ],
+          "example": "The Atlantic comes before the southern South American passage; the Pacific comes after it on this westward outline.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.cultura.gob.es/cultura/archivos/difusion/registro-memoria-unesco/2023/vuelta-mundo-magallanes-elcano.html",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/",
+          "https://www.nqc.gov.ph/en/map/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission1-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission1",
+        "status": "active",
+        "order": 4,
+        "title": "Your Turn: Motive, Event or Claim?",
+        "content": "A motive is a reason for acting. An event is something that happened. An outcome is a result. Keeping them separate prevents a plan from becoming an invented success story.\n\nTry this classroom source comparison. Card A paraphrases the expedition's trade aim: seek a western path to the Spice Islands. Card B summarizes a later result: surviving members completed a global circuit. The cards are teaching summaries, not quotations from original documents.\n\nStep 1. Identify the question: are we explaining why the expedition was funded, or what later happened? Step 2. Select the relevant card. Step 3. Avoid making either card answer everything. The later global circuit does not mean that every original plan was fulfilled or that every crew member returned.\n\nNew sources can refine details. A commemorative map, a sponsor's instruction and a participant's account have different purposes. Read their origins and limits instead of turning the most exciting description into the whole history.",
+        "reviewTopics": [
+          "motives-and-outcomes"
+        ],
+        "imageUrl": "../assets/story/exploration-motives.svg",
+        "imageFit": "contain",
+        "imageAlt": "Trade access, sponsorship and voyage uncertainty are distinct ideas.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Reason card",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A statement about seeking profitable access explains a motive. It does not report a completed result.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Result card",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A report of a completed circuit concerns an outcome. It is not identical to every original participant's goal or experience.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source card",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A modern lesson summary should be labelled as such. It is not an original royal instruction or an eyewitness quotation.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which sentence describes a motive rather than a guaranteed outcome?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Drawing a route completed the voyage",
+          "The sponsor wanted access to valuable spice trade",
+          "Every original participant returned safely",
+          "Funding proved all communities consented"
+        ],
+        "decisionCorrectAnswer": "The sponsor wanted access to valuable spice trade",
+        "decisionExplanation": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "keyTerm": "Motive",
+        "keyTermDefinition": "A reason for choosing an action.",
+        "historicalInsight": "A modern lesson summary should be labelled as such. It is not an original royal instruction or an eyewitness quotation.",
+        "learningHelp": {
+          "explanation": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "vocabulary": [
+            {
+              "term": "Motive",
+              "definition": "A reason for choosing an action."
+            }
+          ],
+          "example": "A statement about seeking profitable access explains a motive. It does not report a completed result.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.cultura.gob.es/cultura/archivos/difusion/registro-memoria-unesco/2023/vuelta-mundo-magallanes-elcano.html",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/",
+          "https://www.nqc.gov.ph/en/map/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission1-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission1",
+        "status": "active",
+        "order": 5,
+        "title": "Compare Perspectives Before Judging",
+        "content": "A European sponsor could ask about routes, profit and influence. A community receiving unfamiliar visitors could ask about exchange, safety, authority and its own interests. These questions concern the same contact but different perspectives.\n\nUse a fictional meeting preparation task. A sponsor's card says, We want access to trade. A local community's classroom card asks, What do visitors want, and do we agree? These are invented prompts for comparison, not authentic speeches by named historical leaders.\n\nThe Philippines already had communities and wider connections. Calling arrival a discovery for Europeans must not imply that the people or places had no earlier history. Local people could negotiate, cooperate, resist or respond differently. Later missions examine specific encounters rather than assume a single response.\n\nLearning the motives of an expedition does not excuse coercion or require students to celebrate domination. Nor should one source stand for every resident or visitor. Ask whose account is available, what it supports and what another perspective might add.",
+        "reviewTopics": [
+          "local-perspectives"
+        ],
+        "imageUrl": "../assets/story/exploration-perspectives.svg",
+        "imageFit": "contain",
+        "imageAlt": "Compare sponsor interests, local interests and the limits of evidence.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Sponsor perspective",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A funding aim explains what the sponsor hoped to gain. It does not describe every consequence for others.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Local perspective",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Questions about consent, authority and safety matter to people already living at a destination. An arrival does not erase their history.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Keep the case fictional",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The two classroom prompts help compare viewpoints. They are not quotations proving what all real people said.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report compares perspectives responsibly?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Name the sponsor's aim and ask how local people understood and responded to contact",
+          "Treat arrival as the beginning of all local history",
+          "Assume everyone welcomed every foreign claim",
+          "Present an invented classroom prompt as a leader's exact speech"
+        ],
+        "decisionCorrectAnswer": "Name the sponsor's aim and ask how local people understood and responded to contact",
+        "decisionExplanation": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "keyTerm": "Perspective",
+        "keyTermDefinition": "A viewpoint shaped by a person's situation, interests and information.",
+        "historicalInsight": "The two classroom prompts help compare viewpoints. They are not quotations proving what all real people said.",
+        "learningHelp": {
+          "explanation": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "vocabulary": [
+            {
+              "term": "Perspective",
+              "definition": "A viewpoint shaped by a person's situation, interests and information."
+            }
+          ],
+          "example": "A funding aim explains what the sponsor hoped to gain. It does not describe every consequence for others.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.cultura.gob.es/cultura/archivos/difusion/registro-memoria-unesco/2023/vuelta-mundo-magallanes-elcano.html",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/",
+          "https://www.nqc.gov.ph/en/map/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission1-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission1",
+        "status": "active",
+        "order": 6,
+        "title": "Field Journal: Explain Why, Where and Whose View",
+        "content": "Build a mission report with three questions. Why was the expedition supported? Consider spice access, possible profit and political interests. Where did the westward plan lead? Follow the broad oceans and passage while keeping Philippine islands and Maluku distinct. Whose perspective are we hearing? Compare the sponsor's aims with the interests of people already present.\n\nUse source labels honestly. The route is simplified, the fictional comparison prompts are not original speeches, and a motive is not a guaranteed outcome. Saving a clue does not prove mastery or give ownership of historical objects.\n\nThe five-question mission quiz assesses ideas taught here. If an idea needs work, return to its explanation and practise before retrying with equivalent new questions.\n\nAfter this first mission, Chapter 5 is still being built. Its remaining lessons will examine Magellan's encounters, Lapulapu and Mactan, and later expeditions. No chapter badge or completed-chapter claim is available from this one mission alone.",
+        "reviewTopics": [
+          "spice-trade-motives",
+          "sponsorship-and-power",
+          "westward-route",
+          "motives-and-outcomes",
+          "local-perspectives"
+        ],
+        "imageUrl": "../assets/story/exploration-perspectives.svg",
+        "imageFit": "contain",
+        "imageAlt": "Compare sponsor interests, local interests and the limits of evidence.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Connect the motive",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Explain a desired benefit without treating it as a guaranteed or universally accepted result.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connect the route",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Name the broad route and its limits instead of claiming the diagram records every exact position.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connect perspectives",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An expedition entered places with existing histories. Local choices and interests belong in the account.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which final report connects the mission ideas?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A new route meant every goal succeeded without local decisions",
+          "The Philippines and Maluku are identical names for the same place",
+          "A fictional classroom card supplies every participant's exact words",
+          "A Spanish-backed westward spice expedition had goals and uncertainties and encountered societies with their own interests"
+        ],
+        "decisionCorrectAnswer": "A Spanish-backed westward spice expedition had goals and uncertainties and encountered societies with their own interests",
+        "decisionExplanation": "The report connects sponsorship, the route goal and multiple perspectives without erasing uncertainty or earlier societies.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The report connects sponsorship, the route goal and multiple perspectives without erasing uncertainty or earlier societies.",
+        "keyTerm": "Historical explanation",
+        "keyTermDefinition": "An account connecting evidence, reasons and limits.",
+        "historicalInsight": "An expedition entered places with existing histories. Local choices and interests belong in the account.",
+        "learningHelp": {
+          "explanation": "The report connects sponsorship, the route goal and multiple perspectives without erasing uncertainty or earlier societies.",
+          "vocabulary": [
+            {
+              "term": "Historical explanation",
+              "definition": "An account connecting evidence, reasons and limits."
+            }
+          ],
+          "example": "Explain a desired benefit without treating it as a guaranteed or universally accepted result.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.cultura.gob.es/cultura/archivos/difusion/registro-memoria-unesco/2023/vuelta-mundo-magallanes-elcano.html",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/",
+          "https://www.nqc.gov.ph/en/map/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz1-question1",
+      "create": true,
+      "fields": {
+        "question": "Why did the Spanish sponsor seek a westward sea route?",
+        "optionA": "To gain access to valuable spice trade",
+        "optionB": "To find lands with no inhabitants",
+        "optionC": "To guarantee that every voyage made money",
+        "optionD": "To end all existing Asian trade",
+        "correctAnswer": "A",
+        "explanation": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "learningPoint": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "historicalClue": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "answerExplanations": {
+          "A": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "B": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "C": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "D": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition."
+        },
+        "quizId": "chapter5-quiz1",
+        "order": 1,
+        "status": "active",
+        "topic": "spice-trade-motives",
+        "topicLabel": "Spice trade motives",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz1-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Which plan best matches a commercial motive?",
+        "optionA": "Prove that Asian trade had never existed",
+        "optionB": "Treat every destination as an empty place",
+        "optionC": "Promise profit without considering costs",
+        "optionD": "Seek another way to reach valuable spice markets",
+        "correctAnswer": "D",
+        "explanation": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "learningPoint": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "historicalClue": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "B": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "C": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "D": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition."
+        },
+        "quizId": "chapter5-quiz1",
+        "order": 101,
+        "status": "active",
+        "topic": "spice-trade-motives",
+        "topicLabel": "Spice trade motives",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission1-spice-trade-motives-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which explanation fits the commercial aim of the expedition?",
+        "optionA": "Prove that Asian communities had no trade before Europeans",
+        "optionB": "Guarantee profit without paying voyage costs",
+        "optionC": "Acquire automatic ownership by drawing a route",
+        "optionD": "Seek access to valuable spice trade through a westward route",
+        "correctAnswer": "D",
+        "explanation": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "learningPoint": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "historicalClue": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "B": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "C": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "D": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition."
+        },
+        "missionId": "chapter5-mission1",
+        "topic": "spice-trade-motives",
+        "topicLabel": "Spice trade motives",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A reason connected with gaining access to goods or exchange.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission1-spice-trade-motives-practice2",
+      "create": true,
+      "fields": {
+        "question": "A sponsor predicts profit. Which evidence is still needed?",
+        "optionA": "A promise that no ship could be lost",
+        "optionB": "A claim that trade did not exist before arrival",
+        "optionC": "Likely trade income and voyage costs",
+        "optionD": "Proof that all inhabitants agreed to foreign rule",
+        "correctAnswer": "C",
+        "explanation": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "learningPoint": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "historicalClue": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "B": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "C": "The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition.",
+          "D": "Review the lesson clues. The commercial motive concerned access and possible profit. Existing Asian communities and trade did not begin with the expedition."
+        },
+        "missionId": "chapter5-mission1",
+        "topic": "spice-trade-motives",
+        "topicLabel": "Spice trade motives",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A reason connected with gaining access to goods or exchange.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz1-question2",
+      "create": true,
+      "fields": {
+        "question": "What does Spanish support for the expedition tell us?",
+        "optionA": "That all crew members were born in Spain",
+        "optionB": "That local communities agreed to Spanish rule",
+        "optionC": "That every sponsor goal was achieved",
+        "optionD": "Who helped fund the voyage",
+        "correctAnswer": "D",
+        "explanation": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "learningPoint": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "historicalClue": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "B": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "C": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "D": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome."
+        },
+        "quizId": "chapter5-quiz1",
+        "order": 2,
+        "status": "active",
+        "topic": "sponsorship-and-power",
+        "topicLabel": "Sponsors and power",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz1-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Which statement correctly separates sponsorship from consent?",
+        "optionA": "A sponsor decides what all local people believe",
+        "optionB": "A sponsor guarantees a safe return",
+        "optionC": "Funding a voyage does not show local agreement to foreign rule",
+        "optionD": "Funding a voyage gives ownership of every place reached",
+        "correctAnswer": "C",
+        "explanation": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "learningPoint": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "historicalClue": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "B": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "C": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "D": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome."
+        },
+        "quizId": "chapter5-quiz1",
+        "order": 102,
+        "status": "active",
+        "topic": "sponsorship-and-power",
+        "topicLabel": "Sponsors and power",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission1-sponsorship-and-power-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does Spanish sponsorship establish?",
+        "optionA": "That residents of every destination accepted Spanish authority",
+        "optionB": "That every goal was automatically achieved",
+        "optionC": "Who supported the expedition, not consent from every community it might reach",
+        "optionD": "That every crew member had the same birthplace",
+        "correctAnswer": "C",
+        "explanation": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "learningPoint": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "historicalClue": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "B": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "C": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "D": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome."
+        },
+        "missionId": "chapter5-mission1",
+        "topic": "sponsorship-and-power",
+        "topicLabel": "Sponsors and power",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A person or institution providing support for an undertaking.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission1-sponsorship-and-power-practice2",
+      "create": true,
+      "fields": {
+        "question": "A Portuguese-born navigator sails with Spanish funding. Which conclusion fits?",
+        "optionA": "Spanish support proves local consent",
+        "optionB": "Birthplace and sponsorship are different facts",
+        "optionC": "The voyage had no sponsor",
+        "optionD": "All crew members had the same birthplace",
+        "correctAnswer": "B",
+        "explanation": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "learningPoint": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "historicalClue": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "B": "Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "C": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome.",
+          "D": "Review the lesson clues. Sponsorship identifies support and aims. It does not prove local agreement, uniform motives or a successful outcome."
+        },
+        "missionId": "chapter5-mission1",
+        "topic": "sponsorship-and-power",
+        "topicLabel": "Sponsors and power",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A person or institution providing support for an undertaking.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz1-question3",
+      "create": true,
+      "fields": {
+        "question": "Which broad sequence fits the outward expedition?",
+        "optionA": "Philippine islands, Spain, Atlantic, southern South America",
+        "optionB": "Spain, Indian Ocean, Mediterranean, Atlantic",
+        "optionC": "Spain, Atlantic, southern South America, Pacific, Asian islands",
+        "optionD": "Spain, Pacific, northern Europe, Atlantic, Asian islands",
+        "correctAnswer": "C",
+        "explanation": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "learningPoint": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "historicalClue": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "B": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "C": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "D": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct."
+        },
+        "quizId": "chapter5-quiz1",
+        "order": 3,
+        "status": "active",
+        "topic": "westward-route",
+        "topicLabel": "Reading the route",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz1-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "What should a learner remember when reading the route map?",
+        "optionA": "All ocean crossings took the same time",
+        "optionB": "The Philippine islands and Maluku are different places",
+        "optionC": "The map shows the exact position of each ship each day",
+        "optionD": "Reaching the Philippines meant reaching the spice destination",
+        "correctAnswer": "B",
+        "explanation": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "learningPoint": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "historicalClue": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "B": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "C": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "D": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct."
+        },
+        "quizId": "chapter5-quiz1",
+        "order": 103,
+        "status": "active",
+        "topic": "westward-route",
+        "topicLabel": "Reading the route",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission1-westward-route-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which broad sequence fits the westward route outline?",
+        "optionA": "A route line supplies the exact time of every stop",
+        "optionB": "Spain, Atlantic, southern South America, Pacific, Asian islands",
+        "optionC": "Spain, Pacific, Atlantic, southern South America, Asian islands",
+        "optionD": "Maluku and the Philippines are one identical island",
+        "correctAnswer": "B",
+        "explanation": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "learningPoint": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "historicalClue": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "B": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "C": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "D": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct."
+        },
+        "missionId": "chapter5-mission1",
+        "topic": "westward-route",
+        "topicLabel": "Reading the route",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A simplified representation of the main places or regions along a journey.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission1-westward-route-practice2",
+      "create": true,
+      "fields": {
+        "question": "Someone labels the Philippine islands as Maluku. How should you correct it?",
+        "optionA": "They are distinct places; Maluku was the spice destination",
+        "optionB": "They are two names for one island",
+        "optionC": "Both are places in Spain",
+        "optionD": "The Atlantic and Pacific are the same ocean",
+        "correctAnswer": "A",
+        "explanation": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "learningPoint": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "historicalClue": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+        "answerExplanations": {
+          "A": "The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "B": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "C": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct.",
+          "D": "Review the lesson clues. The outline crosses the Atlantic before the passage near southern South America, then the Pacific. Philippine and Maluku locations remain distinct."
+        },
+        "missionId": "chapter5-mission1",
+        "topic": "westward-route",
+        "topicLabel": "Reading the route",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A simplified representation of the main places or regions along a journey.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz1-question4",
+      "create": true,
+      "fields": {
+        "question": "Which statement describes a motive?",
+        "optionA": "Ships departed in 1519",
+        "optionB": "The sponsor wanted access to valuable spice trade",
+        "optionC": "The expedition crossed the Pacific",
+        "optionD": "Survivors later completed a circuit of the world",
+        "correctAnswer": "B",
+        "explanation": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "learningPoint": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "historicalClue": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "B": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "C": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "D": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred."
+        },
+        "quizId": "chapter5-quiz1",
+        "order": 4,
+        "status": "active",
+        "topic": "motives-and-outcomes",
+        "topicLabel": "Motives and outcomes",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz1-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "A student says a later result was the only original goal. What is the best response?",
+        "optionA": "Check evidence about the original aim separately from later events",
+        "optionB": "Every result must have been the only original goal",
+        "optionC": "A planned benefit always happens",
+        "optionD": "A route map proves what every sailor wanted",
+        "correctAnswer": "A",
+        "explanation": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "learningPoint": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "historicalClue": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "answerExplanations": {
+          "A": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "B": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "C": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "D": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred."
+        },
+        "quizId": "chapter5-quiz1",
+        "order": 104,
+        "status": "active",
+        "topic": "motives-and-outcomes",
+        "topicLabel": "Motives and outcomes",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission1-motives-and-outcomes-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which sentence describes a motive rather than a guaranteed outcome?",
+        "optionA": "The sponsor wanted access to valuable spice trade",
+        "optionB": "Every original participant returned safely",
+        "optionC": "Funding proved all communities consented",
+        "optionD": "Drawing a route completed the voyage",
+        "correctAnswer": "A",
+        "explanation": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "learningPoint": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "historicalClue": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "answerExplanations": {
+          "A": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "B": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "C": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "D": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred."
+        },
+        "missionId": "chapter5-mission1",
+        "topic": "motives-and-outcomes",
+        "topicLabel": "Motives and outcomes",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A reason for choosing an action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission1-motives-and-outcomes-practice2",
+      "create": true,
+      "fields": {
+        "question": "A surviving crew completes a world circuit. What does this alone fail to prove?",
+        "optionA": "That a later outcome occurred",
+        "optionB": "That surviving crew members travelled",
+        "optionC": "That evidence about the outcome can be studied",
+        "optionD": "That every original sailor intended and completed the same journey",
+        "correctAnswer": "D",
+        "explanation": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "learningPoint": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "historicalClue": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "B": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "C": "Review the lesson clues. A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred.",
+          "D": "A desired benefit is a motive. It is not evidence that the hoped-for result, agreement or safe return occurred."
+        },
+        "missionId": "chapter5-mission1",
+        "topic": "motives-and-outcomes",
+        "topicLabel": "Motives and outcomes",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A reason for choosing an action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz1-question5",
+      "create": true,
+      "fields": {
+        "question": "How can we explain contact fairly?",
+        "optionA": "Consider sponsor aims and local people's interests and responses",
+        "optionB": "Describe places as having no history before European arrival",
+        "optionC": "Assume every community responded in the same way",
+        "optionD": "Treat sponsor intentions as permission to rule",
+        "correctAnswer": "A",
+        "explanation": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "learningPoint": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "historicalClue": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "answerExplanations": {
+          "A": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "B": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "C": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "D": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences."
+        },
+        "quizId": "chapter5-quiz1",
+        "order": 5,
+        "status": "active",
+        "topic": "local-perspectives",
+        "topicLabel": "Different perspectives",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter5-quiz1-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Two fictional speakers discuss contact. How should we use their words?",
+        "optionA": "As proof that every local person agreed",
+        "optionB": "As original speeches recorded in 1521",
+        "optionC": "As evidence that only the sponsor had goals",
+        "optionD": "As teaching prompts, not authentic historical quotations",
+        "correctAnswer": "D",
+        "explanation": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "learningPoint": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "historicalClue": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "B": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "C": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "D": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences."
+        },
+        "quizId": "chapter5-quiz1",
+        "order": 105,
+        "status": "active",
+        "topic": "local-perspectives",
+        "topicLabel": "Different perspectives",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission1-local-perspectives-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which report compares perspectives responsibly?",
+        "optionA": "Treat arrival as the beginning of all local history",
+        "optionB": "Assume everyone welcomed every foreign claim",
+        "optionC": "Present an invented classroom prompt as a leader's exact speech",
+        "optionD": "Name the sponsor's aim and ask how local people understood and responded to contact",
+        "correctAnswer": "D",
+        "explanation": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "learningPoint": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "historicalClue": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "B": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "C": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "D": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences."
+        },
+        "missionId": "chapter5-mission1",
+        "topic": "local-perspectives",
+        "topicLabel": "Different perspectives",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A viewpoint shaped by a person's situation, interests and information.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter5-mission1-local-perspectives-practice2",
+      "create": true,
+      "fields": {
+        "question": "One account says contact was welcome. What should a careful learner do?",
+        "optionA": "Ignore all local decisions",
+        "optionB": "Treat a fictional prompt as an original speech",
+        "optionC": "Seek other accounts and avoid assuming every community agreed",
+        "optionD": "Apply that view to every community",
+        "correctAnswer": "C",
+        "explanation": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "learningPoint": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "historicalClue": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "B": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "C": "Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences.",
+          "D": "Review the lesson clues. Comparing perspectives recognizes existing communities and distinguishes an expedition's goals from local choices and consequences."
+        },
+        "missionId": "chapter5-mission1",
+        "topic": "local-perspectives",
+        "topicLabel": "Different perspectives",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A viewpoint shaped by a person's situation, interests and information.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter5-mission1-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter5-mission1",
+        "name": "Route Investigator Journal",
+        "description": "A learning-game token for explaining motives, routes and different perspectives.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Separate aims from results and consider local perspectives.",
+          "reflectionQuestion": "Which clue helped you distinguish a motive from an outcome?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    }
+  ]
+}

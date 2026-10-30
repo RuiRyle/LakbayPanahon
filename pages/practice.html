@@ -20,15 +20,24 @@
     rel="stylesheet" 
     href="../css/practice.css"
     >
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
 </head>
 
 
 <body
-    class="auth-checking"
+    class="auth-checking lakbay-theme"
     data-role="student"
 >
+    <div class="student-loading-shell" role="status" aria-live="polite">
+        <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
+        <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p>Loading your learning space...</p><div class="student-loading-heading" aria-hidden="true"></div><div class="student-loading-cards" aria-hidden="true"><i></i><i></i><i></i></div><div class="student-loading-panel" aria-hidden="true"></div></div></div>
+    </div>
+
 
 <div class="student-app">
+        <a class="student-skip-link" href="#student-main">Skip to main content</a>
 
 
     <!-- =====================================
@@ -66,7 +75,7 @@
 
 
             <a
-                href="student-dashboard.html#journey"
+                href="my-journey.html"
                 class="nav-link active"
             >
                 <span class="nav-icon">📖</span>
@@ -84,7 +93,7 @@
 
 
             <a
-                href="#"
+                href="my-class.html"
                 class="nav-link"
             >
                 <span class="nav-icon">🏫</span>
@@ -93,11 +102,11 @@
 
 
             <a
-                href="student-dashboard.html#dailyChallenge"
+                href="bayani-ai.html"
                 class="nav-link"
             >
                 <span class="nav-icon">⚡</span>
-                <span>Daily Challenge</span>
+                <span>Bayani AI</span>
             </a>
 
 
@@ -108,6 +117,7 @@
                 <span class="nav-icon">🏆</span>
                 <span>Achievements</span>
             </a>
+            <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 13.5 1.1.8-1.1 1.9-1.3-.5a7.8 7.8 0 0 1-1.5.9l-.2 1.4h-2.2l-.3-1.4a7.8 7.8 0 0 1-1.7 0l-.8 1.2-1.9-1.1.5-1.3a7.8 7.8 0 0 1-.9-1.5l-1.4-.2v-2.2l1.4-.3a7.8 7.8 0 0 1 0-1.7L7.9 8.7 9 6.8l1.3.5a7.8 7.8 0 0 1 1.5-.9l.2-1.4h2.2l.3 1.4a7.8 7.8 0 0 1 1.7 0l.8-1.2 1.9 1.1-.5 1.3a7.8 7.8 0 0 1 .9 1.5l1.4.2v2.2l-1.4.3a7.8 7.8 0 0 1 0 1.7Z"/></svg></span><span>Settings</span></a>
 
         </nav>
 
@@ -131,7 +141,7 @@
          MAIN CONTENT
     ====================================== -->
 
-    <main class="main-content">
+    <main tabindex="-1" id="student-main" class="main-content">
 
 
         <!-- =====================================
@@ -218,6 +228,15 @@
             </div>
 
 
+            <div id="practiceChoices" hidden>
+                <nav aria-label="Practice choices">
+                    <a id="practiceLessonLink" class="text-button">Review Lesson</a>
+                    <span aria-hidden="true">&middot;</span>
+                    <a id="practiceRetryLink" class="text-button">Retry Mission Quiz When Ready</a>
+                </nav>
+                <p>Practice builds understanding and does not award mission XP.</p>
+            </div>
+
             <!-- ERROR -->
 
             <div
@@ -228,6 +247,8 @@
                 We could not load this practice challenge.
             </div>
 
+
+            <button id="retryPracticeLoadButton" type="button" class="primary-button" hidden>Try Loading Again</button>
 
             <!-- =====================================
                  PRACTICE CONTENT
@@ -240,11 +261,9 @@
             >
 
 
-                <section class="practice-review-panel" aria-labelledby="practiceReviewTitle">
-                    <h2 id="practiceReviewTitle">Your Practice Review</h2>
-                    <p id="practiceReviewMode" role="status"></p>
-                    <div id="practiceReviewTopics" class="practice-review-grid"></div>
-                </section>
+
+
+
                 <!-- HEADER -->
 
                 <section class="practice-header">
@@ -264,7 +283,11 @@
     the explanation before trying the mission quiz again.
 </p>
 
-                </section>
+                </section><ol class="review-flow-steps" aria-label="Learning recovery steps"><li><span aria-hidden="true">1</span>Review the lesson</li><li aria-current="step"><span aria-hidden="true">2</span>Apply in practice</li><li><span aria-hidden="true">3</span>Choose your next step</li></ol>                <details class="practice-review-panel practice-review-disclosure"><summary><span class="review-disclosure-icon" aria-hidden="true">&#9678;</span><span>Your personalized recommendations</span></summary><div class="review-disclosure-body">
+                    <h2 id="practiceReviewTitle">Your Practice Review</h2>
+                    <p id="practiceReviewMode" role="status"></p>
+                    <div id="practiceReviewTopics" class="practice-review-grid"></div>
+                </div></details>
 
 
                 <!-- =====================================
@@ -334,6 +357,7 @@
                     <div
                         class="practice-feedback"
                         id="practiceFeedback"
+                        role="status" aria-live="polite"
                         hidden
                     >
 
@@ -384,10 +408,12 @@
                     </span>
 
 
-                    <h2>
+                    <h2 id="practiceCompleteTitle">
                         Practice Complete!
                     </h2>
 
+                    <div id="practiceSessionSummary" aria-live="polite"></div>
+                    <div id="practiceNextSteps" aria-live="polite"></div><a href="my-journey.html" class="text-button practice-continue-journey">Continue My Journey &rarr;</a>
                     <p id="practiceSaveStatus" role="status" aria-live="polite"></p>
                     <button type="button" class="begin-mission-button"
                         id="retryPracticeSaveButton" hidden>Retry Saving Progress</button>
@@ -444,5 +470,6 @@
     src="../js/practice.js"
 ></script>
 
+<script type="module" src="../js/page-transition.js"></script>
 </body>
 </html>

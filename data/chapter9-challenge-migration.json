@@ -1,0 +1,990 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Chapter 9 challenge and badge; requires all five published missions; no learner writes",
+  "reviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending",
+  "sourceUrls": [
+    "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+    "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+    "https://archium.ateneo.edu/history-faculty-pubs/114/",
+    "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+    "https://philippineculturaleducation.com.ph/sumuroy/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+    "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+    "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+    "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+    "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+  ],
+  "prerequisites": [
+    {
+      "path": "missions/chapter9-mission1",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter9-mission2",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter9-mission3",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter9-mission4",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter9-mission5",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 5
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission1-scene1",
+      "expected": {
+        "missionId": "chapter9-mission1",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "Required payment",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Tribute was demanded under colonial authority, rather than simply offered as a gift.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Colonial resources",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Collections supplied resources to the colonial system.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Agreement is separate",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Recorded payment does not prove that a person approved of the demand.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission3-scene3",
+      "expected": {
+        "missionId": "chapter9-mission3",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "Named dates",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP marker dates formal establishment to March 1782 and abolition to 1882.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Control",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Designated districts faced compulsory cultivation and government purchase at an official price.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A monopoly period is not the whole history of a crop or every farms experience.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission4-scene1",
+      "expected": {
+        "missionId": "chapter9-mission4",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "Ports",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Manila and Acapulco were linked across the Pacific.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Period",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "1565-1815 identifies this trade connection, not all Philippine exchange.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Diagram limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A schematic link is not the exact sailing track of every voyage.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission2-scene4",
+      "expected": {
+        "missionId": "chapter9-mission2",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "Demand",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An order identifies what was required.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Delivery",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A receipt can record goods handed over.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Payment",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A promise of future payment does not prove payment was received.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission1-scene2",
+      "expected": {
+        "missionId": "chapter9-mission1",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "More than coins",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Early accounts describe goods, including cloth and rice, in some tribute collections.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Work behind goods",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Products represent work and materials, not objects that appeared without effort.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Local detail",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A named item does not establish one amount or form for every community.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission3-scene2",
+      "expected": {
+        "missionId": "chapter9-mission3",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "Rule",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A policy can shape production and exchange.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Choice",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A required buyer can limit where a grower sells.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Check the product, place and period covered by the rule.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission4-scene2",
+      "expected": {
+        "missionId": "chapter9-mission4",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "Direction",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Asian goods went toward the Americas while silver moved toward Manila.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Origin",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A loading port is not necessarily the place an object was made.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Cargo limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Examples do not establish every ships complete cargo or successful delivery.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission1-scene5",
+      "expected": {
+        "missionId": "chapter9-mission1",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "Before and after",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The study distinguishes the end of tribute in 1884 from the later cedula system in 1885.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A changed system",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ending one form of taxation did not mean that all taxes ended.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Check the record",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A dated payment needs the rule that applied in its own setting.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission2-scene5",
+      "expected": {
+        "missionId": "chapter9-mission2",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "A named case",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP marker connects Sumuroy and Palapag with protest against forced labor and abuses in 1649.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Distance",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "CulturEd describes a demand for workers to go to Cavite for shipbuilding.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A named uprising does not establish every workers response or private motive.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission3-scene4",
+      "expected": {
+        "missionId": "chapter9-mission3",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "Two viewpoints",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Government revenue and a growers household outcome are different questions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Subtract listed costs",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Eight received minus five listed costs leaves three in the fictional model.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Missing information",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Check whether an account leaves out costs, work or payment delays.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission5-scene1",
+      "expected": {
+        "missionId": "chapter9-mission5",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "Identify the demand",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Tribute, labor service and produce delivery should not be confused.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare resources",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The same demand can leave households with different resources.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Model boundary",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Twelve minus three is nine; seven minus three is four, in a fictional model only.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission2-scene3",
+      "expected": {
+        "missionId": "chapter9-mission2",
+        "status": "active",
+        "exploreItems": [
+          {
+            "title": "The product",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Bandala required agricultural produce for the colonial government.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Choice matters",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A compulsory sale is not the same as a freely chosen market sale.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare demands",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Polo concerned labor; bandala concerned produce delivery.",
+            "icon": "🔎"
+          }
+        ]
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "chapterChallenges/challenge-9",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-9",
+        "title": "Community Economy Evidence Challenge",
+        "description": "Complete 10 activities: five clue-and-conclusion decisions and five matching tasks. Both parts of an evidence decision count together as one activity. Get at least 7 activities correct. All supplied lesson clues are available without saving them in your journal.",
+        "status": "active",
+        "order": 9,
+        "passingScore": 70,
+        "xpReward": 0,
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "chapterChallengeQuestions/challenge-9-question1",
+      "create": true,
+      "fields": {
+        "challengeId": "challenge-9",
+        "status": "active",
+        "order": 1,
+        "gameType": "historicalDecision",
+        "question": "A caption calls required tribute a gift freely offered by everyone. Which clue directly checks the meaning of tribute?",
+        "optionA": "Tribute was demanded under colonial authority, rather than simply offered as a gift",
+        "optionB": "Every payment proves agreement",
+        "optionC": "Tribute was always optional",
+        "optionD": "A receipt reveals every private motive",
+        "correctAnswer": "A",
+        "evidenceTask": {
+          "version": 1,
+          "instructions": "Read the three lesson clues. Choose the clue that directly answers this question, then choose its supported conclusion. Both parts count together as one activity. You can use every clue without saving it in your journal.",
+          "correctEvidenceId": "task1-clue1",
+          "cards": [
+            {
+              "id": "task1-clue1",
+              "label": "Required payment",
+              "sceneId": "chapter9-mission1-scene1",
+              "clueIndex": 0
+            },
+            {
+              "id": "task1-clue2",
+              "label": "Named dates",
+              "sceneId": "chapter9-mission3-scene3",
+              "clueIndex": 0
+            },
+            {
+              "id": "task1-clue3",
+              "label": "Ports",
+              "sceneId": "chapter9-mission4-scene1",
+              "clueIndex": 0
+            }
+          ]
+        },
+        "explanation": "Identify the required payment before explaining its effects. Payment does not establish freely chosen giving.",
+        "learningPoint": "Identify the required payment before explaining its effects. Payment does not establish freely chosen giving.",
+        "historicalClue": "Identify the required payment before explaining its effects. Payment does not establish freely chosen giving.",
+        "sourceMissionIds": [
+          "chapter9-mission1",
+          "chapter9-mission3",
+          "chapter9-mission4"
+        ],
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "chapterChallengeQuestions/challenge-9-question2",
+      "create": true,
+      "fields": {
+        "challengeId": "challenge-9",
+        "status": "active",
+        "order": 2,
+        "gameType": "historicalDecision",
+        "question": "A delivery note is paired with a promise to pay later. Which clue directly checks whether the producer received payment?",
+        "optionA": "Delivery proves every promise was fulfilled",
+        "optionB": "Every producer freely chose the transaction",
+        "optionC": "An order establishes every stage of the transaction",
+        "optionD": "A payment promise is not proof that payment was received",
+        "correctAnswer": "D",
+        "evidenceTask": {
+          "version": 1,
+          "instructions": "Read the three lesson clues. Choose the clue that directly answers this question, then choose its supported conclusion. Both parts count together as one activity. You can use every clue without saving it in your journal.",
+          "correctEvidenceId": "task2-clue1",
+          "cards": [
+            {
+              "id": "task2-clue2",
+              "label": "More than coins",
+              "sceneId": "chapter9-mission1-scene2",
+              "clueIndex": 0
+            },
+            {
+              "id": "task2-clue3",
+              "label": "Rule",
+              "sceneId": "chapter9-mission3-scene2",
+              "clueIndex": 0
+            },
+            {
+              "id": "task2-clue1",
+              "label": "Payment",
+              "sceneId": "chapter9-mission2-scene4",
+              "clueIndex": 2
+            }
+          ]
+        },
+        "explanation": "Separate delivery from payment. Find appropriate payment evidence for that transaction.",
+        "learningPoint": "Separate delivery from payment. Find appropriate payment evidence for that transaction.",
+        "historicalClue": "Separate delivery from payment. Find appropriate payment evidence for that transaction.",
+        "sourceMissionIds": [
+          "chapter9-mission2",
+          "chapter9-mission1",
+          "chapter9-mission3"
+        ],
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "chapterChallengeQuestions/challenge-9-question3",
+      "create": true,
+      "fields": {
+        "challengeId": "challenge-9",
+        "status": "active",
+        "order": 3,
+        "gameType": "historicalDecision",
+        "question": "A rule requires a grower to use one buyer. Which clue directly explains the change in selling options?",
+        "optionA": "A sale guarantees household wealth",
+        "optionB": "Every crop everywhere followed this rule",
+        "optionC": "A required buyer can limit where a grower sells",
+        "optionD": "Every sale allows identical buyer choice",
+        "correctAnswer": "C",
+        "evidenceTask": {
+          "version": 1,
+          "instructions": "Read the three lesson clues. Choose the clue that directly answers this question, then choose its supported conclusion. Both parts count together as one activity. You can use every clue without saving it in your journal.",
+          "correctEvidenceId": "task3-clue1",
+          "cards": [
+            {
+              "id": "task3-clue3",
+              "label": "Before and after",
+              "sceneId": "chapter9-mission1-scene5",
+              "clueIndex": 0
+            },
+            {
+              "id": "task3-clue1",
+              "label": "Choice",
+              "sceneId": "chapter9-mission3-scene2",
+              "clueIndex": 1
+            },
+            {
+              "id": "task3-clue2",
+              "label": "Direction",
+              "sceneId": "chapter9-mission4-scene2",
+              "clueIndex": 0
+            }
+          ]
+        },
+        "explanation": "Examine the options allowed by the rule without extending it beyond its documented scope.",
+        "learningPoint": "Examine the options allowed by the rule without extending it beyond its documented scope.",
+        "historicalClue": "Examine the options allowed by the rule without extending it beyond its documented scope.",
+        "sourceMissionIds": [
+          "chapter9-mission3",
+          "chapter9-mission4",
+          "chapter9-mission1"
+        ],
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "chapterChallengeQuestions/challenge-9-question4",
+      "create": true,
+      "fields": {
+        "challengeId": "challenge-9",
+        "status": "active",
+        "order": 4,
+        "gameType": "historicalDecision",
+        "question": "An object was loaded in Manila. Which clue directly checks a claim that it must have been made there?",
+        "optionA": "All objects had the same maker",
+        "optionB": "A loading port is not necessarily the production place",
+        "optionC": "Every cargo item was made at its loading port",
+        "optionD": "Departure proves safe arrival",
+        "correctAnswer": "B",
+        "evidenceTask": {
+          "version": 1,
+          "instructions": "Read the three lesson clues. Choose the clue that directly answers this question, then choose its supported conclusion. Both parts count together as one activity. You can use every clue without saving it in your journal.",
+          "correctEvidenceId": "task4-clue1",
+          "cards": [
+            {
+              "id": "task4-clue1",
+              "label": "Origin",
+              "sceneId": "chapter9-mission4-scene2",
+              "clueIndex": 1
+            },
+            {
+              "id": "task4-clue2",
+              "label": "A named case",
+              "sceneId": "chapter9-mission2-scene5",
+              "clueIndex": 0
+            },
+            {
+              "id": "task4-clue3",
+              "label": "Subtract listed costs",
+              "sceneId": "chapter9-mission3-scene4",
+              "clueIndex": 1
+            }
+          ]
+        },
+        "explanation": "Identify production evidence separately from the port where an item was loaded.",
+        "learningPoint": "Identify production evidence separately from the port where an item was loaded.",
+        "historicalClue": "Identify production evidence separately from the port where an item was loaded.",
+        "sourceMissionIds": [
+          "chapter9-mission4",
+          "chapter9-mission2",
+          "chapter9-mission3"
+        ],
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "chapterChallengeQuestions/challenge-9-question5",
+      "create": true,
+      "fields": {
+        "challengeId": "challenge-9",
+        "status": "active",
+        "order": 5,
+        "gameType": "historicalDecision",
+        "question": "Two households face the same demand but start with different resources. Which clue directly checks the claim that their remaining resources must be equal?",
+        "optionA": "The same demand can leave households with different resources",
+        "optionB": "Equal demands guarantee equal burdens",
+        "optionC": "A model token is a documented historical peso",
+        "optionD": "Every household had identical needs",
+        "correctAnswer": "A",
+        "evidenceTask": {
+          "version": 1,
+          "instructions": "Read the three lesson clues. Choose the clue that directly answers this question, then choose its supported conclusion. Both parts count together as one activity. You can use every clue without saving it in your journal.",
+          "correctEvidenceId": "task5-clue1",
+          "cards": [
+            {
+              "id": "task5-clue2",
+              "label": "Diagram limit",
+              "sceneId": "chapter9-mission4-scene1",
+              "clueIndex": 2
+            },
+            {
+              "id": "task5-clue3",
+              "label": "The product",
+              "sceneId": "chapter9-mission2-scene3",
+              "clueIndex": 0
+            },
+            {
+              "id": "task5-clue1",
+              "label": "Compare resources",
+              "sceneId": "chapter9-mission5-scene1",
+              "clueIndex": 1
+            }
+          ]
+        },
+        "explanation": "Compare the resources and needs of each household. Equal amounts demanded do not establish identical effects.",
+        "learningPoint": "Compare the resources and needs of each household. Equal amounts demanded do not establish identical effects.",
+        "historicalClue": "Compare the resources and needs of each household. Equal amounts demanded do not establish identical effects.",
+        "sourceMissionIds": [
+          "chapter9-mission5",
+          "chapter9-mission4",
+          "chapter9-mission2"
+        ],
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "chapterChallengeQuestions/challenge-9-question6",
+      "create": true,
+      "fields": {
+        "challengeId": "challenge-9",
+        "status": "active",
+        "order": 6,
+        "gameType": "matching",
+        "question": "Match each tribute-investigation record with what it directly helps investigate.",
+        "matchingPairs": [
+          {
+            "left": "Payment instruction",
+            "right": "What an authority demanded"
+          },
+          {
+            "left": "Collection entry",
+            "right": "What payment was recorded"
+          },
+          {
+            "left": "Dated tax reform",
+            "right": "Which rules changed over time"
+          }
+        ],
+        "explanation": "Demands, recorded collections and changed rules answer different questions. One record does not explain every household effect.",
+        "sourceMissionIds": [
+          "chapter9-mission1"
+        ],
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "chapterChallengeQuestions/challenge-9-question7",
+      "create": true,
+      "fields": {
+        "challengeId": "challenge-9",
+        "status": "active",
+        "order": 7,
+        "gameType": "matching",
+        "question": "Match the labor and produce terms with their meanings.",
+        "matchingPairs": [
+          {
+            "left": "Polo y servicios",
+            "right": "Required labor service"
+          },
+          {
+            "left": "Bandala",
+            "right": "Compulsory agricultural produce delivery"
+          },
+          {
+            "left": "Payment promise",
+            "right": "A commitment that still needs evidence of fulfillment"
+          }
+        ],
+        "explanation": "Labor, produce delivery and payment stages should not be merged into one voluntary transaction.",
+        "sourceMissionIds": [
+          "chapter9-mission2"
+        ],
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "chapterChallengeQuestions/challenge-9-question8",
+      "create": true,
+      "fields": {
+        "challengeId": "challenge-9",
+        "status": "active",
+        "order": 8,
+        "gameType": "matching",
+        "question": "Match these agriculture-policy ideas with their careful descriptions.",
+        "matchingPairs": [
+          {
+            "left": "Cash crop",
+            "right": "A crop grown for sale, without guaranteed wealth"
+          },
+          {
+            "left": "Net income",
+            "right": "What remains after the relevant costs"
+          },
+          {
+            "left": "Abolition",
+            "right": "Ending a particular rule or system"
+          }
+        ],
+        "explanation": "Sales are not automatically profit. Ending one arrangement does not end all farming, exchange or taxation.",
+        "sourceMissionIds": [
+          "chapter9-mission3"
+        ],
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "chapterChallengeQuestions/challenge-9-question9",
+      "create": true,
+      "fields": {
+        "challengeId": "challenge-9",
+        "status": "active",
+        "order": 9,
+        "gameType": "matching",
+        "question": "Match each galleon-trade clue with the idea it supports.",
+        "matchingPairs": [
+          {
+            "left": "Manila and Acapulco",
+            "right": "Ports connected across the Pacific"
+          },
+          {
+            "left": "Departure entry",
+            "right": "A recorded journey stage, not guaranteed arrival"
+          },
+          {
+            "left": "Unnamed workers",
+            "right": "Contributors may be missing from an account"
+          }
+        ],
+        "explanation": "The network depended on places and peoples work. Check each journeys evidence rather than generalize from one record.",
+        "sourceMissionIds": [
+          "chapter9-mission4"
+        ],
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "chapterChallengeQuestions/challenge-9-question10",
+      "create": true,
+      "fields": {
+        "challengeId": "challenge-9",
+        "status": "active",
+        "order": 10,
+        "gameType": "matching",
+        "question": "Match each community-effects question with what to investigate.",
+        "matchingPairs": [
+          {
+            "left": "Household burden",
+            "right": "Resources and needs alongside the demand"
+          },
+          {
+            "left": "Time away",
+            "right": "Travel and work alongside other tasks"
+          },
+          {
+            "left": "Reported complaint",
+            "right": "The problem raised, with its outcome checked separately"
+          }
+        ],
+        "explanation": "Different households and records need their own evidence. Model tokens and calendar slots are not universal historical rates or quotas.",
+        "sourceMissionIds": [
+          "chapter9-mission5"
+        ],
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "badges/community-economy-investigator",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-9",
+        "name": "Community Economy Investigator",
+        "description": "Earned by completing all five Chapter 9 missions and passing the evidence challenge. Recognizes supported explanations of tribute, labor, agricultural rules, trade and community effects.",
+        "icon": "🧭",
+        "rarity": "special",
+        "order": 9,
+        "status": "active",
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/",
+          "https://pssc.org.ph/wp-content/pssc-archives/Historical%20Bulletin/PHA%20HB%202017.pdf",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philippineculturaleducation.com.ph/sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/",
+          "https://www.asj.upd.edu.ph/mediabox/archive/ASJ-21-1983/wolters.pdf",
+          "https://www.persee.fr/doc/arch_0044-8613_1974_num_8_1_1192",
+          "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815",
+          "https://www.nationalarchives.gov.uk/explore-the-collection/stories/papers-of-nuestra-senora-de-covadonga/"
+        ],
+        "contentReviewStatus": "Source-informed; independent historical, teacher, curriculum and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapter 9 offers five missions on colonial economic life and community effects. Its challenge and Chapters 10-11 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 9 offers five missions and a community economy evidence challenge. Chapters 10-11 are being prepared."
+      }
+    },
+    {
+      "path": "chapters/chapter-9",
+      "create": false,
+      "expected": {
+        "description": "Five missions investigate colonial economic demands, agriculture, trade and community effects. The chapter challenge is being prepared."
+      },
+      "fields": {
+        "description": "Complete five missions, then connect tribute, labor, agricultural policy, trade and community evidence in the Community Economy Evidence Challenge. Pass to earn the chapter badge."
+      }
+    }
+  ]
+}

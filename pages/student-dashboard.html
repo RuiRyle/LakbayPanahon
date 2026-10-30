@@ -22,15 +22,25 @@
     href="../css/student-dashboard.css"
 >
 
+<link rel="stylesheet" href="../css/home-refined.css">
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
 </head>
 
 
 <body
-    class="auth-checking"
+    class="auth-checking lakbay-theme student-home-page"
     data-role="student"
 >
+    <div class="student-loading-shell" role="status" aria-live="polite">
+        <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
+        <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p>Loading your learning space...</p><div class="student-loading-heading" aria-hidden="true"></div><div class="student-loading-cards" aria-hidden="true"><i></i><i></i><i></i></div><div class="student-loading-panel" aria-hidden="true"></div></div></div>
+    </div>
+
 
     <div class="student-app">
+        <a class="student-skip-link" href="#student-main">Skip to main content</a>
 
 
         <!-- =========================================
@@ -75,7 +85,7 @@
 
 
                 <a
-                    href="#journey"
+                    href="my-journey.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">📖</span>
@@ -93,7 +103,7 @@
 
 
                 <a
-                    href="#"
+                    href="my-class.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">🏫</span>
@@ -102,11 +112,11 @@
 
 
                 <a
-                    href="#dailyChallenge"
+                    href="bayani-ai.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">⚡</span>
-                    <span>Daily Challenge</span>
+                    <span>Bayani AI</span>
                 </a>
 
 
@@ -117,6 +127,7 @@
                     <span class="nav-icon">🏆</span>
                     <span>Achievements</span>
                 </a>
+                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 13.5 1.1.8-1.1 1.9-1.3-.5a7.8 7.8 0 0 1-1.5.9l-.2 1.4h-2.2l-.3-1.4a7.8 7.8 0 0 1-1.7 0l-.8 1.2-1.9-1.1.5-1.3a7.8 7.8 0 0 1-.9-1.5l-1.4-.2v-2.2l1.4-.3a7.8 7.8 0 0 1 0-1.7L7.9 8.7 9 6.8l1.3.5a7.8 7.8 0 0 1 1.5-.9l.2-1.4h2.2l.3 1.4a7.8 7.8 0 0 1 1.7 0l.8-1.2 1.9 1.1-.5 1.3a7.8 7.8 0 0 1 .9 1.5l1.4.2v2.2l-1.4.3a7.8 7.8 0 0 1 0 1.7Z"/></svg></span><span>Settings</span></a>
 
             </nav>
 
@@ -140,7 +151,7 @@
              MAIN AREA
         ========================================== -->
 
-        <main class="main-content">
+        <main tabindex="-1" id="student-main" class="main-content">
 
 
             <!-- =====================================
@@ -228,10 +239,20 @@
                      WELCOME
                 ================================== -->
 
+                <section id="studentProfileSetup" class="dashboard-card student-setup-card" aria-labelledby="studentSetupTitle" hidden>
+                    <h2 id="studentSetupTitle">Make this journey yours</h2>
+                    <p>Check your name and choose an explorer avatar. You can also start learning right away.</p>
+                    <div class="student-setup-actions">
+                        <button id="openStudentSetup" type="button" class="primary-button">Set Up My Profile</button>
+                        <button id="dismissStudentSetup" type="button" class="quiz-secondary-button">Not Now</button>
+                    </div>
+                    <p id="studentSetupStatus" role="status" aria-live="polite"></p>
+                </section>
+
                 <section class="welcome-section">
 
 
-                    <div class="welcome-text">
+                    <div class="welcome-text"><span class="home-welcome-kicker">THE EXPLORER'S DESK</span>
 
                         <span class="eyebrow">
                             YOUR HISTORY JOURNEY
@@ -269,7 +290,7 @@
                                 <div>
 
                                     <span>
-                                        PLAYER PROGRESS
+                                        YOUR EXPLORER LEVEL
                                     </span>
 
                                     <strong id="studentLevel">
@@ -283,7 +304,7 @@
                                     class="player-progress-xp"
                                     id="levelProgressXp"
                                 >
-                                    0 / 100 XP
+                                    Loading XP progress...
                                 </strong>
 
                             </div>
@@ -312,7 +333,7 @@
                                 class="player-next-level"
                                 id="nextLevelText"
                             >
-                                100 XP until Level 2
+                                Loading next level...
                             </small>
 
                         </div>
@@ -395,18 +416,16 @@
                     <article class="stat-card">
 
                         <div class="stat-icon">
-                            🔥
+                            &#10024;
                         </div>
 
                         <div>
 
                             <span>
-                                Learning Streak
+                                Learning Companion
                             </span>
 
-                            <strong id="learningStreak">
-                                0 Days
-                            </strong>
+                            <strong><a href="bayani-ai.html">Bayani AI</a></strong>
 
                         </div>
 
@@ -419,7 +438,19 @@
                      MAIN DASHBOARD GRID
                 ================================== -->
 
-                <section class="dashboard-grid">
+                <section class="home-learning-trail" aria-labelledby="homeLearningTitle">
+                    <div class="home-learning-heading">
+                        <div class="home-learning-heading-copy">
+                            <span class="eyebrow">YOUR HISTORY ADVENTURE</span>
+                            <h2 id="homeLearningTitle">Your Lessons</h2>
+                            <p>Continue your current chapter or revisit a lesson you have completed.</p>
+                        </div>
+                        <a href="my-journey.html">View full journey <span aria-hidden="true">&rarr;</span></a>
+                    </div>
+                    <div id="homeLearningTrail" class="home-lesson-list" aria-live="polite">Loading your lessons...</div>
+                </section>
+
+                <section class="dashboard-grid" aria-label="Your next learning step">
 
 
                     <!-- =============================
@@ -440,7 +471,7 @@
                                 </span>
 
                                 <h2>
-                                    Continue Your History Journey
+                                    Your next adventure
                                 </h2>
 
                             </div>
@@ -484,96 +515,55 @@
                     </article>
 
 
-                    <!-- =============================
-                         DAILY CHALLENGE
-                    ============================== -->
+                    </section>
 
-                    <article
-                        class="dashboard-card challenge-card"
-                        id="dailyChallenge"
-                    >
-
-                        <div class="challenge-top">
-
-                            <div>
-
-                                <span class="card-label">
-                                    DAILY CHALLENGE
-                                </span>
-
-                                <h2>
-                                    A new challenge awaits!
-                                </h2>
-
-                            </div>
+<section class="home-discover" aria-labelledby="homeDiscoverTitle"><div class="home-section-title"><div><span class="eyebrow">A DIFFERENT WAY TO DISCOVER</span><h2 id="homeDiscoverTitle">Make room for curiosity.</h2></div><p>Take a daily challenge, ask Bayani AI, explore a chapter, or learn with your class.</p></div><div class="home-side-quests"><article class="dashboard-card home-daily-card" aria-labelledby="homeDailyTitle"><div class="home-quest-heading"><span class="home-quest-icon" aria-hidden="true">&#9889;</span><span class="card-label">A LITTLE HISTORY, EVERY DAY</span></div><h2 id="homeDailyTitle">Daily Challenge</h2><p class="daily-challenge-card-text">Take on today's history question. A small discovery to keep your journey moving.</p><div class="challenge-reward" hidden><span>Today's reward</span><strong id="dailyChallengeCardReward" aria-live="polite"></strong></div><button type="button" class="primary-button daily-challenge-start" id="dailyChallengeStart" disabled>Loading Daily Challenge...</button><div id="dailyChallengeCardCompleted" class="daily-challenge-card-completed" role="status" hidden><span class="daily-complete-check" aria-hidden="true">&#10003;</span><div><strong>Today's challenge complete</strong><p>Come back tomorrow for another discovery.</p></div></div></article><article class="dashboard-card home-bayani-card" id="bayaniAI"><div class="home-quest-heading"><span class="home-bayani-mark" aria-hidden="true">B<span>&#10022;</span></span><span class="card-label">YOUR HISTORY COMPANION</span></div><h2>Curiosity starts here.</h2><p>Ask Bayani AI to explain a lesson, explore an idea or help you think through Philippine history.</p><a href="bayani-ai.html" class="secondary-action-button">Chat with Bayani AI <span aria-hidden="true">&#8594;</span></a><small>Keep your questions about learning. Leave personal details out of chat.</small></article></div>
+<nav class="home-destinations" aria-label="Your learning spaces"><a href="chapters.html"><span class="destination-icon" aria-hidden="true">&#10022;</span><span class="eyebrow">EXPLORE</span><h3>Find your next chapter</h3><p>Explore the historical eras and lessons available to you.</p><span class="destination-action">Explore Chapters &#8594;</span></a><a href="my-class.html"><span class="destination-icon" aria-hidden="true">&#9873;</span><span class="eyebrow">LEARN TOGETHER</span><h3>Your class awaits</h3><p>Join your teacher's class and find your assigned missions.</p><span class="destination-action">Open My Class &#8594;</span></a></nav>
+                </section>
 
 
-                            <div class="challenge-icon">
-                                ⚡
-                            </div>
+                <section class="home-collection-panel" id="achievements" aria-labelledby="dashboardCollectionsTitle"><div class="home-collection-heading"><span class="home-collection-emblem" aria-hidden="true">&#127942;</span><div><span class="eyebrow">MILESTONES WORTH KEEPING</span><h2 id="dashboardCollectionsTitle">Your story, collected.</h2><p>Every chapter conquered and mission completed leaves something to remember.</p></div><a href="achievements.html" class="text-button">Open Collections &#8594;</a></div><div class="home-collection-shelves"><a href="achievements.html"><span class="shelf-symbol" aria-hidden="true">&#127941;</span><div><span class="shelf-label">CHAPTER MILESTONES</span><h3>Badges of achievement</h3><p>Celebrate the chapter challenges you complete.</p></div><span class="shelf-arrow" aria-hidden="true">&#8599;</span></a><a href="achievements.html"><span class="shelf-symbol" aria-hidden="true">&#127994;</span><div><span class="shelf-label">HISTORICAL KEEPSAKES</span><h3>Artifacts of discovery</h3><p>Revisit the collectibles earned on your missions.</p></div><span class="shelf-arrow" aria-hidden="true">&#8599;</span></a></div></section>
 
-                        </div>
-
-<p class="daily-challenge-card-text">
-    Answer today's history question
-    and earn bonus XP.
-</p>
-
-                        <div class="challenge-reward">
-
-                            <span>
-                                Today's Reward
-                            </span>
-
-                            <strong id="dailyChallengeCardReward">
-                                +10 XP
-                            </strong>
-
-                        </div>
+    <section class="return-to-learn-panel" aria-labelledby="studentReturnTitle"><div class="home-review-heading"><div><span class="eyebrow">REMEMBER THIS</span><h2 id="studentReturnTitle">A clue from your past journey.</h2><p>Come back to something you learned a few days ago.</p></div></div><div id="studentReturnTopic" aria-live="polite">Finding a topic from your journey...</div></section>
+    <section class="practice-review-panel" aria-labelledby="studentReviewTitle">
+        <div class="home-review-heading"><div><span class="eyebrow">PERSONALIZED PRACTICE</span><h2 id="studentReviewTitle">A little practice. A stronger explorer.</h2><p>Topics to review, recommended from your saved quizzes and practice.</p></div><button type="button" class="text-button" id="reloadStudentReview">Refresh Review <span aria-hidden="true">&#8635;</span></button></div><p class="home-review-note">Practice at your own pace. Recommendations can include completed missions and update as you learn.</p>
+        <div id="studentReviewTopics" class="practice-review-grid" aria-live="polite"></div>
+    </section>
+            </div>
 
 
-                        <button
-                            type="button"
-                            class="secondary-action-button daily-challenge-start"
-                            id="dailyChallengeStart"
-                            disabled
-                        >
-                            Loading Challenge...
-                        </button>
+        </main>
+
+    </div>
 
 
-                        <div
-                            class="daily-challenge-card-completed"
-                            id="dailyChallengeCardCompleted"
-                            hidden
-                        >
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
-                            <span class="daily-complete-check">
-                                ✓
-                            </span>
+    <script
+        type="module"
+        src="../js/auth-guard.js"
+    ></script>
 
-                            <div>
+    <script
+        type="module"
+        src="../js/student.js"
+    ></script>
 
-                                <strong>
-                                    Challenge Complete
-                                </strong>
+    <script
+        type="module"
+        src="../js/logout.js"
+    ></script>
 
-                                <p>
-                                    Come back tomorrow for another challenge.
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
+    <script
+        type="module"
+        src="../js/page-transition.js"
+    ></script>
 
 
-                    <!-- =========================================
-                         DAILY CHALLENGE MODAL
-                    ========================================== -->
 
-                    <div
+<div
                         class="daily-modal-backdrop"
                         id="dailyChallengeModal"
                         hidden
@@ -592,7 +582,7 @@
                                 <div class="daily-modal-title-group">
 
                                     <div class="daily-modal-icon">
-                                        ⚡
+                                        &#9889;
                                     </div>
 
                                     <div>
@@ -616,7 +606,7 @@
                                     id="dailyChallengeClose"
                                     aria-label="Close Daily Challenge"
                                 >
-                                    ×
+                                    �
                                 </button>
 
                             </div>
@@ -628,7 +618,7 @@
                             >
 
                                 <div class="daily-loading-icon">
-                                    ⏳
+                                    &#8987;
                                 </div>
 
                                 <p>
@@ -775,7 +765,7 @@
                             >
 
                                 <div class="daily-empty-icon">
-                                    📜
+                                    &#10024;
                                 </div>
 
                                 <strong>
@@ -797,7 +787,7 @@
                             >
 
                                 <div class="daily-challenge-completed-icon">
-                                    ✓
+                                    &#10003;
                                 </div>
 
                                 <div>
@@ -818,294 +808,7 @@
                         </div>
 
                     </div>
-
-                </section>
-
-
-                <!-- =================================
-                     EXPLORE CHAPTERS
-                ================================== -->
-
-                <section
-                    class="section-block"
-                    id="chapters"
-                >
-
-                    <div class="section-heading">
-
-                        <div>
-
-                            <span class="eyebrow">
-                                EXPLORE HISTORY
-                            </span>
-
-                            <h2>
-                                Historical Eras
-                            </h2>
-
-                            <p>
-                                Travel through different periods of
-                                Philippine History.
-                            </p>
-
-                        </div>
-
-
-                        <a
-                            href="chapters.html"
-                            class="text-button"
-                        >
-                            View All →
-                        </a>
-
-                    </div>
-
-
-                    <div class="era-grid">
-
-
-                        <article class="era-card available">
-
-                            <div class="era-image">
-                                <span>⛵</span>
-                            </div>
-
-
-                            <div class="era-content">
-
-                                <span class="era-status">
-                                    AVAILABLE
-                                </span>
-
-                                <h3>
-                                    Early Philippine Communities
-                                </h3>
-
-                                <p>
-                                    Begin your journey and discover
-                                    life in early Filipino communities.
-                                </p>
-
-                                <a
-                                    href="chapters.html"
-                                    class="era-button"
-                                >
-                                    Explore Chapters
-                                </a>
-
-                            </div>
-
-                        </article>
-
-
-                        <article class="era-card locked">
-
-                            <div class="era-image">
-                                <span>🏛</span>
-                            </div>
-
-
-                            <div class="era-content">
-
-                                <span class="era-status">
-                                    🔒 LOCKED
-                                </span>
-
-                                <h3>
-                                    Next Historical Era
-                                </h3>
-
-                                <p>
-                                    Complete the previous chapters
-                                    to continue your journey.
-                                </p>
-
-                            </div>
-
-                        </article>
-
-
-                        <article class="era-card locked">
-
-                            <div class="era-image">
-                                <span>📜</span>
-                            </div>
-
-
-                            <div class="era-content">
-
-                                <span class="era-status">
-                                    🔒 LOCKED
-                                </span>
-
-                                <h3>
-                                    More Adventures Ahead
-                                </h3>
-
-                                <p>
-                                    New historical journeys will
-                                    unlock as you progress.
-                                </p>
-
-                            </div>
-
-                        </article>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =================================
-                     ACHIEVEMENTS
-                ================================== -->
-
-                <section
-                    class="section-block"
-                    id="achievements"
-                >
-
-                    <div class="section-heading">
-
-                        <div>
-
-                            <span class="eyebrow">
-                                YOUR COLLECTION
-                            </span>
-
-                            <h2>
-                                Recent Achievements
-                            </h2>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="achievement-empty">
-
-
-                        <!-- =====================================
-                             ARTIFACT COLLECTION
-                        ====================================== -->
-
-                        <div class="artifact-collection">
-
-                            <div class="artifact-collection-header">
-
-                                <div>
-
-                                    <span class="card-label">
-                                        YOUR COLLECTION
-                                    </span>
-
-                                    <h3>
-                                        Historical Artifacts
-                                    </h3>
-
-                                   <p>
-                                     Complete missions to discover
-                                        and collect historical artifacts.
-                                    </p>
-
-                                </div>
-
-
-                                <div class="artifact-count">
-
-                                    <strong id="artifactCount">
-                                        0
-                                    </strong>
-
-                                    <span>
-                                        Collected
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="artifact-grid"
-                                id="artifactGrid"
-                            >
-
-                                <div class="artifact-empty">
-
-                                    <div class="artifact-empty-icon">
-                                        🏺
-                                    </div>
-
-                                    <div>
-
-                                        <strong>
-                                            No artifacts collected yet
-                                        </strong>
-
-                                        <p>
-                                            Complete missions to discover
-                                            historical collectibles.
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-    <section class="practice-review-panel" aria-labelledby="studentReviewTitle">
-        <h2 id="studentReviewTitle">Topics to Review</h2>
-        <p>Practice the topics you found tricky. New attempts update your review list.</p>
-        <button type="button" class="text-button" id="reloadStudentReview">Refresh Review</button>
-        <div id="studentReviewTopics" class="practice-review-grid" aria-live="polite"></div>
-    </section>
-            </div>
-
-
-        </main>
-
-    </div>
-
-
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================== -->
-
-    <script type="module" src="../js/student-review.js"></script>
-    <script
-        type="module"
-        src="../js/auth-guard.js"
-    ></script>
-
-    <script
-        type="module"
-        src="../js/student.js"
-    ></script>
-
-    <script
-        type="module"
-        src="../js/logout.js"
-    ></script>
-
-    <script
-        type="module"
-        src="../js/page-transition.js"
-    ></script>
-
-    <script
-        type="module"
-        src="../js/daily-challenge.js"
-    ></script>
-
-
-
+<script type="module" src="../js/daily-challenge.js"></script>
 </body>
 
 </html>

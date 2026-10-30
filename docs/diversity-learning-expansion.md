@@ -1,0 +1,15 @@
+# Chapter 4 Mission 3 — named examples and respectful comparison
+
+Four existing curriculum documents were updated in original Firestore: scenes 1, 4 and 5 and mission teaching metadata. The environment and oral-learning scenes, order, assessment banks, rewards and student completions remain unchanged.
+
+The lesson now names Ifugao Hudhud narrative chanting and Hanunoo/Buhid script traditions in Mindoro. A broad locator identifies teaching reference areas, explicitly not cultural borders, exact settlements or a map of every individual's identity. A source-comparison card connects the shared idea of passing on knowledge with differences in forms of expression. No chant, restricted pattern or script specimen is copied.
+
+A worked similarity/difference/limit exercise leads to an all-topic recap and the following heritage-synthesis mission. Students are not asked for private family traditions or to represent a whole community. Documented living examples are not presented as unchanged snapshots of precolonial life. The two selected examples illustrate comparison; they do not exhaust regional diversity or establish dates for the origins of their practices.
+
+Sources: [National Museum writing gallery](https://www.nationalmuseum.gov.ph/exhibitions/anthropology/baybayin/), [UNESCO Hudhud entry](https://ich.unesco.org/en/lists?RL=00015) and its [documented safeguarding project](https://ich.unesco.org/en/projects/safeguarding-and-transmission-of-the-hudhud-chants-of-the-ifugao-00004). References to teaching/documentation concern described efforts, not an assertion that every program or performance continues identically today. The locator derives from the existing public-domain Natural Earth outline.
+
+Authoring: `data/diversity-learning-pilot.json`. Builder: `functions/build-diversity-learning.cjs`. Migration: `functions/apply-diversity-learning.cjs`, dry-run by default, with backup, guarded atomic `--apply` and readback verification. Runtime teaching and image references remain in Firestore. Include both SVG assets with normal website deployment; Hosting was not deployed. Content-version checks can restart unfinished lessons without changing completed rewards.
+
+137 local non-emulator unit tests passed. Chrome loaded both illustrations and completed the three revised scenes, decisions and authored help with story recovery checks. Original Firestore readback verified all four documents. Full authenticated Chapter 4 acceptance, independent teacher/community-source review, current-curriculum alignment and Grade 5 comprehension remain pending. These checks establish software behavior rather than measured learning outcomes.
+
+Subsequent authenticated full-Chapter 4 acceptance passed on 28 October 2026 (Asia/Manila): all 20 scenes, four quizzes, fail/review/practice/fresh retry, journal, four artifacts, 100% challenge, badge, correct available-content continuation, refresh and replay protection. Both temporary runs were cleaned. See validation/chapter4-revised-live-2026-10-28.md. Teacher and Grade 5 learning review remain pending.

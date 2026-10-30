@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-29",
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Reviewed Firestore publication queue; not Hosting deployment or independent curriculum approval.",
+  "batches": [
+    {
+      "name": "chapter1-mission1-learning-polish",
+      "documents": 16,
+      "status": "published-and-read-back",
+      "backup": "backups/chapter1-mission1-learning-polish-1793276274176.json"
+    },
+    {
+      "name": "bayani-teaching-policy",
+      "documents": 1,
+      "status": "published-and-read-back",
+      "backup": "backups/bayani-teaching-policy-1793276279365.json"
+    },
+    {
+      "name": "chapter2-reading-polish",
+      "documents": 3,
+      "status": "published-and-read-back",
+      "backup": "backups/chapter2-reading-polish-1793276439472.json"
+    },
+    {
+      "name": "chapter2-feedback-polish",
+      "documents": 6,
+      "status": "published-and-read-back",
+      "backup": "backups/chapter2-feedback-polish-1793276441578.json"
+    },
+    {
+      "name": "chapter2-scene-quality",
+      "documents": 1,
+      "status": "published-and-read-back",
+      "backup": "backups/chapter2-scene-quality-1793276443889.json"
+    },
+    {
+      "name": "chapter2-beginner-practice",
+      "documents": 3,
+      "status": "published-and-read-back",
+      "backup": "backups/chapter2-beginner-practice-1793276461045.json"
+    },
+    {
+      "name": "mission2-easy-review",
+      "documents": 2,
+      "status": "published-and-read-back",
+      "backup": "backups/mission2-easy-review-1793276463607.json"
+    },
+    {
+      "name": "chapter3-decision-quality",
+      "documents": 3,
+      "status": "published-and-read-back",
+      "backup": "backups/chapter3-decision-quality-1793276466290.json"
+    },
+    {
+      "name": "chapter4-learning-polish",
+      "documents": 3,
+      "status": "published-and-read-back",
+      "backup": "backups/chapter4-learning-polish-1793276468402.json"
+    },
+    {
+      "name": "chapter6-help-polish",
+      "documents": 2,
+      "status": "published-and-read-back",
+      "backup": "backups/chapter6-help-polish-1793276470381.json"
+    },
+    {
+      "name": "early-scene-image-repairs",
+      "documents": 15,
+      "status": "published-and-read-back",
+      "backup": "backups/early-scene-image-repairs-1793276472738.json"
+    },
+    {
+      "name": "chapter5-continuation-wording",
+      "documents": 2,
+      "status": "published-and-read-back",
+      "backup": "backups/chapter5-continuation-wording-1793276552202.json"
+    }
+  ],
+  "documentWrites": 57,
+  "distinctDocuments": 53,
+  "chapter5Reconciliation": {
+    "source": "data/chapter5-published-recap-migration.json",
+    "detail": "Current content matched the previously published recap. Updated the exact full-content guard to that reviewed source, retained all guards, then published the two wording changes."
+  },
+  "corrections": [
+    "Corrected 12 broken apostrophes in desired fields only; expected guards were retained.",
+    "Added selected-choice answerHints to three Chapter 2 and two Mission 2 easy-practice records.",
+    "Published only the two remaining Mission 2 entries, excluding the four Mission 1 entries already superseded by published coaching."
+  ],
+  "verification": [
+    "Each batch passed current-record comparison before application.",
+    "All affected fields were read back by the scoped publisher after its guarded atomic commit.",
+    "Sixteen focused local checks passed before these publications.",
+    "Local publication-queue and candidate-content audits passed."
+  ],
+  "remaining": [
+    "Actual Bayani reply quality and boundary checks after reload/new chat.",
+    "Independent curriculum review and Grade 5 comprehension.",
+    "The specific interrupted recovery acceptance steps.",
+    "Normal-lock acceptance when the user finishes exploration.",
+    "Public website/assets deployment."
+  ]
+}

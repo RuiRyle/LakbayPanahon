@@ -1,0 +1,1295 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 13 Mission 1 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://intramuros.gov.ph/2015/01/04/intramuros/",
+    "https://www.nta.da.gov.ph/tobacco/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-12",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-12",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/early-resistance-investigator",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter12-mission1",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter12-mission2",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter12-mission3",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter12-mission4",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter12-mission5",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 5
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter13-mission1",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-13",
+        "title": "Economic and Political Changes in the 18th Century",
+        "order": 1,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate century dates, trade, temporary occupation and government rules affecting production.",
+        "learningObjective": "Explain selected economic and political changes using place, time and evidence about policy stages.",
+        "learningObjectives": [
+          "Explain find the 18th century using lesson evidence.",
+          "Explain manila was connected by trade using lesson evidence.",
+          "Explain a temporary change in manila using lesson evidence.",
+          "Explain government rules could shape work using lesson evidence.",
+          "Explain a rule and its effects are different using lesson evidence."
+        ],
+        "lessonRecap": "1782. Date order alone does not prove cause. A trade connection between places. A trade link does not prove equal household benefits. Manila experienced a temporary British occupation. Control in a city does not establish control of every community. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "sourceUrls": [
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter13-quiz1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission1",
+        "title": "18th Century Changes - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "century",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "trade-links",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "occupation",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "monopoly",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "policy-stages",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission1-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission1",
+        "status": "active",
+        "order": 1,
+        "title": "Find the 18th Century",
+        "content": "The 18th century runs from 1701 to 1800. A year beginning with 17 usually belongs here, but the boundary matters: 1800 is still in the 18th century, while 1801 begins the 19th. Place a date before making a claim about its period. Our timeline is a modern learning tool, not an old calendar.\n\nThis mission introduces selected changes rather than every event in one hundred years. Compare trade connections, a temporary occupation and a government monopoly. They concern different parts of life and did not all begin together. An earlier event does not automatically cause a later one. Keep a question beside each date: what changed, where did it change, and what evidence supports the connection? You will investigate detailed reforms and new ideas in the later missions.\n\nOpen the three clues. Select a supported explanation. Use Explain for help and return to these clues before practice.",
+        "reviewTopics": [
+          "century"
+        ],
+        "imageUrl": "../assets/story/eighteenth-change-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for Find the 18th Century. Labelled evidence, not an original historical image.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Range",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The 18th century is 1701-1800.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Boundary",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "1801 begins the 19th century.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connection",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Date order alone does not prove cause.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which year is in the 18th century?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "1782",
+          "1801",
+          "1882",
+          "1901"
+        ],
+        "decisionCorrectAnswer": "1782",
+        "decisionExplanation": "1782. Date order alone does not prove cause.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "1782. Date order alone does not prove cause.",
+        "keyTerm": "Century",
+        "keyTermDefinition": "A period of one hundred years.",
+        "historicalInsight": "Date order alone does not prove cause.",
+        "learningHelp": {
+          "explanation": "1782. Date order alone does not prove cause.",
+          "vocabulary": [
+            {
+              "term": "Century",
+              "definition": "A period of one hundred years."
+            }
+          ],
+          "example": "The 18th century is 1701-1800.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission1-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission1",
+        "status": "active",
+        "order": 2,
+        "title": "Manila Was Connected by Trade",
+        "content": "Manila was one end of the Manila-Acapulco galleon route. The Intramuros Administration dates this route from 1571 to 1815. It therefore existed before the 18th century and continued through it. The year 1815 belongs to the next century. A route can continue while other parts of life change.\n\nTrade links show movement between places. They do not tell us that every household was wealthy or that everyone traded directly with Acapulco. A route map answers a question about connections; records about workers and households answer other questions. Imagine comparing a route card with a local household account. These are teaching examples, not surviving records supplied in this scene. Use each for the question it can support. Do not claim that international connections began only when a later policy was announced.\n\nOpen the three clues. Select a supported explanation. Use Explain for help and return to these clues before practice.",
+        "reviewTopics": [
+          "trade-links"
+        ],
+        "imageUrl": "../assets/story/eighteenth-change-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for Manila Was Connected by Trade. Labelled evidence, not an original historical image.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Route",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Manila and Acapulco were connected by galleon trade.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Period",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The route continued through the 18th century.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A trade link does not prove equal household benefits.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the route card show?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Equal wealth for all households",
+          "Every persons occupation",
+          "Trade beginning only in 1800",
+          "A trade connection between places"
+        ],
+        "decisionCorrectAnswer": "A trade connection between places",
+        "decisionExplanation": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "keyTerm": "Trade",
+        "keyTermDefinition": "Exchange of goods between people or places.",
+        "historicalInsight": "A trade link does not prove equal household benefits.",
+        "learningHelp": {
+          "explanation": "A trade connection between places. A trade link does not prove equal household benefits.",
+          "vocabulary": [
+            {
+              "term": "Trade",
+              "definition": "Exchange of goods between people or places."
+            }
+          ],
+          "example": "Manila and Acapulco were connected by galleon trade.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission1-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission1",
+        "status": "active",
+        "order": 3,
+        "title": "A Temporary Change in Manila",
+        "content": "The Intramuros Administration records a British occupation from 1762 to 1764 during the Seven Years War. This was a temporary political change in Manila. Political questions concern authority: who governed or controlled a place, and when? Locate the event on the same century timeline as the trade route.\n\nBe careful about scale. Evidence about occupation in Manila does not prove that British forces governed every community throughout the islands. A capital city and an entire archipelago are not the same area. Nor does a temporary occupation establish permanent independence. Ask for the place and period whenever you explain control. You can investigate political change without reenacting a battle. No points are earned for harm; your task is to choose a statement that fits the source and identify what it does not establish.\n\nOpen the three clues. Select a supported explanation. Use Explain for help and return to these clues before practice.",
+        "reviewTopics": [
+          "occupation"
+        ],
+        "imageUrl": "../assets/story/eighteenth-change-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for A Temporary Change in Manila. Labelled evidence, not an original historical image.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Place",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The cited account concerns Manila.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Period",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The occupation is dated 1762-1764.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Control in a city does not establish control of every community.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which claim fits the evidence?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The occupation lasted the entire century",
+          "Colonial rule ended everywhere",
+          "Manila experienced a temporary British occupation",
+          "Every island was permanently British"
+        ],
+        "decisionCorrectAnswer": "Manila experienced a temporary British occupation",
+        "decisionExplanation": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "keyTerm": "Occupation",
+        "keyTermDefinition": "Control of a place by an outside military force.",
+        "historicalInsight": "Control in a city does not establish control of every community.",
+        "learningHelp": {
+          "explanation": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "vocabulary": [
+            {
+              "term": "Occupation",
+              "definition": "Control of a place by an outside military force."
+            }
+          ],
+          "example": "The cited account concerns Manila.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission1-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission1",
+        "status": "active",
+        "order": 4,
+        "title": "Government Rules Could Shape Work",
+        "content": "The government tobacco monopoly was established in 1782 under Governor Jose Basco y Vargas. The National Tobacco Administration describes government efforts to raise revenue, or income for public authorities. This is an example of political decisions shaping economic activity: rules about a crop affected production and selling.\n\nThe same historical account describes compulsory planting, quotas and complaints in affected areas. A quota means a required amount. Do not assume every community grew the crop or that all farmers had identical experiences. Government income and household wellbeing are different questions. Study how a rule could limit choices rather than treating revenue as proof that everyone benefited. Tobacco is discussed only as historical evidence, not as a product to use. You will not grow, buy or try it in this learning activity.\n\nOpen the three clues. Select a supported explanation. Use Explain for help and return to these clues before practice.",
+        "reviewTopics": [
+          "monopoly"
+        ],
+        "imageUrl": "../assets/story/eighteenth-change-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for Government Rules Could Shape Work. Labelled evidence, not an original historical image.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Date",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The monopoly was established in 1782.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Aim",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Revenue means income for government in this example.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Effects",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Rules and quotas could limit choices in affected areas.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "How can a political rule affect economic life?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "It removes the need for evidence",
+          "It can shape what producers must grow or sell",
+          "It changes everyones beliefs automatically",
+          "It proves every family became wealthy"
+        ],
+        "decisionCorrectAnswer": "It can shape what producers must grow or sell",
+        "decisionExplanation": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "keyTerm": "Monopoly",
+        "keyTermDefinition": "Exclusive control over an activity or trade.",
+        "historicalInsight": "Rules and quotas could limit choices in affected areas.",
+        "learningHelp": {
+          "explanation": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "vocabulary": [
+            {
+              "term": "Monopoly",
+              "definition": "Exclusive control over an activity or trade."
+            }
+          ],
+          "example": "The monopoly was established in 1782.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission1-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission1",
+        "status": "active",
+        "order": 5,
+        "title": "A Rule and Its Effects Are Different",
+        "content": "A government can announce a rule before it is put into practice. The NHCP marker for the tobacco monopoly distinguishes a royal decree in 1780 from formal establishment in March 1782. These dates belong to different stages. Do not combine them into one date or assume that a decree immediately changed every local activity.\n\nUse three investigation cards: decision, implementation and experience. A decree helps identify an official decision. An implementation record helps establish when a system started operating. Accounts of affected people help examine its effects. The cards here are modern teaching categories. A later account also reports abolition in 1882, outside this mission period; it must not be placed in the 18th century. In later missions you will compare reforms more closely. For now, distinguish what a government intended, what it put into practice and what people experienced.\n\nOpen the three clues. Select a supported explanation. Use Explain for help and return to these clues before practice.",
+        "reviewTopics": [
+          "policy-stages"
+        ],
+        "imageUrl": "../assets/story/eighteenth-change-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for A Rule and Its Effects Are Different. Labelled evidence, not an original historical image.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Decision",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The marker dates the royal decree to 1780.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Implementation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Formal establishment followed in March 1782.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Experience",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A decision alone does not prove every local effect.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which statement distinguishes the stages?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A 1780 decree preceded establishment in 1782",
+          "Both dates describe every household experience",
+          "The monopoly ended in 1782",
+          "A decree guarantees equal benefits"
+        ],
+        "decisionCorrectAnswer": "A 1780 decree preceded establishment in 1782",
+        "decisionExplanation": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "keyTerm": "Implementation",
+        "keyTermDefinition": "Putting a decision or rule into practice.",
+        "historicalInsight": "A decision alone does not prove every local effect.",
+        "learningHelp": {
+          "explanation": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "vocabulary": [
+            {
+              "term": "Implementation",
+              "definition": "Putting a decision or rule into practice."
+            }
+          ],
+          "example": "The marker dates the royal decree to 1780.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter13-mission1-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission1",
+        "status": "active",
+        "order": 6,
+        "title": "Your Century Evidence Journal",
+        "content": "The 18th century runs from 1701 to 1800. A year beginning with 17 usually belongs here, but the boundary matters: 1800 is still in the 18th century, while 1801 begins the 19th. Place a date before making a claim about its period. Our timeline is a modern learning tool, not an old calendar.\n\nBe careful about scale. Evidence about occupation in Manila does not prove that British forces governed every community throughout the islands. A capital city and an entire archipelago are not the same area. Nor does a temporary occupation establish permanent independence. Ask for the place and period whenever you explain control. You can investigate political change without reenacting a battle. No points are earned for harm; your task is to choose a statement that fits the source and identify what it does not establish.\n\nUse three investigation cards: decision, implementation and experience. A decree helps identify an official decision. An implementation record helps establish when a system started operating. Accounts of affected people help examine its effects. The cards here are modern teaching categories. A later account also reports abolition in 1882, outside this mission period; it must not be placed in the 18th century. In later missions you will compare reforms more closely. For now, distinguish what a government intended, what it put into practice and what people experienced.\n\nReview trade, authority, production and policy stages before the quiz. Missions 2-4 and the chapter challenge are being prepared. Completing one mission does not complete the chapter.",
+        "reviewTopics": [
+          "century",
+          "trade-links",
+          "occupation",
+          "monopoly",
+          "policy-stages"
+        ],
+        "imageUrl": "../assets/story/eighteenth-change-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for A Rule and Its Effects Are Different. Labelled evidence, not an original historical image.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Decision",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The marker dates the royal decree to 1780.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Implementation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Formal establishment followed in March 1782.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Experience",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A decision alone does not prove every local effect.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which journal is ready for the quiz?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One that treats every rule as an equal benefit",
+          "One that gives every community one experience",
+          "One that mixes all dates together",
+          "One that identifies place, date and supported changes"
+        ],
+        "decisionCorrectAnswer": "One that identifies place, date and supported changes",
+        "decisionExplanation": "Identify place, date and supported changes. Separate a decision, its implementation and its effects.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Identify place, date and supported changes. Separate a decision, its implementation and its effects.",
+        "keyTerm": "Implementation",
+        "keyTermDefinition": "Putting a decision or rule into practice.",
+        "historicalInsight": "A decision alone does not prove every local effect.",
+        "learningHelp": {
+          "explanation": "Identify place, date and supported changes. Separate a decision, its implementation and its effects.",
+          "vocabulary": [
+            {
+              "term": "Implementation",
+              "definition": "Putting a decision or rule into practice."
+            }
+          ],
+          "example": "The marker dates the royal decree to 1780.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://intramuros.gov.ph/2015/01/04/intramuros/",
+          "https://www.nta.da.gov.ph/tobacco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/abolition-of-tobacco-monopoly/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz1-question1",
+      "create": true,
+      "fields": {
+        "question": "Which range names the 18th century?",
+        "optionA": "1701-1800",
+        "optionB": "1801-1900",
+        "optionC": "1601-1700",
+        "optionD": "1901-2000",
+        "correctAnswer": "A",
+        "explanation": "1782. Date order alone does not prove cause.",
+        "learningPoint": "1782. Date order alone does not prove cause.",
+        "historicalClue": "1782. Date order alone does not prove cause.",
+        "answerExplanations": {
+          "A": "1782. Date order alone does not prove cause.",
+          "B": "Review the lesson clues. 1782. Date order alone does not prove cause.",
+          "C": "Review the lesson clues. 1782. Date order alone does not prove cause.",
+          "D": "Review the lesson clues. 1782. Date order alone does not prove cause."
+        },
+        "quizId": "chapter13-quiz1",
+        "order": 1,
+        "status": "active",
+        "topic": "century",
+        "topicLabel": "Find the 18th Century",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz1-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Where should 1800 go?",
+        "optionA": "At the start of the 19th century",
+        "optionB": "In the 20th century",
+        "optionC": "Outside every century",
+        "optionD": "At the end of the 18th century",
+        "correctAnswer": "D",
+        "explanation": "1782. Date order alone does not prove cause.",
+        "learningPoint": "1782. Date order alone does not prove cause.",
+        "historicalClue": "1782. Date order alone does not prove cause.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. 1782. Date order alone does not prove cause.",
+          "B": "Review the lesson clues. 1782. Date order alone does not prove cause.",
+          "C": "Review the lesson clues. 1782. Date order alone does not prove cause.",
+          "D": "1782. Date order alone does not prove cause."
+        },
+        "quizId": "chapter13-quiz1",
+        "order": 101,
+        "status": "active",
+        "topic": "century",
+        "topicLabel": "Find the 18th Century",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission1-century-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which year is in the 18th century?",
+        "optionA": "1801",
+        "optionB": "1882",
+        "optionC": "1901",
+        "optionD": "1782",
+        "correctAnswer": "D",
+        "explanation": "1782. Date order alone does not prove cause.",
+        "learningPoint": "1782. Date order alone does not prove cause.",
+        "historicalClue": "1782. Date order alone does not prove cause.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. 1782. Date order alone does not prove cause.",
+          "B": "Review the lesson clues. 1782. Date order alone does not prove cause.",
+          "C": "Review the lesson clues. 1782. Date order alone does not prove cause.",
+          "D": "1782. Date order alone does not prove cause."
+        },
+        "missionId": "chapter13-mission1",
+        "topic": "century",
+        "topicLabel": "Find the 18th Century",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A period of one hundred years.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission1-century-practice2",
+      "create": true,
+      "fields": {
+        "question": "Two policies have different dates. What does their order alone establish?",
+        "optionA": "That everyone benefited",
+        "optionB": "That both began together",
+        "optionC": "Which came earlier",
+        "optionD": "That the first caused the second",
+        "correctAnswer": "C",
+        "explanation": "1782. Date order alone does not prove cause.",
+        "learningPoint": "1782. Date order alone does not prove cause.",
+        "historicalClue": "1782. Date order alone does not prove cause.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. 1782. Date order alone does not prove cause.",
+          "B": "Review the lesson clues. 1782. Date order alone does not prove cause.",
+          "C": "1782. Date order alone does not prove cause.",
+          "D": "Review the lesson clues. 1782. Date order alone does not prove cause."
+        },
+        "missionId": "chapter13-mission1",
+        "topic": "century",
+        "topicLabel": "Find the 18th Century",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A period of one hundred years.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz1-question2",
+      "create": true,
+      "fields": {
+        "question": "Which pair belongs to this route?",
+        "optionA": "Manila and every household",
+        "optionB": "Bohol and every capital",
+        "optionC": "Palapag and all farms",
+        "optionD": "Manila and Acapulco",
+        "correctAnswer": "D",
+        "explanation": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "learningPoint": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "historicalClue": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits.",
+          "B": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits.",
+          "C": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits.",
+          "D": "A trade connection between places. A trade link does not prove equal household benefits."
+        },
+        "quizId": "chapter13-quiz1",
+        "order": 2,
+        "status": "active",
+        "topic": "trade-links",
+        "topicLabel": "Manila Was Connected by Trade",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz1-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "What continued during the 18th century?",
+        "optionA": "An end to all colonial rule",
+        "optionB": "Universal household wealth",
+        "optionC": "The Manila-Acapulco route",
+        "optionD": "An occupation lasting the whole century",
+        "correctAnswer": "C",
+        "explanation": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "learningPoint": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "historicalClue": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits.",
+          "B": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits.",
+          "C": "A trade connection between places. A trade link does not prove equal household benefits.",
+          "D": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits."
+        },
+        "quizId": "chapter13-quiz1",
+        "order": 102,
+        "status": "active",
+        "topic": "trade-links",
+        "topicLabel": "Manila Was Connected by Trade",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission1-trade-links-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the route card show?",
+        "optionA": "Every persons occupation",
+        "optionB": "Trade beginning only in 1800",
+        "optionC": "A trade connection between places",
+        "optionD": "Equal wealth for all households",
+        "correctAnswer": "C",
+        "explanation": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "learningPoint": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "historicalClue": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits.",
+          "B": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits.",
+          "C": "A trade connection between places. A trade link does not prove equal household benefits.",
+          "D": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits."
+        },
+        "missionId": "chapter13-mission1",
+        "topic": "trade-links",
+        "topicLabel": "Manila Was Connected by Trade",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Exchange of goods between people or places.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission1-trade-links-practice2",
+      "create": true,
+      "fields": {
+        "question": "What extra evidence helps investigate a household benefit from trade?",
+        "optionA": "A guess from a port symbol",
+        "optionB": "A dated account about that household",
+        "optionC": "Only the route name",
+        "optionD": "Only a modern game map",
+        "correctAnswer": "B",
+        "explanation": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "learningPoint": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "historicalClue": "A trade connection between places. A trade link does not prove equal household benefits.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits.",
+          "B": "A trade connection between places. A trade link does not prove equal household benefits.",
+          "C": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits.",
+          "D": "Review the lesson clues. A trade connection between places. A trade link does not prove equal household benefits."
+        },
+        "missionId": "chapter13-mission1",
+        "topic": "trade-links",
+        "topicLabel": "Manila Was Connected by Trade",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Exchange of goods between people or places.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz1-question3",
+      "create": true,
+      "fields": {
+        "question": "What kind of question asks who controlled a place?",
+        "optionA": "Only a weather question",
+        "optionB": "A question with no need for dates",
+        "optionC": "A political question",
+        "optionD": "Only a painting question",
+        "correctAnswer": "C",
+        "explanation": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "learningPoint": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "historicalClue": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "B": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "C": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "D": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community."
+        },
+        "quizId": "chapter13-quiz1",
+        "order": 3,
+        "status": "active",
+        "topic": "occupation",
+        "topicLabel": "A Temporary Change in Manila",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz1-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Which dates belong to this occupation?",
+        "optionA": "1807-1821",
+        "optionB": "1762-1764",
+        "optionC": "1701-1800",
+        "optionD": "1782-1882",
+        "correctAnswer": "B",
+        "explanation": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "learningPoint": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "historicalClue": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "B": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "C": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "D": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community."
+        },
+        "quizId": "chapter13-quiz1",
+        "order": 103,
+        "status": "active",
+        "topic": "occupation",
+        "topicLabel": "A Temporary Change in Manila",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission1-occupation-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which claim fits the evidence?",
+        "optionA": "Colonial rule ended everywhere",
+        "optionB": "Manila experienced a temporary British occupation",
+        "optionC": "Every island was permanently British",
+        "optionD": "The occupation lasted the entire century",
+        "correctAnswer": "B",
+        "explanation": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "learningPoint": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "historicalClue": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "B": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "C": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "D": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community."
+        },
+        "missionId": "chapter13-mission1",
+        "topic": "occupation",
+        "topicLabel": "A Temporary Change in Manila",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Control of a place by an outside military force.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission1-occupation-practice2",
+      "create": true,
+      "fields": {
+        "question": "A source describes control in Manila. What requires additional evidence?",
+        "optionA": "Control of a distant community",
+        "optionB": "The place named in the account",
+        "optionC": "The dates supplied in the account",
+        "optionD": "That Manila was a named city",
+        "correctAnswer": "A",
+        "explanation": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "learningPoint": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "historicalClue": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+        "answerExplanations": {
+          "A": "Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "B": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "C": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community.",
+          "D": "Review the lesson clues. Manila experienced a temporary British occupation. Control in a city does not establish control of every community."
+        },
+        "missionId": "chapter13-mission1",
+        "topic": "occupation",
+        "topicLabel": "A Temporary Change in Manila",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Control of a place by an outside military force.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz1-question4",
+      "create": true,
+      "fields": {
+        "question": "What is a quota?",
+        "optionA": "A kind of painting",
+        "optionB": "A required amount",
+        "optionC": "A personal lifespan",
+        "optionD": "A museum date",
+        "correctAnswer": "B",
+        "explanation": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "learningPoint": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "historicalClue": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "B": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "C": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "D": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas."
+        },
+        "quizId": "chapter13-quiz1",
+        "order": 4,
+        "status": "active",
+        "topic": "monopoly",
+        "topicLabel": "Government Rules Could Shape Work",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz1-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "What does government revenue mean here?",
+        "optionA": "Income received by government",
+        "optionB": "Every farmers happiness",
+        "optionC": "A date range",
+        "optionD": "A private motive",
+        "correctAnswer": "A",
+        "explanation": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "learningPoint": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "historicalClue": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "answerExplanations": {
+          "A": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "B": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "C": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "D": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas."
+        },
+        "quizId": "chapter13-quiz1",
+        "order": 104,
+        "status": "active",
+        "topic": "monopoly",
+        "topicLabel": "Government Rules Could Shape Work",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission1-monopoly-practice1",
+      "create": true,
+      "fields": {
+        "question": "How can a political rule affect economic life?",
+        "optionA": "It can shape what producers must grow or sell",
+        "optionB": "It changes everyones beliefs automatically",
+        "optionC": "It proves every family became wealthy",
+        "optionD": "It removes the need for evidence",
+        "correctAnswer": "A",
+        "explanation": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "learningPoint": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "historicalClue": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "answerExplanations": {
+          "A": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "B": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "C": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "D": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas."
+        },
+        "missionId": "chapter13-mission1",
+        "topic": "monopoly",
+        "topicLabel": "Government Rules Could Shape Work",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Exclusive control over an activity or trade.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission1-monopoly-practice2",
+      "create": true,
+      "fields": {
+        "question": "Why compare revenue with household experience?",
+        "optionA": "Both always mean the same thing",
+        "optionB": "All households had the same income",
+        "optionC": "Quotas never affect choices",
+        "optionD": "Government income alone does not prove equal benefits",
+        "correctAnswer": "D",
+        "explanation": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "learningPoint": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "historicalClue": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "B": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "C": "Review the lesson clues. It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas.",
+          "D": "It can shape what producers must grow or sell. Rules and quotas could limit choices in affected areas."
+        },
+        "missionId": "chapter13-mission1",
+        "topic": "monopoly",
+        "topicLabel": "Government Rules Could Shape Work",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Exclusive control over an activity or trade.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz1-question5",
+      "create": true,
+      "fields": {
+        "question": "What does implementation mean?",
+        "optionA": "Putting a rule into practice",
+        "optionB": "Only remembering an event",
+        "optionC": "Guessing a result",
+        "optionD": "A list of all motives",
+        "correctAnswer": "A",
+        "explanation": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "learningPoint": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "historicalClue": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "answerExplanations": {
+          "A": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "B": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "C": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "D": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect."
+        },
+        "quizId": "chapter13-quiz1",
+        "order": 5,
+        "status": "active",
+        "topic": "policy-stages",
+        "topicLabel": "A Rule and Its Effects Are Different",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter13-quiz1-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Which date is outside the 18th century?",
+        "optionA": "1762",
+        "optionB": "1780",
+        "optionC": "1782",
+        "optionD": "1882",
+        "correctAnswer": "D",
+        "explanation": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "learningPoint": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "historicalClue": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "B": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "C": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "D": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect."
+        },
+        "quizId": "chapter13-quiz1",
+        "order": 105,
+        "status": "active",
+        "topic": "policy-stages",
+        "topicLabel": "A Rule and Its Effects Are Different",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission1-policy-stages-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which statement distinguishes the stages?",
+        "optionA": "Both dates describe every household experience",
+        "optionB": "The monopoly ended in 1782",
+        "optionC": "A decree guarantees equal benefits",
+        "optionD": "A 1780 decree preceded establishment in 1782",
+        "correctAnswer": "D",
+        "explanation": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "learningPoint": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "historicalClue": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "B": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "C": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "D": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect."
+        },
+        "missionId": "chapter13-mission1",
+        "topic": "policy-stages",
+        "topicLabel": "A Rule and Its Effects Are Different",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Putting a decision or rule into practice.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter13-mission1-policy-stages-practice2",
+      "create": true,
+      "fields": {
+        "question": "Which evidence best addresses how a rule affected people?",
+        "optionA": "Only the governors name",
+        "optionB": "An unrelated route symbol",
+        "optionC": "Accounts of people affected by its operation",
+        "optionD": "Only its announcement date",
+        "correctAnswer": "C",
+        "explanation": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "learningPoint": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "historicalClue": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "B": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "C": "A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect.",
+          "D": "Review the lesson clues. A 1780 decree preceded establishment in 1782. A decision alone does not prove every local effect."
+        },
+        "missionId": "chapter13-mission1",
+        "topic": "policy-stages",
+        "topicLabel": "A Rule and Its Effects Are Different",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Putting a decision or rule into practice.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter13-mission1-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter13-mission1",
+        "name": "Century Evidence Journal",
+        "description": "A learning-game token for examining trade, authority and economic rules.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish trade links, political control, policy decisions and lived effects.",
+          "reflectionQuestion": "Which clue helped you distinguish an official decision from an effect?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-13",
+      "create": true,
+      "fields": {
+        "eraId": "resistance-national-consciousness",
+        "title": "Colonial Reforms and New Political Ideas",
+        "description": "Mission 1 introduces selected economic and political changes in the 18th century. Missions 2-4 and the chapter challenge are being prepared.",
+        "order": 13,
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapter 12 offers five missions and an evidence challenge on early resistance. Chapters 13-14 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 12 offers five missions and an evidence challenge. Chapter 13 begins with 18th-century changes; later missions and Chapter 14 are being prepared."
+      }
+    }
+  ]
+}

@@ -8,8 +8,10 @@ const read = name => fs.readFileSync(path.join(__dirname, '..', 'js', name), 'ut
 const snapshot = rows => ({ docs: rows.map(row => ({ id: row.id, data: () => row })) });
 
 function accessFixture(overrides = {}) {
+    const reads = [];
     const data = {
         users: [{ id: 'student', role: 'student', status: 'active' }],
+        eras: [{id:'e1',status:'active'},{id:'e2',status:'active'}],
         chapters: [
             { id: 'c1', eraId: 'e1', status: 'active', order: 1 },
             { id: 'c2', eraId: 'e1', status: 'active', order: 2 },
@@ -27,18 +29,31 @@ function accessFixture(overrides = {}) {
         doc: (_, name, id) => ({ name, id }),
         where: (field, _, value) => ({ field, value }),
         query: (ref, condition) => ({ ...ref, condition }),
-        getDoc: async ref => {
+        getDocFromServer: async ref => {
             const row = data[ref.name].find(item => item.id === ref.id);
             return { exists: () => !!row, data: () => row };
         },
-        getDocs: async ref => snapshot(data[ref.name].filter(row =>
-            !ref.condition || row[ref.condition.field] === ref.condition.value))
+        getDocsFromServer: async ref => {
+            reads.push(ref);
+            return snapshot(data[ref.name].filter(row =>
+                !ref.condition || row[ref.condition.field] === ref.condition.value));
+        }
     });
     const source = read('learning-access.js').replace(/import[\s\S]*?from\s+"[^"]+";/g, '')
         .replace(/export /g, '');
     vm.runInContext(source + '\nglobalThis.check = requireLearningAccess;', context);
+    context.reads = reads;
     return context;
 }
+
+test('lesson access reads only chapters in the selected era', async () => {
+    const context = accessFixture();
+    await context.check('c1', 'm1');
+    const chapters = context.reads.filter(ref => ref.name === 'chapters');
+    assert.equal(chapters.length, 1);
+    assert.equal(chapters[0].condition.field, 'eraId');
+    assert.equal(chapters[0].condition.value, 'e1');
+});
 
 test('first mission and first chapter in another era need no classroom', async () => {
     const context = accessFixture();
@@ -107,7 +122,9 @@ test('practice save failure is visible and retry reuses an acknowledged record',
         currentUser: { uid: 'student' }, chapterId: 'c1', missionId: 'm1',
         practiceResults: [{ questionId: 'q1', topic: 'trade', firstTryCorrect: false, attempts: 2 }],
         practiceSessionReference: { id: 'stable-session' },
+        practiceSessionGeneration: 1, practiceSavePending: false, practiceDraftReady: false, practiceDraft: null,
         practiceSaveStatus: { textContent: '' },
+        document: { getElementById: () => null },
         refreshPracticeReview: async () => {},
         retryPracticeSaveButton: { hidden: true, disabled: false },
         retryMissionQuizButton: { disabled: false },
@@ -129,7 +146,8 @@ test('practice save failure is visible and retry reuses an acknowledged record',
         source.indexOf('retryPracticeSaveButton.addEventListener'));
     vm.runInContext(save + persist + '\nglobalThis.persist = persistPracticeSession;', context);
     await context.persist();
-    assert.match(context.practiceSaveStatus.textContent, /not saved/);
+    assert.match(context.practiceSaveStatus.textContent, /could not confirm.*saved/);
+    assert.match(context.practiceSaveStatus.textContent, /Retry Saving Progress/);
     assert.equal(context.retryPracticeSaveButton.hidden, false);
     assert.equal(context.retryMissionQuizButton.disabled, false);
     await context.persist();
@@ -137,4 +155,102 @@ test('practice save failure is visible and retry reuses an acknowledged record',
     assert.equal(context.retryPracticeSaveButton.hidden, true);
     assert.equal(writes, 2);
     assert.equal(stored.topicsForReview[0], 'trade');
+
+    let releaseSave;
+    context.setDoc = async () => { writes++; await new Promise(resolve => { releaseSave = resolve; }); };
+    const pending = context.persist();
+    await context.persist();
+    assert.equal(writes, 3, 'Overlapping saves must be ignored');
+    context.practiceSessionGeneration++;
+    context.currentUser = null;
+    context.practiceSaveStatus.textContent = 'Signed out';
+    releaseSave();
+    await pending;
+    assert.equal(context.practiceSaveStatus.textContent, 'Signed out', 'A late save must not change the signed-out UI');
+});
+
+test('direct learning access rejects an inactive or missing parent era',async()=>{
+ await assert.rejects(accessFixture({eras:[{id:'e1',status:'inactive'}]}).check('c1','m1'),/era is not available/);
+ await assert.rejects(accessFixture({eras:[]}).check('c1','m1'),/era is not available/);
+});
+
+test('configured era prerequisites require every owned chapter completion',async()=>{
+ const eras=[{id:'e1',status:'active'},{id:'e2',status:'active',requiredChapterIds:['c1','c2']}];
+ for(const studentChapterProgress of [[],[{userId:'student',chapterId:'c1',completed:true}],[{userId:'student',chapterId:'c1',completed:true},{userId:'other',chapterId:'c2',completed:true}]]){
+  await assert.rejects(accessFixture({eras,studentChapterProgress}).check('other-era'),/previous era/);
+ }
+ const unlocked=accessFixture({eras,studentChapterProgress:['c1','c2'].map(chapterId=>({userId:'student',chapterId,completed:true}))});
+ assert.equal((await unlocked.check('other-era')).id,'other-era');
+});
+
+test('completed missions remain reviewable without unlocking new work in a newly locked era',async()=>{
+ const context=accessFixture({eras:[{id:'e1',status:'active',requiredChapterIds:['earlier']}],studentProgress:[{userId:'student',missionId:'m1',completed:true}]});
+ assert.equal((await context.check('c1','m1')).id,'m1');
+ await assert.rejects(context.check('c1','m2'),/previous era/);
+ await assert.rejects(context.check('c1'),/previous era/);
+ const completedChapter=accessFixture({eras:[{id:'e1',status:'active',requiredChapterIds:['earlier']}],studentChapterProgress:[{userId:'student',chapterId:'c1',completed:true}]});
+ assert.equal((await completedChapter.check('c1')).id,'c1');
+});
+
+test('malformed era requirements cannot silently unlock new lessons',async()=>{
+ for(const requiredChapterIds of [null,'c1',[null],['']]){
+  const context=accessFixture({eras:[{id:'e1',status:'active',requiredChapterIds}]});
+  await assert.rejects(context.check('c1'),/previous era/);
+ }
+});
+
+test('local preview opens active chapter and mission links while retaining account/content validation',async()=>{
+ const context=accessFixture({eras:[{id:'e1',status:'active',requiredChapterIds:['missing']}]});context.__lakbayExplorationPreview=true;
+ assert.equal((await context.check('c2')).id,'c2');assert.equal((await context.check('c1','m2')).id,'m2');
+ await assert.rejects(context.check('c1','unknown'),/not available/);
+ context.auth.currentUser=null;await assert.rejects(context.check('c1'),/sign in/);
+});
+
+test('access checks require fresh server state and never fall back to cached approval', async () => {
+ const context=accessFixture();
+ context.getDoc=()=>{throw Error('Cached document access must not be used');};
+ context.getDocs=()=>{throw Error('Cached collection access must not be used');};
+ assert.equal((await context.check('c1','m1')).id,'m1');
+ context.getDocsFromServer=async()=>{throw Error('Server unavailable');};
+ await assert.rejects(context.check('c1','m1'),/Server unavailable/);
+});
+
+test('an account change during access verification cannot approve the departing account',async()=>{
+ const context=accessFixture(),read=context.getDocFromServer;
+ let finish;
+ context.getDocFromServer=ref=>new Promise(resolve=>{finish=async()=>resolve(await read(ref));});
+ const pending=context.check('c1','m1');
+ context.auth.currentUser={uid:'another-student'};
+ await finish();
+ await assert.rejects(pending,/account changed/);
+});
+
+test('invalid learning identifiers are rejected before any database read',async()=>{
+ const context=accessFixture();
+ context.getDocFromServer=()=>{throw Error('Must not read');};
+ for(const chapterId of ['',null,{},'../c1','c1/other',' c1','c1\u0000','..']) {
+  await assert.rejects(context.check(chapterId),/learning link is invalid/);
+ }
+ for(const missionId of ['',false,'../m1','m1/other']) {
+  await assert.rejects(context.check('c1',missionId),/learning link is invalid/);
+ }
+});
+
+test('malformed parent eras and missing selected catalog rows cannot bypass ordering',async()=>{
+ for(const eraId of [null,{},'',false,'../e1']) {
+  const context=accessFixture({chapters:[{id:'c1',status:'active',eraId}]});
+  await assert.rejects(context.check('c1'),/era is not available/);
+ }
+ const context=accessFixture(),read=context.getDocsFromServer;
+ context.getDocsFromServer=ref=>ref.name==='chapters'?Promise.resolve({docs:[]}):read(ref);
+ await assert.rejects(context.check('c1'),/chapter changed/);
+});
+
+test('invalid catalog order cannot silently place later content before its prerequisites',async()=>{
+ for(const order of [undefined,null,'2','invalid',NaN,Infinity]) {
+  const chapter=accessFixture({chapters:[{id:'c1',status:'active',eraId:'e1',order}]});
+  await assert.rejects(chapter.check('c1'),/learning order needs/);
+  const mission=accessFixture({missions:[{id:'m1',status:'active',chapterId:'c1',order}]});
+  await assert.rejects(mission.check('c1','m1'),/learning order needs/);
+ }
 });

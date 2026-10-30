@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-30T03:42:32.161Z",
+  "status": "pass",
+  "error": null,
+  "mode": "loopback-http-chrome-native-keyboard-real-reload",
+  "audio": "AudioContext disabled; no listening or signed-in-shell playback acceptance",
+  "checks": [
+    "Space activates the focused sound switch",
+    "Tab reaches the sound-volume slider in DOM order",
+    "Keyboard navigation exposes a visible-focus state",
+    "Arrow key changes sound volume independently of music",
+    "Enter activates the music switch",
+    "Space activates motion and contrast choices",
+    "Native select keyboard input changes reading size",
+    "Real page reload restores the chosen audio and display preferences",
+    "Reload preserves unrelated local and tab data",
+    "Keyboard Reset restores all display and volume defaults",
+    "Reset also restores sound, music and focus-audio switches",
+    "Reset preserves unrelated local data and the draft sentinel",
+    "Reset defaults survive another real reload"
+  ],
+  "screenshot": "C:\\Users\\RUIRYL~1\\AppData\\Local\\Temp\\lakbay-settings-keyboard-qseLWw\\settings-keyboard.png",
+  "sources": [
+    {
+      "file": "pages/settings.html",
+      "sha256": "58d50b545d20204f57d86c24511740359591a21445d483e2cb03d0eb5826c02c"
+    },
+    {
+      "file": "js/page-transition.js",
+      "sha256": "dc97f42639d5ce8af02e7924dea149da49ababc297657633f0d7d43c5c8f8f78"
+    },
+    {
+      "file": "css/student.css",
+      "sha256": "d1a2a8d4114f9cc5036e3c1c0b150a9ff2c6cee3a080913696f55b3c021a9117"
+    },
+    {
+      "file": "css/student-settings.css",
+      "sha256": "738d1995fec560dc96d2b35b11c34b4c90463630540bb366c8a8617e231818d2"
+    },
+    {
+      "file": "css/navy-gold-theme.css",
+      "sha256": "056a0c24ea8ff7ba49f3ee9bcf3c206a557ae70308e86cc2542c499238044087"
+    }
+  ]
+}

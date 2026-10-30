@@ -22,15 +22,24 @@
      href="../css/chapters.css"
     >
 
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
 </head>
 
 <body
-    class="auth-checking"
+    class="auth-checking lakbay-theme"
     data-role="student"
 >
+    <div class="student-loading-shell" role="status" aria-live="polite">
+        <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
+        <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p>Loading your learning space...</p><div class="student-loading-heading" aria-hidden="true"></div><div class="student-loading-cards" aria-hidden="true"><i></i><i></i><i></i></div><div class="student-loading-panel" aria-hidden="true"></div></div></div>
+    </div>
+
 
 
     <div class="student-app">
+        <a class="student-skip-link" href="#student-main">Skip to main content</a>
 
 
         <!-- =====================================
@@ -82,7 +91,7 @@
                 <!-- MY JOURNEY -->
 
                 <a
-                    href="student-dashboard.html#journey"
+                    href="my-journey.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">📖</span>
@@ -94,7 +103,7 @@
 
                 <a
                     href="chapters.html"
-                    class="nav-link active"
+                    class="nav-link active" aria-current="page"
                 >
                     <span class="nav-icon">🗺</span>
                     <span>Explore Chapters</span>
@@ -104,7 +113,7 @@
                 <!-- MY CLASS -->
 
                 <a
-                    href="#"
+                    href="my-class.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">🏫</span>
@@ -115,11 +124,11 @@
                 <!-- DAILY CHALLENGE -->
 
                 <a
-                    href="student-dashboard.html#dailyChallenge"
+                    href="bayani-ai.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">⚡</span>
-                    <span>Daily Challenge</span>
+                    <span>Bayani AI</span>
                 </a>
 
 
@@ -132,6 +141,7 @@
                     <span class="nav-icon">🏆</span>
                     <span>Achievements</span>
                 </a>
+                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 13.5 1.1.8-1.1 1.9-1.3-.5a7.8 7.8 0 0 1-1.5.9l-.2 1.4h-2.2l-.3-1.4a7.8 7.8 0 0 1-1.7 0l-.8 1.2-1.9-1.1.5-1.3a7.8 7.8 0 0 1-.9-1.5l-1.4-.2v-2.2l1.4-.3a7.8 7.8 0 0 1 0-1.7L7.9 8.7 9 6.8l1.3.5a7.8 7.8 0 0 1 1.5-.9l.2-1.4h2.2l.3 1.4a7.8 7.8 0 0 1 1.7 0l.8-1.2 1.9 1.1-.5 1.3a7.8 7.8 0 0 1 .9 1.5l1.4.2v2.2l-1.4.3a7.8 7.8 0 0 1 0 1.7Z"/></svg></span><span>Settings</span></a>
 
 
             </nav>
@@ -158,7 +168,7 @@
              MAIN
         ====================================== -->
 
-        <main class="main-content">
+        <main tabindex="-1" id="student-main" class="main-content">
 
 
             <!-- =================================
@@ -179,7 +189,7 @@
 
 
                 <div class="topbar-title">
-                    Explore Philippine History
+                    Chart your journey through history
                 </div>
 
 
@@ -202,7 +212,7 @@
                      PAGE INTRODUCTION
                 ================================== -->
 
-                <section class="explore-header">
+                <section class="explore-header"><span class="expedition-label">LAKBAYPANAHON EXPEDITION</span><div class="explore-compass" aria-hidden="true">&#10022;</div>
 
 
                     <span class="eyebrow">
@@ -216,7 +226,7 @@
 
 
                     <p>
-                        Choose a historical era and continue your
+                        Choose an era, follow its chapter trail and continue your
                         journey through the stories of the Philippines.
                     </p>
 
@@ -229,7 +239,7 @@
                      LOADING
                 ================================== -->
 
-                <div
+                <div class="expedition-board-heading" aria-hidden="true"><span>&#10022;</span> YOUR EXPEDITION ATLAS <span>&#10022;</span></div><div class="explore-orientation"><div><span class="eyebrow">CHOOSE YOUR DESTINATION</span><h2>Choose your historical destination</h2></div><a href="my-journey.html" class="text-button">Continue My Journey &#8594;</a></div><p class="explore-guide">Open an era to discover its stories and follow its chapter trail. Complete each chapter challenge to unlock the next chapter in that era.</p><div
                     id="eraLoading"
                     class="learning-message"
                 >
@@ -308,7 +318,7 @@
                     </div>
 
 
-                    <div
+                    <div class="chapter-state-legend" aria-label="Chapter states"><span><i class="available" aria-hidden="true"></i>Available</span><span><i class="completed" aria-hidden="true"></i>Completed</span><span><i class="locked" aria-hidden="true"></i>Locked or preparing</span></div><div
                         id="chapterList"
                         class="chapter-grid"
                     ></div>

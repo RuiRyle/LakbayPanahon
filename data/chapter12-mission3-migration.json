@@ -1,0 +1,1301 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 12 Mission 3 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/in-memory-of-francisco-dagohoy/",
+    "https://nhcphistoricsites.blogspot.com/2021/07/apolinario-de-la-cruz-18151841.html"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-11",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-11",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/autonomy-community-investigator",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter11-mission1",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter11-mission2",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter11-mission3",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter11-mission4",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter12-mission1",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter12-mission2",
+      "expected": {
+        "chapterId": "chapter-12",
+        "status": "active",
+        "order": 2
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter12-mission3",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-12",
+        "title": "Religious and Political Revolts",
+        "order": 3,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Compare religious concerns, political organization and movement dates through the Dagohoy and Cofradia cases.",
+        "learningObjective": "Explain overlapping concerns and institutions while distinguishing movement duration, personal lives and source perspectives.",
+        "learningObjectives": [
+          "Explain concerns could overlap using lesson evidence.",
+          "Explain dagohoy: a concern and local organization using lesson evidence.",
+          "Explain apolinario de la cruz and the cofradia using lesson evidence.",
+          "Explain a movements dates were not a lifetime using lesson evidence.",
+          "Explain compare institutions and people respectfully using lesson evidence."
+        ],
+        "lessonRecap": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/in-memory-of-francisco-dagohoy/",
+          "https://nhcphistoricsites.blogspot.com/2021/07/apolinario-de-la-cruz-18151841.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter12-quiz3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission3",
+        "title": "Religious and Political Cases - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 3,
+        "questionBlueprint": [
+          {
+            "topic": "religion-authority-overlap",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "dagohoy-grievance-authority",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "cofradia-hermano",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "movement-leader-dates",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "religious-political-source-limits",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission3-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission3",
+        "status": "active",
+        "order": 1,
+        "title": "Concerns Could Overlap",
+        "content": "Religious concerns can involve beliefs, practices or religious institutions. Political concerns can involve authority, rules and who makes decisions. In a historical case, these may overlap. Naming one concern does not automatically exclude the other, and a label such as religious revolt does not reveal every participants private belief.\n\nThis mission compares Dagohoys Bohol movement and the Cofradia de San Jose associated with Apolinario de la Cruz. We ask what sources record about concerns, organization and authority. Our fictional sorting cards identify a disputed religious practice, a community decision and a request about treatment. They are teaching models, not quotations from a surviving document. Do not force every case into one exclusive box or treat every complaint as one modern national program. Students examine evidence without adopting a faith or disclosing personal religion.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "religion-authority-overlap"
+        ],
+        "imageUrl": "../assets/story/religious-political-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Concerns Could Overlap. Labelled clues distinguish concern, institution, movement dates and source limits; not an original testimony.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Different questions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Religious practice and political authority are related but distinct questions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Possible overlap",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One historical concern can connect with more than one aspect of life.",
+            "icon": "🔎"
+          },
+          {
+            "title": "No automatic motive",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A revolt label does not reveal every persons belief or aim.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A case involves a religious concern and questions about local decisions. Which approach fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Investigate both with evidence rather than force one exclusive label",
+          "Assume religion and authority can never overlap",
+          "Use the label to assign every persons belief",
+          "Treat every concern as an identical modern program"
+        ],
+        "decisionCorrectAnswer": "Investigate both with evidence rather than force one exclusive label",
+        "decisionExplanation": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "keyTerm": "Political authority",
+        "keyTermDefinition": "The ability to make or carry out decisions about community or government affairs.",
+        "historicalInsight": "A revolt label does not reveal every persons belief or aim.",
+        "learningHelp": {
+          "explanation": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "vocabulary": [
+            {
+              "term": "Political authority",
+              "definition": "The ability to make or carry out decisions about community or government affairs."
+            }
+          ],
+          "example": "Religious practice and political authority are related but distinct questions.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/in-memory-of-francisco-dagohoy/",
+          "https://nhcphistoricsites.blogspot.com/2021/07/apolinario-de-la-cruz-18151841.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission3-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission3",
+        "status": "active",
+        "order": 2,
+        "title": "Dagohoy: A Concern and Local Organization",
+        "content": "NCCA CulturEd locates Francisco Dagohoys movement in Bohol. It connects the beginning with a dispute over a religious burial for his brother and also describes local communities and government outside Spanish authority. These are different parts of an explanation: a reported concern and the organization that developed. One should not replace the other.\n\nThe NHCP Dagohoy marker identifies an independent government during the movement dated 1744-1829. The phrase is historical evidence about a particular case, not proof that every Bohol resident belonged to one identical community or that its institutions matched a modern republic. Our labelled source guide does not reconstruct a burial ceremony or an exact government chart. We acknowledge that conflict caused harm without graphic scenes, reenactment or rewards for retaliation. A reported trigger is not every participants full motive throughout a long movement.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "dagohoy-grievance-authority"
+        ],
+        "imageUrl": "../assets/story/religious-political-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Dagohoy: A Concern and Local Organization. Labelled clues distinguish concern, institution, movement dates and source limits; not an original testimony.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Reported concern",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "CulturEd connects the beginning with a disputed religious burial.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Organization",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The sources also describe local communities and government.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A trigger and an institution do not explain every person or every year of the movement.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Dagohoys case includes a burial dispute and local government. What should a report do?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Reduce the whole movement to every persons identical private motive",
+          "Treat its government as a modern republic without checking",
+          "Require students to perform a ceremony",
+          "Explain both the reported concern and later organization within their evidence"
+        ],
+        "decisionCorrectAnswer": "Explain both the reported concern and later organization within their evidence",
+        "decisionExplanation": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "keyTerm": "Grievance",
+        "keyTermDefinition": "A complaint or concern about treatment, conditions or a demand.",
+        "historicalInsight": "A trigger and an institution do not explain every person or every year of the movement.",
+        "learningHelp": {
+          "explanation": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "vocabulary": [
+            {
+              "term": "Grievance",
+              "definition": "A complaint or concern about treatment, conditions or a demand."
+            }
+          ],
+          "example": "CulturEd connects the beginning with a disputed religious burial.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/in-memory-of-francisco-dagohoy/",
+          "https://nhcphistoricsites.blogspot.com/2021/07/apolinario-de-la-cruz-18151841.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission3-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission3",
+        "status": "active",
+        "order": 3,
+        "title": "Apolinario de la Cruz and the Cofradia",
+        "content": "Apolinario de la Cruz is also known as Hermano Puli or Hermano Pule. The NHCP marker at Lucban identifies him with the Cofradia de San Jose, a religious association, and commemorates concerns about religious freedom and social rights. This named example connects religious organization with treatment and rights rather than making a persons faith the complete explanation.\n\nThe marker is a later public account, not a complete membership register, a transcript of every meeting or the full chronology of the 1841 conflict. Our source card identifies the person, association, setting and kind of claim. It does not reproduce prayers, claim supernatural events as verified facts or ask students to join a religious group. We study the case respectfully while seeking evidence for particular demands and actions. The rights language of later commemoration should not be turned automatically into every participants exact words or one identical political program.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "cofradia-hermano"
+        ],
+        "imageUrl": "../assets/story/religious-political-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Apolinario de la Cruz and the Cofradia. Labelled clues distinguish concern, institution, movement dates and source limits; not an original testimony.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Named association",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP marker connects Apolinario de la Cruz with the Cofradia de San Jose.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Concerns",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The marker commemorates religious freedom and social rights.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A later summary does not supply every members words, motive or full event chronology.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A later marker describes the Cofradia and rights concerns. What is a careful use?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Require students to join the group",
+          "Rank faiths by the marker",
+          "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent",
+          "Treat it as every members complete testimony"
+        ],
+        "decisionCorrectAnswer": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent",
+        "decisionExplanation": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "keyTerm": "Cofradia",
+        "keyTermDefinition": "A religious brotherhood or association.",
+        "historicalInsight": "A later summary does not supply every members words, motive or full event chronology.",
+        "learningHelp": {
+          "explanation": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "vocabulary": [
+            {
+              "term": "Cofradia",
+              "definition": "A religious brotherhood or association."
+            }
+          ],
+          "example": "The NHCP marker connects Apolinario de la Cruz with the Cofradia de San Jose.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/in-memory-of-francisco-dagohoy/",
+          "https://nhcphistoricsites.blogspot.com/2021/07/apolinario-de-la-cruz-18151841.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission3-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission3",
+        "status": "active",
+        "order": 4,
+        "title": "A Movements Dates Were Not a Lifetime",
+        "content": "The Dagohoy movement is dated 1744-1829 in the NHCP marker. Those dates describe the movement, not Dagohoys birth and death. CulturEd explicitly notes uncertainty about his death and says the movement continued after he was gone. Do not turn the movements long duration into a claim that he personally led every stage.\n\nOur timeline shows the movement span and leaves the uncertain personal date unfilled. That is a useful historical limit, not a gap to complete with a guess. A movement can involve changing participants and conditions across time. A long duration alone does not establish unchanged institutions, identical motives or every households experience. To explain a particular stage, find evidence for its people and period. The timeline is a modern teaching aid, not an original record or a complete sequence of battles. It does not rank movements by the amount of violence or length alone.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "movement-leader-dates"
+        ],
+        "imageUrl": "../assets/story/religious-political-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Movements Dates Were Not a Lifetime. Labelled clues distinguish concern, institution, movement dates and source limits; not an original testimony.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Movement span",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The named movement is dated 1744-1829.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Personal limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Its founder did not necessarily lead every stage, and his death date is uncertain in the cited account.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Changing stages",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Duration alone does not prove identical conditions or participants throughout.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A timeline lists 1744-1829 as Dagohoys birth and death. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Invent a death date to complete the card",
+          "Label it as the movement span and keep uncertain personal dates unfilled",
+          "Use movement dates as every participants lifetime",
+          "Assume he led every year personally"
+        ],
+        "decisionCorrectAnswer": "Label it as the movement span and keep uncertain personal dates unfilled",
+        "decisionExplanation": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "keyTerm": "Duration",
+        "keyTermDefinition": "The length of time an activity or process lasts.",
+        "historicalInsight": "Duration alone does not prove identical conditions or participants throughout.",
+        "learningHelp": {
+          "explanation": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "vocabulary": [
+            {
+              "term": "Duration",
+              "definition": "The length of time an activity or process lasts."
+            }
+          ],
+          "example": "The named movement is dated 1744-1829.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/in-memory-of-francisco-dagohoy/",
+          "https://nhcphistoricsites.blogspot.com/2021/07/apolinario-de-la-cruz-18151841.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission3-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission3",
+        "status": "active",
+        "order": 5,
+        "title": "Compare Institutions and People Respectfully",
+        "content": "A dispute with a particular authority does not make every member of a religion responsible for the same action. A religious association does not make every member identical. Compare recorded practices, institutions, demands and responses without ranking faiths or using ancestry as a motive. Students are assessed on historical evidence, not belief.\n\nOur fictional portfolio compares a biographical entry and two later markers. Each has a maker, date and purpose. One can identify a concern or commemorate organization without answering every question about an event. A request, a conflict and its outcome also need to be separated. The account of a burial dispute and the Cofradia case are not one coordinated movement merely because both connect with religion. Do not invent unity, conversations or complete membership from a shared theme. Later lessons will examine leaders, communities, participation and significance more closely.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "religious-political-source-limits"
+        ],
+        "imageUrl": "../assets/story/religious-political-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Compare Institutions and People Respectfully. Labelled clues distinguish concern, institution, movement dates and source limits; not an original testimony.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Institutions and people",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Specific actions should not become stereotypes about every believer.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare sources",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Entries and markers have dates, purposes and different limits.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Separate cases",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A shared theme does not prove coordination, identical aims or outcomes.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Two movements both involve religious concerns. What is the strongest comparison?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Compare their particular institutions, people and evidence without assuming one coordinated event",
+          "Assign every believer one motive",
+          "Treat every institution as identical",
+          "Require a student to adopt one faith"
+        ],
+        "decisionCorrectAnswer": "Compare their particular institutions, people and evidence without assuming one coordinated event",
+        "decisionExplanation": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "keyTerm": "Source perspective",
+        "keyTermDefinition": "The standpoint and purpose from which information is presented.",
+        "historicalInsight": "A shared theme does not prove coordination, identical aims or outcomes.",
+        "learningHelp": {
+          "explanation": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "vocabulary": [
+            {
+              "term": "Source perspective",
+              "definition": "The standpoint and purpose from which information is presented."
+            }
+          ],
+          "example": "Specific actions should not become stereotypes about every believer.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/in-memory-of-francisco-dagohoy/",
+          "https://nhcphistoricsites.blogspot.com/2021/07/apolinario-de-la-cruz-18151841.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter12-mission3-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission3",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Religious and Political Comparison",
+        "content": "Review five ideas. Religious practice and political authority can overlap. Dagohoys case includes a reported burial dispute and local organization. The Cofradia de San Jose connects an association with commemorated concerns about faith and social rights. A movements duration is not its founders lifetime. Similar themes do not make every participant or case identical.\n\nPrepare a fictional report for another Grade 5 learner. Name the case, institution, place and period. Connect a claim to a supporting clue and identify a limit. Keep the 1744-1829 movement span separate from uncertain personal dates. Do not invent speeches, assume universal membership, or blame an entire religion for a particular authoritys action. Students do not perform rituals, adopt a belief or share personal faith.\n\nThe main quiz has five questions and three correct passes. Review linked learning content before practice and a retry if needed. Completing this mission earns its configured reward once, but does not complete Chapter 12. Missions 4-5 and the chapter challenge are still being prepared.",
+        "reviewTopics": [
+          "religion-authority-overlap",
+          "dagohoy-grievance-authority",
+          "cofradia-hermano",
+          "movement-leader-dates",
+          "religious-political-source-limits"
+        ],
+        "imageUrl": "../assets/story/religious-political-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Compare Institutions and People Respectfully. Labelled clues distinguish concern, institution, movement dates and source limits; not an original testimony.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Institutions and people",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Specific actions should not become stereotypes about every believer.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare sources",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Entries and markers have dates, purposes and different limits.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Separate cases",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A shared theme does not prove coordination, identical aims or outcomes.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best compares these movements?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat every religious concern as one coordinated revolt",
+          "Use movement dates as every leaders lifetime",
+          "Blame every believer for one authoritys action",
+          "Explain particular concerns, organization and dated evidence while respecting belief and source limits"
+        ],
+        "decisionCorrectAnswer": "Explain particular concerns, organization and dated evidence while respecting belief and source limits",
+        "decisionExplanation": "Compare religious concerns and political organization through particular cases and evidence without stereotypes or invented motives.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Compare religious concerns and political organization through particular cases and evidence without stereotypes or invented motives.",
+        "keyTerm": "Source perspective",
+        "keyTermDefinition": "The standpoint and purpose from which information is presented.",
+        "historicalInsight": "A shared theme does not prove coordination, identical aims or outcomes.",
+        "learningHelp": {
+          "explanation": "Compare religious concerns and political organization through particular cases and evidence without stereotypes or invented motives.",
+          "vocabulary": [
+            {
+              "term": "Source perspective",
+              "definition": "The standpoint and purpose from which information is presented."
+            }
+          ],
+          "example": "Specific actions should not become stereotypes about every believer.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/in-memory-of-francisco-dagohoy/",
+          "https://nhcphistoricsites.blogspot.com/2021/07/apolinario-de-la-cruz-18151841.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz3-question1",
+      "create": true,
+      "fields": {
+        "question": "What does political authority concern here?",
+        "optionA": "Making or carrying out decisions about community or government affairs",
+        "optionB": "Every persons private faith",
+        "optionC": "Only a building material",
+        "optionD": "A measure of human worth",
+        "correctAnswer": "A",
+        "explanation": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "learningPoint": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "historicalClue": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "answerExplanations": {
+          "A": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "B": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "C": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "D": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim."
+        },
+        "quizId": "chapter12-quiz3",
+        "order": 1,
+        "status": "active",
+        "topic": "religion-authority-overlap",
+        "topicLabel": "Concerns Could Overlap",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz3-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why avoid one exclusive label before reading the evidence?",
+        "optionA": "A label supplies every private motive",
+        "optionB": "All revolts had one identical cause",
+        "optionC": "Dates cannot affect interpretation",
+        "optionD": "Concerns about practice, treatment and authority can overlap",
+        "correctAnswer": "D",
+        "explanation": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "learningPoint": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "historicalClue": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "B": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "C": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "D": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim."
+        },
+        "quizId": "chapter12-quiz3",
+        "order": 101,
+        "status": "active",
+        "topic": "religion-authority-overlap",
+        "topicLabel": "Concerns Could Overlap",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission3-religion-authority-overlap-practice1",
+      "create": true,
+      "fields": {
+        "question": "A case involves a religious concern and questions about local decisions. Which approach fits?",
+        "optionA": "Assume religion and authority can never overlap",
+        "optionB": "Use the label to assign every persons belief",
+        "optionC": "Treat every concern as an identical modern program",
+        "optionD": "Investigate both with evidence rather than force one exclusive label",
+        "correctAnswer": "D",
+        "explanation": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "learningPoint": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "historicalClue": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "B": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "C": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "D": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim."
+        },
+        "missionId": "chapter12-mission3",
+        "topic": "religion-authority-overlap",
+        "topicLabel": "Concerns Could Overlap",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The ability to make or carry out decisions about community or government affairs.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission3-religion-authority-overlap-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption says a religious concern proves every participant held one belief. What is missing?",
+        "optionA": "A classroom faith test",
+        "optionB": "Nothing because the label reveals all thoughts",
+        "optionC": "Evidence about particular people and the claims being made",
+        "optionD": "Only a stronger label",
+        "correctAnswer": "C",
+        "explanation": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "learningPoint": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "historicalClue": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "B": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "C": "Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim.",
+          "D": "Review the lesson clues. Investigate both with evidence rather than force one exclusive label. A revolt label does not reveal every persons belief or aim."
+        },
+        "missionId": "chapter12-mission3",
+        "topic": "religion-authority-overlap",
+        "topicLabel": "Concerns Could Overlap",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The ability to make or carry out decisions about community or government affairs.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz3-question2",
+      "create": true,
+      "fields": {
+        "question": "Which place is associated with Dagohoys movement here?",
+        "optionA": "Every island as one place",
+        "optionB": "Palapag as another name for Bohol",
+        "optionC": "No named place",
+        "optionD": "Bohol",
+        "correctAnswer": "D",
+        "explanation": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "learningPoint": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "historicalClue": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "B": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "C": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "D": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement."
+        },
+        "quizId": "chapter12-quiz3",
+        "order": 2,
+        "status": "active",
+        "topic": "dagohoy-grievance-authority",
+        "topicLabel": "Dagohoy: A Concern and Local Organization",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz3-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish a reported trigger from a movements later organization?",
+        "optionA": "Every year had identical conditions",
+        "optionB": "One institution reveals every private thought",
+        "optionC": "They concern different stages and kinds of evidence",
+        "optionD": "A trigger proves every later aim and outcome",
+        "correctAnswer": "C",
+        "explanation": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "learningPoint": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "historicalClue": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "B": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "C": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "D": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement."
+        },
+        "quizId": "chapter12-quiz3",
+        "order": 102,
+        "status": "active",
+        "topic": "dagohoy-grievance-authority",
+        "topicLabel": "Dagohoy: A Concern and Local Organization",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission3-dagohoy-grievance-authority-practice1",
+      "create": true,
+      "fields": {
+        "question": "Dagohoys case includes a burial dispute and local government. What should a report do?",
+        "optionA": "Treat its government as a modern republic without checking",
+        "optionB": "Require students to perform a ceremony",
+        "optionC": "Explain both the reported concern and later organization within their evidence",
+        "optionD": "Reduce the whole movement to every persons identical private motive",
+        "correctAnswer": "C",
+        "explanation": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "learningPoint": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "historicalClue": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "B": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "C": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "D": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement."
+        },
+        "missionId": "chapter12-mission3",
+        "topic": "dagohoy-grievance-authority",
+        "topicLabel": "Dagohoy: A Concern and Local Organization",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A complaint or concern about treatment, conditions or a demand.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission3-dagohoy-grievance-authority-practice2",
+      "create": true,
+      "fields": {
+        "question": "A marker mentions independent government and a caption claims every resident participated. What needs checking?",
+        "optionA": "Nothing because every resident must have joined",
+        "optionB": "Evidence about actual membership, roles and local experience",
+        "optionC": "Only the markers title",
+        "optionD": "An assumption that place means universal participation",
+        "correctAnswer": "B",
+        "explanation": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "learningPoint": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "historicalClue": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "B": "Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "C": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement.",
+          "D": "Review the lesson clues. Explain both the reported concern and later organization within their evidence. A trigger and an institution do not explain every person or every year of the movement."
+        },
+        "missionId": "chapter12-mission3",
+        "topic": "dagohoy-grievance-authority",
+        "topicLabel": "Dagohoy: A Concern and Local Organization",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A complaint or concern about treatment, conditions or a demand.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz3-question3",
+      "create": true,
+      "fields": {
+        "question": "What is a cofradia?",
+        "optionA": "A guarantee that all members had identical motives",
+        "optionB": "A universal tax rate",
+        "optionC": "A religious brotherhood or association",
+        "optionD": "Every government in one region",
+        "correctAnswer": "C",
+        "explanation": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "learningPoint": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "historicalClue": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "B": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "C": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "D": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology."
+        },
+        "quizId": "chapter12-quiz3",
+        "order": 3,
+        "status": "active",
+        "topic": "cofradia-hermano",
+        "topicLabel": "Apolinario de la Cruz and the Cofradia",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz3-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why identify the association as well as its leader?",
+        "optionA": "A name supplies every outcome",
+        "optionB": "Organization and membership are historical questions beyond one biography",
+        "optionC": "One leader reveals every members thoughts",
+        "optionD": "The association means all residents joined",
+        "correctAnswer": "B",
+        "explanation": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "learningPoint": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "historicalClue": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "B": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "C": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "D": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology."
+        },
+        "quizId": "chapter12-quiz3",
+        "order": 103,
+        "status": "active",
+        "topic": "cofradia-hermano",
+        "topicLabel": "Apolinario de la Cruz and the Cofradia",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission3-cofradia-hermano-practice1",
+      "create": true,
+      "fields": {
+        "question": "A later marker describes the Cofradia and rights concerns. What is a careful use?",
+        "optionA": "Rank faiths by the marker",
+        "optionB": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent",
+        "optionC": "Treat it as every members complete testimony",
+        "optionD": "Require students to join the group",
+        "correctAnswer": "B",
+        "explanation": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "learningPoint": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "historicalClue": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "B": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "C": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "D": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology."
+        },
+        "missionId": "chapter12-mission3",
+        "topic": "cofradia-hermano",
+        "topicLabel": "Apolinario de la Cruz and the Cofradia",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A religious brotherhood or association.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission3-cofradia-hermano-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption turns the markers later rights language into an exact speech by every member. What should change?",
+        "optionA": "Separate commemoration from documented historical words and individual claims",
+        "optionB": "Keep the invented quotation",
+        "optionC": "Erase the source date",
+        "optionD": "Treat every member as one voice",
+        "correctAnswer": "A",
+        "explanation": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "learningPoint": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "historicalClue": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+        "answerExplanations": {
+          "A": "Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "B": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "C": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology.",
+          "D": "Review the lesson clues. Identify its commemorated concerns while keeping member motives and exact words evidence-dependent. A later summary does not supply every members words, motive or full event chronology."
+        },
+        "missionId": "chapter12-mission3",
+        "topic": "cofradia-hermano",
+        "topicLabel": "Apolinario de la Cruz and the Cofradia",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A religious brotherhood or association.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz3-question4",
+      "create": true,
+      "fields": {
+        "question": "What does duration describe?",
+        "optionA": "A measure of human worth",
+        "optionB": "How long an activity or process lasts",
+        "optionC": "Every participants age",
+        "optionD": "A guarantee of unchanged conditions",
+        "correctAnswer": "B",
+        "explanation": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "learningPoint": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "historicalClue": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "B": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "C": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "D": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout."
+        },
+        "quizId": "chapter12-quiz3",
+        "order": 4,
+        "status": "active",
+        "topic": "movement-leader-dates",
+        "topicLabel": "A Movements Dates Were Not a Lifetime",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz3-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish a founders life from a movements continuation?",
+        "optionA": "Participants and leadership can change while a movement continues",
+        "optionB": "Every movement ends when its first leader leaves",
+        "optionC": "A movement has only one person",
+        "optionD": "Dates automatically reveal all motives",
+        "correctAnswer": "A",
+        "explanation": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "learningPoint": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "historicalClue": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "answerExplanations": {
+          "A": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "B": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "C": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "D": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout."
+        },
+        "quizId": "chapter12-quiz3",
+        "order": 104,
+        "status": "active",
+        "topic": "movement-leader-dates",
+        "topicLabel": "A Movements Dates Were Not a Lifetime",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission3-movement-leader-dates-practice1",
+      "create": true,
+      "fields": {
+        "question": "A timeline lists 1744-1829 as Dagohoys birth and death. What correction fits?",
+        "optionA": "Label it as the movement span and keep uncertain personal dates unfilled",
+        "optionB": "Use movement dates as every participants lifetime",
+        "optionC": "Assume he led every year personally",
+        "optionD": "Invent a death date to complete the card",
+        "correctAnswer": "A",
+        "explanation": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "learningPoint": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "historicalClue": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "answerExplanations": {
+          "A": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "B": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "C": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "D": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout."
+        },
+        "missionId": "chapter12-mission3",
+        "topic": "movement-leader-dates",
+        "topicLabel": "A Movements Dates Were Not a Lifetime",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The length of time an activity or process lasts.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission3-movement-leader-dates-practice2",
+      "create": true,
+      "fields": {
+        "question": "A long movement is described as unchanged in every year. What evidence is needed?",
+        "optionA": "Only the total number of years",
+        "optionB": "An assumption that all participants were identical",
+        "optionC": "A larger timeline arrow",
+        "optionD": "Records about particular stages, people and conditions",
+        "correctAnswer": "D",
+        "explanation": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "learningPoint": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "historicalClue": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "B": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "C": "Review the lesson clues. Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout.",
+          "D": "Label it as the movement span and keep uncertain personal dates unfilled. Duration alone does not prove identical conditions or participants throughout."
+        },
+        "missionId": "chapter12-mission3",
+        "topic": "movement-leader-dates",
+        "topicLabel": "A Movements Dates Were Not a Lifetime",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The length of time an activity or process lasts.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz3-question5",
+      "create": true,
+      "fields": {
+        "question": "What is source perspective?",
+        "optionA": "The standpoint and purpose from which information is presented",
+        "optionB": "Proof that one summary is complete",
+        "optionC": "Every persons private belief",
+        "optionD": "A ranking of religions",
+        "correctAnswer": "A",
+        "explanation": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "learningPoint": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "historicalClue": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "answerExplanations": {
+          "A": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "B": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "C": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "D": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes."
+        },
+        "quizId": "chapter12-quiz3",
+        "order": 5,
+        "status": "active",
+        "topic": "religious-political-source-limits",
+        "topicLabel": "Compare Institutions and People Respectfully",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter12-quiz3-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why keep a biographical entry distinct from a commemorative marker?",
+        "optionA": "Both are complete eyewitness transcripts",
+        "optionB": "All later sources have no value",
+        "optionC": "Dates never affect an account",
+        "optionD": "Their purposes and evidence limits can differ",
+        "correctAnswer": "D",
+        "explanation": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "learningPoint": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "historicalClue": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "B": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "C": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "D": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes."
+        },
+        "quizId": "chapter12-quiz3",
+        "order": 105,
+        "status": "active",
+        "topic": "religious-political-source-limits",
+        "topicLabel": "Compare Institutions and People Respectfully",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission3-religious-political-source-limits-practice1",
+      "create": true,
+      "fields": {
+        "question": "Two movements both involve religious concerns. What is the strongest comparison?",
+        "optionA": "Assign every believer one motive",
+        "optionB": "Treat every institution as identical",
+        "optionC": "Require a student to adopt one faith",
+        "optionD": "Compare their particular institutions, people and evidence without assuming one coordinated event",
+        "correctAnswer": "D",
+        "explanation": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "learningPoint": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "historicalClue": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "B": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "C": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "D": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes."
+        },
+        "missionId": "chapter12-mission3",
+        "topic": "religious-political-source-limits",
+        "topicLabel": "Compare Institutions and People Respectfully",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The standpoint and purpose from which information is presented.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter12-mission3-religious-political-source-limits-practice2",
+      "create": true,
+      "fields": {
+        "question": "A source names one authority involved in a dispute. What should a report avoid?",
+        "optionA": "Checking the dated setting",
+        "optionB": "Seeking other relevant evidence",
+        "optionC": "Blaming every member of a religion for that specific action",
+        "optionD": "Identifying the named authority",
+        "correctAnswer": "C",
+        "explanation": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "learningPoint": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "historicalClue": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "B": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "C": "Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes.",
+          "D": "Review the lesson clues. Compare their particular institutions, people and evidence without assuming one coordinated event. A shared theme does not prove coordination, identical aims or outcomes."
+        },
+        "missionId": "chapter12-mission3",
+        "topic": "religious-political-source-limits",
+        "topicLabel": "Compare Institutions and People Respectfully",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The standpoint and purpose from which information is presented.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter12-mission3-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter12-mission3",
+        "name": "Religious and Political Evidence Journal",
+        "description": "A learning-game token for investigating concerns, organization and movement dates respectfully.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 3,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Compare religious concerns and political institutions without ranking beliefs or inventing motives.",
+          "reflectionQuestion": "Which clue helped you distinguish a movements duration from its founders life?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-12",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-2 introduce causes, forms and selected regional uprisings. Missions 3-5 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-3 introduce causes, regional cases and religious/political concerns. Missions 4-5 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapter 12 offers Missions 1-2 on causes, forms and regional cases of resistance. Later missions and Chapters 13-14 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 12 offers Missions 1-3 on causes, regional cases and religious/political concerns. Later missions and Chapters 13-14 are being prepared."
+      }
+    }
+  ]
+}

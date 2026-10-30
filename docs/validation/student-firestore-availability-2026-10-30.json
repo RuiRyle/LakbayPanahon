@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-30T02:38:26.789Z",
+  "mode": "single-document-availability-check",
+  "httpStatus": 200,
+  "available": true,
+  "scope": "Administrator single-document probe only; not learner availability or acceptance.",
+  "studentAcceptance": {
+    "status": "blocked",
+    "httpStatus": 429,
+    "temporaryAccountAndRecordsCleaned": true
+  },
+  "familyContentDryRun": {
+    "status": "blocked",
+    "httpStatus": 429,
+    "writes": 0
+  },
+  "error": null,
+  "latestLearnerStatus": "quota-exhausted",
+  "studentAcceptanceRetries": [
+    {
+      "checkedAt": "2026-10-30T04:16:43.014Z",
+      "command": "node tests/live-mission-flow.cjs --security-only",
+      "status": "quota-exhausted",
+      "httpStatus": 429,
+      "errorCode": "RESOURCE_EXHAUSTED",
+      "stage": "First prologue mission document read, after role/XP escalation denials; before quiz submission",
+      "temporaryAccountAndRecordsCleaned": true,
+      "quizSaveVerified": false,
+      "contentPublished": false,
+      "furtherDatabaseAttempts": 0
+    }
+  ]
+}

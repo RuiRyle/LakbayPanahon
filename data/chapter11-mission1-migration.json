@@ -1,0 +1,1287 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 11 Mission 1 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+    "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-10",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-10",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/social-cultural-investigator",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter10-mission1",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter10-mission2",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter10-mission3",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter10-mission4",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter10-mission5",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 5
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter11-mission1",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-11",
+        "title": "Communities Beyond Effective Spanish Control",
+        "order": 1,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate the difference between colonial claims, actual authority and community decisions through named examples.",
+        "learningObjective": "Distinguish claims from effective control and explain autonomy without assuming isolation or unchanged communities.",
+        "learningObjectives": [
+          "Explain a claim was not control everywhere using lesson evidence.",
+          "Explain autonomy meant local decisions using lesson evidence.",
+          "Explain contact did not automatically mean conquest using lesson evidence.",
+          "Explain autonomy did not mean an unchanging life using lesson evidence.",
+          "Explain compare claims with community evidence using lesson evidence."
+        ],
+        "lessonRecap": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "sourceUrls": [
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter11-quiz1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission1",
+        "title": "Autonomy and Control - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "claim-effective-control",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "autonomy-local-decisions",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "contact-rule",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "connected-change",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "autonomy-source-comparison",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission1-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission1",
+        "status": "active",
+        "order": 1,
+        "title": "A Claim Was Not Control Everywhere",
+        "content": "A colonial authority could claim a territory without controlling every community within it. To investigate actual control, ask what happened in a particular place and period. Were instructions carried out? Was tribute collected? Who made decisions? A boundary drawn on a map does not answer all these questions. A single expedition also does not automatically establish lasting rule.\n\nOur fictional source desk compares a map claim, an order and a record of a local action. The map shows what its maker represented. The order shows what an authority wanted. The action record may help investigate practice. Keep their dates and purposes separate. Do not turn one successful visit into permanent control of a whole region, or one failed action into proof that no contact ever occurred. This is a way to read evidence, not a map of present-day legal rights or instructions about modern government.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "claim-effective-control"
+        ],
+        "imageUrl": "../assets/story/autonomy-evidence-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Claim Was Not Control Everywhere. Labelled clues distinguish claims, local decisions, contacts and source limits; not a territorial map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Claim",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A territorial claim states an asserted authority.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Practice",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Effective control needs evidence of authority actually carried out.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One map or expedition does not establish lasting control of every community.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A shaded colonial map is used to claim every local order was obeyed. What is missing?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Evidence of authority actually carried out in particular communities",
+          "Only a darker map color",
+          "An assumption that every visit meant lasting rule",
+          "A rule that all communities had identical responses"
+        ],
+        "decisionCorrectAnswer": "Evidence of authority actually carried out in particular communities",
+        "decisionExplanation": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "keyTerm": "Effective control",
+        "keyTermDefinition": "The actual ability to carry out authority in a place, rather than only claim it.",
+        "historicalInsight": "One map or expedition does not establish lasting control of every community.",
+        "learningHelp": {
+          "explanation": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "vocabulary": [
+            {
+              "term": "Effective control",
+              "definition": "The actual ability to carry out authority in a place, rather than only claim it."
+            }
+          ],
+          "example": "A territorial claim states an asserted authority.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission1-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission1",
+        "status": "active",
+        "order": 2,
+        "title": "Autonomy Meant Local Decisions",
+        "content": "Communities could maintain important decisions and institutions beyond effective Spanish rule. In this historical lesson, autonomy concerns local affairs and authority. It does not mean that everyone in a community had equal power, that no rules existed, or that the community had no connections with others. Ask which decisions people maintained and under what conditions.\n\nA UCLA research summary of Stephen Acabado and Marlon Martins work describes Ifugao resistance to Spanish conquest alongside strategies for strengthening local organization. This is a named case, not every highland communitys identical history. Our modern clue card asks who made a decision and what evidence shows it being carried out. It is not a drawing of a universal council or a present-day legal definition of autonomous regions. More detailed Ifugao and other Cordillera histories follow later in the chapter.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "autonomy-local-decisions"
+        ],
+        "imageUrl": "../assets/story/autonomy-evidence-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Autonomy Meant Local Decisions. Labelled clues distinguish claims, local decisions, contacts and source limits; not a territorial map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Local affairs",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Autonomy concerns maintaining decisions about community affairs.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Named case",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ifugao research links resistance with local strategies and organization.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Autonomy is not equal power for everyone or the absence of rules and contacts.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A community maintained important local decisions. Which explanation fits historical autonomy?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "No one had any rules",
+          "Every person had identical authority",
+          "The community could not interact with anyone",
+          "Local decision-making could continue without unlimited freedom or equal power for everyone"
+        ],
+        "decisionCorrectAnswer": "Local decision-making could continue without unlimited freedom or equal power for everyone",
+        "decisionExplanation": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "keyTerm": "Autonomy",
+        "keyTermDefinition": "The ability of a community to make and maintain decisions about its own affairs.",
+        "historicalInsight": "Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "learningHelp": {
+          "explanation": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "vocabulary": [
+            {
+              "term": "Autonomy",
+              "definition": "The ability of a community to make and maintain decisions about its own affairs."
+            }
+          ],
+          "example": "Autonomy concerns maintaining decisions about community affairs.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission1-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission1",
+        "status": "active",
+        "order": 3,
+        "title": "Contact Did Not Automatically Mean Conquest",
+        "content": "Communities could trade, negotiate or encounter colonial forces without every interaction producing complete colonial control. A treaty text records an agreement or claim, but its implementation needs evidence. A garrison is a military post; its presence in one place does not by itself establish identical authority throughout surrounding communities.\n\nNajeeb Saleebys 1908 History of Sulu distinguishes Spanish claims and positions from limits on authority beyond them. The book also collects treaty texts and accounts of trade. Read it critically: it was written after Spanish rule in an American colonial setting and contains dated language and judgments. We use a limited example to ask about different forms of authority, not to repeat its stereotypes or decide present-day territorial disputes. A fuller account of Muslim polities and communities follows in Mission 2.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "contact-rule"
+        ],
+        "imageUrl": "../assets/story/autonomy-evidence-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Contact Did Not Automatically Mean Conquest. Labelled clues distinguish claims, local decisions, contacts and source limits; not a territorial map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Interactions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Trade and negotiation are forms of contact, not automatic proof of complete conquest.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Place matters",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A post in one place does not establish the same authority everywhere around it.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Treaty wording and an authors account need dated evidence of actual practice.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A military post in one location is used to claim identical control throughout a region. What should be checked?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "An assumption that every interaction was conquest",
+          "A claim that no local institutions existed",
+          "Authority and local practice beyond that post",
+          "Only the posts name"
+        ],
+        "decisionCorrectAnswer": "Authority and local practice beyond that post",
+        "decisionExplanation": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "keyTerm": "Contact",
+        "keyTermDefinition": "An interaction between people or groups.",
+        "historicalInsight": "Treaty wording and an authors account need dated evidence of actual practice.",
+        "learningHelp": {
+          "explanation": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "vocabulary": [
+            {
+              "term": "Contact",
+              "definition": "An interaction between people or groups."
+            }
+          ],
+          "example": "Trade and negotiation are forms of contact, not automatic proof of complete conquest.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission1-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission1",
+        "status": "active",
+        "order": 4,
+        "title": "Autonomy Did Not Mean an Unchanging Life",
+        "content": "Resisting conquest did not require a community to remain unchanged. People could adjust livelihoods, organization and relationships while defending local authority. Terrain could affect movement and resources, but mountains alone do not explain peoples decisions or every colonial outcome. Keep the people and their actions in the explanation.\n\nThe UCLA account of Ifugao research describes people using economic opportunities and strengthening local organization. This challenges a picture of an isolated society frozen outside history. Our fictional comparison cards show a community keeping a local decision while changing an exchange activity. They illustrate a possible relationship, not a surviving transaction or proof of every persons motive. To explain actual change, use archaeological, documentary and community evidence for the named place and period. Change is not a measure of greater or lesser human worth.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "connected-change"
+        ],
+        "imageUrl": "../assets/story/autonomy-evidence-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Autonomy Did Not Mean an Unchanging Life. Labelled clues distinguish claims, local decisions, contacts and source limits; not a territorial map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "People act",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Communities could adjust activities while maintaining local authority.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connections",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Economic interaction does not automatically erase autonomy.",
+            "icon": "🔎"
+          },
+          {
+            "title": "No frozen history",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Resistance does not prove isolation or unchanged practices across centuries.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A report says resisting conquest meant no changes or outside connections. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every community remained identical forever",
+          "People could adapt and interact while defending local authority",
+          "All resistance required complete isolation",
+          "Mountains alone made every decision"
+        ],
+        "decisionCorrectAnswer": "People could adapt and interact while defending local authority",
+        "decisionExplanation": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "keyTerm": "Adaptation",
+        "keyTermDefinition": "Adjusting activities or arrangements in response to conditions.",
+        "historicalInsight": "Resistance does not prove isolation or unchanged practices across centuries.",
+        "learningHelp": {
+          "explanation": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "vocabulary": [
+            {
+              "term": "Adaptation",
+              "definition": "Adjusting activities or arrangements in response to conditions."
+            }
+          ],
+          "example": "Communities could adjust activities while maintaining local authority.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission1-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission1",
+        "status": "active",
+        "order": 5,
+        "title": "Compare Claims with Community Evidence",
+        "content": "A colonial report might call an area controlled while local evidence points to different limits. Do not assume that one official label is the complete story. Ask who produced each source, when, for what purpose and whose actions it records. Community knowledge and archaeological evidence can help investigate questions that an official report leaves out.\n\nUCLA describes collaboration between researchers and descendant communities in interpreting Ifugao history. This is not permission to invent a single voice for every community member. Our fictional portfolio separates a map claim, a dated action record and a later community account. Match each to a question it can support, and identify gaps or disagreement. A modern account should keep its own date rather than be presented as an unchanged colonial statement. No student is asked to disclose ancestry, faith or family identity to complete the activity.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "autonomy-source-comparison"
+        ],
+        "imageUrl": "../assets/story/autonomy-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Compare Claims with Community Evidence. Labelled clues distinguish claims, local decisions, contacts and source limits; not a territorial map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Perspective",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A source has a maker, purpose and setting.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Official claims, community accounts and archaeology can answer different questions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Respect limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "No single source automatically speaks for every person or period.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An official label and a community account differ. What should a historian do?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Compare their dates, purposes and evidence instead of treating one label as complete",
+          "Assume the official label records every local experience",
+          "Invent a compromise with no evidence",
+          "Treat the later account as an exact colonial quotation"
+        ],
+        "decisionCorrectAnswer": "Compare their dates, purposes and evidence instead of treating one label as complete",
+        "decisionExplanation": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "keyTerm": "Source perspective",
+        "keyTermDefinition": "The standpoint and purpose from which a source presents information.",
+        "historicalInsight": "No single source automatically speaks for every person or period.",
+        "learningHelp": {
+          "explanation": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "vocabulary": [
+            {
+              "term": "Source perspective",
+              "definition": "The standpoint and purpose from which a source presents information."
+            }
+          ],
+          "example": "A source has a maker, purpose and setting.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission1-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission1",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Autonomy Evidence Report",
+        "content": "Review five ideas. A territorial claim was not proof of effective control everywhere. Autonomy concerned local decisions, not the absence of institutions. Trade, treaties and military posts required separate evidence about actual authority. Communities could change and interact while defending local affairs. Different sources and community knowledge help investigate limits.\n\nPrepare a fictional report for another Grade 5 learner. Name the people, place and period, explain the claim or recorded action, give a supporting clue and state a limit. Do not use one garrison as every communitys experience, mountains as the only explanation, or resistance as proof of complete isolation. Label the source cards as models, and keep historical questions separate from present-day legal claims.\n\nThe main quiz has five questions and three correct passes. Review linked learning content before practice and a retry if needed. Only Chapter 11 Mission 1 is ready in this release. Completing it does not finish the chapter or award its final badge: Missions 2-4 and the chapter challenge are still being prepared.",
+        "reviewTopics": [
+          "claim-effective-control",
+          "autonomy-local-decisions",
+          "contact-rule",
+          "connected-change",
+          "autonomy-source-comparison"
+        ],
+        "imageUrl": "../assets/story/autonomy-evidence-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Compare Claims with Community Evidence. Labelled clues distinguish claims, local decisions, contacts and source limits; not a territorial map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Perspective",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A source has a maker, purpose and setting.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Official claims, community accounts and archaeology can answer different questions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Respect limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "No single source automatically speaks for every person or period.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best explains the limits of colonial control?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Use a map color as proof of every local outcome",
+          "Treat all contact as complete conquest",
+          "Describe every autonomous community as unchanged and isolated",
+          "Compare claims with actual authority, local decisions and dated evidence"
+        ],
+        "decisionCorrectAnswer": "Compare claims with actual authority, local decisions and dated evidence",
+        "decisionExplanation": "Explain particular claims, actual authority and community decisions through dated evidence, with limits and different perspectives.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain particular claims, actual authority and community decisions through dated evidence, with limits and different perspectives.",
+        "keyTerm": "Source perspective",
+        "keyTermDefinition": "The standpoint and purpose from which a source presents information.",
+        "historicalInsight": "No single source automatically speaks for every person or period.",
+        "learningHelp": {
+          "explanation": "Explain particular claims, actual authority and community decisions through dated evidence, with limits and different perspectives.",
+          "vocabulary": [
+            {
+              "term": "Source perspective",
+              "definition": "The standpoint and purpose from which a source presents information."
+            }
+          ],
+          "example": "A source has a maker, purpose and setting.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://anthro.ucla.edu/publication/indigenous-archaeology-in-the-philippines-decolonizing-ifugao-history/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz1-question1",
+      "create": true,
+      "fields": {
+        "question": "What is effective control in this lesson?",
+        "optionA": "Actual ability to carry out authority in a place",
+        "optionB": "Only a claim written on a map",
+        "optionC": "One visit without follow-up",
+        "optionD": "Every persons agreement with a rule",
+        "correctAnswer": "A",
+        "explanation": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "learningPoint": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "historicalClue": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "answerExplanations": {
+          "A": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "B": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "C": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "D": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community."
+        },
+        "quizId": "chapter11-quiz1",
+        "order": 1,
+        "status": "active",
+        "topic": "claim-effective-control",
+        "topicLabel": "A Claim Was Not Control Everywhere",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz1-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a map claim with an action record?",
+        "optionA": "A map proves every instruction succeeded",
+        "optionB": "Action records never matter",
+        "optionC": "Every boundary explains all local life",
+        "optionD": "A represented claim and actual practice are different questions",
+        "correctAnswer": "D",
+        "explanation": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "learningPoint": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "historicalClue": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "B": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "C": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "D": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community."
+        },
+        "quizId": "chapter11-quiz1",
+        "order": 101,
+        "status": "active",
+        "topic": "claim-effective-control",
+        "topicLabel": "A Claim Was Not Control Everywhere",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission1-claim-effective-control-practice1",
+      "create": true,
+      "fields": {
+        "question": "A shaded colonial map is used to claim every local order was obeyed. What is missing?",
+        "optionA": "Only a darker map color",
+        "optionB": "An assumption that every visit meant lasting rule",
+        "optionC": "A rule that all communities had identical responses",
+        "optionD": "Evidence of authority actually carried out in particular communities",
+        "correctAnswer": "D",
+        "explanation": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "learningPoint": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "historicalClue": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "B": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "C": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "D": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community."
+        },
+        "missionId": "chapter11-mission1",
+        "topic": "claim-effective-control",
+        "topicLabel": "A Claim Was Not Control Everywhere",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The actual ability to carry out authority in a place, rather than only claim it.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission1-claim-effective-control-practice2",
+      "create": true,
+      "fields": {
+        "question": "One expedition entered an area. Which conclusion stays within that fact?",
+        "optionA": "No further evidence is needed",
+        "optionB": "All residents shared one belief",
+        "optionC": "Entry occurred; lasting local authority still needs evidence",
+        "optionD": "Every community was permanently controlled",
+        "correctAnswer": "C",
+        "explanation": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "learningPoint": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "historicalClue": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "B": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "C": "Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community.",
+          "D": "Review the lesson clues. Evidence of authority actually carried out in particular communities. One map or expedition does not establish lasting control of every community."
+        },
+        "missionId": "chapter11-mission1",
+        "topic": "claim-effective-control",
+        "topicLabel": "A Claim Was Not Control Everywhere",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The actual ability to carry out authority in a place, rather than only claim it.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz1-question2",
+      "create": true,
+      "fields": {
+        "question": "What does autonomy mean here?",
+        "optionA": "Having no rules or institutions",
+        "optionB": "Never meeting another community",
+        "optionC": "A measure of cultural worth",
+        "optionD": "The ability to maintain decisions about community affairs",
+        "correctAnswer": "D",
+        "explanation": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "learningPoint": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "historicalClue": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "B": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "C": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "D": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts."
+        },
+        "quizId": "chapter11-quiz1",
+        "order": 2,
+        "status": "active",
+        "topic": "autonomy-local-decisions",
+        "topicLabel": "Autonomy Meant Local Decisions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz1-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why ask which decisions a community maintained?",
+        "optionA": "Every community was identical",
+        "optionB": "A claim reveals every private motive",
+        "optionC": "Autonomy needs a particular scope and setting",
+        "optionD": "One label explains every institution",
+        "correctAnswer": "C",
+        "explanation": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "learningPoint": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "historicalClue": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "B": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "C": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "D": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts."
+        },
+        "quizId": "chapter11-quiz1",
+        "order": 102,
+        "status": "active",
+        "topic": "autonomy-local-decisions",
+        "topicLabel": "Autonomy Meant Local Decisions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission1-autonomy-local-decisions-practice1",
+      "create": true,
+      "fields": {
+        "question": "A community maintained important local decisions. Which explanation fits historical autonomy?",
+        "optionA": "Every person had identical authority",
+        "optionB": "The community could not interact with anyone",
+        "optionC": "Local decision-making could continue without unlimited freedom or equal power for everyone",
+        "optionD": "No one had any rules",
+        "correctAnswer": "C",
+        "explanation": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "learningPoint": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "historicalClue": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "B": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "C": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "D": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts."
+        },
+        "missionId": "chapter11-mission1",
+        "topic": "autonomy-local-decisions",
+        "topicLabel": "Autonomy Meant Local Decisions",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The ability of a community to make and maintain decisions about its own affairs.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission1-autonomy-local-decisions-practice2",
+      "create": true,
+      "fields": {
+        "question": "Ifugao resistance is described as every highland communitys identical experience. What revision fits?",
+        "optionA": "Treat local decisions as proof of no contact",
+        "optionB": "Keep the named case and investigate other communities separately",
+        "optionC": "Keep every community identical",
+        "optionD": "Assume no other histories exist",
+        "correctAnswer": "B",
+        "explanation": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "learningPoint": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "historicalClue": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "B": "Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "C": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts.",
+          "D": "Review the lesson clues. Local decision-making could continue without unlimited freedom or equal power for everyone. Autonomy is not equal power for everyone or the absence of rules and contacts."
+        },
+        "missionId": "chapter11-mission1",
+        "topic": "autonomy-local-decisions",
+        "topicLabel": "Autonomy Meant Local Decisions",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The ability of a community to make and maintain decisions about its own affairs.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz1-question3",
+      "create": true,
+      "fields": {
+        "question": "What is a garrison in this lesson?",
+        "optionA": "A guarantee of complete local agreement",
+        "optionB": "A trading item",
+        "optionC": "A military post",
+        "optionD": "Every community in a region",
+        "correctAnswer": "C",
+        "explanation": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "learningPoint": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "historicalClue": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "B": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "C": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "D": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice."
+        },
+        "quizId": "chapter11-quiz1",
+        "order": 3,
+        "status": "active",
+        "topic": "contact-rule",
+        "topicLabel": "Contact Did Not Automatically Mean Conquest",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz1-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish a treaty text from implementation?",
+        "optionA": "Contact always means complete conquest",
+        "optionB": "Written terms and actual practice are different evidence questions",
+        "optionC": "Every treaty proves identical local outcomes",
+        "optionD": "Treaties remove the need for dates",
+        "correctAnswer": "B",
+        "explanation": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "learningPoint": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "historicalClue": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "B": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "C": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "D": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice."
+        },
+        "quizId": "chapter11-quiz1",
+        "order": 103,
+        "status": "active",
+        "topic": "contact-rule",
+        "topicLabel": "Contact Did Not Automatically Mean Conquest",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission1-contact-rule-practice1",
+      "create": true,
+      "fields": {
+        "question": "A military post in one location is used to claim identical control throughout a region. What should be checked?",
+        "optionA": "A claim that no local institutions existed",
+        "optionB": "Authority and local practice beyond that post",
+        "optionC": "Only the posts name",
+        "optionD": "An assumption that every interaction was conquest",
+        "correctAnswer": "B",
+        "explanation": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "learningPoint": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "historicalClue": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "B": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "C": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "D": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice."
+        },
+        "missionId": "chapter11-mission1",
+        "topic": "contact-rule",
+        "topicLabel": "Contact Did Not Automatically Mean Conquest",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An interaction between people or groups.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission1-contact-rule-practice2",
+      "create": true,
+      "fields": {
+        "question": "A trade record is used to claim the trading community had no autonomy. What revision fits?",
+        "optionA": "Describe the exchange and seek separate evidence about authority",
+        "optionB": "Treat all trade as automatic surrender",
+        "optionC": "Assume every trader had one motive",
+        "optionD": "Erase the community from its own history",
+        "correctAnswer": "A",
+        "explanation": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "learningPoint": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "historicalClue": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+        "answerExplanations": {
+          "A": "Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "B": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "C": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice.",
+          "D": "Review the lesson clues. Authority and local practice beyond that post. Treaty wording and an authors account need dated evidence of actual practice."
+        },
+        "missionId": "chapter11-mission1",
+        "topic": "contact-rule",
+        "topicLabel": "Contact Did Not Automatically Mean Conquest",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An interaction between people or groups.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz1-question4",
+      "create": true,
+      "fields": {
+        "question": "What is adaptation?",
+        "optionA": "A ranking of cultural worth",
+        "optionB": "Adjusting activities or arrangements to conditions",
+        "optionC": "Never changing anything",
+        "optionD": "Automatically losing every local decision",
+        "correctAnswer": "B",
+        "explanation": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "learningPoint": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "historicalClue": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "B": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "C": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "D": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries."
+        },
+        "quizId": "chapter11-quiz1",
+        "order": 4,
+        "status": "active",
+        "topic": "connected-change",
+        "topicLabel": "Autonomy Did Not Mean an Unchanging Life",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz1-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why include peoples choices alongside terrain?",
+        "optionA": "Geography matters without explaining every action or outcome by itself",
+        "optionB": "Terrain makes all decisions for people",
+        "optionC": "All mountain communities had identical histories",
+        "optionD": "Choices never affect local organization",
+        "correctAnswer": "A",
+        "explanation": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "learningPoint": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "historicalClue": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "answerExplanations": {
+          "A": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "B": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "C": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "D": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries."
+        },
+        "quizId": "chapter11-quiz1",
+        "order": 104,
+        "status": "active",
+        "topic": "connected-change",
+        "topicLabel": "Autonomy Did Not Mean an Unchanging Life",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission1-connected-change-practice1",
+      "create": true,
+      "fields": {
+        "question": "A report says resisting conquest meant no changes or outside connections. What correction fits?",
+        "optionA": "People could adapt and interact while defending local authority",
+        "optionB": "All resistance required complete isolation",
+        "optionC": "Mountains alone made every decision",
+        "optionD": "Every community remained identical forever",
+        "correctAnswer": "A",
+        "explanation": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "learningPoint": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "historicalClue": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "answerExplanations": {
+          "A": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "B": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "C": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "D": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries."
+        },
+        "missionId": "chapter11-mission1",
+        "topic": "connected-change",
+        "topicLabel": "Autonomy Did Not Mean an Unchanging Life",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Adjusting activities or arrangements in response to conditions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission1-connected-change-practice2",
+      "create": true,
+      "fields": {
+        "question": "A fictional exchange card is used as proof of an actual Ifugao transaction. What should change?",
+        "optionA": "Treat the model as an original account",
+        "optionB": "Invent a date to make it authentic",
+        "optionC": "Assume one exchange explains every household",
+        "optionD": "Label the model and use appropriate evidence for the historical claim",
+        "correctAnswer": "D",
+        "explanation": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "learningPoint": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "historicalClue": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "B": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "C": "Review the lesson clues. People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries.",
+          "D": "People could adapt and interact while defending local authority. Resistance does not prove isolation or unchanged practices across centuries."
+        },
+        "missionId": "chapter11-mission1",
+        "topic": "connected-change",
+        "topicLabel": "Autonomy Did Not Mean an Unchanging Life",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Adjusting activities or arrangements in response to conditions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz1-question5",
+      "create": true,
+      "fields": {
+        "question": "What is source perspective?",
+        "optionA": "The standpoint and purpose from which information is presented",
+        "optionB": "Proof that every statement is complete",
+        "optionC": "A guarantee of identical private beliefs",
+        "optionD": "A rule that dates never matter",
+        "correctAnswer": "A",
+        "explanation": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "learningPoint": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "historicalClue": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "answerExplanations": {
+          "A": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "B": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "C": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "D": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period."
+        },
+        "quizId": "chapter11-quiz1",
+        "order": 5,
+        "status": "active",
+        "topic": "autonomy-source-comparison",
+        "topicLabel": "Compare Claims with Community Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz1-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why include community knowledge and archaeological evidence?",
+        "optionA": "They automatically supply every persons voice",
+        "optionB": "They remove the need for source dates",
+        "optionC": "Every account always agrees",
+        "optionD": "They may help investigate questions official records leave out",
+        "correctAnswer": "D",
+        "explanation": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "learningPoint": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "historicalClue": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "B": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "C": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "D": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period."
+        },
+        "quizId": "chapter11-quiz1",
+        "order": 105,
+        "status": "active",
+        "topic": "autonomy-source-comparison",
+        "topicLabel": "Compare Claims with Community Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission1-autonomy-source-comparison-practice1",
+      "create": true,
+      "fields": {
+        "question": "An official label and a community account differ. What should a historian do?",
+        "optionA": "Assume the official label records every local experience",
+        "optionB": "Invent a compromise with no evidence",
+        "optionC": "Treat the later account as an exact colonial quotation",
+        "optionD": "Compare their dates, purposes and evidence instead of treating one label as complete",
+        "correctAnswer": "D",
+        "explanation": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "learningPoint": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "historicalClue": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "B": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "C": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "D": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period."
+        },
+        "missionId": "chapter11-mission1",
+        "topic": "autonomy-source-comparison",
+        "topicLabel": "Compare Claims with Community Evidence",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The standpoint and purpose from which a source presents information.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission1-autonomy-source-comparison-practice2",
+      "create": true,
+      "fields": {
+        "question": "A modern community account is labelled as an unchanged colonial statement. What correction fits?",
+        "optionA": "Assume no practices ever changed",
+        "optionB": "Use one account as every persons full history",
+        "optionC": "Keep its date and investigate how it supports the earlier claim",
+        "optionD": "Erase the modern date",
+        "correctAnswer": "C",
+        "explanation": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "learningPoint": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "historicalClue": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "B": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "C": "Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period.",
+          "D": "Review the lesson clues. Compare their dates, purposes and evidence instead of treating one label as complete. No single source automatically speaks for every person or period."
+        },
+        "missionId": "chapter11-mission1",
+        "topic": "autonomy-source-comparison",
+        "topicLabel": "Compare Claims with Community Evidence",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The standpoint and purpose from which a source presents information.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter11-mission1-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission1",
+        "name": "Autonomy Evidence Journal",
+        "description": "A learning-game token for comparing colonial claims and community decisions.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Connect claims, actual authority, local decisions and changing relationships through evidence.",
+          "reflectionQuestion": "Which clue helped you distinguish contact from lasting colonial authority?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-11",
+      "create": true,
+      "fields": {
+        "eraId": "colonial-economic-social-cultural-change",
+        "title": "Indigenous Autonomy and the Limits of Colonial Rule",
+        "description": "Mission 1 investigates claims, effective control and community autonomy. Missions 2-4 and the chapter challenge are being prepared.",
+        "order": 11,
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapters 9-10 offer five missions and an evidence challenge each. Chapter 11 is being prepared."
+      },
+      "fields": {
+        "description": "Chapters 9-10 offer five missions and an evidence challenge each. Chapter 11 begins with community autonomy and limits of colonial control; later content is being prepared."
+      }
+    }
+  ]
+}

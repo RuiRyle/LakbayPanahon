@@ -22,76 +22,49 @@
     rel="stylesheet" 
     href="../css/chapter-challenge.css"
     >
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
 </head>
 
-<body data-role="student">
+<body data-role="student" class="auth-checking lakbay-theme">
+    <div class="student-loading-shell" role="status" aria-live="polite">
+        <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
+        <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p>Loading your learning space...</p><div class="student-loading-heading" aria-hidden="true"></div><div class="student-loading-cards" aria-hidden="true"><i></i><i></i><i></i></div><div class="student-loading-panel" aria-hidden="true"></div></div></div>
+    </div>
+
 
     <main class="chapter-challenge-page">
 
-        <section class="chapter-challenge-intro">
+        <section class="chapter-challenge-intro" aria-labelledby="challengeChapterTitle">
+            <header class="chapter-finale-heading">
+                <div class="finale-crest" aria-hidden="true">
+                    <div class="chapter-challenge-icon">&#x1F6E1;&#xFE0F;</div>
+                    <span>FINAL TRIAL</span>
+                </div>
 
-            <div class="chapter-challenge-icon">
-                🏆
+                <div class="finale-title-group">
+                    <span class="card-label">CHAPTER FINAL BOSS</span>
+                    <h1 id="challengeChapterTitle">Loading Chapter...</h1>
+                    <p id="challengeDescription">
+                        Every mission led to this final challenge. Bring your discoveries together and earn your chapter reward.
+                    </p>
+                </div>
+            </header>
+
+            <div class="chapter-challenge-info" aria-label="Final trial requirements">
+                <div><strong>10</strong><span>Questions</span></div>
+                <div><strong>70%</strong><span>Passing Score</span></div>
+                <div><strong>&#x1F3C5;</strong><span>Chapter Reward</span></div>
             </div>
 
-            <span class="card-label">
-                CHAPTER CHALLENGE
-            </span>
+            <footer class="chapter-finale-actions">
+                <button id="beginChallengeButton" type="button" disabled>Enter the Final Trial &rarr;</button>
+                <button id="backToMissionsButton" type="button">&larr; Back to Missions</button>
+                <button id="retryChapterLoadButton" type="button" hidden>Try Loading Again</button>
+            </footer>
 
-            <h1 id="challengeChapterTitle">
-                Loading Chapter...
-            </h1>
-
-           <p id="challengeDescription">
-    You completed every mission in this chapter.
-    Answer the questions to show what you learned.
-</p>
-
-
-            <div class="chapter-challenge-info">
-
-                <div>
-                    <strong>10</strong>
-                    <span>Questions</span>
-                </div>
-
-                <div>
-                    <strong>70%</strong>
-                    <span>Passing Score</span>
-                </div>
-
-                <div>
-                    <strong>🏅</strong>
-                    <span>Chapter Reward</span>
-                </div>
-
-            </div>
-
-
-            <button
-                id="beginChallengeButton"
-                type="button"
-                disabled
-            >
-                Begin Challenge →
-            </button>
-
-
-            <button
-                id="backToMissionsButton"
-                type="button"
-            >
-                ← Back to Missions
-            </button>
-
-
-            <p
-                id="challengeStatus"
-                role="status"
-            >
-                Checking your progress...
-            </p>
-
+            <p id="challengeStatus" role="status">Checking your progress...</p>
         </section>
 
     </main>
@@ -107,6 +80,8 @@
         src="../js/chapter-challenge.js"
     ></script>
 
+
+    <script type="module" src="../js/page-transition.js"></script>
 </body>
 
 </html>

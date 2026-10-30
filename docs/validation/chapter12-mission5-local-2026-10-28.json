@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-28",
+  "missionId": "chapter12-mission5",
+  "status": "local-only-unpublished",
+  "unitChecks": {
+    "passed": 304,
+    "failed": 0,
+    "emulator": false
+  },
+  "browser": {
+    "scenes": 6,
+    "passed": true,
+    "mockedFirestore": true,
+    "checks": [
+      "rendering",
+      "images",
+      "clue exploration",
+      "correct decisions",
+      "authored help",
+      "story recovery"
+    ]
+  },
+  "applyScriptSyntax": "passed",
+  "publication": {
+    "writes": 31,
+    "creates": 29,
+    "guardedUpdates": 2,
+    "prerequisites": 11,
+    "executed": false
+  },
+  "pending": [
+    "Teacher and curriculum review",
+    "Authenticated live walkthrough",
+    "Ordered Firestore publication",
+    "Hosting deployment",
+    "Chapter 12 final challenge"
+  ]
+}

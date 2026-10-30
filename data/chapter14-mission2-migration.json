@@ -1,0 +1,1301 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 14 Mission 2 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philippineculturaleducation.com.ph/tamblot/",
+    "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-13",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-13",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/reforms-ideas-investigator",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter13-mission1",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter13-mission2",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter13-mission3",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter13-mission4",
+      "expected": {
+        "chapterId": "chapter-13",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter14-mission1",
+      "expected": {
+        "chapterId": "chapter-14",
+        "status": "active",
+        "order": 1
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter14-mission2",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-14",
+        "title": "Participation of Different Regions and Communities",
+        "order": 2,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Compare regional settings, distinct movements, wider reach and named participation.",
+        "learningObjective": "Distinguish location, participation and reported spread using specific cases and source limits.",
+        "learningObjectives": [
+          "Explain a place is not a participant list using lesson evidence.",
+          "Explain one island, different movements using lesson evidence.",
+          "Explain read a claim about wider reach using lesson evidence.",
+          "Explain a named contribution in ilocos using lesson evidence.",
+          "Explain build a community evidence portfolio using lesson evidence."
+        ],
+        "lessonRecap": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter14-quiz2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission2",
+        "title": "Regions and Communities - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 2,
+        "questionBlueprint": [
+          {
+            "topic": "place-community",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "bohol-distinct",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "sumuroy-reach",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "ilocos-leadership",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "regional-portfolio",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission2-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission2",
+        "status": "active",
+        "order": 1,
+        "title": "A Place Is Not a Participant List",
+        "content": "A historical place name helps locate an action, but it does not identify every person who took part. A town could include leaders, participants, residents affected by events and people whose actions are not recorded. These groups can overlap. Being present in a place is not the same as joining a movement.\n\nUse a modern evidence desk with three fictional cards: a place label, a named action and an account of an affected household. The place label tells you where to investigate. The named action helps identify participation. The household account would help examine an experience. These are teaching categories, not authentic registers for the cases in this mission. To describe a community fairly, say which people and actions your source actually records. Do not decide a persons role or motive from a modern regional label, religion or ancestry. An unnamed person is not automatically a nonparticipant either.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then return to the evidence before practice.",
+        "reviewTopics": [
+          "place-community"
+        ],
+        "imageUrl": "../assets/story/regional-communities-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for A Place Is Not a Participant List. Labelled evidence guide, not an original participant record or historical route map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Location",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A place name helps locate an event.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Participation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Joining requires evidence about people and actions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Distinction",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A resident, participant and affected person are not always the same role.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A source names a town but gives no participant list. What can you report?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The location is known; individual participation needs evidence",
+          "Every resident joined",
+          "No resident joined",
+          "Everyone had one identical motive"
+        ],
+        "decisionCorrectAnswer": "The location is known; individual participation needs evidence",
+        "decisionExplanation": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "keyTerm": "Community",
+        "keyTermDefinition": "People connected through a place or shared life.",
+        "historicalInsight": "A resident, participant and affected person are not always the same role.",
+        "learningHelp": {
+          "explanation": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "vocabulary": [
+            {
+              "term": "Community",
+              "definition": "People connected through a place or shared life."
+            }
+          ],
+          "example": "A place name helps locate an event.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission2-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission2",
+        "status": "active",
+        "order": 2,
+        "title": "One Island, Different Movements",
+        "content": "CulturEd places Tamblots uprising in Bohol in 1621. It also describes the movement associated with Dagohoy in Bohol from 1744 to 1829. One place can therefore contain different movements at different times. Put separate case cards on your timeline rather than merging every Bohol action into one continuous event.\n\nThe earlier case is connected in its account with religious practice; the later account describes a burial dispute and local organization. These short summaries do not supply every participants beliefs. Similar themes do not prove that the same people joined both movements or that they followed one unchanged plan. The beginnings are more than a century apart. Ask the same questions of each case: when, where, who is recorded and what action or concern is described? Respect peoples beliefs while investigating particular actions. This activity asks for evidence comparison, not religious practice or a judgement about which belief is better.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then return to the evidence before practice.",
+        "reviewTopics": [
+          "bohol-distinct"
+        ],
+        "imageUrl": "../assets/story/regional-communities-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for One Island, Different Movements. Labelled evidence guide, not an original participant record or historical route map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Tamblot",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Bohol uprising is dated 1621.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Dagohoy movement",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Bohol movement is dated 1744-1829.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Difference",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A shared place does not make separate movements one event.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "How should you organize the two Bohol cases?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Merge them into one event",
+          "Assign identical participants automatically",
+          "Treat both sets of dates as one lifespan",
+          "Use separate dated case cards"
+        ],
+        "decisionCorrectAnswer": "Use separate dated case cards",
+        "decisionExplanation": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "keyTerm": "Comparison",
+        "keyTermDefinition": "Examining similarities and differences using shared questions.",
+        "historicalInsight": "A shared place does not make separate movements one event.",
+        "learningHelp": {
+          "explanation": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "vocabulary": [
+            {
+              "term": "Comparison",
+              "definition": "Examining similarities and differences using shared questions."
+            }
+          ],
+          "example": "The Bohol uprising is dated 1621.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission2-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission2",
+        "status": "active",
+        "order": 3,
+        "title": "Read a Claim About Wider Reach",
+        "content": "The NHCP marker for Agustin Sumuroy connects the Palapag uprising of 1 June 1649 with forced labor and abuses. It also describes spread beyond the starting place, naming areas in the Visayas, Mindanao and Luzon. This lets us investigate a movement with a wider reported reach rather than treating every case as limited to one town.\n\nKeep the wording of the source in view. Reported spread is not a census of every participant or proof that all communities acted together in the same way. A marker written later summarizes a history; it does not supply every local meeting or account of coordination. To investigate a named area more closely, seek records about the actions and people there. Our teaching card lists broad island groups rather than pretending to reconstruct exact routes of travel or command. A line between places on a diagram would not by itself prove who carried a message or how every action was organized.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then return to the evidence before practice.",
+        "reviewTopics": [
+          "sumuroy-reach"
+        ],
+        "imageUrl": "../assets/story/regional-communities-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for Read a Claim About Wider Reach. Labelled evidence guide, not an original participant record or historical route map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Starting point",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The marker links Palapag and 1 June 1649.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Wider reach",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "It names spread into areas of the Visayas, Mindanao and Luzon.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Reported spread is not proof that every resident joined or every local action was identical.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report fits the marker without adding a universal claim?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every local action was identical",
+          "One marker records every meeting",
+          "It describes spread beyond Palapag; local participation needs closer evidence",
+          "Every resident in all three island groups joined"
+        ],
+        "decisionCorrectAnswer": "It describes spread beyond Palapag; local participation needs closer evidence",
+        "decisionExplanation": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "keyTerm": "Reach",
+        "keyTermDefinition": "The places or people an action extends to.",
+        "historicalInsight": "Reported spread is not proof that every resident joined or every local action was identical.",
+        "learningHelp": {
+          "explanation": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "vocabulary": [
+            {
+              "term": "Reach",
+              "definition": "The places or people an action extends to."
+            }
+          ],
+          "example": "The marker links Palapag and 1 June 1649.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission2-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission2",
+        "status": "active",
+        "order": 4,
+        "title": "A Named Contribution in Ilocos",
+        "content": "The NHCP registry records that Gabriela Silang continued the Ilocos uprising after Diego Silang. This identifies a contribution in a particular regional setting. It helps a comparison include leadership changes instead of treating a region as one person or an unchanged group. A regional account can contain different people and stages.\n\nUse the contribution as evidence of the named action. Do not turn it into a complete register of Ilocos residents or assume that everyone supported the same aims. A leader and a whole community are not interchangeable. The later marker also cannot tell us every unnamed persons role. When comparing this case with Bohol or Palapag, identify what each source actually supplies: a leadership continuation, a movement period or a statement of spread. These are different clues. Additional records would be needed to describe every contributor or establish coordination between separate cases. Regional variety belongs in the explanation rather than being erased.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then return to the evidence before practice.",
+        "reviewTopics": [
+          "ilocos-leadership"
+        ],
+        "imageUrl": "../assets/story/regional-communities-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for A Named Contribution in Ilocos. Labelled evidence guide, not an original participant record or historical route map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Gabriela continued the Ilocos uprising after Diego.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Setting",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The named contribution belongs to an Ilocos case.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A leader account is not a complete record of regional participation.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the Gabriela account contribute to a regional comparison?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every unnamed persons role",
+          "A named example of leadership continuation",
+          "A list of all Ilocos residents",
+          "Proof of identical aims in every region"
+        ],
+        "decisionCorrectAnswer": "A named example of leadership continuation",
+        "decisionExplanation": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "keyTerm": "Leadership",
+        "keyTermDefinition": "Guiding or organizing an action.",
+        "historicalInsight": "A leader account is not a complete record of regional participation.",
+        "learningHelp": {
+          "explanation": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "vocabulary": [
+            {
+              "term": "Leadership",
+              "definition": "Guiding or organizing an action."
+            }
+          ],
+          "example": "Gabriela continued the Ilocos uprising after Diego.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission2-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission2",
+        "status": "active",
+        "order": 5,
+        "title": "Build a Community Evidence Portfolio",
+        "content": "Build a portfolio with columns for case, place, period, recorded action and limits. Place Tamblot and the Dagohoy movement on separate Bohol rows. Add the reported spread from the Sumuroy marker and the named leadership continuation in Ilocos. These entries let you recognize different regional experiences without pretending that the sources provide the same detail for each.\n\nA useful portfolio can reveal questions, not only answers. Which account names participants? Which describes a wider reach? Which leaves local coordination unclear? A common concern is worth comparing, but it does not automatically establish one national organization. Do not rank regions by bravery, participation totals you do not have or battles won. Missing detail in a short source does not make a community less important. The next mission will examine women and Indigenous peoples more closely. Keep roles connected to evidence rather than assigning them from identity or asking classmates to disclose family background.\n\nOpen the three clues. Choose a supported explanation. Use Explain for help, then return to the evidence before practice.",
+        "reviewTopics": [
+          "regional-portfolio"
+        ],
+        "imageUrl": "../assets/story/regional-communities-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for Build a Community Evidence Portfolio. Labelled evidence guide, not an original participant record or historical route map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Organize",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Keep case, place, period and recorded action together.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Different sources can supply different kinds of participation evidence.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Respect",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Missing detail is not proof that a community was unimportant.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which portfolio is useful for comparison?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One that records case, place, period, action and limits",
+          "One that merges every region into one group",
+          "One that invents participant totals",
+          "One that ranks communities by battles"
+        ],
+        "decisionCorrectAnswer": "One that records case, place, period, action and limits",
+        "decisionExplanation": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "keyTerm": "Portfolio",
+        "keyTermDefinition": "A collection of work or evidence organized for a purpose.",
+        "historicalInsight": "Missing detail is not proof that a community was unimportant.",
+        "learningHelp": {
+          "explanation": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "vocabulary": [
+            {
+              "term": "Portfolio",
+              "definition": "A collection of work or evidence organized for a purpose."
+            }
+          ],
+          "example": "Keep case, place, period and recorded action together.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter14-mission2-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission2",
+        "status": "active",
+        "order": 6,
+        "title": "Your Regional Evidence Journal",
+        "content": "A historical place name helps locate an action, but it does not identify every person who took part. A town could include leaders, participants, residents affected by events and people whose actions are not recorded. These groups can overlap. Being present in a place is not the same as joining a movement.\n\nA useful portfolio can reveal questions, not only answers. Which account names participants? Which describes a wider reach? Which leaves local coordination unclear? A common concern is worth comparing, but it does not automatically establish one national organization. Do not rank regions by bravery, participation totals you do not have or battles won. Missing detail in a short source does not make a community less important. The next mission will examine women and Indigenous peoples more closely. Keep roles connected to evidence rather than assigning them from identity or asking classmates to disclose family background.\n\nReview Bohol, the reported spread beyond Palapag and the named Ilocos contribution. Separate location, recorded participation and wider reach before the quiz. Missions 3-5 and the chapter challenge are being prepared. Completing this mission alone does not complete the chapter.",
+        "reviewTopics": [
+          "place-community",
+          "bohol-distinct",
+          "sumuroy-reach",
+          "ilocos-leadership",
+          "regional-portfolio"
+        ],
+        "imageUrl": "../assets/story/regional-communities-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards for Build a Community Evidence Portfolio. Labelled evidence guide, not an original participant record or historical route map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Organize",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Keep case, place, period and recorded action together.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Different sources can supply different kinds of participation evidence.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Respect",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Missing detail is not proof that a community was unimportant.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which journal is ready for review?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One that assumes everyone in a place joined",
+          "One that merges all movements",
+          "One that invents exact routes and totals",
+          "One that distinguishes place, people, action and source limits"
+        ],
+        "decisionCorrectAnswer": "One that distinguishes place, people, action and source limits",
+        "decisionExplanation": "Keep place, people, action and source limits together. Recognize regional differences without inventing universal participation.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Keep place, people, action and source limits together. Recognize regional differences without inventing universal participation.",
+        "keyTerm": "Portfolio",
+        "keyTermDefinition": "A collection of work or evidence organized for a purpose.",
+        "historicalInsight": "Missing detail is not proof that a community was unimportant.",
+        "learningHelp": {
+          "explanation": "Keep place, people, action and source limits together. Recognize regional differences without inventing universal participation.",
+          "vocabulary": [
+            {
+              "term": "Portfolio",
+              "definition": "A collection of work or evidence organized for a purpose."
+            }
+          ],
+          "example": "Keep case, place, period and recorded action together.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/tamblot/",
+          "https://philippineculturaleducation.com.ph/dagohoy-francisco/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/agustin-sumuroy/",
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/maria-josefa-gabriela-silang-1723-1763/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz2-question1",
+      "create": true,
+      "fields": {
+        "question": "What does a place label directly help identify?",
+        "optionA": "Where an action occurred",
+        "optionB": "Every persons private belief",
+        "optionC": "Every participant name",
+        "optionD": "A complete household history",
+        "correctAnswer": "A",
+        "explanation": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "learningPoint": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "historicalClue": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "answerExplanations": {
+          "A": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "B": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "C": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "D": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role."
+        },
+        "quizId": "chapter14-quiz2",
+        "order": 1,
+        "status": "active",
+        "topic": "place-community",
+        "topicLabel": "A Place Is Not a Participant List",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz2-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Which evidence best supports that someone joined an action?",
+        "optionA": "Only a regional label",
+        "optionB": "Only a modern icon",
+        "optionC": "A guess from ancestry",
+        "optionD": "A record identifying the person and action",
+        "correctAnswer": "D",
+        "explanation": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "learningPoint": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "historicalClue": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "B": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "C": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "D": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role."
+        },
+        "quizId": "chapter14-quiz2",
+        "order": 101,
+        "status": "active",
+        "topic": "place-community",
+        "topicLabel": "A Place Is Not a Participant List",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission2-place-community-practice1",
+      "create": true,
+      "fields": {
+        "question": "A source names a town but gives no participant list. What can you report?",
+        "optionA": "Every resident joined",
+        "optionB": "No resident joined",
+        "optionC": "Everyone had one identical motive",
+        "optionD": "The location is known; individual participation needs evidence",
+        "correctAnswer": "D",
+        "explanation": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "learningPoint": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "historicalClue": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "B": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "C": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "D": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role."
+        },
+        "missionId": "chapter14-mission2",
+        "topic": "place-community",
+        "topicLabel": "A Place Is Not a Participant List",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "People connected through a place or shared life.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission2-place-community-practice2",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish residents from participants?",
+        "optionA": "Only named leaders can be affected",
+        "optionB": "Unnamed people certainly did nothing",
+        "optionC": "Being in a place does not automatically mean joining",
+        "optionD": "Every resident must be a leader",
+        "correctAnswer": "C",
+        "explanation": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "learningPoint": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "historicalClue": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "B": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "C": "A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role.",
+          "D": "Review the lesson clues. A place name helps locate an event. Joining requires evidence about people and actions. A resident, participant and affected person are not always the same role."
+        },
+        "missionId": "chapter14-mission2",
+        "topic": "place-community",
+        "topicLabel": "A Place Is Not a Participant List",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "People connected through a place or shared life.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz2-question2",
+      "create": true,
+      "fields": {
+        "question": "Which date belongs to Tamblots uprising?",
+        "optionA": "1744",
+        "optionB": "1829",
+        "optionC": "2009",
+        "optionD": "1621",
+        "correctAnswer": "D",
+        "explanation": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "learningPoint": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "historicalClue": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "B": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "C": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "D": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event."
+        },
+        "quizId": "chapter14-quiz2",
+        "order": 2,
+        "status": "active",
+        "topic": "bohol-distinct",
+        "topicLabel": "One Island, Different Movements",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz2-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "What does the shared Bohol setting establish?",
+        "optionA": "One unchanged plan across all years",
+        "optionB": "Every resident had identical beliefs",
+        "optionC": "A place for comparison, not identical movements",
+        "optionD": "The same people joined both",
+        "correctAnswer": "C",
+        "explanation": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "learningPoint": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "historicalClue": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "B": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "C": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "D": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event."
+        },
+        "quizId": "chapter14-quiz2",
+        "order": 102,
+        "status": "active",
+        "topic": "bohol-distinct",
+        "topicLabel": "One Island, Different Movements",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission2-bohol-distinct-practice1",
+      "create": true,
+      "fields": {
+        "question": "How should you organize the two Bohol cases?",
+        "optionA": "Assign identical participants automatically",
+        "optionB": "Treat both sets of dates as one lifespan",
+        "optionC": "Use separate dated case cards",
+        "optionD": "Merge them into one event",
+        "correctAnswer": "C",
+        "explanation": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "learningPoint": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "historicalClue": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "B": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "C": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "D": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event."
+        },
+        "missionId": "chapter14-mission2",
+        "topic": "bohol-distinct",
+        "topicLabel": "One Island, Different Movements",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Examining similarities and differences using shared questions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission2-bohol-distinct-practice2",
+      "create": true,
+      "fields": {
+        "question": "Which comparison is useful for the two cases?",
+        "optionA": "Infer every participants belief from a leader label",
+        "optionB": "Ask when, where and what each source records",
+        "optionC": "Assume a common island proves coordination",
+        "optionD": "Skip the dates",
+        "correctAnswer": "B",
+        "explanation": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "learningPoint": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "historicalClue": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "B": "The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "C": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event.",
+          "D": "Review the lesson clues. The Bohol uprising is dated 1621. The Bohol movement is dated 1744-1829. A shared place does not make separate movements one event."
+        },
+        "missionId": "chapter14-mission2",
+        "topic": "bohol-distinct",
+        "topicLabel": "One Island, Different Movements",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Examining similarities and differences using shared questions.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz2-question3",
+      "create": true,
+      "fields": {
+        "question": "What does reach describe here?",
+        "optionA": "Only a leaders lifespan",
+        "optionB": "A guarantee of victory",
+        "optionC": "Where an action extends",
+        "optionD": "Every persons private motive",
+        "correctAnswer": "C",
+        "explanation": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "learningPoint": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "historicalClue": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "B": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "C": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "D": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical."
+        },
+        "quizId": "chapter14-quiz2",
+        "order": 3,
+        "status": "active",
+        "topic": "sumuroy-reach",
+        "topicLabel": "Read a Claim About Wider Reach",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz2-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Which starting point belongs to this case?",
+        "optionA": "Cadiz, 1812",
+        "optionB": "Palapag, 1 June 1649",
+        "optionC": "Bohol, 1621",
+        "optionD": "France, 1789",
+        "correctAnswer": "B",
+        "explanation": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "learningPoint": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "historicalClue": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "B": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "C": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "D": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical."
+        },
+        "quizId": "chapter14-quiz2",
+        "order": 103,
+        "status": "active",
+        "topic": "sumuroy-reach",
+        "topicLabel": "Read a Claim About Wider Reach",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission2-sumuroy-reach-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which report fits the marker without adding a universal claim?",
+        "optionA": "One marker records every meeting",
+        "optionB": "It describes spread beyond Palapag; local participation needs closer evidence",
+        "optionC": "Every resident in all three island groups joined",
+        "optionD": "Every local action was identical",
+        "correctAnswer": "B",
+        "explanation": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "learningPoint": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "historicalClue": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "B": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "C": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "D": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical."
+        },
+        "missionId": "chapter14-mission2",
+        "topic": "sumuroy-reach",
+        "topicLabel": "Read a Claim About Wider Reach",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The places or people an action extends to.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission2-sumuroy-reach-practice2",
+      "create": true,
+      "fields": {
+        "question": "What helps investigate participation in one area named by the marker?",
+        "optionA": "Records of people and actions in that area",
+        "optionB": "Only a line on a modern diagram",
+        "optionC": "A guess from the island group",
+        "optionD": "An unrelated painting date",
+        "correctAnswer": "A",
+        "explanation": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "learningPoint": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "historicalClue": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+        "answerExplanations": {
+          "A": "The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "B": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "C": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical.",
+          "D": "Review the lesson clues. The marker links Palapag and 1 June 1649. It names spread into areas of the Visayas, Mindanao and Luzon. Reported spread is not proof that every resident joined or every local action was identical."
+        },
+        "missionId": "chapter14-mission2",
+        "topic": "sumuroy-reach",
+        "topicLabel": "Read a Claim About Wider Reach",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The places or people an action extends to.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz2-question4",
+      "create": true,
+      "fields": {
+        "question": "What does leadership mean here?",
+        "optionA": "A complete resident list",
+        "optionB": "Guiding or organizing an action",
+        "optionC": "Everyone sharing a birthplace",
+        "optionD": "A guaranteed battle result",
+        "correctAnswer": "B",
+        "explanation": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "learningPoint": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "historicalClue": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "B": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "C": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "D": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation."
+        },
+        "quizId": "chapter14-quiz2",
+        "order": 4,
+        "status": "active",
+        "topic": "ilocos-leadership",
+        "topicLabel": "A Named Contribution in Ilocos",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz2-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Which setting fits this named contribution?",
+        "optionA": "Ilocos",
+        "optionB": "Every Philippine region at once",
+        "optionC": "France",
+        "optionD": "Acapulco",
+        "correctAnswer": "A",
+        "explanation": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "learningPoint": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "historicalClue": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "answerExplanations": {
+          "A": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "B": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "C": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "D": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation."
+        },
+        "quizId": "chapter14-quiz2",
+        "order": 104,
+        "status": "active",
+        "topic": "ilocos-leadership",
+        "topicLabel": "A Named Contribution in Ilocos",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission2-ilocos-leadership-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the Gabriela account contribute to a regional comparison?",
+        "optionA": "A named example of leadership continuation",
+        "optionB": "A list of all Ilocos residents",
+        "optionC": "Proof of identical aims in every region",
+        "optionD": "Every unnamed persons role",
+        "correctAnswer": "A",
+        "explanation": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "learningPoint": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "historicalClue": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "answerExplanations": {
+          "A": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "B": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "C": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "D": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation."
+        },
+        "missionId": "chapter14-mission2",
+        "topic": "ilocos-leadership",
+        "topicLabel": "A Named Contribution in Ilocos",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Guiding or organizing an action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission2-ilocos-leadership-practice2",
+      "create": true,
+      "fields": {
+        "question": "What should you do when two regional sources supply different kinds of clues?",
+        "optionA": "Force both into the same claim",
+        "optionB": "Treat all regional residents as leaders",
+        "optionC": "Ignore the source limits",
+        "optionD": "Compare what each supports and note missing evidence",
+        "correctAnswer": "D",
+        "explanation": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "learningPoint": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "historicalClue": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "B": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "C": "Review the lesson clues. Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation.",
+          "D": "Gabriela continued the Ilocos uprising after Diego. The named contribution belongs to an Ilocos case. A leader account is not a complete record of regional participation."
+        },
+        "missionId": "chapter14-mission2",
+        "topic": "ilocos-leadership",
+        "topicLabel": "A Named Contribution in Ilocos",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Guiding or organizing an action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz2-question5",
+      "create": true,
+      "fields": {
+        "question": "What is a portfolio here?",
+        "optionA": "An organized collection of evidence",
+        "optionB": "A proof that everyone agreed",
+        "optionC": "A participant census supplied by every marker",
+        "optionD": "A score for regional worth",
+        "correctAnswer": "A",
+        "explanation": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "learningPoint": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "historicalClue": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "answerExplanations": {
+          "A": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "B": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "C": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "D": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant."
+        },
+        "quizId": "chapter14-quiz2",
+        "order": 5,
+        "status": "active",
+        "topic": "regional-portfolio",
+        "topicLabel": "Build a Community Evidence Portfolio",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter14-quiz2-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "A short source gives few local details. What is a fair response?",
+        "optionA": "Declare the community unimportant",
+        "optionB": "Invent a full participant list",
+        "optionC": "Assume no one acted",
+        "optionD": "Identify the gap and seek further evidence",
+        "correctAnswer": "D",
+        "explanation": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "learningPoint": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "historicalClue": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "B": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "C": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "D": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant."
+        },
+        "quizId": "chapter14-quiz2",
+        "order": 105,
+        "status": "active",
+        "topic": "regional-portfolio",
+        "topicLabel": "Build a Community Evidence Portfolio",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission2-regional-portfolio-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which portfolio is useful for comparison?",
+        "optionA": "One that merges every region into one group",
+        "optionB": "One that invents participant totals",
+        "optionC": "One that ranks communities by battles",
+        "optionD": "One that records case, place, period, action and limits",
+        "correctAnswer": "D",
+        "explanation": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "learningPoint": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "historicalClue": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "B": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "C": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "D": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant."
+        },
+        "missionId": "chapter14-mission2",
+        "topic": "regional-portfolio",
+        "topicLabel": "Build a Community Evidence Portfolio",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A collection of work or evidence organized for a purpose.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter14-mission2-regional-portfolio-practice2",
+      "create": true,
+      "fields": {
+        "question": "Which claim needs more than similar concerns in several regions?",
+        "optionA": "That the cases have locations",
+        "optionB": "That sources can have limits",
+        "optionC": "A coordinated national organization",
+        "optionD": "That comparison is possible",
+        "correctAnswer": "C",
+        "explanation": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "learningPoint": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "historicalClue": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "B": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "C": "Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant.",
+          "D": "Review the lesson clues. Keep case, place, period and recorded action together. Different sources can supply different kinds of participation evidence. Missing detail is not proof that a community was unimportant."
+        },
+        "missionId": "chapter14-mission2",
+        "topic": "regional-portfolio",
+        "topicLabel": "Build a Community Evidence Portfolio",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A collection of work or evidence organized for a purpose.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter14-mission2-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter14-mission2",
+        "name": "Regional Evidence Journal",
+        "description": "A learning-game token for comparing regional participation evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 2,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish case, place, period, recorded participation and reported reach.",
+          "reflectionQuestion": "Which clue helped you distinguish a place name from evidence of joining?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-14",
+      "create": false,
+      "expected": {
+        "description": "Mission 1 examines contributions and lessons of early resistance. Missions 2-5 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-2 examine early contributions and regional participation. Missions 3-5 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapters 12-13 offer missions and evidence challenges. Chapter 14 begins with contributions and lessons of early resistance; later missions and its challenge are being prepared."
+      },
+      "fields": {
+        "description": "Chapters 12-13 offer missions and evidence challenges. Chapter 14 offers Missions 1-2 on contributions and regional participation; later missions and its challenge are being prepared."
+      }
+    }
+  ]
+}

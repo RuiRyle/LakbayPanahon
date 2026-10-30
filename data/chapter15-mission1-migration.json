@@ -1,0 +1,1337 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 15 Mission 1; partial chapter, no learner changes or chapter badge",
+  "curriculumBasis": "MATATAG Grade 5 confirmed by user on 2026-10-28",
+  "sourceUrls": [
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/port-of-iloilo/",
+    "https://www.suezcanal.gov.eg/English/About/SuezCanal/Pages/CanalHistory.aspx",
+    "https://intramuros.gov.ph/mnr/",
+    "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-14",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-14",
+      "expected": {
+        "chapterId": "chapter-14",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/contributions-belonging-investigator",
+      "expected": {
+        "chapterId": "chapter-14",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter14-mission1",
+      "expected": {
+        "chapterId": "chapter-14",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter14-mission2",
+      "expected": {
+        "chapterId": "chapter-14",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter14-mission3",
+      "expected": {
+        "chapterId": "chapter-14",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter14-mission4",
+      "expected": {
+        "chapterId": "chapter-14",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter14-mission5",
+      "expected": {
+        "chapterId": "chapter-14",
+        "status": "active",
+        "order": 5
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter15-mission1",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-15",
+        "title": "Trade, Travel and the Sharing of Ideas",
+        "order": 1,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Help a fictional school museum explain how ports, routes, study and discussion connected people and ideas.",
+        "learningObjective": "Use dated port, route and study examples to explain how people shared ideas while access differed.",
+        "learningObjectives": [
+          "Explain goods move in two directions using lesson evidence.",
+          "Explain the suez water connection using lesson evidence.",
+          "Explain resources and opportunities using lesson evidence.",
+          "Explain reading, study and discussion using lesson evidence.",
+          "Explain connections and wider concerns using lesson evidence."
+        ],
+        "lessonRecap": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/port-of-iloilo/",
+          "https://www.suezcanal.gov.eg/English/About/SuezCanal/Pages/CanalHistory.aspx",
+          "https://intramuros.gov.ph/mnr/",
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter15-quiz1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission1",
+        "title": "Connections Investigation - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "port-exchange",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "suez-connection",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "access-and-resources",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "education-and-ideas",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "connections-and-awareness",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission1-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission1",
+        "status": "active",
+        "order": 1,
+        "title": "Open the Museum Connection Case",
+        "content": "Your school museum has a new case: how did goods, people and ideas move between places? You are its detective. The exhibit and its tasks are fictional, but its dated clues come from historical sources.\n\nStart in Iloilo, on Panay in the Visayas. Its port opened to international trade in 1855. The historical marker records sugar shipped to Melbourne in 1859 and sugar-mill machinery arriving from Glasgow in 1863. An export travels outward; an import comes in. People grew crops, moved goods, kept accounts and worked on ships.\n\nArrange the arrows on the exhibit in your mind. Sugar goes outward; machinery comes inward. A trading connection could also bring people and news. It did not mean every family earned the same benefit. Open the clues, then choose the label that explains both directions.",
+        "reviewTopics": [
+          "port-exchange"
+        ],
+        "imageUrl": "../assets/story/connections-port.svg",
+        "imageFit": "contain",
+        "imageAlt": "Three labelled teaching cards show Iloilo Port in 1855, sugar sent outward, and machinery arriving. Arrows show exchange, not an exact shipping map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "1855: a port opens",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Iloilo marker dates its opening to international trade to 1855.",
+            "icon": "🔎"
+          },
+          {
+            "title": "1859: sugar goes outward",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The marker records sugar shipped from Iloilo to Melbourne.",
+            "icon": "🔎"
+          },
+          {
+            "title": "1863: machinery comes in",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Sugar-mill machinery arrived from Glasgow; trade moved goods in both directions.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which label best explains the Iloilo exhibit?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Sugar went outward and machinery came inward through trade.",
+          "The sugar and machinery were both imports into Iloilo.",
+          "Machinery went outward while sugar came into Iloilo.",
+          "The dates describe only people moving, not goods."
+        ],
+        "decisionCorrectAnswer": "Sugar went outward and machinery came inward through trade.",
+        "decisionExplanation": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "keyTerm": "Export",
+        "keyTermDefinition": "A good sent from one country to another.",
+        "historicalInsight": "Sugar-mill machinery arrived from Glasgow; trade moved goods in both directions.",
+        "learningHelp": {
+          "explanation": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "vocabulary": [
+            {
+              "term": "Export",
+              "definition": "A good sent from one country to another."
+            }
+          ],
+          "example": "The Iloilo marker dates its opening to international trade to 1855.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/port-of-iloilo/",
+          "https://www.suezcanal.gov.eg/English/About/SuezCanal/Pages/CanalHistory.aspx",
+          "https://intramuros.gov.ph/mnr/",
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission1-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission1",
+        "status": "active",
+        "order": 2,
+        "title": "Find the Water Link in 1869",
+        "content": "A visitor asks what changed when the Suez Canal opened in 1869. Find Egypt on a world map with your teacher when one is available. The canal connects the Mediterranean Sea with the Red Sea. It offered a shorter water connection between Europe and Asia than travelling around southern Africa. The diagram here shows the connection, not the whole journey to the Philippines.\n\nYour museum has a fictional travel-planning task dated 1870. Choose the direct water link created by the 1869 opening. A route through Suez fits that clue; a journey across the Pacific concerns a different connection. Travelling around southern Africa remained possible, but it is not the new canal link.\n\nShorter travel could help people, letters and reading materials move. The canal did not make travel free or give everyone a ticket.",
+        "reviewTopics": [
+          "suez-connection"
+        ],
+        "imageUrl": "../assets/story/connections-suez.svg",
+        "imageFit": "contain",
+        "imageAlt": "A symbolic sequence links Mediterranean Sea, Suez Canal in Egypt, and Red Sea. It labels the 1869 opening and is not a scaled map or sailing guide.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Date on the card",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The canal opened in 1869; the classroom route task is dated 1870.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connected seas",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Suez links the Mediterranean Sea and Red Sea through Egypt.",
+            "icon": "🔎"
+          },
+          {
+            "title": "What changed",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "It provided a shorter Europe-Asia water connection; it did not remove travel costs.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Why does the Suez route fit the 1870 exhibit card?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "It follows the Pacific connection between Manila and Acapulco.",
+          "It goes around southern Africa instead of using the canal.",
+          "It treats Egypt as a Philippine island next to Panay.",
+          "It uses the water link between the Mediterranean and Red Seas opened in 1869."
+        ],
+        "decisionCorrectAnswer": "It uses the water link between the Mediterranean and Red Seas opened in 1869.",
+        "decisionExplanation": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "keyTerm": "Canal",
+        "keyTermDefinition": "A waterway made or changed by people to let boats pass.",
+        "historicalInsight": "It provided a shorter Europe-Asia water connection; it did not remove travel costs.",
+        "learningHelp": {
+          "explanation": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "vocabulary": [
+            {
+              "term": "Canal",
+              "definition": "A waterway made or changed by people to let boats pass."
+            }
+          ],
+          "example": "The canal opened in 1869; the classroom route task is dated 1870.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/port-of-iloilo/",
+          "https://www.suezcanal.gov.eg/English/About/SuezCanal/Pages/CanalHistory.aspx",
+          "https://intramuros.gov.ph/mnr/",
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+        "routeActivity": {
+          "title": "Choose the Exhibit's 1870 Water Link",
+          "instructions": "This is a fictional museum task. Choose the direct water link created by the 1869 opening, then explain your choice.",
+          "mapDescription": "Symbolic route labels only, not a scaled map, exact sailing itinerary or travel advice.",
+          "conditions": [
+            "The exhibit card is dated 1870.",
+            "It asks for the direct Mediterranean-Red Sea link opened in 1869.",
+            "It is not asking for every possible Europe-Asia route."
+          ],
+          "routes": [
+            {
+              "id": "cape",
+              "name": "Around southern Africa",
+              "description": "A sea journey around the southern end of Africa.",
+              "suitable": false,
+              "feedback": "This is a different possible sea connection. The task asks for the direct link created by the 1869 canal."
+            },
+            {
+              "id": "suez",
+              "name": "Mediterranean -> Suez Canal -> Red Sea",
+              "description": "A water connection through Egypt using the canal opened in 1869.",
+              "suitable": true,
+              "feedback": "This route connects the two named seas and fits the 1870 date. Now explain why that matters for movement."
+            },
+            {
+              "id": "pacific",
+              "name": "Manila -> Pacific -> Acapulco",
+              "description": "A trans-Pacific connection discussed in an earlier chapter.",
+              "suitable": false,
+              "feedback": "This crosses a different ocean. Compare the Mediterranean and Red Sea clue with the route labels."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission1-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission1",
+        "status": "active",
+        "order": 3,
+        "title": "Compare Two Family Opportunity Cards",
+        "content": "Trade could create opportunities for some merchants, landowners and professional families. Some could pay for more schooling or travel. The emerging middle class was varied: its members did not have identical incomes or opinions. People outside it also worked, learned and shaped their communities.\n\nCompare two fictional family cards. Family A earns enough from a trading business to help an older child study away from home. Family B needs its earnings for food and housing and cannot pay the same fees. These are teaching examples, not biographies or statistics about all families.\n\nThe cards show why money, time and family support affected access. They do not show that one child is cleverer or more valuable. Education and travel offered some people more chances to exchange ideas, while many others faced barriers.",
+        "reviewTopics": [
+          "access-and-resources"
+        ],
+        "imageUrl": "../assets/story/connections-opportunities.svg",
+        "imageFit": "contain",
+        "imageAlt": "Two fictional opportunity cards contrast a trading family able to fund study with a working family facing fees and travel costs. A caption says resources do not measure a person's worth.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Trading family: a model",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Family A can help pay for study away from home. The family is fictional.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Working family: a model",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Family B cannot afford the same fees after meeting basic needs.",
+            "icon": "🔎"
+          },
+          {
+            "title": "The comparison",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Resources can affect opportunities; they do not measure intelligence or worth.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What best explains the different opportunities on the two cards?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Both families must have identical access because they live in one country.",
+          "Working for basic needs means a family has no useful knowledge.",
+          "The families have different resources available for fees and travel.",
+          "Family B's child must be less interested in learning."
+        ],
+        "decisionCorrectAnswer": "The families have different resources available for fees and travel.",
+        "decisionExplanation": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "keyTerm": "Middle class",
+        "keyTermDefinition": "A broad social group between the wealthiest and poorest, with varied work and resources.",
+        "historicalInsight": "Resources can affect opportunities; they do not measure intelligence or worth.",
+        "learningHelp": {
+          "explanation": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "vocabulary": [
+            {
+              "term": "Middle class",
+              "definition": "A broad social group between the wealthiest and poorest, with varied work and resources."
+            }
+          ],
+          "example": "Family A can help pay for study away from home. The family is fictional.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/port-of-iloilo/",
+          "https://www.suezcanal.gov.eg/English/About/SuezCanal/Pages/CanalHistory.aspx",
+          "https://intramuros.gov.ph/mnr/",
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission1-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission1",
+        "status": "active",
+        "order": 4,
+        "title": "Follow a Student, Then a Conversation",
+        "content": "One named example helps us connect travel with study. Jose Rizal continued his medical studies in Madrid, Spain, in 1882. Studying abroad could bring a person into contact with books, other students and public debates. This example does not mean that everyone travelled or that all learning came from Europe. Philippine communities already had knowledge and concerns of their own.\n\nTry a fictional classroom conversation. A reader finds an argument about fair treatment and brings it to a group. The group compares it with a local concern: who can afford school fees? Reading supplies an idea; discussion connects it to a question in people's lives.\n\nTo explain how an idea spread, name the people and actions: reading, carrying a letter, discussing or publishing. A ship carried people and materials; people interpreted the ideas.",
+        "reviewTopics": [
+          "education-and-ideas"
+        ],
+        "imageUrl": "../assets/story/connections-learning.svg",
+        "imageFit": "contain",
+        "imageAlt": "An evidence card identifies Rizal studying medicine in Madrid in 1882. Separate fictional cards show reading, discussion and a school-fee concern; they are not quotations from Rizal.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Named study example",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Rizal continued medical studies in Madrid in 1882.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Classroom conversation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The fee discussion is a fictional example, not Rizal's recorded words.",
+            "icon": "🔎"
+          },
+          {
+            "title": "People do the thinking",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Reading and discussing can connect an argument with a local concern.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which action turns a reading into discussion of a public concern?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A group treats the author's nationality as the answer to every question.",
+          "A group compares its argument with who can afford schooling.",
+          "A ship reaches a port while its cargo remains unopened.",
+          "A reader lists the book's cover color without discussing its ideas."
+        ],
+        "decisionCorrectAnswer": "A group compares its argument with who can afford schooling.",
+        "decisionExplanation": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "keyTerm": "Public concern",
+        "keyTermDefinition": "An issue affecting people beyond one person's private needs.",
+        "historicalInsight": "Reading and discussing can connect an argument with a local concern.",
+        "learningHelp": {
+          "explanation": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "vocabulary": [
+            {
+              "term": "Public concern",
+              "definition": "An issue affecting people beyond one person's private needs."
+            }
+          ],
+          "example": "Rizal continued medical studies in Madrid in 1882.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/port-of-iloilo/",
+          "https://www.suezcanal.gov.eg/English/About/SuezCanal/Pages/CanalHistory.aspx",
+          "https://intramuros.gov.ph/mnr/",
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission1-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission1",
+        "status": "active",
+        "order": 5,
+        "title": "Connect Changes Without Erasing People",
+        "content": "Your exhibit now connects trade, travel and education. Goods moved through ports. The Suez Canal changed a Europe-Asia route. Some families could support further study. Readers and groups could compare ideas with experiences in the Philippines. Together, such connections helped create opportunities for wider public discussion.\n\nNational consciousness concerns a wider sense of belonging and shared public concerns. It could develop through people's choices and experiences; it was not a package delivered by a ship. Local knowledge, work, family networks and existing demands for fair treatment also mattered.\n\nBuild a careful explanation: a route made contact easier; people used the connection to read and discuss; they related ideas to public concerns. Costs and unequal access still mattered. Regional identities did not have to disappear for people to care about wider questions.",
+        "reviewTopics": [
+          "connections-and-awareness"
+        ],
+        "imageUrl": "../assets/story/connections-chain.svg",
+        "imageFit": "contain",
+        "imageAlt": "A labelled teaching chain links connections, people reading and discussing, and wider public concerns. Separate barriers show costs and unequal access; the chain is not an inevitable path.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Connection",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ports and routes supported movement of goods, people and materials.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "People read, discussed and related ideas to experiences.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Wider concern",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A shared question can reach beyond one household while communities remain diverse.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which exhibit label best connects travel with wider awareness?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Connections helped people exchange ideas and relate them to shared concerns.",
+          "The canal itself wrote reform proposals for readers.",
+          "Only people who travelled could have public concerns.",
+          "Regional identity had to disappear before anyone could seek fair treatment."
+        ],
+        "decisionCorrectAnswer": "Connections helped people exchange ideas and relate them to shared concerns.",
+        "decisionExplanation": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "keyTerm": "National consciousness",
+        "keyTermDefinition": "Awareness of belonging to a wider people and sharing public concerns.",
+        "historicalInsight": "A shared question can reach beyond one household while communities remain diverse.",
+        "learningHelp": {
+          "explanation": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "vocabulary": [
+            {
+              "term": "National consciousness",
+              "definition": "Awareness of belonging to a wider people and sharing public concerns."
+            }
+          ],
+          "example": "Ports and routes supported movement of goods, people and materials.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/port-of-iloilo/",
+          "https://www.suezcanal.gov.eg/English/About/SuezCanal/Pages/CanalHistory.aspx",
+          "https://intramuros.gov.ph/mnr/",
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission1-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission1",
+        "status": "active",
+        "order": 6,
+        "title": "Finish Your Connection Exhibit",
+        "content": "Put the selected cards in order: Iloilo's port opening in 1855, the Suez Canal opening in 1869, and Rizal's studies in Madrid in 1882. Chapter 14 introduced events from several periods; this exhibit returns to selected nineteenth-century connections to explain them more closely.\n\nGive your exhibit a useful message. Try this frame in your own words: The port record shows ___. The canal changed ___. People could use these connections to ___. Access still depended on ___. The frame is a classroom tool, not a historical quotation.\n\nDo more than list dates. Explain exports and imports, identify the connected seas, compare access and show what people did with ideas. The quiz checks five topics. Revisit a teaching scene before targeted practice and another attempt. Passing earns this mission's reward once; a mission result is not a whole chapter completion.",
+        "reviewTopics": [
+          "port-exchange",
+          "suez-connection",
+          "access-and-resources",
+          "education-and-ideas",
+          "connections-and-awareness"
+        ],
+        "imageUrl": "../assets/story/connections-timeline.svg",
+        "imageFit": "contain",
+        "imageAlt": "A selected timeline orders Iloilo's 1855 port opening, the 1869 Suez Canal opening and Rizal's 1882 Madrid studies. It is a teaching timeline, not proof of a single cause.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Order the selected events",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "1855 comes before 1869, which comes before 1882.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Explain a link",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Use an action such as exporting, studying, reading or discussing.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Keep access visible",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Money, time and support could affect who used an opportunity.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report goes beyond just listing dates?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "It puts the three years in order but gives no actions or connections.",
+          "It names the places but does not say what happened there.",
+          "It counts the cards without explaining their ideas.",
+          "It explains how routes helped people meet and discuss shared concerns, while access differed."
+        ],
+        "decisionCorrectAnswer": "It explains how routes helped people meet and discuss shared concerns, while access differed.",
+        "decisionExplanation": "A useful report combines a dated example, an action and a connection. A timeline orders events; an explanation shows how people used opportunities.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A useful report combines a dated example, an action and a connection. A timeline orders events; an explanation shows how people used opportunities.",
+        "keyTerm": "Cause and connection",
+        "keyTermDefinition": "An explanation of how one change can help bring about another, supported by evidence.",
+        "historicalInsight": "Money, time and support could affect who used an opportunity.",
+        "learningHelp": {
+          "explanation": "A useful report combines a dated example, an action and a connection. A timeline orders events; an explanation shows how people used opportunities.",
+          "vocabulary": [
+            {
+              "term": "Cause and connection",
+              "definition": "An explanation of how one change can help bring about another, supported by evidence."
+            }
+          ],
+          "example": "1855 comes before 1869, which comes before 1882.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/port-of-iloilo/",
+          "https://www.suezcanal.gov.eg/English/About/SuezCanal/Pages/CanalHistory.aspx",
+          "https://intramuros.gov.ph/mnr/",
+          "https://museum.intramuros.gov.ph/precolonial/manila-at-the-turn-of-the-century/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz1-question1",
+      "create": true,
+      "fields": {
+        "question": "What was the direction of the sugar shipment recorded at Iloilo?",
+        "optionA": "It went outward to Melbourne as an export.",
+        "optionB": "It arrived from Glasgow as an import.",
+        "optionC": "It moved only between rooms in a school.",
+        "optionD": "It travelled from Egypt to the Mediterranean.",
+        "correctAnswer": "A",
+        "explanation": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "learningPoint": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "historicalClue": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "answerExplanations": {
+          "A": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "B": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "C": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "D": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange."
+        },
+        "quizId": "chapter15-quiz1",
+        "order": 1,
+        "status": "active",
+        "topic": "port-exchange",
+        "topicLabel": "Goods Move in Two Directions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz1-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "A record shows machinery arriving at Iloilo from Glasgow. What does it describe?",
+        "optionA": "Sugar being exported to Melbourne.",
+        "optionB": "A student finishing medical studies in Madrid.",
+        "optionC": "A canal opening between two seas.",
+        "optionD": "An import coming into Iloilo.",
+        "correctAnswer": "D",
+        "explanation": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "learningPoint": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "historicalClue": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "B": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "C": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "D": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange."
+        },
+        "quizId": "chapter15-quiz1",
+        "order": 101,
+        "status": "active",
+        "topic": "port-exchange",
+        "topicLabel": "Goods Move in Two Directions",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission1-port-exchange-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which label best explains the Iloilo exhibit?",
+        "optionA": "The sugar and machinery were both imports into Iloilo.",
+        "optionB": "Machinery went outward while sugar came into Iloilo.",
+        "optionC": "The dates describe only people moving, not goods.",
+        "optionD": "Sugar went outward and machinery came inward through trade.",
+        "correctAnswer": "D",
+        "explanation": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "learningPoint": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "historicalClue": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "B": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "C": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "D": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange."
+        },
+        "missionId": "chapter15-mission1",
+        "topic": "port-exchange",
+        "topicLabel": "Goods Move in Two Directions",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A good sent from one country to another.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission1-port-exchange-practice2",
+      "create": true,
+      "fields": {
+        "question": "An exhibit shows sugar outward and machinery inward. Which pair of labels fits?",
+        "optionA": "Exports for both because both used ships.",
+        "optionB": "Imports for both because both were goods.",
+        "optionC": "Export for the sugar; import for the machinery.",
+        "optionD": "Import for the sugar; export for the machinery.",
+        "correctAnswer": "C",
+        "explanation": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "learningPoint": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "historicalClue": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "B": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "C": "Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange.",
+          "D": "Review the lesson clues. Sugar shipped outward was an export; arriving machinery was an import. The two records show different directions of exchange."
+        },
+        "missionId": "chapter15-mission1",
+        "topic": "port-exchange",
+        "topicLabel": "Goods Move in Two Directions",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A good sent from one country to another.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz1-question2",
+      "create": true,
+      "fields": {
+        "question": "Which seas are connected by the Suez Canal?",
+        "optionA": "The Philippine Sea and the Pacific Ocean.",
+        "optionB": "The Red Sea and the Caribbean Sea.",
+        "optionC": "The Mediterranean Sea and Manila Bay.",
+        "optionD": "The Mediterranean Sea and the Red Sea.",
+        "correctAnswer": "D",
+        "explanation": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "learningPoint": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "historicalClue": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "B": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "C": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "D": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel."
+        },
+        "quizId": "chapter15-quiz1",
+        "order": 2,
+        "status": "active",
+        "topic": "suez-connection",
+        "topicLabel": "The Suez Water Connection",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz1-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Which selected event belongs at 1869 on the exhibit timeline?",
+        "optionA": "Rizal continuing medical studies in Madrid in 1882.",
+        "optionB": "The Iloilo machinery arrival recorded at 1863.",
+        "optionC": "The opening of the Suez Canal.",
+        "optionD": "The opening of Iloilo Port recorded at 1855.",
+        "correctAnswer": "C",
+        "explanation": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "learningPoint": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "historicalClue": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "B": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "C": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "D": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel."
+        },
+        "quizId": "chapter15-quiz1",
+        "order": 102,
+        "status": "active",
+        "topic": "suez-connection",
+        "topicLabel": "The Suez Water Connection",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission1-suez-connection-practice1",
+      "create": true,
+      "fields": {
+        "question": "Why does the Suez route fit the 1870 exhibit card?",
+        "optionA": "It goes around southern Africa instead of using the canal.",
+        "optionB": "It treats Egypt as a Philippine island next to Panay.",
+        "optionC": "It uses the water link between the Mediterranean and Red Seas opened in 1869.",
+        "optionD": "It follows the Pacific connection between Manila and Acapulco.",
+        "correctAnswer": "C",
+        "explanation": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "learningPoint": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "historicalClue": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "B": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "C": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "D": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel."
+        },
+        "missionId": "chapter15-mission1",
+        "topic": "suez-connection",
+        "topicLabel": "The Suez Water Connection",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A waterway made or changed by people to let boats pass.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission1-suez-connection-practice2",
+      "create": true,
+      "fields": {
+        "question": "Why is a direct Suez link unsuitable for an exhibit trip dated 1860?",
+        "optionA": "The Mediterranean and Red Seas are the same sea.",
+        "optionB": "The canal had not opened yet; its opening was in 1869.",
+        "optionC": "The canal was a Pacific crossing to Acapulco.",
+        "optionD": "Iloilo Port had not opened until 1882.",
+        "correctAnswer": "B",
+        "explanation": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "learningPoint": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "historicalClue": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "B": "The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "C": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel.",
+          "D": "Review the lesson clues. The date and the two sea names identify the new Suez connection. A shorter route is different from free travel."
+        },
+        "missionId": "chapter15-mission1",
+        "topic": "suez-connection",
+        "topicLabel": "The Suez Water Connection",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A waterway made or changed by people to let boats pass.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz1-question3",
+      "create": true,
+      "fields": {
+        "question": "In the fictional family cards, what affects the chance to study away from home?",
+        "optionA": "Whether a family's home is drawn first.",
+        "optionB": "The number of sea names on a route card.",
+        "optionC": "Resources for fees, travel and everyday needs.",
+        "optionD": "The color used on the museum label.",
+        "correctAnswer": "C",
+        "explanation": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "learningPoint": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "historicalClue": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "B": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "C": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "D": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal."
+        },
+        "quizId": "chapter15-quiz1",
+        "order": 3,
+        "status": "active",
+        "topic": "access-and-resources",
+        "topicLabel": "Resources and Opportunities",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz1-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why is a shorter sea route not enough to show equal access to study abroad?",
+        "optionA": "Books could only be read on ships.",
+        "optionB": "Students still needed money, time and support.",
+        "optionC": "A shorter route removes every school fee.",
+        "optionD": "The route proves everyone had the same income.",
+        "correctAnswer": "B",
+        "explanation": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "learningPoint": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "historicalClue": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "B": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "C": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "D": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal."
+        },
+        "quizId": "chapter15-quiz1",
+        "order": 103,
+        "status": "active",
+        "topic": "access-and-resources",
+        "topicLabel": "Resources and Opportunities",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission1-access-and-resources-practice1",
+      "create": true,
+      "fields": {
+        "question": "What best explains the different opportunities on the two cards?",
+        "optionA": "Working for basic needs means a family has no useful knowledge.",
+        "optionB": "The families have different resources available for fees and travel.",
+        "optionC": "Family B's child must be less interested in learning.",
+        "optionD": "Both families must have identical access because they live in one country.",
+        "correctAnswer": "B",
+        "explanation": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "learningPoint": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "historicalClue": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "B": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "C": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "D": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal."
+        },
+        "missionId": "chapter15-mission1",
+        "topic": "access-and-resources",
+        "topicLabel": "Resources and Opportunities",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A broad social group between the wealthiest and poorest, with varied work and resources.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission1-access-and-resources-practice2",
+      "create": true,
+      "fields": {
+        "question": "A trading family can fund study, while another cannot meet the fees. What should the exhibit explain?",
+        "optionA": "Different resources affect access without ranking the children's worth.",
+        "optionB": "A family paying fees must have greater human worth.",
+        "optionC": "The family without travel funds has no useful knowledge.",
+        "optionD": "Living in the same region proves identical opportunities.",
+        "correctAnswer": "A",
+        "explanation": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "learningPoint": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "historicalClue": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+        "answerExplanations": {
+          "A": "The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "B": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "C": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal.",
+          "D": "Review the lesson clues. The cards describe resources and costs, not different human worth. Access to schooling and travel was unequal."
+        },
+        "missionId": "chapter15-mission1",
+        "topic": "access-and-resources",
+        "topicLabel": "Resources and Opportunities",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A broad social group between the wealthiest and poorest, with varied work and resources.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz1-question4",
+      "create": true,
+      "fields": {
+        "question": "Which named study example belongs to this mission?",
+        "optionA": "Rizal opened Iloilo Port in 1855.",
+        "optionB": "Rizal continued medical studies in Madrid in 1882.",
+        "optionC": "Rizal opened the Suez Canal in 1869.",
+        "optionD": "Rizal sent the Iloilo sugar shipment in 1859.",
+        "correctAnswer": "B",
+        "explanation": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "learningPoint": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "historicalClue": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "B": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "C": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "D": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection."
+        },
+        "quizId": "chapter15-quiz1",
+        "order": 4,
+        "status": "active",
+        "topic": "education-and-ideas",
+        "topicLabel": "Reading, Study and Discussion",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz1-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "What did the fictional group do with the argument it read?",
+        "optionA": "Connected it with a shared question about school fees.",
+        "optionB": "Used the book's cover color as proof of a policy's effects.",
+        "optionC": "Claimed the example was an original quotation from Rizal.",
+        "optionD": "Decided only foreign knowledge could be useful.",
+        "correctAnswer": "A",
+        "explanation": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "learningPoint": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "historicalClue": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "answerExplanations": {
+          "A": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "B": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "C": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "D": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection."
+        },
+        "quizId": "chapter15-quiz1",
+        "order": 104,
+        "status": "active",
+        "topic": "education-and-ideas",
+        "topicLabel": "Reading, Study and Discussion",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission1-education-and-ideas-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which action turns a reading into discussion of a public concern?",
+        "optionA": "A group compares its argument with who can afford schooling.",
+        "optionB": "A ship reaches a port while its cargo remains unopened.",
+        "optionC": "A reader lists the book's cover color without discussing its ideas.",
+        "optionD": "A group treats the author's nationality as the answer to every question.",
+        "correctAnswer": "A",
+        "explanation": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "learningPoint": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "historicalClue": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "answerExplanations": {
+          "A": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "B": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "C": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "D": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection."
+        },
+        "missionId": "chapter15-mission1",
+        "topic": "education-and-ideas",
+        "topicLabel": "Reading, Study and Discussion",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An issue affecting people beyond one person's private needs.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission1-education-and-ideas-practice2",
+      "create": true,
+      "fields": {
+        "question": "Which action most directly shows an idea being shared and examined?",
+        "optionA": "A crate stays sealed after arriving at a port.",
+        "optionB": "A timetable lists a departure but no readers or message.",
+        "optionC": "A student counts pages without considering their meaning.",
+        "optionD": "Readers compare an argument with a local concern in discussion.",
+        "correctAnswer": "D",
+        "explanation": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "learningPoint": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "historicalClue": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "B": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "C": "Review the lesson clues. People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection.",
+          "D": "People connected a written idea with a shared question about access. Travel made contact possible; reading and discussion helped develop the connection."
+        },
+        "missionId": "chapter15-mission1",
+        "topic": "education-and-ideas",
+        "topicLabel": "Reading, Study and Discussion",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An issue affecting people beyond one person's private needs.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz1-question5",
+      "create": true,
+      "fields": {
+        "question": "How could better connections help wider public discussion?",
+        "optionA": "People could exchange reading materials and discuss shared concerns.",
+        "optionB": "The canal decided which ideas every reader must accept.",
+        "optionC": "Ships replaced the need for anyone to read or discuss.",
+        "optionD": "Trade made every household's experience identical.",
+        "correctAnswer": "A",
+        "explanation": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "learningPoint": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "historicalClue": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "answerExplanations": {
+          "A": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "B": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "C": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "D": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities."
+        },
+        "quizId": "chapter15-quiz1",
+        "order": 5,
+        "status": "active",
+        "topic": "connections-and-awareness",
+        "topicLabel": "Connections and Wider Concerns",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz1-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Which timeline order matches the selected examples?",
+        "optionA": "Suez opening in 1869 -> Iloilo opening in 1855 -> Madrid study in 1882.",
+        "optionB": "Madrid study in 1882 -> Suez opening in 1869 -> Iloilo opening in 1855.",
+        "optionC": "Iloilo opening in 1855 -> Madrid study in 1882 -> Suez opening in 1869.",
+        "optionD": "Iloilo opening in 1855 -> Suez opening in 1869 -> Madrid study in 1882.",
+        "correctAnswer": "D",
+        "explanation": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "learningPoint": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "historicalClue": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "B": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "C": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "D": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities."
+        },
+        "quizId": "chapter15-quiz1",
+        "order": 105,
+        "status": "active",
+        "topic": "connections-and-awareness",
+        "topicLabel": "Connections and Wider Concerns",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission1-connections-and-awareness-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which exhibit label best connects travel with wider awareness?",
+        "optionA": "The canal itself wrote reform proposals for readers.",
+        "optionB": "Only people who travelled could have public concerns.",
+        "optionC": "Regional identity had to disappear before anyone could seek fair treatment.",
+        "optionD": "Connections helped people exchange ideas and relate them to shared concerns.",
+        "correctAnswer": "D",
+        "explanation": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "learningPoint": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "historicalClue": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "B": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "C": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "D": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities."
+        },
+        "missionId": "chapter15-mission1",
+        "topic": "connections-and-awareness",
+        "topicLabel": "Connections and Wider Concerns",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Awareness of belonging to a wider people and sharing public concerns.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission1-connections-and-awareness-practice2",
+      "create": true,
+      "fields": {
+        "question": "A museum label says a shorter route produced wider awareness. Which addition best explains people's part?",
+        "optionA": "Travel replaced every form of knowledge already present.",
+        "optionB": "A timeline alone proves how every reader changed.",
+        "optionC": "People read, discussed and connected ideas with shared concerns.",
+        "optionD": "A route made all communities hold the same opinions.",
+        "correctAnswer": "C",
+        "explanation": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "learningPoint": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "historicalClue": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "B": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "C": "Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities.",
+          "D": "Review the lesson clues. Connections mattered because people used them. Wider public concerns grew through discussion and experience, with unequal access and diverse communities."
+        },
+        "missionId": "chapter15-mission1",
+        "topic": "connections-and-awareness",
+        "topicLabel": "Connections and Wider Concerns",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Awareness of belonging to a wider people and sharing public concerns.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter15-mission1-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission1",
+        "name": "Connections Exhibit Pass",
+        "description": "A learning-game token for connecting trade, travel, study and public discussion.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Explain a dated connection and how people used it to share ideas.",
+          "reflectionQuestion": "Which person or action connects a route with a shared concern?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-15",
+      "create": true,
+      "fields": {
+        "eraId": "resistance-national-consciousness",
+        "title": "Connections, Learning and Wider Public Concerns",
+        "description": "Begin with Trade, Travel and the Sharing of Ideas. This is a partial chapter; further missions and its final challenge are not yet available.",
+        "order": 15,
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapters 12-14 offer their missions and evidence challenges on resistance, reforms, contributions and developing national consciousness."
+      },
+      "fields": {
+        "description": "Chapters 12-14 offer missions and evidence challenges. Chapter 15 begins an investigation of trade, travel and the sharing of ideas; its remaining content and final challenge are not yet available."
+      }
+    }
+  ]
+}

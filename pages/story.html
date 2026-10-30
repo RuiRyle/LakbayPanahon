@@ -21,15 +21,24 @@
         rel="stylesheet"
         href="../css/story.css"
     >
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
 </head>
 
 
 <body
-    class="auth-checking"
+    class="auth-checking lakbay-theme"
     data-role="student"
 >
+    <div class="student-loading-shell" role="status" aria-live="polite">
+        <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
+        <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p>Loading your learning space...</p><div class="student-loading-heading" aria-hidden="true"></div><div class="student-loading-cards" aria-hidden="true"><i></i><i></i><i></i></div><div class="student-loading-panel" aria-hidden="true"></div></div></div>
+    </div>
+
 
     <div class="student-app">
+        <a class="student-skip-link" href="#student-main">Skip to main content</a>
 
 
         <!-- SIDEBAR -->
@@ -72,7 +81,7 @@
 
 
                 <a
-                    href="student-dashboard.html#journey"
+                    href="my-journey.html"
                     class="nav-link active"
                 >
                     <span class="nav-icon">📖</span>
@@ -90,7 +99,7 @@
 
 
                 <a
-                    href="#"
+                    href="my-class.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">🏫</span>
@@ -99,11 +108,11 @@
 
 
                 <a
-                    href="student-dashboard.html#dailyChallenge"
+                    href="bayani-ai.html"
                     class="nav-link"
                 >
                     <span class="nav-icon">⚡</span>
-                    <span>Daily Challenge</span>
+                    <span>Bayani AI</span>
                 </a>
 
 
@@ -114,6 +123,7 @@
                     <span class="nav-icon">🏆</span>
                     <span>Achievements</span>
                 </a>
+                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 13.5 1.1.8-1.1 1.9-1.3-.5a7.8 7.8 0 0 1-1.5.9l-.2 1.4h-2.2l-.3-1.4a7.8 7.8 0 0 1-1.7 0l-.8 1.2-1.9-1.1.5-1.3a7.8 7.8 0 0 1-.9-1.5l-1.4-.2v-2.2l1.4-.3a7.8 7.8 0 0 1 0-1.7L7.9 8.7 9 6.8l1.3.5a7.8 7.8 0 0 1 1.5-.9l.2-1.4h2.2l.3 1.4a7.8 7.8 0 0 1 1.7 0l.8-1.2 1.9 1.1-.5 1.3a7.8 7.8 0 0 1 .9 1.5l1.4.2v2.2l-1.4.3a7.8 7.8 0 0 1 0 1.7Z"/></svg></span><span>Settings</span></a>
 
             </nav>
 
@@ -135,7 +145,7 @@
 
         <!-- MAIN CONTENT -->
 
-        <main class="main-content">
+        <main tabindex="-1" id="student-main" class="main-content">
 
 
             <!-- TOPBAR -->
@@ -152,21 +162,23 @@
                 </button>
 
 
-                <div class="topbar-title">
-                    <span>Story Mission</span>
-                </div>
+                <div class="topbar-title"></div>
 
 
                 <div class="topbar-actions">
 
-                    <div class="xp-pill">
-
-                        <span>⭐</span>
-
-                        <strong id="topXp">
+                    <div class="xp-pill" role="group" aria-label="Total experience points">
+                        <span class="student-xp-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="m12 2.8 2.8 5.7 6.3.9-4.6 4.5 1.1 6.3-5.6-3-5.6 3 1.1-6.3L2.9 9.4l6.3-.9L12 2.8Z" />
+                            </svg>
+                        </span>
+                        <span class="student-xp-copy">
+                            <small>TOTAL EXPERIENCE</small>
+                            <strong id="topXp">
                             0 XP
-                        </strong>
-
+                            </strong>
+                        </span>
                     </div>
 
 
@@ -196,6 +208,8 @@
 
                         </div>
 
+                        <span class="student-profile-indicator" aria-hidden="true">⌄</span>
+
                     </button>
 
                 </div>
@@ -208,13 +222,16 @@
             <div class="story-page">
 
 
+                <div class="story-return-row">
                 <button
                     type="button"
                     id="backToMissionButton"
                     class="story-back"
                 >
-                    ← Back to Mission
+                    <span class="story-back-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 5-7 7 7 7M5 12h14"/></svg></span>
+                    <span>Back to Mission</span>
                 </button>
+                </div>
 
 
                 <!-- LOADING -->
@@ -240,6 +257,8 @@
 
                 <!-- STORY -->
 
+                <button id="retryStoryLoadButton" type="button" class="primary-button" hidden>Try Loading Again</button>
+
                 <div
                     id="storyContent"
                     hidden
@@ -248,7 +267,7 @@
 
                     <!-- MISSION HEADER -->
 
-                    <section class="story-header">
+                    <section class="story-header"><span class="story-expedition-emblem" aria-hidden="true">&#10022;</span>
 
                         <span class="eyebrow">
                             STORY MISSION
@@ -268,6 +287,13 @@
                     <!-- PROGRESS -->
 
                     <section class="story-progress">
+
+                        <div class="story-progress-toolbar">
+                            <span class="story-route-label">YOUR SCENE TRAIL</span>
+                            <div id="storyProgressActions" class="story-progress-actions"></div>
+                        </div>
+
+                        <ol id="storySceneTrail" class="story-scene-trail" aria-label="Scene position"></ol>
 
                         <div class="story-progress-info">
 
@@ -340,10 +366,9 @@
     <button
         type="button"
         id="storyAiExplainButton"
-        class="story-ai-explain-button"
-        disabled
+        class="story-ai-explain-button" aria-controls="storyAiExplainResponse" aria-expanded="false" hidden disabled
     >
-        ✨ Explain This
+        Help Me Understand
     </button>
 
     <div
@@ -398,6 +423,39 @@
         id="storyExploreChoices"
         class="story-explore-choices"
     ></div>
+
+</section>
+
+
+<!-- =====================================
+     STORY CLUE HUNT
+====================================== -->
+
+<section
+    id="storyClueHunt"
+    class="story-clue-hunt"
+    aria-labelledby="storyClueHuntTitle"
+    hidden
+>
+
+    <div class="story-clue-hunt-heading">
+        <span class="story-clue-hunt-mark" aria-hidden="true">&#10022;</span>
+        <div>
+            <span class="eyebrow">FIELD INVESTIGATION</span>
+            <h3 id="storyClueHuntTitle">Build a careful conclusion</h3>
+        </div>
+    </div>
+
+    <p id="storyClueHuntInstructions" class="story-clue-hunt-instructions"></p>
+    <p id="storyClueHuntLock" class="story-clue-hunt-lock" role="status" aria-live="polite"></p>
+    <div id="storyClueHuntQuestion" class="story-clue-hunt-question" hidden>
+        <h4 id="storyClueHuntPrompt"></h4>
+        <div id="storyClueHuntChoices" class="story-clue-hunt-choices"></div>
+    </div>
+    <div id="storyClueHuntFeedback" class="story-clue-hunt-feedback" role="status" aria-live="polite" hidden>
+        <strong id="storyClueHuntFeedbackTitle"></strong>
+        <p id="storyClueHuntFeedbackText"></p>
+    </div>
 
 </section>
 
@@ -643,6 +701,7 @@
                             <!-- ACTION -->
 
                             <div class="story-actions">
+                                <button id="previousStoryButton" type="button" class="text-button" disabled>Previous Scene</button>
 
                                 <button
                                     type="button"
@@ -676,7 +735,7 @@
                         </span>
 
                         <h2>
-                            Story Mission Complete!
+                            Lesson Complete!
                         </h2>
 
                         <p>
@@ -684,6 +743,12 @@
                             mission and checked your understanding.
                             Now use what you learned in the Mission Quiz.
                         </p>
+
+                        <div id="lessonRecap"></div>
+                        <div id="lessonQuizBriefing" class="lesson-quiz-briefing" hidden></div>
+                        <p id="lessonQuizRequirements" role="status" aria-live="polite"></p>
+                        <button id="retryLessonQuizInfo" type="button" hidden>Retry Quiz Details</button>
+                        <button id="reviewCompletedLesson" type="button" class="text-button">Review Lesson</button>
 
                         <button
                             type="button"
@@ -724,6 +789,7 @@
         src="../js/story.js"
     ></script>
 
+<script type="module" src="../js/page-transition.js"></script>
 </body>
 
 </html>

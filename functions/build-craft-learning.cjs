@@ -1,0 +1,19 @@
+const fs=require('node:fs'),path=require('node:path');
+const snapshot=require('../docs/validation/learning-content-snapshot.json').collections;
+const lessons=require('../data/craft-learning-pilot.json');
+const sourceUrls=['https://www.nationalmuseum.gov.ph/our-collections/ethnology/mats-and-baskets/','https://www.nationalmuseum.gov.ph/exhibitions/anthropology/entwined/'];
+const writes=[];
+function put(p,fields){const [collection,id]=p.split('/'),old=snapshot[collection]?.find(d=>d.id===id);if(!old)throw Error('Existing content required: '+p);writes.push({path:p,create:false,expected:Object.fromEntries(Object.keys(fields).filter(k=>old[k]!==undefined).map(k=>[k,old[k]])),expectedAbsent:Object.keys(fields).filter(k=>old[k]===undefined),fields});}
+for(const [i,l]of lessons.entries()){
+ const choices=l.task.slice(1),offset=i%4,rotated=choices.slice(offset).concat(choices.slice(0,offset));
+ put('storyScenes/'+l.id,{missionId:'chapter4-mission2',status:'active',title:l.title,content:l.content,reviewTopics:l.topics,
+  ...(l.image?{imageUrl:'../assets/story/'+l.image,imageFit:'contain',imageAlt:l.image==='craft-material-choice.svg'?'Fictional material comparison for a task needing flexible prepared strands: A bends as required; B breaks in the same test. These are invented observations, not measurements of named plants or a universal ranking.':'Worked process model: prepare suitable material, use a learned making method, then check whether the result fits its purpose. No community pattern is reproduced; this is not a complete weaving tutorial.',imageCaption:'Fictional test or simplified process model; no restricted design or universal historical method is represented.'}:{}),
+  exploreIntroduction:'Read each observation. Connect purpose, observed properties and learned methods.',exploreItems:l.clues.map(([title,discovery])=>({title,hint:'Look for a trade clue, source or limit.',discovery,icon:'\ud83d\udd0e'})),
+  decisionSituation:l.task[0],decisionQuestion:'Which explanation is supported by the comparison?',decisionChoices:rotated,decisionCorrectAnswer:choices[0],decisionExplanation:l.reason,
+  discoveryTitle:'Add the comparison to your journal',discoveryText:l.reason,keyTerm:l.term,keyTermDefinition:l.definition,
+  historicalInsight:'Living craft examples illustrate skilled decisions, not identical methods across every past community.',
+  learningHelp:{explanation:l.reason,vocabulary:[{term:l.term,definition:l.definition},...(l.glossary||[])],example:l.clues[0][1],guidingQuestion:'Which feature supports your explanation, and what does it not tell us?'},sourceUrls,contentReviewStatus:'Source-informed teaching expansion; independent teacher and Grade 5 review pending'});
+}
+put('missions/chapter4-mission2',{learningObjective:'Use a purpose and material observations to explain skilled making, respectful design use and continuity/change.',learningObjectives:['Choose a material using its stated properties and a task.','Explain a worked preparation, making and checking sequence.','Recognize practical knowledge and methods as technology.','Respect source attribution and restrictions on designs.','Explain how knowledge can continue while a particular tool or method changes.'],lessonRecap:'A purpose guides material choice. Making requires preparation, learned technique and checking the result. These practical methods are technology. Designs need context and sharing permission. Knowledge can continue alongside changes in tools; fictional examples do not establish every historical method.',sourceUrls});
+fs.writeFileSync(path.join(__dirname,'../data/craft-learning-migration.json'),JSON.stringify({projectId:'lakbaypanahon-1797e',scope:'Chapter 4 Mission 2 material choice and making sequence; preserve banks and rewards',sourceUrls,writes},null,2));
+console.log('Built '+writes.length+' guarded teaching changes.');

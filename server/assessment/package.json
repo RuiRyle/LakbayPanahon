@@ -1,0 +1,10 @@
+{
+  "name": "lakbaypanahon-trusted-assessment-preparation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Inactive server assessment preparation; requires answer-key migration, client integration, rule cutover and approved hosting",
+  "engines": {"node": ">=22"},
+  "scripts": {"start": "node server.mjs", "test": "node ../../tests/trusted-assessment.test.cjs"},
+  "dependencies": {"firebase-admin": "^14.5.0"}
+}

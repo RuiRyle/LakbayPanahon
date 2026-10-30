@@ -1,0 +1,29 @@
+{
+  "mode": "read-only-live-rule-comparison",
+  "checkedAt": "2026-10-30T02:23:07.351Z",
+  "sourceHash": "14e9ec4630a04b858baa18e5979b38728dc45d7fea76bb0fa339ef7421eeea11",
+  "liveHash": "9f6d23f3a419d1fafa6af32657ccdf397d27f9242965d518e2f9728f8d5169b3",
+  "releaseName": "projects/lakbaypanahon-1797e/releases/cloud.firestore",
+  "rulesetName": "projects/lakbaypanahon-1797e/rulesets/1e85b323-9831-4de5-a2cb-22cdbcadadf3",
+  "outsideScopeMatches": true,
+  "scopes": [
+    {
+      "marker": "    match /studentLearningDrafts/{draftId} {",
+      "changed": true,
+      "beforeHash": "05b28d3c195ec0aeab3d45e5b2fcc80adc01fa1f5e3f0c9e4bcab08227d5bdb5",
+      "afterHash": "d4cd200307775952e3c6d58ed8e49c0f926a5e1d6dd57070571663086f2d4832"
+    },
+    {
+      "marker": "    match /studentQuizAttempts/{attemptId} {",
+      "changed": true,
+      "beforeHash": "c85fc90cfc1bc00ccc80708f2a304cad764081ecdcd57ffaf6d4d890744fa479",
+      "afterHash": "66e238dbcfa3831213fa219cee4c37e572a7c3137ace9ea8c5ffb6c6919cac7f"
+    },
+    {
+      "marker": "match /studentPracticeProgress/{progressId} {",
+      "changed": true,
+      "beforeHash": "a505911c671f7de223d3ddc91938eb6c159557f3257c1d1b8f7039a548877cfe",
+      "afterHash": "0600aa12bcc2f5789184cc2ed5fae2cbf76f4f5b27a99b2f1dad13f16dd7773b"
+    }
+  ]
+}

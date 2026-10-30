@@ -1,0 +1,802 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Chapter 1 Mission 1 only: shorter teaching text, worked help, one distinct scene decision, quiz feedback and four option wording repairs.",
+  "reviewStatus": "Compared with current Firestore, published and read back on 29 October 2026. Independent historical/teacher review and Grade 5 learner comprehension remain pending.",
+  "baselineSource": "docs/validation/learning-content-snapshot.json",
+  "writes": [
+    {
+      "path": "storyScenes/mission1-scene1",
+      "create": false,
+      "fields": {
+        "content": "Welcome to a made-up early Philippine community, before Spanish colonization. This story helps us learn; it is not a record of a real village.\n\nA barangay was a kind of community. Families lived near one another, had responsibilities, and took part in community life. Barangays could differ in size and customs.\n\nBayani asks: What shows that these people belong to a community? Open Homes, Families, and Community. Look for how people are connected, as well as where they live.",
+        "learningHelp": {
+          "explanation": "A community includes people and how they live together. Seeing houses tells us where people live. Learning how families care for one another tells us about their relationships.",
+          "vocabulary": [
+            {
+              "term": "Barangay",
+              "definition": "A name used for some early Philippine communities. Their size and ways of life could differ."
+            },
+            {
+              "term": "Responsibility",
+              "definition": "Something a person is expected to do or take care of."
+            }
+          ],
+          "example": "Made-up example: a picture shows three homes. A story says the families help care for one another. The homes show places to live; the help shows a connection between people.",
+          "guidingQuestion": "Which clue explains how people are connected?"
+        },
+        "decisionSituation": "Bayani sees two homes that look alike. Bayani wants to find out how the people help one another.",
+        "decisionQuestion": "What should Bayani investigate next?",
+        "decisionChoices": [
+          "Which tasks the families help one another with.",
+          "Whether the roofs have the same color.",
+          "Whether the doorways are the same width."
+        ],
+        "decisionCorrectAnswer": "Which tasks the families help one another with.",
+        "decisionExplanation": "Learning about shared tasks tells Bayani how people help one another. Roof colors and doorway sizes tell us about buildings, but do not explain those relationships."
+      },
+      "expected": {
+        "missionId": "mission-1",
+        "status": "active",
+        "title": "Arrival in the Barangay",
+        "order": 1,
+        "reviewTopics": [
+          "barangay-community"
+        ],
+        "content": "You arrive in a fictional early Philippine community before Spanish colonization. Bayani invites you to investigate: What makes this a community, rather than just a group of houses?\n\nLook for families, shared activities, and people with different responsibilities. These are clues about how people lived together. A clue supports an idea, but one clue cannot tell us everything.\n\nBarangay is a term used for some early communities or political units. Their size, surroundings, and organization varied. This story illustrates ideas; it is not a record of one actual village.\n\nOpen the three clues. Then choose a conclusion that the clues support.",
+        "learningHelp": {
+          "guidingQuestion": "Which clues show relationships between people?",
+          "example": "A drawing of homes cannot tell you every rule people followed.",
+          "vocabulary": [
+            {
+              "term": "Barangay",
+              "definition": "A term used for some early communities or political units."
+            }
+          ],
+          "explanation": "A community is people connected through relationships and responsibilities. Houses alone cannot tell us how people lived together."
+        },
+        "exploreItems": [
+          {
+            "icon": "🏠",
+            "title": "Homes",
+            "hint": "Look at where people lived.",
+            "discovery": " Homes were part of the places where families carried out their daily lives. The form and materials of homes could differ depending on the community and its surroundings."
+          },
+          {
+            "icon": "👨‍👩‍👧‍👦",
+            "title": "Families",
+            "hint": "Observe the people in the community.",
+            "discovery": "Families and other members of the community lived as part of a larger social group. People had relationships, responsibilities, and roles that helped the community function."
+          },
+          {
+            "icon": "🤝",
+            "title": "Community",
+            "hint": "Discover how people lived together.",
+            "discovery": "Early Filipinos formed organized communities. People did not live completely on their own—they interacted with others and took part in the life of their community."
+          }
+        ],
+        "decisionSituation": "You observed homes, family relationships, and people working together. You have not visited other communities.",
+        "decisionQuestion": "Which conclusion is supported by these clues?",
+        "decisionChoices": [
+          "These people lived in a community with relationships and responsibilities.",
+          "Every community across the islands had the same houses and customs.",
+          "The homes reveal the exact rules used in every barangay."
+        ],
+        "decisionCorrectAnswer": "These people lived in a community with relationships and responsibilities.",
+        "decisionExplanation": "The clues support a conclusion about people living together. They do not prove that all communities were identical or reveal every community rule. Compare the size of a claim with the evidence available."
+      }
+    },
+    {
+      "path": "storyScenes/mission1-scene2",
+      "create": false,
+      "fields": {
+        "content": "In our story, two households need help. One needs food prepared. The other needs a basket repaired. Some people can cook; others can weave or gather materials.\n\nCooperation means working together toward a shared goal. People can do different tasks and still help the same group. Here, sharing the work can help both households.\n\nWorking together does not tell us whether everyone had the same rights or freedom. Open the clues, then choose a plan that meets both needs.",
+        "learningHelp": {
+          "explanation": "First identify both needs: food and a repaired basket. Then match the tasks to people's skills. Cooperation helps the group meet its needs through shared work.",
+          "vocabulary": [
+            {
+              "term": "Cooperation",
+              "definition": "Working with other people toward a shared goal."
+            },
+            {
+              "term": "Household",
+              "definition": "The people who live together in a home."
+            }
+          ],
+          "example": "Made-up example: one person gathers basket materials while another prepares food. Their tasks are different, but both help the households.",
+          "guidingQuestion": "Which plan helps with both food and the basket?"
+        }
+      },
+      "expected": {
+        "missionId": "mission-1",
+        "status": "active",
+        "title": "Life in the Community",
+        "order": 2,
+        "reviewTopics": [
+          "barangay-community",
+          "community-cooperation"
+        ],
+        "content": "A family needs to prepare food while another household repairs a damaged basket. Some people gather materials; others use their skills to make useful objects.\n\nThis is a fictional situation for you to solve. One person cannot do every task at once. Community members can share work and help meet different needs. Cooperation means working together toward a shared purpose.\n\nHelping together does not mean everyone has the same job, social position, or freedom. We must notice differences as well as connections.\n\nInspect the family, responsibility, and cooperation clues. Use them to choose a practical response.",
+        "learningHelp": {
+          "vocabulary": [
+            {
+              "term": "Responsibility",
+              "definition": "Something a person is expected to take care of or do."
+            }
+          ],
+          "guidingQuestion": "What needs must be met, and how could different skills help?",
+          "explanation": "Cooperation means contributing to a shared purpose. Different tasks can help meet the same need.",
+          "example": "In a modern group project, learners can share different tasks. This example explains cooperation, but is not historical evidence."
+        },
+        "exploreItems": [
+          {
+            "icon": "👪",
+            "title": "Family Life",
+            "hint": "Observe a family in the community.",
+            "discovery": "Families were important parts of early communities. Family members cared for one another and took part in the daily life of the community."
+          },
+          {
+            "icon": "🧺",
+            "title": "Daily Responsibilities",
+            "hint": "Watch people carrying out their tasks.",
+            "discovery": "Members of a community performed different responsibilities. Their activities helped families and the wider community meet everyday needs."
+          },
+          {
+            "icon": "🤝",
+            "title": "Helping One Another",
+            "hint": "Notice how community members interact.",
+            "discovery": "Living in a community connected people to others around them. Cooperation and shared responsibilities helped community life continue."
+          }
+        ],
+        "decisionSituation": "Two households need food prepared and a storage basket repaired. Several people have different skills.",
+        "decisionQuestion": "Which plan best applies the idea of cooperation?",
+        "decisionChoices": [
+          "Ask everyone to do the same task, leaving the other need unanswered.",
+          "Share tasks according to available skills and help both households meet their needs.",
+          "Ask the leader to prepare every meal and repair every basket alone."
+        ],
+        "decisionCorrectAnswer": "Share tasks according to available skills and help both households meet their needs.",
+        "decisionExplanation": "Different people can contribute different skills. Sharing suitable tasks connects their work to the needs of both households. Cooperation is more than gathering people in one place."
+      }
+    },
+    {
+      "path": "storyScenes/mission1-scene3",
+      "create": false,
+      "fields": {
+        "content": "Two families in our story want to use the same gathering place. They ask the datu for help.\n\nA datu was a leader in many early Philippine communities. A datu could guide community matters, help address disagreements, and help protect the community. Duties and practices differed by place.\n\nTo understand this disagreement, the leader needs to hear both families and learn which local custom matters. Open the clues about gathering, guidance, and protection. Then choose a helpful next action.",
+        "learningHelp": {
+          "explanation": "The datu's title tells us who the leader is. The leader's actions tell us what responsibilities they have. In this story, the families need help discussing a disagreement.",
+          "vocabulary": [
+            {
+              "term": "Datu",
+              "definition": "A leader in many early Philippine communities. Duties could differ by place."
+            },
+            {
+              "term": "Disagreement",
+              "definition": "A situation in which people have different views or wants."
+            }
+          ],
+          "example": "Made-up example: one family wants a gathering place for a meeting; another wants it for an event. Hearing both explains why each family needs it. This example does not describe every datu's way of deciding.",
+          "guidingQuestion": "What would the leader miss by hearing only one family?"
+        }
+      },
+      "expected": {
+        "missionId": "mission-1",
+        "status": "active",
+        "title": "Leadership in the Barangay",
+        "order": 3,
+        "reviewTopics": [
+          "datu-leadership"
+        ],
+        "content": "A discussion begins near a shared gathering place. Two families have different concerns, and people turn to the datu for guidance.\n\nA datu was a leader in many early Philippine communities. Responsibilities could include guiding community affairs, helping address disagreements, and protecting community interests. Authority and practices varied across communities.\n\nKnowing the leader's title is only a start. Ask what the leader does and how those actions affect others. The fictional situation below lets you apply that idea.\n\nExplore the gathering, guidance, and protection clues before choosing a response.",
+        "learningHelp": {
+          "explanation": "A leader has responsibilities, not just a title. Investigate what a datu could do and how it affected others.",
+          "guidingQuestion": "What information could help someone understand both concerns?",
+          "example": "Hearing only one side of a disagreement may leave important information missing.",
+          "vocabulary": [
+            {
+              "term": "Datu",
+              "definition": "A leader in many early Philippine communities; responsibilities varied."
+            }
+          ]
+        },
+        "exploreItems": [
+          {
+            "icon": "👥",
+            "title": "Community Gathering",
+            "hint": "Observe why people have gathered.",
+            "discovery": "Important matters could involve the wider community. Leadership helped provide direction when decisions or problems affected the barangay."
+          },
+          {
+            "icon": "🗣️",
+            "title": "Guiding the Community",
+            "hint": "Look at the person people turn to for leadership.",
+            "discovery": "A datu could lead the barangay and help guide its people. Leadership included responsibilities connected with maintaining order and looking after the community."
+          },
+          {
+            "icon": "🛡️",
+            "title": "Protecting the Barangay",
+            "hint": "Discover another responsibility of leadership.",
+            "discovery": "Leadership could also involve protecting the community and its interests. A leader therefore had responsibilities beyond simply holding a title."
+          }
+        ],
+        "decisionSituation": "Two families disagree about using a shared gathering place. The datu has not yet heard both families.",
+        "decisionQuestion": "Which action best uses the leadership responsibilities you investigated?",
+        "decisionChoices": [
+          "Hear both concerns and consider the community practices relevant to the disagreement.",
+          "Let the first speaker decide without hearing the other family.",
+          "Assume a custom from another community must apply here."
+        ],
+        "decisionCorrectAnswer": "Hear both concerns and consider the community practices relevant to the disagreement.",
+        "decisionExplanation": "Hearing concerns helps a leader understand the problem. Local practices can matter when addressing a disagreement. This is a reasonable application of the lesson, not a claim that every datu used the same procedure."
+      }
+    },
+    {
+      "path": "storyScenes/mission1-scene4",
+      "create": false,
+      "fields": {
+        "content": "Did everyone in an early community have the same choices? Not always. People could have different rights, duties, and social positions. A social position could affect someone's authority and freedom.\n\nSocial organization means how people, their roles, and their relationships fit together. It includes who can guide others and who owes work to someone else.\n\nIn our made-up example, one person guides a discussion. Another must finish work owed to someone else before leaving. Compare their duties and choices. A person's social position does not decide their worth as a human being.",
+        "learningHelp": {
+          "explanation": "Ask two questions: What must each person do? What can each person choose? The answers help us compare their positions. People can work together while having different rights and duties.",
+          "vocabulary": [
+            {
+              "term": "Duty",
+              "definition": "Something a person is required or expected to do."
+            },
+            {
+              "term": "Authority",
+              "definition": "The power to guide others or make decisions."
+            },
+            {
+              "term": "Social organization",
+              "definition": "How people, their roles, positions, and relationships fit together in a society."
+            }
+          ],
+          "example": "Made-up example: one person can lead a discussion. Another owes work and cannot leave until it is finished. Both belong to the community, but their duties and choices differ.",
+          "guidingQuestion": "Does sharing work prove that both people can make the same choices?"
+        }
+      },
+      "expected": {
+        "missionId": "mission-1",
+        "status": "active",
+        "title": "Members of Early Society",
+        "order": 4,
+        "reviewTopics": [
+          "social-organization"
+        ],
+        "content": "Bayani asks you to investigate a different question: Did everyone experience community life in the same way?\n\nPeople could have different social positions, relationships, rights, and duties. A role describes a responsibility or part someone plays. Social position can also affect authority and obligations; it is more than a person's job.\n\nSocial organization means the ways these positions, responsibilities, and relationships fit together. In some societies, people had unequal freedom and obligations. Cooperation did not mean that everyone had equal choices.\n\nThe names and arrangements of social groups varied across places. Use the clues to compare experiences without judging a person's worth by their position.",
+        "learningHelp": {
+          "vocabulary": [
+            {
+              "term": "Social position",
+              "definition": "A place in a social arrangement that can affect authority and obligations."
+            }
+          ],
+          "guidingQuestion": "What do the clues tell you about each person's choices?",
+          "explanation": "Social organization connects people through different positions, duties and relationships. Cooperation did not mean equal freedom.",
+          "example": "Two people may support a community but have different rights and duties."
+        },
+        "exploreItems": [
+          {
+            "hint": "Observe the people responsible for guiding the community.",
+            "icon": "👑",
+            "title": "Leadership",
+            "discovery": "Some members held positions of leadership and authority. In a barangay, a datu could guide the community and take responsibility for important matters.\n"
+          },
+          {
+            "icon": "👥",
+            "discovery": "Community members could have different responsibilities, relationships, and social positions. These differences formed part of how society was organized.",
+            "hint": "Observe the other people taking part in community life.\n",
+            "title": "Community Members"
+          },
+          {
+            "icon": "🔗",
+            "hint": "Think about how the people you observed were connected.",
+            "title": "Social Relationships",
+            "discovery": "Social organization was not only about identifying a leader. It also involved relationships among the people who formed the community and the responsibilities they had within society."
+          }
+        ],
+        "decisionSituation": "One person has authority to guide community affairs. Another has obligations to work for someone else. These examples come from one fictional teaching situation.",
+        "decisionQuestion": "What should a careful investigator conclude?",
+        "decisionChoices": [
+          "Their experiences and responsibilities could differ; more evidence is needed to describe other communities.",
+          "Their social positions tell us which person has greater human worth.",
+          "Every person across the islands must have had exactly these two roles."
+        ],
+        "decisionCorrectAnswer": "Their experiences and responsibilities could differ; more evidence is needed to describe other communities.",
+        "decisionExplanation": "Different positions can shape experiences. That does not determine human worth, and examples from one situation cannot describe every community. Historians compare evidence and recognize differences."
+      }
+    },
+    {
+      "path": "storyScenes/mission1-scene5",
+      "create": false,
+      "fields": {
+        "content": "A custom is a practice people learn and pass on in a community. Customs can guide how people treat one another and share spaces. A custom is not always a written law. Customs can differ between places.\n\nIn our story, two families need the same gathering place. You have not yet learned the local practice for sharing it. Ask about that practice and hear both families before seeking guidance.\n\nOpen the clues. Which information is still missing? A loud voice alone cannot tell you the local custom.",
+        "learningHelp": {
+          "explanation": "A local custom is a practice used in this community. Knowing another community's custom does not tell us what happens here. Find out which practice matters to the families' problem.",
+          "vocabulary": [
+            {
+              "term": "Custom",
+              "definition": "A practice people learn and pass on within a community."
+            },
+            {
+              "term": "Local",
+              "definition": "Belonging to a particular place or community."
+            }
+          ],
+          "example": "Made-up example: an elder explains how this community usually shares its meeting place. That information helps with this disagreement. Another community may share spaces differently.",
+          "guidingQuestion": "What do you need to learn about this community before suggesting a plan?"
+        }
+      },
+      "expected": {
+        "missionId": "mission-1",
+        "status": "active",
+        "title": "Working Together",
+        "order": 5,
+        "reviewTopics": [
+          "datu-leadership",
+          "community-customs",
+          "community-cooperation"
+        ],
+        "content": "Two families disagree over a shared space. The disagreement affects preparations for a community gathering. How might leadership, customs, and cooperation connect?\n\nA custom is a practice learned and passed on within a community. Customs can guide expectations and relationships. They are not automatically identical to written laws or to customs in another place.\n\nIn this fictional situation, investigate three kinds of information: who can guide the discussion, what local practice is relevant, and what responsibilities the families share.\n\nDo not decide from the loudest voice alone. Use the clues together and explain which information supports your choice.",
+        "learningHelp": {
+          "explanation": "A custom is a practice learned in a community. Find out which local practice matters instead of assuming all places are alike.",
+          "example": "Different groups can have different practices for sharing a space.",
+          "vocabulary": [
+            {
+              "term": "Custom",
+              "definition": "A practice learned and passed on within a community."
+            }
+          ],
+          "guidingQuestion": "Which information is missing before the concern can be understood?"
+        },
+        "exploreItems": [
+          {
+            "title": "Community Leadership",
+            "discovery": "A datu could help guide the barangay, address community matters, and support the maintenance of order.",
+            "icon": "🗣️",
+            "hint": "Discover how a leader could respond to an important concern."
+          },
+          {
+            "hint": "Find out what helped guide behavior within the community.",
+            "icon": "📜",
+            "discovery": "Communities had customs and expectations that helped guide relationships and behavior. These could differ among early Filipino societies.",
+            "title": "Customs and Order"
+          },
+          {
+            "discovery": "Community members carried out different responsibilities. Cooperation helped people respond to shared concerns and support community life.",
+            "title": "Shared Responsibilities",
+            "hint": "Think about how community members could help one another.",
+            "icon": "🤝"
+          }
+        ],
+        "decisionSituation": "Both families want the same gathering space. You know a leader can help, but you have not yet learned the local practice about shared spaces.",
+        "decisionQuestion": "What is the most useful next step?",
+        "decisionChoices": [
+          "Ask about the local practice and hear both concerns before seeking a suitable arrangement.",
+          "Copy another community's practice without checking whether it applies.",
+          "Choose the family that speaks most loudly because no other information matters."
+        ],
+        "decisionCorrectAnswer": "Ask about the local practice and hear both concerns before seeking a suitable arrangement.",
+        "decisionExplanation": "The missing information is the relevant local practice and each family's concern. Gathering it connects leadership with customs and responsibilities instead of guessing."
+      }
+    },
+    {
+      "path": "storyScenes/mission1-scene6",
+      "create": false,
+      "fields": {
+        "content": "Bayani gives you a final made-up report. Families share tasks for a gathering. A datu hears a disagreement. An elder explains a custom. Some people owe work that limits their choices.\n\nConnect each clue to an idea: shared tasks show cooperation; the datu's action shows leadership; the elder describes a custom. Different duties and choices help explain social organization.\n\nTogether, these clues describe this story community. They do not prove that everyone had equal freedom or that all communities lived the same way. Open the final clues and explain what the report supports.",
+        "learningHelp": {
+          "explanation": "Match an idea to an action in the report. Sharing tasks shows cooperation. Guiding a disagreement shows leadership. A practice passed on in the community is a custom. Then compare people's duties and choices.",
+          "vocabulary": [
+            {
+              "term": "Conclusion",
+              "definition": "An idea you reach after considering information."
+            },
+            {
+              "term": "Evidence",
+              "definition": "Information used to support or question an idea. A made-up story helps us practise; it is not a historical record."
+            }
+          ],
+          "example": "The made-up report says families share tasks. That supports cooperation in this example. It does not tell us whether everyone had the same freedom.",
+          "guidingQuestion": "Which detail supports your conclusion, and which question would need information from other communities?"
+        }
+      },
+      "expected": {
+        "missionId": "mission-1",
+        "status": "active",
+        "title": "The Barangay Challenge",
+        "order": 6,
+        "reviewTopics": [
+          "social-organization",
+          "community-customs"
+        ],
+        "content": "Your final task is to connect the discoveries, not simply remember a leader's title.\n\nYou found people living in relationships, carrying different responsibilities, and using leadership and customs to help organize community life. You also learned that people did not always have equal freedom and that communities were diverse.\n\nBayani gives you a fictional report: Families share tasks for a gathering. A datu hears a disagreement. An elder explains a local custom. Some people have obligations that limit their choices.\n\nInspect the clues, choose a conclusion supported by the report, and consider what the report cannot tell you.",
+        "learningHelp": {
+          "vocabulary": [
+            {
+              "term": "Evidence",
+              "definition": "Information used to support or question an idea."
+            }
+          ],
+          "example": "One family story does not describe the experiences of every family.",
+          "guidingQuestion": "Which parts of your conclusion need more evidence?",
+          "explanation": "Connect the clues and check the limits of your conclusion. One situation cannot describe every community."
+        },
+        "exploreItems": [
+          {
+            "icon": "👑",
+            "title": "The Leader",
+            "hint": "Remember who helped guide the barangay.",
+            "discovery": "A datu could help guide the community, address important concerns, and maintain order."
+          },
+          {
+            "icon": "👥",
+            "title": "Community Members",
+            "hint": "Think about the people who made up the community.",
+            "discovery": "Families and other community members had different roles, relationships, and responsibilities that contributed to community life."
+          },
+          {
+            "icon": "📜",
+            "title": "Customs and Cooperation",
+            "hint": "Recall what helped people respond to shared concerns.",
+            "discovery": "Customs could guide community behavior, while cooperation helped members respond to shared needs and responsibilities."
+          }
+        ],
+        "decisionSituation": "Your report describes a datu, families sharing tasks, a local custom, and different obligations. It describes only this teaching situation.",
+        "decisionQuestion": "Which conclusion uses the evidence most carefully?",
+        "decisionChoices": [
+          "Leadership, customs, relationships, and different responsibilities helped organize this community; other communities require their own evidence.",
+          "Because people shared tasks, everyone must have had equal freedom.",
+          "Because this community had a datu, every Philippine community had identical leadership."
+        ],
+        "decisionCorrectAnswer": "Leadership, customs, relationships, and different responsibilities helped organize this community; other communities require their own evidence.",
+        "decisionExplanation": "The report supports connections within the community. It does not prove equal freedom or identical arrangements everywhere. A good historical conclusion includes both what the evidence supports and its limits."
+      }
+    },
+    {
+      "path": "questions/quiz-1-question-1",
+      "create": false,
+      "fields": {
+        "answerExplanations": {
+          "A": "Hearing both families helps the datu understand the problem. Learning the local custom adds information about sharing the place.",
+          "B": "The second family also needs the gathering place. Hearing only the first family leaves out the other concern. Revisit Leadership in the Barangay.",
+          "C": "The custom in another place may be different. Find out how this community shares its gathering place before choosing a plan.",
+          "D": "The families are asking their leader for help with a local problem. Visiting traders do not replace hearing the families and learning the local custom."
+        },
+        "learningPoint": "A datu could guide community matters. In this story, hearing both families and learning the local custom helps explain the disagreement."
+      },
+      "expected": {
+        "quizId": "quiz-1",
+        "status": "active",
+        "topic": "datu-leadership",
+        "difficulty": "medium",
+        "question": "In this made-up barangay story, two families want to use the same meeting place. The datu is asked to help. What should the datu do?",
+        "correctAnswer": "A",
+        "optionA": "Hear both concerns and consider the custom used in their community.",
+        "optionB": "Let the first family speak for everyone without asking questions.",
+        "optionC": "Use another community's practice without checking local customs.",
+        "optionD": "Leave every community concern to visiting traders.",
+        "explanation": "A datu could help with community problems. Hearing both families and learning the local custom can help explain the problem. Customs were not the same everywhere.",
+        "historicalClue": "A datu could help with community problems. Hearing both families and learning the local custom can help explain the problem. Customs were not the same everywhere.",
+        "learningPoint": "A datu could help with community problems. Hearing both families and learning the local custom can help explain the problem. Customs were not the same everywhere.",
+        "answerExplanations": {
+          "C": "A practice from elsewhere may not apply to this community.",
+          "D": "Trading is not the same as taking responsibility for local community concerns.",
+          "B": "Speaking first does not provide all the information about the disagreement.",
+          "A": "A datu could help with community problems. Hearing both families and learning the local custom can help explain the problem. Customs were not the same everywhere."
+        }
+      }
+    },
+    {
+      "path": "questions/quiz-1-question-1-retry",
+      "create": false,
+      "fields": {
+        "optionA": "Ask what needs repairing and share the work according to people's skills.",
+        "answerExplanations": {
+          "A": "The datu can help plan the work, while community members use their skills to repair the meeting place.",
+          "B": "Families still need food and other daily work. A repair plan should consider those needs instead of stopping that work forever.",
+          "C": "A visitor who does not know the damage or people's needs may miss useful information. First find out what needs repairing.",
+          "D": "Other members have skills and responsibilities too. Revisit Leadership in the Barangay and think about how they can help with the repairs."
+        },
+        "learningPoint": "Leadership and cooperation can work together: the leader helps plan, and community members contribute their skills."
+      },
+      "expected": {
+        "quizId": "quiz-1",
+        "status": "active",
+        "topic": "datu-leadership",
+        "difficulty": "medium",
+        "question": "A storm damages a meeting place in this made-up story. The people ask the datu for help. Which plan makes good use of the leader and community members?",
+        "correctAnswer": "A",
+        "optionA": "Discuss the needs and share tasks that people can do with community members.",
+        "optionB": "Require every family to stop all its daily work forever.",
+        "optionC": "Ask a visitor to decide without learning what the community needs.",
+        "optionD": "Repair everything alone because other members have no responsibilities.",
+        "explanation": "A leader can help plan the work. Other people also have skills and duties that can help the community.",
+        "historicalClue": "A leader can help plan the work. Other people also have skills and duties that can help the community.",
+        "learningPoint": "A leader can help plan the work. Other people also have skills and duties that can help the community.",
+        "answerExplanations": {
+          "A": "A leader can help plan the work. Other people also have skills and duties that can help the community.",
+          "B": "Permanently stopping daily work does not address the community's other needs.",
+          "D": "A leader's role does not remove everyone else's responsibilities.",
+          "C": "A decision without local information may overlook important needs."
+        }
+      }
+    },
+    {
+      "path": "questions/quiz-1-question-2",
+      "create": false,
+      "fields": {
+        "answerExplanations": {
+          "A": "The family clue describes people helping one another. That shows relationships and responsibilities, as well as places to live.",
+          "B": "These clues describe one teaching example. They do not show the homes in every community.",
+          "C": "Homes tell us where people live. To learn about their rules and relationships, we need information about the people too.",
+          "D": "One story community cannot describe all communities. Revisit Arrival in the Barangay and compare what the Homes and Families clues tell you."
+        },
+        "learningPoint": "A community includes people and their relationships. Houses alone cannot explain how people lived together."
+      },
+      "expected": {
+        "quizId": "quiz-1",
+        "status": "active",
+        "topic": "barangay-community",
+        "difficulty": "medium",
+        "question": "A lesson picture shows homes. Another clue tells how families help one another. What do these clues tell us?",
+        "correctAnswer": "A",
+        "optionA": "People formed a community connected by relationships and responsibilities.",
+        "optionB": "Every early community had exactly the same homes.",
+        "optionC": "Homes alone reveal every rule followed by the people.",
+        "optionD": "The scene proves how all Philippine communities were organized.",
+        "explanation": "Family ties and shared duties show how people lived together. These clues do not tell us that every community was the same.",
+        "historicalClue": "Family ties and shared duties show how people lived together. These clues do not tell us that every community was the same.",
+        "learningPoint": "Family ties and shared duties show how people lived together. These clues do not tell us that every community was the same.",
+        "answerExplanations": {
+          "C": "Buildings alone cannot reveal every social practice.",
+          "D": "Evidence from one situation cannot describe all communities.",
+          "B": "The clues describe one teaching situation, not every community.",
+          "A": "Family ties and shared duties show how people lived together. These clues do not tell us that every community was the same."
+        }
+      }
+    },
+    {
+      "path": "questions/quiz-1-question-2-retry",
+      "create": false,
+      "fields": {
+        "optionB": "Every house has the same color in a picture.",
+        "answerExplanations": {
+          "A": "Interacting and carrying responsibilities show how people are connected as a group.",
+          "B": "Matching house colors describe the picture. They do not explain what people do for one another.",
+          "C": "The border decorates the picture. It does not tell us about family ties or shared duties.",
+          "D": "A basket may tell us about an object people used. By itself, it does not explain how people are connected. Revisit the Families clue in Arrival in the Barangay."
+        },
+        "learningPoint": "To understand community life, look for relationships and responsibilities as well as buildings and objects."
+      },
+      "expected": {
+        "quizId": "quiz-1",
+        "status": "active",
+        "topic": "barangay-community",
+        "difficulty": "medium",
+        "question": "A learner says a barangay is just a row of houses. Which clue best shows how people lived together as a community?",
+        "correctAnswer": "A",
+        "optionA": "Families interact and people carry different responsibilities within the group.",
+        "optionB": "Every house has the same color in an picture.",
+        "optionC": "The drawing has a decorative border.",
+        "optionD": "A basket appears beside one doorway.",
+        "explanation": "Relationships and duties tell us more about community life than the appearance of houses alone.",
+        "historicalClue": "Relationships and duties tell us more about community life than the appearance of houses alone.",
+        "learningPoint": "Relationships and duties tell us more about community life than the appearance of houses alone.",
+        "answerExplanations": {
+          "A": "Relationships and duties tell us more about community life than the appearance of houses alone.",
+          "B": "A repeated color in a drawing does not show social relationships.",
+          "D": "One object may reveal an activity but does not by itself explain the wider community.",
+          "C": "A decorative border provides no evidence about community organization."
+        }
+      }
+    },
+    {
+      "path": "questions/quiz-1-question-3",
+      "create": false,
+      "fields": {
+        "answerExplanations": {
+          "A": "Repairing baskets helps, but the food is still unprepared. Share the tasks so both needs receive attention.",
+          "B": "Sharing suitable tasks uses people's different skills and helps with both food and basket repair.",
+          "C": "The leader does not need to do everything alone. People who can cook and people who can repair baskets can each help. Revisit Life in the Community.",
+          "D": "Waiting without asking does not give anyone a task or help either household. Look for a plan that uses the skills already available."
+        },
+        "learningPoint": "Cooperation means working toward a shared goal. People can do different tasks to help meet both households' needs."
+      },
+      "expected": {
+        "quizId": "quiz-1",
+        "status": "active",
+        "topic": "community-cooperation",
+        "difficulty": "medium",
+        "question": "Two families need food prepared and baskets repaired. People have different skills. Which plan best shows cooperation, or working together?",
+        "correctAnswer": "B",
+        "optionA": "Have everyone repair baskets and leave food unprepared.",
+        "optionB": "Share suitable tasks so both needs receive attention.",
+        "optionC": "Ask the leader to do every task alone.",
+        "optionD": "Wait for another community to solve both needs without asking.",
+        "explanation": "Working together can meet both needs. People can share tasks and use different skills.",
+        "historicalClue": "Working together can meet both needs. People can share tasks and use different skills.",
+        "learningPoint": "Working together can meet both needs. People can share tasks and use different skills.",
+        "answerExplanations": {
+          "D": "Waiting without action does not show the group working together.",
+          "C": "Putting all work on one person ignores available ways people help.",
+          "A": "Doing only one task leaves the other shared need unanswered.",
+          "B": "Working together can meet both needs. People can share tasks and use different skills."
+        }
+      }
+    },
+    {
+      "path": "questions/quiz-1-question-3-retry",
+      "create": false,
+      "fields": {
+        "optionB": "People do different tasks to help the same gathering.",
+        "answerExplanations": {
+          "A": "Preparing the place, bringing materials, and helping with food are different tasks. Sharing a goal does not mean everyone has the same role or social position.",
+          "B": "Each group helps the gathering in a different way. The shared goal connects their work.",
+          "C": "People bringing materials and helping with food also contribute. More than one group has a responsibility.",
+          "D": "This example shows how these people help with one gathering. It cannot tell us what every community did. Revisit Life in the Community."
+        },
+        "learningPoint": "Different tasks can support the same goal. Cooperation does not mean everyone has the same role, rights, or freedom."
+      },
+      "expected": {
+        "quizId": "quiz-1",
+        "status": "active",
+        "topic": "community-cooperation",
+        "difficulty": "medium",
+        "question": "Some people prepare a meeting place. Others bring materials or help with food. Why is this cooperation?",
+        "correctAnswer": "B",
+        "optionA": "Everyone must have the same role and place in society.",
+        "optionB": "Different ways people help support a shared purpose.",
+        "optionC": "Only the largest group has a responsibility.",
+        "optionD": "The work proves that every community followed the same practices.",
+        "explanation": "The groups do different tasks for the same purpose. Working together does not mean everyone had the same rights.",
+        "historicalClue": "The groups do different tasks for the same purpose. Working together does not mean everyone had the same rights.",
+        "learningPoint": "The groups do different tasks for the same purpose. Working together does not mean everyone had the same rights.",
+        "answerExplanations": {
+          "C": "The smaller groups also contribute to the gathering.",
+          "D": "One situation cannot show practices everywhere.",
+          "B": "The groups do different tasks for the same purpose. Working together does not mean everyone had the same rights.",
+          "A": "Shared work does not mean the same roles or places in society."
+        }
+      }
+    },
+    {
+      "path": "questions/quiz-1-question-4",
+      "create": false,
+      "fields": {
+        "answerExplanations": {
+          "A": "A person's social position does not decide their worth. Compare what each person must do and what they can choose.",
+          "B": "One person guides others; another owes work. These clues describe different duties and choices. Revisit Members of Early Society.",
+          "C": "Comparing their duties and choices helps explain their positions. The stories do not prove that both communities were the same.",
+          "D": "One story describes a particular example. Information from other communities is needed to explain how they lived."
+        },
+        "learningPoint": "Social organization includes people's roles, positions, and relationships. Compare their duties and choices without judging their human worth."
+      },
+      "expected": {
+        "quizId": "quiz-1",
+        "status": "active",
+        "topic": "social-organization",
+        "difficulty": "medium",
+        "question": "Two stories describe people in early communities. One person can guide others. Another must finish work owed to someone else. How should you compare their lives?",
+        "correctAnswer": "C",
+        "optionA": "A person's place in society tells us their worth as a human being.",
+        "optionB": "Everyone must have had the same rights and duties.",
+        "optionC": "Compare their duties and choices without assuming both communities were the same.",
+        "optionD": "One story tells us how every community lived.",
+        "explanation": "People could have different duties and choices. Compare the clues carefully. A person's place in society does not decide their worth.",
+        "historicalClue": "People could have different duties and choices. Compare the clues carefully. A person's place in society does not decide their worth.",
+        "learningPoint": "People could have different duties and choices. Compare the clues carefully. A person's place in society does not decide their worth.",
+        "answerExplanations": {
+          "C": "People could have different duties and choices. Compare the clues carefully. A person's place in society does not decide their worth.",
+          "D": "A wider idea requires more evidence.",
+          "B": "The accounts describe differences rather than the same experiences.",
+          "A": "Social position does not determine human worth."
+        }
+      }
+    },
+    {
+      "path": "questions/quiz-1-question-4-retry",
+      "create": false,
+      "fields": {
+        "answerExplanations": {
+          "A": "Some people must finish work before they can leave. They help with the shared work, but their choices are limited. Revisit Members of Early Society.",
+          "B": "The people are sharing work, so they are connected. Different duties do not remove those relationships.",
+          "C": "Both clues fit: people work together, while some have duties that limit their choices.",
+          "D": "The report describes people sharing work, not just leaders. Other community members also belong to society."
+        },
+        "learningPoint": "People can cooperate while having different rights and duties. Sharing work alone does not prove equal freedom."
+      },
+      "expected": {
+        "quizId": "quiz-1",
+        "status": "active",
+        "topic": "social-organization",
+        "difficulty": "medium",
+        "question": "People in a made-up community share work. Some must finish work owed to others before they can leave. What do both clues tell us?",
+        "correctAnswer": "C",
+        "optionA": "Cooperation proves everyone had equal freedom.",
+        "optionB": "Different duties mean people had no relationships.",
+        "optionC": "People could contribute together while having different rights and duties.",
+        "optionD": "Only leaders formed part of society.",
+        "explanation": "People could work together while having different rights and duties. Shared work does not prove equal freedom.",
+        "historicalClue": "People could work together while having different rights and duties. Shared work does not prove equal freedom.",
+        "learningPoint": "People could work together while having different rights and duties. Shared work does not prove equal freedom.",
+        "answerExplanations": {
+          "C": "People could work together while having different rights and duties. Shared work does not prove equal freedom.",
+          "D": "Families and other members also formed part of society.",
+          "B": "Different duties do not remove social relationships.",
+          "A": "Working together does not prove equal freedom."
+        }
+      }
+    },
+    {
+      "path": "questions/quiz-1-question-5",
+      "create": false,
+      "fields": {
+        "answerExplanations": {
+          "A": "Speaking loudly does not explain the custom or why each family needs the space. Find out that information first.",
+          "B": "Another community may use a different custom. Revisit Working Together and ask what practice is used here.",
+          "C": "Asking a family to leave skips learning the custom and hearing its concern. Both pieces of information can help explain the problem.",
+          "D": "Learning the local practice and both concerns gives useful information before the families seek guidance."
+        },
+        "learningPoint": "A custom is a practice learned and passed on in a community. Learn the relevant local practice before assuming how a shared space should be used."
+      },
+      "expected": {
+        "quizId": "quiz-1",
+        "status": "active",
+        "topic": "community-customs",
+        "difficulty": "medium",
+        "question": "Two families disagree about sharing a space. A local custom may help, but you do not know it yet. What should you find out next?",
+        "correctAnswer": "D",
+        "optionA": "Which family can speak most loudly.",
+        "optionB": "Which practice a different community uses, assuming it must apply here.",
+        "optionC": "Which family should leave without any discussion.",
+        "optionD": "The local practice and both families' concerns before seeking guidance.",
+        "explanation": "Learn the local custom and hear both families. This gives useful information before deciding what to do.",
+        "historicalClue": "Learn the local custom and hear both families. This gives useful information before deciding what to do.",
+        "learningPoint": "Learn the local custom and hear both families. This gives useful information before deciding what to do.",
+        "answerExplanations": {
+          "C": "Removing a family without information ignores the issue being investigated.",
+          "D": "Learn the local custom and hear both families. This gives useful information before deciding what to do.",
+          "B": "Customs could differ between communities.",
+          "A": "Volume does not show the relevant custom or explain both concerns."
+        }
+      }
+    },
+    {
+      "path": "questions/quiz-1-question-5-retry",
+      "create": false,
+      "fields": {
+        "optionC": "Assume every custom was also a written law.",
+        "answerExplanations": {
+          "A": "The elder describes one community's practice. One example does not tell us what happened in every place.",
+          "B": "Customs can guide how people treat one another. The elder's example can help us understand this community.",
+          "C": "People can learn and pass on a practice without writing it as a law. Revisit the Custom explanation in Working Together.",
+          "D": "Use the example to understand this community. To describe other communities, look for information about those places too."
+        },
+        "learningPoint": "Customs can differ between communities and are not always written laws. One example does not describe every place."
+      },
+      "expected": {
+        "quizId": "quiz-1",
+        "status": "active",
+        "topic": "community-customs",
+        "difficulty": "medium",
+        "question": "An elder explains a custom, or shared practice, in one community. A learner says every early community used it. How should you respond?",
+        "correctAnswer": "D",
+        "optionA": "Agree because one example proves a rule for all places.",
+        "optionB": "Ignore the elder because customs cannot guide relationships.",
+        "optionC": "Assume all customs were the same to written laws.",
+        "optionD": "Use the example for this community. Look for more evidence about other places.",
+        "explanation": "Customs could differ. One community's practice does not tell us what happened in every other community.",
+        "historicalClue": "Customs could differ. One community's practice does not tell us what happened in every other community.",
+        "learningPoint": "Customs could differ. One community's practice does not tell us what happened in every other community.",
+        "answerExplanations": {
+          "D": "Customs could differ. One community's practice does not tell us what happened in every other community.",
+          "C": "A custom is not automatically the same as a written law.",
+          "A": "One example cannot show what happened everywhere.",
+          "B": "Customs could help guide expectations and relationships."
+        }
+      }
+    }
+  ],
+  "baselineAt": "2026-10-27T13:06:11.538Z"
+}

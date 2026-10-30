@@ -55,12 +55,30 @@ export function renderReviewTopics(container, topics, chaptersByMission, emptyMe
         const heading = document.createElement("h3");
         heading.textContent = topic.label;
         const detail = document.createElement("p");
-        detail.textContent = `${topic.correct} of ${topic.attempted} answered correctly on the first try in your latest attempts.`;
+        detail.textContent = topic.source === "quiz"
+            ? "Your latest mission quiz identified this topic for review. A completed mission can still have topics to strengthen."
+            : `${topic.correct} of ${topic.attempted} practice questions answered correctly on the first try in your latest attempts.`;
+        const lessonUrl = "story.html?" + new URLSearchParams({chapter:chapterId,mission:topic.missionId,reviewTopic:topic.topic});
+        const practiceUrl = "practice.html?" + new URLSearchParams({chapter:chapterId,mission:topic.missionId,topic:topic.topic,review:'1'});
+        const practiceNext = topic.lessonRevisited === true || topic.state === 'practising';
         const link = document.createElement("a");
-        link.className = "text-button";
-        link.textContent = "Practice Again";
-        link.href = practiceTopicUrl(chapterId, topic.missionId, topic.topic);
-        card.append(heading, detail, link);
+        link.className = "primary-button";
+        link.textContent = practiceNext ? (topic.state === 'practising' ? "Continue Targeted Practice" : "Start Targeted Practice") : "Review Lesson Scenes";
+        link.href = practiceNext ? practiceUrl : lessonUrl;
+        const other = document.createElement('a');other.className='text-button';
+        other.textContent=practiceNext?'Revisit Lesson':'Try Targeted Practice';other.href=practiceNext?lessonUrl:practiceUrl;
+        const retry = document.createElement('a');retry.className='text-button';retry.textContent='Retry Mission Quiz';
+        retry.href='quiz.html?'+new URLSearchParams({chapter:chapterId,mission:topic.missionId});
+        const source = document.createElement("span");source.className="practice-review-source";source.textContent=topic.source==="quiz"?"Recommended from your quiz":"Recommended from practice";
+        const stage=document.createElement('span');stage.className='review-learning-state';stage.dataset.state=topic.state||'review-needed';stage.textContent=({'review-needed':'Review recommended','lesson-revisited':'Lesson revisited','practising':'Building understanding','practice-goal-reached':'Practice goal reached'})[topic.state]||'Review recommended';
+        const evidence=document.createElement('p');evidence.className='review-evidence-progress';
+        if(topic.requiredQuestions&&topic.requiredSessions)evidence.textContent=topic.distinctCorrect+' / '+topic.requiredQuestions+' different questions answered correctly; '+topic.cleanSessions+' / '+topic.requiredSessions+' successful sessions. Include a more challenging practice question. These counts restart after a new mistake.';
+        else evidence.textContent='More practice evidence is needed before this recommendation can be cleared.';
+        if(topic.lessonRevisited&&topic.state!=='lesson-revisited')evidence.textContent+=' Lesson revisited.';
+        const actions = document.createElement("div");
+        actions.className = "practice-review-actions";
+        actions.append(link, other, retry);
+        card.append(source, stage, heading, detail, evidence, actions);
         container.append(card);
     }
 }

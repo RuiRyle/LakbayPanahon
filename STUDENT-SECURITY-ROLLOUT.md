@@ -1,5 +1,9 @@
 # Student data protection - free Firebase plan
 
+Historical implementation/rollout notes follow. AI status and deployment steps below may be outdated; use the [current student release checklist](docs/student-release-checklist.md) for current readiness. The browser-grading limitations remain applicable.
+
+30 October update: [additional access and result-consistency hardening](docs/student-security-hardening-2026-10-30.md) is implemented locally, and the three scoped draft/attempt/practice rule changes are published and read back. Ninety-two local checks, six offline browser fixtures and 32 server Rules API cases passed. A bounded real quiz transaction check remains pending after HTTP 429; its temporary account/records were removed. Historical emulator instructions below were not used for this pass. Browser assessment and progression claims remain untrusted.
+
 The student reward workflow now uses Firestore directly. It does not call or require a deployed Cloud Function. No billing upgrade is required for this implementation; normal Firebase free-plan quotas still apply.
 
 ## Protections

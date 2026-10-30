@@ -1,3 +1,4 @@
+import { instructionalSnapshot } from "./instructional-content.js";
 import { requireLearningAccess, LearningAccessError } from "./learning-access.js";
 import {
     auth,
@@ -76,6 +77,9 @@ const chapterId =
 ========================================== */
 
 let loadedMissionStates = [];
+let missionLoadGeneration = 0;
+let missionUserId = null;
+const retryMissionLoadButton = document.getElementById("retryMissionLoadButton");
 
 let selectedMissionId = null;
 
@@ -91,6 +95,13 @@ let isChapterChallengeCompleted = false;
 ========================================== */
 
 async function loadMissionPage() {
+    const generation = ++missionLoadGeneration;
+    const loadingUid = auth.currentUser?.uid;
+    const isCurrent = () => generation === missionLoadGeneration && auth.currentUser?.uid === loadingUid;
+    missionContent.hidden = true;
+    missionError.hidden = true;
+    missionLoading.hidden = false;
+    if (retryMissionLoadButton) retryMissionLoadButton.hidden = true;
 
     if (!chapterId) {
 
@@ -140,6 +151,7 @@ async function loadMissionPage() {
             );
 
 
+        if (!isCurrent()) return;
         if (!chapterSnapshot.exists()) {
 
             showError(
@@ -183,9 +195,15 @@ if (
 const chapterAccessResult =
     await checkStudentChapterAccess(user, chapterId);
 
+if (!isCurrent()) return;
 if (!chapterAccessResult.allowed) {
     showError(chapterAccessResult.message);
     return;
+}
+const eraBackLink = document.querySelector('.mission-back');
+if (eraBackLink && typeof chapter.eraId === 'string' && chapter.eraId) {
+    eraBackLink.href = 'era.html?' + new URLSearchParams({era: chapter.eraId});
+    eraBackLink.textContent = 'Back to Era';
 }
 loadedChapterName =
     chapter.title ||
@@ -207,14 +225,10 @@ loadedChapterName =
         ================================== */
 
         const missionSnapshot =
-            await getDocs(
-                collection(
-                    db,
-                    "missions"
-                )
-            );
+            await instructionalSnapshot("missions:"+chapterId, () => getDocs(query(collection(db,"missions"),where("chapterId","==",chapterId))));
 
 
+        if (!isCurrent()) return;
         const missions = [];
 
 
@@ -291,6 +305,7 @@ loadedChapterName =
             );
 
 
+        if (!isCurrent()) return;
         const completedMissionIds =
             new Set();
 
@@ -368,7 +383,7 @@ loadedChapterName =
                         ...mission,
 
                         isCompleted,
-                        isUnlocked
+                        isUnlocked: globalThis.__lakbayExplorationPreview===true || isUnlocked
 
                     };
 
@@ -378,6 +393,13 @@ loadedChapterName =
 
         loadedMissionStates =
             missionStates;
+        document.getElementById('chapterExpeditionProgress')?.remove();
+        const expedition=document.createElement('div');expedition.id='chapterExpeditionProgress';expedition.className='chapter-expedition-progress';
+        const count=missionStates.filter(m=>m.isCompleted).length;
+        const caption=document.createElement('strong');caption.textContent=count+' / '+missionStates.length+' missions completed';
+        const meter=document.createElement('progress');meter.max=missionStates.length;meter.value=count;meter.setAttribute('aria-label','Chapter mission completion');
+        const note=document.createElement('p');note.textContent=count===missionStates.length?'All missions complete. Your chapter challenge is ready below.':(missionStates.length-count)+' mission'+(missionStates.length-count===1?'':'s')+' remaining before the chapter challenge unlocks.';
+        expedition.append(caption,meter,note);document.querySelector('.mission-chapter-header').append(expedition);
 
 
         /* ==================================
@@ -412,6 +434,7 @@ const chapterProgressSnapshot =
         )
     );
 
+if (!isCurrent()) return;
 isChapterChallengeCompleted =
     chapterProgressSnapshot.exists() &&
     chapterProgressSnapshot.data().completed === true;
@@ -483,6 +506,7 @@ isChapterChallengeCompleted =
 
     } catch (error) {
 
+        if (!isCurrent()) return;
         console.error(
             "Unable to load mission:",
             error
@@ -546,7 +570,7 @@ if (missionStatusLabel) {
     ================================== */
 
     missionIntroduction.textContent =
-        mission.introduction ||
+        mission.introduction || mission.description ||
         "";
 
 
@@ -554,38 +578,19 @@ if (missionStatusLabel) {
        LEARNING OBJECTIVE
     ================================== */
 
-    const learningObjective =
-        String(
-            mission.learningObjective ||
-            ""
-        ).trim();
-
-
-    if (
-        missionLearningGoal &&
-        missionLearningObjective
-    ) {
-
-        if (learningObjective) {
-
-            missionLearningObjective.textContent =
-                learningObjective;
-
-            missionLearningGoal.hidden =
-                false;
-
-        } else {
-
-            missionLearningObjective.textContent =
-                "";
-
-            missionLearningGoal.hidden =
-                true;
-
+    const objectives = (Array.isArray(mission.learningObjectives) ? mission.learningObjectives : [mission.learningObjective])
+        .filter(value => typeof value === "string" && value.trim()).map(value=>value.trim());
+    if (missionLearningGoal && missionLearningObjective) {
+        missionLearningObjective.replaceChildren();
+        if (objectives.length) {
+            const list = document.createElement("ul");
+            for (const objective of objectives) {
+                const item = document.createElement("li");item.textContent=objective;list.append(item);
+            }
+            missionLearningObjective.append(list);
         }
-
+        missionLearningGoal.hidden = !objectives.length;
     }
-
 
     /* ==================================
        MISSION XP
@@ -682,6 +687,8 @@ function selectMission(mission) {
      * and learning goal before opening it.
      */
 
+    missionTitle.tabIndex = -1;
+    missionTitle.focus({preventScroll:true});
     const introductionCard =
         document.querySelector(
             ".mission-introduction-card"
@@ -992,7 +999,7 @@ function displayMissionPath(
         );
 
 
-    if (chapterChallengeUnlocked) {
+    if (chapterChallengeUnlocked || globalThis.__lakbayExplorationPreview===true) {
 
         challengeItem.className =
             "mission-path-item chapter-challenge unlocked";
@@ -1092,10 +1099,8 @@ function displayMissionPath(
 
     } else {
 
-        challengeItem.className =
-    isChapterChallengeCompleted
-        ? "mission-path-item chapter-challenge completed"
-        : "mission-path-item chapter-challenge unlocked";
+        challengeItem.className = "mission-path-item chapter-challenge locked";
+        challengeItem.setAttribute("aria-disabled", "true");
 
 
         challengeItem.innerHTML = `
@@ -1146,6 +1151,7 @@ function makeMissionSelectable(
     item,
     mission
 ) {
+    item.setAttribute("aria-pressed",String(mission.id === selectedMissionId));
 
     item.style.cursor =
         "pointer";
@@ -1217,6 +1223,7 @@ function makeMissionSelectable(
 ========================================== */
 
 function showError(message) {
+    if (retryMissionLoadButton) retryMissionLoadButton.hidden = !auth.currentUser;
 
     if (missionLoading) {
 
@@ -1269,63 +1276,31 @@ function escapeHtml(value) {
 
 
 /* ==========================================
-   MOBILE SIDEBAR
-========================================== */
-
-const mobileMenuButton =
-    document.getElementById(
-        "mobileMenuButton"
-    );
-
-
-const sidebar =
-    document.querySelector(
-        ".sidebar"
-    );
-
-
-if (
-    mobileMenuButton &&
-    sidebar
-) {
-
-    mobileMenuButton.addEventListener(
-        "click",
-        () => {
-
-            sidebar.classList.toggle(
-                "open"
-            );
-
-        }
-    );
-
-}
-
-
-/* ==========================================
    START
    WAIT FOR FIREBASE AUTH
 ========================================== */
 
-onAuthStateChanged(
-    auth,
-    (user) => {
-
-        if (user) {
-
-            console.log(
-                "Mission page authenticated user:",
-                user.uid
-            );
-
-
-            loadMissionPage();
-
-        }
-
+retryMissionLoadButton?.addEventListener("click", () => loadMissionPage());
+window.addEventListener("pageshow", event => {
+    if (event.persisted && auth.currentUser) loadMissionPage();
+});
+onAuthStateChanged(auth, user => {
+    if (!user) {
+        missionUserId = null;
+        missionLoadGeneration++;
+        loadedMissionStates = [];
+        selectedMissionId = null;
+        isChapterChallengeUnlocked = false;
+        isChapterChallengeCompleted = false;
+        missionPath.replaceChildren();
+        beginMissionButton.onclick = null;
+        showError("Please sign in to view your missions.");
+        return;
     }
-);
+    if (missionUserId === user.uid) return;
+    missionUserId = user.uid;
+    loadMissionPage();
+});
 
 /* ==========================================
    CHECK STUDENT CHAPTER ACCESS

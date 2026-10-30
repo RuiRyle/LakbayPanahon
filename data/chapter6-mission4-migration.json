@@ -1,0 +1,1317 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 2 Chapter 6 Mission 4 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://www.philembassymadrid.com/qa-anduaga",
+    "https://lrmds.deped.gov.ph/detail/19794",
+    "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+    "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-5",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-5",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/first-encounters-investigator",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter5-mission1",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter5-mission2",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter5-mission3",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter5-mission4",
+      "expected": {
+        "chapterId": "chapter-5",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter6-mission1",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter6-mission2",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter6-mission3",
+      "expected": {
+        "chapterId": "chapter-6",
+        "status": "active",
+        "order": 3
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter6-mission4",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-6",
+        "title": "The Meaning, Motives, and Methods of Colonization",
+        "order": 4,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate continuing outside authority and distinguish its aims, methods and effects on people.",
+        "learningObjective": "Explain colonization by separating meaning, motives, methods, effects and source viewpoints.",
+        "learningObjectives": [
+          "Explain meaning of colonization using lesson evidence.",
+          "Explain colonial motives using lesson evidence.",
+          "Explain methods of authority using lesson evidence.",
+          "Explain effects and local responses using lesson evidence.",
+          "Explain checking reports using lesson evidence."
+        ],
+        "lessonRecap": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "sourceUrls": [
+          "https://www.philembassymadrid.com/qa-anduaga",
+          "https://lrmds.deped.gov.ph/detail/19794",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter6-quiz4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission4",
+        "title": "Colonization Explanation - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 4,
+        "questionBlueprint": [
+          {
+            "topic": "colonization-meaning",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "colonization-motives",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "colonization-methods",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "colonization-effects-and-responses",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "colonization-source-check",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission4-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission4",
+        "status": "active",
+        "order": 1,
+        "title": "What Makes Rule Colonial?",
+        "content": "An expedition is a journey. A settlement is a continuing base. Colonization involves an outside power establishing and maintaining authority over a place and its people. These ideas connect, but they are not interchangeable. A ship arriving or a new name appearing in an account does not alone establish continuing rule.\n\nYour Cebu and Manila investigations showed colonial bases in existing societies. People already had leaders, connections and histories. Explaining colonization should identify the outside authority and how it attempted to organize power over people, without treating the communities as empty land.\n\nTry a fictional report check. One card describes a passing ship. Another describes outside officials establishing continuing governing duties. Ask which action supports a claim about colonial rule and what further evidence would show its actual reach. The cards are teaching examples, not original records.\n\nA definition helps classify the claim; evidence still determines what happened in each place.",
+        "reviewTopics": [
+          "colonization-meaning"
+        ],
+        "imageUrl": "../assets/story/colonization-meaning.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern comparison guide for What Makes Rule Colonial?. It separates evidence categories and their limits; it is not an original historical image, speech or map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A journey",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A visiting expedition is not by itself evidence of continuing rule.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A relationship of power",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Colonization involves an outside power establishing and maintaining authority over a place and people.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Existing communities did not begin with colonial institutions, and a claim still needs evidence of its reach.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which description most directly concerns colonization rather than only a visit?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "An outside power establishing and maintaining authority over a place and people",
+          "A ship briefly passing a shore",
+          "Any voluntary exchange between equal trading partners",
+          "A new name that creates every community's history"
+        ],
+        "decisionCorrectAnswer": "An outside power establishing and maintaining authority over a place and people",
+        "decisionExplanation": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "keyTerm": "Colonization",
+        "keyTermDefinition": "The process of an outside power establishing and maintaining authority over a place and its people.",
+        "historicalInsight": "Existing communities did not begin with colonial institutions, and a claim still needs evidence of its reach.",
+        "learningHelp": {
+          "explanation": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "vocabulary": [
+            {
+              "term": "Colonization",
+              "definition": "The process of an outside power establishing and maintaining authority over a place and its people."
+            }
+          ],
+          "example": "A visiting expedition is not by itself evidence of continuing rule.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.philembassymadrid.com/qa-anduaga",
+          "https://lrmds.deped.gov.ph/detail/19794",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission4-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission4",
+        "status": "active",
+        "order": 2,
+        "title": "Why Did Sponsors Seek Rule?",
+        "content": "Motives explain why people or institutions sought an action. Spanish imperial plans included economic interests, political power and religious aims. Trade access, influence and spreading Catholic Christianity could be connected, but this does not mean every participant had identical priorities.\n\nThe Philippine Embassy in Madrid's historical discussion identifies religious, economic and geopolitical motives. Geopolitical means connected with power and relationships between places. Use these as categories for questions, not as a formula that reads everyone's private thoughts.\n\nWatch how to check a fictional sponsor card. If it says a sponsor wants access to trade, identify an economic aim. Do not write that the aim proves a profitable result or makes domination acceptable. Naming a religious aim also does not establish that everyone adopted the religion.\n\nStudents can study these aims without practising a faith. Explain a motive with a source and keep it separate from the method used and the result achieved.",
+        "reviewTopics": [
+          "colonization-motives"
+        ],
+        "imageUrl": "../assets/story/colonization-aim-method-effect.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern comparison guide for Why Did Sponsors Seek Rule?. It separates evidence categories and their limits; it is not an original historical image, speech or map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Economic aims",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Trade access and resources could be sought; wanting them is not proof of obtaining them.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Political and religious aims",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Influence and spreading Catholic Christianity were among imperial aims. Participants could have different priorities.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Explain without excusing",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Identifying a motive does not justify coercion or establish every resident's consent.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A fictional sponsor seeks more trade access. What can the card establish?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Proof that every voyage made a profit",
+          "Proof of every local person's consent",
+          "A reason to ignore the method used",
+          "An economic aim, not a guaranteed result or justification for coercion"
+        ],
+        "decisionCorrectAnswer": "An economic aim, not a guaranteed result or justification for coercion",
+        "decisionExplanation": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "keyTerm": "Motive",
+        "keyTermDefinition": "A reason for wanting or attempting an action.",
+        "historicalInsight": "Identifying a motive does not justify coercion or establish every resident's consent.",
+        "learningHelp": {
+          "explanation": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "vocabulary": [
+            {
+              "term": "Motive",
+              "definition": "A reason for wanting or attempting an action."
+            }
+          ],
+          "example": "Trade access and resources could be sought; wanting them is not proof of obtaining them.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.philembassymadrid.com/qa-anduaga",
+          "https://lrmds.deped.gov.ph/detail/19794",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission4-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission4",
+        "status": "active",
+        "order": 3,
+        "title": "How Was Authority Pursued?",
+        "content": "A method is a way of trying to achieve an aim. Colonial authority could be pursued through force, agreements, governing offices and religious institutions. These could interact. Their exact operation varied across places and periods.\n\nThe DepEd learning resource lists military force, tribute, encomienda and compulsory labor among topics for investigating subjection to Spanish authority. This mission introduces the categories; later chapters examine the systems and their changing rules. Tribute means a required payment to an authority. Naming it here does not establish who paid what amount in every place.\n\nTry sorting a fictional report. Wanting influence is an aim. Creating an office that issues decisions is a method. Evidence about what happened to families afterward concerns effects. A payment demand is not automatically a freely chosen gift.\n\nCheck the action rather than judging by an official's favorable label. A recorded agreement needs its participants and context, especially where force or pressure was involved.",
+        "reviewTopics": [
+          "colonization-methods"
+        ],
+        "imageUrl": "../assets/story/colonization-methods.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern comparison guide for How Was Authority Pursued?. It separates evidence categories and their limits; it is not an original historical image, speech or map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Ways of pursuing authority",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Force, agreements and institutions could be used in efforts to maintain rule.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A required payment",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Tribute is a payment required by an authority, different from assuming a voluntary gift.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Keep the context",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One method's existence does not establish identical operation, consent or results everywhere.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which example describes a method rather than only a motive?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Hoping that a voyage will bring profit",
+          "A later family experience without describing the policy",
+          "Creating a governing office to issue and carry out decisions",
+          "Wanting more influence without taking any action"
+        ],
+        "decisionCorrectAnswer": "Creating a governing office to issue and carry out decisions",
+        "decisionExplanation": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "keyTerm": "Method",
+        "keyTermDefinition": "A way of trying to carry out a purpose.",
+        "historicalInsight": "One method's existence does not establish identical operation, consent or results everywhere.",
+        "learningHelp": {
+          "explanation": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "vocabulary": [
+            {
+              "term": "Method",
+              "definition": "A way of trying to carry out a purpose."
+            }
+          ],
+          "example": "Force, agreements and institutions could be used in efforts to maintain rule.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.philembassymadrid.com/qa-anduaga",
+          "https://lrmds.deped.gov.ph/detail/19794",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission4-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission4",
+        "status": "active",
+        "order": 4,
+        "title": "What Changed, and for Whom?",
+        "content": "An effect is a consequence of an action or arrangement. Effects are not always the outcomes sponsors intended. Asking what changed must include the people affected, not just whether an official achieved a goal.\n\nA required payment could place demands on household resources. To explain its actual effect, check evidence of the requirement, collection and families' circumstances. Do not invent a single amount or burden for every community. People could negotiate, adapt or resist, as you studied in Mission 3.\n\nUse a fictional family-record exercise. A record notes that goods were collected and that a household had fewer goods afterward. This supports a particular consequence in that example. More evidence is needed for a claim that all families had exactly that experience or that we know everyone's thoughts.\n\nCompare different perspectives: an official may describe revenue, while affected people experience obligations. A report can examine both without treating the official account as the only story or making all local responses identical.",
+        "reviewTopics": [
+          "colonization-effects-and-responses"
+        ],
+        "imageUrl": "../assets/story/colonization-effects.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern comparison guide for What Changed, and for Whom?. It separates evidence categories and their limits; it is not an original historical image, speech or map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A consequence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Effects concern what followed from an action, not only what its sponsor wanted.",
+            "icon": "🔎"
+          },
+          {
+            "title": "People and evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Investigate who was affected, in what place and time, rather than invent a universal burden.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Local responses",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Negotiation, adaptation and resistance could vary. One response does not reveal every person's private motive.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which question best investigates an effect of a required payment?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Which invented speech can replace the missing evidence?",
+          "What happened to affected households' resources, according to evidence?",
+          "What did an official hope would happen, without checking results?",
+          "Why must every household have had identical experiences?"
+        ],
+        "decisionCorrectAnswer": "What happened to affected households' resources, according to evidence?",
+        "decisionExplanation": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "keyTerm": "Effect",
+        "keyTermDefinition": "A consequence of an action, event or arrangement.",
+        "historicalInsight": "Negotiation, adaptation and resistance could vary. One response does not reveal every person's private motive.",
+        "learningHelp": {
+          "explanation": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "vocabulary": [
+            {
+              "term": "Effect",
+              "definition": "A consequence of an action, event or arrangement."
+            }
+          ],
+          "example": "Effects concern what followed from an action, not only what its sponsor wanted.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.philembassymadrid.com/qa-anduaga",
+          "https://lrmds.deped.gov.ph/detail/19794",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission4-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission4",
+        "status": "active",
+        "order": 5,
+        "title": "Check the Colonial Report",
+        "content": "A source can describe aims, methods or effects, but it may emphasize one viewpoint. An official report saying a policy brought peace does not by itself show that every person freely accepted it. Compare its claim with evidence of actions and local responses.\n\nThe Library of Congress account of early colonial relationships highlights local interests and negotiation alongside Spanish aims and coercion. It helps us ask whose participation and choices are missing from a simple story of one-sided control. This does not mean every account is useless; it means a claim must fit what the source can establish.\n\nWork through a fictional exhibit caption: A new office was created, so all islands happily obeyed. The first clause describes an institution. The second adds claims about reach and feelings that need separate evidence. Correct the caption instead of inventing a speech to support it.\n\nExplaining colonization is not a game of choosing which people are worth more. Use evidence, name harms and keep uncertainty visible without erasing anyone's history.",
+        "reviewTopics": [
+          "colonization-source-check"
+        ],
+        "imageUrl": "../assets/story/colonization-aim-method-effect.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern comparison guide for Check the Colonial Report. It separates evidence categories and their limits; it is not an original historical image, speech or map.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Identify the claim",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask whether a statement names an aim, a method or a claimed effect.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Look for the missing link",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An office or order does not establish universal enforcement or everyone's feelings.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Use the source responsibly",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Name its viewpoint, compare evidence and identify what remains uncertain.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A report says an office was established, so all communities willingly obeyed. What needs checking?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The separate claims about enforcement and consent",
+          "Only whether the office had a long name",
+          "Nothing, because an institution proves universal approval",
+          "Which fictional speech can be treated as original"
+        ],
+        "decisionCorrectAnswer": "The separate claims about enforcement and consent",
+        "decisionExplanation": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "keyTerm": "Source viewpoint",
+        "keyTermDefinition": "The position and interests reflected in an account.",
+        "historicalInsight": "Name its viewpoint, compare evidence and identify what remains uncertain.",
+        "learningHelp": {
+          "explanation": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "vocabulary": [
+            {
+              "term": "Source viewpoint",
+              "definition": "The position and interests reflected in an account."
+            }
+          ],
+          "example": "Ask whether a statement names an aim, a method or a claimed effect.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.philembassymadrid.com/qa-anduaga",
+          "https://lrmds.deped.gov.ph/detail/19794",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter6-mission4-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission4",
+        "status": "active",
+        "order": 6,
+        "title": "Your Colonization Explanation",
+        "content": "Complete your explanation using three connected questions. What did an authority seek? What actions or institutions were used? What happened to the people affected? Keep colonization's continuing outside authority distinct from a brief visit, and keep earlier local histories visible.\n\nUse a named example from this chapter without turning it into a universal pattern. Settlements, connections, demands and local responses must be explained in their settings. An aim does not guarantee an outcome. A method does not establish everyone's consent. A particular effect does not describe all families.\n\nTry this fictional report frame in your own words: The stated aim was [aim]. The action used was [method]. Evidence about [people, place and time] shows [effect or response]. It does not establish [unsupported claim]. The frame is a classroom tool, not an original speech.\n\nUse the mission quiz to check what you learned. If a topic is difficult, revisit its lesson and try targeted practice before another quiz attempt. Passing earns the mission reward once. Complete all missions, then pass the chapter challenge to earn the chapter badge.",
+        "reviewTopics": [
+          "colonization-meaning",
+          "colonization-motives",
+          "colonization-methods",
+          "colonization-effects-and-responses",
+          "colonization-source-check"
+        ],
+        "imageUrl": "../assets/story/colonization-aim-method-effect.svg",
+        "imageFit": "contain",
+        "imageAlt": "Three separate report columns distinguish an aim, the method used and the observed effect. A completed mission is not a passed chapter challenge.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Define the relationship",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Distinguish continuing outside authority from arrival or naming alone.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Connect the categories",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Explain an aim, method and effect rather than treating them as interchangeable.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Include people and limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Use local evidence, identify the source viewpoint and avoid inventing universal consent.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which final report follows the evidence carefully?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat every imperial aim as a guaranteed result",
+          "Assume one institution proves every resident agreed",
+          "Replace missing evidence with an invented original speech",
+          "Separate continuing authority, aims, methods and effects, and include local responses and source limits"
+        ],
+        "decisionCorrectAnswer": "Separate continuing authority, aims, methods and effects, and include local responses and source limits",
+        "decisionExplanation": "A supported explanation links aims, methods and effects with particular people and evidence, while recognizing source limits.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A supported explanation links aims, methods and effects with particular people and evidence, while recognizing source limits.",
+        "keyTerm": "Supported explanation",
+        "keyTermDefinition": "An explanation whose claims are connected to evidence and stated limits.",
+        "historicalInsight": "Use local evidence, identify the source viewpoint and avoid inventing universal consent.",
+        "learningHelp": {
+          "explanation": "A supported explanation links aims, methods and effects with particular people and evidence, while recognizing source limits.",
+          "vocabulary": [
+            {
+              "term": "Supported explanation",
+              "definition": "An explanation whose claims are connected to evidence and stated limits."
+            }
+          ],
+          "example": "Distinguish continuing outside authority from arrival or naming alone.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.philembassymadrid.com/qa-anduaga",
+          "https://lrmds.deped.gov.ph/detail/19794",
+          "https://ncca.gov.ph/about-culture-and-arts/in-focus/philippines-gateway-to-the-orient-from-legazpi-to-malaspina/",
+          "https://blogs.loc.gov/international-collections/2021/10/negotiating-empire-part-i-from-magellan-to-the-founding-of-manila-16th-18th-centuries/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz4-question1",
+      "create": true,
+      "fields": {
+        "question": "What distinguishes colonization from a brief visit?",
+        "optionA": "An outside power establishing continuing authority over people and place",
+        "optionB": "Only a ship arriving for one day",
+        "optionC": "Any exchange between traders",
+        "optionD": "A new name that creates local history",
+        "correctAnswer": "A",
+        "explanation": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "learningPoint": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "historicalClue": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "answerExplanations": {
+          "A": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "B": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "C": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "D": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach."
+        },
+        "quizId": "chapter6-quiz4",
+        "order": 1,
+        "status": "active",
+        "topic": "colonization-meaning",
+        "topicLabel": "Meaning of colonization",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz4-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "A record shows a passing ship but no continuing authority. What is supported?",
+        "optionA": "Proof of universal colonial control",
+        "optionB": "Proof that all residents consented",
+        "optionC": "Evidence that no community existed before",
+        "optionD": "Evidence of a visit, not enough by itself to establish colonial rule",
+        "correctAnswer": "D",
+        "explanation": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "learningPoint": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "historicalClue": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "B": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "C": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "D": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach."
+        },
+        "quizId": "chapter6-quiz4",
+        "order": 101,
+        "status": "active",
+        "topic": "colonization-meaning",
+        "topicLabel": "Meaning of colonization",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission4-colonization-meaning-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which description most directly concerns colonization rather than only a visit?",
+        "optionA": "A ship briefly passing a shore",
+        "optionB": "Any voluntary exchange between equal trading partners",
+        "optionC": "A new name that creates every community's history",
+        "optionD": "An outside power establishing and maintaining authority over a place and people",
+        "correctAnswer": "D",
+        "explanation": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "learningPoint": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "historicalClue": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "B": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "C": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "D": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach."
+        },
+        "missionId": "chapter6-mission4",
+        "topic": "colonization-meaning",
+        "topicLabel": "Meaning of colonization",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The process of an outside power establishing and maintaining authority over a place and its people.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission4-colonization-meaning-practice2",
+      "create": true,
+      "fields": {
+        "question": "A map labels a place as a colony without evidence about institutions or actions. What should a learner ask?",
+        "optionA": "Which colour guarantees historical accuracy",
+        "optionB": "Why local evidence is unnecessary",
+        "optionC": "How authority was established and maintained in that place",
+        "optionD": "Why the label proves everyone obeyed",
+        "correctAnswer": "C",
+        "explanation": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "learningPoint": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "historicalClue": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "B": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "C": "Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach.",
+          "D": "Review the lesson clues. Colonization concerns continuing outside authority. A visit, name or claim alone does not establish its actual reach."
+        },
+        "missionId": "chapter6-mission4",
+        "topic": "colonization-meaning",
+        "topicLabel": "Meaning of colonization",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The process of an outside power establishing and maintaining authority over a place and its people.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz4-question2",
+      "create": true,
+      "fields": {
+        "question": "Which statement describes a motive?",
+        "optionA": "An office was established to issue decisions",
+        "optionB": "Goods were collected from a household",
+        "optionC": "A family had fewer goods after collection",
+        "optionD": "A sponsor sought trade access and political influence",
+        "correctAnswer": "D",
+        "explanation": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "learningPoint": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "historicalClue": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "B": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "C": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "D": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification."
+        },
+        "quizId": "chapter6-quiz4",
+        "order": 2,
+        "status": "active",
+        "topic": "colonization-motives",
+        "topicLabel": "Colonial motives",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz4-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "What does identifying a religious aim fail to establish?",
+        "optionA": "That participants could have priorities",
+        "optionB": "That a source can describe a sponsor's intention",
+        "optionC": "That everyone adopted the religion or freely consented to rule",
+        "optionD": "That an aim can be studied historically",
+        "correctAnswer": "C",
+        "explanation": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "learningPoint": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "historicalClue": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "B": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "C": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "D": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification."
+        },
+        "quizId": "chapter6-quiz4",
+        "order": 102,
+        "status": "active",
+        "topic": "colonization-motives",
+        "topicLabel": "Colonial motives",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission4-colonization-motives-practice1",
+      "create": true,
+      "fields": {
+        "question": "A fictional sponsor seeks more trade access. What can the card establish?",
+        "optionA": "Proof of every local person's consent",
+        "optionB": "A reason to ignore the method used",
+        "optionC": "An economic aim, not a guaranteed result or justification for coercion",
+        "optionD": "Proof that every voyage made a profit",
+        "correctAnswer": "C",
+        "explanation": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "learningPoint": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "historicalClue": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "B": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "C": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "D": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification."
+        },
+        "missionId": "chapter6-mission4",
+        "topic": "colonization-motives",
+        "topicLabel": "Colonial motives",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A reason for wanting or attempting an action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission4-colonization-motives-practice2",
+      "create": true,
+      "fields": {
+        "question": "An account names an economic aim and calls coercion justified. How should a report respond?",
+        "optionA": "Replace the account with invented dialogue",
+        "optionB": "Explain the aim separately from evaluating the method and its effects",
+        "optionC": "Assume wanting wealth makes all force acceptable",
+        "optionD": "Treat the aim as proof of universal consent",
+        "correctAnswer": "B",
+        "explanation": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "learningPoint": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "historicalClue": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "B": "Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "C": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification.",
+          "D": "Review the lesson clues. Imperial motives could include economic, political and religious aims. A desired result is not an achieved result or a justification."
+        },
+        "missionId": "chapter6-mission4",
+        "topic": "colonization-motives",
+        "topicLabel": "Colonial motives",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A reason for wanting or attempting an action.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz4-question3",
+      "create": true,
+      "fields": {
+        "question": "Which example most directly describes a method?",
+        "optionA": "Hoping for profitable trade",
+        "optionB": "Experiencing a later consequence",
+        "optionC": "Establishing an office to issue governing decisions",
+        "optionD": "Wanting more influence",
+        "correctAnswer": "C",
+        "explanation": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "learningPoint": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "historicalClue": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "B": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "C": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "D": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence."
+        },
+        "quizId": "chapter6-quiz4",
+        "order": 3,
+        "status": "active",
+        "topic": "colonization-methods",
+        "topicLabel": "Methods of authority",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz4-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "How should tribute be introduced in this mission?",
+        "optionA": "A complete explanation of every local response",
+        "optionB": "A required payment, with details needing evidence by place and period",
+        "optionC": "Always a freely chosen gift",
+        "optionD": "The same amount paid by every household in all periods",
+        "correctAnswer": "B",
+        "explanation": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "learningPoint": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "historicalClue": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "B": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "C": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "D": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence."
+        },
+        "quizId": "chapter6-quiz4",
+        "order": 103,
+        "status": "active",
+        "topic": "colonization-methods",
+        "topicLabel": "Methods of authority",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission4-colonization-methods-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which example describes a method rather than only a motive?",
+        "optionA": "A later family experience without describing the policy",
+        "optionB": "Creating a governing office to issue and carry out decisions",
+        "optionC": "Wanting more influence without taking any action",
+        "optionD": "Hoping that a voyage will bring profit",
+        "correctAnswer": "B",
+        "explanation": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "learningPoint": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "historicalClue": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "B": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "C": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "D": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence."
+        },
+        "missionId": "chapter6-mission4",
+        "topic": "colonization-methods",
+        "topicLabel": "Methods of authority",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A way of trying to carry out a purpose.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission4-colonization-methods-practice2",
+      "create": true,
+      "fields": {
+        "question": "A report labels a required payment a voluntary gift without checking context. What is missing?",
+        "optionA": "Evidence about the requirement, collection and pressure involved",
+        "optionB": "Only a more attractive label",
+        "optionC": "A claim that every payment is identical",
+        "optionD": "An invented statement of everyone's approval",
+        "correctAnswer": "A",
+        "explanation": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "learningPoint": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "historicalClue": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+        "answerExplanations": {
+          "A": "Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "B": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "C": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence.",
+          "D": "Review the lesson clues. Methods are actions or arrangements used to pursue an aim. Their operation and effects need place-specific evidence."
+        },
+        "missionId": "chapter6-mission4",
+        "topic": "colonization-methods",
+        "topicLabel": "Methods of authority",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A way of trying to carry out a purpose.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz4-question4",
+      "create": true,
+      "fields": {
+        "question": "Which statement most directly concerns an effect?",
+        "optionA": "Only a claim that an outcome was inevitable",
+        "optionB": "A documented consequence for people following a policy",
+        "optionC": "Only the sponsor's original wish",
+        "optionD": "Only the name of a governing office",
+        "correctAnswer": "B",
+        "explanation": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "learningPoint": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "historicalClue": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "B": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "C": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "D": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses."
+        },
+        "quizId": "chapter6-quiz4",
+        "order": 4,
+        "status": "active",
+        "topic": "colonization-effects-and-responses",
+        "topicLabel": "Effects and local responses",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz4-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why study household circumstances when examining a payment?",
+        "optionA": "Consequences can vary and need evidence about affected people",
+        "optionB": "All households necessarily had one identical experience",
+        "optionC": "An official's intention reveals every private feeling",
+        "optionD": "A policy name proves every effect",
+        "correctAnswer": "A",
+        "explanation": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "learningPoint": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "historicalClue": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "answerExplanations": {
+          "A": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "B": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "C": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "D": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses."
+        },
+        "quizId": "chapter6-quiz4",
+        "order": 104,
+        "status": "active",
+        "topic": "colonization-effects-and-responses",
+        "topicLabel": "Effects and local responses",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission4-colonization-effects-and-responses-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which question best investigates an effect of a required payment?",
+        "optionA": "What happened to affected households' resources, according to evidence?",
+        "optionB": "What did an official hope would happen, without checking results?",
+        "optionC": "Why must every household have had identical experiences?",
+        "optionD": "Which invented speech can replace the missing evidence?",
+        "correctAnswer": "A",
+        "explanation": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "learningPoint": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "historicalClue": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "answerExplanations": {
+          "A": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "B": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "C": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "D": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses."
+        },
+        "missionId": "chapter6-mission4",
+        "topic": "colonization-effects-and-responses",
+        "topicLabel": "Effects and local responses",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A consequence of an action, event or arrangement.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission4-colonization-effects-and-responses-practice2",
+      "create": true,
+      "fields": {
+        "question": "A fictional household record shows fewer goods after a collection. What conclusion stays within it?",
+        "optionA": "All families everywhere had the same loss",
+        "optionB": "No local response could occur",
+        "optionC": "The record proves everyone welcomed the collection",
+        "optionD": "That consequence is supported for the example; universal claims need more evidence",
+        "correctAnswer": "D",
+        "explanation": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "learningPoint": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "historicalClue": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "B": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "C": "Review the lesson clues. Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses.",
+          "D": "Investigate consequences for particular people using evidence. An official aim does not substitute for effects or local responses."
+        },
+        "missionId": "chapter6-mission4",
+        "topic": "colonization-effects-and-responses",
+        "topicLabel": "Effects and local responses",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A consequence of an action, event or arrangement.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz4-question5",
+      "create": true,
+      "fields": {
+        "question": "Why should an official's account be examined for viewpoint?",
+        "optionA": "It may emphasize aims while leaving local experiences or enforcement unclear",
+        "optionB": "All official accounts contain every person's thoughts",
+        "optionC": "A source label guarantees universal truth",
+        "optionD": "Viewpoint means every recorded event is false",
+        "correctAnswer": "A",
+        "explanation": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "learningPoint": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "historicalClue": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "answerExplanations": {
+          "A": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "B": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "C": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "D": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent."
+        },
+        "quizId": "chapter6-quiz4",
+        "order": 5,
+        "status": "active",
+        "topic": "colonization-source-check",
+        "topicLabel": "Checking reports",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter6-quiz4-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Which inference goes beyond evidence that an office was created?",
+        "optionA": "An institutional action was recorded",
+        "optionB": "The office can be investigated",
+        "optionC": "The account makes a specific claim",
+        "optionD": "Every community freely accepted and obeyed it",
+        "correctAnswer": "D",
+        "explanation": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "learningPoint": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "historicalClue": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "B": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "C": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "D": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent."
+        },
+        "quizId": "chapter6-quiz4",
+        "order": 105,
+        "status": "active",
+        "topic": "colonization-source-check",
+        "topicLabel": "Checking reports",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission4-colonization-source-check-practice1",
+      "create": true,
+      "fields": {
+        "question": "A report says an office was established, so all communities willingly obeyed. What needs checking?",
+        "optionA": "Only whether the office had a long name",
+        "optionB": "Nothing, because an institution proves universal approval",
+        "optionC": "Which fictional speech can be treated as original",
+        "optionD": "The separate claims about enforcement and consent",
+        "correctAnswer": "D",
+        "explanation": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "learningPoint": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "historicalClue": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "B": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "C": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "D": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent."
+        },
+        "missionId": "chapter6-mission4",
+        "topic": "colonization-source-check",
+        "topicLabel": "Checking reports",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The position and interests reflected in an account.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter6-mission4-colonization-source-check-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption jumps from an institution to universal consent. What is the best revision?",
+        "optionA": "Invent a historical speech to close the gap",
+        "optionB": "Remove all local people from the explanation",
+        "optionC": "State the institution and ask for separate evidence of reach and responses",
+        "optionD": "Keep both claims because they sound connected",
+        "correctAnswer": "C",
+        "explanation": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "learningPoint": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "historicalClue": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "B": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "C": "Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent.",
+          "D": "Review the lesson clues. Identify aims, methods and effects separately. Evidence of an institution alone cannot establish universal enforcement or consent."
+        },
+        "missionId": "chapter6-mission4",
+        "topic": "colonization-source-check",
+        "topicLabel": "Checking reports",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The position and interests reflected in an account.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter6-mission4-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter6-mission4",
+        "name": "Colonization Explanation Journal",
+        "description": "A learning-game token for explaining motives, methods and effects using evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 4,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish aims from methods and effects while keeping local people and evidence limits visible.",
+          "reflectionQuestion": "Which clue helped you distinguish what was wanted from what happened?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-6",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-3 cover the expedition, settlements and expansion with local responses. Mission 4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-4 cover the expedition, settlements, local responses and the meaning, motives and methods of colonization. The chapter challenge is being prepared."
+      }
+    },
+    {
+      "path": "eras/spanish-exploration-colonial-rule",
+      "create": false,
+      "expected": {
+        "description": "Chapter 5 offers four missions and an evidence challenge. Chapter 6 offers Missions 1-3 on the expedition, settlements and local responses; later content is being prepared."
+      },
+      "fields": {
+        "description": "Chapter 5 offers four missions and an evidence challenge. Chapter 6 offers four missions on the establishment and methods of colonial rule; its chapter challenge and later content are being prepared."
+      }
+    }
+  ]
+}

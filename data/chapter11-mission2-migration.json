@@ -1,0 +1,1301 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 11 Mission 2 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+    "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html",
+    "https://link.springer.com/article/10.1007/s11457-025-09481-3"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-10",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-10",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/social-cultural-investigator",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter10-mission1",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter10-mission2",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter10-mission3",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter10-mission4",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter10-mission5",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 5
+      }
+    },
+    {
+      "path": "missions/chapter11-mission1",
+      "expected": {
+        "chapterId": "chapter-11",
+        "status": "active",
+        "order": 1
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter11-mission2",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-11",
+        "title": "Muslim Polities and Communities in Mindanao and Sulu",
+        "order": 2,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate distinct polities, Kudarats leadership, trading communities, diplomacy and historical perspectives.",
+        "learningObjective": "Explain Muslim polities and varied community experiences through dated leadership, trade and diplomatic evidence.",
+        "learningObjectives": [
+          "Explain distinct polities, connected communities using lesson evidence.",
+          "Explain a named leader: sultan kudarat using lesson evidence.",
+          "Explain trade connected people and work using lesson evidence.",
+          "Explain an agreement needed follow-up evidence using lesson evidence.",
+          "Explain communities were more than labels using lesson evidence."
+        ],
+        "lessonRecap": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html",
+          "https://link.springer.com/article/10.1007/s11457-025-09481-3"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter11-quiz2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission2",
+        "title": "Muslim Polities - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 2,
+        "questionBlueprint": [
+          {
+            "topic": "muslim-polities",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "kudarat-leadership",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "sulu-trade-work",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "treaties-practice",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "community-source-voices",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission2-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission2",
+        "status": "active",
+        "order": 1,
+        "title": "Distinct Polities, Connected Communities",
+        "content": "A polity is an organized political community. A sultanate is a polity headed by a sultan. Sulu and Maguindanao were distinct historical polities, not two names for one identical government. Communities in Mindanao and the Sulu islands also had different languages, livelihoods and local relationships. Religion alone does not describe every persons role or experience.\n\nOur labelled relationship guide keeps Sulu and Maguindanao separate while showing that connections could exist between them. It is not a territorial map or a modern boundary claim. Ask which ruler, community, place and period a source concerns before combining accounts. Do not treat all of Mindanao as one sultanate or assume every person belonged to one religion. This chapter studies institutions and people respectfully; students do not need to disclose ancestry or faith to complete the investigation.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "muslim-polities"
+        ],
+        "imageUrl": "../assets/story/muslim-polities-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Distinct Polities, Connected Communities. Labelled clues distinguish polities, actions and source limits; not a territorial map or an original treaty.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Political community",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A polity concerns organized authority; a sultanate is headed by a sultan.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Distinct examples",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Sulu and Maguindanao were separate polities with connections.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Variation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One religion or regional label does not describe every community or person.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A caption treats Sulu and Maguindanao as two names for one identical government. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Keep the distinct polities visible and investigate their particular connections",
+          "Treat every community in Mindanao as identical",
+          "Use religion to assign every persons role",
+          "Call the teaching diagram a modern boundary map"
+        ],
+        "decisionCorrectAnswer": "Keep the distinct polities visible and investigate their particular connections",
+        "decisionExplanation": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "keyTerm": "Polity",
+        "keyTermDefinition": "A community or group organized under a form of political authority.",
+        "historicalInsight": "One religion or regional label does not describe every community or person.",
+        "learningHelp": {
+          "explanation": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "vocabulary": [
+            {
+              "term": "Polity",
+              "definition": "A community or group organized under a form of political authority."
+            }
+          ],
+          "example": "A polity concerns organized authority; a sultanate is headed by a sultan.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html",
+          "https://link.springer.com/article/10.1007/s11457-025-09481-3"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission2-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission2",
+        "status": "active",
+        "order": 2,
+        "title": "A Named Leader: Sultan Kudarat",
+        "content": "The NHCP marker identifies Sultan Dipatuan Kudarat as a sultan of Maguindanao who ruled from 1619 to 1671. It describes links with Sulu, opposition to Spanish forces and a peace agreement in 1645. This named example shows that leadership could involve alliances, conflict and negotiation at different times.\n\nKeep the ruler, polity and period attached to the claim. A marker is a later public account, not the transcript of every meeting. We do not invent a speech or assume that a ruler spoke for every persons private wishes. The marker also does not turn the sultanate into the same thing as a present-day province named Sultan Kudarat. Our timeline identifies the dated leadership and agreement without drawing exact territorial borders or reenacting fighting. A fuller look at varied responses follows in Mission 4.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "kudarat-leadership"
+        ],
+        "imageUrl": "../assets/story/muslim-polities-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Named Leader: Sultan Kudarat. Labelled clues distinguish polities, actions and source limits; not a territorial map or an original treaty.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Named leadership",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The NHCP marker dates Kudarats rule to 1619-1671.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Several actions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The account includes alliance, opposition and a peace agreement in 1645.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Source limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A later marker does not record every conversation or local response.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the Kudarat example help show?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "All relations were only war forever",
+          "Every local person had identical wishes",
+          "A historical sultanate was identical to a modern province",
+          "Leadership could include alliance, opposition and negotiation in a dated setting"
+        ],
+        "decisionCorrectAnswer": "Leadership could include alliance, opposition and negotiation in a dated setting",
+        "decisionExplanation": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "keyTerm": "Alliance",
+        "keyTermDefinition": "A relationship in which parties agree to work together for particular purposes.",
+        "historicalInsight": "A later marker does not record every conversation or local response.",
+        "learningHelp": {
+          "explanation": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "vocabulary": [
+            {
+              "term": "Alliance",
+              "definition": "A relationship in which parties agree to work together for particular purposes."
+            }
+          ],
+          "example": "The NHCP marker dates Kudarats rule to 1619-1671.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html",
+          "https://link.springer.com/article/10.1007/s11457-025-09481-3"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission2-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission2",
+        "status": "active",
+        "order": 3,
+        "title": "Trade Connected People and Work",
+        "content": "Sulu was part of exchange networks, including connections with China, Maguindanao and Brunei. A maritime-history study describes these connections and the work behind goods moving through them. A sea route should not make us imagine empty islands or people whose lives consisted only of conflict. Producers, crews, traders and households had different activities and positions.\n\nThe same history also includes raids, captivity and coerced labor. Coerced means forced rather than freely chosen. These caused harm and should not be hidden behind a story of valuable cargo. Nor should the actions of particular people be assigned to every Muslim or every member of a community. Our source guide names exchange, work and unequal conditions without graphic scenes or a game of taking captives. We award careful historical explanation, never harm. One trading account does not establish every workers consent, payment or household outcome.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "sulu-trade-work"
+        ],
+        "imageUrl": "../assets/story/muslim-polities-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Trade Connected People and Work. Labelled clues distinguish polities, actions and source limits; not a territorial map or an original treaty.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Connections",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Sulu had trading relationships with neighboring polities and wider markets.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Work and conditions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Exchange depended on work, which could include unequal and forced conditions.",
+            "icon": "🔎"
+          },
+          {
+            "title": "No stereotype",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Specific harmful actions do not define every person of a religion or community.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A cargo total is used to say all workers freely benefited. What should be checked?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Whether every Muslim had one occupation",
+          "Whether all communities shared one private motive",
+          "Work, consent, payment and unequal conditions for the people involved",
+          "Nothing because valuable trade proves fairness"
+        ],
+        "decisionCorrectAnswer": "Work, consent, payment and unequal conditions for the people involved",
+        "decisionExplanation": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "keyTerm": "Trade network",
+        "keyTermDefinition": "People and places connected through exchange of goods.",
+        "historicalInsight": "Specific harmful actions do not define every person of a religion or community.",
+        "learningHelp": {
+          "explanation": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "vocabulary": [
+            {
+              "term": "Trade network",
+              "definition": "People and places connected through exchange of goods."
+            }
+          ],
+          "example": "Sulu had trading relationships with neighboring polities and wider markets.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html",
+          "https://link.springer.com/article/10.1007/s11457-025-09481-3"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission2-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission2",
+        "status": "active",
+        "order": 4,
+        "title": "An Agreement Needed Follow-up Evidence",
+        "content": "Polities could use diplomacy as well as face conflict. An agreement records terms or commitments. It does not automatically show how every term worked in practice or that every community had the same understanding. Ask who made it, when, which version you are reading and what evidence describes implementation.\n\nSaleebys History of Sulu presents both Spanish and Sulu-text translations for the 1878 agreement. Their presence reminds us to inspect versions and perspectives rather than treat one wording as everyones complete experience. This mission does not settle every clause or a present-day territorial dispute. Our fictional source desk separates an agreement text, a later action record and a report of local conditions. Match each to what it can establish. A request for peace does not erase earlier harm, and signing does not guarantee equal power or permanent peace.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "treaties-practice"
+        ],
+        "imageUrl": "../assets/story/muslim-polities-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for An Agreement Needed Follow-up Evidence. Labelled clues distinguish polities, actions and source limits; not a territorial map or an original treaty.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Terms",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An agreement records commitments or claims.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Versions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Check which text, translation and perspective a source presents.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Practice",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Implementation and local effects need evidence beyond signing.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An agreement text is used to claim all terms worked identically everywhere. What should be checked?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The text settles all present-day legal questions",
+          "Versions, implementation and local effects in the particular period",
+          "Nothing because signing guarantees every outcome",
+          "Every private motive can be read from one signature"
+        ],
+        "decisionCorrectAnswer": "Versions, implementation and local effects in the particular period",
+        "decisionExplanation": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "keyTerm": "Diplomacy",
+        "keyTermDefinition": "Managing relationships through communication and negotiation.",
+        "historicalInsight": "Implementation and local effects need evidence beyond signing.",
+        "learningHelp": {
+          "explanation": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "vocabulary": [
+            {
+              "term": "Diplomacy",
+              "definition": "Managing relationships through communication and negotiation."
+            }
+          ],
+          "example": "An agreement records commitments or claims.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html",
+          "https://link.springer.com/article/10.1007/s11457-025-09481-3"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission2-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission2",
+        "status": "active",
+        "order": 5,
+        "title": "Communities Were More Than Labels",
+        "content": "Communities include people with varied roles and histories. The Sulu research discusses distinct groups, including Sama and Tausug, rather than one identical island population. Even a named group does not mean every member had one occupation, status or response. A ruler account is not automatically every households voice.\n\nHistorical sources also have perspectives. Saleebys 1908 book was produced in an American colonial setting and contains dated judgments; a later marker commemorates a leader; a research article asks its own questions. Compare them carefully and keep the source date visible. Our fictional portfolio has a ruler summary, an exchange entry and a community account. Each can help with some questions and leave gaps. We do not ask students to adopt a faith or repeat insulting colonial labels. Explain particular actions with evidence while respecting peoples dignity.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "community-source-voices"
+        ],
+        "imageUrl": "../assets/story/muslim-polities-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Communities Were More Than Labels. Labelled clues distinguish polities, actions and source limits; not a territorial map or an original treaty.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Diversity",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Sama, Tausug and other communities cannot be reduced to one identical experience.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Perspective",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A source has a maker, purpose and date.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A ruler, institution or category does not automatically speak for every person.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A ruler summary is used as every households complete story. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Keep its scope and seek evidence about other roles and experiences",
+          "Assume every person shared identical conditions",
+          "Replace all local names with one stereotype",
+          "Treat a source as having no date or purpose"
+        ],
+        "decisionCorrectAnswer": "Keep its scope and seek evidence about other roles and experiences",
+        "decisionExplanation": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "keyTerm": "Source perspective",
+        "keyTermDefinition": "The standpoint and purpose from which a source presents information.",
+        "historicalInsight": "A ruler, institution or category does not automatically speak for every person.",
+        "learningHelp": {
+          "explanation": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "vocabulary": [
+            {
+              "term": "Source perspective",
+              "definition": "The standpoint and purpose from which a source presents information."
+            }
+          ],
+          "example": "Sama, Tausug and other communities cannot be reduced to one identical experience.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html",
+          "https://link.springer.com/article/10.1007/s11457-025-09481-3"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter11-mission2-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission2",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Polities and Communities Report",
+        "content": "Review five ideas. Sulu and Maguindanao were distinct polities with connections. Kudarats dated leadership included alliance, opposition and negotiation. Trade involved people and work, including conditions that could be unequal or forced. Treaty texts need follow-up evidence of practice. Communities and sources contain different roles and perspectives.\n\nPrepare a fictional report for another Grade 5 learner. Name the polity, community, place and period. Connect a claim to a supporting clue and explain a limit. Do not merge every community into one government, erase harm behind valuable cargo, or turn particular harmful actions into a stereotype about a religion. Keep agreement texts separate from actual outcomes and historical questions separate from present-day legal claims.\n\nThe main quiz has five questions and three correct passes. Return to linked learning content before practice and a retry if needed. Completing this mission earns its configured reward once, but does not complete Chapter 11. Missions 3-4 and the chapter challenge are still being prepared.",
+        "reviewTopics": [
+          "muslim-polities",
+          "kudarat-leadership",
+          "sulu-trade-work",
+          "treaties-practice",
+          "community-source-voices"
+        ],
+        "imageUrl": "../assets/story/muslim-polities-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Communities Were More Than Labels. Labelled clues distinguish polities, actions and source limits; not a territorial map or an original treaty.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Diversity",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Sama, Tausug and other communities cannot be reduced to one identical experience.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Perspective",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A source has a maker, purpose and date.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A ruler, institution or category does not automatically speak for every person.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best uses this mission?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat every Muslim as having one role",
+          "Call every agreement proof of equal power and lasting peace",
+          "Use one ruler as every households complete history",
+          "Keep distinct polities, people, actions and dated evidence visible without stereotypes"
+        ],
+        "decisionCorrectAnswer": "Keep distinct polities, people, actions and dated evidence visible without stereotypes",
+        "decisionExplanation": "Explain distinct polities and communities through leadership, trade, diplomacy and source evidence while respecting dignity and limits.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain distinct polities and communities through leadership, trade, diplomacy and source evidence while respecting dignity and limits.",
+        "keyTerm": "Source perspective",
+        "keyTermDefinition": "The standpoint and purpose from which a source presents information.",
+        "historicalInsight": "A ruler, institution or category does not automatically speak for every person.",
+        "learningHelp": {
+          "explanation": "Explain distinct polities and communities through leadership, trade, diplomacy and source evidence while respecting dignity and limits.",
+          "vocabulary": [
+            {
+              "term": "Source perspective",
+              "definition": "The standpoint and purpose from which a source presents information."
+            }
+          ],
+          "example": "Sama, Tausug and other communities cannot be reduced to one identical experience.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/sultan-dipatuan-kudarat-c-1590-1671/",
+          "https://www.gutenberg.org/cache/epub/41771/pg41771-images.html",
+          "https://link.springer.com/article/10.1007/s11457-025-09481-3"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz2-question1",
+      "create": true,
+      "fields": {
+        "question": "What is a sultanate?",
+        "optionA": "A polity headed by a sultan",
+        "optionB": "Every community with one identical culture",
+        "optionC": "A modern province in every period",
+        "optionD": "A guarantee that everyone has equal power",
+        "correctAnswer": "A",
+        "explanation": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "learningPoint": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "historicalClue": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "answerExplanations": {
+          "A": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "B": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "C": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "D": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person."
+        },
+        "quizId": "chapter11-quiz2",
+        "order": 1,
+        "status": "active",
+        "topic": "muslim-polities",
+        "topicLabel": "Distinct Polities, Connected Communities",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz2-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why identify the polity and period before comparing rulers?",
+        "optionA": "Every ruler had the same role everywhere",
+        "optionB": "One region had one unchanged government",
+        "optionC": "Religion explains every private motive",
+        "optionD": "Different institutions and people need their own historical setting",
+        "correctAnswer": "D",
+        "explanation": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "learningPoint": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "historicalClue": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "B": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "C": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "D": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person."
+        },
+        "quizId": "chapter11-quiz2",
+        "order": 101,
+        "status": "active",
+        "topic": "muslim-polities",
+        "topicLabel": "Distinct Polities, Connected Communities",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission2-muslim-polities-practice1",
+      "create": true,
+      "fields": {
+        "question": "A caption treats Sulu and Maguindanao as two names for one identical government. What correction fits?",
+        "optionA": "Treat every community in Mindanao as identical",
+        "optionB": "Use religion to assign every persons role",
+        "optionC": "Call the teaching diagram a modern boundary map",
+        "optionD": "Keep the distinct polities visible and investigate their particular connections",
+        "correctAnswer": "D",
+        "explanation": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "learningPoint": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "historicalClue": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "B": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "C": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "D": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person."
+        },
+        "missionId": "chapter11-mission2",
+        "topic": "muslim-polities",
+        "topicLabel": "Distinct Polities, Connected Communities",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A community or group organized under a form of political authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission2-muslim-polities-practice2",
+      "create": true,
+      "fields": {
+        "question": "A regional label is used to say everyone shared one language and way of life. What is missing?",
+        "optionA": "A rule assigning faith to every person",
+        "optionB": "Only the name of one ruler",
+        "optionC": "Evidence about distinct communities and experiences",
+        "optionD": "A stronger universal label",
+        "correctAnswer": "C",
+        "explanation": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "learningPoint": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "historicalClue": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "B": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "C": "Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person.",
+          "D": "Review the lesson clues. Keep the distinct polities visible and investigate their particular connections. One religion or regional label does not describe every community or person."
+        },
+        "missionId": "chapter11-mission2",
+        "topic": "muslim-polities",
+        "topicLabel": "Distinct Polities, Connected Communities",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A community or group organized under a form of political authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz2-question2",
+      "create": true,
+      "fields": {
+        "question": "Which polity is associated with Kudarat in the NHCP marker?",
+        "optionA": "Every polity as one government",
+        "optionB": "A fictional kingdom with no setting",
+        "optionC": "Only a modern province as an unchanged institution",
+        "optionD": "Maguindanao",
+        "correctAnswer": "D",
+        "explanation": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "learningPoint": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "historicalClue": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "B": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "C": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "D": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response."
+        },
+        "quizId": "chapter11-quiz2",
+        "order": 2,
+        "status": "active",
+        "topic": "kudarat-leadership",
+        "topicLabel": "A Named Leader: Sultan Kudarat",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz2-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "What does the marker identify in 1645?",
+        "optionA": "The beginning of every trading network",
+        "optionB": "A transcript of every private conversation",
+        "optionC": "A peace agreement",
+        "optionD": "The end of all community differences",
+        "correctAnswer": "C",
+        "explanation": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "learningPoint": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "historicalClue": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "B": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "C": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "D": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response."
+        },
+        "quizId": "chapter11-quiz2",
+        "order": 102,
+        "status": "active",
+        "topic": "kudarat-leadership",
+        "topicLabel": "A Named Leader: Sultan Kudarat",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission2-kudarat-leadership-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the Kudarat example help show?",
+        "optionA": "Every local person had identical wishes",
+        "optionB": "A historical sultanate was identical to a modern province",
+        "optionC": "Leadership could include alliance, opposition and negotiation in a dated setting",
+        "optionD": "All relations were only war forever",
+        "correctAnswer": "C",
+        "explanation": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "learningPoint": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "historicalClue": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "B": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "C": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "D": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response."
+        },
+        "missionId": "chapter11-mission2",
+        "topic": "kudarat-leadership",
+        "topicLabel": "A Named Leader: Sultan Kudarat",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A relationship in which parties agree to work together for particular purposes.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission2-kudarat-leadership-practice2",
+      "create": true,
+      "fields": {
+        "question": "A marker is used to invent an exact speech at a negotiation. What should be checked?",
+        "optionA": "Whether the marker reveals every persons thoughts",
+        "optionB": "Evidence for the words beyond the later summary",
+        "optionC": "Which invented speech sounds strongest",
+        "optionD": "Whether all leaders spoke identically",
+        "correctAnswer": "B",
+        "explanation": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "learningPoint": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "historicalClue": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "B": "Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "C": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response.",
+          "D": "Review the lesson clues. Leadership could include alliance, opposition and negotiation in a dated setting. A later marker does not record every conversation or local response."
+        },
+        "missionId": "chapter11-mission2",
+        "topic": "kudarat-leadership",
+        "topicLabel": "A Named Leader: Sultan Kudarat",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A relationship in which parties agree to work together for particular purposes.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz2-question3",
+      "create": true,
+      "fields": {
+        "question": "What does coerced mean?",
+        "optionA": "A guarantee of equal benefit",
+        "optionB": "A type of cargo price",
+        "optionC": "Forced rather than freely chosen",
+        "optionD": "Always a voluntary gift",
+        "correctAnswer": "C",
+        "explanation": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "learningPoint": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "historicalClue": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "B": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "C": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "D": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community."
+        },
+        "quizId": "chapter11-quiz2",
+        "order": 3,
+        "status": "active",
+        "topic": "sulu-trade-work",
+        "topicLabel": "Trade Connected People and Work",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz2-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why study producers and crews alongside traded goods?",
+        "optionA": "Every worker was treated identically",
+        "optionB": "Exchange depended on peoples work and conditions",
+        "optionC": "Goods appeared without work",
+        "optionD": "Only rulers contributed to trade",
+        "correctAnswer": "B",
+        "explanation": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "learningPoint": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "historicalClue": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "B": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "C": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "D": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community."
+        },
+        "quizId": "chapter11-quiz2",
+        "order": 103,
+        "status": "active",
+        "topic": "sulu-trade-work",
+        "topicLabel": "Trade Connected People and Work",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission2-sulu-trade-work-practice1",
+      "create": true,
+      "fields": {
+        "question": "A cargo total is used to say all workers freely benefited. What should be checked?",
+        "optionA": "Whether all communities shared one private motive",
+        "optionB": "Work, consent, payment and unequal conditions for the people involved",
+        "optionC": "Nothing because valuable trade proves fairness",
+        "optionD": "Whether every Muslim had one occupation",
+        "correctAnswer": "B",
+        "explanation": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "learningPoint": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "historicalClue": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "B": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "C": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "D": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community."
+        },
+        "missionId": "chapter11-mission2",
+        "topic": "sulu-trade-work",
+        "topicLabel": "Trade Connected People and Work",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "People and places connected through exchange of goods.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission2-sulu-trade-work-practice2",
+      "create": true,
+      "fields": {
+        "question": "An account describes raids by particular groups and labels every Muslim a raider. What correction fits?",
+        "optionA": "Identify specific actions and actors without stereotyping a religion",
+        "optionB": "Keep the universal label",
+        "optionC": "Erase the harm from the account",
+        "optionD": "Treat every trading activity as the same action",
+        "correctAnswer": "A",
+        "explanation": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "learningPoint": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "historicalClue": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+        "answerExplanations": {
+          "A": "Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "B": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "C": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community.",
+          "D": "Review the lesson clues. Work, consent, payment and unequal conditions for the people involved. Specific harmful actions do not define every person of a religion or community."
+        },
+        "missionId": "chapter11-mission2",
+        "topic": "sulu-trade-work",
+        "topicLabel": "Trade Connected People and Work",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "People and places connected through exchange of goods.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz2-question4",
+      "create": true,
+      "fields": {
+        "question": "What is diplomacy?",
+        "optionA": "A guarantee that parties have equal power",
+        "optionB": "Managing relationships through communication and negotiation",
+        "optionC": "Only fighting without communication",
+        "optionD": "Proof of permanent peace",
+        "correctAnswer": "B",
+        "explanation": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "learningPoint": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "historicalClue": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "B": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "C": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "D": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing."
+        },
+        "quizId": "chapter11-quiz2",
+        "order": 4,
+        "status": "active",
+        "topic": "treaties-practice",
+        "topicLabel": "An Agreement Needed Follow-up Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz2-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why note that a work presents translations of more than one treaty text?",
+        "optionA": "Version and perspective matter when comparing claims",
+        "optionB": "All translations automatically mean every reader agreed",
+        "optionC": "One version contains every private thought",
+        "optionD": "Text differences never matter",
+        "correctAnswer": "A",
+        "explanation": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "learningPoint": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "historicalClue": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "answerExplanations": {
+          "A": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "B": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "C": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "D": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing."
+        },
+        "quizId": "chapter11-quiz2",
+        "order": 104,
+        "status": "active",
+        "topic": "treaties-practice",
+        "topicLabel": "An Agreement Needed Follow-up Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission2-treaties-practice-practice1",
+      "create": true,
+      "fields": {
+        "question": "An agreement text is used to claim all terms worked identically everywhere. What should be checked?",
+        "optionA": "Versions, implementation and local effects in the particular period",
+        "optionB": "Nothing because signing guarantees every outcome",
+        "optionC": "Every private motive can be read from one signature",
+        "optionD": "The text settles all present-day legal questions",
+        "correctAnswer": "A",
+        "explanation": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "learningPoint": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "historicalClue": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "answerExplanations": {
+          "A": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "B": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "C": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "D": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing."
+        },
+        "missionId": "chapter11-mission2",
+        "topic": "treaties-practice",
+        "topicLabel": "An Agreement Needed Follow-up Evidence",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Managing relationships through communication and negotiation.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission2-treaties-practice-practice2",
+      "create": true,
+      "fields": {
+        "question": "A signature is used as proof that conflict never happened afterward. What evidence is needed?",
+        "optionA": "Only a larger signature image",
+        "optionB": "An assumption that peace is always permanent",
+        "optionC": "A modern boundary drawn without sources",
+        "optionD": "Later records about actual relations and events",
+        "correctAnswer": "D",
+        "explanation": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "learningPoint": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "historicalClue": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "B": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "C": "Review the lesson clues. Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing.",
+          "D": "Versions, implementation and local effects in the particular period. Implementation and local effects need evidence beyond signing."
+        },
+        "missionId": "chapter11-mission2",
+        "topic": "treaties-practice",
+        "topicLabel": "An Agreement Needed Follow-up Evidence",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Managing relationships through communication and negotiation.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz2-question5",
+      "create": true,
+      "fields": {
+        "question": "What is source perspective?",
+        "optionA": "The standpoint and purpose from which information is presented",
+        "optionB": "Proof that one account is complete",
+        "optionC": "Every persons private belief",
+        "optionD": "A ranking of cultural worth",
+        "correctAnswer": "A",
+        "explanation": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "learningPoint": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "historicalClue": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "answerExplanations": {
+          "A": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "B": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "C": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "D": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person."
+        },
+        "quizId": "chapter11-quiz2",
+        "order": 5,
+        "status": "active",
+        "topic": "community-source-voices",
+        "topicLabel": "Communities Were More Than Labels",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter11-quiz2-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why keep distinct community names and roles visible?",
+        "optionA": "Every named group has one occupation",
+        "optionB": "A name reveals all wealth",
+        "optionC": "Diversity makes evidence unnecessary",
+        "optionD": "They help avoid treating a diverse region as one identical population",
+        "correctAnswer": "D",
+        "explanation": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "learningPoint": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "historicalClue": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "B": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "C": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "D": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person."
+        },
+        "quizId": "chapter11-quiz2",
+        "order": 105,
+        "status": "active",
+        "topic": "community-source-voices",
+        "topicLabel": "Communities Were More Than Labels",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission2-community-source-voices-practice1",
+      "create": true,
+      "fields": {
+        "question": "A ruler summary is used as every households complete story. What correction fits?",
+        "optionA": "Assume every person shared identical conditions",
+        "optionB": "Replace all local names with one stereotype",
+        "optionC": "Treat a source as having no date or purpose",
+        "optionD": "Keep its scope and seek evidence about other roles and experiences",
+        "correctAnswer": "D",
+        "explanation": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "learningPoint": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "historicalClue": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "B": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "C": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "D": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person."
+        },
+        "missionId": "chapter11-mission2",
+        "topic": "community-source-voices",
+        "topicLabel": "Communities Were More Than Labels",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The standpoint and purpose from which a source presents information.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter11-mission2-community-source-voices-practice2",
+      "create": true,
+      "fields": {
+        "question": "A colonial-era description uses insulting generalizations. How should a historical report respond?",
+        "optionA": "Assign the insult to classmates",
+        "optionB": "Assume every source has the same purpose",
+        "optionC": "Identify the perspective and investigate specific evidence without repeating the stereotype as fact",
+        "optionD": "Adopt the insult as a neutral definition",
+        "correctAnswer": "C",
+        "explanation": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "learningPoint": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "historicalClue": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "B": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "C": "Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person.",
+          "D": "Review the lesson clues. Keep its scope and seek evidence about other roles and experiences. A ruler, institution or category does not automatically speak for every person."
+        },
+        "missionId": "chapter11-mission2",
+        "topic": "community-source-voices",
+        "topicLabel": "Communities Were More Than Labels",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The standpoint and purpose from which a source presents information.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter11-mission2-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter11-mission2",
+        "name": "Polities and Communities Evidence Journal",
+        "description": "A learning-game token for explaining distinct polities and community experiences through evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 2,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Distinguish rulers, communities, trade, treaty texts and actual outcomes without stereotypes.",
+          "reflectionQuestion": "Which clue helped you keep distinct communities and experiences visible?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-11",
+      "create": false,
+      "expected": {
+        "description": "Mission 1 investigates claims, effective control and community autonomy. Missions 2-4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-2 investigate autonomy, distinct Muslim polities and community experiences. Missions 3-4 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapters 9-10 offer five missions and an evidence challenge each. Chapter 11 begins with community autonomy and limits of colonial control; later content is being prepared."
+      },
+      "fields": {
+        "description": "Chapters 9-10 offer five missions and an evidence challenge each. Chapter 11 offers Missions 1-2 on autonomy and Muslim polities; later content is being prepared."
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+const fs=require('node:fs'),path=require('node:path');
+const snapshot=require('../docs/validation/learning-content-snapshot.json').collections;
+const lessons=require('../data/maritime-centers-learning-pilot.json');
+const sourceUrls=['https://whc.unesco.org/en/tentativelists/2071/','https://www.nationalmuseum.gov.ph/2022/10/24/preserving-our-heritage-towards-the-future-of-our-museums/'];
+const writes=[];
+function put(p,fields){const [collection,id]=p.split('/'),old=snapshot[collection]?.find(d=>d.id===id);if(!old)throw Error('Existing content required: '+p);writes.push({path:p,create:false,expected:Object.fromEntries(Object.keys(fields).filter(k=>old[k]!==undefined).map(k=>[k,old[k]])),expectedAbsent:Object.keys(fields).filter(k=>old[k]===undefined),fields});}
+for(const [i,l]of lessons.entries()){
+ const choices=l.task.slice(1),offset=i%4,rotated=choices.slice(offset).concat(choices.slice(0,offset));
+ put('storyScenes/'+l.id,{missionId:'chapter3-mission4',status:'active',title:l.title,content:l.content,reviewTopics:l.topics,
+  ...(l.image?{imageUrl:'../assets/story/'+l.image,imageFit:'contain',imageAlt:l.image==='harbor-community-model.svg'?'Fictional relationship diagram: an inland river meets a landing area and coastal water; food producers, makers and boat workers support the community. Not an archaeological map or a fixed arrangement of every port.':'Butuan evidence categories: boat remains help investigate construction; imported ceramics help investigate wider connections. Dates and contexts must be compared before combining claims. These are not objects from one proven voyage.',imageCaption:'Teaching relationship model or source summary, not an excavated site map or a single historical event.'}:{}),
+  exploreIntroduction:'Read each observation. Connect place, work and evidence with a supported explanation.',exploreItems:l.clues.map(([title,discovery])=>({title,hint:'Look for a making detail, local choice or evidence limit.',discovery,icon:'\ud83d\udd0e'})),
+  decisionSituation:l.task[0],decisionQuestion:'Which explanation is supported by the comparison?',decisionChoices:rotated,decisionCorrectAnswer:choices[0],decisionExplanation:l.reason,
+  discoveryTitle:'Add the comparison to your journal',discoveryText:l.reason,keyTerm:l.term,keyTermDefinition:l.definition,
+  historicalInsight:'Collections cover different periods and contexts. A teaching network is not a record of a particular voyage.',
+  learningHelp:{explanation:l.reason,vocabulary:[{term:l.term,definition:l.definition},...(l.glossary||[])],example:l.clues[0][1],guidingQuestion:'Which feature supports your explanation, and what does it not tell us?'},sourceUrls,contentReviewStatus:'Source-informed teaching expansion; independent teacher and Grade 5 review pending'});
+}
+put('missions/chapter3-mission4',{learningObjective:'Connect routes, supporting work and separate archaeological evidence when explaining maritime communities and change.',learningObjectives:['Explain why location alone does not guarantee a trading center.','Compare what Butuan boat and ceramic evidence can support.','Connect food producers, makers and boat workers with exchange.','Compare dated evidence before describing continuity or change.','Protect sites and state limits when preparing a chapter explanation.'],lessonRecap:'A maritime center depends on routes, work, supplies and relationships. Butuan provides different evidence categories that need separate context and dates. Ports can change. A fictional model does not represent every site, and heritage care protects future learning.',sourceUrls});
+fs.writeFileSync(path.join(__dirname,'../data/maritime-centers-learning-migration.json'),JSON.stringify({projectId:'lakbaypanahon-1797e',scope:'Chapter 3 Mission 4 maritime-center model and evidence comparison; preserve banks and rewards',sourceUrls,writes},null,2));
+console.log('Built '+writes.length+' guarded teaching changes.');

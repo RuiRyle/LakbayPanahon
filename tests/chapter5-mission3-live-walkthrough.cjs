@@ -1,0 +1,103 @@
+// Explicit live desktop acceptance: real pages/SDK, original project, isolated temporary account.
+// Uses the existing Firebase CLI login only to remove this test account's owned records.
+const fs=require('fs'),http=require('http'),path=require('path'),os=require('os'),{spawn}=require('child_process'),{randomUUID,randomBytes}=require('crypto');
+const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'lakbay-mactan-live-')),port=19397,debug=19398;
+let chrome,server,ws,uid,adminToken;const pending=new Map();let seq=0;const report=[];
+const pause=ms=>new Promise(r=>setTimeout(r,ms));
+function send(method,params={}){return new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}));});}
+async function evaluate(expression){const r=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.exception?.description||r.exceptionDetails.text);return r.result?.value;}
+async function wait(expression,label){for(let i=0;i<120;i++){try{if(await evaluate(expression))return;}catch{}await pause(250);}throw Error('Timed out: '+label+' '+await evaluate('document.body.innerText.slice(-1800)'));}
+async function go(url){await send('Page.navigate',{url:url.startsWith('http')?url:`http://localhost:${port}/pages/${url}`});await pause(700);await wait('document.readyState==="complete"','page ready');}
+async function click(selector){await wait(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});return e&&!e.disabled;})()`,"enabled control "+selector);await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});if(!e||e.disabled)throw Error('Unavailable control: '+${JSON.stringify(selector)}+' '+document.body.innerText.slice(-1200));e.click();})()`);await pause(350);}
+function pass(message){report.push(message);console.log('PASS: '+message);}
+const sdk=`const {auth,db}=await import('/js/firebase-config.js');const f=await import('https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js');`;
+async function catalog(name,field=null,value=null){const ref=field?'f.query(f.collection(db,'+JSON.stringify(name)+'),f.where('+JSON.stringify(field)+',"==",'+JSON.stringify(value)+'))':'f.collection(db,'+JSON.stringify(name)+')';return evaluate(`(async()=>{${sdk}return (await f.getDocs(${ref})).docs.map(d=>({id:d.id,...d.data()}));})()`);}
+async function runQuiz(mission,fail=false){
+ await go('quiz.html?'+new URLSearchParams({chapter:mission.chapterId,mission:mission.id}));await wait('document.querySelector("#quizContent")&&!document.querySelector("#quizContent").hidden&&document.querySelector("#quizOptions button")','quiz loaded');
+ if(await evaluate('!!document.querySelector("#quizMissionBriefing button")'))await click('#quizMissionBriefing button');
+ const bank=await catalog('questions','quizId',mission.quizId),ids=[];
+ for(let n=0;n<5;n++){const text=await evaluate('document.getElementById("questionText").textContent.trim()');const q=bank.find(q=>q.quizId===mission.quizId&&q.question?.trim()===text);if(!q)throw Error('Quiz question not found in live Firestore');ids.push(q.id);await click('#quizOptions [data-option="'+(fail?(q.correctAnswer==='A'?'B':'A'):q.correctAnswer)+'"]');if(n===0)await refreshDraft('quiz',mission.id,'#quizContent','document.querySelector("#quizOptions button")&&!document.getElementById("quizContent").hidden&&!document.getElementById("questionCard").hidden');await click('#nextQuestionButton');}
+ await wait('!document.getElementById("flagReviewPanel").hidden','answer journal');await click('#flagReviewPanel button:last-child');await wait('!document.getElementById("quizResult").hidden','quiz saved');const title=await evaluate('document.getElementById("quizResultTitle").textContent');if(fail?!title.includes('Training'):!title.includes('Passed'))throw Error('Unexpected quiz result '+title);pass((fail?'Failed':'Passed')+' mission '+mission.id+' through actual controls');return ids;
+}
+const verifiedRefresh = new Set();
+const canonical = value => JSON.stringify((function sort(item){return Array.isArray(item)?item.map(sort):item&&typeof item==='object'?Object.fromEntries(Object.keys(item).sort().map(key=>[key,sort(item[key])])):item;})(value));
+async function refreshDraft(kind, scope, container, ready, label=kind) {
+ if(verifiedRefresh.has(label))return;
+ const savedStatus = JSON.stringify(container+' > p[role="status"]');
+ await wait(`document.querySelector(${savedStatus})?.textContent.startsWith('Your place is saved')`,label+' save confirmation');
+ const read = `(async()=>{${sdk}return (await f.getDocFromServer(f.doc(db,'studentLearningDrafts',auth.currentUser.uid+'_'+${JSON.stringify(kind)}+'_'+${JSON.stringify(scope)}))).data()?.state;})()`;
+ const before=await evaluate(read);if(!before)throw Error(label+' draft missing');
+ await send('Page.reload');await pause(700);await wait(ready,label+' restored interface');
+ await wait(`document.querySelector(${savedStatus})?.textContent.startsWith('Your place is saved')`,label+' restored draft');
+ const after=await evaluate(read);if(canonical(before)!==canonical(after))throw Error(label+' refresh changed saved answers or position');
+ verifiedRefresh.add(label);pass(label+' refresh preserved saved answers, position and session');
+}
+async function ownedRecords(name){return evaluate(`(async()=>{${sdk}return (await f.getDocs(f.query(f.collection(db,${JSON.stringify(name)}),f.where('userId','==',auth.currentUser.uid)))).docs.map(d=>({id:d.id,...d.data()}));})()`);}
+async function savedIdentity(){return evaluate(`(async()=>{${sdk}const p=(await f.getDocFromServer(f.doc(db,'users',auth.currentUser.uid))).data();return {firstName:p.firstName,lastName:p.lastName,avatarId:p.avatarId,xp:p.xp,learningStreak:p.learningStreak};})()`);}
+async function runChapter(first){ await go(`chapter-challenge.html?chapter=${first.chapterId}`);await wait('!document.getElementById("beginChallengeButton").disabled','chapter unlocked');await click('#beginChallengeButton');const challengeBank=await catalog('chapterChallengeQuestions','challengeId','challenge-5');for(let i=0;i<40;i++){if(await evaluate('!document.getElementById("chapterChallengeQuiz")'))break;const state=await evaluate(`(()=>{const e=document.querySelector('#challengeQuestionText');return {text:e?.textContent.trim(),body:document.body.innerText.slice(-500)};})()`);const q=challengeBank.find(q=>q.question?.trim()===state.text);if(!q){console.log('CHAPTER STATE: '+JSON.stringify(state));break;}console.log('Chapter question: '+q.id+' '+q.gameType);if(q.gameType==='matching')await evaluate(`(()=>{const q=${JSON.stringify(q)};document.querySelectorAll('.matching-select').forEach(s=>{const left=s.closest('.matching-row').querySelector('.matching-label').textContent.trim();s.value=q.matchingPairs.find(p=>p.left===left).right;s.dispatchEvent(new Event('change'));});})()`);else if(q.gameType==='tradeSimulation')for(let n=0;n<Number(q.requiredQuantity);n++)await evaluate("document.querySelectorAll('.trade-quantity-button')[1].click()");else await click(`.challenge-option[data-answer="${q.correctAnswer}"]`);await wait('document.getElementById("submitChallengeAnswer")&&!document.getElementById("submitChallengeAnswer").disabled','chapter answer selected');await refreshDraft('chapter',first.chapterId,'.chapter-challenge-intro','!!document.getElementById("chapterChallengeQuiz")',q.gameType+' chapter');await click('#submitChallengeAnswer');}
+ await wait(`(async()=>{${sdk}return (await f.getDoc(f.doc(db,'studentChapterProgress',auth.currentUser.uid+'_'+${JSON.stringify(first.chapterId)}))).data()?.completed;})()`,'chapter completion saved');
+}
+async function recoveryChecks(first){
+ const missing='missing-'+randomUUID();
+ for(const [page,error,retry] of [['story','storyError','retryStoryLoadButton'],['quiz','quizError','retryQuizLoadButton'],['practice','practiceError','retryPracticeLoadButton']]){
+   await go(page+'.html?chapter='+first.chapterId+'&mission='+missing);
+   await wait(`!document.getElementById(${JSON.stringify(error)}).hidden&&!document.getElementById(${JSON.stringify(retry)}).hidden`,page+' missing-content recovery');
+   pass(page+' missing mission shows an error and retry instead of learning content');
+ }
+ await go('quiz.html?chapter='+first.chapterId+'&mission='+first.id);await wait('document.querySelector("#quizOptions button")&&!document.getElementById("quizContent").hidden','quiz for connectivity checks');
+ await send('Network.enable');
+ try{
+   await send('Network.emulateNetworkConditions',{offline:true,latency:0,downloadThroughput:-1,uploadThroughput:-1});
+   await click('#quizOptions [data-option="A"]');await wait(`document.querySelector('#quizContent > p[role="status"]').textContent.includes("offline")`,'offline unsaved message');
+   pass('Offline answer clearly reports that the latest place is not saved');
+ } finally {await send('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});}
+ await wait(`document.querySelector('#quizContent > p[role="status"]').textContent.startsWith("Your place is saved")`,'reconnected draft confirmation');
+ const restored=await evaluate(`(async()=>{${sdk}return (await f.getDocFromServer(f.doc(db,'studentLearningDrafts',auth.currentUser.uid+'_quiz_'+${JSON.stringify(first.id)}))).data()?.state;})()`);if(!Object.values(restored?.answers||{}).includes('A'))throw Error('Offline answer was not saved after reconnect');pass('Reconnecting saved the pending answer to original Firestore');
+ await send('Network.emulateNetworkConditions',{offline:false,latency:350,downloadThroughput:120000,uploadThroughput:120000});
+ try{await click('#quizOptions [data-option="B"]');await wait(`document.querySelector('#quizContent > p[role="status"]').textContent.startsWith("Your place is saved")`,'slow-network draft save');pass('A slow connection retained the answer and reached confirmed save');}
+ finally{await send('Network.emulateNetworkConditions',{offline:false,latency:0,downloadThroughput:-1,uploadThroughput:-1});}
+}
+async function main(){
+ if(process.env.FIRESTORE_EMULATOR_HOST||process.env.FIREBASE_AUTH_EMULATOR_HOST)throw Error('Original project only');
+ const cli=require(path.join(process.env.APPDATA,'npm/node_modules/firebase-tools/lib/auth.js'));const account=cli.getProjectDefaultAccount(root);adminToken=(await cli.getAccessToken(account.tokens.refresh_token,['https://www.googleapis.com/auth/cloud-platform'])).access_token;
+ server=http.createServer((req,res)=>{const file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));if(!file.startsWith(root+path.sep)||!/^\/(pages|js|css|assets|images|fonts)\//.test(req.url)){res.writeHead(404);return res.end();}fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);return res.end();}res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg'})[path.extname(file)]||'application/octet-stream');res.end(data);});});await new Promise(r=>server.listen(port,'127.0.0.1',r));
+ chrome=spawn('C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',['--headless','--disable-gpu','--no-first-run','--no-default-browser-check','--window-size=1440,1000','--remote-debugging-port='+debug,'--user-data-dir='+path.join(dir,'profile'),'about:blank'],{windowsHide:true,stdio:'ignore'});
+ let tabs;for(let i=0;i<80;i++){try{tabs=await(await fetch(`http://127.0.0.1:${debug}/json`)).json();break;}catch{await pause(250);}}if(!tabs)throw Error('Chrome did not start');ws=new WebSocket(tabs.find(t=>t.type==='page').webSocketDebuggerUrl);await new Promise(r=>ws.addEventListener('open',r,{once:true}));ws.addEventListener('message',e=>{const m=JSON.parse(e.data);if(pending.has(m.id)){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(Error(m.error.message)):p.resolve(m.result);}});await send('Page.enable');
+ await go('register.html');await wait('document.querySelector("#studentRegisterForm")','registration');const email='desktop-'+randomUUID()+'@example.com',password=randomBytes(20).toString('hex');await evaluate(`(()=>{for(const [id,value]of Object.entries(${JSON.stringify({firstName:'Desktop',lastName:'TemporaryTest',studentEmail:email,studentPassword:password,studentConfirmPassword:password})})){document.getElementById(id).value=value;}document.getElementById('studentTerms').checked=true;})()`);
+ if(process.argv.includes('--validation-only')){
+ await evaluate("(()=>{document.getElementById('firstName').value='';document.getElementById('studentRegisterForm').requestSubmit();})()");if(!await evaluate('!document.getElementById("firstName").validity.valid'))throw Error('Blank required name accepted');pass('Registration blocks blank required fields');
+ await evaluate("(()=>{document.getElementById('firstName').value='Desktop';document.getElementById('studentTerms').checked=false;document.getElementById('studentRegisterForm').requestSubmit();})()");await wait('!document.getElementById("studentTerms").validity.valid||document.getElementById("studentRegisterMessage").textContent.includes("accept the terms")','terms validation');pass('Registration requires accepted terms');
+ await evaluate("(()=>{document.getElementById('studentTerms').checked=true;document.getElementById('studentConfirmPassword').value='different-password';document.getElementById('studentRegisterForm').requestSubmit();})()");await wait('document.getElementById("studentRegisterMessage").textContent.includes("do not match")','password mismatch validation');const signedIn=await evaluate("(async()=>{const {auth}=await import('/js/firebase-config.js');return !!auth.currentUser;})()");if(signedIn)throw Error('Invalid registration created an account');pass('Mismatched passwords show an error without creating an account');console.log('Walkthrough report: '+dir);return;
+ }
+ await evaluate("document.getElementById('studentRegisterForm').requestSubmit()");
+ await wait(`(async()=>{const {auth}=await import('/js/firebase-config.js');return !!auth.currentUser;})()`,'registration auth');uid=await evaluate(`(async()=>{const {auth}=await import('/js/firebase-config.js');return auth.currentUser.uid;})()`);fs.writeFileSync(path.join(dir,'test-account.json'),JSON.stringify({uid,email,password}));await wait('!document.getElementById("studentRegistrationContinue").hidden','profile created');pass('Actual registration form created a student profile');
+ await click('#studentRegistrationContinue');await wait('location.pathname.includes("student-dashboard")','dashboard navigation');await pause(2000);pass('Registration continued to dashboard');
+
+
+
+ const missions=await catalog('missions','chapterId','chapter-5'),quizzes=await catalog('quizzes'),sceneBank=(await Promise.all([1,2,3,4].map(n=>catalog('storyScenes','missionId','chapter5-mission'+n)))).flat();
+ for(const id of ['chapter5-mission1','chapter5-mission2','chapter5-mission3']){
+ const mission={...missions.find(m=>m.id===id),quizId:quizzes.find(q=>q.missionId===id&&q.status==='active').id};const initialXp=Number((await savedIdentity()).xp)||0;
+ await go('story.html?chapter=chapter-5&mission='+mission.id);await wait('!document.getElementById("storyContent").hidden','lesson loaded');const seen=new Set();
+ for(let i=0;i<10;i++){
+ if(await evaluate('!document.getElementById("storyCompleteSection").hidden'))break;
+ const title=await evaluate('document.getElementById("sceneTitle").textContent.trim()'),scene=sceneBank.find(s=>s.missionId===mission.id&&s.title?.trim()===title);if(!scene)throw Error('Scene not found: '+title);seen.add(scene.id);
+ await wait('document.getElementById("storySceneImage").naturalWidth>0','authored illustration');
+ await evaluate('document.querySelectorAll(".story-explore-choice:not(:disabled)").forEach(b=>b.click())');
+ await evaluate('(()=>{const wanted='+JSON.stringify(scene.decisionCorrectAnswer)+';const b=[...document.querySelectorAll(".story-decision-choice")].find(b=>b.textContent.includes(wanted));if(!b)throw Error("Decision missing");if(!b.disabled)b.click();})()');
+ if(scene.order===2)await refreshDraft('story',mission.id,'#storyContent','!document.getElementById("storyContent").hidden&&document.getElementById("sceneTitle").textContent.trim()==='+JSON.stringify(scene.title),mission.id+' lesson');
+ await click('#continueStoryButton');
+ }
+ if(seen.size!==6)throw Error('Expected six scenes for '+mission.id);await wait('!document.getElementById("storyCompleteSection").hidden','lesson completion');pass(mission.id+' completed six illustrated scenes using actual clue and decision controls');
+ if((Number((await savedIdentity()).xp)||0)!==initialXp)throw Error('Lesson awarded quiz XP early');
+ await runQuiz(mission);if(Number((await savedIdentity()).xp)!==initialXp+Number(mission.xpReward))throw Error('Wrong configured XP for '+mission.id);
+ if(!(await ownedRecords('studentArtifacts')).some(a=>a.missionId===mission.id))throw Error('Missing artifact for '+mission.id);pass(mission.id+' awarded configured one-time XP and collectible');
+ const xp=Number((await savedIdentity()).xp);await runQuiz(mission);if(Number((await savedIdentity()).xp)!==xp)throw Error('Replay duplicated XP');pass(mission.id+' replay preserved XP');
+ }
+ if((await ownedRecords('studentChapterProgress')).some(p=>p.chapterId==='chapter-5'&&p.completed))throw Error('Partial chapter completed early');
+ if((await ownedRecords('studentBadges')).some(p=>p.chapterId==='chapter-5'))throw Error('Partial chapter badge awarded early');
+ pass('Partial Chapter 5 does not grant a chapter completion or badge');
+ console.log('Walkthrough report: '+dir);
+}
+async function cleanup(){if(uid&&adminToken){try{const base='https://firestore.googleapis.com/v1/projects/lakbaypanahon-1797e/databases/(default)/documents';const names=[];for(const name of ['studentProgress','studentQuizAttempts','studentPracticeProgress','studentReviewEvents','studentLearningDrafts','studentChapterProgress','studentDailyChallenges','studentArtifacts','studentBadges','studentEvidenceJournal']){const r=await fetch(base+':runQuery',{method:'POST',headers:{Authorization:'Bearer '+adminToken,'Content-Type':'application/json'},body:JSON.stringify({structuredQuery:{from:[{collectionId:name}],where:{fieldFilter:{field:{fieldPath:'userId'},op:'EQUAL',value:{stringValue:uid}}}}})});if(!r.ok)throw Error('Cleanup query '+r.status);for(const row of await r.json()){if(!row.document)continue;if(row.document.fields.userId.stringValue!==uid)throw Error('Cleanup ownership mismatch');names.push(row.document.name);}}names.push('projects/lakbaypanahon-1797e/databases/(default)/documents/users/'+uid);const r=await fetch(base+':commit',{method:'POST',headers:{Authorization:'Bearer '+adminToken,'Content-Type':'application/json'},body:JSON.stringify({writes:names.map(name=>({delete:name}))})});if(!r.ok)throw Error('Cleanup commit '+r.status);const deleted=await fetch('https://identitytoolkit.googleapis.com/v1/projects/lakbaypanahon-1797e/accounts:delete',{method:'POST',headers:{Authorization:'Bearer '+adminToken,'Content-Type':'application/json'},body:JSON.stringify({localId:uid})});if(!deleted.ok)throw Error('Temporary auth deletion '+deleted.status);fs.rmSync(path.join(dir,'test-account.json'),{force:true});console.log('Removed temporary account and owned learning records');}catch(error){console.error('CLEANUP REQUIRED: '+error.message+'; recovery file '+path.join(dir,'test-account.json'));process.exitCode=1;}}ws?.close();chrome?.kill();server?.close();fs.writeFileSync(path.join(dir,'report.json'),JSON.stringify(report,null,2));}
+main().catch(async e=>{console.error(e.message);report.push('FAIL: '+e.message);if(ws?.readyState===1)await send('Page.captureScreenshot',{format:'png'}).then(r=>fs.writeFileSync(path.join(dir,'failure.png'),Buffer.from(r.data,'base64'))).catch(()=>{});console.log('Walkthrough report: '+dir);process.exitCode=1;}).finally(cleanup);

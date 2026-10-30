@@ -1,0 +1,1301 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 10 Mission 2 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://www.loc.gov/item/48031307/",
+    "https://ozamiz.deped.gov.ph/history/",
+    "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-9",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-9",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/community-economy-investigator",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter9-mission1",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter9-mission2",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter9-mission3",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter9-mission4",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter9-mission5",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 5
+      }
+    },
+    {
+      "path": "missions/chapter10-mission1",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 1
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter10-mission2",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-10",
+        "title": "Education, Language, and Religious Life",
+        "order": 2,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate learning settings, a named teaching book, language, education policy and religious life through evidence.",
+        "learningObjective": "Distinguish materials and policies from actual access, learning and responses while respecting different beliefs.",
+        "learningObjectives": [
+          "Explain learning was more than a school building using lesson evidence.",
+          "Explain investigate a named teaching book using lesson evidence.",
+          "Explain language helped communication using lesson evidence.",
+          "Explain a school policy was not every learners experience using lesson evidence.",
+          "Explain study religious life respectfully using lesson evidence."
+        ],
+        "lessonRecap": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "sourceUrls": [
+          "https://www.loc.gov/item/48031307/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter10-quiz2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission2",
+        "title": "Education and Language - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 2,
+        "questionBlueprint": [
+          {
+            "topic": "learning-settings",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "teaching-materials",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "language-understanding",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "school-policy-access",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "religious-life-evidence",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission2-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission2",
+        "status": "active",
+        "order": 1,
+        "title": "Learning Was More Than a School Building",
+        "content": "People learned in families and communities before Spanish colonial schools. Knowledge and skills could be passed on through practice, observation and teaching. DepEds historical overview distinguishes learning before Spanish rule from later changes in formal education. Adding a new school did not mean that all earlier ways of learning vanished or that people had previously known nothing.\n\nCompare two fictional cards. One shows a learner practicing a household skill with guidance. Another records a class organized by an institution. Both concern learning, but they are not the same kind of setting. A building alone does not tell us what was taught or who attended. Ask about the people, activities, language and period before explaining change. Do not rank a persons worth by whether their learning occurred in a formal classroom.\n\nOpen the three clues, then choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice when the topic needs review.",
+        "reviewTopics": [
+          "learning-settings"
+        ],
+        "imageUrl": "../assets/story/education-language-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Learning Was More Than a School Building. Labelled clues distinguish materials, policy and learners experiences; not an original school record or religious text.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Earlier learning",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Families and communities transmitted knowledge before colonial schools.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Different settings",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Practice with guidance and organized classes are different learning settings.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Evidence needed",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A building alone does not establish attendance or the teaching that occurred.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A caption says learning began only when colonial schools appeared. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Earlier community learning existed alongside later institutional changes",
+          "People previously had no knowledge",
+          "Every earlier skill disappeared immediately",
+          "A school building proves every child attended"
+        ],
+        "decisionCorrectAnswer": "Earlier community learning existed alongside later institutional changes",
+        "decisionExplanation": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "keyTerm": "Learning setting",
+        "keyTermDefinition": "A place or situation in which people gain knowledge and skills.",
+        "historicalInsight": "A building alone does not establish attendance or the teaching that occurred.",
+        "learningHelp": {
+          "explanation": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "vocabulary": [
+            {
+              "term": "Learning setting",
+              "definition": "A place or situation in which people gain knowledge and skills."
+            }
+          ],
+          "example": "Families and communities transmitted knowledge before colonial schools.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.loc.gov/item/48031307/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission2-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission2",
+        "status": "active",
+        "order": 2,
+        "title": "Investigate a Named Teaching Book",
+        "content": "The Library of Congress catalog identifies the Doctrina Christiana in Spanish and Tagalog, printed in Manila in 1593. It was a Catholic teaching text. Its existence gives evidence of a particular printed material and purpose. It does not establish how many people read it, whether every learner understood it, or what every person believed.\n\nOur source card shows the title, place, year and described languages rather than requiring you to recite a religious passage. Compare a claim about producing a book with a claim about its reception: how people encountered and responded to it. These need different evidence. A surviving copy does not prove universal circulation or acceptance. We study the material as history while respecting Catholics, Muslims, Indigenous traditions, other religions and people with no religion.\n\nOpen the three clues, then choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice when the topic needs review.",
+        "reviewTopics": [
+          "teaching-materials"
+        ],
+        "imageUrl": "../assets/story/education-language-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Investigate a Named Teaching Book. Labelled clues distinguish materials, policy and learners experiences; not an original school record or religious text.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Named material",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Doctrina Christiana is a dated Catholic teaching text printed in Manila in 1593.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Languages",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The catalog describes Spanish and Tagalog.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Reception limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A printed book does not establish every persons reading, understanding or belief.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does the 1593 teaching book most directly support?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every person read it",
+          "Every learner understood it identically",
+          "All earlier traditions disappeared",
+          "A particular printed material existed, not universal reading or acceptance"
+        ],
+        "decisionCorrectAnswer": "A particular printed material existed, not universal reading or acceptance",
+        "decisionExplanation": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "keyTerm": "Teaching material",
+        "keyTermDefinition": "An object or text used to help communicate a lesson.",
+        "historicalInsight": "A printed book does not establish every persons reading, understanding or belief.",
+        "learningHelp": {
+          "explanation": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "vocabulary": [
+            {
+              "term": "Teaching material",
+              "definition": "An object or text used to help communicate a lesson."
+            }
+          ],
+          "example": "The Doctrina Christiana is a dated Catholic teaching text printed in Manila in 1593.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.loc.gov/item/48031307/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission2-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission2",
+        "status": "active",
+        "order": 3,
+        "title": "Language Helped Communication",
+        "content": "Language shaped how teaching could be communicated. A text in Spanish and Tagalog is evidence that more than one language was used in that material. It is not proof that everyone spoke Spanish or that all communities used Tagalog. The islands had different languages, and one book cannot represent them all.\n\nTry a fictional translation desk using a neutral message about meeting at a place. One card gives the message in one language; another expresses its meaning in another. Communicating a message still requires someone to hear or read it and understand the intended meaning. A translation label alone does not prove identical understanding or agreement. Local people could help communicate and interpret teachings; they should not be erased from the story. Students are not asked to reveal family religion or demonstrate religious belief.\n\nOpen the three clues, then choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice when the topic needs review.",
+        "reviewTopics": [
+          "language-understanding"
+        ],
+        "imageUrl": "../assets/story/education-language-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Language Helped Communication. Labelled clues distinguish materials, policy and learners experiences; not an original school record or religious text.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Communication",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Language is one part of how a message reaches a learner.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Meaning",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Translation concerns expressing meaning in another language.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One bilingual text does not prove everyones language ability or identical understanding.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A Spanish-Tagalog book is used to claim everyone spoke Spanish. Which correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "All other languages vanished",
+          "Translation proves universal agreement",
+          "It shows languages in that material, not everyones language ability",
+          "Everyone must have spoken both languages"
+        ],
+        "decisionCorrectAnswer": "It shows languages in that material, not everyones language ability",
+        "decisionExplanation": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "keyTerm": "Translation",
+        "keyTermDefinition": "Expressing meaning from one language in another.",
+        "historicalInsight": "One bilingual text does not prove everyones language ability or identical understanding.",
+        "learningHelp": {
+          "explanation": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "vocabulary": [
+            {
+              "term": "Translation",
+              "definition": "Expressing meaning from one language in another."
+            }
+          ],
+          "example": "Language is one part of how a message reaches a learner.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.loc.gov/item/48031307/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission2-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission2",
+        "status": "active",
+        "order": 4,
+        "title": "A School Policy Was Not Every Learners Experience",
+        "content": "DepEds overview identifies the Educational Decree of 1863 as an important change in primary education. It provided for town primary schooling for boys and girls and teacher preparation. This describes a policy development. It should not be turned into a claim that every child immediately attended school or had an identical experience.\n\nUse a fictional evidence desk with a policy instruction, a dated class register and a teacher or materials record. The instruction helps explain what was planned. The register helps investigate who was recorded in a class. Other evidence can help explain staffing and available resources. Keep access, attendance and learning separate. Distance, time and resources are questions to investigate in a particular place, not invented facts about every household. A pupil name alone also does not show everything that person learned.\n\nOpen the three clues, then choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice when the topic needs review.",
+        "reviewTopics": [
+          "school-policy-access"
+        ],
+        "imageUrl": "../assets/story/education-language-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A School Policy Was Not Every Learners Experience. Labelled clues distinguish materials, policy and learners experiences; not an original school record or religious text.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Dated policy",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The 1863 decree is a named change in education policy.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Implementation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A policy requires evidence of actual schools, teachers and resources.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Learners",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Access, recorded attendance and demonstrated learning are different questions.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An 1863 policy is used to claim every child immediately learned equally. What should be checked?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A register reveals every private thought",
+          "Actual access, attendance, teaching and learning in particular places",
+          "Nothing because a policy proves every outcome",
+          "Every household must have had identical resources"
+        ],
+        "decisionCorrectAnswer": "Actual access, attendance, teaching and learning in particular places",
+        "decisionExplanation": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "keyTerm": "Access",
+        "keyTermDefinition": "The practical opportunity to reach and take part in something.",
+        "historicalInsight": "Access, recorded attendance and demonstrated learning are different questions.",
+        "learningHelp": {
+          "explanation": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "vocabulary": [
+            {
+              "term": "Access",
+              "definition": "The practical opportunity to reach and take part in something."
+            }
+          ],
+          "example": "The 1863 decree is a named change in education policy.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.loc.gov/item/48031307/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission2-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission2",
+        "status": "active",
+        "order": 5,
+        "title": "Study Religious Life Respectfully",
+        "content": "Religious teaching and institutions were part of colonial education and community life. The Library of Congress account also draws attention to local intermediaries and different responses. A recorded ceremony or class describes an activity. It does not reveal every participants private belief or erase earlier Indigenous traditions, Islam or other ways of understanding.\n\nOur fictional report compares a public-event record with a writers hope that everyone would accept a teaching. Keep the recorded action separate from the writers aim. To explain responses, ask what the source actually records and whose voice may be missing. Studying a religion does not require adopting it, praying, performing a ceremony or disclosing your faith. Activities assess the use of evidence, not a students religion. A respectful report can identify change and uncertainty without ranking communities by belief.\n\nOpen the three clues, then choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice when the topic needs review.",
+        "reviewTopics": [
+          "religious-life-evidence"
+        ],
+        "imageUrl": "../assets/story/education-language-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Study Religious Life Respectfully. Labelled clues distinguish materials, policy and learners experiences; not an original school record or religious text.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Activity",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A class or ceremony record can describe a public action.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Private belief",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Participation alone does not reveal every persons inner understanding.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Respectful inquiry",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "History activities assess evidence rather than a students own religion.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A ceremony record is treated as proof of every participants private belief. Which correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Describe the event and seek appropriate evidence for wider claims",
+          "Assume every participant thought identically",
+          "Require students to perform the ceremony",
+          "Rank communities by religion"
+        ],
+        "decisionCorrectAnswer": "Describe the event and seek appropriate evidence for wider claims",
+        "decisionExplanation": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "keyTerm": "Religious practice",
+        "keyTermDefinition": "An activity connected with a religion or tradition.",
+        "historicalInsight": "History activities assess evidence rather than a students own religion.",
+        "learningHelp": {
+          "explanation": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "vocabulary": [
+            {
+              "term": "Religious practice",
+              "definition": "An activity connected with a religion or tradition."
+            }
+          ],
+          "example": "A class or ceremony record can describe a public action.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.loc.gov/item/48031307/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission2-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission2",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Learning History Report",
+        "content": "Review five ideas. Learning occurred in families and communities as well as institutions. The 1593 Doctrina Christiana is a named teaching material. Language and translation helped communication without guaranteeing identical understanding. The 1863 education decree describes policy rather than every learners outcome. Religious activity is not automatic evidence of every private belief.\n\nPrepare a fictional museum report for another Grade 5 learner. Name the source, explain what it supports and identify a limit. Keep production, access, attendance, learning and acceptance separate. Do not describe earlier communities as having no knowledge, or make one language stand for everyone. You do not need to recite religious passages or share personal faith.\n\nThe main quiz has five questions and three correct passes. Review linked learning content before practice and a retry if needed. Completing this mission earns its configured reward once, but does not complete Chapter 10. Missions 3-5 and the final challenge are still being prepared.",
+        "reviewTopics": [
+          "learning-settings",
+          "teaching-materials",
+          "language-understanding",
+          "school-policy-access",
+          "religious-life-evidence"
+        ],
+        "imageUrl": "../assets/story/education-language-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A School Policy Was Not Every Learners Experience. Labelled clues distinguish materials, policy and learners experiences; not an original school record or religious text.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Dated policy",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The 1863 decree is a named change in education policy.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Implementation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A policy requires evidence of actual schools, teachers and resources.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Learners",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Access, recorded attendance and demonstrated learning are different questions.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best uses this mission?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat a printed book as proof of every belief",
+          "Treat a decree as complete learning for everyone",
+          "Rank people by religion or school access",
+          "Explain the material or policy with evidence and distinguish learners actual experiences"
+        ],
+        "decisionCorrectAnswer": "Explain the material or policy with evidence and distinguish learners actual experiences",
+        "decisionExplanation": "Use dated evidence to distinguish teaching aims, materials, access, learning and responses respectfully.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Use dated evidence to distinguish teaching aims, materials, access, learning and responses respectfully.",
+        "keyTerm": "Access",
+        "keyTermDefinition": "The practical opportunity to reach and take part in something.",
+        "historicalInsight": "Access, recorded attendance and demonstrated learning are different questions.",
+        "learningHelp": {
+          "explanation": "Use dated evidence to distinguish teaching aims, materials, access, learning and responses respectfully.",
+          "vocabulary": [
+            {
+              "term": "Access",
+              "definition": "The practical opportunity to reach and take part in something."
+            }
+          ],
+          "example": "The 1863 decree is a named change in education policy.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.loc.gov/item/48031307/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz2-question1",
+      "create": true,
+      "fields": {
+        "question": "What is a learning setting?",
+        "optionA": "A place or situation where people gain knowledge and skills",
+        "optionB": "Only a stone building",
+        "optionC": "A guarantee of equal access",
+        "optionD": "A score that ranks peoples worth",
+        "correctAnswer": "A",
+        "explanation": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "learningPoint": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "historicalClue": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "answerExplanations": {
+          "A": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "B": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "C": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "D": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred."
+        },
+        "quizId": "chapter10-quiz2",
+        "order": 1,
+        "status": "active",
+        "topic": "learning-settings",
+        "topicLabel": "Learning Was More Than a School Building",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz2-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare guided practice with an organized class?",
+        "optionA": "To prove only classrooms contain knowledge",
+        "optionB": "To erase earlier skills",
+        "optionC": "To assume both had identical activities",
+        "optionD": "To notice different settings and changes in learning",
+        "correctAnswer": "D",
+        "explanation": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "learningPoint": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "historicalClue": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "B": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "C": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "D": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred."
+        },
+        "quizId": "chapter10-quiz2",
+        "order": 101,
+        "status": "active",
+        "topic": "learning-settings",
+        "topicLabel": "Learning Was More Than a School Building",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission2-learning-settings-practice1",
+      "create": true,
+      "fields": {
+        "question": "A caption says learning began only when colonial schools appeared. What correction fits?",
+        "optionA": "People previously had no knowledge",
+        "optionB": "Every earlier skill disappeared immediately",
+        "optionC": "A school building proves every child attended",
+        "optionD": "Earlier community learning existed alongside later institutional changes",
+        "correctAnswer": "D",
+        "explanation": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "learningPoint": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "historicalClue": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "B": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "C": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "D": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred."
+        },
+        "missionId": "chapter10-mission2",
+        "topic": "learning-settings",
+        "topicLabel": "Learning Was More Than a School Building",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A place or situation in which people gain knowledge and skills.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission2-learning-settings-practice2",
+      "create": true,
+      "fields": {
+        "question": "A record dates a school building but lists no classes or pupils. What remains to check?",
+        "optionA": "Nothing because a building proves learning",
+        "optionB": "Every residents private belief",
+        "optionC": "Teaching and attendance in that particular setting",
+        "optionD": "Whether every child automatically attended",
+        "correctAnswer": "C",
+        "explanation": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "learningPoint": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "historicalClue": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "B": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "C": "Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred.",
+          "D": "Review the lesson clues. Earlier community learning existed alongside later institutional changes. A building alone does not establish attendance or the teaching that occurred."
+        },
+        "missionId": "chapter10-mission2",
+        "topic": "learning-settings",
+        "topicLabel": "Learning Was More Than a School Building",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A place or situation in which people gain knowledge and skills.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz2-question2",
+      "create": true,
+      "fields": {
+        "question": "Which languages are named in the catalog title used here?",
+        "optionA": "Only modern English",
+        "optionB": "Every language in the islands",
+        "optionC": "No languages",
+        "optionD": "Spanish and Tagalog",
+        "correctAnswer": "D",
+        "explanation": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "learningPoint": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "historicalClue": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "B": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "C": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "D": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief."
+        },
+        "quizId": "chapter10-quiz2",
+        "order": 2,
+        "status": "active",
+        "topic": "teaching-materials",
+        "topicLabel": "Investigate a Named Teaching Book",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz2-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why separate a books printing from its reception?",
+        "optionA": "One copy reveals all private beliefs",
+        "optionB": "A title supplies every readers experience",
+        "optionC": "Production and peoples responses require different evidence",
+        "optionD": "Printing proves everyone understood",
+        "correctAnswer": "C",
+        "explanation": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "learningPoint": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "historicalClue": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "B": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "C": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "D": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief."
+        },
+        "quizId": "chapter10-quiz2",
+        "order": 102,
+        "status": "active",
+        "topic": "teaching-materials",
+        "topicLabel": "Investigate a Named Teaching Book",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission2-teaching-materials-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does the 1593 teaching book most directly support?",
+        "optionA": "Every learner understood it identically",
+        "optionB": "All earlier traditions disappeared",
+        "optionC": "A particular printed material existed, not universal reading or acceptance",
+        "optionD": "Every person read it",
+        "correctAnswer": "C",
+        "explanation": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "learningPoint": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "historicalClue": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "B": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "C": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "D": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief."
+        },
+        "missionId": "chapter10-mission2",
+        "topic": "teaching-materials",
+        "topicLabel": "Investigate a Named Teaching Book",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An object or text used to help communicate a lesson.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission2-teaching-materials-practice2",
+      "create": true,
+      "fields": {
+        "question": "One surviving book is used to claim that everyone adopted its teaching. What is missing?",
+        "optionA": "Nothing because publication proves belief",
+        "optionB": "Evidence about circulation, reading and responses",
+        "optionC": "Only a larger title",
+        "optionD": "A claim that every reader was identical",
+        "correctAnswer": "B",
+        "explanation": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "learningPoint": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "historicalClue": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "B": "A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "C": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief.",
+          "D": "Review the lesson clues. A particular printed material existed, not universal reading or acceptance. A printed book does not establish every persons reading, understanding or belief."
+        },
+        "missionId": "chapter10-mission2",
+        "topic": "teaching-materials",
+        "topicLabel": "Investigate a Named Teaching Book",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An object or text used to help communicate a lesson.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz2-question3",
+      "create": true,
+      "fields": {
+        "question": "What does translation concern?",
+        "optionA": "Proving everyone agrees",
+        "optionB": "Giving every person the same beliefs",
+        "optionC": "Expressing meaning in another language",
+        "optionD": "Changing a town founding date",
+        "correctAnswer": "C",
+        "explanation": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "learningPoint": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "historicalClue": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "B": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "C": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "D": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding."
+        },
+        "quizId": "chapter10-quiz2",
+        "order": 3,
+        "status": "active",
+        "topic": "language-understanding",
+        "topicLabel": "Language Helped Communication",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz2-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why ask how a learner encountered a translated message?",
+        "optionA": "Every community used the same language",
+        "optionB": "Access and understanding are not proved by a translation label",
+        "optionC": "A translation proves every person read it",
+        "optionD": "Messages always have one universal response",
+        "correctAnswer": "B",
+        "explanation": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "learningPoint": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "historicalClue": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "B": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "C": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "D": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding."
+        },
+        "quizId": "chapter10-quiz2",
+        "order": 103,
+        "status": "active",
+        "topic": "language-understanding",
+        "topicLabel": "Language Helped Communication",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission2-language-understanding-practice1",
+      "create": true,
+      "fields": {
+        "question": "A Spanish-Tagalog book is used to claim everyone spoke Spanish. Which correction fits?",
+        "optionA": "Translation proves universal agreement",
+        "optionB": "It shows languages in that material, not everyones language ability",
+        "optionC": "Everyone must have spoken both languages",
+        "optionD": "All other languages vanished",
+        "correctAnswer": "B",
+        "explanation": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "learningPoint": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "historicalClue": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "B": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "C": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "D": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding."
+        },
+        "missionId": "chapter10-mission2",
+        "topic": "language-understanding",
+        "topicLabel": "Language Helped Communication",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Expressing meaning from one language in another.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission2-language-understanding-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption says translating a text guaranteed identical understanding. What should change?",
+        "optionA": "Check how particular learners encountered and understood it",
+        "optionB": "Keep identical understanding as automatic",
+        "optionC": "Assume all languages disappeared",
+        "optionD": "Treat disagreement as proof no message existed",
+        "correctAnswer": "A",
+        "explanation": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "learningPoint": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "historicalClue": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+        "answerExplanations": {
+          "A": "It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "B": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "C": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding.",
+          "D": "Review the lesson clues. It shows languages in that material, not everyones language ability. One bilingual text does not prove everyones language ability or identical understanding."
+        },
+        "missionId": "chapter10-mission2",
+        "topic": "language-understanding",
+        "topicLabel": "Language Helped Communication",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Expressing meaning from one language in another.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz2-question4",
+      "create": true,
+      "fields": {
+        "question": "What does access mean in this lesson?",
+        "optionA": "A guarantee that distance never matters",
+        "optionB": "A practical opportunity to reach and take part",
+        "optionC": "Proof of complete learning",
+        "optionD": "A school name alone",
+        "correctAnswer": "B",
+        "explanation": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "learningPoint": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "historicalClue": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "B": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "C": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "D": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions."
+        },
+        "quizId": "chapter10-quiz2",
+        "order": 4,
+        "status": "active",
+        "topic": "school-policy-access",
+        "topicLabel": "A School Policy Was Not Every Learners Experience",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz2-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a policy with a dated class register?",
+        "optionA": "A planned rule and recorded attendance answer different questions",
+        "optionB": "A rule alone proves attendance",
+        "optionC": "Every listed pupil learned the same things",
+        "optionD": "Dates never affect school records",
+        "correctAnswer": "A",
+        "explanation": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "learningPoint": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "historicalClue": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "answerExplanations": {
+          "A": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "B": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "C": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "D": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions."
+        },
+        "quizId": "chapter10-quiz2",
+        "order": 104,
+        "status": "active",
+        "topic": "school-policy-access",
+        "topicLabel": "A School Policy Was Not Every Learners Experience",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission2-school-policy-access-practice1",
+      "create": true,
+      "fields": {
+        "question": "An 1863 policy is used to claim every child immediately learned equally. What should be checked?",
+        "optionA": "Actual access, attendance, teaching and learning in particular places",
+        "optionB": "Nothing because a policy proves every outcome",
+        "optionC": "Every household must have had identical resources",
+        "optionD": "A register reveals every private thought",
+        "correctAnswer": "A",
+        "explanation": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "learningPoint": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "historicalClue": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "answerExplanations": {
+          "A": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "B": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "C": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "D": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions."
+        },
+        "missionId": "chapter10-mission2",
+        "topic": "school-policy-access",
+        "topicLabel": "A School Policy Was Not Every Learners Experience",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The practical opportunity to reach and take part in something.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission2-school-policy-access-practice2",
+      "create": true,
+      "fields": {
+        "question": "A register records a pupil but gives no learning result. Which report fits?",
+        "optionA": "All subjects were completely mastered",
+        "optionB": "The policy reached everyone identically",
+        "optionC": "The pupil must have agreed with every teaching",
+        "optionD": "Attendance is recorded; demonstrated learning needs more evidence",
+        "correctAnswer": "D",
+        "explanation": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "learningPoint": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "historicalClue": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "B": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "C": "Review the lesson clues. Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions.",
+          "D": "Actual access, attendance, teaching and learning in particular places. Access, recorded attendance and demonstrated learning are different questions."
+        },
+        "missionId": "chapter10-mission2",
+        "topic": "school-policy-access",
+        "topicLabel": "A School Policy Was Not Every Learners Experience",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The practical opportunity to reach and take part in something.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz2-question5",
+      "create": true,
+      "fields": {
+        "question": "What does studying religious life require here?",
+        "optionA": "Respectful use of historical evidence",
+        "optionB": "Adopting a particular faith",
+        "optionC": "Sharing family religion",
+        "optionD": "Performing a prayer for points",
+        "correctAnswer": "A",
+        "explanation": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "learningPoint": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "historicalClue": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "answerExplanations": {
+          "A": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "B": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "C": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "D": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion."
+        },
+        "quizId": "chapter10-quiz2",
+        "order": 5,
+        "status": "active",
+        "topic": "religious-life-evidence",
+        "topicLabel": "Study Religious Life Respectfully",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz2-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish a writers hope from a recorded activity?",
+        "optionA": "A hope proves universal acceptance",
+        "optionB": "Every writer records every voice",
+        "optionC": "Participation reveals every private belief",
+        "optionD": "An aim and an observed action are different claims",
+        "correctAnswer": "D",
+        "explanation": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "learningPoint": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "historicalClue": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "B": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "C": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "D": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion."
+        },
+        "quizId": "chapter10-quiz2",
+        "order": 105,
+        "status": "active",
+        "topic": "religious-life-evidence",
+        "topicLabel": "Study Religious Life Respectfully",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission2-religious-life-evidence-practice1",
+      "create": true,
+      "fields": {
+        "question": "A ceremony record is treated as proof of every participants private belief. Which correction fits?",
+        "optionA": "Assume every participant thought identically",
+        "optionB": "Require students to perform the ceremony",
+        "optionC": "Rank communities by religion",
+        "optionD": "Describe the event and seek appropriate evidence for wider claims",
+        "correctAnswer": "D",
+        "explanation": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "learningPoint": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "historicalClue": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "B": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "C": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "D": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion."
+        },
+        "missionId": "chapter10-mission2",
+        "topic": "religious-life-evidence",
+        "topicLabel": "Study Religious Life Respectfully",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An activity connected with a religion or tradition.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission2-religious-life-evidence-practice2",
+      "create": true,
+      "fields": {
+        "question": "An institutional account leaves local responses unclear. What should a historian do?",
+        "optionA": "Invent private conversations",
+        "optionB": "Judge a students personal beliefs",
+        "optionC": "Identify the limit and seek other relevant voices or evidence",
+        "optionD": "Assume everyone agreed",
+        "correctAnswer": "C",
+        "explanation": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "learningPoint": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "historicalClue": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "B": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "C": "Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion.",
+          "D": "Review the lesson clues. Describe the event and seek appropriate evidence for wider claims. History activities assess evidence rather than a students own religion."
+        },
+        "missionId": "chapter10-mission2",
+        "topic": "religious-life-evidence",
+        "topicLabel": "Study Religious Life Respectfully",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An activity connected with a religion or tradition.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter10-mission2-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission2",
+        "name": "Learning History Evidence Journal",
+        "description": "A learning-game token for comparing education materials, policy and learners experiences.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 2,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Separate teaching materials, language, school policy and actual learning or belief.",
+          "reflectionQuestion": "Which clue helped you distinguish a teaching material from evidence of actual learning?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-10",
+      "create": false,
+      "expected": {
+        "description": "Mission 1 investigates changes in settlements and housing. Missions 2-5 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-2 investigate settlements, housing, education, language and religious life. Missions 3-5 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapter 9 offers five missions and an evidence challenge. Chapter 10 begins with settlements and housing; later content is being prepared."
+      },
+      "fields": {
+        "description": "Chapter 9 offers five missions and an evidence challenge. Chapter 10 offers Missions 1-2 on housing and learning histories; later content is being prepared."
+      }
+    }
+  ]
+}

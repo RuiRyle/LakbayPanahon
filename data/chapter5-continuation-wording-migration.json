@@ -1,0 +1,69 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Correct outdated build-status wording in two Chapter 5 scene endings only",
+  "reviewStatus": "Offline comparison with complete Chapter 5 authoring chain; live comparison pending",
+  "prerequisites": [
+    {
+      "path": "missions/chapter5-mission3",
+      "expected": {
+        "status": "active",
+        "chapterId": "chapter-5"
+      }
+    },
+    {
+      "path": "missions/chapter5-mission4",
+      "expected": {
+        "status": "active",
+        "chapterId": "chapter-5"
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-5",
+      "expected": {
+        "status": "active",
+        "chapterId": "chapter-5"
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "storyScenes/chapter5-mission1-scene6",
+      "create": false,
+      "expected": {
+        "missionId": "chapter5-mission1",
+        "title": "Field Journal: Explain Why, Where and Whose View",
+        "content": "Build a mission report with three questions. Why was the expedition supported? Consider spice access, possible profit and political interests. Where did the westward plan lead? Follow the broad oceans and passage while keeping Philippine islands and Maluku distinct. Whose perspective are we hearing? Compare the sponsor's aims with the interests of people already present.\n\nUse source labels honestly. The route is simplified, the fictional comparison prompts are not original speeches, and a motive is not a guaranteed outcome. Saving a clue does not prove mastery or give ownership of historical objects.\n\nThe five-question mission quiz assesses ideas taught here. If an idea needs work, return to its explanation and practise before retrying with equivalent new questions.\n\nContinue through the four Chapter 5 missions to investigate encounters, Mactan and later expeditions. Complete all missions, then pass the chapter challenge to earn the chapter badge. Passing this mission alone does not complete the chapter."
+      },
+      "fields": {
+        "content": "Build a mission report with three questions. Why was the expedition supported? Consider spice access, possible profit and political interests. Where did the westward plan lead? Follow the broad oceans and passage while keeping Philippine islands and Maluku distinct. Whose perspective are we hearing? Compare the sponsor's aims with the interests of people already present.\n\nUse source labels honestly. The route is simplified, the fictional comparison prompts are not original speeches, and a motive is not a guaranteed outcome. Saving a clue does not prove mastery or give ownership of historical objects.\n\nThe five-question mission quiz assesses ideas taught here. If an idea needs work, return to its explanation and practise before retrying with equivalent new questions.\n\nThis mission is one part of Chapter 5. Continue with the encounters at Homonhon, Limasawa and Cebu, then investigate Mactan and later expeditions. To earn the chapter badge, complete the chapter missions and pass the chapter challenge. Passing this mission alone does not complete the chapter."
+      }
+    },
+    {
+      "path": "storyScenes/chapter5-mission2-scene6",
+      "create": false,
+      "expected": {
+        "missionId": "chapter5-mission2",
+        "title": "Your Encounter Report",
+        "content": "Complete your encounter report. Start with a sequence: Homonhon, Limasawa and Cebu are distinct stops. Name an action: local people provided supplies at Homonhon. Explain communication: interpreters helped people speaking different languages meet. Name a setting: Cebu already had trade and leadership. Finally, identify a source and a limit.\n\nUse this frame in your own words: At [place], [people] took part in [event]. The evidence supports [specific claim]. It does not establish [claim that goes too far]. This is a thinking tool, not a speech from the past.\n\nCheck your report. Did you confuse a landing with a sighting? Turn help into surrender? Treat a religious event as everyone's belief? Invent what a leader thought? Revise claims that exceed the clues.\n\nContinue through the four Chapter 5 missions to investigate encounters, Mactan and later expeditions. Complete all missions, then pass the chapter challenge to earn the chapter badge. Passing this mission alone does not complete the chapter."
+      },
+      "fields": {
+        "content": "Complete your encounter report. Start with a sequence: Homonhon, Limasawa and Cebu are distinct stops. Name an action: local people provided supplies at Homonhon. Explain communication: interpreters helped people speaking different languages meet. Name a setting: Cebu already had trade and leadership. Finally, identify a source and a limit.\n\nUse this frame in your own words: At [place], [people] took part in [event]. The evidence supports [specific claim]. It does not establish [claim that goes too far]. This is a thinking tool, not a speech from the past.\n\nCheck your report. Did you confuse a landing with a sighting? Turn help into surrender? Treat a religious event as everyone's belief? Invent what a leader thought? Revise claims that exceed the clues.\n\nThe quiz asks five questions. If a topic is difficult, revisit its scene and use targeted practice before retrying. The mission reward is earned once. Next, investigate Mactan and later expeditions. To earn the chapter badge, complete the chapter missions and pass the chapter challenge. Passing this mission alone does not complete the chapter."
+      }
+    }
+  ],
+  "reconciliation": {
+    "date": "2026-10-29",
+    "source": "data/chapter5-published-recap-migration.json",
+    "reason": "Bounded live comparison matched the already-reviewed published recap exactly. Only the earlier ending paragraph differed; full body guards are retained.",
+    "previousGuards": [
+      {
+        "path": "storyScenes/chapter5-mission1-scene6",
+        "previousExpectedSha256": "f5a3b0808787fa4e13054c2a0f7d4b05ade3b24734c5340aab9d73d23b5cd2ce"
+      },
+      {
+        "path": "storyScenes/chapter5-mission2-scene6",
+        "previousExpectedSha256": "a44ecd109d114853e65b2b3cfafa9ba6f1620a31bf30b88e31fe8ba7efab0927"
+      }
+    ]
+  }
+}

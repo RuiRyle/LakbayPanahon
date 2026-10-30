@@ -1,0 +1,1333 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 10 Mission 5 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://whc.unesco.org/en/list/502/",
+    "https://ozamiz.deped.gov.ph/history/",
+    "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+    "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-9",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-9",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/community-economy-investigator",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter9-mission1",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter9-mission2",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter9-mission3",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter9-mission4",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter9-mission5",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 5
+      }
+    },
+    {
+      "path": "missions/chapter10-mission1",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter10-mission2",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter10-mission3",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter10-mission4",
+      "expected": {
+        "chapterId": "chapter-10",
+        "status": "active",
+        "order": 4
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter10-mission5",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-10",
+        "title": "Continuity and Change in Filipino Society",
+        "order": 5,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Compare what changed and continued through dated sources, institutional practice, peoples actions and living heritage.",
+        "learningObjective": "Explain continuity and change in particular settings without assuming identical experiences or automatic outcomes.",
+        "learningObjectives": [
+          "Explain change and continuity can happen together using lesson evidence.",
+          "Explain compare the same question across time using lesson evidence.",
+          "Explain a new rule was not every outcome using lesson evidence.",
+          "Explain people took part in change using lesson evidence.",
+          "Explain heritage can continue and change using lesson evidence."
+        ],
+        "lessonRecap": "Continuity in a skill can accompany a change in use. A named example is not every communitys history. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter10-quiz5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission5",
+        "title": "Continuity and Change - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 5,
+        "questionBlueprint": [
+          {
+            "topic": "continuity-change",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "compare-dated-sources",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "institution-experience",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "people-varied-responses",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "living-heritage-dates",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission5-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission5",
+        "status": "active",
+        "order": 1,
+        "title": "Change and Continuity Can Happen Together",
+        "content": "Change means something becomes different. Continuity means something carries on. A community can experience both at the same time. New institutions, materials or activities do not prove that every earlier skill disappeared. Continuing a skill also does not mean that every use or condition stayed exactly the same.\n\nUNESCO describes Vigan through earlier trading activity and later planning, with architecture drawing on several traditions. This named example helps us ask about layers of history rather than choose between everything changed and nothing changed. Our fictional comparison cards show a familiar skill used for a new purpose. They illustrate a question, not a documented individual workshop. Identify exactly what continued and what changed, then ask what evidence supports each part. One feature cannot explain every community in the islands.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "continuity-change"
+        ],
+        "imageUrl": "../assets/story/continuity-change-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Change and Continuity Can Happen Together. Labelled clues compare continuity, change, dated sources and limits; not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Two ideas",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Change and continuity can occur within the same setting.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare parts",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask which skill, use or institution changed and which continued.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A named example is not every communitys history.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A familiar skill is used for a new purpose in a teaching model. Which idea fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Continuity in a skill can accompany a change in use",
+          "Every earlier skill must have disappeared",
+          "Nothing at all changed",
+          "One model proves all communities were identical"
+        ],
+        "decisionCorrectAnswer": "Continuity in a skill can accompany a change in use",
+        "decisionExplanation": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "keyTerm": "Continuity",
+        "keyTermDefinition": "Something carrying on while other things may change.",
+        "historicalInsight": "A named example is not every communitys history.",
+        "learningHelp": {
+          "explanation": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "vocabulary": [
+            {
+              "term": "Continuity",
+              "definition": "Something carrying on while other things may change."
+            }
+          ],
+          "example": "Change and continuity can occur within the same setting.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission5-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission5",
+        "status": "active",
+        "order": 2,
+        "title": "Compare the Same Question Across Time",
+        "content": "A useful comparison asks the same clear question of sources from different times. A towns beginning, a houses construction and a modern repair are different stages. A later photograph does not automatically show the first form of a building. Nor does a policy date tell us exactly when every community experienced its effects.\n\nTry a fictional source desk with an earlier room plan, a later dated photograph and a repair note. Ask which opening each shows and what changed between them. Before combining them, check that the records concern the same building and feature. Do not compare unrelated houses as if they were stages of one house. A missing feature in a partial image may be outside the frame rather than absent from the building. State what the records show, then identify what still needs evidence. The desk is a model, not an original building archive.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "compare-dated-sources"
+        ],
+        "imageUrl": "../assets/story/continuity-change-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Compare the Same Question Across Time. Labelled clues compare continuity, change, dated sources and limits; not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Same question",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Compare evidence about a clearly identified feature or activity.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Dates and setting",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Check that the sources concern the people or place you are comparing.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Missing evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Not visible in a source does not always mean nonexistent.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An earlier plan and later photograph are supplied. What should you check before calling a difference a change?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Whether every town had the same house",
+          "Whether the photograph shows every hidden room",
+          "Whether a missing detail must never have existed",
+          "Whether they show the same building and feature in comparable ways"
+        ],
+        "decisionCorrectAnswer": "Whether they show the same building and feature in comparable ways",
+        "decisionExplanation": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "keyTerm": "Historical comparison",
+        "keyTermDefinition": "Examining similarities and differences using evidence from particular settings.",
+        "historicalInsight": "Not visible in a source does not always mean nonexistent.",
+        "learningHelp": {
+          "explanation": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "vocabulary": [
+            {
+              "term": "Historical comparison",
+              "definition": "Examining similarities and differences using evidence from particular settings."
+            }
+          ],
+          "example": "Compare evidence about a clearly identified feature or activity.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission5-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission5",
+        "status": "active",
+        "order": 3,
+        "title": "A New Rule Was Not Every Outcome",
+        "content": "Institutional changes and everyday experiences are connected but different. The 1863 education decree is a named policy development from an earlier lesson. It did not by itself establish identical access, attendance or learning for every child. To explain what changed in a particular town, compare the rule with evidence of what actually happened.\n\nOur fictional cards show a school instruction, a teacher record and a class register. They answer questions about plans, staffing and recorded attendance. None alone proves what every learner understood. Earlier community learning also should not be erased simply because formal schooling expanded. Ask what evidence supports continuity in skills and what supports change in institutions. This comparison does not judge a learners worth or ask students to disclose family resources, religion or school difficulties.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "institution-experience"
+        ],
+        "imageUrl": "../assets/story/continuity-change-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A New Rule Was Not Every Outcome. Labelled clues compare continuity, change, dated sources and limits; not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Policy",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A decree can establish an intended institutional change.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Practice",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Implementation needs evidence of actual people, resources and activities.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Experience",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Access, attendance and learning are different questions.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A school decree is treated as proof that every child immediately learned equally. What should be checked?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every household must have identical support",
+          "Earlier community learning never existed",
+          "Actual implementation, access, attendance and learning",
+          "Nothing because a rule guarantees every result"
+        ],
+        "decisionCorrectAnswer": "Actual implementation, access, attendance and learning",
+        "decisionExplanation": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "keyTerm": "Implementation",
+        "keyTermDefinition": "Putting a plan or rule into actual practice.",
+        "historicalInsight": "Access, attendance and learning are different questions.",
+        "learningHelp": {
+          "explanation": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "vocabulary": [
+            {
+              "term": "Implementation",
+              "definition": "Putting a plan or rule into actual practice."
+            }
+          ],
+          "example": "A decree can establish an intended institutional change.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission5-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission5",
+        "status": "active",
+        "order": 4,
+        "title": "People Took Part in Change",
+        "content": "People were not simply objects moved by rules. They could make requests, adapt activities, cooperate, contest demands or take other actions within unequal conditions. Having some ability to act did not mean having unlimited freedom or equal power. Explain the action that is recorded without inventing every private motive.\n\nThe Bacolor case from an earlier lesson identifies a 1698 petition concerning tribute-collection duties. It shows a particular action within social and institutional relationships. The existence of a petition is not proof that every request was granted or that every community responded the same way. In our fictional comparison, two source cards record different requests in different places. Keep each case attached to its own people, period and outcome evidence. Do not turn a social category into one guaranteed behavior, wealth level or measure of worth.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "people-varied-responses"
+        ],
+        "imageUrl": "../assets/story/continuity-change-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for People Took Part in Change. Labelled clues compare continuity, change, dated sources and limits; not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "People could take part in change within constraints.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Named case",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The Bacolor petition is a particular recorded request in 1698.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Limits",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Agency does not mean equal power, unlimited choice or automatic success.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A petition shows people making a request under unequal conditions. Which idea fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A category determines every persons behavior",
+          "People could act within limits without guaranteed success",
+          "Everyone had unlimited choice",
+          "Every petition automatically succeeded"
+        ],
+        "decisionCorrectAnswer": "People could act within limits without guaranteed success",
+        "decisionExplanation": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "keyTerm": "Historical agency",
+        "keyTermDefinition": "Peoples ability to act within the conditions and limits they face.",
+        "historicalInsight": "Agency does not mean equal power, unlimited choice or automatic success.",
+        "learningHelp": {
+          "explanation": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "vocabulary": [
+            {
+              "term": "Historical agency",
+              "definition": "Peoples ability to act within the conditions and limits they face."
+            }
+          ],
+          "example": "People could take part in change within constraints.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission5-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission5",
+        "status": "active",
+        "order": 5,
+        "title": "Heritage Can Continue and Change",
+        "content": "A living tradition can carry knowledge forward while materials, uses or forms change. A modern heritage object can help us ask about that process. Its modern date should not be hidden to make it appear colonial. An object that looks old is not automatically evidence of every earlier practice.\n\nThe Field Museum entry used in the earlier arts lesson dates its named Abel Iloko textile to the early to mid-1960s. That object has a later story of use and memory. It is not a surviving colonial-era textile simply because weaving has a longer history. Our date-and-claim card distinguishes the particular object from a claim about earlier knowledge. To explain an earlier detail, find evidence for that period and attribute community accounts carefully. We do not copy a textile pattern, require a religious practice or treat one owners memory as every families history.\n\nOpen the three clues and choose an explanation they support. Use Explain for help or revisit the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "living-heritage-dates"
+        ],
+        "imageUrl": "../assets/story/continuity-change-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Heritage Can Continue and Change. Labelled clues compare continuity, change, dated sources and limits; not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Date the object",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A modern object has its own making and use history.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Continuing knowledge",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Skills may continue while uses and forms change.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Earlier claim",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A later object alone does not establish every earlier detail.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A later textile carries a heritage story. What is a careful historical use?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Keep its date and seek earlier evidence for claims about earlier forms",
+          "Erase the date to make it colonial",
+          "Assume every pattern never changed",
+          "Use one owners account for every family"
+        ],
+        "decisionCorrectAnswer": "Keep its date and seek earlier evidence for claims about earlier forms",
+        "decisionExplanation": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "keyTerm": "Living heritage",
+        "keyTermDefinition": "Knowledge and practices that people share, continue and sometimes change.",
+        "historicalInsight": "A later object alone does not establish every earlier detail.",
+        "learningHelp": {
+          "explanation": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "vocabulary": [
+            {
+              "term": "Living heritage",
+              "definition": "Knowledge and practices that people share, continue and sometimes change."
+            }
+          ],
+          "example": "A modern object has its own making and use history.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission5-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission5",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Continuity and Change Report",
+        "content": "Bring the chapter together. Settlement layouts and houses changed while skills and activities could continue. Teaching materials and policies did not guarantee identical learning. Social categories and local roles did not determine a whole life or human worth. Cultural works have makers, dates and uses. People acted within conditions that could be unequal.\n\nPrepare a fictional report for another Grade 5 learner. State what changed and what continued, identify the people, place and period, give supporting evidence and explain a limit. Compare the same question across sources. Keep a rule separate from implementation, a request separate from success and a modern object separate from evidence of an earlier design. Label the source cards as teaching models and do not invent private conversations.\n\nThe main quiz has five questions and three correct passes. Return to linked learning content before practice and a retry if needed. This is the fifth mission, but completing it does not yet complete Chapter 10 or award its final badge. The chapter evidence challenge is still being prepared.",
+        "reviewTopics": [
+          "continuity-change",
+          "compare-dated-sources",
+          "institution-experience",
+          "people-varied-responses",
+          "living-heritage-dates"
+        ],
+        "imageUrl": "../assets/story/continuity-change-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Change and Continuity Can Happen Together. Labelled clues compare continuity, change, dated sources and limits; not an original historical record.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Two ideas",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Change and continuity can occur within the same setting.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare parts",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask which skill, use or institution changed and which continued.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Scope",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A named example is not every communitys history.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best explains continuity and change?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Say everything changed identically everywhere",
+          "Say nothing ever changed",
+          "Treat one source as every persons full history",
+          "Compare particular features and experiences with dated evidence and stated limits"
+        ],
+        "decisionCorrectAnswer": "Compare particular features and experiences with dated evidence and stated limits",
+        "decisionExplanation": "Explain what changed and what continued for particular people and settings, using dated evidence and identifying limits.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain what changed and what continued for particular people and settings, using dated evidence and identifying limits.",
+        "keyTerm": "Continuity",
+        "keyTermDefinition": "Something carrying on while other things may change.",
+        "historicalInsight": "A named example is not every communitys history.",
+        "learningHelp": {
+          "explanation": "Explain what changed and what continued for particular people and settings, using dated evidence and identifying limits.",
+          "vocabulary": [
+            {
+              "term": "Continuity",
+              "definition": "Something carrying on while other things may change."
+            }
+          ],
+          "example": "Change and continuity can occur within the same setting.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://ozamiz.deped.gov.ph/history/",
+          "https://history.upd.edu.ph/publications/they-are-not-foreigners/",
+          "https://philippines.fieldmuseum.org/heritage/multimedia/1627247"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz5-question1",
+      "create": true,
+      "fields": {
+        "question": "What does continuity mean?",
+        "optionA": "Something carrying on during other changes",
+        "optionB": "Everything always staying identical",
+        "optionC": "Every older practice disappearing",
+        "optionD": "A guarantee of equal benefits",
+        "correctAnswer": "A",
+        "explanation": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "learningPoint": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "historicalClue": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "answerExplanations": {
+          "A": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "B": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "C": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "D": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history."
+        },
+        "quizId": "chapter10-quiz5",
+        "order": 1,
+        "status": "active",
+        "topic": "continuity-change",
+        "topicLabel": "Change and Continuity Can Happen Together",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz5-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why separate a skill from its use when comparing periods?",
+        "optionA": "A skill proves all beliefs stayed identical",
+        "optionB": "A new use erases all earlier knowledge",
+        "optionC": "Dates never matter",
+        "optionD": "One can continue while the other changes",
+        "correctAnswer": "D",
+        "explanation": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "learningPoint": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "historicalClue": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "B": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "C": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "D": "Continuity in a skill can accompany a change in use. A named example is not every communitys history."
+        },
+        "quizId": "chapter10-quiz5",
+        "order": 101,
+        "status": "active",
+        "topic": "continuity-change",
+        "topicLabel": "Change and Continuity Can Happen Together",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission5-continuity-change-practice1",
+      "create": true,
+      "fields": {
+        "question": "A familiar skill is used for a new purpose in a teaching model. Which idea fits?",
+        "optionA": "Every earlier skill must have disappeared",
+        "optionB": "Nothing at all changed",
+        "optionC": "One model proves all communities were identical",
+        "optionD": "Continuity in a skill can accompany a change in use",
+        "correctAnswer": "D",
+        "explanation": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "learningPoint": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "historicalClue": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "B": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "C": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "D": "Continuity in a skill can accompany a change in use. A named example is not every communitys history."
+        },
+        "missionId": "chapter10-mission5",
+        "topic": "continuity-change",
+        "topicLabel": "Change and Continuity Can Happen Together",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Something carrying on while other things may change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission5-continuity-change-practice2",
+      "create": true,
+      "fields": {
+        "question": "One new building is used to claim all earlier community life vanished. What is missing?",
+        "optionA": "An assumption that every person agreed",
+        "optionB": "Only the building name",
+        "optionC": "Evidence about what changed and what continued in that setting",
+        "optionD": "A larger universal claim",
+        "correctAnswer": "C",
+        "explanation": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "learningPoint": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "historicalClue": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "B": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "C": "Continuity in a skill can accompany a change in use. A named example is not every communitys history.",
+          "D": "Review the lesson clues. Continuity in a skill can accompany a change in use. A named example is not every communitys history."
+        },
+        "missionId": "chapter10-mission5",
+        "topic": "continuity-change",
+        "topicLabel": "Change and Continuity Can Happen Together",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Something carrying on while other things may change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz5-question2",
+      "create": true,
+      "fields": {
+        "question": "What makes a historical comparison useful?",
+        "optionA": "Ignoring all dates",
+        "optionB": "Treating unrelated places as one biography",
+        "optionC": "Assuming every image is complete",
+        "optionD": "A clear question and evidence tied to particular settings",
+        "correctAnswer": "D",
+        "explanation": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "learningPoint": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "historicalClue": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "B": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "C": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "D": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent."
+        },
+        "quizId": "chapter10-quiz5",
+        "order": 2,
+        "status": "active",
+        "topic": "compare-dated-sources",
+        "topicLabel": "Compare the Same Question Across Time",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz5-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why check what a photograph leaves outside its frame?",
+        "optionA": "Missing detail proves total destruction",
+        "optionB": "Frames cannot affect evidence",
+        "optionC": "An unseen feature may still exist beyond the image",
+        "optionD": "Every photograph shows every room",
+        "correctAnswer": "C",
+        "explanation": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "learningPoint": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "historicalClue": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "B": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "C": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "D": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent."
+        },
+        "quizId": "chapter10-quiz5",
+        "order": 102,
+        "status": "active",
+        "topic": "compare-dated-sources",
+        "topicLabel": "Compare the Same Question Across Time",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission5-compare-dated-sources-practice1",
+      "create": true,
+      "fields": {
+        "question": "An earlier plan and later photograph are supplied. What should you check before calling a difference a change?",
+        "optionA": "Whether the photograph shows every hidden room",
+        "optionB": "Whether a missing detail must never have existed",
+        "optionC": "Whether they show the same building and feature in comparable ways",
+        "optionD": "Whether every town had the same house",
+        "correctAnswer": "C",
+        "explanation": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "learningPoint": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "historicalClue": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "B": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "C": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "D": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent."
+        },
+        "missionId": "chapter10-mission5",
+        "topic": "compare-dated-sources",
+        "topicLabel": "Compare the Same Question Across Time",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Examining similarities and differences using evidence from particular settings.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission5-compare-dated-sources-practice2",
+      "create": true,
+      "fields": {
+        "question": "Two records concern different houses but are called before-and-after views of one house. What correction fits?",
+        "optionA": "Use appearance alone as a complete history",
+        "optionB": "Keep their identities separate and find records of the same house for that claim",
+        "optionC": "Erase the place names",
+        "optionD": "Assume all houses were identical",
+        "correctAnswer": "B",
+        "explanation": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "learningPoint": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "historicalClue": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "B": "Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "C": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent.",
+          "D": "Review the lesson clues. Whether they show the same building and feature in comparable ways. Not visible in a source does not always mean nonexistent."
+        },
+        "missionId": "chapter10-mission5",
+        "topic": "compare-dated-sources",
+        "topicLabel": "Compare the Same Question Across Time",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Examining similarities and differences using evidence from particular settings.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz5-question3",
+      "create": true,
+      "fields": {
+        "question": "What is implementation?",
+        "optionA": "A guarantee of universal agreement",
+        "optionB": "A measure of human worth",
+        "optionC": "Putting a plan or rule into practice",
+        "optionD": "Writing a wish that proves every outcome",
+        "correctAnswer": "C",
+        "explanation": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "learningPoint": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "historicalClue": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "B": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "C": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "D": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions."
+        },
+        "quizId": "chapter10-quiz5",
+        "order": 3,
+        "status": "active",
+        "topic": "institution-experience",
+        "topicLabel": "A New Rule Was Not Every Outcome",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz5-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a policy with a teacher record and class register?",
+        "optionA": "Every learner had one identical experience",
+        "optionB": "Plans, staffing and recorded attendance need distinct evidence",
+        "optionC": "All three prove complete learning",
+        "optionD": "A rule makes resources irrelevant",
+        "correctAnswer": "B",
+        "explanation": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "learningPoint": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "historicalClue": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "B": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "C": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "D": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions."
+        },
+        "quizId": "chapter10-quiz5",
+        "order": 103,
+        "status": "active",
+        "topic": "institution-experience",
+        "topicLabel": "A New Rule Was Not Every Outcome",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission5-institution-experience-practice1",
+      "create": true,
+      "fields": {
+        "question": "A school decree is treated as proof that every child immediately learned equally. What should be checked?",
+        "optionA": "Earlier community learning never existed",
+        "optionB": "Actual implementation, access, attendance and learning",
+        "optionC": "Nothing because a rule guarantees every result",
+        "optionD": "Every household must have identical support",
+        "correctAnswer": "B",
+        "explanation": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "learningPoint": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "historicalClue": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "B": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "C": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "D": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions."
+        },
+        "missionId": "chapter10-mission5",
+        "topic": "institution-experience",
+        "topicLabel": "A New Rule Was Not Every Outcome",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Putting a plan or rule into actual practice.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission5-institution-experience-practice2",
+      "create": true,
+      "fields": {
+        "question": "A register shows attendance but no learning results. Which conclusion stays within it?",
+        "optionA": "Attendance is recorded; demonstrated learning needs further evidence",
+        "optionB": "All knowledge was mastered",
+        "optionC": "Every learner adopted identical beliefs",
+        "optionD": "No earlier skills continued",
+        "correctAnswer": "A",
+        "explanation": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "learningPoint": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "historicalClue": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+        "answerExplanations": {
+          "A": "Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "B": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "C": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions.",
+          "D": "Review the lesson clues. Actual implementation, access, attendance and learning. Access, attendance and learning are different questions."
+        },
+        "missionId": "chapter10-mission5",
+        "topic": "institution-experience",
+        "topicLabel": "A New Rule Was Not Every Outcome",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Putting a plan or rule into actual practice.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz5-question4",
+      "create": true,
+      "fields": {
+        "question": "What does historical agency mean here?",
+        "optionA": "A fixed ancestry ranking",
+        "optionB": "Peoples ability to act within their conditions and limits",
+        "optionC": "Equal power for everyone",
+        "optionD": "Automatic success in every request",
+        "correctAnswer": "B",
+        "explanation": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "learningPoint": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "historicalClue": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "B": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "C": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "D": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success."
+        },
+        "quizId": "chapter10-quiz5",
+        "order": 4,
+        "status": "active",
+        "topic": "people-varied-responses",
+        "topicLabel": "People Took Part in Change",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz5-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why keep the Bacolor petition tied to its place and period?",
+        "optionA": "A named case does not establish every communitys response",
+        "optionB": "Every town filed the same request",
+        "optionC": "All outcomes follow from a category",
+        "optionD": "The date reveals every private motive",
+        "correctAnswer": "A",
+        "explanation": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "learningPoint": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "historicalClue": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "answerExplanations": {
+          "A": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "B": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "C": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "D": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success."
+        },
+        "quizId": "chapter10-quiz5",
+        "order": 104,
+        "status": "active",
+        "topic": "people-varied-responses",
+        "topicLabel": "People Took Part in Change",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission5-people-varied-responses-practice1",
+      "create": true,
+      "fields": {
+        "question": "A petition shows people making a request under unequal conditions. Which idea fits?",
+        "optionA": "People could act within limits without guaranteed success",
+        "optionB": "Everyone had unlimited choice",
+        "optionC": "Every petition automatically succeeded",
+        "optionD": "A category determines every persons behavior",
+        "correctAnswer": "A",
+        "explanation": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "learningPoint": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "historicalClue": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "answerExplanations": {
+          "A": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "B": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "C": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "D": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success."
+        },
+        "missionId": "chapter10-mission5",
+        "topic": "people-varied-responses",
+        "topicLabel": "People Took Part in Change",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Peoples ability to act within the conditions and limits they face.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission5-people-varied-responses-practice2",
+      "create": true,
+      "fields": {
+        "question": "Two petitions from different places are merged into one universal response. What correction fits?",
+        "optionA": "Erase the place names",
+        "optionB": "Assume all requests succeeded",
+        "optionC": "Use a social label as every persons motive",
+        "optionD": "Explain each action and its documented outcome separately",
+        "correctAnswer": "D",
+        "explanation": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "learningPoint": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "historicalClue": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "B": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "C": "Review the lesson clues. People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success.",
+          "D": "People could act within limits without guaranteed success. Agency does not mean equal power, unlimited choice or automatic success."
+        },
+        "missionId": "chapter10-mission5",
+        "topic": "people-varied-responses",
+        "topicLabel": "People Took Part in Change",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Peoples ability to act within the conditions and limits they face.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz5-question5",
+      "create": true,
+      "fields": {
+        "question": "What can living heritage include?",
+        "optionA": "Continuing knowledge alongside changing uses or forms",
+        "optionB": "A guarantee that every detail stayed identical",
+        "optionC": "Only objects made during colonial rule",
+        "optionD": "One story that explains every community",
+        "correctAnswer": "A",
+        "explanation": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "learningPoint": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "historicalClue": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "answerExplanations": {
+          "A": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "B": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "C": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "D": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail."
+        },
+        "quizId": "chapter10-quiz5",
+        "order": 5,
+        "status": "active",
+        "topic": "living-heritage-dates",
+        "topicLabel": "Heritage Can Continue and Change",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz5-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish an objects age from the longer history of a skill?",
+        "optionA": "All objects sharing a skill have one date",
+        "optionB": "Looking traditional proves a colonial date",
+        "optionC": "Dates never limit claims",
+        "optionD": "A later object does not automatically date every earlier use of the skill",
+        "correctAnswer": "D",
+        "explanation": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "learningPoint": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "historicalClue": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "B": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "C": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "D": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail."
+        },
+        "quizId": "chapter10-quiz5",
+        "order": 105,
+        "status": "active",
+        "topic": "living-heritage-dates",
+        "topicLabel": "Heritage Can Continue and Change",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission5-living-heritage-dates-practice1",
+      "create": true,
+      "fields": {
+        "question": "A later textile carries a heritage story. What is a careful historical use?",
+        "optionA": "Erase the date to make it colonial",
+        "optionB": "Assume every pattern never changed",
+        "optionC": "Use one owners account for every family",
+        "optionD": "Keep its date and seek earlier evidence for claims about earlier forms",
+        "correctAnswer": "D",
+        "explanation": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "learningPoint": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "historicalClue": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "B": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "C": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "D": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail."
+        },
+        "missionId": "chapter10-mission5",
+        "topic": "living-heritage-dates",
+        "topicLabel": "Heritage Can Continue and Change",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Knowledge and practices that people share, continue and sometimes change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission5-living-heritage-dates-practice2",
+      "create": true,
+      "fields": {
+        "question": "A 1960s object is used to prove an exact seventeenth-century design. What evidence is needed?",
+        "optionA": "A rule that modern memory proves all earlier details",
+        "optionB": "An assumption that change never happens",
+        "optionC": "Evidence about the earlier period and design",
+        "optionD": "Only a more confident caption",
+        "correctAnswer": "C",
+        "explanation": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "learningPoint": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "historicalClue": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "B": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "C": "Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail.",
+          "D": "Review the lesson clues. Keep its date and seek earlier evidence for claims about earlier forms. A later object alone does not establish every earlier detail."
+        },
+        "missionId": "chapter10-mission5",
+        "topic": "living-heritage-dates",
+        "topicLabel": "Heritage Can Continue and Change",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Knowledge and practices that people share, continue and sometimes change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter10-mission5-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission5",
+        "name": "Continuity and Change Evidence Journal",
+        "description": "A learning-game token for explaining continuity and change through dated evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 5,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Compare features, institutions, experiences and responses across time with source limits.",
+          "reflectionQuestion": "Which clue helped you explain both change and continuity in one setting?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-10",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-4 investigate housing, learning, social experiences and cultural works. Mission 5 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Five missions investigate housing, learning, social experiences, cultural works and continuity and change. The chapter challenge is being prepared."
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapter 9 offers five missions and an evidence challenge. Chapter 10 offers Missions 1-4 on social and cultural transformation; later content is being prepared."
+      },
+      "fields": {
+        "description": "Chapter 9 offers five missions and an evidence challenge. Chapter 10 offers five missions on social and cultural transformation; its challenge and Chapter 11 are being prepared."
+      }
+    }
+  ]
+}

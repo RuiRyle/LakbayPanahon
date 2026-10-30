@@ -1,0 +1,1301 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 15 Mission 3; preserve prior missions and learner records; no chapter badge",
+  "curriculumBasis": "User-confirmed MATATAG Grade 5",
+  "sourceUrls": [
+    "https://philippineculturaleducation.com.ph/pelaez-pedro/",
+    "https://publications.lst.edu/product/pedro-pelaez-brebes-apuntes-sobre-la-cuestion-de-curatos-de-filipinas-a-transcription/",
+    "https://www.newadvent.org/cathen/13675a.htm"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-15",
+      "expected": {
+        "status": "active",
+        "contentReady": true,
+        "eraId": "resistance-national-consciousness"
+      }
+    },
+    {
+      "path": "missions/chapter15-mission1",
+      "expected": {
+        "chapterId": "chapter-15",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter15-mission2",
+      "expected": {
+        "chapterId": "chapter-15",
+        "status": "active",
+        "order": 2
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter15-mission3",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-15",
+        "title": "Parish Reform and the Call for Fair Treatment",
+        "order": 3,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Build a reform case board connecting parish roles, Pedro Pelaez, clergy rights and requests for fair opportunities.",
+        "learningObjective": "Distinguish clergy roles and reform terms, then explain Pelaez's advocacy using a role, a documented concern and a proposed change.",
+        "learningObjectives": [
+          "Explain parishes and responsibilities using lesson evidence.",
+          "Explain secular and regular clergy using lesson evidence.",
+          "Explain pedro pelaez's advocacy using lesson evidence.",
+          "Explain the reform terms using lesson evidence.",
+          "Explain roles, concerns and reform requests using lesson evidence."
+        ],
+        "lessonRecap": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/pelaez-pedro/",
+          "https://publications.lst.edu/product/pedro-pelaez-brebes-apuntes-sobre-la-cuestion-de-curatos-de-filipinas-a-transcription/",
+          "https://www.newadvent.org/cathen/13675a.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter15-quiz3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission3",
+        "title": "Parish Reform Case - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "parish-and-leadership",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "clergy-categories",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "pelaez-advocacy",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "secularization-and-filipinization",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "reform-case-connections",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission3-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission3",
+        "status": "active",
+        "order": 1,
+        "title": "Start with the Parish Community",
+        "content": "Our museum has a new case board: who could lead a parish, and why did that become a reform issue? First understand the words. A parish is a local Catholic community served by a priest. A diocese is a larger Church area under a bishop. A parish is more than its building: people and responsibilities are part of it.\n\nIn Spanish-colonial history, parish leadership connected religious institutions with community life. Choosing who would administer a parish therefore concerned a continuing role, not simply who visited a church. To administer means to manage responsibilities.\n\nImagine a fictional museum label that calls a parish just a stone building. Improve it by including the community and the priest's role. We study these institutions to understand history. You do not need to belong to a religion, perform a prayer or share your beliefs to complete the task.",
+        "reviewTopics": [
+          "parish-and-leadership"
+        ],
+        "imageUrl": "../assets/story/reform-parish.svg",
+        "imageFit": "contain",
+        "imageAlt": "A labelled teaching model connects a parish community, a priest serving it and the wider diocese. It is not a map of one historical parish or an instruction to practise a religion.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Local community",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A parish includes a Catholic community, not only a building.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Responsibilities",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A priest serves the parish; administering concerns continuing responsibilities.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Wider organization",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A diocese is under a bishop and can include parishes.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which museum label best explains a parish?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A local Catholic community served by a priest within a diocese.",
+          "Any stone building, even without a community or priest.",
+          "A shipping route between two seas.",
+          "A newspaper shared by readers of different languages."
+        ],
+        "decisionCorrectAnswer": "A local Catholic community served by a priest within a diocese.",
+        "decisionExplanation": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "keyTerm": "Parish",
+        "keyTermDefinition": "A local Catholic community served by a priest and organized within a diocese.",
+        "historicalInsight": "A diocese is under a bishop and can include parishes.",
+        "learningHelp": {
+          "explanation": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "vocabulary": [
+            {
+              "term": "Parish",
+              "definition": "A local Catholic community served by a priest and organized within a diocese."
+            }
+          ],
+          "example": "A parish includes a Catholic community, not only a building.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/pelaez-pedro/",
+          "https://publications.lst.edu/product/pedro-pelaez-brebes-apuntes-sobre-la-cuestion-de-curatos-de-filipinas-a-transcription/",
+          "https://www.newadvent.org/cathen/13675a.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission3-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission3",
+        "status": "active",
+        "order": 2,
+        "title": "Two Clergy Terms, Not Two Religions",
+        "content": "Historical accounts distinguish secular clergy and regular clergy. In this lesson, secular priests serve under a bishop and are not members of a religious order. Regular priests belong to religious orders, which have their own rules of community life. These descriptions concern how the clergy are organized.\n\nBe careful with familiar words. Secular here does not mean a priest has no religion. Regular does not mean that a priest attends more often or is more important. Both categories can include Catholic priests. Their titles alone also do not tell a person's birthplace or nationality.\n\nCompare the two cards. Use membership in a religious order as the distinguishing clue, not a guess about someone's faith or worth. This simplified vocabulary guide supports the historical investigation; it is not a complete account of Church law.",
+        "reviewTopics": [
+          "clergy-categories"
+        ],
+        "imageUrl": "../assets/story/reform-clergy.svg",
+        "imageFit": "contain",
+        "imageAlt": "Two equal-sized cards distinguish secular clergy under a bishop from regular clergy belonging to religious orders. A note says the categories are not different religions or nationalities.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Secular",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "In this use, secular clergy are under a bishop and not members of a religious order.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Regular",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Regular clergy belong to religious orders. Regular refers to an order's rule.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Keep categories distinct",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Clergy category is not the same as religion, nationality or personal worth.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which clue distinguishes the regular clergy in this lesson?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Having no religious belief.",
+          "Attending every parish event more often.",
+          "Being born in exactly one country.",
+          "Membership in a religious order."
+        ],
+        "decisionCorrectAnswer": "Membership in a religious order.",
+        "decisionExplanation": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "keyTerm": "Secular clergy",
+        "keyTermDefinition": "Clergy serving under a bishop who are not members of a religious order; the term does not mean they have no religion.",
+        "historicalInsight": "Clergy category is not the same as religion, nationality or personal worth.",
+        "learningHelp": {
+          "explanation": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "vocabulary": [
+            {
+              "term": "Secular clergy",
+              "definition": "Clergy serving under a bishop who are not members of a religious order; the term does not mean they have no religion."
+            }
+          ],
+          "example": "In this use, secular clergy are under a bishop and not members of a religious order.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/pelaez-pedro/",
+          "https://publications.lst.edu/product/pedro-pelaez-brebes-apuntes-sobre-la-cuestion-de-curatos-de-filipinas-a-transcription/",
+          "https://www.newadvent.org/cathen/13675a.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission3-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission3",
+        "status": "active",
+        "order": 3,
+        "title": "Pedro Pelaez Defends Clergy Rights",
+        "content": "Pedro Pelaez was a priest born in Pagsanjan, Laguna. In the nineteenth century, he defended the rights of Filipino secular clergy. Parish assignments and restrictions could limit their opportunities to administer parishes. His advocacy used written arguments about those rights.\n\nThe NCCA account describes Pelaez challenging a directive in 1861 involving parish transfers to the Recollects, a religious order. His objection concerned how Filipino priests were treated and the responsibilities they could hold. The existence of an objection does not mean the requested change was immediately granted.\n\nFor our case board, separate the person, concern and action. Pelaez is the named advocate. Unequal treatment and parish opportunities are the concern. Written advocacy is an action used to seek change. These summaries explain the record; they are not invented quotations from a letter.",
+        "reviewTopics": [
+          "pelaez-advocacy"
+        ],
+        "imageUrl": "../assets/story/reform-pelaez.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching cards identify Pedro Pelaez, written advocacy for Filipino secular clergy and parish responsibilities. The cards are summaries, not original letters or a portrait.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Named advocate",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Pedro Pelaez defended the rights of Filipino secular clergy.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Documented concern",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Parish transfers and restrictions affected opportunities to administer parishes.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Action toward change",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Written objections and arguments supported a reform request; an objection is not proof of its success.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which action belongs to Pedro Pelaez in this case?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Founding El Ilocano in 1889.",
+          "Making the Malolos women's educational request in 1888.",
+          "Defending Filipino secular clergy through written advocacy about parish rights.",
+          "Opening Iloilo Port for international sugar shipments."
+        ],
+        "decisionCorrectAnswer": "Defending Filipino secular clergy through written advocacy about parish rights.",
+        "decisionExplanation": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "keyTerm": "Advocacy",
+        "keyTermDefinition": "Speaking, writing or acting in support of a concern or proposed change.",
+        "historicalInsight": "Written objections and arguments supported a reform request; an objection is not proof of its success.",
+        "learningHelp": {
+          "explanation": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "vocabulary": [
+            {
+              "term": "Advocacy",
+              "definition": "Speaking, writing or acting in support of a concern or proposed change."
+            }
+          ],
+          "example": "Pedro Pelaez defended the rights of Filipino secular clergy.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/pelaez-pedro/",
+          "https://publications.lst.edu/product/pedro-pelaez-brebes-apuntes-sobre-la-cuestion-de-curatos-de-filipinas-a-transcription/",
+          "https://www.newadvent.org/cathen/13675a.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission3-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission3",
+        "status": "active",
+        "order": 4,
+        "title": "What Change Did Reformers Seek?",
+        "content": "Secularization can have different meanings in different settings. In this historical parish dispute, it concerns parish administration by secular clergy instead of religious orders. It does not mean that parishes would stop being religious communities.\n\nFilipinization points to a greater role for Filipino priests in parish leadership. The two questions connect, but the words are not identical: one concerns a clergy category and the other concerns Filipino participation. Remember that clergy category and nationality are different.\n\nTry a fictional reform label: Consider qualified Filipino secular priests fairly for parish responsibilities. This is a classroom summary of the concern, not a quotation or a complete historical decree. Ask whether the label identifies the role and the proposed change. A request for fair opportunities should not become a claim that every person in a religious order thought or acted alike.",
+        "reviewTopics": [
+          "secularization-and-filipinization"
+        ],
+        "imageUrl": "../assets/story/reform-request.svg",
+        "imageFit": "contain",
+        "imageAlt": "A teaching sequence separates a parish responsibility, the secular-clergy administration proposal and fair opportunities for Filipino priests. It does not equate reform with removing religion.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Administration",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The secularization dispute concerns who administers parishes.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Participation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Filipinization concerns Filipino priests' participation in parish leadership.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Proposed change",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A modern classroom summary asks for fair consideration of qualified clergy; it is not an original decree.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which statement correctly explains secularization in this lesson?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Making church attendance the same as clergy organization.",
+          "Parish administration by secular clergy rather than religious orders.",
+          "Removing religion from every parish community.",
+          "Changing every priest's nationality by issuing a label."
+        ],
+        "decisionCorrectAnswer": "Parish administration by secular clergy rather than religious orders.",
+        "decisionExplanation": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "keyTerm": "Secularization",
+        "keyTermDefinition": "In this parish dispute, placing parish administration with secular clergy rather than religious orders.",
+        "historicalInsight": "A modern classroom summary asks for fair consideration of qualified clergy; it is not an original decree.",
+        "learningHelp": {
+          "explanation": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "vocabulary": [
+            {
+              "term": "Secularization",
+              "definition": "In this parish dispute, placing parish administration with secular clergy rather than religious orders."
+            }
+          ],
+          "example": "The secularization dispute concerns who administers parishes.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/pelaez-pedro/",
+          "https://publications.lst.edu/product/pedro-pelaez-brebes-apuntes-sobre-la-cuestion-de-curatos-de-filipinas-a-transcription/",
+          "https://www.newadvent.org/cathen/13675a.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission3-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission3",
+        "status": "active",
+        "order": 5,
+        "title": "Build a Reform Case Board",
+        "content": "A good case board connects a role, a concern and a proposed change. The role tells us what responsibility is being discussed. The concern explains the difficulty. The request identifies what change is sought. These are different parts of an explanation.\n\nUse our modern summary cards. One describes a parish responsibility. Another describes restrictions affecting Filipino secular priests' opportunities. A third asks for fair consideration of qualified Filipino clergy. Match each card to its meaning, then explain how they fit together. The cards are teaching tools, not photographs of actual petitions.\n\nThis dispute also raised a wider question: who received recognition and opportunities within colonial institutions? Studying that connection helps explain public concerns without assuming every person shared one opinion or that one reform request alone created national consciousness.",
+        "reviewTopics": [
+          "reform-case-connections"
+        ],
+        "imageUrl": "../assets/story/reform-board.svg",
+        "imageFit": "contain",
+        "imageAlt": "Three modern case-board cards separate a clergy role, a concern about unequal opportunities and a request for fair consideration. Students match meanings before explaining the case.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Role",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Identify the parish responsibility before judging who could hold it.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Concern",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Unequal opportunities are a concern about treatment and participation.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Request",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A proposed change is not the same as evidence that the change occurred.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which explanation connects the case board correctly?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A parish role was disputed, restrictions affected opportunities, and advocates sought fair consideration.",
+          "The existence of a request proves every proposed change happened immediately.",
+          "A clergy category alone identifies every person's nationality and beliefs.",
+          "The three cards all describe the same dated outcome."
+        ],
+        "decisionCorrectAnswer": "A parish role was disputed, restrictions affected opportunities, and advocates sought fair consideration.",
+        "decisionExplanation": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "keyTerm": "Reform request",
+        "keyTermDefinition": "A proposal to change a rule, practice or arrangement.",
+        "historicalInsight": "A proposed change is not the same as evidence that the change occurred.",
+        "learningHelp": {
+          "explanation": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "vocabulary": [
+            {
+              "term": "Reform request",
+              "definition": "A proposal to change a rule, practice or arrangement."
+            }
+          ],
+          "example": "Identify the parish responsibility before judging who could hold it.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/pelaez-pedro/",
+          "https://publications.lst.edu/product/pedro-pelaez-brebes-apuntes-sobre-la-cuestion-de-curatos-de-filipinas-a-transcription/",
+          "https://www.newadvent.org/cathen/13675a.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+        "exhibitActivity": {
+          "title": "Connect the Reform Case",
+          "eyebrow": "BUILD YOUR REFORM CASE BOARD",
+          "matchPrompt": "Choose what this case card identifies",
+          "instructions": "Match the responsibility, the concern and the proposed change. The cards are modern summaries, not original quotations. Explain the connected case after checking.",
+          "successMessage": "The case parts fit. Explain how the concern connects with the proposed change.",
+          "retryMessage": "Compare the wording with the lesson clues and try again. No points are lost.",
+          "effects": [
+            {
+              "id": "concern",
+              "label": "A concern about unequal opportunities"
+            },
+            {
+              "id": "request",
+              "label": "A proposal for fair consideration"
+            },
+            {
+              "id": "role",
+              "label": "The responsibility under discussion"
+            }
+          ],
+          "pairs": [
+            {
+              "id": "parish-duty",
+              "label": "Case card A",
+              "action": "Administering a parish and its continuing responsibilities.",
+              "effectId": "role",
+              "feedback": "This identifies the parish role whose administration was disputed."
+            },
+            {
+              "id": "restricted-opportunity",
+              "label": "Case card B",
+              "action": "Restrictions limit Filipino secular priests' opportunities to administer parishes.",
+              "effectId": "concern",
+              "feedback": "This describes the concern about treatment and participation."
+            },
+            {
+              "id": "proposed-change",
+              "label": "Case card C",
+              "action": "Consider qualified Filipino secular priests fairly for parish responsibilities.",
+              "effectId": "request",
+              "feedback": "This proposes a change. Separate a request from evidence that it was granted."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission3-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission3",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare the Next History Connection",
+        "content": "Explain the reform case in your own words: a parish is ___. Secular and regular clergy differ in ___. Pelaez defended ___. The proposed change concerned ___. Our case board matters because ___. Use the scene clues instead of inventing a speech.\n\nKeep the periods separate. Pelaez's advocacy belongs before the later events of 1872. He died in 1863 during the Manila earthquake, and other advocates continued the reform effort. Earlier missions included later travel, publications and educational requests. This mission returned to earlier institutional disputes to explain their background.\n\nNext, the learning path can examine Cavite and GOMBURZA in their own setting. That later case must not be treated as the same event as Pelaez's earlier advocacy. The quiz checks five taught topics. Review the relevant scene, try practice and retry when needed. Passing completes this mission; Chapter 15's final challenge is not available yet.",
+        "reviewTopics": [
+          "parish-and-leadership",
+          "clergy-categories",
+          "pelaez-advocacy",
+          "secularization-and-filipinization",
+          "reform-case-connections"
+        ],
+        "imageUrl": "../assets/story/reform-context.svg",
+        "imageFit": "contain",
+        "imageAlt": "A selected teaching timeline shows Pelaez's 1861 objection, his death in 1863 and continued reform advocacy. A note distinguishes this background from the later events of 1872.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "1861",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Pelaez challenges the parish-transfer directive described in the NCCA account.",
+            "icon": "🔎"
+          },
+          {
+            "title": "1863",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Pelaez dies during the Manila earthquake; the reform effort continues.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Later context",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The events of 1872 need their own explanation rather than being merged with Pelaez's earlier actions.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which connection keeps the chronology clear?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Pelaez wrote the 1888 Malolos request during the 1872 events.",
+          "The 1861 objection happened after the 1889 founding of El Ilocano.",
+          "All reform requests and later events occurred on a single day.",
+          "Pelaez's earlier advocacy helps explain reform concerns before the later events of 1872."
+        ],
+        "decisionCorrectAnswer": "Pelaez's earlier advocacy helps explain reform concerns before the later events of 1872.",
+        "decisionExplanation": "Historical context connects distinct events without collapsing their dates or participants. Earlier advocacy and later developments require separate evidence.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Historical context connects distinct events without collapsing their dates or participants. Earlier advocacy and later developments require separate evidence.",
+        "keyTerm": "Historical context",
+        "keyTermDefinition": "The circumstances that help explain an event or action.",
+        "historicalInsight": "The events of 1872 need their own explanation rather than being merged with Pelaez's earlier actions.",
+        "learningHelp": {
+          "explanation": "Historical context connects distinct events without collapsing their dates or participants. Earlier advocacy and later developments require separate evidence.",
+          "vocabulary": [
+            {
+              "term": "Historical context",
+              "definition": "The circumstances that help explain an event or action."
+            }
+          ],
+          "example": "Pelaez challenges the parish-transfer directive described in the NCCA account.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philippineculturaleducation.com.ph/pelaez-pedro/",
+          "https://publications.lst.edu/product/pedro-pelaez-brebes-apuntes-sobre-la-cuestion-de-curatos-de-filipinas-a-transcription/",
+          "https://www.newadvent.org/cathen/13675a.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz3-question1",
+      "create": true,
+      "fields": {
+        "question": "What does parish mean in this mission?",
+        "optionA": "A local Catholic community served by a priest within a diocese.",
+        "optionB": "Any stone building without a community or role.",
+        "optionC": "A trade route carrying sugar to Melbourne.",
+        "optionD": "A newspaper printed in two languages.",
+        "correctAnswer": "A",
+        "explanation": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "learningPoint": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "historicalClue": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "answerExplanations": {
+          "A": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "B": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "C": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "D": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered."
+        },
+        "quizId": "chapter15-quiz3",
+        "order": 1,
+        "status": "active",
+        "topic": "parish-and-leadership",
+        "topicLabel": "Parishes and Responsibilities",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz3-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why does parish administration concern more than a building?",
+        "optionA": "It measures the height of a church wall only.",
+        "optionB": "It refers only to the color of a museum card.",
+        "optionC": "It is another name for the Suez route.",
+        "optionD": "It includes serving a community and managing continuing responsibilities.",
+        "correctAnswer": "D",
+        "explanation": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "learningPoint": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "historicalClue": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "B": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "C": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "D": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered."
+        },
+        "quizId": "chapter15-quiz3",
+        "order": 101,
+        "status": "active",
+        "topic": "parish-and-leadership",
+        "topicLabel": "Parishes and Responsibilities",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission3-parish-and-leadership-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which museum label best explains a parish?",
+        "optionA": "Any stone building, even without a community or priest.",
+        "optionB": "A shipping route between two seas.",
+        "optionC": "A newspaper shared by readers of different languages.",
+        "optionD": "A local Catholic community served by a priest within a diocese.",
+        "correctAnswer": "D",
+        "explanation": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "learningPoint": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "historicalClue": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "B": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "C": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "D": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered."
+        },
+        "missionId": "chapter15-mission3",
+        "topic": "parish-and-leadership",
+        "topicLabel": "Parishes and Responsibilities",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A local Catholic community served by a priest and organized within a diocese.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission3-parish-and-leadership-practice2",
+      "create": true,
+      "fields": {
+        "question": "A label describes a parish only as a stone building. Which addition makes it more accurate?",
+        "optionA": "Use only its distance from a port.",
+        "optionB": "Describe a clergy category as a type of rock.",
+        "optionC": "Include the community and the priest's continuing responsibilities.",
+        "optionD": "Replace it with the name of a newspaper editor.",
+        "correctAnswer": "C",
+        "explanation": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "learningPoint": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "historicalClue": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "B": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "C": "A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered.",
+          "D": "Review the lesson clues. A parish concerns a community and religious responsibilities. Understanding the role helps explain why parish appointments mattered."
+        },
+        "missionId": "chapter15-mission3",
+        "topic": "parish-and-leadership",
+        "topicLabel": "Parishes and Responsibilities",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A local Catholic community served by a priest and organized within a diocese.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz3-question2",
+      "create": true,
+      "fields": {
+        "question": "What distinguishes regular clergy in the lesson?",
+        "optionA": "Having no religion.",
+        "optionB": "Being born in one particular country.",
+        "optionC": "Attending parish activities more often than everyone else.",
+        "optionD": "Membership in a religious order.",
+        "correctAnswer": "D",
+        "explanation": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "learningPoint": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "historicalClue": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "B": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "C": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "D": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion."
+        },
+        "quizId": "chapter15-quiz3",
+        "order": 2,
+        "status": "active",
+        "topic": "clergy-categories",
+        "topicLabel": "Secular and Regular Clergy",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz3-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "What does secular clergy mean here?",
+        "optionA": "All people who visit a parish building.",
+        "optionB": "A group defined only by being born abroad.",
+        "optionC": "Clergy under a bishop who are not members of a religious order.",
+        "optionD": "People who cannot hold any religious belief.",
+        "correctAnswer": "C",
+        "explanation": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "learningPoint": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "historicalClue": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "B": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "C": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "D": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion."
+        },
+        "quizId": "chapter15-quiz3",
+        "order": 102,
+        "status": "active",
+        "topic": "clergy-categories",
+        "topicLabel": "Secular and Regular Clergy",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission3-clergy-categories-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which clue distinguishes the regular clergy in this lesson?",
+        "optionA": "Attending every parish event more often.",
+        "optionB": "Being born in exactly one country.",
+        "optionC": "Membership in a religious order.",
+        "optionD": "Having no religious belief.",
+        "correctAnswer": "C",
+        "explanation": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "learningPoint": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "historicalClue": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "B": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "C": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "D": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion."
+        },
+        "missionId": "chapter15-mission3",
+        "topic": "clergy-categories",
+        "topicLabel": "Secular and Regular Clergy",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Clergy serving under a bishop who are not members of a religious order; the term does not mean they have no religion.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission3-clergy-categories-practice2",
+      "create": true,
+      "fields": {
+        "question": "A museum card says secular clergy means priests without religion. How should it be corrected?",
+        "optionA": "Use the size of a parish building to determine a priest's beliefs.",
+        "optionB": "Explain the clergy category and religious-order membership instead.",
+        "optionC": "Replace secular with an attendance count.",
+        "optionD": "Treat every Filipino as belonging to one clergy category.",
+        "correctAnswer": "B",
+        "explanation": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "learningPoint": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "historicalClue": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "B": "The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "C": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion.",
+          "D": "Review the lesson clues. The distinction concerns clergy organization. Secular clergy are still clergy; the category must not be confused with having no religion."
+        },
+        "missionId": "chapter15-mission3",
+        "topic": "clergy-categories",
+        "topicLabel": "Secular and Regular Clergy",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Clergy serving under a bishop who are not members of a religious order; the term does not mean they have no religion.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz3-question3",
+      "create": true,
+      "fields": {
+        "question": "Which concern did Pedro Pelaez address in this case?",
+        "optionA": "The founding of El Ilocano in 1889.",
+        "optionB": "The order of seas along a Suez route.",
+        "optionC": "Rights and parish opportunities of Filipino secular clergy.",
+        "optionD": "The export direction of Iloilo's sugar shipment.",
+        "correctAnswer": "C",
+        "explanation": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "learningPoint": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "historicalClue": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "B": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "C": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "D": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events."
+        },
+        "quizId": "chapter15-quiz3",
+        "order": 3,
+        "status": "active",
+        "topic": "pelaez-advocacy",
+        "topicLabel": "Pedro Pelaez's Advocacy",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz3-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Which action supported Pelaez's reform advocacy?",
+        "optionA": "Printing El Ilocano as a student project in 1889.",
+        "optionB": "Written arguments and objections about clergy rights.",
+        "optionC": "Building the Suez Canal in 1869.",
+        "optionD": "Making the Malolos women's school request in 1888.",
+        "correctAnswer": "B",
+        "explanation": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "learningPoint": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "historicalClue": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "B": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "C": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "D": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events."
+        },
+        "quizId": "chapter15-quiz3",
+        "order": 103,
+        "status": "active",
+        "topic": "pelaez-advocacy",
+        "topicLabel": "Pedro Pelaez's Advocacy",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission3-pelaez-advocacy-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which action belongs to Pedro Pelaez in this case?",
+        "optionA": "Making the Malolos women's educational request in 1888.",
+        "optionB": "Defending Filipino secular clergy through written advocacy about parish rights.",
+        "optionC": "Opening Iloilo Port for international sugar shipments.",
+        "optionD": "Founding El Ilocano in 1889.",
+        "correctAnswer": "B",
+        "explanation": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "learningPoint": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "historicalClue": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "B": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "C": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "D": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events."
+        },
+        "missionId": "chapter15-mission3",
+        "topic": "pelaez-advocacy",
+        "topicLabel": "Pedro Pelaez's Advocacy",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Speaking, writing or acting in support of a concern or proposed change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission3-pelaez-advocacy-practice2",
+      "create": true,
+      "fields": {
+        "question": "What does Pelaez's written objection most directly establish?",
+        "optionA": "He challenged a parish-related restriction and advocated change.",
+        "optionB": "Every requested reform was granted immediately.",
+        "optionC": "All clergy held exactly the same view.",
+        "optionD": "The later events of 1872 were the same event as his objection.",
+        "correctAnswer": "A",
+        "explanation": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "learningPoint": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "historicalClue": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+        "answerExplanations": {
+          "A": "Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "B": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "C": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events.",
+          "D": "Review the lesson clues. Identify Pelaez's advocacy with the clergy-rights concern it addressed. A reform request and a granted reform are different events."
+        },
+        "missionId": "chapter15-mission3",
+        "topic": "pelaez-advocacy",
+        "topicLabel": "Pedro Pelaez's Advocacy",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Speaking, writing or acting in support of a concern or proposed change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz3-question4",
+      "create": true,
+      "fields": {
+        "question": "What does secularization concern in this parish dispute?",
+        "optionA": "Measuring how often someone visits a building.",
+        "optionB": "Parish administration by secular clergy rather than religious orders.",
+        "optionC": "Removing religion from all parish communities.",
+        "optionD": "Changing a person's nationality through a new title.",
+        "correctAnswer": "B",
+        "explanation": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "learningPoint": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "historicalClue": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "B": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "C": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "D": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation."
+        },
+        "quizId": "chapter15-quiz3",
+        "order": 4,
+        "status": "active",
+        "topic": "secularization-and-filipinization",
+        "topicLabel": "The Reform Terms",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz3-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "What does Filipinization highlight in this lesson?",
+        "optionA": "A greater role for Filipino priests in parish leadership.",
+        "optionB": "The opening of an international shipping canal.",
+        "optionC": "The translation of every text into one language.",
+        "optionD": "A rule that clergy category and nationality are identical.",
+        "correctAnswer": "A",
+        "explanation": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "learningPoint": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "historicalClue": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "answerExplanations": {
+          "A": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "B": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "C": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "D": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation."
+        },
+        "quizId": "chapter15-quiz3",
+        "order": 104,
+        "status": "active",
+        "topic": "secularization-and-filipinization",
+        "topicLabel": "The Reform Terms",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission3-secularization-and-filipinization-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which statement correctly explains secularization in this lesson?",
+        "optionA": "Parish administration by secular clergy rather than religious orders.",
+        "optionB": "Removing religion from every parish community.",
+        "optionC": "Changing every priest's nationality by issuing a label.",
+        "optionD": "Making church attendance the same as clergy organization.",
+        "correctAnswer": "A",
+        "explanation": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "learningPoint": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "historicalClue": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "answerExplanations": {
+          "A": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "B": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "C": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "D": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation."
+        },
+        "missionId": "chapter15-mission3",
+        "topic": "secularization-and-filipinization",
+        "topicLabel": "The Reform Terms",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "In this parish dispute, placing parish administration with secular clergy rather than religious orders.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission3-secularization-and-filipinization-practice2",
+      "create": true,
+      "fields": {
+        "question": "Why should secularization and Filipinization be explained separately?",
+        "optionA": "Both terms refer only to whether someone attends regularly.",
+        "optionB": "Both terms mean that a person has no religion.",
+        "optionC": "One term is the name of a ship and the other a newspaper.",
+        "optionD": "One highlights clergy organization; the other highlights Filipino participation.",
+        "correctAnswer": "D",
+        "explanation": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "learningPoint": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "historicalClue": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "B": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "C": "Review the lesson clues. Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation.",
+          "D": "Use the term in its historical setting. Secularization concerns parish administration, while Filipinization highlights Filipino participation."
+        },
+        "missionId": "chapter15-mission3",
+        "topic": "secularization-and-filipinization",
+        "topicLabel": "The Reform Terms",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "In this parish dispute, placing parish administration with secular clergy rather than religious orders.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz3-question5",
+      "create": true,
+      "fields": {
+        "question": "Which sequence explains the reform case?",
+        "optionA": "Identify the parish responsibility, explain the restriction, then identify the proposed change.",
+        "optionB": "Treat the request as proof that every reform already succeeded.",
+        "optionC": "Guess a priest's nationality from the size of the building.",
+        "optionD": "Replace the documented concern with an invented speech.",
+        "correctAnswer": "A",
+        "explanation": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "learningPoint": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "historicalClue": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "answerExplanations": {
+          "A": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "B": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "C": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "D": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting."
+        },
+        "quizId": "chapter15-quiz3",
+        "order": 5,
+        "status": "active",
+        "topic": "reform-case-connections",
+        "topicLabel": "Roles, Concerns and Reform Requests",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz3-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "How can this parish dispute connect with wider public concerns?",
+        "optionA": "It proves everyone had the same political opinion.",
+        "optionB": "It makes the 1861 and 1872 events one event.",
+        "optionC": "It shows that religion and nationality are the same category.",
+        "optionD": "It raises questions about recognition, treatment and opportunities within colonial institutions.",
+        "correctAnswer": "D",
+        "explanation": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "learningPoint": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "historicalClue": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "B": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "C": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "D": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting."
+        },
+        "quizId": "chapter15-quiz3",
+        "order": 105,
+        "status": "active",
+        "topic": "reform-case-connections",
+        "topicLabel": "Roles, Concerns and Reform Requests",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission3-reform-case-connections-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which explanation connects the case board correctly?",
+        "optionA": "The existence of a request proves every proposed change happened immediately.",
+        "optionB": "A clergy category alone identifies every person's nationality and beliefs.",
+        "optionC": "The three cards all describe the same dated outcome.",
+        "optionD": "A parish role was disputed, restrictions affected opportunities, and advocates sought fair consideration.",
+        "correctAnswer": "D",
+        "explanation": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "learningPoint": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "historicalClue": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "B": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "C": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "D": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting."
+        },
+        "missionId": "chapter15-mission3",
+        "topic": "reform-case-connections",
+        "topicLabel": "Roles, Concerns and Reform Requests",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A proposal to change a rule, practice or arrangement.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission3-reform-case-connections-practice2",
+      "create": true,
+      "fields": {
+        "question": "Which timeline statement fits the mission evidence?",
+        "optionA": "The 1869 Suez opening caused Pelaez's 1861 objection to occur afterward.",
+        "optionB": "All the dated cases happened in 1889.",
+        "optionC": "Pelaez's advocacy and his 1863 death came before the later events of 1872.",
+        "optionD": "Pelaez made his 1861 objection after the 1888 school request.",
+        "correctAnswer": "C",
+        "explanation": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "learningPoint": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "historicalClue": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "B": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "C": "Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting.",
+          "D": "Review the lesson clues. Explain the responsibility, the documented concern and the proposed change separately, then connect them. Reform efforts were actions within a wider historical setting."
+        },
+        "missionId": "chapter15-mission3",
+        "topic": "reform-case-connections",
+        "topicLabel": "Roles, Concerns and Reform Requests",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A proposal to change a rule, practice or arrangement.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter15-mission3-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission3",
+        "name": "Parish Reform Case File",
+        "description": "A learning-game token for connecting a parish responsibility, a clergy-rights concern and a reform request.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Explain parish roles, reform vocabulary and the concern addressed by advocacy.",
+          "reflectionQuestion": "How does the proposed change address the documented concern?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-15",
+      "create": false,
+      "expected": {
+        "description": "Investigate trade and travel, then build an exhibit about the emerging middle class and public participation. Missions 1-2 are available; further missions and the final challenge are not yet available."
+      },
+      "fields": {
+        "description": "Investigate connections, public participation and parish reform. Missions 1-3 are available; the remaining content and final challenge are not yet available."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapters 12-14 offer missions and evidence challenges. Chapter 15 offers two missions on connections and public participation; its remaining content and final challenge are not yet available."
+      },
+      "fields": {
+        "description": "Chapters 12-14 offer missions and evidence challenges. Chapter 15 offers three missions on connections, participation and parish reform; further content and its final challenge are not yet available."
+      }
+    }
+  ]
+}

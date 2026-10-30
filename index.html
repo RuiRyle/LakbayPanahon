@@ -11,9 +11,13 @@
     <link rel="stylesheet" href="css/index-dark-theme.css">
 
 
+    <link rel="stylesheet" href="css/navy-gold-theme.css">
+    <link rel="stylesheet" href="css/public-audio.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="assets/brand/favicon.svg">
+    <link rel="stylesheet" href="css/page-transition.css">
 </head>
 
-<body>
+<body class="lakbay-theme">
 
     <!-- =========================
          NAVIGATION
@@ -495,8 +499,26 @@
 
     </footer>
 
+    <aside class="landing-audio-card" aria-label="Audio controls">
+        <div class="landing-audio-heading">
+            <span class="landing-audio-mark" aria-hidden="true">♫</span>
+            <span><strong>Journey audio</strong><small>Soundtrack &amp; effects</small></span>
+        </div>
+        <div class="landing-audio-actions">
+            <button class="landing-audio-music" type="button" data-landing-music aria-pressed="false">
+                <span aria-hidden="true">▶</span><span data-landing-music-label>Play adventure music</span>
+            </button>
+            <button class="landing-audio-effects" type="button" role="switch" aria-checked="true" data-landing-effects>
+                <span>Sound effects</span><span class="landing-audio-state" data-landing-effects-state>On</span>
+            </button>
+        </div>
+        <p data-landing-audio-status role="status" aria-live="polite">Choose Play to hear the soundtrack. Button and card sounds are on.</p>
+    </aside>
+
 
     <script src="js/main.js"></script>
 
+    <script type="module" src="js/public-audio.js"></script>
+    <script type="module" src="js/page-transition.js"></script>
 </body>
 </html>

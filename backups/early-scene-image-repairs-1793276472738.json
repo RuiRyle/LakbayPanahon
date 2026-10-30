@@ -1,0 +1,3113 @@
+[
+  {
+    "path": "storyScenes/chapter3-mission1-scene4",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter3-mission1-scene4",
+      "fields": {
+        "missionId": {
+          "stringValue": "chapter3-mission1"
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Water and weather can change, so the crew may need to wait or revise the plan."
+        },
+        "decisionSituation": {
+          "stringValue": "You chose a route using the boat, water and landing clues. Now explain your plan. This is a fictional classroom example, not advice for a real sea journey."
+        },
+        "keyTermDefinition": {
+          "stringValue": "Travelling or working at sea."
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "Water and weather can change, so the crew may need to wait or revise the plan."
+              },
+              {
+                "stringValue": "A longer route guarantees safety in every situation."
+              },
+              {
+                "stringValue": "A familiar landing means weather never matters."
+              },
+              {
+                "stringValue": "The shortest route must always be chosen."
+              }
+            ]
+          }
+        },
+        "order": {
+          "integerValue": "4"
+        },
+        "discoveryText": {
+          "stringValue": "Seafaring needs knowledge of water, weather, routes and the boat. People learned through experience and teaching. Winds and currents can affect a journey. A planned route may need to change when conditions change."
+        },
+        "title": {
+          "stringValue": "Reading Travel Conditions"
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "seafaring-knowledge"
+              }
+            ]
+          }
+        },
+        "decisionExplanation": {
+          "stringValue": "The route fits the stated conditions today. Conditions can change, and a crew may need a different plan. The exercise teaches comparing evidence, not guaranteeing real-world safety."
+        },
+        "decisionQuestion": {
+          "stringValue": "Why should the crew keep checking conditions even after choosing a route?"
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Seafaring"
+                          },
+                          "definition": {
+                            "stringValue": "Travelling or working at sea."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "explanation": {
+                "stringValue": "Seafaring needs knowledge of water, weather, routes and the boat. People learned through experience and teaching."
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "example": {
+                "stringValue": "Which information helps plan a sea trip?"
+              }
+            }
+          }
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Reading Travel Conditions.\n\nSeafaring needs knowledge of water, weather, routes and the boat. People learned through experience and teaching.\n\nWinds and currents can affect a journey. A planned route may need to change when conditions change.\n\nCareful preparation reduces risks but cannot promise a safe trip in every situation.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "historicalInsight": {
+          "stringValue": "Careful preparation reduces risks but cannot promise a safe trip in every situation."
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter3-mission1-scene4.png"
+        },
+        "visualSymbol": {
+          "stringValue": "⛵"
+        },
+        "routeActivity": {
+          "mapValue": {
+            "fields": {
+              "title": {
+                "stringValue": "Choose a Route for Today"
+              },
+              "mapDescription": {
+                "stringValue": "A symbolic route board, not a geographic map. All choices travel from the same island landing toward a neighboring community. The descriptions give all the information needed; no dragging or map reading is required."
+              },
+              "conditions": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "stringValue": "The destination is a neighboring community across the water."
+                    },
+                    {
+                      "stringValue": "Your small boat is in good condition, but it is not suited to rough open water."
+                    },
+                    {
+                      "stringValue": "Today, the exposed crossing has rough waves. A sheltered coastal route has calmer conditions and a known landing."
+                    },
+                    {
+                      "stringValue": "The shallow creek shortcut has rocks and too little water for this boat. The crew can wait and check conditions again if they change."
+                    }
+                  ]
+                }
+              },
+              "instructions": {
+                "stringValue": "Compare the travel clues with all three route descriptions. Choose a plan, check it, then explain why the conditions matter."
+              },
+              "routes": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "id": {
+                            "stringValue": "exposed"
+                          },
+                          "name": {
+                            "stringValue": "Open-water crossing"
+                          },
+                          "description": {
+                            "stringValue": "A short exposed crossing with rough waves today. The boat is not suited to these conditions."
+                          },
+                          "suitable": {
+                            "booleanValue": false
+                          },
+                          "feedback": {
+                            "stringValue": "A shorter route is not always a suitable route. Today the rough exposed water does not suit this boat. Compare the other conditions."
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "id": {
+                            "stringValue": "sheltered"
+                          },
+                          "name": {
+                            "stringValue": "Sheltered coastal route"
+                          },
+                          "description": {
+                            "stringValue": "A longer route with calmer water today and a landing the crew knows. The crew will continue checking conditions."
+                          },
+                          "suitable": {
+                            "booleanValue": true
+                          },
+                          "feedback": {
+                            "stringValue": "This plan fits the boat, today's calmer conditions and the known landing. It is suitable for this made-up situation, not a promise that any real route is always safe. Now explain why checking conditions matters."
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "id": {
+                            "stringValue": "creek"
+                          },
+                          "name": {
+                            "stringValue": "Shallow creek shortcut"
+                          },
+                          "description": {
+                            "stringValue": "A short narrow creek with rocks and too little water for this boat."
+                          },
+                          "suitable": {
+                            "booleanValue": false
+                          },
+                          "feedback": {
+                            "stringValue": "Calm-looking water can still be unsuitable. Rocks and low water make this shortcut a poor choice for this boat. Check the depth and boat clues."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Reading Travel Conditions"
+        },
+        "keyTerm": {
+          "stringValue": "Seafaring"
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/"
+              },
+              {
+                "stringValue": "https://whc.unesco.org/en/tentativelists/2071"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/archaeology/stoneware-and-porcelainware/"
+              }
+            ]
+          }
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Seafaring needs knowledge of water, weather, routes and the boat. People learned through experience and teaching."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Winds and currents can affect a journey. A planned route may need to change when conditions change."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Careful preparation reduces risks but cannot promise a safe trip in every situation."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter3-mission2-scene3",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter3-mission2-scene3",
+      "fields": {
+        "decisionCorrectAnswer": {
+          "stringValue": "That everyone wanted it for exactly the same reason"
+        },
+        "decisionQuestion": {
+          "stringValue": "Which choice best fits the evidence and ideas you explored?"
+        },
+        "order": {
+          "integerValue": "3"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "That skills mattered"
+              },
+              {
+                "stringValue": "That a local source needs study"
+              },
+              {
+                "stringValue": "That everyone wanted it for exactly the same reason"
+              },
+              {
+                "stringValue": "That people could exchange goods"
+              }
+            ]
+          }
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Communities had different resources and skills. Exchange could help people obtain useful or valued goods."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "People also made things locally. Trading did not mean all communities stopped farming, fishing or crafting."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Goods could serve daily needs, ceremonies or social purposes. We should check evidence rather than assume one purpose."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/"
+              },
+              {
+                "stringValue": "https://whc.unesco.org/en/tentativelists/2071"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/archaeology/stoneware-and-porcelainware/"
+              }
+            ]
+          }
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Why People Exchanged Goods"
+        },
+        "missionId": {
+          "stringValue": "chapter3-mission2"
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "trade-needs"
+              }
+            ]
+          }
+        },
+        "historicalInsight": {
+          "stringValue": "Goods could serve daily needs, ceremonies or social purposes. We should check evidence rather than assume one purpose."
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A trader offers a valued good. What should an investigator avoid assuming?"
+        },
+        "decisionExplanation": {
+          "stringValue": "Communities had different resources and skills. Exchange could help people obtain useful or valued goods. People also made things locally. Trading did not mean all communities stopped farming, fishing or crafting."
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "keyTermDefinition": {
+          "stringValue": "Something people can use to meet a need."
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter3-mission2-scene3.png"
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Why People Exchanged Goods.\n\nCommunities had different resources and skills. Exchange could help people obtain useful or valued goods.\n\nPeople also made things locally. Trading did not mean all communities stopped farming, fishing or crafting.\n\nGoods could serve daily needs, ceremonies or social purposes. We should check evidence rather than assume one purpose.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "keyTerm": {
+          "stringValue": "Resource"
+        },
+        "discoveryText": {
+          "stringValue": "Communities had different resources and skills. Exchange could help people obtain useful or valued goods. People also made things locally. Trading did not mean all communities stopped farming, fishing or crafting."
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Resource"
+                          },
+                          "definition": {
+                            "stringValue": "Something people can use to meet a need."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "example": {
+                "stringValue": "Why can different resources encourage trade?"
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "explanation": {
+                "stringValue": "Communities had different resources and skills. Exchange could help people obtain useful or valued goods."
+              }
+            }
+          }
+        },
+        "visualSymbol": {
+          "stringValue": "🧭"
+        },
+        "title": {
+          "stringValue": "Why People Exchanged Goods"
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter3-mission2-scene4",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter3-mission2-scene4",
+      "fields": {
+        "decisionExplanation": {
+          "stringValue": "A written account and an object can provide different clues. Compare their dates, settings and what each can show. A named author or an old object is not enough to settle every question. Explain the disagreement instead of reporting agreement that the evidence does not show."
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Reading Routes Carefully"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "Accept the written account because it names its author"
+              },
+              {
+                "stringValue": "Compare the sources and explain what remains uncertain"
+              },
+              {
+                "stringValue": "Accept the object alone because objects are from the past"
+              },
+              {
+                "stringValue": "Combine both details and report that the sources agree"
+              }
+            ]
+          }
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Compare the sources and explain what remains uncertain"
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter3-mission2-scene4.png"
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "trade-route-evidence"
+              }
+            ]
+          }
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/"
+              },
+              {
+                "stringValue": "https://whc.unesco.org/en/tentativelists/2071"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/archaeology/stoneware-and-porcelainware/"
+              }
+            ]
+          }
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "explanation": {
+                "stringValue": "Maps of past trade are explanations based on evidence. They are not photographs of every ship journey."
+              },
+              "example": {
+                "stringValue": "What makes a historical route map stronger?"
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Evidence"
+                          },
+                          "definition": {
+                            "stringValue": "Information that supports or questions an idea."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "keyTerm": {
+          "stringValue": "Evidence"
+        },
+        "discoveryText": {
+          "stringValue": "Maps of past trade are explanations based on evidence. They are not photographs of every ship journey. Researchers use objects, written accounts and other sources together. Each source has limits."
+        },
+        "decisionQuestion": {
+          "stringValue": "What should researchers do when these two sources suggest different details?"
+        },
+        "missionId": {
+          "stringValue": "chapter3-mission2"
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A written account and an object suggest different details. What should researchers do?"
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "title": {
+          "stringValue": "Reading Routes Carefully"
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Reading Routes Carefully.\n\nMaps of past trade are explanations based on evidence. They are not photographs of every ship journey.\n\nResearchers use objects, written accounts and other sources together. Each source has limits.\n\nModern country names can help us locate places today, but past borders and communities were different.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "keyTermDefinition": {
+          "stringValue": "Information that supports or questions an idea."
+        },
+        "order": {
+          "integerValue": "4"
+        },
+        "visualSymbol": {
+          "stringValue": "🧭"
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Maps of past trade are explanations based on evidence. They are not photographs of every ship journey."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Researchers use objects, written accounts and other sources together. Each source has limits."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Modern country names can help us locate places today, but past borders and communities were different."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "historicalInsight": {
+          "stringValue": "Modern country names can help us locate places today, but past borders and communities were different."
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-29T12:21:06.372188Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter3-mission3-scene1",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter3-mission3-scene1",
+      "fields": {
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "keyTermDefinition": {
+          "stringValue": "Objects that people make, use or exchange."
+        },
+        "missionId": {
+          "stringValue": "chapter3-mission3"
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/"
+              },
+              {
+                "stringValue": "https://whc.unesco.org/en/tentativelists/2071"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/archaeology/stoneware-and-porcelainware/"
+              }
+            ]
+          }
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. Two similar jars have different find settings. What should a researcher do?"
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Useful and Valued Goods.\n\nGoods could meet different needs. Pots could hold things, while cloth could have everyday and social uses.\n\nThe same object may have different uses in different settings. Look for clues rather than guess.\n\nLocal goods and imported goods could both be valued.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "goods-and-needs"
+              }
+            ]
+          }
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Goods"
+                          },
+                          "definition": {
+                            "stringValue": "Objects that people make, use or exchange."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "example": {
+                "stringValue": "Which is a good people could exchange?"
+              },
+              "explanation": {
+                "stringValue": "Goods could meet different needs. Pots could hold things, while cloth could have everyday and social uses."
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              }
+            }
+          }
+        },
+        "decisionExplanation": {
+          "stringValue": "Goods could meet different needs. Pots could hold things, while cloth could have everyday and social uses. The same object may have different uses in different settings. Look for clues rather than guess."
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter3-mission3-scene1.png"
+        },
+        "historicalInsight": {
+          "stringValue": "Local goods and imported goods could both be valued."
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Useful and Valued Goods"
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Goods could meet different needs. Pots could hold things, while cloth could have everyday and social uses."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "The same object may have different uses in different settings. Look for clues rather than guess."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Local goods and imported goods could both be valued."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "discoveryText": {
+          "stringValue": "Goods could meet different needs. Pots could hold things, while cloth could have everyday and social uses. The same object may have different uses in different settings. Look for clues rather than guess."
+        },
+        "title": {
+          "stringValue": "Useful and Valued Goods"
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "visualSymbol": {
+          "stringValue": "🧺"
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Study each setting before assuming the same use"
+        },
+        "order": {
+          "integerValue": "1"
+        },
+        "decisionQuestion": {
+          "stringValue": "Which choice best fits the evidence and ideas you explored?"
+        },
+        "keyTerm": {
+          "stringValue": "Goods"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "Study each setting before assuming the same use"
+              },
+              {
+                "stringValue": "Give both the same use without checking"
+              },
+              {
+                "stringValue": "Ignore all nearby objects"
+              },
+              {
+                "stringValue": "Assume their shapes reveal every owner"
+              }
+            ]
+          }
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter3-mission3-scene3",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter3-mission3-scene3",
+      "fields": {
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter3-mission3-scene3.png"
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Ideas Travel Too.\n\nPeople meeting through travel could share language, skills and beliefs. Cultural exchange can move in more than one direction.\n\nA community may change a borrowed idea to suit its needs. Not every group accepts the same ideas.\n\nSharing is not proof that one society had no ideas of its own.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/"
+              },
+              {
+                "stringValue": "https://whc.unesco.org/en/tentativelists/2071"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/archaeology/stoneware-and-porcelainware/"
+              }
+            ]
+          }
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "The number of similar objects, without checking when they were used"
+              },
+              {
+                "stringValue": "A map showing contact, without checking how people responded"
+              },
+              {
+                "stringValue": "Evidence of where, when and how people used it"
+              },
+              {
+                "stringValue": "One traveller's opinion, without comparing other people's experiences"
+              }
+            ]
+          }
+        },
+        "keyTerm": {
+          "stringValue": "Cultural exchange"
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "explanation": {
+                "stringValue": "People meeting through travel could share language, skills and beliefs. Cultural exchange can move in more than one direction."
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "example": {
+                "stringValue": "Which could travel along with goods?"
+              },
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Cultural exchange"
+                          },
+                          "definition": {
+                            "stringValue": "Sharing and changing ideas or practices through contact."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "visualSymbol": {
+          "stringValue": "🧺"
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Ideas Travel Too"
+        },
+        "order": {
+          "integerValue": "3"
+        },
+        "title": {
+          "stringValue": "Ideas Travel Too"
+        },
+        "discoveryText": {
+          "stringValue": "People meeting through travel could share language, skills and beliefs. Cultural exchange can move in more than one direction. A community may change a borrowed idea to suit its needs. Not every group accepts the same ideas."
+        },
+        "missionId": {
+          "stringValue": "chapter3-mission3"
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "People meeting through travel could share language, skills and beliefs. Cultural exchange can move in more than one direction."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "A community may change a borrowed idea to suit its needs. Not every group accepts the same ideas."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Sharing is not proof that one society had no ideas of its own."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Evidence of where, when and how people used it"
+        },
+        "decisionExplanation": {
+          "stringValue": "Contact gives people a chance to share an idea, but does not show that everyone accepted it at once. Compare evidence of its use in different places and times. Similar objects, a contact map or one opinion alone cannot establish how all people responded."
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A learner says a borrowed idea was accepted by everyone at once. What should they check?"
+        },
+        "historicalInsight": {
+          "stringValue": "Sharing is not proof that one society had no ideas of its own."
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "cultural-exchange"
+              }
+            ]
+          }
+        },
+        "keyTermDefinition": {
+          "stringValue": "Sharing and changing ideas or practices through contact."
+        },
+        "decisionQuestion": {
+          "stringValue": "What would help check whether people accepted the idea in different places and times?"
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-29T12:21:06.372188Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter3-mission4-scene3",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter3-mission4-scene3",
+      "fields": {
+        "decisionQuestion": {
+          "stringValue": "Which choice best fits the evidence and ideas you explored?"
+        },
+        "keyTermDefinition": {
+          "stringValue": "Something a person does to help an activity."
+        },
+        "discoveryText": {
+          "stringValue": "Maritime communities needed more than visiting merchants. Boatbuilders, food producers and skilled makers could support daily life and exchange. Different responsibilities could connect people without giving them equal rights or power."
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Maritime communities needed more than visiting merchants. Boatbuilders, food producers and skilled makers could support daily life and exchange."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Different responsibilities could connect people without giving them equal rights or power."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "A list of goods alone may not name all the people whose work supported trade."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A maker contributes goods but has limited choices in society. What should a careful account recognize?"
+        },
+        "title": {
+          "stringValue": "People Behind the Exchange"
+        },
+        "order": {
+          "integerValue": "3"
+        },
+        "visualSymbol": {
+          "stringValue": "⚓"
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: People Behind the Exchange.\n\nMaritime communities needed more than visiting merchants. Boatbuilders, food producers and skilled makers could support daily life and exchange.\n\nDifferent responsibilities could connect people without giving them equal rights or power.\n\nA list of goods alone may not name all the people whose work supported trade.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/"
+              },
+              {
+                "stringValue": "https://whc.unesco.org/en/tentativelists/2071"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/archaeology/stoneware-and-porcelainware/"
+              }
+            ]
+          }
+        },
+        "historicalInsight": {
+          "stringValue": "A list of goods alone may not name all the people whose work supported trade."
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: People Behind the Exchange"
+        },
+        "decisionExplanation": {
+          "stringValue": "Maritime communities needed more than visiting merchants. Boatbuilders, food producers and skilled makers could support daily life and exchange. Different responsibilities could connect people without giving them equal rights or power."
+        },
+        "keyTerm": {
+          "stringValue": "Contribution"
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter3-mission4-scene3.png"
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Contribution"
+                          },
+                          "definition": {
+                            "stringValue": "Something a person does to help an activity."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "example": {
+                "stringValue": "Who could support boat journeys?"
+              },
+              "explanation": {
+                "stringValue": "Maritime communities needed more than visiting merchants. Boatbuilders, food producers and skilled makers could support daily life and exchange."
+              }
+            }
+          }
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "harbor-community-work"
+              }
+            ]
+          }
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "A limited choice means no useful work occurred"
+              },
+              {
+                "stringValue": "One worker represents every community"
+              },
+              {
+                "stringValue": "Contribution does not prove equal rights or power"
+              },
+              {
+                "stringValue": "Making goods always means having the most power"
+              }
+            ]
+          }
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "missionId": {
+          "stringValue": "chapter3-mission4"
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Contribution does not prove equal rights or power"
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter3-mission4-scene4",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter3-mission4-scene4",
+      "fields": {
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "changing-trading-places"
+              }
+            ]
+          }
+        },
+        "decisionQuestion": {
+          "stringValue": "Which choice best fits the evidence and ideas you explored?"
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter3-mission4-scene4.png"
+        },
+        "historicalInsight": {
+          "stringValue": "Researchers compare dated finds to explain change rather than assume a place was always the same."
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Trading Places Change.\n\nRoutes and trading places could change over time. Environmental conditions, relationships and needs affected connections.\n\nEvidence from one period cannot automatically describe the same place in every century.\n\nResearchers compare dated finds to explain change rather than assume a place was always the same.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "A claim that causes never need study"
+              },
+              {
+                "stringValue": "Evidence before treating that reason as certain"
+              },
+              {
+                "stringValue": "More confident wording"
+              },
+              {
+                "stringValue": "A longer invented story"
+              }
+            ]
+          }
+        },
+        "keyTermDefinition": {
+          "stringValue": "A difference over time."
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "explanation": {
+                "stringValue": "Routes and trading places could change over time. Environmental conditions, relationships and needs affected connections."
+              },
+              "example": {
+                "stringValue": "What helps study change over time?"
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Change"
+                          },
+                          "definition": {
+                            "stringValue": "A difference over time."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "discoveryText": {
+          "stringValue": "Routes and trading places could change over time. Environmental conditions, relationships and needs affected connections. Evidence from one period cannot automatically describe the same place in every century."
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A learner names one reason for a port's decline without sources. What is needed?"
+        },
+        "keyTerm": {
+          "stringValue": "Change"
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Routes and trading places could change over time. Environmental conditions, relationships and needs affected connections."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Evidence from one period cannot automatically describe the same place in every century."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Researchers compare dated finds to explain change rather than assume a place was always the same."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/"
+              },
+              {
+                "stringValue": "https://whc.unesco.org/en/tentativelists/2071"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/archaeology/stoneware-and-porcelainware/"
+              }
+            ]
+          }
+        },
+        "title": {
+          "stringValue": "Trading Places Change"
+        },
+        "missionId": {
+          "stringValue": "chapter3-mission4"
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Evidence before treating that reason as certain"
+        },
+        "order": {
+          "integerValue": "4"
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Trading Places Change"
+        },
+        "decisionExplanation": {
+          "stringValue": "Routes and trading places could change over time. Environmental conditions, relationships and needs affected connections. Evidence from one period cannot automatically describe the same place in every century."
+        },
+        "visualSymbol": {
+          "stringValue": "⚓"
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter4-mission1-scene1",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter4-mission1-scene1",
+      "fields": {
+        "status": {
+          "stringValue": "active"
+        },
+        "title": {
+          "stringValue": "More Than One Way to Communicate"
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "writing-and-speech"
+              }
+            ]
+          }
+        },
+        "keyTerm": {
+          "stringValue": "Communication"
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: More Than One Way to Communicate"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "Who shared it and what can it help explain?"
+              },
+              {
+                "stringValue": "Why does speech never count as a source?"
+              },
+              {
+                "stringValue": "How can we replace it with a guess?"
+              },
+              {
+                "stringValue": "Does it describe every community?"
+              }
+            ]
+          }
+        },
+        "order": {
+          "integerValue": "1"
+        },
+        "decisionQuestion": {
+          "stringValue": "Which choice best fits the evidence and ideas you explored?"
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter4-mission1-scene1.png"
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Who shared it and what can it help explain?"
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A class studies a spoken account. What question helps?"
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "People communicated through spoken language, stories, signs and writing. Different forms could serve different purposes."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "A written object and an oral account are different kinds of sources. Each needs careful study."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "The absence of a surviving written record does not prove that a community had no knowledge or history."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "keyTermDefinition": {
+          "stringValue": "Sharing a message or idea."
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "explanation": {
+                "stringValue": "People communicated through spoken language, stories, signs and writing. Different forms could serve different purposes."
+              },
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Communication"
+                          },
+                          "definition": {
+                            "stringValue": "Sharing a message or idea."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "example": {
+                "stringValue": "What does communication do?"
+              }
+            }
+          }
+        },
+        "historicalInsight": {
+          "stringValue": "The absence of a surviving written record does not prove that a community had no knowledge or history."
+        },
+        "missionId": {
+          "stringValue": "chapter4-mission1"
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/10/21/baybayin-ancient-and-traditional-scripts-of-the-philippines-gallery/"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/ethnology/mats-and-baskets/"
+              },
+              {
+                "stringValue": "https://ncca.gov.ph/about-culture-and-arts/culture-profile/intangible-heritage/"
+              }
+            ]
+          }
+        },
+        "visualSymbol": {
+          "stringValue": "📜"
+        },
+        "decisionExplanation": {
+          "stringValue": "People communicated through spoken language, stories, signs and writing. Different forms could serve different purposes. A written object and an oral account are different kinds of sources. Each needs careful study."
+        },
+        "discoveryText": {
+          "stringValue": "People communicated through spoken language, stories, signs and writing. Different forms could serve different purposes. A written object and an oral account are different kinds of sources. Each needs careful study."
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: More Than One Way to Communicate.\n\nPeople communicated through spoken language, stories, signs and writing. Different forms could serve different purposes.\n\nA written object and an oral account are different kinds of sources. Each needs careful study.\n\nThe absence of a surviving written record does not prove that a community had no knowledge or history.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter4-mission1-scene4",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter4-mission1-scene4",
+      "fields": {
+        "status": {
+          "stringValue": "active"
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Check its source, meaning and any permission needed"
+        },
+        "order": {
+          "integerValue": "4"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "Change its name for convenience"
+              },
+              {
+                "stringValue": "Check its source, meaning and any permission needed"
+              },
+              {
+                "stringValue": "Copy private material without asking"
+              },
+              {
+                "stringValue": "Claim to speak for the whole community"
+              }
+            ]
+          }
+        },
+        "visualSymbol": {
+          "stringValue": "📜"
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Living tradition"
+                          },
+                          "definition": {
+                            "stringValue": "A practice that people continue to use and pass on."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "example": {
+                "stringValue": "What makes a tradition living?"
+              },
+              "explanation": {
+                "stringValue": "The National Museum presents continuing script traditions among communities including Hanunoo, Buhid, Tagbanua and Pala'wan. These names should not be treated as interchangeable."
+              }
+            }
+          }
+        },
+        "decisionExplanation": {
+          "stringValue": "The National Museum presents continuing script traditions among communities including Hanunoo, Buhid, Tagbanua and Pala'wan. These names should not be treated as interchangeable. Present-day community members are people with choices, not examples frozen in the past."
+        },
+        "discoveryText": {
+          "stringValue": "The National Museum presents continuing script traditions among communities including Hanunoo, Buhid, Tagbanua and Pala'wan. These names should not be treated as interchangeable. Present-day community members are people with choices, not examples frozen in the past."
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A learner wants to share an example of community writing. What is respectful?"
+        },
+        "historicalInsight": {
+          "stringValue": "Learning respectfully means using reliable sources and respecting how communities describe their own knowledge."
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter4-mission1-scene4.png"
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/10/21/baybayin-ancient-and-traditional-scripts-of-the-philippines-gallery/"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/ethnology/mats-and-baskets/"
+              },
+              {
+                "stringValue": "https://ncca.gov.ph/about-culture-and-arts/culture-profile/intangible-heritage/"
+              }
+            ]
+          }
+        },
+        "keyTermDefinition": {
+          "stringValue": "A practice that people continue to use and pass on."
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Writing Traditions Continue.\n\nThe National Museum presents continuing script traditions among communities including Hanunoo, Buhid, Tagbanua and Pala'wan. These names should not be treated as interchangeable.\n\nPresent-day community members are people with choices, not examples frozen in the past.\n\nLearning respectfully means using reliable sources and respecting how communities describe their own knowledge.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "The National Museum presents continuing script traditions among communities including Hanunoo, Buhid, Tagbanua and Pala'wan. These names should not be treated as interchangeable."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Present-day community members are people with choices, not examples frozen in the past."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Learning respectfully means using reliable sources and respecting how communities describe their own knowledge."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "decisionQuestion": {
+          "stringValue": "Which choice best fits the evidence and ideas you explored?"
+        },
+        "title": {
+          "stringValue": "Writing Traditions Continue"
+        },
+        "missionId": {
+          "stringValue": "chapter4-mission1"
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "living-script-traditions"
+              }
+            ]
+          }
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Writing Traditions Continue"
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "keyTerm": {
+          "stringValue": "Living tradition"
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter4-mission2-scene3",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter4-mission2-scene3",
+      "fields": {
+        "visualSymbol": {
+          "stringValue": "🏺"
+        },
+        "decisionQuestion": {
+          "stringValue": "What would explain the skill behind the object in this display?"
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "The methods and skills used to make it"
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter4-mission2-scene3.png"
+        },
+        "decisionExplanation": {
+          "stringValue": "A finished object does not explain the whole making process. Describe the methods, tools and learned skills used to make it. Its price, colour or display date alone does not show that knowledge."
+        },
+        "title": {
+          "stringValue": "Skilled Work Is Technology"
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Skilled Work Is Technology.\n\nTechnology is not limited to electric devices. Pottery, carving and boatbuilding involve methods and tools.\n\nA maker chooses techniques for a purpose and learns through practice and teaching.\n\nCareful study should not rank a community as less capable because its tools differ from modern ones.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Technology is not limited to electric devices. Pottery, carving and boatbuilding involve methods and tools."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "A maker chooses techniques for a purpose and learns through practice and teaching."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Careful study should not rank a community as less capable because its tools differ from modern ones."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "missionId": {
+          "stringValue": "chapter4-mission2"
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "order": {
+          "integerValue": "3"
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "explanation": {
+                "stringValue": "Technology is not limited to electric devices. Pottery, carving and boatbuilding involve methods and tools."
+              },
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Technology"
+                          },
+                          "definition": {
+                            "stringValue": "Knowledge, methods and tools used to solve tasks."
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Technique"
+                          },
+                          "definition": {
+                            "stringValue": "A learned way of doing a task."
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Firing"
+                          },
+                          "definition": {
+                            "stringValue": "Heating shaped clay to make pottery."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "example": {
+                "stringValue": "In a fictional pottery display, a label explains how a maker chose materials and used learned shaping and firing methods. Firing means heating shaped clay to make pottery. These methods show practical knowledge; a price label alone does not explain the skill."
+              }
+            }
+          }
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Skilled Work Is Technology"
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A display praises a finished object but not its maker's knowledge. What should be added?"
+        },
+        "keyTerm": {
+          "stringValue": "Technology"
+        },
+        "keyTermDefinition": {
+          "stringValue": "Knowledge, methods and tools used to solve tasks."
+        },
+        "discoveryText": {
+          "stringValue": "Technology is not limited to electric devices. Pottery, carving and boatbuilding involve methods and tools. A maker chooses techniques for a purpose and learns through practice and teaching."
+        },
+        "historicalInsight": {
+          "stringValue": "Careful study should not rank a community as less capable because its tools differ from modern ones."
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "The selling price, without explaining how the object was made"
+              },
+              {
+                "stringValue": "The object's colour, without checking the making process"
+              },
+              {
+                "stringValue": "The methods and skills used to make it"
+              },
+              {
+                "stringValue": "The date of the display, without describing the maker's work"
+              }
+            ]
+          }
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/10/21/baybayin-ancient-and-traditional-scripts-of-the-philippines-gallery/"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/ethnology/mats-and-baskets/"
+              },
+              {
+                "stringValue": "https://ncca.gov.ph/about-culture-and-arts/culture-profile/intangible-heritage/"
+              }
+            ]
+          }
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "craft-technologies"
+              }
+            ]
+          }
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-29T12:21:08.497606Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter4-mission2-scene4",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter4-mission2-scene4",
+      "fields": {
+        "visualSymbol": {
+          "stringValue": "🏺"
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/10/21/baybayin-ancient-and-traditional-scripts-of-the-philippines-gallery/"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/ethnology/mats-and-baskets/"
+              },
+              {
+                "stringValue": "https://ncca.gov.ph/about-culture-and-arts/culture-profile/intangible-heritage/"
+              }
+            ]
+          }
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Designs Need Context.\n\nDesigns can have meanings connected with community practices. Not every pattern has the same meaning or is free to copy.\n\nA responsible learner checks how a design is described and whether its use has restrictions.\n\nA classroom activity can explore general making skills without copying sacred or restricted designs.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Context"
+                          },
+                          "definition": {
+                            "stringValue": "Information about where, when and how something is used."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "explanation": {
+                "stringValue": "Designs can have meanings connected with community practices. Not every pattern has the same meaning or is free to copy."
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "example": {
+                "stringValue": "What does context help explain?"
+              }
+            }
+          }
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "discoveryText": {
+          "stringValue": "Designs can have meanings connected with community practices. Not every pattern has the same meaning or is free to copy. A responsible learner checks how a design is described and whether its use has restrictions."
+        },
+        "order": {
+          "integerValue": "4"
+        },
+        "keyTerm": {
+          "stringValue": "Context"
+        },
+        "missionId": {
+          "stringValue": "chapter4-mission2"
+        },
+        "decisionQuestion": {
+          "stringValue": "Which choice best fits the evidence and ideas you explored?"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "Replace the source with a decoration"
+              },
+              {
+                "stringValue": "Check reliable sources rather than repeat the invented meaning"
+              },
+              {
+                "stringValue": "Treat the advertisement as proof"
+              },
+              {
+                "stringValue": "Assume all communities agree"
+              }
+            ]
+          }
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Check reliable sources rather than repeat the invented meaning"
+        },
+        "title": {
+          "stringValue": "Designs Need Context"
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "design-and-meaning"
+              }
+            ]
+          }
+        },
+        "decisionExplanation": {
+          "stringValue": "Designs can have meanings connected with community practices. Not every pattern has the same meaning or is free to copy. A responsible learner checks how a design is described and whether its use has restrictions."
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Designs Need Context"
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter4-mission2-scene4.png"
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Designs can have meanings connected with community practices. Not every pattern has the same meaning or is free to copy."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "A responsible learner checks how a design is described and whether its use has restrictions."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "A classroom activity can explore general making skills without copying sacred or restricted designs."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "keyTermDefinition": {
+          "stringValue": "Information about where, when and how something is used."
+        },
+        "historicalInsight": {
+          "stringValue": "A classroom activity can explore general making skills without copying sacred or restricted designs."
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A shop gives a design a made-up community meaning. What should a careful account do?"
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter4-mission3-scene2",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter4-mission3-scene2",
+      "fields": {
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/10/21/baybayin-ancient-and-traditional-scripts-of-the-philippines-gallery/"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/ethnology/mats-and-baskets/"
+              },
+              {
+                "stringValue": "https://ncca.gov.ph/about-culture-and-arts/culture-profile/intangible-heritage/"
+              }
+            ]
+          }
+        },
+        "order": {
+          "integerValue": "2"
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Surroundings and Human Choices.\n\nSurroundings can influence available materials and activities. People also make choices and learn from others.\n\nA coastal location does not mean everyone has the same livelihood or belief. Environment alone cannot explain a whole culture.\n\nUnderstanding a practice needs local evidence and the people's knowledge.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter4-mission3-scene2.png"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "A larger climate map, without asking about community life"
+              },
+              {
+                "stringValue": "The same climate in another place, assuming its culture must match"
+              },
+              {
+                "stringValue": "The amount of rainfall, treating it as a complete explanation"
+              },
+              {
+                "stringValue": "People's choices, histories and other evidence"
+              }
+            ]
+          }
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "decisionQuestion": {
+          "stringValue": "What else should the report investigate before explaining this community's culture?"
+        },
+        "decisionExplanation": {
+          "stringValue": "Climate can influence opportunities, but it cannot explain a whole culture. Investigate local choices, histories and knowledge too. Two places with similar weather can have different practices."
+        },
+        "missionId": {
+          "stringValue": "chapter4-mission3"
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "environment-and-culture"
+              }
+            ]
+          }
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A report explains a whole culture using only climate. What is missing?"
+        },
+        "title": {
+          "stringValue": "Surroundings and Human Choices"
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "keyTermDefinition": {
+          "stringValue": "The surroundings in which people live."
+        },
+        "visualSymbol": {
+          "stringValue": "🏘️"
+        },
+        "discoveryText": {
+          "stringValue": "Surroundings can influence available materials and activities. People also make choices and learn from others. A coastal location does not mean everyone has the same livelihood or belief. Environment alone cannot explain a whole culture."
+        },
+        "historicalInsight": {
+          "stringValue": "Understanding a practice needs local evidence and the people's knowledge."
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Surroundings and Human Choices"
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "example": {
+                "stringValue": "A fictional coastal community has people who fish, weave and repair boats. Living near the sea creates opportunities, but does not give everyone the same work or explain all their traditions."
+              },
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Environment"
+                          },
+                          "definition": {
+                            "stringValue": "The surroundings in which people live."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "explanation": {
+                "stringValue": "Surroundings can influence available materials and activities. People also make choices and learn from others."
+              }
+            }
+          }
+        },
+        "keyTerm": {
+          "stringValue": "Environment"
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Surroundings can influence available materials and activities. People also make choices and learn from others."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "A coastal location does not mean everyone has the same livelihood or belief. Environment alone cannot explain a whole culture."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Understanding a practice needs local evidence and the people's knowledge."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "People's choices, histories and other evidence"
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-29T12:21:08.497606Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter4-mission3-scene3",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter4-mission3-scene3",
+      "fields": {
+        "keyTerm": {
+          "stringValue": "Oral tradition"
+        },
+        "decisionQuestion": {
+          "stringValue": "Which choice best fits the evidence and ideas you explored?"
+        },
+        "visualSymbol": {
+          "stringValue": "🏘️"
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Ask about sources and settings before explaining the differences"
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter4-mission3-scene3.png"
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Stories, songs and spoken accounts can carry knowledge and memories. Communities may have rules about who can share some material."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "A tradition should be identified and understood in its own setting. A fictional classroom story is not automatically an authentic community tradition."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Respectful study asks about source, meaning and limits."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "historicalInsight": {
+          "stringValue": "Respectful study asks about source, meaning and limits."
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "discoveryText": {
+          "stringValue": "Stories, songs and spoken accounts can carry knowledge and memories. Communities may have rules about who can share some material. A tradition should be identified and understood in its own setting. A fictional classroom story is not automatically an authentic community tradition."
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "explanation": {
+                "stringValue": "Stories, songs and spoken accounts can carry knowledge and memories. Communities may have rules about who can share some material."
+              },
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Oral tradition"
+                          },
+                          "definition": {
+                            "stringValue": "Knowledge or stories passed on through spoken forms."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "example": {
+                "stringValue": "Which is an oral tradition?"
+              }
+            }
+          }
+        },
+        "keyTermDefinition": {
+          "stringValue": "Knowledge or stories passed on through spoken forms."
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. Two versions of an account differ. What is a careful next step?"
+        },
+        "order": {
+          "integerValue": "3"
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "missionId": {
+          "stringValue": "chapter4-mission3"
+        },
+        "decisionExplanation": {
+          "stringValue": "Stories, songs and spoken accounts can carry knowledge and memories. Communities may have rules about who can share some material. A tradition should be identified and understood in its own setting. A fictional classroom story is not automatically an authentic community tradition."
+        },
+        "title": {
+          "stringValue": "Listen to Shared Knowledge"
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Listen to Shared Knowledge.\n\nStories, songs and spoken accounts can carry knowledge and memories. Communities may have rules about who can share some material.\n\nA tradition should be identified and understood in its own setting. A fictional classroom story is not automatically an authentic community tradition.\n\nRespectful study asks about source, meaning and limits.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Listen to Shared Knowledge"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "Merge both and call every detail certain"
+              },
+              {
+                "stringValue": "Hide all source information"
+              },
+              {
+                "stringValue": "Ask about sources and settings before explaining the differences"
+              },
+              {
+                "stringValue": "Declare one false without study"
+              }
+            ]
+          }
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "oral-tradition-learning"
+              }
+            ]
+          }
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/10/21/baybayin-ancient-and-traditional-scripts-of-the-philippines-gallery/"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/ethnology/mats-and-baskets/"
+              },
+              {
+                "stringValue": "https://ncca.gov.ph/about-culture-and-arts/culture-profile/intangible-heritage/"
+              }
+            ]
+          }
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter4-mission4-scene2",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter4-mission4-scene2",
+      "fields": {
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "People may share a Filipino identity while belonging to different communities and traditions. Shared identity does not require sameness in every practice."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "The people of the precolonial islands did not all use a single modern national identity in the way we do today."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "We can value their contributions without treating the past as identical to the present."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Shared Identity, Different Experiences.\n\nPeople may share a Filipino identity while belonging to different communities and traditions. Shared identity does not require sameness in every practice.\n\nThe people of the precolonial islands did not all use a single modern national identity in the way we do today.\n\nWe can value their contributions without treating the past as identical to the present.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Shared Identity, Different Experiences"
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "explanation": {
+                "stringValue": "People may share a Filipino identity while belonging to different communities and traditions. Shared identity does not require sameness in every practice."
+              },
+              "example": {
+                "stringValue": "What is identity?"
+              },
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Identity"
+                          },
+                          "definition": {
+                            "stringValue": "How people understand and describe who they are."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "decisionExplanation": {
+          "stringValue": "People may share a Filipino identity while belonging to different communities and traditions. Shared identity does not require sameness in every practice. The people of the precolonial islands did not all use a single modern national identity in the way we do today."
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Include other relevant voices without erasing differences"
+        },
+        "visualSymbol": {
+          "stringValue": "✦"
+        },
+        "keyTermDefinition": {
+          "stringValue": "How people understand and describe who they are."
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "missionId": {
+          "stringValue": "chapter4-mission4"
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "historicalInsight": {
+          "stringValue": "We can value their contributions without treating the past as identical to the present."
+        },
+        "title": {
+          "stringValue": "Shared Identity, Different Experiences"
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/10/21/baybayin-ancient-and-traditional-scripts-of-the-philippines-gallery/"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/ethnology/mats-and-baskets/"
+              },
+              {
+                "stringValue": "https://ncca.gov.ph/about-culture-and-arts/culture-profile/intangible-heritage/"
+              }
+            ]
+          }
+        },
+        "discoveryText": {
+          "stringValue": "People may share a Filipino identity while belonging to different communities and traditions. Shared identity does not require sameness in every practice. The people of the precolonial islands did not all use a single modern national identity in the way we do today."
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A display includes only one community's voice. What could make it more balanced?"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "Call that voice the only possible identity"
+              },
+              {
+                "stringValue": "Remove all community names"
+              },
+              {
+                "stringValue": "Replace sources with a stereotype"
+              },
+              {
+                "stringValue": "Include other relevant voices without erasing differences"
+              }
+            ]
+          }
+        },
+        "decisionQuestion": {
+          "stringValue": "Which choice best fits the evidence and ideas you explored?"
+        },
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "identity-and-diversity"
+              }
+            ]
+          }
+        },
+        "keyTerm": {
+          "stringValue": "Identity"
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter4-mission4-scene2.png"
+        },
+        "order": {
+          "integerValue": "2"
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  },
+  {
+    "path": "storyScenes/chapter4-mission4-scene4",
+    "document": {
+      "name": "projects/lakbaypanahon-1797e/databases/(default)/documents/storyScenes/chapter4-mission4-scene4",
+      "fields": {
+        "reviewTopics": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "heritage-responsibility"
+              }
+            ]
+          }
+        },
+        "decisionQuestion": {
+          "stringValue": "Which choice best fits the evidence and ideas you explored?"
+        },
+        "discoveryText": {
+          "stringValue": "Heritage care includes protecting objects, places and knowledge. Communities have important roles in deciding how their traditions are shared. Useful actions include following site rules, crediting sources and asking permission when needed."
+        },
+        "contentReviewStatus": {
+          "stringValue": "Authored; independent teacher review pending"
+        },
+        "decisionChoices": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "Sell the design without discussion"
+              },
+              {
+                "stringValue": "Give credit and check agreed sharing conditions"
+              },
+              {
+                "stringValue": "Claim the students created it"
+              },
+              {
+                "stringValue": "Ignore the maker's wishes"
+              }
+            ]
+          }
+        },
+        "content": {
+          "stringValue": "Bayani opens the next page of your field journal: Caring Is Part of Learning.\n\nHeritage care includes protecting objects, places and knowledge. Communities have important roles in deciding how their traditions are shared.\n\nUseful actions include following site rules, crediting sources and asking permission when needed.\n\nRespect does not mean taking objects home or publishing everything that can be recorded.\n\nInvestigate the three clues below. Use them to decide what a careful learner should do in the teaching situation. You may revisit any clue before choosing."
+        },
+        "decisionSituation": {
+          "stringValue": "This is a fictional classroom investigation. A project includes a craftsperson's work. Which step is responsible?"
+        },
+        "decisionCorrectAnswer": {
+          "stringValue": "Give credit and check agreed sharing conditions"
+        },
+        "order": {
+          "integerValue": "4"
+        },
+        "keyTermDefinition": {
+          "stringValue": "Help protect something from loss or harm."
+        },
+        "learningHelp": {
+          "mapValue": {
+            "fields": {
+              "guidingQuestion": {
+                "stringValue": "Which clue supports your choice, and what does it not tell you?"
+              },
+              "vocabulary": {
+                "arrayValue": {
+                  "values": [
+                    {
+                      "mapValue": {
+                        "fields": {
+                          "term": {
+                            "stringValue": "Safeguard"
+                          },
+                          "definition": {
+                            "stringValue": "Help protect something from loss or harm."
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "example": {
+                "stringValue": "What does safeguard mean?"
+              },
+              "explanation": {
+                "stringValue": "Heritage care includes protecting objects, places and knowledge. Communities have important roles in deciding how their traditions are shared."
+              }
+            }
+          }
+        },
+        "discoveryTitle": {
+          "stringValue": "Discovery: Caring Is Part of Learning"
+        },
+        "historicalInsight": {
+          "stringValue": "Respect does not mean taking objects home or publishing everything that can be recorded."
+        },
+        "imageUrl": {
+          "stringValue": "../assets/story/chapter4-mission4-scene4.png"
+        },
+        "keyTerm": {
+          "stringValue": "Safeguard"
+        },
+        "exploreItems": {
+          "arrayValue": {
+            "values": [
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Investigate the idea"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Heritage care includes protecting objects, places and knowledge. Communities have important roles in deciding how their traditions are shared."
+                    },
+                    "icon": {
+                      "stringValue": "🔎"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Look at the evidence"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Useful actions include following site rules, crediting sources and asking permission when needed."
+                    },
+                    "icon": {
+                      "stringValue": "📜"
+                    }
+                  }
+                }
+              },
+              {
+                "mapValue": {
+                  "fields": {
+                    "title": {
+                      "stringValue": "Check the limits"
+                    },
+                    "hint": {
+                      "stringValue": "Open this clue and use it in your decision."
+                    },
+                    "discovery": {
+                      "stringValue": "Respect does not mean taking objects home or publishing everything that can be recorded."
+                    },
+                    "icon": {
+                      "stringValue": "🧠"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "decisionExplanation": {
+          "stringValue": "Heritage care includes protecting objects, places and knowledge. Communities have important roles in deciding how their traditions are shared. Useful actions include following site rules, crediting sources and asking permission when needed."
+        },
+        "sourceUrls": {
+          "arrayValue": {
+            "values": [
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/2022/10/21/baybayin-ancient-and-traditional-scripts-of-the-philippines-gallery/"
+              },
+              {
+                "stringValue": "https://www.nationalmuseum.gov.ph/our-collections/ethnology/mats-and-baskets/"
+              },
+              {
+                "stringValue": "https://ncca.gov.ph/about-culture-and-arts/culture-profile/intangible-heritage/"
+              }
+            ]
+          }
+        },
+        "status": {
+          "stringValue": "active"
+        },
+        "exploreIntroduction": {
+          "stringValue": "Open each clue. Ask what it supports, then use the clues to explain your decision."
+        },
+        "missionId": {
+          "stringValue": "chapter4-mission4"
+        },
+        "title": {
+          "stringValue": "Caring Is Part of Learning"
+        },
+        "visualSymbol": {
+          "stringValue": "✦"
+        }
+      },
+      "createTime": "2026-10-27T10:32:36.929079Z",
+      "updateTime": "2026-10-27T13:03:40.213152Z"
+    }
+  }
+]

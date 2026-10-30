@@ -1,0 +1,239 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function activeStudent() {
+      return signedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'student'
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';
+    }
+    function ownRecord() { return resource.data.userId == request.auth.uid; }
+    function twoDigits(value) { return value < 10 ? '0' + string(value) : string(value); }
+    function dayKey(time) {
+      let local = time + duration.value(8, 'h');
+      return string(local.year()) + '-' + twoDigits(local.month()) + '-' + twoDigits(local.day());
+    }
+    function completionPath(kind, id) {
+      let records = kind == 'mission' ? 'studentProgress' : 'studentDailyChallenges';
+      return /databases/$(database)/documents/$(records)/$(request.auth.uid + '_' + id);
+    }
+    function expectedStreak() {
+      return resource.data.get('lastStreakDate', '') == dayKey(request.time)
+        ? (resource.data.get('learningStreak', 0) > 0 ? resource.data.learningStreak : 1)
+        : resource.data.get('lastStreakDate', '') == dayKey(request.time - duration.value(1, 'd'))
+          ? resource.data.get('learningStreak', 0) + 1 : 1;
+    }
+    function rewardUpdate() {
+      let next = request.resource.data;
+      let kind = next.lastRewardKind;
+      let path = completionPath(kind, next.lastRewardId);
+      let completion = getAfter(path).data;
+      return activeStudent() && kind in ['mission', 'daily'] && !exists(path)
+        && completion.userId == request.auth.uid && completion.completed == true
+        && completion.completedAt == request.time
+        && next.diff(resource.data).affectedKeys().hasOnly(kind == 'daily'
+          ? ['xp', 'level', 'updatedAt', 'lastRewardKind', 'lastRewardId', 'learningStreak', 'lastStreakDate']
+          : ['xp', 'level', 'updatedAt', 'lastRewardKind', 'lastRewardId'])
+        && next.xp is int && next.xp == resource.data.get('xp', 0) + completion.xpEarned
+        && next.level == int(next.xp / 100) + 1 && next.updatedAt == request.time
+        && (kind != 'daily' || (next.lastStreakDate == dayKey(request.time)
+          && next.learningStreak == expectedStreak()));
+    }
+    function pairedReward(kind, id) {
+      let student = getAfter(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+      let previous = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+      return student.lastRewardKind == kind && student.lastRewardId == id
+        && student.xp == previous.get('xp', 0) + request.resource.data.xpEarned
+        && student.updatedAt == request.time;
+    }
+    function validCompletion() {
+      let data = request.resource.data;
+      return data.userId == request.auth.uid && data.completed == true
+        && data.bestScore is int && data.bestScore >= 0 && data.bestScore <= 100
+        && data.completedAt == request.time && data.updatedAt == request.time;
+    }
+    function scoreReplay() {
+      return ownRecord() && resource.data.completed == true
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['bestScore', 'updatedAt'])
+        && request.resource.data.bestScore is int
+        && request.resource.data.bestScore >= resource.data.bestScore
+        && request.resource.data.bestScore <= 100 && request.resource.data.updatedAt == request.time;
+    }
+    match /users/{userId} {
+      allow read: if signedIn() && request.auth.uid == userId;
+      allow create: if signedIn() && request.auth.uid == userId
+        && request.resource.data.keys().hasOnly([
+          'firstName', 'middleName', 'lastName', 'email', 'role', 'status', 'createdAt'
+        ])
+        && request.resource.data.keys().hasAll([
+          'firstName', 'lastName', 'email', 'role', 'status', 'createdAt'
+        ])
+        && request.resource.data.firstName is string
+        && request.resource.data.firstName.size() > 0 && request.resource.data.firstName.size() <= 100
+        && request.resource.data.lastName is string
+        && request.resource.data.lastName.size() > 0 && request.resource.data.lastName.size() <= 100
+        && request.resource.data.get('middleName', '') is string
+        && request.resource.data.get('middleName', '').size() <= 100
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.createdAt == request.time
+        && ((request.resource.data.role == 'student' && request.resource.data.status == 'active')
+          || (request.resource.data.role == 'teacher' && request.resource.data.status == 'pending'));
+      // Names can be edited; rewards require a paired first-completion write.
+      allow update: if signedIn() && request.auth.uid == userId && rewardUpdate();
+      allow update: if signedIn() && request.auth.uid == userId
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'firstName', 'middleName', 'lastName', 'avatarId', 'updatedAt'
+        ])
+        && request.resource.data.firstName is string
+        && request.resource.data.firstName.size() > 0 && request.resource.data.firstName.size() <= 100
+        && request.resource.data.lastName is string
+        && request.resource.data.lastName.size() > 0 && request.resource.data.lastName.size() <= 100
+        && request.resource.data.get('middleName', '') is string
+        && request.resource.data.get('middleName', '').size() <= 100
+        && request.resource.data.get('avatarId', 'initials') in [
+          'initials', 'compass', 'book', 'sun', 'star', 'turtle', 'eagle', 'cat', 'rocket'
+        ]
+        && request.resource.data.updatedAt == request.time;
+    }
+    match /{catalog}/{contentId} {
+      allow read: if activeStudent() && catalog in [
+        'eras', 'chapters', 'missions', 'storyScenes', 'quizzes', 'questions',
+        'practiceQuestions', 'artifacts', 'chapterChallenges', 'chapterChallengeQuestions',
+        'badges', 'dailyChallenges'
+      ];
+    }
+    match /{records}/{recordId} {
+      function protectedRecords() {
+        return records in ['studentProgress', 'studentChapterProgress', 'studentArtifacts',
+          'studentBadges', 'studentDailyChallenges'];
+      }
+      // Allow an owner to check a not-yet-created completion; lists still require userId filters.
+      allow get: if protectedRecords() && activeStudent()
+        && (!exists(/databases/$(database)/documents/$(records)/$(recordId)) || ownRecord());
+      allow list: if protectedRecords() && activeStudent() && ownRecord();
+      // Writes are allowed only by the specific rules below.
+    }
+    match /studentProgress/{progressId} {
+      function validMission() {
+        let data = request.resource.data;
+        let mission = get(/databases/$(database)/documents/missions/$(data.missionId)).data;
+        let chapter = get(/databases/$(database)/documents/chapters/$(data.chapterId)).data;
+        let quiz = get(/databases/$(database)/documents/quizzes/$(data.quizId)).data;
+        return data.keys().hasOnly(['userId', 'chapterId', 'missionId', 'quizId', 'completed',
+            'bestScore', 'completedAt', 'updatedAt', 'xpEarned'])
+          && progressId == request.auth.uid + '_' + data.missionId
+          && mission.status == 'active' && mission.chapterId == data.chapterId
+          && chapter.status == 'active' && chapter.get('contentReady', true) != false
+          && quiz.status == 'active' && quiz.missionId == data.missionId
+          && data.bestScore >= quiz.get('passingScore', 60)
+          && data.xpEarned is int && data.xpEarned >= 0 && data.xpEarned == mission.get('xpReward', 0)
+          && pairedReward('mission', data.missionId);
+      }
+      allow create: if activeStudent() && validCompletion() && validMission();
+      allow update: if activeStudent() && scoreReplay();
+    }
+    match /studentChapterProgress/{progressId} {
+      function validChapter() {
+        let data = request.resource.data;
+        let challenge = get(/databases/$(database)/documents/chapterChallenges/$(data.challengeId)).data;
+        let chapter = get(/databases/$(database)/documents/chapters/$(data.chapterId)).data;
+        return data.keys().hasOnly(['userId', 'chapterId', 'challengeId', 'completed',
+            'bestScore', 'completedAt', 'updatedAt'])
+          && progressId == request.auth.uid + '_' + data.chapterId
+          && chapter.status == 'active' && chapter.get('contentReady', true) != false
+          && challenge.status == 'active' && challenge.chapterId == data.chapterId
+          && data.bestScore >= challenge.get('passingScore', 70);
+      }
+      allow create: if activeStudent() && validCompletion() && validChapter();
+      allow update: if activeStudent() && scoreReplay();
+    }
+    match /studentDailyChallenges/{completionId} {
+      function validDaily() {
+        let data = request.resource.data;
+        let challenge = get(/databases/$(database)/documents/dailyChallenges/$(data.challengeId)).data;
+        return data.keys().hasOnly(['userId', 'challengeId', 'dateKey', 'completed', 'correct',
+            'selectedAnswer', 'xpEarned', 'bestScore', 'completedAt', 'updatedAt'])
+          && data.dateKey == dayKey(request.time)
+          && completionId == request.auth.uid + '_' + dayKey(request.time)
+          && challenge.status == 'active' && data.correct == true && data.bestScore == 100
+          && data.selectedAnswer == challenge.correctAnswer.upper()
+          && data.xpEarned is int && data.xpEarned >= 0 && data.xpEarned == challenge.get('xpReward', 0)
+          && pairedReward('daily', data.dateKey);
+      }
+      allow create: if activeStudent() && validCompletion() && validDaily();
+    }
+    match /studentArtifacts/{ownershipId} {
+      function validArtifact() {
+        let data = request.resource.data;
+        let artifact = get(/databases/$(database)/documents/artifacts/$(data.artifactId)).data;
+        let progress = getAfter(/databases/$(database)/documents/studentProgress/$(request.auth.uid + '_' + data.missionId)).data;
+        return data.keys().hasOnly(['userId', 'artifactId', 'missionId', 'chapterId', 'earnedAt'])
+          && data.userId == request.auth.uid && ownershipId == request.auth.uid + '_' + data.artifactId
+          && data.earnedAt == request.time && artifact.status == 'active'
+          && artifact.missionId == data.missionId && progress.chapterId == data.chapterId
+          && progress.userId == request.auth.uid && progress.completed == true;
+      }
+      allow create: if activeStudent() && validArtifact();
+    }
+    match /studentBadges/{ownershipId} {
+      function validBadge() {
+        let data = request.resource.data;
+        let badge = get(/databases/$(database)/documents/badges/$(data.badgeId)).data;
+        let progress = getAfter(/databases/$(database)/documents/studentChapterProgress/$(request.auth.uid + '_' + data.chapterId)).data;
+        return data.keys().hasOnly(['userId', 'badgeId', 'chapterId', 'challengeId', 'earnedAt'])
+          && data.userId == request.auth.uid && ownershipId == request.auth.uid + '_' + data.badgeId
+          && data.earnedAt == request.time && badge.status == 'active'
+          && badge.chapterId == data.chapterId && progress.challengeId == data.challengeId
+          && progress.userId == request.auth.uid && progress.completed == true;
+      }
+      allow create: if activeStudent() && validBadge();
+    }
+match /studentPracticeProgress/{progressId} {
+
+  // Students can read only their own practice records.
+  allow read: if activeStudent()
+              && resource.data.userId == request.auth.uid;
+
+  // Students can create records only for themselves.
+  allow create: if activeStudent()
+                && request.resource.data.userId == request.auth.uid
+                && request.resource.data.keys().hasOnly([
+                  "userId",
+                  "chapterId",
+                  "missionId",
+                  "completedAt",
+                  "totalQuestions",
+                  "firstTryCorrectCount",
+                  "questionResults",
+                  "topicsForReview"
+                ])
+                && request.resource.data.keys().hasAll([
+                  "userId",
+                  "chapterId",
+                  "missionId",
+                  "completedAt",
+                  "totalQuestions",
+                  "firstTryCorrectCount",
+                  "questionResults",
+                  "topicsForReview"
+                ])
+                && request.resource.data.chapterId is string
+                && request.resource.data.missionId is string
+                && request.resource.data.completedAt == request.time
+                && request.resource.data.totalQuestions is int
+                && request.resource.data.totalQuestions > 0
+                && request.resource.data.firstTryCorrectCount is int
+                && request.resource.data.firstTryCorrectCount >= 0
+                && request.resource.data.firstTryCorrectCount
+                   <= request.resource.data.totalQuestions
+                && request.resource.data.questionResults is list
+                && request.resource.data.questionResults.size()
+                   == request.resource.data.totalQuestions
+                && request.resource.data.topicsForReview is list;
+
+  // Practice session records are append-only.
+  allow update, delete: if false;
+}
+  }
+}
+    

@@ -1,4 +1,13 @@
-import { requestAiAssistance, aiAssistanceLocalOnly } from "./ai-assistance-client.js";
+import {mountEvidenceSaver} from './evidence-journal.js';
+import { evaluateRoute, renderRouteInvestigation } from "./story-route.js";
+import {evaluateExhibit, renderExhibit} from "./story-exhibit.js";
+import { recordLessonReview } from "./review-events.js";
+import { validateTradeActivity, evaluateTradePlan } from './story-trade.js';
+import { stableDraftVersion } from "./quiz-draft-policy.js";
+import { mountLearningNavigation } from "./learning-navigation.js";
+import { requireMissionPolicy } from "./mission-assessment.js";
+import { learningDraft, draftStatus, restartControl } from "./learning-draft.js";
+
 
 import { db, auth } from "./firebase-config.js";
 import { requireLearningAccess, LearningAccessError } from "./learning-access.js";
@@ -26,6 +35,35 @@ const $ = (id) => document.getElementById(id);
 
 const storyLoading = $("storyLoading");
 const storyError = $("storyError");
+const retryStoryLoadButton = $("retryStoryLoadButton");
+let storySessionGeneration = 0;
+let storyLoadPending = false;
+let storyUserId = null;
+let storyDraft = null, storyDraftReady = false;
+const storyDraftStatus = draftStatus(document.getElementById("storyContent"));
+const restartStoryButton = restartControl(document.getElementById("storyContent"), "Start Lesson Over", async () => {
+    if (!auth.currentUser || storyLoadPending) return;
+    const generation = storySessionGeneration;
+    storyDraftReady = false;
+    try {
+        await storyDraft.clear();
+        if (generation !== storySessionGeneration) return;
+        await loadStory();
+    } catch {
+        if (generation !== storySessionGeneration) return;
+        storyDraft = learningDraft("story", chapterId, missionId, storyDraftStatus);
+        storyDraftReady = true;
+        storyDraftStatus.textContent = "Could not restart. Your current lesson is still available. Try again.";
+    }
+});
+storyDraftStatus.classList.add("story-draft-status");
+storyDraftStatus.retryButton.classList.add("story-draft-retry");
+restartStoryButton.classList.add("story-restart-button");
+const storyProgressActions = document.getElementById("storyProgressActions");
+storyProgressActions?.append(storyDraftStatus, storyDraftStatus.retryButton, restartStoryButton);
+let storyContentVersion = "";
+let loadedStoryMission = null;
+let quizInfoRequest = 0;
 const storyContent = $("storyContent");
 
 const storyMissionTitle = $("storyMissionTitle");
@@ -43,16 +81,8 @@ const storyText = $("storyText");
 const storyAiExplainButton = $("storyAiExplainButton");
 const storyAiExplainResponse = $("storyAiExplainResponse");
 
-function resetStoryAiExplanation() {
-    if (storyAiExplainButton) {
-        storyAiExplainButton.disabled = !aiAssistanceLocalOnly;
-    }
-
-    if (storyAiExplainResponse) {
-        storyAiExplainResponse.textContent = "";
-        storyAiExplainResponse.hidden = true;
-    }
-}
+function sceneHelp(scene){const h=scene?.learningHelp;return h&&typeof h.explanation==='string'&&h.explanation.trim()?h:null;}
+function resetStoryAiExplanation(){const help=sceneHelp(getCurrentScene());if(storyAiExplainButton){storyAiExplainButton.hidden=!help;storyAiExplainButton.disabled=!help;storyAiExplainButton.setAttribute('aria-expanded','false');}if(storyAiExplainResponse){storyAiExplainResponse.replaceChildren();storyAiExplainResponse.hidden=true;}}
 
 const storyVisual = $("storyVisual");
 const storySceneImage = $("storySceneImage");
@@ -62,6 +92,16 @@ const storyVisualCaption = $("storyVisualCaption");
 const storyExplore = $("storyExplore");
 const storyExploreIntroduction = $("storyExploreIntroduction");
 const storyExploreChoices = $("storyExploreChoices");
+const storyClueHunt = $("storyClueHunt");
+const storyClueHuntTitle = $("storyClueHuntTitle");
+const storyClueHuntInstructions = $("storyClueHuntInstructions");
+const storyClueHuntLock = $("storyClueHuntLock");
+const storyClueHuntQuestion = $("storyClueHuntQuestion");
+const storyClueHuntPrompt = $("storyClueHuntPrompt");
+const storyClueHuntChoices = $("storyClueHuntChoices");
+const storyClueHuntFeedback = $("storyClueHuntFeedback");
+const storyClueHuntFeedbackTitle = $("storyClueHuntFeedbackTitle");
+const storyClueHuntFeedbackText = $("storyClueHuntFeedbackText");
 
 const storyDiscovery = $("storyDiscovery");
 const storyDiscoveryTitle = $("storyDiscoveryTitle");
@@ -93,6 +133,7 @@ const sceneProgressText = $("sceneProgressText");
 const storyProgressFill = $("storyProgressFill");
 
 const continueStoryButton = $("continueStoryButton");
+const previousStoryButton = $("previousStoryButton");
 const storyCompleteSection = $("storyCompleteSection");
 const backToMissionButton = $("backToMissionButton");
 const quizButton = $("quizButton");
@@ -105,6 +146,9 @@ const params = new URLSearchParams(window.location.search);
 
 const chapterId = params.get("chapter");
 const missionId = params.get("mission");
+const reviewTopic = (params.get("reviewTopic") || "").trim();
+let topicReviewMapped = false;
+let reviewSavePending=null;
 
 /* =========================================================
    STORY STATE
@@ -115,7 +159,11 @@ let currentSceneIndex = 0;
 
 const completedQuickChecks = new Set();
 const completedStoryDecisions = new Set();
+const completedClueHunts = new Set();
 const exploredSceneItems = new Map();
+const storyTradePlans = new Map();
+const storyRoutePlans = new Map();
+const storyExhibitPlans = new Map();
 
 /*
    Activity completion is session-only.
@@ -135,6 +183,7 @@ function clean(value) {
 }
 
 function showError(message) {
+    if (retryStoryLoadButton) retryStoryLoadButton.hidden = !auth.currentUser || !chapterId || !missionId;
     if (storyLoading) {
         storyLoading.hidden = true;
     }
@@ -190,6 +239,36 @@ function getExploreItems(scene) {
     });
 }
 
+function getClueHunt(scene) {
+    const activity = scene?.clueHunt;
+    const choices = Array.isArray(activity?.choices)
+        ? activity.choices.map((choice) => clean(choice)).filter(Boolean)
+        : [];
+    const correctAnswer = clean(activity?.correctAnswer);
+
+    if (
+        !activity ||
+        typeof activity !== "object" ||
+        getExploreItems(scene).length < 2 ||
+        !clean(activity.title) ||
+        !clean(activity.instructions) ||
+        !clean(activity.question) ||
+        choices.length < 2 ||
+        new Set(choices).size !== choices.length ||
+        !choices.includes(correctAnswer) ||
+        !clean(activity.correctExplanation) ||
+        !clean(activity.retryExplanation)
+    ) {
+        return null;
+    }
+
+    return { ...activity, choices, correctAnswer };
+}
+
+function isSceneClueHuntComplete(scene) {
+    return !getClueHunt(scene) || completedClueHunts.has(scene.id);
+}
+
 function isSafeImageUrl(value) {
     const url = clean(value);
 
@@ -219,7 +298,7 @@ function scrollToSection(element) {
 
     const reducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
-    ).matches;
+    ).matches || document.body.classList.contains('lakbay-reduce-motion');
 
     element.scrollIntoView({
         behavior: reducedMotion ? "auto" : "smooth",
@@ -231,7 +310,30 @@ function scrollToSection(element) {
    LOAD STORY FROM FIRESTORE
    ========================================================= */
 
+function topicPracticeUrl(){return 'practice.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,topic:reviewTopic,review:'1'});}
+function renderTopicReviewNotice(){
+    document.getElementById('topicReviewNotice')?.remove();
+    const panel=document.createElement('section');panel.id='topicReviewNotice';panel.className='topic-review-notice';panel.setAttribute('aria-label','Topic review');
+    const heading=document.createElement('div');heading.className='topic-review-heading';
+    const mark=document.createElement('span');mark.className='topic-review-mark';mark.setAttribute('aria-hidden','true');mark.textContent='↻';
+    const headingCopy=document.createElement('div');headingCopy.className='topic-review-heading-copy';
+    const eyebrow=document.createElement('span');eyebrow.className='topic-review-eyebrow';eyebrow.textContent='YOUR PERSONALIZED REVIEW';
+    const title=document.createElement('h2');title.textContent='Review the lesson: '+reviewTopic;
+    headingCopy.append(eyebrow,title);heading.append(mark,headingCopy);
+    const copy=document.createElement('p');copy.textContent=topicReviewMapped?'These story scenes teach the topic recommended for review. Explore the explanations and complete any scene checks, then apply what you learned in practice.':'A specific scene link has not been configured for this topic yet. Review the full mission lesson, then continue to targeted practice.';
+    const note=document.createElement('p');note.textContent='This review keeps your unfinished lesson position unchanged. Revisiting content does not award XP or clear a review recommendation.';
+    const full=document.createElement('a');full.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId});full.className='text-button';full.textContent='Open Full Lesson';
+    const back=document.createElement('a');back.href='my-journey.html';back.className='text-button';back.textContent='Back to My Journey';
+    const steps=document.createElement('ol');steps.className='review-flow-steps';steps.setAttribute('aria-label','Learning recovery steps');
+    for(const [index,label] of ['Review the lesson','Apply in practice','Choose your next step'].entries()){const item=document.createElement('li');if(index===0)item.setAttribute('aria-current','step');const number=document.createElement('span');number.setAttribute('aria-hidden','true');number.textContent=String(index+1);item.append(number,document.createTextNode(label));steps.append(item);}
+    const actions=document.createElement('div');actions.className='topic-review-actions';actions.append(full,back);
+    panel.append(heading,steps,copy,note,actions);storyContent.prepend(panel);
+}
+
 async function loadStory() {
+    if (!auth.currentUser || storyLoadPending) return;
+    const generation = storySessionGeneration;
+    const isCurrent = () => generation === storySessionGeneration;
     if (!chapterId || !missionId) {
         showError(
             "The chapter or mission was not selected."
@@ -239,12 +341,21 @@ async function loadStory() {
         return;
     }
 
+    quizInfoRequest++;
+    quizButton.disabled = true;
+    storyLoadPending = true;
+    storyLoading.hidden = false;
+    storyError.hidden = true;
+    storyContent.hidden = true;
+    if (retryStoryLoadButton) retryStoryLoadButton.hidden = true;
     try {
         await requireLearningAccess(chapterId, missionId);
+        if (!isCurrent()) return;
         const chapterSnapshot = await getDoc(
             doc(db, "chapters", chapterId)
         );
 
+        if (!isCurrent()) return;
         if (!chapterSnapshot.exists()) {
             showError(
                 "The selected chapter could not be found."
@@ -256,6 +367,7 @@ async function loadStory() {
             doc(db, "missions", missionId)
         );
 
+        if (!isCurrent()) return;
         if (!missionSnapshot.exists()) {
             showError(
                 "The selected mission could not be found."
@@ -265,6 +377,7 @@ async function loadStory() {
 
         const chapter = chapterSnapshot.data();
         const mission = missionSnapshot.data();
+        loadedStoryMission = mission;
 
         if (mission.chapterId !== chapterId) {
             showError(
@@ -293,6 +406,7 @@ async function loadStory() {
 
         const sceneSnapshot = await getDocs(sceneQuery);
 
+        if (!isCurrent()) return;
         scenes = [];
 
         sceneSnapshot.forEach((snapshot) => {
@@ -320,27 +434,74 @@ async function loadStory() {
             return;
         }
 
+        if(reviewTopic){
+            const mapped=scenes.filter(scene=>Array.isArray(scene.reviewTopics)&&scene.reviewTopics.includes(reviewTopic));
+            topicReviewMapped=mapped.length>0;
+            if(topicReviewMapped)scenes=mapped;
+            renderTopicReviewNotice();
+        }
+        storyDraft?.close();
+        storyDraftReady = false;
+        storyDraft = reviewTopic ? null : learningDraft("story", chapterId, missionId, storyDraftStatus);
+        const savedDraft = reviewTopic ? null : await storyDraft.read();
+        if (!isCurrent()) return;
+        const existingLessonScenes = scenes.map(({ clueHunt, ...scene }) => scene);
+        storyContentVersion = stableDraftVersion(existingLessonScenes).split("").reduce((hash,char) => Math.imul(hash ^ char.charCodeAt(0),16777619),2166136261).toString();
         currentSceneIndex = 0;
 
+        reviewSavePending=null;
+        storyTradePlans.clear();storyRoutePlans.clear();storyExhibitPlans.clear();
         completedQuickChecks.clear();
         completedStoryDecisions.clear();
+        completedClueHunts.clear();
         exploredSceneItems.clear();
 
+        if (savedDraft?.version === storyContentVersion) {
+            for (const id of savedDraft.quickChecks || []) if (scenes.some(scene=>scene.id===id)) completedQuickChecks.add(id);
+            for (const id of savedDraft.decisions || []) if (scenes.some(scene=>scene.id===id)) completedStoryDecisions.add(id);
+            const savedClueHuntVersions = savedDraft.clueHuntVersions || {};
+            for (const id of savedDraft.clueHunts || []) {
+                const scene = scenes.find(item => item.id === id);
+                const activity = getClueHunt(scene);
+                if (activity && savedClueHuntVersions[id] === stableDraftVersion(activity)) completedClueHunts.add(id);
+            }
+            for (const [id,items] of Object.entries(savedDraft.explored || {})) if (Array.isArray(items)) exploredSceneItems.set(id,new Set(items));
+            for(const [id,plan] of Object.entries(savedDraft.tradePlans||{}))if(scenes.some(scene=>scene.id===id&&scene.tradeActivity))storyTradePlans.set(id,plan);
+            for(const [id,plan] of Object.entries(savedDraft.routePlans||{}))if(scenes.some(scene=>scene.id===id&&scene.routeActivity))storyRoutePlans.set(id,plan);
+            for(const [id,plan] of Object.entries(savedDraft.exhibitPlans||{}))if(scenes.some(scene=>scene.id===id&&scene.exhibitActivity))storyExhibitPlans.set(id,plan);
+            const index = scenes.findIndex(scene=>scene.id===savedDraft.sceneId);
+            if (index >= 0) currentSceneIndex = index;
+        }
+        restartStoryButton.hidden = !savedDraft;
         storyCompleteSection.hidden = true;
         storyReadingCard.hidden = false;
 
         displayScene();
+        const savedLessonWasCompletedBeforeClueHunt = savedDraft?.completed === true && !savedDraft?.clueHuntVersions;
+        if (savedDraft?.version === storyContentVersion && savedDraft.completed === true &&
+            scenes.every(scene=>isSceneExploreComplete(scene) && (savedLessonWasCompletedBeforeClueHunt || isSceneClueHuntComplete(scene)) && isStoryDecisionComplete(scene) && (!sceneHasQuickCheck(scene) || completedQuickChecks.has(scene.id)))) {
+            storyReadingCard.hidden = true;
+            storyCompleteSection.hidden = false;
+            storyProgressFill.style.width = "100%";
+            sceneProgressText.textContent = "Completed";
+            loadLessonQuizInfo();
+        }
 
+        storyDraftReady = !reviewTopic;
+        saveStoryPlace(getCurrentScene(), !storyCompleteSection.hidden);
         storyLoading.hidden = true;
         storyError.hidden = true;
         storyContent.hidden = false;
 
     } catch (error) {
+        if (!isCurrent()) return;
         console.error("Unable to load story:", error);
 
         showError(
             error instanceof LearningAccessError ? error.message : "We could not load this story mission. Please try again."
         );
+    } finally {
+        if (isCurrent()) storyLoadPending = false;
     }
 }
 
@@ -349,17 +510,26 @@ async function loadStory() {
    ========================================================= */
 
 function displayScene() {
+    if (previousStoryButton) previousStoryButton.disabled=currentSceneIndex===0;
     const scene = getCurrentScene();
 
    if (!scene) {
     return;
 }
 
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        storyReadingCard.classList.remove('story-scene-arrival');
+        void storyReadingCard.offsetWidth;
+        storyReadingCard.classList.add('story-scene-arrival');
+    }
+
 resetStoryAiExplanation();
 
     const sceneNumber = currentSceneIndex + 1;
     const totalScenes = scenes.length;
     
+    const trail=document.getElementById('storySceneTrail');
+    if(trail){trail.replaceChildren();for(const [index,entry] of scenes.entries()){const marker=document.createElement('li');marker.textContent=String(index+1);marker.title=entry.title||'Scene '+(index+1);marker.setAttribute('aria-label','Scene '+(index+1)+': '+(entry.title||'Learning scene'));if(index===currentSceneIndex)marker.setAttribute('aria-current','step');trail.append(marker);}}
     sceneLabel.textContent = `SCENE ${sceneNumber}`;
 
     sceneTitle.textContent =
@@ -368,9 +538,14 @@ resetStoryAiExplanation();
     displaySceneVisual(scene);
     displayStoryText(scene);
     displayStoryExplore(scene);
+    displayStoryClueHunt(scene);
+    mountEvidenceSaver({scene,chapterId,missionId,anchor:storyExplore,explored:()=>[...getExploredItemsForScene(scene)].map(i=>scene.exploreItems.indexOf(getExploreItems(scene)[i])).filter(i=>i>=0)});
     displayStoryDiscovery(scene);
     displayStoryKeyTerm(scene);
     displayStoryDecision(scene);
+    renderStoryTrade(scene);
+    renderStoryRoute(scene);
+    renderStoryExhibit(scene);
     displayHistoricalInsight(scene);
     displayQuickCheck(scene);
 
@@ -399,7 +574,9 @@ function displaySceneVisual(scene) {
         return;
     }
 
+    const sceneSymbol=document.querySelector('.story-visual-icon');if(sceneSymbol)sceneSymbol.textContent=clean(scene.visualSymbol)||'\u{1F6D6}';
     const imageUrl = clean(scene.imageUrl);
+    storySceneImage.classList.toggle("story-instructional-image", scene.imageFit === "contain");
     const imageAlt = clean(scene.imageAlt);
     const imageCaption = clean(scene.imageCaption);
 
@@ -606,6 +783,7 @@ function displayStoryExplore(scene) {
                 String(!result.hidden)
             );
 
+            updateStoryClueHuntUnlock(scene);
             updateContinueButton(scene);
         });
 
@@ -623,6 +801,96 @@ function isSceneExploreComplete(scene) {
     const exploredItems = getExploredItemsForScene(scene);
 
     return exploredItems.size >= items.length;
+}
+
+function displayStoryClueHunt(scene) {
+    if (!storyClueHunt) return;
+
+    const activity = getClueHunt(scene);
+    storyClueHunt.hidden = !activity;
+    if (!activity) {
+        storyClueHuntChoices?.replaceChildren();
+        return;
+    }
+
+    const completed = completedClueHunts.has(scene.id);
+    storyClueHuntTitle.textContent = clean(activity.title);
+    storyClueHuntInstructions.textContent = clean(activity.instructions);
+    storyClueHuntPrompt.textContent = clean(activity.question);
+    storyClueHuntChoices.replaceChildren();
+
+    activity.choices.forEach((choice) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "story-clue-hunt-choice";
+        button.textContent = choice;
+        button.disabled = completed;
+        if (completed && choice === activity.correctAnswer) {
+            button.classList.add("correct");
+        }
+        button.addEventListener("click", () => handleStoryClueHuntAnswer(scene, choice, button));
+        storyClueHuntChoices.append(button);
+    });
+
+    if (completed) {
+        showStoryClueHuntFeedback(true, activity.correctTitle || "Strong historical thinking!", activity.correctExplanation);
+    } else {
+        storyClueHuntFeedback.hidden = true;
+        storyClueHuntFeedback.classList.remove("correct", "incorrect");
+        storyClueHuntFeedbackTitle.textContent = "";
+        storyClueHuntFeedbackText.textContent = "";
+    }
+    updateStoryClueHuntUnlock(scene);
+}
+
+function updateStoryClueHuntUnlock(scene) {
+    const activity = getClueHunt(scene);
+    if (!activity || storyClueHunt.hidden) return;
+
+    const clues = getExploreItems(scene);
+    const openedCount = getExploredItemsForScene(scene).size;
+    const ready = isSceneExploreComplete(scene);
+    const completed = completedClueHunts.has(scene.id);
+
+    storyClueHuntLock.hidden = ready;
+    storyClueHuntLock.textContent = ready
+        ? "All clues found. Compare them, then choose the conclusion they support."
+        : `Open all ${clues.length} clues above to unlock your investigation (${Math.min(openedCount, clues.length)} of ${clues.length} found).`;
+    storyClueHuntQuestion.hidden = !ready;
+    storyClueHuntChoices.querySelectorAll("button").forEach((button) => {
+        button.disabled = !ready || completed;
+    });
+}
+
+function handleStoryClueHuntAnswer(scene, selectedAnswer, selectedButton) {
+    const activity = getClueHunt(scene);
+    if (!activity || completedClueHunts.has(scene.id) || !isSceneExploreComplete(scene)) return;
+
+    storyClueHuntChoices.querySelectorAll("button").forEach((button) => button.classList.remove("incorrect"));
+    const correct = selectedAnswer === activity.correctAnswer;
+    if (!correct) {
+        selectedButton.classList.add("incorrect");
+        showStoryClueHuntFeedback(false, activity.retryTitle || "Look closely at the clues", activity.retryExplanation);
+        return;
+    }
+
+    completedClueHunts.add(scene.id);
+    storyClueHuntChoices.querySelectorAll("button").forEach((button) => {
+        button.disabled = true;
+        if (button.textContent === activity.correctAnswer) button.classList.add("correct");
+    });
+    showStoryClueHuntFeedback(true, activity.correctTitle || "Strong historical thinking!", activity.correctExplanation);
+    displayStoryDecision(scene);
+    document.dispatchEvent(new CustomEvent("lakbay:answer-correct"));
+    updateContinueButton(scene);
+}
+
+function showStoryClueHuntFeedback(correct, title, explanation) {
+    storyClueHuntFeedback.hidden = false;
+    storyClueHuntFeedback.classList.toggle("correct", correct);
+    storyClueHuntFeedback.classList.toggle("incorrect", !correct);
+    storyClueHuntFeedbackTitle.textContent = clean(title);
+    storyClueHuntFeedbackText.textContent = clean(explanation);
 }
 
 /* =========================================================
@@ -712,6 +980,7 @@ function sceneHasDecision(scene) {
 }
 
 function isStoryDecisionComplete(scene) {
+    if(!isSceneTradeComplete(scene)||!isSceneRouteComplete(scene)||!isSceneExhibitComplete(scene))return false;
     return (
         !sceneHasDecision(scene) ||
         completedStoryDecisions.has(scene.id)
@@ -770,6 +1039,7 @@ function displayStoryDecision(scene) {
 
     const alreadyCompleted =
         completedStoryDecisions.has(scene.id);
+    const waitingForClueHunt = !isSceneClueHuntComplete(scene);
 
     choices.forEach((choice) => {
         const button = document.createElement("button");
@@ -778,10 +1048,10 @@ function displayStoryDecision(scene) {
         button.className = "story-decision-choice";
         button.textContent = choice;
 
-        if (alreadyCompleted) {
+        if (alreadyCompleted || waitingForClueHunt) {
             button.disabled = true;
 
-            if (choice === correctAnswer) {
+            if (alreadyCompleted && choice === correctAnswer) {
                 button.classList.add("correct");
             }
         }
@@ -811,6 +1081,12 @@ function handleStoryDecision(
     selectedAnswer,
     selectedButton
 ) {
+    if (!isSceneClueHuntComplete(scene)) {
+        scrollToSection(storyClueHunt);
+        return;
+    }
+    if (!isSceneRouteComplete(scene)) {scrollToSection(document.getElementById("storyRouteActivity"));return;}
+    if (!isSceneTradeComplete(scene)) {scrollToSection(document.getElementById("storyTradeActivity"));return;}
     if (completedStoryDecisions.has(scene.id)) {
         return;
     }
@@ -1117,7 +1393,77 @@ function resetQuickCheckFeedback() {
    CONTINUE REQUIREMENTS
    ========================================================= */
 
+function isSceneExhibitComplete(scene){if(!scene?.exhibitActivity)return true;const state=storyExhibitPlans.get(scene.id);try{return state?.confirmed===true&&evaluateExhibit(scene.exhibitActivity,state.matches).valid;}catch{return false;}}
+function renderStoryExhibit(scene){
+ document.getElementById('storyExhibitActivity')?.remove();if(!scene.exhibitActivity)return;
+ const host=document.createElement('section');host.id='storyExhibitActivity';host.dataset.explored=String(isSceneExploreComplete(scene));storyDecision.before(host);
+ renderExhibit({host,activity:scene.exhibitActivity,state:storyExhibitPlans.get(scene.id),explored:isSceneExploreComplete(scene),onChange:plan=>{if(!auth.currentUser)return;storyExhibitPlans.set(scene.id,plan);completedStoryDecisions.delete(scene.id);displayStoryDecision(scene);storyDecision.hidden=!isSceneExhibitComplete(scene);updateContinueButton(scene);},onConfirmed:()=>{displayStoryDecision(scene);storyDecision.hidden=false;const heading=storyDecision.querySelector('h3');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}});
+ if(sceneHasDecision(scene))storyDecision.hidden=!isSceneExhibitComplete(scene);
+}
+function isSceneRouteComplete(scene){if(!scene?.routeActivity)return true;const plan=storyRoutePlans.get(scene.id);try{return plan?.confirmed===true&&evaluateRoute(scene.routeActivity,plan.routeId).valid;}catch{return false;}}
+function renderStoryRoute(scene){
+ document.getElementById('storyRouteActivity')?.remove();if(!scene.routeActivity)return;
+ const host=document.createElement('section');host.id='storyRouteActivity';host.dataset.explored=String(isSceneExploreComplete(scene));storyDecision.before(host);
+ renderRouteInvestigation({scene,host,state:storyRoutePlans.get(scene.id),explored:isSceneExploreComplete(scene),onChange:plan=>{if(!auth.currentUser)return;storyRoutePlans.set(scene.id,plan);completedStoryDecisions.delete(scene.id);displayStoryDecision(scene);storyDecision.hidden=!isSceneRouteComplete(scene);updateContinueButton(scene);},onConfirmed:()=>{displayStoryDecision(scene);storyDecision.hidden=false;const heading=storyDecision.querySelector('h3');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}});
+ if(sceneHasDecision(scene))storyDecision.hidden=!isSceneRouteComplete(scene);
+}
+
+function isSceneTradeComplete(scene){
+ if(!scene?.tradeActivity)return true;
+ const plan=storyTradePlans.get(scene.id);try{return plan?.confirmed===true&&evaluateTradePlan(scene.tradeActivity,plan).valid;}catch{return false;}
+}
+function syncStoryTrade(scene){
+ const panel=document.getElementById('storyTradeActivity');if(!panel||!scene?.tradeActivity)return;
+ const ready=isSceneExploreComplete(scene),done=isSceneTradeComplete(scene);
+ panel.querySelectorAll('select,button').forEach(control=>control.disabled=!ready||(done&&!control.hasAttribute('data-revise')));
+ const stage = !ready ? 0 : !done ? 1 : !isStoryDecisionComplete(scene) ? 2 : 3;
+ panel.querySelectorAll('.trade-quest-steps li').forEach((step,index)=>{
+   step.dataset.state=index<stage?'complete':index===stage?'current':'waiting';
+   if(index===stage)step.setAttribute('aria-current','step');else step.removeAttribute('aria-current');
+   step.querySelector('small').textContent=index<stage?'Done':index===stage?'Your next step':'Up next';
+ });
+ const journal=panel.querySelector('.trade-evidence-journal');if(journal)journal.hidden=!ready;
+ const lock=panel.querySelector('.trade-plan-lock');if(lock)lock.hidden=ready;
+ if(storyDecision&&sceneHasDecision(scene))storyDecision.hidden=!done;
+}
+function renderStoryTrade(scene){
+ document.getElementById('storyTradeActivity')?.remove();if(!scene.tradeActivity)return;
+ const panel=document.createElement('section');panel.id='storyTradeActivity';panel.className='story-trade-activity';panel.setAttribute('aria-labelledby','storyTradeTitle');storyDecision.before(panel);
+ const add=(tag,value,className)=>{const el=document.createElement(tag);el.textContent=value;if(className)el.className=className;panel.append(el);return el;};
+ let activity;try{activity=validateTradeActivity(scene.tradeActivity);}catch{add('p','This learning activity could not be prepared. Please ask your teacher for help.','learning-message');return;}
+ add('span','YOUR TRADING EXPEDITION','eyebrow');
+ const steps=document.createElement('ol');steps.className='trade-quest-steps';steps.setAttribute('aria-label','Investigation steps');
+ ['Explore the clues','Plan an exchange','Explain your choice'].forEach((label,index)=>{const item=document.createElement('li');const number=document.createElement('span');number.className='trade-step-number';number.textContent=String(index+1);number.setAttribute('aria-hidden','true');const name=document.createElement('strong');name.textContent=label;const status=document.createElement('small');item.append(number,name,status);steps.append(item);});panel.append(steps);const title=add('h3',activity.title);title.id='storyTradeTitle';add('p',activity.instructions);add('p','Open every scene clue to collect the information for your plan.','trade-plan-lock');
+ const journal=document.createElement('div');journal.className='trade-evidence-journal';const journalTitle=document.createElement('h4');journalTitle.textContent='Clues collected ? use them to plan';journal.append(journalTitle);
+ for(const line of Array.isArray(activity.journalEntries)?activity.journalEntries:[])if(typeof line==='string'){const entry=document.createElement('p');entry.textContent=line;journal.append(entry);}panel.append(journal);
+ const goods=document.createElement('div');goods.className='trade-goods-board';
+ for(const [label,items] of [['Our community',activity.ownGoods],['Visiting traders',activity.partnerGoods]]){const side=document.createElement('section');const heading=document.createElement('h4');heading.textContent=label;side.append(heading);for(const good of items){const card=document.createElement('p');const name=document.createElement('strong');name.textContent=good.name;const stock=document.createElement('span');stock.textContent=good.quantity+' available before the exchange';card.append(name,stock);side.append(card);}goods.append(side);}panel.append(goods);
+ const controls=document.createElement('div');controls.className='trade-plan-controls';
+ const previous=storyTradePlans.get(scene.id)||{};const inputs={};
+ function selectField(key,label,options){const wrap=document.createElement('label');wrap.textContent=label;const select=document.createElement('select');select.id='tradePlan-'+key;const empty=document.createElement('option');empty.value='';empty.textContent='Choose';select.append(empty);for(const option of options){const node=document.createElement('option');node.value=String(option.value);node.textContent=option.label;select.append(node);}select.value=String(previous[key]??'');wrap.append(select);controls.append(wrap);inputs[key]=select;select.addEventListener('change',()=>{const plan=readPlan();storyTradePlans.set(scene.id,{...plan,confirmed:false});completedStoryDecisions.delete(scene.id);result.dataset.valid='false';result.textContent='Your plan is saved with this lesson once the save status confirms it. Check the plan when ready.';updateContinueButton(scene);});}
+ selectField('offerGoodId','We offer',activity.ownGoods.map(g=>({value:g.id,label:g.name})));
+ selectField('offerQuantity','Amount we offer',Array.from({length:Math.max(...activity.ownGoods.map(g=>g.quantity))},(_,i)=>({value:i+1,label:String(i+1)})));
+ selectField('receiveGoodId','We receive',activity.partnerGoods.map(g=>({value:g.id,label:g.name})));
+ selectField('receiveQuantity','Amount we receive',Array.from({length:Math.max(...activity.partnerGoods.map(g=>g.quantity))},(_,i)=>({value:i+1,label:String(i+1)})));
+ panel.append(controls);const check=document.createElement('button');check.type='button';check.textContent='Check My Exchange';check.className='begin-mission-button';panel.append(check);const revise=document.createElement('button');revise.type='button';revise.className='text-button';revise.setAttribute('data-revise','');revise.textContent='Revise My Plan';panel.append(revise);
+ const result=add('p','','trade-plan-feedback');result.setAttribute('role','status');result.setAttribute('aria-live','polite');
+ revise.addEventListener('click',()=>{if(!auth.currentUser||!isSceneExploreComplete(scene))return;storyTradePlans.set(scene.id,{...readPlan(),confirmed:false});completedStoryDecisions.delete(scene.id);displayStoryDecision(scene);result.dataset.valid='false';result.textContent='You can change your plan. Check it again before explaining your choice.';updateContinueButton(scene);});
+ function readPlan(){return{offerGoodId:inputs.offerGoodId.value,offerQuantity:Number(inputs.offerQuantity.value),receiveGoodId:inputs.receiveGoodId.value,receiveQuantity:Number(inputs.receiveQuantity.value)};}
+ function explainResult(outcome){result.textContent=outcome.message;if(outcome.valid){const offer=activity.ownGoods.find(g=>g.id===readPlan().offerGoodId),receive=activity.partnerGoods.find(g=>g.id===readPlan().receiveGoodId);result.textContent+=' We keep '+outcome.ownRemaining+' '+offer.name+'. The visitors keep '+outcome.partnerRemaining+' '+receive.name+'.';}result.dataset.valid=String(outcome.valid);}
+ if(isSceneTradeComplete(scene))explainResult(evaluateTradePlan(activity,previous));
+ check.addEventListener('click',()=>{if(!auth.currentUser||!isSceneExploreComplete(scene))return;const plan=readPlan(),outcome=evaluateTradePlan(activity,plan);storyTradePlans.set(scene.id,{...plan,confirmed:outcome.valid});explainResult(outcome);if(outcome.valid){displayStoryDecision(scene);storyDecision.hidden=false;const heading=storyDecision.querySelector('h3');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}updateContinueButton(scene);});
+ syncStoryTrade(scene);
+}
+
+function saveStoryPlace(scene, completed) {
+    if(reviewTopic)return;
+    if (storyDraftReady) storyDraft?.save({version: storyContentVersion, sceneId: scene.id, completed, quickChecks: [...completedQuickChecks], decisions: [...completedStoryDecisions], clueHunts: [...completedClueHunts], clueHuntVersions: Object.fromEntries(scenes.filter(item=>getClueHunt(item)).map(item=>[item.id,stableDraftVersion(getClueHunt(item))])), tradePlans: Object.fromEntries(storyTradePlans), routePlans: Object.fromEntries(storyRoutePlans), exhibitPlans: Object.fromEntries(storyExhibitPlans), explored: Object.fromEntries([...exploredSceneItems].map(([id,items])=>[id,[...items]]))});
+}
 function updateContinueButton(scene) {
+    syncStoryTrade(scene);
+    if(scene?.routeActivity){const host=document.getElementById("storyRouteActivity");if(host&&host.dataset.explored!==String(isSceneExploreComplete(scene)))renderStoryRoute(scene);if(sceneHasDecision(scene))storyDecision.hidden=!isSceneRouteComplete(scene);}
+    if(scene?.exhibitActivity){const host=document.getElementById('storyExhibitActivity');if(host&&host.dataset.explored!==String(isSceneExploreComplete(scene)))renderStoryExhibit(scene);if(sceneHasDecision(scene))storyDecision.hidden=!isSceneExhibitComplete(scene);}
+    saveStoryPlace(scene, false);
     if (!continueStoryButton || !scene) {
         return;
     }
@@ -1128,16 +1474,53 @@ function updateContinueButton(scene) {
     const decisionReady =
         isStoryDecisionComplete(scene);
 
+    const clueHuntReady =
+        isSceneClueHuntComplete(scene);
+
     const quickCheckReady =
         !sceneHasQuickCheck(scene) ||
         completedQuickChecks.has(scene.id);
 
     const canContinue =
         exploreReady &&
+        clueHuntReady &&
         decisionReady &&
         quickCheckReady;
 
     continueStoryButton.disabled = !canContinue;
+
+    // A disabled Continue button cannot take the learner to unfinished work.
+    let guide = document.getElementById('storyNextStepGuide');
+    if (!guide) {
+        guide = document.createElement('button');
+        guide.id = 'storyNextStepGuide';
+        guide.type = 'button';
+        guide.className = 'story-next-step-guide';
+        continueStoryButton.before(guide);
+    }
+    const nextStep = !exploreReady ? [storyExplore, 'Find the clues', 'Open each clue to learn what happened.']
+        : !clueHuntReady ? [storyClueHunt, 'Investigate the clues', 'Compare the clues, then choose the conclusion they support.']
+        : !isSceneTradeComplete(scene) ? [document.getElementById('storyTradeActivity'), 'Plan your exchange', 'Use the collected clues, then check your plan.']
+        : !isSceneRouteComplete(scene) ? [document.getElementById('storyRouteActivity'), 'Choose your route', 'Compare the travel clues, then check your route.']
+        : !isSceneExhibitComplete(scene) ? [document.getElementById('storyExhibitActivity'), 'Build your exhibit', 'Match the actions with their contributions, then check your connections.']
+        : !decisionReady ? [storyDecision, 'Explain your choice', 'Use what you learned to choose an answer.']
+        : !quickCheckReady ? [storyQuickCheck, 'Try the quick check', 'Check what you understood before moving on.'] : null;
+    guide.hidden = !nextStep;
+    guide.onclick = null;
+    if (nextStep) {
+        guide.replaceChildren();
+        const title = document.createElement('strong'); title.textContent = nextStep[1];
+        const detail = document.createElement('span'); detail.textContent = nextStep[2];
+        guide.append(title, detail);
+        guide.onclick = () => {
+            const target = nextStep[0];
+            if (!target) return;
+            scrollToSection(target);
+            const heading = target.querySelector('h3, h4') || target;
+            heading.tabIndex = -1;
+            heading.focus({preventScroll:true});
+        };
+    }
 
     if (!exploreReady) {
         continueStoryButton.textContent =
@@ -1145,6 +1528,14 @@ function updateContinueButton(scene) {
         return;
     }
 
+    if (!clueHuntReady) {
+        continueStoryButton.textContent = "Complete the Clue Hunt to Continue";
+        return;
+    }
+
+    if (!isSceneTradeComplete(scene)) {continueStoryButton.textContent="Plan an Exchange to Continue";return;}
+    if(!isSceneRouteComplete(scene)){continueStoryButton.textContent="Plan a Route to Continue";return;}
+    if(!isSceneExhibitComplete(scene)){continueStoryButton.textContent="Finish Your Exhibit to Continue";return;}
     if (!decisionReady) {
         continueStoryButton.textContent =
             "Make a Historical Decision";
@@ -1169,6 +1560,9 @@ function updateContinueButton(scene) {
    NEXT SCENE / STORY COMPLETE
    ========================================================= */
 
+previousStoryButton?.addEventListener("click",()=>{
+    if(currentSceneIndex>0){currentSceneIndex--;displayScene();sceneTitle.tabIndex=-1;sceneTitle.focus({preventScroll:true});}
+});
 if (continueStoryButton) {
     continueStoryButton.addEventListener("click", () => {
         const scene = getCurrentScene();
@@ -1188,6 +1582,11 @@ if (continueStoryButton) {
             return;
         }
 
+        if (!isSceneClueHuntComplete(scene)) {
+            scrollToSection(storyClueHunt);
+            return;
+        }
+
         if (!isStoryDecisionComplete(scene)) {
             scrollToSection(storyDecision);
             return;
@@ -1204,11 +1603,14 @@ if (continueStoryButton) {
         if (currentSceneIndex < scenes.length - 1) {
             currentSceneIndex++;
             displayScene();
+            sceneTitle.tabIndex=-1;sceneTitle.focus({preventScroll:true});
             return;
         }
 
         storyReadingCard.hidden = true;
         storyCompleteSection.hidden = false;
+        saveStoryPlace(scene, true);
+        loadLessonQuizInfo();
 
         storyProgressFill.style.width = "100%";
         sceneProgressText.textContent = "Completed";
@@ -1230,22 +1632,10 @@ if (backToMissionButton) {
 
 if (quizButton) {
     quizButton.addEventListener("click", () => {
+        if(reviewTopic){window.location.href=topicPracticeUrl();return;}
         window.location.href =
             `quiz.html?chapter=${encodeURIComponent(chapterId || "")}` +
             `&mission=${encodeURIComponent(missionId || "")}`;
-    });
-}
-
-/* =========================================================
-   MOBILE SIDEBAR
-   ========================================================= */
-
-const mobileMenuButton = $("mobileMenuButton");
-const sidebar = document.querySelector(".sidebar");
-
-if (mobileMenuButton && sidebar) {
-    mobileMenuButton.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
     });
 }
 
@@ -1256,8 +1646,25 @@ if (mobileMenuButton && sidebar) {
 let storyLoadStarted = false;
 onAuthStateChanged(auth, (user) => {
     if (!user) {
+        storyDraft?.close();
+        storyDraftReady = false;
+        storySessionGeneration++;
+        storyUserId = null;
+        loadedStoryMission = null;
+        quizInfoRequest++;
+        storyLoadPending = false;
+        storyAiRequestSerial++;
+        storyLoadStarted=false;
+        scenes=[];storyTradePlans.clear();completedQuickChecks.clear();completedStoryDecisions.clear();completedClueHunts.clear();exploredSceneItems.clear();
         showError("Please sign in to access this story.");
         return;
+    }
+    if (storyUserId !== user.uid) {
+        storyUserId = user.uid;
+        storySessionGeneration++;
+        storyLoadPending = false;
+        storyLoadStarted = false;
+        storyAiRequestSerial++;
     }
     if (!storyLoadStarted) {
         storyLoadStarted = true;
@@ -1271,45 +1678,93 @@ onAuthStateChanged(auth, (user) => {
 
 let storyAiRequestSerial = 0;
 
-storyAiExplainButton?.addEventListener(
-    "click",
-    async () => {
+storyAiExplainButton?.addEventListener('click',()=>{const help=sceneHelp(getCurrentScene());if(!help||!auth.currentUser)return;const opening=storyAiExplainResponse.hidden;storyAiExplainButton.setAttribute('aria-expanded',String(opening));storyAiExplainResponse.hidden=!opening;if(!opening)return;storyAiExplainResponse.replaceChildren();const block=(title,value)=>{if(typeof value!=='string'||!value.trim())return;const heading=document.createElement('h3');heading.textContent=title;const copy=document.createElement('p');copy.textContent=value;storyAiExplainResponse.append(heading,copy);};block('In simpler words',help.explanation);for(const word of Array.isArray(help.vocabulary)?help.vocabulary:[])if(typeof word?.term==='string')block(word.term,word.definition);block('Think of this example',help.example);block('Think it through',help.guidingQuestion);});
 
-        const scene = getCurrentScene();
+retryStoryLoadButton?.addEventListener("click", () => loadStory());
 
-        if (
-            !aiAssistanceLocalOnly ||
-            !scene?.id ||
-            !chapterId ||
-            !missionId
-        ) {
-            return;
-        }
-
-        const serial = ++storyAiRequestSerial;
-        const sceneId = scene.id;
-
-        storyAiExplainButton.disabled = true;
-
-        storyAiExplainResponse.hidden = false;
-        storyAiExplainResponse.textContent =
-            "Kinukuha ang paliwanag...";
-
-        const text = await requestAiAssistance({
-            type: "story_explanation",
-            chapterId,
-            missionId,
-            contentId: sceneId
-        });
-
-        if (
-            serial !== storyAiRequestSerial ||
-            getCurrentScene()?.id !== sceneId
-        ) {
-            return;
-        }
-
-        storyAiExplainResponse.textContent = text;
-        storyAiExplainButton.disabled = false;
+async function loadLessonQuizInfo() {
+    const briefing = document.getElementById('lessonQuizBriefing');
+    if (briefing) { briefing.hidden = true; briefing.replaceChildren(); }
+    if(reviewTopic){
+        if (!auth.currentUser || storyCompleteSection.hidden) return;
+        quizInfoRequest++;
+        storyCompleteSection.querySelector('h2').textContent='Lesson review complete';
+        storyCompleteSection.querySelector('.eyebrow').textContent='TOPIC REVIEW';
+        storyCompleteSection.querySelector('p').textContent='You finished reviewing this topic. Now try a few practice questions to use what you learned.';
+        document.getElementById('lessonQuizRequirements').textContent='Practice helps you check what you understand. After practice, you can try the mission quiz again.';
+        document.getElementById('lessonRecap').replaceChildren();
+        document.getElementById('retryLessonQuizInfo').hidden=true;
+        quizButton.textContent='Saving Lesson Review...';quizButton.disabled=true;
+        const reviewGeneration=storySessionGeneration,reviewUid=auth.currentUser.uid;
+        if(!reviewSavePending)reviewSavePending=recordLessonReview({chapterId,missionId,topic:reviewTopic,sceneIds:scenes.map(scene=>scene.id)}).catch(()=>{reviewSavePending=null;return false;});
+        const recorded=await reviewSavePending;
+        if(reviewGeneration!==storySessionGeneration||auth.currentUser?.uid!==reviewUid)return;
+        quizButton.textContent='Apply It in Targeted Practice';quizButton.disabled=false;
+        if(reviewGeneration===storySessionGeneration&&auth.currentUser?.uid===reviewUid&&!recorded)document.getElementById('lessonQuizRequirements').textContent+=' We could not save that you revisited this lesson. You can still continue to practice.';
+        return;
     }
-);
+    if (!auth.currentUser || storyCompleteSection.hidden) return;
+    const request = ++quizInfoRequest;
+    const generation = storySessionGeneration;
+    const details = document.getElementById("lessonQuizRequirements");
+    const recap = document.getElementById("lessonRecap");
+    const retry = document.getElementById("retryLessonQuizInfo");
+    quizButton.disabled = true;
+    retry.hidden = true;
+    details.textContent = "Loading quiz requirements...";
+    recap.replaceChildren();
+    const mission = loadedStoryMission || {};
+    if (typeof mission.lessonRecap === "string" && mission.lessonRecap.trim()) {
+        const paragraph = document.createElement("p");paragraph.textContent = mission.lessonRecap.trim();recap.append(paragraph);
+    }
+    const objectives = Array.isArray(mission.learningObjectives) ? mission.learningObjectives : [mission.learningObjective];
+    const list = document.createElement("ul");
+    for (const objective of objectives) if (typeof objective === "string" && objective.trim()) {
+        const item = document.createElement("li");item.textContent = objective.trim();list.append(item);
+    }
+    if (list.children.length) {const title=document.createElement("h3");title.textContent="What you learned";recap.append(title,list);}
+    try {
+        const snapshot = await getDocs(query(collection(db,"quizzes"),where("missionId","==",missionId)));
+        if (generation !== storySessionGeneration || request !== quizInfoRequest) return;
+        const quiz = snapshot.docs.map(row=>row.data()).find(row=>row.status === "active");
+        requireMissionPolicy(quiz);
+        details.textContent = quiz.questionCount + " questions. Answer at least " + Math.ceil(quiz.questionCount * quiz.passingScore / 100) + " correctly to pass (" + quiz.passingScore + "%). Mission XP is awarded once. If you do not pass, review your feedback, practise and retry.";
+        if (briefing) {
+            const heading=document.createElement('h3');heading.textContent='Your next challenge';briefing.append(heading);
+            const stats=document.createElement('dl');
+            const stat=(label,value)=>{const card=document.createElement('div');const term=document.createElement('dt');term.textContent=label;const detail=document.createElement('dd');detail.textContent=value;card.append(term,detail);stats.append(card);};
+            stat('Questions',String(quiz.questionCount));
+            stat('Correct answers to pass',Math.ceil(quiz.questionCount*quiz.passingScore/100)+' of '+quiz.questionCount);
+            if (Number.isFinite(mission.xpReward) && mission.xpReward > 0) stat('XP for your first pass',String(mission.xpReward)+' XP');
+            briefing.append(stats);
+            const help=document.createElement('p');help.textContent='Not ready yet? Review the lesson. If you miss the passing score, we will guide you back to the topics to learn, then you can practise and try again.';briefing.append(help);
+            briefing.hidden=false;
+        }
+        quizButton.textContent='Start Mission Quiz';
+        quizButton.disabled = false;
+    } catch (error) {
+        if (generation !== storySessionGeneration || request !== quizInfoRequest) return;
+        details.textContent = "Quiz details are unavailable. You can review the lesson or retry loading the details.";
+        retry.hidden = false;
+    }
+}
+document.getElementById("retryLessonQuizInfo")?.addEventListener("click",loadLessonQuizInfo);
+document.getElementById("reviewCompletedLesson")?.addEventListener("click",()=>{
+    quizInfoRequest++;
+    quizButton.disabled = true;
+    storyCompleteSection.hidden = true;
+    storyReadingCard.hidden = false;
+    currentSceneIndex = 0;
+    displayScene();
+});
+
+mountLearningNavigation(document.querySelector(".story-page"), "Lesson");
+const storyPageRoot=document.querySelector('.story-page');
+const storyBreadcrumbs=storyPageRoot?.querySelector('.learning-navigation');
+const storyReturnRow=storyPageRoot?.querySelector('.story-return-row');
+if(storyPageRoot&&storyBreadcrumbs&&storyReturnRow){
+    const storyNavigationBar=document.createElement('div');
+    storyNavigationBar.className='story-navigation-bar';
+    storyNavigationBar.append(storyBreadcrumbs,storyReturnRow);
+    storyPageRoot.prepend(storyNavigationBar);
+}

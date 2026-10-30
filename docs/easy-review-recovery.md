@@ -1,0 +1,15 @@
+# Lesson-first quiz recovery and easy review
+
+Implemented locally on 2026-10-28. No Firestore requests, migrations or Hosting deployment.
+
+29 October update: the four Mission 1 easy items were revised and published through the [scoped beginner-practice coaching plan](chapter1-mission1-practice-polish.md), together with feedback on the existing easy leadership item. The two remaining Mission 2 items are now also published and read back, with selected-choice hints, through `functions/apply-mission2-easy-review.cjs`. See [publication evidence](student-publication-2026-10-29.md). Do not rerun this older six-item creation plan over the revised Mission 1 questions; its collision guard should stop it. The earlier preparation notes below are historical evidence.
+
+The failed-quiz primary button now says Review This Topic and opens story.html with the first diagnosed topic, scoped to the current chapter and mission. If no topic was diagnosed it opens the mission lesson normally. Passing still returns to the mission journey. The existing targeted-review scene flow continues to practice after the lesson; retry remains available. Query parameters use URLSearchParams. This is guidance, not a new mandatory practice gate.
+
+Six new easy practice questions are authored in data/easy-review-gaps-migration.json: barangay community, cooperation, social organization, community customs, craftsmanship and barter/exchange. They use shorter questions and concrete examples rather than changing the difficulty label on existing medium items. Each has four options, per-answer explanations and the existing topic evidence policy. Hard practice and multi-session evidence requirements are retained. New questions are separate from main and existing practice prompts.
+
+The matching apply script is create-only for these six practice documents, with existing collision protection, atomic commit, backup and readback behavior. It was syntax checked only. Do not run even its default dry run while database reads are deferred. Review the questions against the intended final lessons and live catalog before publication. The new questions will not appear in the website until published to Firestore; UI code changes require the normal deployment workflow.
+
+Validation: all 370 non-emulator checks passed. Direct tests verify failure routes to the diagnosed lesson, safe topic encoding, no-topic fallback and unchanged passing navigation. The existing mocked Chrome quiz test passed fail/retry/pass, rewards and recovery/sign-out behavior. Applying the six-item overlay only in local audit memory reduces requested-easy topic gaps from six to zero, with no structural alignment errors. The dated baseline report is retained unchanged; the overlay result is in docs/validation/easy-review-recovery-local.json. Neither result proves current database state.
+
+Pending: teacher comprehension/content review, bounded live comparison, guarded publication, asset/code deployment and authenticated end-to-end walkthrough. Next priority: make the Home Continue Learning action consistently follow lesson review, practice and quiz retry state.

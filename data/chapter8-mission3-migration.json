@@ -1,0 +1,1317 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 2 Chapter 8 Mission 3 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://www.nationalmuseum.gov.ph/2021/12/16/silang-church/",
+    "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/visual-arts/the-spanish-colonial-tradition-in-philippine-visual-arts/",
+    "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/",
+    "https://www.nationalmuseum.gov.ph/exhibitions/nm-marinduque-romblon-area-museum/moryonan/",
+    "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-7",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-7",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/government-community-investigator",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter7-mission1",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter7-mission2",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter7-mission3",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter7-mission4",
+      "expected": {
+        "chapterId": "chapter-7",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter8-mission1",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter8-mission2",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 2
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter8-mission3",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-8",
+        "title": "Changes in Beliefs, Practices, and Community Life",
+        "order": 3,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate community spaces, makers and practices through dated evidence while distinguishing public actions from private beliefs.",
+        "learningObjective": "Explain community changes through particular practices, institutions, objects, continuity and dated source limits.",
+        "learningObjectives": [
+          "Explain belief and practice using lesson evidence.",
+          "Explain community spaces using lesson evidence.",
+          "Explain art and makers using lesson evidence.",
+          "Explain continuity and change using lesson evidence.",
+          "Explain dated heritage evidence using lesson evidence."
+        ],
+        "lessonRecap": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding. Distinguish an institution's beginning, a building's development and evidence of actual community use. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/2021/12/16/silang-church/",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/visual-arts/the-spanish-colonial-tradition-in-philippine-visual-arts/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-marinduque-romblon-area-museum/moryonan/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter8-quiz3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission3",
+        "title": "Community and Religious Change - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 3,
+        "questionBlueprint": [
+          {
+            "topic": "religious-change-categories",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "community-spaces",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "religious-art-makers",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "religious-continuity-change",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "religious-source-time",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission3-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission3",
+        "status": "active",
+        "order": 1,
+        "title": "A Practice Is Not Every Private Belief",
+        "content": "Belief concerns what people hold to be true. Practice concerns what people do. An institution is an organized body with continuing roles. These can connect, but a record about one does not automatically establish all the others.\n\nA ceremony record may describe participation. A building can provide evidence of a place for religious activity. Neither alone reveals every person's private understanding or proves that every community experienced the same change. Earlier Indigenous traditions and Islam did not become nonexistent because Catholic institutions expanded.\n\nTry a fictional report check. A record names a public event, and a caption says it proves every resident thought identically. Keep the recorded action but question the universal claim. Rejecting that leap does not require denying that the event happened.\n\nWe study religion as history without requiring a prayer, a profession of belief or disclosure of your own faith. The activities assess how claims fit evidence, not whether a student follows a religion.",
+        "reviewTopics": [
+          "religious-change-categories"
+        ],
+        "imageUrl": "../assets/story/community-belief-practice.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern historical teaching guide for A Practice Is Not Every Private Belief. It distinguishes recorded actions, dates and source limits without requiring religious practice.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Different questions",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Belief, practice and institution describe related but distinct parts of religious life.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A recorded action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Participation or a building does not by itself reveal every person's private belief.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Respect difference",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Earlier traditions and different religious histories must not be erased or ranked by worth.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A record describes participation in a ceremony. Which conclusion stays within it?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A practice was recorded; private beliefs and universal claims need more evidence",
+          "Every resident had the same private belief",
+          "Earlier traditions ceased to exist everywhere",
+          "Students must perform the ceremony to study it"
+        ],
+        "decisionCorrectAnswer": "A practice was recorded; private beliefs and universal claims need more evidence",
+        "decisionExplanation": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "keyTerm": "Practice",
+        "keyTermDefinition": "An action or activity people carry out.",
+        "historicalInsight": "Earlier traditions and different religious histories must not be erased or ranked by worth.",
+        "learningHelp": {
+          "explanation": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "vocabulary": [
+            {
+              "term": "Practice",
+              "definition": "An action or activity people carry out."
+            }
+          ],
+          "example": "Belief, practice and institution describe related but distinct parts of religious life.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/2021/12/16/silang-church/",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/visual-arts/the-spanish-colonial-tradition-in-philippine-visual-arts/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-marinduque-romblon-area-museum/moryonan/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission3-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission3",
+        "status": "active",
+        "order": 2,
+        "title": "A Religious Place and Community Life",
+        "content": "Religious institutions could become part of community spaces and recurring activities. To investigate a place, ask what evidence shows its construction, use and connection with residents. A later photograph or a present-day building does not automatically show how it looked in every earlier period.\n\nThe National Museum's account of Silang Church identifies a parish established in 1595 and discusses later church heritage. A parish is a local Catholic community under pastoral care. Keep an institution's beginning separate from the construction date of every feature visible today.\n\nTry a fictional source comparison. A record dates a parish, while a later image shows a building. The records concern connected but different claims. To say the later appearance already existed at the earlier date, you need construction or other appropriate evidence.\n\nA religious space could matter to residents in different ways. Its presence is not proof of everyone's participation, equal benefit or acceptance of all colonial demands.",
+        "reviewTopics": [
+          "community-spaces"
+        ],
+        "imageUrl": "../assets/story/community-space-evidence.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern historical teaching guide for A Religious Place and Community Life. It distinguishes recorded actions, dates and source limits without requiring religious practice.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A named institution",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The National Museum identifies the establishment of Silang as a parish in 1595.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Different dates",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A parish's establishment does not date every part of a later building or present-day photograph.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Use needs evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A religious place does not reveal every resident's participation or experience.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A parish record gives an early date and a later photograph shows a building. What still needs checking?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Nothing, because every feature must date to the parish's beginning",
+          "The exact thoughts of every person can be assumed",
+          "All residents necessarily used it identically",
+          "When the visible features were built and how the place was used"
+        ],
+        "decisionCorrectAnswer": "When the visible features were built and how the place was used",
+        "decisionExplanation": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "keyTerm": "Parish",
+        "keyTermDefinition": "A local Catholic community under pastoral care.",
+        "historicalInsight": "A religious place does not reveal every resident's participation or experience.",
+        "learningHelp": {
+          "explanation": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "vocabulary": [
+            {
+              "term": "Parish",
+              "definition": "A local Catholic community under pastoral care."
+            }
+          ],
+          "example": "The National Museum identifies the establishment of Silang as a parish in 1595.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/2021/12/16/silang-church/",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/visual-arts/the-spanish-colonial-tradition-in-philippine-visual-arts/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-marinduque-romblon-area-museum/moryonan/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission3-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission3",
+        "status": "active",
+        "order": 3,
+        "title": "Objects Also Show People at Work",
+        "content": "Religious change can be studied through material culture: objects people made and used. Paintings, carvings and other works can help investigate skills, commissions and practices. They are not windows into every maker's private belief.\n\nNCCA's account of colonial visual arts describes religious commissions and artisans working on sacred images. The National Museum also places sculpture within local artistic traditions. Together these sources help us ask about people and skills rather than describe objects as appearing without makers or assume local creativity began only with colonial arrival.\n\nTry a fictional museum-label task. An object was made for a church, and the label says that proves its maker's exact motives and every viewer's response. Separate the object's documented purpose from those added claims. Seek evidence of the maker, setting and use.\n\nA teaching drawing is not an original artifact. We do not ask students to venerate or reproduce a sacred practice to examine historical art.",
+        "reviewTopics": [
+          "religious-art-makers"
+        ],
+        "imageUrl": "../assets/story/community-art-evidence.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern historical teaching guide for Objects Also Show People at Work. It distinguishes recorded actions, dates and source limits without requiring religious practice.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A material source",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A religious object can support questions about making, use and patronage.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Makers mattered",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Artisans and existing local skills should remain visible in accounts of religious art.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A commission or image alone does not establish every maker's motive or every viewer's belief.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An image was commissioned for a church. Which explanation uses it carefully?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Local people had no artistic skills before the commission",
+          "Every viewer responded identically",
+          "Investigate its maker, context and use without assuming everyone's private beliefs",
+          "The commission reveals all makers' exact motives"
+        ],
+        "decisionCorrectAnswer": "Investigate its maker, context and use without assuming everyone's private beliefs",
+        "decisionExplanation": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "keyTerm": "Material culture",
+        "keyTermDefinition": "Objects people make and use that can be studied as evidence of their lives.",
+        "historicalInsight": "A commission or image alone does not establish every maker's motive or every viewer's belief.",
+        "learningHelp": {
+          "explanation": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "vocabulary": [
+            {
+              "term": "Material culture",
+              "definition": "Objects people make and use that can be studied as evidence of their lives."
+            }
+          ],
+          "example": "A religious object can support questions about making, use and patronage.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/2021/12/16/silang-church/",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/visual-arts/the-spanish-colonial-tradition-in-philippine-visual-arts/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-marinduque-romblon-area-museum/moryonan/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission3-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission3",
+        "status": "active",
+        "order": 4,
+        "title": "Change Did Not Mean One Identical Path",
+        "content": "Continuity means something carried on while other things changed. Religious histories can include new teachings and institutions alongside continuing or reworked practices. This does not mean every belief or practice blended in the same way, or that all people shared one response.\n\nThe Library of Congress discussion notes the role of local intermediaries in interpreting and spreading Catholicism beyond major centers. Local people were participants in how messages were understood, not simply identical receivers of instruction. That broad discussion does not supply every locality's detailed history.\n\nIn this fictional comparison, a community begins a new public observance while a family continues a different customary activity. Identify the two recorded actions. Do not invent a single private belief that must explain both, or apply the example to every household.\n\nChapter 8 Mission 4 will examine adaptation and resistance more closely. Here, use specific evidence to identify continuity and change without treating present-day practice as a complete unchanged record of the colonial past.",
+        "reviewTopics": [
+          "religious-continuity-change"
+        ],
+        "imageUrl": "../assets/story/community-continuity.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern historical teaching guide for Change Did Not Mean One Identical Path. It distinguishes recorded actions, dates and source limits without requiring religious practice.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Continuity and change",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A new institution does not automatically mean every older practice disappeared.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Local interpretation",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Local intermediaries helped interpret and transmit teachings in particular settings.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Avoid a universal formula",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A distinct combination of actions in one example does not establish identical beliefs across all communities.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A fictional record shows a new observance and a continuing custom. What is careful?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Read everyone's private beliefs directly from the two actions",
+          "Describe both actions and seek evidence of their meanings in that setting",
+          "Declare every community followed an identical combination",
+          "Assume the new action erased every older practice"
+        ],
+        "decisionCorrectAnswer": "Describe both actions and seek evidence of their meanings in that setting",
+        "decisionExplanation": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "keyTerm": "Continuity",
+        "keyTermDefinition": "Something that carries on while other aspects change.",
+        "historicalInsight": "A distinct combination of actions in one example does not establish identical beliefs across all communities.",
+        "learningHelp": {
+          "explanation": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "vocabulary": [
+            {
+              "term": "Continuity",
+              "definition": "Something that carries on while other aspects change."
+            }
+          ],
+          "example": "A new institution does not automatically mean every older practice disappeared.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/2021/12/16/silang-church/",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/visual-arts/the-spanish-colonial-tradition-in-philippine-visual-arts/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-marinduque-romblon-area-museum/moryonan/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission3-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission3",
+        "status": "active",
+        "order": 5,
+        "title": "A Living Tradition Is Not a Time Machine",
+        "content": "A present-day tradition can be important heritage. It does not by itself establish that every feature existed unchanged centuries earlier. To explain change, compare sources with their dates, places and purposes.\n\nThe National Museum's Moryonan exhibition presents Marinduque mask-making and Holy Week practices as living cultural heritage. We can study the exhibition as evidence of how heritage is described and safeguarded today. It is not automatic proof of the date or form of every colonial-era practice. We do not need to reproduce penitential practices or show graphic imagery to make that distinction.\n\nTry a fictional exhibit check. A modern display shows a costume, while an older text records only an event. Ask which details each source supports. Do not move every modern costume feature backward in time without evidence.\n\nCommunity knowledge and other dated sources can help build a careful account. Credit participants, respect sharing permissions and distinguish a source's present purpose from the historical claims it can establish.",
+        "reviewTopics": [
+          "religious-source-time"
+        ],
+        "imageUrl": "../assets/story/community-source-time.svg",
+        "imageFit": "contain",
+        "imageAlt": "A modern historical teaching guide for A Living Tradition Is Not a Time Machine. It distinguishes recorded actions, dates and source limits without requiring religious practice.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A named living heritage",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The National Museum describes Marinduque Moryonan, including mask-making, as living cultural heritage.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Date the evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A modern description or object does not automatically establish every colonial-era detail.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Respect sources",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Compare dates and purposes, credit community knowledge and do not invent an unchanged history.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A modern heritage display shows a costume. What is needed before dating all its features to the colonial period?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Appropriate dated evidence for those features",
+          "Only the fact that it is a tradition today",
+          "A claim that every tradition never changes",
+          "An invented eyewitness statement"
+        ],
+        "decisionCorrectAnswer": "Appropriate dated evidence for those features",
+        "decisionExplanation": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "keyTerm": "Dated evidence",
+        "keyTermDefinition": "Evidence connected with a particular time, whose claims must fit that setting.",
+        "historicalInsight": "Compare dates and purposes, credit community knowledge and do not invent an unchanged history.",
+        "learningHelp": {
+          "explanation": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "vocabulary": [
+            {
+              "term": "Dated evidence",
+              "definition": "Evidence connected with a particular time, whose claims must fit that setting."
+            }
+          ],
+          "example": "The National Museum describes Marinduque Moryonan, including mask-making, as living cultural heritage.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/2021/12/16/silang-church/",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/visual-arts/the-spanish-colonial-tradition-in-philippine-visual-arts/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-marinduque-romblon-area-museum/moryonan/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter8-mission3-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission3",
+        "status": "active",
+        "order": 6,
+        "title": "Your Community Change Report",
+        "content": "Explain change by asking what the evidence records and what it leaves uncertain. Separate beliefs from practices and institutions. Keep the beginning of a parish distinct from the age of every visible building feature. Include artisans and local participants in accounts of religious art.\n\nLook for continuity as well as change without inventing identical beliefs for all people. A modern heritage display can be valuable without proving that all of its details existed unchanged during colonial rule. Compare dates and purposes before connecting sources.\n\nUse this fictional report frame in your own words: At [place and time], evidence shows [object, action or institution]. Compared with [other dated evidence], this suggests [supported change or continuity]. It does not establish [unsupported claim]. The frame is not an original quotation.\n\nThe five-question quiz checks historical reasoning, not your religion. Revisit difficult topics and use targeted practice before retrying. Passing earns a mission reward once. Mission 4 and the Chapter 8 challenge are still being prepared; completing this mission does not complete the chapter.",
+        "reviewTopics": [
+          "religious-change-categories",
+          "community-spaces",
+          "religious-art-makers",
+          "religious-continuity-change",
+          "religious-source-time"
+        ],
+        "imageUrl": "../assets/story/community-source-time.svg",
+        "imageFit": "contain",
+        "imageAlt": "A report guide compares beliefs, practices, institutions, local makers and dated evidence. It does not assess a student's faith or complete the chapter.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Separate claims",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Belief, practice, institution and an object's use need appropriate evidence.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Keep people visible",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Include makers and local participants without assigning one private motive to everyone.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Compare time carefully",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A source supports particular claims in its setting, not an automatic unchanged story across centuries.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which final report best fits the investigation?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat every public action as proof of everyone's private belief",
+          "Move all modern heritage details unchanged into the colonial period",
+          "Require a religious practice before evaluating the evidence",
+          "Compare dated practices, institutions and objects while keeping local participants and source limits visible"
+        ],
+        "decisionCorrectAnswer": "Compare dated practices, institutions and objects while keeping local participants and source limits visible",
+        "decisionExplanation": "A supported account connects dated evidence with particular community changes while distinguishing practice, belief and historical uncertainty.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A supported account connects dated evidence with particular community changes while distinguishing practice, belief and historical uncertainty.",
+        "keyTerm": "Historical comparison",
+        "keyTermDefinition": "Comparing evidence about different settings or times while checking what each source supports.",
+        "historicalInsight": "A source supports particular claims in its setting, not an automatic unchanged story across centuries.",
+        "learningHelp": {
+          "explanation": "A supported account connects dated evidence with particular community changes while distinguishing practice, belief and historical uncertainty.",
+          "vocabulary": [
+            {
+              "term": "Historical comparison",
+              "definition": "Comparing evidence about different settings or times while checking what each source supports."
+            }
+          ],
+          "example": "Belief, practice, institution and an object's use need appropriate evidence.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.nationalmuseum.gov.ph/2021/12/16/silang-church/",
+          "https://ncca.gov.ph/about-ncca-3/subcommissions/subcommission-on-the-arts-sca/visual-arts/the-spanish-colonial-tradition-in-philippine-visual-arts/",
+          "https://www.nationalmuseum.gov.ph/our-collections/fine-arts/sculptures/",
+          "https://www.nationalmuseum.gov.ph/exhibitions/nm-marinduque-romblon-area-museum/moryonan/",
+          "https://blogs.loc.gov/international-collections/2018/07/catholicism-in-the-philippines-during-the-spanish-colonial-period-1521-1898/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz3-question1",
+      "create": true,
+      "fields": {
+        "question": "Which statement separates practice from private belief?",
+        "optionA": "A recorded action does not reveal every participant's inner understanding",
+        "optionB": "Every public action proves identical belief",
+        "optionC": "An institution contains every person's thoughts",
+        "optionD": "A ceremony erased all earlier traditions",
+        "correctAnswer": "A",
+        "explanation": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "learningPoint": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "historicalClue": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "answerExplanations": {
+          "A": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "B": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "C": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "D": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding."
+        },
+        "quizId": "chapter8-quiz3",
+        "order": 1,
+        "status": "active",
+        "topic": "religious-change-categories",
+        "topicLabel": "Belief and practice",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz3-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "What should a learner ask after finding a ceremony record?",
+        "optionA": "Why must everyone everywhere have believed identically?",
+        "optionB": "Which prayer must the student perform?",
+        "optionC": "Why is every private motive now certain?",
+        "optionD": "What event is recorded and what further evidence supports claims about people's understanding?",
+        "correctAnswer": "D",
+        "explanation": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "learningPoint": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "historicalClue": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "B": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "C": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "D": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding."
+        },
+        "quizId": "chapter8-quiz3",
+        "order": 101,
+        "status": "active",
+        "topic": "religious-change-categories",
+        "topicLabel": "Belief and practice",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission3-religious-change-categories-practice1",
+      "create": true,
+      "fields": {
+        "question": "A record describes participation in a ceremony. Which conclusion stays within it?",
+        "optionA": "Every resident had the same private belief",
+        "optionB": "Earlier traditions ceased to exist everywhere",
+        "optionC": "Students must perform the ceremony to study it",
+        "optionD": "A practice was recorded; private beliefs and universal claims need more evidence",
+        "correctAnswer": "D",
+        "explanation": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "learningPoint": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "historicalClue": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "B": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "C": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "D": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding."
+        },
+        "missionId": "chapter8-mission3",
+        "topic": "religious-change-categories",
+        "topicLabel": "Belief and practice",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An action or activity people carry out.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission3-religious-change-categories-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption turns one recorded event into universal conversion. What revision fits?",
+        "optionA": "Treat missing evidence as proof of agreement",
+        "optionB": "Assess the student's religion instead of the source",
+        "optionC": "Keep the event and identify the unsupported claim about all people",
+        "optionD": "Erase the event solely because the broad claim is unsupported",
+        "correctAnswer": "C",
+        "explanation": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "learningPoint": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "historicalClue": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "B": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "C": "Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding.",
+          "D": "Review the lesson clues. Separate belief, practice and institutions. A recorded action does not establish every person's inner understanding."
+        },
+        "missionId": "chapter8-mission3",
+        "topic": "religious-change-categories",
+        "topicLabel": "Belief and practice",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An action or activity people carry out.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz3-question2",
+      "create": true,
+      "fields": {
+        "question": "What does Silang's 1595 parish establishment date establish most directly?",
+        "optionA": "Every feature visible today was built in 1595",
+        "optionB": "Every resident used the place identically",
+        "optionC": "A complete record of every private belief",
+        "optionD": "A dated institutional development, not the age of every later building feature",
+        "correctAnswer": "D",
+        "explanation": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "learningPoint": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "historicalClue": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "B": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "C": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "D": "Distinguish an institution's beginning, a building's development and evidence of actual community use."
+        },
+        "quizId": "chapter8-quiz3",
+        "order": 2,
+        "status": "active",
+        "topic": "community-spaces",
+        "topicLabel": "Community spaces",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz3-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a parish record with construction evidence?",
+        "optionA": "A photograph supplies all earlier uses",
+        "optionB": "A parish name proves universal participation",
+        "optionC": "Institutional beginnings and a building's development can concern different dates",
+        "optionD": "All visible features must have one date",
+        "correctAnswer": "C",
+        "explanation": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "learningPoint": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "historicalClue": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "B": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "C": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "D": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use."
+        },
+        "quizId": "chapter8-quiz3",
+        "order": 102,
+        "status": "active",
+        "topic": "community-spaces",
+        "topicLabel": "Community spaces",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission3-community-spaces-practice1",
+      "create": true,
+      "fields": {
+        "question": "A parish record gives an early date and a later photograph shows a building. What still needs checking?",
+        "optionA": "The exact thoughts of every person can be assumed",
+        "optionB": "All residents necessarily used it identically",
+        "optionC": "When the visible features were built and how the place was used",
+        "optionD": "Nothing, because every feature must date to the parish's beginning",
+        "correctAnswer": "C",
+        "explanation": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "learningPoint": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "historicalClue": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "B": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "C": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "D": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use."
+        },
+        "missionId": "chapter8-mission3",
+        "topic": "community-spaces",
+        "topicLabel": "Community spaces",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A local Catholic community under pastoral care.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission3-community-spaces-practice2",
+      "create": true,
+      "fields": {
+        "question": "An early parish date and a later photograph are supplied. What still needs checking?",
+        "optionA": "Which invented date can fill every gap",
+        "optionB": "When the pictured features were built and how the place was used",
+        "optionC": "Only a larger copy of the photograph",
+        "optionD": "Why every resident necessarily approved",
+        "correctAnswer": "B",
+        "explanation": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "learningPoint": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "historicalClue": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "B": "Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "C": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use.",
+          "D": "Review the lesson clues. Distinguish an institution's beginning, a building's development and evidence of actual community use."
+        },
+        "missionId": "chapter8-mission3",
+        "topic": "community-spaces",
+        "topicLabel": "Community spaces",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A local Catholic community under pastoral care.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz3-question3",
+      "create": true,
+      "fields": {
+        "question": "What does a commissioned religious object help investigate?",
+        "optionA": "The belief of every viewer",
+        "optionB": "The absence of earlier local skills",
+        "optionC": "Making, context, patronage and use",
+        "optionD": "Every maker's exact private motive",
+        "correctAnswer": "C",
+        "explanation": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "learningPoint": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "historicalClue": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "B": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "C": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "D": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception."
+        },
+        "quizId": "chapter8-quiz3",
+        "order": 3,
+        "status": "active",
+        "topic": "religious-art-makers",
+        "topicLabel": "Art and makers",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz3-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why keep artisans visible in an account of religious art?",
+        "optionA": "All makers had one identical reason",
+        "optionB": "Objects involved people and existing skills rather than appearing without makers",
+        "optionC": "Local creativity began only when outsiders arrived",
+        "optionD": "A patron performed every task alone",
+        "correctAnswer": "B",
+        "explanation": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "learningPoint": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "historicalClue": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "B": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "C": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "D": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception."
+        },
+        "quizId": "chapter8-quiz3",
+        "order": 103,
+        "status": "active",
+        "topic": "religious-art-makers",
+        "topicLabel": "Art and makers",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission3-religious-art-makers-practice1",
+      "create": true,
+      "fields": {
+        "question": "An image was commissioned for a church. Which explanation uses it carefully?",
+        "optionA": "Every viewer responded identically",
+        "optionB": "Investigate its maker, context and use without assuming everyone's private beliefs",
+        "optionC": "The commission reveals all makers' exact motives",
+        "optionD": "Local people had no artistic skills before the commission",
+        "correctAnswer": "B",
+        "explanation": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "learningPoint": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "historicalClue": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "B": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "C": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "D": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception."
+        },
+        "missionId": "chapter8-mission3",
+        "topic": "religious-art-makers",
+        "topicLabel": "Art and makers",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Objects people make and use that can be studied as evidence of their lives.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission3-religious-art-makers-practice2",
+      "create": true,
+      "fields": {
+        "question": "A church commission is recorded but no maker testimony is supplied. Which claim needs separate evidence?",
+        "optionA": "The maker's exact personal belief and motive",
+        "optionB": "That a commission appears in the record",
+        "optionC": "That the object has a documented purpose",
+        "optionD": "That making and use can be studied",
+        "correctAnswer": "A",
+        "explanation": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "learningPoint": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "historicalClue": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+        "answerExplanations": {
+          "A": "Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "B": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "C": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception.",
+          "D": "Review the lesson clues. Objects provide evidence of making and use. Keep artisans and local skills visible while checking claims about motives and reception."
+        },
+        "missionId": "chapter8-mission3",
+        "topic": "religious-art-makers",
+        "topicLabel": "Art and makers",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Objects people make and use that can be studied as evidence of their lives.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz3-question4",
+      "create": true,
+      "fields": {
+        "question": "Which statement correctly treats continuity?",
+        "optionA": "Modern practice proves every earlier detail",
+        "optionB": "Something can carry on while other practices or institutions change",
+        "optionC": "Every older practice necessarily disappeared",
+        "optionD": "All communities followed one identical combination",
+        "correctAnswer": "B",
+        "explanation": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "learningPoint": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "historicalClue": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "B": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "C": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "D": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief."
+        },
+        "quizId": "chapter8-quiz3",
+        "order": 4,
+        "status": "active",
+        "topic": "religious-continuity-change",
+        "topicLabel": "Continuity and change",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz3-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "What does local interpretation emphasize?",
+        "optionA": "People helped shape how messages were understood in particular settings",
+        "optionB": "Everyone received every message identically",
+        "optionC": "Local participants had no knowledge",
+        "optionD": "A text alone reveals all reception",
+        "correctAnswer": "A",
+        "explanation": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "learningPoint": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "historicalClue": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "answerExplanations": {
+          "A": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "B": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "C": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "D": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief."
+        },
+        "quizId": "chapter8-quiz3",
+        "order": 104,
+        "status": "active",
+        "topic": "religious-continuity-change",
+        "topicLabel": "Continuity and change",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission3-religious-continuity-change-practice1",
+      "create": true,
+      "fields": {
+        "question": "A fictional record shows a new observance and a continuing custom. What is careful?",
+        "optionA": "Describe both actions and seek evidence of their meanings in that setting",
+        "optionB": "Declare every community followed an identical combination",
+        "optionC": "Assume the new action erased every older practice",
+        "optionD": "Read everyone's private beliefs directly from the two actions",
+        "correctAnswer": "A",
+        "explanation": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "learningPoint": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "historicalClue": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "answerExplanations": {
+          "A": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "B": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "C": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "D": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief."
+        },
+        "missionId": "chapter8-mission3",
+        "topic": "religious-continuity-change",
+        "topicLabel": "Continuity and change",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Something that carries on while other aspects change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission3-religious-continuity-change-practice2",
+      "create": true,
+      "fields": {
+        "question": "A fictional case records a new observance and an older custom continuing. What is careful?",
+        "optionA": "Declare every community combined beliefs identically",
+        "optionB": "Treat the two actions as proof of all private motives",
+        "optionC": "Erase one action because both cannot occur",
+        "optionD": "Describe both actions and investigate their meanings without assigning one belief to all",
+        "correctAnswer": "D",
+        "explanation": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "learningPoint": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "historicalClue": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "B": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "C": "Review the lesson clues. Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief.",
+          "D": "Identify continuity and change through particular evidence. Different practices cannot be reduced to one universal path or private belief."
+        },
+        "missionId": "chapter8-mission3",
+        "topic": "religious-continuity-change",
+        "topicLabel": "Continuity and change",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Something that carries on while other aspects change.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz3-question5",
+      "create": true,
+      "fields": {
+        "question": "What does a present-day heritage exhibition fail to establish alone?",
+        "optionA": "That all displayed details existed unchanged in the colonial period",
+        "optionB": "That the exhibition describes a tradition",
+        "optionC": "That heritage can be studied respectfully",
+        "optionD": "That objects and practices can matter to communities",
+        "correctAnswer": "A",
+        "explanation": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "learningPoint": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "historicalClue": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "answerExplanations": {
+          "A": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "B": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "C": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "D": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward."
+        },
+        "quizId": "chapter8-quiz3",
+        "order": 5,
+        "status": "active",
+        "topic": "religious-source-time",
+        "topicLabel": "Dated heritage evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter8-quiz3-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "How should a learner use the Moryonan example?",
+        "optionA": "As proof that all costumes never changed",
+        "optionB": "As a requirement to perform penitential practices",
+        "optionC": "As the history of every religious community",
+        "optionD": "As a named living heritage example while checking dated evidence for earlier features",
+        "correctAnswer": "D",
+        "explanation": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "learningPoint": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "historicalClue": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "B": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "C": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "D": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward."
+        },
+        "quizId": "chapter8-quiz3",
+        "order": 105,
+        "status": "active",
+        "topic": "religious-source-time",
+        "topicLabel": "Dated heritage evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission3-religious-source-time-practice1",
+      "create": true,
+      "fields": {
+        "question": "A modern heritage display shows a costume. What is needed before dating all its features to the colonial period?",
+        "optionA": "Only the fact that it is a tradition today",
+        "optionB": "A claim that every tradition never changes",
+        "optionC": "An invented eyewitness statement",
+        "optionD": "Appropriate dated evidence for those features",
+        "correctAnswer": "D",
+        "explanation": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "learningPoint": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "historicalClue": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "B": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "C": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "D": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward."
+        },
+        "missionId": "chapter8-mission3",
+        "topic": "religious-source-time",
+        "topicLabel": "Dated heritage evidence",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Evidence connected with a particular time, whose claims must fit that setting.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter8-mission3-religious-source-time-practice2",
+      "create": true,
+      "fields": {
+        "question": "A modern costume is shown beside an older text naming only an event. What should be checked?",
+        "optionA": "Which invented eyewitness speech confirms all details",
+        "optionB": "Why source dates should be ignored",
+        "optionC": "Which details each dated source actually supports",
+        "optionD": "Why every modern feature must be ancient",
+        "correctAnswer": "C",
+        "explanation": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "learningPoint": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "historicalClue": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "B": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "C": "Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward.",
+          "D": "Review the lesson clues. Living heritage matters, but claims about earlier forms need dated evidence rather than automatic projection backward."
+        },
+        "missionId": "chapter8-mission3",
+        "topic": "religious-source-time",
+        "topicLabel": "Dated heritage evidence",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Evidence connected with a particular time, whose claims must fit that setting.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter8-mission3-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter8-mission3",
+        "name": "Community Change Evidence Journal",
+        "description": "A learning-game token for comparing community practices and dated material evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 3,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Separate practice and private belief while comparing dated objects, institutions and local participation.",
+          "reflectionQuestion": "Which clue helped you avoid projecting a modern feature unchanged into the past?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-8",
+      "create": false,
+      "expected": {
+        "description": "Missions 1-2 introduce missionary history and royal patronage. Missions 3-4 and the chapter challenge are being prepared."
+      },
+      "fields": {
+        "description": "Missions 1-3 cover missionaries, patronage and changes in community life. Mission 4 and the chapter challenge are being prepared."
+      }
+    },
+    {
+      "path": "eras/spanish-exploration-colonial-rule",
+      "create": false,
+      "expected": {
+        "description": "Chapters 5-7 offer four missions and an evidence challenge each. Chapter 8 offers Missions 1-2 on missionaries and royal patronage; later content is being prepared."
+      },
+      "fields": {
+        "description": "Chapters 5-7 offer four missions and an evidence challenge each. Chapter 8 offers Missions 1-3 on missionary history, patronage and community changes; later content is being prepared."
+      }
+    }
+  ]
+}

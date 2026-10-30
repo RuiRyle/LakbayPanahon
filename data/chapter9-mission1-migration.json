@@ -1,0 +1,1289 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 9 Mission 1 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+    "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+    "https://archium.ateneo.edu/history-faculty-pubs/114/"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-8",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-8",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/community-belief-investigator",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter8-mission1",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter8-mission2",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter8-mission3",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter8-mission4",
+      "expected": {
+        "chapterId": "chapter-8",
+        "status": "active",
+        "order": 4
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter9-mission1",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-9",
+        "title": "Tribute and Colonial Taxation",
+        "order": 1,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate colonial tribute, payment forms, household burdens, collection records and changing tax systems.",
+        "learningObjective": "Explain tribute using dated evidence, distinguishing demands, collections, burdens and changes over time.",
+        "learningObjectives": [
+          "Explain a required payment, not a gift using lesson evidence.",
+          "Explain payments could involve goods using lesson evidence.",
+          "Explain what did a payment mean for a household? using lesson evidence.",
+          "Explain read the rule and the collection separately using lesson evidence.",
+          "Explain tax rules changed over time using lesson evidence."
+        ],
+        "lessonRecap": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter9-quiz1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission1",
+        "title": "Tribute Investigation - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "tribute-obligation",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "tribute-payment-forms",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "tribute-household-burden",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "tribute-records",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "tribute-tax-change",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission1-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission1",
+        "status": "active",
+        "order": 1,
+        "title": "A Required Payment, Not a Gift",
+        "content": "Tribute was a required payment under Spanish colonial authority. It was not simply a freely chosen present. Collecting it brought resources into the colonial system. To understand a demand, ask who required payment, who was expected to pay, and what rule applied in that place and period. A label such as tax does not tell us whether a collection was fair.\n\nImagine two fictional cards. One describes a family choosing a gift; the other records a payment demanded by an authority. The second describes an obligation: something people were required to do. Do not call it voluntary just because a record says it was paid. A payment record also does not show that every resident agreed with the demand. We study this system to understand people and power, not to reward collecting from classmates.\n\nOpen the three clues. Then choose the explanation they support. Use Explain if you want help, and return to the lesson before practice when a topic needs review.",
+        "reviewTopics": [
+          "tribute-obligation"
+        ],
+        "imageUrl": "../assets/story/tribute-investigation-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A Required Payment, Not a Gift. Labelled clues distinguish rules, evidence and limits; not an original tax document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Required payment",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Tribute was demanded under colonial authority, rather than simply offered as a gift.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Colonial resources",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Collections supplied resources to the colonial system.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Agreement is separate",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Recorded payment does not prove that a person approved of the demand.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A record says a required payment was collected. Which description fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A colonial obligation was recorded, not necessarily a voluntary gift",
+          "Every payer freely chose a gift",
+          "Every family agreed with the demand",
+          "The record proves every collection was fair"
+        ],
+        "decisionCorrectAnswer": "A colonial obligation was recorded, not necessarily a voluntary gift",
+        "decisionExplanation": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "keyTerm": "Tribute",
+        "keyTermDefinition": "A payment demanded under colonial authority.",
+        "historicalInsight": "Recorded payment does not prove that a person approved of the demand.",
+        "learningHelp": {
+          "explanation": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "vocabulary": [
+            {
+              "term": "Tribute",
+              "definition": "A payment demanded under colonial authority."
+            }
+          ],
+          "example": "Tribute was demanded under colonial authority, rather than simply offered as a gift.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission1-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission1",
+        "status": "active",
+        "order": 2,
+        "title": "Payments Could Involve Goods",
+        "content": "Payments did not always consist only of coins. Early colonial accounts describe goods such as rice, cotton, cloth and wax being collected as tribute in particular places. The kind of payment depended on the rule and setting. An example of cloth tribute does not mean that every household everywhere paid the same cloth or amount.\n\nA study in The Philippine Review of Economics discusses woven goods in early tribute and trade. This helps keep the work of makers visible: cloth had to be produced before it could be collected. Our pictured bundle is a modern teaching symbol, not an original tribute item or a measurement guide. When you read a record, look for its place, date, item and unit. Do not change an example into a universal payment schedule.\n\nOpen the three clues. Then choose the explanation they support. Use Explain if you want help, and return to the lesson before practice when a topic needs review.",
+        "reviewTopics": [
+          "tribute-payment-forms"
+        ],
+        "imageUrl": "../assets/story/tribute-investigation-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Payments Could Involve Goods. Labelled clues distinguish rules, evidence and limits; not an original tax document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "More than coins",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Early accounts describe goods, including cloth and rice, in some tribute collections.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Work behind goods",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Products represent work and materials, not objects that appeared without effort.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Local detail",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A named item does not establish one amount or form for every community.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A source lists cloth in one early tribute collection. What can you conclude?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every household paid identical cloth",
+          "Coins were never used anywhere",
+          "The illustration is an original tribute object",
+          "Goods could be involved in that setting; other collections need their own evidence"
+        ],
+        "decisionCorrectAnswer": "Goods could be involved in that setting; other collections need their own evidence",
+        "decisionExplanation": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "keyTerm": "Payment in goods",
+        "keyTermDefinition": "Giving products instead of coins to meet a payment demand.",
+        "historicalInsight": "A named item does not establish one amount or form for every community.",
+        "learningHelp": {
+          "explanation": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "vocabulary": [
+            {
+              "term": "Payment in goods",
+              "definition": "Giving products instead of coins to meet a payment demand."
+            }
+          ],
+          "example": "Early accounts describe goods, including cloth and rice, in some tribute collections.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission1-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission1",
+        "status": "active",
+        "order": 3,
+        "title": "What Did a Payment Mean for a Household?",
+        "content": "A required payment could affect what a household had available for its other needs. Goods required materials and work. Money required access to money. To explain the burden, we need more than the size of a demand: we also need to know what resources people had and what conditions they faced. This mission does not assign one experience to every family.\n\nTry a fictional comparison, not a historical tax rate. Household A has ten supply tokens and Household B has five. Both must give two. A has eight left and B has three. The same number taken leaves different amounts available. The tokens stand for resources only; they are not pesos, real tribute rates or points earned for taking goods. To explain an actual case, find evidence about the demand and the household circumstances.\n\nOpen the three clues. Then choose the explanation they support. Use Explain if you want help, and return to the lesson before practice when a topic needs review.",
+        "reviewTopics": [
+          "tribute-household-burden"
+        ],
+        "imageUrl": "../assets/story/tribute-investigation-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for What Did a Payment Mean for a Household?. Labelled clues distinguish rules, evidence and limits; not an original tax document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Demand",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Identify what was required.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Resources",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ask what the household could draw on.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Comparison",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Equal amounts demanded do not automatically mean equal burdens.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "In the token model, both households give two but start with different supplies. What does it illustrate?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Two tokens was the historical tribute everywhere",
+          "Taking supplies earns more learning points",
+          "The same demand can leave different resources available",
+          "Both households must face identical burdens"
+        ],
+        "decisionCorrectAnswer": "The same demand can leave different resources available",
+        "decisionExplanation": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "keyTerm": "Burden",
+        "keyTermDefinition": "A demand that takes resources or effort to meet.",
+        "historicalInsight": "Equal amounts demanded do not automatically mean equal burdens.",
+        "learningHelp": {
+          "explanation": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "vocabulary": [
+            {
+              "term": "Burden",
+              "definition": "A demand that takes resources or effort to meet."
+            }
+          ],
+          "example": "Identify what was required.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission1-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission1",
+        "status": "active",
+        "order": 4,
+        "title": "Read the Rule and the Collection Separately",
+        "content": "A rule can describe what an authority demanded. A collection record can describe what was received. These are related questions, but they are not the same. A rule alone does not prove that every demanded payment was collected. A recorded collection alone does not settle whether it followed the rule or how it affected the people who paid.\n\nOur fictional source desk has three cards: a payment instruction, a collection entry, and a complaint about an extra demand. The instruction helps identify the rule. The entry helps identify a recorded action. The complaint helps identify a reported problem; it does not by itself show how the problem was finally resolved. Compare the cards rather than treating any one as a complete account. Colonial writers had their own purposes, and their records may leave local voices out.\n\nOpen the three clues. Then choose the explanation they support. Use Explain if you want help, and return to the lesson before practice when a topic needs review.",
+        "reviewTopics": [
+          "tribute-records"
+        ],
+        "imageUrl": "../assets/story/tribute-investigation-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Read the Rule and the Collection Separately. Labelled clues distinguish rules, evidence and limits; not an original tax document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Rule",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An instruction describes a demand, not proof that it was fully carried out.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A collection entry describes a recorded payment.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Reported problem",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A complaint needs follow-up evidence to establish its outcome.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An instruction and a collection entry differ. What is the best next step?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Invent the missing payments",
+          "Compare their dates, coverage and recorded actions before explaining the difference",
+          "Assume the instruction proves every collection",
+          "Treat a complaint as proof of its final outcome"
+        ],
+        "decisionCorrectAnswer": "Compare their dates, coverage and recorded actions before explaining the difference",
+        "decisionExplanation": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "keyTerm": "Collection record",
+        "keyTermDefinition": "A record describing payments received or collected.",
+        "historicalInsight": "A complaint needs follow-up evidence to establish its outcome.",
+        "learningHelp": {
+          "explanation": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "vocabulary": [
+            {
+              "term": "Collection record",
+              "definition": "A record describing payments received or collected."
+            }
+          ],
+          "example": "An instruction describes a demand, not proof that it was fully carried out.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission1-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission1",
+        "status": "active",
+        "order": 5,
+        "title": "Tax Rules Changed Over Time",
+        "content": "Spanish colonial rule lasted for a long period, and taxation did not stay unchanged throughout it. Historian Filomeno Aguilars study identifies the ending of tribute in 1884 and the introduction of cedulas personales in 1885. A cedula personal was connected with a later personal-tax system. Keep these two stages distinct instead of treating every colonial payment as the same rule.\n\nThe study explains that the later system used rates connected with economic capacity. That does not mean taxation ended, that every person paid the same amount, or that everyone welcomed the change. Our timeline marks the transition described in this study; it is not a complete chart of every tax. A real payment record still needs its own date, category and setting. We are comparing historical systems, not giving instructions about modern taxes.\n\nOpen the three clues. Then choose the explanation they support. Use Explain if you want help, and return to the lesson before practice when a topic needs review.",
+        "reviewTopics": [
+          "tribute-tax-change"
+        ],
+        "imageUrl": "../assets/story/tribute-investigation-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Tax Rules Changed Over Time. Labelled clues distinguish rules, evidence and limits; not an original tax document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Before and after",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "The study distinguishes the end of tribute in 1884 from the later cedula system in 1885.",
+            "icon": "🔎"
+          },
+          {
+            "title": "A changed system",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Ending one form of taxation did not mean that all taxes ended.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Check the record",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A dated payment needs the rule that applied in its own setting.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A caption says ending tribute meant all colonial taxes disappeared. Which correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "One system ended while a later personal-tax system followed",
+          "All taxes ended forever",
+          "Every earlier and later rate was identical",
+          "The dates prove universal approval"
+        ],
+        "decisionCorrectAnswer": "One system ended while a later personal-tax system followed",
+        "decisionExplanation": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "keyTerm": "Tax reform",
+        "keyTermDefinition": "A change in the rules or system of taxation.",
+        "historicalInsight": "A dated payment needs the rule that applied in its own setting.",
+        "learningHelp": {
+          "explanation": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "vocabulary": [
+            {
+              "term": "Tax reform",
+              "definition": "A change in the rules or system of taxation."
+            }
+          ],
+          "example": "The study distinguishes the end of tribute in 1884 from the later cedula system in 1885.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter9-mission1-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission1",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Tribute Investigation Report",
+        "content": "Review five ideas from this mission. Tribute was a required colonial payment rather than simply a gift. Payments could include goods in particular settings. The burden depended on available resources as well as the demand. Rules and recorded collections answer different questions. Tax systems also changed over time.\n\nPrepare a fictional museum report for another Grade 5 learner. State what was demanded, identify the supporting source and explain what you cannot yet know. If you use the two-token household model, label it as a model. It is not a historical tribute rate. Do not assume all households had the same experience or that payment proves agreement.\n\nYour main quiz has five questions. Three correct passes this mission. If you need help, the review path leads back to learning content before targeted practice and a retry. Only Chapter 9 Mission 1 is ready in this release. Completing it does not complete the chapter or award its final badge; Missions 2-5 and the challenge are still being prepared.",
+        "reviewTopics": [
+          "tribute-obligation",
+          "tribute-payment-forms",
+          "tribute-household-burden",
+          "tribute-records",
+          "tribute-tax-change"
+        ],
+        "imageUrl": "../assets/story/tribute-investigation-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Read the Rule and the Collection Separately. Labelled clues distinguish rules, evidence and limits; not an original tax document.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Rule",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An instruction describes a demand, not proof that it was fully carried out.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Action",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A collection entry describes a recorded payment.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Reported problem",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A complaint needs follow-up evidence to establish its outcome.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best explains a tribute record?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Treat one rate as universal for all centuries",
+          "Call every payment a freely chosen gift",
+          "Use model tokens as exact historical pesos",
+          "Name the demand, use dated evidence and explain its limits"
+        ],
+        "decisionCorrectAnswer": "Name the demand, use dated evidence and explain its limits",
+        "decisionExplanation": "Explain the demand with dated evidence and identify what the source does not establish.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Explain the demand with dated evidence and identify what the source does not establish.",
+        "keyTerm": "Collection record",
+        "keyTermDefinition": "A record describing payments received or collected.",
+        "historicalInsight": "A complaint needs follow-up evidence to establish its outcome.",
+        "learningHelp": {
+          "explanation": "Explain the demand with dated evidence and identify what the source does not establish.",
+          "vocabulary": [
+            {
+              "term": "Collection record",
+              "definition": "A record describing payments received or collected."
+            }
+          ],
+          "example": "An instruction describes a demand, not proof that it was fully carried out.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://www.gutenberg.org/cache/epub/13701/pg13701-images.html",
+          "https://pre.econ.upd.edu.ph/index.php/pre/article/viewFile/1046/970",
+          "https://archium.ateneo.edu/history-faculty-pubs/114/"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz1-question1",
+      "create": true,
+      "fields": {
+        "question": "What distinguishes tribute from a freely chosen gift?",
+        "optionA": "Tribute was required under colonial authority",
+        "optionB": "Tribute was always optional",
+        "optionC": "Tribute had no connection with authority",
+        "optionD": "Tribute was a classroom prize",
+        "correctAnswer": "A",
+        "explanation": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "learningPoint": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "historicalClue": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "answerExplanations": {
+          "A": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "B": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "C": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "D": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand."
+        },
+        "quizId": "chapter9-quiz1",
+        "order": 1,
+        "status": "active",
+        "topic": "tribute-obligation",
+        "topicLabel": "A Required Payment, Not a Gift",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz1-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "A caption calls required tribute a present freely offered by everyone. What should change?",
+        "optionA": "Keep the caption because payment proves agreement",
+        "optionB": "Remove the idea of authority",
+        "optionC": "Call it a modern reward",
+        "optionD": "Describe the required payment without assuming universal agreement",
+        "correctAnswer": "D",
+        "explanation": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "learningPoint": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "historicalClue": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "B": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "C": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "D": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand."
+        },
+        "quizId": "chapter9-quiz1",
+        "order": 101,
+        "status": "active",
+        "topic": "tribute-obligation",
+        "topicLabel": "A Required Payment, Not a Gift",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission1-tribute-obligation-practice1",
+      "create": true,
+      "fields": {
+        "question": "A record says a required payment was collected. Which description fits?",
+        "optionA": "Every payer freely chose a gift",
+        "optionB": "Every family agreed with the demand",
+        "optionC": "The record proves every collection was fair",
+        "optionD": "A colonial obligation was recorded, not necessarily a voluntary gift",
+        "correctAnswer": "D",
+        "explanation": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "learningPoint": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "historicalClue": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "B": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "C": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "D": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand."
+        },
+        "missionId": "chapter9-mission1",
+        "topic": "tribute-obligation",
+        "topicLabel": "A Required Payment, Not a Gift",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A payment demanded under colonial authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission1-tribute-obligation-practice2",
+      "create": true,
+      "fields": {
+        "question": "A receipt records payment but says nothing about approval. What can you report?",
+        "optionA": "Nobody ever objected",
+        "optionB": "The payment was optional",
+        "optionC": "Payment is recorded; approval needs other evidence",
+        "optionD": "Every payer approved",
+        "correctAnswer": "C",
+        "explanation": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "learningPoint": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "historicalClue": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "B": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "C": "A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand.",
+          "D": "Review the lesson clues. A colonial obligation was recorded, not necessarily a voluntary gift. Recorded payment does not prove that a person approved of the demand."
+        },
+        "missionId": "chapter9-mission1",
+        "topic": "tribute-obligation",
+        "topicLabel": "A Required Payment, Not a Gift",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A payment demanded under colonial authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz1-question2",
+      "create": true,
+      "fields": {
+        "question": "What is payment in goods?",
+        "optionA": "Giving only modern banknotes",
+        "optionB": "A voluntary classroom game",
+        "optionC": "Proof that products required no work",
+        "optionD": "Giving products rather than coins for a demand",
+        "correctAnswer": "D",
+        "explanation": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "learningPoint": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "historicalClue": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "B": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "C": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "D": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community."
+        },
+        "quizId": "chapter9-quiz1",
+        "order": 2,
+        "status": "active",
+        "topic": "tribute-payment-forms",
+        "topicLabel": "Payments Could Involve Goods",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz1-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why ask for place and date when reading a cloth-tribute example?",
+        "optionA": "The date reveals every persons opinion",
+        "optionB": "Goods have no relationship with work",
+        "optionC": "The example does not establish every collection everywhere",
+        "optionD": "All collections had identical items",
+        "correctAnswer": "C",
+        "explanation": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "learningPoint": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "historicalClue": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "B": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "C": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "D": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community."
+        },
+        "quizId": "chapter9-quiz1",
+        "order": 102,
+        "status": "active",
+        "topic": "tribute-payment-forms",
+        "topicLabel": "Payments Could Involve Goods",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission1-tribute-payment-forms-practice1",
+      "create": true,
+      "fields": {
+        "question": "A source lists cloth in one early tribute collection. What can you conclude?",
+        "optionA": "Coins were never used anywhere",
+        "optionB": "The illustration is an original tribute object",
+        "optionC": "Goods could be involved in that setting; other collections need their own evidence",
+        "optionD": "Every household paid identical cloth",
+        "correctAnswer": "C",
+        "explanation": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "learningPoint": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "historicalClue": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "B": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "C": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "D": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community."
+        },
+        "missionId": "chapter9-mission1",
+        "topic": "tribute-payment-forms",
+        "topicLabel": "Payments Could Involve Goods",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Giving products instead of coins to meet a payment demand.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission1-tribute-payment-forms-practice2",
+      "create": true,
+      "fields": {
+        "question": "A museum card turns one rice entry into a rule for all islands and centuries. Which correction fits?",
+        "optionA": "Claim coins did not exist",
+        "optionB": "Keep the documented entry and limit it to its supported setting",
+        "optionC": "Use the same amount for all places",
+        "optionD": "Invent the missing dates",
+        "correctAnswer": "B",
+        "explanation": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "learningPoint": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "historicalClue": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "B": "Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "C": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community.",
+          "D": "Review the lesson clues. Goods could be involved in that setting; other collections need their own evidence. A named item does not establish one amount or form for every community."
+        },
+        "missionId": "chapter9-mission1",
+        "topic": "tribute-payment-forms",
+        "topicLabel": "Payments Could Involve Goods",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Giving products instead of coins to meet a payment demand.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz1-question3",
+      "create": true,
+      "fields": {
+        "question": "What helps explain a household burden besides the demanded amount?",
+        "optionA": "A guess that all families were identical",
+        "optionB": "A modern game score",
+        "optionC": "Available resources and conditions",
+        "optionD": "Only the title of an official",
+        "correctAnswer": "C",
+        "explanation": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "learningPoint": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "historicalClue": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "B": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "C": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "D": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens."
+        },
+        "quizId": "chapter9-quiz1",
+        "order": 3,
+        "status": "active",
+        "topic": "tribute-household-burden",
+        "topicLabel": "What Did a Payment Mean for a Household?",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz1-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "A historian compares the same demand in a good and a poor harvest. Why?",
+        "optionA": "Every family had the same supplies",
+        "optionB": "Available resources can change the effect of a demand",
+        "optionC": "Harvests cannot affect resources",
+        "optionD": "The demand must have been voluntary",
+        "correctAnswer": "B",
+        "explanation": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "learningPoint": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "historicalClue": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "B": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "C": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "D": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens."
+        },
+        "quizId": "chapter9-quiz1",
+        "order": 103,
+        "status": "active",
+        "topic": "tribute-household-burden",
+        "topicLabel": "What Did a Payment Mean for a Household?",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission1-tribute-household-burden-practice1",
+      "create": true,
+      "fields": {
+        "question": "In the token model, both households give two but start with different supplies. What does it illustrate?",
+        "optionA": "Taking supplies earns more learning points",
+        "optionB": "The same demand can leave different resources available",
+        "optionC": "Both households must face identical burdens",
+        "optionD": "Two tokens was the historical tribute everywhere",
+        "correctAnswer": "B",
+        "explanation": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "learningPoint": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "historicalClue": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "B": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "C": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "D": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens."
+        },
+        "missionId": "chapter9-mission1",
+        "topic": "tribute-household-burden",
+        "topicLabel": "What Did a Payment Mean for a Household?",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A demand that takes resources or effort to meet.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission1-tribute-household-burden-practice2",
+      "create": true,
+      "fields": {
+        "question": "A fictional two-token demand is used as an exact colonial tax rate. What should a reviewer say?",
+        "optionA": "It is a comparison model, not a documented rate",
+        "optionB": "It proves every historical amount",
+        "optionC": "It makes dates unnecessary",
+        "optionD": "It proves identical household experiences",
+        "correctAnswer": "A",
+        "explanation": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "learningPoint": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "historicalClue": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+        "answerExplanations": {
+          "A": "The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "B": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "C": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens.",
+          "D": "Review the lesson clues. The same demand can leave different resources available. Equal amounts demanded do not automatically mean equal burdens."
+        },
+        "missionId": "chapter9-mission1",
+        "topic": "tribute-household-burden",
+        "topicLabel": "What Did a Payment Mean for a Household?",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A demand that takes resources or effort to meet.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz1-question4",
+      "create": true,
+      "fields": {
+        "question": "Which source most directly records a payment received?",
+        "optionA": "A modern teaching icon",
+        "optionB": "A collection entry",
+        "optionC": "A plan with no record of action",
+        "optionD": "A wish for future income",
+        "correctAnswer": "B",
+        "explanation": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "learningPoint": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "historicalClue": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "B": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "C": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "D": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome."
+        },
+        "quizId": "chapter9-quiz1",
+        "order": 4,
+        "status": "active",
+        "topic": "tribute-records",
+        "topicLabel": "Read the Rule and the Collection Separately",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz1-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a payment instruction with a collection entry?",
+        "optionA": "A demand and its actual collection are different questions",
+        "optionB": "Instructions always prove full compliance",
+        "optionC": "All records have the same purpose",
+        "optionD": "The comparison reveals every private thought",
+        "correctAnswer": "A",
+        "explanation": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "learningPoint": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "historicalClue": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "answerExplanations": {
+          "A": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "B": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "C": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "D": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome."
+        },
+        "quizId": "chapter9-quiz1",
+        "order": 104,
+        "status": "active",
+        "topic": "tribute-records",
+        "topicLabel": "Read the Rule and the Collection Separately",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission1-tribute-records-practice1",
+      "create": true,
+      "fields": {
+        "question": "An instruction and a collection entry differ. What is the best next step?",
+        "optionA": "Compare their dates, coverage and recorded actions before explaining the difference",
+        "optionB": "Assume the instruction proves every collection",
+        "optionC": "Treat a complaint as proof of its final outcome",
+        "optionD": "Invent the missing payments",
+        "correctAnswer": "A",
+        "explanation": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "learningPoint": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "historicalClue": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "answerExplanations": {
+          "A": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "B": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "C": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "D": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome."
+        },
+        "missionId": "chapter9-mission1",
+        "topic": "tribute-records",
+        "topicLabel": "Read the Rule and the Collection Separately",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A record describing payments received or collected.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission1-tribute-records-practice2",
+      "create": true,
+      "fields": {
+        "question": "A complaint describes an extra demand but no later decision. Which report fits?",
+        "optionA": "The complaint automatically won",
+        "optionB": "No extra demand could ever occur",
+        "optionC": "The writer speaks for every resident",
+        "optionD": "A problem was reported; its resolution still needs evidence",
+        "correctAnswer": "D",
+        "explanation": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "learningPoint": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "historicalClue": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "B": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "C": "Review the lesson clues. Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome.",
+          "D": "Compare their dates, coverage and recorded actions before explaining the difference. A complaint needs follow-up evidence to establish its outcome."
+        },
+        "missionId": "chapter9-mission1",
+        "topic": "tribute-records",
+        "topicLabel": "Read the Rule and the Collection Separately",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A record describing payments received or collected.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz1-question5",
+      "create": true,
+      "fields": {
+        "question": "What does a tax reform change?",
+        "optionA": "Tax rules or the tax system",
+        "optionB": "Every persons beliefs automatically",
+        "optionC": "Only a classroom score",
+        "optionD": "Nothing about taxation",
+        "correctAnswer": "A",
+        "explanation": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "learningPoint": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "historicalClue": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "answerExplanations": {
+          "A": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "B": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "C": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "D": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting."
+        },
+        "quizId": "chapter9-quiz1",
+        "order": 5,
+        "status": "active",
+        "topic": "tribute-tax-change",
+        "topicLabel": "Tax Rules Changed Over Time",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter9-quiz1-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "Why date a colonial payment before identifying its rules?",
+        "optionA": "One rule applied unchanged for all centuries",
+        "optionB": "A date proves a payment was voluntary",
+        "optionC": "All tax records describe the same system",
+        "optionD": "Tax systems changed over time",
+        "correctAnswer": "D",
+        "explanation": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "learningPoint": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "historicalClue": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "B": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "C": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "D": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting."
+        },
+        "quizId": "chapter9-quiz1",
+        "order": 105,
+        "status": "active",
+        "topic": "tribute-tax-change",
+        "topicLabel": "Tax Rules Changed Over Time",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission1-tribute-tax-change-practice1",
+      "create": true,
+      "fields": {
+        "question": "A caption says ending tribute meant all colonial taxes disappeared. Which correction fits?",
+        "optionA": "All taxes ended forever",
+        "optionB": "Every earlier and later rate was identical",
+        "optionC": "The dates prove universal approval",
+        "optionD": "One system ended while a later personal-tax system followed",
+        "correctAnswer": "D",
+        "explanation": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "learningPoint": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "historicalClue": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "B": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "C": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "D": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting."
+        },
+        "missionId": "chapter9-mission1",
+        "topic": "tribute-tax-change",
+        "topicLabel": "Tax Rules Changed Over Time",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A change in the rules or system of taxation.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter9-mission1-tribute-tax-change-practice2",
+      "create": true,
+      "fields": {
+        "question": "A source distinguishes tribute ending in 1884 and cedulas in 1885. What should the timeline show?",
+        "optionA": "One identical system with no change",
+        "optionB": "A universal rate for every payer",
+        "optionC": "Two stages in a tax-system transition",
+        "optionD": "The permanent disappearance of every tax",
+        "correctAnswer": "C",
+        "explanation": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "learningPoint": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "historicalClue": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "B": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "C": "One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting.",
+          "D": "Review the lesson clues. One system ended while a later personal-tax system followed. A dated payment needs the rule that applied in its own setting."
+        },
+        "missionId": "chapter9-mission1",
+        "topic": "tribute-tax-change",
+        "topicLabel": "Tax Rules Changed Over Time",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A change in the rules or system of taxation.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter9-mission1-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter9-mission1",
+        "name": "Tribute Investigation Journal",
+        "description": "A learning-game token for investigating colonial payment demands through evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Compare tribute demands, payment forms, household resources and changing tax rules.",
+          "reflectionQuestion": "Which clue helped you distinguish a demand from its collection or effect?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": true,
+      "fields": {
+        "title": "Economic, Social, and Cultural Changes Under Spanish Rule",
+        "description": "Chapter 9 begins with tribute and colonial taxation. Later missions and Chapters 10-11 are being prepared.",
+        "order": 3,
+        "status": "active",
+        "theme": "sand",
+        "dateRange": "Spanish colonial period"
+      }
+    },
+    {
+      "path": "chapters/chapter-9",
+      "create": true,
+      "fields": {
+        "eraId": "colonial-economic-social-cultural-change",
+        "title": "Colonial Economic Life and Policies",
+        "description": "Mission 1 investigates tribute and colonial taxation. Missions 2-5 and the chapter challenge are being prepared.",
+        "order": 9,
+        "status": "active",
+        "contentReady": true
+      }
+    }
+  ]
+}

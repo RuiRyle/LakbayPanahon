@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-29",
+  "projectId": "lakbaypanahon-1797e",
+  "mode": "bounded-authenticated-recovery-tail",
+  "result": "passed",
+  "checks": [
+    "Actual registration form created a student profile",
+    "Only the temporary account received earlier-era prerequisite fixture records",
+    "Recovery-tail fixture seeded four temporary Chapter 5 mission completions; no chapter completion, badge, XP or artifact was seeded. This does not verify first-time mission completion.",
+    "quiz refresh preserved saved answers, position and session",
+    "Passed mission chapter5-mission2 through actual controls",
+    "Interrupted Mission 2 replay completed and preserved existing XP",
+    "story missing mission shows an error and retry instead of learning content",
+    "quiz missing mission shows an error and retry instead of learning content",
+    "practice missing mission shows an error and retry instead of learning content",
+    "Offline answer clearly reports that the latest place is not saved",
+    "Reconnecting saved the pending answer to original Firestore",
+    "A slow connection retained answer B and confirmed it in Firestore",
+    "Chapter 5 evidence refresh preserved saved answers, position and session",
+    "Chapter 5 matching refresh preserved saved answers, position and session",
+    "All ten Chapter 5 tasks completed through actual evidence and matching controls; result offers Continue to Next Chapter",
+    "Chapter completion awards the authored badge without duplicate mission XP",
+    "Chapter 5 result opened unlocked Chapter 6 under normal locks",
+    "A real top-page refresh preserved the actual Chapter 6 activity route, normal locks and mission content"
+  ],
+  "fixture": {
+    "temporaryAccount": true,
+    "earlierEraPrerequisitesSeeded": true,
+    "chapter5MissionCompletionsSeeded": 4,
+    "chapter5CompletionOrBadgeSeeded": false,
+    "xpOrArtifactSeeded": false,
+    "userExplorationSessionChanged": false
+  },
+  "cleanup": {
+    "authAccountRemoved": true,
+    "ownedLearningAndProfileDocumentsRemoved": 15,
+    "recoveryFileRemoved": true
+  },
+  "localVerification": {
+    "targetedUnitChecks": 11,
+    "chromeFixtures": [
+      "chapter-continuation-browser.cjs",
+      "chapter-challenge-browser.cjs"
+    ],
+    "finalThemeCheck": "The continuation fixture loads actual CSS and checks next-panel/button contrast and nonwhite back-action background."
+  },
+  "harnessCorrections": [
+    "Activity evaluation follows the same-origin student shell frame.",
+    "Missing XP on a newly registered profile is interpreted as zero, matching runtime behavior.",
+    "Actual top-page reload is used for draft and Chapter 6 route recovery."
+  ],
+  "limitations": [
+    "Four Chapter 5 mission completions were fixtures; this run does not prove those missions were earned or replay all four lessons.",
+    "Earlier whole-chapter evidence remains separate.",
+    "Final CSS contrast correction followed the successful live run and was checked locally in Chrome.",
+    "Does not verify Bayani responses, independent curriculum approval, child comprehension, every era or public Hosting."
+  ]
+}

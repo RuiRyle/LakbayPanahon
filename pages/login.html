@@ -17,10 +17,13 @@
         href="../css/auth.css"
     >
 
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
 </head>
 
 
-<body>
+<body class="lakbay-theme">
 
     <main class="auth-page">
 
@@ -309,11 +312,12 @@
                                 <input
                                     type="checkbox"
                                     id="rememberMe"
+                                    aria-describedby="rememberMeHelp"
                                 >
 
 
                                 <span>
-                                    Remember me
+                                    Remember me on this device
                                 </span>
 
 
@@ -323,6 +327,8 @@
                         </div>
 
 
+
+                        <p id="rememberMeHelp" class="input-help">Leave this off on a shared computer. Your sign-in lasts for this tab; saved learning progress stays in your account.</p>
 
                         <!-- LOGIN MESSAGE -->
 
@@ -548,6 +554,8 @@
     ></script>
 
 
+
+    <script type="module" src="../js/page-transition.js"></script>
 </body>
 
 </html>

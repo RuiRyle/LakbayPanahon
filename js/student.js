@@ -1,3 +1,12 @@
+import { missionReviewTopics } from "./mission-review.js";
+import { reviewQuestionSnapshot } from "./review-question-catalog.js";
+import { resolveStudentJourney, renderStudentJourney } from "./student-journey.js";
+import { renderReviewTopics } from "./practice-review.js";
+import { listReturnTopics, chooseRecallQuestion, renderReturnToLearn, requireReturnPolicy } from "./return-to-learn.js";
+import { loadProgressionPolicy } from "./progression.js";
+import { instructionalSnapshot } from "./instructional-snapshot.js";
+import { renderHomeLearningTrail } from "./home-learning-trail.js";
+import { progressionState } from "./progression-policy.js";
 // ==========================================
 // LAKBAYPANAHON
 // STUDENT DASHBOARD
@@ -19,6 +28,7 @@ import {
     collection,
     doc,
     getDoc,
+    getDocFromServer,
     getDocs,
     query,
     where
@@ -29,14 +39,27 @@ import {
 // AUTHENTICATED STUDENT
 // ==========================================
 
-onAuthStateChanged(
-    auth,
-    async (user) => {
+let dashboardGeneration = 0;
+async function loadStudentDashboard(user) {
+        document.getElementById("dashboardRetryProgression")?.remove();
+        const generation = ++dashboardGeneration;
+        const isCurrent = () => generation === dashboardGeneration && auth.currentUser?.uid === user?.uid;
 
         if (!user) {
+            for (const id of ["studentFirstName","topStudentName","studentXp","topXp","studentLevel","topStudentLevel","missionsCompleted","badgesEarned","levelProgressXp","nextLevelText"]) setText(id,"Sign in");
+
+            loadCurrentJourney.request = Symbol("signed-out");
+            const journey = document.getElementById("newJourneyState");
+            if (journey) journey.textContent = "Sign in to view your learning journey.";
+            const trail=document.getElementById('homeLearningTrail');if(trail)trail.textContent='Sign in to view your lessons.';
+            const review=document.getElementById('studentReviewTopics');if(review)review.textContent='Sign in to view your review topics.';
+            const returnPanel=document.getElementById('studentReturnTopic');if(returnPanel)returnPanel.textContent='Sign in to see a topic from your journey.';
+            const reviewReload=document.getElementById('reloadStudentReview');if(reviewReload)reviewReload.disabled=true;
             return;
         }
 
+
+        for (const id of ['studentXp','topXp','studentLevel','topStudentLevel','missionsCompleted','badgesEarned','levelProgressXp','nextLevelText']) setText(id, 'Loading?');
 
         try {
 
@@ -54,11 +77,15 @@ onAuthStateChanged(
                 );
 
 
+            if (!isCurrent()) return;
             if (!userSnapshot.exists()) {
+                for (const id of ['studentXp','topXp','studentLevel','topStudentLevel','missionsCompleted','badgesEarned','levelProgressXp','nextLevelText']) setText(id, 'Not loaded');
 
-                console.error(
-                    "Student profile not found."
-                );
+                const panel = document.getElementById('newJourneyState');
+                if (panel) {
+                    panel.textContent = 'Your student profile could not be found. Try loading again. If this keeps happening, ask your teacher for help.';
+                    appendDashboardRetry(panel, 'Retry Loading Dashboard');
+                }
 
                 return;
             }
@@ -89,8 +116,11 @@ onAuthStateChanged(
                 Number(student.xp) || 0;
 
 
-            const level =
-                Number(student.level) || 1;
+            let progressionPolicy = null;
+            try { progressionPolicy = await loadProgressionPolicy(); }
+            catch (error) { console.warn(error.message); }
+            if (!isCurrent()) return;
+            const level = progressionPolicy ? progressionState(xp, progressionPolicy).level : "Unavailable";
 
 
             // ==================================
@@ -155,44 +185,47 @@ onAuthStateChanged(
 
             loadPlayerProgress(
                 xp,
-                level
+                level,
+                progressionPolicy
             );
 
+
+            if (!progressionPolicy) {
+                const container = document.getElementById("nextLevelText")?.parentElement;
+                if (container) appendDashboardRetry(container,"Retry Level Settings","dashboardRetryProgression");
+            }
 
             // ==================================
             // DASHBOARD DATA
             // ==================================
 
-            await loadCompletedMissionCount(
-                user.uid
-            );
-
-
-            await loadCurrentJourney(
-                user.uid
-            );
-
-
-            await loadArtifactCollection(
-                user.uid
-            );
-
-
-            await loadBadgeCount(
-                user.uid
-            );
-
+            const sharedMissionProgress = getDocs(query(collection(db,'studentProgress'),where('userId','==',user.uid)));
+            const sections = await Promise.allSettled([
+                loadCompletedMissionCount(user.uid,sharedMissionProgress),
+                loadCurrentJourney(user.uid,sharedMissionProgress),
+                loadBadgeCount(user.uid)
+            ]);
+            if (!isCurrent()) return;
+            for (const section of sections) if (section.status === "rejected") {
+                console.warn("A dashboard section could not finish loading:", section.reason);
+            }
 
         } catch (error) {
-
+            if (!isCurrent()) return;
+            for (const id of ['studentXp','topXp','studentLevel','topStudentLevel','missionsCompleted','badgesEarned','levelProgressXp','nextLevelText']) setText(id, 'Not loaded');
+            const panel = document.getElementById("newJourneyState");
+            if (panel) {
+                panel.textContent = "We could not finish loading your dashboard. Your saved progress is unchanged.";
+                appendDashboardRetry(panel,"Retry Loading Dashboard");
+            }
             console.error(
                 "Unable to load student dashboard:",
                 error
             );
         }
 
-    }
-);
+}
+onAuthStateChanged(auth, loadStudentDashboard);
 
 
 // ==========================================
@@ -201,53 +234,17 @@ onAuthStateChanged(
 
 function loadPlayerProgress(
     xp,
-    level
+    level,
+    policy
 ) {
-
-    const xpPerLevel = 100;
-
-
-    const currentLevelStartXp =
-        (level - 1) *
-        xpPerLevel;
-
-
-    const nextLevelXp =
-        level *
-        xpPerLevel;
-
-
-    const xpInsideCurrentLevel =
-        Math.max(
-            0,
-            xp -
-            currentLevelStartXp
-        );
-
-
-    const levelProgressPercent =
-        Math.max(
-            0,
-            Math.min(
-                100,
-                Math.round(
-                    (
-                        xpInsideCurrentLevel /
-                        xpPerLevel
-                    ) *
-                    100
-                )
-            )
-        );
-
-
-    const xpUntilNextLevel =
-        Math.max(
-            0,
-            nextLevelXp -
-            xp
-        );
-
+    if (!policy) {
+        setText("levelProgressXp", "Level settings unavailable");
+        setText("nextLevelText", "Level settings could not be loaded.");
+        const bar = document.getElementById("levelProgressBar");
+        if (bar) bar.style.width = "0%";
+        return;
+    }
+    const {xpPerLevel, xpInLevel: xpInsideCurrentLevel, percent: levelProgressPercent, xpUntilNextLevel} = progressionState(xp, policy);
 
     setText(
         "levelProgressXp",
@@ -297,8 +294,13 @@ function loadPlayerProgress(
 // ==========================================
 
 async function loadCompletedMissionCount(
-    userId
+    userId, sharedProgress = null
 ) {
+    const generation = dashboardGeneration;
+    const isCurrent = () => generation === dashboardGeneration && auth.currentUser?.uid === userId;
+    if (!isCurrent()) return;
+
+    document.getElementById('missionsCompletedRetry')?.remove?.();
 
     try {
 
@@ -316,13 +318,11 @@ async function loadCompletedMissionCount(
             );
 
 
-        const progressSnapshot =
-            await getDocs(
-                progressQuery
-            );
+        const progressSnapshot = await (sharedProgress || getDocs(progressQuery));
+                if (!isCurrent()) return;
 
 
-        let completedCount = 0;
+        const completedMissionIds = new Set();
 
 
         progressSnapshot.forEach(
@@ -332,12 +332,9 @@ async function loadCompletedMissionCount(
                     progressDocument.data();
 
 
-                if (
-                    progress.completed === true
-                ) {
-
-                    completedCount++;
-                }
+                if (progress.userId === userId && progress.completed === true &&
+                    typeof progress.missionId === 'string' && progress.missionId.trim())
+                    completedMissionIds.add(progress.missionId);
 
             }
         );
@@ -345,12 +342,16 @@ async function loadCompletedMissionCount(
 
         setText(
             "missionsCompleted",
-            completedCount
+            completedMissionIds.size
         );
 
 
     } catch (error) {
+                if (!isCurrent()) return;
 
+        setText('missionsCompleted', 'Not loaded');
+        const count = document.getElementById('missionsCompleted');
+        if (count?.parentElement) appendDashboardRetry(count.parentElement, 'Retry mission count', 'missionsCompletedRetry', () => loadCompletedMissionCount(userId));
         console.error(
             "Unable to load completed mission count:",
             error
@@ -363,812 +364,94 @@ async function loadCompletedMissionCount(
 // CURRENT JOURNEY
 // ==========================================
 
-async function loadCurrentJourney(
-    userId
-) {
-
-    const journeyContainer =
-        document.getElementById(
-            "newJourneyState"
-        );
-
-
-    if (!journeyContainer) {
-        return;
-    }
-
-
+async function loadCurrentJourney(userId,sharedProgress=null) {
+    if (auth.currentUser?.uid !== userId) return;
+    const request = Symbol("journey-request");
+    loadCurrentJourney.request = request;
+    const isCurrent = () => loadCurrentJourney.request === request && auth.currentUser?.uid === userId;
+    const container = document.getElementById("newJourneyState");
+    const reviewPanel=document.getElementById('studentReviewTopics'),reviewReload=document.getElementById('reloadStudentReview');
+    const returnPanel=document.getElementById('studentReturnTopic');
+    const trail=document.getElementById('homeLearningTrail');
+    if (!container) return;
+    if(reviewPanel)reviewPanel.textContent='Loading your review topics...';
+    if(returnPanel)returnPanel.textContent='Finding a topic from your journey...';
+    if(trail)trail.textContent='Loading your lessons...';
+    if(reviewReload)reviewReload.disabled=true;
     try {
-
-        // ==================================
-        // LOAD CHAPTERS
-        // ==================================
-
-        const chapterSnapshot =
-            await getDocs(
-                collection(
-                    db,
-                    "chapters"
-                )
-            );
-
-
-        const chapters = [];
-
-
-        chapterSnapshot.forEach(
-            (chapterDocument) => {
-
-                const chapter =
-                    chapterDocument.data();
-
-
-                if (
-                    chapter.status === "active"
-                ) {
-
-                    chapters.push({
-                        id:
-                            chapterDocument.id,
-
-                        ...chapter
-                    });
-                }
-
-            }
-        );
-
-
-        chapters.sort(
-            (a, b) =>
-                (Number(a.order) || 0) -
-                (Number(b.order) || 0)
-        );
-
-
-        if (
-            chapters.length === 0
-        ) {
-
-            showJourneyUnavailable();
-
-            return;
+        const names = ["chapters", "eras", "missions", "chapterChallenges", "studentChapterProgress", "studentProgress", "studentQuizAttempts", "studentLearningDrafts", "studentPracticeProgress", "practiceQuestions", "studentReviewEvents", "returnPolicy"];
+        const results = await Promise.allSettled(names.map(name => name === "returnPolicy"
+            ? getDocFromServer(doc(db,"learningSettings","progression")) : name === "practiceQuestions"
+            ? Promise.resolve({docs:[]}) : name === 'studentProgress' && sharedProgress ? sharedProgress : name.startsWith("student")
+            ? getDocs(query(collection(db,name),where("userId","==",userId)))
+            : instructionalSnapshot(name,()=>getDocs(collection(db,name)))));
+        if (!isCurrent()) return;
+        const rows = snapshot => snapshot.docs.map(item=>({...item.data(),id:item.id}));
+        const failedCore = results.slice(0,7).find(result=>result.status === "rejected");
+        if (failedCore) throw failedCore.reason;
+        // Avoid downloading every mission's bank on every dashboard visit.
+        if (results[8].status === "fulfilled") {
+            try {
+                results[9] = {status:"fulfilled",value:await reviewQuestionSnapshot(userId,
+                    rows(results[6].value), rows(results[8].value), missionId =>
+                        getDocs(query(collection(db,"practiceQuestions"),where("missionId","==",missionId))))};
+            } catch (reason) { results[9] = {status:"rejected",reason}; }
+        } else results[9] = {status:"rejected",reason:results[8].reason};
+        if (!isCurrent()) return;
+        const snapshots = results.map(result=>result.status === "fulfilled" ? result.value : {docs:[]});
+        const [chapters,eras,missions,challenges,chapterProgress,missionProgress,attempts,drafts,practiceHistory,practiceQuestions,reviewEvents] = snapshots.slice(0,11).map(rows);
+        const reviewAvailable = results[8].status === "fulfilled" && results[9].status === "fulfilled" && results[10].status === "fulfilled";
+        const topics=reviewAvailable?missionReviewTopics(attempts.filter(row=>row.userId===userId),practiceHistory.filter(row=>row.userId===userId),practiceQuestions,reviewEvents):undefined;
+        const state = resolveStudentJourney({userId,chapters,eras,missions,challenges,chapterProgress,missionProgress,attempts,drafts,practiceSessions:practiceHistory,reviewTopics:topics});
+        if(trail)renderHomeLearningTrail(trail,{userId,chapters,eras,missions,challenges,chapterProgress,missionProgress},state);
+        if(returnPanel){
+            if(reviewAvailable&&results[11].status==='fulfilled'){
+                const activeEras=new Set(eras.filter(era=>era.status==='active').map(era=>era.id));
+                const readyChapters=new Set(chapters.filter(chapter=>chapter.status==='active'&&chapter.contentReady!==false&&(!chapter.eraId||activeEras.has(chapter.eraId))).map(chapter=>chapter.id));
+                try {
+                    const policy=results[11].value.data();
+                    requireReturnPolicy(policy);
+                    const due=listReturnTopics({userId,policy,missions:missions.filter(mission=>readyChapters.has(mission.chapterId)),missionProgress,attempts,practiceSessions:practiceHistory,questions:practiceQuestions});
+                    let index=0;
+                    const show=()=>{
+                        if(!isCurrent())return;
+                        const topic=due[index]||null;
+                        renderReturnToLearn(returnPanel,topic,chooseRecallQuestion(topic,practiceQuestions),index<due.length-1?()=>{index++;show();}:null);
+                    };
+                    show();
+                } catch {returnPanel.textContent='Your memory check is being prepared. Use Refresh Review later.';}
+            }else returnPanel.textContent='Your past learning could not be checked right now. Use Refresh Review to try again.';
         }
-
-
-        // ==================================
-        // LOAD STUDENT CHAPTER PROGRESS
-        // ==================================
-
-        const chapterProgressQuery =
-            query(
-                collection(
-                    db,
-                    "studentChapterProgress"
-                ),
-                where(
-                    "userId",
-                    "==",
-                    userId
-                )
-            );
-
-
-        const chapterProgressSnapshot =
-            await getDocs(
-                chapterProgressQuery
-            );
-
-
-        const completedChapters =
-            new Set();
-
-
-        chapterProgressSnapshot.forEach(
-            (progressDocument) => {
-
-                const progress =
-                    progressDocument.data();
-
-
-                if (
-                    progress.completed === true &&
-                    progress.chapterId
-                ) {
-
-                    completedChapters.add(
-                        progress.chapterId
-                    );
-                }
-
-            }
-        );
-
-
-        // ==================================
-        // FIND CURRENT CHAPTER
-        // ==================================
-
-        let currentChapter = null;
-
-
-        for (
-            const chapter of chapters
-        ) {
-
-            if (
-                !completedChapters.has(
-                    chapter.id
-                )
-            ) {
-
-                currentChapter =
-                    chapter;
-
-                break;
-            }
-
+        state.optionalGuidanceUnavailable = results.slice(7,11).some(result=>result.status === "rejected");
+        renderStudentJourney(container,state,()=>loadCurrentJourney(userId));
+        if(reviewPanel){
+            if(reviewAvailable){
+                const activeEras=new Set(eras.filter(era=>era.status==='active').map(era=>era.id));
+                const readyChapters=new Set(chapters.filter(chapter=>chapter.status==='active'&&chapter.contentReady!==false&&(!chapter.eraId||activeEras.has(chapter.eraId))).map(chapter=>chapter.id));
+                const chaptersByMission=new Map(missions.filter(mission=>mission.status==='active'&&readyChapters.has(mission.chapterId)).map(mission=>[mission.id,mission.chapterId]));
+                renderReviewTopics(reviewPanel,topics.filter(topic=>topic.missed>0&&chaptersByMission.has(topic.missionId)),chaptersByMission,'Your saved quizzes and practice currently show no topics needing extra review. Continue learning to build more evidence.');
+            }else reviewPanel.textContent='We could not load your review topics. Try Refresh Review again.';
         }
-
-
-        // ==================================
-        // ALL AVAILABLE CHAPTERS COMPLETE
-        // ==================================
-
-        if (!currentChapter) {
-
-            showJourneyComplete();
-
-            return;
-        }
-
-
-        // ==================================
-        // LOAD MISSIONS FOR CURRENT CHAPTER
-        // ==================================
-
-        const missionQuery =
-            query(
-                collection(
-                    db,
-                    "missions"
-                ),
-                where(
-                    "chapterId",
-                    "==",
-                    currentChapter.id
-                )
-            );
-
-
-        const missionSnapshot =
-            await getDocs(
-                missionQuery
-            );
-
-
-        const missions = [];
-
-
-        missionSnapshot.forEach(
-            (missionDocument) => {
-
-                const mission =
-                    missionDocument.data();
-
-
-                if (
-                    mission.status === "active"
-                ) {
-
-                    missions.push({
-                        id:
-                            missionDocument.id,
-
-                        ...mission
-                    });
-                }
-
-            }
-        );
-
-
-        missions.sort(
-            (a, b) =>
-                (Number(a.order) || 0) -
-                (Number(b.order) || 0)
-        );
-
-
-        // ==================================
-        // CHAPTER EXISTS BUT NO MISSIONS
-        // ==================================
-
-        if (
-            missions.length === 0
-        ) {
-
-            showChapterComingSoon(
-                currentChapter
-            );
-
-            return;
-        }
-
-
-        // ==================================
-        // LOAD STUDENT MISSION PROGRESS
-        // ==================================
-
-        const missionProgressQuery =
-            query(
-                collection(
-                    db,
-                    "studentProgress"
-                ),
-                where(
-                    "userId",
-                    "==",
-                    userId
-                )
-            );
-
-
-        const missionProgressSnapshot =
-            await getDocs(
-                missionProgressQuery
-            );
-
-
-        const completedMissions =
-            new Set();
-
-
-        missionProgressSnapshot.forEach(
-            (progressDocument) => {
-
-                const progress =
-                    progressDocument.data();
-
-
-                if (
-                    progress.completed === true &&
-                    progress.missionId
-                ) {
-
-                    completedMissions.add(
-                        progress.missionId
-                    );
-                }
-
-            }
-        );
-
-
-        // ==================================
-        // FIND NEXT UNFINISHED MISSION
-        // ==================================
-
-        const nextMission =
-            missions.find(
-                (mission) =>
-                    !completedMissions.has(
-                        mission.id
-                    )
-            );
-
-
-        const completedMissionCount =
-            missions.filter(
-                (mission) =>
-                    completedMissions.has(
-                        mission.id
-                    )
-            ).length;
-
-
-        // ==================================
-        // CONTINUE MISSION
-        // ==================================
-
-        if (nextMission) {
-
-            showCurrentMission(
-                currentChapter,
-                nextMission,
-                completedMissionCount,
-                missions.length
-            );
-
-            return;
-        }
-
-
-        // ==================================
-        // ALL MISSIONS COMPLETE
-        // TAKE CHAPTER CHALLENGE
-        // ==================================
-
-        showChapterChallenge(
-            currentChapter,
-            missions.length
-        );
-
-
     } catch (error) {
-
-        console.error(
-            "Unable to load current journey:",
-            error
-        );
-
-
-        showJourneyError();
+        console.warn("Journey loading failed:",error);
+        if (isCurrent()) {renderStudentJourney(container,{kind:"error"},()=>loadCurrentJourney(userId));if(trail)trail.textContent='Your lessons could not load. Use Refresh Review to try again.';if(reviewPanel)reviewPanel.textContent='We could not load your review topics. Try Refresh Review again.';if(returnPanel)returnPanel.textContent='Your past learning could not be checked right now. Use Refresh Review to try again.';}
+    } finally {
+        if(isCurrent()&&reviewReload)reviewReload.disabled=false;
     }
 }
-
-
-// ==========================================
-// SHOW CURRENT MISSION
-// ==========================================
-
-function showCurrentMission(
-    chapter,
-    mission,
-    completedCount,
-    totalMissions
-) {
-
-    const journeyContainer =
-        document.getElementById(
-            "newJourneyState"
-        );
-
-
-    if (!journeyContainer) {
-        return;
-    }
-
-
-    const percentage =
-        totalMissions > 0
-            ? Math.round(
-                (
-                    completedCount /
-                    totalMissions
-                ) *
-                100
-            )
-            : 0;
-
-
-    journeyContainer.innerHTML = `
-        ${createJourneyIcon("📖")}
-
-        <div class="journey-details">
-
-            <span class="journey-status">
-                CURRENT MISSION
-            </span>
-
-            <span class="journey-chapter-label">
-                ${chapter.title || "Historical Chapter"}
-            </span>
-
-            <h3>
-                ${mission.title || "Continue Mission"}
-            </h3>
-
-            <p>
-                ${
-                    mission.introduction ||
-                    "Continue your historical adventure and complete the next mission."
-                }
-            </p>
-
-            ${
-                createJourneyProgress(
-                    completedCount,
-                    totalMissions,
-                    percentage
-                )
-            }
-
-            ${
-                createJourneyObjective(
-                    "📜",
-                    "YOUR OBJECTIVE",
-                    "Complete this historical mission"
-                )
-            }
-
-            ${
-                createJourneyButton(
-                    `mission.html?chapter=${chapter.id}`,
-                    "Continue Mission"
-                )
-            }
-
-        </div>
-    `;
-}
-
-
-// ==========================================
-// SHOW CHAPTER CHALLENGE
-// ==========================================
-
-function showChapterChallenge(
-    chapter,
-    totalMissions
-) {
-
-    const journeyContainer =
-        document.getElementById(
-            "newJourneyState"
-        );
-
-
-    if (!journeyContainer) {
-        return;
-    }
-
-
-    journeyContainer.innerHTML = `
-        ${createJourneyIcon("🏆")}
-
-        <div class="journey-details">
-
-            <span class="journey-status">
-                FINAL CHALLENGE READY
-            </span>
-
-            <span class="journey-chapter-label">
-                ${chapter.title || "Historical Chapter"}
-            </span>
-
-            <h3>
-                Chapter Challenge
-            </h3>
-
-            <p>
-                You completed all missions in this chapter.
-                Test what you learned to complete the chapter
-                and earn its special badge.
-            </p>
-
-            ${
-                createJourneyProgress(
-                    totalMissions,
-                    totalMissions,
-                    100
-                )
-            }
-
-            ${
-                createJourneyObjective(
-                    "🏅",
-                    "FINAL OBJECTIVE",
-                    "Pass the Chapter Challenge"
-                )
-            }
-
-            ${
-                createJourneyButton(
-                    `chapter-challenge.html?chapter=${chapter.id}`,
-                    "Take Chapter Challenge"
-                )
-            }
-
-        </div>
-    `;
-}
-
-
-// ==========================================
-// SHOW NEXT CHAPTER / COMING SOON
-// ==========================================
-
-function showChapterComingSoon(
-    chapter
-) {
-
-    const journeyContainer =
-        document.getElementById(
-            "newJourneyState"
-        );
-
-
-    if (!journeyContainer) {
-        return;
-    }
-
-
-    journeyContainer.innerHTML = `
-        ${createJourneyIcon("🗺️")}
-
-        <div class="journey-details">
-
-            <span class="journey-status">
-                NEXT DESTINATION
-            </span>
-
-            <span class="journey-chapter-label">
-                Your Journey Continues
-            </span>
-
-            <h3>
-                ${chapter.title || "Next Historical Chapter"}
-            </h3>
-
-            <p>
-                ${
-                    chapter.description ||
-                    "A new historical chapter is waiting for you."
-                }
-            </p>
-
-            ${
-                createJourneyObjective(
-                    "🧭",
-                    "CHAPTER STATUS",
-                    "New missions are coming soon"
-                )
-            }
-
-            ${
-                createJourneyButton(
-                    "chapters.html",
-                    "Explore Chapters"
-                )
-            }
-
-        </div>
-    `;
-}
-
-
-// ==========================================
-// SHOW JOURNEY COMPLETE
-// ==========================================
-
-function showJourneyComplete() {
-
-    const journeyContainer =
-        document.getElementById(
-            "newJourneyState"
-        );
-
-
-    if (!journeyContainer) {
-        return;
-    }
-
-
-    journeyContainer.innerHTML = `
-        ${createJourneyIcon("🏅")}
-
-        <div class="journey-details">
-
-            <span class="journey-status">
-                JOURNEY COMPLETE
-            </span>
-
-            <h3>
-                Great Work, History Explorer!
-            </h3>
-
-            <p>
-                You completed all currently available
-                historical chapters. You can review your
-                previous adventures while waiting for
-                more chapters.
-            </p>
-
-            ${
-                createJourneyObjective(
-                    "📚",
-                    "KEEP EXPLORING",
-                    "Review completed chapters and missions"
-                )
-            }
-
-            ${
-                createJourneyButton(
-                    "chapters.html",
-                    "Review Chapters"
-                )
-            }
-
-        </div>
-    `;
-}
-
-
-// ==========================================
-// JOURNEY UNAVAILABLE
-// ==========================================
-
-function showJourneyUnavailable() {
-
-    const journeyContainer =
-        document.getElementById(
-            "newJourneyState"
-        );
-
-
-    if (!journeyContainer) {
-        return;
-    }
-
-
-    journeyContainer.innerHTML = `
-        ${createJourneyIcon("🧭")}
-
-        <div class="journey-details">
-
-            <span class="journey-status">
-                JOURNEY PREPARING
-            </span>
-
-            <h3>
-                Historical Adventures Coming Soon
-            </h3>
-
-            <p>
-                There are currently no active historical
-                chapters available.
-            </p>
-
-        </div>
-    `;
-}
-
-
-// ==========================================
-// JOURNEY ERROR
-// ==========================================
-
-function showJourneyError() {
-
-    const journeyContainer =
-        document.getElementById(
-            "newJourneyState"
-        );
-
-
-    if (!journeyContainer) {
-        return;
-    }
-
-
-    journeyContainer.innerHTML = `
-        ${createJourneyIcon("📜")}
-
-        <div class="journey-details">
-
-            <span class="journey-status">
-                JOURNEY UNAVAILABLE
-            </span>
-
-            <h3>
-                We could not load your journey.
-            </h3>
-
-            <p>
-                Refresh the page to try again.
-            </p>
-
-        </div>
-    `;
-}
-
-
-// ==========================================
-// JOURNEY UI HELPERS
-// ==========================================
-
-function createJourneyIcon(
-    icon
-) {
-
-    return `
-        <div class="journey-illustration quest-compass">
-            ${icon}
-        </div>
-    `;
-}
-
-
-function createJourneyObjective(
-    icon,
-    label,
-    objective
-) {
-
-    return `
-        <div class="quest-objective">
-
-            <span class="quest-objective-icon">
-                ${icon}
-            </span>
-
-            <div>
-
-                <small>
-                    ${label}
-                </small>
-
-                <strong>
-                    ${objective}
-                </strong>
-
-            </div>
-
-        </div>
-    `;
-}
-
-
-function createJourneyProgress(
-    completed,
-    total,
-    percentage
-) {
-
-    return `
-        <div class="journey-progress-box">
-
-            <div class="journey-progress-header">
-
-                <span>
-                    CHAPTER PROGRESS
-                </span>
-
-                <strong>
-                    ${completed} / ${total} Missions
-                </strong>
-
-            </div>
-
-            <div class="journey-progress-track">
-
-                <div
-                    class="journey-progress-fill"
-                    style="width: ${percentage}%;"
-                ></div>
-
-            </div>
-
-        </div>
-    `;
-}
-
-
-function createJourneyButton(
-    href,
-    text
-) {
-
-    return `
-        <a
-            href="${href}"
-            class="primary-button journey-action-button"
-        >
-            ${text}
-            <span>→</span>
-        </a>
-    `;
-}
-
-
-// ==========================================
-// BADGE COUNT
-// ==========================================
+document.getElementById('reloadStudentReview')?.addEventListener('click',()=>{if(auth.currentUser)loadCurrentJourney(auth.currentUser.uid);});
+window.addEventListener("pageshow",event=>{
+    if(event.persisted && auth.currentUser) loadStudentDashboard(auth.currentUser);
+});
 
 async function loadBadgeCount(
     userId
 ) {
+    const generation = dashboardGeneration;
+    const isCurrent = () => generation === dashboardGeneration && auth.currentUser?.uid === userId;
+    if (!isCurrent()) return;
+
+    document.getElementById('badgesEarnedRetry')?.remove?.();
 
     try {
 
@@ -1190,16 +473,24 @@ async function loadBadgeCount(
             await getDocs(
                 badgeQuery
             );
+                if (!isCurrent()) return;
 
 
-        setText(
-            "badgesEarned",
-            badgeSnapshot.size
-        );
+        const earnedBadgeIds = new Set();
+        badgeSnapshot.forEach(row=>{
+            const badge=row.data();
+            if(badge.userId===userId&&typeof badge.badgeId==='string'&&badge.badgeId&&!badge.badgeId.includes('/'))
+                earnedBadgeIds.add(badge.badgeId);
+        });
+        setText("badgesEarned",earnedBadgeIds.size);
 
 
     } catch (error) {
+                if (!isCurrent()) return;
 
+        setText('badgesEarned', 'Not loaded');
+        const count = document.getElementById('badgesEarned');
+        if (count?.parentElement) appendDashboardRetry(count.parentElement, 'Retry badge count', 'badgesEarnedRetry', () => loadBadgeCount(userId));
         console.error(
             "Unable to load badge count:",
             error
@@ -1209,272 +500,7 @@ async function loadBadgeCount(
 
 
 // ==========================================
-// ARTIFACT COLLECTION
-// ==========================================
-
-async function loadArtifactCollection(
-    userId
-) {
-
-    const artifactGrid =
-        document.getElementById(
-            "artifactGrid"
-        );
-
-
-    if (!artifactGrid) {
-        return;
-    }
-
-
-    try {
-
-        const studentArtifactQuery =
-            query(
-                collection(
-                    db,
-                    "studentArtifacts"
-                ),
-                where(
-                    "userId",
-                    "==",
-                    userId
-                )
-            );
-
-
-        const studentArtifactSnapshot =
-            await getDocs(
-                studentArtifactQuery
-            );
-
-
-        const artifactIds = [];
-
-
-        studentArtifactSnapshot.forEach(
-            (artifactDocument) => {
-
-                const artifactOwnership =
-                    artifactDocument.data();
-
-
-                if (
-                    artifactOwnership.artifactId
-                ) {
-
-                    artifactIds.push(
-                        artifactOwnership.artifactId
-                    );
-                }
-
-            }
-        );
-
-
-        setText(
-            "artifactCount",
-            artifactIds.length
-        );
-
-
-        if (
-            artifactIds.length === 0
-        ) {
-
-            showEmptyArtifactCollection();
-
-            return;
-        }
-
-
-        const artifacts = [];
-
-
-        for (
-            const artifactId of artifactIds
-        ) {
-
-            try {
-
-                const artifactSnapshot =
-                    await getDoc(
-                        doc(
-                            db,
-                            "artifacts",
-                            artifactId
-                        )
-                    );
-
-
-                if (
-                    artifactSnapshot.exists()
-                ) {
-
-                    artifacts.push({
-                        id:
-                            artifactSnapshot.id,
-
-                        ...artifactSnapshot.data()
-                    });
-                }
-
-
-            } catch (error) {
-
-                console.error(
-                    `Unable to load artifact ${artifactId}:`,
-                    error
-                );
-            }
-
-        }
-
-
-        if (
-            artifacts.length === 0
-        ) {
-
-            showEmptyArtifactCollection();
-
-            return;
-        }
-
-
-        artifacts.sort(
-            (a, b) =>
-                (Number(a.order) || 0) -
-                (Number(b.order) || 0)
-        );
-
-
-        artifactGrid.innerHTML = "";
-
-
-        artifacts.forEach(
-            (artifact) => {
-
-                artifactGrid.insertAdjacentHTML(
-                    "beforeend",
-                    createArtifactCard(
-                        artifact
-                    )
-                );
-
-            }
-        );
-
-
-    } catch (error) {
-
-        console.error(
-            "Unable to load artifact collection:",
-            error
-        );
-
-
-        showEmptyArtifactCollection();
-    }
-}
-
-
-// ==========================================
-// CREATE ARTIFACT CARD
-// ==========================================
-
-function createArtifactCard(
-    artifact
-) {
-
-    const icon =
-        artifact.icon ||
-        artifact.emoji ||
-        "🏺";
-
-
-    const name =
-        artifact.name ||
-        artifact.title ||
-        "Historical Artifact";
-
-
-    const description =
-        artifact.description ||
-        "A historical collectible earned during your journey.";
-
-
-    return `
-        <article class="artifact-card">
-
-            <div class="artifact-card-icon">
-                ${icon}
-            </div>
-
-            <div class="artifact-card-content">
-
-                <span class="artifact-unlocked">
-                    ✓ COLLECTED
-                </span>
-
-                <h4>
-                    ${name}
-                </h4>
-
-                <p>
-                    ${description}
-                </p>
-
-            </div>
-
-        </article>
-    `;
-}
-
-
-// ==========================================
-// EMPTY ARTIFACT COLLECTION
-// ==========================================
-
-function showEmptyArtifactCollection() {
-
-    const artifactGrid =
-        document.getElementById(
-            "artifactGrid"
-        );
-
-
-    if (!artifactGrid) {
-        return;
-    }
-
-
-    artifactGrid.innerHTML = `
-        <div class="artifact-empty">
-
-            <div class="artifact-empty-icon">
-                🏺
-            </div>
-
-            <div>
-
-                <strong>
-                    No artifacts collected yet
-                </strong>
-
-                <p>
-                    Complete missions to discover
-                    historical collectibles.
-                </p>
-
-            </div>
-
-        </div>
-    `;
-}
-
-
-// ==========================================
-// TEXT HELPER
+// TEXT HELPERS
 // ==========================================
 
 function setText(
@@ -1496,62 +522,14 @@ function setText(
 }
 
 
-// ==========================================
-// MOBILE SIDEBAR
-// ==========================================
-
-const mobileMenuButton =
-    document.getElementById(
-        "mobileMenuButton"
-    );
-
-
-const sidebar =
-    document.querySelector(
-        ".sidebar"
-    );
-
-
-if (
-    mobileMenuButton &&
-    sidebar
-) {
-
-    mobileMenuButton.addEventListener(
-        "click",
-        () => {
-
-            sidebar.classList.toggle(
-                "mobile-open"
-            );
-
-        }
-    );
-
-
-    document
-        .querySelectorAll(
-            ".sidebar .nav-link"
-        )
-        .forEach(
-            (link) => {
-
-                link.addEventListener(
-                    "click",
-                    () => {
-
-                        if (
-                            window.innerWidth <= 900
-                        ) {
-
-                            sidebar.classList.remove(
-                                "mobile-open"
-                            );
-                        }
-
-                    }
-                );
-
-            }
-        );
+function appendDashboardRetry(container,label,id,retry) {
+    const button=document.createElement("button");button.type="button";button.className="text-button";button.textContent=label;
+    if(id)button.id=id;
+    button.addEventListener("click",async()=>{
+        if(button.disabled || !auth.currentUser)return;
+        button.disabled=true;
+        try { await (retry ? retry() : loadStudentDashboard(auth.currentUser)); }
+        finally { button.disabled=false; }
+    });
+    container.append(button);
 }

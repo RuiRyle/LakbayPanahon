@@ -1,0 +1,298 @@
+{
+  "startedAt": "2026-10-30T03:30:16.087Z",
+  "finishedAt": "2026-10-30T03:31:21.687Z",
+  "planVersion": 1,
+  "mode": "local-mocked-only",
+  "planSha256": "5d07e1b4a851f6904998c29009de7afa8033c22fc8464c4ce992f4ea3f0a24c6",
+  "units": {
+    "status": "pass",
+    "suites": 43,
+    "tests": 281,
+    "passed": 281,
+    "failed": 0,
+    "skipped": 0,
+    "error": null
+  },
+  "browser": {
+    "status": "pass-with-targeted-retry",
+    "fixtures": [
+      {
+        "file": "student-dashboard-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: start/continue lesson links, safe Firestore text, review links, challenge, complete, empty and retry states"
+      },
+      {
+        "file": "mission-quiz-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: fail/retry/pass, rewards, load recovery, auth refresh and delayed load/save after sign-out"
+      },
+      {
+        "file": "story-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: interactive lesson, previous/next, completion, layout, load/empty-scene retry, session recovery, hostile navigation/text and unsafe image URLs",
+        "retry": "30 October: original combined attempt returned no browser result. A separate node tests/story-browser.cjs run exited 0 with this PASS output; no Story runtime code changed."
+      },
+      {
+        "file": "student-navigation-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: native/modified/dynamic links and Back/Forward preserve visible content without a forced delay"
+      },
+      {
+        "file": "student-profile-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: optional setup, completion/dismissal persistence, catalog recovery, name-only save, dynamic choices, preview, pending-save dismissal and hostile identity/avatar text"
+      },
+      {
+        "file": "my-class-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: join/leave, published assignments, saved completion, prerequisites, safe text, read recovery and session isolation"
+      },
+      {
+        "file": "my-journey-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: personal path, prerequisites, review/resume, safe text, error/retry and session recovery"
+      },
+      {
+        "file": "student-collections-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: collection animation, rapid switching, reduced motion, toggles, counts and independent recovery"
+      },
+      {
+        "file": "bayani-ai-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: chat deadlines, draft recovery, known reply errors, local New Chat, session isolation and hostile HTML/markdown"
+      },
+      {
+        "file": "student-review-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: adaptive practice, history, session recovery, content failure/empty bank retry and lesson/quiz escape routes"
+      },
+      {
+        "file": "student-registration-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: password validation, duplicate prevention, profile retry, lost acknowledgement, dashboard link and narrow layout"
+      },
+      {
+        "file": "student-settings-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: seven desktop settings scenarios (mocked audio; no Firebase)"
+      }
+    ]
+  },
+  "criteria": [
+    {
+      "id": "A01",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-auth-guard.test.cjs",
+        "student-auth-persistence.test.cjs",
+        "student-session-storage.test.cjs"
+      ]
+    },
+    {
+      "id": "A02",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-shell-route.test.cjs",
+        "student-journey.test.cjs",
+        "student-journey-action.test.cjs",
+        "student-journey-loading.test.cjs",
+        "student-dashboard-recovery.test.cjs",
+        "student-dashboard-session.test.cjs"
+      ]
+    },
+    {
+      "id": "A03",
+      "status": "local-suite-pass",
+      "tests": [
+        "story-route.test.cjs",
+        "story-exhibit.test.cjs",
+        "story-trade.test.cjs"
+      ]
+    },
+    {
+      "id": "A04",
+      "status": "local-suite-pass",
+      "tests": [
+        "mission-flow.test.cjs",
+        "quiz-draft-policy.test.cjs"
+      ]
+    },
+    {
+      "id": "A05",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-review.test.cjs",
+        "student-review-session.test.cjs",
+        "review-evidence.test.cjs",
+        "return-to-learn.test.cjs",
+        "easy-review-recovery.test.cjs"
+      ]
+    },
+    {
+      "id": "A06",
+      "status": "local-suite-pass",
+      "tests": [
+        "learning-draft.test.cjs",
+        "student-recovery-action.test.cjs"
+      ]
+    },
+    {
+      "id": "A07",
+      "status": "local-suite-pass",
+      "tests": [
+        "era-progression.test.cjs",
+        "journey-path.test.cjs",
+        "progression.test.cjs",
+        "exploration-preview.test.cjs"
+      ]
+    },
+    {
+      "id": "A08",
+      "status": "local-suite-pass",
+      "tests": [
+        "daily-policy.test.cjs",
+        "chapter-continuation.test.cjs"
+      ]
+    },
+    {
+      "id": "A09",
+      "status": "local-suite-pass",
+      "tests": [
+        "evidence-journal.test.cjs"
+      ]
+    },
+    {
+      "id": "A10",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-profile.test.cjs"
+      ]
+    },
+    {
+      "id": "A12",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-class-client.test.cjs"
+      ]
+    },
+    {
+      "id": "A13",
+      "status": "local-suite-pass",
+      "tests": [
+        "bayani-debug.test.cjs",
+        "bayani-backend-client.test.cjs",
+        "bayani-bridge-integration.test.cjs",
+        "bayani-backend.test.cjs",
+        "bayani-request.test.cjs"
+      ]
+    },
+    {
+      "id": "A14",
+      "status": "local-suite-pass",
+      "tests": [
+        "trusted-assessment.test.cjs",
+        "trusted-assessment-rules-candidate.test.cjs",
+        "firestore-read-scope.test.cjs"
+      ]
+    },
+    {
+      "id": "A15",
+      "status": "local-suite-pass",
+      "tests": [
+        "chapter2-family-learning-polish.test.cjs",
+        "chapter2-women-role-learning.test.cjs"
+      ]
+    },
+    {
+      "id": "A16",
+      "status": "local-suite-pass",
+      "tests": [
+        "web-release-boundary.test.cjs",
+        "student-hosting-config.test.cjs"
+      ]
+    },
+    {
+      "id": "A17",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-account-inventory.test.cjs"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "js/auth-guard.js",
+      "sha256": "0bafa8782ad919ede18874ac3e0379cca99167c10deb340a76a251dc0b373b21"
+    },
+    {
+      "file": "js/student.js",
+      "sha256": "5e123d8aade1f77a007c0c1e37944fc10b4f6d3481af7d3e56aca715e22e4d54"
+    },
+    {
+      "file": "js/my-journey.js",
+      "sha256": "55dc2dbbf5c2c80fc0eba90e99a7b0cb481a9901b85b8daf6b2669b96355aee2"
+    },
+    {
+      "file": "js/story.js",
+      "sha256": "634554a6399ec3863112f67bd077c5b43e7b3a776ccac55d723a73b456a7af00"
+    },
+    {
+      "file": "js/quiz.js",
+      "sha256": "31c9058b4f0c374e875d157b0f65c0b5586923bccde7dedb77e5e815c7cfa2a8"
+    },
+    {
+      "file": "js/practice.js",
+      "sha256": "8b90a068c03ab43090c46cedc26efa16d53d12d723b9cb5cc841c3335ba49419"
+    },
+    {
+      "file": "js/practice-review.js",
+      "sha256": "06594b9d7cf7595c3961b0feacd9628f7739622ea05b2f09435b984aa922e01e"
+    },
+    {
+      "file": "js/learning-draft.js",
+      "sha256": "c5ad9024d5c2bc14b135cf1ba7bd4619a9a2ee64b1e982054322b03e05d36134"
+    },
+    {
+      "file": "js/mission-assessment-client.js",
+      "sha256": "cac06e0439a4673dec28428b1a958963ab0e31f05b5b1ea299e4be9c8c125f48"
+    },
+    {
+      "file": "js/student-rewards-client.js",
+      "sha256": "60dfca122dce7c58a3170dcfb4b2f85c687ffe439fa9bb2a3e6175ee170682a1"
+    },
+    {
+      "file": "js/student-class-client.js",
+      "sha256": "6d4cf3c386318b2e9da84f750badf812dd9c822c66367d5a5339e70af4bcf09c"
+    },
+    {
+      "file": "js/my-class.js",
+      "sha256": "b8e5154e3e35dd2ea99d73f0080bb175d4ac74efb6f83aac866d88e52e01f7c9"
+    },
+    {
+      "file": "js/student-profile.js",
+      "sha256": "352e483f296f64948f6e9004ef489ba996fb1f829aff5e4d9c035078ac00b2a6"
+    },
+    {
+      "file": "js/page-transition.js",
+      "sha256": "dc97f42639d5ce8af02e7924dea149da49ababc297657633f0d7d43c5c8f8f78"
+    },
+    {
+      "file": "js/bayani-client.js",
+      "sha256": "e5bf38ca2a01185387f35168e7b6fbec0b6491232e2d8cf35aaf65ba22493a93"
+    },
+    {
+      "file": "pages/settings.html",
+      "sha256": "58d50b545d20204f57d86c24511740359591a21445d483e2cb03d0eb5826c02c"
+    },
+    {
+      "file": "pages/register.html",
+      "sha256": "a4b04e4f240c8322d53fac608e5885e839eb7fc4070ebf0eab79e3d5a0f781d6"
+    },
+    {
+      "file": "firestore.rules",
+      "sha256": "14e9ec4630a04b858baa18e5979b38728dc45d7fea76bb0fa339ef7421eeea11"
+    }
+  ],
+  "completion": "NOT COMPLETE: local checks cannot close live saves, normal-mode confirmation, privacy, human learning review, classroom integration or deployment."
+}

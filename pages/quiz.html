@@ -20,15 +20,24 @@
         rel="stylesheet"
         href="../css/quiz.css"
     >
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
 </head>
 
 
 <body
-    class="auth-checking"
+    class="auth-checking lakbay-theme"
     data-role="student"
 >
+    <div class="student-loading-shell" role="status" aria-live="polite">
+        <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
+        <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p>Loading your learning space...</p><div class="student-loading-heading" aria-hidden="true"></div><div class="student-loading-cards" aria-hidden="true"><i></i><i></i><i></i></div><div class="student-loading-panel" aria-hidden="true"></div></div></div>
+    </div>
+
 
 <div class="student-app">
+        <a class="student-skip-link" href="#student-main">Skip to main content</a>
 
 
     <!-- =====================================
@@ -66,7 +75,7 @@
 
 
             <a
-                href="student-dashboard.html#journey"
+                href="my-journey.html"
                 class="nav-link active"
             >
                 <span class="nav-icon">📖</span>
@@ -84,7 +93,7 @@
 
 
             <a
-                href="#"
+                href="my-class.html"
                 class="nav-link"
             >
                 <span class="nav-icon">🏫</span>
@@ -93,11 +102,11 @@
 
 
             <a
-                href="student-dashboard.html#dailyChallenge"
+                href="bayani-ai.html"
                 class="nav-link"
             >
                 <span class="nav-icon">⚡</span>
-                <span>Daily Challenge</span>
+                <span>Bayani AI</span>
             </a>
 
 
@@ -108,6 +117,7 @@
                 <span class="nav-icon">🏆</span>
                 <span>Achievements</span>
             </a>
+            <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 13.5 1.1.8-1.1 1.9-1.3-.5a7.8 7.8 0 0 1-1.5.9l-.2 1.4h-2.2l-.3-1.4a7.8 7.8 0 0 1-1.7 0l-.8 1.2-1.9-1.1.5-1.3a7.8 7.8 0 0 1-.9-1.5l-1.4-.2v-2.2l1.4-.3a7.8 7.8 0 0 1 0-1.7L7.9 8.7 9 6.8l1.3.5a7.8 7.8 0 0 1 1.5-.9l.2-1.4h2.2l.3 1.4a7.8 7.8 0 0 1 1.7 0l.8-1.2 1.9 1.1-.5 1.3a7.8 7.8 0 0 1 .9 1.5l1.4.2v2.2l-1.4.3a7.8 7.8 0 0 1 0 1.7Z"/></svg></span><span>Settings</span></a>
 
         </nav>
 
@@ -131,7 +141,7 @@
          MAIN CONTENT
     ====================================== -->
 
-    <main class="main-content">
+    <main tabindex="-1" id="student-main" class="main-content">
 
 
         <!-- =====================================
@@ -233,11 +243,15 @@
                  QUIZ CONTENT
             ====================================== -->
 
-            <div
+            <button id="retryQuizLoadButton" type="button" class="primary-button" hidden>Try Loading Again</button>
+            <p id="quizSaveStatus" class="learning-message" role="status" aria-live="polite" hidden></p>
+
+                <div
                 id="quizContent"
                 class="quiz-container"
                 hidden
             >
+<p id="quizSetNotice" role="status"></p>
 
 
                 <!-- =====================================
@@ -263,8 +277,8 @@
 
         <div>
             <strong>Complete the Trial</strong>
-            <p>
-                Answer every checkpoint. You need at least 60% to complete the mission.
+            <p id="quizPassingRequirement">
+                Loading quiz requirements...
             </p>
         </div>
     </div>
@@ -319,9 +333,17 @@
                     id="questionCard"
                 >
 
+                    <aside id="adaptiveFollowupIntro" class="adaptive-followup-intro" hidden aria-live="polite">
+                        <span class="adaptive-followup-kicker">PERSONALIZED PRACTICE</span>
+                        <strong>Your next question responds to your answers</strong>
+                        <p>We’ll use your answers to choose what to practice next and adjust the question difficulty as you go. This short check guides your review and does not change your mission score or rewards.</p>
+                    </aside>
+
                     <span
                         class="quiz-question-number"
                         id="questionNumber"
+                        role="status"
+                        aria-live="polite"
                     >
                         CHECKPOINT 1
                     </span>
@@ -339,9 +361,11 @@
      HISTORICAL CLUE DISCOVERY
 ====================================== -->
 
-<div
+<div class="quiz-review-tools"><button id="flagQuestionButton" type="button" aria-pressed="false">Flag for Review</button><span id="flaggedQuestionCount" role="status" aria-live="polite"></span></div><section id="flagReviewPanel" class="flag-review-panel" hidden aria-label="Flagged checkpoint review"></section><div
     class="historical-clue-card"
     id="historicalClueCard"
+    role="status"
+    aria-live="polite"
     hidden
 >
 
@@ -351,7 +375,7 @@
 
     <div class="historical-clue-content">
 
-        <span class="historical-clue-label">
+        <span class="historical-clue-label" id="historicalClueLabel">
             HISTORICAL CLUE DISCOVERED
         </span>
 
@@ -598,11 +622,16 @@
                     </div>
 
 
+                    <p id="quizReinforcementSummary" aria-live="polite"></p>
+                    <div id="quizWeakTopics" aria-live="polite"></div>
+
                     <!-- =====================================
                          RESULT ACTIONS
                     ====================================== -->
 
                     <div class="quiz-result-actions">
+                        <a class="quiz-secondary-button" id="reviewLessonLink" href="#">Review Lesson</a>
+                        <a class="quiz-secondary-button" id="reinforcePassedTopicsLink" hidden>Optional Topic Practice</a>
 
                         <button
                             type="button"
@@ -610,7 +639,7 @@
                             id="retryQuizButton"
                             hidden
                         >
-                            Try Again
+                            Retry Mission Quiz
                         </button>
 
 

@@ -1,0 +1,1295 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 3 Chapter 10 Mission 1 only; no learner changes or chapter completion reward",
+  "sourceUrls": [
+    "https://whc.unesco.org/en/list/502/",
+    "https://philhistoricsites.nhcp.gov.ph/wp-content/uploads/2023/07/NHCP-GUIDELINES-ON-THE-IDENTIFICATION-AND-RECOGNITION-OF-CULTURAL-PROPERTIES-AS-HERITAGE-HOUSES.pdf",
+    "https://philippines.un.org/en/283842-raising-roof-building-resilience-through-conserving-historic-homes-unesco-world-heritage"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-9",
+      "expected": {
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "chapterChallenges/challenge-9",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "passingScore": 70
+      }
+    },
+    {
+      "path": "badges/community-economy-investigator",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active"
+      }
+    },
+    {
+      "path": "missions/chapter9-mission1",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter9-mission2",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter9-mission3",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 3
+      }
+    },
+    {
+      "path": "missions/chapter9-mission4",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 4
+      }
+    },
+    {
+      "path": "missions/chapter9-mission5",
+      "expected": {
+        "chapterId": "chapter-9",
+        "status": "active",
+        "order": 5
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter10-mission1",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-10",
+        "title": "Changes in Settlements and Housing",
+        "order": 1,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Investigate settlement layouts, house materials, ventilation, daily uses and changes through dated evidence.",
+        "learningObjective": "Explain selected changes in settlements and housing while distinguishing models, particular cases and dated evidence.",
+        "learningObjectives": [
+          "Explain read a settlement layout using lesson evidence.",
+          "Explain a house could combine materials using lesson evidence.",
+          "Explain look for light and air using lesson evidence.",
+          "Explain work and home could share a building using lesson evidence.",
+          "Explain buildings have histories too using lesson evidence."
+        ],
+        "lessonRecap": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://philhistoricsites.nhcp.gov.ph/wp-content/uploads/2023/07/NHCP-GUIDELINES-ON-THE-IDENTIFICATION-AND-RECOGNITION-OF-CULTURAL-PROPERTIES-AS-HERITAGE-HOUSES.pdf",
+          "https://philippines.un.org/en/283842-raising-roof-building-resilience-through-conserving-historic-homes-unesco-world-heritage"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter10-quiz1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission1",
+        "title": "Settlements and Housing - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "settlement-layout",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "housing-materials",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "housing-climate",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "housing-daily-use",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "housing-change-care",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission1-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission1",
+        "status": "active",
+        "order": 1,
+        "title": "Read a Settlement Layout",
+        "content": "A settlement includes more than a collection of houses. Streets, open spaces, workplaces and public buildings connect peoples activities. Colonial planning changed some settlements, but a plan is not proof that every place was built or used identically. Ask how the arrangement related to the people living there and how it changed over time.\n\nUNESCO describes Vigan in Ilocos Sur as a planned colonial town with a street grid and adjacent plazas. It also identifies Vigan as a trading place before Spanish rule. This named example connects earlier activity with later planning; it does not mean communities began only when colonial authorities arrived. Our diagram is a fictional layout model, not a measured map of Vigan. Trace a route between two places and ask what evidence would show actual daily use.\n\nOpen the three clues and choose the explanation they support. Use Explain for help or return to the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "settlement-layout"
+        ],
+        "imageUrl": "../assets/story/settlement-housing-1.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Read a Settlement Layout. Labelled clues distinguish a building feature and evidence limits, not an authentic historical house plan.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Connected spaces",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Streets and open spaces connect activities within a settlement.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Named example",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Vigan had earlier trading activity as well as later colonial planning.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Plan limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A model layout does not establish every residents route or every towns form.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A fictional town plan shows streets and open spaces. What can it directly help investigate?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "How the depicted spaces connect, not every residents actual daily route",
+          "Every towns exact layout",
+          "Proof that communities began only under Spanish rule",
+          "The private beliefs of every resident"
+        ],
+        "decisionCorrectAnswer": "How the depicted spaces connect, not every residents actual daily route",
+        "decisionExplanation": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "keyTerm": "Settlement",
+        "keyTermDefinition": "A place where people live and carry out connected activities.",
+        "historicalInsight": "A model layout does not establish every residents route or every towns form.",
+        "learningHelp": {
+          "explanation": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "vocabulary": [
+            {
+              "term": "Settlement",
+              "definition": "A place where people live and carry out connected activities."
+            }
+          ],
+          "example": "Streets and open spaces connect activities within a settlement.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://philhistoricsites.nhcp.gov.ph/wp-content/uploads/2023/07/NHCP-GUIDELINES-ON-THE-IDENTIFICATION-AND-RECOGNITION-OF-CULTURAL-PROPERTIES-AS-HERITAGE-HOUSES.pdf",
+          "https://philippines.un.org/en/283842-raising-roof-building-resilience-through-conserving-historic-homes-unesco-world-heritage"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission1-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission1",
+        "status": "active",
+        "order": 2,
+        "title": "A House Could Combine Materials",
+        "content": "The term bahay na bato is often translated as stone house, but it should not make us imagine that every part was stone. NHCP guidelines describe regional house styles using masonry and wood, including stone lower portions and wooden upper floors in typical examples. Builders combined materials and skills rather than copying one unchanged design everywhere.\n\nTry a fictional building card. It labels a masonry lower part and a wooden upper part. You can describe the combination without claiming it is an exact drawing of a named surviving house. A material label alone does not date construction, identify every maker or show who could afford such a house. Other housing forms also existed. Do not rank the worth of residents by their building materials. Compare particular houses with their setting, available materials and dated records.\n\nOpen the three clues and choose the explanation they support. Use Explain for help or return to the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "housing-materials"
+        ],
+        "imageUrl": "../assets/story/settlement-housing-2.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for A House Could Combine Materials. Labelled clues distinguish a building feature and evidence limits, not an authentic historical house plan.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Combination",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Bahay na bato examples can combine masonry and wood.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Local work",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Regional forms and local craftsmanship matter.",
+            "icon": "🔎"
+          },
+          {
+            "title": "No universal house",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "One house type does not describe every familys dwelling.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A bahay na bato label is read as proof that every part was stone. What correction fits?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every roof and wall was always stone",
+          "Every household lived in the same type",
+          "Materials reveal every builders name",
+          "Examples could combine masonry and wood; check the particular building"
+        ],
+        "decisionCorrectAnswer": "Examples could combine masonry and wood; check the particular building",
+        "decisionExplanation": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "keyTerm": "Building material",
+        "keyTermDefinition": "A substance used to make part of a building.",
+        "historicalInsight": "One house type does not describe every familys dwelling.",
+        "learningHelp": {
+          "explanation": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "vocabulary": [
+            {
+              "term": "Building material",
+              "definition": "A substance used to make part of a building."
+            }
+          ],
+          "example": "Bahay na bato examples can combine masonry and wood.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://philhistoricsites.nhcp.gov.ph/wp-content/uploads/2023/07/NHCP-GUIDELINES-ON-THE-IDENTIFICATION-AND-RECOGNITION-OF-CULTURAL-PROPERTIES-AS-HERITAGE-HOUSES.pdf",
+          "https://philippines.un.org/en/283842-raising-roof-building-resilience-through-conserving-historic-homes-unesco-world-heritage"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission1-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission1",
+        "status": "active",
+        "order": 3,
+        "title": "Look for Light and Air",
+        "content": "A building feature can help us ask how people used a space. UNESCO describes sliding window panels with kapis shells and wooden frames in Vigan houses, allowing more air when opened. This gives a concrete example of a feature connected with ventilation. It does not prove that every house used the same windows or that one feature solved every problem of heat and weather.\n\nOur teaching diagram shows an open panel and an arrow for air movement. The arrow is a model, not a measured airflow test or instructions for changing a heritage building. Compare the closed and open positions. Then ask what the evidence supports: a possible function of the opening, rather than every residents comfort or an exact room temperature. Materials, maintenance, building arrangement and conditions all need investigation in a particular case.\n\nOpen the three clues and choose the explanation they support. Use Explain for help or return to the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "housing-climate"
+        ],
+        "imageUrl": "../assets/story/settlement-housing-3.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Look for Light and Air. Labelled clues distinguish a building feature and evidence limits, not an authentic historical house plan.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "A named feature",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Vigan examples include sliding kapis-shell panels in wooden frames.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Function",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Opening panels can help air move through a space.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Model limit",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "An airflow arrow does not measure temperature or every residents comfort.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "An open window panel is shown with an air arrow. What does the model illustrate?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Every Philippine house had the same windows",
+          "A complete building-repair instruction",
+          "A ventilation function, not a measured temperature for every house",
+          "Every resident always felt comfortable"
+        ],
+        "decisionCorrectAnswer": "A ventilation function, not a measured temperature for every house",
+        "decisionExplanation": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "keyTerm": "Ventilation",
+        "keyTermDefinition": "The movement of air into and through a space.",
+        "historicalInsight": "An airflow arrow does not measure temperature or every residents comfort.",
+        "learningHelp": {
+          "explanation": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "vocabulary": [
+            {
+              "term": "Ventilation",
+              "definition": "The movement of air into and through a space."
+            }
+          ],
+          "example": "Vigan examples include sliding kapis-shell panels in wooden frames.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://philhistoricsites.nhcp.gov.ph/wp-content/uploads/2023/07/NHCP-GUIDELINES-ON-THE-IDENTIFICATION-AND-RECOGNITION-OF-CULTURAL-PROPERTIES-AS-HERITAGE-HOUSES.pdf",
+          "https://philippines.un.org/en/283842-raising-roof-building-resilience-through-conserving-historic-homes-unesco-world-heritage"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission1-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission1",
+        "status": "active",
+        "order": 4,
+        "title": "Work and Home Could Share a Building",
+        "content": "Houses could connect domestic life with work and exchange. NHCP recognizes variation in house forms and functions. In a named Vigan example, UNESCO describes merchants using ground-floor spaces for shops, offices or storage, with living spaces above. That is a useful pattern to investigate, not a floor plan for every household or every century.\n\nOur fictional cutaway separates a lower work area from an upper living area. It helps us ask how activities could connect. It cannot identify the people who used a particular room, prove that every resident was wealthy, or show every task done in a day. A later museum display may also arrange rooms differently from earlier residents. Compare dated plans, household records and accounts of use before presenting a complete story. The model does not invite entry into private houses or ask students for their home layout.\n\nOpen the three clues and choose the explanation they support. Use Explain for help or return to the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "housing-daily-use"
+        ],
+        "imageUrl": "../assets/story/settlement-housing-4.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Work and Home Could Share a Building. Labelled clues distinguish a building feature and evidence limits, not an authentic historical house plan.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Different activities",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A building can contain both work and living spaces.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Named pattern",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Some Vigan merchant houses combined business below with living quarters above.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Use needs evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A model or later display is not a complete record of earlier daily life.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A cutaway shows work below and living spaces above. What is a careful explanation?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A modern display records every earlier daily task",
+          "It models a pattern that needs evidence for a particular house and period",
+          "Every household followed that exact plan",
+          "Every room proves its occupants were wealthy"
+        ],
+        "decisionCorrectAnswer": "It models a pattern that needs evidence for a particular house and period",
+        "decisionExplanation": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "keyTerm": "Building use",
+        "keyTermDefinition": "The activities carried out in a building or part of it.",
+        "historicalInsight": "A model or later display is not a complete record of earlier daily life.",
+        "learningHelp": {
+          "explanation": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "vocabulary": [
+            {
+              "term": "Building use",
+              "definition": "The activities carried out in a building or part of it."
+            }
+          ],
+          "example": "A building can contain both work and living spaces.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://philhistoricsites.nhcp.gov.ph/wp-content/uploads/2023/07/NHCP-GUIDELINES-ON-THE-IDENTIFICATION-AND-RECOGNITION-OF-CULTURAL-PROPERTIES-AS-HERITAGE-HOUSES.pdf",
+          "https://philippines.un.org/en/283842-raising-roof-building-resilience-through-conserving-historic-homes-unesco-world-heritage"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission1-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission1",
+        "status": "active",
+        "order": 5,
+        "title": "Buildings Have Histories Too",
+        "content": "A towns beginnings and a houses construction are different dates. A surviving house may include additions, repairs and changed uses. We need to investigate those stages rather than date every visible feature to the founding of a settlement. A photograph records an appearance at a time; it does not show all earlier forms.\n\nA United Nations report describes documentation and expert assessments of Vigan houses after the 2022 earthquake, including the Syquia Mansion and Cabildo House. This modern conservation example shows why recording features before and during repair matters. It is not proof of a buildings exact colonial appearance. Our fictional timeline has construction, a later alteration and a modern repair. Keep each stage separate. Students can respect heritage and learn from records without climbing damaged structures, entering private spaces or attempting repairs.\n\nOpen the three clues and choose the explanation they support. Use Explain for help or return to the lesson before targeted practice if the topic needs review.",
+        "reviewTopics": [
+          "housing-change-care"
+        ],
+        "imageUrl": "../assets/story/settlement-housing-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Buildings Have Histories Too. Labelled clues distinguish a building feature and evidence limits, not an authentic historical house plan.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Different dates",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Settlement beginnings, construction, alteration and repair can belong to different periods.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Record before repair",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Documentation helps keep evidence of features and changes visible.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Modern evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A conservation report is not automatic proof of every earlier appearance.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "A town founding date is attached to every visible house feature. What should be checked?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Construction, alteration and repair dates for the particular features",
+          "Nothing because every feature must share one date",
+          "Only whether the building looks old",
+          "Whether all residents had identical beliefs"
+        ],
+        "decisionCorrectAnswer": "Construction, alteration and repair dates for the particular features",
+        "decisionExplanation": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "keyTerm": "Conservation",
+        "keyTermDefinition": "Caring for heritage while keeping evidence of its history.",
+        "historicalInsight": "A conservation report is not automatic proof of every earlier appearance.",
+        "learningHelp": {
+          "explanation": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "vocabulary": [
+            {
+              "term": "Conservation",
+              "definition": "Caring for heritage while keeping evidence of its history."
+            }
+          ],
+          "example": "Settlement beginnings, construction, alteration and repair can belong to different periods.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://philhistoricsites.nhcp.gov.ph/wp-content/uploads/2023/07/NHCP-GUIDELINES-ON-THE-IDENTIFICATION-AND-RECOGNITION-OF-CULTURAL-PROPERTIES-AS-HERITAGE-HOUSES.pdf",
+          "https://philippines.un.org/en/283842-raising-roof-building-resilience-through-conserving-historic-homes-unesco-world-heritage"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter10-mission1-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission1",
+        "status": "active",
+        "order": 6,
+        "title": "Prepare Your Settlement and Housing Report",
+        "content": "Review five ideas. Settlements connect places and activities. Houses could combine materials and local skills. Features such as openings helped people use spaces. Some buildings combined work with domestic life. Buildings also changed through construction, alteration, use and repair. A surviving town or house does not show every communitys experience.\n\nPrepare a fictional heritage report for another Grade 5 learner. Name a place or feature, give a supporting clue and explain what remains uncertain. Label the town plan and house cutaway as models. Do not use a towns beginning to date every later feature, or judge peoples worth from house materials. Keep local work visible and compare dated evidence before describing daily life.\n\nThe main quiz has five questions, and three correct passes this mission. Review linked learning content before practice and a retry if needed. Only Chapter 10 Mission 1 is ready in this release. Completing it does not complete the chapter or award its final badge: Missions 2-5 and the chapter challenge are still being prepared.",
+        "reviewTopics": [
+          "settlement-layout",
+          "housing-materials",
+          "housing-climate",
+          "housing-daily-use",
+          "housing-change-care"
+        ],
+        "imageUrl": "../assets/story/settlement-housing-5.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern teaching guide for Buildings Have Histories Too. Labelled clues distinguish a building feature and evidence limits, not an authentic historical house plan.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Different dates",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Settlement beginnings, construction, alteration and repair can belong to different periods.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Record before repair",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Documentation helps keep evidence of features and changes visible.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Modern evidence",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "A conservation report is not automatic proof of every earlier appearance.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report best explains a historic house?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Date every feature to the towns founding",
+          "Treat one house as every familys home",
+          "Rank people by their building materials",
+          "Describe features with dated evidence and identify model and source limits"
+        ],
+        "decisionCorrectAnswer": "Describe features with dated evidence and identify model and source limits",
+        "decisionExplanation": "Connect layouts, materials, functions and changes through dated evidence while recognizing variation.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Connect layouts, materials, functions and changes through dated evidence while recognizing variation.",
+        "keyTerm": "Conservation",
+        "keyTermDefinition": "Caring for heritage while keeping evidence of its history.",
+        "historicalInsight": "A conservation report is not automatic proof of every earlier appearance.",
+        "learningHelp": {
+          "explanation": "Connect layouts, materials, functions and changes through dated evidence while recognizing variation.",
+          "vocabulary": [
+            {
+              "term": "Conservation",
+              "definition": "Caring for heritage while keeping evidence of its history."
+            }
+          ],
+          "example": "Settlement beginnings, construction, alteration and repair can belong to different periods.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://whc.unesco.org/en/list/502/",
+          "https://philhistoricsites.nhcp.gov.ph/wp-content/uploads/2023/07/NHCP-GUIDELINES-ON-THE-IDENTIFICATION-AND-RECOGNITION-OF-CULTURAL-PROPERTIES-AS-HERITAGE-HOUSES.pdf",
+          "https://philippines.un.org/en/283842-raising-roof-building-resilience-through-conserving-historic-homes-unesco-world-heritage"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz1-question1",
+      "create": true,
+      "fields": {
+        "question": "What does a settlement include in this lesson?",
+        "optionA": "Connected living and activity spaces",
+        "optionB": "Only one roof",
+        "optionC": "Only a modern game map",
+        "optionD": "A guarantee that all residents agree",
+        "correctAnswer": "A",
+        "explanation": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "learningPoint": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "historicalClue": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "answerExplanations": {
+          "A": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "B": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "C": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "D": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form."
+        },
+        "quizId": "chapter10-quiz1",
+        "order": 1,
+        "status": "active",
+        "topic": "settlement-layout",
+        "topicLabel": "Read a Settlement Layout",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz1-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Why mention trading activity before colonial planning in Vigan?",
+        "optionA": "To claim every later building already existed",
+        "optionB": "To show planning never changed anything",
+        "optionC": "To erase the towns named setting",
+        "optionD": "To avoid treating colonial planning as the beginning of community life",
+        "correctAnswer": "D",
+        "explanation": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "learningPoint": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "historicalClue": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "B": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "C": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "D": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form."
+        },
+        "quizId": "chapter10-quiz1",
+        "order": 101,
+        "status": "active",
+        "topic": "settlement-layout",
+        "topicLabel": "Read a Settlement Layout",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission1-settlement-layout-practice1",
+      "create": true,
+      "fields": {
+        "question": "A fictional town plan shows streets and open spaces. What can it directly help investigate?",
+        "optionA": "Every towns exact layout",
+        "optionB": "Proof that communities began only under Spanish rule",
+        "optionC": "The private beliefs of every resident",
+        "optionD": "How the depicted spaces connect, not every residents actual daily route",
+        "correctAnswer": "D",
+        "explanation": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "learningPoint": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "historicalClue": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "B": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "C": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "D": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form."
+        },
+        "missionId": "chapter10-mission1",
+        "topic": "settlement-layout",
+        "topicLabel": "Read a Settlement Layout",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A place where people live and carry out connected activities.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission1-settlement-layout-practice2",
+      "create": true,
+      "fields": {
+        "question": "A model plan is presented as every Philippine towns exact map. Which correction fits?",
+        "optionA": "Assume all residents used identical paths",
+        "optionB": "Erase earlier settlement activity",
+        "optionC": "Label the model and use evidence for each actual place",
+        "optionD": "Keep the universal claim",
+        "correctAnswer": "C",
+        "explanation": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "learningPoint": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "historicalClue": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "B": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "C": "How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form.",
+          "D": "Review the lesson clues. How the depicted spaces connect, not every residents actual daily route. A model layout does not establish every residents route or every towns form."
+        },
+        "missionId": "chapter10-mission1",
+        "topic": "settlement-layout",
+        "topicLabel": "Read a Settlement Layout",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A place where people live and carry out connected activities.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz1-question2",
+      "create": true,
+      "fields": {
+        "question": "Which combination appears in the NHCP discussion of colonial-period houses?",
+        "optionA": "Only modern plastic",
+        "optionB": "Only glass with no other material",
+        "optionC": "One material for every building everywhere",
+        "optionD": "Masonry and wood",
+        "correctAnswer": "D",
+        "explanation": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "learningPoint": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "historicalClue": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "B": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "C": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "D": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling."
+        },
+        "quizId": "chapter10-quiz1",
+        "order": 2,
+        "status": "active",
+        "topic": "housing-materials",
+        "topicLabel": "A House Could Combine Materials",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz1-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "Why inspect parts of a house rather than rely only on its name?",
+        "optionA": "All roofs and walls were identical",
+        "optionB": "Material records never help",
+        "optionC": "A name may not describe every material used",
+        "optionD": "The name proves every construction date",
+        "correctAnswer": "C",
+        "explanation": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "learningPoint": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "historicalClue": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "B": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "C": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "D": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling."
+        },
+        "quizId": "chapter10-quiz1",
+        "order": 102,
+        "status": "active",
+        "topic": "housing-materials",
+        "topicLabel": "A House Could Combine Materials",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission1-housing-materials-practice1",
+      "create": true,
+      "fields": {
+        "question": "A bahay na bato label is read as proof that every part was stone. What correction fits?",
+        "optionA": "Every household lived in the same type",
+        "optionB": "Materials reveal every builders name",
+        "optionC": "Examples could combine masonry and wood; check the particular building",
+        "optionD": "Every roof and wall was always stone",
+        "correctAnswer": "C",
+        "explanation": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "learningPoint": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "historicalClue": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "B": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "C": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "D": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling."
+        },
+        "missionId": "chapter10-mission1",
+        "topic": "housing-materials",
+        "topicLabel": "A House Could Combine Materials",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A substance used to make part of a building.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission1-housing-materials-practice2",
+      "create": true,
+      "fields": {
+        "question": "A drawing of one house is used to rank residents by worth. What should a historian do?",
+        "optionA": "Ignore local craftsmanship",
+        "optionB": "Describe materials and setting without ranking peoples worth",
+        "optionC": "Treat expensive materials as proof of greater human value",
+        "optionD": "Assume all families had equal resources",
+        "correctAnswer": "B",
+        "explanation": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "learningPoint": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "historicalClue": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "B": "Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "C": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling.",
+          "D": "Review the lesson clues. Examples could combine masonry and wood; check the particular building. One house type does not describe every familys dwelling."
+        },
+        "missionId": "chapter10-mission1",
+        "topic": "housing-materials",
+        "topicLabel": "A House Could Combine Materials",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A substance used to make part of a building.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz1-question3",
+      "create": true,
+      "fields": {
+        "question": "What does ventilation mean?",
+        "optionA": "A tax on a building",
+        "optionB": "A guarantee that storms cannot damage a house",
+        "optionC": "Air moving into and through a space",
+        "optionD": "The date a town was founded",
+        "correctAnswer": "C",
+        "explanation": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "learningPoint": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "historicalClue": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "B": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "C": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "D": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort."
+        },
+        "quizId": "chapter10-quiz1",
+        "order": 3,
+        "status": "active",
+        "topic": "housing-climate",
+        "topicLabel": "Look for Light and Air",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz1-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare an open and closed window panel?",
+        "optionA": "To show every building was identical",
+        "optionB": "To investigate how a feature can affect air movement",
+        "optionC": "To prove the exact thoughts of residents",
+        "optionD": "To date every part of the house",
+        "correctAnswer": "B",
+        "explanation": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "learningPoint": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "historicalClue": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "B": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "C": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "D": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort."
+        },
+        "quizId": "chapter10-quiz1",
+        "order": 103,
+        "status": "active",
+        "topic": "housing-climate",
+        "topicLabel": "Look for Light and Air",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission1-housing-climate-practice1",
+      "create": true,
+      "fields": {
+        "question": "An open window panel is shown with an air arrow. What does the model illustrate?",
+        "optionA": "A complete building-repair instruction",
+        "optionB": "A ventilation function, not a measured temperature for every house",
+        "optionC": "Every resident always felt comfortable",
+        "optionD": "Every Philippine house had the same windows",
+        "correctAnswer": "B",
+        "explanation": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "learningPoint": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "historicalClue": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "B": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "C": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "D": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort."
+        },
+        "missionId": "chapter10-mission1",
+        "topic": "housing-climate",
+        "topicLabel": "Look for Light and Air",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The movement of air into and through a space.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission1-housing-climate-practice2",
+      "create": true,
+      "fields": {
+        "question": "A diagram claims one opening kept every historic house equally cool. What should change?",
+        "optionA": "Explain the function and check actual conditions before claiming universal comfort",
+        "optionB": "Treat the arrow as a measured temperature",
+        "optionC": "Assume maintenance never mattered",
+        "optionD": "Use one panel to describe every region",
+        "correctAnswer": "A",
+        "explanation": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "learningPoint": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "historicalClue": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+        "answerExplanations": {
+          "A": "A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "B": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "C": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort.",
+          "D": "Review the lesson clues. A ventilation function, not a measured temperature for every house. An airflow arrow does not measure temperature or every residents comfort."
+        },
+        "missionId": "chapter10-mission1",
+        "topic": "housing-climate",
+        "topicLabel": "Look for Light and Air",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The movement of air into and through a space.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz1-question4",
+      "create": true,
+      "fields": {
+        "question": "What does building use describe?",
+        "optionA": "A universal tax rate",
+        "optionB": "Activities carried out in a building or its spaces",
+        "optionC": "Only a building material",
+        "optionD": "Every persons private thoughts",
+        "correctAnswer": "B",
+        "explanation": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "learningPoint": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "historicalClue": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "B": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "C": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "D": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life."
+        },
+        "quizId": "chapter10-quiz1",
+        "order": 4,
+        "status": "active",
+        "topic": "housing-daily-use",
+        "topicLabel": "Work and Home Could Share a Building",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz1-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Why compare a floor plan with records of actual use?",
+        "optionA": "A labelled space does not record every activity that occurred there",
+        "optionB": "Plans always reveal all daily life",
+        "optionC": "Every room stayed unchanged forever",
+        "optionD": "Records cannot add anything to a drawing",
+        "correctAnswer": "A",
+        "explanation": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "learningPoint": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "historicalClue": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "answerExplanations": {
+          "A": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "B": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "C": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "D": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life."
+        },
+        "quizId": "chapter10-quiz1",
+        "order": 104,
+        "status": "active",
+        "topic": "housing-daily-use",
+        "topicLabel": "Work and Home Could Share a Building",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission1-housing-daily-use-practice1",
+      "create": true,
+      "fields": {
+        "question": "A cutaway shows work below and living spaces above. What is a careful explanation?",
+        "optionA": "It models a pattern that needs evidence for a particular house and period",
+        "optionB": "Every household followed that exact plan",
+        "optionC": "Every room proves its occupants were wealthy",
+        "optionD": "A modern display records every earlier daily task",
+        "correctAnswer": "A",
+        "explanation": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "learningPoint": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "historicalClue": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "answerExplanations": {
+          "A": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "B": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "C": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "D": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life."
+        },
+        "missionId": "chapter10-mission1",
+        "topic": "housing-daily-use",
+        "topicLabel": "Work and Home Could Share a Building",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The activities carried out in a building or part of it.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission1-housing-daily-use-practice2",
+      "create": true,
+      "fields": {
+        "question": "A restored room display is described as an unchanged scene from all colonial years. What is missing?",
+        "optionA": "Only the display color",
+        "optionB": "A claim that no household ever changed",
+        "optionC": "Proof that every family had the same resources",
+        "optionD": "Dated evidence about earlier arrangement, use and later changes",
+        "correctAnswer": "D",
+        "explanation": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "learningPoint": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "historicalClue": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "B": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "C": "Review the lesson clues. It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life.",
+          "D": "It models a pattern that needs evidence for a particular house and period. A model or later display is not a complete record of earlier daily life."
+        },
+        "missionId": "chapter10-mission1",
+        "topic": "housing-daily-use",
+        "topicLabel": "Work and Home Could Share a Building",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The activities carried out in a building or part of it.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz1-question5",
+      "create": true,
+      "fields": {
+        "question": "Why document a heritage house during conservation?",
+        "optionA": "To preserve evidence of its features and changes",
+        "optionB": "To prove it never changed",
+        "optionC": "To make every building the same",
+        "optionD": "To replace all historical records with a guess",
+        "correctAnswer": "A",
+        "explanation": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "learningPoint": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "historicalClue": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "answerExplanations": {
+          "A": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "B": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "C": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "D": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance."
+        },
+        "quizId": "chapter10-quiz1",
+        "order": 5,
+        "status": "active",
+        "topic": "housing-change-care",
+        "topicLabel": "Buildings Have Histories Too",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter10-quiz1-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "What does a modern photograph most directly record?",
+        "optionA": "Every previous room arrangement",
+        "optionB": "A complete construction history without other records",
+        "optionC": "Every residents daily experience",
+        "optionD": "An appearance at the time it was taken",
+        "correctAnswer": "D",
+        "explanation": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "learningPoint": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "historicalClue": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "B": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "C": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "D": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance."
+        },
+        "quizId": "chapter10-quiz1",
+        "order": 105,
+        "status": "active",
+        "topic": "housing-change-care",
+        "topicLabel": "Buildings Have Histories Too",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission1-housing-change-care-practice1",
+      "create": true,
+      "fields": {
+        "question": "A town founding date is attached to every visible house feature. What should be checked?",
+        "optionA": "Nothing because every feature must share one date",
+        "optionB": "Only whether the building looks old",
+        "optionC": "Whether all residents had identical beliefs",
+        "optionD": "Construction, alteration and repair dates for the particular features",
+        "correctAnswer": "D",
+        "explanation": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "learningPoint": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "historicalClue": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "B": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "C": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "D": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance."
+        },
+        "missionId": "chapter10-mission1",
+        "topic": "housing-change-care",
+        "topicLabel": "Buildings Have Histories Too",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Caring for heritage while keeping evidence of its history.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter10-mission1-housing-change-care-practice2",
+      "create": true,
+      "fields": {
+        "question": "A post-earthquake assessment is used to prove an exact colonial layout. What revision fits?",
+        "optionA": "Erase the assessment date",
+        "optionB": "Assume the town founding date explains all features",
+        "optionC": "Use it for the documented modern assessment and seek dated evidence for earlier forms",
+        "optionD": "Treat every repair as original construction",
+        "correctAnswer": "C",
+        "explanation": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "learningPoint": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "historicalClue": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "B": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "C": "Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance.",
+          "D": "Review the lesson clues. Construction, alteration and repair dates for the particular features. A conservation report is not automatic proof of every earlier appearance."
+        },
+        "missionId": "chapter10-mission1",
+        "topic": "housing-change-care",
+        "topicLabel": "Buildings Have Histories Too",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "Caring for heritage while keeping evidence of its history.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter10-mission1-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter10-mission1",
+        "name": "Settlement and Housing Evidence Journal",
+        "description": "A learning-game token for examining settlement and house evidence.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Connect layout, materials, functions and dated changes without treating one house as every home.",
+          "reflectionQuestion": "Which clue helped you distinguish a towns beginning from a houses later features?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-10",
+      "create": true,
+      "fields": {
+        "eraId": "colonial-economic-social-cultural-change",
+        "title": "Social and Cultural Transformation",
+        "description": "Mission 1 investigates changes in settlements and housing. Missions 2-5 and the chapter challenge are being prepared.",
+        "order": 10,
+        "status": "active",
+        "contentReady": true
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "create": false,
+      "expected": {
+        "description": "Chapter 9 offers five missions and a community economy evidence challenge. Chapters 10-11 are being prepared."
+      },
+      "fields": {
+        "description": "Chapter 9 offers five missions and an evidence challenge. Chapter 10 begins with settlements and housing; later content is being prepared."
+      }
+    }
+  ]
+}

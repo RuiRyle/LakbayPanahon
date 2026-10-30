@@ -1,0 +1,1317 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "scope": "Era 4 Chapter 15 Mission 4; preserve prior missions and learner records; no chapter badge",
+  "curriculumBasis": "User-confirmed MATATAG Grade 5",
+  "sourceUrls": [
+    "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+    "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+    "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+    "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+  ],
+  "reviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+  "prerequisites": [
+    {
+      "path": "chapters/chapter-15",
+      "expected": {
+        "status": "active",
+        "contentReady": true,
+        "eraId": "resistance-national-consciousness"
+      }
+    },
+    {
+      "path": "missions/chapter15-mission1",
+      "expected": {
+        "chapterId": "chapter-15",
+        "status": "active",
+        "order": 1
+      }
+    },
+    {
+      "path": "missions/chapter15-mission2",
+      "expected": {
+        "chapterId": "chapter-15",
+        "status": "active",
+        "order": 2
+      }
+    },
+    {
+      "path": "missions/chapter15-mission3",
+      "expected": {
+        "chapterId": "chapter-15",
+        "status": "active",
+        "order": 3
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "missions/chapter15-mission4",
+      "create": true,
+      "fields": {
+        "chapterId": "chapter-15",
+        "title": "Cavite and GOMBURZA: Events, Claims and Remembrance",
+        "order": 4,
+        "status": "active",
+        "xpReward": 50,
+        "introduction": "Build a history case board separating the Cavite event, accusation, execution and later remembrance.",
+        "learningObjective": "Identify GOMBURZA, explain the 1872 sequence and distinguish an accusation from evidence and later remembrance.",
+        "learningObjectives": [
+          "Explain the cavite event using lesson evidence.",
+          "Explain the three priests using lesson evidence.",
+          "Explain accusations and evidence using lesson evidence.",
+          "Explain the 1872 sequence using lesson evidence.",
+          "Explain remembrance and wider concern using lesson evidence."
+        ],
+        "lessonRecap": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "quizzes/chapter15-quiz4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission4",
+        "title": "Cavite and GOMBURZA - Mission Quiz",
+        "description": "Five questions covering the same topics on every attempt. Pass with at least three correct.",
+        "questionCount": 5,
+        "passingScore": 60,
+        "status": "active",
+        "order": 1,
+        "questionBlueprint": [
+          {
+            "topic": "cavite-event",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "gomburza-identities",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "accusation-and-evidence",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "execution-chronology",
+            "difficulty": "medium",
+            "count": 1
+          },
+          {
+            "topic": "remembrance-and-meaning",
+            "difficulty": "medium",
+            "count": 1
+          }
+        ],
+        "practicePolicy": {
+          "difficultyLevels": [
+            "easy",
+            "hard"
+          ],
+          "startDifficulty": "easy",
+          "reviewDifficulty": "easy",
+          "questionLimit": 5,
+          "promoteAccuracy": 0.8,
+          "demoteAccuracy": 0.4
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission4-scene1",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission4",
+        "status": "active",
+        "order": 1,
+        "title": "Locate the Cavite Event",
+        "content": "Our new case starts at Cavite on 20 January 1872. A mutiny is a military uprising against authority. The NHCP execution-site marker links the later accusation against three priests with this January event.\n\nKeep two places separate: Cavite is linked with the uprising; Bagumbayan in Manila is linked with the later execution. Related events in the same year are not necessarily the same event. This introductory timeline does not settle every disagreement about the causes or extent of the uprising.\n\nYour museum task is to locate the event accurately. We study what happened without acting as fighters.",
+        "reviewTopics": [
+          "cavite-event"
+        ],
+        "imageUrl": "../assets/story/cavite-event.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled case diagram: Locate the Cavite Event. No violence or original document is depicted.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Clue 1",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Date: 20 January 1872.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 2",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Event: a military uprising.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 3",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Place: Cavite, separate from the later Manila event.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which label starts this case timeline?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "20 January 1872: military uprising in Cavite.",
+          "17 February 1872: publication of a newspaper.",
+          "20 January 1872: dedication of a novel.",
+          "17 February 1872: opening of the Suez Canal."
+        ],
+        "decisionCorrectAnswer": "20 January 1872: military uprising in Cavite.",
+        "decisionExplanation": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "keyTerm": "Mutiny",
+        "keyTermDefinition": "A military uprising against authority.",
+        "historicalInsight": "Place: Cavite, separate from the later Manila event.",
+        "learningHelp": {
+          "explanation": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "vocabulary": [
+            {
+              "term": "Mutiny",
+              "definition": "A military uprising against authority."
+            }
+          ],
+          "example": "Date: 20 January 1872.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission4-scene2",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission4",
+        "status": "active",
+        "order": 2,
+        "title": "Meet the Three Priests",
+        "content": "GOMBURZA combines parts of three surnames: Gomes, Burgos and Zamora. Mariano Gomes, Jose Burgos and Jacinto Zamora were three Filipino priests. Some historical writing uses Gomez for Gomes; in this lesson these spellings refer to the same priest.\n\nThe NHCP connects their memory with secularization and equal rights. Recall the previous mission: secularization concerns parish administration by secular clergy. Supporting reform does not by itself establish that someone organized a military uprising.\n\nKeep the people card separate from the event card. The combined name remembers three people, not every participant in the Cavite Mutiny.",
+        "reviewTopics": [
+          "gomburza-identities"
+        ],
+        "imageUrl": "../assets/story/cavite-names.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled case diagram: Meet the Three Priests. No violence or original document is depicted.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Clue 1",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "People: the three priests Gomes, Burgos and Zamora.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 2",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Connection: secularization and equal rights.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 3",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Limit: supporting reform does not prove mutiny leadership.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which people belong on the GOMBURZA card?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "Pedro Pelaez, Jose Rizal and Marcelo del Pilar.",
+          "Isabelo de los Reyes, Jose Rizal and Andres Bonifacio.",
+          "The crew of every ship arriving at Cavite.",
+          "Mariano Gomes, Jose Burgos and Jacinto Zamora."
+        ],
+        "decisionCorrectAnswer": "Mariano Gomes, Jose Burgos and Jacinto Zamora.",
+        "decisionExplanation": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "keyTerm": "GOMBURZA",
+        "keyTermDefinition": "A combined name remembering Mariano Gomes, Jose Burgos and Jacinto Zamora.",
+        "historicalInsight": "Limit: supporting reform does not prove mutiny leadership.",
+        "learningHelp": {
+          "explanation": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "vocabulary": [
+            {
+              "term": "GOMBURZA",
+              "definition": "A combined name remembering Mariano Gomes, Jose Burgos and Jacinto Zamora."
+            }
+          ],
+          "example": "People: the three priests Gomes, Burgos and Zamora.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission4-scene3",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission4",
+        "status": "active",
+        "order": 3,
+        "title": "Read the Accusation Carefully",
+        "content": "After the uprising, colonial authorities accused the priests of involvement. The NHCP marker describes their involvement as alleged. Alleged means claimed, rather than proven merely by saying it. The National Museum describes suspected treason: a charge of acting against the government to which a person owes allegiance.\n\nA caption should distinguish the accusation from proof. A serious punishment does not by itself prove that an accusation was true. Our classroom cards cannot replace examination of historical records.\n\nRepair this fictional label: \"They were accused, so they must have organized the mutiny.\" An accusation and a proven action are different. You are not asked to decide guilt from three short clues.",
+        "reviewTopics": [
+          "accusation-and-evidence"
+        ],
+        "imageUrl": "../assets/story/cavite-claim.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled case diagram: Read the Accusation Carefully. No violence or original document is depicted.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Clue 1",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Claim: authorities linked the priests with the uprising.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 2",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Language: alleged involvement means claimed involvement.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 3",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Reasoning: punishment alone cannot prove the accused action.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which caption handles the accusation carefully?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A later monument proves that no uprising took place.",
+          "Anyone supporting reform must have led the mutiny.",
+          "Authorities accused the priests; the accusation itself is not proof they organized the mutiny.",
+          "An accusation automatically proves every detail of a case."
+        ],
+        "decisionCorrectAnswer": "Authorities accused the priests; the accusation itself is not proof they organized the mutiny.",
+        "decisionExplanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "keyTerm": "Accusation",
+        "keyTermDefinition": "A claim of wrongdoing that must be examined using evidence.",
+        "historicalInsight": "Reasoning: punishment alone cannot prove the accused action.",
+        "learningHelp": {
+          "explanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "vocabulary": [
+            {
+              "term": "Accusation",
+              "definition": "A claim of wrongdoing that must be examined using evidence."
+            }
+          ],
+          "example": "Claim: authorities linked the priests with the uprising.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission4-scene4",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission4",
+        "status": "active",
+        "order": 4,
+        "title": "Place the Loss on the Timeline",
+        "content": "The three priests were executed at Bagumbayan in Manila on 17 February 1872. Executed means put to death under a government sentence. This was a serious loss of human life. We remember it respectfully, without showing or acting out how it happened.\n\nThe January uprising came first; the February execution followed. Both belong to 1872, but they happened on different days and in different places. Modern memorials remember this loss.\n\nThe timeline helps explain the sequence. It is not a countdown or a battle. Your task is to explain what happened first and what followed, while keeping a claim of involvement separate from proof.",
+        "reviewTopics": [
+          "execution-chronology"
+        ],
+        "imageUrl": "../assets/story/cavite-dates.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled case diagram: Place the Loss on the Timeline. No violence or original document is depicted.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Clue 1",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "First: 20 January 1872, Cavite Mutiny.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 2",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Later: 17 February 1872, execution at Bagumbayan, Manila.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 3",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Respect: explaining a loss does not make harm a game goal.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which timeline keeps the events in order?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "The execution happened before Spanish colonial rule began.",
+          "Cavite Mutiny in January, then execution at Bagumbayan in February 1872.",
+          "Execution in January, then the Cavite Mutiny in February 1872.",
+          "Both events happened at the same place on the same day."
+        ],
+        "decisionCorrectAnswer": "Cavite Mutiny in January, then execution at Bagumbayan in February 1872.",
+        "decisionExplanation": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "keyTerm": "Chronology",
+        "keyTermDefinition": "The order in which events happened.",
+        "historicalInsight": "Respect: explaining a loss does not make harm a game goal.",
+        "learningHelp": {
+          "explanation": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "vocabulary": [
+            {
+              "term": "Chronology",
+              "definition": "The order in which events happened."
+            }
+          ],
+          "example": "First: 20 January 1872, Cavite Mutiny.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission4-scene5",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission4",
+        "status": "active",
+        "order": 5,
+        "title": "Build a Remembrance Case Board",
+        "content": "Jose Rizal dedicated his second novel, El Filibusterismo, to the memory of the priests. In the dedication he questioned the accusation. This gives evidence of his response, not every Filipino's opinion.\n\nThe NHCP also records remembrance within the Katipunan. These responses connect the case with wider concerns for justice and the country. They do not mean one event alone caused every later movement, or that everyone responded alike.\n\nBuild a modern case board. Connect an event, a claim and a later response with the kind of information each provides. Then explain why a dedication is evidence of remembrance, not proof that its writer witnessed the uprising.",
+        "reviewTopics": [
+          "remembrance-and-meaning"
+        ],
+        "imageUrl": "../assets/story/cavite-memory.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled case diagram: Build a Remembrance Case Board. No violence or original document is depicted.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Clue 1",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Later writing: Rizal dedicated El Filibusterismo to the priests.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 2",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Wider concern: remembrance connected the case with justice and the country.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 3",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Limit: a dedication does not show everyone held the same view.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "What does Rizal's dedication help us understand?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "He honored the priests and questioned the accusation in his later writing.",
+          "He personally witnessed every part of the Cavite Mutiny.",
+          "Every Filipino had an identical opinion of the case.",
+          "The dedication itself proves the priests organized the mutiny."
+        ],
+        "decisionCorrectAnswer": "He honored the priests and questioned the accusation in his later writing.",
+        "decisionExplanation": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "keyTerm": "Remembrance",
+        "keyTermDefinition": "An act that keeps the memory of people or events alive.",
+        "historicalInsight": "Limit: a dedication does not show everyone held the same view.",
+        "learningHelp": {
+          "explanation": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "vocabulary": [
+            {
+              "term": "Remembrance",
+              "definition": "An act that keeps the memory of people or events alive."
+            }
+          ],
+          "example": "Later writing: Rizal dedicated El Filibusterismo to the priests.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending",
+        "exhibitActivity": {
+          "title": "Connect the Case Evidence",
+          "eyebrow": "BUILD YOUR HISTORY CASE BOARD",
+          "matchPrompt": "What kind of evidence is this card?",
+          "instructions": "Explore the clues. Match each modern summary card with what it tells us, then explain your choice.",
+          "successMessage": "You separated the event, accusation and later remembrance. Now explain the connection.",
+          "retryMessage": "Check which card records an event, which reports a claim and which shows a later response.",
+          "effects": [
+            {
+              "id": "event",
+              "label": "Dated event: something happened at a place and time."
+            },
+            {
+              "id": "claim",
+              "label": "Accusation: authorities claimed involvement; a claim alone is not proof."
+            },
+            {
+              "id": "response",
+              "label": "Later response: someone honored the priests and questioned injustice."
+            }
+          ],
+          "pairs": [
+            {
+              "id": "january",
+              "label": "Cavite timeline card",
+              "action": "20 January 1872: the Cavite Mutiny.",
+              "effectId": "event",
+              "feedback": "This locates the uprising in time and place."
+            },
+            {
+              "id": "accused",
+              "label": "Accusation card",
+              "action": "Colonial authorities accused the priests of involvement.",
+              "effectId": "claim",
+              "feedback": "Reporting an accusation does not turn it into proof."
+            },
+            {
+              "id": "dedication",
+              "label": "Writing card",
+              "action": "El Filibusterismo was dedicated to the memory of the priests.",
+              "effectId": "response",
+              "feedback": "This records a later act of remembrance."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "storyScenes/chapter15-mission4-scene6",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission4",
+        "status": "active",
+        "order": 6,
+        "title": "Explain the Whole Case",
+        "content": "Your case has three parts. Locate the Cavite Mutiny on 20 January 1872. Explain that authorities accused Gomes, Burgos and Zamora, and that the priests were executed at Bagumbayan on 17 February. Then identify later remembrance, such as Rizal's dedication.\n\nThe sequence connects events without confusing them. Punishment does not turn an accusation into proof. Later remembrance helps explain why the case remained important in concerns about justice and the country.\n\nComplete this report frame silently or with a trusted adult: \"The event was ___. The accusation was ___. A later response was ___. It shows ___, but does not prove ___.\" The quiz checks five lesson topics. If one is difficult, review its scene before targeted practice.",
+        "reviewTopics": [
+          "cavite-event",
+          "gomburza-identities",
+          "accusation-and-evidence",
+          "execution-chronology",
+          "remembrance-and-meaning"
+        ],
+        "imageUrl": "../assets/story/cavite-recap.svg",
+        "imageFit": "contain",
+        "imageAlt": "Modern labelled case diagram: Explain the Whole Case. No violence or original document is depicted.",
+        "imageCaption": "Modern teaching diagram, not an original historical source.",
+        "exploreIntroduction": "Open the three clues. Use them to explain your choice.",
+        "exploreItems": [
+          {
+            "title": "Clue 1",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Distinguish: an event and the people accused are different subjects.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 2",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Sequence: January mutiny, February execution, later remembrance.",
+            "icon": "🔎"
+          },
+          {
+            "title": "Clue 3",
+            "hint": "Look for an idea and a limit.",
+            "discovery": "Explain: connect a response with justice and state its limits.",
+            "icon": "🔎"
+          }
+        ],
+        "decisionSituation": "Which report connects the case evidence?",
+        "decisionQuestion": "Which explanation fits the clues?",
+        "decisionChoices": [
+          "A novel dedication was the mutiny and happened before January 1872.",
+          "All reform supporters certainly organized the uprising.",
+          "One memorial tells us every detail of the trial and every person's view.",
+          "A January mutiny was followed by accusations and a February execution; later remembrance expressed concern about injustice."
+        ],
+        "decisionCorrectAnswer": "A January mutiny was followed by accusations and a February execution; later remembrance expressed concern about injustice.",
+        "decisionExplanation": "A sound explanation distinguishes the event, accusation, execution and later remembrance.",
+        "discoveryTitle": "Record your discovery",
+        "discoveryText": "A sound explanation distinguishes the event, accusation, execution and later remembrance.",
+        "keyTerm": "Historical explanation",
+        "keyTermDefinition": "An account connecting events and responses while showing what evidence supports.",
+        "historicalInsight": "Explain: connect a response with justice and state its limits.",
+        "learningHelp": {
+          "explanation": "A sound explanation distinguishes the event, accusation, execution and later remembrance.",
+          "vocabulary": [
+            {
+              "term": "Historical explanation",
+              "definition": "An account connecting events and responses while showing what evidence supports."
+            }
+          ],
+          "example": "Distinguish: an event and the people accused are different subjects.",
+          "guidingQuestion": "Which clue supports your explanation? What does it not prove?"
+        },
+        "sourceUrls": [
+          "https://philhistoricsites.nhcp.gov.ph/registry_database/gomburza-execution-site/",
+          "https://www.nationalmuseum.gov.ph/2025/02/17/nmp-commemorates-gomburza-on-153rd-martyrdom-anniversary/",
+          "https://pia.gov.ph/press-release/nhcp-commemorates-the-153rd-anniversary-of-the-martyrdom-of-frs-gomes-burgos-and-zamora/",
+          "https://www.gutenberg.org/files/10676/10676-h/10676-h.htm"
+        ],
+        "contentReviewStatus": "Source-informed draft; independent teacher, curriculum alignment and Grade 5 review pending"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question1",
+      "create": true,
+      "fields": {
+        "question": "What does the Cavite Mutiny refer to?",
+        "optionA": "A military uprising in Cavite on 20 January 1872.",
+        "optionB": "The February execution at Bagumbayan.",
+        "optionC": "A dedication written by a novelist.",
+        "optionD": "A Malolos night-school request.",
+        "correctAnswer": "A",
+        "explanation": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "learningPoint": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "historicalClue": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "answerExplanations": {
+          "A": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "B": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "C": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "D": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event."
+        },
+        "quizId": "chapter15-quiz4",
+        "order": 1,
+        "status": "active",
+        "topic": "cavite-event",
+        "topicLabel": "The Cavite Event",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question1-retry",
+      "create": true,
+      "fields": {
+        "question": "Which event belongs to Cavite in January 1872?",
+        "optionA": "The February execution at Bagumbayan.",
+        "optionB": "A dedication written by a novelist.",
+        "optionC": "A Malolos night-school request.",
+        "optionD": "A mutiny against military authority.",
+        "correctAnswer": "D",
+        "explanation": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "learningPoint": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "historicalClue": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "B": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "C": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "D": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event."
+        },
+        "quizId": "chapter15-quiz4",
+        "order": 101,
+        "status": "active",
+        "topic": "cavite-event",
+        "topicLabel": "The Cavite Event",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-cavite-event-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which label starts this case timeline?",
+        "optionA": "17 February 1872: publication of a newspaper.",
+        "optionB": "20 January 1872: dedication of a novel.",
+        "optionC": "17 February 1872: opening of the Suez Canal.",
+        "optionD": "20 January 1872: military uprising in Cavite.",
+        "correctAnswer": "D",
+        "explanation": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "learningPoint": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "historicalClue": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "B": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "C": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "D": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event."
+        },
+        "missionId": "chapter15-mission4",
+        "topic": "cavite-event",
+        "topicLabel": "The Cavite Event",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 1,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A military uprising against authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-cavite-event-practice2",
+      "create": true,
+      "fields": {
+        "question": "A museum labels the mutiny as the February execution in Manila. What should change?",
+        "optionA": "A dedication written by a novelist.",
+        "optionB": "A Malolos night-school request.",
+        "optionC": "Label it as the January military uprising in Cavite.",
+        "optionD": "The February execution at Bagumbayan.",
+        "correctAnswer": "C",
+        "explanation": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "learningPoint": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "historicalClue": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "B": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "C": "The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event.",
+          "D": "Review the lesson clues. The Cavite Mutiny was a military uprising on 20 January 1872; the later execution was a separate event."
+        },
+        "missionId": "chapter15-mission4",
+        "topic": "cavite-event",
+        "topicLabel": "The Cavite Event",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 2,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A military uprising against authority.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question2",
+      "create": true,
+      "fields": {
+        "question": "Whose surnames form GOMBURZA?",
+        "optionA": "Every participant in the Cavite uprising.",
+        "optionB": "Pelaez, Rizal and Bonifacio.",
+        "optionC": "The names of three Cavite ships.",
+        "optionD": "Gomes, Burgos and Zamora.",
+        "correctAnswer": "D",
+        "explanation": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "learningPoint": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "historicalClue": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "B": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "C": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "D": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny."
+        },
+        "quizId": "chapter15-quiz4",
+        "order": 2,
+        "status": "active",
+        "topic": "gomburza-identities",
+        "topicLabel": "The Three Priests",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question2-retry",
+      "create": true,
+      "fields": {
+        "question": "What does the combined name GOMBURZA help us remember?",
+        "optionA": "Pelaez, Rizal and Bonifacio.",
+        "optionB": "The names of three Cavite ships.",
+        "optionC": "Three Filipino priests: Mariano Gomes, Jose Burgos and Jacinto Zamora.",
+        "optionD": "Every participant in the Cavite uprising.",
+        "correctAnswer": "C",
+        "explanation": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "learningPoint": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "historicalClue": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "B": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "C": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "D": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny."
+        },
+        "quizId": "chapter15-quiz4",
+        "order": 102,
+        "status": "active",
+        "topic": "gomburza-identities",
+        "topicLabel": "The Three Priests",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-gomburza-identities-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which people belong on the GOMBURZA card?",
+        "optionA": "Isabelo de los Reyes, Jose Rizal and Andres Bonifacio.",
+        "optionB": "The crew of every ship arriving at Cavite.",
+        "optionC": "Mariano Gomes, Jose Burgos and Jacinto Zamora.",
+        "optionD": "Pedro Pelaez, Jose Rizal and Marcelo del Pilar.",
+        "correctAnswer": "C",
+        "explanation": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "learningPoint": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "historicalClue": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "B": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "C": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "D": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny."
+        },
+        "missionId": "chapter15-mission4",
+        "topic": "gomburza-identities",
+        "topicLabel": "The Three Priests",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 3,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A combined name remembering Mariano Gomes, Jose Burgos and Jacinto Zamora.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-gomburza-identities-practice2",
+      "create": true,
+      "fields": {
+        "question": "A caption calls GOMBURZA every reform supporter who led the mutiny. What should change?",
+        "optionA": "The names of three Cavite ships.",
+        "optionB": "Identify the three priests; reform support alone does not prove mutiny leadership.",
+        "optionC": "Every participant in the Cavite uprising.",
+        "optionD": "Pelaez, Rizal and Bonifacio.",
+        "correctAnswer": "B",
+        "explanation": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "learningPoint": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "historicalClue": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "B": "GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "C": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny.",
+          "D": "Review the lesson clues. GOMBURZA remembers the three priests; reform advocacy alone does not prove involvement in the mutiny."
+        },
+        "missionId": "chapter15-mission4",
+        "topic": "gomburza-identities",
+        "topicLabel": "The Three Priests",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 4,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A combined name remembering Mariano Gomes, Jose Burgos and Jacinto Zamora.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question3",
+      "create": true,
+      "fields": {
+        "question": "What does alleged involvement mean?",
+        "optionA": "A monument replaces the need for evidence.",
+        "optionB": "Reform support always proves military leadership.",
+        "optionC": "Involvement was claimed; the claim itself is not proof.",
+        "optionD": "An accusation automatically proves every detail.",
+        "correctAnswer": "C",
+        "explanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "learningPoint": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "historicalClue": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "B": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "C": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "D": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement."
+        },
+        "quizId": "chapter15-quiz4",
+        "order": 3,
+        "status": "active",
+        "topic": "accusation-and-evidence",
+        "topicLabel": "Accusations and Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question3-retry",
+      "create": true,
+      "fields": {
+        "question": "Why distinguish an accusation from proof?",
+        "optionA": "Reform support always proves military leadership.",
+        "optionB": "A claim of wrongdoing must be examined using evidence.",
+        "optionC": "An accusation automatically proves every detail.",
+        "optionD": "A monument replaces the need for evidence.",
+        "correctAnswer": "B",
+        "explanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "learningPoint": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "historicalClue": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "B": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "C": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "D": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement."
+        },
+        "quizId": "chapter15-quiz4",
+        "order": 103,
+        "status": "active",
+        "topic": "accusation-and-evidence",
+        "topicLabel": "Accusations and Evidence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-accusation-and-evidence-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which caption handles the accusation carefully?",
+        "optionA": "Anyone supporting reform must have led the mutiny.",
+        "optionB": "Authorities accused the priests; the accusation itself is not proof they organized the mutiny.",
+        "optionC": "An accusation automatically proves every detail of a case.",
+        "optionD": "A later monument proves that no uprising took place.",
+        "correctAnswer": "B",
+        "explanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "learningPoint": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "historicalClue": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "B": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "C": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "D": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement."
+        },
+        "missionId": "chapter15-mission4",
+        "topic": "accusation-and-evidence",
+        "topicLabel": "Accusations and Evidence",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 5,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A claim of wrongdoing that must be examined using evidence.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-accusation-and-evidence-practice2",
+      "create": true,
+      "fields": {
+        "question": "A student says punishment alone proves the priests organized the mutiny. Which reply uses evidence carefully?",
+        "optionA": "Punishment records what authorities did; it does not by itself prove the accused action.",
+        "optionB": "An accusation automatically proves every detail.",
+        "optionC": "A monument replaces the need for evidence.",
+        "optionD": "Reform support always proves military leadership.",
+        "correctAnswer": "A",
+        "explanation": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "learningPoint": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "historicalClue": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+        "answerExplanations": {
+          "A": "Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "B": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "C": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement.",
+          "D": "Review the lesson clues. Distinguish the authorities' accusation from evidence of an action; accusation or punishment alone does not prove involvement."
+        },
+        "missionId": "chapter15-mission4",
+        "topic": "accusation-and-evidence",
+        "topicLabel": "Accusations and Evidence",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 6,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "A claim of wrongdoing that must be examined using evidence.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question4",
+      "create": true,
+      "fields": {
+        "question": "Which event followed the January Cavite Mutiny?",
+        "optionA": "The two events happened before Spanish colonial rule.",
+        "optionB": "The execution of the priests at Bagumbayan on 17 February 1872.",
+        "optionC": "Both events happened on the same day in Cavite.",
+        "optionD": "The execution happened before the January uprising.",
+        "correctAnswer": "B",
+        "explanation": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "learningPoint": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "historicalClue": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "B": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "C": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "D": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872."
+        },
+        "quizId": "chapter15-quiz4",
+        "order": 4,
+        "status": "active",
+        "topic": "execution-chronology",
+        "topicLabel": "The 1872 Sequence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question4-retry",
+      "create": true,
+      "fields": {
+        "question": "Where does the February execution belong on the timeline?",
+        "optionA": "After the January mutiny, at Bagumbayan in Manila.",
+        "optionB": "Both events happened on the same day in Cavite.",
+        "optionC": "The execution happened before the January uprising.",
+        "optionD": "The two events happened before Spanish colonial rule.",
+        "correctAnswer": "A",
+        "explanation": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "learningPoint": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "historicalClue": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "answerExplanations": {
+          "A": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "B": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "C": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "D": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872."
+        },
+        "quizId": "chapter15-quiz4",
+        "order": 104,
+        "status": "active",
+        "topic": "execution-chronology",
+        "topicLabel": "The 1872 Sequence",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-execution-chronology-practice1",
+      "create": true,
+      "fields": {
+        "question": "Which timeline keeps the events in order?",
+        "optionA": "Cavite Mutiny in January, then execution at Bagumbayan in February 1872.",
+        "optionB": "Execution in January, then the Cavite Mutiny in February 1872.",
+        "optionC": "Both events happened at the same place on the same day.",
+        "optionD": "The execution happened before Spanish colonial rule began.",
+        "correctAnswer": "A",
+        "explanation": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "learningPoint": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "historicalClue": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "answerExplanations": {
+          "A": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "B": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "C": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "D": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872."
+        },
+        "missionId": "chapter15-mission4",
+        "topic": "execution-chronology",
+        "topicLabel": "The 1872 Sequence",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 7,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The order in which events happened.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-execution-chronology-practice2",
+      "create": true,
+      "fields": {
+        "question": "Two cards say Cavite, 20 January and Bagumbayan, 17 February, both 1872. How do they connect?",
+        "optionA": "Both events happened on the same day in Cavite.",
+        "optionB": "The execution happened before the January uprising.",
+        "optionC": "The two events happened before Spanish colonial rule.",
+        "optionD": "The uprising came first; the execution followed at a different place.",
+        "correctAnswer": "D",
+        "explanation": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "learningPoint": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "historicalClue": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "B": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "C": "Review the lesson clues. The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872.",
+          "D": "The 20 January mutiny preceded the 17 February execution at Bagumbayan in 1872."
+        },
+        "missionId": "chapter15-mission4",
+        "topic": "execution-chronology",
+        "topicLabel": "The 1872 Sequence",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 8,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "The order in which events happened.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question5",
+      "create": true,
+      "fields": {
+        "question": "Which action shows Rizal remembering the priests?",
+        "optionA": "Dedicating El Filibusterismo to their memory.",
+        "optionB": "The writer witnessed every event in Cavite.",
+        "optionC": "Every Filipino had exactly the same opinion.",
+        "optionD": "One event alone caused every later movement.",
+        "correctAnswer": "A",
+        "explanation": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "learningPoint": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "historicalClue": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "answerExplanations": {
+          "A": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "B": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "C": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "D": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response."
+        },
+        "quizId": "chapter15-quiz4",
+        "order": 5,
+        "status": "active",
+        "topic": "remembrance-and-meaning",
+        "topicLabel": "Remembrance and Wider Concern",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "questions/chapter15-quiz4-question5-retry",
+      "create": true,
+      "fields": {
+        "question": "What can a dedication to the priests show?",
+        "optionA": "The writer witnessed every event in Cavite.",
+        "optionB": "Every Filipino had exactly the same opinion.",
+        "optionC": "One event alone caused every later movement.",
+        "optionD": "A later writer honored them and expressed concern about injustice.",
+        "correctAnswer": "D",
+        "explanation": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "learningPoint": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "historicalClue": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "B": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "C": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "D": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response."
+        },
+        "quizId": "chapter15-quiz4",
+        "order": 105,
+        "status": "active",
+        "topic": "remembrance-and-meaning",
+        "topicLabel": "Remembrance and Wider Concern",
+        "difficulty": "medium"
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-remembrance-and-meaning-practice1",
+      "create": true,
+      "fields": {
+        "question": "What does Rizal's dedication help us understand?",
+        "optionA": "He personally witnessed every part of the Cavite Mutiny.",
+        "optionB": "Every Filipino had an identical opinion of the case.",
+        "optionC": "The dedication itself proves the priests organized the mutiny.",
+        "optionD": "He honored the priests and questioned the accusation in his later writing.",
+        "correctAnswer": "D",
+        "explanation": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "learningPoint": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "historicalClue": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "B": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "C": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "D": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response."
+        },
+        "missionId": "chapter15-mission4",
+        "topic": "remembrance-and-meaning",
+        "topicLabel": "Remembrance and Wider Concern",
+        "status": "active",
+        "difficulty": "easy",
+        "order": 9,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An act that keeps the memory of people or events alive.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "practiceQuestions/chapter15-mission4-remembrance-and-meaning-practice2",
+      "create": true,
+      "fields": {
+        "question": "Why can remembrance matter when studying national consciousness?",
+        "optionA": "Every Filipino had exactly the same opinion.",
+        "optionB": "One event alone caused every later movement.",
+        "optionC": "It can connect people with wider concerns for justice without proving everyone responded alike.",
+        "optionD": "The writer witnessed every event in Cavite.",
+        "correctAnswer": "C",
+        "explanation": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "learningPoint": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "historicalClue": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+        "answerExplanations": {
+          "A": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "B": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "C": "Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response.",
+          "D": "Review the lesson clues. Rizal's dedication records remembrance and concern about injustice; it does not prove eyewitness knowledge or a single nationwide response."
+        },
+        "missionId": "chapter15-mission4",
+        "topic": "remembrance-and-meaning",
+        "topicLabel": "Remembrance and Wider Concern",
+        "status": "active",
+        "difficulty": "hard",
+        "order": 10,
+        "reviewEvidencePolicy": {
+          "version": 1,
+          "minDistinctQuestions": 2,
+          "minCleanSessions": 2,
+          "requiredDifficulty": "hard"
+        },
+        "hint": "An act that keeps the memory of people or events alive.",
+        "answerHints": {
+          "A": "Compare the choice with the lesson evidence and its limits.",
+          "B": "Compare the choice with the lesson evidence and its limits.",
+          "C": "Compare the choice with the lesson evidence and its limits.",
+          "D": "Compare the choice with the lesson evidence and its limits."
+        }
+      }
+    },
+    {
+      "path": "artifacts/chapter15-mission4-artifact",
+      "create": true,
+      "fields": {
+        "missionId": "chapter15-mission4",
+        "name": "Cavite History Case File",
+        "description": "A learning-game token for separating a dated event, a claim and a later response.",
+        "icon": "🧭",
+        "rarity": "common",
+        "order": 1,
+        "status": "active",
+        "learningDetails": {
+          "represents": "Careful historical explanation.",
+          "lessonConnection": "Connect the Cavite event, the 1872 sequence and later remembrance.",
+          "reflectionQuestion": "How is a later response different from proof of an accusation?",
+          "collectibleNote": "A game token, not an original historical object."
+        }
+      }
+    },
+    {
+      "path": "chapters/chapter-15",
+      "create": false,
+      "expected": {
+        "description": "Investigate connections, public participation and parish reform. Missions 1-3 are available; the remaining content and final challenge are not yet available."
+      },
+      "fields": {
+        "description": "Investigate connections, public participation, parish reform and Cavite/GOMBURZA. Missions 1-4 are available; the remaining content and final challenge are not yet available."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "create": false,
+      "expected": {
+        "description": "Chapters 12-14 offer missions and evidence challenges. Chapter 15 offers three missions on connections, participation and parish reform; further content and its final challenge are not yet available."
+      },
+      "fields": {
+        "description": "Chapters 12-14 offer missions and evidence challenges. Chapter 15 offers four missions on connections, participation, parish reform and Cavite/GOMBURZA; further content and its final challenge are not yet available."
+      }
+    }
+  ]
+}

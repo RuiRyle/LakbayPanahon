@@ -1,0 +1,192 @@
+{
+  "projectId": "lakbaypanahon-1797e",
+  "description": "Chronological era prerequisites. Apply after the chapter content has been published. Existing completed lessons remain reviewable.",
+  "prerequisites": [
+    {
+      "path": "chapters/era1-prologue",
+      "expected": {
+        "status": "active",
+        "eraId": "early-philippine-communities"
+      }
+    },
+    {
+      "path": "chapters/chapter-1",
+      "expected": {
+        "status": "active",
+        "eraId": "early-philippine-communities"
+      }
+    },
+    {
+      "path": "chapters/chapter-2",
+      "expected": {
+        "status": "active",
+        "eraId": "early-philippine-communities"
+      }
+    },
+    {
+      "path": "chapters/chapter-3",
+      "expected": {
+        "status": "active",
+        "eraId": "early-philippine-communities"
+      }
+    },
+    {
+      "path": "chapters/chapter-4",
+      "expected": {
+        "status": "active",
+        "eraId": "early-philippine-communities"
+      }
+    },
+    {
+      "path": "chapters/chapter-5",
+      "expected": {
+        "status": "active",
+        "eraId": "spanish-exploration-colonial-rule"
+      }
+    },
+    {
+      "path": "chapters/chapter-6",
+      "expected": {
+        "status": "active",
+        "eraId": "spanish-exploration-colonial-rule"
+      }
+    },
+    {
+      "path": "chapters/chapter-7",
+      "expected": {
+        "status": "active",
+        "eraId": "spanish-exploration-colonial-rule"
+      }
+    },
+    {
+      "path": "chapters/chapter-8",
+      "expected": {
+        "status": "active",
+        "eraId": "spanish-exploration-colonial-rule"
+      }
+    },
+    {
+      "path": "chapters/chapter-9",
+      "expected": {
+        "status": "active",
+        "eraId": "colonial-economic-social-cultural-change"
+      }
+    },
+    {
+      "path": "chapters/chapter-10",
+      "expected": {
+        "status": "active",
+        "eraId": "colonial-economic-social-cultural-change"
+      }
+    },
+    {
+      "path": "chapters/chapter-11",
+      "expected": {
+        "status": "active",
+        "eraId": "colonial-economic-social-cultural-change"
+      }
+    }
+  ],
+  "writes": [
+    {
+      "path": "eras/early-philippine-communities",
+      "expected": {
+        "status": "active",
+        "title": "Precolonial Philippines"
+      },
+      "expectedAbsent": [
+        "requiredChapterIds",
+        "unlockMessage"
+      ],
+      "fields": {
+        "requiredChapterIds": [],
+        "unlockMessage": "Complete the prologue, then follow the chapters in order."
+      }
+    },
+    {
+      "path": "eras/spanish-exploration-colonial-rule",
+      "expected": {
+        "status": "active",
+        "title": "Exploration and Spanish Colonial Rule"
+      },
+      "expectedAbsent": [
+        "requiredChapterIds",
+        "unlockMessage"
+      ],
+      "fields": {
+        "requiredChapterIds": [
+          "era1-prologue",
+          "chapter-1",
+          "chapter-2",
+          "chapter-3",
+          "chapter-4"
+        ],
+        "unlockMessage": "Complete the prologue and all four Precolonial Philippines chapters to unlock this era."
+      }
+    },
+    {
+      "path": "eras/colonial-economic-social-cultural-change",
+      "expected": {
+        "status": "active",
+        "title": "Economic, Social, and Cultural Changes Under Spanish Rule"
+      },
+      "expectedAbsent": [
+        "requiredChapterIds",
+        "unlockMessage"
+      ],
+      "fields": {
+        "requiredChapterIds": [
+          "era1-prologue",
+          "chapter-1",
+          "chapter-2",
+          "chapter-3",
+          "chapter-4",
+          "chapter-5",
+          "chapter-6",
+          "chapter-7",
+          "chapter-8"
+        ],
+        "unlockMessage": "Complete the earlier eras through Chapter 8 to unlock this era."
+      }
+    },
+    {
+      "path": "eras/resistance-national-consciousness",
+      "expected": {
+        "status": "active",
+        "title": "Resistance and the Beginnings of National Consciousness"
+      },
+      "expectedAbsent": [
+        "requiredChapterIds",
+        "unlockMessage"
+      ],
+      "fields": {
+        "requiredChapterIds": [
+          "era1-prologue",
+          "chapter-1",
+          "chapter-2",
+          "chapter-3",
+          "chapter-4",
+          "chapter-5",
+          "chapter-6",
+          "chapter-7",
+          "chapter-8",
+          "chapter-9",
+          "chapter-10",
+          "chapter-11"
+        ],
+        "unlockMessage": "Complete the earlier eras through Chapter 11 to unlock this era."
+      }
+    },
+    {
+      "path": "chapters/era1-prologue",
+      "expected": {
+        "eraId": "early-philippine-communities",
+        "order": 0,
+        "requiredForProgression": false
+      },
+      "fields": {
+        "requiredForProgression": true
+      }
+    }
+  ]
+}

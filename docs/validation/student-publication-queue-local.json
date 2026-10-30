@@ -1,0 +1,138 @@
+{
+  "mode": "offline-only-not-authority-to-publish",
+  "baselineAt": "2026-10-27T13:06:11.538Z",
+  "prerequisiteCandidates": [
+    "social-roles-learning-migration",
+    "beliefs-learning-migration",
+    "islam-exchange-learning-migration",
+    "writing-learning-migration",
+    "chapter5-mission1-migration",
+    "chapter5-mission2-migration",
+    "chapter5-mission3-migration",
+    "chapter5-mission4-migration",
+    "chapter5-challenge-migration",
+    "chapter5-published-recap-migration",
+    "chapter6-mission4-migration"
+  ],
+  "plans": [
+    {
+      "plan": "mission2-easy-review",
+      "documents": 2,
+      "allowedFields": "new easy practice records only"
+    },
+    {
+      "plan": "chapter1-mission1-practice-polish",
+      "documents": 5,
+      "allowedFields": [
+        "missionId",
+        "topic",
+        "topicLabel",
+        "status",
+        "difficulty",
+        "order",
+        "question",
+        "optionA",
+        "optionB",
+        "optionC",
+        "optionD",
+        "correctAnswer",
+        "explanation",
+        "learningPoint",
+        "hint",
+        "answerHints",
+        "answerExplanations",
+        "reviewEvidencePolicy",
+        "contentReviewStatus"
+      ]
+    },
+    {
+      "plan": "chapter1-mission1-learning-polish",
+      "documents": 16,
+      "allowedFields": [
+        "content",
+        "learningHelp",
+        "decisionSituation",
+        "decisionQuestion",
+        "decisionChoices",
+        "decisionCorrectAnswer",
+        "decisionExplanation",
+        "answerExplanations",
+        "learningPoint",
+        "optionA",
+        "optionB",
+        "optionC"
+      ]
+    },
+    {
+      "plan": "chapter2-reading-polish",
+      "documents": 3,
+      "allowedFields": [
+        "content"
+      ]
+    },
+    {
+      "plan": "chapter6-help-polish",
+      "documents": 2,
+      "allowedFields": [
+        "learningHelp"
+      ]
+    },
+    {
+      "plan": "chapter5-continuation-wording",
+      "documents": 2,
+      "allowedFields": [
+        "content"
+      ]
+    },
+    {
+      "plan": "chapter4-learning-polish",
+      "documents": 3,
+      "allowedFields": [
+        "content",
+        "decisionQuestion",
+        "decisionChoices",
+        "decisionExplanation",
+        "learningHelp"
+      ]
+    },
+    {
+      "plan": "chapter3-decision-quality",
+      "documents": 3,
+      "allowedFields": [
+        "decisionQuestion",
+        "decisionChoices",
+        "decisionExplanation"
+      ]
+    },
+    {
+      "plan": "chapter2-scene-quality",
+      "documents": 1,
+      "allowedFields": [
+        "decisionChoices"
+      ]
+    },
+    {
+      "plan": "chapter2-feedback-polish",
+      "documents": 6,
+      "allowedFields": [
+        "answerExplanations",
+        "learningPoint"
+      ]
+    },
+    {
+      "plan": "chapter2-beginner-practice",
+      "documents": 3,
+      "allowedFields": "new easy practice records only"
+    }
+  ],
+  "bayani": {
+    "document": "learningSettings/bayaniAI",
+    "field": "systemInstruction"
+  },
+  "errors": [],
+  "limitations": [
+    "Compatibility is against a dated snapshot plus explicit local prerequisite candidates, not current Firestore.",
+    "The prerequisite candidates are not instructions to republish those full plans. Inspect current live state first.",
+    "Does not independently approve historical accuracy, learner suitability or AI behavior."
+  ]
+}

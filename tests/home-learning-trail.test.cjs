@@ -1,0 +1,7 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const context=vm.createContext({});
+for(const file of ['journey-path.js','home-learning-trail.js'])vm.runInContext(fs.readFileSync(require.resolve('../js/'+file),'utf8').replace(/import[^;]+;/g,'').replace(/export /g,''),context);
+const data={userId:'student',eras:[{id:'era',status:'active'}],chapters:Array.from({length:6},(_,i)=>({id:'c'+i,eraId:'era',status:'active',order:i,title:'Chapter '+i})),missions:Array.from({length:6},(_,i)=>({id:'m'+i,chapterId:'c'+i,status:'active'})),challenges:[],chapterProgress:[{userId:'student',chapterId:'c0',completed:true}],missionProgress:[{userId:'student',missionId:'m0',completed:true},{userId:'other',missionId:'m1',completed:true}]};
+test('Home lesson rows use owned progress and retain chapter locks',()=>{const rows=context.homeTrailChapters(data,{chapter:{id:'c1'}});assert.equal(rows.length,4);assert.equal(rows[0].completed,true);assert.equal(rows[1].current,true);assert.equal(rows[1].completedMissions,0);assert.equal(rows[2].accessible,false);});
+test('Home shows the current later chapter without listing the whole catalog',()=>{const rows=context.homeTrailChapters(data,{chapter:{id:'c5'}});assert.deepEqual(Array.from(rows,r=>r.id),['c2','c3','c4','c5']);});
+test('Home handles an empty published catalog without inventing lessons',()=>{assert.equal(context.homeTrailChapters({...data,chapters:[]},{}).length,0);});
