@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../css/student-settings.css">
     <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
     <link rel="stylesheet" href="../css/page-transition.css">
+    <link rel="stylesheet" href="../css/expedition.css">
+<link rel="stylesheet" href="../css/level-rewards.css"><link rel="stylesheet" href="../css/student-layout.css">    <link rel="stylesheet" href="../css/interface-clarity.css">
+<link rel="stylesheet" href="../css/settings-refinement.css">
 </head>
 <body class="auth-checking lakbay-theme student-settings-page" data-role="student">
     <div class="student-loading-shell" role="status" aria-live="polite">
@@ -25,16 +28,17 @@
                 <div class="logo-name"><strong>LakbayPanahon</strong><span>Philippine History</span></div>
             </a>
             <nav class="sidebar-nav" aria-label="Student navigation">
-                <a href="student-dashboard.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1Z"/></svg></span><span>Home</span></a>
-                <a href="my-journey.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21Z"/><path d="M4 5.5v13A2.5 2.5 0 0 1 6.5 16H20M8 7h8M8 10h6"/></svg></span><span>My Journey</span></a>
-                <a href="chapters.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9Z"/></svg></span><span>Explore Chapters</span></a>
-                <a href="my-class.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V8l7-4 7 4v12M9 20v-6h6v6M8 10h.01M12 10h.01M16 10h.01"/></svg></span><span>My Class</span></a>
-                <a href="bayani-ai.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 9.5 10.5 4 13l5.5 2.5L12 21l2.5-5.5L20 13l-5.5-2.5Z"/><path d="m19 3 .8 2.2L22 6l-2.2.8L19 9l-.8-2.2L16 6l2.2-.8Z"/></svg></span><span>Bayani AI</span></a>
-                <a href="achievements.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0ZM12 13v5m-4 3h8m-4-3a4 4 0 0 0 4 3M8 6H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4"/></svg></span><span>Achievements</span></a>
-                <a href="settings.html" class="nav-link settings-nav-link active" aria-current="page"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 13.5 1.1.8-1.1 1.9-1.3-.5a7.8 7.8 0 0 1-1.5.9l-.2 1.4h-2.2l-.3-1.4a7.8 7.8 0 0 1-1.7 0l-.8 1.2-1.9-1.1.5-1.3a7.8 7.8 0 0 1-.9-1.5l-1.4-.2v-2.2l1.4-.3a7.8 7.8 0 0 1 0-1.7L7.9 8.7 9 6.8l1.3.5a7.8 7.8 0 0 1 1.5-.9l.2-1.4h2.2l.3 1.4a7.8 7.8 0 0 1 1.7 0l.8-1.2 1.9 1.1-.5 1.3a7.8 7.8 0 0 1 .9 1.5l1.4.2v2.2l-1.4.3a7.8 7.8 0 0 1 0 1.7Z"/></svg></span><span>Settings</span></a>
-            </nav>
+                <a href="student-dashboard.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v11h5v-7h4v7h5V10"/></svg></span><span>Home</span></a>
+                <a href="my-journey.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 3h13a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-2V3Zm0 14h16M8 7h8M8 11h6"/></svg></span><span>My Journey</span></a>
+                <a href="chapters.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span><span>Explore Chapters</span></a>
+                <a href="my-class.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6M9 10h6"/></svg></span><span>My Class</span></a>
+                <a href="bayani-ai.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 2.8 6.2L21 12l-6.2 2.8L12 21l-2.8-6.2L3 12l6.2-2.8L12 3Z"/></svg></span><span>Bayani AI</span></a>
+                <a href="achievements.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span><span>Achievements</span></a>
+                <a href="settings.html" class="nav-link settings-nav-link active" aria-current="page"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
+            <a href="history-timeline.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 3v18M5 6h14M5 12h10M5 18h14" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><span>Historical Timeline</span></a>
+</nav>
             <div class="sidebar-bottom">
-                <button type="button" class="nav-link logout-button"><span class="nav-icon" aria-hidden="true">&#8594;</span><span>Log Out</span></button>
+                <button type="button" class="nav-link logout-button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4H4v16h5m5-13 5 5-5 5m-6-5h11"/></svg></span><span>Log Out</span></button>
             </div>
         </aside>
 
@@ -86,7 +90,7 @@
                     <div class="settings-divider" aria-hidden="true"></div>
                         <div class="settings-option">
                             <div class="settings-option-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-                            <div class="settings-option-copy"><h3>Background music</h3><p>Hear a warm, synthesized saxophone trade short phrases with a softer flute, supported by fuller strings and gentle guitar-like plucks. Music continues across student pages unless Focus audio lowers or pauses it. Your browser may wait for your first click before starting it.</p></div>
+                            <div class="settings-option-copy"><h3>Background music</h3><p>Keep the adventure theme playing as you explore. Focus audio makes it softer during lessons and pauses it during quizzes.</p></div>
                             <button class="settings-switch" type="button" role="switch" aria-checked="true" aria-label="Background music" data-preference-switch="music"><span class="settings-switch-track" aria-hidden="true"><span></span></span><span class="settings-switch-state" data-switch-state>On</span></button>
                         </div>
                         <div class="settings-divider" aria-hidden="true"></div>
@@ -203,11 +207,14 @@
                             </details>
                         </div>
                         <aside class="settings-data-support" aria-labelledby="accountRequestTitle">
-                            <span class="settings-support-state">Not available yet</span>
-                            <h3 id="accountRequestTitle">Need a copy of your data or want to delete your account?</h3>
-                            <p>This website cannot accept these requests yet. A support contact still needs to be assigned.</p>
-                            <p>Ask a parent or guardian to help you talk to the adult who introduced you to LakbayPanahon.</p>
-                            <p class="settings-support-note">No request is sent from this page.</p>
+                            <h3 id="accountRequestTitle">Your learning data</h3>
+                            <p>Download a JSON file of your saved profile, learning records, rewards and class membership. It contains personal information, so keep it on a device you trust.</p>
+                            <button id="downloadLearningData" type="button" class="text-button">Download my learning data</button>
+                            <p id="learningDataDownloadStatus" role="status" aria-live="polite"></p>
+                            <p class="settings-support-note">This includes records available to your signed-in account. It does not include passwords, other students' data, service logs or outside AI-provider records.</p>
+                            <h4>Need to delete your account?</h4>
+                            <p>A verified support process still needs to be assigned. Ask a parent or guardian to help you contact the person who introduced you to LakbayPanahon.</p>
+                            <p class="settings-support-note">This page does not send or complete account-deletion requests.</p>
                         </aside>
                     </div>
                 </section>
@@ -216,7 +223,9 @@
     </div>
 
     <script type="module" src="../js/auth-guard.js"></script>
+    <script type="module" src="../js/student-data-download.js"></script>
     <script type="module" src="../js/logout.js"></script>
     <script type="module" src="../js/page-transition.js"></script>
-</body>
+    <script type="module" src="../js/expedition-ui.js"></script>
+<script type="module" src="../js/level-rewards.js"></script></body>
 </html>

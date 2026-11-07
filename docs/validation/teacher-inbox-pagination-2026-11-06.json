@@ -1,0 +1,55 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-05T19:39:18.572Z",
+  "mode": "mocked Firestore, actual inbox module and Chrome; no production data modified",
+  "results": [
+    {
+      "state": "PASS",
+      "width": 1440,
+      "checks": [
+        "first page is bounded and exposes more records",
+        "pending counts disclose incomplete coverage",
+        "failed next-page read preserves records and unsent text",
+        "page failure sends no automatic retry",
+        "loading more retains the original reply field and draft",
+        "cursor paging reaches beyond 200 without skipping the sentinel record",
+        "former members are excluded while the cursor still reaches the end",
+        "explicit retry resumes the same cursor without advancing on failure",
+        "a request beyond the original limit can receive private guidance",
+        "pending filter and counts reflect responses across loaded pages",
+        "exact request beyond page one loads through one class-scoped query",
+        "direct request does not pretend the full inbox was loaded",
+        "explanation pages also extend beyond the first 100",
+        "direct request and later pages do not duplicate a card",
+        "foreign-class request IDs cannot populate the selected inbox",
+        "all page and target reads stay scoped to the selected classroom",
+        "paged inbox fits the viewport",
+        "stale page completion cannot replace inbox content after the account changes"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "first page is bounded and exposes more records",
+        "pending counts disclose incomplete coverage",
+        "failed next-page read preserves records and unsent text",
+        "page failure sends no automatic retry",
+        "loading more retains the original reply field and draft",
+        "cursor paging reaches beyond 200 without skipping the sentinel record",
+        "former members are excluded while the cursor still reaches the end",
+        "explicit retry resumes the same cursor without advancing on failure",
+        "a request beyond the original limit can receive private guidance",
+        "pending filter and counts reflect responses across loaded pages",
+        "exact request beyond page one loads through one class-scoped query",
+        "direct request does not pretend the full inbox was loaded",
+        "explanation pages also extend beyond the first 100",
+        "direct request and later pages do not duplicate a card",
+        "foreign-class request IDs cannot populate the selected inbox",
+        "all page and target reads stay scoped to the selected classroom",
+        "paged inbox fits the viewport",
+        "stale page completion cannot replace inbox content after the account changes"
+      ]
+    }
+  ]
+}

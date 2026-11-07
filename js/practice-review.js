@@ -70,10 +70,11 @@ export function renderReviewTopics(container, topics, chaptersByMission, emptyMe
         const retry = document.createElement('a');retry.className='text-button';retry.textContent='Retry Mission Quiz';
         retry.href='quiz.html?'+new URLSearchParams({chapter:chapterId,mission:topic.missionId});
         const source = document.createElement("span");source.className="practice-review-source";source.textContent=topic.source==="quiz"?"Recommended from your quiz":"Recommended from practice";
-        const stage=document.createElement('span');stage.className='review-learning-state';stage.dataset.state=topic.state||'review-needed';stage.textContent=({'review-needed':'Review recommended','lesson-revisited':'Lesson revisited','practising':'Building understanding','practice-goal-reached':'Practice goal reached'})[topic.state]||'Review recommended';
+        const stage=document.createElement('span');stage.className='review-learning-state';stage.dataset.state=topic.state||'review-needed';stage.textContent=({'review-needed':'Review recommended','lesson-revisited':'Lesson revisited','practising':'Practice in progress','practice-goal-reached':'Practice goal reached'})[topic.state]||'Review recommended';
         const evidence=document.createElement('p');evidence.className='review-evidence-progress';
         if(topic.requiredQuestions&&topic.requiredSessions)evidence.textContent=topic.distinctCorrect+' / '+topic.requiredQuestions+' different questions answered correctly; '+topic.cleanSessions+' / '+topic.requiredSessions+' successful sessions. Include a more challenging practice question. These counts restart after a new mistake.';
         else evidence.textContent='More practice evidence is needed before this recommendation can be cleared.';
+        if(topic.evidenceUncertain)evidence.textContent+=' Some saved evidence has missing, conflicting, or uncertain dates. This recommendation stays visible until the records can be checked; it is not a judgment of your ability.';
         if(topic.lessonRevisited&&topic.state!=='lesson-revisited')evidence.textContent+=' Lesson revisited.';
         const actions = document.createElement("div");
         actions.className = "practice-review-actions";
@@ -81,4 +82,32 @@ export function renderReviewTopics(container, topics, chaptersByMission, emptyMe
         card.append(source, stage, heading, detail, evidence, actions);
         container.append(card);
     }
+}
+export function practiceMisconceptionSupport(question,chosenAnswer,missionId){
+    if(!['prologue-mission1','chapter3-mission1'].includes(missionId)||(question.missionId&&question.missionId!==missionId))return null;
+    const selected=String(chosenAnswer||'').trim().toUpperCase(),correct=String(question.correctAnswer||'').trim().toUpperCase();
+    if(!['A','B','C','D'].includes(selected)||!['A','B','C','D'].includes(correct)||selected===correct)return null;
+    const reason=question.answerExplanations?.[selected];if(typeof reason!=='string'||!reason.trim())return null;
+    const clue=[question.answerHints?.[selected],question.hint,question.historicalClue].find(value=>typeof value==='string'&&value.trim());
+    return {reason:reason.trim(),clue:clue?.trim()||'Compare the remaining choices with the evidence in the lesson.',topic:typeof question.topic==='string'?question.topic.trim():''};
+}
+export function renderPracticeMisconceptionClue(parent,support,chapterId,missionId){
+    parent.querySelector('.practice-misconception-coaching')?.remove();
+    const section=document.createElement('aside');section.className='practice-misconception-coaching';
+    const heading=document.createElement('strong');heading.textContent='Look for this clue';
+    const clue=document.createElement('p');clue.textContent=support.clue;
+    const prompt=document.createElement('p');prompt.textContent='Which detail helps you rule out that choice? Compare the evidence, then try again.';
+    const lesson=document.createElement('a');lesson.className='text-button';lesson.textContent='Revisit this lesson topic';lesson.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,...(support.topic?{reviewTopic:support.topic}:{})});
+    section.append(heading,clue,prompt,lesson);parent.append(section);
+}
+// Describes only this application's hint request, never all assistance or independent understanding.
+export function practiceHintEvidence(result){
+    if(result?.hintRequested===true)return 'requested';
+    if(result?.hintRequested===false)return 'not-requested';
+    return 'unknown';
+}
+export function summarizePracticeHints(results){
+    const counts={requested:0,notRequested:0,unknown:0};
+    for(const result of results){const state=practiceHintEvidence(result);counts[state==='not-requested'?'notRequested':state]++;}
+    return counts;
 }

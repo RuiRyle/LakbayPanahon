@@ -1,0 +1,38 @@
+{
+  "status": "stage-0-stopped-before-candidate-changes",
+  "reason": "Installed existing Firebase deployment converter does not emit the requested custom build identity",
+  "cliVersion": "15.33.0",
+  "sdkVersion": "7.4.0",
+  "checks": [
+    {
+      "endpoint": "startStudentAssessment",
+      "runtimeSettingsMapped": true,
+      "runtimeIdentityMapped": true,
+      "customBuildIdentityMapped": false
+    },
+    {
+      "endpoint": "advanceStudentAssessment",
+      "runtimeSettingsMapped": true,
+      "runtimeIdentityMapped": true,
+      "customBuildIdentityMapped": false
+    },
+    {
+      "endpoint": "resumeStudentAssessment",
+      "runtimeSettingsMapped": true,
+      "runtimeIdentityMapped": true,
+      "customBuildIdentityMapped": false
+    },
+    {
+      "endpoint": "submitStudentActivity",
+      "runtimeSettingsMapped": true,
+      "runtimeIdentityMapped": true,
+      "customBuildIdentityMapped": false
+    }
+  ],
+  "manifestSha256": "126b79f89883777b7e20345ca31a0e8e2093ab36424b7be64e6fe8160ee0a07f",
+  "sourceDrift": [],
+  "artifactDrift": [],
+  "newCandidateCreated": false,
+  "newEmulatorOrBrowserTestsRun": false,
+  "productionChanges": false
+}

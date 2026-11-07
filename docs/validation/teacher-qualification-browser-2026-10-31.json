@@ -1,0 +1,95 @@
+{
+  "mode": "local-browser-real-modules-mocked-firebase",
+  "verifiedAt": "2026-11-05T11:48:44.004Z",
+  "pass": true,
+  "sources": [
+    {
+      "file": "js/teacher-application.js",
+      "sha256": "2e6289a88d34dae428e2ec8cd41f48c2ea2ce96416588a5327868e8c444437ba"
+    },
+    {
+      "file": "js/teacher-application-client.js",
+      "sha256": "42b614d412d7a859d890c24c99ce216fb9b13aa1a08c0a24629f018d34bc0dd7"
+    },
+    {
+      "file": "js/teacher-application-review.js",
+      "sha256": "29e125f95b0c5dc2ea180a04efe0cff0a9424cc092130346a5fb0cfc22078efd"
+    },
+    {
+      "file": "js/teacher-review-panel.js",
+      "sha256": "88057d9817ae96918924968344dc0ff2f2560c8524d14ca83830898cdb1caab1"
+    },
+    {
+      "file": "js/teacher-evidence-viewer.js",
+      "sha256": "5eb38fc8242ce40b7bf55fc6684767d160c2b0c9ffcaa11f0882e23f0ab3937d"
+    },
+    {
+      "file": "pages/teacher-application.html",
+      "sha256": "4cb218509638ddc9107415589de473461c99aa949383609c052399d687744aad"
+    },
+    {
+      "file": "css/teacher-application.css",
+      "sha256": "d5b1699071b4a9e8f8f92c770b880976b5e554f3d4a6b4c6ca0ba8cc27a93f48"
+    }
+  ],
+  "results": [
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "application uses the full page without an empty sidebar",
+        "form has three sections and the correct initial step",
+        "default school route asks for no PRC or supervisor details",
+        "only three profile fields are required and extras start collapsed",
+        "new setup reuses the registered teacher name",
+        "unverified email cannot submit",
+        "draft saves complete form values while controls are disabled",
+        "email action has resend cooldown",
+        "email status refresh preserves unsaved application details",
+        "verified application and private image save together",
+        "submitted application highlights administrator review",
+        "submitted setup shows review status instead of an open application form",
+        "submitted application waits for administrator review",
+        "evidence opens as a private image without public download URL",
+        "evidence dialog is centered in the visible viewport",
+        "closing evidence clears private image URL",
+        "revision request shows reason and editable fields",
+        "resubmission advances application revision",
+        "approved teacher gets classroom action",
+        "editing approval returns to draft and pauses classroom access",
+        "expired evidence is physically removed when application is opened",
+        "no horizontal overflow at 390px",
+        "sign out clears application identity and fields"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 1280,
+      "checks": [
+        "application uses the full page without an empty sidebar",
+        "form has three sections and the correct initial step",
+        "default school route asks for no PRC or supervisor details",
+        "only three profile fields are required and extras start collapsed",
+        "new setup reuses the registered teacher name",
+        "unverified email cannot submit",
+        "draft saves complete form values while controls are disabled",
+        "email action has resend cooldown",
+        "email status refresh preserves unsaved application details",
+        "verified application and private image save together",
+        "submitted application highlights administrator review",
+        "submitted setup shows review status instead of an open application form",
+        "submitted application waits for administrator review",
+        "evidence opens as a private image without public download URL",
+        "evidence dialog is centered in the visible viewport",
+        "closing evidence clears private image URL",
+        "revision request shows reason and editable fields",
+        "resubmission advances application revision",
+        "approved teacher gets classroom action",
+        "editing approval returns to draft and pauses classroom access",
+        "expired evidence is physically removed when application is opened",
+        "no horizontal overflow at 1280px",
+        "sign out clears application identity and fields"
+      ]
+    }
+  ]
+}

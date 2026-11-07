@@ -1,0 +1,34 @@
+{
+  "status": "local-followup-pass-hosted-no-go",
+  "manifestSha256": "0b902b44931e19bde9e26db746c6518def3991367f85717f01014f28c3beb2ef",
+  "artifactsVerified": 242,
+  "sourcesVerified": 23,
+  "drift": [],
+  "catalog": {
+    "missionId": "chapter15-mission5",
+    "reads": 621,
+    "writes": 20,
+    "deletes": 0,
+    "retries": 0
+  },
+  "displaySharing": {
+    "status": "pass",
+    "scope": "Two overlapping display consumers of four catalog collections, 30 synthetic browsers",
+    "baselineReads": 6120,
+    "sharedReads": 3060,
+    "savedReads": 3060,
+    "writes": 0,
+    "deletes": 0,
+    "displayParity": true,
+    "freshPageSeesEdits": true,
+    "serverAssessmentCaching": false,
+    "productionIntegration": false,
+    "limitations": [
+      "No saving if the existing UI already coalesces these consumers.",
+      "Not a browser trace or reward-service optimization.",
+      "Seed/probe writes excluded from measured display workload."
+    ]
+  },
+  "noAuthoritativeServiceOptimization": true,
+  "productionActions": 0
+}

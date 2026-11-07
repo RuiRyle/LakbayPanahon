@@ -1,0 +1,5 @@
+# Teacher My Classes directory - November 6, 2026
+
+Refined the directory with a compact My Classes header, one create action, a framed search/status toolbar and a matching-classroom count. Classroom initials are more descriptive, card layouts are consistent, names have more space, descriptions use two lines, and footers align. Active cards use restrained green/navy surfaces; archived cards use slate. Gold remains focused on creation and focus feedback. Two columns suit normal desktop widths, three suit wide displays, and mobile uses one. Stable full-card links, keyboard focus and one-time entrance motion remain intact; no extra database reads were introduced.
+
+Validation: 32 mocked browser checks passed at 390px/1280px, covering full-card hit areas, search/status filtering, result counts, paging, create-form draft preservation, empty states and no horizontal overflow. Clean package mozYif: 32 pages/571 files, no missing/rejected references. Updated localhost:56738. No live classroom data or permissions changed.

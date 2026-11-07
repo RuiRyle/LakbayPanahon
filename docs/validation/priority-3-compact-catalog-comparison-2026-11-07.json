@@ -1,0 +1,98 @@
+{
+  "status": "local-read-feasibility-pass-security-and-hosted-no-go",
+  "beforeReads": 56232,
+  "afterReads": 31752,
+  "readsSaved": 24480,
+  "writes": 2220,
+  "deletes": 0,
+  "targetHeadroom": 8248,
+  "sparkReadHeadroom": 18248,
+  "publication": {
+    "transactions": 1,
+    "outsideGets": 0,
+    "callbacks": 1,
+    "retryCallbacks": 0,
+    "documentsReturned": 0,
+    "minimumReadUnits": 150,
+    "pointGets": 150,
+    "queryGets": 0,
+    "attemptedWrites": 150,
+    "committedWrites": 150,
+    "committedDeletes": 0,
+    "failedTransactions": 0,
+    "collections": {
+      "experimentalCatalogHeads": {
+        "pointGets": 1,
+        "queryGets": 0,
+        "documentsReturned": 0,
+        "minimumReadUnits": 1
+      },
+      "experimentalCatalogPacks": {
+        "pointGets": 149,
+        "queryGets": 0,
+        "documentsReturned": 0,
+        "minimumReadUnits": 149
+      }
+    },
+    "packs": 149,
+    "maxPackBytes": 46846,
+    "durationMs": 2832
+  },
+  "browser": {
+    "reads": 11850,
+    "writes": 480,
+    "deletes": 0,
+    "gets": 1380,
+    "queries": 1200,
+    "transactionCallbacks": 480
+  },
+  "security": {
+    "status": "local-controls-pass-migration-blocker",
+    "tamperedHeadDenied": true,
+    "tamperedPackDenied": true,
+    "stalePublisherDenied": true,
+    "failedPublicationAtomic": true,
+    "publishedEditInvalidatesAttempt": true,
+    "rollbackNewGeneration": 3,
+    "sameAttemptRecovery": true,
+    "authAndAppCheckPreserved": true,
+    "profileAndPauseFresh": true,
+    "legacyDirectEditsIgnored": true,
+    "signedHeadReplayAccepted": true,
+    "blocker": "Legacy question writers must become draft-only or be replaced by atomic trusted publication before this can be secure for live content. Signed head replay by a compromised Admin writer is also not prevented by signature alone."
+  },
+  "prototypeFiles": [
+    {
+      "file": "bootstrap.cjs",
+      "sha256": "88d46819ab5891c08e1b083f56f7ef5e448e02f2abc9ca6a5689c18d65cf8b6d"
+    },
+    {
+      "file": "browser.cjs",
+      "sha256": "11a73c54157e2567585beba7d3c0eb458567edf4d121fe62063a36512a727c12"
+    },
+    {
+      "file": "catalog.cjs",
+      "sha256": "0d6496a283f3d4f1179ece30ab70b37a6971fe967fa7cf021de45ebc6b204f27"
+    },
+    {
+      "file": "catalog.test.cjs",
+      "sha256": "1308d25a4834884df3fb64675e9781e8970c9bfbd2efa3829011330d495e5e2c"
+    },
+    {
+      "file": "classroom.cjs",
+      "sha256": "2d813ab8ba306ebaf5a3724d7772008df0ce7ff7129c7a6c508518ee17875daa"
+    },
+    {
+      "file": "probe-run.cjs",
+      "sha256": "04c0f961bd2faee92b7232b7037344029bb91511514024ba7c9fbf4e4d4406de"
+    },
+    {
+      "file": "probes.cjs",
+      "sha256": "a6562fe0b12d1f329fc7d5a85fc690a371222c0b4b8b0d2bf5a40f99be8c412c"
+    },
+    {
+      "file": "README.md",
+      "sha256": "c59210053bd8231794e15296b1b580eb69e0fc3ce90c415ca0d7d87046fc7061"
+    }
+  ]
+}

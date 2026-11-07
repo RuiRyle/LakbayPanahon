@@ -1,0 +1,5 @@
+{
+ "functions":[{"source":"build/priority3-stage0-release/functions","codebase":"default"}],
+ "firestore":{"rules":"build/priority3-stage0-release/rules/firestore.rules"},
+ "emulators":{"auth":{"host":"127.0.0.1","port":9099},"functions":{"host":"127.0.0.1","port":5001},"firestore":{"host":"127.0.0.1","port":8180,"websocketPort":9151},"hub":{"host":"127.0.0.1","port":4410},"logging":{"host":"127.0.0.1","port":4510},"ui":{"enabled":false},"singleProjectMode":true}
+}

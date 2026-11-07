@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-07",
+  "mode": "local-read-only-hosting-review-no-provider-runtime-test",
+  "verdict": "hosted-no-go",
+  "installedPackages": {
+    "firebase-admin": "14.5.0",
+    "firebase-functions": "7.4.0",
+    "@google-cloud/firestore": "9.3.1",
+    "@grpc/grpc-js": "1.14.6"
+  },
+  "staticChecks": {
+    "grpcReferencesHttp2": true,
+    "adminOffersPreferRest": true
+  },
+  "files": [
+    {
+      "file": "build/priority3-stage0-release/functions/node_modules/firebase-admin/lib/firestore/firestore-internal.d.ts",
+      "sha256": "e27cc61f0230e2c53f7975a389a472a55ae7441fdbd838b7cc48acba01f5e823"
+    },
+    {
+      "file": "build/priority3-stage0-release/functions/node_modules/@grpc/grpc-js/build/src/transport.js",
+      "sha256": "ae045d6d805b3103fa42b92e478c6d748ec0d4a40a56944d1fb831e19d9776d6"
+    }
+  ],
+  "previouslyMeasuredFirestore": {
+    "routineReads": 31992,
+    "routineWrites": 2220,
+    "initialPublicationDayReads": 34570,
+    "initialPublicationDayWrites": 2370
+  },
+  "immediateLegacyBankValidationProjectionReads": 57342,
+  "newRuntimeTestsPerformed": false,
+  "accountSignupAttempted": false,
+  "providerDeploymentPerformed": false,
+  "sources": [
+    "https://docs.netlify.com/build/functions/environment-variables/",
+    "https://developers.cloudflare.com/workers/runtime-apis/nodejs/",
+    "https://developers.cloudflare.com/workers/ci-cd/builds/configuration/",
+    "https://developers.cloudflare.com/workers/configuration/secrets/",
+    "https://developers.cloudflare.com/workers/platform/pricing/",
+    "https://developers.cloudflare.com/durable-objects/platform/pricing/",
+    "https://firebase.google.com/docs/firestore/use-rest-api"
+  ]
+}

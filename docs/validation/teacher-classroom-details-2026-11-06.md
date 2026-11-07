@@ -1,0 +1,5 @@
+# Classroom details polish - November 6, 2026
+
+Reorganized the dedicated classroom page into overview and teaching shortcuts, class invitations, then a separate settings area. Editing and archiving remain collapsed secondary controls. Removed the repeated classroom name from the overview heading. Unified page widths, section spacing, green/navy/gold surfaces, typography, buttons, fields and focus treatments. Invitations clearly identify their classroom, show code state and expiry, and retain guidance and access controls. Archived classrooms hide invitations while keeping restoration available.
+
+Validation: 26 mocked classroom browser checks passed at 390px/1440px, covering section order, actual membership counts, class-specific code display, edit cancellation, archived restoration and viewport fit. Directory, activity-board and announcement-board regressions also passed. Clean package MGAh0A passed all reference checks; final spacing adjustment copied to localhost:56738 along with the updated module. No live data or permission changes; nothing deployed to hosting.

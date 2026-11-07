@@ -16,7 +16,7 @@ test('dashboard counts ignore reads from a replaced session',async()=>{
  assert.equal(updates.length,2,'Current session counts did not render');
 });
 
-test('dashboard links to Achievements without reading artifact ownership or catalog',()=>{
+test('core dashboard counters stay independent of optional collection-preview reads',()=>{
  const source=fs.readFileSync(path.join(__dirname,'../js/student.js'),'utf8');
  const html=fs.readFileSync(path.join(__dirname,'../pages/student-dashboard.html'),'utf8');
  assert.doesNotMatch(source,/loadArtifactCollection|studentArtifacts/);

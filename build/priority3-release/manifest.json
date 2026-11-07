@@ -1,0 +1,1065 @@
+{
+  "mode": "local-preparation-only-not-deployed",
+  "baselineVersion": "projects/lakbaypanahon-1797e/sites/lakbaypanahon-1797e/versions/b984eba31379723a",
+  "baselineRulesSha256": "678be315fa0aecdbb09fc3cb88294c0f69493056e8c50389a254500234ac0496",
+  "securedRulesSha256": "6b704af7ac7e6114851ce1a3e61ceaf2aaf2568587c4150bc51bafac90ae5849",
+  "updates": [
+    {
+      "path": "/js/student-rewards-client.js",
+      "before": "3773419f0656c79dd9cab62e2ec99bba04b6f45b1e7a54a79e2e10014fca10df",
+      "after": "91ef8ccf62b38eb6e09d3b40c59a1939d5177c995fee73bab0d304fc27ac8618",
+      "sourceSha256": "90237330006f14675d643566bfd236c916345f7a96219cc8e949ec8cb29c95a3"
+    },
+    {
+      "path": "/js/mission-assessment-client.js",
+      "before": "3982d4817d051568be39ef9ed119d6b1f1010441a9fcc59a27f07f3892365110",
+      "after": "eaac12eba7bb7e3da613f04f353263803f5fa66aefd4524fca463cff58c2803f",
+      "sourceSha256": "c05263a2497d98be1fb331fee516b421aa53714cdcfa85eb6d9442e939c7d2b4"
+    },
+    {
+      "path": "/js/quiz.js",
+      "before": "83360298ddf321d663e4f6a5bbf48a3977f994d608d8a24ed270c286b135f92d",
+      "after": "fa757eb629d49636cd9c405a5d23b42d4fc72941abc9b8280db0a735da9a922c",
+      "sourceSha256": "0ddb5e15ef3f7bac444edbdf1728fd0d8e849cfbf88fdb4e5c177138817708aa"
+    },
+    {
+      "path": "/js/chapter-challenge.js",
+      "before": "2a7691342ec422cb07708425cc9017bea9686b3771137ea8c98c92db5300df9a",
+      "after": "fbf71a4f77efd7d867a740ad69376ba7e355f9c96bfff79ed55e0955e26c28a0",
+      "sourceSha256": "7b450e9e8c4dc951d3c0725cf0bdcdb99724d387c0d5f61b9970166b95043e7e"
+    },
+    {
+      "path": "/js/daily-challenge.js",
+      "before": "a5313b67a46532b9acdae2ac64a5b6021ab8022038d743b3af77f17553f86e5c",
+      "after": "db0303e109ed5b3f626e377e678ba48430939421ea9791a60bf8b54c4de30e1e",
+      "sourceSha256": "a8b727db144e8cbf23c4cade8c75de2f4e1eaec77693d8202bb178843889fea4"
+    },
+    {
+      "path": "/js/student-assessment-client.js",
+      "before": null,
+      "after": "f8e6a936be68bdca5fc560f224bf5d3509ce5a14272effbd641a62ac589f60fc",
+      "sourceSha256": "ce8a695264c281434559c1878269eecc21fb2a4cef474fdd155a65950064c40b"
+    },
+    {
+      "path": "/js/assessment-preview.js",
+      "before": null,
+      "after": "9e5d01016e06efbc46abfd982ca33458265c3b356e131bdba493ff24e9e49a3e",
+      "sourceSha256": "01bbcc2d355c2dbec93b2eb5628cdb7e86a873c1c9bcdb1e5712f1776ea35c37"
+    }
+  ],
+  "expectedHostingPaths": 577,
+  "preservedPaths": 570,
+  "callableOrigin": "https://asia-southeast1-lakbaypanahon-1797e.cloudfunctions.net",
+  "functions": [
+    "startStudentAssessment",
+    "advanceStudentAssessment",
+    "resumeStudentAssessment",
+    "submitStudentActivity"
+  ],
+  "activation": false,
+  "requiresFreshProductionPreflight": true,
+  "sourceFiles": [
+    {
+      "file": "js/firebase-config.js",
+      "sha256": "bd45ce072548b60af0dce9f0ea535f4814ec21ded1c9374e6ef777bc7b8df920"
+    },
+    {
+      "file": "js/student-assessment-client.js",
+      "sha256": "ce8a695264c281434559c1878269eecc21fb2a4cef474fdd155a65950064c40b"
+    },
+    {
+      "file": "functions/student-hosting-config.cjs",
+      "sha256": "4517c7c26138d5c79c9525cce00272419ece2baaac1378d1266a94e958325727"
+    },
+    {
+      "file": "functions/index.js",
+      "sha256": "d2cdb2a8ac6eeda85a0fe46fe6c5ae01e3a0874ca40329435b59fa32d0b0a567"
+    },
+    {
+      "file": "functions/student-assessment.js",
+      "sha256": "25bf1b4cee5b5d6144d79376d2342c396db386a40deadf981753816f51e24a2f"
+    },
+    {
+      "file": "functions/package.json",
+      "sha256": "7282e92833d211ccc2b24cecfd55e3ad14250d722a2997b63957775be470143b"
+    },
+    {
+      "file": "functions/package-lock.json",
+      "sha256": "0eaedbf386bb5cddb70ed00be7403a78c5257130487f1fa25d549f1d2cc0ec38"
+    },
+    {
+      "file": "functions/prepare-priority3-readiness.cjs",
+      "sha256": "50078de171e441237d9e4bcfb1bf28e0f763c157efa7ee0693e0af91f643627d"
+    },
+    {
+      "file": "firebase.priority3-readiness-emulator.json",
+      "sha256": "e94f4151824a819be93ee829bfb2c289e3ebef5a99dc56d35cbccad91dd2f4d7"
+    },
+    {
+      "file": "tests/priority3-readiness.test.cjs",
+      "sha256": "6b3a5e4a802a115a2f251212e23cb4156f18bc878068834cccf82ab4e8ba2076"
+    },
+    {
+      "file": "tests/secured-browser-emulator.cjs",
+      "sha256": "0fd80c26d3567b1c147c72d069c61297c90f4227e804820fbf4b36cdbbf929a7"
+    },
+    {
+      "file": "tests/easy-review-recovery.test.cjs",
+      "sha256": "6cefe0d6f03cd8da5bc0bbb7a743c9e647b11f7420aad6186b895a547d8cbd3d"
+    },
+    {
+      "file": "tests/option-a-context.test.cjs",
+      "sha256": "c567fc90170020772374b5d2830b3a83de36db3010d999472954b432ce7c30d0"
+    },
+    {
+      "file": "tests/student-assessment-emulator.cjs",
+      "sha256": "904e0d7ed3a189d36bbfcd919e2074278373d6b61d6511c424156dfbb60b5a74"
+    },
+    {
+      "file": "tests/priority3-save-diagnostic.cjs",
+      "sha256": "1783d880cecca1131e56302eece1906b86de0f49c975f40080d55ceb9714a535"
+    }
+  ],
+  "inventory": [
+    {
+      "file": "assessment-runtime-role.proposal.json",
+      "sha256": "7c8a2073e86a93e2912af2dcef0d2ec2116f0558aee2dc7464cb0db413556f9d"
+    },
+    {
+      "file": "baseline/file-map.json",
+      "sha256": "512d07b18daead4fbd137e205b75add0bf519b66d4fd9baa752fc4f93e138202"
+    },
+    {
+      "file": "baseline/firestore.rules",
+      "sha256": "678be315fa0aecdbb09fc3cb88294c0f69493056e8c50389a254500234ac0496"
+    },
+    {
+      "file": "baseline/hosting-config.json",
+      "sha256": "27d19e79ae06ead8fd41dc37aa350ee65c56c4c229b2666a27abcfd49f3d7db7"
+    },
+    {
+      "file": "firebase.release.json",
+      "sha256": "1f4ce0df9bdcb730a9abb4c435e41608158a13731588fd54e0efe0c6fbe06381"
+    },
+    {
+      "file": "functions/.firebaseignore",
+      "sha256": "e95ee11fc4e6f99d636b4a2ebc707ec9f521be1b3f9d8a06b302124467ff928c"
+    },
+    {
+      "file": "functions/assessment-callables.js",
+      "sha256": "224a9e84f444516db5b316945b4c1307477fa119f7f244d928a1c30d4ede6d75"
+    },
+    {
+      "file": "functions/assessment-shared/daily-policy.mjs",
+      "sha256": "41ca9f83ff917e92978577592f558085a102cb370c36563735b098204d05b22e"
+    },
+    {
+      "file": "functions/assessment-shared/mission-assessment.mjs",
+      "sha256": "128880f98452c64fd902ecd434464e4c0ba03cb2e3fae21f1d0a85ab56c2e4e6"
+    },
+    {
+      "file": "functions/assessment-shared/mission-review.mjs",
+      "sha256": "acc22563f82d51609a1f67e708dff4d51986ff9d5a9b8d32b09290e340fec888"
+    },
+    {
+      "file": "functions/assessment-shared/practice-review.mjs",
+      "sha256": "57b983f8055dd5b7e894831c3305d058cdf9ce3443468ef1d037820c4cc0bba0"
+    },
+    {
+      "file": "functions/assessment-shared/progression-policy.mjs",
+      "sha256": "93b6c10fad328ce9bc5b64782f631591d682baf4967f7fe2a436413efb2aabe8"
+    },
+    {
+      "file": "functions/index.js",
+      "sha256": "2988845a120b1b6c6862eec3dfbffac43ee749b17482ba6c82e2a68aea9ee898"
+    },
+    {
+      "file": "functions/package-lock.json",
+      "sha256": "0eaedbf386bb5cddb70ed00be7403a78c5257130487f1fa25d549f1d2cc0ec38"
+    },
+    {
+      "file": "functions/package.json",
+      "sha256": "7282e92833d211ccc2b24cecfd55e3ad14250d722a2997b63957775be470143b"
+    },
+    {
+      "file": "functions/progression-policy.js",
+      "sha256": "1de0ea16a9b5457ee87de9df710cb41ed043680c18e617d49981b2ae33a5e62e"
+    },
+    {
+      "file": "functions/student-assessment.js",
+      "sha256": "25bf1b4cee5b5d6144d79376d2342c396db386a40deadf981753816f51e24a2f"
+    },
+    {
+      "file": "functions/student-rewards.js",
+      "sha256": "ab09e221a67a1bad31160b8e1adacc885bd3e1c15d15d05cfb748fa6dee47e5f"
+    },
+    {
+      "file": "hosting/config.json",
+      "sha256": "f80b095ea1811bc9f903fd3402f35f4cafa9db2c45c634de457cda9310b4f1b3"
+    },
+    {
+      "file": "hosting/file-map.json",
+      "sha256": "b72d3326155b2541e2cc15426d004e5b2b381db885ce6625842a2be93ecfdcdd"
+    },
+    {
+      "file": "hosting/public/404.html",
+      "sha256": "4ccc41153ca3d30a692daad3874685b469c70698841cb11159ec8d8f0c88f692"
+    },
+    {
+      "file": "hosting/public/css/achievements-polish.css",
+      "sha256": "d685e1c1dec3c1bc3d77ac29319c52265c99b0d09233e6e0c492b52b7d6095cd"
+    },
+    {
+      "file": "hosting/public/css/achievements.css",
+      "sha256": "58bebe5d2fe69247733fba3da01663918c9a95ca4ec0b9083a38ca5539ab9fdb"
+    },
+    {
+      "file": "hosting/public/css/admin-workspace.css",
+      "sha256": "e0fb5e2cf494e698f47e99d2cbc6a27415556525a93cf1afc7ca66deb2d681a3"
+    },
+    {
+      "file": "hosting/public/css/auth.css",
+      "sha256": "08d99e4f00f25a83b706fdc36d622d410c01da492c78fedbf493195221ce7148"
+    },
+    {
+      "file": "hosting/public/css/bayani-ai.css",
+      "sha256": "7786897f16462b44f864c76025a0234a38b141ee3f1f47da0ce4231416b6dd08"
+    },
+    {
+      "file": "hosting/public/css/bayani-narration-button.css",
+      "sha256": "a0caafc3169670939ef5bb88d28f42e9606aa03db98e6a98679448a51326f3d4"
+    },
+    {
+      "file": "hosting/public/css/chapter-challenge.css",
+      "sha256": "a8529fdacb77166b1fe6821e540be78f7b4f61794471a97070457291dc5b0930"
+    },
+    {
+      "file": "hosting/public/css/chapters.css",
+      "sha256": "1af34b5bd08c2b33794041cf8e5a740d2016931760b42e67f0def46fd922ec6f"
+    },
+    {
+      "file": "hosting/public/css/class-feedback.css",
+      "sha256": "bc095718463d5994f41aee5f30e8d053a8a8889f2a8348513632fb1dae0d7dc8"
+    },
+    {
+      "file": "hosting/public/css/daily-challenge-theme.css",
+      "sha256": "c82696ee18a4f20e99ff158bc88c9dd25d5a484d381278f263bf2ad71ffa56eb"
+    },
+    {
+      "file": "hosting/public/css/discovery-experiences.css",
+      "sha256": "b63a9457e4827fd78f0d0d089355a43c2c377d3e6bd424fe75007165814c0af7"
+    },
+    {
+      "file": "hosting/public/css/era-mission-simple.css",
+      "sha256": "1cfabb3e35104b5190a1f79afdf5a2babf7e82e124b63938ae1280fd3252f5ef"
+    },
+    {
+      "file": "hosting/public/css/expedition.css",
+      "sha256": "07e90cb196a948a2bd25870636da3072846393148ac41e75e0c1ebdc8e5120c2"
+    },
+    {
+      "file": "hosting/public/css/home-practice-review.css",
+      "sha256": "dfdc77eb7b54635ce8f6011ec209479723df417088a1a4677bbfde697aac096a"
+    },
+    {
+      "file": "hosting/public/css/home-refined.css",
+      "sha256": "b9d1f21d6d1057862510b591a2a66f97d931122ea0ae8c9c0d59f1b75c631057"
+    },
+    {
+      "file": "hosting/public/css/index-dark-theme.css",
+      "sha256": "f8054043709e7d7ce3de18111caa682a7e1ee346122a53625cb86a3a20d9293c"
+    },
+    {
+      "file": "hosting/public/css/journey-finale.css",
+      "sha256": "bc9ce4ee8623a344fd2b3361d404ae3ac1a967b429acefe00c9a9f62efb5bcb7"
+    },
+    {
+      "file": "hosting/public/css/landing-polish.css",
+      "sha256": "67dbb08c082b6b1f2935e695127e9d990f9ded6978bda956eb9e1891d56f3a0f"
+    },
+    {
+      "file": "hosting/public/css/learning-clean.css",
+      "sha256": "fd2db02c1f04ac6bb29e572ba2aba153fa7229ca4c8b2e5f6a61b717e3d5d3c6"
+    },
+    {
+      "file": "hosting/public/css/learning-contrast.css",
+      "sha256": "c8ba12fa4df0c89d567b53ff90d075cda04990f31260b88cbd24a90f10a7bac4"
+    },
+    {
+      "file": "hosting/public/css/level-rewards.css",
+      "sha256": "3ef7dad9f1bde1035e0c28bd66e4279e1ca3d020e6356c13041882d19191ac8f"
+    },
+    {
+      "file": "hosting/public/css/mission-learning-guide.css",
+      "sha256": "56e7715a1ba70142b7e7e8a85bda9831ac595d66c5ece8e6c53b560f2261f1b7"
+    },
+    {
+      "file": "hosting/public/css/mission-quest.css",
+      "sha256": "dcd2eb64386381c7472364acb6ee76d06d15c9e5aa0f37c5f08a929622a1aeff"
+    },
+    {
+      "file": "hosting/public/css/mission.css",
+      "sha256": "a80803048d75cbd43502569a62ba98efcaaaceb1eab27de4580c68e23c057ffd"
+    },
+    {
+      "file": "hosting/public/css/my-class.css",
+      "sha256": "ed431025b371702e44307b775d572c5cc08b0a183f643238e07368ca0dc18172"
+    },
+    {
+      "file": "hosting/public/css/my-journey.css",
+      "sha256": "98b497d723e4302e7a476aede28af51ae686b12063494878b8ec1532e8c575c1"
+    },
+    {
+      "file": "hosting/public/css/navy-gold-theme.css",
+      "sha256": "9a603fac8b59208fa0065e1d0c41a7736d70fa37f383b6f6bae3b159ca6ceecb"
+    },
+    {
+      "file": "hosting/public/css/not-found.css",
+      "sha256": "aac91d2a8814b355702cde2b7dba03955e885973f98e8642be1cd6859977a0b2"
+    },
+    {
+      "file": "hosting/public/css/page-transition.css",
+      "sha256": "d4c4dce1b5a1ed1116702b22039124ed7f740587ab132977ba78f672e360aa3b"
+    },
+    {
+      "file": "hosting/public/css/practice.css",
+      "sha256": "65533cf16c3bf7d326fcf1c33862a1d81710402a74e2204e536fab24e27aaf60"
+    },
+    {
+      "file": "hosting/public/css/quiz.css",
+      "sha256": "0f074eb5fb5e2bbbae288571c552eb3b16a2f89644bb347e5bfc5886cd2fd47d"
+    },
+    {
+      "file": "hosting/public/css/story-reading-steps.css",
+      "sha256": "67a9274813963163539895cec0bdb93037a6198a110f25412d0dd5a9665821e6"
+    },
+    {
+      "file": "hosting/public/css/story.css",
+      "sha256": "fea11ea8d766821248ff3d77da72016e6c2a2c1b8ee879f056b538da9f03ad96"
+    },
+    {
+      "file": "hosting/public/css/storybook-learning.css",
+      "sha256": "41da1c92991d9213da0e297b4547371bce9db6e39ce839fa5c08081c155e7c07"
+    },
+    {
+      "file": "hosting/public/css/student-dashboard.css",
+      "sha256": "69a3e1f77957568902cb02a8b9375ad581498f0ac13ed8ec7d68f8326b6cb78d"
+    },
+    {
+      "file": "hosting/public/css/student-layout.css",
+      "sha256": "6037cfd64992633b9d1f4da6ddb6cddbdd2c9364db1ef93ad5ae06cd6582d4de"
+    },
+    {
+      "file": "hosting/public/css/student-missing-features.css",
+      "sha256": "afa9de9f0f413e4d55ac9e14b61aa628c5125f7b082e2e37bdfc188a11870122"
+    },
+    {
+      "file": "hosting/public/css/student-profile-page.css",
+      "sha256": "50671e3d4956035b4c4eaeef7fe2bd264d2274fb6fa1e87f30f0fdb1f6b86518"
+    },
+    {
+      "file": "hosting/public/css/student-settings.css",
+      "sha256": "738d1995fec560dc96d2b35b11c34b4c90463630540bb366c8a8617e231818d2"
+    },
+    {
+      "file": "hosting/public/css/student.css",
+      "sha256": "e443d175a0797182fecfd22e994a60627aee0b0e953a706a861a48e091916018"
+    },
+    {
+      "file": "hosting/public/css/style.css",
+      "sha256": "0a7ab1a16abba9c9be6db9f646ba919d82aa3756c2cdfad3149da00996794eec"
+    },
+    {
+      "file": "hosting/public/css/teacher-application.css",
+      "sha256": "d5b1699071b4a9e8f8f92c770b880976b5e554f3d4a6b4c6ca0ba8cc27a93f48"
+    },
+    {
+      "file": "hosting/public/css/teacher-landing.css",
+      "sha256": "97db897f508ea88455cca9aec0d518c277fc14d5b9b9cd186e1b53d4ea41bd70"
+    },
+    {
+      "file": "hosting/public/css/teacher-workspace.css",
+      "sha256": "0c598547e88ab417723ea7c8812c6394eb8b3456d34853cca27e48204661e985"
+    },
+    {
+      "file": "hosting/public/css/workspace-loading.css",
+      "sha256": "1dfebc6e4a8cc927170791a8751f6ac6de57acce811cd0fc07abe8a3801b39a3"
+    },
+    {
+      "file": "hosting/public/index.html",
+      "sha256": "486772ff18e53a310c9050bc271aeb45581d0c481bf39b6d9b18d0de2af2fe7e"
+    },
+    {
+      "file": "hosting/public/js/achievements.js",
+      "sha256": "67fd91efbad2fb9e1b99534f537d636061de317b07a2d0575084077bf8d30eef"
+    },
+    {
+      "file": "hosting/public/js/activity-policy.js",
+      "sha256": "8f6a0af3eaf6462da0ab1e2a9ea58f6e2e1be05186ad94e8485fbf0f81f5fd0d"
+    },
+    {
+      "file": "hosting/public/js/admin-accounts.js",
+      "sha256": "97e1b036664415fa7e86f464b13e75f14cd8c8c7dc081d87afcb8620c8a0595b"
+    },
+    {
+      "file": "hosting/public/js/admin-workspace.js",
+      "sha256": "1cbcf4f8a47357e35932bbc315589be868835fce55d8a647a659d8577ccab3ff"
+    },
+    {
+      "file": "hosting/public/js/adventure-voice.js",
+      "sha256": "bcb4cf047073ab92e7981d3af44f3ec6b431fab1168347bd17126d87c88c99cd"
+    },
+    {
+      "file": "hosting/public/js/ai-assistance-client.js",
+      "sha256": "3d8d98a84f8e947ab0a22a771e9c7b11c6dc7ba2ecb2ed3c824b593adeffd504"
+    },
+    {
+      "file": "hosting/public/js/assessment-preview.js",
+      "sha256": "01bbcc2d355c2dbec93b2eb5628cdb7e86a873c1c9bcdb1e5712f1776ea35c37"
+    },
+    {
+      "file": "hosting/public/js/auth-guard.js",
+      "sha256": "f425664feb178bcb4d3df2244de82ac079e04b1563c5af14dc7bb0d2430990a9"
+    },
+    {
+      "file": "hosting/public/js/auth-ui.js",
+      "sha256": "e9fc277ae3c7b84a294aebdcc692e809183d4287c78ad9a8ebd0503a0b119c67"
+    },
+    {
+      "file": "hosting/public/js/bayani-ai.js",
+      "sha256": "0079e8b790c787ab47a0415fcbd4617389a690a7caa2d9af7e80e9b898a6eaaa"
+    },
+    {
+      "file": "hosting/public/js/bayani-backend-client.js",
+      "sha256": "35fecd0106be4091a164413e581651a60a53a7ac81783e000a6a7be684656648"
+    },
+    {
+      "file": "hosting/public/js/bayani-client.js",
+      "sha256": "584cacc7abb871909901749bcd05b3fca320727c56f6e81ad0ab24e2297b10fa"
+    },
+    {
+      "file": "hosting/public/js/bayani-generated-clips.js",
+      "sha256": "7f223adcf7c834fe11311b7cbeceffc9d6fc846ec15fa36afea6aeefbadd1fe6"
+    },
+    {
+      "file": "hosting/public/js/bayani-narration-button.js",
+      "sha256": "1acb172fe8e77c9b1588637450445e94349ffb40188b57479485b2dd5fb53549"
+    },
+    {
+      "file": "hosting/public/js/bayani-request.js",
+      "sha256": "8df1ae24669f1055ac61b34278cc829d250324e3e48ac152185bc3a407b4c2aa"
+    },
+    {
+      "file": "hosting/public/js/bayani-review-question.js",
+      "sha256": "38776bad49d8d920ee42d3d567e3eb80a837c57660f1e0caf29a0f983a1d3051"
+    },
+    {
+      "file": "hosting/public/js/bayani-review.js",
+      "sha256": "f5525d9a7d5c83ba5e3b28a3a10ef9a55429034e1421a757abdf5b1b6d1f2cc7"
+    },
+    {
+      "file": "hosting/public/js/bayani-voice-clips.js",
+      "sha256": "efad16649c1c2c0320d309b4b8dca97a4688db4685503e0d715c78860bd32e98"
+    },
+    {
+      "file": "hosting/public/js/chapter-challenge.js",
+      "sha256": "7b450e9e8c4dc951d3c0725cf0bdcdb99724d387c0d5f61b9970166b95043e7e"
+    },
+    {
+      "file": "hosting/public/js/chapter-continuation.js",
+      "sha256": "6b58098133125314ca4ba522a90af4c222f9d2de3e3f62ebc2c9936f923579d3"
+    },
+    {
+      "file": "hosting/public/js/chapter-keepsake.js",
+      "sha256": "ad7b3bb99650618ea064a87ac4d4bc26bddf625faccadfef349c1e328277a81d"
+    },
+    {
+      "file": "hosting/public/js/chapters.js",
+      "sha256": "2045df88187595f1ce85568859722e55b6b64b1b65c45e562f52da4bb8f849a3"
+    },
+    {
+      "file": "hosting/public/js/class-announcements.js",
+      "sha256": "f675e5f708715114b59d9d83ca237d6e8cb4e8bd60f77bc1f88a2cdf28b2331b"
+    },
+    {
+      "file": "hosting/public/js/content-cache.js",
+      "sha256": "4b7404eeb284fe460508f312d9539e91b5983fc5d3baafbcc89c268b40d0b351"
+    },
+    {
+      "file": "hosting/public/js/daily-challenge.js",
+      "sha256": "a8b727db144e8cbf23c4cade8c75de2f4e1eaec77693d8202bb178843889fea4"
+    },
+    {
+      "file": "hosting/public/js/daily-policy.js",
+      "sha256": "41ca9f83ff917e92978577592f558085a102cb370c36563735b098204d05b22e"
+    },
+    {
+      "file": "hosting/public/js/discovery-case-loader.js",
+      "sha256": "9ecab979d1647a4d06eca73dd87bf04f79dd69b944055da12e4181250672511e"
+    },
+    {
+      "file": "hosting/public/js/discovery-case-view.js",
+      "sha256": "633261db14cb86bb6c57d1c9e3d93fb9d74cbe096b4952487288bb5e13e77dc0"
+    },
+    {
+      "file": "hosting/public/js/discovery-cases.js",
+      "sha256": "4321987458e091fa0462eca73f0dbe5567c340350f1768c432b9c5872295b41f"
+    },
+    {
+      "file": "hosting/public/js/discovery-pins.js",
+      "sha256": "62e6aa43733de138b8af64ee07461a305c5ba4d06fd5cf2c5a23cc4d5aaff84c"
+    },
+    {
+      "file": "hosting/public/js/discovery-wall-page.js",
+      "sha256": "bc8863607f1af5fa914dec4c33225b841df43aaa2eaba115f24cfa12ea9124e4"
+    },
+    {
+      "file": "hosting/public/js/evidence-decision.js",
+      "sha256": "6a3af3ee39c89c79b2f9e97a6c510ae8a9931f8a5f6b10becbedb977fbe8d3bb"
+    },
+    {
+      "file": "hosting/public/js/evidence-journal-page.js",
+      "sha256": "7d376465a321f7cf7b2a74bba67d40fb3915d64bdb6427f041c82e1d8767b5a3"
+    },
+    {
+      "file": "hosting/public/js/evidence-journal.js",
+      "sha256": "3659ade1201ca24652084ceb250c943e4c4fb631abdc77fd286ef61724a390ba"
+    },
+    {
+      "file": "hosting/public/js/expedition-ui.js",
+      "sha256": "bf718422e944d7b39570ff8d3fad63f490049b2e58c0213a3e8acd9f0c0037a8"
+    },
+    {
+      "file": "hosting/public/js/exploration-preview.js",
+      "sha256": "7c79da857713f86b0eb00ad5c2ce3cc1ad942946d54b4c44e8d63f6182f21abd"
+    },
+    {
+      "file": "hosting/public/js/explorer-art.js",
+      "sha256": "cdde399660cea233cccf223dbb6888ded776c5b5fc2ae6764dd7a1064b7c2d61"
+    },
+    {
+      "file": "hosting/public/js/explorer-desk.js",
+      "sha256": "f2ddf3437282d3cd3d08095c43981245048a490c9cebcc966ddc8644e51b7b80"
+    },
+    {
+      "file": "hosting/public/js/firebase-config.js",
+      "sha256": "bda65feacbc42668d910f6a4b3af5aef0db2ba5b977c8f775e0d1c5e27df0e56"
+    },
+    {
+      "file": "hosting/public/js/firebase-environment.js",
+      "sha256": "5c8b9e51f01eaba4b8584c5d42087c9e4a28d50a9284593af793829a8b12e055"
+    },
+    {
+      "file": "hosting/public/js/history-timeline-view.js",
+      "sha256": "953d9a2a6e61a626d2253335f3f5d709c03ddab7096d0b498d5a2ee23e032ac2"
+    },
+    {
+      "file": "hosting/public/js/history-timeline.js",
+      "sha256": "cd107cd6ef99265ff96b12f3fc2f0275782f4de9e35c43ce150a2cc2c0d188c0"
+    },
+    {
+      "file": "hosting/public/js/home-learning-trail.js",
+      "sha256": "e6542074e1c4cffe753ba7b90708ce9a3523f7d644fa8427fb5c22d7396a0572"
+    },
+    {
+      "file": "hosting/public/js/instructional-content.js",
+      "sha256": "24d2e886f529c6fe35185d99e29067aeaa998e2908f1bcde134d80ba42df4762"
+    },
+    {
+      "file": "hosting/public/js/instructional-snapshot.js",
+      "sha256": "9df23b528b6bd4a5397391bc3d6706192f595978afdd7751ceff2cfadc12f1c3"
+    },
+    {
+      "file": "hosting/public/js/journey-finale-client.js",
+      "sha256": "d9eafe2aaae445daee19fd1dcb3b1a55d53c76afc5ac55c1f02106b3127457ac"
+    },
+    {
+      "file": "hosting/public/js/journey-finale-policy.js",
+      "sha256": "085e4b010ec6ec1c7b645d3fcf9238f087b36cc2e29de9b903ca5ec58f974f29"
+    },
+    {
+      "file": "hosting/public/js/journey-finale.js",
+      "sha256": "ba53c1e3a07499be3fa6c537dc001f52735c368f233e2997402341c861cd25d3"
+    },
+    {
+      "file": "hosting/public/js/journey-path.js",
+      "sha256": "8c7f0c071c157fa7b1efcbdfab5741c4622cb44e1f7cc2ae5360cef8410f86b1"
+    },
+    {
+      "file": "hosting/public/js/lakbay-passport.js",
+      "sha256": "f2a867f196564f7dd4010d9c68e1fa844115f1893577671c89d3f34e1a2b0b14"
+    },
+    {
+      "file": "hosting/public/js/learning-access.js",
+      "sha256": "b4f7b5b8b4a3628db211bdfd28e5db9f159ef58133f68109a9e176689db11c7b"
+    },
+    {
+      "file": "hosting/public/js/learning-community.js",
+      "sha256": "357720874bac72d89ed51e369781815e6beb47ee2ed63c9056d67eb8c2e1d09b"
+    },
+    {
+      "file": "hosting/public/js/learning-draft.js",
+      "sha256": "692d59242f6bf09cb36d5dd660d71f79442e705c5b0b973cedc1bfb0d1a83b75"
+    },
+    {
+      "file": "hosting/public/js/learning-navigation.js",
+      "sha256": "10212c872b7341119b931a66839610b6463299dc98a0a33c8e38c131edb35933"
+    },
+    {
+      "file": "hosting/public/js/lesson-game-audio.js",
+      "sha256": "87bce6fee117078683cc62d91145f8a81db4ba460c7d7285ed91b6a2ae84c745"
+    },
+    {
+      "file": "hosting/public/js/lesson-image-viewer.js",
+      "sha256": "84c5ec1c5b2064688b9c2245cfc15de494fc3a8bc6d19512a6499b877233a889"
+    },
+    {
+      "file": "hosting/public/js/lesson-narration-text.js",
+      "sha256": "44bfd4a5d6090afe417d821cb940e5e96ac4d1e83de63536b00f59381cbef36c"
+    },
+    {
+      "file": "hosting/public/js/level-reward-policy.js",
+      "sha256": "8515902d6dfaac31b709eb079d270b65f241d468059164768a380d95c771708e"
+    },
+    {
+      "file": "hosting/public/js/level-rewards.js",
+      "sha256": "468d12660de0612d11e17a577751b325a04a43292c43c4b500fdb4bea2d963d7"
+    },
+    {
+      "file": "hosting/public/js/logout.js",
+      "sha256": "a9ec0bfc7ed301638e73ad5d4c5d16a19948373f225fa824a46c22b5494b8651"
+    },
+    {
+      "file": "hosting/public/js/main.js",
+      "sha256": "c30be51430a3de94b19f1da3521411ce21a017ad7faff173f8befbcc68494f8a"
+    },
+    {
+      "file": "hosting/public/js/mission-assessment-client.js",
+      "sha256": "c05263a2497d98be1fb331fee516b421aa53714cdcfa85eb6d9442e939c7d2b4"
+    },
+    {
+      "file": "hosting/public/js/mission-assessment.js",
+      "sha256": "128880f98452c64fd902ecd434464e4c0ba03cb2e3fae21f1d0a85ab56c2e4e6"
+    },
+    {
+      "file": "hosting/public/js/mission-discovery.js",
+      "sha256": "3ad857b7cbcdd5e043664d3ecdde8999c975a19040f3c27821f0b672f7682743"
+    },
+    {
+      "file": "hosting/public/js/mission-learning-companion.js",
+      "sha256": "31370bce849f943f9e8804c811ece01639b385dbe22b11fa746ae2a5b53833b1"
+    },
+    {
+      "file": "hosting/public/js/mission-learning-guide-policy.js",
+      "sha256": "bce039018c20b214ac5b503b859bdbfde0fee6e34cda0b9f1d2c15f4ff39fe62"
+    },
+    {
+      "file": "hosting/public/js/mission-learning-guide-view.js",
+      "sha256": "00ff85f65977be7beef0aa7e152edf52066c60f883dd649d17e8119867af95bc"
+    },
+    {
+      "file": "hosting/public/js/mission-quest.js",
+      "sha256": "34a8c99e0b4852d9ce3a791a88bb59e03fb2bba99d52f1bfb75c961715a5215a"
+    },
+    {
+      "file": "hosting/public/js/mission-review.js",
+      "sha256": "7564acc613db6e5ae29d35e4947ef157a2c3d5785301da2c0f5bfda20d63ea93"
+    },
+    {
+      "file": "hosting/public/js/mission.js",
+      "sha256": "fa92e15de08e8100edc46549b89d0099708dcde2e760ae9bd4a718f93e8f6614"
+    },
+    {
+      "file": "hosting/public/js/museum-exhibits.js",
+      "sha256": "463588371f1073d8d6b3a6fa1e843cc2301c853af2f3be37564b7bb2ea79203b"
+    },
+    {
+      "file": "hosting/public/js/my-class.js",
+      "sha256": "e47b293f75b082a20cb93ce93dc0623010ef6aa8fad9dba8c360d94e5dda61d8"
+    },
+    {
+      "file": "hosting/public/js/my-journey.js",
+      "sha256": "07c48dc2a4917305a305c45e2b2863a084d830f9636433c6f6ee5b5e20f62b8a"
+    },
+    {
+      "file": "hosting/public/js/page-transition.js",
+      "sha256": "24f2fcb5d0bad2f26af29a3af7a90009e6576ecd5ee6f2bb3a9c3f3eb56542f5"
+    },
+    {
+      "file": "hosting/public/js/practice-review.js",
+      "sha256": "c8d0a6d91b231cb96da2323d3f48b3334c08050950dab4cc4c2f3b76fac099dc"
+    },
+    {
+      "file": "hosting/public/js/practice.js",
+      "sha256": "8af4c05d994b3f9bbd1c6b1977f0119f13ea5950b4282a2384943e5550b6a081"
+    },
+    {
+      "file": "hosting/public/js/progression-policy.js",
+      "sha256": "93b6c10fad328ce9bc5b64782f631591d682baf4967f7fe2a436413efb2aabe8"
+    },
+    {
+      "file": "hosting/public/js/progression.js",
+      "sha256": "efeeea6efec1232a14eeb702e9b1fdb913374272ac076048fb02eafdbe0f7021"
+    },
+    {
+      "file": "hosting/public/js/public-audio.js",
+      "sha256": "e2e099f05dffedfaad694323b2dda622829fb692ec8750eab8d99213a235d7bd"
+    },
+    {
+      "file": "hosting/public/js/quiz-draft-policy.js",
+      "sha256": "171c89401ae24dd0a09abb4c459e9d82305551c7c2b862b20601d8206a6d86f8"
+    },
+    {
+      "file": "hosting/public/js/quiz.js",
+      "sha256": "0ddb5e15ef3f7bac444edbdf1728fd0d8e849cfbf88fdb4e5c177138817708aa"
+    },
+    {
+      "file": "hosting/public/js/return-to-learn.js",
+      "sha256": "22517f7e73176a8ff4b0a26f5700cccf7b60174c99fb2b43713ea9c77275da0e"
+    },
+    {
+      "file": "hosting/public/js/review-events.js",
+      "sha256": "234621d7353fd6846a1ec99ee42781a4a50f8f53e89666cd08c236f85ac26c17"
+    },
+    {
+      "file": "hosting/public/js/review-question-catalog.js",
+      "sha256": "b4da55c0b72e2dce9922b9e3e4737b6c97cdf5d03db04fc9109be75aa37cfac0"
+    },
+    {
+      "file": "hosting/public/js/story-exhibit.js",
+      "sha256": "af6c40138c9d13bbe32693ef81c4f94844382d2cf0353205cb14f7f32fe04a7e"
+    },
+    {
+      "file": "hosting/public/js/story-playground-content.js",
+      "sha256": "0aa39ad80cdc75430c99e75323932bcbb3d32ebc25915598d5a28c985958da61"
+    },
+    {
+      "file": "hosting/public/js/story-playground.js",
+      "sha256": "fd395da88507bad29d2b514aa34b58d6ebdfeb95d0254c95b48bfcdf9155589f"
+    },
+    {
+      "file": "hosting/public/js/story-reading-steps.js",
+      "sha256": "1e6bbdd4aa29c90b617bcae81b0e1d3a55afe4e9e29493fbfa5f6c52b120d449"
+    },
+    {
+      "file": "hosting/public/js/story-route.js",
+      "sha256": "01f4350d697badf99672930a29b6a233b11d5b3addcf25acf8e2d684c4cd7fb2"
+    },
+    {
+      "file": "hosting/public/js/story-trade.js",
+      "sha256": "7ab15711ec4df01c821f056a9f1767061490f6ae6aa070e1f2d727a3f4b9af1e"
+    },
+    {
+      "file": "hosting/public/js/story.js",
+      "sha256": "5156cf83c94a38891b108c5594827255db28bbb910be03950651fa02595d0bff"
+    },
+    {
+      "file": "hosting/public/js/student-assessment-client.js",
+      "sha256": "ce8a695264c281434559c1878269eecc21fb2a4cef474fdd155a65950064c40b"
+    },
+    {
+      "file": "hosting/public/js/student-audio-host.js",
+      "sha256": "197a04cb9a489bc4ee722d3cc483ffedbc110780052bf86c257b9dd48f5ba288"
+    },
+    {
+      "file": "hosting/public/js/student-class-client.js",
+      "sha256": "1ef3dc0be83d012225234682b0b005c9914d22986b1f7e2bf3036c74f72e535c"
+    },
+    {
+      "file": "hosting/public/js/student-data-download.js",
+      "sha256": "9479b82264c2c90479f2286822d358445d6a840f696191e3de0d4a68d51855be"
+    },
+    {
+      "file": "hosting/public/js/student-data-export.js",
+      "sha256": "093303bd38ebaa79970f836cd9f66728524f6ddf83f7ebb1b2eda14a327e380e"
+    },
+    {
+      "file": "hosting/public/js/student-feedback.js",
+      "sha256": "7470a3c6741c759897d6760681e864ec64dd1754d0aeca908c69ca528fb0fcd1"
+    },
+    {
+      "file": "hosting/public/js/student-journey.js",
+      "sha256": "3576eb96c07010067a7918b0778ce105610109786d6426ce1f4a8bfe048204ba"
+    },
+    {
+      "file": "hosting/public/js/student-profile.js",
+      "sha256": "5a1dbfda44de0d122a219f29cde1cf916786da7b3f23bee9b4b2b2df15368ca4"
+    },
+    {
+      "file": "hosting/public/js/student-rewards-client.js",
+      "sha256": "90237330006f14675d643566bfd236c916345f7a96219cc8e949ec8cb29c95a3"
+    },
+    {
+      "file": "hosting/public/js/student-session-storage.js",
+      "sha256": "a54ec4c87de205f9231eccbddaa774bef90f39d216162346df0a35f3391aa758"
+    },
+    {
+      "file": "hosting/public/js/student-shell-route.js",
+      "sha256": "2f753bc165aa7d01606806e3e2b2e2e20ace50fadab3e551d9f974dd470c50d8"
+    },
+    {
+      "file": "hosting/public/js/student-shell.js",
+      "sha256": "83f6caa5b8499a81e8cf7c2bfa7825e4800a15ba398d3eaed94eae8a9d60c1cf"
+    },
+    {
+      "file": "hosting/public/js/student-status.js",
+      "sha256": "af2e1b9bad9ef66338986ebc87b02440dc0f7ed7949eef58b9525e4e0ccab08a"
+    },
+    {
+      "file": "hosting/public/js/student.js",
+      "sha256": "3e8b35a3664eb0d04374684c08f47a1858b9c8a00c660032cbeabdebc07a01c9"
+    },
+    {
+      "file": "hosting/public/js/teacher-application-client.js",
+      "sha256": "42b614d412d7a859d890c24c99ce216fb9b13aa1a08c0a24629f018d34bc0dd7"
+    },
+    {
+      "file": "hosting/public/js/teacher-application-policy.js",
+      "sha256": "1d940596c487fff9f6946afda011ff2cba61d6467b2baf31c476ade07e577541"
+    },
+    {
+      "file": "hosting/public/js/teacher-application-review.js",
+      "sha256": "29e125f95b0c5dc2ea180a04efe0cff0a9424cc092130346a5fb0cfc22078efd"
+    },
+    {
+      "file": "hosting/public/js/teacher-application.js",
+      "sha256": "941c3b82ff47af6497fd3531489cfbc8ce0369cf8b50a59a5646c2a546568c1d"
+    },
+    {
+      "file": "hosting/public/js/teacher-class-client.js",
+      "sha256": "9f7c27036caefd062aeb1684ea3ec5ffb014a997ea9d8cdcbb52acd0fc980175"
+    },
+    {
+      "file": "hosting/public/js/teacher-class-policy.js",
+      "sha256": "3a87941f44c7d4b5d9ff57010b22ef6ac22a19ec93c621447dd77461d78aa0ec"
+    },
+    {
+      "file": "hosting/public/js/teacher-evidence-viewer.js",
+      "sha256": "5eb38fc8242ce40b7bf55fc6684767d160c2b0c9ffcaa11f0882e23f0ab3937d"
+    },
+    {
+      "file": "hosting/public/js/teacher-quiz-insights.js",
+      "sha256": "f2ae60f1aad5dafbc783c913c1d25774d991d49e7c20903301c959fec1fa8fd4"
+    },
+    {
+      "file": "hosting/public/js/teacher-report-export.js",
+      "sha256": "71daa3c9324b9c378fcd88c011734d06829a0e5547e86d66bc90fcb5b43c7fb8"
+    },
+    {
+      "file": "hosting/public/js/teacher-review-panel.js",
+      "sha256": "88057d9817ae96918924968344dc0ff2f2560c8524d14ca83830898cdb1caab1"
+    },
+    {
+      "file": "hosting/public/js/teacher-support-policy.js",
+      "sha256": "b4680c709d1b79d556bc4817fd280a514057bc89ada75a0dbb2a9387e5568e39"
+    },
+    {
+      "file": "hosting/public/js/teacher-workspace.js",
+      "sha256": "7630c5c4049dda067a06e6ca3225378795d44740d0e49c595a873c2ae8e810c4"
+    },
+    {
+      "file": "hosting/public/pages/achievements.html",
+      "sha256": "a1a1f58586813c061a8b985c3dea0fe2d9f5ca53bf93275ecbb9c116cad110c1"
+    },
+    {
+      "file": "hosting/public/pages/admin-dashboard.html",
+      "sha256": "c6a3633dca084a7226a21b34864bd8e281de449e41fecae1ace6d6607cdf55a0"
+    },
+    {
+      "file": "hosting/public/pages/bayani-ai.html",
+      "sha256": "909318a4cb26b79f1eada9913bc64dbb7416a6412547b28e3694aab1bb537b97"
+    },
+    {
+      "file": "hosting/public/pages/chapter-challenge.html",
+      "sha256": "c9de24bf0d88ed6e4e22f7942d1c5fdbf375cef273376d79402a2fe27c0745f7"
+    },
+    {
+      "file": "hosting/public/pages/chapters.html",
+      "sha256": "79cb8efe4f6c99bc9834f63ba6a67d7d35d282e19b0867b2e61f8e7a65b6fd16"
+    },
+    {
+      "file": "hosting/public/pages/era.html",
+      "sha256": "b605ff91cca2ca9d5c3d07ab47965411b23580f1ae122c085709382491e517e2"
+    },
+    {
+      "file": "hosting/public/pages/history-timeline.html",
+      "sha256": "5b6fcbc7bfc8b788035ee7cc3504453d737600086845dcb082f4c932fc60f8f0"
+    },
+    {
+      "file": "hosting/public/pages/journey-finale.html",
+      "sha256": "3d7ea29647e9cdf56a05ea0b10873c2bda27c2c7262a1942907e70fefb9adb6e"
+    },
+    {
+      "file": "hosting/public/pages/login.html",
+      "sha256": "3136a43e06bcaea57d5844222c14d26f91293e08e5806811d7d671a9d22b47fc"
+    },
+    {
+      "file": "hosting/public/pages/mission.html",
+      "sha256": "075689ebc51f1309aaf80a7f0a04c29fc141a66309c532a61c7afb1785dea334"
+    },
+    {
+      "file": "hosting/public/pages/my-class.html",
+      "sha256": "3811d3d23d1f7bb96d668d9f03a85af9f16255e5061d9f5c7847e72677e7f6cf"
+    },
+    {
+      "file": "hosting/public/pages/my-journey.html",
+      "sha256": "8eff6d65881621e1166e7a19e72d6fd3ba81e52c86cc553d7abb6030c99ae7f6"
+    },
+    {
+      "file": "hosting/public/pages/my-profile.html",
+      "sha256": "8dcf9d6e44e48f9643d8241ac78d1b834b16b8674f173e1c6b41912993ee6948"
+    },
+    {
+      "file": "hosting/public/pages/practice.html",
+      "sha256": "a4bcf3b3c52b86db22cf017a936bd85e6eb3775451eb9336c0c4e52075811b8a"
+    },
+    {
+      "file": "hosting/public/pages/quiz.html",
+      "sha256": "5129dc053091cd8b42f73e09edea8d4db881fc5ebaf255cb13e5e0ddfaa0902b"
+    },
+    {
+      "file": "hosting/public/pages/register.html",
+      "sha256": "6c8d232a8ea6273d04486b0390924f9a0c086960a8ae9eb736c5d4f3652ad40f"
+    },
+    {
+      "file": "hosting/public/pages/settings.html",
+      "sha256": "05a2af9266dfac8005a42a2f916ac54ec07e0b3bb63019af737f97db8449b749"
+    },
+    {
+      "file": "hosting/public/pages/story-playground.html",
+      "sha256": "3af05ab4bd3918a1037c5c9d8b2fad4359c6c2e2e9a64cd117f505c799cae9f6"
+    },
+    {
+      "file": "hosting/public/pages/story.html",
+      "sha256": "eba91b45bd1b20886fbc204b3c38fb06566df8c710d4b00c4dbc52ac6f87bf3e"
+    },
+    {
+      "file": "hosting/public/pages/student-dashboard.html",
+      "sha256": "f69d2899026aac85442353ccba8024d5879caa2ac699662ff7de38c54d9603b1"
+    },
+    {
+      "file": "hosting/public/pages/student-shell.html",
+      "sha256": "be3a12d14ba59a8938f37f5a18ce7d18ee855140ffaa9ca2be30610ba924e6fc"
+    },
+    {
+      "file": "hosting/public/pages/teacher-announcements.html",
+      "sha256": "c646526032045c366d5287d958f3a675bad18cd34230c8ab56319589325406e5"
+    },
+    {
+      "file": "hosting/public/pages/teacher-application.html",
+      "sha256": "df0d6ab756a10f44712d7fb0050b9a92dfd93ff60323139ec6621c4660a034c1"
+    },
+    {
+      "file": "hosting/public/pages/teacher-assignments.html",
+      "sha256": "ed922ae05144eb0508ddeb0fe967be368022b1027ba0d96a250d2985f6277f12"
+    },
+    {
+      "file": "hosting/public/pages/teacher-classes.html",
+      "sha256": "6243c7ec923c991f544bfe78d7fa9b9600e68071cf60a8bf2453aed35f34a359"
+    },
+    {
+      "file": "hosting/public/pages/teacher-classroom.html",
+      "sha256": "60151c1e2489197063926a259c86b8447ed2ac1cb64c6e1ff74f15ed0e7aa251"
+    },
+    {
+      "file": "hosting/public/pages/teacher-dashboard.html",
+      "sha256": "2243fd4cce9df61aece8ccce7a33bc68e8babbea7e452ca79965871e46321862"
+    },
+    {
+      "file": "hosting/public/pages/teacher-register.html",
+      "sha256": "aa29229ae10a0e5b54d493822d1eea557c6ca43400cd91ac9a145b8b82faf519"
+    },
+    {
+      "file": "hosting/public/pages/teacher-settings.html",
+      "sha256": "1d7bf7e00d8e2b32d62362db9f8c1b05e4835317078d33aba74ae1700fbb47a6"
+    },
+    {
+      "file": "hosting/public/pages/teacher-students.html",
+      "sha256": "6fe491571ad88b911ad1357d7e6c50331801f9702282ac3cb9d420370c9a3193"
+    },
+    {
+      "file": "hosting/public/pages/teacher.html",
+      "sha256": "5f6a7584e7a39bae977f1f38cc7ea88b8607e9c91c92e579503e91a12ceac53f"
+    },
+    {
+      "file": "hosting/uploads/91ef8ccf62b38eb6e09d3b40c59a1939d5177c995fee73bab0d304fc27ac8618.gz",
+      "sha256": "91ef8ccf62b38eb6e09d3b40c59a1939d5177c995fee73bab0d304fc27ac8618"
+    },
+    {
+      "file": "hosting/uploads/9e5d01016e06efbc46abfd982ca33458265c3b356e131bdba493ff24e9e49a3e.gz",
+      "sha256": "9e5d01016e06efbc46abfd982ca33458265c3b356e131bdba493ff24e9e49a3e"
+    },
+    {
+      "file": "hosting/uploads/db0303e109ed5b3f626e377e678ba48430939421ea9791a60bf8b54c4de30e1e.gz",
+      "sha256": "db0303e109ed5b3f626e377e678ba48430939421ea9791a60bf8b54c4de30e1e"
+    },
+    {
+      "file": "hosting/uploads/eaac12eba7bb7e3da613f04f353263803f5fa66aefd4524fca463cff58c2803f.gz",
+      "sha256": "eaac12eba7bb7e3da613f04f353263803f5fa66aefd4524fca463cff58c2803f"
+    },
+    {
+      "file": "hosting/uploads/f8e6a936be68bdca5fc560f224bf5d3509ce5a14272effbd641a62ac589f60fc.gz",
+      "sha256": "f8e6a936be68bdca5fc560f224bf5d3509ce5a14272effbd641a62ac589f60fc"
+    },
+    {
+      "file": "hosting/uploads/fa757eb629d49636cd9c405a5d23b42d4fc72941abc9b8280db0a735da9a922c.gz",
+      "sha256": "fa757eb629d49636cd9c405a5d23b42d4fc72941abc9b8280db0a735da9a922c"
+    },
+    {
+      "file": "hosting/uploads/fbf71a4f77efd7d867a740ad69376ba7e355f9c96bfff79ed55e0955e26c28a0.gz",
+      "sha256": "fbf71a4f77efd7d867a740ad69376ba7e355f9c96bfff79ed55e0955e26c28a0"
+    },
+    {
+      "file": "policy/disabled-proposal.json",
+      "sha256": "2326787a18a75eb4837b97b652f52e7b0f61670a4ed5044ce4735cd625ea90c1"
+    },
+    {
+      "file": "README.txt",
+      "sha256": "cb416137018086bd16d314f29ecf77d7b199640d88af6341ce276251aea1079a"
+    },
+    {
+      "file": "rollback/firebase.json",
+      "sha256": "3b762a131eb4b4898e3bf42810efc017043e5d90061ad329cadf6f93d5c71a20"
+    },
+    {
+      "file": "rollback/firestore.rules",
+      "sha256": "6b704af7ac7e6114851ce1a3e61ceaf2aaf2568587c4150bc51bafac90ae5849"
+    },
+    {
+      "file": "rollback/functions/index.js",
+      "sha256": "4277773278a7d8a46bc79cf10a38e656227f243cc5bc03f74be0ace461fb501d"
+    },
+    {
+      "file": "rollback/functions/package-lock.json",
+      "sha256": "0eaedbf386bb5cddb70ed00be7403a78c5257130487f1fa25d549f1d2cc0ec38"
+    },
+    {
+      "file": "rollback/functions/package.json",
+      "sha256": "7282e92833d211ccc2b24cecfd55e3ad14250d722a2997b63957775be470143b"
+    },
+    {
+      "file": "rollback/hosting-config.json",
+      "sha256": "f80b095ea1811bc9f903fd3402f35f4cafa9db2c45c634de457cda9310b4f1b3"
+    },
+    {
+      "file": "rollback/hosting-file-map.json",
+      "sha256": "f57721b826702281c17f46baef69e83c93ee0b6a2f5f33a652f8dd3f6bfe4307"
+    },
+    {
+      "file": "rollback/student-rewards-client.js",
+      "sha256": "023b720d6ddb340bca4f3b4d6d57674b00a4d4b7ce473b10ce54d66fb9e3a876"
+    },
+    {
+      "file": "rollback/uploads/b79214d4ded53eb656bbf314e403c6c3743bf0314bcafe76ff6ac1b6442ec822.gz",
+      "sha256": "b79214d4ded53eb656bbf314e403c6c3743bf0314bcafe76ff6ac1b6442ec822"
+    },
+    {
+      "file": "rules/firestore.rules",
+      "sha256": "6b704af7ac7e6114851ce1a3e61ceaf2aaf2568587c4150bc51bafac90ae5849"
+    },
+    {
+      "file": "runtime-identity.proposal.json",
+      "sha256": "69632ee2253759bc95258b4b421fb7713b8d65504db5ba7da4904b0b18dc8d92"
+    }
+  ]
+}

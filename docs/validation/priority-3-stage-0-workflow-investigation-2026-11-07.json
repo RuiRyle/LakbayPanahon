@@ -1,0 +1,73 @@
+{
+  "mode": "offline-workflow-investigation-only",
+  "firebaseCliVersion": "15.33.0",
+  "functionsSdkVersion": "7.4.0",
+  "callableConversion": [
+    {
+      "name": "startStudentAssessment",
+      "expectedCallableLabel": "true",
+      "runtime": {
+        "serviceAccountEmail": "assessment-runtime@lakbaypanahon-1797e.iam.gserviceaccount.com",
+        "availableMemory": "256Mi",
+        "minInstanceCount": 0,
+        "maxInstanceCount": 2,
+        "maxInstanceRequestConcurrency": 8,
+        "availableCpu": "1",
+        "environmentVariables": {
+          "FUNCTION_REGION": "asia-southeast1"
+        }
+      }
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "expectedCallableLabel": "true",
+      "runtime": {
+        "serviceAccountEmail": "assessment-runtime@lakbaypanahon-1797e.iam.gserviceaccount.com",
+        "availableMemory": "256Mi",
+        "minInstanceCount": 0,
+        "maxInstanceCount": 2,
+        "maxInstanceRequestConcurrency": 8,
+        "availableCpu": "1",
+        "environmentVariables": {
+          "FUNCTION_REGION": "asia-southeast1"
+        }
+      }
+    },
+    {
+      "name": "resumeStudentAssessment",
+      "expectedCallableLabel": "true",
+      "runtime": {
+        "serviceAccountEmail": "assessment-runtime@lakbaypanahon-1797e.iam.gserviceaccount.com",
+        "availableMemory": "256Mi",
+        "minInstanceCount": 0,
+        "maxInstanceCount": 2,
+        "maxInstanceRequestConcurrency": 8,
+        "availableCpu": "1",
+        "environmentVariables": {
+          "FUNCTION_REGION": "asia-southeast1"
+        }
+      }
+    },
+    {
+      "name": "submitStudentActivity",
+      "expectedCallableLabel": "true",
+      "runtime": {
+        "serviceAccountEmail": "assessment-runtime@lakbaypanahon-1797e.iam.gserviceaccount.com",
+        "availableMemory": "256Mi",
+        "minInstanceCount": 0,
+        "maxInstanceCount": 2,
+        "maxInstanceRequestConcurrency": 8,
+        "availableCpu": "1",
+        "environmentVariables": {
+          "FUNCTION_REGION": "asia-southeast1"
+        }
+      }
+    }
+  ],
+  "manifestSha256": "126b79f89883777b7e20345ca31a0e8e2093ab36424b7be64e6fe8160ee0a07f",
+  "sourceDrift": [],
+  "artifactDrift": [],
+  "releaseModified": false,
+  "productionAccess": false,
+  "newManifestGenerated": false
+}

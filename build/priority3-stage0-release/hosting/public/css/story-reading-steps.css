@@ -1,0 +1,14 @@
+body.lakbay-theme .story-beat-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:20px 0;padding:14px;border:1px solid #3e5c6c;background:#0e2536;border-radius:12px}
+body.lakbay-theme .story-beat-toolbar>span{flex-basis:100%;font-size:.75rem;color:#adc8ce;font-weight:700;margin-bottom:4px}
+body.lakbay-theme .story-beat-toolbar button{font:inherit;font-size:.78rem;min-height:44px;padding:9px 12px;border:1px solid #476172;border-radius:9px;background:#193548;color:#dfebef;cursor:pointer}
+body.lakbay-theme .story-beat-toolbar button:hover:not(:disabled){border-color:#91cdbd;background:#244651}
+body.lakbay-theme .story-beat-toolbar button:disabled{opacity:.5;cursor:default}
+body.lakbay-theme .story-text>p{padding:4px 0 14px}
+body.lakbay-theme .story-preview-link{display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border:1px solid #91cdbd65;border-radius:12px;color:#b2dfcc;background:#102e3d;text-decoration:none;font-size:.85rem;margin-top:14px}
+@media(max-width:600px){body.lakbay-theme .story-beat-toolbar button{flex:1 1 42%}}
+.narrator-options{padding:14px 0;border-top:1px solid #365369;margin-top:12px;max-width:100%}
+.narrator-options label{display:grid;gap:8px;color:#dce5ed;font-size:.85rem}
+.narrator-options select{width:100%;min-width:0;max-width:100%;min-height:44px;background:#122b3e;color:#e2ecee;border:1px solid #567281;border-radius:9px;padding:8px;font:inherit}
+.narrator-options button{min-height:44px;padding:8px 14px;margin-top:10px;background:#254a51;color:#e6eee2;border:1px solid #638e80;border-radius:9px;font:inherit;cursor:pointer}
+.narrator-options p{font-size:.8rem;color:#b2c7cb;line-height:1.6}
+.narrator-options :is(button,select):focus-visible{outline:3px solid #edc37b;outline-offset:3px}

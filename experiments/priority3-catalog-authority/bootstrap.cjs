@@ -1,0 +1,9 @@
+'use strict';
+process.env.GCE_METADATA_HOST='127.0.0.1:9';
+const crypto=require('crypto'),path=require('path'),core=require('../priority3-netlify/service/student-assessment.js'),{assessmentStore}=require('../priority3-read-efficiency/memo-store.cjs'),{createAuthority}=require('./authority.cjs'),{wrapStore}=require('./store.cjs');
+const pair=crypto.generateKeyPairSync('ed25519'),secret=crypto.randomBytes(32).toString('hex'),factory=core.createAssessmentService;let authority,offset=0;
+core.createAssessmentService=(store,options={})=>factory(store,{...options,clock:()=>Date.now()+offset});core.assessmentStore=(db,timestamp)=>({run:fn=>wrapStore(assessmentStore(db,timestamp),authority).run(fn)});
+const p=require('../priority3-netlify/proof.cjs'),seed=p.fixture.seedLocalCatalog,journal=path.join(__dirname,'.local-state',crypto.randomUUID(),'authority.jsonl');
+function instantiate(){return createAuthority({db:p.db,journal,approvalSecret:secret,privateKey:pair.privateKey,publicKey:pair.publicKey});}
+p.fixture.seedLocalCatalog=async()=>{await seed();authority=instantiate();await p.meter.run('publication',async()=>{await authority.recover(secret);await authority.publish(secret,{nextCatalog:p.catalog,previousCatalog:p.catalog,expectedGeneration:0});});module.exports.publication=p.meter.total('publication');p.meter.events.length=0;};
+module.exports={...p,advanceSchoolTime:()=>{offset+=5*60*1000;},publicationControl:{publish:input=>authority.publish(secret,input),recover:()=>authority.recover(secret),restart:()=>{const s=authority.status();if(s.leases||s.publishing)throw Error('fixture/drain-required');authority=instantiate();},status:()=>authority.status(),untrustedPublish:input=>authority.publish('content-writer-without-approval',input),untrustedRecover:()=>authority.recover('content-writer-without-approval'),acquireFixture:()=>authority.acquire(),runTransactionFixture:fn=>core.assessmentStore(p.db,()=>null).run(fn)}};

@@ -7,6 +7,8 @@ import {buildJourneyPath} from './journey-path.js';
 import {missionTopicStates} from './mission-review.js';
 import {reviewQuestionSnapshot} from './review-question-catalog.js';
 import {instructionalSnapshot} from './instructional-snapshot.js';
+import {passportEntries,renderPassport} from './lakbay-passport.js';
+import {learningCommunityState,renderLearningCommunity} from './learning-community.js';
 
 const page=document.getElementById('journeyPageContent'),status=document.getElementById('journeyPageStatus'),refresh=document.getElementById('refreshJourney');
 let generation=0;
@@ -29,7 +31,7 @@ function renderTopicStatuses(container,topics,chapterByMission){
         const action=topic.state==='review-needed'||topic.state==='practice-goal-reached'
             ? pathLink('Revisit Story','story.html?'+new URLSearchParams({chapter,mission:topic.missionId,reviewTopic:topic.topic}))
             : pathLink('Practise This Topic','practice.html?'+new URLSearchParams({chapter,mission:topic.missionId,topic:topic.topic,review:'1'}));
-        card.append(stage,heading,text('p',message),action);
+        card.append(stage,heading,text('p',message),action,pathLink('Practise with Bayani','bayani-ai.html?'+new URLSearchParams({chapter,mission:topic.missionId,topic:topic.topic,label:topic.label||topic.topic}))); 
         container.append(card);
     }
 }
@@ -76,10 +78,27 @@ function renderPath(groups,state) {
         path.append(section);
     }
 }
+// Visual enrichment only; all access and next-action routes come from the existing state.
+function decorateExplorerJournal(groups,state,user){
+ const message=document.querySelector('.journey-page-heading .adventure-tagline');
+ if(message)message.textContent=user.displayName?user.displayName.split(' ')[0]+', continue your discoveries.':'Your next adventure awaits.';
+ const host=document.getElementById('journeyNextAction');
+ const scenes={'chapter-1':'chapter-1-mission-1-scene-1.png','chapter-2':'chapter-2-mission-1-scene-1.png','chapter-3':'chapter3-mission1-scene1.png'};
+ if(state.chapter){const image=document.createElement('img');image.className='journal-next-art';image.alt='';image.src=scenes[state.chapter.id]?'../assets/story/'+scenes[state.chapter.id]:'../assets/atlas/archive.svg';image.addEventListener('error',()=>{image.src='../assets/atlas/archive.svg';},{once:true});host.prepend(image);}
+ for(const chapter of groups.flatMap(g=>g.chapters).filter(c=>!c.completed)){
+  const pending=text('article','','passport-pending');pending.append(text('span',chapter.accessible?'NEXT DESTINATION':'NOT YET STAMPED'),text('h3',chapter.title||'Historical chapter'),text('small',chapter.ready?(chapter.accessible?'Available in your learning path':'Complete earlier chapters first'):'Content being prepared'));document.getElementById('passportStamps').append(pending);
+ }
+ const goal=document.querySelector('.journey-finale-entry');goal?.querySelector('.journal-goal-progress')?.remove();
+ const chapters=groups.flatMap(g=>g.chapters).filter(c=>c.ready),done=chapters.filter(c=>c.completed).length;
+ if(goal&&chapters.length){const box=text('div','','journal-goal-progress'),meter=document.createElement('progress');meter.max=chapters.length;meter.value=done;meter.setAttribute('aria-label','Published chapters completed');box.append(text('small',done+' / '+chapters.length+' published chapters completed'),meter);goal.firstElementChild.append(box);}
+}
 async function loadJourneyPage() {
     const user=auth.currentUser,request=++generation;const current=()=>request===generation&&auth.currentUser?.uid===user?.uid;
     page.hidden=true;refresh.disabled=true;status.textContent=user?'Loading your saved journey...':'Sign in to view your journey.';
-    if(!user)return;
+    const nextAction=document.getElementById('journeyNextAction');
+    nextAction.replaceChildren(text('p',user?'Finding your next activity from your saved progress...':'Sign in to see your next activity.'));
+    nextAction.setAttribute('aria-busy',String(Boolean(user)));
+    if(!user){refresh.disabled=false;return;}
     try {
         const names=['chapters','eras','missions','chapterChallenges','studentChapterProgress','studentProgress','studentQuizAttempts','studentLearningDrafts','studentPracticeProgress','practiceQuestions','studentReviewEvents'];
         const results=await Promise.allSettled(names.map(name=>name==='practiceQuestions'?Promise.resolve({docs:[]}):name.startsWith('student')
@@ -105,6 +124,9 @@ async function loadJourneyPage() {
         const state=resolveStudentJourney({...data,reviewTopics:review});state.optionalGuidanceUnavailable=results.slice(7).some(r=>r.status==='rejected');
         renderStudentJourney(document.getElementById('journeyNextAction'),state,loadJourneyPage);
         renderPath(groups,state);
+        renderPassport(document.getElementById('passportStamps'),passportEntries(groups,chapterProgress,user.uid));
+        renderLearningCommunity(document.getElementById('learningCommunity'),learningCommunityState(groups,missionProgress,user.uid));
+        decorateExplorerJournal(groups,state,user);
         document.getElementById('journeyMissionCount').textContent=missionRows.filter(m=>m.completed).length+' / '+missionRows.length;
         document.getElementById('journeyChapterCount').textContent=chapterRows.filter(c=>c.completed&&c.ready).length+' / '+chapterRows.filter(c=>c.ready).length;
         document.getElementById('journeyReviewCount').textContent=reviewAvailable?String(review.length):'Unavailable';
@@ -116,12 +138,13 @@ async function loadJourneyPage() {
     } catch(error) {
         if(!current())return;
         console.warn('Journey page unavailable:',error);status.textContent=studentLoadMessage(error,'We could not load your journey. Use Refresh Progress to try again.');
-    } finally {if(current())refresh.disabled=false;}
+        renderStudentJourney(nextAction,{kind:'error'},loadJourneyPage);
+    } finally {if(current()){refresh.disabled=false;nextAction.setAttribute('aria-busy','false');}}
 }
 refresh.addEventListener('click',loadJourneyPage);
 onAuthStateChanged(auth,()=>{
     generation++;page.hidden=true;
-    for(const id of ['journeyNextAction','journeyPath','journeyReviewTopics'])document.getElementById(id).replaceChildren();
+    for(const id of ['journeyNextAction','journeyPath','journeyReviewTopics','passportStamps','learningCommunity'])document.getElementById(id)?.replaceChildren();
     loadJourneyPage();
 });
 window.addEventListener('pageshow',event=>{if(event.persisted)loadJourneyPage();});

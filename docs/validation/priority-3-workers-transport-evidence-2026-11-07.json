@@ -1,0 +1,46 @@
+{
+  "scope": "bounded-local-only",
+  "recommendation": "NO-GO-current-Workers-Free-transport",
+  "passingGroups": 9,
+  "failingGroups": [
+    "Concurrent duplicate submissions commit exactly one reward and artifact"
+  ],
+  "maxFirestoreSubrequests": 105,
+  "authDenialsBeforeFirestore": true,
+  "hostedCpuProven": false,
+  "productionAccess": false,
+  "files": [
+    {
+      "file": "experiments/priority3-workers-transport/rest-store.mjs",
+      "sha256": "760256671c4ceda301afa2c21a022c1de327f28ffb6a53e923bb34d07803d2b4"
+    },
+    {
+      "file": "experiments/priority3-workers-transport/worker.mjs",
+      "sha256": "392e14da65a58c0f007ac6c1eae927d1aa590bcb227c8aead09289db361c7a8c"
+    },
+    {
+      "file": "experiments/priority3-workers-transport/proof.cjs",
+      "sha256": "bdc86a332ecd9063c5c975ec37b9c468b0ae0afe3baeaffa4236142c3b24a957"
+    },
+    {
+      "file": "experiments/priority3-workers-transport/wrangler.jsonc",
+      "sha256": "2e2372999fdd0cf91e4c9e10f401cc06e45b626b78f661a9a5420dce7d07ace7"
+    },
+    {
+      "file": "docs/validation/priority-3-workers-transport-results-2026-11-07.json",
+      "sha256": "0b9961f1888e93c7e43d5ce766551f18cee68d7ba2819883870297f4289fe97a"
+    },
+    {
+      "file": "docs/validation/priority-3-workers-transport-tests-2026-11-07.log",
+      "sha256": "2bf26cd249d1e7c73fb757865a55ced107523da870702fdd24b4caae9e868ca0"
+    },
+    {
+      "file": "docs/validation/priority-3-workers-transport-cpu-2026-11-07.cpuprofile",
+      "sha256": "7c874c382542fb433ed9e141f06ad7b5861bbbef1059e58f4aefbd2445555b60"
+    },
+    {
+      "file": "docs/validation/priority-3-workers-transport-review-2026-11-07.md",
+      "sha256": "8932597afe34357720a49d3f355a0b7c89660c7d65476cfb3161076f3300f7c2"
+    }
+  ]
+}

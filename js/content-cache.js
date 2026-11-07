@@ -26,7 +26,8 @@ export function createContentCache({storage = null, now = Date.now, ttl = 120000
             let entry = memory.get(fullKey);
             if (!entry) { try { entry = JSON.parse(storage.getItem(fullKey)); } catch {} }
             if (entry && Number.isFinite(entry.at) && now() >= entry.at && now()-entry.at < ttl &&
-                Array.isArray(entry.rows) && entry.rows.every(row=>typeof row.id==='string' && row.data && typeof row.data==='object')) {
+                Array.isArray(entry.rows) && entry.rows.every(row=>row && typeof row.id==='string' && row.id.length>0 &&
+                    row.data && typeof row.data==='object' && !Array.isArray(row.data))) {
                 memory.set(fullKey,entry);
                 return snapshot(entry.rows);
             }

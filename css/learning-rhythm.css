@@ -1,0 +1,53 @@
+/* Learning rhythm: shared readable type and spacing, without changing activity structure. */
+body.lakbay-theme {
+    --learn-gap-small: 12px;
+    --learn-gap: 20px;
+    --learn-gap-large: 28px;
+    --learn-body-size: 1rem;
+    --learn-body-leading: 1.8;
+}
+body.lakbay-theme .chapter-challenge-page .challenge-question-card {
+    padding: clamp(20px, 3vw, 32px);
+}
+body.lakbay-theme .chapter-challenge-page #challengeQuestionText {
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+    line-height: 1.5;
+    max-width: 58ch;
+    margin: 0 0 var(--learn-gap-large);
+    overflow-wrap: anywhere;
+}
+body.lakbay-theme .chapter-challenge-page .challenge-options {gap: 14px}
+body.lakbay-theme .chapter-challenge-page .challenge-option {
+    min-height: 52px;
+    padding: 16px 18px;
+    font-size: var(--learn-body-size);
+    line-height: 1.65;
+    align-items: flex-start;
+    overflow-wrap: anywhere;
+}
+body.lakbay-theme .chapter-challenge-page .challenge-option-letter {flex-shrink: 0}
+body.lakbay-theme .chapter-challenge-page :is(.matching-instructions,.trade-instructions) {
+    font-size: var(--learn-body-size);
+    line-height: var(--learn-body-leading);
+    margin-bottom: var(--learn-gap);
+    max-width: 70ch;
+}
+body.lakbay-theme .chapter-challenge-page :is(.matching-row,.challenge-review-item,.challenge-evidence-card) {padding: 20px}
+body.lakbay-theme .chapter-challenge-page :is(.matching-label,.matching-select,.evidence-clue-select,.evidence-conclusion-select) {font-size: var(--learn-body-size);line-height: 1.65;min-width: 0;max-width: 100%}
+body.lakbay-theme .chapter-challenge-page :is(.matching-select,.evidence-clue-select,.evidence-conclusion-select) {min-height: 48px}
+body.lakbay-theme .chapter-challenge-page :is(.challenge-review-item h4,.challenge-learning-review-header h3) {font-size: 1.15rem;line-height: 1.55;margin-bottom: 16px;overflow-wrap: anywhere}
+body.lakbay-theme .chapter-challenge-page :is(.challenge-review-explanation p,.challenge-evidence-card p,.challenge-review-answer span) {font-size: var(--learn-body-size);line-height: var(--learn-body-leading)}
+body.lakbay-theme .chapter-challenge-page .challenge-review-number {font-size: .78rem;line-height: 1.5;letter-spacing: .06em;margin-bottom: 12px}
+body.simple-lesson.lakbay-theme .story-reading-content {padding: clamp(20px, 3vw, 32px)}
+body.simple-lesson.lakbay-theme .story-reading-content #sceneTitle {font-size: clamp(1.35rem, 2.8vw, 1.85rem);line-height: 1.4;margin-bottom: 24px;max-width: 38ch;overflow-wrap: anywhere}
+body.simple-lesson.lakbay-theme .story-reading-content :is(.story-text,.lesson-example,.lesson-explanation,.story-explore-result) {line-height: var(--learn-body-leading);font-size: var(--learn-body-size)}
+body.simple-lesson.lakbay-theme .story-reading-content :is(.story-text,.lesson-example,.lesson-explanation,.story-explore-result) p {max-width: 70ch;line-height: var(--learn-body-leading);font-size: inherit;overflow-wrap: anywhere}
+body.simple-lesson.lakbay-theme .story-reading-content :is(.lesson-example,.lesson-explanation,.story-explore-result) h3 {font-size: 1.1rem;line-height: 1.55;margin: 0 0 14px}
+body.simple-lesson.lakbay-theme .story-reading-content :is(.lesson-example,.story-explore-result) {padding: 22px}
+body.simple-lesson.lakbay-theme .story-reading-content :is(.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice) {min-height: 48px;font-size: var(--learn-body-size);line-height: 1.65;padding: 14px 16px;overflow-wrap: anywhere}
+@media(max-width:600px) {
+    body.lakbay-theme .chapter-challenge-page :is(.challenge-question-card,.matching-row,.challenge-review-item,.challenge-evidence-card),
+    body.simple-lesson.lakbay-theme .story-reading-content {padding: 18px}
+    body.simple-lesson.lakbay-theme .story-reading-content :is(.lesson-example,.story-explore-result) {padding: 18px}
+    body.lakbay-theme .chapter-challenge-page .challenge-option {padding: 14px;gap: 10px}
+}

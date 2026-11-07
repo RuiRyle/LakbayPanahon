@@ -1,0 +1,77 @@
+{
+  "status": "pass",
+  "kind": "Allowlisted source staging only",
+  "dummyEnvironmentValueAbsent": true,
+  "privateKeyBlocksAbsent": true,
+  "files": [
+    {
+      "file": "functions/assessment.cjs",
+      "sha256": "90049811e9df35e3cdf2b1413b4e6fd3cac4c2e0080ffe48955e5e60bd615107"
+    },
+    {
+      "file": "bridge.cjs",
+      "sha256": "0324064d0a9170014ac2153495532e68de5ab5ae412d6f0590384246cd3aa053"
+    },
+    {
+      "file": "adapter-deps/package.json",
+      "sha256": "9f982957f67e126af06ec006a9f33da131c23c5880fd5ac9bba0ced7a524079f"
+    },
+    {
+      "file": "adapter-deps/package-lock.json",
+      "sha256": "ed6af10638250ad0220147578fa303a08d55a194519d0f8b844e05b82b46d50b"
+    },
+    {
+      "file": "service/index.js",
+      "sha256": "adadd2375da370b0dadacd2f0fed27a654c39e2e19630a97bf4f35ceb46272cb"
+    },
+    {
+      "file": "service/assessment-callables.js",
+      "sha256": "224a9e84f444516db5b316945b4c1307477fa119f7f244d928a1c30d4ede6d75"
+    },
+    {
+      "file": "service/student-assessment.js",
+      "sha256": "25bf1b4cee5b5d6144d79376d2342c396db386a40deadf981753816f51e24a2f"
+    },
+    {
+      "file": "service/student-rewards.js",
+      "sha256": "ab09e221a67a1bad31160b8e1adacc885bd3e1c15d15d05cfb748fa6dee47e5f"
+    },
+    {
+      "file": "service/progression-policy.js",
+      "sha256": "1de0ea16a9b5457ee87de9df710cb41ed043680c18e617d49981b2ae33a5e62e"
+    },
+    {
+      "file": "service/package.json",
+      "sha256": "7282e92833d211ccc2b24cecfd55e3ad14250d722a2997b63957775be470143b"
+    },
+    {
+      "file": "service/package-lock.json",
+      "sha256": "0eaedbf386bb5cddb70ed00be7403a78c5257130487f1fa25d549f1d2cc0ec38"
+    },
+    {
+      "file": "service/assessment-shared/daily-policy.mjs",
+      "sha256": "41ca9f83ff917e92978577592f558085a102cb370c36563735b098204d05b22e"
+    },
+    {
+      "file": "service/assessment-shared/mission-assessment.mjs",
+      "sha256": "128880f98452c64fd902ecd434464e4c0ba03cb2e3fae21f1d0a85ab56c2e4e6"
+    },
+    {
+      "file": "service/assessment-shared/mission-review.mjs",
+      "sha256": "acc22563f82d51609a1f67e708dff4d51986ff9d5a9b8d32b09290e340fec888"
+    },
+    {
+      "file": "service/assessment-shared/practice-review.mjs",
+      "sha256": "57b983f8055dd5b7e894831c3305d058cdf9ce3443468ef1d037820c4cc0bba0"
+    },
+    {
+      "file": "service/assessment-shared/progression-policy.mjs",
+      "sha256": "93b6c10fad328ce9bc5b64782f631591d682baf4967f7fe2a436413efb2aabe8"
+    }
+  ],
+  "limitations": [
+    "Not a Netlify-generated executable bundle. Runtime node_modules and native dependency tracing still require bundler verification.",
+    "Does not prove hosted build-log redaction, preview isolation or environment settings.",
+    "Local-only entry deliberately rejects production configuration. No actual credentials created or inspected."
+  ]
+}

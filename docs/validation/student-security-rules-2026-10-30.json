@@ -1,7 +1,7 @@
 {
   "mode": "server-rules-test-synthetic-mocks-not-deployed",
-  "verifiedAt": "2026-10-30T02:21:22.002Z",
-  "sourceHash": "14e9ec4630a04b858baa18e5979b38728dc45d7fea76bb0fa339ef7421eeea11",
+  "verifiedAt": "2026-10-31T03:00:43.289Z",
+  "sourceHash": "7f8a2078d8f3c5856bb911f61b21d2d5e57721c888b3fca3951902ed6732acdf",
   "issues": [],
   "tests": [
     {
@@ -53,7 +53,7 @@
       "expectation": "DENY",
       "state": "SUCCESS",
       "debugMessages": [
-        "Error: firestore.rules line [138], column [39]. Property lastRewardId is undefined on object."
+        "Error: firestore.rules line [157], column [39]. Property lastRewardId is undefined on object."
       ],
       "functionCalls": [
         {
@@ -93,7 +93,7 @@
       "expectation": "DENY",
       "state": "SUCCESS",
       "debugMessages": [
-        "Error: firestore.rules line [138], column [39]. Property lastRewardId is undefined on object."
+        "Error: firestore.rules line [157], column [39]. Property lastRewardId is undefined on object."
       ],
       "functionCalls": [
         {
@@ -894,7 +894,7 @@
       "expectation": "DENY",
       "state": "SUCCESS",
       "debugMessages": [
-        "Error: firestore.rules line [265], column [24]. Service call error. Function: [getAfter], Argument: [path_value {\n  segments {\n    simple: \"databases\"\n  }\n  segments {\n    simple: \"(default)\"\n  }\n  segments {\n    simple: \"documents\"\n  }\n  segments {\n    simple: \"studentProgress\"\n  }\n  segments {\n    simple: \"alice_m1\"\n  }\n}\n]."
+        "Error: firestore.rules line [284], column [24]. Service call error. Function: [getAfter], Argument: [path_value {\n  segments {\n    simple: \"databases\"\n  }\n  segments {\n    simple: \"(default)\"\n  }\n  segments {\n    simple: \"documents\"\n  }\n  segments {\n    simple: \"studentProgress\"\n  }\n  segments {\n    simple: \"alice_m1\"\n  }\n}\n]."
       ],
       "functionCalls": [
         {
@@ -1060,6 +1060,564 @@
           "function": "exists",
           "args": [
             "/databases/%28default%29/documents/studentProgress/alice_m1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "member reads published announcement get",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_class1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_class1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_class1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "member reads published announcement list",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_class1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_class1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_class1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nonmember cannot read announcements",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_class1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "member cannot read announcement drafts",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_class1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_class1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_class1"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "anonymous cannot read announcements",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": []
+    },
+    {
+      "name": "student cannot create announcement",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": []
+    },
+    {
+      "name": "student cannot update announcement",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": []
+    },
+    {
+      "name": "student cannot delete announcement",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": []
+    },
+    {
+      "name": "earned bamboo frame may be equipped",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "locked bamboo frame cannot be equipped",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "earned sunburst frame may be equipped",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "locked sunburst frame cannot be equipped",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "earned guardian frame may be equipped",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "locked guardian frame cannot be equipped",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "owner reads own cosmetics",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cosmetics cannot be enumerated",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "other account cosmetics stay private",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cosmetics cannot change XP",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "unknown frame is rejected",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "another account cannot equip cosmetics",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "active student reads finale definition",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "anonymous cannot read finale definition",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": []
+    },
+    {
+      "name": "student cannot change finale requirements",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": []
+    },
+    {
+      "name": "student cannot list finale configuration",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
           ]
         }
       ]

@@ -1,0 +1,63 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-06T10:09:34.082Z",
+  "mode": "actual modules and browser, mocked Firestore; no live records changed",
+  "results": [
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "confirmed commit occurs once when list refresh fails",
+        "refresh failure is shown as a confirmed save with read-only recovery",
+        "confirmed save clears the composer and cannot be accidentally resubmitted",
+        "refresh saved list does not repeat the write",
+        "uncertain response keeps text and prevents a blind resubmission",
+        "cancel cannot forget an uncertain save",
+        "uncertain save blocks a classroom switch until verified",
+        "status verification finds the committed record without another write",
+        "confirmed status check reports its outcome honestly",
+        "failed precommit does not create a saved record",
+        "no-record verification preserves text and enables explicit retry",
+        "explicit retry reuses the allocated record ID",
+        "no automatic replay is sent in any recovery branch",
+        "existing record ID alone cannot falsely confirm an unsaved edit",
+        "edit verification is read-only"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 1440,
+      "checks": [
+        "confirmed commit occurs once when list refresh fails",
+        "refresh failure is shown as a confirmed save with read-only recovery",
+        "confirmed save clears the composer and cannot be accidentally resubmitted",
+        "refresh saved list does not repeat the write",
+        "uncertain response keeps text and prevents a blind resubmission",
+        "cancel cannot forget an uncertain save",
+        "uncertain save blocks a classroom switch until verified",
+        "status verification finds the committed record without another write",
+        "confirmed status check reports its outcome honestly",
+        "failed precommit does not create a saved record",
+        "no-record verification preserves text and enables explicit retry",
+        "explicit retry reuses the allocated record ID",
+        "no automatic replay is sent in any recovery branch",
+        "existing record ID alone cannot falsely confirm an unsaved edit",
+        "edit verification is read-only"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "js/teacher-workspace.js",
+      "sha256": "cadb191a0bd5ed0f80c31b584e5efa49b68956fb37668826fb6c1fd1365a1dba"
+    },
+    {
+      "file": "js/teacher-class-client.js",
+      "sha256": "dc6db19ddcd4d0eb41bdb6b32450ed967438b8fedc8a32feae83f2b60aba27ee"
+    },
+    {
+      "file": "css/teacher-workspace.css",
+      "sha256": "43008edcbf453690a8daf01d4bb9ea54216e3ac5d640c0d5879d185cea9d3ebf"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),{spawnSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..'),temp=fs.mkdtempSync(path.join(os.tmpdir(),'lakbay-settings-'));
 const original=fs.readFileSync(path.join(root,'pages/settings.html'),'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'').replace('class="student-page lakbay-theme"','class="student-page lakbay-theme authenticated"');
-const css=['student.css','navy-gold-theme.css','student-settings.css','page-transition.css'].map(file=>fs.readFileSync(path.join(root,'css',file),'utf8')).join('\n');
+const css=['student.css','navy-gold-theme.css','student-settings.css','page-transition.css','student-layout.css','settings-refinement.css'].map(file=>fs.readFileSync(path.join(root,'css',file),'utf8')).join('\n');
 const runtime=fs.readFileSync(path.join(root,'js/page-transition.js'),'utf8');
 const cases=[['default','settings.html',1440],['restored','settings.html',1280],['blocked','settings.html',1440],['write-blocked','settings.html',1440],['autoplay-blocked','settings.html',1440],['reading','story.html',1440],['focus','quiz.html',1440]];
 const results=[];

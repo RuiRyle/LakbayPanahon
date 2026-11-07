@@ -1,0 +1,41 @@
+// Offline preparation only. No authentication, network calls or publication.
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const {scopes}=require('./prepare-teacher-rules-review.cjs');
+const {resolvePackage}=require('../tools/serve-student-web.cjs');
+const {createHostingConfig}=require('./student-hosting-config.cjs');
+const root=path.resolve(__dirname,'..'),hash=value=>crypto.createHash('sha256').update(value).digest('hex');
+const read=file=>fs.readFileSync(path.join(root,file),'utf8'),json=file=>JSON.parse(read(file));
+const folder=resolvePackage(process.argv[2]);
+const manifest=JSON.parse(fs.readFileSync(path.join(folder,'release-manifest.json'),'utf8'));
+const html=[],paths=new Set();
+for(const item of manifest.files){
+ if(paths.has(item.file)||item.file.includes('..')||item.file.includes('\\')||/^(docs|backups|tests|functions|server|data|\.git)\//.test(item.file))throw Error('Invalid public manifest path');
+ paths.add(item.file);const bytes=fs.readFileSync(path.join(folder,'public',item.file));
+ if(hash(bytes)!==item.sha256||hash(fs.readFileSync(path.join(root,item.file)))!==item.sha256)throw Error('Package/source drift: '+item.file);
+ if(item.file.endsWith('.html'))html.push(bytes.toString('utf8'));
+}
+const config=JSON.parse(fs.readFileSync(path.join(folder,'firebase.json'),'utf8'));
+if(JSON.stringify(config)!==JSON.stringify(createHostingConfig(html)))throw Error('Hosting security-header configuration differs.');
+for(const page of ['dashboard','classes','students','announcements','assignments'])if(!paths.has('pages/teacher-'+page+'.html'))throw Error('Missing teacher destination');
+const source=read('firestore.rules'),proof=json('docs/validation/teacher-qualification-publication-2026-10-31.json');
+const backup=json(proof.backup),old=backup.ruleset.source.files[0].content;
+const baseline=old.replace(scopes(old).result.get('function validTeacherDecision'),scopes(source).result.get('function validTeacherDecision'));
+if(hash(baseline)!==proof.sourceHash)throw Error('Recorded published baseline reconstruction failed.');
+const before=scopes(baseline),after=scopes(source);
+if(before.outside!==after.outside)throw Error('Rule changes outside named scopes.');
+const allowed=new Set(['match /classMembers/{membershipId}','match /classFeedback/{feedbackId}','match /teacherSupportNotes/{noteId}','function validPublication']);
+const changed=[...new Set([...before.result.keys(),...after.result.keys()])].filter(key=>before.result.get(key)!==after.result.get(key));
+if(changed.some(key=>!allowed.has(key)))throw Error('Unexpected rule changes: '+changed.join(', '));
+const emulator=json('docs/validation/teacher-student-loop-emulator-2026-11-03.json');
+if(emulator.sourceHash!==hash(source)||emulator.steps.length<129||emulator.steps.some(s=>s.status!=='pass'))throw Error('Matching rules evidence required.');
+const browser=json('docs/validation/teacher-workspace-browser-2026-10-31.json'),navigation=json('docs/validation/teacher-pages-browser-2026-11-04.json');
+if(!browser.pass||!navigation.pass)throw Error('Passing browser evidence required.');
+for(const entry of browser.sources)if(hash(read(entry.file))!==entry.sha256)throw Error('Browser evidence source drift: '+entry.file);
+const review={mode:'offline-prepared-not-deployed',preparedAt:new Date().toISOString(),project:'lakbaypanahon-1797e',package:path.relative(root,folder).replaceAll('\\','/'),pages:html.length,files:manifest.files.length,sourceHash:hash(source),baselineRuleset:proof.rulesetName,baselineSourceHash:proof.sourceHash,baselineIsRecordedNotLive:true,changedScopes:changed,localRulesChecks:emulator.steps.length,teacherBrowserWidths:browser.results.map(r=>r.width),publicSourceHashesMatch:true,hostingConfigHash:hash(JSON.stringify(config)),pending:['Fresh live rules drift check before activation','Release approval/activation and hosted acceptance','Human teacher/student usability and print/PDF/device checks']};
+const candidate=path.join(folder,'reviewed-firestore.rules');
+if(fs.existsSync(candidate)&&hash(fs.readFileSync(candidate))!==hash(source))throw Error('Staged rules differ');
+if(!fs.existsSync(candidate))fs.writeFileSync(candidate,source,{flag:'wx'});
+fs.writeFileSync(path.join(folder,'teacher-workflow-release-review.json'),JSON.stringify(review,null,2));
+fs.writeFileSync(path.join(root,'docs/validation/teacher-workflow-release-preparation-2026-11-05.json'),JSON.stringify(review,null,2));
+fs.writeFileSync(path.join(root,'docs/teacher-workflow-rules-review-2026-11-05.md'),'# Pending teacher workflow rules\n\nOffline comparison against the recorded qualification publication. No live release was queried and nothing was published.\n\n'+changed.map(key=>'## '+key+'\n\nBefore:\n```\n'+(before.result.get(key)||'(absent)')+'\n```\nAfter:\n```\n'+(after.result.get(key)||'(absent)')+'\n```\n').join('\n'));
+console.log(JSON.stringify(review,null,2));

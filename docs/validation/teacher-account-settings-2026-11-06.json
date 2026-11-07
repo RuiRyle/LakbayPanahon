@@ -1,0 +1,81 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-05T18:23:40.438Z",
+  "mode": "actual modules and browser, mocked Firestore; no live records changed",
+  "results": [
+    {
+      "state": "PASS",
+      "width": 1440,
+      "checks": [
+        "account settings opens without a classroom",
+        "settings does not ask for a classroom",
+        "settings avoids class and learning report queries",
+        "settings navigation identifies the current destination",
+        "account role is clearly labelled",
+        "preferred name is editable separately from verified identity",
+        "duplicate heading is removed from account settings",
+        "one focused settings panel is shown",
+        "section tabs reveal the chosen panel",
+        "failed reset is visible and can be explicitly retried",
+        "successful reset prevents repeated requests",
+        "reset success tells the teacher what to do next",
+        "verification summary reflects matching approved revision",
+        "failed name save preserves editable text",
+        "preferred name saves to authentication and refreshes identity header",
+        "preferred-name edit leaves approved identity unchanged",
+        "visual avatar choices clearly mark selection",
+        "avatar save persists only the selected catalog ID",
+        "motion control updates the existing preference and visible state",
+        "text size immediately updates teacher reading size",
+        "appearance preview cards select the reading surface",
+        "reading surface applies immediately",
+        "section navigation supports arrow keys and focus",
+        "settings fits the viewport at extra large text"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "account settings opens without a classroom",
+        "settings does not ask for a classroom",
+        "settings avoids class and learning report queries",
+        "settings navigation identifies the current destination",
+        "account role is clearly labelled",
+        "preferred name is editable separately from verified identity",
+        "duplicate heading is removed from account settings",
+        "one focused settings panel is shown",
+        "section tabs reveal the chosen panel",
+        "failed reset is visible and can be explicitly retried",
+        "successful reset prevents repeated requests",
+        "reset success tells the teacher what to do next",
+        "verification summary reflects matching approved revision",
+        "failed name save preserves editable text",
+        "preferred name saves to authentication and refreshes identity header",
+        "preferred-name edit leaves approved identity unchanged",
+        "visual avatar choices clearly mark selection",
+        "avatar save persists only the selected catalog ID",
+        "motion control updates the existing preference and visible state",
+        "text size immediately updates teacher reading size",
+        "appearance preview cards select the reading surface",
+        "reading surface applies immediately",
+        "section navigation supports arrow keys and focus",
+        "settings fits the viewport at extra large text"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "js/teacher-workspace.js",
+      "sha256": "b75f19e41afe9e793acbdb0bd1d5f9e2e2cd7124395c9dba784540ff5a2a68d2"
+    },
+    {
+      "file": "js/teacher-class-client.js",
+      "sha256": "288c9d3a955d0af9f699b2c1c686c56c3d5d64a7dcfe0b3026cafc59464a3cd8"
+    },
+    {
+      "file": "css/teacher-workspace.css",
+      "sha256": "d97c6ba490fc0cfd765e9efd2aff380c25254d2557b93f5476b186454b039c64"
+    }
+  ]
+}

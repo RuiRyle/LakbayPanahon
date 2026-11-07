@@ -58,7 +58,7 @@ test('private authoring, function and validation directories remain outside the 
 
 test('settings and the computed student-shell destination are explicit public entry pages', () => {
     const result = inventory('js/bayani-backend-client.js');
-    for (const file of ['pages/settings.html','pages/student-shell.html']) {
+    for (const file of ['pages/settings.html','pages/student-shell.html','pages/story-playground.html','pages/history-timeline.html','pages/journey-finale.html']) {
         assert.ok(result.report.entryPages.includes(file), file);
         assert.ok(result.report.files.includes(file), file);
     }

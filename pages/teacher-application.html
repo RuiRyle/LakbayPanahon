@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teacher Account Setup | LakbayPanahon</title>
+<link rel="stylesheet" href="../css/navy-gold-theme.css"><link rel="stylesheet" href="../css/expedition.css"><link rel="stylesheet" href="../css/teacher-workspace.css"><link rel="stylesheet" href="../css/teacher-application.css"><link rel="stylesheet" href="../css/page-transition.css"><link rel="icon" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/interface-clarity.css">
+</head>
+<body class="lakbay-theme teacher-workspace teacher-application-page" data-unified-teacher-setup="true" data-setup-phase="account">
+<a class="student-skip-link" href="#application-main">Skip to main content</a>
+<div class="teacher-shell">
+<header class="teacher-topbar application-topbar"><a class="teacher-brand" href="../index.html"><img src="../assets/brand/lakbay-sun.svg" width="42" height="42" alt=""><span>LakbayPanahon<small>Philippine History</small></span></a><span class="application-header-label">TEACHER SETUP</span><button type="button" class="logout-button">Log Out</button></header>
+<main id="application-main">
+<header class="application-hero"><span class="eyebrow">TEACHER ACCOUNT SETUP</span><h1 id="teacherSetupTitle">Create your teacher account.</h1><p id="teacherSetupDescription">One setup, from your account to your classroom. Create your sign-in, verify your email, and share your teaching details here.</p>
+<ol class="application-steps" aria-label="Teacher account setup"><li data-application-step="account" data-state="current" aria-current="step"><span class="application-step-number" aria-hidden="true">1</span><div><strong>Create account</strong><small>Your sign-in details</small></div></li><li data-application-step="email"><span class="application-step-number" aria-hidden="true">2</span><div><strong>Verify your email</strong><small>Confirm your account</small></div></li><li data-application-step="details"><span class="application-step-number" aria-hidden="true">3</span><div><strong>Complete your details</strong><small>Share your teaching role</small></div></li><li data-application-step="review"><span class="application-step-number" aria-hidden="true">4</span><div><strong>Administrator review</strong><small>Follow your application here</small></div></li></ol>
+</header>
+<p id="applicationMessage" class="teacher-status application-message" role="status" aria-live="polite">Checking your account...</p>
+<section id="teacherSetupAccount" class="teacher-panel teacher-setup-account" aria-labelledby="teacherAccountTitle">
+<header class="application-form-heading"><span class="eyebrow">STEP 1 OF 4</span><h2 id="teacherAccountTitle">Your account details</h2><p>Already registered? <a href="login.html">Sign in to resume your setup.</a></p></header>
+<form id="teacherRegisterForm" class="application-fieldset"><input id="teacherRole" type="hidden" value="teacher">
+<div class="application-columns"><label>First name<input id="teacherFirstName" maxlength="100" autocomplete="given-name" required></label><label>Last name<input id="teacherLastName" maxlength="100" autocomplete="family-name" required></label></div>
+<label>Middle name <small>Optional</small><input id="teacherMiddleName" maxlength="100" autocomplete="additional-name"></label>
+<label>Email address<input id="teacherEmail" type="email" autocomplete="email" required></label>
+<div class="application-columns"><label>Password<input id="teacherPassword" type="password" minlength="6" autocomplete="new-password" required></label><label>Confirm password<input id="teacherConfirmPassword" type="password" minlength="6" autocomplete="new-password" required></label></div>
+<label class="application-check"><input id="teacherTerms" type="checkbox" required><span>I understand that my name and email are used to create and review my teacher account, and that classroom access requires administrator approval.</span></label>
+<p id="teacherRegisterMessage" class="form-message" role="status" aria-live="polite"></p>
+<div class="teacher-actions"><button type="submit" disabled>Create account and continue</button></div><a id="teacherRegistrationContinue" href="#application-main" hidden>Continue teacher setup</a>
+<p class="application-field-help setup-registration-help">You will stay on this page to verify your email and finish your teaching details.</p>
+</form></section>
+<button id="retryTeacherSetup" type="button" class="secondary" hidden>Retry loading my setup</button>
+<section id="applicationWorkspace" class="application-layout" hidden>
+<aside class="application-sidebar" aria-label="Your application and account">
+<section class="teacher-panel application-status-card"><span class="eyebrow">YOUR APPLICATION</span><h2>Where you stand</h2><p id="teacherApplicationStatus" class="application-status-label"></p><p id="teacherDecisionReason" class="application-decision"></p><p id="teacherEvidenceStatus" class="teacher-note"></p><div class="teacher-actions application-side-actions"><a id="openApprovedWorkspace" href="teacher-dashboard.html" hidden>Open Classroom Workspace</a><button id="viewTeacherEvidence" type="button" class="secondary" hidden>View Evidence</button><button id="reviseTeacherApplication" type="button" class="secondary" hidden>Revise Application</button><button id="reloadApplication" class="secondary" type="button">Refresh Application</button></div></section>
+<section class="teacher-panel application-email-card"><span class="eyebrow">ACCOUNT CHECK</span><h2>Verify your email</h2><p id="teacherEmailStatus" class="application-email-status"></p><p class="teacher-note">Open the verification link in your inbox, then return here and check your status.</p><div class="teacher-actions application-side-actions"><button id="sendTeacherVerification" type="button">Send Verification Email</button><button id="refreshTeacherEmail" class="secondary" type="button">Check Email Status</button></div><p class="application-small-note">Email verification confirms your account. Your qualifications are reviewed separately.</p></section>
+</aside>
+<details id="teacherSetupDetails" class="teacher-panel application-form-card" aria-labelledby="qualificationTitle" open><summary class="application-details-toggle">Review your submitted details</summary><header class="application-form-heading"><span class="eyebrow">YOUR TEACHING PROFILE</span><h2 id="qualificationTitle">Application details</h2><p>Introduce yourself, choose a verification route, and submit. Additional details are optional.</p></header>
+<form id="teacherApplicationForm">
+<fieldset class="application-fieldset"><legend><span>01</span> Your teaching details</legend><p class="application-section-help">Just three details to introduce yourself. Your sign-in email is already linked to this application.</p>
+<label>Full name<input name="legalName" maxlength="100" required autocomplete="name" placeholder="Enter your full name"></label>
+<label>School / institution / organization<input name="institution" maxlength="150" required autocomplete="organization" placeholder="Institution name"></label>
+<label>Teaching or learning-support role<input name="roleTitle" maxlength="100" required placeholder="e.g. Grade 5 Araling Panlipunan teacher"></label>
+</fieldset>
+<fieldset class="application-fieldset"><legend><span>02</span> How your role is verified</legend><p class="application-section-help">Choose the route that fits you. An administrator reviews every application before classroom access is granted.</p>
+<label>Verification route<select name="applicantType" id="applicantType"><option value="school_teacher">School affiliation ? teacher or school staff</option><option value="licensed_teacher">Professional teacher license ? PRC details</option><option value="student_teacher">Student teacher ? supervisor endorsement</option><option value="facilitator">Learning facilitator ? organization endorsement</option></select></label>
+<p id="applicationRouteHelp" class="application-route-note">The administrator confirms your identity and connection to your institution. No PRC number or document upload is required to start. They may request one supporting document if needed.</p>
+<div id="licensedTeacherFields" class="application-columns" hidden><label>PRC teacher registration number<input name="prcNumber" maxlength="12" inputmode="numeric" placeholder="Registration number"></label><label>PRC card / license expiry<input name="prcExpiry" type="date"></label></div>
+<div id="endorsedTeacherFields" class="application-columns" hidden><label>Endorsing supervisor / representative<input name="sponsorName" maxlength="100" placeholder="Supervisor's name"></label><label>Supervisor's work contact<input name="sponsorContact" maxlength="150" placeholder="Work email or official office contact"></label></div>
+<p class="application-field-help">School-affiliation approval confirms classroom access. It does not certify professional teacher licensure, and a school email alone does not automatically approve an account.</p>
+</fieldset>
+<fieldset class="application-fieldset application-optional-section"><legend><span>03</span> Anything else to share? <small>Optional</small></legend><p class="application-section-help">Leave this section closed unless it helps explain your role or your reviewer asks for more information.</p>
+<details class="application-optional-details"><summary>Add supporting details or an evidence image</summary><div class="application-optional-content">
+<div class="application-columns"><label>Work email <small>Optional</small><input name="workEmail" type="email" maxlength="150" placeholder="Your institution email"></label><label>Official institution website <small>Optional</small><input name="officialWebsite" type="url" maxlength="250" placeholder="https://..."></label></div>
+<label>City / municipality <small>Optional</small><input name="locality" maxlength="100" autocomplete="address-level2" placeholder="City or municipality"></label>
+<label>About your teaching <small>Optional</small><textarea name="statement" maxlength="1500" rows="3" placeholder="Add context about the learners you support, if useful."></textarea></label>
+<div class="application-upload"><label for="teacherEvidenceFile">Attach an evidence image</label><p>JPG or PNG &middot; Up to 250 KB &middot; One image</p><input id="teacherEvidenceFile" type="file" accept="image/jpeg,image/png"><p id="applicationFileName" class="application-field-help" aria-live="polite">No new image selected.</p></div>
+<label class="application-check"><input id="removeTeacherEvidence" type="checkbox"><span>Remove my previous evidence image</span></label>
+<details class="application-privacy"><summary>How to prepare your evidence and who can see it</summary><p>Cover addresses, birth dates, signatures, and unrelated numbers unless needed for the review. Do not upload student records, passwords, or an unredacted full government ID.</p><p>Only you and authorized administrators can access your qualification details and evidence. Image access expires after 30 days. Images are removed after a review decision and during expired-evidence cleanup. Qualification details and review decisions remain until the account-data process removes them.</p></details>
+</div></details></fieldset>
+<footer class="application-submit-area"><label class="application-check application-acknowledgement"><input id="teacherQualificationAcknowledged" type="checkbox"><span>I understand how these details are used for account review. I confirm that my information is accurate and I may submit this evidence.</span></label><div class="application-submit-row"><p>Saving a draft does not send your application for review.</p><div class="teacher-actions"><button id="saveTeacherDraft" type="button" class="secondary">Save Draft</button><button type="submit">Submit for Review</button></div></div></footer>
+</form>
+</details>
+</section>
+</main>
+<footer class="application-page-footer">LakbayPanahon &middot; A shared journey through Philippine history</footer>
+</div>
+<script type="module" async src="../js/auth-ui.js"></script><script type="module" async src="../js/teacher-application.js"></script><script type="module" src="../js/logout.js"></script><script type="module" src="../js/page-transition.js"></script>
+</body></html>

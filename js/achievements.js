@@ -1,4 +1,6 @@
 import {studentLoadMessage} from './student-status.js';
+import {createDiscoveryPinControl} from './discovery-pins.js';
+import {openMuseumExhibit,closeMuseumExhibit} from './museum-exhibits.js';
 ﻿import { auth, db } from "./firebase-config.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 import { collection, doc, getDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
@@ -154,25 +156,22 @@ function createArtifactCard(artifact) {
     content.append(label, name, description);
     const date = formatEarnedDate(artifact.earnedAt);
     if (date) { const earned = document.createElement("small"); earned.className = "achievement-earned-date"; earned.textContent = "Collected " + date; content.append(earned); }
-    const learning=artifact.learningDetails;
-    if(learning&&typeof learning==='object'){
-        const details=document.createElement('details');details.className='artifact-learning-details';const summary=document.createElement('summary');summary.textContent='Explore This Discovery';details.append(summary);
-        const body=document.createElement('div');body.className='artifact-learning-body';
-        function section(title,value){if(typeof value!=='string'||!value.trim())return;const heading=document.createElement('h4');heading.textContent=title;const copy=document.createElement('p');copy.textContent=value;body.append(heading,copy);}
-        section('What this represents',learning.represents);section('Connect it to your lesson',learning.lessonConnection);section('Think about it',learning.reflectionQuestion);section('About this collectible',learning.collectibleNote);
-        if(typeof artifact.chapterId==='string'&&artifact.chapterId&&typeof artifact.missionId==='string'&&artifact.missionId){const lesson=document.createElement('a');lesson.className='artifact-lesson-link';lesson.textContent='Revisit the Lesson';lesson.href='story.html?'+new URLSearchParams({chapter:artifact.chapterId,mission:artifact.missionId});body.append(lesson);}
-        details.append(body);content.append(details);
-    }
+    const userId=auth.currentUser?.uid;
+    const actions=document.createElement('div');actions.className='artifact-card-actions';
+    if(userId){const open=document.createElement('button');open.type='button';open.className='text-button artifact-view-button';open.textContent='View Exhibit';open.addEventListener('click',()=>openMuseumExhibit(artifact,{isCurrent:()=>auth.currentUser?.uid===userId&&card.isConnected}));actions.append(open);}
+    if(userId&&typeof artifact.id==='string')actions.append(createDiscoveryPinControl({userId,kind:'artifact',id:artifact.id,showWallLink:false,isCurrent:()=>auth.currentUser?.uid===userId&&card.isConnected}));
+    content.append(actions);
     card.append(icon, content); return card;
 }
 
 function formatEarnedDate(timestamp) {
     if (!timestamp || typeof timestamp.toDate !== "function") return "";
     const date = timestamp.toDate();
-    return Number.isFinite(date.getTime()) ? date.toLocaleDateString(undefined, {year:"numeric", month:"short", day:"numeric"}) : "";
+    return Number.isFinite(date.getTime()) ? date.toLocaleDateString('en-PH', {timeZone:'Asia/Manila', year:"numeric", month:"short", day:"numeric"}) : "";
 }
 
 onAuthStateChanged(auth, user => {
+    closeMuseumExhibit();
     sessionGeneration++;
     showCollection(null, false);
     for (const view of [badgeView, artifactView]) { view.request++; resetCollection(view); }

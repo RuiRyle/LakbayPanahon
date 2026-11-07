@@ -1,0 +1,2739 @@
+{
+  "checkedAt": "2026-11-06T18:43:06.313Z",
+  "mode": "production-read-only-no-student-records",
+  "project": {
+    "number": "831214660993",
+    "lifecycleState": "ACTIVE"
+  },
+  "productionModified": false,
+  "billing": {
+    "billingEnabled": false,
+    "billingAccountLinked": false
+  },
+  "firebase": {
+    "state": "ACTIVE"
+  },
+  "services": [
+    {
+      "name": "cloudfunctions.googleapis.com",
+      "enabled": true
+    },
+    {
+      "name": "run.googleapis.com",
+      "enabled": false
+    },
+    {
+      "name": "cloudbuild.googleapis.com",
+      "enabled": false
+    },
+    {
+      "name": "artifactregistry.googleapis.com",
+      "enabled": false
+    },
+    {
+      "name": "firestore.googleapis.com",
+      "enabled": true
+    },
+    {
+      "name": "identitytoolkit.googleapis.com",
+      "enabled": true
+    },
+    {
+      "name": "firebaseappcheck.googleapis.com",
+      "enabled": true
+    },
+    {
+      "name": "recaptchaenterprise.googleapis.com",
+      "enabled": true
+    },
+    {
+      "name": "iam.googleapis.com",
+      "enabled": false
+    },
+    {
+      "name": "iamcredentials.googleapis.com",
+      "enabled": false
+    },
+    {
+      "name": "logging.googleapis.com",
+      "enabled": true
+    },
+    {
+      "name": "monitoring.googleapis.com",
+      "enabled": true
+    },
+    {
+      "name": "eventarc.googleapis.com",
+      "enabled": false
+    },
+    {
+      "name": "pubsub.googleapis.com",
+      "enabled": true
+    },
+    {
+      "name": "storage.googleapis.com",
+      "enabled": true
+    }
+  ],
+  "servicesListComplete": true,
+  "serviceAccounts": [
+    {
+      "email": "lakbaypanahon-1797e@appspot.gserviceaccount.com",
+      "disabled": false
+    },
+    {
+      "email": "firebase-adminsdk-fbsvc@lakbaypanahon-1797e.iam.gserviceaccount.com",
+      "disabled": false
+    }
+  ],
+  "projectServiceAccountBindings": [
+    {
+      "role": "roles/cloudfunctions.standardServiceAgent",
+      "members": [
+        "serviceAccount:service-831214660993@gcf-admin-robot.iam.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/editor",
+      "members": [
+        "serviceAccount:lakbaypanahon-1797e@appspot.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/firebase.managementServiceAgent",
+      "members": [
+        "serviceAccount:service-831214660993@gcp-sa-firebase.iam.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/firebase.sdkAdminServiceAgent",
+      "members": [
+        "serviceAccount:firebase-adminsdk-fbsvc@lakbaypanahon-1797e.iam.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/firebaseappcheck.admin",
+      "members": [
+        "serviceAccount:firebase-adminsdk-fbsvc@lakbaypanahon-1797e.iam.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/firebaseappcheck.serviceAgent",
+      "members": [
+        "serviceAccount:service-831214660993@gcp-sa-firebaseappcheck.iam.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/firebaseauth.admin",
+      "members": [
+        "serviceAccount:firebase-adminsdk-fbsvc@lakbaypanahon-1797e.iam.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/firebaseml.serviceAgent",
+      "members": [
+        "serviceAccount:service-831214660993@gcp-sa-firebasevertexai.iam.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/firebaserules.system",
+      "members": [
+        "serviceAccount:service-831214660993@firebase-rules.iam.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/firestore.serviceAgent",
+      "members": [
+        "serviceAccount:service-831214660993@gcp-sa-firestore.iam.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/iam.serviceAccountTokenCreator",
+      "members": [
+        "serviceAccount:firebase-adminsdk-fbsvc@lakbaypanahon-1797e.iam.gserviceaccount.com"
+      ]
+    }
+  ],
+  "deployerPermissions": {
+    "granted": [
+      "cloudfunctions.functions.create",
+      "cloudfunctions.functions.delete",
+      "cloudfunctions.functions.get",
+      "cloudfunctions.functions.update",
+      "firebasehosting.sites.update",
+      "firebaserules.releases.update",
+      "iam.serviceAccounts.actAs",
+      "resourcemanager.projects.getIamPolicy",
+      "run.services.create",
+      "run.services.update",
+      "serviceusage.services.enable"
+    ],
+    "missing": [],
+    "verifiedAt": "2026-11-06T18:44:25.893Z"
+  },
+  "functions": [
+    {
+      "api": "v1",
+      "reachable": true,
+      "unreachable": [],
+      "functions": []
+    },
+    {
+      "api": "v2",
+      "reachable": true,
+      "unreachable": [],
+      "functions": []
+    }
+  ],
+  "cloudRunServices": [],
+  "database": {
+    "locationId": "asia-southeast1",
+    "type": "FIRESTORE_NATIVE",
+    "concurrencyMode": "PESSIMISTIC",
+    "pointInTimeRecoveryEnablement": "POINT_IN_TIME_RECOVERY_DISABLED",
+    "deleteProtectionState": "DELETE_PROTECTION_DISABLED"
+  },
+  "rules": {
+    "ruleset": "projects/lakbaypanahon-1797e/rulesets/7b56c656-fb38-44a3-9b69-38942be9a8c3",
+    "sha256": "678be315fa0aecdbb09fc3cb88294c0f69493056e8c50389a254500234ac0496",
+    "implementationBaseline": "678be315fa0aecdbb09fc3cb88294c0f69493056e8c50389a254500234ac0496",
+    "matchesImplementationBaseline": true
+  },
+  "hosting": {
+    "version": "projects/lakbaypanahon-1797e/sites/lakbaypanahon-1797e/versions/b984eba31379723a",
+    "releaseTime": "2026-11-06T17:22:51.299Z",
+    "config": {
+      "headers": [
+        {
+          "headers": {
+            "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "Referrer-Policy": "no-referrer",
+            "X-Content-Type-Options": "nosniff",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Content-Security-Policy": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+          },
+          "glob": "**"
+        },
+        {
+          "headers": {
+            "Cache-Control": "no-store"
+          },
+          "glob": "**/*.html"
+        },
+        {
+          "headers": {
+            "Cache-Control": "no-store"
+          },
+          "glob": "/"
+        },
+        {
+          "headers": {
+            "Cache-Control": "no-cache"
+          },
+          "glob": "**/*.{js,css}"
+        },
+        {
+          "headers": {
+            "Cache-Control": "public, max-age=86400"
+          },
+          "glob": "assets/**"
+        }
+      ]
+    },
+    "fileCount": 575,
+    "files": [
+      {
+        "path": "/404.html",
+        "hash": "a6b46b9487f7eaabb4d3c44dc01ee71e4549ea4acac15d0f6b9ba2b847647e38"
+      },
+      {
+        "path": "/__/firebase/init.js",
+        "hash": "86feb22c8307e3f81e0565d4359b03dfcddcc59a58310259d0b3eb0112d5a29d"
+      },
+      {
+        "path": "/__/firebase/init.json",
+        "hash": "cd14cf6ca68a1e9a2423038355e1b3608534b33bdc8e622027cea610f0aeea87"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/0284ae9270a31a04fe1bff1a.mp3",
+        "hash": "70aab473cf02461d45953aa0824a9db304a4c2fb1b0b5790062e7dcdd1ee23f0"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/06e744aef22d06cce7b3785b.mp3",
+        "hash": "569e358c8fe1dc80bb28044ba8540483fa383fea7042c48b927ba72cae21d2da"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/0869c002486ba865e02d61e1.mp3",
+        "hash": "8fddfdf87ec85899dbeb6b690aa91c34d844883c2fbcd6a1285ba4c3acfca4bf"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/15d3b70a1075476a57711115.mp3",
+        "hash": "50fd8cee6e3c97fcb8f57b7ab7bbfdd44a32b35b903789c14fec645d9f3ba7c0"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/1677a2a04acca04fc61bb147.mp3",
+        "hash": "1571ad6af85ebf02ccfe3532d50384853cd60e04df76c58b811a6a1f7d54d209"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/19f5634370607110133b3f65.mp3",
+        "hash": "c48391d2d239aaf55b9a6747d46455c279d03819fda29822f3d32e9a2f7c4826"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/1b301a673488649169b18857.mp3",
+        "hash": "0d47c8c25541c275b1a148427e5452b506261358d78b70fea93cc1719480cf4e"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/1d20413bb12f89d7802914e7.mp3",
+        "hash": "4757c4746190cb321668db81451532d4ff5b1c812328ea12f73fab96385cacf0"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/1d264c3e24a8d6d3abce8846.mp3",
+        "hash": "58ad2bb9126ebcfd83037099824b03840aa983875313b2ca7f3528d6c59b3e36"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/2777c6c8e4f6f4580af2f6d7.mp3",
+        "hash": "75f2b50af2c6986c65c74b1e7499998545f95422bf77753094d89592aedec3d6"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/29795400d39077c2ba687c91.mp3",
+        "hash": "8172eb749a41d7f8f97a666adc31382882b42c9be3ecdb2ae7a815397e7bd680"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/2d529bd73f470e34d6994baf.mp3",
+        "hash": "24e3abc74d9b5203fde64953f352724d7ed03d222ff03e4cafa85608ce5f2469"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/2e331925cf8676bc419630b3.mp3",
+        "hash": "1af47600294d48f66bbb635cc497447bfc3f5312efb352e6d34c60b0d8717870"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/315d5f394798b4d467400ff5.mp3",
+        "hash": "fd514dcb74809fd46bb0b5d106611564a456815e1a8071cf7e9295b0bbac77c9"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/3b5d1765e9657c5134de0912.mp3",
+        "hash": "2535a326af2ccb321c61feb62d9fc40b32a40b705489b4919c80aeea5b305783"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/3c37793069049978da60627e.mp3",
+        "hash": "15d1e31aa10ff5dbc847240bd9f0c2f4113117fbf3f0168ad10c926766015cda"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/443842d6f1a9a585b0a362bd.mp3",
+        "hash": "3bc279ccc5a9bb3e5d2242a90f2f17e2d75beac633e85dee0dca88c5df07de6b"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/49a0bd7088768bb7d4dc8144.mp3",
+        "hash": "6592a41d55321a524d9f2cb85901a0e36bf876608f7b5b23f56310fd9d5f5a7b"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/4f31e887423e0f557f02b8d7.mp3",
+        "hash": "63252ee39bf2f3fc4f3d55f268fd1e93ebdd012f4843340a7f217adedc47c35c"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/63af4e2906650342e576cf36.mp3",
+        "hash": "1a8e2dc5ea333e3fb8774564985c46e38ee27d2dfdf5aa17ddc7d4a42a346064"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/64cbcd6c9dc5b325264d0439.mp3",
+        "hash": "4652909391c61027f06c894154edd8438001a89eb115c7e972479a93a5f20add"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/672a69df8b9269a0fc2304d1.mp3",
+        "hash": "ee29c9668bfca897f0e61c499fe5270fa22c000b29b9c5d795d95602405e449c"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/67716c176172545348f4f639.mp3",
+        "hash": "ac0a1c2ea6e37820404c73f31c265fce4479a5f1a1a3bce364b4333d19e69c37"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/6e6d3d50119f5311044f3e5a.mp3",
+        "hash": "b5ff767a185a90a8fca6fad1db1c6fda62d8c59a9280ad7fdc39bad50afc16d6"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/6f47a86c0f7f73e6fd492e41.mp3",
+        "hash": "3e34e2ee25a07e7db243b14bf963374565e05da376396be673f4f59b1dce8aa0"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/8349650cc24cebf9652d0f52.mp3",
+        "hash": "98bd06b9437adce5da7a408a47e50f065f8e698dca7364412659dd36bc12f698"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/8ab8af294b90b805a9c54bef.mp3",
+        "hash": "4d9b4f57a8262d5d55a8bb1706399c2fe6847d06749ee828fde13a664a8b0902"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/93f6feac14700b5e6fca7857.mp3",
+        "hash": "d473c9de244ac21d06f85cd3486ad7876f5182b30f0d4fa83795e77175f1c164"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/947795d7fb4fd95a6e03b472.mp3",
+        "hash": "f5e427a01e4e20988b7e3263fb2e00fae649cf84c748e05265f79f1cad0ff639"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/9819880dc30db08f2e0fe279.mp3",
+        "hash": "9d5379eb704f7744e5c785ee6af5eb58acc1dac9ee10152af862a2f294a3b02f"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/b217b56eaae7ca712aa37c9e.mp3",
+        "hash": "c6d868d98cf83b9301998f73cd41faea50f85c25e8d9284193bbaaea2895c448"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/b71e224446febc331edbdba4.mp3",
+        "hash": "a80de25e64a1617e7b46c0b06d403ead9218010315114a2b278807cfaaa9c2c4"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/b83d3040609350e45e3f9cff.mp3",
+        "hash": "29c1e792b08cd21e93df110608be4f8e31c57112f2a899d2c2bd0f20b13b1364"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/b857f187df72de4191b86f97.mp3",
+        "hash": "6f10385dedf1b0f56450f1e381c947aa48417d4f0237d88a9f1e8b717d2221a4"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/b8637207e019b35a0f757eaf.mp3",
+        "hash": "d80fdff45eabbe9525c533b7d81da4abc0ca718d2a3cfcd7c6818c74fb878f68"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/bc3fa4281c27136d2dd96275.mp3",
+        "hash": "8a6b50627c5c7510cb677307cf2485fec010c5e9a823750d9d37b222405dfe02"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/bc95787729ede9d11ff87bce.mp3",
+        "hash": "97a7ca879b2f57810b9f8805fe71f7962bd17a810452925689ff8745295e9d0e"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/c64ac1c520589dd72cf6b29e.mp3",
+        "hash": "620315fa23e64de78f1a71c5c2fe357a3ac3e0774360be0f122f31786a3194d3"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/c68296eb193ec19609e026d2.mp3",
+        "hash": "67461f7c2fc3af390be3d62205137c46d5bf898a7588982abbb8b0feb9946f8b"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/cbd082dcfd21adadce8e6d2d.mp3",
+        "hash": "22f0da88f616b2d8e1182ff3dbbde8304efb20b838940ca6c7a1f2a9e19054b4"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/da0864842d56fc114be8a85e.mp3",
+        "hash": "960ac5ad44ed54e6e7fbfcbbb42cdd3ff86a64ce304d8b3c144b31dbb331674b"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/dfddf8d50598a50d811d7915.mp3",
+        "hash": "ff58b0d5e773ad04af157aea3108ddcde6f5e7d5e67653012d3c5e88a30c0893"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/e1f3e0d5e9a53965cc703e9a.mp3",
+        "hash": "9f07be6cbcda911521799d2cad6ada2afd37fb6a15775a23f5ef03e290436554"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/e2d82aa8724c9b77c379e996.mp3",
+        "hash": "dcd7877748570118bc2c24795dc0ab6e67467ab19088ace35bb57010a0c103bd"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/e988f3afbb2faddb6c810de2.mp3",
+        "hash": "d8d03bb15ea86899c75f90eb40109ac79a8e3d9c8163323c8ea993c14336a39e"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/ed9f125264b193ff9532acf4.mp3",
+        "hash": "a2e513cbef767f02629e6881b2aa4d09db1b04cdd25ff3ff5faa0245295d53bc"
+      },
+      {
+        "path": "/assets/audio/bayani/generated/f451824cc784fa66c1a40528.mp3",
+        "hash": "107a22fc583ac18e9ba985b935cb7bf6f426af3c3c7e6e6b36ce0abc69ee4306"
+      },
+      {
+        "path": "/assets/audio/bayani/welcome.mp3",
+        "hash": "048409c9f801ff36dd9e606d22214e59dd8fc1cc712d7c7cdb45143acfd82cd7"
+      },
+      {
+        "path": "/assets/brand/bayani-explorer-still.svg",
+        "hash": "b62c350e123894ea9cc335181f6375934792045aff6f62ece6cb40fb76e5f2e8"
+      },
+      {
+        "path": "/assets/brand/bayani-explorer.svg",
+        "hash": "8b33c8102ad55542708797b6f1f3ef6ac6014252501510289b5f09ef9542ed25"
+      },
+      {
+        "path": "/assets/brand/expedition-archive.svg",
+        "hash": "95c69ce8d657774f7f00f8bf15a961fc580b42bb648bca939457ec0a15c70bb8"
+      },
+      {
+        "path": "/assets/brand/expedition-atlas.svg",
+        "hash": "444f02bbbebd74d60601bf5845c1c0b7499d77052892c532195fdced1063ab71"
+      },
+      {
+        "path": "/assets/brand/expedition-community.svg",
+        "hash": "be1bff492aaadaf86db91cedebb9ad94d05794606353c948ec8c686f8744f675"
+      },
+      {
+        "path": "/assets/brand/favicon.svg",
+        "hash": "5c4c865f931beabc29e1c49b34502475678431665ed1db354ccefd8d72b7aceb"
+      },
+      {
+        "path": "/assets/brand/lakbay-cursor-arrow.svg",
+        "hash": "586ba6362a4c331fc15b8284ac9f1701d510b953a899238e1ba3cc7fe3c3f745"
+      },
+      {
+        "path": "/assets/brand/lakbay-cursor-hand.svg",
+        "hash": "9bb4c488a67b3b16548f06de016723790c3ecd370295f51ec6f1f8084679749d"
+      },
+      {
+        "path": "/assets/brand/lakbay-sun.svg",
+        "hash": "838fa854707a12554e4ac1e6acb81a3f62ebfbc64babc541a7829382ba6122ca"
+      },
+      {
+        "path": "/assets/discovery/now-community.svg",
+        "hash": "65a96332b6e8d00065f784cbe583edaa12504ac27cbb4392047916e1c224269a"
+      },
+      {
+        "path": "/assets/discovery/then-community.svg",
+        "hash": "7f520bb5eee0a98053073177e863c2079c8e240c816f2dfc7fc1527ef0021de7"
+      },
+      {
+        "path": "/assets/story/agriculture-policy-1.svg",
+        "hash": "6f34ed3a8a3d868b0eda8654851dc09533e6513b33101c166b3c6bcf2e555284"
+      },
+      {
+        "path": "/assets/story/agriculture-policy-2.svg",
+        "hash": "ae38bc3be57c613afb057407f876398427a94a816754a9076e7d70184a9db35a"
+      },
+      {
+        "path": "/assets/story/agriculture-policy-3.svg",
+        "hash": "03c2bc2107c5e659323f68c2222d129e2398b3b6938f42601bf797c4271b7995"
+      },
+      {
+        "path": "/assets/story/agriculture-policy-4.svg",
+        "hash": "f86afe63f690679bd199f82e3c0ff8cc926806fb19744cdc89094b1747812da2"
+      },
+      {
+        "path": "/assets/story/agriculture-policy-5.svg",
+        "hash": "5e78ef30d529d4c8567424c0ca61da0c1561cc68498f5b193034d9336cb65324"
+      },
+      {
+        "path": "/assets/story/archaeology-context.svg",
+        "hash": "1522d012d6255fc88f2782843f732836e3acd35ae9cccef31c66891a216662d2"
+      },
+      {
+        "path": "/assets/story/archaeology-evidence.svg",
+        "hash": "59e68eed013fd805de88c69f5c9b267c328c4263465e2eeeb199811a47144c94"
+      },
+      {
+        "path": "/assets/story/archaeology-sites.svg",
+        "hash": "d43ed486319862e0d98aba6437c4a57dded313b36eb4aa3dd2c13592a1ea0160"
+      },
+      {
+        "path": "/assets/story/archaeology-time.svg",
+        "hash": "1d858335b1fefee5972a22f85d236d7ae18eaf7f5f545ed4be9ef6cd241c9ee6"
+      },
+      {
+        "path": "/assets/story/arts-cultural-evidence-1.svg",
+        "hash": "bc187a753782a20e75b888dcb066a05939ef87daf65dba201a55040a40974d30"
+      },
+      {
+        "path": "/assets/story/arts-cultural-evidence-2.svg",
+        "hash": "1539b0c9ae6b49b77c416ac6f208ca17a20693b7e1d9cfaaedd754c45cee4d12"
+      },
+      {
+        "path": "/assets/story/arts-cultural-evidence-3.svg",
+        "hash": "48218793c5e6a5428af19dbf601b8a4deb846f78d191c3ea1e656d492e2e423b"
+      },
+      {
+        "path": "/assets/story/arts-cultural-evidence-4.svg",
+        "hash": "2278aac650d054508d451d42f74c0af48b68dd81f64ff6ecfdbe5fa25aff0abd"
+      },
+      {
+        "path": "/assets/story/arts-cultural-evidence-5.svg",
+        "hash": "34de3447432c12f53d6e8a67a77974f9b268fde4849cc10813fe7d97a47c508a"
+      },
+      {
+        "path": "/assets/story/autonomy-evidence-1.svg",
+        "hash": "e9575f3948b498ff339508fd4a09946862ea1a5e73c6b3359626906a6f2eea74"
+      },
+      {
+        "path": "/assets/story/autonomy-evidence-2.svg",
+        "hash": "f7131b4aec20dac2f1529828a2de4c515ed0a557e6ae81a3bb443bbbf7c53917"
+      },
+      {
+        "path": "/assets/story/autonomy-evidence-3.svg",
+        "hash": "e294b0060cc0094f69b17b005cb031d150f092a41ce9fb33f0c21058575bcda1"
+      },
+      {
+        "path": "/assets/story/autonomy-evidence-4.svg",
+        "hash": "f53dee3607d973e8fa9575e806a80c26b33c0052874b9d2f210a6f61a03e2e6d"
+      },
+      {
+        "path": "/assets/story/autonomy-evidence-5.svg",
+        "hash": "b1dac9e321b6acbc78fa71ccda9b39031ac537f0131fc38f8ea32561fc39d9ce"
+      },
+      {
+        "path": "/assets/story/balangay-construction.svg",
+        "hash": "1e0bda9c33c38e2c8c8c5a2a9d5c4394bd5fc0920620c1a7f884f74a567b265d"
+      },
+      {
+        "path": "/assets/story/balangay-evidence-card.svg",
+        "hash": "8164436aed0e4c5df023c076e5f6a671793d3215ad2209e45176f9d8e5a0ad75"
+      },
+      {
+        "path": "/assets/story/cavite-accounts.svg",
+        "hash": "ec5415dfea1c53cbed6d4424488abf5a7fc9f14f3059d6670ead60d6d6f2b19d"
+      },
+      {
+        "path": "/assets/story/cavite-causes.svg",
+        "hash": "bf3cd9d939a5c23dc1e757ea9df875bb435b03319101d551022644a0fc7cfd9d"
+      },
+      {
+        "path": "/assets/story/cavite-claim.svg",
+        "hash": "277fdbe5ee5304583d1e4ec212b08b9a190f65207bb8674bfebf84e64e6aac30"
+      },
+      {
+        "path": "/assets/story/cavite-dates.svg",
+        "hash": "dc2dac89a2b64811d2317be72ccead9416c51ff20b932b6ca0285aa4c4f6088f"
+      },
+      {
+        "path": "/assets/story/cavite-event.svg",
+        "hash": "fa371a21f29b1368a1c8ef85f4a450533271e0b860f632274a0299691a3adaad"
+      },
+      {
+        "path": "/assets/story/cavite-memory.svg",
+        "hash": "9de8a2c4e39a92441307f2da8b24170ce64f8c8e3e26e749496f09c5c664b2ac"
+      },
+      {
+        "path": "/assets/story/cavite-names.svg",
+        "hash": "134cce2efcfad82d08bc4bc37e8afbb381f39d5b929ef032298e60b985c9239b"
+      },
+      {
+        "path": "/assets/story/cavite-recap.svg",
+        "hash": "19a861dcbf680b29d5777ddd111dabc81de92a64b4c8c97ad6c56c21b0acd166"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-1-scene-1.png",
+        "hash": "acfd42954f499225e3def4583d50f0cfded6d06d74eb98bdee379b462e122ecc"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-1-scene-2.png",
+        "hash": "ea87b98157e75f28a5a041a08cf2147a43b77df57ce1bf013ac944e1d355715c"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-1-scene-3.png",
+        "hash": "4eacb7b0bf0d47a6991a9b3c0facffe77f19ed48162b825c3ef7238861a1e490"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-1-scene-4.png",
+        "hash": "782ab087b76b82211bedc8ca0d481d8e8387b6183b3b549fc1c83490479c2b28"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-1-scene-5.png",
+        "hash": "d7ba39f61d6f47f92d3c88956f45e03580227b60059556ee4219327a3e490521"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-1-scene-6.png",
+        "hash": "b3832d0539b9e1caeb469f5045cc2b10ea0409b6f5cfd494c0e2f4242732a0e8"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-2-scene-1.png",
+        "hash": "8ed2a30aec45344e220af98439d28a6d97603abb2141a985d4c7630db2667ea2"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-2-scene-2.png",
+        "hash": "78d7bf4a0bb59a668e32ee3ce82041cb8efa6dc0e8aeaa2d7744286f485ca5bd"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-2-scene-3.png",
+        "hash": "11e8abaa7c836386f67bbd3faa1d64c4f2829dc809242b81d6a0f333b347b07e"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-2-scene-4.png",
+        "hash": "0dbf8bbf611143a389ddccd4e9172ba74732cacd2fe6b2aa362440e2a2486648"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-2-scene-5.png",
+        "hash": "8e3c8573345c377f51c561f9a7ec76078bcca7b20f5e1b56d434d2c5127f752e"
+      },
+      {
+        "path": "/assets/story/chapter-1-mission-2-scene-6.png",
+        "hash": "fdd4051be9065c0e0a6bd99db8bdc61796bda59aa9dc25d0b369eed3c3acd657"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-1-scene-1.png",
+        "hash": "0b46e943e9b1994db8a376641a04bf3ed3b5b110542bda7696eaec821cbc7324"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-1-scene-2.png",
+        "hash": "cc4ad7259de8b776d8c59503dff9a3d603a5bbc05363f97a06b9f942985c6430"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-1-scene-3.png",
+        "hash": "d9a7beede6e7a55661518ba7d0b795eb500aaa3391f70770833af8703e51aed7"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-1-scene-4.png",
+        "hash": "c29f7158b4e7737878322d2f4e73379dc9e16f9936a747c9aeb1ff6c033bcaa1"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-1-scene-5.png",
+        "hash": "cd6026f3112e25581c11a01544c59865475d2b4f2423f1ca84c3f5c8d3fc3fb6"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-1-scene-6.png",
+        "hash": "dbf66d5f2856dd835f253d7bee8a65286ad5d89fddcdb2a0208387fc1b3acade"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-2-scene-1.png",
+        "hash": "ae98461589ee51b999c5fc2eab8231711f8e64f28eab027efd05006d760b1830"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-2-scene-2.png",
+        "hash": "b4ba12410bc9842e85ec983fdd128198df48be68b227dcd831916bb1c03700bc"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-2-scene-3.png",
+        "hash": "22b5c34e91db6de18404259f754c16d81d42e7f61f0be07e4fc82cf69ea3d46e"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-2-scene-4.png",
+        "hash": "cad1c0d9f1c438010f64d299f6b98cda4f35e3de8849cf95738425353f64d779"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-2-scene-5.png",
+        "hash": "36ec6f53cd69e8a7682e1b9e667607b1b5a4112ee14cbc4d21ac6c059cc0f7a5"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-2-scene-6.png",
+        "hash": "f29a27b19ee1e3a5dd50f80d67832f8e058435f519c1584077e66ae0cf92cdd5"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-3-scene-1.png",
+        "hash": "841e860e89d0123a9bf4fb595417b698058933e7e39e726c367261b4fe99886c"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-3-scene-2.png",
+        "hash": "aecfa1438adb13d3c863bcbc8eb1b4a78f9098c78848bc089e0361cffb4ae73c"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-3-scene-3.png",
+        "hash": "7f842a6fb2b2079650abc45402e44a9e04ab8c9a48896647aea30b008e1e07b2"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-3-scene-4.png",
+        "hash": "128421e19935f3c4309fc20e0cdf29bbf497bbc2f273a26a8623488a0775622b"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-3-scene-5.png",
+        "hash": "71c7a4500b8527308354e14e33d5ba43abde952971148b95c445b8534fa22692"
+      },
+      {
+        "path": "/assets/story/chapter-2-mission-3-scene-6.png",
+        "hash": "d17496211a34e206372b36768e63d90e34da1b07d21f2d05ba2988d1bf59205e"
+      },
+      {
+        "path": "/assets/story/chapter3-mission1-scene1.png",
+        "hash": "0f637617fe6767b22062202416a2735bf5436ab7b6317625e0d8c2a20bb4b288"
+      },
+      {
+        "path": "/assets/story/clue-desk.svg",
+        "hash": "aa56470afd179863429097475b7c1144f5a95de46356a5d3429f2a51231eddb4"
+      },
+      {
+        "path": "/assets/story/colonial-reforms-1.svg",
+        "hash": "e56ec1773d45a8d4abe6b918bdf0162b3195cc8938a7f46044929d68e03e4051"
+      },
+      {
+        "path": "/assets/story/colonial-reforms-2.svg",
+        "hash": "e8e04b609affdccabf15c289dad53a495c06df65f2b903e1e9e0b00cf1f6977a"
+      },
+      {
+        "path": "/assets/story/colonial-reforms-3.svg",
+        "hash": "e22a6f7ba686af75f12849af9d4cbec2425a40539d2ce04c263ab70215df735a"
+      },
+      {
+        "path": "/assets/story/colonial-reforms-4.svg",
+        "hash": "a62785a77234e6198d23f228f253993afe6b46ed13491865a7c8c0ac2ba8f8cc"
+      },
+      {
+        "path": "/assets/story/colonial-reforms-5.svg",
+        "hash": "564c40efd295370530d8580ca953e9c78abe465f15b6aaa443b072238594f024"
+      },
+      {
+        "path": "/assets/story/colonization-aim-method-effect.svg",
+        "hash": "f63eaea22eeb5f3a0520cfb9e59a0ceaf6fd2e8dffb0579b867f30cc4216bb30"
+      },
+      {
+        "path": "/assets/story/colonization-effects.svg",
+        "hash": "d8e955f99c32d00a7afb68734ed1d69f591200233f131f54598b9115e3f566ac"
+      },
+      {
+        "path": "/assets/story/colonization-meaning.svg",
+        "hash": "f2777137cf366349bf443a7df228310d992a49e5f7b4cd4e31ef8bd554affe49"
+      },
+      {
+        "path": "/assets/story/colonization-methods.svg",
+        "hash": "950d8a89496d5dd9465e5aba525a78e08316f94a15f4ddb3d2179ed9a64ee9fb"
+      },
+      {
+        "path": "/assets/story/community-art-evidence.svg",
+        "hash": "30df142dd54f4c5a7b2948f8c31331bc31485610b0464186025e4a68c8daf3df"
+      },
+      {
+        "path": "/assets/story/community-belief-practice.svg",
+        "hash": "d88fcd2105485d14096425794f699583a6be3afe129288d866e53781c9dabb7b"
+      },
+      {
+        "path": "/assets/story/community-continuity.svg",
+        "hash": "ce474d2ffbb07663a85807fbc1756b60542a2271d6dbbdc0239cbabb854a1ec3"
+      },
+      {
+        "path": "/assets/story/community-economy-1.svg",
+        "hash": "2796b92e1710e63cfd675a0a0ca99bce19eecf02b1c9db3ad86016c7534ab8be"
+      },
+      {
+        "path": "/assets/story/community-economy-2.svg",
+        "hash": "85f94fab362ce0817674326d436ba7414775cf019fb8316c239a49badd68c5c8"
+      },
+      {
+        "path": "/assets/story/community-economy-3.svg",
+        "hash": "5c2e92c6ff4d42012e5678381ddef8865887043d69fd73980b8858e773d9f71f"
+      },
+      {
+        "path": "/assets/story/community-economy-4.svg",
+        "hash": "e8056925e964855741544e421db9be787122e6178884a6e8060de886ed7fe1c3"
+      },
+      {
+        "path": "/assets/story/community-economy-5.svg",
+        "hash": "4bce77c920e3edf699ebff9dda262e563bc9a13e0f7289743102a55f631cb560"
+      },
+      {
+        "path": "/assets/story/community-source-time.svg",
+        "hash": "1616102b7f793af9d7f8aa958b2d93e818d187bc890a886a82e1f866d6254eda"
+      },
+      {
+        "path": "/assets/story/community-space-evidence.svg",
+        "hash": "09b99b92792b3b9260f457252e10392ad6d8c8dd0d100abc211f17aa531b0a65"
+      },
+      {
+        "path": "/assets/story/connections-chain.svg",
+        "hash": "f42f4d0e77b1e597713a361ed568c887724cba22ad5de5427a9c81ea74910a8e"
+      },
+      {
+        "path": "/assets/story/connections-learning.svg",
+        "hash": "27ffe595e6d5c85999ce26b91afb01504357810a76c7de7ff69dcc332d6d0011"
+      },
+      {
+        "path": "/assets/story/connections-opportunities.svg",
+        "hash": "7387c0b215ec06e187c002338e3554b1d8fcf008989be1b953ac070c745f38e7"
+      },
+      {
+        "path": "/assets/story/connections-port.svg",
+        "hash": "55e224d187566eceb7361bfb813f8c03b973a5b1c68d2050c6697a873c30608d"
+      },
+      {
+        "path": "/assets/story/connections-suez.svg",
+        "hash": "849271e8b7fa19a1bb5d1fa01b4d6ac4e4902b56196043d06f06154e6d804577"
+      },
+      {
+        "path": "/assets/story/connections-timeline.svg",
+        "hash": "949b40b320933345cef6c48d55edc37a2af1eeb4b0037d460294c0e3c3137bc7"
+      },
+      {
+        "path": "/assets/story/continuity-change-1.svg",
+        "hash": "7a383bb1309088220e569a89ab5afe1f297d1122be9b071fa05b9fe50dd727ae"
+      },
+      {
+        "path": "/assets/story/continuity-change-2.svg",
+        "hash": "0425833e95723102b6f70d876c6d8c19e6bf66be5b03e0b38bbcde72cf2809ba"
+      },
+      {
+        "path": "/assets/story/continuity-change-3.svg",
+        "hash": "85cf99e140f1807ab81eda6f5397a60b9990fca610581330bafbcdfed8cef910"
+      },
+      {
+        "path": "/assets/story/continuity-change-4.svg",
+        "hash": "74f2e340595901d672693dbe7674559bf4d7352d646163d368777fdecaba3294"
+      },
+      {
+        "path": "/assets/story/continuity-change-5.svg",
+        "hash": "2696ae5bd175e921c9dd49cc5a4d3944ac885fefd6df3d254756cf50120a0d9d"
+      },
+      {
+        "path": "/assets/story/cordillera-autonomy-1.svg",
+        "hash": "8810b4f5b1b836f08fbd537471297edbb9e0779696069d2931a3095c393765f1"
+      },
+      {
+        "path": "/assets/story/cordillera-autonomy-2.svg",
+        "hash": "d0a81fa15f48c24688141d4a24d772a4b177dbeff4a66ad12652fa2658e85196"
+      },
+      {
+        "path": "/assets/story/cordillera-autonomy-3.svg",
+        "hash": "6495faa66f84ccdd81f1c884be6d0e8cb5ea4294eecc0609857037866cb6ad89"
+      },
+      {
+        "path": "/assets/story/cordillera-autonomy-4.svg",
+        "hash": "a5f64d213222f71c8aa8ee9d58b0873b18a533c1d9403fd46f083c228a69de60"
+      },
+      {
+        "path": "/assets/story/cordillera-autonomy-5.svg",
+        "hash": "4a77810b8505293494a60ec7e6cf2be48b41590e745e8ca5a1465dd6c6d64314"
+      },
+      {
+        "path": "/assets/story/craft-making-sequence.svg",
+        "hash": "15f7c4bef05e56a0c9ba1c52998d21f6c37770972e1dfbc35763a3cec25c6bb7"
+      },
+      {
+        "path": "/assets/story/craft-material-choice.svg",
+        "hash": "be69d441fa35c9819ebb6c6e72f4bed9028cb54766def1db44e82eae074f5703"
+      },
+      {
+        "path": "/assets/story/detective-island.svg",
+        "hash": "480888564aa4405ef4c0744723e90efe144c92618506006a8111dd039f7b427c"
+      },
+      {
+        "path": "/assets/story/diversity-comparison.svg",
+        "hash": "49ec5e14123bfd76b28560a8e40cdd2c77030aeaa176d8bdcea0351ed1d421c3"
+      },
+      {
+        "path": "/assets/story/diversity-locator.svg",
+        "hash": "baf1185f8d61bdcc279577d8a81e8f3fb5d10a91c8d8bdfd0da698b8ab8ad77a"
+      },
+      {
+        "path": "/assets/story/early-resistance-causes-1.svg",
+        "hash": "ce82804fe70c798fcd748d8eb8580bbc6b4c5cb9d9f425e9272212a055940592"
+      },
+      {
+        "path": "/assets/story/early-resistance-causes-2.svg",
+        "hash": "b260ae961dd0e72b44300aee35bee098d06014b54371938f478c9aaf5829540b"
+      },
+      {
+        "path": "/assets/story/early-resistance-causes-3.svg",
+        "hash": "5c13ae8fbe40cc74d9b307e282d7b4f172a808229228681b4b2f248d60ba7f32"
+      },
+      {
+        "path": "/assets/story/early-resistance-causes-4.svg",
+        "hash": "5ab056f4ed8dfb86723c5daef8ffbbb2a9a21f2688aef45a28f7a4d8545ed745"
+      },
+      {
+        "path": "/assets/story/early-resistance-causes-5.svg",
+        "hash": "2bd6b620f75439943900668ec228ffbef9fdd69e549059ef5843bedd7fc889fb"
+      },
+      {
+        "path": "/assets/story/education-language-1.svg",
+        "hash": "cbbf43bbf940a280bf10e883b8d88a850b370382dc7e4deb321064d17d18ef71"
+      },
+      {
+        "path": "/assets/story/education-language-2.svg",
+        "hash": "5b1e3f9f8fabbe4aa8a4c70ba2492c018ae0aec81278897fd2fcb11aad321af2"
+      },
+      {
+        "path": "/assets/story/education-language-3.svg",
+        "hash": "86ab4288dc2ec8eb5bb0eaee7901ed27db76bd268fa70d5eaa94afa330242245"
+      },
+      {
+        "path": "/assets/story/education-language-4.svg",
+        "hash": "e95082fbd5c201919ce5f1bac39ee060d433371f621913a506e68aed6b6ca8a6"
+      },
+      {
+        "path": "/assets/story/education-language-5.svg",
+        "hash": "2a36cdd6eee4e9384a02b2d5f15da0b8c355c5737030b406e033057ab40f57ca"
+      },
+      {
+        "path": "/assets/story/eighteenth-change-1.svg",
+        "hash": "ba8a198b5d271f49df0b2c3ac340c39116407c573cafd0d23473bd32d2517c0e"
+      },
+      {
+        "path": "/assets/story/eighteenth-change-2.svg",
+        "hash": "f8839727f613cd5ae8ffdda0f910c45b20f1246b977a4b5d6565ffac8fdddfc2"
+      },
+      {
+        "path": "/assets/story/eighteenth-change-3.svg",
+        "hash": "091e8bb35371714ffd5f6109f07a469d54040aea4891fd9788390136c6f98461"
+      },
+      {
+        "path": "/assets/story/eighteenth-change-4.svg",
+        "hash": "51d4b98b8cc4ede8116dcbc27e503ffd54c815cefa9b6e38e3fb3337fe251a78"
+      },
+      {
+        "path": "/assets/story/eighteenth-change-5.svg",
+        "hash": "87aa558d22d15b8a90a068b3179cc3e8bf830dd77600d5d23927a65630eb7fc1"
+      },
+      {
+        "path": "/assets/story/encomienda-duty-practice.svg",
+        "hash": "4f3d5148df55260ac54c781c88ac111828979d1c6c9d77f3fd037a49eb515c0f"
+      },
+      {
+        "path": "/assets/story/encomienda-relationships.svg",
+        "hash": "a771f4875d2747cf116909c887a43f45508c0761d9c92a6d19ab449339734f59"
+      },
+      {
+        "path": "/assets/story/encounter-communication.svg",
+        "hash": "17d257e12a12344b78db85e41a2aecdd523f783a730c5ffecd23ad82ce51516b"
+      },
+      {
+        "path": "/assets/story/encounter-exchange.svg",
+        "hash": "4360e525aead034993ee12314dc968513e4b8586000e03e5e4d17a636a775366"
+      },
+      {
+        "path": "/assets/story/encounter-perspectives.svg",
+        "hash": "98f8803c9bfd992e13a34a7ba23beec98779f232ce8b96a102a631694e242ddf"
+      },
+      {
+        "path": "/assets/story/encounter-timeline.svg",
+        "hash": "6ebf298bdd643d909576d00fd334744e0847036b231ecdcf707fe316faf25a11"
+      },
+      {
+        "path": "/assets/story/exchange-adaptation-case.svg",
+        "hash": "75dce9ebf9e1ed4eabb9d91bb9c74b56f8dd245f69b518de439302758c4a521f"
+      },
+      {
+        "path": "/assets/story/exchange-tool-technique.svg",
+        "hash": "d6a9dbc778535daf786746ff65bde2b40f972c18aa2b04eb74ac292a17bf2257"
+      },
+      {
+        "path": "/assets/story/expansion-autonomy-evidence.svg",
+        "hash": "c26e07d7e2173ff83f4c436ad96ec8f87a9ffb54f98529f7828c541109a19248"
+      },
+      {
+        "path": "/assets/story/expansion-links.svg",
+        "hash": "f3b15c864891c2d76e912ba873234d5df8b9b4355967f2d925079a0a4a339325"
+      },
+      {
+        "path": "/assets/story/expansion-reach-check.svg",
+        "hash": "b0a1834daadca10553e19ff0ecb26545dbad8836161425372edeff391dfdeca6"
+      },
+      {
+        "path": "/assets/story/expansion-response-cards.svg",
+        "hash": "de0c12391aa9e8532f9893a7288d2f91d5b333618a646a7cd9e4fdebf1c993ea"
+      },
+      {
+        "path": "/assets/story/exploration-motives.svg",
+        "hash": "90bf70261d8e759852ddbfb45bd2ca3da165fd9384ee7ab156f3a25b6065e8f2"
+      },
+      {
+        "path": "/assets/story/exploration-perspectives.svg",
+        "hash": "2aca7a5c536c1384cebde5e7c4a3ba4116a3c7e83a5ceb18b4fde1589284ab42"
+      },
+      {
+        "path": "/assets/story/exploration-route.svg",
+        "hash": "4a3982c754446ce0876a20c0df2799568185f267d89fe0e6228cb6bb4320cd1f"
+      },
+      {
+        "path": "/assets/story/formation-evidence.svg",
+        "hash": "fdb496ae50afc36a999d6eb23235f819d64c6b423f908e2f0187dfb94a610938"
+      },
+      {
+        "path": "/assets/story/formation-plates.svg",
+        "hash": "104d851437fec3492cea1e59f28bb1768dbffe0639fa4a044dcbb58161fed78f"
+      },
+      {
+        "path": "/assets/story/formation-shoreline.svg",
+        "hash": "835ae07975867a386d64298e4673a5f66617c75a26d92553f3019cf8befdeffd"
+      },
+      {
+        "path": "/assets/story/formation-volcano.svg",
+        "hash": "496b99d02c401c3827f9657358af26fabea5cb1fcc0bdc644bd1aeb9aed8ba85"
+      },
+      {
+        "path": "/assets/story/galleon-network-1.svg",
+        "hash": "d6b0d4f74c78a06701df82b93c2ea5f5bcbae9d2d1a49820d06c3e057c889818"
+      },
+      {
+        "path": "/assets/story/galleon-network-2.svg",
+        "hash": "1be9b0331d401be8058fa93fcfb243d03c0cf999c561451ea80a89b853997837"
+      },
+      {
+        "path": "/assets/story/galleon-network-3.svg",
+        "hash": "46a96d0acc84e4ad5766e85bfd3bd9513099b0ee97bfa79e0fe0619e0d9fca36"
+      },
+      {
+        "path": "/assets/story/galleon-network-4.svg",
+        "hash": "e27b0e551522588c8d52112fcff0d0f94f7d873e4a53f0f96d194e706adfd5d7"
+      },
+      {
+        "path": "/assets/story/galleon-network-5.svg",
+        "hash": "9e76b01ed4eafe3fb0c7317c34c940900d5d1ac640f75a04a166f159c7305286"
+      },
+      {
+        "path": "/assets/story/government-authority.svg",
+        "hash": "aa9cb441055dba07564b73b64ab10ed3963c9d1acf1b4e427a8b9b90416f6d76"
+      },
+      {
+        "path": "/assets/story/government-duties.svg",
+        "hash": "c9cfb72f38dc9c728e984b4ccbc561e247aeee05a3d5ab67eb0200a0f89aa252"
+      },
+      {
+        "path": "/assets/story/government-institutions.svg",
+        "hash": "5cb9a04e392fb28fbb121d8aad008c26c57a846e050d29cdb363d329d8ccf4c6"
+      },
+      {
+        "path": "/assets/story/government-order-path.svg",
+        "hash": "142a87eb677e000079558ecd1dc21fe390ee77550d166e6949b0e1cd791c1629"
+      },
+      {
+        "path": "/assets/story/harbor-butuan-evidence.svg",
+        "hash": "a9b5db0a9cd62b2cad721072b46652bf95b94f41d54bb9683fb381db1740bebc"
+      },
+      {
+        "path": "/assets/story/harbor-community-model.svg",
+        "hash": "248d5f93490920873c92e24bbd0f7b973a32484079829f19e34bc09b33260468"
+      },
+      {
+        "path": "/assets/story/heritage-claim-builder.svg",
+        "hash": "4db98edb9604cc38a36b263da862c2d07eef6c7194a9916d03b1dd0c753ddafa"
+      },
+      {
+        "path": "/assets/story/heritage-evidence-portfolio.svg",
+        "hash": "a30995e10e4d590c03384e0c274313cc5ea2c61b6149c52931bfc9290339d13e"
+      },
+      {
+        "path": "/assets/story/ideas-evidence-1.svg",
+        "hash": "61d0464b1406ea770c3b2ef82aa3e7076d1f450917c26a16bce4ecc91c06664c"
+      },
+      {
+        "path": "/assets/story/ideas-evidence-2.svg",
+        "hash": "c3a1cf25c266673483ccd8f524a210c36be899c290d0cdb03be0ff3586aba658"
+      },
+      {
+        "path": "/assets/story/ideas-evidence-3.svg",
+        "hash": "2b6b75377d0a6794bdf5d27f2a0f1edb39cd8a888b4ec5187fe530f3220fbc6e"
+      },
+      {
+        "path": "/assets/story/ideas-evidence-4.svg",
+        "hash": "475a47756ff503367fb6e7fe71c6d0fbc8901d1b8953d5db5aa8ebf3a698fd68"
+      },
+      {
+        "path": "/assets/story/ideas-evidence-5.svg",
+        "hash": "1750ee22cbb98eb045768aa4efe6ad6b08064f1785e42008a49ef61893cfabfa"
+      },
+      {
+        "path": "/assets/story/inclusive-contributions-1.svg",
+        "hash": "e43267b10a40cf638cd7311d9c8c01d8f047c426aa6578dae9f233825085bd31"
+      },
+      {
+        "path": "/assets/story/inclusive-contributions-2.svg",
+        "hash": "5a96bfe70ff33c1c7fe38216dae87696bb67a7618fb2fc56fed19143aa9777ee"
+      },
+      {
+        "path": "/assets/story/inclusive-contributions-3.svg",
+        "hash": "56996c05191eb4e3797bfe66b477035cd588fb1e9cc4de156d46529135daa762"
+      },
+      {
+        "path": "/assets/story/inclusive-contributions-4.svg",
+        "hash": "4ec668a9b025b273e43e06bc7c4e30600654a74858f4bbb8e49e139834a4cf7d"
+      },
+      {
+        "path": "/assets/story/inclusive-contributions-5.svg",
+        "hash": "89b8ccf25d3d7b24bfb15f5e6346c84ca61bed460d2f0aadafbe3523e438b0f5"
+      },
+      {
+        "path": "/assets/story/islam-belief-leadership-timeline.svg",
+        "hash": "30a04025f1b4f886dd9becfc521cf60c960e65967f0b857f3cc5db1701f68f3d"
+      },
+      {
+        "path": "/assets/story/islam-community-contributions.svg",
+        "hash": "672fd0af591f38e93555a11f2c7cb1735db6d6d89729113e5b783641d86e0838"
+      },
+      {
+        "path": "/assets/story/islam-southern-locator.svg",
+        "hash": "4780f0daeb2dccda8584d497876ae432d03fcd6582cdcf7e968d6286d69afe85"
+      },
+      {
+        "path": "/assets/story/labor-produce-evidence-1.svg",
+        "hash": "9654226fe27cfb0d9f6e7b47d1e2bdf31b3deba1ab81acf83e514987ac6893cb"
+      },
+      {
+        "path": "/assets/story/labor-produce-evidence-2.svg",
+        "hash": "d986177c35d84ba65c9a9e60900b07df34e171705c8317bcb7f2f9dd14656194"
+      },
+      {
+        "path": "/assets/story/labor-produce-evidence-3.svg",
+        "hash": "27e87ea66f0d985cc48b9c76ce706a2d49a121095fc985a163ec99676f768954"
+      },
+      {
+        "path": "/assets/story/labor-produce-evidence-4.svg",
+        "hash": "175566657503564efb47f157fdc120a80280165ef2e43494fb0ef2cd546cf1e3"
+      },
+      {
+        "path": "/assets/story/labor-produce-evidence-5.svg",
+        "hash": "0724897ee4ce9d8c7a2e04927d804971c0ce1571c48e8b1cb14a518e15940b99"
+      },
+      {
+        "path": "/assets/story/later-expedition-timeline.svg",
+        "hash": "f9ab556c5da6f06974d9d1c8a0d1d9a256d638901c51ff981c141d1424abd3ec"
+      },
+      {
+        "path": "/assets/story/later-naming-evidence.svg",
+        "hash": "8eea4a343e274e0acda5f139a0e991697b601eb7604d82ac5df7a457d68d6385"
+      },
+      {
+        "path": "/assets/story/later-voyage-questions.svg",
+        "hash": "48ea456a27482941a9529257e89ca193914dfe8d169673fd35655eb7a7c2b11c"
+      },
+      {
+        "path": "/assets/story/later-voyage-sequence.svg",
+        "hash": "aef578aecb90b7c7303ec06556274e62a02cb05bc12c0263a6f59dc21fe36134"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter3-mission1-scene4.svg",
+        "hash": "ae3aecd4869c3f039ca9898dcff08c83864109a5cb9f4c5f305831b68a87ac9c"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter3-mission2-scene3.svg",
+        "hash": "f3b62f30987e3587854d524835340680e68cb5dec53af105a262816f4aeee297"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter3-mission2-scene4.svg",
+        "hash": "ce115d555bf67fc7176316dd9fad7262ae07e9ce40b40ee0e169639cc116c4b4"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter3-mission3-scene1.svg",
+        "hash": "7273b73c1ff57032fc306d85a957de793aa414abb48b237d909fba24e2e35f8d"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter3-mission3-scene3.svg",
+        "hash": "07d07a0e85223e39d086a6c7ffc0c71bc6b115d1bd983706c9ff839f77745743"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter3-mission4-scene3.svg",
+        "hash": "6cade9f31c2b7335dc65ffdbc7bc927d8f83e9796b8b0c1da5b0cd0c770cb8c3"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter3-mission4-scene4.svg",
+        "hash": "ee5e647795738a172d749004a8cc6ee844f9cd6793e452ecb46aaf90ebb15c47"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter4-mission1-scene1.svg",
+        "hash": "1bd95b827338843b8b4bc20d47bf16281917d1fcb578700fc861977e51cfb4b5"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter4-mission1-scene4.svg",
+        "hash": "a1711afdc5a2f182eefe206496f24dc27ee490541e0cc7af1597c3599867fdcb"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter4-mission2-scene3.svg",
+        "hash": "27e65f7eb148887189c27891b63035f75aa2a43fa21bffee10d43bcca1330542"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter4-mission2-scene4.svg",
+        "hash": "7cc667fd616789ccf8da9d49aa2e12ced7fc4e681e9da1f630fba471f13ce60f"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter4-mission3-scene2.svg",
+        "hash": "2cffca34ff767c2fb69fc911eca5cc96b6612951fc77b82a0a507af7ef9a182a"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter4-mission3-scene3.svg",
+        "hash": "efcdcba85b60a10453b50d35f4bf27c9cb00f99d73c3a8d9792670e29e2d4921"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter4-mission4-scene2.svg",
+        "hash": "6753009ad62bbaa03a12def2593bebccaff307cd08a999ad83aae673103c4cdd"
+      },
+      {
+        "path": "/assets/story/learning-guide-chapter4-mission4-scene4.svg",
+        "hash": "3a01d739a7945f36322c0a7c4c0add80bdc43c43ae67bdb789271ef972ade374"
+      },
+      {
+        "path": "/assets/story/legazpi-evidence-check.svg",
+        "hash": "ea1c0547881b7efe7d37ffd06bf6ab2f9d07b71094995a11e09da5b13e424054"
+      },
+      {
+        "path": "/assets/story/legazpi-roles-and-aims.svg",
+        "hash": "02a1864c43b80b6af4254786801dcfa4b464cd4c7f807ae425921021a4cac2fc"
+      },
+      {
+        "path": "/assets/story/legazpi-settlement-questions.svg",
+        "hash": "5c22e8e98f99273b513449435e4bc61b6537509ac2455e80b5c332faea3763da"
+      },
+      {
+        "path": "/assets/story/legazpi-voyage-sequence.svg",
+        "hash": "4490dd29947b54c01c316e216dc4ad21d6be4bddb553959594c37b0a089385de"
+      },
+      {
+        "path": "/assets/story/local-awareness-1.svg",
+        "hash": "e3ea933c528d50b6f02b22797fa048c7b645b78500edd3bd35f212847085fa51"
+      },
+      {
+        "path": "/assets/story/local-awareness-2.svg",
+        "hash": "35a548ed62b728d85df3c00fc0e96da6829c32788643b384d2fbffdc67731922"
+      },
+      {
+        "path": "/assets/story/local-awareness-3.svg",
+        "hash": "3382a93d55690104fa31573f22c8983292aaa0f6f175bd16e719bb2f6bb0b088"
+      },
+      {
+        "path": "/assets/story/local-awareness-4.svg",
+        "hash": "ab67699dd23a8326dc34f3f7f1efa8194f9b8e6f0fb5fe198efbea90dd6d84cd"
+      },
+      {
+        "path": "/assets/story/local-awareness-5.svg",
+        "hash": "97dcd03d86df3ff8ef1a25f68236729444c8501207e0f3d5e1edc772a0c194d9"
+      },
+      {
+        "path": "/assets/story/local-government-levels.svg",
+        "hash": "2b03d36c50f6011b79c0934c46f0eb27c4063e8e94f52edcd74f61161c8c27ac"
+      },
+      {
+        "path": "/assets/story/local-government-offices.svg",
+        "hash": "b6a4ef87ef8aa1678f8c05b287b33f559174cfaa99d69260d06eac08e5a7965a"
+      },
+      {
+        "path": "/assets/story/local-government-process.svg",
+        "hash": "7832bf5c438527400d6a30aee9f0f527163cf353e3768267c419d4be5953bd1b"
+      },
+      {
+        "path": "/assets/story/local-leadership-change.svg",
+        "hash": "2789bd03e329c717ad17f5728e8aa7e34f4046d7ef24ab9fed1ef294f87ea506"
+      },
+      {
+        "path": "/assets/story/mactan-decisions.svg",
+        "hash": "5519ff9967711b5a2a3a0f48ef0ad649a4cc827a5f447a3d2f37ee67c699434b"
+      },
+      {
+        "path": "/assets/story/mactan-outcome.svg",
+        "hash": "7c3dcae17f2df684ed21e62676978b27885049d8054af4128efe4c2f0c6dba6f"
+      },
+      {
+        "path": "/assets/story/mactan-shoreline.svg",
+        "hash": "2ec0b962300d49a28435b461a3fc284935887b82843fd5607db49a2a2de4670c"
+      },
+      {
+        "path": "/assets/story/mactan-source-check.svg",
+        "hash": "292824d791bd8229b02f9badd5de91f098139a07168ec487c9f660e91af717ae"
+      },
+      {
+        "path": "/assets/story/missionaries-aims.svg",
+        "hash": "a9ea92573778dda705ef972209eb431d4f4d26f370db808665efaf7ad8f48c43"
+      },
+      {
+        "path": "/assets/story/missionaries-context.svg",
+        "hash": "85de34e1051ff40cf0ca0ab3103e1e92a985a5a89363e10a30bb2abdb8f5b218"
+      },
+      {
+        "path": "/assets/story/missionaries-language.svg",
+        "hash": "194e6cd5127e914ce141f7851a3d69361afc2e9590ac40794bf543f7c2e1b4fd"
+      },
+      {
+        "path": "/assets/story/missionaries-sequence.svg",
+        "hash": "d58f2babf375ded13db66237e5d644db9547824a460b0c97378a028841f654a4"
+      },
+      {
+        "path": "/assets/story/muslim-polities-1.svg",
+        "hash": "7064bc029abad11f0ff1aecdb233e3ac05f413ec4db388d728e4747063839c50"
+      },
+      {
+        "path": "/assets/story/muslim-polities-2.svg",
+        "hash": "6cbb3bcecdd84f496f109a155359bc1612dfed17767983c5bc9ee0b48c596a39"
+      },
+      {
+        "path": "/assets/story/muslim-polities-3.svg",
+        "hash": "47cc51916c09fe2fed29133219701feec5f4ed14a00b4eb8784e2d0ffdd89670"
+      },
+      {
+        "path": "/assets/story/muslim-polities-4.svg",
+        "hash": "9331cd01f117dcd27fa09641adb8e5689e82930e924b209cd0e743b4ca3578f8"
+      },
+      {
+        "path": "/assets/story/muslim-polities-5.svg",
+        "hash": "b6f88eb2a0ba6d8a7d4b9488f5f3d542cc5f13550089e10835ee05f7b6bf52d8"
+      },
+      {
+        "path": "/assets/story/national-consciousness-1.svg",
+        "hash": "00114aa9058986879df528b2a603039a5c22ec7a40d6a074655943022e411e51"
+      },
+      {
+        "path": "/assets/story/national-consciousness-2.svg",
+        "hash": "3fcdc82dc7e04756e949dda4d61711e6011f5e41881f688e63a8ffc3eb576e10"
+      },
+      {
+        "path": "/assets/story/national-consciousness-3.svg",
+        "hash": "88c59d910278422e8103db2666dbb98fd777b228035b50dbdc11aa37f5baec43"
+      },
+      {
+        "path": "/assets/story/national-consciousness-4.svg",
+        "hash": "28d7852515d4e59c4d06170b09ff382734121652172a762656a1b9b198bdbf6c"
+      },
+      {
+        "path": "/assets/story/national-consciousness-5.svg",
+        "hash": "1c7e3a7778f4ae975533ada92dc5466df28302992064287525e77b946bc225a1"
+      },
+      {
+        "path": "/assets/story/participation-exhibit.svg",
+        "hash": "3c77fa2578efffab5587859506394a7901c2a87edd4f835c629c8f63436427ba"
+      },
+      {
+        "path": "/assets/story/participation-malolos.svg",
+        "hash": "db3cdcad37f71c382d17c0cf0e2f9b4721ea00e237f8ec97ba39a3c1aee47c50"
+      },
+      {
+        "path": "/assets/story/participation-regional.svg",
+        "hash": "cc297c3153f6d471819dd8b841cfd9605aef3ee18850410b5475f8e63e334ad4"
+      },
+      {
+        "path": "/assets/story/participation-resources.svg",
+        "hash": "60836435aa19c2420a33606439ca0ff030d39c29bf2841f395a37d8fce57af7f"
+      },
+      {
+        "path": "/assets/story/participation-timeline.svg",
+        "hash": "6eb791ec03e68b30fec309c81b97246909aa13773ac9bab1c8c55034d008141c"
+      },
+      {
+        "path": "/assets/story/participation-translation.svg",
+        "hash": "d04790b5879e10813fa6e35cf2acfc4cef8783ad5f92d92fa10d540f70f0d7c6"
+      },
+      {
+        "path": "/assets/story/patronato-relationships.svg",
+        "hash": "7c29917ede875a333e55f1752b4c766423a11d6506c3f3aef8b6faa496018698"
+      },
+      {
+        "path": "/assets/story/patronato-source-check.svg",
+        "hash": "10767c4fe49e944fba1426d8fd5743a78681b856a2235b1e64569aa1c3cae776"
+      },
+      {
+        "path": "/assets/story/patronato-support.svg",
+        "hash": "7a9adcbe8ff03c66fd92da6258873feb4b0c42386fe5ad0a8c7414fbf8475fae"
+      },
+      {
+        "path": "/assets/story/population-language.svg",
+        "hash": "f57396b490212dcef8f7f20156291cb70fc10327a6f4a89ee846518b44b25cfe"
+      },
+      {
+        "path": "/assets/story/population-models.svg",
+        "hash": "d155715b5b78d25f1f119933ac13a3f58bc3b12d99458e8d379669284af19f9c"
+      },
+      {
+        "path": "/assets/story/population-northern-map.svg",
+        "hash": "fb767fe582bca97cd4f9adf610c4a8502933c5091fb22845502ffdcf7dec2164"
+      },
+      {
+        "path": "/assets/story/population-sources.svg",
+        "hash": "cbacd3aba57065a77f79927ed67ef1dfa5e2fb7dc4126c4e6c42f9c3c982f2a8"
+      },
+      {
+        "path": "/assets/story/prologue-island-map.svg",
+        "hash": "168cfad9459efae3b0ad13b5f55267185f026249eb3a9b837d8adc1672b236c0"
+      },
+      {
+        "path": "/assets/story/prologue-place-map.svg",
+        "hash": "1cba5f15d567fadf218406e8d7417abf842fd99205d21f16f2ad346240c60533"
+      },
+      {
+        "path": "/assets/story/prologue-region-map.svg",
+        "hash": "dea73f3d0ba4f32a4d9c5c3ff30b7bc44143486befbfaca5df09024d67e921a0"
+      },
+      {
+        "path": "/assets/story/reduccion-household-questions.svg",
+        "hash": "b731c456aa8e60bdf3f230d0624182e6822044169ea6b519d0d96cfa50020168"
+      },
+      {
+        "path": "/assets/story/reduccion-layout-model.svg",
+        "hash": "8c07c519810f0cc1eb74959333447f9db083175a9474c8bbb81b2464666931cf"
+      },
+      {
+        "path": "/assets/story/reduccion-plan-evidence.svg",
+        "hash": "75807a4718b117e470bd359fc3f31b55d5a488e7826ca845bc4cdd19a1fec628"
+      },
+      {
+        "path": "/assets/story/reform-board.svg",
+        "hash": "02b7bcaa305c253c69ba948547b3869cc737bfb23c8827897691eaade49b6870"
+      },
+      {
+        "path": "/assets/story/reform-clergy.svg",
+        "hash": "1e4bd3041ed73ee5c9cd647b4e8b8e1501c8ccb0ea71ba6d1ffa9b929539646a"
+      },
+      {
+        "path": "/assets/story/reform-context.svg",
+        "hash": "30b722ff5c2583c9159cfeee511e9a1c1ba7bcafc2ea3f4ada577fc64dccceb2"
+      },
+      {
+        "path": "/assets/story/reform-parish.svg",
+        "hash": "8c37079aa9315fd5d7b5b626da55ae5ca2f3f09cf1b71847c2bf0d847432da0c"
+      },
+      {
+        "path": "/assets/story/reform-pelaez.svg",
+        "hash": "b4c725b331e8476f249bb87d572d5a2339764a4ed57f9bf162e5d6c64837dae7"
+      },
+      {
+        "path": "/assets/story/reform-request.svg",
+        "hash": "0ee0d29c9a5dfd6c5b4ce90763c23faeab4718104a63d8bbf20d02bd20116d49"
+      },
+      {
+        "path": "/assets/story/reform-voices-board.svg",
+        "hash": "6dc3cd8485b9023af2fea8623b1f1339ea6a946a5c01232925fde86102f8eff0"
+      },
+      {
+        "path": "/assets/story/reform-voices-goals.svg",
+        "hash": "a1df094feafab44f514ead8512c0773f82db53ad1aa7b4bf544004e3da5ab330"
+      },
+      {
+        "path": "/assets/story/reform-voices-liga.svg",
+        "hash": "190d83380faed4c57c31ca203b84188a2128fba80bf465ed9028c026ddf42f7b"
+      },
+      {
+        "path": "/assets/story/reform-voices-paper.svg",
+        "hash": "f55f66fd9e11896d8abc3c833ed74c4faf3aaab1e557d6ee8a44533e3c0f122f"
+      },
+      {
+        "path": "/assets/story/reform-voices-people.svg",
+        "hash": "a3dbad0d548d37aabe46cd3b4e6784bd0bd528a6eb1e4c30b71103631bddb889"
+      },
+      {
+        "path": "/assets/story/reform-voices-recap.svg",
+        "hash": "77e878fa991a4dafbbc418e0334a956b57790a5e11e714a3ab549df60b58b650"
+      },
+      {
+        "path": "/assets/story/regional-communities-1.svg",
+        "hash": "fd93dba28865e087cde77a3afd5bf586ca6665a3e65ab6c0b294bb9f904be9f8"
+      },
+      {
+        "path": "/assets/story/regional-communities-2.svg",
+        "hash": "34760374a29aeada151b39660f4bfa82c3705738835de66ad98f1cae55ea785a"
+      },
+      {
+        "path": "/assets/story/regional-communities-3.svg",
+        "hash": "1ad9628d46a19511987f6325db0d18be4c144a37e452a65e01f3914c4bda8a17"
+      },
+      {
+        "path": "/assets/story/regional-communities-4.svg",
+        "hash": "f80d588156ce3c6c6672245c3bc6bad608b38d1d3edec25680aebbae7d64823f"
+      },
+      {
+        "path": "/assets/story/regional-communities-5.svg",
+        "hash": "b79281a6b60b1554b795e3c9c767f02459bad7ea8db809c5e7cc6b502153ddd3"
+      },
+      {
+        "path": "/assets/story/regional-participation-1.svg",
+        "hash": "ab62d981e0fbe25df0d954a1b42840fc1c52a20430ef782542220f08063c9c46"
+      },
+      {
+        "path": "/assets/story/regional-participation-2.svg",
+        "hash": "8638836ea41088c5648b47b60d5764ceef6d32e3edd75788b31d60543018f437"
+      },
+      {
+        "path": "/assets/story/regional-participation-3.svg",
+        "hash": "6c3a9bd0c76e6bd38647275793574c33ef6d3b36a3158f380b9fea2df1e24a2c"
+      },
+      {
+        "path": "/assets/story/regional-participation-4.svg",
+        "hash": "c7033d7538494a51f05a6724044a9a2fede262bdf8d84283f0855bf9c6a45021"
+      },
+      {
+        "path": "/assets/story/regional-participation-5.svg",
+        "hash": "f86029205daf5cf70f50953ed857acfccc0439e4bafeae676e07d0c5f68ac142"
+      },
+      {
+        "path": "/assets/story/regional-uprisings-1.svg",
+        "hash": "9f1f77078c6aafa2fbea247460472d9b9a8033664953e4dfd89c94bb81b8e9e3"
+      },
+      {
+        "path": "/assets/story/regional-uprisings-2.svg",
+        "hash": "20451a35b8272e2be6eaea85afa6d033a3df9951f665b3010c9a12d0a82feaf8"
+      },
+      {
+        "path": "/assets/story/regional-uprisings-3.svg",
+        "hash": "5557f5668ec8586f39f80610a27c3342d9950c32d81aff9cb4d03840169c01cb"
+      },
+      {
+        "path": "/assets/story/regional-uprisings-4.svg",
+        "hash": "791c5067ab1a4fe35d213f54e68e77186bb77a2a2046a4e97388b53f901f80f5"
+      },
+      {
+        "path": "/assets/story/regional-uprisings-5.svg",
+        "hash": "fc9adb0dfc1e8a0770f0dec07ab719fb10ee04389b88e24f4c488554e67cc9fe"
+      },
+      {
+        "path": "/assets/story/religious-political-1.svg",
+        "hash": "79ab8cb43fa74fc343a0527562e1023e133b404f18a961629a868290f02373db"
+      },
+      {
+        "path": "/assets/story/religious-political-2.svg",
+        "hash": "0010ce8830a0ea51c3bd48dca8e9ecacac92978a249b1b58f174ff5a9c4acaba"
+      },
+      {
+        "path": "/assets/story/religious-political-3.svg",
+        "hash": "deca1d5ab0c3f61c28ffc01e4ef88fb44a7258e10861d16dcf58bb6cf3657f54"
+      },
+      {
+        "path": "/assets/story/religious-political-4.svg",
+        "hash": "d62bdec423653908e713b47e8da9301f26f92d15452403afd2f08fd0040db225"
+      },
+      {
+        "path": "/assets/story/religious-political-5.svg",
+        "hash": "66ee00b1069304505674fe841ef465fb65a5562ca42e63597a52f96d82ea1a55"
+      },
+      {
+        "path": "/assets/story/resistance-lessons-1.svg",
+        "hash": "19abddb09fa75387fc146cf5aff696a1fea172bedf54a28bb943386d28a02749"
+      },
+      {
+        "path": "/assets/story/resistance-lessons-2.svg",
+        "hash": "f0087a6aa9e21516446e067608ccc7717870abcc9d2a96fd9ebb69d39fe4275d"
+      },
+      {
+        "path": "/assets/story/resistance-lessons-3.svg",
+        "hash": "1f04234c1f46c110ab3fb5742680883f14a953892b3c5b8d19084ca01ed9323b"
+      },
+      {
+        "path": "/assets/story/resistance-lessons-4.svg",
+        "hash": "38a168cdf8ecca20c1275f59418bf91b65d85552346279bbd866e869fd9db6de"
+      },
+      {
+        "path": "/assets/story/resistance-lessons-5.svg",
+        "hash": "679e7136c586ba787c5f7222c1f7bbc105ae0ef938f4dbdf52b614fd750c837f"
+      },
+      {
+        "path": "/assets/story/response-evidence-1.svg",
+        "hash": "d37ac3ae7ab81839f8a1a9a01feadcc9b8aeae3045ef2d35be003e2d459a6a1b"
+      },
+      {
+        "path": "/assets/story/response-evidence-2.svg",
+        "hash": "40bc12d4432da29a5594644cb9a0cccc316972233df37194a7776141761494e1"
+      },
+      {
+        "path": "/assets/story/response-evidence-3.svg",
+        "hash": "2714ee8ff8a70b8f0a30b42df32c80d419af06b52eb1ac9a1e362b3dbb64459c"
+      },
+      {
+        "path": "/assets/story/response-evidence-4.svg",
+        "hash": "0769b5d52e8b8e1e7d66f0e31f927c6dcdb03a46898107b96c516f7e1dd86225"
+      },
+      {
+        "path": "/assets/story/response-evidence-5.svg",
+        "hash": "9952ecc3fd662d345ffe8233e0ab6f1868bb6572388e09f83ec92ceef44bb161"
+      },
+      {
+        "path": "/assets/story/responses-evidence-1.svg",
+        "hash": "5d7b80e2e5de9dc1fd0618647b17e1dad4f7bef575fd75f58d074e5ce80219aa"
+      },
+      {
+        "path": "/assets/story/responses-evidence-2.svg",
+        "hash": "02ead3ed0aa5b668b4cacd04081349388d1d52e8c9cf8a857a563f0efb7e7579"
+      },
+      {
+        "path": "/assets/story/responses-evidence-3.svg",
+        "hash": "1b65559cf1cf15781a3b36dc7e12ca8eeadb8183d9bd5c26b24893194f73d09d"
+      },
+      {
+        "path": "/assets/story/responses-evidence-4.svg",
+        "hash": "7c15f43398778d2b9a4de40a8dfa9ed5c976c0333f283e07658524f415a4635b"
+      },
+      {
+        "path": "/assets/story/responses-evidence-5.svg",
+        "hash": "d32bfd499d340a71ec7b3ae30276c1a2e60a36b366c7a58c066ed7e0968ecd15"
+      },
+      {
+        "path": "/assets/story/revolt-outcomes-1.svg",
+        "hash": "6ad32a8cd25979695b66dfb1b057fe275f990ef4d75a82875b8aa3bcce16c974"
+      },
+      {
+        "path": "/assets/story/revolt-outcomes-2.svg",
+        "hash": "7f266785cab5874ad5ec244a62a5f8c8e8984cb0d3de170f05d735354c850d3a"
+      },
+      {
+        "path": "/assets/story/revolt-outcomes-3.svg",
+        "hash": "ebbda10b0455bdc76af34018fabe8fd45f37291f4e773abeab05766846cabf9d"
+      },
+      {
+        "path": "/assets/story/revolt-outcomes-4.svg",
+        "hash": "9028247ece16e75d50e9093590718b23324e81dbfe6012c7f30866b3aad8a4eb"
+      },
+      {
+        "path": "/assets/story/revolt-outcomes-5.svg",
+        "hash": "12762bcfd40265ab47ecca50baca816491d371f18a0264c5754f697421b1608e"
+      },
+      {
+        "path": "/assets/story/settlement-housing-1.svg",
+        "hash": "fa5da1d0c49f8ad4ebbffb984bbb146660dd3c1291117f5c0652466327dd8e45"
+      },
+      {
+        "path": "/assets/story/settlement-housing-2.svg",
+        "hash": "025b32f9ba0cfa9c60a843e7d296e04a00f133dfe640b11ecd0fcbe263a02275"
+      },
+      {
+        "path": "/assets/story/settlement-housing-3.svg",
+        "hash": "38bd649176beb4f4144a299bcbce764ee9617b1cfa7cbb9481d1c83a72eeca76"
+      },
+      {
+        "path": "/assets/story/settlement-housing-4.svg",
+        "hash": "85a449b1fbf8ea7dcb470a41062021ef67e97aeaab1e8b084c37d77236e6415a"
+      },
+      {
+        "path": "/assets/story/settlement-housing-5.svg",
+        "hash": "2ebc5b461ee16c1a37a805b4f4e3e21008a591c098966456b9df8d32419105b9"
+      },
+      {
+        "path": "/assets/story/settlements-authority-model.svg",
+        "hash": "dffa87a128c1debf9f51c68f33a423bd5df074d106044e74e73e84d09718d38b"
+      },
+      {
+        "path": "/assets/story/settlements-comparison.svg",
+        "hash": "cd7b9c43033e5f4499c63e5d776828fc87d9877fcf967defd7a12ab187c17a55"
+      },
+      {
+        "path": "/assets/story/settlements-local-evidence.svg",
+        "hash": "c800153af11716b6340265692f60f001e2734de8f1bfe9a71ee44edc6ac4ca22"
+      },
+      {
+        "path": "/assets/story/settlements-port-model.svg",
+        "hash": "3f5e89ce6e9903c17807ddc9ffcf953bda1c3207c1d6e189bbd0bb2de7ca8b0d"
+      },
+      {
+        "path": "/assets/story/social-choices-example.svg",
+        "hash": "b7ea26b688f9b5612261339e12f46c958e3b71c4e8bda89c2e4ba14cd8a930b5"
+      },
+      {
+        "path": "/assets/story/social-experience-1.svg",
+        "hash": "66bc25540493b3b5d88ce7e8b93690b9fc4545a60329fd833e54145c1b433bd9"
+      },
+      {
+        "path": "/assets/story/social-experience-2.svg",
+        "hash": "7ef2873197dc6f48949d0e0dada93ddc1ac599da1d091ffad814226baeec98a1"
+      },
+      {
+        "path": "/assets/story/social-experience-3.svg",
+        "hash": "035e275743144ada2265fe5f043cf691662598e2375e7c797bed2123373c6273"
+      },
+      {
+        "path": "/assets/story/social-experience-4.svg",
+        "hash": "f742474a60713ead16418fc67c9c9072cffdd769c219415dd00f4e6549bb4d8c"
+      },
+      {
+        "path": "/assets/story/social-experience-5.svg",
+        "hash": "9edb6c0bc6bfd0e3bb02e04e451863336d3fe7f78afc4c927a81dcb404e55fe3"
+      },
+      {
+        "path": "/assets/story/social-position-comparison.svg",
+        "hash": "baa595b69e1a9090a338c4d35980507c71a48b3646b0d689b28653605614ac4a"
+      },
+      {
+        "path": "/assets/story/trade-ceramic-evidence.svg",
+        "hash": "92bf1ebb9a647e50c912c7439d1b144067b5698c0dd702bba3bcdf6be062a606"
+      },
+      {
+        "path": "/assets/story/trade-network-model.svg",
+        "hash": "7a895233cc2b03945292a626f670e2532e0c6315dac63d81728bc8df06845e81"
+      },
+      {
+        "path": "/assets/story/tradition-continuity.svg",
+        "hash": "63938688836d7bbb9977a3c4d8ef570f18e0f4834884a107d5a6adada7a9186a"
+      },
+      {
+        "path": "/assets/story/tradition-evidence.svg",
+        "hash": "66b8c8f2fde33f87096fb68a64228fcbb12dbcc039f086e0116b4957f4dfa8a4"
+      },
+      {
+        "path": "/assets/story/tribute-household-evidence.svg",
+        "hash": "9cebb43d00821c1183a5d0e03a156fb73c8adf23d9f173cc8bda8e0d92b4fe05"
+      },
+      {
+        "path": "/assets/story/tribute-investigation-1.svg",
+        "hash": "677c1ab234c56c2d1ae2a3dc8a5c231605ac443655b62725f8d58268aec28736"
+      },
+      {
+        "path": "/assets/story/tribute-investigation-2.svg",
+        "hash": "8770ac1b1dcf968217607c65bf602d25073fee505f77d6651ba8ff766583f940"
+      },
+      {
+        "path": "/assets/story/tribute-investigation-3.svg",
+        "hash": "1a95852a8890485912cfd2d08c4379768a400a03f63088a96da33abe06c5ac76"
+      },
+      {
+        "path": "/assets/story/tribute-investigation-4.svg",
+        "hash": "01a7baa80ee6e2d39f0e90e2c74ee6bdfd68ad2302822e653651556754c5cfdb"
+      },
+      {
+        "path": "/assets/story/tribute-investigation-5.svg",
+        "hash": "4d48d45e28d39da7d59fc64f2750edf41399fb7c8f724d0cc96462db202db7cc"
+      },
+      {
+        "path": "/assets/story/tribute-payment-check.svg",
+        "hash": "1ce5e4f39ad90fc09653c6fa6cbc5fcb74b12323a47ab6e75008431ce7546d57"
+      },
+      {
+        "path": "/assets/story/unity-identity-1.svg",
+        "hash": "12c8d2f77c9091f7dbc5f3c49868116395df5f53dd97b593bef1576c1e9d0021"
+      },
+      {
+        "path": "/assets/story/unity-identity-2.svg",
+        "hash": "eccb97e27ea097480060bda1dee7d581f50a263b3ca45ced945d00c4eb64342f"
+      },
+      {
+        "path": "/assets/story/unity-identity-3.svg",
+        "hash": "0ae6c32640074d2619cf328dafe1871f36550cbedbe3bd9b135c91d5cc71dc85"
+      },
+      {
+        "path": "/assets/story/unity-identity-4.svg",
+        "hash": "6511d6bc89e9bde4ad6df5646fd3ea1bad5c31a95241197ce37b4336636d85af"
+      },
+      {
+        "path": "/assets/story/unity-identity-5.svg",
+        "hash": "bdc2112a4589dad9d1da107bfd2838f7f5ca4d3192fe34be7ec67c443ed4b00c"
+      },
+      {
+        "path": "/assets/story/writing-baybayin-example.svg",
+        "hash": "2ebb726de0728c8c8ecee3f4b435afee7b252fbc3f510e2419f6e75e0b90c4e1"
+      },
+      {
+        "path": "/assets/story/writing-source-comparison.svg",
+        "hash": "ee056667cf7f3f528f374f53123a2ada50ea9aed8761ef7c99d6122519446c3f"
+      },
+      {
+        "path": "/css/achievements-polish.css",
+        "hash": "e8a4aa7dc376ddf68f524b84c0af380ca9a0c4bdaf6ba31fe656ab2ff5594878"
+      },
+      {
+        "path": "/css/achievements.css",
+        "hash": "4b6f27a42b000f85ad3695a6717579be207d734500ab7953c4a5d64913fac88d"
+      },
+      {
+        "path": "/css/admin-workspace.css",
+        "hash": "51c9dd92f1a87ad4e7bd4cf4a26d157359fe361ac9b49ca2bf918fec1592fbe7"
+      },
+      {
+        "path": "/css/auth.css",
+        "hash": "fea0aed26e382afcb179461f7bee75c19f5f6c09ae0b22df0a878b82e2e9cd78"
+      },
+      {
+        "path": "/css/bayani-ai.css",
+        "hash": "81c2b68b9b68dfd520695c158bebfb3221c4dd627e5eb5476285fbea959d515f"
+      },
+      {
+        "path": "/css/bayani-narration-button.css",
+        "hash": "bd7e99063e705a46dce582cd6efd668cdaf11d33a591f501ddf8d8a26106cf92"
+      },
+      {
+        "path": "/css/chapter-challenge.css",
+        "hash": "1c14121ec3519971724592a8c67eb730eaa150e0a74e9e7b98e26cb8447d9737"
+      },
+      {
+        "path": "/css/chapters.css",
+        "hash": "8fbdb201aeacd53578596af51db00624346304ee10fb0f6c7e8aa382f0a10599"
+      },
+      {
+        "path": "/css/class-feedback.css",
+        "hash": "7fbee6d1103773f58adf2c47a38d6c81ff9d04a37d35f0743126a3730910a108"
+      },
+      {
+        "path": "/css/daily-challenge-theme.css",
+        "hash": "435f4feab36adcb82f893fa4771d1e6efe64704c71524d8f9791edf645a6b59f"
+      },
+      {
+        "path": "/css/discovery-experiences.css",
+        "hash": "62d1f52f2e243a58f3512bcfff1c5e87ce9ec604035478c81525ffb7048f25e1"
+      },
+      {
+        "path": "/css/era-mission-simple.css",
+        "hash": "7323db175bcd2cbe6cc657e2c5b41c360952a28fc6b26da422c089d67aedc7b7"
+      },
+      {
+        "path": "/css/expedition.css",
+        "hash": "016ee94306f8ae436ccd0e01a11e22b93cbcbe60d0592861dced59ec6483382e"
+      },
+      {
+        "path": "/css/home-practice-review.css",
+        "hash": "77b372edd5ac86041041c1eb37b6a44928574eaf0fcdfaab8e1a9ea1756805d0"
+      },
+      {
+        "path": "/css/home-refined.css",
+        "hash": "6d2fc957bff80737f41ccdc781eae1b8ecf5c9cf83c14a0a2d04e679c0b833a8"
+      },
+      {
+        "path": "/css/index-dark-theme.css",
+        "hash": "5367e3a35b985fd4e40fa4010040001cd28b0078901a5e38f61f9b6189c0e6ca"
+      },
+      {
+        "path": "/css/journey-finale.css",
+        "hash": "b3a261b895f5fe215a096e1f5e7a7c0bdcd08aa2fa68701dee45123af62d0291"
+      },
+      {
+        "path": "/css/landing-polish.css",
+        "hash": "aa791cbfc9b0b117b1c76692b26e49d8cd1122b12191e27066c312c4f5076cfe"
+      },
+      {
+        "path": "/css/learning-clean.css",
+        "hash": "99e854d5be82e3a527d3ccddc1db2e1ace9998011af1855186b3ca3ca35154c6"
+      },
+      {
+        "path": "/css/learning-contrast.css",
+        "hash": "f6c246656377a283b89166addf04078cd6077aefbe07535b6e42ad66b1dae5d0"
+      },
+      {
+        "path": "/css/level-rewards.css",
+        "hash": "51632d70c617f54ac13a360e406ab16e6b062415899aaab59610944d2650eaac"
+      },
+      {
+        "path": "/css/mission-learning-guide.css",
+        "hash": "7da797a78be54a161417bd00ac4dc3826d026db074fc005f37eccef21b033c9d"
+      },
+      {
+        "path": "/css/mission-quest.css",
+        "hash": "2d92568f8846a0bca010bf10f2751b3f43a21d44347d66894471787baa11313b"
+      },
+      {
+        "path": "/css/mission.css",
+        "hash": "83b4ed6e9797b7788ea6371f5ea0ba7832fffd61e6cbffafb537f167a285d781"
+      },
+      {
+        "path": "/css/my-class.css",
+        "hash": "46301e072bdc7e22c06f189cf17e29b07e129cecd0f38eee6177329dd98086ef"
+      },
+      {
+        "path": "/css/my-journey.css",
+        "hash": "ef033fc8562dd0109dbac19ccb5987e64b9636932fc556e340af0090ded3a356"
+      },
+      {
+        "path": "/css/navy-gold-theme.css",
+        "hash": "0c729316abc4e942f8f307f86c68f688f85cd01f44f132f9a953c1c361f90d26"
+      },
+      {
+        "path": "/css/not-found.css",
+        "hash": "eefa7ce457494cb8135d3c80c7bbada0ed517d53980167e508e4c7f6e4ad5bb8"
+      },
+      {
+        "path": "/css/page-transition.css",
+        "hash": "1410a0cb45ed3e54d4f9fd88d2d35fdd7e40671e07d3914b2bbf2c6fa85d4ab8"
+      },
+      {
+        "path": "/css/practice.css",
+        "hash": "08fe8184ca811d235706763947f951e8b116e59a19fd710090c263aebd3a3e66"
+      },
+      {
+        "path": "/css/quiz.css",
+        "hash": "c70555b01e0cfdaf71c19efd873e6c23d7cbc41bcf086e904acb7fd84d69b38a"
+      },
+      {
+        "path": "/css/story-reading-steps.css",
+        "hash": "9b43445ee0846127461dbf12f782186cdf52e6203600ea56df8a235eeab2c9d6"
+      },
+      {
+        "path": "/css/story.css",
+        "hash": "e2096da985bb3bdd1c83214acbdb6e32f0432298eb9668fa2feec425a687f104"
+      },
+      {
+        "path": "/css/storybook-learning.css",
+        "hash": "a0e91fe586f5828408d6884410e45426e99ac8e80d6630c6cd5e248800dd7736"
+      },
+      {
+        "path": "/css/student-dashboard.css",
+        "hash": "b39f9d713d38f1be895ab26f028250329e43e433cb19c96c8070465be8a0b7e6"
+      },
+      {
+        "path": "/css/student-layout.css",
+        "hash": "cf65d6945a9e16448919383f82c4993a7dfbd639e0bb9bdbbe01788ae8b8c726"
+      },
+      {
+        "path": "/css/student-missing-features.css",
+        "hash": "1dcb9950fea0bc9f9b3738fc543451348649f35d5727468a43ac0a049392c775"
+      },
+      {
+        "path": "/css/student-profile-page.css",
+        "hash": "4cdd9e157051ffa3f6c66b4571181486df162609e204e35a49133f2acdbe407c"
+      },
+      {
+        "path": "/css/student-settings.css",
+        "hash": "8bd45cd753a728df2925a6ff06714c4da59776ca5114d4c816818aa5221423ec"
+      },
+      {
+        "path": "/css/student.css",
+        "hash": "02e1a6aec36bcc9e25f4b21058527a21169a2f1b020ee342bf3bac285631b258"
+      },
+      {
+        "path": "/css/style.css",
+        "hash": "446cb22e525dd3049b07970af97002d2958b99e31e02581add8a95fd356c803a"
+      },
+      {
+        "path": "/css/teacher-application.css",
+        "hash": "5c0dd74bd79a071e61fcf8c166d7f93b47977007b32c8c5668303454630c529b"
+      },
+      {
+        "path": "/css/teacher-landing.css",
+        "hash": "eac9b59d87c60679b3bb0a6b30a2f787bd3e0f25a452678b4808655213bfd277"
+      },
+      {
+        "path": "/css/teacher-workspace.css",
+        "hash": "3376acbbac3781192e20709e5fdcbadb9b49d6434d4acf5488bf5118cbcf54dc"
+      },
+      {
+        "path": "/css/workspace-loading.css",
+        "hash": "aac7ad6e72b5d694c6388292c1f07ba22de3bdde4ebb85830890b4eb7701e13b"
+      },
+      {
+        "path": "/index.html",
+        "hash": "e1ddee27562f3c9f89e1720aaf15bf5c5f967c9338b4034a7faaff8fb0a5223a"
+      },
+      {
+        "path": "/js/achievements.js",
+        "hash": "d1e68ed91bccba5558379af4a2cf9cf50d69474ad8593f5989f6390d47db3f7b"
+      },
+      {
+        "path": "/js/activity-policy.js",
+        "hash": "d548c0a011d600c255c28b19fa8454487ab1fac67fa59bb5334679950ae62079"
+      },
+      {
+        "path": "/js/admin-accounts.js",
+        "hash": "932c8562e5dbe5e8b604ed6c2305610f15b67b49b979c60b7f6b137e47c022f8"
+      },
+      {
+        "path": "/js/admin-workspace.js",
+        "hash": "c127d25ff57fa21e2b76e9b44ea56b854b02c942a57ad5843e4c1e3e531ee9c0"
+      },
+      {
+        "path": "/js/adventure-voice.js",
+        "hash": "e32fb922b089623c254915c11623a3dedd74312235587188f3fedbe32bb2f01b"
+      },
+      {
+        "path": "/js/ai-assistance-client.js",
+        "hash": "402955126222d9589f489a92efe36ceae02002cbedbd123eb47937f2593e8763"
+      },
+      {
+        "path": "/js/auth-guard.js",
+        "hash": "b27fabea505795163c8c6c7a6af3d743ca90216fce2e593f052e0ad3fc2da070"
+      },
+      {
+        "path": "/js/auth-ui.js",
+        "hash": "c1ec744cc3f4d74a7c7162f104ea9e055d4c384aba91b23c65b8de8c3a4a9211"
+      },
+      {
+        "path": "/js/bayani-ai.js",
+        "hash": "933160dcd1aaf1b74df73d445a50de5a26b618a18319ccb98f5bb4a1056b4848"
+      },
+      {
+        "path": "/js/bayani-backend-client.js",
+        "hash": "09f156d2aca42352e781b913b24ae58ccb6c714dbd5d39f5d87d7bca49670640"
+      },
+      {
+        "path": "/js/bayani-client.js",
+        "hash": "5050eb8a4b62b213b93366610a6ad6d962fa6d6f03596c27a9d68d664e089044"
+      },
+      {
+        "path": "/js/bayani-generated-clips.js",
+        "hash": "b9bf42334cb9070d2d3b191f926c11dee2da132771527a9374835029d61efa87"
+      },
+      {
+        "path": "/js/bayani-narration-button.js",
+        "hash": "7ebf62030cfe1f8c1994687c644476ce4548f7ff3fa8f72bc7b01f3eb096120c"
+      },
+      {
+        "path": "/js/bayani-request.js",
+        "hash": "3788cfd8b9ea8afc2d80b2feae169de0efdb5114ed4eaa74eb0a9014665e8f8f"
+      },
+      {
+        "path": "/js/bayani-review-question.js",
+        "hash": "6c810cc45f92807eb39ec8a53d755a35c440eec1ef4125164ddc6fcfde21845d"
+      },
+      {
+        "path": "/js/bayani-review.js",
+        "hash": "dfd164662435666d703343a6da9282c8355cfb2e1b4d6bfc55e54c7c0c53e615"
+      },
+      {
+        "path": "/js/bayani-voice-clips.js",
+        "hash": "40dfd40a95b31e155270cc46309bb097c0fda4b4d37b827ffad079b88d061c6f"
+      },
+      {
+        "path": "/js/chapter-challenge.js",
+        "hash": "2a7691342ec422cb07708425cc9017bea9686b3771137ea8c98c92db5300df9a"
+      },
+      {
+        "path": "/js/chapter-continuation.js",
+        "hash": "a5653d4afc90e6f92f31b805aa4ceffa3f461ec3f730618b253170010acc0c5b"
+      },
+      {
+        "path": "/js/chapter-keepsake.js",
+        "hash": "3f86e87077b8741584dfe050ce7a9ea695fb81759a04db5f1f2ec2495ce593d1"
+      },
+      {
+        "path": "/js/chapters.js",
+        "hash": "183e99b37d699367c19287b7fb083d497673ba1a749e7075ee0324f4cfaa019a"
+      },
+      {
+        "path": "/js/class-announcements.js",
+        "hash": "2cce770fb1be4b3b4da88fe1254f0caa2dd8bbd785e4fe86a1d96f79c111b834"
+      },
+      {
+        "path": "/js/content-cache.js",
+        "hash": "a5b7afb17490331acaf5a3fec11243f99c164af4125c9f2615bfbb08b7e3bd17"
+      },
+      {
+        "path": "/js/daily-challenge.js",
+        "hash": "a5313b67a46532b9acdae2ac64a5b6021ab8022038d743b3af77f17553f86e5c"
+      },
+      {
+        "path": "/js/daily-policy.js",
+        "hash": "cecb66946a31a7de20c584c36f9cc89e6490b6f6b63c5e0df539e32586b957b2"
+      },
+      {
+        "path": "/js/discovery-case-loader.js",
+        "hash": "3efc98ed8a236c8dac67cc71c81797364081ba3456678429e2fd0338f2064f3a"
+      },
+      {
+        "path": "/js/discovery-case-view.js",
+        "hash": "4716f9f48868ecb984aadbc6c78c0f0bcb0185f80b6dce020811e061f35c6d3f"
+      },
+      {
+        "path": "/js/discovery-cases.js",
+        "hash": "01d12009f49ddd84f7f263136ad9e4101a750b98b106817e522e699496690c60"
+      },
+      {
+        "path": "/js/discovery-pins.js",
+        "hash": "f7fbdc12939395e744eb0c0229c4302e3ecbead8f35635880a3c7444c7aea7ec"
+      },
+      {
+        "path": "/js/discovery-wall-page.js",
+        "hash": "bf5d7dfd45ba23393d1df35277d4e2029b69d20eebc671a9a8e8129ddf4b172a"
+      },
+      {
+        "path": "/js/evidence-decision.js",
+        "hash": "5a5da0b1636bea9623421dbe26837b0ee8d692efbdaed5e51c5b9561fd5cb619"
+      },
+      {
+        "path": "/js/evidence-journal-page.js",
+        "hash": "a30327529f5d5b05637bfa2776b6467cfd73e41822fa62f7668fecade536b87c"
+      },
+      {
+        "path": "/js/evidence-journal.js",
+        "hash": "2f10583df2d5180e2ecf619bf0a9ee8e918ddccd6be3c4c3d24b0d8f224fc366"
+      },
+      {
+        "path": "/js/expedition-ui.js",
+        "hash": "c3fe2979cd75d4f23b531f71687323e089d6c22c32128be2ab33a7681817d7f0"
+      },
+      {
+        "path": "/js/exploration-preview.js",
+        "hash": "f10a17c3a64b889c5a2c688c3ffc5b68244b3c0012c1729da4c36cd86e52b07d"
+      },
+      {
+        "path": "/js/explorer-art.js",
+        "hash": "92ebc86535995656dcdd53703a7f19e7ed57b1995a784a5ae71def197f079316"
+      },
+      {
+        "path": "/js/explorer-desk.js",
+        "hash": "600f014df7b359732c076f2978bdf11ec3120d9b8e92c073180b03d4f3d7620a"
+      },
+      {
+        "path": "/js/firebase-config.js",
+        "hash": "ed953982d5a9f537674edb060fa6cbcc7840f892a14744f153064b0a8a16892e"
+      },
+      {
+        "path": "/js/firebase-environment.js",
+        "hash": "f2073d05efda7d857dc030792e41e8e5854a2eeb0a28ac6b4b7463423e525992"
+      },
+      {
+        "path": "/js/history-timeline-view.js",
+        "hash": "97517ab98cb377782c486c0b260c818e0fb431db8ee4475c8848d20d28999069"
+      },
+      {
+        "path": "/js/history-timeline.js",
+        "hash": "2ebcd5f54b50aa4a96d870dd2f1624d7a6ba8aab00ece2810693c4d6be941cca"
+      },
+      {
+        "path": "/js/home-learning-trail.js",
+        "hash": "c65104a6ed2380d9f7b01cafc1218d2d9870393e74504e60c0fa304ae29f1931"
+      },
+      {
+        "path": "/js/instructional-content.js",
+        "hash": "c2d6564a590b4f2156b7501fead319e54dad099562563b6221246d4ea61ba6b6"
+      },
+      {
+        "path": "/js/instructional-snapshot.js",
+        "hash": "ff143c54c826239a00acd287dad3a9549f13d8a93bfd65244c6ef6de90488079"
+      },
+      {
+        "path": "/js/journey-finale-client.js",
+        "hash": "87f4d2a182ed941e4cc91002f4cc476c829e05db0c498033805641abc69d0faa"
+      },
+      {
+        "path": "/js/journey-finale-policy.js",
+        "hash": "46207594494f5045313e267d8cfe2860b07a516f0b138b863276d821bbd766a1"
+      },
+      {
+        "path": "/js/journey-finale.js",
+        "hash": "55a1694412fb90da8dee00898d54851cf2ef25c0fc782e4a568a2c0a6f6049ba"
+      },
+      {
+        "path": "/js/journey-path.js",
+        "hash": "c2c43c00fe0d09543353304ec13e3d69d0fcc180244f6ed3c13b8f90d474d50d"
+      },
+      {
+        "path": "/js/lakbay-passport.js",
+        "hash": "2241ce2d880e640839b57c472c8959c39f8df2d6e94f62d2f4b09fbdf70f2113"
+      },
+      {
+        "path": "/js/learning-access.js",
+        "hash": "8e8dcdbfd3923f8a5f4d166a34fa68c9063685699d2064983e9eb91c51b4d584"
+      },
+      {
+        "path": "/js/learning-community.js",
+        "hash": "58002957ca0099c5c559e147f349072a134ceb3d12302e3988d38b017ce9ddd4"
+      },
+      {
+        "path": "/js/learning-draft.js",
+        "hash": "b62f7cd272d8a25f3c4e844f836102d8f01442db40afc72304f8e2693810eb7b"
+      },
+      {
+        "path": "/js/learning-navigation.js",
+        "hash": "edb2654ec1bcd55561292a02698189a8ec6f20ac90154a447ef5c4a654a955c5"
+      },
+      {
+        "path": "/js/lesson-game-audio.js",
+        "hash": "9a9cdaf041a0f351692387d2062c4d21e2cd7f98b65053be5400178dcf9edc5f"
+      },
+      {
+        "path": "/js/lesson-image-viewer.js",
+        "hash": "a1a5ed93095b597bb2922ec9f4a719961035ad7222374acbef18f0a2e5256d11"
+      },
+      {
+        "path": "/js/lesson-narration-text.js",
+        "hash": "cd3bde0bd701b36f5f49db47942c3a5ad3bea869de7695d51ad6d238aa3459f3"
+      },
+      {
+        "path": "/js/level-reward-policy.js",
+        "hash": "844975f0420cb127c9af1e064d0d688813652cb4bdf54e7eee422b3d150d41f8"
+      },
+      {
+        "path": "/js/level-rewards.js",
+        "hash": "6c2359b0c1373ecf29544b4da68d45e8006c40f6cd57344f0feb379be78635d7"
+      },
+      {
+        "path": "/js/logout.js",
+        "hash": "9feb2d43e095b81fe7d28853cb7eb885f64636b70bcd5f3ae836c73786aba6d0"
+      },
+      {
+        "path": "/js/main.js",
+        "hash": "94e275d239ed36272618ac082692c364816cac6763950c0512586ac5ca2a2aa3"
+      },
+      {
+        "path": "/js/mission-assessment-client.js",
+        "hash": "3982d4817d051568be39ef9ed119d6b1f1010441a9fcc59a27f07f3892365110"
+      },
+      {
+        "path": "/js/mission-assessment.js",
+        "hash": "7ca1081cd6319192af7f6607e309253201b08780b385d948e921713be223e649"
+      },
+      {
+        "path": "/js/mission-discovery.js",
+        "hash": "21f7ca46d7cdd062f26d02fc6d174093bc82b8a2c2300e316462c93001768839"
+      },
+      {
+        "path": "/js/mission-learning-companion.js",
+        "hash": "5783be199d9a1bddd4707dbba16f58b0ab70916fc09c7b3f99c79399822fa0d1"
+      },
+      {
+        "path": "/js/mission-learning-guide-policy.js",
+        "hash": "0eeb4cc081f00137471223f760bd1924026a9468cb69521217287d9d685b707e"
+      },
+      {
+        "path": "/js/mission-learning-guide-view.js",
+        "hash": "79d93903b9b04a17d98ead1d3afd9d0d4b6035bf7ed513979730f9974f886f37"
+      },
+      {
+        "path": "/js/mission-quest.js",
+        "hash": "bc9e844f9d7b148f2d0ca001f0c614cee344f80d09bc76c1ed6b0288b984464a"
+      },
+      {
+        "path": "/js/mission-review.js",
+        "hash": "8ba36ffaaf9b9e4c491af2916949f15b654e93167a2af4a96f000729d0d7448d"
+      },
+      {
+        "path": "/js/mission.js",
+        "hash": "6d6f6fa209596a3bb5944c77a8335eab8e7d71abe8a8bb3488c50e293ca893f9"
+      },
+      {
+        "path": "/js/museum-exhibits.js",
+        "hash": "8b4c0069acab7460917a6c9595652a94706b4dc460b7135e6eb4151f2fc10f4f"
+      },
+      {
+        "path": "/js/my-class.js",
+        "hash": "10beb1e32b5bb792fcc2102e230fd050bd695829bbebe32767c3ed31ee266095"
+      },
+      {
+        "path": "/js/my-journey.js",
+        "hash": "643879c901297f01def96b544a15a005f2c9f7613bca1b117a62fbde88c47cb9"
+      },
+      {
+        "path": "/js/page-transition.js",
+        "hash": "e7b60d664a1adc0313d37cd9cbe8e0e6f0c3c689107eb1f7f83e70450a2aab04"
+      },
+      {
+        "path": "/js/practice-review.js",
+        "hash": "2d6e3fe7a9cb56bada72246d1980fde7a87eec00b5d2027a943ab04825c9537f"
+      },
+      {
+        "path": "/js/practice.js",
+        "hash": "8b6e431ca6e235f2caa173dc010924910486e3147c2f98ece442ae9269543118"
+      },
+      {
+        "path": "/js/progression-policy.js",
+        "hash": "ba33893fba63156a383e62693619cf642d0e235b47054aca07f2b3a3750e6ab2"
+      },
+      {
+        "path": "/js/progression.js",
+        "hash": "7dad8e159d3ab209a2da9656eb8066d1d98c4dc5d3a021721c630deb269dcbf9"
+      },
+      {
+        "path": "/js/public-audio.js",
+        "hash": "71b37589a65df9a56c45defac9e33ffffc23634c51aeaa7a1dcf66bf9502bcb0"
+      },
+      {
+        "path": "/js/quiz-draft-policy.js",
+        "hash": "d0c829036a63739975e80c72cf3bea81570227c942678bf0e8d96232a7ebcb04"
+      },
+      {
+        "path": "/js/quiz.js",
+        "hash": "83360298ddf321d663e4f6a5bbf48a3977f994d608d8a24ed270c286b135f92d"
+      },
+      {
+        "path": "/js/return-to-learn.js",
+        "hash": "88768aa237146092e01853a5deb82a76bf5d58ca755ec726ea1027a342271000"
+      },
+      {
+        "path": "/js/review-events.js",
+        "hash": "61c42cee2cdf7864a5331e13426f593cd642a705e58edb7341186cba20bb6008"
+      },
+      {
+        "path": "/js/review-question-catalog.js",
+        "hash": "3bf3602b484959d1607afc03ef7a4f323db30d5f2360587dec2c6f137179f02d"
+      },
+      {
+        "path": "/js/story-exhibit.js",
+        "hash": "7f2ded1e79502005e303a10443a07fd82dbadac5fdcf5b66703bf3778122bdec"
+      },
+      {
+        "path": "/js/story-playground-content.js",
+        "hash": "226ede1cb30b6c0009a401b760eb5a6b750c13fbf75cd2a972414d02de092c90"
+      },
+      {
+        "path": "/js/story-playground.js",
+        "hash": "74f47ad05e634284f76c75d76e89aeb6c873385f026c602d92a09505c429abaa"
+      },
+      {
+        "path": "/js/story-reading-steps.js",
+        "hash": "045459e3530ba26ad9c93b9bed928f5ee251bc95b5345c0ca2d863dd2a0ef8e7"
+      },
+      {
+        "path": "/js/story-route.js",
+        "hash": "a5b40e69bd8accc92ad0b1b140d641f585f714f8413723078e7aac40065b3f26"
+      },
+      {
+        "path": "/js/story-trade.js",
+        "hash": "45b9855d3e06b17336cf4ad0d10007aef78fa61c1c84dd8e4c4d2ae4a725e40a"
+      },
+      {
+        "path": "/js/story.js",
+        "hash": "a0ed57f5672920077141a61c9921c57289049eeb6d6324659c34c314a1bb95b6"
+      },
+      {
+        "path": "/js/student-audio-host.js",
+        "hash": "ba96cf0e2fab2c5ab3c573e88b7a5a4c7222c8560636089234d8fce0cf986a2f"
+      },
+      {
+        "path": "/js/student-class-client.js",
+        "hash": "169318ad08fb0a58bf38bd33bae92c997037f21558aa7a36fec9f4eb7964d072"
+      },
+      {
+        "path": "/js/student-data-download.js",
+        "hash": "0b3d4f8a501f05ee00496aea7d03f9537a299dab5b43144f678a16a8b94a677c"
+      },
+      {
+        "path": "/js/student-data-export.js",
+        "hash": "a373fafa219e49e82e1cc7dbe4f92bf86b6b1945b87ba8b2737cc3799f23d667"
+      },
+      {
+        "path": "/js/student-feedback.js",
+        "hash": "c595f4485e08213927225807681596b979e60e3c97e289f9abfa5f478f4095d5"
+      },
+      {
+        "path": "/js/student-journey.js",
+        "hash": "cfc1899d88990e6989fd5bafc5bf6778b817707ac1fde529c306dfd055b55c48"
+      },
+      {
+        "path": "/js/student-profile.js",
+        "hash": "3caa712675be4fae03d0f4c8b314506d99372602c9d897507fc8d7d0a0b88186"
+      },
+      {
+        "path": "/js/student-rewards-client.js",
+        "hash": "3773419f0656c79dd9cab62e2ec99bba04b6f45b1e7a54a79e2e10014fca10df"
+      },
+      {
+        "path": "/js/student-session-storage.js",
+        "hash": "b236870c986a4a7a25c23a6f6c4569f7d7f93550def9b15ab9eefefaa286df24"
+      },
+      {
+        "path": "/js/student-shell-route.js",
+        "hash": "29a7ad1fe7bff73d7bfed5620aa87a019648e7b5890cf5c42fe7121b91921fd4"
+      },
+      {
+        "path": "/js/student-shell.js",
+        "hash": "c11fb7e19da7ad84bcebd3419e6efb922016f3c31ac2088f87737d5513943663"
+      },
+      {
+        "path": "/js/student-status.js",
+        "hash": "4b5cedd80af41fd92a9c24c3d96438360f6ba9b7ecc311b514299eff979ef641"
+      },
+      {
+        "path": "/js/student.js",
+        "hash": "b3b3d1490051568221e606b1a6547a2baf2d294683bea5ad120159ce4d6eaab8"
+      },
+      {
+        "path": "/js/teacher-application-client.js",
+        "hash": "904fbb800684a028c51a360ad1db0c13d24e65f5e4147ebc8b68855b8fdac113"
+      },
+      {
+        "path": "/js/teacher-application-policy.js",
+        "hash": "2f99aeccb16a1df190722020ad731707328fee7d243123542f849edfb23050b2"
+      },
+      {
+        "path": "/js/teacher-application-review.js",
+        "hash": "e2e15ca6e75d2887ad904e3b46af91ffa34e1e6c6c157d4479404e4306395adf"
+      },
+      {
+        "path": "/js/teacher-application.js",
+        "hash": "ce826963bfead59a3308ed95744dcafc726d9812d0266a92fe44dedced08e584"
+      },
+      {
+        "path": "/js/teacher-class-client.js",
+        "hash": "c7f1b7cd77b343162f272b296ace0e1b52463a51266ab4af100a8b73098922fd"
+      },
+      {
+        "path": "/js/teacher-class-policy.js",
+        "hash": "af9029ac98211ee60715b545b7d58ac415ce0c40e2ce633b90ac118a28f67953"
+      },
+      {
+        "path": "/js/teacher-evidence-viewer.js",
+        "hash": "59261636e19fdc696dd5e18bb3af6b902263b641623476338f2e07551ed292b0"
+      },
+      {
+        "path": "/js/teacher-quiz-insights.js",
+        "hash": "39706c37af260b9d79ba7278ac9c56b0c28aec6bf289f17ebbeafbd6f25fcfc5"
+      },
+      {
+        "path": "/js/teacher-report-export.js",
+        "hash": "f1241aa75ef44d5badf968bd73402b368238d38f67a3d9c958951a6c83220d04"
+      },
+      {
+        "path": "/js/teacher-review-panel.js",
+        "hash": "2e04f96f7fe0b06e9cb70ec683d192404824b1b9efa338a8dccceba9e22d5ebc"
+      },
+      {
+        "path": "/js/teacher-support-policy.js",
+        "hash": "cfcdb29caf4b0fd17c01e9336c319b25cb5184d4aafeff1ead28c7149a405466"
+      },
+      {
+        "path": "/js/teacher-workspace.js",
+        "hash": "78dd5d1834abc858c3c1efc03c15898c7b2464ae37592209ee4c84823e7aebeb"
+      },
+      {
+        "path": "/pages/achievements.html",
+        "hash": "37e91e603932a61877def2a80693d4e870fe9fe52cdc981c6d616b45859082c6"
+      },
+      {
+        "path": "/pages/admin-dashboard.html",
+        "hash": "9a0b9be075394841ad9c2904ad584839243a2701df626cc28ae3c5e09cd04a50"
+      },
+      {
+        "path": "/pages/bayani-ai.html",
+        "hash": "13682a31c5ac80dec57c81a4e96824b50fa085eda70db00ec9b7c3b44d7c81ea"
+      },
+      {
+        "path": "/pages/chapter-challenge.html",
+        "hash": "bceed0a9515461cda63be8ed19fe5852673c2cedc5a2864b1a075e6a20e208ab"
+      },
+      {
+        "path": "/pages/chapters.html",
+        "hash": "a8b97d113d85848791ce1da12f710cdddd0f09e03d5e7c11cbf9df4e37148103"
+      },
+      {
+        "path": "/pages/era.html",
+        "hash": "40acc65ec0be02a2e765033dfb554d518742caaf198ad9909e1e218ebbaaecbd"
+      },
+      {
+        "path": "/pages/history-timeline.html",
+        "hash": "f9990e7d958e9c5f5df0b179e35df610886082e8d00dab37d604f3acc2d8f395"
+      },
+      {
+        "path": "/pages/journey-finale.html",
+        "hash": "8bc6657292970b624484eb2b109d2b661e4d7087a65e482b90862f39882f48ea"
+      },
+      {
+        "path": "/pages/login.html",
+        "hash": "554dea69f9af1ece5549c9340da428e995cbe20d41a979aac7c57370d4e50614"
+      },
+      {
+        "path": "/pages/mission.html",
+        "hash": "c3d4f30bcad753a54b99236d25914ae8008faeabcb920c279a88233eeef5cca8"
+      },
+      {
+        "path": "/pages/my-class.html",
+        "hash": "3875f46f3e8ba0dfbca4bc225d373236d91abf7a930d36ac3ebb3b9aa9a899e7"
+      },
+      {
+        "path": "/pages/my-journey.html",
+        "hash": "f7931ce54cfa3e7b10b31ff942410c76e14f76203a27db0386c29d477e9d462b"
+      },
+      {
+        "path": "/pages/my-profile.html",
+        "hash": "a3b41918de4280df90275a5066ba5a11f99270de3aadaa04d99f73a0177b56a0"
+      },
+      {
+        "path": "/pages/practice.html",
+        "hash": "639a17c01a18e82959e1db0a2e7127399ede37490f43d63d68549c1dfd1ac298"
+      },
+      {
+        "path": "/pages/quiz.html",
+        "hash": "6b5acd32d6a53ca6a78418cb90ffb18be230eb62fa8ff932cdfb60d2a7a44c0e"
+      },
+      {
+        "path": "/pages/register.html",
+        "hash": "b20487ee364a746f8803dc384fb10e272ee1f6cfde851e580dc798b61d0a4f9d"
+      },
+      {
+        "path": "/pages/settings.html",
+        "hash": "e28c42e8990bf521558619ea211f2ed5d71e3937c07a5a542ad490bae1fe20dc"
+      },
+      {
+        "path": "/pages/story-playground.html",
+        "hash": "201db9510282c2d99b3551e39d22d5080966c599066ecce1816211ee25309406"
+      },
+      {
+        "path": "/pages/story.html",
+        "hash": "4161878f298e4d01c69a964a523e9a76f902cf1f3726ce320fc3c2aada801e05"
+      },
+      {
+        "path": "/pages/student-dashboard.html",
+        "hash": "a83405a04da905577f31f4750dc96cef8f0b79d564d5ffa81a5e371cebe1e8e9"
+      },
+      {
+        "path": "/pages/student-shell.html",
+        "hash": "d80fd0da5b2aa07fc023e6e1d2f4e793dd12db4b2cc6c8410ab7fcb01a191f0f"
+      },
+      {
+        "path": "/pages/teacher-announcements.html",
+        "hash": "e546f9ab16b881db05d3c6de3f3f325771ac243cc87ac4e9a115aed1eb15e03e"
+      },
+      {
+        "path": "/pages/teacher-application.html",
+        "hash": "fa6093db700d8a70417899b2591ffaf5c3fb5a9ebab9c36acf47442bff915213"
+      },
+      {
+        "path": "/pages/teacher-assignments.html",
+        "hash": "d43d54c32b3e7d7bc73284df806e75dd9a62300d50670b4ec0aa86121231a6da"
+      },
+      {
+        "path": "/pages/teacher-classes.html",
+        "hash": "64d3e1c3a77974a28f39d451977c1df426e8817ffd3f18473c6ece9f8bc263b3"
+      },
+      {
+        "path": "/pages/teacher-classroom.html",
+        "hash": "e5597e97c97daf245085e957082f38a08eeb6e5cf10ae9a944ee167d6d846b99"
+      },
+      {
+        "path": "/pages/teacher-dashboard.html",
+        "hash": "d678fedec40842f31d294c7e12e0032348570e6f7120542b98daee356da35bc4"
+      },
+      {
+        "path": "/pages/teacher-register.html",
+        "hash": "541e3885950963d491f08074c2e2592c206f761a1c8e28c86ad869d0232d0cb0"
+      },
+      {
+        "path": "/pages/teacher-settings.html",
+        "hash": "79c8957cb4f7b4daf3083fc3688a966a412501105639eda3240006c6ca07c593"
+      },
+      {
+        "path": "/pages/teacher-students.html",
+        "hash": "8b69d3515ee7bbf1b33e98bef1afc92122bd1d2eeb1738fdd707e136ac8b0b89"
+      },
+      {
+        "path": "/pages/teacher.html",
+        "hash": "20fd8fdc188f4ee9aaca272d616d02201b868c7f43fe430fb6abadc434a6932a"
+      }
+    ]
+  },
+  "assets": [
+    {
+      "file": "js/student-rewards-client.js",
+      "status": 200,
+      "cache": "no-cache",
+      "sha256": "60dfca122dce7c58a3170dcfb4b2f85c687ffe439fa9bb2a3e6175ee170682a1",
+      "matchesLocal": false,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    },
+    {
+      "file": "js/mission-assessment-client.js",
+      "status": 200,
+      "cache": "no-cache",
+      "sha256": "80bd1047ee94ae41147d7082ebeae0c39fb9781b9154f75a6d119fdfb906a630",
+      "matchesLocal": false,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    },
+    {
+      "file": "js/quiz.js",
+      "status": 200,
+      "cache": "no-cache",
+      "sha256": "50c0bc889e8eda16944a1954c2d630b3a09d0ac65dc613c8b336e4476e09dbd8",
+      "matchesLocal": false,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    },
+    {
+      "file": "js/chapter-challenge.js",
+      "status": 200,
+      "cache": "no-cache",
+      "sha256": "364e8ac2694b50ef62793da26736a6272c08d9eb46176ca050da0f52e7a20908",
+      "matchesLocal": false,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    },
+    {
+      "file": "js/daily-challenge.js",
+      "status": 200,
+      "cache": "no-cache",
+      "sha256": "ba364b4446cb571a55ffc7a7de092a09b0ab47de88ba01e227e15f61afcf6522",
+      "matchesLocal": false,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    },
+    {
+      "file": "js/firebase-config.js",
+      "status": 200,
+      "cache": "no-cache",
+      "sha256": "bda65feacbc42668d910f6a4b3af5aef0db2ba5b977c8f775e0d1c5e27df0e56",
+      "matchesLocal": false,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    },
+    {
+      "file": "js/student-assessment-client.js",
+      "status": 404,
+      "cache": "no-store",
+      "sha256": "4ccc41153ca3d30a692daad3874685b469c70698841cb11159ec8d8f0c88f692",
+      "matchesLocal": false,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    },
+    {
+      "file": "js/assessment-preview.js",
+      "status": 404,
+      "cache": "no-store",
+      "sha256": "4ccc41153ca3d30a692daad3874685b469c70698841cb11159ec8d8f0c88f692",
+      "matchesLocal": false,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    },
+    {
+      "file": "js/mission-assessment.js",
+      "status": 200,
+      "cache": "no-cache",
+      "sha256": "128880f98452c64fd902ecd434464e4c0ba03cb2e3fae21f1d0a85ab56c2e4e6",
+      "matchesLocal": true,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    },
+    {
+      "file": "js/learning-draft.js",
+      "status": 200,
+      "cache": "no-cache",
+      "sha256": "692d59242f6bf09cb36d5dd660d71f79442e705c5b0b973cedc1bfb0d1a83b75",
+      "matchesLocal": true,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    },
+    {
+      "file": "js/firebase-environment.js",
+      "status": 200,
+      "cache": "no-cache",
+      "sha256": "5c8b9e51f01eaba4b8584c5d42087c9e4a28d50a9284593af793829a8b12e055",
+      "matchesLocal": true,
+      "csp": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    }
+  ],
+  "appCheck": {
+    "registered": true,
+    "tokenTtl": "3600s",
+    "keyConfigured": true,
+    "minValidScore": 0.5,
+    "registeredKeyFoundInProject": false
+  },
+  "appCheckServices": [
+    {
+      "name": "projects/831214660993/services/firebaseml.googleapis.com",
+      "enforcementMode": "UNENFORCED"
+    },
+    {
+      "name": "projects/831214660993/services/firestore.googleapis.com",
+      "enforcementMode": "UNENFORCED"
+    },
+    {
+      "name": "projects/831214660993/services/identitytoolkit.googleapis.com",
+      "enforcementMode": "UNENFORCED"
+    }
+  ],
+  "recaptcha": null,
+  "appCheckClientConfig": {
+    "siteKeyPresent": true,
+    "matchesRegisteredKey": true
+  },
+  "securedAssessmentPolicy": null,
+  "progression": {
+    "version": 1,
+    "reviewAfterDays": 3,
+    "xpPerLevel": 100
+  },
+  "catalogCounts": {
+    "missions": {
+      "total": 66,
+      "active": 66
+    },
+    "chapters": {
+      "total": 16,
+      "active": 16
+    },
+    "eras": {
+      "total": 4,
+      "active": 4
+    },
+    "quizzes": {
+      "total": 66,
+      "active": 66
+    },
+    "questions": {
+      "total": 1320,
+      "active": 1320
+    },
+    "practiceQuestions": {
+      "total": 687,
+      "active": 687
+    },
+    "chapterChallenges": {
+      "total": 16,
+      "active": 16
+    },
+    "chapterChallengeQuestions": {
+      "total": 165,
+      "active": 165
+    },
+    "artifacts": {
+      "total": 66,
+      "active": 66
+    },
+    "badges": {
+      "total": 16,
+      "active": 16
+    },
+    "dailyChallenges": {
+      "total": 5,
+      "active": 5
+    }
+  },
+  "errors": [
+    {
+      "url": "https://cloudresourcemanager.googleapis.com/v1/projects/lakbaypanahon-1797e:testIamPermissions",
+      "status": 400
+    },
+    {
+      "url": "https://run.googleapis.com/v2/projects/lakbaypanahon-1797e/locations/asia-southeast1/services?pageSize=100",
+      "status": 403
+    },
+    {
+      "url": "https://recaptchaenterprise.googleapis.com/v1/projects/lakbaypanahon-1797e/keys/[site-key]",
+      "status": 400
+    },
+    {
+      "url": "https://firestore.googleapis.com/v1/projects/lakbaypanahon-1797e/databases/(default)/documents/learningSettings/securedAssessment",
+      "status": 404
+    }
+  ],
+  "diagnosticFollowups": [
+    "Initial testIamPermissions request contained an invalid permission name; corrected request confirmed all listed grants.",
+    "Individual reCAPTCHA key GET returned HTTP 400; complete project key listing contains two different keys, neither matches the configured public key.",
+    "Cloud Run list unavailable because its API is disabled; Functions v1/v2 lists are independently empty.",
+    "Missing securedAssessment policy is an expected activation prerequisite, not an audit write."
+  ]
+}

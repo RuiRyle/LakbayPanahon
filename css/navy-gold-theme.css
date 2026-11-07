@@ -386,6 +386,8 @@ body.lakbay-theme :is(.mission-checkpoint.current,.story-scene-trail [aria-curre
 body.lakbay-theme .mission-checkpoint.answered { background: #12403e; color: #8af2c9; border-color: var(--lp-green); }
 body.lakbay-theme :is(.quiz-result-score,.challenge-score,.mission-xp-reward,.chapter-badge-status) { color: var(--lp-gold); }
 body.lakbay-theme :is(.chapter-completion-banner,.chapter-badge-earned,.chapter-badge-collected) { background: #103d3a; border-color: #398e74; color: #a7f4d5; }
+body.lakbay-theme .chapter-completion-banner strong { color: #e7f8ef; }
+body.lakbay-theme .chapter-completion-banner span:not(.chapter-completion-check) { color: #bce4d4; }
 body.lakbay-theme :is(.challenge-fail-message,.chapter-review-banner,.class-warning,.error-message) { background: #392b40; border-color: #946175; color: #ffd0d9; }
 body.lakbay-theme :is(.player-xp-track,.journey-progress-track,.story-progress-track,.quiz-progress-track,.challenge-progress-track,.chapter-expedition-progress>div,.class-quest-progress) { background: #29466b; }
 body.lakbay-theme :is(.player-xp-fill,.journey-progress-fill,.story-progress-fill,.quiz-progress-fill,.challenge-progress-fill) { background: var(--lp-gold); }

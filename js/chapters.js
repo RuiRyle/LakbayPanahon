@@ -1,5 +1,6 @@
 import { instructionalSnapshot } from "./instructional-content.js";
 
+
  // ==========================================
  // LAKBAYPANAHON
  // HISTORICAL ERAS AND CHAPTERS
@@ -216,6 +217,14 @@ import {
                  const visual=card.querySelector('.era-image');
                  visual.innerHTML='<svg class="era-expedition-art" viewBox="0 0 400 200" fill="none" aria-hidden="true"><path class="atlas-route" d="M-10 160C60 170 65 60 160 90S255 160 320 65S410 25 430 45"/><path class="atlas-island-shadow" d="M82 62l20-17 27 6 12 22-8 24 19 24-9 24-24-7-13-25-24-11-11-22zM222 123l28-12 24 10 10 24-21 20-34-5-17-18zM302 32l20-12 26 14-4 28-24 6-21-17z"/><path class="atlas-island" d="M78 55l20-17 27 6 12 22-8 24 19 24-9 24-24-7-13-25-24-11-11-22zM218 116l28-12 24 10 10 24-21 20-34-5-17-18zM298 25l20-12 26 14-4 28-24 6-21-17z"/><path class="atlas-topography" d="M92 62l13-10 17 13-8 24 17 26M231 128l14-9 20 14-10 13M310 32l10-6 13 12"/><g class="atlas-boat"><path d="M174 134h48l-10 12h-28z"/><path d="M196 91v41h-25zM200 102l19 28h-19z"/><path d="M165 149h64M170 155h54"/></g><circle cx="315" cy="93" r="12" class="atlas-marker"/><path d="M311 92l3 3 5-6" stroke="#fff8df" stroke-width="2"/><path d="M355 128v35m-17-17h34m-17-11 6 11-6 11-6-11z" class="atlas-compass"/></svg>';
                  card.dataset.theme=['sea','forest','sand'].includes(era.theme)?era.theme:'sea';
+                 const destinationThemes=['sea','forest','sand'];
+                 const destinationTheme=['sea','forest','sand'].includes(era.theme)?era.theme:destinationThemes[activeEras.indexOf(era)%3];
+                 card.dataset.theme=destinationTheme;
+                 const illustration=document.createElement('img');
+                 illustration.src='../assets/brand/'+({sea:'expedition-atlas.svg',forest:'expedition-community.svg',sand:'expedition-archive.svg'}[destinationTheme]);
+                 illustration.alt='';illustration.className='era-destination-art';illustration.loading='lazy';
+                 const destination=document.createElement('span');destination.className='destination-number';destination.textContent='DESTINATION '+String(activeEras.indexOf(era)+1).padStart(2,'0');
+                 visual.replaceChildren(illustration,destination);
                  if(typeof era.dateRange==='string'&&era.dateRange.trim()){const dates=document.createElement('span');dates.className='era-date-range';dates.textContent=era.dateRange;card.querySelector('.era-content h3').after(dates);}
                  if(typeof era.imageUrl==='string'){try{const url=new URL(era.imageUrl);if(url.protocol==='https:'){const picture=document.createElement('img');picture.src=url.href;picture.alt='';picture.loading='lazy';picture.className='era-authored-art';visual.append(picture);}}catch{}}
                  card.dataset.eraId=era.id;
@@ -338,7 +347,7 @@ import {
      const request = ++chapterRequestGeneration;
      if (isEraOverviewPage) {
          for(const id of ['eraContinue','eraDiscoveries','eraProgressPanel'])document.getElementById(id).hidden=true;
-         document.getElementById('eraOverviewAccess').textContent='Loading your chapter trail...';
+         document.getElementById('eraOverviewAccess').textContent='Loading the chapters...';
      }
      const isCurrent = () => generation === mapSessionGeneration && request === chapterRequestGeneration;
 
@@ -737,7 +746,7 @@ import {
 
      } catch (error) {
          if (!isCurrent()) return;
-         if(isEraOverviewPage) document.getElementById('eraOverviewAccess').textContent='Your trail could not load. Use Retry Loading Chapters below.';
+         if(isEraOverviewPage) document.getElementById('eraOverviewAccess').textContent='The chapters could not load. Use Retry Loading Chapters below.';
          console.error(
              "Unable to load chapters:",
              error
@@ -838,10 +847,10 @@ function appendMapRetry(container,label,retry) {
 }
 
 function resetEraOverview() {
-    for (const id of ['eraOverview','eraDiscoveries','eraProgressPanel']) {
+    for (const id of ['eraOverview','eraDiscoveries','eraProgressPanel','eraArrival']) {
         const element=document.getElementById(id); if(element)element.hidden=true;
     }
-    const action=document.getElementById('eraContinue');if(action){action.hidden=true;action.removeAttribute('href');}
+    const action=document.getElementById('eraContinue');if(action){action.hidden=true;action.removeAttribute('href');}const nextName=document.getElementById('eraNextChapterName');if(nextName){nextName.hidden=true;nextName.textContent='';}
 }
 function renderEraOverview(era) {
     const overview=document.getElementById('eraOverview');if(!overview)return;
@@ -854,6 +863,7 @@ function renderEraOverview(era) {
     const art=document.getElementById('eraOverviewArt');art.replaceChildren();
     const card=[...eraList.children].find(card=>card.dataset.eraId===era.id);
     const image=card?.querySelector('.era-image');if(image)art.append(...[...image.children].map(child=>child.cloneNode(true)));
+    const arrival=document.getElementById('eraArrival');if(arrival){arrival.replaceChildren();arrival.hidden=true;}
     document.getElementById('eraOverviewAccess').textContent='Loading your chapter trail...';
 }
 function renderEraOverviewProgress(era,destinations,unlocked) {
@@ -861,18 +871,20 @@ function renderEraOverviewProgress(era,destinations,unlocked) {
     const completed=destinations.filter(row=>row.isCompleted).length;
     const total=destinations.length;
     document.getElementById('eraProgressText').textContent=completed+' of '+total+' chapters complete';
-    document.getElementById('eraProgressHint').textContent='Chapter challenges mark your progress. You can revisit completed chapters.';
+    document.getElementById('eraProgressHint').textContent='Completed chapters stay available for review.';
     const progress=document.getElementById('eraProgress');progress.max=Math.max(1,total);progress.value=completed;panel.hidden=false;
     const preview=globalThis.__lakbayExplorationPreview===true;
-    document.getElementById('eraOverviewAccess').textContent=preview?'Exploration preview: lessons are open for testing. Quiz progress and rewards are not saved.':unlocked?'Your trail is open. Complete each chapter challenge to unlock the next step.':era.unlockMessage||'Complete the required chapters in the previous era to unlock new lessons. You can look around here first.';
+    document.getElementById('eraOverviewAccess').textContent=preview?'Exploration preview: lessons are open for testing. Quiz progress and rewards are not saved.':unlocked?'Chapters unlock in order as you finish.':era.unlockMessage||'Complete the required chapters in the previous era to unlock new lessons. You can look around here first.';
     const next=destinations.find(row=>row.isUnlocked&&row.isContentReady&&!row.isCompleted)||destinations.find(row=>row.isUnlocked&&row.isContentReady&&row.isCompleted);
     const action=document.getElementById('eraContinue');action.hidden=!next;
-    if(next){action.href='mission.html?'+new URLSearchParams({chapter:next.chapter.id});action.textContent=(next.isCompleted?'Revisit: ':'Explore: ')+(next.chapter.title||'Chapter');}else action.removeAttribute('href');
+    if(next){action.href='mission.html?'+new URLSearchParams({chapter:next.chapter.id});action.textContent=next.isCompleted?'Review a chapter':'Open next chapter';action.setAttribute('aria-label',(next.isCompleted?'Review ':'Open ')+(next.chapter.title||'Chapter'));}else action.removeAttribute('href');
+    const nextName=document.getElementById('eraNextChapterName');if(nextName){nextName.hidden=!next;nextName.textContent=next?'Next: '+(next.chapter.title||'Chapter'):'';}
     const discoveries=document.getElementById('eraDiscoveryList');discoveries.replaceChildren();
     const goals=Array.isArray(era.learningObjectives)?era.learningObjectives.filter(goal=>typeof goal==='string'&&goal.trim()).slice(0,6):[];
     for(const text of goals.length?goals:destinations.slice(0,3).map(row=>row.chapter.title).filter(Boolean)){
         const li=document.createElement('li');li.textContent=text;discoveries.append(li);
     }
     document.getElementById('eraDiscoveries').hidden=!discoveries.children.length;
-    document.getElementById('selectedEraTitle').textContent='Your chapter trail';
+    document.getElementById('selectedEraTitle').textContent='Chapters in this time period';
+    if(isEraOverviewPage)document.dispatchEvent(new CustomEvent('lakbay:era-rendered',{detail:{era,destinations}}));
 }

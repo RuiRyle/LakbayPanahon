@@ -1,0 +1,28 @@
+{
+  "status": "local-security-pass-hosted-no-go",
+  "checks": [
+    "Real emulator-auth application admin denied direct legacy/head/pack writes; publication credential required",
+    "All four unchanged onCall exports enforce Auth and App Check",
+    "Publication drains an actual grading-store transaction, blocks new work, atomically updates legacy row and pack/head, rejects stale browser attempt",
+    "Older valid signed head rejected by external checkpoint, including after authority reconstruction",
+    "Rollback publishes higher generation; old unfinished session restarts explicitly; committed receipt recovers without repeat XP",
+    "Interrupted publication before DB commit recovers journal by aborting pending generation without source drift",
+    "Lost acknowledgement after atomic commit remains paused; trusted recovery reconciles pending journal to new generation",
+    "Concurrent publishers with same expected generation produce one winner",
+    "Interrupted transaction rolls back queued legacy, pack and head writes together",
+    "Monotonic generation cannot be decremented or restored through trusted publisher",
+    "Tampered pack fails digest verification",
+    "Full-source publication and recovery audits detect out-of-band Admin source drift and remain paused until repaired; raw Admin writers remain excluded from live content-writer roles",
+    "Current account and policy checks still protect active attempts and historical receipt recovery"
+  ],
+  "finalGeneration": 5,
+  "sourceAndHeadAtomic": true,
+  "oldSignedHeadReplayDenied": true,
+  "legacyEditsDeniedForApplicationAdmin": true,
+  "authorityReconstructionFromJournal": true,
+  "remainingLimits": [
+    "No resistance claimed to project owners, raw Admin legacy writers or host/filesystem compromise. Those credentials are excluded from content-writer roles.",
+    "Authority reconstruction tested locally, not machine failure, multi-region durability or hosted global leases.",
+    "External durable coordinator and approval/key isolation are not hosted or provisioned."
+  ]
+}

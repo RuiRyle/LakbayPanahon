@@ -1,0 +1,78 @@
+/* Scoped exclusively to the selected-era overview. */
+body.era-detail-page.lakbay-theme[data-role=student] .dashboard-content{max-width:1280px;display:block;padding-top:24px}
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverview{display:grid;grid-template-columns:minmax(0,1fr) 34%;gap:28px;padding:28px;min-height:0;align-items:center;background:#12313d;border:1px solid #58776e;border-radius:18px;margin-bottom:24px}
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverview h1{font-size:clamp(1.8rem,3vw,2.65rem);margin:10px 0 12px;max-width:none;line-height:1.2;color:#f0dfb9}
+body.era-detail-page.lakbay-theme[data-role=student] .era-page-help{font-size:.87rem;margin:10px 0;line-height:1.7}
+body.era-detail-page.lakbay-theme[data-role=student] .era-about{margin:8px 0;font-size:.85rem}
+body.era-detail-page.lakbay-theme[data-role=student] .era-about summary{min-height:36px;padding:6px 0}
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverviewArt{position:relative;width:100%;height:auto;min-height:200px;align-self:stretch;overflow:hidden;border:1px solid #5d80724d;border-radius:12px;background:#12313d}
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverviewArt img{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:contain;transition:transform .25s}
+.era-art-caption{position:absolute;bottom:9px;left:12px;max-width:calc(100% - 24px);font-size:.6rem;color:#bbd2cc}
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverviewArt{display:block}
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverviewDescription:empty{display:none}
+body.era-detail-page.lakbay-theme[data-role=student] #eraProgressPanel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;padding:14px 0;margin:12px 0 0;background:transparent;border:0;border-top:1px solid #567469;border-radius:0;box-shadow:none}
+body.era-detail-page.lakbay-theme[data-role=student] #eraProgressPanel>div{display:block}
+body.era-detail-page.lakbay-theme[data-role=student] #eraProgressText{font-size:.8rem;color:#d1dfdc}
+body.era-detail-page.lakbay-theme[data-role=student] #eraProgressHint{display:block;font-size:.67rem;margin-top:4px;line-height:1.5}
+#eraCompletionPercent{font-size:1.25rem;font-weight:650;color:#e3c17e;align-self:start}
+body.era-detail-page.lakbay-theme[data-role=student] #eraProgress{grid-column:1/-1;width:100%;height:6px}
+body.era-detail-page.lakbay-theme[data-role=student] .era-overview-actions{margin-top:10px;gap:10px}
+body.era-detail-page.lakbay-theme[data-role=student] .era-overview-actions a{min-height:42px;padding:10px 16px;font-size:.8rem;border-radius:9px}
+body.era-detail-page.lakbay-theme[data-role=student] .era-next-chapter{font-size:.75rem;margin:10px 0 0}
+body.era-detail-page.lakbay-theme[data-role=student] #eraDiscoveries{padding:16px 20px;margin:0 0 28px;border:1px solid #3d5b6d;border-radius:14px;background:#102a3e}
+body.era-detail-page.lakbay-theme[data-role=student] #eraDiscoveries>summary{font-size:.95rem;padding:4px 0;min-height:36px}
+body.era-detail-page.lakbay-theme[data-role=student] #eraDiscoveryList{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;list-style:none;margin:12px 0 0;padding:0}
+body.era-detail-page.lakbay-theme[data-role=student] #eraDiscoveryList li{position:relative;padding:16px 16px 16px 32px;border:1px solid #3b5e68;border-radius:10px;background:#14353e;color:#cddfdc;font-size:.82rem;line-height:1.7;min-width:0;overflow-wrap:anywhere}
+#eraDiscoveryList li::before{content:'◇';position:absolute;left:12px;top:16px;color:#dfc17e}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterSection .section-heading{margin:0 0 22px;padding:0}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterSection .section-heading h2{font-size:1.35rem;margin:8px 0}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterSection .section-heading p{font-size:.85rem;line-height:1.75}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList{display:grid;grid-template-columns:1fr;gap:18px;border-left:1px solid #b49b5b80;margin-left:16px;padding-left:28px}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card{position:relative;display:grid;grid-template-columns:46px minmax(0,1fr);align-items:start;gap:18px;min-height:0;height:auto;margin:0;padding:22px;border:1px solid #3e5a6e;border-radius:14px;background:#112b40;box-shadow:none;transition:transform .2s,border-color .2s}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card::before{content:'';position:absolute;left:-37px;top:30px;width:12px;height:12px;border:3px solid #081629;background:#738b99;border-radius:50%;box-shadow:0 0 0 1px #8197a2}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card[data-expedition-state=current]{border-color:#d0b271;background:#183740}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card[data-expedition-state=current]::before{background:#e5c17a;box-shadow:0 0 0 1px #d0b271,0 0 12px #e5c17a30}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card.completed::before{background:#9dceb9;box-shadow:0 0 0 1px #9dceb9}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-number{display:grid;place-items:center;width:42px;height:42px;min-width:0;margin:0;border:1px solid #687d71;border-radius:12px;background:#1a3b43;color:#e6ca8b;font-size:1rem}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-content{display:block;padding:0;min-width:0}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-content h3{font-size:1.1rem;margin:8px 0 10px;line-height:1.4}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-content>p{font-size:.83rem;line-height:1.75;margin:8px 0;color:#c3d3dd}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-label{font-size:.62rem;color:#cbbb92}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-button{display:inline-flex;align-items:center;justify-content:center;width:auto;max-width:100%;min-height:42px;padding:10px 18px;margin:14px 0 0;border-radius:9px;font-size:.78rem;white-space:normal}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .era-chapter-requirement{font-size:.73rem;margin-bottom:0;color:#aabbc8}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .era-mission-progress{font-size:.73rem;margin-top:14px;max-width:480px}
+.era-mission-progress progress{appearance:none;display:block;width:100%;height:5px;margin-top:8px;border:0;border-radius:5px;overflow:hidden;background:#345368}
+.era-mission-progress progress::-webkit-progress-bar{background:#345368}.era-mission-progress progress::-webkit-progress-value{background:#dabe7c;transition:width .6s}.era-mission-progress progress::-moz-progress-bar{background:#dabe7c}
+@media(hover:hover){body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card:not(.locked):hover{transform:translateY(-2px);border-color:#c4a86a}body.era-detail-page.lakbay-theme[data-role=student] #eraOverviewArt:hover img{transform:scale(1.025)}}
+@media(max-width:850px){body.era-detail-page.lakbay-theme[data-role=student] #eraOverview{grid-template-columns:minmax(0,1fr) 28%;gap:20px;padding:24px}body.era-detail-page.lakbay-theme[data-role=student] #eraDiscoveryList{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){body.era-detail-page.lakbay-theme[data-role=student] #eraOverview{grid-template-columns:1fr;padding:22px}body.era-detail-page.lakbay-theme[data-role=student] #eraOverviewArt{min-height:140px;height:140px;grid-row:1}body.era-detail-page.lakbay-theme[data-role=student] #eraDiscoveryList{grid-template-columns:1fr}body.era-detail-page.lakbay-theme[data-role=student] #chapterList{margin-left:8px;padding-left:22px}body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card{grid-template-columns:1fr;padding:18px;gap:12px}body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card::before{left:-31px}body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-number{width:34px;height:34px}body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-button{width:100%}}
+@media(prefers-reduced-motion:reduce){body.era-detail-page.lakbay-theme[data-role=student] *{animation:none!important;transition:none!important}}
+body.era-detail-page.lakbay-reduce-motion *{animation:none!important;transition:none!important}
+
+/* Prominent lesson artwork and compact chapter route refinement. */
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverview{grid-template-columns:minmax(0,1fr) 44%;gap:26px;padding:26px;overflow:hidden}
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverviewArt{min-height:260px;border:0;border-radius:12px;background:#0b2337}
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverviewArt[data-artwork=historical] img{object-fit:cover;object-position:55% center}
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverviewArt[data-artwork=historical]::after{content:'';position:absolute;inset:60% 0 0;background:linear-gradient(transparent,#061c30dd);pointer-events:none}
+body.era-detail-page.lakbay-theme[data-role=student] .era-art-caption{z-index:1;font-size:.61rem;color:#d7e2df;line-height:1.5}
+body.era-detail-page.lakbay-theme[data-role=student] #eraOverview h1{font-size:clamp(1.7rem,2.7vw,2.4rem)}
+body.era-detail-page.lakbay-theme[data-role=student] #eraProgressHint{font-size:.64rem}
+body.era-detail-page.lakbay-theme[data-role=student] .era-access-note{font-size:.78rem;line-height:1.65}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterSection{padding:0;background:transparent;border:0;box-shadow:none}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card{grid-template-columns:66px minmax(0,1fr) 180px;gap:20px;align-items:center;padding:18px 20px;min-height:0}
+.era-chapter-visual{position:relative;display:grid;justify-items:center;gap:10px;width:66px}
+.era-chapter-visual img{width:66px;height:64px;object-fit:cover;border-radius:8px;border:1px solid #64887b66}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-number{width:34px;height:34px;min-height:0;font-size:.9rem;border-radius:50%;background:#193c44}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-content{align-self:center;min-height:0}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-content h3{font-size:1.12rem;margin:0 0 8px;line-height:1.4}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-content>p{font-size:.82rem;line-height:1.7;margin:7px 0}
+.era-chapter-actions{display:flex;flex-direction:column;align-items:stretch;gap:10px;min-width:0;align-self:center}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .era-chapter-actions .chapter-label{display:block;text-align:center;font-size:.59rem;letter-spacing:.04em;line-height:1.6;color:#c4d7d5}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .era-chapter-actions .chapter-button{margin:0;width:100%;padding:10px;min-height:42px;font-size:.75rem;box-shadow:none}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .era-chapter-actions .era-chapter-requirement{font-size:.66rem;line-height:1.6;text-align:center;margin:0;color:#adbfca}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .era-mission-progress{font-size:.71rem;margin-top:12px;max-width:none}
+body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card[data-expedition-state=current]{box-shadow:inset 2px 0 #d5ba7b}
+body.era-detail-page.lakbay-theme[data-role=student] #eraDiscoveries{padding:14px 18px;margin-bottom:24px}
+body.era-detail-page.lakbay-theme[data-role=student] #eraDiscoveryList li{padding:12px 12px 12px 28px;font-size:.78rem}
+@media(max-width:950px){body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card{grid-template-columns:46px minmax(0,1fr) 145px;gap:14px;padding:18px}.era-chapter-visual{width:46px}.era-chapter-visual img{width:46px;height:52px}body.era-detail-page.lakbay-theme[data-role=student] #eraOverview{grid-template-columns:minmax(0,1fr) 40%;padding:22px}}
+@media(max-width:600px){body.era-detail-page.lakbay-theme[data-role=student] #eraOverview{grid-template-columns:1fr;gap:20px;padding:18px}body.era-detail-page.lakbay-theme[data-role=student] #eraOverviewArt{height:190px;min-height:190px}body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-card{grid-template-columns:34px minmax(0,1fr);gap:12px;padding:16px}.era-chapter-visual{width:34px;grid-column:1;grid-row:1}.era-chapter-visual img{display:none}body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-content{grid-column:2;grid-row:1}.era-chapter-actions{grid-column:2;grid-row:2;gap:8px}body.era-detail-page.lakbay-theme[data-role=student] #chapterList .era-chapter-actions .chapter-label{text-align:left}body.era-detail-page.lakbay-theme[data-role=student] #chapterList .era-chapter-actions .era-chapter-requirement{text-align:left}body.era-detail-page.lakbay-theme[data-role=student] #chapterList .chapter-content h3{font-size:1rem}}

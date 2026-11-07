@@ -27,11 +27,14 @@
     <link rel="stylesheet" href="../css/navy-gold-theme.css">
     <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
     <link rel="stylesheet" href="../css/page-transition.css">
+    <link rel="stylesheet" href="../css/expedition.css">
+<link rel="stylesheet" href="../css/level-rewards.css"><link rel="stylesheet" href="../css/student-layout.css"><link rel="stylesheet" href="../css/journey-finale.css"><link rel="stylesheet" href="../css/discovery-experiences.css">    <link rel="stylesheet" href="../css/interface-clarity.css">
+<link rel="stylesheet" href="../css/explorer-journal.css">
 </head>
 
 
 <body
-    class="auth-checking lakbay-theme"
+    class="auth-checking lakbay-theme explorer-journal-page"
     data-role="student"
 >
     <div class="student-loading-shell" role="status" aria-live="polite">
@@ -80,7 +83,7 @@
                     href="student-dashboard.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">⌂</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v11h5v-7h4v7h5V10"/></svg></span>
                     <span>Home</span>
                 </a>
 
@@ -89,7 +92,7 @@
                     href="my-journey.html"
                     class="nav-link active" aria-current="page"
                 >
-                    <span class="nav-icon">📖</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 3h13a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-2V3Zm0 14h16M8 7h8M8 11h6"/></svg></span>
                     <span>My Journey</span>
                 </a>
 
@@ -98,7 +101,7 @@
                     href="chapters.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">🗺</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
                     <span>Explore Chapters</span>
                 </a>
 
@@ -107,7 +110,7 @@
                     href="my-class.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">🏫</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6M9 10h6"/></svg></span>
                     <span>My Class</span>
                 </a>
 
@@ -116,7 +119,7 @@
                     href="bayani-ai.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">⚡</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 2.8 6.2L21 12l-6.2 2.8L12 21l-2.8-6.2L3 12l6.2-2.8L12 3Z"/></svg></span>
                     <span>Bayani AI</span>
                 </a>
 
@@ -125,12 +128,13 @@
                     href="achievements.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">🏆</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
                     <span>Achievements</span>
                 </a>
-                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 13.5 1.1.8-1.1 1.9-1.3-.5a7.8 7.8 0 0 1-1.5.9l-.2 1.4h-2.2l-.3-1.4a7.8 7.8 0 0 1-1.7 0l-.8 1.2-1.9-1.1.5-1.3a7.8 7.8 0 0 1-.9-1.5l-1.4-.2v-2.2l1.4-.3a7.8 7.8 0 0 1 0-1.7L7.9 8.7 9 6.8l1.3.5a7.8 7.8 0 0 1 1.5-.9l.2-1.4h2.2l.3 1.4a7.8 7.8 0 0 1 1.7 0l.8-1.2 1.9 1.1-.5 1.3a7.8 7.8 0 0 1 .9 1.5l1.4.2v2.2l-1.4.3a7.8 7.8 0 0 1 0 1.7Z"/></svg></span><span>Settings</span></a>
+                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
 
-            </nav>
+            <a href="history-timeline.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 3v18M5 6h14M5 12h10M5 18h14" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><span>Historical Timeline</span></a>
+</nav>
 
 
             <div class="sidebar-bottom">
@@ -139,7 +143,7 @@
                     type="button"
                     class="nav-link logout-button"
                 >
-                    <span class="nav-icon">↪</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4H4v16h5m5-13 5 5-5 5m-6-5h11"/></svg></span>
                     <span>Log Out</span>
                 </button>
 
@@ -205,21 +209,28 @@
 
             <div class="my-journey-content">
                 <header class="journey-page-heading"><span class="adventure-emblem" aria-hidden="true">&#10022;</span><div><span class="eyebrow">YOUR LEARNING PATH</span><h1>My Journey</h1><strong class="adventure-tagline">Your next adventure awaits.</strong><p>Every lesson is a step through history. Follow your path and discover what comes next.</p></div><a class="primary-button" href="chapters.html">Explore Chapters &rarr;</a></header>
-                <div class="journey-load-status"><p id="journeyPageStatus" role="status" aria-live="polite">Loading your saved journey...</p><button id="refreshJourney" class="text-button" type="button">Refresh Progress</button></div>
+                <h2 class="journal-section-title">01 <span>My Expedition Overview</span></h2><div class="journey-load-status"><p id="journeyPageStatus" role="status" aria-live="polite">Loading your saved journey...</p><button id="refreshJourney" class="text-button" type="button">Refresh Progress</button></div>
+                    <section class="journey-next journey-panel" aria-labelledby="nextStepTitle"><h2 id="nextStepTitle">What should I do next?</h2><p>Follow the action below to continue your lesson, review a topic, or take your chapter challenge.</p><div id="journeyNextAction" aria-live="polite"><p>Finding your next activity from your saved progress...</p></div></section>
                 <div id="journeyPageContent" hidden>
+                    <section class="journey-finale-entry" aria-label="Your journey finish line"><div><span class="eyebrow">YOUR FINISH LINE</span><h2>Every discovery leads somewhere</h2><p>Finish the required chapters to earn your Journey Complete badge and a personal keepsake.</p></div><a class="text-button" href="journey-finale.html">View My Journey Goal &rarr;</a></section>
+                    <h2 class="journal-section-title journal-discoveries-title">02 <span>My Historical Discoveries</span></h2><section class="lakbay-passport" aria-labelledby="passportTitle">
+                        <div class="passport-heading"><div><span class="passport-kicker">LAKBAYPANAHON · EXPLORER RECORD</span><h2 id="passportTitle">Your Lakbay Passport</h2><p>Your chapter progress, stamped one discovery at a time.</p></div><img class="passport-seal" src="../assets/brand/lakbay-sun.svg" alt="" width="56" height="56"></div>
+                        <div id="passportStamps" class="passport-stamps"></div>
+                    </section>
                     <section class="journey-stats" aria-label="Your progress">
                         <article><span>Missions completed</span><strong id="journeyMissionCount">&mdash;</strong></article>
                         <article><span>Chapters completed</span><strong id="journeyChapterCount">&mdash;</strong></article>
                         <article><span>Topics to review</span><strong id="journeyReviewCount">&mdash;</strong></article>
                     </section>
-                    <section class="journey-next journey-panel" aria-labelledby="nextStepTitle"><span class="eyebrow">YOUR NEXT STEP</span><h2 id="nextStepTitle">Recommended Next Step</h2><div id="journeyNextAction"></div></section>
+
+                    <details class="discovery-panel" id="learningCommunityPanel"><summary>Build Your Learning Community</summary><p>Your completed missions reveal places to explore. Open this when you want to see your progress grow.</p><div id="learningCommunity"></div></details>
                     <section id="evidenceJournal" class="journey-panel evidence-journal" aria-labelledby="evidenceJournalTitle">
                         <div class="evidence-journal-heading">
                             <span class="eyebrow">YOUR FIELD NOTES</span>
                             <h2 id="evidenceJournalTitle">Evidence Journal</h2>
                             <p>Your saved clues from each lesson, ready to revisit whenever you want to remember what they mean.</p>
                         </div>
-                        <div class="evidence-journal-controls">
+                        <div class="journal-view-switch" role="group" aria-label="Journal view"><button type="button" data-journal-view="cards" aria-pressed="true">Cards</button><button type="button" data-journal-view="notebook" aria-pressed="false">Notebook</button><button type="button" data-journal-view="timeline" aria-pressed="false">Timeline</button></div><div class="evidence-journal-controls"><label for="journalSearch">Search discoveries<input id="journalSearch" type="search" placeholder="Topic, lesson or explanation"></label><label for="journalChapterFilter">Chapter<select id="journalChapterFilter"><option value="">All chapters</option></select></label>
                             <label for="evidenceJournalFilter">Browse by mission
                                 <select id="evidenceJournalFilter"><option value="">All missions</option></select>
                             </label>
@@ -228,7 +239,7 @@
                         <p id="evidenceJournalStatus" role="status" aria-live="polite">Loading your saved discoveries...</p>
                         <div id="evidenceJournalEntries" class="evidence-journal-grid"></div>
                     </section>
-                    <div class="journey-body-grid">
+                    <h2 class="journal-section-title journal-progress-title">03 <span>My Learning Progress</span></h2><div class="journey-body-grid">
                         <section class="journey-panel" aria-labelledby="learningPathTitle"><div class="journey-section-heading"><span class="eyebrow">CHAPTER BY CHAPTER</span><h2 id="learningPathTitle">Your Learning Path</h2><p>Complete missions, then take the chapter challenge to unlock what comes next.</p></div><div id="journeyPath"></div></section>
                         <section class="journey-panel journey-review" aria-labelledby="journeyReviewTitle">
                             <div class="journey-section-heading">
@@ -272,6 +283,7 @@
 ></script>
 
 <script type="module" src="../js/evidence-journal-page.js"></script>
-</body>
+    <script type="module" src="../js/expedition-ui.js"></script>
+<script type="module" src="../js/level-rewards.js"></script></body>
 
 </html>

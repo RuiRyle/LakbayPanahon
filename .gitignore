@@ -80,3 +80,14 @@ node_modules/
 /build/student-web-*/
 /build/student-review-*/
 /build/student-assessment-*/
+/build/bayani-narration/
+
+# Local browser profiles, downloaded toolchains and transient review output.
+# Keep the accepted release candidates and offline audit inputs reviewable.
+/build/*
+!/build/priority3-release/
+!/build/priority3-stage0-release/
+!/build/priority3-audit/
+/.vscode/
+/backups/priority-2-temporary-*.json
+experiments/**/package-preview/

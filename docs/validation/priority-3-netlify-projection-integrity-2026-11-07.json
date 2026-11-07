@@ -1,0 +1,67 @@
+{
+  "status": "local-proof-promising-production-no-go",
+  "manifestSha256": "0b902b44931e19bde9e26db746c6518def3991367f85717f01014f28c3beb2ef",
+  "artifactsVerified": 242,
+  "sourcesVerified": 23,
+  "serviceCopiesByteIdentical": true,
+  "drift": [],
+  "tests": {
+    "adapterUnit": 12,
+    "existingCompatibilityUnit": 230,
+    "emulatorChecks": 18,
+    "independentSaveWaves": [
+      1,
+      5,
+      10,
+      30,
+      30
+    ],
+    "failedEligibleSaves": 0
+  },
+  "projection": {
+    "readUnitsAreMinimumDocumentBasedNotProductionBill": true,
+    "sparkReadsPerDay": 50000,
+    "sparkWritesPerDay": 20000,
+    "oneMissionAndDailyPlusSampledUI": {
+      "reads": 24390,
+      "writes": 810,
+      "deletes": 0,
+      "remainingReadAllowance": 25610
+    },
+    "samePlusChapter": {
+      "reads": 26970,
+      "writes": 1020,
+      "deletes": 0
+    },
+    "twoMissionsAndDailyPlusSampledUI": {
+      "reads": 44190,
+      "writes": 1410,
+      "deletes": 0,
+      "remainingReadAllowance": 5810
+    },
+    "twoMissionsPlusChapter": {
+      "reads": 46770,
+      "writes": 1620,
+      "deletes": 0,
+      "remainingReadAllowance": 3230
+    },
+    "monthlyPriorWorkload": {
+      "missionAttempts": 750,
+      "chapterAttempts": 120,
+      "dailyAttempts": 300,
+      "backendReadUnits": 513420,
+      "backendWritesBeforeFailureAdjustment": 17940,
+      "sampledUIReadUnitsFor20SchoolDays": 75600,
+      "excludes": "Resumes, errors, retries, index-entry/rule reads, story scenes and unmeasured app/teacher/nonpilot traffic"
+    }
+  },
+  "blockedFollowup": {
+    "test": "Additional catalog-heavy mission",
+    "executed": false,
+    "reason": "Automatic approval review failed due to usage limit; not a safety determination. No bypass attempted."
+  },
+  "sourceChangesAfterFinalEmulatorRun": [
+    "proof.cjs exported helpers and parameterized quiz identity for the additional unexecuted catalog test; no new emulator pass claimed for that follow-up"
+  ],
+  "productionActions": 0
+}

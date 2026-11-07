@@ -1,0 +1,16 @@
+// Read-only production metadata and public route inspection. Never deploys or writes records.
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'..'),project='lakbaypanahon-1797e',hash=v=>crypto.createHash('sha256').update(v).digest('hex');
+async function main(){
+ if(!process.argv.includes('--inspect'))throw Error('Use --inspect for read-only checks.');
+ const cli=require(path.join(process.env.APPDATA,'npm/node_modules/firebase-tools/lib/auth.js')),account=cli.getProjectDefaultAccount(root);if(!account)throw Error('Firebase CLI login required.');
+ const token=(await cli.getAccessToken(account.tokens.refresh_token,['https://www.googleapis.com/auth/cloud-platform'])).access_token;
+ async function get(url){const r=await fetch(url,{headers:{Authorization:'Bearer '+token},signal:AbortSignal.timeout(20000)});if(r.status===404)return null;if(!r.ok)throw Error('Metadata GET failed: HTTP '+r.status);return r.json();}
+ const errors=[],report={mode:'read-only-production-readiness',checkedAt:new Date().toISOString(),project,configurationChanged:false,productionRecordsChanged:false};
+ try{const base='https://firebaserules.googleapis.com/v1/projects/'+project,release=await get(base+'/releases/cloud.firestore'),rules=release&&await get('https://firebaserules.googleapis.com/v1/'+release.rulesetName);const file=rules?.source?.files?.find(f=>['firestore.rules','firestore.candidate.rules'].includes(f.name));report.rules={ruleset:release?.rulesetName||null,matchesLocal:!!file&&hash(file.content)===hash(fs.readFileSync(path.join(root,'firestore.rules'))),localHash:hash(fs.readFileSync(path.join(root,'firestore.rules'))),liveHash:file?hash(file.content):null};}catch(e){errors.push({check:'rules',message:e.message});}
+ try{const base='https://firebasehosting.googleapis.com/v1beta1/projects/'+project+'/sites/'+project,site=await get(base),channel=site&&await get(base+'/channels/live');report.hosting={siteExists:!!site,defaultUrl:site?.defaultUrl||null,hasLiveRelease:!!channel?.release,releasedAt:channel?.release?.releaseTime||null};}catch(e){errors.push({check:'hosting',message:e.message});}
+ try{const config=await get('https://identitytoolkit.googleapis.com/admin/v2/projects/'+project+'/config');report.auth={authorizedDomains:config?.authorizedDomains||[],emailDeliveryVerified:false};}catch(e){errors.push({check:'auth-metadata',message:e.message});}
+ report.routes=[];for(const route of ['pages/login.html','pages/teacher-dashboard.html','pages/teacher-settings.html','pages/teacher-students.html','pages/my-class.html']){try{const r=await fetch('https://'+project+'.web.app/'+route,{signal:AbortSignal.timeout(15000)}),body=await r.text();report.routes.push({route,httpStatus:r.status,contentType:r.headers.get('content-type'),matchesLocal:r.ok&&hash(body)===hash(fs.readFileSync(path.join(root,route))),hasCSP:!!r.headers.get('content-security-policy')});}catch(e){report.routes.push({route,error:e.message});}}
+ report.errors=errors;fs.writeFileSync(path.join(root,'docs/validation/production-readiness-2026-11-06.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));
+}
+main().catch(e=>{console.error(e.message);process.exitCode=1;});

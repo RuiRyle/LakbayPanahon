@@ -22,15 +22,21 @@
     href="../css/student-dashboard.css"
 >
 
-<link rel="stylesheet" href="../css/home-refined.css">
+    <link rel="stylesheet" href="../css/home-refined.css">
+    <link rel="stylesheet" href="../css/workspace-loading.css">
     <link rel="stylesheet" href="../css/navy-gold-theme.css">
     <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
     <link rel="stylesheet" href="../css/page-transition.css">
+    <link rel="stylesheet" href="../css/daily-challenge-theme.css">
+    <link rel="stylesheet" href="../css/home-practice-review.css">
+    <link rel="stylesheet" href="../css/expedition.css">
+<link rel="stylesheet" href="../css/level-rewards.css"><link rel="stylesheet" href="../css/student-layout.css">    <link rel="stylesheet" href="../css/interface-clarity.css">
+    <link rel="stylesheet" href="../css/student-headquarters.css">
 </head>
 
 
 <body
-    class="auth-checking lakbay-theme student-home-page"
+    class="auth-checking lakbay-theme student-home-page student-headquarters"
     data-role="student"
 >
     <div class="student-loading-shell" role="status" aria-live="polite">
@@ -79,7 +85,7 @@
                     href="student-dashboard.html"
                     class="nav-link active"
                 >
-                    <span class="nav-icon">⌂</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v11h5v-7h4v7h5V10"/></svg></span>
                     <span>Home</span>
                 </a>
 
@@ -88,7 +94,7 @@
                     href="my-journey.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">📖</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 3h13a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-2V3Zm0 14h16M8 7h8M8 11h6"/></svg></span>
                     <span>My Journey</span>
                 </a>
 
@@ -97,7 +103,7 @@
                     href="chapters.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">🗺</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
                     <span>Explore Chapters</span>
                 </a>
 
@@ -106,7 +112,7 @@
                     href="my-class.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">🏫</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6M9 10h6"/></svg></span>
                     <span>My Class</span>
                 </a>
 
@@ -115,7 +121,7 @@
                     href="bayani-ai.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">⚡</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 2.8 6.2L21 12l-6.2 2.8L12 21l-2.8-6.2L3 12l6.2-2.8L12 3Z"/></svg></span>
                     <span>Bayani AI</span>
                 </a>
 
@@ -124,12 +130,13 @@
                     href="achievements.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">🏆</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
                     <span>Achievements</span>
                 </a>
-                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 13.5 1.1.8-1.1 1.9-1.3-.5a7.8 7.8 0 0 1-1.5.9l-.2 1.4h-2.2l-.3-1.4a7.8 7.8 0 0 1-1.7 0l-.8 1.2-1.9-1.1.5-1.3a7.8 7.8 0 0 1-.9-1.5l-1.4-.2v-2.2l1.4-.3a7.8 7.8 0 0 1 0-1.7L7.9 8.7 9 6.8l1.3.5a7.8 7.8 0 0 1 1.5-.9l.2-1.4h2.2l.3 1.4a7.8 7.8 0 0 1 1.7 0l.8-1.2 1.9 1.1-.5 1.3a7.8 7.8 0 0 1 .9 1.5l1.4.2v2.2l-1.4.3a7.8 7.8 0 0 1 0 1.7Z"/></svg></span><span>Settings</span></a>
+                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
 
-            </nav>
+            <a href="history-timeline.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 3v18M5 6h14M5 12h10M5 18h14" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><span>Historical Timeline</span></a>
+</nav>
 
 
             <div class="sidebar-bottom">
@@ -138,7 +145,7 @@
                     type="button"
                     class="nav-link logout-button"
                 >
-                    <span class="nav-icon">↪</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4H4v16h5m5-13 5 5-5 5m-6-5h11"/></svg></span>
                     <span>Log Out</span>
                 </button>
 
@@ -250,9 +257,10 @@
                 </section>
 
                 <section class="welcome-section">
+                    <div class="hq-welcome-art" aria-hidden="true"></div>
 
 
-                    <div class="welcome-text"><span class="home-welcome-kicker">THE EXPLORER'S DESK</span>
+                    <div class="welcome-text"><span class="home-welcome-kicker">YOUR HISTORY EXPLORER'S HEADQUARTERS</span>
 
                         <span class="eyebrow">
                             YOUR HISTORY JOURNEY
@@ -267,8 +275,7 @@
                         </h1>
 
                         <p>
-                            Continue exploring the people, places,
-                            and events that shaped the Philippines.
+                            Start with your next lesson below. Read, explore, and check what you learned at your own pace.
                         </p>
 
                     </div>
@@ -347,6 +354,78 @@
                      STATS
                 ================================== -->
 
+                <section class="dashboard-grid" aria-label="Your next learning step">
+
+
+                    <!-- =============================
+                         CONTINUE JOURNEY
+                    ============================== -->
+
+                    <article
+                        class="dashboard-card journey-card journey-quest-card"
+                        id="journey" data-desk-theme="sea"
+                    >
+
+                        <div class="journey-quest-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    🧭 YOUR NEXT STEP
+                                </span>
+
+                                <h2>
+                                    Continue your expedition
+                                </h2>
+
+                            </div>
+
+
+                            <span class="quest-badge">
+                                START HERE
+                            </span>
+
+                        </div>
+
+
+                        <div class="hq-current-layout">
+                        <div
+                            class="journey-content journey-quest-content"
+                            id="newJourneyState"
+                        >
+
+                            <div class="journey-illustration quest-compass">
+                                🧭
+                            </div>
+
+
+                            <div class="journey-details">
+
+                                <span class="journey-status">
+                                    LOADING YOUR JOURNEY
+                                </span>
+
+                                <h3>
+                                    Preparing Your Adventure
+                                </h3>
+
+                                <p>
+                                    Checking your historical progress...
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div id="homeExpeditionArt" class="hq-current-art" aria-hidden="true"></div>
+                        </div>
+                        <div class="explorer-desk-heading"><span class="eyebrow">LEARNING TOOLS</span><p>Choose a tool whenever you need it.</p></div>
+                        <nav id="explorerDesk" class="explorer-desk" aria-label="Your explorer tools"><a class="desk-object" href="chapters.html"><strong>Browse chapters</strong><span>Choose a destination</span></a><a class="desk-object" href="my-journey.html#evidenceJournal"><strong>My saved clues</strong><span>Revisit your saved clues</span></a><a class="desk-object" href="achievements.html"><strong>My achievements</strong><span>Explore your earned keepsakes</span></a></nav>
+                    </article>
+
+
+                    </section>
+
                 <section class="stats-grid">
 
 
@@ -422,10 +501,10 @@
                         <div>
 
                             <span>
-                                Learning Companion
+                                Explorer Level
                             </span>
 
-                            <strong><a href="bayani-ai.html">Bayani AI</a></strong>
+                            <strong id="studentLevelStat">Loading...</strong>
 
                         </div>
 
@@ -438,11 +517,14 @@
                      MAIN DASHBOARD GRID
                 ================================== -->
 
+
+
+                <div class="hq-learning-grid">
                 <section class="home-learning-trail" aria-labelledby="homeLearningTitle">
                     <div class="home-learning-heading">
                         <div class="home-learning-heading-copy">
                             <span class="eyebrow">YOUR HISTORY ADVENTURE</span>
-                            <h2 id="homeLearningTitle">Your Lessons</h2>
+                            <h2 id="homeLearningTitle">Your Historical Journey</h2>
                             <p>Continue your current chapter or revisit a lesson you have completed.</p>
                         </div>
                         <a href="my-journey.html">View full journey <span aria-hidden="true">&rarr;</span></a>
@@ -450,83 +532,19 @@
                     <div id="homeLearningTrail" class="home-lesson-list" aria-live="polite">Loading your lessons...</div>
                 </section>
 
-                <section class="dashboard-grid" aria-label="Your next learning step">
 
-
-                    <!-- =============================
-                         CONTINUE JOURNEY
-                    ============================== -->
-
-                    <article
-                        class="dashboard-card journey-card journey-quest-card"
-                        id="journey"
-                    >
-
-                        <div class="journey-quest-header">
-
-                            <div>
-
-                                <span class="card-label">
-                                    🧭 YOUR CURRENT JOURNEY
-                                </span>
-
-                                <h2>
-                                    Your next adventure
-                                </h2>
-
-                            </div>
-
-
-                            <span class="quest-badge">
-                                MAIN QUEST
-                            </span>
-
-                        </div>
-
-
-                        <div
-                            class="journey-content journey-quest-content"
-                            id="newJourneyState"
-                        >
-
-                            <div class="journey-illustration quest-compass">
-                                🧭
-                            </div>
-
-
-                            <div class="journey-details">
-
-                                <span class="journey-status">
-                                    LOADING YOUR JOURNEY
-                                </span>
-
-                                <h3>
-                                    Preparing Your Adventure
-                                </h3>
-
-                                <p>
-                                    Checking your historical progress...
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    </section>
-
-<section class="home-discover" aria-labelledby="homeDiscoverTitle"><div class="home-section-title"><div><span class="eyebrow">A DIFFERENT WAY TO DISCOVER</span><h2 id="homeDiscoverTitle">Make room for curiosity.</h2></div><p>Take a daily challenge, ask Bayani AI, explore a chapter, or learn with your class.</p></div><div class="home-side-quests"><article class="dashboard-card home-daily-card" aria-labelledby="homeDailyTitle"><div class="home-quest-heading"><span class="home-quest-icon" aria-hidden="true">&#9889;</span><span class="card-label">A LITTLE HISTORY, EVERY DAY</span></div><h2 id="homeDailyTitle">Daily Challenge</h2><p class="daily-challenge-card-text">Take on today's history question. A small discovery to keep your journey moving.</p><div class="challenge-reward" hidden><span>Today's reward</span><strong id="dailyChallengeCardReward" aria-live="polite"></strong></div><button type="button" class="primary-button daily-challenge-start" id="dailyChallengeStart" disabled>Loading Daily Challenge...</button><div id="dailyChallengeCardCompleted" class="daily-challenge-card-completed" role="status" hidden><span class="daily-complete-check" aria-hidden="true">&#10003;</span><div><strong>Today's challenge complete</strong><p>Come back tomorrow for another discovery.</p></div></div></article><article class="dashboard-card home-bayani-card" id="bayaniAI"><div class="home-quest-heading"><span class="home-bayani-mark" aria-hidden="true">B<span>&#10022;</span></span><span class="card-label">YOUR HISTORY COMPANION</span></div><h2>Curiosity starts here.</h2><p>Ask Bayani AI to explain a lesson, explore an idea or help you think through Philippine history.</p><a href="bayani-ai.html" class="secondary-action-button">Chat with Bayani AI <span aria-hidden="true">&#8594;</span></a><small>Keep your questions about learning. Leave personal details out of chat.</small></article></div>
-<nav class="home-destinations" aria-label="Your learning spaces"><a href="chapters.html"><span class="destination-icon" aria-hidden="true">&#10022;</span><span class="eyebrow">EXPLORE</span><h3>Find your next chapter</h3><p>Explore the historical eras and lessons available to you.</p><span class="destination-action">Explore Chapters &#8594;</span></a><a href="my-class.html"><span class="destination-icon" aria-hidden="true">&#9873;</span><span class="eyebrow">LEARN TOGETHER</span><h3>Your class awaits</h3><p>Join your teacher's class and find your assigned missions.</p><span class="destination-action">Open My Class &#8594;</span></a></nav>
+<section class="home-discover" aria-labelledby="homeDiscoverTitle"><div class="home-section-title"><div><span class="eyebrow">A DIFFERENT WAY TO DISCOVER</span><h2 id="homeDiscoverTitle">Make room for curiosity.</h2></div><p>Take a daily challenge, ask Bayani AI, explore a chapter, or learn with your class.</p></div><div class="hq-activity-content"><div class="home-side-quests"><article class="dashboard-card home-daily-card" aria-labelledby="homeDailyTitle"><div class="home-quest-heading"><span class="home-quest-icon" aria-hidden="true">&#9889;</span><span class="card-label">A LITTLE HISTORY, EVERY DAY</span></div><h2 id="homeDailyTitle">Daily History Challenge</h2><p class="daily-challenge-card-text">Take on today's history question. A small discovery to keep your journey moving.</p><div class="challenge-reward" hidden><span>Today's reward</span><strong id="dailyChallengeCardReward" aria-live="polite"></strong></div><button type="button" class="primary-button daily-challenge-start" id="dailyChallengeStart" disabled>Loading Daily Challenge...</button><div id="dailyChallengeCardCompleted" class="daily-challenge-card-completed" role="status" hidden><span class="daily-complete-check" aria-hidden="true">&#10003;</span><div><strong>Today's challenge complete</strong><p>Come back tomorrow for another discovery.</p></div></div></article><article class="dashboard-card home-bayani-card" id="bayaniAI"><div class="home-quest-heading"><span class="home-bayani-mark" aria-hidden="true">B<span>&#10022;</span></span><span class="card-label">YOUR HISTORY COMPANION</span></div><h2>Ask Bayani</h2><p>Ask Bayani AI to explain a lesson, explore an idea or help you think through Philippine history.</p><div class="hq-bayani-prompts" aria-label="Suggested history questions"><a href="bayani-ai.html?prompt=communities">How did early communities work together?</a><a href="bayani-ai.html?prompt=trade">How did seafaring connect communities?</a></div><a href="bayani-ai.html" class="secondary-action-button">Chat with Bayani AI <span aria-hidden="true">&#8594;</span></a><small>Keep your questions about learning. Leave personal details out of chat.</small></article></div>
+<nav class="home-destinations" aria-label="Your learning spaces"><a href="chapters.html"><span class="destination-icon" aria-hidden="true">&#10022;</span><span class="eyebrow">EXPLORE</span><h3>Find your next chapter</h3><p>Explore the historical eras and lessons available to you.</p><span class="destination-action">Explore Chapters &#8594;</span></a><a href="my-class.html"><span class="destination-icon" aria-hidden="true">&#9873;</span><span class="eyebrow">LEARN TOGETHER</span><h3>Your class awaits</h3><p>Join your teacher's class and find your assigned missions.</p><span class="destination-action">Open My Class &#8594;</span></a></nav></div>
                 </section>
 
 
-                <section class="home-collection-panel" id="achievements" aria-labelledby="dashboardCollectionsTitle"><div class="home-collection-heading"><span class="home-collection-emblem" aria-hidden="true">&#127942;</span><div><span class="eyebrow">MILESTONES WORTH KEEPING</span><h2 id="dashboardCollectionsTitle">Your story, collected.</h2><p>Every chapter conquered and mission completed leaves something to remember.</p></div><a href="achievements.html" class="text-button">Open Collections &#8594;</a></div><div class="home-collection-shelves"><a href="achievements.html"><span class="shelf-symbol" aria-hidden="true">&#127941;</span><div><span class="shelf-label">CHAPTER MILESTONES</span><h3>Badges of achievement</h3><p>Celebrate the chapter challenges you complete.</p></div><span class="shelf-arrow" aria-hidden="true">&#8599;</span></a><a href="achievements.html"><span class="shelf-symbol" aria-hidden="true">&#127994;</span><div><span class="shelf-label">HISTORICAL KEEPSAKES</span><h3>Artifacts of discovery</h3><p>Revisit the collectibles earned on your missions.</p></div><span class="shelf-arrow" aria-hidden="true">&#8599;</span></a></div></section>
+                </div>
 
-    <section class="return-to-learn-panel" aria-labelledby="studentReturnTitle"><div class="home-review-heading"><div><span class="eyebrow">REMEMBER THIS</span><h2 id="studentReturnTitle">A clue from your past journey.</h2><p>Come back to something you learned a few days ago.</p></div></div><div id="studentReturnTopic" aria-live="polite">Finding a topic from your journey...</div></section>
+                <section class="home-collection-panel" id="achievements" aria-labelledby="dashboardCollectionsTitle"><div class="home-collection-heading"><span class="home-collection-emblem" aria-hidden="true">&#127942;</span><div><span class="eyebrow">MILESTONES WORTH KEEPING</span><h2 id="dashboardCollectionsTitle">Your story, collected.</h2><p>Every chapter explored and mission completed leaves something to remember.</p></div><a href="achievements.html" class="text-button">Open Collections &#8594;</a></div><button type="button" id="refreshHomeCollections" class="text-button hq-refresh-collections">Refresh collection previews</button><div class="home-collection-shelves"><a href="achievements.html"><span class="shelf-symbol" aria-hidden="true">&#127941;</span><div><span class="shelf-label">CHAPTER MILESTONES</span><h3>Badges of achievement</h3><div id="homeBadgePreview" class="hq-collection-preview" aria-live="polite">Loading saved badges...</div><p>Celebrate the chapter challenges you complete.</p></div><span class="shelf-arrow" aria-hidden="true">&#8599;</span></a><a href="achievements.html"><span class="shelf-symbol" aria-hidden="true">&#127994;</span><div><span class="shelf-label">HISTORICAL KEEPSAKES</span><h3>Artifacts of discovery</h3><div id="homeArtifactPreview" class="hq-collection-preview" aria-live="polite">Loading saved artifacts...</div><p>Revisit the collectibles earned on your missions.</p></div><span class="shelf-arrow" aria-hidden="true">&#8599;</span></a></div></section>
+
+    <section class="return-to-learn-panel" aria-labelledby="studentReturnTitle"><div class="home-review-heading"><div><span class="eyebrow">REMEMBER THIS</span><h2 id="studentReturnTitle">History Recall</h2><p>Come back to something you learned a few days ago.</p></div></div><div id="studentReturnTopic" aria-live="polite">Finding a topic from your journey...</div></section>
     <section class="practice-review-panel" aria-labelledby="studentReviewTitle">
-        <div class="home-review-heading"><div><span class="eyebrow">PERSONALIZED PRACTICE</span><h2 id="studentReviewTitle">A little practice. A stronger explorer.</h2><p>Topics to review, recommended from your saved quizzes and practice.</p></div><button type="button" class="text-button" id="reloadStudentReview">Refresh Review <span aria-hidden="true">&#8635;</span></button></div><p class="home-review-note">Practice at your own pace. Recommendations can include completed missions and update as you learn.</p>
+        <div class="home-review-heading"><div><span class="eyebrow">PERSONALIZED PRACTICE</span><h2 id="studentReviewTitle">Strengthen your understanding</h2><p>Topics to review, recommended from your saved quizzes and practice.</p></div><button type="button" class="text-button" id="reloadStudentReview">Refresh Review <span aria-hidden="true">&#8635;</span></button></div><p class="home-review-note">Practice at your own pace. Recommendations can include completed missions and update as you learn.</p>
         <div id="studentReviewTopics" class="practice-review-grid" aria-live="polite"></div>
     </section>
             </div>
@@ -797,8 +815,8 @@
                                     </strong>
 
                                     <p>
-                                        Great work, history explorer!
-                                        Come back tomorrow for another challenge.
+                                        Today's discovery is complete!
+                                        A new Daily Challenge awaits tomorrow. Keep exploring your lessons today.
                                     </p>
 
                                 </div>
@@ -809,6 +827,8 @@
 
                     </div>
 <script type="module" src="../js/daily-challenge.js"></script>
-</body>
+    <script type="module" src="../js/dashboard-collections.js"></script>
+    <script type="module" src="../js/expedition-ui.js"></script>
+<script type="module" src="../js/level-rewards.js"></script></body>
 
 </html>

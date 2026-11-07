@@ -1,0 +1,35 @@
+{
+  "status": "pass",
+  "mode": "offline-actual-gcloud-zip-routine",
+  "packages": [
+    {
+      "rollback": false,
+      "files": [
+        ".gcloudignore",
+        "assessment-callables.js",
+        "assessment-shared/daily-policy.mjs",
+        "assessment-shared/mission-assessment.mjs",
+        "assessment-shared/mission-review.mjs",
+        "assessment-shared/practice-review.mjs",
+        "assessment-shared/progression-policy.mjs",
+        "index.js",
+        "package-lock.json",
+        "package.json",
+        "progression-policy.js",
+        "student-assessment.js",
+        "student-rewards.js"
+      ],
+      "sha256": "d70031ef2deda86189b5c90302a32c2eb5f0ad182f28d004fb91e074d7ac0b9b"
+    },
+    {
+      "rollback": true,
+      "files": [
+        ".gcloudignore",
+        "index.js",
+        "package-lock.json",
+        "package.json"
+      ],
+      "sha256": "3c80c28bf264f1f581dab2ab7084618ef39b54325744cedb8dcef35dbef528b0"
+    }
+  ]
+}

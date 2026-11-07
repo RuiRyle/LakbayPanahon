@@ -1,0 +1,116 @@
+{
+  "mode": "local-only-no-production-changes",
+  "date": "2026-11-07",
+  "productionReady": false,
+  "manifestSha256": "1b77328bf8ef9952a849e520965c9627a79e9ffea90df40693c2ef942c74a911",
+  "artifacts": 235,
+  "hostingPayloads": 7,
+  "servedUpdatesUnchanged": true,
+  "retainedArtifactsUnchanged": true,
+  "sourceDrift": [],
+  "artifactDrift": [],
+  "unit": {
+    "passed": 204,
+    "failed": 0
+  },
+  "httpSecurityIntegration": {
+    "passed": 28,
+    "failed": 0
+  },
+  "policyLegacyScenarios": {
+    "status": "pass",
+    "mode": "demo-Auth-Firestore-real-callable-adapter-and-fixed-clock-core",
+    "checks": [
+      "Two-hour expiry issued exactly",
+      "Three new starts accepted; fourth rejected in a fixed server minute",
+      "Stable issuance replay still resumes at the start quota",
+      "Expired unfinished attempt rejected without XP, deletion or profile reset",
+      "Seeded count 60 rejects another new daily issuance; not 60 exercised quizzes",
+      "Actual catalog legacy replay preserves XP 777, best score 100 and original completion/artifact timestamps"
+    ]
+  },
+  "httpStress": {
+    "status": "failed-incomplete",
+    "capturedCalls": 436,
+    "timeouts": 46,
+    "expectedStaleDenials": 10
+  },
+  "trustedAdapterStress": {
+    "status": "failed-at-saves",
+    "capturedCalls": 423,
+    "failedSubmitAttempts": 33
+  },
+  "controls": {
+    "mode": "real-Firestore-emulator-no-assessment-code",
+    "database": "pilot-control",
+    "controls": [
+      {
+        "query": false,
+        "seed": "none",
+        "elapsedMs": 4719.621300000001,
+        "results": [
+          {
+            "status": "committed"
+          },
+          {
+            "status": "committed"
+          }
+        ]
+      },
+      {
+        "query": true,
+        "seed": "none",
+        "elapsedMs": 2080.888999999999,
+        "results": [
+          {
+            "status": "rejected",
+            "code": 10,
+            "message": "10 ABORTED: Transaction lock timeout."
+          },
+          {
+            "status": "rejected",
+            "code": 10,
+            "message": "10 ABORTED: Transaction lock timeout."
+          }
+        ]
+      },
+      {
+        "query": true,
+        "seed": "unrelated",
+        "elapsedMs": 2044.4336999999996,
+        "results": [
+          {
+            "status": "rejected",
+            "code": 10,
+            "message": "10 ABORTED: Transaction lock timeout."
+          },
+          {
+            "status": "rejected",
+            "code": 10,
+            "message": "10 ABORTED: Transaction lock timeout."
+          }
+        ]
+      },
+      {
+        "query": true,
+        "seed": "matching",
+        "elapsedMs": 2065.021200000001,
+        "results": [
+          {
+            "status": "rejected",
+            "code": 10,
+            "message": "10 ABORTED: Transaction lock timeout."
+          },
+          {
+            "status": "rejected",
+            "code": 10,
+            "message": "10 ABORTED: Transaction lock timeout."
+          }
+        ]
+      }
+    ]
+  },
+  "productionBaselineMatches": true,
+  "billingLinked": false,
+  "priority4Started": false
+}

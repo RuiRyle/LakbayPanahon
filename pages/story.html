@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="../css/navy-gold-theme.css">
     <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
     <link rel="stylesheet" href="../css/page-transition.css">
+    <link rel="stylesheet" href="../css/expedition.css">
+    <link rel="stylesheet" href="../css/story-reading-steps.css">
+    <link rel="stylesheet" href="../css/mission-quest.css">
+<link rel="stylesheet" href="../css/storybook-learning.css"><link rel="stylesheet" href="../css/learning-clean.css"><link rel="stylesheet" href="../css/level-rewards.css"><link rel="stylesheet" href="../css/bayani-narration-button.css"><link rel="stylesheet" href="../css/student-layout.css"><link rel="stylesheet" href="../css/discovery-experiences.css"><link rel="stylesheet" href="../css/mission-learning-guide.css"><link rel="stylesheet" href="../css/learning-tokens.css"><link rel="stylesheet" href="../css/learning-contrast.css"><link rel="stylesheet" href="../css/learning-rhythm.css"><link rel="stylesheet" href="../css/story-completion.css">    <link rel="stylesheet" href="../css/interface-clarity.css">
 </head>
 
 
@@ -75,7 +79,7 @@
                     href="student-dashboard.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">⌂</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v11h5v-7h4v7h5V10"/></svg></span>
                     <span>Home</span>
                 </a>
 
@@ -84,7 +88,7 @@
                     href="my-journey.html"
                     class="nav-link active"
                 >
-                    <span class="nav-icon">📖</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 3h13a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-2V3Zm0 14h16M8 7h8M8 11h6"/></svg></span>
                     <span>My Journey</span>
                 </a>
 
@@ -93,7 +97,7 @@
                     href="chapters.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">🗺</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
                     <span>Explore Chapters</span>
                 </a>
 
@@ -102,7 +106,7 @@
                     href="my-class.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">🏫</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6M9 10h6"/></svg></span>
                     <span>My Class</span>
                 </a>
 
@@ -111,7 +115,7 @@
                     href="bayani-ai.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">⚡</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 2.8 6.2L21 12l-6.2 2.8L12 21l-2.8-6.2L3 12l6.2-2.8L12 3Z"/></svg></span>
                     <span>Bayani AI</span>
                 </a>
 
@@ -120,12 +124,13 @@
                     href="achievements.html"
                     class="nav-link"
                 >
-                    <span class="nav-icon">🏆</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
                     <span>Achievements</span>
                 </a>
-                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 13.5 1.1.8-1.1 1.9-1.3-.5a7.8 7.8 0 0 1-1.5.9l-.2 1.4h-2.2l-.3-1.4a7.8 7.8 0 0 1-1.7 0l-.8 1.2-1.9-1.1.5-1.3a7.8 7.8 0 0 1-.9-1.5l-1.4-.2v-2.2l1.4-.3a7.8 7.8 0 0 1 0-1.7L7.9 8.7 9 6.8l1.3.5a7.8 7.8 0 0 1 1.5-.9l.2-1.4h2.2l.3 1.4a7.8 7.8 0 0 1 1.7 0l.8-1.2 1.9 1.1-.5 1.3a7.8 7.8 0 0 1 .9 1.5l1.4.2v2.2l-1.4.3a7.8 7.8 0 0 1 0 1.7Z"/></svg></span><span>Settings</span></a>
+                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
 
-            </nav>
+            <a href="history-timeline.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 3v18M5 6h14M5 12h10M5 18h14" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><span>Historical Timeline</span></a>
+</nav>
 
 
             <div class="sidebar-bottom">
@@ -134,7 +139,7 @@
                     type="button"
                     class="nav-link logout-button"
                 >
-                    <span class="nav-icon">↪</span>
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4H4v16h5m5-13 5 5-5 5m-6-5h11"/></svg></span>
                     <span>Log Out</span>
                 </button>
 
@@ -281,7 +286,7 @@
                             Chapter
                         </p>
 
-                    </section>
+                    </section><div id="missionLearningCompass" class="mission-learning-compass" hidden></div>
 
 
                     <!-- PROGRESS -->
@@ -289,8 +294,7 @@
                     <section class="story-progress">
 
                         <div class="story-progress-toolbar">
-                            <span class="story-route-label">YOUR SCENE TRAIL</span>
-                            <div id="storyProgressActions" class="story-progress-actions"></div>
+                            <details class="lesson-options"><summary>Lesson options</summary><div id="storyProgressActions" class="story-progress-actions"></div><button id="readingSurfaceToggle" class="reading-surface-toggle" type="button" aria-pressed="false">Soft navy reading: off</button></details>
                         </div>
 
                         <ol id="storySceneTrail" class="story-scene-trail" aria-label="Scene position"></ol>
@@ -321,6 +325,12 @@
 
 
                     <!-- STORY CARD -->
+                    <aside class="mission-bayani" aria-label="Bayani's mission tip">
+                        <img src="../assets/brand/bayani-explorer.svg" alt="Bayani the tarsier explorer" width="100" height="104">
+                        <div><p id="missionBayaniTip" role="status">Read the story, then continue.</p></div>
+                        <details class="mascot-options"><summary aria-label="Bayani options">Options</summary><button id="missionMotionToggle" type="button" aria-pressed="false">Pause mascot</button></details>
+                    </aside>
+                    <nav id="missionQuestSteps" class="mission-quest-steps" aria-label="Activities in this scene" hidden></nav>
 
                     <section
                         class="story-reading-card"
@@ -338,6 +348,7 @@
 
 
                         <div class="story-reading-content">
+                            <div id="storySceneContext" class="story-scene-context" aria-label="Historical setting"></div>
 
                             <span
                                 class="story-scene-label"
@@ -726,37 +737,31 @@
                         hidden
                     >
 
-                        <div class="story-complete-icon">
-                            ✓
+                        <header class="lesson-finish-heading">
+                            <div class="finish-guide" aria-hidden="true"><img src="../assets/brand/bayani-explorer-still.svg" alt="" width="112" height="117"><span class="finish-guide-badge">&#10003;</span></div>
+                            <div>
+                                <span class="eyebrow">LESSON EXPLORED</span>
+                                <h2 tabindex="-1">Nice exploring! What's next?</h2>
+                                <p>You reached the end of the lesson. Let's put your discoveries to work!</p>
+                            </div>
+                        </header>
+                        <div class="lesson-finish-next" aria-label="Your next learning step"><span class="finish-step-label"><span aria-hidden="true">&#10140;</span> YOUR NEXT STEP</span>
+                            <div id="lessonQuizBriefing" class="lesson-quiz-briefing" hidden></div>
+                            <p id="lessonQuizRequirements" role="status" aria-live="polite"></p>
+                            <div class="lesson-finish-actions">
+                                <button type="button" id="quizButton" class="begin-mission-button">Continue to Mission Quiz</button>
+                                <button id="reviewCompletedLesson" type="button" class="text-button">Revisit lesson</button>
+                                <button id="retryLessonQuizInfo" type="button" class="text-button" hidden>Retry quiz details</button>
+                            </div>
                         </div>
-
-                        <span class="eyebrow">
-                            STORY COMPLETE
-                        </span>
-
-                        <h2>
-                            Lesson Complete!
-                        </h2>
-
-                        <p>
-                            You explored the important ideas in this
-                            mission and checked your understanding.
-                            Now use what you learned in the Mission Quiz.
-                        </p>
-
-                        <div id="lessonRecap"></div>
-                        <div id="lessonQuizBriefing" class="lesson-quiz-briefing" hidden></div>
-                        <p id="lessonQuizRequirements" role="status" aria-live="polite"></p>
-                        <button id="retryLessonQuizInfo" type="button" hidden>Retry Quiz Details</button>
-                        <button id="reviewCompletedLesson" type="button" class="text-button">Review Lesson</button>
-
-                        <button
-                            type="button"
-                            id="quizButton"
-                            class="begin-mission-button"
-                        >
-                            Continue to Mission Quiz →
-                        </button>
+                        <section class="lesson-finish-recap" aria-label="Your lesson recap">
+                            <h3>Need a little reminder?</h3>
+                            <div id="lessonRecap"></div>
+                        </section>
+                        <details class="lesson-finish-extras"><summary><span>Explore more</span><small>Optional adventures, at your own pace.</small></summary><div class="finish-extra-activities">
+                            <details id="missionApplication" class="mission-application" hidden><summary>Try a new example with Bayani (optional)</summary><div data-mission-application></div></details>
+                            <details id="missionDiscovery" class="discovery-panel" hidden><summary>Try a History Detective Case (optional)</summary><p>Examine clues, compare then and now, and explain your discovery to Bayani. This practice does not replace the lesson or quiz.</p><div data-discovery-activity></div></details>
+                        </div></details>
 
                     </section>
 
@@ -790,6 +795,16 @@
     ></script>
 
 <script type="module" src="../js/page-transition.js"></script>
-</body>
+    <script type="module" src="../js/expedition-ui.js"></script>
+    <script src="../js/lesson-narration-text.js" defer></script>
+    <script src="../js/bayani-voice-clips.js" defer></script>
+    <script src="../js/bayani-generated-clips.js" defer></script>
+    <script src="../js/lesson-game-audio.js" defer></script>
+    <script src="../js/bayani-narration-button.js" defer></script>
+    <script src="../js/adventure-voice.js" defer></script>
+    <script src="../js/story-reading-steps.js" defer></script>
+    <script src="../js/lesson-image-viewer.js" defer></script>
+    <script src="../js/mission-quest.js" defer></script>
+<script type="module" src="../js/level-rewards.js"></script><script type="module" src="../js/mission-discovery.js"></script><script type="module" src="../js/mission-learning-companion.js"></script></body>
 
 </html>

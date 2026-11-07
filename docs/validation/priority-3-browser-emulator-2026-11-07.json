@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "checks": [
+    "Real quiz HTML/Auth guard and Functions issuance load",
+    "Real page reload restores the issued sequence and two saved server answers",
+    "Five actual quiz checkpoint answers saved through callable advancement",
+    "Lost callable response after commit recovers the saved result on an actual page reload",
+    "Existing followup UI receives feedback and saves a passing result despite wrong followups",
+    "Actual saved profile has exactly 25 XP after navigation",
+    "Production AI helper import resolves; real Functions SDK sends local CustomProvider App Check token (not production reCAPTCHA attestation)"
+  ],
+  "errors": [
+    "InvalidStateError: Transition was aborted because of invalid state. ViewTransition opt-in disabled"
+  ],
+  "physicalDevice": false
+}

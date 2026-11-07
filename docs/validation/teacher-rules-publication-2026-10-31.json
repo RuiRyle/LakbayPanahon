@@ -1,0 +1,26 @@
+{
+  "mode": "published-and-read-back",
+  "publishedAt": "2026-10-31T14:12:07.515Z",
+  "sourceHash": "b87347f96c53a0319f349f7ec6d1ef1081e1138a34820b67980abcdde95883a3",
+  "previousRuleset": "projects/lakbaypanahon-1797e/rulesets/8b28a8b6-2ce6-41f0-a1d3-dc83e768833f",
+  "rulesetName": "projects/lakbaypanahon-1797e/rulesets/8587c270-4d69-4b9a-ae99-ce011f5283a2",
+  "backup": "backups\\teacher-rules-1793455921836.json",
+  "scope": [
+    "match /classJoinCodes/{code}",
+    "match /classes/{classId}",
+    "match /classMembers/{membershipId}",
+    "match /classAssignments/{assignmentId}",
+    "match /classAnnouncements/{announcementId}",
+    "match /users/{userId}",
+    "match /{catalog}/{contentId}",
+    "match /studentProgress/{progressId}",
+    "match /studentQuizAttempts/{attemptId}",
+    "function activeTeacher",
+    "function ownsClass",
+    "function activeOwnedMember",
+    "function teacherCanReport",
+    "function validPublication",
+    "match /teacherStudentLinks/{linkId}"
+  ],
+  "learnerRecordsChanged": false
+}

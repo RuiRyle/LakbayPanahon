@@ -1,0 +1,15 @@
+{
+  "status": "local-controls-pass-migration-blocker",
+  "tamperedHeadDenied": true,
+  "tamperedPackDenied": true,
+  "stalePublisherDenied": true,
+  "failedPublicationAtomic": true,
+  "publishedEditInvalidatesAttempt": true,
+  "rollbackNewGeneration": 3,
+  "sameAttemptRecovery": true,
+  "authAndAppCheckPreserved": true,
+  "profileAndPauseFresh": true,
+  "legacyDirectEditsIgnored": true,
+  "signedHeadReplayAccepted": true,
+  "blocker": "Legacy question writers must become draft-only or be replaced by atomic trusted publication before this can be secure for live content. Signed head replay by a compromised Admin writer is also not prevented by signature alone."
+}

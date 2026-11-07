@@ -1,5 +1,8 @@
 # LakbayPanahon Data Dictionary and ERD
 
+Activity lifecycle update (6 November 2026): class goals and personal reviews now include optional `endedAt`, required when `status` is `closed` or `withdrawn`. Ended records stay read-only and visible to authorized class members; drafts stay private. See [policy and field semantics](activity-lifecycle.md).
+
+
 ## Scope and conventions
 
 This document describes the Firestore data model used by the application, based on the repository's Firestore security rules and client code. Firestore is a document database: collections contain documents, and relationships below are logical references rather than SQL-enforced foreign keys. Unless noted, document IDs are strings and timestamps use Firestore `Timestamp` values. Fields marked **conditional** are required only for the corresponding record type or workflow.
@@ -16,6 +19,12 @@ Firebase Authentication stores credentials separately; the `users` collection st
 | Class learning | `classJoinCodes` | `{code}` server-managed invitation and expiry state. |
 | Class learning | `classMembers` | `{uid}_{classId}` student membership. |
 | Class learning | `classAssignments` | `{assignmentId}` published class work. |
+| Class learning | `classReviewAssignments` | `{assignmentId}` private targeted review for one student, with a fixed first-publication anchor. See [teaching workflow](class-teaching-workflow.md). |
+| Class learning | `classReviewReflections` | `{reviewId}` current private student explanation backed by a fresh passing review attempt, plus teacher guidance. See [follow-up fields](classroom-learning-followups.md). |
+| Class learning | `classHelpRequests` | `{classId}_{userId}_{assignmentId}` current private student help request and teacher reply. See [help fields](class-help-workflow.md). |
+| Class directory (subcollection) | `classes/{classId}/classmates` | `{studentId}` optional classroom display name only. See [directory fields](classmates-workflow.md). |
+| Class learning | `classFeedback` | `{classId}_{userId}_{missionId}` latest student-visible teacher guidance and revision-aware read acknowledgement. |
+| Teacher support | `teacherSupportNotes` | `{classId}_{userId}_{missionId}` private follow-up note, planned/discussed status and status-time boundary. Not student-visible. |
 | Configuration | `learningSettings` | Singleton documents `progression` and `bayaniAI`; both are read-only to students. |
 | Learning catalog | `eras` | Historical eras. |
 | Learning catalog | `chapters` | Era or standalone chapters. |
@@ -76,12 +85,41 @@ erDiagram
         string assignmentId PK
         string classId FK
         string status
+        timestamp endedAt
+    }
+    CLASS_FEEDBACK {
+        string feedbackId PK
+        string classId FK
+        string userId FK
+        string teacherId FK
+        string missionId FK
+        string chapterId FK
+        string body
+        int revision
+        timestamp createdAt
+        timestamp updatedAt
+        timestamp readAt
+    }
+    TEACHER_SUPPORT_NOTE {
+        string noteId PK
+        string classId FK
+        string userId FK
+        string teacherId FK
+        string missionId FK
+        string chapterId FK
+        string status
+        string note
+        int revision
+        timestamp createdAt
+        timestamp updatedAt
+        timestamp statusAt
     }
     ERA {
         string eraId PK
         string title
         int order
         string status
+        timestamp endedAt
     }
     CHAPTER {
         string chapterId PK
@@ -226,6 +264,14 @@ erDiagram
     USER ||--o{ CLASS_MEMBER : joins
     CLASS ||--o{ CLASS_MEMBER : has
     CLASS ||--o{ CLASS_ASSIGNMENT : publishes
+    CLASS ||--o{ CLASS_FEEDBACK : contains
+    USER ||--o{ CLASS_FEEDBACK : receives
+    USER ||--o{ CLASS_FEEDBACK : sends_as_teacher
+    MISSION ||--o{ CLASS_FEEDBACK : discussed_in
+    CLASS ||--o{ TEACHER_SUPPORT_NOTE : scopes
+    USER ||--o{ TEACHER_SUPPORT_NOTE : records_as_teacher
+    USER ||--o{ TEACHER_SUPPORT_NOTE : receives_support
+    MISSION ||--o{ TEACHER_SUPPORT_NOTE : discussed_in
     CLASS_JOIN_CODE }o--|| CLASS : grants_access
 
     ERA ||--o{ CHAPTER : groups
@@ -289,9 +335,9 @@ erDiagram
 | | `learningStreak`, `lastStreakDate` | integer, string | Optional | Daily streak count and last date key (`YYYY-MM-DD`, UTC+8 basis in rules). |
 | | `lastRewardKind`, `lastRewardId` | string | Optional | Identifies the paired mission/daily reward transaction. |
 | `classes/{classId}` | `status`, `name`, `teacherName`, `description` | string | `status` required by access logic; display fields observed in class UI | Class must be active for membership/access. Student-side rules do not validate class creation or the complete class record. |
-| `classJoinCodes/{code}` | document ID (`code`), `classId`, `status`, `expiresAt` | string, string, string, timestamp | `classId`, `status` used by membership validation; expiry optional | Code maps a student to an active class; codes are server-managed and not writable by clients. |
+| `classJoinCodes/{code}` | document ID (`code`), `classId`, `teacherId`, `status`, `expiresAt`, `createdAt`, optional `className`, `teacherName` | strings and timestamps | Unique code document maps to one immutable `classId`; optional names are validated snapshots at creation | Owner teacher issues/revokes codes through rule-checked transactions. Students look up a code and confirm before joining its classroom. |
 | `classMembers/{uid_classId}` | `userId`, `classId`, `joinCode`, `status`, `joinedAt` | string, string, string, string, timestamp | All required | Student's active membership in a class. Composite ID `{userId}_{classId}`. |
-| `classAssignments/{assignmentId}` | `classId`, `status`, `missionId`, `chapterId`, `title`, `instructions`, `dueAt` | string, string, string, string, string, string, timestamp | `classId` and `status` required for member listing; remaining fields are observed UI fields | Published assignment for a class, usually pointing to a mission and chapter. Admin/teacher write schema is not specified in student rules. |
+| `classAssignments/{assignmentId}` | `classId`, `status`, `missionId`, `chapterId`, `title`, `instructions`, `dueAt`, `endedAt` | string, string, string, string, string, string, timestamp, timestamp | `dueAt` is optional or null; an edited date is the end of the Philippine calendar day. Other publisher fields follow teacher publication validation. | Class mission assignment. Owning approved teachers manage publication and optional deadlines. Joined students read published and ended items; ended items are read-only history. Deadline changes do not lock lessons or change progress/rewards. |
 | `learningSettings/progression` | `xpPerLevel`, `version`, `reviewAfterDays` | integer | First two required by level policy; review interval is optional policy configuration | Controls XP-to-level calculation and, when configured, the return-to-learn review interval. |
 | `learningSettings/bayaniAI` | `enabled`, `model`, `appCheckSiteKey`, `maxMessageCharacters`, `welcomeMessage`, `systemInstruction` | boolean, string, string, integer, string, string | Configuration fields observed in setup code | Read-only controls for Bayani AI availability, provider model, client configuration, limits, greeting, and instruction text. Secret/provider credentials are not stored in these fields. |
 | `avatars/{avatarId}` | `name`, `status`, `kind`, `icon`, `order`, `isDefault` | string, string, string, string, number, boolean | `name`, `status`, `kind` required by catalog normalization; `icon` required when `kind=emoji` | Read-only avatar catalog record. `kind` is `initials` or `emoji`; active items can be selected. |
@@ -545,3 +591,11 @@ For the final submission, the ERD can be exported from the Mermaid block to SVG 
 ## Source and verification notes
 
 Primary schema source: `firestore.rules`. Client usage reviewed in the JavaScript modules under `js/`, including reward submission, quiz, chapter challenge, story, practice, profile, class, and review flows. This is a repository-derived logical schema rather than a live database export. Before final paper submission, compare optional catalog fields and teacher/admin-managed class fields with the deployed Firestore documents and your institution's required notation/template.
+
+## Review publication coordination addition
+
+Logical relationship: CLASS (1) to CLASS REVIEW PUBLICATION STATE (0..1), identified by the same classId. Storage is `classReviewPublicationState/{classId}` with classId (string FK), revision (positive integer, starts at 1 and increases by 1), and updatedAt (server timestamp). Updated teacher clients compare/advance the revision atomically with review writes to reject stale duplicate checks. Only the owning qualified teacher can get it; updates require an active class. Students cannot access it; list/delete are denied. This locally implemented coordination entity requires matching rules/frontend publication. It is not a universal uniqueness constraint or a student assessment record.
+
+## Practice hint-request metadata addition - 6 November 2026
+
+Existing studentPracticeProgress questionResults rows gain optional hintRequested (boolean/null); studentLearningDrafts state gains the same attribute for the current practice question and retains it in completed state.results rows. True means an in-app hint was requested before correct completion, false means no request recorded in a newly tracked question, and absent/null remains unknown. It does not establish hint delivery or independence. No ERD entity/relationship changes; no new reward or grade. Current rules do not individually enforce the nested flag. Local implementation awaiting publication; see docs/practice-hint-evidence.md.

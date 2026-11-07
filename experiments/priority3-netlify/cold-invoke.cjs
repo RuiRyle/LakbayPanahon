@@ -1,0 +1,4 @@
+// Child-process harness only: fixture trust is never packaged into the adapter.
+const fs=require('fs');const started=performance.now();const input=JSON.parse(fs.readFileSync(0,'utf8'));const {handler}=require('./functions/assessment.cjs');const db=require('firebase-admin/firestore').getFirestore(),meter=require('./meter.cjs').installMeter(db);
+require('firebase-admin/app-check').getAppCheck().appCheckTokenVerifier.signatureVerifier.keyFetcher.fetchPublicKeys=async()=>({'local-proof':input.publicKey});
+handler(input.event,{}).then(response=>console.log('PROOF_RESULT '+JSON.stringify({response,initializationAndCallMs:performance.now()-started,operations:meter.total()}))).catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{await db.terminate();for(const a of require('firebase-admin/app').getApps())await require('firebase-admin/app').deleteApp(a);});

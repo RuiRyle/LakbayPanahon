@@ -1,0 +1,11 @@
+.admin-workspace { margin: 0; }
+.admin-workspace .admin-account-list { display: grid; gap: 10px; margin: 20px 0; }
+.admin-workspace .admin-account-list button { text-align: left; overflow-wrap: anywhere; }
+.admin-workspace .admin-account-list small { display: block; margin-top: 5px; font-weight: 400; }
+.admin-workspace .admin-account-list button[aria-pressed="true"] { background: #e4c57e; color: #172b3c; }
+.admin-workspace .admin-verification { display: flex; align-items: start; gap: 12px; font-weight: 400; padding: 16px; border: 1px solid #bfa96f; border-radius: 10px; }
+.admin-workspace .admin-verification input { width: 20px; height: 20px; flex-shrink: 0; }
+.admin-workspace .student-auth-recovery { visibility: visible; width: min(480px,calc(100% - 32px)); margin: auto; padding: 28px; border: 1px solid #bfa96f; border-radius: 18px; color: #f4ead4; background: #19364a; font: inherit; }
+.admin-workspace .student-auth-recovery::backdrop { background: #10243fe6; }
+.admin-workspace .student-auth-recovery a { display: inline-block; padding: 12px; color: inherit; }
+.admin-workspace #accountEmail { overflow-wrap: anywhere; }

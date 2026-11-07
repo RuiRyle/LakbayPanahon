@@ -1,0 +1,26 @@
+{
+  "mode": "offline-reviewed-candidate-not-published",
+  "preparedAt": "2026-10-31T13:49:32.914Z",
+  "baselineSourceHash": "7f8a2078d8f3c5856bb911f61b21d2d5e57721c888b3fca3951902ed6732acdf",
+  "baselineRuleset": "projects/lakbaypanahon-1797e/rulesets/8b28a8b6-2ce6-41f0-a1d3-dc83e768833f",
+  "sourceHash": "b87347f96c53a0319f349f7ec6d1ef1081e1138a34820b67980abcdde95883a3",
+  "outsideScopeMatches": true,
+  "changedScopes": [
+    "match /classJoinCodes/{code}",
+    "match /classes/{classId}",
+    "match /classMembers/{membershipId}",
+    "match /classAssignments/{assignmentId}",
+    "match /classAnnouncements/{announcementId}",
+    "match /users/{userId}",
+    "match /{catalog}/{contentId}",
+    "match /studentProgress/{progressId}",
+    "match /studentQuizAttempts/{attemptId}",
+    "function activeTeacher",
+    "function ownsClass",
+    "function activeOwnedMember",
+    "function teacherCanReport",
+    "function validPublication",
+    "match /teacherStudentLinks/{linkId}"
+  ],
+  "localChecks": 57
+}

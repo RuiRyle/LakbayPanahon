@@ -1,0 +1,142 @@
+{
+  "currency": "USD",
+  "period": "20-school-day month",
+  "assumptions": {
+    "newMissionQuizzesPerStudent": 20,
+    "extraMissionAttempts": 5,
+    "chapterChallenges": 4,
+    "dailyChallenges": 10,
+    "resumeCalls": 20,
+    "requestsPerMissionAttempt": 13,
+    "requestsPerChapterOrDaily": 3,
+    "transportAllowance": 0.1,
+    "requestsPerStudent": 426,
+    "firestoreReadsPerStudent": 36000,
+    "firestoreWritesPerStudent": 1100,
+    "recaptchaPerStudent": 40,
+    "allocatedVcpu": 1,
+    "memoryGiB": 0.25,
+    "activeSecondsPerRequest": [
+      0.5,
+      2
+    ],
+    "builds": 8,
+    "minutesPerBuild": 5,
+    "buildMinutes": 40,
+    "artifactStorageGiB": 2,
+    "otherSmallInfrastructureReserve": [
+      1,
+      5
+    ]
+  },
+  "rates": {
+    "cpuPerVcpuSecond": 0.0000336,
+    "memoryPerGiBSecond": 0.0000035,
+    "requestsPerMillion": 0.4,
+    "readsPer100k": 0.0369,
+    "writesPer100k": 0.1107,
+    "buildPerMinute": [
+      0.006,
+      0.0156
+    ],
+    "artifactPerGiBMonth": 0.1
+  },
+  "scenarios": [
+    {
+      "students": 30,
+      "newMissionQuizzes": 600,
+      "missionAttempts": 750,
+      "chapterChallenges": 120,
+      "dailyChallenges": 300,
+      "functionsRequests": 12780,
+      "firestoreReads": 1080000,
+      "firestoreWrites": 33000,
+      "recaptchaAssessments": 1200,
+      "compute": [
+        0.22029525,
+        0.881181
+      ],
+      "requestCost": 0.005112,
+      "readCost": 0.39852000000000004,
+      "writeCost": 0.036531,
+      "grossCore": [
+        0.66045825,
+        1.321344
+      ],
+      "recaptchaAssumingNoOtherOrganizationTraffic": 0,
+      "buildBeforeFreeAllowance": [
+        0.24,
+        0.624
+      ],
+      "artifactIfFreeHalfGiBAvailable": 0.15000000000000002,
+      "planningEnvelopeBeforeCoreCredits": [
+        2.05045825,
+        7.095344
+      ]
+    },
+    {
+      "students": 100,
+      "newMissionQuizzes": 2000,
+      "missionAttempts": 2500,
+      "chapterChallenges": 400,
+      "dailyChallenges": 1000,
+      "functionsRequests": 42600,
+      "firestoreReads": 3600000,
+      "firestoreWrites": 110000,
+      "recaptchaAssessments": 4000,
+      "compute": [
+        0.7343175,
+        2.93727
+      ],
+      "requestCost": 0.01704,
+      "readCost": 1.3284,
+      "writeCost": 0.12177000000000002,
+      "grossCore": [
+        2.2015275,
+        4.4044799999999995
+      ],
+      "recaptchaAssumingNoOtherOrganizationTraffic": 0,
+      "buildBeforeFreeAllowance": [
+        0.24,
+        0.624
+      ],
+      "artifactIfFreeHalfGiBAvailable": 0.15000000000000002,
+      "planningEnvelopeBeforeCoreCredits": [
+        3.5915275,
+        10.17848
+      ]
+    },
+    {
+      "students": 300,
+      "newMissionQuizzes": 6000,
+      "missionAttempts": 7500,
+      "chapterChallenges": 1200,
+      "dailyChallenges": 3000,
+      "functionsRequests": 127800,
+      "firestoreReads": 10800000,
+      "firestoreWrites": 330000,
+      "recaptchaAssessments": 12000,
+      "compute": [
+        2.2029525,
+        8.81181
+      ],
+      "requestCost": 0.05112,
+      "readCost": 3.9852000000000003,
+      "writeCost": 0.36531,
+      "grossCore": [
+        6.6045825,
+        13.213439999999999
+      ],
+      "recaptchaAssumingNoOtherOrganizationTraffic": 8,
+      "buildBeforeFreeAllowance": [
+        0.24,
+        0.624
+      ],
+      "artifactIfFreeHalfGiBAvailable": 0.15000000000000002,
+      "planningEnvelopeBeforeCoreCredits": [
+        15.994582500000002,
+        26.98744
+      ]
+    }
+  ]
+}

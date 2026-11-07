@@ -1,0 +1,59 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-05T18:53:37.834Z",
+  "mode": "actual modules and browser, mocked Firestore; no live records changed",
+  "results": [
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "classroom order is overview, invitations, then settings",
+        "editing and archiving are grouped separately from teaching tools",
+        "overview avoids repeating the classroom page title",
+        "three clear teaching shortcuts remain available",
+        "joined-student summary uses actual membership",
+        "active classroom displays its own valid invitation code",
+        "invitation names the selected classroom",
+        "secondary settings start collapsed",
+        "cancel restores saved class details and closes editing",
+        "archive control explains its effect on student progress",
+        "active classroom fits 390px",
+        "archived classroom hides invitations and retains restoration",
+        "archived classroom fits 390px"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 1440,
+      "checks": [
+        "classroom order is overview, invitations, then settings",
+        "editing and archiving are grouped separately from teaching tools",
+        "overview avoids repeating the classroom page title",
+        "three clear teaching shortcuts remain available",
+        "joined-student summary uses actual membership",
+        "active classroom displays its own valid invitation code",
+        "invitation names the selected classroom",
+        "secondary settings start collapsed",
+        "cancel restores saved class details and closes editing",
+        "archive control explains its effect on student progress",
+        "active classroom fits 1440px",
+        "archived classroom hides invitations and retains restoration",
+        "archived classroom fits 1440px"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "js/teacher-workspace.js",
+      "sha256": "a62579ad9f26b83f5bf2037c745cfcfa06bd97659138c0231634660f833d8eb8"
+    },
+    {
+      "file": "js/teacher-class-client.js",
+      "sha256": "c5c408c90118a287519358e50aa039c5dc09c24dca9a35d15f678695add6a4f1"
+    },
+    {
+      "file": "css/teacher-workspace.css",
+      "sha256": "38642cdc968432992268434b2563686b3259d0dc509bacd1e3e4ee6256f5b1a2"
+    }
+  ]
+}

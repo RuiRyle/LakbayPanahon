@@ -1,0 +1,43 @@
+{
+  "mode": "real-sdk-staged-local-security-headers-live-firebase",
+  "startedAt": "2026-10-31T15:00:52.146Z",
+  "steps": [
+    {
+      "name": "Staged teacher registration confirms a real pending profile under CSP",
+      "status": "pass"
+    },
+    {
+      "name": "Normal sign-in explains pending teacher approval without opening classroom tools",
+      "status": "pass"
+    }
+  ],
+  "cleanup": "complete",
+  "limitations": [
+    "Local HTTP with staged security headers; not deployed HTTPS hosting.",
+    "Only temporary identities are modified; no human usability or email delivery acceptance."
+  ],
+  "package": "build\\student-web-lWuxmY",
+  "status": "fail",
+  "error": "EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='\".\n\n    at eval (<anonymous>)\n    at <anonymous>:1:102\n    at <anonymous>:1:149",
+  "removedTemporaryAccounts": 3,
+  "removedOwnedDocuments": 3,
+  "finishedAt": "2026-10-31T15:01:30.078Z",
+  "sources": [
+    {
+      "file": "js/auth-ui.js",
+      "sha256": "26a3245a79e30a8b153cb8889fc45077f52b044c6ad4c0e42b54fffa21100d32"
+    },
+    {
+      "file": "pages/teacher-register.html",
+      "sha256": "cfe750992d4620cd2bd0237b891924fe88534698ae888040b7ca95c704b12f69"
+    },
+    {
+      "file": "pages/login.html",
+      "sha256": "62860288d86c98fd07e1d177e5394bdc2e203ad69757cdbd9f07ddd2d59c398c"
+    },
+    {
+      "file": "js/auth-guard.js",
+      "sha256": "a674132870a6eee375cc69c14c5897fa6c4ee3c95c4ef421a3462ddf7003e609"
+    }
+  ]
+}

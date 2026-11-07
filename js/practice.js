@@ -4,7 +4,7 @@ import { mountLearningNavigation } from "./learning-navigation.js";
 import { missionReviewTopics, missionTopicStates, requirePracticePolicy } from "./mission-review.js";
 import { requestAiAssistance, aiAssistanceAvailable } from "./ai-assistance-client.js";
 import { requireLearningAccess, LearningAccessError } from "./learning-access.js";
-import { reviewTopicsFromHistory, renderReviewTopics } from "./practice-review.js";
+import { reviewTopicsFromHistory, renderReviewTopics,practiceMisconceptionSupport,renderPracticeMisconceptionClue,summarizePracticeHints } from "./practice-review.js";
 
 import { db, auth } from "./firebase-config.js";
 
@@ -12,7 +12,7 @@ import {
     collection,
     getDocs,
     doc,
-    getDoc,
+    getDocFromServer,
     setDoc,
     serverTimestamp,
     query,
@@ -116,6 +116,7 @@ let selectedAnswer = null;
 let questionMastered = false;
 let currentAttemptCount = 0;
 let lastIncorrectAnswer = null;
+let currentHintRequested=false;
 
 let adaptiveMode = false;
 let targetDifficulty = null;
@@ -335,6 +336,13 @@ function renderPracticeNextSteps() {
     if (topics.length) {
         const cards = document.createElement("div");cards.className="practice-review-grid";
         renderReviewTopics(cards,topics,new Map([[missionId,chapterId]]),"");container.append(cards);
+        for(const topic of topics.filter(t=>t.evidenceAvailable)){
+            const details=document.createElement('details'),summary=document.createElement('summary'),explanation=document.createElement('p');
+            details.className='practice-goal-explanation';summary.textContent='Why is '+topic.label+' still recommended?';
+            explanation.textContent='The practice goal is '+topic.requiredQuestions+' different questions answered correctly on the first try across '+topic.requiredSessions+' successful practice rounds, including a '+topic.requiredDifficulty+' question. Since the latest mistake: '+topic.distinctCorrect+' different questions and '+topic.cleanSessions+' successful rounds. You can retry the mission quiz at any time; this goal does not block it.';
+            if(topic.evidenceUncertain)explanation.textContent+=' Some saved records have missing, conflicting, or uncertain dates, so we cannot safely clear this recommendation yet. This is a record check, not a judgment of your ability.';
+            details.append(summary,explanation);container.append(details);
+        }
     }
 }
 
@@ -436,7 +444,7 @@ function renderGuidedPracticeIntro(mission,resume) {
     else add('p','Open the lesson for a refresher. You can return here when you are ready to practise.');
     add('p','Practice adjusts difficulty as you answer and explains your mistakes. It does not award mission XP or complete the mission.');
     const actions=document.createElement('div');actions.className='guided-practice-actions';
-    const lesson=document.createElement('a');lesson.textContent='Review Lesson';lesson.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId});lesson.className='text-button';
+    const lesson=document.createElement('a');lesson.textContent='Review Lesson';lesson.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,...(requestedTopic?{reviewTopic:requestedTopic}:{})});lesson.className='text-button';
     const begin=document.createElement('button');begin.type='button';begin.className='begin-mission-button';begin.textContent='Start Targeted Practice';
     begin.addEventListener('click',()=>{intro.remove();practiceQuestionCard.hidden=false;practiceQuestion.tabIndex=-1;practiceQuestion.focus({preventScroll:true});});
     actions.append(lesson,begin);intro.append(actions);practiceQuestionCard.hidden=true;practiceContent.prepend(intro);title.focus({preventScroll:true});
@@ -583,6 +591,7 @@ async function loadPractice() {
 
         displayPracticeQuestion();
         if (resume) {
+            currentHintRequested=typeof savedDraft.hintRequested==='boolean'?savedDraft.hintRequested:null;
             currentAttemptCount = Math.max(0,Number(savedDraft.attempts)||0);
             lastIncorrectAnswer = ["A","B","C","D"].includes(savedDraft.lastIncorrectAnswer) ? savedDraft.lastIncorrectAnswer : null;
             if (currentAttemptCount > 0 && lastIncorrectAnswer && savedDraft.mastered !== true) handleIncorrectAnswer(currentQuestion,lastIncorrectAnswer);
@@ -640,6 +649,8 @@ function displayPracticeQuestion() {
     questionMastered = false;
     currentAttemptCount = 0;
     lastIncorrectAnswer = null;
+    currentHintRequested=false;
+    practiceFeedback.querySelector('.practice-misconception-coaching')?.remove();
 
     practiceQuestion.textContent =
         question.question || "Practice Question";
@@ -824,7 +835,8 @@ function handleCorrectAnswer(
 
         firstTryCorrect,
 
-        attempts: currentAttemptCount
+        attempts: currentAttemptCount,
+        hintRequested:currentHintRequested
     });
 
     updateAdaptiveDifficulty(firstTryCorrect);
@@ -833,6 +845,7 @@ function handleCorrectAnswer(
 }
 
 function renderCorrectPracticeFeedback(question,correctAnswer) {
+    practiceFeedback.querySelector('.practice-misconception-coaching')?.remove();
     practiceOptions
         .querySelectorAll(".practice-option")
         .forEach((button) => {
@@ -885,6 +898,11 @@ function renderCorrectPracticeFeedback(question,correctAnswer) {
         isFinalQuestion
             ? "Finish Practice →"
             : "Next Practice Question →";
+    if(['prologue-mission1','chapter3-mission1'].includes(missionId)&&!isFinalQuestion&&requestedTopic===question.topic&&remainingQuestions.some(item=>item.id!==question.id&&item.topic===question.topic)){
+        practiceExplanation.textContent+=' Next, use this idea in a different practice question. A first-try answer and an answer after help remain separate in your saved practice result.';
+        checkAnswerButton.textContent='Try another example';
+    }
+
 }
 
 /* ==========================================
@@ -935,6 +953,8 @@ function handleIncorrectAnswer(
         .find(value => typeof value === "string" && value.trim());
     practiceExplanation.textContent = hint?.trim() || "Revisit the lesson, then compare the remaining choices. You can try again.";
 
+    const support=['prologue-mission1','chapter3-mission1'].includes(missionId)?practiceMisconceptionSupport(question,chosenAnswer,missionId):null;
+    if(support){practiceExplanation.textContent='Why this choice needs another look: '+support.reason;renderPracticeMisconceptionClue(practiceFeedback,support,chapterId,missionId);}
     selectedAnswer = null;
 
     practiceOptions
@@ -1027,12 +1047,18 @@ async function savePracticeSession() {
         // succeeded before its response was lost, so confirm that record.
         let existingSession;
         try {
-            existingSession = await getDoc(savingReference);
+            existingSession = await getDocFromServer(savingReference);
         } catch {
             throw error;
         }
-        if (!existingSession.exists() ||
-            existingSession.data().userId !== savingUser.uid) throw error;
+        if (!existingSession.exists() || existingSession.metadata?.fromCache ||
+            existingSession.metadata?.hasPendingWrites) throw error;
+        const confirmed = existingSession.data();
+        // Ownership alone cannot confirm this submission. A restored tab may
+        // hold an older version of the same append-only session document.
+        if (confirmed.userId !== savingUser.uid || Object.keys(sessionData)
+            .filter(key => key !== 'completedAt')
+            .some(key => stableDraftVersion(confirmed[key]) !== stableDraftVersion(sessionData[key]))) throw error;
     }
 
     console.log(
@@ -1077,6 +1103,7 @@ async function finishPractice() {
         const title=document.createElement('h3');title.textContent='Your practice discoveries';summary.append(title);
         const accuracy = document.createElement("p");accuracy.className='practice-session-score';
         accuracy.textContent = practiceResults.filter(result=>result.firstTryCorrect).length + " of " + practiceResults.length + " answered correctly on the first try. Practice does not complete the mission; retry the main quiz when ready.";
+        const hintCounts=summarizePracticeHints(practiceResults);accuracy.textContent+=' In-app hint requests: '+hintCounts.requested+'; no recorded in-app request: '+hintCounts.notRequested+'; unknown: '+hintCounts.unknown+'. A first-try answer does not prove unaided understanding. A request does not confirm a hint was delivered.';
         summary.append(accuracy);
         const topicCards=document.createElement('div');topicCards.className='practice-session-topics';summary.append(topicCards);
         for (const topic of new Set(practiceResults.map(result=>result.topic).filter(Boolean))) {
@@ -1155,11 +1182,11 @@ retryMissionQuizButton.addEventListener(
     () => {
 
         window.location.href =
-            `quiz.html?chapter=${encodeURIComponent(
+            learningNavigation.carry(`quiz.html?chapter=${encodeURIComponent(
                 chapterId
             )}&mission=${encodeURIComponent(
                 missionId
-            )}`;
+            )}`);
     }
 );
 
@@ -1250,6 +1277,8 @@ practiceAiHintButton?.addEventListener(
             return;
         }
 
+        if(questionMastered)return;
+        currentHintRequested=true;savePracticeDraft();
         const serial = ++practiceAiRequestSerial;
         const questionId = currentQuestion.id;
 
@@ -1282,17 +1311,17 @@ practiceAiHintButton?.addEventListener(
 const practiceRoute = new URLSearchParams({chapter: chapterId || "", mission: missionId || ""});
 const practiceLessonLink = document.getElementById("practiceLessonLink");
 const practiceRetryLink = document.getElementById("practiceRetryLink");
-if (practiceLessonLink) practiceLessonLink.href = 'story.html?' + practiceRoute;
+if (practiceLessonLink) practiceLessonLink.href = 'story.html?' + new URLSearchParams({chapter:chapterId||'',mission:missionId||'',...(requestedTopic?{reviewTopic:requestedTopic}:{})});
 if (practiceRetryLink) practiceRetryLink.href = 'quiz.html?' + practiceRoute;
 
 retryPracticeLoadButton?.addEventListener("click", () => loadPractice());
 
-mountLearningNavigation(document.querySelector(".practice-page"), "Adaptive Practice");
+const learningNavigation=mountLearningNavigation(document.querySelector(".practice-page"), "Adaptive Practice")||{carry:url=>url};
 
 function savePracticeDraft() {
     if (!practiceDraftReady || !currentQuestion || practiceFinished) return;
     practiceDraft?.save({version:practiceDraftVersion,topic:requestedTopic,sessionId:practiceSessionReference.id,
         pool:practiceQuestions.map(q=>q.id),remaining:remainingQuestions.map(q=>q.id),questionId:currentQuestion.id,
-        index:currentPracticeIndex,answer:selectedAnswer,attempts:currentAttemptCount,mastered:questionMastered,lastIncorrectAnswer,
+        index:currentPracticeIndex,answer:selectedAnswer,attempts:currentAttemptCount,mastered:questionMastered,lastIncorrectAnswer,hintRequested:currentHintRequested,
         targetDifficulty,results:practiceResults.map(result=>({...result}))});
 }

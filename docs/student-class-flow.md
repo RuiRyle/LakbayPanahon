@@ -1,5 +1,11 @@
 # Student My Class
 
+**Current local refinements (5 November 2026):** [Class goals and private reviews](class-teaching-workflow.md), [focused review and explanations](classroom-learning-followups.md), [private help](class-help-workflow.md), and [classmates](classmates-workflow.md) describe the revised workflow. The latest additions are verified locally and require separate online rules/site publication; earlier publication notes below do not certify these new collections. Class goals count prior mission completion, while private reviews require fresh passing evidence.
+
+**Teacher integration:** The [teacher workspace](teacher-workflow.md) now implements the class-management and publishing UI. Its reviewed permission rules are published and verified. The manual setup instructions below remain a trusted-administrator fallback. No demonstration class or automatic membership is introduced.
+
+New teacher-managed classes store `teacherId`, `currentJoinCode`, `createdAt` and `updatedAt`. A join must use the class's current code when that field exists. Clearing it revokes invitations without deleting membership or progress. Legacy classes without that field retain their previous invitation lookup contract.
+
 Students can join a class by code, view published mission assignments and due dates, open eligible lessons, and leave a class without losing learning progress. Independent learning remains available. Completion comes from the student's existing saved mission progress, including missions completed before joining. There is no separate submission or grade record yet.
 
 Assignments respect the existing mission and chapter prerequisites. Assigning a locked mission does not unlock it. Due dates are informational and displayed in Philippine time; passing after the deadline still completes the mission. Assignment completion does not award additional XP.

@@ -1,0 +1,7 @@
+# Teacher editing states and confirmations - November 6, 2026
+
+Added matching unsaved-change indicators to announcement and activity planners. Closing an unfinished planner shows a visible board reminder and the existing Resume action. Explicit Discard changes asks before resetting unsaved work, leaves saved records untouched, and restores focus. An additional Save draft action appears when Publish is selected and uses normal form validation and the existing save path. Confirmation notices beside the saved board name the receiving classroom and explain draft/private-review/class publication visibility. Changing classroom clears old confirmations.
+
+Task failures also appear inside an open planner. Failed requests preserve the fields and do not show a success notice; changing input clears that error state. These indicators use existing form baselines and do not add autosaving, polling, database reads or permissions.
+
+Validation: 66 announcement and 54 activity mocked browser checks passed, including failed-save preservation, unsaved reminders, discard cancellation, actual draft/publication confirmation, and the privacy of the Save draft shortcut. Classroom details regression passed 26 checks. Clean build 21viKx has 32 pages/571 files and zero missing/rejected references; final confirmation-clear adjustment copied into the existing localhost preview. No live records changed or hosting deployment.

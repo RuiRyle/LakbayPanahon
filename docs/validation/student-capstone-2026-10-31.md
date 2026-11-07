@@ -1,0 +1,13 @@
+# Capstone student verification — 31 October 2026
+
+- Real Firebase flow: [17 passing steps](student-capstone-flow-live-2026-10-31.json), first prologue mission, failed quiz, mapped review, practice, passing retry, saved next destination, actual reload and network disconnect/reconnect. Temporary Auth account and nine owned documents removed. This does not establish all-mission or full-chapter acceptance.
+- Initial development runs stopped at stale test assumptions about answer markers, asynchronous saving, filtered review titles and adaptive question freshness. Those accounts were also cleaned. The final harness follows the current interface and verifies actual saved question identities. One repeated easy item was valid because its topic/difficulty had no unused equivalent. The UI now explains possible repetition.
+- Visual scope: exact 390px/1440px recap/result checks pass without horizontal overflow. Mobile result and desktop recap screenshots were visually inspected. Captures remain in the test's temporary directory; this is not a human usability study.
+- Final combined local audit: 296/296 unit checks in 45 suites and 12/13 mocked browser fixtures passed. Settings hit the runner timeout. A direct `node tests/student-settings-browser.cjs` rerun exited 0 with all seven scenarios passing. The combined JSON deliberately retains the timeout. Separate native keyboard/reload and shell/WebAudio checks also passed; physical listening remains unverified.
+- Content inventory: 66 missions, 388 scenes, 330 topics; zero structural topic gaps, missing images or scene-interaction issues. Structural completeness does not prove factual adequacy or comprehension.
+- Package: `build/student-web-Xn5baF/public`, 24 pages, 510 hash-verified files, zero missing/rejected references. Playground explicitly included in approved entries. Staged CSP blocking/control, 404 and private-file exclusion browser checks pass. Two local-server tests pass, including audio ranges and repository-root rejection. The first ordinary Node test invocation encountered sandbox child-process EPERM; rerunning with `--test-isolation=none` passed.
+- No website deployment, paid voice generation, AI activation or grading-backend activation. Teacher/history review, supervised learner feedback, remaining recordings and optional AI acceptance stay open.
+
+Run instructions and current system scope: [student web system runbook](../student-system-runbook.md).
+
+Scope correction: this capstone is a complete web system for a potential buyer, not a demonstration-only deliverable. Earlier demo wording was an incorrect interpretation. Recorded test evidence retains its bounded scope; public-release requirements remain open.

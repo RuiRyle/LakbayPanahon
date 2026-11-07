@@ -8,7 +8,20 @@ function restorePageAppearance() {
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',restorePageAppearance,{once:true});
 else restorePageAppearance();
 window.addEventListener('pageshow',restorePageAppearance);
-const PAGE_EXIT_DURATION=640;
+// Login stays visible while the remote authentication module downloads.
+// Do not allow a native form submission before its secure handler is ready.
+function prepareLoginStartup(){
+    const form=document.getElementById('loginForm')||document.getElementById('teacherRegisterForm');if(!form)return;
+    form.addEventListener('submit',event=>{if(form.dataset.authReady!=='true')event.preventDefault();});
+    window.setTimeout(()=>{
+        if(form.dataset.authReady==='true')return;
+        const message=document.getElementById('loginMessage')||document.getElementById('teacherRegisterMessage');if(!message)return;
+        message.textContent='Secure sign-in is taking longer than expected. Check your internet connection and reload this page. Your account details have not been sent.';
+        message.classList.add('error');
+    },10000);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',prepareLoginStartup,{once:true});
+else prepareLoginStartup();
 let pageNavigationPending=false;
 function shouldReduceMotion(){
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches||document.body.classList.contains('lakbay-reduce-motion');
@@ -53,14 +66,14 @@ document.addEventListener('click',event=>{
     try{destination=new URL(link.href,window.location.href);}catch{return;}
     if(!['http:','https:'].includes(destination.protocol)||destination.origin!==window.location.origin)return;
     if(destination.pathname===window.location.pathname&&destination.search===window.location.search)return;
-
     event.preventDefault();
     pageNavigationPending=true;
     document.body.classList.remove('page-visible');
     document.body.classList.add('page-leaving');
     showRouteTransition();
-    window.setTimeout(()=>{
-        window.location.assign(destination.href);
+    // Briefly show the requested transition before replacing the document.
+    // Reduced-motion navigation bypasses this handler above.
+    window.setTimeout(()=>window.location.assign(destination.href),220);
         // If a beforeunload prompt is canceled, restore the current page.
         window.setTimeout(()=>{
             pageNavigationPending=false;
@@ -68,7 +81,6 @@ document.addEventListener('click',event=>{
             document.querySelectorAll('.route-transition-overlay').forEach(overlay=>overlay.remove());
             document.body.classList.add('page-visible');
         },900);
-    },PAGE_EXIT_DURATION);
 });
 
 // Shared, accessible menu behavior across every student route.
@@ -169,6 +181,7 @@ document.body.classList.toggle('lakbay-reduce-motion',uiReducedMotionEnabled);
 document.body.classList.toggle('lakbay-high-contrast',uiHighContrastEnabled);
 function applyStudentReadingSize(){
     if(document.body.dataset.role==='student')document.documentElement.dataset.studentTextSize=uiReadingSize;
+    if(document.body.dataset.role==='teacher')document.documentElement.dataset.teacherTextSize=uiReadingSize;
 }
 applyStudentReadingSize();
 function getSharedAudioHost(){
@@ -200,6 +213,8 @@ function playUiTone(context,frequency,endFrequency,duration,volume,type='sine',d
     oscillator.stop(start+duration+.012);
 }
 function playUiSound(kind,force=false){
+    if(window.LakbayLessonAudio?.narrating)return;
+    if(window.LakbayLessonAudio&&kind==='correct')return;
     if((!uiSoundsEnabled&&!force)||uiSoundVolume<=0)return;
     const sharedHost=getSharedAudioHost();
     if(sharedHost){sharedHost.playSound(kind,uiSoundVolume,force);return;}
@@ -279,6 +294,7 @@ let nextMusicStep=0;
 let musicEpoch=0;
 let backgroundMusicFocusLevel=1;
 let transientFocusActive=false;
+let narrationFocusActive=false;
 function scheduleMusicVoice(context,destination,frequency,start,duration,peak,options={}){
     const oscillator=context.createOscillator();
     const filter=context.createBiquadFilter();
@@ -400,6 +416,7 @@ function getBackgroundMusicGainLevel(){
     return Math.max(.0001,Math.min(1.4,backgroundMusicVolume*1.4*backgroundMusicFocusLevel));
 }
 function getPageAudioFocusMode(){
+    if(narrationFocusActive)return 'focus';
     if(!uiFocusAudioEnabled)return 'normal';
     if(transientFocusActive)return 'focus';
     const page=window.location.pathname.split('/').pop()?.toLowerCase();
@@ -431,6 +448,7 @@ if(document.body.dataset.role==='student'){
         transientFocusActive=Boolean(event.detail?.active);
         applyPageAudioFocus();
     });
+    document.addEventListener('lakbay:narration-state',event=>{narrationFocusActive=Boolean(event.detail?.active);applyPageAudioFocus();});
 }
 function getMusicEpoch(){
     try{
@@ -529,14 +547,28 @@ if(document.body.dataset.role==='student'){
     document.addEventListener('pointerdown',handleStudentAudioUnlock,true);
     document.addEventListener('keydown',handleStudentAudioUnlock,true);
     let studentPageWasAuthenticated=document.body.classList.contains('authenticated');
+    let studentAudioPageLeaving=false;
     const musicAuthObserver=new MutationObserver(()=>{
         const authenticated=document.body.classList.contains('authenticated');
         if(authenticated){studentPageWasAuthenticated=true;startBackgroundMusic();}
-        else if(studentPageWasAuthenticated){studentPageWasAuthenticated=false;stopBackgroundMusic();}
+        else if(studentPageWasAuthenticated&&!studentAudioPageLeaving){
+            // Finish dispatching pagehide before interpreting a removed class.
+            // Browsers may deliver mutation callbacks between event listeners.
+            window.setTimeout(()=>{
+                if(!studentAudioPageLeaving&&!document.body.classList.contains('authenticated')){
+                    studentPageWasAuthenticated=false;stopBackgroundMusic();
+                }
+            },0);
+        }
     });
     musicAuthObserver.observe(document.body,{attributes:true,attributeFilter:['class']});
-    window.addEventListener('pagehide',()=>stopBackgroundMusic(true));
-    window.addEventListener('pageshow',startBackgroundMusic);
+    window.addEventListener('pagehide',()=>{
+        // The auth guard locks a departing document. That is not a sign-out:
+        // its MutationObserver runs after pagehide and must preserve shell audio.
+        studentAudioPageLeaving=true;
+        stopBackgroundMusic(true);
+    },true);
+    window.addEventListener('pageshow',()=>{studentAudioPageLeaving=false;startBackgroundMusic();});
 }
 function updatePreferenceSwitch(button,enabled){
     button.setAttribute('aria-checked',String(enabled));
@@ -613,8 +645,8 @@ function resetStudentPreferences(){
     }else startBackgroundMusic();
 }
 document.addEventListener('click',event=>{
-    if(document.body.dataset.role!=='student')return;
     const target=event.target instanceof Element?event.target:null;
+    if(document.body.dataset.role!=='student'&&!(document.body.dataset.role==='teacher'&&target?.closest('[data-preference-switch=motion],[data-preference-switch=contrast]')))return;
     if(target?.closest('[data-preferences-reset]')){
         resetStudentPreferences();
         return;
@@ -666,11 +698,12 @@ document.addEventListener('click',event=>{
         if(uiSoundsEnabled)playUiSound('toggle');
         return;
     }
+    if(window.LakbayLessonAudio&&target?.closest('.story-page,.lesson-image-dialog'))return;
     if(uiSoundsEnabled&&target?.closest('#beginChallengeButton'))return;
     if(uiSoundsEnabled&&target?.closest('a[href],button:not(:disabled),[role="button"]:not([aria-disabled="true"]),summary,input[type="checkbox"]:not(:disabled),input[type="radio"]:not(:disabled)'))playUiSound('activate');
 },true);
 document.addEventListener('change',event=>{
-    if(document.body.dataset.role!=='student')return;
+    if(!['student','teacher'].includes(document.body.dataset.role))return;
     const select=event.target instanceof Element?event.target.closest('[data-reading-size]'):null;
     if(!select)return;
     const value=['standard','large','larger'].includes(select.value)?select.value:'standard';
@@ -706,6 +739,7 @@ document.addEventListener('pointerover',event=>{
     const target=event.target instanceof Element?event.target:null;
     const card=target?.closest(movingCardSelector);
     if(!card)return;
+    if(window.LakbayLessonAudio&&card.closest('.story-page'))return;
     const previous=event.relatedTarget instanceof Element?event.relatedTarget.closest(movingCardSelector):null;
     if(previous===card)return;
     const style=getComputedStyle(card);

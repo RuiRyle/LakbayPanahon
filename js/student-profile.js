@@ -143,6 +143,8 @@ const studentPageTitles = {
     "practice.html": "Adaptive Practice",
     "chapter-challenge.html": "Chapter Challenge",
     "my-class.html": "My Class",
+    "history-timeline.html": "Historical Timeline",
+    "journey-finale.html": "Journey Finale",
     "achievements.html": "Achievements",
     "my-profile.html": "My Profile",
     "bayani-ai.html": "Bayani AI",
@@ -150,6 +152,7 @@ const studentPageTitles = {
 };
 
 const studentNavigationTargets = {
+    "journey-finale.html": "my-journey.html",
     "student-dashboard.html": "student-dashboard.html",
     "my-journey.html": "my-journey.html",
     "chapters.html": "chapters.html",
@@ -160,6 +163,7 @@ const studentNavigationTargets = {
     "practice.html": "my-journey.html",
     "chapter-challenge.html": "chapters.html",
     "my-class.html": "my-class.html",
+    "history-timeline.html": "history-timeline.html",
     "achievements.html": "achievements.html",
     "my-profile.html": "my-profile.html",
     "bayani-ai.html": "bayani-ai.html",
@@ -167,6 +171,7 @@ const studentNavigationTargets = {
 };
 
 const studentNavigationIcons = {
+    "history-timeline.html": '<path d="M5 3v18M5 6h14M5 12h10M5 18h14"/>',
     "student-dashboard.html": '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1Z"/>',
     "my-journey.html": '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5Z"/><path d="M4 5.5v13A2.5 2.5 0 0 1 6.5 16H20M8 7h8M8 10h6"/>',
     "chapters.html": '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9Z"/>',
@@ -354,6 +359,10 @@ function normalizeStudentNavigation() {
     if (achievements) achievements.after(profileEntry);
     else if (settings) sidebar.insertBefore(profileEntry, settings);
     else sidebar.append(profileEntry);
+
+    for(const page of ['student-dashboard.html','my-journey.html','chapters.html','history-timeline.html','bayani-ai.html','my-class.html','achievements.html','my-profile.html','settings.html']){
+        const link=sidebar.querySelector('a[href="'+page+'"]');if(link)sidebar.append(link);
+    }
 
     const currentPage = window.location.pathname.split("/").pop();
     const activeTarget = studentNavigationTargets[currentPage];

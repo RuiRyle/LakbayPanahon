@@ -5,7 +5,7 @@ const checks=[];let screenshot=null;
 const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const assert=(ok,message)=>{if(!ok)throw Error(message);checks.push(message);};
 async function main(){
- const css=['student.css','navy-gold-theme.css','student-settings.css','page-transition.css'].map(file=>fs.readFileSync(path.join(root,'css',file),'utf8')).join('\n');
+ const css=['student.css','navy-gold-theme.css','student-settings.css','page-transition.css','student-layout.css','settings-refinement.css'].map(file=>fs.readFileSync(path.join(root,'css',file),'utf8')).join('\n');
  const code=fs.readFileSync(path.join(root,'js/page-transition.js'),'utf8');
  const setup="Object.defineProperty(window,'AudioContext',{value:undefined});Object.defineProperty(window,'webkitAudioContext',{value:undefined});document.body.classList.add('authenticated');";
  const html=fs.readFileSync(path.join(root,'pages/settings.html'),'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'').replace('</head>','<style>'+css+'</style></head>').replace('</body>','<script>'+setup+'\n'+code+'</script></body>');

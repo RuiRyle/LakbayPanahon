@@ -1,8 +1,10 @@
+import {beginAssessment,forgetAssessment} from './student-assessment-client.js';
 import {renderEvidenceDecision,evidenceDecisionCorrect} from "./evidence-decision.js";
 let restoredEvidenceChoice=null;
 import { stableDraftVersion } from "./quiz-draft-policy.js";
 import { learningDraft, draftStatus, restartControl } from "./learning-draft.js";
 import { nextChapterAfterCompletion, nextChapterCandidate } from "./chapter-continuation.js";
+import { renderChapterKeepsake,chapterArtifactIds } from './chapter-keepsake.js';
 import { requirePassingScore } from "./activity-policy.js";
 import { submitStudentActivity } from "./student-rewards-client.js";
 import { requireLearningAccess, LearningAccessError } from "./learning-access.js";
@@ -478,6 +480,8 @@ async function loadChapterChallenge() {
         );
 
 
+        if(globalThis.__lakbayExplorationPreview!==true)await beginAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id});
+        if(!isCurrent())return;
         challengeQuestions.sort(
             (a, b) =>
 
@@ -854,7 +858,7 @@ function renderMatchingGame(question, optionsContainer, submitButton) {
             [descriptions[j], descriptions[i]];
     }
 
-    pairs.forEach(pair => {
+    pairs.forEach((pair, pairIndex) => {
 
         const row = document.createElement("div");
         row.className = "matching-row";
@@ -865,6 +869,8 @@ function renderMatchingGame(question, optionsContainer, submitButton) {
 
         const select = document.createElement("select");
         select.className = "matching-select";
+        select.id = `challenge-match-${currentQuestionIndex}-${pairIndex}`;
+        label.htmlFor = select.id;
 
         const placeholder = document.createElement("option");
         placeholder.value = "";
@@ -2979,12 +2985,34 @@ insertChallengeLearningReview(
         primaryButton.parentElement.before(continuationStatus);
         primaryButton.parentElement.append(retryContinuationButton);
         let continuationLookupPending = false;
+        let finaleDestination = null;
         const continuationIsCurrent = () => generation === chapterSessionGeneration &&
             auth.currentUser?.uid === continuationUserId &&
             document.getElementById('challengeResultPrimaryButton') === primaryButton;
+        const keepsake=document.createElement('section');keepsake.className='chapter-keepsake';keepsake.setAttribute('aria-label','Your chapter discoveries');
+        primaryButton.parentElement.before(keepsake);
+        let keepsakeArtifacts=[],keepsakeArtifactsAvailable=false;
+        const updateKeepsake=()=>{
+            if(!continuationIsCurrent())return;
+            try{renderChapterKeepsake(keepsake,{chapter:currentChapter,firstCompletion,nextChapter:continuationChapter,artifacts:keepsakeArtifacts,artifactsAvailable:keepsakeArtifactsAvailable});}
+            catch{keepsake.replaceChildren();keepsake.hidden=true;}
+        };
+        updateKeepsake();
+        async function loadKeepsakeArtifacts(){
+            try{
+                const owned=await getDocs(query(collection(db,'studentArtifacts'),where('userId','==',continuationUserId),where('chapterId','==',chapterId)));
+                if(!continuationIsCurrent())return;
+                const ids=chapterArtifactIds(owned.docs.map(row=>row.data()),continuationUserId,chapterId);
+                const details=await Promise.allSettled(ids.map(id=>getDoc(doc(db,'artifacts',id))));
+                if(!continuationIsCurrent())return;
+                keepsakeArtifacts=details.filter(row=>row.status==='fulfilled'&&row.value.exists()).map(row=>row.value.data()).filter(row=>!row.status||row.status==='active').map(row=>({title:row.name||row.title||'Earned artifact'}));
+                keepsakeArtifactsAvailable=details.every(row=>row.status==='fulfilled');updateKeepsake();
+            }catch{/* Optional collections never block the saved result or next action. */}
+        }
+        loadKeepsakeArtifacts();
         primaryButton.addEventListener("click", () => {
             if (!continuationIsCurrent() || continuationLookupPending) return;
-            window.location.href = continuationChapter ? "mission.html?" + new URLSearchParams({chapter:continuationChapter.id}) : fallbackDestination;
+            window.location.href = finaleDestination || (continuationChapter ? "mission.html?" + new URLSearchParams({chapter:continuationChapter.id}) : fallbackDestination);
         });
         resultBackButton.addEventListener(
             "click",
@@ -2994,6 +3022,7 @@ insertChallengeLearningReview(
             if (!continuationIsCurrent() || continuationLookupPending) return;
             const restoreActionFocus = document.activeElement === retryContinuationButton;
             continuationLookupPending = true;
+            finaleDestination = null;
             continuationChapter = null;
             primaryButton.disabled = true;
             primaryButton.setAttribute('aria-busy', 'true');
@@ -3025,6 +3054,13 @@ insertChallengeLearningReview(
                     continuationStatus.textContent = resultEraId
                         ? 'Your chapter is saved. Return to this era to choose what to explore next.'
                         : 'Your chapter is saved. Explore the chapter map to choose your next step.';
+                    try{
+                        const finale=await getDoc(doc(db,'learningSettings','journeyFinale'));
+                        if(!continuationIsCurrent())return;
+                        if(finale.exists()&&finale.data().enabled===true&&finale.data().finalChapterId===chapterId){
+                            finaleDestination='journey-finale.html';primaryButton.textContent='Open Journey Finale';continuationStatus.textContent='Your final chapter is saved. Open the finale to check and celebrate your completed journey.';
+                        }
+                    }catch{/* Optional finale configuration never blocks the saved result or map route. */}
                 }
             } catch (error) {
                 // Retrying navigation must not resubmit the completed challenge or rewards.
@@ -3035,6 +3071,7 @@ insertChallengeLearningReview(
                 retryContinuationButton.hidden = false;
             } finally {
                 if (continuationIsCurrent()) {
+                    updateKeepsake();
                     continuationLookupPending = false;
                     primaryButton.disabled = false;
                     primaryButton.removeAttribute('aria-busy');

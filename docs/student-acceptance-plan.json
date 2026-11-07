@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "scope": "Fixed student finish audit; original Firebase unavailable, all checks here local/mocked. No emulator or live checks.",
+  "scope": "Fixed student finish audit; all checks here local/mocked. No emulator or live checks.",
   "suiteGroups": [
     {
       "criterion": "A01",
@@ -18,7 +18,9 @@
         "student-journey-action.test.cjs",
         "student-journey-loading.test.cjs",
         "student-dashboard-recovery.test.cjs",
-        "student-dashboard-session.test.cjs"
+        "student-dashboard-session.test.cjs",
+        "content-cache.test.cjs",
+        "student-shell-recovery.test.cjs"
       ]
     },
     {
@@ -50,7 +52,8 @@
       "criterion": "A06",
       "tests": [
         "learning-draft.test.cjs",
-        "student-recovery-action.test.cjs"
+        "student-recovery-action.test.cjs",
+        "practice-save-recovery.test.cjs"
       ]
     },
     {
@@ -59,7 +62,17 @@
         "era-progression.test.cjs",
         "journey-path.test.cjs",
         "progression.test.cjs",
-        "exploration-preview.test.cjs"
+        "exploration-preview.test.cjs",
+        "student-handoff.test.cjs",
+        "content-quality-fixes.test.cjs",
+        "student-content-completion.test.cjs",
+        "chapter6-learning-clarity.test.cjs",
+        "chapter7-learning-clarity.test.cjs",
+        "level-rewards.test.cjs",
+        "journey-finale.test.cjs",
+        "journey-finale-client.test.cjs",
+        "discovery-experiences.test.cjs",
+        "discovery-firestore.test.cjs"
       ]
     },
     {
@@ -94,7 +107,8 @@
         "bayani-backend-client.test.cjs",
         "bayani-bridge-integration.test.cjs",
         "bayani-backend.test.cjs",
-        "bayani-request.test.cjs"
+        "bayani-request.test.cjs",
+        "bayani-review-question.test.cjs"
       ]
     },
     {
@@ -109,7 +123,16 @@
       "criterion": "A15",
       "tests": [
         "chapter2-family-learning-polish.test.cjs",
-        "chapter2-women-role-learning.test.cjs"
+        "chapter2-women-role-learning.test.cjs",
+        "balangay-clarity.test.cjs",
+        "all-mission-learning.test.cjs",
+        "mission-learning-guide-policy.test.cjs",
+        "chapter3-learning-clarity.test.cjs",
+        "chapter4-learning-clarity.test.cjs",
+        "chapter5-mission1-learning.test.cjs",
+        "chapter5-mission2-learning.test.cjs",
+        "chapter5-mission3-learning.test.cjs",
+        "chapter5-mission4-learning.test.cjs"
       ]
     },
     {
@@ -122,13 +145,15 @@
     {
       "criterion": "A17",
       "tests": [
-        "student-account-inventory.test.cjs"
+        "student-account-inventory.test.cjs",
+        "student-data-export.test.cjs"
       ]
     }
   ],
   "browserFixtures": [
     "student-dashboard-browser.cjs",
     "mission-quiz-browser.cjs",
+    "mission-quiz-storage-browser.cjs",
     "story-browser.cjs",
     "student-navigation-browser.cjs",
     "student-profile-browser.cjs",
@@ -138,10 +163,17 @@
     "bayani-ai-browser.cjs",
     "student-review-browser.cjs",
     "student-registration-browser.cjs",
-    "student-settings-browser.cjs"
+    "student-settings-browser.cjs",
+    "student-missing-features-browser.cjs",
+    "discovery-experiences-browser.cjs",
+    "achievements-layout-browser.cjs",
+    "all-mission-learning-browser.cjs"
   ],
   "sourceFiles": [
     "js/auth-guard.js",
+    "js/student-data-export.js",
+    "js/student-data-download.js",
+    "js/exploration-preview.js",
     "js/student.js",
     "js/my-journey.js",
     "js/story.js",
@@ -158,6 +190,52 @@
     "js/bayani-client.js",
     "pages/settings.html",
     "pages/register.html",
-    "firestore.rules"
+    "firestore.rules",
+    "js/student-session-storage.js",
+    "js/content-cache.js",
+    "js/student-shell.js",
+    "pages/student-shell.html",
+    "js/history-timeline.js",
+    "js/history-timeline-view.js",
+    "js/bayani-review.js",
+    "js/bayani-review-question.js",
+    "js/class-announcements.js",
+    "css/student-missing-features.css",
+    "pages/history-timeline.html",
+    "js/level-rewards.js",
+    "js/level-reward-policy.js",
+    "css/level-rewards.css",
+    "js/bayani-narration-button.js",
+    "js/story-reading-steps.js",
+    "js/story-playground.js",
+    "css/bayani-narration-button.css",
+    "css/student-layout.css",
+    "css/era-mission-simple.css",
+    "js/journey-finale-policy.js",
+    "js/journey-finale-client.js",
+    "js/journey-finale.js",
+    "css/journey-finale.css",
+    "pages/journey-finale.html",
+    "js/discovery-cases.js",
+    "js/discovery-case-loader.js",
+    "data/discovery-cases.json",
+    "js/discovery-case-view.js",
+    "js/mission-discovery.js",
+    "js/learning-community.js",
+    "js/museum-exhibits.js",
+    "css/discovery-experiences.css",
+    "assets/discovery/then-community.svg",
+    "assets/discovery/now-community.svg",
+    "css/achievements-polish.css",
+    "js/achievements.js",
+    "pages/achievements.html",
+    "data/mission-learning-guides.authoring.js",
+    "js/mission-learning-guide-policy.js",
+    "js/mission-learning-guide-view.js",
+    "js/mission-learning-companion.js",
+    "css/mission-learning-guide.css",
+    "js/lesson-narration-text.js",
+    "pages/story.html",
+    "pages/mission.html"
   ]
 }

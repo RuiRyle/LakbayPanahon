@@ -150,8 +150,6 @@ export function selectAdaptiveQuestion(bank, {
     if (!candidates.length) return null;
 
     const seen = new Set(seenIds);
-    const fresh = candidates.filter(question => !seen.has(question.id));
-    if (fresh.length) candidates = fresh;
 
     const topics = [...new Set(candidates.map(question => question.topic.trim()))];
     const topicRank = new Map(topics.map(topic => [topic, {
@@ -169,6 +167,10 @@ export function selectAdaptiveQuestion(bank, {
     const distance = question => Math.abs(difficultyLevels.indexOf(String(question.difficulty || '').trim().toLowerCase()) - targetIndex);
     const nearest = Math.min(...candidates.map(distance));
     candidates = candidates.filter(question => distance(question) === nearest);
+    // Novelty breaks ties within the educationally appropriate pool; it must
+    // not exclude a weak topic or override the requested difficulty.
+    const fresh = candidates.filter(question => !seen.has(question.id));
+    if (fresh.length) candidates = fresh;
     return candidates[Math.floor(Math.max(0, Math.min(.999999, random())) * candidates.length)];
 }
 

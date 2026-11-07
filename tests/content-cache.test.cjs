@@ -4,3 +4,13 @@ test('content cache shares concurrent reads, expires, and survives page navigati
 test('errors are retryable and disabled storage falls back without blocking content',async()=>{let reads=0;const cache=createContentCache({storage:{getItem(){throw Error();},setItem(){throw Error();}}});await assert.rejects(()=>cache.read('s','x',async()=>{throw Error('offline');}),/offline/);await cache.read('s','x',async()=>{reads++;return result();});await cache.read('s','x',async()=>{reads++;return result();});assert.equal(reads,1);cache.clear();await cache.read('s','x',async()=>{reads++;return result();});assert.equal(reads,2);});
 test('account changes discard pending old-account cache writes and signed-out reads are not cached',async()=>{let release;const store=storage(),cache=createContentCache({storage:store}),gate=new Promise(r=>release=r);const old=cache.read('old','x',async()=>{await gate;return result();});await cache.read('new','x',async()=>result());release();await old;assert.ok([...Array(store.length)].every((_,i)=>!store.key(i).includes('old')));let reads=0;for(let i=0;i<2;i++)await cache.read(null,'x',async()=>{reads++;return result();});assert.equal(reads,2);});
 test('bounded cache evicts and does not persist Firestore-specific values',async()=>{const store=storage(),cache=createContentCache({storage:store,maxEntries:2});for(const key of ['a','b','c'])await cache.read('s',key,async()=>result());assert.equal(store.length,2);class Timestamp{}let reads=0;for(let i=0;i<2;i++)await cache.read('s','timestamp',async()=>{reads++;return{docs:[{id:'x',data:()=>({at:new Timestamp()})}]};});assert.equal(reads,2);});
+
+
+test('malformed cached rows are discarded and replaced by a fresh catalog',async()=>{
+ for(const rows of [[null],[{id:'one',data:[]}],[{id:'',data:{title:'bad'}}]]){
+  const store=storage();store.setItem('lakbay-content-v1:'+JSON.stringify(['student','eras']),JSON.stringify({at:100,rows}));
+  const cache=createContentCache({storage:store,now:()=>101});let reads=0;
+  const snap=await cache.read('student','eras',async()=>{reads++;return result();});
+  assert.equal(reads,1);assert.equal(snap.docs[0].data().title,'Lesson');
+ }
+});

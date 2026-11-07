@@ -1,0 +1,17 @@
+{
+  "status": "fail",
+  "error": "Error: assessment/locked\n    at C:\\LakbayPanahon\\tests\\priority3-pilot-load.cjs:21:23\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async Object.startStudentAssessment (C:\\LakbayPanahon\\tests\\priority3-pilot-load.cjs:11:137)\n    at async C:\\LakbayPanahon\\tests\\priority3-pilot-load.cjs:58:37\n    at async Promise.all (index 7)\n    at async main (C:\\LakbayPanahon\\tests\\priority3-pilot-load.cjs:57:16)",
+  "metrics": [
+    {
+      "phase": "thirty-student-concurrent",
+      "name": "startStudentAssessment",
+      "queueMs": 0.002699999999094871,
+      "serviceMs": 23965.388499999997,
+      "totalMs": 23965.415700000005,
+      "retry": 0,
+      "status": 403,
+      "error": "assessment/locked"
+    }
+  ],
+  "checks": []
+}

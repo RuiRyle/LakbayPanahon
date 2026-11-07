@@ -1,0 +1,56 @@
+/* Shared storybook finish for the real lesson and its practice preview. */
+body.detective-page,body.simple-lesson.lakbay-theme {
+ --book-paper:#d6b985;--book-ink:#342e24;--book-teal:#224f51;--book-gold:#e7bd70;
+ background-color:#102c36;
+ background-image:radial-gradient(ellipse at 4% 0%,#3d77744a,transparent 48%),radial-gradient(ellipse at 95% 95%,#bb965015,transparent 55%);
+}
+body.detective-page .detective-main,body.simple-lesson.lakbay-theme[data-role="student"] .main-content>.story-page {max-width:860px}
+.detective-page .lab-intro h1 {color:#eed29c;text-shadow:none;font-size:1.65rem;letter-spacing:-.025em}
+.detective-page .lab-header {border-bottom:1px solid #6f958040}
+.detective-page .lab-guide,body.simple-lesson .mission-bayani {flex-direction:row;align-items:center;gap:14px;padding:4px 0}
+.detective-page .lab-bayani-character,body.simple-lesson .mission-bayani img {width:76px;height:80px;object-fit:contain;flex:none;filter:drop-shadow(0 5px 5px #061d3245)}
+.detective-page .lab-speech,body.simple-lesson .mission-bayani>div {flex:1;min-width:0;background:#23494b;border:1px solid #668c744d;border-radius:6px 18px 18px 18px;padding:12px 16px}
+.detective-page .lab-speech p,body.simple-lesson .mission-bayani p {color:#e1e6d5;font-weight:500;line-height:1.6;font-size:.88rem}
+.detective-page .lab-stage,body.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card {background:#173b43;border:1px solid #698b7760;border-radius:24px;box-shadow:0 6px 0 #09252e,0 20px 50px #041f2830}
+body.simple-lesson.lakbay-theme .story-reading-content {background:#173b43}
+.detective-page .lab-stage {padding:24px}
+.detective-page .lab-stage h2 {font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:-.025em;line-height:1.3}
+.detective-page #labSceneTitle:focus {outline:none}
+.detective-page #labBrief {font-size:.98rem;color:#cbd8d4;max-width:62ch}
+.detective-page .lab-visual {border:0;border-radius:16px;background:transparent;box-shadow:0 8px 20px #08273150;margin:20px 0}
+.detective-page .lab-visual>img {max-height:none;aspect-ratio:900/320;object-fit:cover}
+.detective-page .lab-caption {background:#10333d;color:#a9c8bf!important;font-size:.66rem!important;line-height:1.5;padding:8px 14px}
+.detective-page .lab-clues {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.detective-page .lab-clue {display:flex;flex-direction:column;text-align:left;align-items:flex-start;justify-content:flex-start;padding:16px 12px;background:#254c50;border:1px solid #63857d;border-bottom:4px solid #0d3039;border-radius:16px;gap:10px;box-shadow:none}
+.detective-page .lab-clue-icon {width:44px;height:44px;background:#d5b378;color:#3d4331;border-radius:50%;font-size:1.5rem}
+.detective-page .lab-clue[aria-pressed=true] {background:#375b49;border-color:#99bb7b;border-bottom-color:#254431}
+.detective-page .lab-clue strong {font-size:.88rem;line-height:1.4}
+.detective-page .lab-clue small {font-size:.76rem;line-height:1.5}
+.detective-page .lab-note {position:relative;background:var(--book-paper);background-image:repeating-linear-gradient(0deg,#80643208 0 1px,transparent 1px 5px);color:var(--book-ink);border:0;border-radius:4px 18px 18px 18px;padding:22px;box-shadow:0 5px 0 #977e51;margin-top:18px}
+.detective-page .lab-note h3 {color:#3b3525!important;font-size:1.12rem}
+.detective-page .lab-note p {color:#443b2c;font-size:.98rem;line-height:1.8}
+.detective-page .lab-note button {background:#3b6554;border-color:#2d4f41;color:#f0e6ca;font-size:.8rem}
+.detective-page .lab-option,.detective-page .lab-order-row {background:#23474d;border:1px solid #63857d;border-bottom:4px solid #0f3039;box-shadow:none}
+.detective-page .lab-option>span {background:#d3b780;color:#3e3b2a;border-radius:50%}
+.detective-page .lab-actions .lab-primary,body.simple-lesson .lesson-flow .begin-mission-button {background:#e3bd73;color:#342f23;border:1px solid #efd499;border-bottom:4px solid #9b773f;border-radius:14px;font-weight:800;box-shadow:0 3px 8px #0a273130}
+.detective-page .lab-actions .lab-primary:hover:not(:disabled),body.simple-lesson .lesson-flow .begin-mission-button:hover:not(:disabled) {background:#edcb8b;color:#342f23}
+.detective-page .lab-game-progress progress {height:10px;border:0;background:#234a4c}
+.detective-page .lab-game-progress progress::-webkit-progress-bar {background:#234a4c}
+.detective-page .lab-game-progress progress::-webkit-progress-value {background:#d2b779}
+.detective-page .lab-full {background:transparent;border:0;border-top:1px solid #56796960;border-radius:0;padding-inline:0}
+body.simple-lesson .lesson-step-count {color:#d1c4a2;font-weight:650;font-size:.8rem;letter-spacing:.015em}
+body.simple-lesson.lakbay-theme .story-visual {border-bottom:5px solid #c7a66a;background:#23474d;max-height:240px}
+body.simple-lesson.lakbay-theme .story-scene-image {max-height:240px}
+body.simple-lesson.lakbay-theme .story-reading-card.lesson-reading .story-text {padding:20px 22px;background:var(--book-paper);border-radius:5px 15px 15px 15px;color:var(--book-ink);font-size:1.04rem;line-height:1.85;border-top:3px solid #e5c996}
+body.simple-lesson.lakbay-theme .story-reading-card.lesson-reading .story-text :is(p,strong,span,li) {color:var(--book-ink)}
+body.simple-lesson.lakbay-theme .story-text>p:last-child {margin-bottom:0;padding-bottom:0}
+body.simple-lesson.lakbay-theme .story-explore-choice {background:#254c50;border-color:#63857d;border-radius:16px}
+body.simple-lesson.lakbay-theme .story-explore-result {background:#d6b985;color:#342e24;border:0;border-radius:5px 16px 16px 16px}
+body.simple-lesson.lakbay-theme .story-explore-result :is(p,strong,summary,.evidence-note-label) {color:#443b2c}
+body.simple-lesson.lakbay-theme :is(.story-decision-choice,.quick-check-choice,.story-clue-hunt-choice) {border-radius:15px;min-height:56px}
+body.simple-lesson .lesson-flow {border-color:#6c8a6e50}
+body.simple-lesson .mission-bayani.is-ready>div {background:#315744;border-color:#9aba7666}
+.detective-page[data-game-step="4"] .lab-speech {background:#315744;border-color:#9aba7666}
+.detective-page .lab-feedback {border-width:1px;border-left:4px solid #a4c780;box-shadow:none;border-radius:12px;background:#315744;font-weight:500}
+.detective-page .lab-feedback[data-kind="hint"] {background:#574c31;border-color:#d4b577}
+@media(max-width:600px){.detective-page .lab-stage{padding:18px 15px}.detective-page .lab-bayani-character,body.simple-lesson .mission-bayani img{width:60px;height:64px}.detective-page .lab-speech,body.simple-lesson .mission-bayani>div{padding:10px 12px}.detective-page .lab-clues{gap:7px}.detective-page .lab-clue{padding:12px 9px}.detective-page .lab-clue small{display:none}.detective-page .lab-clue strong{font-size:.78rem}.detective-page .lab-clue-icon{width:36px;height:36px;font-size:1.2rem}body.simple-lesson.lakbay-theme .story-reading-card.lesson-reading .story-text{padding:16px;font-size:1rem}}

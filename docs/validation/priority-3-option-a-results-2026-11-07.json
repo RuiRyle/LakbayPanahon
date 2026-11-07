@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-07",
+  "status": "implemented-and-verified-locally-awaiting-review",
+  "productionDeploymentAuthorized": false,
+  "productionChanged": false,
+  "priority4Started": false,
+  "node": "22.23.4",
+  "tests": {
+    "relevantUnit": {
+      "passed": 206,
+      "failed": 0
+    },
+    "finalPackagedAuthFunctionsFirestore": {
+      "passed": 32,
+      "failed": 0
+    },
+    "standaloneBrowserFixtures": {
+      "passed": 11,
+      "failed": 0
+    },
+    "sourceIntegrationBeforePackaging": {
+      "passed": 31,
+      "failed": 0
+    },
+    "localThirtyStudentWaves": [
+      {
+        "name": "thirty",
+        "requests": 30,
+        "successful": 30,
+        "failed": 0,
+        "distinctCommittedAttempts": 30,
+        "p50Ms": 849.6726999999955,
+        "p95Ms": 916.801300000021,
+        "transactionInvocations": 30,
+        "callbackExecutions": 30,
+        "retryCallbacks": 0,
+        "terminalAborted": 0,
+        "queryCounts": {
+          "chapters": 30,
+          "missions": 30,
+          "questions": 30,
+          "practiceQuestions": 30,
+          "artifacts": 30
+        }
+      },
+      {
+        "name": "thirty",
+        "requests": 30,
+        "successful": 30,
+        "failed": 0,
+        "distinctCommittedAttempts": 30,
+        "p50Ms": 1175.8315000000002,
+        "p95Ms": 1190.5037000000011,
+        "transactionInvocations": 30,
+        "callbackExecutions": 30,
+        "retryCallbacks": 0,
+        "terminalAborted": 0,
+        "queryCounts": {
+          "chapters": 30,
+          "missions": 30,
+          "questions": 30,
+          "practiceQuestions": 30,
+          "artifacts": 30
+        }
+      }
+    ]
+  },
+  "manifestSha256": "126b79f89883777b7e20345ca31a0e8e2093ab36424b7be64e6fe8160ee0a07f",
+  "previousManifestSha256": "1b77328bf8ef9952a849e520965c9627a79e9ffea90df40693c2ef942c74a911",
+  "artifactCount": 235,
+  "sourceDrift": [],
+  "artifactDrift": [],
+  "changedArtifacts": [
+    "functions/student-assessment.js"
+  ],
+  "hostingUpdatesUnchanged": true,
+  "rulesUnchanged": true,
+  "rollbackUnchanged": true,
+  "dependencyLockSha256": "0eaedbf386bb5cddb70ed00be7403a78c5257130487f1fa25d549f1d2cc0ec38",
+  "productionBaseline": {
+    "checkedAt": "2026-11-07T06:18:10.292Z",
+    "versionMatches": true,
+    "fileMapMatches": true,
+    "configMatches": true,
+    "rulesMatch": true
+  },
+  "remainingLimitations": [
+    "Local emulator core timings do not certify production Cloud Run capacity or indexes.",
+    "Same-student shared-record retries and multi-second waits remain.",
+    "Real App Check repair/attestation, dependency decision, billing/APIs/IAM/backup/monitoring and separate deployment approval remain required."
+  ]
+}

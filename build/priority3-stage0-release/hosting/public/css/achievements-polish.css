@@ -1,0 +1,56 @@
+/* Achievements: one clear collection choice, consistent cards, two actions per artifact. */
+body.lakbay-theme .achievements-content{max-width:1200px}
+body.lakbay-theme .achievements-hero{padding:30px 32px;border-radius:24px;background:radial-gradient(ellipse at 100% 0%,#355d5555,transparent 65%),#102b40;border:1px solid #506a76;box-shadow:none}
+body.lakbay-theme .achievements-hero h1{color:#f2d591;line-height:1.2}
+body.lakbay-theme .achievements-hero p{color:#c8d9e4;max-width:58ch}
+body.lakbay-theme .achievements-hero-icon{width:80px;height:80px;outline:none;border:1px solid #9f8d5b;background:#214344;border-radius:22px;box-shadow:none}
+body.lakbay-theme .achievement-summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 12px}
+body.lakbay-theme .achievement-summary-card{display:flex;align-items:center;gap:18px;min-height:130px;padding:22px;text-align:left;border:1px solid #506b80;border-radius:18px;background:#132f46;box-shadow:none;transform:none}
+body.lakbay-theme .achievement-summary-card[aria-expanded=true]{border:2px solid #e6c47b;background:#21443f;box-shadow:none}
+body.lakbay-theme .achievement-summary-card>div:last-child{display:grid;grid-template-columns:1fr auto;align-items:center;gap:6px 20px;flex:1;min-width:0}
+body.lakbay-theme .achievement-summary-card strong{grid-column:2;grid-row:1/3;font-size:2.2rem;color:#f0d18a;margin:0}
+body.lakbay-theme .achievement-summary-card small{grid-column:1;color:#bdcfdc;font-size:.8rem}
+body.lakbay-theme .achievement-summary-card span{color:#e0eaf1}
+body.lakbay-theme .achievement-summary-icon{width:54px;height:60px;font-size:1.8rem;flex:none;border-radius:14px;box-shadow:none;background:#25465a}
+body.lakbay-theme .collection-selection-hint{font-size:.85rem;color:#bed1df;margin:12px 0 24px}
+body.lakbay-theme .achievement-section{padding:26px;border:1px solid #435f73;border-radius:22px;background:#10273b;box-shadow:none;margin:0 0 24px}
+body.lakbay-theme .achievement-section .section-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:0 0 24px}
+body.lakbay-theme .achievement-section .section-heading h2{font-size:1.5rem;margin:7px 0 10px;color:#eed194}
+body.lakbay-theme .achievement-section .section-heading p{max-width:64ch;line-height:1.65;color:#c3d4df;margin:0}
+body.lakbay-theme :is(.badge-collection,.artifact-grid){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+body.lakbay-theme :is(.achievement-badge-card,.achievement-artifact-card){display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding:24px;border:1px solid #48677b;border-radius:18px;background:linear-gradient(145deg,#18384a,#122c41);box-shadow:none;text-align:left;transform:none}
+body.lakbay-theme :is(.achievement-badge-card,.achievement-artifact-card):hover{transform:none;box-shadow:none;border-color:#829176}
+body.lakbay-theme .achievements-content :is(.achievement-badge-card,.achievement-artifact-card){animation:none!important;opacity:1}
+body.lakbay-theme :is(.achievement-badge-icon,.achievement-artifact-icon){width:72px;height:72px;font-size:2.3rem;display:grid;place-items:center;outline:none;margin:0;border:1px solid #958452;border-radius:18px;background:#294d4c;box-shadow:none}
+body.lakbay-theme .achievement-badge-content{display:flex;flex-direction:column;gap:10px;flex:1;width:100%;min-width:0}
+body.lakbay-theme .achievement-badge-content h3{font-size:1.15rem;line-height:1.4;color:#f2dba6;margin:0;overflow-wrap:anywhere}
+body.lakbay-theme .achievement-badge-content>p{margin:0;line-height:1.7;color:#cadce5;font-size:.9rem}
+body.lakbay-theme .achievement-badge-content>small{font-size:.78rem;color:#b6cddd;margin:0;padding:0;border:0}
+body.lakbay-theme .achievement-artifact-label{margin:0;color:#b9dfce;letter-spacing:.1em;font-size:.7rem}
+body.lakbay-theme .achievement-badge-content>.achievement-artifact-label{align-self:flex-start;display:inline-flex;padding:4px 9px;border:1px solid #51766b;border-radius:999px;background:#21473f}
+body.lakbay-theme .artifact-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto;padding-top:18px;border-top:1px solid #476073}
+body.lakbay-theme .artifact-card-actions .discovery-pin-control{display:contents}
+body.lakbay-theme .artifact-card-actions :is(button,a){display:flex;align-items:center;justify-content:center;min-height:46px;margin:0;padding:11px 12px;border:1px solid #6c8798;border-radius:11px;background:#18384e;color:#d8e6ef;font:inherit;font-size:.83rem;line-height:1.4;box-sizing:border-box;text-decoration:none;text-align:center;white-space:normal}
+body.lakbay-theme .artifact-card-actions .artifact-view-button{background:#e8c77e;color:#142b40;border-color:#e8c77e;font-weight:750}
+body.lakbay-theme .artifact-card-actions .discovery-pin-status{grid-column:1/-1;margin:0;font-size:.78rem;line-height:1.6;color:#c3d9e4}
+body.lakbay-theme .artifact-card-actions .discovery-pin-status:empty{display:none}
+body.lakbay-theme .achievements-content>.journey-finale-entry{margin:28px 0 0;background:#10273a;border-color:#425f70;padding:22px;box-shadow:none}
+body.lakbay-theme .achievements-content>.journey-finale-entry h2{font-size:1.05rem;margin:6px 0}
+body.lakbay-theme .achievements-content>.journey-finale-entry p{font-size:.85rem;line-height:1.6}
+body.lakbay-theme .achievements-content :is(button,a,summary):focus-visible{outline:3px solid #f1cf84;outline-offset:4px}
+/* Fixed geometry centres the exhibit independently of scroll position and selected view. */
+body.lakbay-theme dialog.museum-exhibit{animation:none!important;transition:none}
+body.lakbay-theme dialog.museum-exhibit{position:fixed;inset:0;margin:auto;transform:none;width:min(720px,calc(100vw - 32px));height:min(760px,calc(100dvh - 48px));max-width:none;max-height:none;padding:0;overflow:hidden;border:1px solid #b29a63;border-radius:24px;background:#112c42;color:#d5e5ed;box-sizing:border-box;box-shadow:0 24px 90px #0009}
+body.lakbay-theme dialog.museum-exhibit[open]{display:flex;flex-direction:column}
+body.lakbay-theme .museum-exhibit-header{display:flex;align-items:flex-start;gap:18px;justify-content:space-between;padding:24px 26px 18px;flex:none;background:#142f44}
+body.lakbay-theme .museum-exhibit-kicker{font-size:.66rem;letter-spacing:.12em;color:#bfceb9;margin:0 0 8px}
+body.lakbay-theme .museum-exhibit-header h2{font-size:1.35rem;line-height:1.4;color:#f2d69a;margin:0;overflow-wrap:anywhere}
+body.lakbay-theme .museum-exhibit-close{font:inherit;font-size:.8rem;min-height:44px;padding:8px 14px;flex:none;border:1px solid #6c8494;border-radius:10px;color:#e5eff2;background:#1c3c51;cursor:pointer}
+body.lakbay-theme .museum-exhibit-visual{flex:none;min-height:116px;margin:0 26px 18px;font-size:64px;background:radial-gradient(ellipse,#305b52,#142e43);border:1px solid #476e70;border-radius:16px}
+body.lakbay-theme .museum-exhibit-views{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:6px;margin:0 26px 0;border-radius:12px;background:#0b2133;flex:none}
+body.lakbay-theme .museum-exhibit-views .discovery-choice{width:auto;margin:0;padding:10px 6px;min-height:44px;font-size:.83rem;text-align:center;border:1px solid transparent;border-radius:8px;color:#c6d9e5;background:transparent}
+body.lakbay-theme .museum-exhibit-views [aria-pressed=true]{background:#31554c;border-color:#bdab70;color:#ffebbb}
+body.lakbay-theme .museum-exhibit-body{flex:1;min-height:0;overflow:auto;padding:20px 26px 28px;overscroll-behavior:contain}
+body.lakbay-theme .museum-exhibit-body h3{font-size:1.05rem;color:#eed39a;margin:0 0 14px}
+body.lakbay-theme .museum-exhibit-body p{line-height:1.8;margin:0 0 18px;color:#ccdde6;font-size:.92rem}
+@media(max-width:700px){body.lakbay-theme .achievements-hero{padding:24px}body.lakbay-theme .achievement-summary-card{padding:18px;min-height:118px;gap:12px}body.lakbay-theme .achievement-summary-icon{display:none}body.lakbay-theme .achievement-summary-card>div:last-child{gap:5px}body.lakbay-theme .achievement-summary-card strong{font-size:1.8rem}body.lakbay-theme .achievement-summary-card span{font-size:.83rem}body.lakbay-theme .achievement-section{padding:18px}body.lakbay-theme :is(.badge-collection,.artifact-grid){grid-template-columns:1fr}body.lakbay-theme .achievement-summary-card small{font-size:.72rem}body.lakbay-theme .museum-exhibit-header{padding:18px;gap:12px}body.lakbay-theme .museum-exhibit-header h2{font-size:1.1rem}body.lakbay-theme .museum-exhibit-visual{margin:0 18px 14px;min-height:100px;font-size:54px}body.lakbay-theme .museum-exhibit-views{margin:0 18px}body.lakbay-theme .museum-exhibit-body{padding:20px 18px}body.lakbay-theme dialog.museum-exhibit{border-radius:18px}}

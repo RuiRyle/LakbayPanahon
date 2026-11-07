@@ -1,0 +1,21 @@
+{
+  "mode": "published-and-read-back",
+  "publishedAt": "2026-10-31T15:44:13.033Z",
+  "sourceHash": "7622c8fa5d1b6bfb049f9ec9a7c33821aec839f40c02c978fc7eff9fe053aa2f",
+  "previousRuleset": "projects/lakbaypanahon-1797e/rulesets/feb2d362-27ac-4707-9e96-668b6c32adc8",
+  "rulesetName": "projects/lakbaypanahon-1797e/rulesets/e38948f9-68f3-4caa-9039-109cb87f52bc",
+  "backup": "backups\\teacher-qualification-rules-1793461445880.json",
+  "scope": [
+    "function validModeration",
+    "match /accountModeration/{eventId}",
+    "function activeTeacher",
+    "match /users/{userId}",
+    "function teacherApplicant",
+    "function qualifiedTeacher",
+    "function validTeacherDecision",
+    "match /teacherApplications/{uid}",
+    "match /teacherEvidence/{uid}",
+    "match /teacherApplicationReviews/{eventId}"
+  ],
+  "accountRecordsChanged": false
+}

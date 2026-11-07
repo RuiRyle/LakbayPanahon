@@ -1,0 +1,477 @@
+{
+  "checkedAt": "2026-11-07T04:51:28.460Z",
+  "mode": "registry-GET-only-no-package-updates",
+  "packages": [
+    {
+      "name": "@google-cloud/firestore",
+      "installed": [
+        {
+          "path": "node_modules/@google-cloud/firestore",
+          "version": "9.3.1",
+          "optional": true,
+          "dev": false
+        }
+      ],
+      "parents": [
+        {
+          "parent": "node_modules/firebase-admin",
+          "range": "^9.1.0",
+          "latestMatching": "9.4.0"
+        }
+      ],
+      "latest": "9.4.0",
+      "versions": [
+        {
+          "version": "9.3.1",
+          "dependencies": {
+            "google-gax": "^6.0.1",
+            "protobufjs": "^7.5.3",
+            "fast-deep-equal": "^3.1.3",
+            "@opentelemetry/api": "^1.9.0",
+            "functional-red-black-tree": "^1.0.1",
+            "@google-cloud/firestore-api": "^0.2.0"
+          },
+          "engines": {
+            "node": ">=22"
+          }
+        },
+        {
+          "version": "9.4.0",
+          "dependencies": {
+            "google-gax": "^6.0.1",
+            "protobufjs": "^7.5.3",
+            "fast-deep-equal": "^3.1.3",
+            "@opentelemetry/api": "^1.9.0",
+            "functional-red-black-tree": "^1.0.1",
+            "@google-cloud/firestore-api": "^0.2.0"
+          },
+          "engines": {
+            "node": ">=22"
+          }
+        }
+      ]
+    },
+    {
+      "name": "@google-cloud/firestore-api",
+      "installed": [
+        {
+          "path": "node_modules/@google-cloud/firestore-api",
+          "version": "0.2.0",
+          "optional": true,
+          "dev": false
+        }
+      ],
+      "parents": [
+        {
+          "parent": "node_modules/@google-cloud/firestore",
+          "range": "^0.2.0",
+          "latestMatching": "0.2.0"
+        }
+      ],
+      "latest": "0.7.1",
+      "versions": [
+        {
+          "version": "0.2.0",
+          "dependencies": {
+            "google-gax": "^5.0.0"
+          },
+          "engines": {
+            "node": ">=18"
+          }
+        },
+        {
+          "version": "0.7.1",
+          "dependencies": {
+            "long": "^5.3.2",
+            "google-gax": "^6.0.0"
+          },
+          "engines": {
+            "node": ">=22"
+          }
+        }
+      ]
+    },
+    {
+      "name": "gaxios",
+      "installed": [
+        {
+          "path": "node_modules/@google-cloud/firestore-api/node_modules/gaxios",
+          "version": "7.1.3",
+          "optional": true,
+          "dev": false
+        },
+        {
+          "path": "node_modules/gaxios",
+          "version": "7.3.1",
+          "optional": false,
+          "dev": false
+        }
+      ],
+      "parents": [
+        {
+          "parent": "node_modules/@google-cloud/firestore-api/node_modules/gcp-metadata",
+          "range": "7.1.3",
+          "latestMatching": "7.1.3"
+        },
+        {
+          "parent": "node_modules/@google-cloud/firestore-api/node_modules/google-auth-library",
+          "range": "^7.0.0",
+          "latestMatching": "7.3.1"
+        },
+        {
+          "parent": "node_modules/@google-cloud/storage",
+          "range": "^7.1.4",
+          "latestMatching": "7.3.1"
+        },
+        {
+          "parent": "node_modules/gcp-metadata",
+          "range": "^7.1.3",
+          "latestMatching": "7.3.1"
+        },
+        {
+          "parent": "node_modules/google-auth-library",
+          "range": "^7.1.4",
+          "latestMatching": "7.3.1"
+        },
+        {
+          "parent": "node_modules/gtoken",
+          "range": "^7.0.0",
+          "latestMatching": "7.3.1"
+        }
+      ],
+      "latest": "8.3.2",
+      "versions": [
+        {
+          "version": "7.1.3",
+          "dependencies": {
+            "extend": "^3.0.2",
+            "rimraf": "^5.0.1",
+            "node-fetch": "^3.3.2",
+            "https-proxy-agent": "^7.0.1"
+          },
+          "engines": {
+            "node": ">=18"
+          }
+        },
+        {
+          "version": "7.3.1",
+          "dependencies": {
+            "extend": "^3.0.2",
+            "node-fetch": "^3.3.2",
+            "https-proxy-agent": "^7.0.1"
+          },
+          "engines": {
+            "node": ">=18"
+          }
+        },
+        {
+          "version": "8.3.2",
+          "dependencies": {
+            "extend": "^3.0.2",
+            "node-fetch": "^3.3.2",
+            "https-proxy-agent": "^7.0.1"
+          },
+          "engines": {
+            "node": ">=22"
+          }
+        }
+      ]
+    },
+    {
+      "name": "gcp-metadata",
+      "installed": [
+        {
+          "path": "node_modules/@google-cloud/firestore-api/node_modules/gcp-metadata",
+          "version": "8.1.4",
+          "optional": true,
+          "dev": false
+        },
+        {
+          "path": "node_modules/gcp-metadata",
+          "version": "9.2.0",
+          "optional": false,
+          "dev": false
+        }
+      ],
+      "parents": [
+        {
+          "parent": "node_modules/@google-cloud/firestore-api/node_modules/google-auth-library",
+          "range": "^8.0.0",
+          "latestMatching": "8.1.4"
+        },
+        {
+          "parent": "node_modules/google-auth-library",
+          "range": "^9.0.0",
+          "latestMatching": "9.2.3"
+        }
+      ],
+      "latest": "9.2.3",
+      "versions": [
+        {
+          "version": "8.1.4",
+          "dependencies": {
+            "gaxios": "7.1.3",
+            "json-bigint": "^1.0.0",
+            "google-logging-utils": "1.1.3"
+          },
+          "engines": {
+            "node": ">=18"
+          }
+        },
+        {
+          "version": "9.2.0",
+          "dependencies": {
+            "gaxios": "^7.1.3",
+            "json-bigint": "^1.0.0",
+            "google-logging-utils": "^2.0.0"
+          },
+          "engines": {
+            "node": ">=22"
+          }
+        },
+        {
+          "version": "9.2.3",
+          "dependencies": {
+            "gaxios": "^8.3.1",
+            "json-bigint": "^1.0.0",
+            "google-logging-utils": "^2.1.0"
+          },
+          "engines": {
+            "node": ">=22"
+          }
+        }
+      ]
+    },
+    {
+      "name": "glob",
+      "installed": [
+        {
+          "path": "node_modules/rimraf/node_modules/glob",
+          "version": "10.5.0",
+          "optional": true,
+          "dev": false
+        }
+      ],
+      "parents": [
+        {
+          "parent": "node_modules/rimraf",
+          "range": "^10.3.7",
+          "latestMatching": "10.5.0"
+        }
+      ],
+      "latest": "14.0.4",
+      "versions": [
+        {
+          "version": "10.5.0",
+          "dependencies": {
+            "minipass": "^7.1.2",
+            "jackspeak": "^3.1.2",
+            "minimatch": "^9.0.4",
+            "path-scurry": "^1.11.1",
+            "foreground-child": "^3.1.0",
+            "package-json-from-dist": "^1.0.0"
+          }
+        },
+        {
+          "version": "14.0.4",
+          "dependencies": {
+            "minipass": "^7.1.3",
+            "minimatch": "^11.0.5",
+            "path-scurry": "^3.0.0"
+          },
+          "engines": {
+            "node": "18 || 20 || >=22"
+          }
+        }
+      ]
+    },
+    {
+      "name": "google-gax",
+      "installed": [
+        {
+          "path": "node_modules/@google-cloud/firestore-api/node_modules/google-gax",
+          "version": "5.0.8",
+          "optional": true,
+          "dev": false
+        },
+        {
+          "path": "node_modules/google-gax",
+          "version": "6.12.1",
+          "optional": true,
+          "dev": false
+        }
+      ],
+      "parents": [
+        {
+          "parent": "node_modules/@google-cloud/firestore",
+          "range": "^6.0.1",
+          "latestMatching": "6.16.0"
+        },
+        {
+          "parent": "node_modules/@google-cloud/firestore-api",
+          "range": "^5.0.0",
+          "latestMatching": "5.0.8"
+        }
+      ],
+      "latest": "6.16.0",
+      "versions": [
+        {
+          "version": "5.0.8",
+          "dependencies": {
+            "rimraf": "^5.0.1",
+            "duplexify": "^4.1.3",
+            "node-fetch": "^3.3.2",
+            "protobufjs": "^7.5.4",
+            "object-hash": "^3.0.0",
+            "@grpc/grpc-js": "^1.12.6",
+            "retry-request": "^8.0.2",
+            "@grpc/proto-loader": "^0.8.0",
+            "google-auth-library": "10.5.0",
+            "google-logging-utils": "1.1.3",
+            "proto3-json-serializer": "3.0.4"
+          },
+          "engines": {
+            "node": ">=18"
+          }
+        },
+        {
+          "version": "6.12.1",
+          "dependencies": {
+            "duplexify": "^4.1.3",
+            "node-fetch": "^3.3.2",
+            "protobufjs": "^7.5.4",
+            "object-hash": "^3.0.0",
+            "@grpc/grpc-js": "^1.12.6",
+            "retry-request": "^9.0.0",
+            "@grpc/proto-loader": "^0.8.0",
+            "@opentelemetry/api": "^1.9.0",
+            "google-auth-library": "^11.0.0",
+            "google-logging-utils": "^2.0.0",
+            "proto3-json-serializer": "^4.0.0"
+          },
+          "engines": {
+            "node": ">=22"
+          }
+        },
+        {
+          "version": "6.16.0",
+          "dependencies": {
+            "duplexify": "^4.1.3",
+            "node-fetch": "^3.3.2",
+            "protobufjs": "^7.5.4",
+            "object-hash": "^3.0.0",
+            "@grpc/grpc-js": "^1.12.6",
+            "retry-request": "^9.1.0",
+            "@grpc/proto-loader": "^0.8.0",
+            "@opentelemetry/api": "^1.9.0",
+            "google-auth-library": "^11.3.1",
+            "google-logging-utils": "^2.1.0",
+            "proto3-json-serializer": "^4.1.0"
+          },
+          "engines": {
+            "node": ">=22"
+          }
+        }
+      ]
+    },
+    {
+      "name": "minimatch",
+      "installed": [
+        {
+          "path": "node_modules/rimraf/node_modules/minimatch",
+          "version": "9.0.9",
+          "optional": true,
+          "dev": false
+        }
+      ],
+      "parents": [
+        {
+          "parent": "node_modules/rimraf/node_modules/glob",
+          "range": "^9.0.4",
+          "latestMatching": "9.0.9"
+        }
+      ],
+      "latest": "11.0.5",
+      "versions": [
+        {
+          "version": "9.0.9",
+          "dependencies": {
+            "brace-expansion": "^2.0.2"
+          },
+          "engines": {
+            "node": ">=16 || 14 >=14.17"
+          }
+        },
+        {
+          "version": "11.0.5",
+          "dependencies": {
+            "brace-expansion": "^5.0.12",
+            "@isaacs/nonrecursive-glob-match": "^1.1.0"
+          },
+          "engines": {
+            "node": "20 || >=22"
+          }
+        }
+      ]
+    },
+    {
+      "name": "rimraf",
+      "installed": [
+        {
+          "path": "node_modules/rimraf",
+          "version": "5.0.10",
+          "optional": true,
+          "dev": false
+        }
+      ],
+      "parents": [
+        {
+          "parent": "node_modules/@google-cloud/firestore-api/node_modules/gaxios",
+          "range": "^5.0.1",
+          "latestMatching": "5.0.10"
+        },
+        {
+          "parent": "node_modules/@google-cloud/firestore-api/node_modules/google-gax",
+          "range": "^5.0.1",
+          "latestMatching": "5.0.10"
+        }
+      ],
+      "latest": "6.1.4",
+      "versions": [
+        {
+          "version": "5.0.10",
+          "dependencies": {
+            "glob": "^10.3.7"
+          }
+        },
+        {
+          "version": "6.1.4",
+          "dependencies": {
+            "glob": "^14.0.3",
+            "package-json-from-dist": "^1.0.1"
+          },
+          "engines": {
+            "node": "20 || >=22"
+          }
+        }
+      ]
+    }
+  ],
+  "runtimeImports": [
+    "rimraf/dist/commonjs/index.js",
+    "rimraf/dist/esm/index.js",
+    "rimraf/node_modules/glob/dist/commonjs/glob.js",
+    "rimraf/node_modules/glob/dist/commonjs/has-magic.js",
+    "rimraf/node_modules/glob/dist/commonjs/ignore.js",
+    "rimraf/node_modules/glob/dist/commonjs/index.js",
+    "rimraf/node_modules/glob/dist/commonjs/pattern.js",
+    "rimraf/node_modules/glob/dist/commonjs/processor.js",
+    "rimraf/node_modules/glob/dist/esm/glob.js",
+    "rimraf/node_modules/glob/dist/esm/has-magic.js",
+    "rimraf/node_modules/glob/dist/esm/ignore.js",
+    "rimraf/node_modules/glob/dist/esm/index.js",
+    "rimraf/node_modules/glob/dist/esm/pattern.js",
+    "rimraf/node_modules/glob/dist/esm/processor.js"
+  ],
+  "lockSha256": "0eaedbf386bb5cddb70ed00be7403a78c5257130487f1fa25d549f1d2cc0ec38"
+}

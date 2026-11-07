@@ -1,5 +1,13 @@
 ﻿// Era prerequisites are authored as requiredChapterIds in Firestore.
 const pathOrder = rows => rows.slice().sort((a,b)=>(Number(a.order)||0)-(Number(b.order)||0)||a.id.localeCompare(b.id));
+export function assignmentReadiness(path,assignment){
+    const index=path.findIndex(m=>m.id===assignment.missionId&&m.chapterId===assignment.chapterId);
+    if(index<0)return {state:'unavailable',next:null};
+    const mission=path[index];
+    if(mission.completed)return {state:'complete',next:mission};
+    if(mission.accessible)return {state:'ready',next:mission};
+    return {state:'locked',next:path.slice(0,index).find(m=>m.accessible&&!m.completed)||null};
+}
 export function buildJourneyPath({userId,eras,chapters,missions,challenges,chapterProgress,missionProgress}) {
     const completedChapters = new Set(chapterProgress.filter(p=>p.userId===userId&&p.completed===true).map(p=>p.chapterId));
     const completedMissions = new Set(missionProgress.filter(p=>p.userId===userId&&p.completed===true).map(p=>p.missionId));

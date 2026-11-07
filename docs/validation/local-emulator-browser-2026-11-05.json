@@ -1,0 +1,13 @@
+{
+  "mode": "real-browser-sdk-local-demo-emulators-only",
+  "verifiedAt": "2026-11-04T17:34:51.890Z",
+  "pass": true,
+  "checks": [
+    "dedicated server opts into the demo emulator project",
+    "approved local teacher signs in through the actual page and sees emulator banner",
+    "browser SDK uses demo project and local verified teacher",
+    "actual SDK generates an invitation code using local rules",
+    "actual local student joins the teacher class without online Firebase",
+    "local student cannot read private teacher follow-ups"
+  ]
+}

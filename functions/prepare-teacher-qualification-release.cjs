@@ -1,0 +1,16 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const{scopes}=require('./prepare-teacher-rules-review.cjs');const root=path.resolve(__dirname,'..'),hash=v=>crypto.createHash('sha256').update(v).digest('hex');
+function main(){
+ const followup=process.argv.includes('--pairing-followup');
+ const baseline=JSON.parse(fs.readFileSync(path.join(root,followup?'backups/teacher-qualification-pairing-baseline-2026-10-31.json':'backups/teacher-qualification-baseline-2026-10-31.json'),'utf8')),source=fs.readFileSync(path.join(root,'firestore.rules'),'utf8');
+ if(hash(baseline.source)!==baseline.proof.sourceHash)throw Error('Baseline drift.');const before=scopes(baseline.source.replace(/\r\n/g,'\n')),after=scopes(source.replace(/\r\n/g,'\n'));
+ const allowed=new Set(['function teacherApplicant','function qualifiedTeacher','function validTeacherDecision','function validModeration','function activeTeacher','match /teacherApplications/{uid}','match /teacherEvidence/{uid}','match /teacherApplicationReviews/{eventId}','match /accountModeration/{eventId}','match /users/{userId}']);
+ if(followup){allowed.clear();allowed.add('function validTeacherDecision');}
+ const changed=[...new Set([...before.result.keys(),...after.result.keys()])].filter(key=>before.result.get(key)!==after.result.get(key));if(before.outside!==after.outside||changed.length!==allowed.size||changed.some(key=>!allowed.has(key)))throw Error('Unreviewed rule scope changes.');
+ for(const[file,count]of[['teacher-qualification-rules-2026-10-31.json',45],['qualification-teacher-regression-2026-10-31.json',57],['qualification-admin-regression-2026-10-31.json',44]]){const proof=JSON.parse(fs.readFileSync(path.join(root,'docs/validation',file),'utf8'));if(proof.sourceHash!==hash(source)||proof.steps.length<count||proof.steps.some(t=>t.status!=='pass'))throw Error('Matching permission checks missing: '+file);}
+ for(const file of ['teacher-qualification-browser-2026-10-31.json','admin-workspace-browser-2026-10-31.json']){const proof=JSON.parse(fs.readFileSync(path.join(root,'docs/validation',file),'utf8'));if(!proof.pass)throw Error('Browser checks missing: '+file);for(const item of proof.sources)if(hash(fs.readFileSync(path.join(root,item.file)))!==item.sha256)throw Error('Browser source drift: '+item.file);}
+ const report={mode:'reviewed-qualification-candidate',preparedAt:new Date().toISOString(),sourceHash:hash(source),baselineSourceHash:baseline.proof.sourceHash,baselineRuleset:baseline.proof.rulesetName,outsideScopeMatches:true,changedScopes:changed};
+ fs.writeFileSync(path.join(root,'docs/validation/teacher-qualification-review-2026-10-31.json'),JSON.stringify(report,null,2));
+ fs.writeFileSync(path.join(root,'docs/teacher-qualification-rules-review.md'),'# Teacher qualification permission review\n\nOnly the named qualification/approval scopes below change. Existing teacher accounts must complete the new review before accessing classroom records; no profile or learning records are deleted. Student access/progression and administrator role provisioning remain unchanged.\n\n'+changed.map(key=>'## '+key+'\n\nBefore:\n```\n'+(before.result.get(key)||'(absent)')+'\n```\n\nAfter:\n```\n'+after.result.get(key)+'\n```\n').join('\n'));console.log(JSON.stringify(report,null,2));
+}
+if(require.main===module)main();module.exports={main};

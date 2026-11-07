@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),{spawnSync}=require('node:child_process');
 const root=path.join(__dirname,'..'),temp=fs.mkdtempSync(path.join(os.tmpdir(),'lakbay-chapter-'));
-const source=name=>fs.readFileSync(path.join(root,'js',name),'utf8').replace(/import[\s\S]*?from\s+"[^"]+";/g,'').replace(/export /g,'');
+const source=name=>fs.readFileSync(path.join(root,'js',name),'utf8').replace(/import[\s\S]*?from\s+['"][^'"]+['"];/g,'').replace(/export /g,'');
 let html=fs.readFileSync(path.join(root,'pages/chapter-challenge.html'),'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'');
 const script=`
 const auth={currentUser:{uid:'test'}},db={},records=new Map();
@@ -39,6 +39,8 @@ const fixtureDrafts=new Map(),fixtureDraftWrites=[];
 const draftStatus=container=>{const p=document.createElement('p');container.prepend(p);return p;};
 const learningDraft=(kind,chapter,mission)=>{const key=kind+chapter;let closed=false;return{read:async()=>fixtureDrafts.get(key)||null,save:state=>{if(!closed){fixtureDraftWrites.push(JSON.parse(JSON.stringify(state)));fixtureDrafts.set(key,JSON.parse(JSON.stringify(state)));}},clear:async()=>{closed=true;fixtureDrafts.delete(key);},close:()=>{closed=true;}};};
 ${source('chapter-continuation.js')}
+${source('explorer-art.js')}
+${source('chapter-keepsake.js')}
 ${source('chapter-challenge.js').replace(/window\.location\.href\s*=/g, 'fixtureNavigation =')}
 const tick=()=>new Promise(resolve=>setTimeout(resolve,40)),check=(value,message)=>{if(!value)throw Error(message);};
 async function answerAll(correct){
@@ -114,6 +116,7 @@ async function answerAll(correct){
  check(document.getElementById('challengeResultPrimaryButton').textContent==='Continue to Next Chapter','Eligible next chapter missing');
  document.getElementById('challengeResultPrimaryButton').click();check(fixtureNavigation==='mission.html?chapter=c2','Wrong next chapter route');
  check(!document.querySelector('#chapterChallengeResult img'),'Chapter title rendered as HTML');
+ const savedRenderer=renderChapterKeepsake;renderChapterKeepsake=()=>{throw Error('Optional decoration failed');};const beforeDecorationFailure=JSON.stringify({xp:records.get('users/test').xp,badge:records.get('studentBadges/test_b1')});await showChallengeResult();check(!document.getElementById('challengeResultPrimaryButton').disabled,'Optional keepsake failure blocked Continue');document.getElementById('challengeResultPrimaryButton').click();check(fixtureNavigation==='mission.html?chapter=c2','Optional keepsake failure lost the next chapter route');check(JSON.stringify({xp:records.get('users/test').xp,badge:records.get('studentBadges/test_b1')})===beforeDecorationFailure,'Optional keepsake retry changed saved rewards');renderChapterKeepsake=savedRenderer;
  const replay=await completeChapter();check(!replay.firstCompletion&&!validatedChapterReward.newlyEarned,'Replay duplicated badge');
  let releaseSave;fixtureSaveGate=new Promise(resolve=>{releaseSave=resolve;});
  const saving=showChallengeResult();await tick();

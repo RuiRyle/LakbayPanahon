@@ -1,0 +1,15 @@
+// Reuse the full actual-practice browser fixture, with the mission switched to the limited pilot.
+const fs=require('fs');let script=fs.readFileSync(require.resolve('./student-review-browser.cjs'),'utf8');const pilotMission=process.argv.includes('--first-mission')?'prologue-mission1':'chapter3-mission1';script=script.replaceAll('m1',pilotMission);const marker='    for (let count = 0; count < 2; count++) {';if(!script.includes(marker))throw Error('Practice fixture changed');script=script.replace(marker,`    currentQuestion.answerExplanations={A:'The supporting clue fits this choice.',B:'This choice ignores the route clue.'};
+    currentQuestion.answerHints={B:'Compare the two route descriptions.'};
+    document.querySelector('.practice-option[data-option="B"]').click();checkAnswerButton.click();
+    fixtureCheck(practiceExplanation.textContent.includes('This choice ignores the route clue.'),'Pilot did not explain the selected wrong choice');
+    fixtureCheck(practiceFeedback.querySelector('.practice-misconception-coaching').textContent.includes('Compare the two route descriptions.'),'Pilot clue was not shown');
+    fixtureCheck(new URL(practiceFeedback.querySelector('.practice-misconception-coaching a').href).searchParams.get('reviewTopic')===requestedTopic,'Pilot clue link lost the topic');
+`+marker);script=script.replace("        document.getElementById('checkAnswerButton').click();\n        document.getElementById('checkAnswerButton').click();",`        document.getElementById('checkAnswerButton').click();
+        if(count===0){fixtureCheck(!practiceFeedback.querySelector('.practice-misconception-coaching'),'Old misconception coaching remained after a correct retry');fixtureCheck(checkAnswerButton.textContent==='Try another example','Pilot did not offer a different available example');}
+        document.getElementById('checkAnswerButton').click();`);script=script.replace("includes('2 of 2')", "includes('1 of 2')").replace('fixtureSaved.firstTryCorrectCount === 2','fixtureSaved.firstTryCorrectCount === 1');const goalMarker="    fixtureCheck(!document.getElementById('practiceReviewTopics').textContent.includes('Trading communities')";
+script=script.replace(goalMarker,`    fixtureCheck(document.getElementById('practiceReviewTopics').textContent.includes('Trading communities'),'Assisted session plus one clean round incorrectly cleared review');
+    fixtureSessions.push({id:'trade-second-clean',userId:'test',missionId:'chapter3-mission1',totalQuestions:1,firstTryCorrectCount:1,completedAt:{toMillis:()=>300},questionResults:[{questionId:'q1',firstTryCorrect:true}]});
+    await refreshPracticeReview();
+`+goalMarker);
+script=script.replaceAll('chapter3-mission1',pilotMission);script=script.replace('PASS: adaptive practice, history, session recovery, content failure/empty bank retry and lesson/quiz escape routes','PASS: pilot misconception feedback, clue return, another example, assisted accuracy, draft recovery and save failures');new Function('require','__dirname','__filename',script)(require,__dirname,__filename);

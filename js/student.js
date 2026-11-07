@@ -7,6 +7,8 @@ import { loadProgressionPolicy } from "./progression.js";
 import { instructionalSnapshot } from "./instructional-snapshot.js";
 import { renderHomeLearningTrail } from "./home-learning-trail.js";
 import { progressionState } from "./progression-policy.js";
+import { renderExplorerDesk } from './explorer-desk.js';
+import { renderDashboardExpedition } from './dashboard-expedition.js';
 // ==========================================
 // LAKBAYPANAHON
 // STUDENT DASHBOARD
@@ -41,9 +43,11 @@ import {
 
 let dashboardGeneration = 0;
 async function loadStudentDashboard(user) {
+        const expeditionArt=document.getElementById('homeExpeditionArt');if(expeditionArt?.replaceChildren)expeditionArt.replaceChildren();
         document.getElementById("dashboardRetryProgression")?.remove();
         const generation = ++dashboardGeneration;
         const isCurrent = () => generation === dashboardGeneration && auth.currentUser?.uid === user?.uid;
+        const desk=document.getElementById('explorerDesk');if(desk?.replaceChildren)renderExplorerDesk(desk,{});
 
         if (!user) {
             for (const id of ["studentFirstName","topStudentName","studentXp","topXp","studentLevel","topStudentLevel","missionsCompleted","badgesEarned","levelProgressXp","nextLevelText"]) setText(id,"Sign in");
@@ -424,6 +428,8 @@ async function loadCurrentJourney(userId,sharedProgress=null) {
         }
         state.optionalGuidanceUnavailable = results.slice(7,11).some(result=>result.status === "rejected");
         renderStudentJourney(container,state,()=>loadCurrentJourney(userId));
+        if(document.getElementById('homeExpeditionArt'))renderDashboardExpedition(state,eras);
+        const desk=document.getElementById('explorerDesk');if(desk?.replaceChildren)renderExplorerDesk(desk,state);
         if(reviewPanel){
             if(reviewAvailable){
                 const activeEras=new Set(eras.filter(era=>era.status==='active').map(era=>era.id));
@@ -434,7 +440,7 @@ async function loadCurrentJourney(userId,sharedProgress=null) {
         }
     } catch (error) {
         console.warn("Journey loading failed:",error);
-        if (isCurrent()) {renderStudentJourney(container,{kind:"error"},()=>loadCurrentJourney(userId));if(trail)trail.textContent='Your lessons could not load. Use Refresh Review to try again.';if(reviewPanel)reviewPanel.textContent='We could not load your review topics. Try Refresh Review again.';if(returnPanel)returnPanel.textContent='Your past learning could not be checked right now. Use Refresh Review to try again.';}
+        if (isCurrent()) {renderStudentJourney(container,{kind:"error"},()=>loadCurrentJourney(userId));const desk=document.getElementById('explorerDesk');if(desk?.replaceChildren)renderExplorerDesk(desk,{});if(trail)trail.textContent='Your lessons could not load. Use Refresh Review to try again.';if(reviewPanel)reviewPanel.textContent='We could not load your review topics. Try Refresh Review again.';if(returnPanel)returnPanel.textContent='Your past learning could not be checked right now. Use Refresh Review to try again.';}
     } finally {
         if(isCurrent()&&reviewReload)reviewReload.disabled=false;
     }

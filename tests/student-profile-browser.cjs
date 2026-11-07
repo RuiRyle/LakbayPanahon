@@ -12,7 +12,7 @@ const source = fs.readFileSync(path.join(root, 'js/student-profile.js'), 'utf8')
 const setupMarkup=fs.readFileSync(path.join(root,'pages/student-dashboard.html'),'utf8').match(/<section id="studentProfileSetup"[\s\S]*?<\/section>/)[0];
 const style = fs.readFileSync(path.join(root, 'css/student.css'), 'utf8');
 const html = `<!doctype html><meta charset="utf-8"><style>${style}</style>
-<body data-role="student"><nav class="sidebar-nav"></nav><main>${setupMarkup}
+<body data-role="student"><nav class="sidebar-nav"><a class="nav-link" href="settings.html"><span class="nav-icon"></span>settings.html</a><a class="nav-link" href="achievements.html"><span class="nav-icon"></span>achievements.html</a><a class="nav-link" href="history-timeline.html"><span class="nav-icon"></span>history-timeline.html</a><a class="nav-link" href="student-dashboard.html"><span class="nav-icon"></span>student-dashboard.html</a><a class="nav-link" href="chapters.html"><span class="nav-icon"></span>chapters.html</a><a class="nav-link" href="my-class.html"><span class="nav-icon"></span>my-class.html</a><a class="nav-link" href="my-journey.html"><span class="nav-icon"></span>my-journey.html</a><a class="nav-link" href="bayani-ai.html"><span class="nav-icon"></span>bayani-ai.html</a></nav><main>${setupMarkup}
 <button id="profileButton" class="profile-button"><span id="profileAvatar" class="profile-avatar">A</span><span id="topStudentName">Alice</span></button>
 </main><output id="result">RUNNING</output><script type="module">
 const auth = { currentUser: { uid: 'alice' } }, db = {};
@@ -37,6 +37,7 @@ const tick = () => new Promise(resolve => setTimeout(resolve, 30));
 (async () => {
     mountStudentProfile(saved);
     await tick();
+    check([...document.querySelectorAll('.sidebar-nav a')].map(a=>a.getAttribute('href')).join(',')==='student-dashboard.html,my-journey.html,chapters.html,history-timeline.html,bayani-ai.html,my-class.html,achievements.html,my-profile.html,settings.html','Student navigation order differs between routes');
     const button = document.getElementById('profileButton');
     const modal = document.querySelector('dialog');
     const savedModal = document.querySelector('.student-profile-saved-dialog');

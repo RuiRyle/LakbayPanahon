@@ -1,0 +1,180 @@
+/* A bold compass loading transition keeps the LakbayPanahon expedition identity. */
+@view-transition { navigation: auto; }
+::view-transition-group(root) {
+    animation-duration: 540ms;
+    animation-timing-function: cubic-bezier(.22,.8,.24,1);
+}
+::view-transition-old(root) { animation: lp-native-depart 180ms ease-out both; }
+::view-transition-new(root) { animation: lp-native-arrive 240ms ease-out both; }
+@keyframes lp-native-depart { to { opacity: .96; } }
+@keyframes lp-native-arrive { from { opacity: .94; } to { opacity: 1; } }
+@keyframes lp-content-depart {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: .45; transform: translateX(-14px); }
+}
+@keyframes lp-content-arrive {
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes lp-expedition-backdrop {
+    from { opacity: 0; backdrop-filter: blur(0); }
+    to { opacity: 1; backdrop-filter: blur(7px); }
+}
+@keyframes lp-compass-orbit { to { transform: rotate(1turn); } }
+@keyframes lp-compass-needle {
+    0% { transform: rotate(-38deg) scale(.86); }
+    68% { transform: rotate(8deg) scale(1.025); }
+    100% { transform: rotate(0) scale(1); }
+}
+@keyframes lp-compass-pulse {
+    0%,100% { opacity: .52; scale: .94; }
+    50% { opacity: 1; scale: 1.04; }
+}
+@keyframes lp-compass-glint {
+    0%,100% { opacity: .35; transform: scale(.72); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+body.page-leaving :is(main,.main-content) {
+    animation: lp-content-depart 520ms cubic-bezier(.4,0,.2,1) both;
+}
+.route-transition-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483646;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 48%,#153857e8 0%,#0a1f39f2 52%,#061329fa 100%);
+    pointer-events: none;
+    animation: lp-expedition-backdrop 260ms ease-out both;
+}
+.route-transition-overlay::before {
+    position: absolute;
+    inset: -22%;
+    background: repeating-radial-gradient(ellipse at 17% 76%,transparent 0 48px,#d7b5680d 49px 50px,transparent 51px 94px);
+    content: "";
+    animation: lp-compass-pulse 3.2s ease-in-out infinite;
+}
+.route-compass-loader {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: clamp(210px,32vw,310px);
+    aspect-ratio: 1;
+    filter: drop-shadow(0 22px 50px #0209148c);
+}
+.route-compass-orbit {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.route-compass-orbit--outer {
+    inset: 2%;
+    border: 1px solid #d7b56865;
+    border-top-color: #ffe39a;
+    border-right-color: #d7b568a8;
+    box-shadow: 0 0 0 8px #d7b56809, inset 0 0 16px #d7b5680b;
+    animation: lp-compass-orbit 8s linear infinite;
+}
+.route-compass-orbit--inner {
+    inset: 10%;
+    border: 1px dashed #d7b5688a;
+    box-shadow: 0 0 18px #d7b56822;
+    animation: lp-compass-orbit 18s linear infinite reverse;
+}
+.route-compass-orbit--arc {
+    inset: -2%;
+    background: conic-gradient(from -35deg,transparent 0 18%,#b78b39 23%,#fff0b3 28%,#d7b568 32%,transparent 38% 72%,#d7b568 78%,transparent 82% 100%);
+    -webkit-mask: radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));
+    mask: radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));
+    filter: drop-shadow(0 0 8px #f0c87585);
+    animation: lp-compass-orbit 1.8s cubic-bezier(.4,0,.2,1) infinite;
+}
+.route-transition-compass {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 68%;
+    height: 68%;
+    border: 1px solid #f0d58e;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 32%,#244d6c,#112b49 59%,#07182f 100%);
+    box-shadow: 0 0 0 7px #d7b56813,0 0 38px #d7b56842,inset 0 2px 18px #d7b56812;
+    color: #d7b568;
+    animation: lp-compass-needle 640ms cubic-bezier(.2,.85,.25,1) both;
+}
+.route-transition-compass::before,
+.route-transition-compass::after {
+    position: absolute;
+    border: 1px solid #d7b56845;
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+}
+.route-transition-compass::before { inset: 8%; }
+.route-transition-compass::after { inset: 17%; border-style: dotted; opacity: .62; }
+.route-transition-compass svg {
+    position: relative;
+    z-index: 1;
+    width: 82%;
+    height: 82%;
+    filter: drop-shadow(0 0 9px #d7b56830);
+}
+.route-compass-star {
+    position: absolute;
+    z-index: 2;
+    color: #fff0b3;
+    text-shadow: 0 0 12px #f0c875;
+    animation: lp-compass-glint 1.4s ease-in-out infinite;
+}
+.route-compass-star--one { top: 13%; right: 18%; font-size: 18px; }
+.route-compass-star--two { bottom: 19%; left: 13%; color: #d7b568; font-size: 12px; animation-delay: .42s; }
+body.page-visible:not([data-role]) :is(main,.main-content),
+body.page-visible.authenticated :is(main,.main-content),
+body.page-visible.authenticated[data-role]:not([data-role="student"]) > :is(h1,p,button) {
+    animation: lp-content-arrive 540ms cubic-bezier(.22,.8,.24,1) both;
+}
+@media (max-width: 560px) {
+    .route-compass-loader { width: min(70vw,260px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    @view-transition { navigation: none; }
+    body.page-leaving :is(main,.main-content),
+    body.page-visible :is(main,.main-content),
+    body.page-visible.authenticated[data-role]:not([data-role="student"]) > :is(h1,p,button),
+    .route-transition-overlay,.route-transition-overlay::before,.route-transition-compass,
+    .route-compass-orbit,.route-compass-star { animation: none !important; }
+}
+/* LakbayPanahon pointer set. */
+body.lakbay-theme {
+    cursor: url('../assets/brand/lakbay-cursor-arrow.svg') 4 3, auto;
+}
+body.lakbay-theme :is(a[href],button:not(:disabled),[role="button"]:not([aria-disabled="true"]),summary,select,input[type="checkbox"]:not(:disabled),input[type="radio"]:not(:disabled),label[for]) {
+    cursor: url('../assets/brand/lakbay-cursor-hand.svg') 12 7, pointer;
+}
+body.lakbay-theme :is(input:not(:disabled):not([aria-disabled="true"]):not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="range"]),textarea:not(:disabled):not([aria-disabled="true"]),[contenteditable="true"]:not([aria-disabled="true"])) {
+    cursor: text;
+}
+body.lakbay-theme :is(button:disabled,input:disabled,[aria-disabled="true"]) {
+    cursor: not-allowed;
+}
+/* Keep the added settings shortcut visually consistent with the navigation. */
+body.lakbay-theme .settings-nav-link .nav-icon svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    overflow: visible;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+body.lakbay-reduce-motion *,
+body.lakbay-reduce-motion *::before,
+body.lakbay-reduce-motion *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+}
+body.lakbay-reduce-motion .route-transition-overlay { display: none !important; }

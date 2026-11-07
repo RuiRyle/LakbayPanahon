@@ -1,0 +1,18 @@
+{
+  "status": "pass",
+  "scope": "Two overlapping display consumers of four catalog collections, 30 synthetic browsers",
+  "baselineReads": 6120,
+  "sharedReads": 3060,
+  "savedReads": 3060,
+  "writes": 0,
+  "deletes": 0,
+  "displayParity": true,
+  "freshPageSeesEdits": true,
+  "serverAssessmentCaching": false,
+  "productionIntegration": false,
+  "limitations": [
+    "No saving if the existing UI already coalesces these consumers.",
+    "Not a browser trace or reward-service optimization.",
+    "Seed/probe writes excluded from measured display workload."
+  ]
+}

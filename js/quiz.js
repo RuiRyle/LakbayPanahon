@@ -1,6 +1,98 @@
+import { assessmentAction, assessmentState, forgetAssessment } from './student-assessment-client.js';
+let securedQuiz = false,
+  assessmentBusy = false;
+const securedIdentity = () => ({
+  kind: 'mission',
+  chapterId,
+  missionId,
+  quizId: currentQuiz.id
+});
+async function syncSecuredAnswer(question, answer) {
+  const state = await assessmentAction(securedIdentity(), {
+    action: 'answer',
+    questionId: question.id,
+    answer
+  });
+  questions = state.questions;
+  missionQuestionBank = state.questions;
+  studentAnswers = {
+    ...state.answers
+  };
+  return state;
+}
+async function startSecuredFollowup() {
+  const identity = securedIdentity();
+  let state = assessmentState(identity);
+  for (let i = 0; i < questions.length; i++) {
+    const q = questions[i],
+      answer = studentAnswers[q.id];
+    if (!answer) throw Error('Answer every question before continuing.');
+    if (state.answers[q.id] !== answer) state = await syncSecuredAnswer(q, answer);
+  }
+  state = await assessmentAction(identity, {
+    action: 'followupStart'
+  });
+  adaptiveQuestionLimit = state.followupLimit;
+  if (!state.followupQuestions.length) return false;
+  adaptiveFollowupStarted = true;
+  adaptiveFollowupComplete = false;
+  adaptiveQuestionIds = state.followupQuestions.map(q => q.id);
+  adaptiveAnswers = {
+    ...state.followupAnswers
+  };
+  adaptiveQuestionIndex = state.followupQuestions.length - 1;
+  adaptiveCurrentQuestion = state.followupQuestions.at(-1);
+  adaptiveSelectedAnswer = null;
+  adaptiveFeedbackVisible = !!adaptiveAnswers[adaptiveCurrentQuestion.id];
+  adaptiveQuestionPool = state.followupQuestions;
+  displayAdaptiveQuestion();
+  return true;
+}
+async function securedFollowupAction() {
+  if (assessmentBusy) return;
+  assessmentBusy = true;
+  nextQuestionButton.disabled = true;
+  try {
+    let state;
+    if (!adaptiveFeedbackVisible) {
+      if (!adaptiveSelectedAnswer) return;
+      state = await assessmentAction(securedIdentity(), {
+        action: 'followupAnswer',
+        questionId: adaptiveCurrentQuestion.id,
+        answer: adaptiveSelectedAnswer
+      });
+      adaptiveAnswers = {
+        ...state.followupAnswers
+      };
+      adaptiveCurrentQuestion = state.followupQuestions.at(-1);
+      adaptiveFeedbackVisible = true;
+      displayAdaptiveQuestion();
+    } else if (adaptiveQuestionIds.length < adaptiveQuestionLimit) {
+      state = await assessmentAction(securedIdentity(), {
+        action: 'followupNext'
+      });
+      adaptiveQuestionIds = state.followupQuestions.map(q => q.id);
+      adaptiveQuestionIndex = adaptiveQuestionIds.length - 1;
+      adaptiveCurrentQuestion = state.followupQuestions.at(-1);
+      adaptiveSelectedAnswer = null;
+      adaptiveFeedbackVisible = false;
+      adaptiveQuestionPool = state.followupQuestions;
+      displayAdaptiveQuestion();
+    } else {
+      adaptiveFollowupComplete = true;
+      await submitQuiz(true);
+    }
+  } catch (error) {
+    alert(error.message);
+  } finally {
+    assessmentBusy = false;
+    if (!quizSubmitted) nextQuestionButton.disabled = false;
+  }
+}
 import { quizDraftVersion } from "./quiz-draft-policy.js";
 import { mountLearningNavigation } from "./learning-navigation.js";
 import { learningDraft, draftStatus, restartControl } from "./learning-draft.js";
+import { studentTabStorage } from "./student-session-storage.js";
 import { loadProgressionPolicy } from "./progression.js";
 import { progressionState } from "./progression-policy.js";
 import { startMissionQuiz } from "./mission-assessment-client.js";
@@ -259,9 +351,10 @@ const restartQuizButton = restartControl(quizContent, "Start Quiz Over", async (
     quizDraftReady = false;
     try {
         await quizDraft.clear();
+        if(securedQuiz)forgetAssessment(securedIdentity());
         if (generation !== quizSessionGeneration) return;
-        sessionStorage.removeItem(attemptKey);
-        sessionStorage.removeItem('missionQuizSet:' + currentUser.uid + ':' + currentAttemptId);
+        studentTabStorage.removeItem(attemptKey);
+        studentTabStorage.removeItem('missionQuizSet:' + currentUser.uid + ':' + currentAttemptId);
         await loadQuiz();
     } catch {
         if (generation !== quizSessionGeneration) return;
@@ -604,12 +697,14 @@ currentAttemptId = null;
         const savedDraft = await quizDraft.read();
         if (!isCurrent()) return;
         const attemptKey = 'missionQuiz:' + currentUser.uid + ':' + currentQuiz.id;
-        currentAttemptId = savedDraft?.quizId === currentQuiz.id && typeof savedDraft.attemptId === "string" ? savedDraft.attemptId : sessionStorage.getItem(attemptKey) || crypto.randomUUID();
-        sessionStorage.setItem(attemptKey, currentAttemptId);
-        if (savedDraft?.attemptId === currentAttemptId && Array.isArray(savedDraft.questionIds)) sessionStorage.setItem("missionQuizSet:" + currentUser.uid + ":" + currentAttemptId, JSON.stringify(savedDraft.questionIds));
-        const issued = await startMissionQuiz({ chapterId, missionId, quizId: currentQuiz.id, attemptId: currentAttemptId });
+        currentAttemptId = savedDraft?.quizId === currentQuiz.id && typeof savedDraft.attemptId === "string" ? savedDraft.attemptId : studentTabStorage.getItem(attemptKey) || crypto.randomUUID();
+        studentTabStorage.setItem(attemptKey, currentAttemptId);
+        if (savedDraft?.attemptId === currentAttemptId && Array.isArray(savedDraft.questionIds)) studentTabStorage.setItem("missionQuizSet:" + currentUser.uid + ":" + currentAttemptId, JSON.stringify(savedDraft.questionIds));
+        const issued = await startMissionQuiz({ chapterId, missionId, quizId: currentQuiz.id, attemptId: currentAttemptId,
+            questionIds: savedDraft?.quizId === currentQuiz.id && savedDraft?.attemptId === currentAttemptId && Array.isArray(savedDraft.questionIds) ? savedDraft.questionIds : null });
         if (!isCurrent()) return;
         currentAttemptId = issued.attemptId;
+        securedQuiz=issued.secured===true;
         questions = issued.questions;
         missionQuestionBank = issued.questionBank || issued.questions;
         seenMissionQuestionIds = issued.seenQuestionIds || [];
@@ -622,7 +717,8 @@ currentAttemptId = null;
         const passingRequirement = document.getElementById("quizPassingRequirement");
         if (passingRequirement) passingRequirement.textContent = "Answer all " + questions.length + " questions. You need at least " + Math.ceil(questions.length * requirePassingScore(currentQuiz) / 100) + " correct (" + currentQuiz.passingScore + "%) to complete the mission.";
         const notice = document.getElementById("quizSetNotice");
-        if (notice) notice.textContent = "Your answers help choose questions for you. This mission still has " + questions.length + " questions and the same passing goal. Any extra practice helps you review; it does not change your mission score.";
+        if (notice) notice.textContent = "Your answers help choose questions for you. This mission still has " + questions.length + " questions and the same passing goal. Any extra practice helps you review; it does not change your mission score."
+            + (questions.some(question=>seenMissionQuestionIds.includes(question.id)) ? " You may recognize a question from an earlier try. Use what you learned to explain it again." : "");
 
         /* ==================================
            DISPLAY QUIZ INFORMATION
@@ -646,8 +742,9 @@ currentAttemptId = null;
             0;
 
 
+        if(securedQuiz){studentAnswers={...issued.answers};quizStarted=Object.keys(issued.answers).length>0;currentQuestionIndex=Math.min(Object.keys(issued.answers).length,questions.length-1);if(issued.followupStarted){adaptiveFollowupStarted=true;adaptiveQuestionLimit=issued.followupLimit;adaptiveQuestionIds=issued.followupQuestions.map(q=>q.id);adaptiveAnswers={...issued.followupAnswers};adaptiveQuestionIndex=Math.max(0,adaptiveQuestionIds.length-1);adaptiveCurrentQuestion=issued.followupQuestions.at(-1)||null;adaptiveFeedbackVisible=!!adaptiveAnswers[adaptiveCurrentQuestion?.id];adaptiveQuestionPool=issued.followupQuestions;}}
         const currentDraftVersion = quizDraftVersion(currentQuiz, questions, adaptiveQuestionPool, missionQuestionBank);
-        const canResumeDraft = savedDraft?.version === currentDraftVersion && savedDraft?.attemptId === currentAttemptId &&
+        const canResumeDraft = !securedQuiz && savedDraft?.version === currentDraftVersion && savedDraft?.attemptId === currentAttemptId &&
             JSON.stringify(savedDraft.questionIds) === JSON.stringify(questions.map(q => q.id));
         if (canResumeDraft) {
             flaggedQuestions = new Set((Array.isArray(savedDraft.flagged)?savedDraft.flagged:[]).filter(id=>questions.some(q=>q.id===id)));
@@ -689,10 +786,11 @@ currentAttemptId = null;
             const resumeNotice = document.getElementById("quizSetNotice");
             if (resumeNotice) resumeNotice.textContent += " The quiz content changed, so your saved answers have been reset. Completed progress and rewards are unchanged.";
         }
-        quizStarted = canResumeDraft &&
+        quizStarted = securedQuiz ? (Object.keys(issued.answers||{}).length>0||issued.followupStarted) : canResumeDraft &&
             savedDraft?.attemptId === currentAttemptId &&
             JSON.stringify(savedDraft.questionIds) === JSON.stringify(questions.map(q=>q.id)) &&
             (savedDraft.started === true || Object.keys(studentAnswers).length > 0);
+        if(savedDraft&&savedDraft.attemptId!==currentAttemptId){const note=document.getElementById('quizSetNotice');if(note)note.textContent+=' Please restart this unfinished quiz with verified saving. Your completed missions and earned rewards are still saved.';}
         quizDraftReady = true;
         restartQuizButton.hidden = !savedDraft;
         if (adaptiveFollowupStarted && adaptiveCurrentQuestion) displayAdaptiveQuestion();
@@ -707,6 +805,7 @@ currentAttemptId = null;
 
         quizContent.hidden =
             false;
+        if(securedQuiz&&issued.result){adaptiveFollowupComplete=true;await submitQuiz(true);}
 
 
     } catch (error) {
@@ -859,6 +958,7 @@ function getAdaptiveCandidates() {
 }
 
 function getAdaptiveQuestionLimit() {
+    if(securedQuiz)return assessmentState(securedIdentity())?.followupLimit||0;
     return Math.min(3, getAdaptiveCandidates().length);
 }
 
@@ -880,7 +980,7 @@ function saveQuizDraftState() {
     if (!quizDraftReady || !currentUser || !currentQuiz || quizSubmitted) return;
     const questionIds = questions.map(question => question.id);
     try {
-        if (currentAttemptId) sessionStorage.setItem('missionQuizSet:' + currentUser.uid + ':' + currentAttemptId, JSON.stringify(questionIds));
+        if (currentAttemptId) studentTabStorage.setItem('missionQuizSet:' + currentUser.uid + ':' + currentAttemptId, JSON.stringify(questionIds));
     } catch {}
     quizDraft?.save({
         version: quizDraftVersion(currentQuiz, questions, adaptiveQuestionPool, missionQuestionBank),
@@ -1019,6 +1119,7 @@ function displayAdaptiveQuestion() {
 }
 
 function handleAdaptiveFollowupAction() {
+    if(securedQuiz){securedFollowupAction();return;}
     if (!adaptiveCurrentQuestion) return;
     const question = adaptiveCurrentQuestion;
     if (!adaptiveFeedbackVisible) {
@@ -1259,6 +1360,9 @@ function displayQuestion() {
 
 
                     const previousAnswer = studentAnswers[question.id];
+                    const laterAnsweredCount = previousAnswer && previousAnswer !== option.key
+                        ? questions.slice(currentQuestionIndex + 1).filter(item=>studentAnswers[item.id]).length : 0;
+                    if(laterAnsweredCount&&!window.confirm('Change this answer? You will need to answer '+laterAnsweredCount+' later question'+(laterAnsweredCount===1?'':'s')+' again so the quiz can adapt. Keep your current answer by choosing Cancel.'))return;
                     studentAnswers[
                         question.id
                     ] =
@@ -1465,6 +1569,7 @@ nextQuestionButton.addEventListener(
            REQUIRE AN ANSWER
         ================================== */
 
+        if (assessmentBusy) return;
         if (!selectedAnswer) {
 
             alert(
@@ -1489,11 +1594,12 @@ nextQuestionButton.addEventListener(
            NEXT CHECKPOINT
         ================================== */
 
+        if(securedQuiz){assessmentBusy=true;quizOptions.inert=true;nextQuestionButton.disabled=true;try{await syncSecuredAnswer(currentQuestion,selectedAnswer);}catch(error){alert(error.message);return;}finally{assessmentBusy=false;quizOptions.inert=false;nextQuestionButton.disabled=false;}}
         if (!isLastQuestion) {
 
             const hasAnsweredLaterQuestion = questions.slice(currentQuestionIndex + 1)
                 .some(question => ['A', 'B', 'C', 'D'].includes(studentAnswers[question.id]));
-            if (!hasAnsweredLaterQuestion) {
+            if (!securedQuiz && !hasAnsweredLaterQuestion) {
                 const nextMissionQuestion = chooseNextMissionQuestion(currentQuestionIndex);
                 if (nextMissionQuestion) placeNextMissionQuestion(currentQuestionIndex, nextMissionQuestion);
             }
@@ -1573,7 +1679,7 @@ async function submitQuiz(flagsConfirmed=false) {
 
     }
 
-    if (flagsConfirmed && !adaptiveFollowupStarted && !adaptiveFollowupComplete && startAdaptiveFollowup()) return;
+    if(flagsConfirmed&&!adaptiveFollowupStarted&&!adaptiveFollowupComplete){try{if(securedQuiz?await startSecuredFollowup():startAdaptiveFollowup())return;}catch(error){alert(error.message);return;}}
 
 
     if(!flagsConfirmed){
@@ -1631,6 +1737,7 @@ const completionResult = await submitStudentActivity({
     ...(adaptiveQuestionIds.length ? {adaptiveFollowup:{questionIds:adaptiveQuestionIds,answers:adaptiveAnswers}} : {})
 });
 
+
 if (!isCurrent()) return;
 quizDraftReady = false;
 if (saveStatus) saveStatus.textContent = completionResult.preview ? 'Preview result only. No score, completion or reward was saved.' : 'Your quiz result is saved.';
@@ -1648,8 +1755,8 @@ lastAdaptiveFollowup = completionResult.adaptiveFollowup
     ? {...completionResult.adaptiveFollowup, preview:completionResult.preview === true}
     : null;
 lastArtifactResult = completionResult.artifactResult || null;
-sessionStorage.removeItem('missionQuiz:' + currentUser.uid + ':' + currentQuiz.id);
-sessionStorage.removeItem('missionQuizSet:' + currentUser.uid + ':' + currentAttemptId);
+studentTabStorage.removeItem('missionQuiz:' + currentUser.uid + ':' + currentQuiz.id);
+studentTabStorage.removeItem('missionQuizSet:' + currentUser.uid + ':' + currentAttemptId);
 const correctAnswers = completionResult.correctAnswers;
 const percentage = completionResult.score;
 const passed = completionResult.passed === true;
@@ -2260,7 +2367,7 @@ function showResult(
     const expeditionSummary=document.createElement('div');expeditionSummary.id='expeditionResultSummary';expeditionSummary.className='expedition-result-summary';
     const tag=document.createElement('span');tag.className='eyebrow';tag.textContent=passed?'EXPEDITION COMPLETE':'YOUR RECOVERY ROUTE';
     const total=document.createElement('strong');total.textContent=correctAnswers+' / '+questions.length+' mission questions correct';
-    const requirement=document.createElement('p');requirement.textContent='You need '+Math.ceil(questions.length*requirePassingScore(currentQuiz)/100)+' correct to pass. '+(passed?'Continue your journey, or revisit any topics below.':'First review a missed topic in the lesson. Then try practice and return for another quiz on the same topics.');
+    const requirement=document.createElement('p');requirement.textContent='You need '+Math.ceil(questions.length*requirePassingScore(currentQuiz)/100)+' correct to pass. '+(passed?'Continue your journey, or revisit any topics below.':'Your next step: review one missed topic. Then practise it and retry the mission quiz.');
     expeditionSummary.append(tag,total,requirement);
     if(lastAdaptiveFollowup){const adaptiveSummary=document.createElement('p');adaptiveSummary.className='adaptive-result-summary';adaptiveSummary.textContent='Extra practice: '+lastAdaptiveFollowup.correctAnswers+' of '+lastAdaptiveFollowup.totalQuestions+' correct. This does not change your mission score. '+(lastAdaptiveFollowup.preview?'This preview was not saved.':'Check the topics below to see what you can review.');expeditionSummary.append(adaptiveSummary);}
     quizResultMessage.after(expeditionSummary);
@@ -2283,10 +2390,21 @@ function showResult(
     const topicBox = document.getElementById("quizWeakTopics");
     if (topicBox) {
         topicBox.replaceChildren();
-        for (const topic of lastQuizTopics) {
-            const item=document.createElement('article');item.className='result-topic-route';const question=questions.find(q=>q.topic===topic)||adaptiveQuestionPool.find(q=>q.topic===topic);const name=document.createElement('strong');name.textContent=question?.topicLabel||topic;const note=document.createElement('p');note.textContent='Read this topic again, then try a few practice questions. Return to the mission quiz when you feel ready.';const link=document.createElement('a');link.textContent='1. Review the lesson';link.setAttribute('aria-label','Review the lesson: '+name.textContent);link.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,reviewTopic:topic});const practice=document.createElement('a');practice.textContent='2. Try practice';practice.setAttribute('aria-label','Try practice: '+name.textContent);practice.href='practice.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,topic,review:'1'});item.append(name,note,link,practice);topicBox.append(item);
+        let otherTopics;
+        if(!passed&&lastQuizTopics.length>1){otherTopics=document.createElement('details');otherTopics.className='quiz-other-review-topics';const summary=document.createElement('summary');summary.textContent='Other topics to revisit ('+(lastQuizTopics.length-1)+')';otherTopics.append(summary);}
+        for (const [topicIndex,topic] of lastQuizTopics.entries()) {
+            const item=document.createElement('article');item.className='result-topic-route';const question=questions.find(q=>q.topic===topic)||adaptiveQuestionPool.find(q=>q.topic===topic);const name=document.createElement('strong');name.textContent=question?.topicLabel||topic;const note=document.createElement('p');note.textContent=!passed&&topicIndex===0?'Start here. Review this lesson topic, practise it, then try the mission quiz again.':'Read this topic again, then try a few practice questions. Return to the mission quiz when you feel ready.';const link=document.createElement('a');link.textContent='1. Review the lesson';link.setAttribute('aria-label','Review the lesson: '+name.textContent);link.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,reviewTopic:topic});const practice=document.createElement('a');practice.textContent='2. Try practice';practice.setAttribute('aria-label','Try practice: '+name.textContent);practice.href='practice.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,topic,review:'1'});item.append(name,note,link,practice);(!passed&&topicIndex>0&&otherTopics?otherTopics:topicBox).append(item);
         }
+        if(otherTopics)topicBox.append(otherTopics);
     }
+    retryQuizButton.textContent=passed?'Replay Mission Quiz':'Retry Quiz Now';
+    retryQuizButton.title=passed?'Replay this mission quiz.':'Optional shortcut. Reviewing the lesson and practising first is recommended.';
+    const generalReviewLink=document.getElementById('reviewLessonLink');if(generalReviewLink)generalReviewLink.hidden=!passed&&lastQuizTopics.length>0;
+    // Put the recovery route before the long answer explanations on failure.
+    // Move the same controls back below rewards for a passing result.
+    const resultActions=continueResultButton.closest('.quiz-result-actions');
+    const recoveryAnchor=passed?document.getElementById('missionRewardCard'):expeditionSummary;
+    if(recoveryAnchor&&reinforcement&&topicBox&&resultActions)recoveryAnchor.after(reinforcement,topicBox,resultActions);
 
 
     /* ======================================
@@ -2301,7 +2419,7 @@ function showResult(
         missionRewardCard.hidden=true;
         if(reinforcement)reinforcement.textContent='Use the explanations below to test the learning flow. Your saved student progress is unchanged.';
         retryQuizButton.hidden=false;
-        continueResultButton.textContent=passed?'Back to Missions':'Review This Topic';
+        continueResultButton.textContent=passed?(learningNavigation.classroomReturn?'Back to class activity':'Back to Missions'):'Review This Topic';
         return;
     }
     if (passed) {
@@ -2474,6 +2592,7 @@ quizResultTitle.textContent =
 
     continueResultButton.textContent =
         "Review This Topic \u2192";
+    if(lastQuizTopics.length){const firstTopic=questions.find(q=>q.topic===lastQuizTopics[0])||adaptiveQuestionPool.find(q=>q.topic===lastQuizTopics[0]);continueResultButton.textContent='Review '+(firstTopic?.topicLabel||lastQuizTopics[0])+' →';}
 
     document.dispatchEvent(new CustomEvent("lakbay:needs-practice"));
 
@@ -2709,7 +2828,8 @@ retryQuizButton.addEventListener("click", async () => {
     if (!currentUser || !currentQuiz || retryQuizButton.disabled) return;
     const generation = quizSessionGeneration;
     retryQuizButton.disabled = true;
-    sessionStorage.removeItem('missionQuiz:' + currentUser.uid + ':' + currentQuiz.id);
+    studentTabStorage.removeItem('missionQuiz:' + currentUser.uid + ':' + currentQuiz.id);
+    if(securedQuiz)forgetAssessment(securedIdentity());
     await loadQuiz();
     if (generation === quizSessionGeneration) retryQuizButton.disabled = false;
 });
@@ -2732,7 +2852,7 @@ continueResultButton.addEventListener(
 
         if (lastQuizPassed) {
 
-            window.location.href =
+            window.location.href = learningNavigation.classroomReturn ||
                 `mission.html?chapter=${encodeURIComponent(
                     chapterId
                 )}`;
@@ -2743,7 +2863,7 @@ continueResultButton.addEventListener(
 
 
         window.location.href =
-            'story.html?' + new URLSearchParams({chapter: chapterId, mission: missionId, ...(lastQuizTopics[0] ? {reviewTopic: lastQuizTopics[0]} : {})});
+            learningNavigation.carry('story.html?' + new URLSearchParams({chapter: chapterId, mission: missionId, ...(lastQuizTopics[0] ? {reviewTopic: lastQuizTopics[0]} : {})}));
 
     }
 );
@@ -3001,6 +3121,6 @@ if (reviewLessonLink) reviewLessonLink.href = `story.html?${new URLSearchParams(
 
 retryQuizLoadButton?.addEventListener("click", () => loadQuiz());
 
-mountLearningNavigation(document.querySelector(".quiz-page"), "Main Quiz");
+const learningNavigation=mountLearningNavigation(document.querySelector(".quiz-page"), "Main Quiz")||{carry:url=>url};
 
 document.getElementById('flagQuestionButton')?.addEventListener('click',()=>{if(quizSubmitted||!currentUser)return;const id=questions[currentQuestionIndex]?.id;if(!id)return;if(flaggedQuestions.has(id))flaggedQuestions.delete(id);else flaggedQuestions.add(id);displayQuestion();});

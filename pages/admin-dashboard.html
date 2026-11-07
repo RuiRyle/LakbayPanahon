@@ -20,15 +20,40 @@
     <link rel="stylesheet" href="../css/navy-gold-theme.css">
     <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
     <link rel="stylesheet" href="../css/page-transition.css">
+    <link rel="stylesheet" href="../css/expedition.css">
+    <link rel="stylesheet" href="../css/teacher-workspace.css">
+    <link rel="stylesheet" href="../css/admin-workspace.css">
+    <link rel="stylesheet" href="../css/teacher-application.css">
+    <link rel="stylesheet" href="../css/interface-clarity.css">
 </head>
 
-<body data-role="admin" class="lakbay-theme">
-
-    <h1>Administrator Dashboard</h1>
-
-    <p>
-        LakbayPanahon Administration
-    </p>
+<body data-role="admin" class="lakbay-theme teacher-workspace admin-workspace">
+    <a class="student-skip-link" href="#admin-main">Skip to main content</a>
+    <div class="teacher-shell">
+        <header class="teacher-topbar"><a class="teacher-brand" href="../index.html"><img src="../assets/brand/lakbay-sun.svg" alt="" width="42" height="42"><span>LakbayPanahon<br><small>Administrator workspace</small></span></a><button type="button" class="logout-button">Log Out</button></header>
+        <main id="admin-main" tabindex="-1">
+            <div class="teacher-intro"><span class="eyebrow">ACCOUNT MANAGEMENT</span><h1>Give the right people access.</h1><p>Review teacher requests and manage student and teacher account availability.</p></div>
+            <p id="adminStatus" class="teacher-status" role="status" aria-live="polite">Checking administrator access...</p>
+            <div class="teacher-layout">
+                <section class="teacher-panel" aria-labelledby="accountListTitle"><h2 id="accountListTitle">Accounts</h2>
+                    <button id="reviewSubmittedApplications" type="button" class="secondary" aria-pressed="false">Review Submitted Applications</button><p class="teacher-note">Find new submissions and existing teachers awaiting qualification review.</p>
+                    <form id="accountFilters"><label>Account type<select id="accountRole"><option value="teacher">Teachers</option><option value="student">Students</option></select></label><label>Status<select id="accountStatusFilter"><option value="pending">Awaiting approval</option><option value="active">Active</option><option value="inactive">Inactive</option></select></label><button type="submit">Refresh Accounts</button></form>
+                    <div id="adminAccounts" class="admin-account-list"></div>
+                    <p id="accountPage" class="teacher-note"></p><div class="teacher-actions"><button id="previousAccounts" type="button" class="secondary" disabled>Previous</button><button id="nextAccounts" type="button" class="secondary" disabled>Next</button></div>
+                </section>
+                <section id="adminAccountDetail" class="teacher-panel" hidden aria-labelledby="accountName"><p id="accountCurrentStatus" class="teacher-note"></p><h2 id="accountName"></h2><p id="accountEmail"></p>
+                    <p class="teacher-note">Changing access preserves saved learning records. Inactive accounts cannot use protected features. Administrator privileges are managed through trusted project setup.</p>
+                    <form id="moderationForm"><label>Decision<select id="newAccountStatus"><option value="active">Activate / approve access</option><option value="inactive">Deactivate / decline access</option></select></label>
+                        <label id="identityCheck" class="admin-verification"><input id="teacherIdentityVerified" type="checkbox"><span>I checked this teacher's identity and eligibility to access classroom tools.</span></label>
+                        <label>Reason for this decision<textarea id="moderationReason" required minlength="5" maxlength="500" placeholder="Record the verification or account-management reason."></textarea></label>
+                        <p class="teacher-note">This reason is saved in the administrator audit trail. Avoid unnecessary personal or sensitive details.</p><button id="saveAccountStatus" type="submit">Save Account Status</button>
+                    </form>
+                    <div id="teacherQualificationReview"></div>
+                    <h3>Recorded decisions</h3><p class="teacher-note">Decisions appear in document order, 25 at a time. Each record shows its actual saved time.</p><div id="accountHistory"></div><button id="moreAccountHistory" type="button" class="secondary" hidden>Load More Decisions</button>
+                </section>
+            </div>
+        </main>
+    </div>
 
     <script
     type="module"
@@ -37,5 +62,8 @@
 
 
     <script type="module" src="../js/page-transition.js"></script>
+    <script type="module" src="../js/expedition-ui.js"></script>
+    <script type="module" src="../js/logout.js"></script>
+    <script type="module" src="../js/admin-workspace.js"></script>
 </body>
 </html>

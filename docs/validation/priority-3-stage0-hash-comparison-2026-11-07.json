@@ -1,0 +1,125 @@
+{
+  "status": "pass",
+  "acceptedManifestSha256": "126b79f89883777b7e20345ca31a0e8e2093ab36424b7be64e6fe8160ee0a07f",
+  "newManifestSha256": "0b902b44931e19bde9e26db746c6518def3991367f85717f01014f28c3beb2ef",
+  "acceptedSourcesChanged": [],
+  "newLocalSourceFiles": [
+    {
+      "file": "functions/stage0-gcloud-plan.cjs",
+      "before": null,
+      "after": "1a5511cea133ca0680cd64ead239085f7fb460a3399a5a7209cf3ad8ee7b6e32"
+    },
+    {
+      "file": "functions/prepare-priority3-stage0.cjs",
+      "before": null,
+      "after": "b5850ef45cd46f2a06d311dd6f3752c8cc521cf747bdd9081463430b8730b79d"
+    },
+    {
+      "file": "tests/stage0-workflow.test.cjs",
+      "before": null,
+      "after": "09deb8f8e4d350b75753e18efb3bb2f0ab0a115bb1f080a4207580e4190b0bf6"
+    },
+    {
+      "file": "tests/stage0-gcloud-packaging.py",
+      "before": null,
+      "after": "0eb136a74d4c296575639fdeb249531f35765d6b37c5d09bdfa213d1417df373"
+    },
+    {
+      "file": "tests/stage0-assessment-emulator.cjs",
+      "before": null,
+      "after": "9d9b82b51fc667e3268e0665b55d3b40cea9e402f9cef4b4a2ceff2ca1340c3f"
+    },
+    {
+      "file": "tests/stage0-browser-emulator.cjs",
+      "before": null,
+      "after": "e04318f7da3f0203578e8b02ba26bf1b35328b143f80fac95cab4e30739fb866"
+    },
+    {
+      "file": "tests/stage0-pilot-checks.cjs",
+      "before": null,
+      "after": "94c0528244728f1cbd412c2e27ff9589d8c79974cdc70b9f940c425fb87df5e0"
+    },
+    {
+      "file": "firebase.stage0-emulator.json",
+      "before": null,
+      "after": "3e3af87af5944c4b9c44d208bd68b24fcb72d29ba7ffc35856d8855994bd4bb8"
+    }
+  ],
+  "artifactChanges": {
+    "changedOrAdded": [
+      {
+        "file": "deployment/deploy-plan.json",
+        "before": null,
+        "after": "93c237965a32a5188e7f8627df85fdadb35bb15eafd7bb177462ed7019ef235e"
+      },
+      {
+        "file": "deployment/identity-binding.json",
+        "before": null,
+        "after": "7b5d49c004b0b611543c71cce9dd47bcbb1e13e4a378fdc028cfdb7992f4e094"
+      },
+      {
+        "file": "deployment/rollback-plan.json",
+        "before": null,
+        "after": "f5ea8b309332321e7478471a1f970c882df44b1ab0b937d5e1dbfd16f50d7a38"
+      },
+      {
+        "file": "deployment/runtime-env.json",
+        "before": null,
+        "after": "959f6afc42118e496e6d47dc34fd83a54a0b948f3c02901bfd4f2f6cee35b807"
+      },
+      {
+        "file": "firebase.release.json",
+        "before": "1f4ce0df9bdcb730a9abb4c435e41608158a13731588fd54e0efe0c6fbe06381",
+        "after": "6a2172ba77323d5a0c25bb40944286574fcdcb7f7b8aec3aa2a777f6c71c7bbe"
+      },
+      {
+        "file": "functions/.gcloudignore",
+        "before": null,
+        "after": "a501c613eea4bc2808a816d5d0b3de9c8ecccfbdb4e5cecb64d25c569d9ed750"
+      },
+      {
+        "file": "functions/index.js",
+        "before": "2988845a120b1b6c6862eec3dfbffac43ee749b17482ba6c82e2a68aea9ee898",
+        "after": "adadd2375da370b0dadacd2f0fed27a654c39e2e19630a97bf4f35ceb46272cb"
+      },
+      {
+        "file": "policy/disabled-proposal.json",
+        "before": "2326787a18a75eb4837b97b652f52e7b0f61670a4ed5044ce4735cd625ea90c1",
+        "after": "67c2aa4cbfddef790e566eaa50c79217ab90fd1ae0c78edbfa99c73398c11c42"
+      },
+      {
+        "file": "preparation.json",
+        "before": null,
+        "after": "3976167c3435cf57634e42855623911f853cb58391c48d9b5e815fe9125b2eeb"
+      },
+      {
+        "file": "README.txt",
+        "before": "cb416137018086bd16d314f29ecf77d7b199640d88af6341ce276251aea1079a",
+        "after": "72117895256d567f2d894eaa19939ad0b6cfd0b4270cd01711f021f81ceaf3d6"
+      },
+      {
+        "file": "rollback/firebase.json",
+        "before": "3b762a131eb4b4898e3bf42810efc017043e5d90061ad329cadf6f93d5c71a20",
+        "after": "e87125f3ec6439a59ba44d80a6dcc46378a27a0644b0cda30abeafd2efb67e20"
+      },
+      {
+        "file": "rollback/functions/.gcloudignore",
+        "before": null,
+        "after": "11937f9436b7d6d123bfdd316625b959d3d140ac34316147b219f5e8f39a985b"
+      },
+      {
+        "file": "rollback/functions/index.js",
+        "before": "4277773278a7d8a46bc79cf10a38e656227f243cc5bc03f74be0ace461fb501d",
+        "after": "7060ac595a8b987152dce53b2b20db23137e41146c8ea6bc4f310460e6b05d34"
+      }
+    ],
+    "removed": []
+  },
+  "unchangedRetainedArtifacts": 229,
+  "newArtifacts": 7,
+  "artifactCount": 242,
+  "sourceDrift": [],
+  "artifactDrift": [],
+  "productionBaseline": "Pinned baseline only; no fresh production request in this task",
+  "protocolEnabled": false
+}

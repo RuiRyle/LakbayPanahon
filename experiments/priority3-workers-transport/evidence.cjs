@@ -1,0 +1,9 @@
+'use strict';
+const fs=require('fs'),crypto=require('crypto'),assert=require('assert/strict');
+const report='docs/validation/priority-3-workers-transport-results-2026-11-07.json',r=JSON.parse(fs.readFileSync(report));
+const files=['experiments/priority3-workers-transport/rest-store.mjs','experiments/priority3-workers-transport/worker.mjs','experiments/priority3-workers-transport/proof.cjs','experiments/priority3-workers-transport/wrangler.jsonc',report,'docs/validation/priority-3-workers-transport-tests-2026-11-07.log','docs/validation/priority-3-workers-transport-cpu-2026-11-07.cpuprofile','docs/validation/priority-3-workers-transport-review-2026-11-07.md'];
+const summary={scope:'bounded-local-only',recommendation:'NO-GO-current-Workers-Free-transport',passingGroups:r.checks.filter(x=>x.status==='pass').length,failingGroups:r.checks.filter(x=>x.status==='fail').map(x=>x.name),maxFirestoreSubrequests:Math.max(...r.requestMetrics.map(x=>x.firestoreRequests)),authDenialsBeforeFirestore:r.requestMetrics.slice(0,6).every(x=>x.status===401&&x.firestoreRequests===0),hostedCpuProven:false,productionAccess:false,files:files.map(file=>({file,sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')}))};
+assert.equal(summary.passingGroups,9);assert.equal(summary.failingGroups.length,1);assert.equal(summary.maxFirestoreSubrequests,105);assert.equal(summary.authDenialsBeforeFirestore,true);
+fs.writeFileSync('docs/validation/priority-3-workers-transport-evidence-2026-11-07.json',JSON.stringify(summary,null,2)+'\n');
+eval(fs.readFileSync('experiments/priority3-netlify/verify-traffic-integrity.cjs','utf8').replace('priority-3-netlify-full-traffic-integrity-2026-11-07.json','priority-3-workers-transport-integrity-2026-11-07.json'));
+console.log(JSON.stringify({passing:summary.passingGroups,failing:summary.failingGroups,maxSubrequests:summary.maxFirestoreSubrequests,authDenialsBeforeFirestore:summary.authDenialsBeforeFirestore}));

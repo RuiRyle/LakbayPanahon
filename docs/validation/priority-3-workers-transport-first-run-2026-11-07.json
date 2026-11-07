@@ -1,0 +1,724 @@
+{
+  "status": "bounded-transport-tests-fail",
+  "checks": [
+    {
+      "name": "Auth and App Check enforced before Firestore access",
+      "status": "pass",
+      "detail": {
+        "denials": 6
+      }
+    },
+    {
+      "name": "All four operations; adaptive selection; server marking and receipt replay",
+      "status": "fail",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    adaptiveFollowup: {\n      answers: {\n        'easy-review-mission-1-barangay-community': 'A',\n        'practice-1': 'A',\n...\n    },\n+   replayed: true,\n    reviewQuestions: [\n      {\n        answerExplanations: {\n          A: 'Hearing both families helps the datu understand the problem. Learning the local custom adds information about sharing the place.',\n          B: 'The second family also needs the gathering place. Hearing only the first family leaves out the other concern. Revisit Leadership in the Barangay.',\n\n    at C:\\LakbayPanahon\\experiments\\priority3-workers-transport\\proof.cjs:22:440\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)\n    at async check (C:\\LakbayPanahon\\experiments\\priority3-workers-transport\\proof.cjs:15:48)\n    at async main (C:\\LakbayPanahon\\experiments\\priority3-workers-transport\\proof.cjs:22:2)"
+    },
+    {
+      "name": "Stale action revision rejected and action UUID recovery retained",
+      "status": "pass"
+    },
+    {
+      "name": "Concurrent duplicate submissions commit exactly one reward and artifact",
+      "status": "pass",
+      "detail": {
+        "duplicates": 4
+      }
+    },
+    {
+      "name": "Daily and chapter grading retain XP and badge semantics",
+      "status": "pass"
+    },
+    {
+      "name": "Expired attempts and disabled protocol fail closed",
+      "status": "pass"
+    },
+    {
+      "name": "Auth-disabled account denied after issuance",
+      "status": "pass"
+    }
+  ],
+  "scope": "local-only",
+  "limitations": [
+    "Synthetic Auth emulator tokens and fixed local RSA App Check trust fixture; no production Google OAuth/JWKS/attestation.",
+    "No compact authority/DO integration or full classroom traffic in this bounded proof.",
+    "Request counts exclude setup, health and metrics; REST counts include rollback/retries but exclude Auth SDK HTTP traffic.",
+    "Profiler and V8 heap do not certify hosted billed CPU or whole-isolate memory.",
+    "REST adapter supports only the value/query/write subset used by the existing assessment core."
+  ],
+  "inspectorUnavailable": "Received network error or non-101 status code.",
+  "metrics": {
+    "requests": 56,
+    "byOperation": [
+      {
+        "name": "startStudentAssessment",
+        "requests": 15,
+        "successful": 8,
+        "reads": 365,
+        "writes": 21,
+        "deletes": 0,
+        "firestoreRequests": 143,
+        "transactionAttempts": 9,
+        "retries": 0,
+        "maxFirestoreSubrequests": 20,
+        "maxWallMs": 862
+      },
+      {
+        "name": "advanceStudentAssessment",
+        "requests": 28,
+        "successful": 26,
+        "reads": 1287,
+        "writes": 25,
+        "deletes": 0,
+        "firestoreRequests": 400,
+        "transactionAttempts": 28,
+        "retries": 0,
+        "maxFirestoreSubrequests": 15,
+        "maxWallMs": 217
+      },
+      {
+        "name": "resumeStudentAssessment",
+        "requests": 4,
+        "successful": 1,
+        "reads": 55,
+        "writes": 0,
+        "deletes": 0,
+        "firestoreRequests": 24,
+        "transactionAttempts": 3,
+        "retries": 0,
+        "maxFirestoreSubrequests": 15,
+        "maxWallMs": 282
+      },
+      {
+        "name": "submitStudentActivity",
+        "requests": 9,
+        "successful": 8,
+        "reads": 334,
+        "writes": 18,
+        "deletes": 0,
+        "firestoreRequests": 158,
+        "transactionAttempts": 12,
+        "retries": 3,
+        "maxFirestoreSubrequests": 27,
+        "maxWallMs": 2420
+      }
+    ]
+  },
+  "requestMetrics": [
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 0,
+      "reads": 0,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 0,
+      "retries": 0,
+      "status": 401,
+      "wallMs": 5
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 0,
+      "reads": 0,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 0,
+      "retries": 0,
+      "status": 401,
+      "wallMs": 3
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 0,
+      "reads": 0,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 0,
+      "retries": 0,
+      "status": 401,
+      "wallMs": 31
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 0,
+      "reads": 0,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 0,
+      "retries": 0,
+      "status": 401,
+      "wallMs": 5
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 0,
+      "reads": 0,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 0,
+      "retries": 0,
+      "status": 401,
+      "wallMs": 5
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 0,
+      "reads": 0,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 0,
+      "retries": 0,
+      "status": 401,
+      "wallMs": 16
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 20,
+      "reads": 55,
+      "writes": 3,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 862
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 16,
+      "reads": 51,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 277
+    },
+    {
+      "name": "resumeStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 282
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 217
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 194
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 167
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 157
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 155
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 152
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 154
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 127
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 123
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 131
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 135
+    },
+    {
+      "name": "submitStudentActivity",
+      "firestoreRequests": 20,
+      "reads": 55,
+      "writes": 6,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 205
+    },
+    {
+      "name": "submitStudentActivity",
+      "firestoreRequests": 6,
+      "reads": 4,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 57
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 20,
+      "reads": 55,
+      "writes": 3,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 185
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 119
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 116
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 412,
+      "wallMs": 115
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 20,
+      "reads": 55,
+      "writes": 3,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 144
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 134
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 120
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 145
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 126
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 116
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 106
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 126
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 114
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 93
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 98
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 50,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 119
+    },
+    {
+      "name": "submitStudentActivity",
+      "firestoreRequests": 20,
+      "reads": 55,
+      "writes": 6,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 2316
+    },
+    {
+      "name": "submitStudentActivity",
+      "firestoreRequests": 27,
+      "reads": 59,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 2,
+      "retries": 1,
+      "status": 200,
+      "wallMs": 2405
+    },
+    {
+      "name": "submitStudentActivity",
+      "firestoreRequests": 27,
+      "reads": 59,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 2,
+      "retries": 1,
+      "status": 200,
+      "wallMs": 2411
+    },
+    {
+      "name": "submitStudentActivity",
+      "firestoreRequests": 27,
+      "reads": 59,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 2,
+      "retries": 1,
+      "status": 200,
+      "wallMs": 2420
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 7,
+      "reads": 9,
+      "writes": 3,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 40
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 6,
+      "reads": 8,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 35
+    },
+    {
+      "name": "submitStudentActivity",
+      "firestoreRequests": 8,
+      "reads": 10,
+      "writes": 3,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 48
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 16,
+      "reads": 28,
+      "writes": 3,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 86
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 15,
+      "reads": 27,
+      "writes": 1,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 95
+    },
+    {
+      "name": "submitStudentActivity",
+      "firestoreRequests": 19,
+      "reads": 31,
+      "writes": 3,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 122
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 20,
+      "reads": 55,
+      "writes": 3,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 125
+    },
+    {
+      "name": "resumeStudentAssessment",
+      "firestoreRequests": 5,
+      "reads": 3,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 412,
+      "wallMs": 29
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 4,
+      "reads": 2,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 412,
+      "wallMs": 29
+    },
+    {
+      "name": "advanceStudentAssessment",
+      "firestoreRequests": 4,
+      "reads": 2,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 412,
+      "wallMs": 27
+    },
+    {
+      "name": "resumeStudentAssessment",
+      "firestoreRequests": 4,
+      "reads": 2,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 412,
+      "wallMs": 24
+    },
+    {
+      "name": "submitStudentActivity",
+      "firestoreRequests": 4,
+      "reads": 2,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 412,
+      "wallMs": 25
+    },
+    {
+      "name": "startStudentAssessment",
+      "firestoreRequests": 20,
+      "reads": 55,
+      "writes": 3,
+      "deletes": 0,
+      "transactionAttempts": 1,
+      "retries": 0,
+      "status": 200,
+      "wallMs": 157
+    },
+    {
+      "name": "resumeStudentAssessment",
+      "firestoreRequests": 0,
+      "reads": 0,
+      "writes": 0,
+      "deletes": 0,
+      "transactionAttempts": 0,
+      "retries": 0,
+      "status": 401,
+      "wallMs": 4
+    }
+  ]
+}

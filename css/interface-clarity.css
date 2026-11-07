@@ -1,0 +1,114 @@
+/* Shared finishing layer: calm surfaces, readable controls and a clear next step.
+   Learning states, contrast preferences and page-specific layouts remain intact. */
+body.lakbay-theme {
+    --lp-muted: #becbd7;
+    --lp-line: #344b60;
+    background-image: none;
+    line-height: 1.65;
+}
+body.lakbay-theme :is(button, input, textarea, select) { font-family: inherit; }
+body.lakbay-theme :is(p, li) { text-wrap: pretty; }
+body.lakbay-theme :is(h1, h2, h3) { line-height: 1.3; }
+body.lakbay-theme :is(.btn, .primary-button, .secondary-button, .text-button, .era-button, .chapter-button) {
+    min-height: 46px;
+    border-radius: 12px;
+    line-height: 1.45;
+}
+body.lakbay-theme :is(input:not([type=checkbox]):not([type=radio]), select, textarea) {
+    min-height: 46px;
+    font-size: 1rem;
+}
+body.lakbay-theme :is(a, button, input, textarea, select, summary):focus-visible {
+    outline: 3px solid #f4d58d;
+    outline-offset: 4px;
+}
+body.lakbay-theme .sidebar { border-right-color: #344b60; }
+body.lakbay-theme .sidebar-nav { gap: 6px; }
+body.lakbay-theme .sidebar .nav-link { min-height: 46px; font-size: .9rem; }
+body.lakbay-theme .sidebar .nav-link:is(.active, [aria-current=page]) {
+    color: #f4d58d;
+    background: #263b4b;
+    border-color: #a78c54;
+    box-shadow: inset 3px 0 #e4c17b;
+}
+body.lakbay-theme .topbar { background: #0b1e35; border-bottom: 1px solid #344b60; box-shadow: none; }
+body.lakbay-theme :is(.card-label, .eyebrow) { letter-spacing: .075em; line-height: 1.6; }
+body.lakbay-theme[data-role=student] :is(.story-text, .story-scene-text, .lesson-explanation, .quiz-question, .practice-question) {
+    line-height: 1.85;
+    overflow-wrap: break-word;
+}
+/* Home: a brief welcome, then the real learning action. */
+body.lakbay-theme.student-home-page[data-role=student] .welcome-section {
+    padding: 26px 30px;
+    border-radius: 18px;
+    background: #122a40;
+    box-shadow: none;
+    align-items: center;
+    gap: 24px;
+}
+body.lakbay-theme.student-home-page[data-role=student] .welcome-section::after { content: none; }
+body.lakbay-theme.student-home-page[data-role=student] .home-welcome-kicker { margin-bottom: 10px; color: #a9d6c9; letter-spacing: .08em; }
+body.lakbay-theme.student-home-page[data-role=student] .welcome-text h1 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); }
+body.lakbay-theme.student-home-page[data-role=student] .welcome-text p { margin-top: 12px; font-size: 1rem; color: #c9d6e1; }
+body.lakbay-theme.student-home-page[data-role=student] .player-progress-card { box-shadow: none; background: #0d2235; }
+body.lakbay-theme.student-home-page[data-role=student] .dashboard-content .journey-quest-card {
+    background: #153841;
+    border-color: #73998e;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px #02091420;
+}
+body.lakbay-theme.student-home-page[data-role=student] .journey-quest-card::after { content: none; }
+body.lakbay-theme.student-home-page[data-role=student] .journey-quest-header { gap: 16px; flex-wrap: wrap; }
+body.lakbay-theme.student-home-page[data-role=student] .journey-quest-header .card-label { color: #b9ddcd; }
+body.lakbay-theme.student-home-page[data-role=student] .quest-badge { background: #0e2930; color: #c5e5d8; border-color: #73998e; }
+body.lakbay-theme.student-home-page[data-role=student] .explorer-desk-heading { margin-top: 24px; padding-top: 20px; }
+body.lakbay-theme.student-home-page[data-role=student] .explorer-desk { gap: 12px; }
+body.lakbay-theme.student-home-page[data-role=student] .desk-object { padding: 16px; background: #0d2932; border-color: #54766e; border-radius: 12px; }
+body.lakbay-theme.student-home-page[data-role=student] .desk-object .explorer-object-art { max-height: 86px; }
+body.lakbay-theme.student-home-page[data-role=student] .desk-object strong { font-size: .95rem; }
+body.lakbay-theme.student-home-page[data-role=student] .desk-object span { color: #c1d5d1; font-size: .85rem; }
+body.lakbay-theme.student-home-page[data-role=student] .stats-grid { gap: 12px; }
+body.lakbay-theme.student-home-page[data-role=student] .stat-card { background: #10263e; box-shadow: none; border: 1px solid #344b60; border-radius: 14px; padding: 18px; }
+/* Landing: retain the illustrated map, with less surrounding visual noise. */
+body.lakbay-theme.landing-page .hero { background: linear-gradient(120deg, #0b1e35, #143442); }
+body.lakbay-theme.landing-page .hero::before,
+body.lakbay-theme.landing-page .hero::after { content: none; }
+body.lakbay-theme.landing-page :is(.landing-stars, .hero-decoration, .floating-card, .sun-rays) { display: none; }
+body.lakbay-theme.landing-page .hero-container { min-height: 0; padding-block: 64px 72px; gap: 56px; }
+body.lakbay-theme.landing-page .hero h1 { font-size: clamp(2.5rem, 4.5vw, 4rem); line-height: 1.12; }
+body.lakbay-theme.landing-page .hero-description { font-size: 1.08rem; color: #c8d6e1; line-height: 1.8; }
+body.lakbay-theme.landing-page .hero-note p { font-size: .88rem; color: #becbd7; }
+body.lakbay-theme.landing-page .history-card { transform: none; box-shadow: 0 20px 48px #02091440; border-color: #658579; }
+body.lakbay-theme.landing-page .hero-explore-link { font-size: .9rem; }
+body.lakbay-theme.landing-page .nav-links a { font-size: .94rem; min-height: 44px; display: inline-flex; align-items: center; }
+body.lakbay-theme.landing-page .feature-card { box-shadow: none; border-color: #344b60; border-radius: 18px; }
+body.lakbay-theme.landing-page .feature-card p { font-size: .96rem; line-height: 1.75; }
+body.lakbay-theme.landing-page .journey-preview-controls button { min-height: 46px; font-size: .78rem; }
+body.lakbay-theme.landing-page .journey-preview-note { font-size: .75rem; color: #bdcdd8; }
+body.lakbay-theme.landing-page .illustration-content p { font-size: .9rem; color: #c9d9df; }
+body.lakbay-theme.landing-page .map-caption { font-size: .65rem; }
+@media (max-width: 900px) {
+    body.lakbay-theme.landing-page .hero-container { gap: 32px; padding-block: 36px 48px; }
+    body.lakbay-theme.student-home-page[data-role=student] .welcome-section { padding: 24px; }
+}
+@media (max-width: 560px) {
+    body.lakbay-theme[data-role=student] .main-content { min-width: 0; width: 100%; margin-left: 0; }
+    body.lakbay-theme[data-role=student] .dashboard-content { min-width: 0; width: 100%; box-sizing: border-box; }
+    body.lakbay-theme.student-home-page[data-role=student] :is(.welcome-text, .player-progress-card, .journey-details) { min-width: 0; max-width: 100%; box-sizing: border-box; }
+    body.lakbay-theme.student-home-page[data-role=student] .welcome-section { grid-template-columns: 1fr; gap: 20px; padding: 22px 20px; }
+    body.lakbay-theme.student-home-page[data-role=student] .explorer-desk { grid-template-columns: 1fr; }
+    body.lakbay-theme.student-home-page[data-role=student] .desk-object { justify-items: start; text-align: left; }
+    body.lakbay-theme.student-home-page[data-role=student] .desk-object .explorer-object-art { display: none; }
+    body.lakbay-theme.landing-page .hero-buttons { align-items: stretch; flex-direction: column; }
+    body.lakbay-theme.landing-page .hero-buttons .btn { justify-content: center; width: 100%; }
+    body.lakbay-theme.landing-page .hero h1 { font-size: clamp(2.2rem, 9vw, 3rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+    body.lakbay-theme *, body.lakbay-theme *::before, body.lakbay-theme *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+body.lakbay-theme.lakbay-high-contrast { --lp-muted: #e0eaf3; --lp-line: #a9c5da; }

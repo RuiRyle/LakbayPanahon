@@ -1,0 +1,7 @@
+# Teacher announcement board - November 6, 2026
+
+Replaced the permanent split composer/library view with a posts-first classroom board. The classroom switcher now sits in the page header. Published is the default filter; Drafts and All posts retain accurate saved counts and bounded paging.
+
+New announcement opens a labelled native modal with title focus, a student preview, and existing draft/publication controls. Close and Escape preserve unsent text on the current page; Resume message reopens it. Cancel Edit explicitly resets editing. Class switching, editing another post, and changing post visibility protect unsaved edits. Successful save/publish closes the composer, displays the actual saved status view, and uses the existing confirmation message. Keyboard focus returns to the board action. The dialog fits mobile viewports and respects system/saved reduced motion, including its inherited backdrop animation.
+
+Validation: 52 mocked announcement browser checks passed at 390px/1440px, including save and publication, modal focus, close/Escape draft preservation, class switching, editing, filters, pagination, animations, and reduced motion. Student Progress (78) and Dashboard (22) regressions passed. Board and dialog screenshots inspected. Clean build 3dSd8C: 32 pages/571 files, zero missing/rejected references. Updated localhost:56738 and verified served code. Mock writes were only in-memory test fixtures; no live Firebase records changed or hosting deployment.

@@ -1,0 +1,61 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-05T17:04:02.316Z",
+  "mode": "real browser mocked Firestore; no live data changes",
+  "results": [
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "class directory avoids unrelated mission and story catalog reads",
+        "page has a clear classroom header and primary create action",
+        "large classroom collections show twelve cards per page",
+        "cards have clear headings, descriptions and dedicated classroom links",
+        "a real classroom link covers the card including its padding",
+        "card interaction area is stable without translating hover effects",
+        "next page shows remaining active classroom",
+        "search resets pagination and finds the named classroom",
+        "toolbar result count follows classroom search",
+        "no-match state gives a clear recovery action",
+        "clear filters restores the active directory",
+        "archived classrooms retain a distinct visible status",
+        "create action reveals the form and focuses the classroom name",
+        "closing creation preserves the draft and restores focus to its action",
+        "directory has no horizontal overflow at 390px",
+        "first-time teachers see a useful create-classroom empty state"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 1280,
+      "checks": [
+        "class directory avoids unrelated mission and story catalog reads",
+        "page has a clear classroom header and primary create action",
+        "large classroom collections show twelve cards per page",
+        "cards have clear headings, descriptions and dedicated classroom links",
+        "a real classroom link covers the card including its padding",
+        "card interaction area is stable without translating hover effects",
+        "next page shows remaining active classroom",
+        "search resets pagination and finds the named classroom",
+        "toolbar result count follows classroom search",
+        "no-match state gives a clear recovery action",
+        "clear filters restores the active directory",
+        "archived classrooms retain a distinct visible status",
+        "create action reveals the form and focuses the classroom name",
+        "closing creation preserves the draft and restores focus to its action",
+        "directory has no horizontal overflow at 1280px",
+        "first-time teachers see a useful create-classroom empty state"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "js/teacher-workspace.js",
+      "sha256": "902cb0b39e1819c7220ad032985985730e033b412c2ed23ed961076c0e7eb3f0"
+    },
+    {
+      "file": "css/teacher-workspace.css",
+      "sha256": "80b2aed1c9641f034bfd7cf3b0de9234c857f4a7a8d704fe15e72728b018b194"
+    }
+  ]
+}

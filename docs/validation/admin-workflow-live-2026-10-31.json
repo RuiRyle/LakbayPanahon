@@ -1,0 +1,98 @@
+{
+  "mode": "real-sdk-isolated-admin-accounts-local-client-live-firestore",
+  "startedAt": "2026-10-31T14:47:49.723Z",
+  "steps": [
+    {
+      "name": "Teacher cannot use administrator account tools",
+      "status": "pass",
+      "observedError": "An active administrator account is required."
+    },
+    {
+      "name": "Pending teacher cannot open classroom tools before approval",
+      "status": "pass",
+      "observedError": "An approved teacher account is required."
+    },
+    {
+      "name": "Administrator reads the isolated pending request",
+      "status": "pass"
+    },
+    {
+      "name": "Teacher approval requires the verification confirmation",
+      "status": "pass"
+    },
+    {
+      "name": "Real approval atomically saves the teacher status and audit record",
+      "status": "pass"
+    },
+    {
+      "name": "Administrator cannot rewrite a saved audit entry",
+      "status": "pass",
+      "observedError": "permission-denied"
+    },
+    {
+      "name": "Direct status writes without audit are denied by Firestore",
+      "status": "pass",
+      "observedError": "permission-denied"
+    },
+    {
+      "name": "Approved teacher can create an owned class",
+      "status": "pass"
+    },
+    {
+      "name": "Deactivated teacher loses protected classroom access",
+      "status": "pass",
+      "observedError": "permission-denied"
+    },
+    {
+      "name": "Verified teacher reactivation restores owned class access",
+      "status": "pass"
+    },
+    {
+      "name": "Deactivated student cannot read protected learning data",
+      "status": "pass",
+      "observedError": "permission-denied"
+    },
+    {
+      "name": "Student reactivation retains saved synthetic learning progress",
+      "status": "pass"
+    },
+    {
+      "name": "Student cannot read administrator audit reasons",
+      "status": "pass",
+      "observedError": "permission-denied"
+    },
+    {
+      "name": "Revoked administrator loses access to other account profiles",
+      "status": "pass",
+      "observedError": "permission-denied"
+    }
+  ],
+  "cleanup": "complete",
+  "limitations": [
+    "Learning completion/attempt fixtures are synthetic, not earned quiz results.",
+    "Local pages with live Firebase; not hosted website acceptance.",
+    "No real teacher or learner account is used."
+  ],
+  "status": "pass",
+  "removedTemporaryAccounts": 3,
+  "removedOwnedDocuments": 11,
+  "finishedAt": "2026-10-31T14:48:21.196Z",
+  "sources": [
+    {
+      "file": "js/admin-accounts.js",
+      "sha256": "19f83393d71306027fef4542f6d035aeabfaed5a4ac84cca373e44a764aab12a"
+    },
+    {
+      "file": "js/admin-workspace.js",
+      "sha256": "28ec932406f3b8884539f531525e2eff13c0b0b3c42682bf8dea118b1a9c8333"
+    },
+    {
+      "file": "js/auth-guard.js",
+      "sha256": "a674132870a6eee375cc69c14c5897fa6c4ee3c95c4ef421a3462ddf7003e609"
+    },
+    {
+      "file": "firestore.rules",
+      "sha256": "0a98811d0bdbcb29302f04803568d43ec18b30c0ac84b7bb1cbed08fa90e5551"
+    }
+  ]
+}

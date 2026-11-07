@@ -1,0 +1,14 @@
+{
+  "mode": "local-lambda-bridge-real-demo-auth-firestore",
+  "status": "fail",
+  "checks": [],
+  "scenarios": [],
+  "limitations": [
+    "Not a Netlify deployment, build or capacity guarantee.",
+    "Local JWKS trust fixture; not production reCAPTCHA attestation.",
+    "Read units count returned documents and minimum query/point reads, not production invoice/index-entry/rule-dependent billing.",
+    "Seeding, Auth operations and integrity assertions excluded from assessed operation totals."
+  ],
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n400 !== 401\n\n    at main (C:\\LakbayPanahon\\experiments\\priority3-netlify\\proof.cjs:35:341)\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+  "operationsByPhase": {}
+}

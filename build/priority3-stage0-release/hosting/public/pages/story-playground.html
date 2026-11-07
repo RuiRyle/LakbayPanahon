@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Learn with Bayani | LakbayPanahon</title>
+    <link rel="icon" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/learning-clean.css">
+<link rel="stylesheet" href="../css/bayani-narration-button.css"></head>
+<body class="clean-learning-preview">
+    <a class="lab-skip" href="#detectiveMain">Skip to lesson</a>
+    <header class="lab-header">
+        <a href="../index.html" class="lab-brand"><img src="../assets/brand/lakbay-sun.svg" width="32" height="32" alt="">LakbayPanahon</a>
+        <a href="../index.html">Exit lesson</a>
+    </header>
+    <main id="detectiveMain" tabindex="-1" class="detective-main">
+        <div class="lab-game-progress"><span id="labProgressLabel">Step 1 of 5</span><progress id="labProgress" max="4" value="0" aria-label="Lesson progress"></progress></div>
+        <ol id="labSteps" hidden></ol>
+        <article class="lab-stage" aria-labelledby="labSceneTitle">
+            <div class="lab-stage-heading"><span class="lesson-kicker">LEARN WITH BAYANI</span><div class="lab-audio"><button id="labNarrate" type="button">Listen</button><button id="labStop" type="button" hidden>Stop audio</button></div></div>
+            <span id="labCaseLabel" hidden></span>
+            <h1 id="labSceneTitle" tabindex="-1"></h1>
+            <p id="labBrief"></p>
+            <div id="labActivity"></div>
+            <div id="labFeedback" class="lab-feedback" role="status" aria-live="polite"></div>
+            <aside class="lab-guide" aria-label="Bayani's tip"><img class="lab-bayani-character" src="../assets/brand/bayani-explorer.svg" width="56" height="58" alt="Bayani the tarsier"><p id="labGuide"></p></aside>
+            <div class="lab-actions"><button id="labBack" type="button">Back</button><button id="labNext" type="button" class="lab-primary">Continue</button></div>
+        </article>
+        <footer class="lab-lesson-options">
+            <details class="lab-journal" id="labBag"><summary>Saved clues <span id="labBagCount">0 / 3</span></summary><p id="labJournalEmpty">Saving clues is optional. Open a clue to save it.</p><ul id="labJournal"></ul></details>
+            <details class="lab-full"><summary>Lesson notes and voice</summary><div id="labFullText"></div></details>
+            <details class="lab-restart-menu"><summary>Start again</summary><p>This clears the practice answers and saved clues in this tab.</p><button id="labRestart" type="button">Restart practice</button></details>
+            <p class="lab-disclosure">Practice lesson · No sign-in or account XP. Bayani and the learning kit are illustrations. Site facts come from the project's archaeology lesson.</p>
+        </footer>
+    </main>
+    <script src="../js/lesson-narration-text.js" defer></script>
+    <script src="../js/bayani-voice-clips.js" defer></script>
+    <script src="../js/bayani-generated-clips.js" defer></script>
+    <script src="../js/lesson-game-audio.js" defer></script>
+    <script src="../js/bayani-narration-button.js" defer></script>
+    <script src="../js/adventure-voice.js" defer></script>
+    <script src="../js/lesson-image-viewer.js" defer></script>
+    <script src="../js/story-playground-content.js" defer></script>
+    <script src="../js/story-playground.js" defer></script>
+</body>
+</html>

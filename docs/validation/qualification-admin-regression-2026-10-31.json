@@ -1,0 +1,183 @@
+{
+  "mode": "local-emulator-synthetic-identities-not-deployed",
+  "verifiedAt": "2026-10-31T15:48:41.527Z",
+  "sourceHash": "1cd3e6535405c0dedaeb972b4528c49e66c315539523cf7097161e193d770f01",
+  "steps": [
+    {
+      "name": "admin lists pending teachers",
+      "status": "pass"
+    },
+    {
+      "name": "admin reads account profile",
+      "status": "pass"
+    },
+    {
+      "name": "teacher cannot enumerate accounts",
+      "status": "pass"
+    },
+    {
+      "name": "teacher cannot read moderation trail",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot enumerate accounts",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot read moderation trail",
+      "status": "pass"
+    },
+    {
+      "name": "pendingTeacher cannot enumerate accounts",
+      "status": "pass"
+    },
+    {
+      "name": "pendingTeacher cannot read moderation trail",
+      "status": "pass"
+    },
+    {
+      "name": "disabledAdmin cannot enumerate accounts",
+      "status": "pass"
+    },
+    {
+      "name": "disabledAdmin cannot read moderation trail",
+      "status": "pass"
+    },
+    {
+      "name": "anonymous cannot enumerate accounts",
+      "status": "pass"
+    },
+    {
+      "name": "anonymous cannot read moderation trail",
+      "status": "pass"
+    },
+    {
+      "name": "status change without audit rejected",
+      "status": "pass"
+    },
+    {
+      "name": "audit without paired status update rejected",
+      "status": "pass"
+    },
+    {
+      "name": "teacher approval requires verification",
+      "status": "pass"
+    },
+    {
+      "name": "approval reason required",
+      "status": "pass"
+    },
+    {
+      "name": "stale review status rejected",
+      "status": "pass"
+    },
+    {
+      "name": "teacher cannot approve teachers",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot approve teachers",
+      "status": "pass"
+    },
+    {
+      "name": "pendingTeacher cannot approve teachers",
+      "status": "pass"
+    },
+    {
+      "name": "disabledAdmin cannot approve teachers",
+      "status": "pass"
+    },
+    {
+      "name": "admin cannot promote target role",
+      "status": "pass"
+    },
+    {
+      "name": "admin cannot add XP during approval",
+      "status": "pass"
+    },
+    {
+      "name": "admin cannot change account email",
+      "status": "pass"
+    },
+    {
+      "name": "admin cannot deactivate self",
+      "status": "pass"
+    },
+    {
+      "name": "admin cannot deactivate another admin",
+      "status": "pass"
+    },
+    {
+      "name": "verified teacher approval atomically records audit",
+      "status": "pass"
+    },
+    {
+      "name": "admin queries saved decisions",
+      "status": "pass"
+    },
+    {
+      "name": "audit trail cannot be edited",
+      "status": "pass"
+    },
+    {
+      "name": "audit trail cannot be deleted",
+      "status": "pass"
+    },
+    {
+      "name": "student deactivation atomically records audit",
+      "status": "pass"
+    },
+    {
+      "name": "inactive student loses protected progress access",
+      "status": "pass"
+    },
+    {
+      "name": "reactivate student without deleting progress",
+      "status": "pass"
+    },
+    {
+      "name": "reactivated student retains progress",
+      "status": "pass"
+    },
+    {
+      "name": "approved teacher can access owned class",
+      "status": "pass"
+    },
+    {
+      "name": "deactivate teacher records audit",
+      "status": "pass"
+    },
+    {
+      "name": "deactivated teacher loses class access",
+      "status": "pass"
+    },
+    {
+      "name": "reactivating teacher still requires verification",
+      "status": "pass"
+    },
+    {
+      "name": "verified teacher reactivation accepted",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot self-promote to admin",
+      "status": "pass"
+    },
+    {
+      "name": "admin cannot create admin account through client",
+      "status": "pass"
+    },
+    {
+      "name": "admin cannot delete profile",
+      "status": "pass"
+    },
+    {
+      "name": "admin cannot change curriculum",
+      "status": "pass"
+    },
+    {
+      "name": "admin has no student quiz-result enumeration permission",
+      "status": "pass"
+    }
+  ]
+}

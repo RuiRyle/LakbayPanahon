@@ -1,0 +1,47 @@
+/* Daily Challenge surfaces and completion states use explicit dark-theme colors. */
+body.lakbay-theme .daily-modal { background: #0d2540; color: #edf3fa; border-color: #9a815066; box-shadow: 0 30px 90px #02091499; }
+body.lakbay-theme .daily-modal-header { background: radial-gradient(ellipse at 100% 0,#456d7040,transparent 65%),linear-gradient(120deg,#153552,#102944); border-bottom: 1px solid #bfac7733; }
+body.lakbay-theme .daily-modal-title-group h2 { color: #f5f0e4; }
+body.lakbay-theme .daily-modal-title-group .card-label { color: #edcf8c; }
+body.lakbay-theme .daily-modal-content { background: #0d2540; color: #e8eff7; }
+body.lakbay-theme .daily-question-number { color: #edcf8c; }
+body.lakbay-theme .daily-challenge-question { color: #edf3fa; }
+body.lakbay-theme .daily-challenge-option { background: #14334e; border-color: #45647b; color: #e8eff7; }
+body.lakbay-theme .daily-challenge-option:hover:not(:disabled) { background: #1c4059; color: #fff3d4; border-color: #d6b567; }
+body.lakbay-theme .daily-challenge-option.selected { background: #3b3b31; border-color: #e5c078; color: #fff1ce; }
+body.lakbay-theme .daily-option-letter { background: #24455f; color: #d3e3ef; }
+body.lakbay-theme .daily-challenge-option.selected .daily-option-letter { background: #e5c078; color: #10233d; }
+body.lakbay-theme .daily-challenge-option.correct { background: #143d38; border-color: #66b697; color: #ccf5df; }
+body.lakbay-theme .daily-challenge-option.incorrect { background: #422e3c; border-color: #c47e85; color: #ffdde0; }
+body.lakbay-theme .daily-modal-footer { background: transparent; border-color: #45647b70; }
+body.lakbay-theme .daily-modal-reward span { color: #b7cbd9; }
+body.lakbay-theme .daily-modal-reward strong { color: #edcf8c; }
+body.lakbay-theme .daily-modal-reward::before { background: #e5b64f15; color: #edcf8c; }
+body.lakbay-theme .daily-challenge-feedback.correct { background: #133c35; color: #c7f1dc; border-color: #438a70; }
+body.lakbay-theme .daily-challenge-feedback.incorrect { background: #3b2938; color: #f6d2d7; border-color: #956271; }
+body.lakbay-theme .daily-challenge-feedback strong, body.lakbay-theme .daily-challenge-feedback span { color: inherit; }
+body.lakbay-theme .daily-challenge-completed { position: relative; padding: 34px 28px 28px; background: radial-gradient(ellipse at 50% 0,#c8a65d12,transparent 65%),#0d2540; color: #e8eff7; text-align: center; }
+body.lakbay-theme .daily-complete-icon { display: grid; place-items: center; width: 82px; height: 82px; margin: 0 auto 21px; border: 1px solid #dfbf7770; border-radius: 26px; background: linear-gradient(145deg,#e5b64f22,#e5b64f08); color: #f0d18c; box-shadow: 0 0 0 7px #e5b64f06; }
+.daily-complete-icon svg { width: 48px; height: 48px; }
+body.lakbay-theme .daily-complete-label { color: #a5d7c4; font-size: .61rem; letter-spacing: .15em; margin-bottom: 12px; }
+body.lakbay-theme .daily-challenge-completed h3 { color: #fff0cf; font: 600 clamp(1.45rem,4vw,1.85rem)/1.2 Georgia,serif; margin: 0 0 12px; }
+body.lakbay-theme .daily-challenge-completed p { color: #b9cddd; font-size: .85rem; line-height: 1.8; max-width: 400px; margin: 0 auto; }
+body.lakbay-theme .daily-complete-rewards { gap: 10px; margin: 23px 0; }
+body.lakbay-theme .daily-complete-rewards strong { background: #e5b64f0e; border: 1px solid #d3b67650; border-radius: 12px; padding: 11px 16px; color: #f0d18c; font-size: .85rem; }
+.daily-complete-return { display: flex; align-items: flex-start; gap: 13px; width: 100%; padding: 17px; background: #17394a; border: 1px solid #6fae9a40; border-radius: 14px; text-align: left; }
+.daily-complete-return>span { color: #a5d7c4; font-size: 1.35rem; line-height: 1.2; }
+body.lakbay-theme .daily-complete-return strong { display: block; color: #d5efdf; font-size: .82rem; margin-bottom: 5px; }
+body.lakbay-theme .daily-complete-return p { color: #bcd5d8; font-size: .77rem; margin: 0; }
+body.lakbay-theme .daily-complete-dismiss { display: inline-flex; align-items: center; justify-content: center; gap: 14px; margin-top: 21px; min-height: 44px; padding: 12px 23px; border: 1px solid #e1c281; border-radius: 11px; background: #e5bf70; color: #10233d; font-size: .82rem; font-weight: 750; cursor: pointer; }
+body.lakbay-theme .daily-complete-dismiss:hover { background: #f1d393; }
+body.lakbay-theme .home-daily-card .daily-challenge-card-completed { align-items: flex-start; gap: 12px; padding: 17px; background: linear-gradient(120deg,#153e38,#12343c); border: 1px solid #65a58b66; border-radius: 14px; color: #cbf0db; }
+body.lakbay-theme .home-daily-card .daily-challenge-card-completed strong { display: block; color: #d2f4de; font-size: .83rem; line-height: 1.5; }
+body.lakbay-theme .home-daily-card .daily-challenge-card-completed p { color: #bad7ce; font-size: .77rem; line-height: 1.75; margin: 5px 0 0; }
+body.lakbay-theme .daily-complete-check { flex: 0 0 29px; display: grid; place-items: center; width: 29px; height: 29px; color: #c8f5da; background: #79bb9620; border: 1px solid #87c5a660; border-radius: 50%; }
+body.lakbay-theme .daily-modal-loading, body.lakbay-theme .daily-challenge-empty { background: #0d2540; color: #edf3fa; }
+body.lakbay-theme .daily-modal-loading p, body.lakbay-theme .daily-challenge-empty p { color: #b9cddd; }
+body.lakbay-theme .daily-challenge-empty strong { color: #f0d18c; }
+body.lakbay-theme .daily-challenge-completed[hidden], body.lakbay-theme .daily-challenge-card-completed[hidden] { display: none !important; }
+@media (prefers-reduced-motion: no-preference) { body.lakbay-theme .daily-challenge-completed:not([hidden]) .daily-complete-icon { animation: daily-success-arrive .45s ease-out both; } @keyframes daily-success-arrive { from { opacity: 0; transform: translateY(8px) scale(.9); } to { opacity: 1; transform: none; } } }
+@media (max-width: 600px) { body.lakbay-theme .daily-challenge-completed { padding: 28px 18px 23px; } .daily-complete-return { padding: 14px; } body.lakbay-theme .daily-complete-dismiss { width: 100%; } }
+body.lakbay-theme.lakbay-reduce-motion .daily-complete-icon { animation: none !important; }

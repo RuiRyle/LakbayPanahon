@@ -1,0 +1,102 @@
+{
+  "startedAt": "2026-10-31T08:52:21.299Z",
+  "mode": "live-sdk-isolated-student",
+  "scope": "First prologue mission, weak-topic recovery, saved retry, next mission and reconnect",
+  "steps": [
+    {
+      "status": "pass",
+      "message": "Real registration saves the isolated student profile"
+    },
+    {
+      "status": "pass",
+      "message": "Registration opens the authenticated student dashboard"
+    },
+    {
+      "status": "pass",
+      "message": "Fresh student session uses normal learning without a testing-mode override"
+    },
+    {
+      "status": "pass",
+      "message": "Actual top-page refresh restores the saved lesson scene and explored clues"
+    },
+    {
+      "status": "pass",
+      "message": "Completed 6 authored scene(s) through the one-activity Back/Continue interface"
+    },
+    {
+      "status": "pass",
+      "message": "lesson-recap has no horizontal overflow at an exact 390px viewport"
+    },
+    {
+      "status": "pass",
+      "message": "lesson-recap has no horizontal overflow at an exact 1440px viewport"
+    },
+    {
+      "status": "pass",
+      "message": "Quiz answer and question identity survive an actual top-page reload"
+    },
+    {
+      "status": "pass",
+      "message": "A genuine failed quiz saves without XP and offers mapped recovery"
+    },
+    {
+      "status": "pass",
+      "message": "My Journey shows the saved weak-topic recovery action"
+    },
+    {
+      "status": "pass",
+      "message": "Completed 2 authored scene(s) through the one-activity Back/Continue interface"
+    },
+    {
+      "status": "pass",
+      "message": "Mapped lesson review leads to targeted practice with acknowledged saving"
+    },
+    {
+      "status": "pass",
+      "message": "A passing retry saves and confirms the mission result"
+    },
+    {
+      "status": "pass",
+      "message": "Retry preserves topic coverage, uses available equivalents and awards configured XP once"
+    },
+    {
+      "status": "pass",
+      "message": "passing-result has no horizontal overflow at an exact 390px viewport"
+    },
+    {
+      "status": "pass",
+      "message": "passing-result has no horizontal overflow at an exact 1440px viewport"
+    },
+    {
+      "status": "pass",
+      "message": "Saved result exposes its next learning destination"
+    },
+    {
+      "status": "pass",
+      "message": "A real network disconnect reports unsaved work and reconnect reaches save acknowledgement"
+    }
+  ],
+  "cleanup": "complete",
+  "retry": {
+    "failedQuestionIds": [
+      "prologue-quiz1-question5",
+      "prologue-quiz1-question-archipelago-adaptive-easy",
+      "prologue-quiz1-question-island-groups-adaptive-easy",
+      "prologue-quiz1-question-land-water-livelihood-adaptive-easy",
+      "prologue-quiz1-question-map-directions-adaptive-easy"
+    ],
+    "passedQuestionIds": [
+      "prologue-quiz1-question-island-groups-adaptive-easy",
+      "prologue-quiz1-question4-retry",
+      "prologue-quiz1-question2-retry",
+      "prologue-quiz1-question5-retry",
+      "prologue-quiz1-question1-retry"
+    ],
+    "repeated": [
+      "prologue-quiz1-question-island-groups-adaptive-easy"
+    ]
+  },
+  "status": "pass",
+  "removedOwnedDocuments": 9,
+  "finishedAt": "2026-10-31T08:53:48.096Z"
+}

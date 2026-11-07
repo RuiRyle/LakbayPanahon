@@ -1,0 +1,59 @@
+{
+  "mode": "real-sdk-isolated-accounts-local-pages-live-firestore",
+  "startedAt": "2026-10-31T14:16:10.193Z",
+  "steps": [
+    {
+      "name": "Pending teacher cannot open classroom tools",
+      "status": "pass"
+    },
+    {
+      "name": "Approved teacher creates a real owned class through the dashboard",
+      "status": "pass"
+    },
+    {
+      "name": "Dashboard generates and saves a working invitation code",
+      "status": "pass"
+    },
+    {
+      "name": "Teacher saves a draft announcement and publishes existing mission assignments",
+      "status": "pass"
+    },
+    {
+      "name": "Student joins through the normal My Class interface",
+      "status": "pass"
+    },
+    {
+      "name": "Joined student cannot read announcement drafts",
+      "status": "pass"
+    }
+  ],
+  "cleanup": "complete",
+  "limitations": [
+    "Learning completion/attempt fixtures are synthetic, not earned quiz results.",
+    "Local pages with live Firebase; not hosted website acceptance.",
+    "No real teacher or learner account is used."
+  ],
+  "status": "fail",
+  "error": "Expected independent completion and locked assignment.",
+  "removedTemporaryAccounts": 3,
+  "removedOwnedDocuments": 12,
+  "finishedAt": "2026-10-31T14:16:45.401Z",
+  "sources": [
+    {
+      "file": "js/teacher-class-client.js",
+      "sha256": "89fe38876945daa0a8c00f6cf5066edd330ac59fc526f18bdedcb06c8614c439"
+    },
+    {
+      "file": "js/teacher-workspace.js",
+      "sha256": "43d03025fe7bf0c2545368d2ca88a538dfdd00bf3094ddd698f9c0216f075367"
+    },
+    {
+      "file": "js/my-class.js",
+      "sha256": "3d23bf7c1864b1d5b396fad841ecfa724c85da28ed13b2228cf00ad4d8603509"
+    },
+    {
+      "file": "firestore.rules",
+      "sha256": "b87347f96c53a0319f349f7ec6d1ef1081e1138a34820b67980abcdde95883a3"
+    }
+  ]
+}

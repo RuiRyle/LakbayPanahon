@@ -1,0 +1,34 @@
+{
+  "mode": "real-sdk-isolated-admin-accounts-local-client-live-firestore",
+  "startedAt": "2026-10-31T14:47:12.653Z",
+  "steps": [],
+  "cleanup": "complete",
+  "limitations": [
+    "Learning completion/attempt fixtures are synthetic, not earned quiz results.",
+    "Local pages with live Firebase; not hosted website acceptance.",
+    "No real teacher or learner account is used."
+  ],
+  "status": "fail",
+  "error": "Unexpected failure instead of an access denial: An active administrator account is required.",
+  "removedTemporaryAccounts": 3,
+  "removedOwnedDocuments": 3,
+  "finishedAt": "2026-10-31T14:47:24.609Z",
+  "sources": [
+    {
+      "file": "js/admin-accounts.js",
+      "sha256": "19f83393d71306027fef4542f6d035aeabfaed5a4ac84cca373e44a764aab12a"
+    },
+    {
+      "file": "js/admin-workspace.js",
+      "sha256": "28ec932406f3b8884539f531525e2eff13c0b0b3c42682bf8dea118b1a9c8333"
+    },
+    {
+      "file": "js/auth-guard.js",
+      "sha256": "a674132870a6eee375cc69c14c5897fa6c4ee3c95c4ef421a3462ddf7003e609"
+    },
+    {
+      "file": "firestore.rules",
+      "sha256": "0a98811d0bdbcb29302f04803568d43ec18b30c0ac84b7bb1cbed08fa90e5551"
+    }
+  ]
+}

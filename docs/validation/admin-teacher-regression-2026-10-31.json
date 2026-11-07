@@ -1,0 +1,235 @@
+{
+  "mode": "local-emulator-synthetic-identities-not-deployed",
+  "verifiedAt": "2026-10-31T14:40:03.929Z",
+  "sourceHash": "0a98811d0bdbcb29302f04803568d43ec18b30c0ac84b7bb1cbed08fa90e5551",
+  "steps": [
+    {
+      "name": "approved teacher creates class",
+      "status": "pass"
+    },
+    {
+      "name": "pending teacher denied class creation",
+      "status": "pass"
+    },
+    {
+      "name": "student denied class creation",
+      "status": "pass"
+    },
+    {
+      "name": "owner reads class",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher denied class read",
+      "status": "pass"
+    },
+    {
+      "name": "teacher queries owned classes",
+      "status": "pass"
+    },
+    {
+      "name": "teacher cannot query foreign classes",
+      "status": "pass"
+    },
+    {
+      "name": "class ownership cannot transfer",
+      "status": "pass"
+    },
+    {
+      "name": "owner edits class details",
+      "status": "pass"
+    },
+    {
+      "name": "atomic invitation generation",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot read invitation",
+      "status": "pass"
+    },
+    {
+      "name": "student may look up exact invitation",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot enumerate invitations",
+      "status": "pass"
+    },
+    {
+      "name": "student joins with active code",
+      "status": "pass"
+    },
+    {
+      "name": "joined student reads class",
+      "status": "pass"
+    },
+    {
+      "name": "nonmember cannot read class",
+      "status": "pass"
+    },
+    {
+      "name": "owner queries active roster",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot query roster",
+      "status": "pass"
+    },
+    {
+      "name": "teacher cannot modify membership",
+      "status": "pass"
+    },
+    {
+      "name": "owner establishes report link",
+      "status": "pass"
+    },
+    {
+      "name": "cannot link nonmember",
+      "status": "pass"
+    },
+    {
+      "name": "owner reads active member profile",
+      "status": "pass"
+    },
+    {
+      "name": "owner queries member studentProgress",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot query studentProgress",
+      "status": "pass"
+    },
+    {
+      "name": "nonmember report query denied studentProgress",
+      "status": "pass"
+    },
+    {
+      "name": "owner queries member studentQuizAttempts",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot query studentQuizAttempts",
+      "status": "pass"
+    },
+    {
+      "name": "nonmember report query denied studentQuizAttempts",
+      "status": "pass"
+    },
+    {
+      "name": "owner saves announcement draft",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot read draft",
+      "status": "pass"
+    },
+    {
+      "name": "owner publishes announcement",
+      "status": "pass"
+    },
+    {
+      "name": "member reads announcement",
+      "status": "pass"
+    },
+    {
+      "name": "nonmember cannot read announcement",
+      "status": "pass"
+    },
+    {
+      "name": "member queries published announcements",
+      "status": "pass"
+    },
+    {
+      "name": "teacher reads drafts and published items",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot publish",
+      "status": "pass"
+    },
+    {
+      "name": "owner assigns existing mission",
+      "status": "pass"
+    },
+    {
+      "name": "member reads assignment",
+      "status": "pass"
+    },
+    {
+      "name": "cannot assign wrong chapter",
+      "status": "pass"
+    },
+    {
+      "name": "teacher reads active mission catalog",
+      "status": "pass"
+    },
+    {
+      "name": "teacher cannot edit curriculum",
+      "status": "pass"
+    },
+    {
+      "name": "rotate code and revoke old atomically",
+      "status": "pass"
+    },
+    {
+      "name": "old invitation no longer joins",
+      "status": "pass"
+    },
+    {
+      "name": "new invitation admits student",
+      "status": "pass"
+    },
+    {
+      "name": "revocation clears current invitation",
+      "status": "pass"
+    },
+    {
+      "name": "stale active code rejected after revocation",
+      "status": "pass"
+    },
+    {
+      "name": "archive clears invitation",
+      "status": "pass"
+    },
+    {
+      "name": "archived class prevents reporting",
+      "status": "pass"
+    },
+    {
+      "name": "archived class prevents publication",
+      "status": "pass"
+    },
+    {
+      "name": "student progress remains saved after archive",
+      "status": "pass"
+    },
+    {
+      "name": "restore class",
+      "status": "pass"
+    },
+    {
+      "name": "member may leave class",
+      "status": "pass"
+    },
+    {
+      "name": "leaving immediately revokes teacher progress read",
+      "status": "pass"
+    },
+    {
+      "name": "leaving immediately revokes teacher attempt query",
+      "status": "pass"
+    },
+    {
+      "name": "leaving immediately revokes teacher profile read",
+      "status": "pass"
+    },
+    {
+      "name": "student retains progress after leaving",
+      "status": "pass"
+    },
+    {
+      "name": "inactive teacher loses class access",
+      "status": "pass"
+    }
+  ]
+}

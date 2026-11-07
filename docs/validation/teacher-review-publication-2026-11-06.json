@@ -1,0 +1,38 @@
+{
+  "verifiedAt": "2026-11-06T04:37:48.300Z",
+  "mode": "local policy/client fixtures, isolated Firebase emulators and responsive browser regressions; no production writes",
+  "checks": {
+    "clientPublication": 8,
+    "policy": 9,
+    "emulatorPublicationRules": 9,
+    "actualTeacherStudentWalkthrough": 40,
+    "responsiveConflicts": "passed",
+    "responsiveRecovery": "passed",
+    "responsiveAssignmentDesign": "passed"
+  },
+  "build": {
+    "directory": "build/student-web-Knib7H",
+    "pages": 33,
+    "files": 572,
+    "missingReferences": 0,
+    "rejectedReferences": 0
+  },
+  "sources": [
+    {
+      "file": "js/teacher-class-client.js",
+      "sha256": "f04501d01ba3b5e5800bb9ee6de67210d69befa3a477c984661f42371c655e17"
+    },
+    {
+      "file": "js/teacher-workspace.js",
+      "sha256": "5299c9e82ece2ea8e504d345a23cec6fd93b811cb89c4054b058bd61ef002eef"
+    },
+    {
+      "file": "firestore.rules",
+      "sha256": "678be315fa0aecdbb09fc3cb88294c0f69493056e8c50389a254500234ac0496"
+    }
+  ],
+  "limits": [
+    "Updated-client coordination protocol; legacy/direct writes are not serialized.",
+    "Matching rules and frontend require coordinated publication; nothing deployed."
+  ]
+}

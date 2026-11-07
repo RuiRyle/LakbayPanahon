@@ -17,11 +17,15 @@ ${source('mission-review.js')}
 ${source('review-question-catalog.js')}
 ${source('student-journey.js')}
 ${source('journey-path.js')}
+${source('lakbay-passport.js')}
+${source('learning-community.js')}
 ${source('my-journey.js')}
 const tick=()=>new Promise(r=>setTimeout(r,70)),check=(ok,message)=>{if(!ok)throw Error(message);};
 (async()=>{
  document.body.classList.add('authenticated');document.body.classList.remove('auth-checking');await tick();
  check(!page.hidden,'Journey did not load: '+status.textContent);
+ check(document.querySelectorAll('#journeyNextAction').length===1,'Duplicate next-step sections confuse the journey');
+ check(document.getElementById('nextStepTitle').textContent==='What should I do next?'&&document.querySelector('#journeyNextAction .journey-action-button').getBoundingClientRect().height>0,'Next-step purpose or visible action missing');
  check(catalogReads.join(',')==='chapters,eras,missions,chapterChallenges','Journey did not use the shared instructional cache for only catalog data');
  check(document.querySelector('#journeyNextAction .journey-action-button').textContent==='Review Missed Topic','Saved quiz diagnosis did not drive next step');
  check(document.querySelector('#journeyNextAction .journey-action-button').href.includes('reviewTopic=exchange'),'Next action skipped the diagnosed lesson topic');
@@ -41,7 +45,9 @@ const tick=()=>new Promise(r=>setTimeout(r,70)),check=(ok,message)=>{if(!ok)thro
  records.studentLearningDrafts=[{id:'draft',userId:'student',kind:'quiz',chapterId:'c1',missionId:'m2',state:{attemptId:'new-attempt'},updatedAt:{toMillis:()=>200}}];await loadJourneyPage();check(document.querySelector('#journeyNextAction .journey-action-button').textContent==='Resume Quiz','Quiz resume did not reuse existing recommendation logic');records.studentLearningDrafts=[];
  failOptional=true;await loadJourneyPage();check(!page.hidden&&document.getElementById('journeyReviewCount').textContent==='Unavailable'&&status.textContent.includes('Some resume'),'Optional read failure blocked path or invented review count');failOptional=false;
  failReviewEvents=true;await loadJourneyPage();check(!page.hidden&&document.getElementById('journeyReviewCount').textContent==='Unavailable'&&!document.querySelector('#journeyReviewTopics a'),'Missing lesson events fabricated review stage');failReviewEvents=false;
- failCore=true;await loadJourneyPage();check(page.hidden&&!refresh.disabled&&status.textContent.includes('could not load'),'Core error lacks recovery');failCore=false;refresh.click();await tick();check(!page.hidden,'Refresh retry failed');
+ failCore=true;await loadJourneyPage();check(page.hidden&&!refresh.disabled&&status.textContent.includes('could not load'),'Core error lacks recovery');
+ const nextPanel=document.getElementById('journeyNextAction');check(!nextPanel.closest('[hidden]')&&nextPanel.textContent.includes('Retry Loading Journey')&&nextPanel.getBoundingClientRect().height>0,'Next step disappeared on read failure');
+ failCore=false;nextPanel.querySelector('button').click();await tick();check(!page.hidden&&nextPanel.querySelector('a'),'Next-step retry failed');
  records.eras.push({id:'e2',status:'active',title:'Later era',order:2,requiredChapterIds:['c1','c2'],unlockMessage:'Complete Early Philippine Communities first.'});
  records.chapters.push({id:'later',eraId:'e2',status:'active',title:'Later chapter',order:1});
  records.missions.push({id:'old-complete',chapterId:'later',status:'active',title:'Completed before chronology',order:1},{id:'new-locked',chapterId:'later',status:'active',title:'New work',order:2});
@@ -49,7 +55,7 @@ const tick=()=>new Promise(r=>setTimeout(r,70)),check=(ok,message)=>{if(!ok)thro
  await loadJourneyPage();check(document.querySelector('.journey-era-requirement').textContent.includes('Complete Early'),'Era requirement not explained');
  check([...document.querySelectorAll('#journeyPath a')].some(a=>a.href.includes('mission=old-complete')),'Completed lesson review disappeared');
  check(![...document.querySelectorAll('#journeyPath a')].some(a=>a.href.includes('mission=new-locked')),'New lesson bypassed era prerequisites');
- let release;gate=new Promise(r=>release=r);const old=loadJourneyPage();await tick();auth.currentUser=null;authListener(null);gate=null;release();await old;check(page.hidden&&!document.getElementById('journeyPath').children.length,'Stale load restored signed-out progress');
+ let release;gate=new Promise(r=>release=r);const old=loadJourneyPage();await tick();check(!nextPanel.closest('[hidden]')&&nextPanel.textContent.includes('Finding your next activity')&&!nextPanel.querySelector('a'),'Next step disappeared or retained stale link while loading');auth.currentUser=null;authListener(null);gate=null;release();await old;check(page.hidden&&!document.getElementById('journeyPath').children.length&&!nextPanel.querySelector('a')&&nextPanel.textContent.includes('Sign in'),'Stale load restored signed-out progress');
  auth.currentUser={uid:'student'};authListener(auth.currentUser);await tick();check(!page.hidden,'Fresh login did not restore journey');
  check(document.querySelector('.journey-era h3 a')?.href.includes('era=e1'),'Era overview link missing from learning path');
  records.studentChapterProgress=[{userId:'student',chapterId:'c1',completed:true,completedAt:{toMillis:()=>10}},{userId:'student',chapterId:'c2',completed:true,completedAt:{toMillis:()=>20}},{userId:'student',chapterId:'later',completed:true,completedAt:{toMillis:()=>30}}];

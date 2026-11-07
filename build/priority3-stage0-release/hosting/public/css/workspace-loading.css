@@ -1,0 +1,26 @@
+/* Shared student and teacher loading shell; colors and shimmer come from navy-gold-theme.css. */
+.student-loading-shell { position: fixed; inset: 0; z-index: 900; display: grid; grid-template-columns: 290px minmax(0,1fr); visibility: visible; background: #081629; color: #aab8c7; }
+body.authenticated > .student-loading-shell { display: none; }
+.student-loading-sidebar { padding: 30px 24px; background: #0b1e35; }
+.student-loading-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; color: #edcf87; font-weight: 800; }
+.student-loading-brand span { color: #edf1f4; font-size: 1rem; }
+.student-loading-sidebar i { display: block; width: 80%; height: 13px; margin: 34px 8px; border-radius: 6px; background: #ffffff16; }
+.student-loading-topbar { height: 96px; border-bottom: 1px solid #294363; background: #0b1e38; }
+.student-loading-body { max-width: 1280px; margin: auto; padding: 32px 34px; }
+.student-loading-body p { margin: 0 0 24px; font-size: .9rem; }
+.student-loading-heading { width: min(380px,75%); height: 38px; margin-bottom: 30px; border-radius: 8px; }
+.student-loading-cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; margin-bottom: 24px; }
+.student-loading-cards i, .student-loading-panel { display: block; min-height: 112px; border-radius: 16px; }
+.student-loading-panel { min-height: 260px; }
+body.teacher-workspace.workspace-loading > .student-loading-shell { display: grid; }
+body.teacher-workspace:not(.authenticated) > .teacher-sidebar,
+body.teacher-workspace:not(.authenticated) > .teacher-shell { visibility: hidden; }
+@media(max-width:900px) {
+ .student-loading-shell { grid-template-columns: 1fr; }
+ .student-loading-sidebar { display: none; }
+ .student-loading-topbar { height: 76px; }
+ .student-loading-body { padding: 24px 18px; }
+}
+@media(max-width:520px) { .student-loading-cards { grid-template-columns: 1fr; } .student-loading-cards i { min-height: 64px; } }
+@media(prefers-reduced-motion:reduce) { .student-loading-shell * { animation: none !important; } }
+body.lakbay-reduce-motion .student-loading-shell * { animation: none !important; }

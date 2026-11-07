@@ -16,7 +16,7 @@ async function main(){
     const html=fs.readFileSync(path.join(root,url.pathname.slice(1)),'utf8');
     const css=[...html.matchAll(/<link\b[^>]*href=["']\.\.\/css\/([-a-z0-9]+\.css)["'][^>]*>/gi)].map(match=>fs.readFileSync(path.join(root,'css',match[1]),'utf8')).join('\n');
     const runtime=fs.readFileSync(path.join(root,'js/page-transition.js'),'utf8');
-    body=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'').replace('</head>','<style>'+css+'</style></head>').replace('</body>',"<script>document.body.classList.add('authenticated');document.body.classList.remove('auth-checking');\n"+runtime+'</script></body>');
+    body=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'').replace('</head>','<style>'+css+'</style></head>').replace('</body>',"<script>document.body.classList.add('authenticated');document.body.classList.remove('auth-checking');window.addEventListener('pagehide',()=>document.body.classList.remove('authenticated'));\n"+runtime+'</script></body>');
    }else{res.writeHead(404);res.end();return;}
    res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-store','Content-Security-Policy':"default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; frame-src 'self'; img-src 'self' data:; connect-src 'none'"});res.end(body);
   }catch{res.writeHead(500);res.end('Fixture error');}

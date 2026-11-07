@@ -1,0 +1,527 @@
+{
+  "startedAt": "2026-10-31T09:41:39.208Z",
+  "finishedAt": "2026-10-31T09:43:02.759Z",
+  "planVersion": 1,
+  "mode": "local-mocked-only",
+  "planSha256": "f7bac91b3f3459ef2b11424fa07ed95320d012325288d03cb0ca60ba5a3a4ef9",
+  "units": {
+    "status": "pass",
+    "suites": 64,
+    "tests": 394,
+    "passed": 394,
+    "failed": 0,
+    "skipped": 0,
+    "error": null
+  },
+  "browser": {
+    "status": "pass",
+    "fixtures": [
+      {
+        "file": "student-dashboard-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: start/continue lesson links, safe Firestore text, review links, challenge, complete, empty and retry states"
+      },
+      {
+        "file": "mission-quiz-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: fail/retry/pass, rewards, load recovery, auth refresh and delayed load/save after sign-out"
+      },
+      {
+        "file": "mission-quiz-storage-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: fail/retry/pass, rewards, load recovery, auth refresh and delayed load/save after sign-out"
+      },
+      {
+        "file": "story-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: interactive lesson, previous/next, completion, layout, load/empty-scene retry, session recovery, hostile navigation/text and unsafe image URLs"
+      },
+      {
+        "file": "student-navigation-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: native/modified/dynamic links and Back/Forward preserve visible content without a forced delay"
+      },
+      {
+        "file": "student-profile-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: optional setup, completion/dismissal persistence, catalog recovery, name-only save, dynamic choices, preview, pending-save dismissal and hostile identity/avatar text"
+      },
+      {
+        "file": "my-class-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: join/leave, published assignments, saved completion, prerequisites, safe text, read recovery and session isolation"
+      },
+      {
+        "file": "my-journey-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: personal path, prerequisites, review/resume, safe text, error/retry and session recovery"
+      },
+      {
+        "file": "student-collections-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: collection animation, rapid switching, reduced motion, toggles, counts and independent recovery"
+      },
+      {
+        "file": "bayani-ai-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: chat deadlines, draft recovery, known reply errors, local New Chat, session isolation and hostile HTML/markdown"
+      },
+      {
+        "file": "student-review-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: adaptive practice, history, session recovery, content failure/empty bank retry and lesson/quiz escape routes"
+      },
+      {
+        "file": "student-registration-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: password validation, duplicate prevention, profile retry, lost acknowledgement, dashboard link and narrow layout"
+      },
+      {
+        "file": "student-settings-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: seven desktop settings scenarios (mocked audio; no Firebase)"
+      },
+      {
+        "file": "student-missing-features-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: journey-finale.html 1440px"
+      },
+      {
+        "file": "discovery-experiences-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: all three cases, comparisons, Bayani explanations, community, museum, access and account isolation 1440px"
+      },
+      {
+        "file": "achievements-layout-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: gallery actions, centred exhibit, view changes, focus, scroll and account cleanup 1440px gallery"
+      },
+      {
+        "file": "all-mission-learning-browser.cjs",
+        "status": "pass",
+        "summary": "PASS: all 66 authored mission questions and applications, feedback, retry, optional reflection, mission matching and account cleanup 1440px"
+      }
+    ]
+  },
+  "criteria": [
+    {
+      "id": "A01",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-auth-guard.test.cjs",
+        "student-auth-persistence.test.cjs",
+        "student-session-storage.test.cjs"
+      ]
+    },
+    {
+      "id": "A02",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-shell-route.test.cjs",
+        "student-journey.test.cjs",
+        "student-journey-action.test.cjs",
+        "student-journey-loading.test.cjs",
+        "student-dashboard-recovery.test.cjs",
+        "student-dashboard-session.test.cjs",
+        "content-cache.test.cjs",
+        "student-shell-recovery.test.cjs"
+      ]
+    },
+    {
+      "id": "A03",
+      "status": "local-suite-pass",
+      "tests": [
+        "story-route.test.cjs",
+        "story-exhibit.test.cjs",
+        "story-trade.test.cjs"
+      ]
+    },
+    {
+      "id": "A04",
+      "status": "local-suite-pass",
+      "tests": [
+        "mission-flow.test.cjs",
+        "quiz-draft-policy.test.cjs"
+      ]
+    },
+    {
+      "id": "A05",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-review.test.cjs",
+        "student-review-session.test.cjs",
+        "review-evidence.test.cjs",
+        "return-to-learn.test.cjs",
+        "easy-review-recovery.test.cjs"
+      ]
+    },
+    {
+      "id": "A06",
+      "status": "local-suite-pass",
+      "tests": [
+        "learning-draft.test.cjs",
+        "student-recovery-action.test.cjs",
+        "practice-save-recovery.test.cjs"
+      ]
+    },
+    {
+      "id": "A07",
+      "status": "local-suite-pass",
+      "tests": [
+        "era-progression.test.cjs",
+        "journey-path.test.cjs",
+        "progression.test.cjs",
+        "exploration-preview.test.cjs",
+        "student-handoff.test.cjs",
+        "student-content-completion.test.cjs",
+        "chapter6-learning-clarity.test.cjs",
+        "chapter7-learning-clarity.test.cjs",
+        "level-rewards.test.cjs",
+        "journey-finale.test.cjs",
+        "journey-finale-client.test.cjs",
+        "discovery-experiences.test.cjs"
+      ]
+    },
+    {
+      "id": "A08",
+      "status": "local-suite-pass",
+      "tests": [
+        "daily-policy.test.cjs",
+        "chapter-continuation.test.cjs"
+      ]
+    },
+    {
+      "id": "A09",
+      "status": "local-suite-pass",
+      "tests": [
+        "evidence-journal.test.cjs"
+      ]
+    },
+    {
+      "id": "A10",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-profile.test.cjs"
+      ]
+    },
+    {
+      "id": "A12",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-class-client.test.cjs"
+      ]
+    },
+    {
+      "id": "A13",
+      "status": "local-suite-pass",
+      "tests": [
+        "bayani-debug.test.cjs",
+        "bayani-backend-client.test.cjs",
+        "bayani-bridge-integration.test.cjs",
+        "bayani-backend.test.cjs",
+        "bayani-request.test.cjs",
+        "bayani-review-question.test.cjs"
+      ]
+    },
+    {
+      "id": "A14",
+      "status": "local-suite-pass",
+      "tests": [
+        "trusted-assessment.test.cjs",
+        "trusted-assessment-rules-candidate.test.cjs",
+        "firestore-read-scope.test.cjs"
+      ]
+    },
+    {
+      "id": "A15",
+      "status": "local-suite-pass",
+      "tests": [
+        "chapter2-family-learning-polish.test.cjs",
+        "chapter2-women-role-learning.test.cjs",
+        "balangay-clarity.test.cjs",
+        "all-mission-learning.test.cjs",
+        "chapter3-learning-clarity.test.cjs",
+        "chapter4-learning-clarity.test.cjs",
+        "chapter5-mission1-learning.test.cjs",
+        "chapter5-mission2-learning.test.cjs",
+        "chapter5-mission3-learning.test.cjs",
+        "chapter5-mission4-learning.test.cjs"
+      ]
+    },
+    {
+      "id": "A16",
+      "status": "local-suite-pass",
+      "tests": [
+        "web-release-boundary.test.cjs",
+        "student-hosting-config.test.cjs"
+      ]
+    },
+    {
+      "id": "A17",
+      "status": "local-suite-pass",
+      "tests": [
+        "student-account-inventory.test.cjs",
+        "student-data-export.test.cjs"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "js/auth-guard.js",
+      "sha256": "0bafa8782ad919ede18874ac3e0379cca99167c10deb340a76a251dc0b373b21"
+    },
+    {
+      "file": "js/student-data-export.js",
+      "sha256": "093303bd38ebaa79970f836cd9f66728524f6ddf83f7ebb1b2eda14a327e380e"
+    },
+    {
+      "file": "js/student-data-download.js",
+      "sha256": "9479b82264c2c90479f2286822d358445d6a840f696191e3de0d4a68d51855be"
+    },
+    {
+      "file": "js/exploration-preview.js",
+      "sha256": "7c79da857713f86b0eb00ad5c2ce3cc1ad942946d54b4c44e8d63f6182f21abd"
+    },
+    {
+      "file": "js/student.js",
+      "sha256": "3e8b35a3664eb0d04374684c08f47a1858b9c8a00c660032cbeabdebc07a01c9"
+    },
+    {
+      "file": "js/my-journey.js",
+      "sha256": "07c48dc2a4917305a305c45e2b2863a084d830f9636433c6f6ee5b5e20f62b8a"
+    },
+    {
+      "file": "js/story.js",
+      "sha256": "51c79646d1d5b8838d0aa6b29200102d3f4a8d24c0e39c81cd2a77f5b432a3ee"
+    },
+    {
+      "file": "js/quiz.js",
+      "sha256": "0231b03ad7888649bcf6b9eaca242e4a5bbf8c3ca7d5dde3fb14cc7281d5e7d8"
+    },
+    {
+      "file": "js/practice.js",
+      "sha256": "2f5104aab314dde1969ebc732fd38ff047f58cc181b215b8cb120a36e0bbe42e"
+    },
+    {
+      "file": "js/practice-review.js",
+      "sha256": "06594b9d7cf7595c3961b0feacd9628f7739622ea05b2f09435b984aa922e01e"
+    },
+    {
+      "file": "js/learning-draft.js",
+      "sha256": "c5ad9024d5c2bc14b135cf1ba7bd4619a9a2ee64b1e982054322b03e05d36134"
+    },
+    {
+      "file": "js/mission-assessment-client.js",
+      "sha256": "80bd1047ee94ae41147d7082ebeae0c39fb9781b9154f75a6d119fdfb906a630"
+    },
+    {
+      "file": "js/student-rewards-client.js",
+      "sha256": "60dfca122dce7c58a3170dcfb4b2f85c687ffe439fa9bb2a3e6175ee170682a1"
+    },
+    {
+      "file": "js/student-class-client.js",
+      "sha256": "39b07d69ba1d9dc60d361ecb92e35f16f1a863cceb32facc07b7649b5175da2b"
+    },
+    {
+      "file": "js/my-class.js",
+      "sha256": "3d23bf7c1864b1d5b396fad841ecfa724c85da28ed13b2228cf00ad4d8603509"
+    },
+    {
+      "file": "js/student-profile.js",
+      "sha256": "5a1dbfda44de0d122a219f29cde1cf916786da7b3f23bee9b4b2b2df15368ca4"
+    },
+    {
+      "file": "js/page-transition.js",
+      "sha256": "f5b726130b3f15f96419ecb0baaa7081e682030e39c9cd8aec49a6f606796bd6"
+    },
+    {
+      "file": "js/bayani-client.js",
+      "sha256": "584cacc7abb871909901749bcd05b3fca320727c56f6e81ad0ab24e2297b10fa"
+    },
+    {
+      "file": "pages/settings.html",
+      "sha256": "05a2af9266dfac8005a42a2f916ac54ec07e0b3bb63019af737f97db8449b749"
+    },
+    {
+      "file": "pages/register.html",
+      "sha256": "6c8d232a8ea6273d04486b0390924f9a0c086960a8ae9eb736c5d4f3652ad40f"
+    },
+    {
+      "file": "firestore.rules",
+      "sha256": "7f8a2078d8f3c5856bb911f61b21d2d5e57721c888b3fca3951902ed6732acdf"
+    },
+    {
+      "file": "js/student-session-storage.js",
+      "sha256": "a54ec4c87de205f9231eccbddaa774bef90f39d216162346df0a35f3391aa758"
+    },
+    {
+      "file": "js/content-cache.js",
+      "sha256": "4b7404eeb284fe460508f312d9539e91b5983fc5d3baafbcc89c268b40d0b351"
+    },
+    {
+      "file": "js/student-shell.js",
+      "sha256": "83f6caa5b8499a81e8cf7c2bfa7825e4800a15ba398d3eaed94eae8a9d60c1cf"
+    },
+    {
+      "file": "pages/student-shell.html",
+      "sha256": "be3a12d14ba59a8938f37f5a18ce7d18ee855140ffaa9ca2be30610ba924e6fc"
+    },
+    {
+      "file": "js/history-timeline.js",
+      "sha256": "cd107cd6ef99265ff96b12f3fc2f0275782f4de9e35c43ce150a2cc2c0d188c0"
+    },
+    {
+      "file": "js/history-timeline-view.js",
+      "sha256": "953d9a2a6e61a626d2253335f3f5d709c03ddab7096d0b498d5a2ee23e032ac2"
+    },
+    {
+      "file": "js/bayani-review.js",
+      "sha256": "f5525d9a7d5c83ba5e3b28a3a10ef9a55429034e1421a757abdf5b1b6d1f2cc7"
+    },
+    {
+      "file": "js/bayani-review-question.js",
+      "sha256": "38776bad49d8d920ee42d3d567e3eb80a837c57660f1e0caf29a0f983a1d3051"
+    },
+    {
+      "file": "js/class-announcements.js",
+      "sha256": "93d40478a1b6ebcb4d1ee7df6c81ab0de74b7ca40a57cf6e10c81e88b5cb392d"
+    },
+    {
+      "file": "css/student-missing-features.css",
+      "sha256": "afa9de9f0f413e4d55ac9e14b61aa628c5125f7b082e2e37bdfc188a11870122"
+    },
+    {
+      "file": "pages/history-timeline.html",
+      "sha256": "5b6fcbc7bfc8b788035ee7cc3504453d737600086845dcb082f4c932fc60f8f0"
+    },
+    {
+      "file": "js/level-rewards.js",
+      "sha256": "8de0de9b0a64699885fc8497f4ac8443fb2501d1a7f3b318e2816fc32821d511"
+    },
+    {
+      "file": "js/level-reward-policy.js",
+      "sha256": "8515902d6dfaac31b709eb079d270b65f241d468059164768a380d95c771708e"
+    },
+    {
+      "file": "css/level-rewards.css",
+      "sha256": "0c9cac4ce6be24ad106b1e2c9086286afe8106c2a617a2f4fdc98ee0fa3cc958"
+    },
+    {
+      "file": "js/bayani-narration-button.js",
+      "sha256": "1acb172fe8e77c9b1588637450445e94349ffb40188b57479485b2dd5fb53549"
+    },
+    {
+      "file": "js/story-reading-steps.js",
+      "sha256": "1e6bbdd4aa29c90b617bcae81b0e1d3a55afe4e9e29493fbfa5f6c52b120d449"
+    },
+    {
+      "file": "js/story-playground.js",
+      "sha256": "fd395da88507bad29d2b514aa34b58d6ebdfeb95d0254c95b48bfcdf9155589f"
+    },
+    {
+      "file": "css/bayani-narration-button.css",
+      "sha256": "a0caafc3169670939ef5bb88d28f42e9606aa03db98e6a98679448a51326f3d4"
+    },
+    {
+      "file": "css/student-layout.css",
+      "sha256": "c78e879b7d58b57b805e25dd32a46ede08e11386d0921d8e7bed207b66969485"
+    },
+    {
+      "file": "css/era-mission-simple.css",
+      "sha256": "1cfabb3e35104b5190a1f79afdf5a2babf7e82e124b63938ae1280fd3252f5ef"
+    },
+    {
+      "file": "js/journey-finale-policy.js",
+      "sha256": "085e4b010ec6ec1c7b645d3fcf9238f087b36cc2e29de9b903ca5ec58f974f29"
+    },
+    {
+      "file": "js/journey-finale-client.js",
+      "sha256": "d9eafe2aaae445daee19fd1dcb3b1a55d53c76afc5ac55c1f02106b3127457ac"
+    },
+    {
+      "file": "js/journey-finale.js",
+      "sha256": "ba53c1e3a07499be3fa6c537dc001f52735c368f233e2997402341c861cd25d3"
+    },
+    {
+      "file": "css/journey-finale.css",
+      "sha256": "bc9ce4ee8623a344fd2b3361d404ae3ac1a967b429acefe00c9a9f62efb5bcb7"
+    },
+    {
+      "file": "pages/journey-finale.html",
+      "sha256": "3d7ea29647e9cdf56a05ea0b10873c2bda27c2c7262a1942907e70fefb9adb6e"
+    },
+    {
+      "file": "js/discovery-cases.js",
+      "sha256": "590bea7a0a6889b598a19fda8e518a5e7c5dbfa4768ee37cc5a8c06fe97a2fae"
+    },
+    {
+      "file": "js/discovery-case-view.js",
+      "sha256": "633261db14cb86bb6c57d1c9e3d93fb9d74cbe096b4952487288bb5e13e77dc0"
+    },
+    {
+      "file": "js/mission-discovery.js",
+      "sha256": "5d7f5227de654a22505806ea3de1c7ac68312477eec9bf2bc7728fb8c6ff0136"
+    },
+    {
+      "file": "js/learning-community.js",
+      "sha256": "357720874bac72d89ed51e369781815e6beb47ee2ed63c9056d67eb8c2e1d09b"
+    },
+    {
+      "file": "js/museum-exhibits.js",
+      "sha256": "caca0b4e8a5bc3b7d506937f20d04e992c7dd8842966069a81b269d6f33de4e0"
+    },
+    {
+      "file": "css/discovery-experiences.css",
+      "sha256": "b63a9457e4827fd78f0d0d089355a43c2c377d3e6bd424fe75007165814c0af7"
+    },
+    {
+      "file": "assets/discovery/then-community.svg",
+      "sha256": "a467d72574b3fdc27214bd6869a058d73d60848d40797220fba24826954781f6"
+    },
+    {
+      "file": "assets/discovery/now-community.svg",
+      "sha256": "0b5e91c017c88d6ba6abe1f763011c3a99bdd6b284339325e6a972bac537d217"
+    },
+    {
+      "file": "css/achievements-polish.css",
+      "sha256": "d685e1c1dec3c1bc3d77ac29319c52265c99b0d09233e6e0c492b52b7d6095cd"
+    },
+    {
+      "file": "js/achievements.js",
+      "sha256": "67fd91efbad2fb9e1b99534f537d636061de317b07a2d0575084077bf8d30eef"
+    },
+    {
+      "file": "pages/achievements.html",
+      "sha256": "a1a1f58586813c061a8b985c3dea0fe2d9f5ca53bf93275ecbb9c116cad110c1"
+    },
+    {
+      "file": "js/mission-learning-guides.js",
+      "sha256": "bffc18cfb67db58e8bdb598d6f931d97ba24a4cbceb1deb845acd7e88ac40bb3"
+    },
+    {
+      "file": "js/mission-learning-guide-view.js",
+      "sha256": "4ed80e293b2e663df690272830f21fa80f8429ca22b8ae4f979f24bb73c8ab99"
+    },
+    {
+      "file": "js/mission-learning-companion.js",
+      "sha256": "bd657f0ef8ce38c32f73b1856eb0f026a6b30a23b15126026429d6a528d03ede"
+    },
+    {
+      "file": "css/mission-learning-guide.css",
+      "sha256": "56e7715a1ba70142b7e7e8a85bda9831ac595d66c5ece8e6c53b560f2261f1b7"
+    },
+    {
+      "file": "js/lesson-narration-text.js",
+      "sha256": "44bfd4a5d6090afe417d821cb940e5e96ac4d1e83de63536b00f59381cbef36c"
+    },
+    {
+      "file": "pages/story.html",
+      "sha256": "efa30af42fda98769e9940f23e1434c876dfec7a22e87227d650504d9e72f20c"
+    },
+    {
+      "file": "pages/mission.html",
+      "sha256": "075689ebc51f1309aaf80a7f0a04c29fc141a66309c532a61c7afb1785dea334"
+    }
+  ],
+  "completion": "NOT COMPLETE: local checks cannot close live saves, normal-mode confirmation, privacy, human learning review, classroom integration or deployment."
+}

@@ -1,0 +1,91 @@
+{
+  "status": "isolated-probes-pass-full-sdk-no-go",
+  "tool": "Wrangler 4.158.0 local workerd",
+  "checks": [
+    {
+      "name": "Isolated SDK modules and original grading helper load in workerd",
+      "status": "pass",
+      "result": {
+        "adminAuthLoaded": true,
+        "adminAppCheckLoaded": true,
+        "gradingMark": true,
+        "firestoreTransport": "experimental-fetch-REST-not-Admin-SDK"
+      }
+    },
+    {
+      "name": "Auth SDK verifies demo token with revocation checking enabled",
+      "status": "pass",
+      "result": {
+        "verified": true
+      }
+    },
+    {
+      "name": "Auth SDK rejects invalid token",
+      "status": "pass",
+      "result": {
+        "verified": false,
+        "code": "auth/argument-error"
+      }
+    },
+    {
+      "name": "Auth SDK notices disabled account on next request",
+      "status": "pass",
+      "result": {
+        "verified": false,
+        "code": "auth/user-disabled"
+      }
+    },
+    {
+      "name": "App Check SDK verifies signed test token using isolated JWKS fixture",
+      "status": "pass",
+      "result": {
+        "verified": true
+      }
+    },
+    {
+      "name": "App Check SDK rejects foreign audience and expiry",
+      "status": "pass",
+      "result": {
+        "denied": 2
+      }
+    },
+    {
+      "name": "Fetch REST Firestore transactions preserve concurrent increments",
+      "status": "pass",
+      "result": [
+        {
+          "count": 2,
+          "attempts": 2
+        },
+        {
+          "count": 1,
+          "attempts": 1
+        }
+      ]
+    },
+    {
+      "name": "SQLite Durable Object admits one concurrent generation advance",
+      "status": "pass",
+      "result": {
+        "generation": 1
+      }
+    }
+  ],
+  "sqliteGeneration": 1,
+  "fullSdkBundle": {
+    "status": "failed-before-request",
+    "cause": "ReferenceError: __dirname is not defined in google-gax grpc.js; preferRest full import graph not compatible without changes"
+  },
+  "limitations": [
+    "No real credentials, Google OAuth, hosted access or production App Check attestation.",
+    "Firestore probe is a minimal emulator-only REST adapter, not a full assessment or trusted publication implementation.",
+    "App Check probe injects a test public key and MUST NOT be deployed.",
+    "Local runtime does not certify Free CPU, quotas, latency, durability or role/deployment isolation."
+  ],
+  "restartPersistence": {
+    "scope": "Local workerd process restart using the same SQLite storage directory; not hosted disaster recovery",
+    "status": "pass",
+    "actualGeneration": 1,
+    "expectedGeneration": 1
+  }
+}

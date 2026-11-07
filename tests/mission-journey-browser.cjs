@@ -5,8 +5,9 @@ const hostileId='c1"><img data-attack src=x onerror="window.routeAttack=1">&miss
 let html = fs.readFileSync(path.join(root, 'pages/mission.html'), 'utf8')
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(/<link\b[^>]*>/gi, '');
 const source = fs.readFileSync(path.join(root, 'js/mission.js'), 'utf8').replace(/import[\s\S]*?from\s+"[^"]+";/g, '').replace(/window\.location\.href\s*=/g,'fixtureNavigation =');
-const styles = ['student.css', 'mission.css','navy-gold-theme.css'].map(name => fs.readFileSync(path.join(root, 'css', name), 'utf8')).join('\n');
+const styles = ['student.css', 'mission.css','navy-gold-theme.css','student-layout.css','era-mission-simple.css'].map(name => fs.readFileSync(path.join(root, 'css', name), 'utf8')).join('\n');
 const script = `
+let receivedMissionGuide;document.addEventListener('lakbay:mission-guide',event=>receivedMissionGuide=event.detail);
 const instructionalSnapshot=(_,load)=>load();
 const auth={currentUser:{uid:'student'}}, db={};
 const fixtureChapterId=${JSON.stringify(hostileId)};let fixtureNavigation='';
@@ -33,6 +34,7 @@ const check=(ok,message)=>{if(!ok)throw Error(message);};
 (async()=>{
  document.body.classList.add('authenticated');
  await tick();check(!missionContent.hidden&&selectedMissionId==='m1','First mission unavailable');
+ check(receivedMissionGuide?.mission.id==='m1'&&receivedMissionGuide.user===auth.currentUser,'Loaded mission was not supplied to companion');receivedMissionGuide=null;document.dispatchEvent(new Event('lakbay:request-mission-guide'));check(receivedMissionGuide?.mission.id==='m1','Late companion cannot request loaded mission');
  check(!missionPath.querySelector('img'),'Catalog title rendered as HTML');
  check(missionLearningObjective.querySelectorAll('li').length===2&&!missionLearningGoal.hidden,'Objective list missing');
  check(!missionLearningObjective.querySelector('img')&&missionLearningObjective.textContent.includes('<img src=x>'),'Objective interpreted HTML');
@@ -41,7 +43,7 @@ const check=(ok,message)=>{if(!ok)throw Error(message);};
  check(!missionPath.children[1].hasAttribute('tabindex'),'Locked mission selectable');
  globalThis.__lakbayExplorationPreview=true;await loadMissionPage();check(loadedMissionStates.every(m=>m.isUnlocked)&&missionPath.querySelector('.chapter-challenge.unlocked'),'Preview did not open all missions and challenge');globalThis.__lakbayExplorationPreview=false;await loadMissionPage();
  completed.add('m1');window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}));await tick();
- check(selectedMissionId==='m2','Returning from quiz did not unlock next mission');
+ check(selectedMissionId==='m2','Returning from quiz did not unlock next mission');check(receivedMissionGuide?.mission.id==='m2','Companion retained old mission');
  check(missionLearningObjective.textContent==='Legacy objective','Legacy objective fallback missing');
  missionPath.children[0].dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}));
  check(selectedMissionId==='m1'&&beginMissionButton.textContent.includes('Review'),'Completed mission review unavailable');
@@ -55,7 +57,7 @@ const check=(ok,message)=>{if(!ok)throw Error(message);};
  const storyTarget=new URL(fixtureNavigation,'https://example.test/pages/');
  check(storyTarget.pathname==='/pages/story.html'&&storyTarget.searchParams.get('chapter')===fixtureChapterId&&storyTarget.searchParams.get('mission')===fixtureChapterId&&[...storyTarget.searchParams].length===2&&!storyTarget.hash,'Hostile chapter/mission IDs changed lesson navigation');
  check(!document.querySelector('[data-attack]')&&window.routeAttack===undefined,'Hostile route parameter rendered as markup');
- fail=true;await loadMissionPage();check(!missionError.hidden&&!retryMissionLoadButton.hidden,'Missing load recovery');
+ fail=true;await loadMissionPage();check(receivedMissionGuide===null,'Failed load retained companion');check(!missionError.hidden&&!retryMissionLoadButton.hidden,'Missing load recovery');
  fail=false;retryMissionLoadButton.click();await tick();check(!missionContent.hidden,'Load retry failed');
  let release;gate=new Promise(resolve=>{release=resolve;});const pending=loadMissionPage();
  auth.currentUser=null;listener(null);release();await pending;gate=null;

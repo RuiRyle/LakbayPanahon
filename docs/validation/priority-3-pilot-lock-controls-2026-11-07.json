@@ -1,0 +1,70 @@
+{
+  "mode": "real-Firestore-emulator-no-assessment-code",
+  "database": "pilot-control",
+  "controls": [
+    {
+      "query": false,
+      "seed": "none",
+      "elapsedMs": 4719.621300000001,
+      "results": [
+        {
+          "status": "committed"
+        },
+        {
+          "status": "committed"
+        }
+      ]
+    },
+    {
+      "query": true,
+      "seed": "none",
+      "elapsedMs": 2080.888999999999,
+      "results": [
+        {
+          "status": "rejected",
+          "code": 10,
+          "message": "10 ABORTED: Transaction lock timeout."
+        },
+        {
+          "status": "rejected",
+          "code": 10,
+          "message": "10 ABORTED: Transaction lock timeout."
+        }
+      ]
+    },
+    {
+      "query": true,
+      "seed": "unrelated",
+      "elapsedMs": 2044.4336999999996,
+      "results": [
+        {
+          "status": "rejected",
+          "code": 10,
+          "message": "10 ABORTED: Transaction lock timeout."
+        },
+        {
+          "status": "rejected",
+          "code": 10,
+          "message": "10 ABORTED: Transaction lock timeout."
+        }
+      ]
+    },
+    {
+      "query": true,
+      "seed": "matching",
+      "elapsedMs": 2065.021200000001,
+      "results": [
+        {
+          "status": "rejected",
+          "code": 10,
+          "message": "10 ABORTED: Transaction lock timeout."
+        },
+        {
+          "status": "rejected",
+          "code": 10,
+          "message": "10 ABORTED: Transaction lock timeout."
+        }
+      ]
+    }
+  ]
+}

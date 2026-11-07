@@ -21,7 +21,11 @@ function buildCandidate(source){
    if(!count)throw Error('No reviewed write rule in '+collection);return replacement;
   });
  }
- return '// INACTIVE TRUSTED-ASSESSMENT CUTOVER CANDIDATE. Review with backend/frontend/key migration.\n'+candidate;
+ const marker='    match /learningSettings/journeyFinale {';
+ if(!candidate.includes(marker))throw Error('Missing secured policy insertion point');
+ const privateRules=['serverAssessmentAttempts','serverAssessmentRequests','serverAssessmentHistory','serverAssessmentUsage'].map(name=>`    match /${name}/{id} { allow read, write: if false; }`).join('\n');
+ candidate=candidate.replace(marker,`    match /learningSettings/securedAssessment { allow read: if activeStudent(); allow write: if false; }\n${privateRules}\n${marker}`);
+ return '// LOCAL TRUSTED-ASSESSMENT CUTOVER CANDIDATE. Not published.\n'+candidate;
 }
 function main(){
  const source=fs.readFileSync(path.join(root,'firestore.rules'),'utf8'),candidate=buildCandidate(source);

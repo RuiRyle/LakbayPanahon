@@ -1,0 +1,19 @@
+// Isolated Auth/Firestore emulators only; all fixture documents are removed.
+const fs=require('fs'),assert=require('node:assert/strict'),crypto=require('crypto');const project='demo-lakbay-local',root='projects/'+project+'/databases/(default)/documents',base='http://127.0.0.1:8180/v1/'+root,checks=[],paths=[];
+const fields=o=>Object.fromEntries(Object.entries(o).map(([k,v])=>[k,v===null?{nullValue:null}:v instanceof Date?{timestampValue:v.toISOString()}:typeof v==='number'?{integerValue:String(v)}:typeof v==='boolean'?{booleanValue:v}:{stringValue:v}]));
+async function call(url,method='GET',body,token='owner'){const r=await fetch(url,{method,headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},...(body?{body:JSON.stringify(body)}:{})});return{status:r.status,data:await r.json().catch(()=>({}))};}
+async function login(email){const r=await call('http://127.0.0.1:9099/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=local','POST',{email,password:'LakbayLocal123!',returnSecureToken:true});assert.equal(r.status,200);return{uid:r.data.localId,token:r.data.idToken};}
+async function check(label,promise,status){const result=await promise;assert.equal(result.status,status,label+' '+JSON.stringify(result.data));checks.push(label);return result.data;}
+async function seed(path,data){await check('seed '+path,call(base+'/'+path,'PATCH',{fields:fields(data)}),200);paths.push(path);}
+async function write(path,data,token,transforms=['publishedAt','updatedAt']){return call(base+':commit','POST',{writes:[{update:{name:root+'/'+path,fields:data},updateTransforms:transforms.map(fieldPath=>({fieldPath,setToServerValue:'REQUEST_TIME'}))}]},token);}
+
+(async()=>{await check('rules compile',call('http://127.0.0.1:8180/emulator/v1/projects/'+project+':securityRules','PUT',{rules:{files:[{name:'firestore.rules',content:fs.readFileSync('firestore.rules','utf8')}]}}),200);const teacher=await login('teacher@lakbay.local'),student=await login('student@lakbay.local'),id='review-state-'+Date.now(),path='classReviewPublicationState/'+id;
+try{await seed('classes/'+id,{teacherId:teacher.uid,status:'active'});
+for(const name of ['classAssignments','classReviewAssignments','classAnnouncements']){
+ const missing=name+'/'+id+'-unused';
+ await check('teacher can check an unused '+name+' ID',call(base+'/'+missing,'GET',null,teacher.token),404);
+ await check('student cannot probe an unused '+name+' ID',call(base+'/'+missing,'GET',null,student.token),403);
+ const foreign=name+'/'+id+'-foreign';await seed(foreign,{classId:id+'-other',userId:student.uid,status:'draft'});
+ await check('unused-ID permission does not expose another class '+name,call(base+'/'+foreign,'GET',null,teacher.token),403);
+}
+paths.push(path);const data={classId:id,revision:1};await check('owner initializes revision',write(path,fields(data),teacher.token,['updatedAt']),200);await check('stale revision rejected',write(path,fields(data),teacher.token,['updatedAt']),403);await check('owner advances revision',write(path,fields({...data,revision:2}),teacher.token,['updatedAt']),200);await check('student cannot read publication state',call(base+'/'+path,'GET',null,student.token),403);await check('student cannot change publication state',write(path,fields({...data,revision:3}),student.token,['updatedAt']),403);await check('mismatched class rejected',write(path,fields({...data,classId:'other',revision:3}),teacher.token,['updatedAt']),403);await check('revision jump rejected',write(path,fields({...data,revision:8}),teacher.token,['updatedAt']),403);await check('owner can read state',call(base+'/'+path,'GET',null,teacher.token),200);console.log(JSON.stringify({pass:true,checks},null,2));}finally{for(const path of paths.reverse())await call(base+'/'+path,'DELETE');}})().catch(e=>{console.error(e);process.exitCode=1;});

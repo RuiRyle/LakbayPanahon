@@ -1,0 +1,15 @@
+# Simpler teacher application — November 5, 2026
+
+Status: implemented and locally validated; not activated in real Firebase. The currently served real-Firebase form remains the previous compatible version until the revised rules are approved and activated.
+
+The default route is School affiliation (`school_teacher`). Applicants verify their existing account email and provide full name, institution and teaching/support role. Location, website, work email, teaching statement and an evidence image are optional and grouped under a closed disclosure. An administrator must still independently check identity and current institutional affiliation, record a verification reference, and approve the current application revision. Neither a school email nor an uploaded image automatically approves access. This route grants classroom access and does not claim professional licensure.
+
+The Licensed teacher route still requires valid/current PRC declarations and a recorded PRC check. Student-teacher and facilitator routes still require a supervisor/organization endorsement. Existing saved applications keep their route. No existing account or approval is migrated automatically. Unused PRC/endorsement fields are cleared from new school-route submissions rather than collecting hidden credential values.
+
+Comparison informing this design: Google Classroom supports school-administrator verification (https://support.google.com/edu/classroom/answer/6071551), and Canva Education uses verified educational domains or an approved supporting document (https://www.canva.com/education/eligibility-guidelines/). LakbayPanahon does not implement automatic domain verification or claim those services' verification capabilities.
+
+Validation: 8 policy unit checks, 42 desktop/mobile application browser checks, 53 qualification permission checks and 129 teacher/student permission regression checks passed. Rules changes are confined to teacherApplications and teacherApplicationReviews. Exact candidate hash and live-rule backup are in `validation/teacher-school-affiliation-review-2026-11-05.json`. The activation tool's read-only preflight passed; no live change was sent. No real applications or test identities were created.
+
+Prepared web package: `build/student-web-ton8SW`. Review image: `validation/teacher-application-simple-desktop.png`. After explicit authorization: `node functions/activate-reviewed-teacher-rules.cjs --activate --school-affiliation`, followed by updating the preview to the matching package and checking the real flow. Activation rechecks the live baseline and preserves a rollback backup.
+
+November 5 activation update: the school-affiliation policy is now active in real Firebase after explicit authorization. The combined Teacher Account Setup preview is enabled at http://localhost:56738/pages/teacher-application.html. Publication proof: `validation/teacher-school-affiliation-publication-2026-11-05.json`. Previous pending-activation notes describe the preparation phase. No existing account or application was migrated or reset.

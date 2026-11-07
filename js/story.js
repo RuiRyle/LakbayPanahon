@@ -63,6 +63,14 @@ const storyProgressActions = document.getElementById("storyProgressActions");
 storyProgressActions?.append(storyDraftStatus, storyDraftStatus.retryButton, restartStoryButton);
 let storyContentVersion = "";
 let loadedStoryMission = null;
+let storyGuideUser = null;
+function emitStoryMissionGuide() {
+    const mission = !storyContent.hidden && storyGuideUser === auth.currentUser ? loadedStoryMission : null;
+    document.dispatchEvent(new CustomEvent('lakbay:mission-guide', {
+        detail: mission ? {mission: {...mission, id: missionId}, user: storyGuideUser} : null
+    }));
+}
+document.addEventListener('lakbay:request-mission-guide', emitStoryMissionGuide);
 let quizInfoRequest = 0;
 const storyContent = $("storyContent");
 
@@ -183,6 +191,8 @@ function clean(value) {
 }
 
 function showError(message) {
+    storyGuideUser = null;
+    emitStoryMissionGuide();
     if (retryStoryLoadButton) retryStoryLoadButton.hidden = !auth.currentUser || !chapterId || !missionId;
     if (storyLoading) {
         storyLoading.hidden = true;
@@ -310,7 +320,7 @@ function scrollToSection(element) {
    LOAD STORY FROM FIRESTORE
    ========================================================= */
 
-function topicPracticeUrl(){return 'practice.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,topic:reviewTopic,review:'1'});}
+function topicPracticeUrl(){return learningNavigation.carry('practice.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,topic:reviewTopic,review:'1'}));}
 function renderTopicReviewNotice(){
     document.getElementById('topicReviewNotice')?.remove();
     const panel=document.createElement('section');panel.id='topicReviewNotice';panel.className='topic-review-notice';panel.setAttribute('aria-label','Topic review');
@@ -332,6 +342,9 @@ function renderTopicReviewNotice(){
 
 async function loadStory() {
     if (!auth.currentUser || storyLoadPending) return;
+    storyGuideUser = null;
+    emitStoryMissionGuide();
+    const loadingUser = auth.currentUser;
     const generation = storySessionGeneration;
     const isCurrent = () => generation === storySessionGeneration;
     if (!chapterId || !missionId) {
@@ -492,6 +505,8 @@ async function loadStory() {
         storyLoading.hidden = true;
         storyError.hidden = true;
         storyContent.hidden = false;
+        storyGuideUser = loadingUser;
+        emitStoryMissionGuide();
 
     } catch (error) {
         if (!isCurrent()) return;
@@ -525,7 +540,15 @@ function displayScene() {
 
 resetStoryAiExplanation();
 
+    document.dispatchEvent(new CustomEvent('mission-scene-start'));
     const sceneNumber = currentSceneIndex + 1;
+    const setting=document.getElementById('storySceneContext');
+    if(setting){
+        setting.replaceChildren();
+        for(const [label,value] of [['Period',scene.dateRange||scene.period],['Place',scene.location||scene.place]]){
+            if(typeof value==='string'&&value.trim()){const detail=document.createElement('span');detail.textContent=label+': '+value;setting.append(detail);}
+        }
+    }
     const totalScenes = scenes.length;
     
     const trail=document.getElementById('storySceneTrail');
@@ -650,22 +673,11 @@ function displayStoryText(scene) {
        Firestore text is never executed as HTML.
     */
 
-    const paragraphs = content.split(/\n\s*\n/);
-
-    paragraphs.forEach((paragraphText) => {
-        const text = clean(paragraphText);
-
-        if (!text) {
-            return;
-        }
-
-        const paragraph = document.createElement("p");
-
-        paragraph.textContent = text;
-        paragraph.style.whiteSpace = "pre-line";
-
-        storyText.appendChild(paragraph);
-    });
+    const paragraphs=window.LakbayLessonText?.readingParts(content)||content.split(/\n\s*\n/).map(text=>text.trim()).filter(Boolean);
+    for(const text of paragraphs){
+        const paragraph=document.createElement('p');paragraph.textContent=text;
+        paragraph.style.whiteSpace='pre-line';storyText.appendChild(paragraph);
+    }
 }
 
 /* =========================================================
@@ -704,6 +716,7 @@ function displayStoryExplore(scene) {
 
         button.type = "button";
         button.className = "story-explore-choice";
+        const clueNumber=document.createElement('span');clueNumber.className='evidence-object-number';clueNumber.textContent='CLUE '+String(index+1).padStart(2,'0');
 
         const iconBox = document.createElement("span");
 
@@ -741,12 +754,14 @@ function displayStoryExplore(scene) {
         hint.textContent =
             clean(item.hint) || "Choose to learn more.";
 
-        contentBox.append(title, hint);
+        contentBox.append(clueNumber,title, hint);
         button.append(iconBox, contentBox);
 
         const result = document.createElement("div");
 
         result.className = "story-explore-result";
+        result.id='scene-'+scene.id+'-clue-'+index;
+        button.setAttribute('aria-controls',result.id);
 
         const resultTitle = document.createElement("strong");
 
@@ -756,7 +771,12 @@ function displayStoryExplore(scene) {
 
         resultText.textContent = clean(item.discovery);
 
-        result.append(resultTitle, resultText);
+        const observationLabel=document.createElement('span');observationLabel.className='evidence-note-label';observationLabel.textContent='WHAT THIS CLUE REVEALS';
+        result.append(observationLabel,resultTitle, resultText);
+        const reflection=document.createElement('details');reflection.className='evidence-reflection';
+        const reflectionSummary=document.createElement('summary');reflectionSummary.textContent='Think like a history explorer';
+        const reflectionCopy=document.createElement('p');reflectionCopy.textContent='What can you observe in this clue? Which part of the explanation does it support? What would you still need to find out?';
+        reflection.append(reflectionSummary,reflectionCopy);result.append(reflection);
 
         const alreadyExplored = exploredItems.has(index);
 
@@ -869,6 +889,7 @@ function handleStoryClueHuntAnswer(scene, selectedAnswer, selectedButton) {
     storyClueHuntChoices.querySelectorAll("button").forEach((button) => button.classList.remove("incorrect"));
     const correct = selectedAnswer === activity.correctAnswer;
     if (!correct) {
+        document.dispatchEvent(new CustomEvent('lakbay:lesson-retry'));
         selectedButton.classList.add("incorrect");
         showStoryClueHuntFeedback(false, activity.retryTitle || "Look closely at the clues", activity.retryExplanation);
         return;
@@ -1096,6 +1117,7 @@ function handleStoryDecision(
     );
 
     const isCorrect = selectedAnswer === correctAnswer;
+    if(!isCorrect)document.dispatchEvent(new CustomEvent("lakbay:lesson-retry"));
 
     const buttons = storyDecisionChoices.querySelectorAll(
         ".story-decision-choice"
@@ -1265,6 +1287,7 @@ function handleQuickCheckAnswer(
     );
 
     const isCorrect = selectedAnswer === correctAnswer;
+    if(!isCorrect)document.dispatchEvent(new CustomEvent("lakbay:lesson-retry"));
 
     if (!isCorrect) {
         selectedButton.classList.add("incorrect");
@@ -1506,6 +1529,28 @@ function updateContinueButton(scene) {
         : !decisionReady ? [storyDecision, 'Explain your choice', 'Use what you learned to choose an answer.']
         : !quickCheckReady ? [storyQuickCheck, 'Try the quick check', 'Check what you understood before moving on.'] : null;
     guide.hidden = !nextStep;
+    document.dispatchEvent(new CustomEvent('mission-quest-update', {detail: {
+        sceneId: scene.id,
+        targetId: nextStep?.[0]?.id || null,
+        tip: nextStep ? nextStep[2] : 'Great exploring! Continue when you are ready for the next part.',
+        ready: !nextStep,
+        completed: {
+            storyExplore: exploreReady,
+            storyClueHunt: clueHuntReady,
+            storyTradeActivity: isSceneTradeComplete(scene),
+            storyRouteActivity: isSceneRouteComplete(scene),
+            storyExhibitActivity: isSceneExhibitComplete(scene),
+            storyDecision: decisionReady,
+            storyQuickCheck: quickCheckReady
+        },
+        teaching: {
+            title: clean(scene.title),
+            goal: clean(scene.learningObjective)||clean(loadedStoryMission?.learningObjective),
+            goals: (Array.isArray(loadedStoryMission?.learningObjectives) ? loadedStoryMission.learningObjectives : [loadedStoryMission?.learningObjective]).filter(value=>typeof value==='string'&&value.trim()),
+            help: sceneHelp(scene),
+            content: clean(scene.content)
+        }
+    }}));
     guide.onclick = null;
     if (nextStep) {
         guide.replaceChildren();
@@ -1616,6 +1661,7 @@ if (continueStoryButton) {
         sceneProgressText.textContent = "Completed";
 
         scrollToSection(storyCompleteSection);
+        storyCompleteSection.querySelector('h2')?.focus({preventScroll:true});
     });
 }
 
@@ -1634,8 +1680,8 @@ if (quizButton) {
     quizButton.addEventListener("click", () => {
         if(reviewTopic){window.location.href=topicPracticeUrl();return;}
         window.location.href =
-            `quiz.html?chapter=${encodeURIComponent(chapterId || "")}` +
-            `&mission=${encodeURIComponent(missionId || "")}`;
+            learningNavigation.carry(`quiz.html?chapter=${encodeURIComponent(chapterId || "")}` +
+            `&mission=${encodeURIComponent(missionId || "")}`);
     });
 }
 
@@ -1690,7 +1736,7 @@ async function loadLessonQuizInfo() {
         quizInfoRequest++;
         storyCompleteSection.querySelector('h2').textContent='Lesson review complete';
         storyCompleteSection.querySelector('.eyebrow').textContent='TOPIC REVIEW';
-        storyCompleteSection.querySelector('p').textContent='You finished reviewing this topic. Now try a few practice questions to use what you learned.';
+        storyCompleteSection.querySelector('.lesson-finish-heading p').textContent='You finished reviewing this topic. Now try a few practice questions to use what you learned.';
         document.getElementById('lessonQuizRequirements').textContent='Practice helps you check what you understand. After practice, you can try the mission quiz again.';
         document.getElementById('lessonRecap').replaceChildren();
         document.getElementById('retryLessonQuizInfo').hidden=true;
@@ -1715,14 +1761,18 @@ async function loadLessonQuizInfo() {
     recap.replaceChildren();
     const mission = loadedStoryMission || {};
     if (typeof mission.lessonRecap === "string" && mission.lessonRecap.trim()) {
-        const paragraph = document.createElement("p");paragraph.textContent = mission.lessonRecap.trim();recap.append(paragraph);
+        const review=document.createElement('details'),summary=document.createElement('summary');summary.textContent='Review the key ideas';review.append(summary);
+        const parts=window.LakbayLessonText?.readingParts(mission.lessonRecap.trim())||[mission.lessonRecap.trim()];
+        for(const part of parts){const paragraph=document.createElement('p');paragraph.textContent=part;review.append(paragraph);}recap.append(review);
     }
+    const words=new Map();for(const scene of scenes){if(typeof scene.keyTerm==='string'&&scene.keyTerm.trim()&&typeof scene.keyTermDefinition==='string'&&scene.keyTermDefinition.trim())words.set(scene.keyTerm.trim(),scene.keyTermDefinition.trim());}
+    if(words.size){const toolkit=document.createElement('details'),summary=document.createElement('summary');toolkit.className='lesson-knowledge-toolkit';summary.textContent='Words and ideas to remember';toolkit.append(summary);for(const [term,definition]of words){const item=document.createElement('details'),label=document.createElement('summary'),copy=document.createElement('p');label.textContent=term;copy.textContent=definition;item.append(label,copy);toolkit.append(item);}recap.append(toolkit);}
     const objectives = Array.isArray(mission.learningObjectives) ? mission.learningObjectives : [mission.learningObjective];
     const list = document.createElement("ul");
     for (const objective of objectives) if (typeof objective === "string" && objective.trim()) {
         const item = document.createElement("li");item.textContent = objective.trim();list.append(item);
     }
-    if (list.children.length) {const title=document.createElement("h3");title.textContent="What you learned";recap.append(title,list);}
+    if (list.children.length) {const title=document.createElement("h3");title.textContent="Ideas you explored";recap.append(title,list);}
     try {
         const snapshot = await getDocs(query(collection(db,"quizzes"),where("missionId","==",missionId)));
         if (generation !== storySessionGeneration || request !== quizInfoRequest) return;
@@ -1730,7 +1780,7 @@ async function loadLessonQuizInfo() {
         requireMissionPolicy(quiz);
         details.textContent = quiz.questionCount + " questions. Answer at least " + Math.ceil(quiz.questionCount * quiz.passingScore / 100) + " correctly to pass (" + quiz.passingScore + "%). Mission XP is awarded once. If you do not pass, review your feedback, practise and retry.";
         if (briefing) {
-            const heading=document.createElement('h3');heading.textContent='Your next challenge';briefing.append(heading);
+            const heading=document.createElement('h3');heading.textContent='Next: the mission quiz';briefing.append(heading);
             const stats=document.createElement('dl');
             const stat=(label,value)=>{const card=document.createElement('div');const term=document.createElement('dt');term.textContent=label;const detail=document.createElement('dd');detail.textContent=value;card.append(term,detail);stats.append(card);};
             stat('Questions',String(quiz.questionCount));
@@ -1758,7 +1808,7 @@ document.getElementById("reviewCompletedLesson")?.addEventListener("click",()=>{
     displayScene();
 });
 
-mountLearningNavigation(document.querySelector(".story-page"), "Lesson");
+const learningNavigation=mountLearningNavigation(document.querySelector(".story-page"), "Lesson")||{carry:url=>url};
 const storyPageRoot=document.querySelector('.story-page');
 const storyBreadcrumbs=storyPageRoot?.querySelector('.learning-navigation');
 const storyReturnRow=storyPageRoot?.querySelector('.story-return-row');

@@ -33,7 +33,7 @@ export function resolveStudentJourney({userId, chapters, eras = [], missions, ch
             (row.kind !== 'practice' || (typeof row.state.sessionId === 'string' && !owned(practiceSessions).some(session=>session.id===row.state.sessionId))) &&
             (row.kind !== 'quiz' || (typeof row.state.attemptId === 'string' && !history.some(attempt=>attempt.attemptId===row.state.attemptId))))
             .sort((a,b)=>b.updatedAt.toMillis()-a.updatedAt.toMillis() || String(a.id).localeCompare(String(b.id)))[0] || null : null;
-        candidates.push({draft,kind:mission?"mission":chapterMissions.length&&challenge?"challenge":"waiting",chapter,mission,attempt,
+        candidates.push({draft,kind:mission?"mission":chapterMissions.length&&challenge?"challenge":"waiting",chapter,mission,attempt,eraTitle:era?.title||era?.name||'',eraTheme:era?.theme||'sea',
             totalMissions:chapterMissions.length,completedCount,eraOrder:eraOrder.get(eraId)??Number.MAX_SAFE_INTEGER});
     }
     if (!candidates.length) {
@@ -88,6 +88,7 @@ export function renderStudentJourney(container, state, retry) {
         text('span','YOUR LEARNING CONTINUES','journey-status');
         text('h3','You completed all available chapters!');
         text('p','Your progress stays with you. Revisit a lesson, explore your collection, and keep your discoveries fresh.');
+        link('Celebrate My Journey','journey-finale.html');
         const summary=state.completion;
         if(summary){
             const stats=document.createElement('dl');stats.className='journey-completion-stats';
@@ -114,6 +115,9 @@ export function renderStudentJourney(container, state, retry) {
         text("span",state.kind==="challenge"?"FINAL CHALLENGE READY":state.kind==="waiting"?"CONTENT PREPARING":state.started?"YOUR NEXT MISSION":"YOUR FIRST MISSION","journey-status");
         text("span",state.chapter.title || "Historical Chapter","journey-chapter-label");
         text("h3",state.mission?.title || (state.kind==="challenge"?"Chapter Challenge":"More lessons are being prepared."));
+        if(state.eraTitle)text('p',state.eraTitle,'journey-meta');
+        const duration=Number(state.mission?.estimatedMinutes);
+        if(Number.isFinite(duration)&&duration>0&&duration<=180)text('p','About '+Math.ceil(duration)+' minutes','journey-meta');
         if (state.mission?.introduction) text("p",state.mission.introduction);
         text("p",state.completedCount+" / "+state.totalMissions+" missions completed","journey-progress-header");
         const track=document.createElement("div"),fill=document.createElement("div");

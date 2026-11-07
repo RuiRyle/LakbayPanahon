@@ -9,6 +9,12 @@ const records={eras:[{id:'e1',status:'active',title:'Early Philippine Communitie
 const collection=(_,name)=>({name}),where=(field,op,value)=>({field,value}),query=(ref,...filters)=>({...ref,filters});
 const journalAuthListeners=[];const onAuthStateChanged=(_,fn)=>{journalAuthListeners.push(fn);authListener=user=>journalAuthListeners.forEach(listener=>listener(user));queueMicrotask(()=>fn(auth.currentUser));};
 const getDocs=async ref=>{const rows=[...(records[ref.name]||[])];if(ref.name.startsWith('student')&&ref.filters?.[0]?.value!==auth.currentUser?.uid)throw Error('Missing owner query');if(gate)await gate;if(failCore&&ref.name==='studentProgress')throw Error('Offline');if(failOptional&&ref.name==='studentPracticeProgress')throw Error('Offline');return{docs:rows.map(row=>({id:row.id,data:()=>row}))};};
+const instructionalSnapshot=(_,load)=>load();
+${source('student-status.js')}
+${source('review-question-catalog.js')}
+${source('lakbay-passport.js')}
+${source('learning-community.js')}
+${source('discovery-pins.js')}
 ${source('practice-review.js')}
 ${source('mission-review.js')}
 ${source('student-journey.js')}
@@ -23,7 +29,7 @@ const tick=()=>new Promise(r=>setTimeout(r,70)),check=(ok,message)=>{if(!ok)thro
 (async()=>{
  document.body.classList.add('authenticated');document.body.classList.remove('auth-checking');await tick();
  check(!page.hidden,'Journey did not load: '+status.textContent);
- check(document.querySelector('#journeyNextAction .journey-action-button').textContent==='Practise Weak Topics','Saved quiz diagnosis did not drive next step');
+ check(document.querySelector('#journeyNextAction .journey-action-button').textContent==='Review Missed Topic','Saved quiz diagnosis did not drive next step');
  check(document.getElementById('journeyMissionCount').textContent==='1 / 3','Saved completion count wrong');
  check(document.getElementById('journeyReviewCount').textContent==='1'&&document.querySelector('#journeyReviewTopics a').href.includes('reviewTopic=exchange'),'Personal review missing');
  check(document.querySelectorAll('.journey-chapter').length===2&&document.querySelector('.journey-chapter').open,'Path does not expand current chapter');
@@ -34,7 +40,7 @@ const tick=()=>new Promise(r=>setTimeout(r,70)),check=(ok,message)=>{if(!ok)thro
  failCore=true;await loadJourneyPage();check(page.hidden&&!refresh.disabled&&status.textContent.includes('could not load'),'Core error lacks recovery');failCore=false;refresh.click();await tick();check(!page.hidden,'Refresh retry failed');
  let release;gate=new Promise(r=>release=r);const old=loadJourneyPage();await tick();auth.currentUser=null;authListener(null);gate=null;release();await old;check(page.hidden&&!document.getElementById('journeyPath').children.length,'Stale load restored signed-out progress');
  auth.currentUser={uid:'student'};authListener(auth.currentUser);await tick();check(!page.hidden,'Fresh login did not restore journey');
- records.storyScenes=[{id:'s1',missionId:'m1',status:'active',reviewTopics:['t'],exploreItems:[{title:'Clue <img src=x>',discovery:'An authored observation'}]}];records.studentEvidenceJournal=[{id:'student_s1_0',userId:'student',chapterId:'c1',missionId:'m1',sceneId:'s1',clueIndex:0}];await loadEvidenceJournal();check(document.querySelectorAll('.evidence-journal-card').length===1,'Saved clue not rendered');check(journalHost.textContent.includes('An authored observation')&&!journalHost.querySelector('img'),'Journal text unsafe or missing');check(journalHost.querySelector('a').href.includes('reviewTopic=t'),'Journal return link lost teaching topic');journalHost.querySelector('button').click();await tick();check(!records.studentEvidenceJournal.length&&!journalHost.querySelector('article'),'Journal deletion failed');
+ records.storyScenes=[{id:'s1',missionId:'m1',status:'active',reviewTopics:['t'],exploreItems:[{title:'Clue <img src=x>',discovery:'An authored observation'}]}];records.studentEvidenceJournal=[{id:'student_s1_0',userId:'student',chapterId:'c1',missionId:'m1',sceneId:'s1',clueIndex:0}];await loadEvidenceJournal();check(document.querySelectorAll('.evidence-journal-card').length===1,'Saved clue not rendered');check(journalHost.textContent.includes('An authored observation')&&!journalHost.querySelector('img'),'Journal text unsafe or missing');check(journalHost.querySelector('a').href.includes('reviewTopic=t'),'Journal return link lost teaching topic');[...journalHost.querySelectorAll('button')].find(b=>b.textContent==='Remove from Journal').click();await tick();check(!records.studentEvidenceJournal.length&&!journalHost.querySelector('article'),'Journal deletion failed');
  check(document.documentElement.scrollWidth<=window.innerWidth,'Desktop journey overflows');
  document.getElementById('result').textContent='PASS: journal read, safe authored content, lesson link and removal; journey recovery';
 })().catch(e=>document.getElementById('result').textContent='FAIL: '+e.message);

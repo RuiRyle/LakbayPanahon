@@ -1,0 +1,15 @@
+{
+  "mode": "published-and-read-back",
+  "publishedAt": "2026-10-31T14:45:22.706Z",
+  "sourceHash": "0a98811d0bdbcb29302f04803568d43ec18b30c0ac84b7bb1cbed08fa90e5551",
+  "previousRuleset": "projects/lakbaypanahon-1797e/rulesets/8587c270-4d69-4b9a-ae99-ce011f5283a2",
+  "rulesetName": "projects/lakbaypanahon-1797e/rulesets/feb2d362-27ac-4707-9e96-668b6c32adc8",
+  "backup": "backups\\admin-rules-1793457917719.json",
+  "scope": [
+    "match /users/{userId}",
+    "function activeAdmin",
+    "function validModeration",
+    "match /accountModeration/{eventId}"
+  ],
+  "accountRecordsChanged": false
+}

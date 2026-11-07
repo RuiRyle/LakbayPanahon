@@ -1,3 +1,11 @@
+// Optional browser storage must not interrupt a quiz or hide a confirmed save.
+// Firestore drafts are the durable source of unfinished learning state.
+export const studentTabStorage = {
+    getItem(key) { try { return globalThis.sessionStorage.getItem(key); } catch { return null; } },
+    setItem(key, value) { try { globalThis.sessionStorage.setItem(key, value); return true; } catch { return false; } },
+    removeItem(key) { try { globalThis.sessionStorage.removeItem(key); return true; } catch { return false; } }
+};
+
 // Remove only the departing account's tab-local learning state. Firebase owns
 // its authentication storage; browser preferences and saved Firestore data stay intact.
 export function clearStudentSessionData(storage, uid) {

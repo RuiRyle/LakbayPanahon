@@ -1,0 +1,846 @@
+// INACTIVE TRUSTED-ASSESSMENT CUTOVER CANDIDATE. Review with backend/frontend/key migration.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function activeStudent() {
+      return signedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'student'
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';
+    }
+    function ownRecord() { return resource.data.userId == request.auth.uid; }
+    function activeAdmin() {
+      return signedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin'
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active';
+    }
+    function teacherApplicant(uid) {
+      return signedIn() && request.auth.uid == uid
+        && get(/databases/$(database)/documents/users/$(uid)).data.role == 'teacher';
+    }
+    function qualifiedTeacher(uid) {
+      let profile = get(/databases/$(database)/documents/users/$(uid)).data;
+      let application = get(/databases/$(database)/documents/teacherApplications/$(uid)).data;
+      return profile.get('teacherVerifiedRevision',0) > 0 && application.status == 'approved'
+        && application.revision == profile.teacherVerifiedRevision && application.emailVerified == true;
+    }
+    function validTeacherDecision(uid, eventId) {
+      let old = get(/databases/$(database)/documents/teacherApplications/$(uid)).data;
+      let application = getAfter(/databases/$(database)/documents/teacherApplications/$(uid)).data;
+      let review = getAfter(/databases/$(database)/documents/teacherApplicationReviews/$(eventId)).data;
+      let profile = getAfter(/databases/$(database)/documents/users/$(uid)).data;
+      let audit = getAfter(/databases/$(database)/documents/accountModeration/$(eventId)).data;
+      return activeAdmin() && old.status == 'submitted' && application.reviewId == eventId
+        && application.revision == old.revision && review.revision == old.revision
+        && review.actorId == request.auth.uid && review.userId == uid && review.createdAt == request.time
+        && application.reviewedAt == request.time && application.reviewedBy == request.auth.uid
+        && application.status == review.decision && application.decisionReason == review.reason
+        && profile.teacherVerificationReviewId == eventId && profile.moderationEventId == eventId && profile.moderatedAt == request.time
+        && audit.userId == uid && audit.actorId == request.auth.uid && audit.createdAt == request.time
+        && !existsAfter(/databases/$(database)/documents/teacherEvidence/$(uid));
+    }
+    match /teacherApplications/{uid} {
+      allow get: if teacherApplicant(uid) || activeAdmin();
+      allow list: if activeAdmin();
+      function validApplicantData() {
+        let data = request.resource.data;
+        return teacherApplicant(uid)
+          && data.keys().hasOnly(['userId','email','emailVerified','revision','status','updatedAt','legalName','institution','locality','roleTitle','officialWebsite','workEmail','prcNumber','prcExpiresAt','sponsorName','sponsorContact','statement','applicantType','acknowledged','evidenceRevision','evidenceName','evidenceUploadedAt'])
+          && data.userId == uid && data.email == request.auth.token.email
+          && data.emailVerified == request.auth.token.get('email_verified',false)
+          && data.revision is int && data.revision == (resource == null ? 1 : resource.data.revision + 1)
+          && data.status in ['draft','submitted'] && data.updatedAt == request.time
+          && data.applicantType in ['school_teacher','licensed_teacher','student_teacher','facilitator']
+          && data.legalName is string && data.legalName.size() <= 100
+          && data.institution is string && data.institution.size() <= 150
+          && data.locality is string && data.locality.size() <= 100
+          && data.roleTitle is string && data.roleTitle.size() <= 100
+          && data.statement is string && data.statement.size() <= 1500
+          && data.officialWebsite is string && data.officialWebsite.size() <= 250
+          && (data.officialWebsite == '' || data.officialWebsite.matches('^https://[^ ]+$'))
+          && data.workEmail is string && data.workEmail.size() <= 150
+          && data.sponsorName is string && data.sponsorName.size() <= 100
+          && data.sponsorContact is string && data.sponsorContact.size() <= 150
+          && data.prcNumber is string && data.prcNumber.size() <= 12
+          && (data.prcExpiresAt == null || data.prcExpiresAt is timestamp)
+          && data.acknowledged is bool && data.evidenceRevision is int && data.evidenceRevision >= 0
+          && ((data.evidenceRevision == 0 && data.evidenceName == '' && data.evidenceUploadedAt == null)
+            || (data.evidenceRevision > 0
+              && getAfter(/databases/$(database)/documents/teacherEvidence/$(uid)).data.revision == data.evidenceRevision
+              && getAfter(/databases/$(database)/documents/teacherEvidence/$(uid)).data.name == data.evidenceName
+              && getAfter(/databases/$(database)/documents/teacherEvidence/$(uid)).data.uploadedAt == data.evidenceUploadedAt))
+          && (data.status == 'draft' || (data.emailVerified && data.acknowledged
+            && data.legalName.size() > 0 && data.institution.size() > 0 && data.roleTitle.size() > 0
+            && (data.applicantType == 'school_teacher' || (data.applicantType == 'licensed_teacher'
+              ? data.prcNumber.matches('^[0-9]{4,12}$') && data.prcExpiresAt is timestamp && data.prcExpiresAt >= request.time
+              : data.sponsorName.size() > 0 && data.sponsorContact.size() > 0))));
+      }
+      allow create, update: if validApplicantData();
+      allow update: if validTeacherDecision(uid,request.resource.data.reviewId)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','decisionReason','reviewId','reviewedAt','reviewedBy','updatedAt','evidenceRevision','evidenceName','evidenceUploadedAt'])
+        && request.resource.data.status in ['approved','needs_changes','declined'] && request.resource.data.updatedAt == request.time
+        && request.resource.data.evidenceRevision == 0 && request.resource.data.evidenceName == '' && request.resource.data.evidenceUploadedAt == null;
+      allow delete: if false;
+    }
+    match /teacherEvidence/{uid} {
+      allow get: if (teacherApplicant(uid) || activeAdmin())
+        && (!exists(/databases/$(database)/documents/teacherEvidence/$(uid)) || (resource.data.uploadedAt + duration.value(30,'d') > request.time
+          && get(/databases/$(database)/documents/teacherApplications/$(uid)).data.evidenceRevision == resource.data.revision));
+      allow list: if false;
+      allow create, update: if teacherApplicant(uid)
+        && request.resource.data.keys().hasOnly(['userId','revision','name','mime','data','uploadedAt'])
+        && request.resource.data.userId == uid && request.resource.data.revision is int
+        && request.resource.data.revision == getAfter(/databases/$(database)/documents/teacherApplications/$(uid)).data.revision
+        && getAfter(/databases/$(database)/documents/teacherApplications/$(uid)).data.evidenceRevision == request.resource.data.revision
+        && request.resource.data.uploadedAt == request.time
+        && request.resource.data.name is string && request.resource.data.name.size() <= 100
+        && request.resource.data.mime in ['image/jpeg','image/png']
+        && request.resource.data.data is string && request.resource.data.data.size() > 0 && request.resource.data.data.size() <= 341336
+        && request.resource.data.data.matches('^[A-Za-z0-9+/]*={0,2}$');
+      allow delete: if teacherApplicant(uid) || activeAdmin();
+    }
+    match /teacherApplicationReviews/{eventId} {
+      allow read: if activeAdmin();
+      allow create: if validTeacherDecision(request.resource.data.userId,eventId)
+        && request.resource.data.keys().hasOnly(['userId','actorId','revision','applicantType','decision','reason','checks','affiliationReference','credentialReference','createdAt'])
+        && request.resource.data.applicantType == get(/databases/$(database)/documents/teacherApplications/$(request.resource.data.userId)).data.applicantType
+        && request.resource.data.decision in ['approved','needs_changes','declined']
+        && request.resource.data.reason is string && request.resource.data.reason.size() >= 5 && request.resource.data.reason.size() <= 500
+        && request.resource.data.checks.keys().hasOnly(['identity','affiliation','prc','endorsement'])
+        && request.resource.data.checks.identity is bool && request.resource.data.checks.affiliation is bool && request.resource.data.checks.prc is bool && request.resource.data.checks.endorsement is bool
+        && request.resource.data.affiliationReference is string && request.resource.data.affiliationReference.size() <= 500
+        && request.resource.data.credentialReference is string && request.resource.data.credentialReference.size() <= 500
+        && (request.resource.data.decision != 'approved' || (request.resource.data.checks.identity && request.resource.data.checks.affiliation
+          && request.resource.data.affiliationReference.size() >= 5
+          && get(/databases/$(database)/documents/teacherApplications/$(request.resource.data.userId)).data.emailVerified == true
+          && (request.resource.data.applicantType == 'school_teacher' || (request.resource.data.credentialReference.size() >= 5 && (request.resource.data.applicantType == 'licensed_teacher'
+            ? request.resource.data.checks.prc && get(/databases/$(database)/documents/teacherApplications/$(request.resource.data.userId)).data.prcExpiresAt >= request.time
+            : request.resource.data.checks.endorsement)))));
+      allow update, delete: if false;
+    }
+    function validModeration(userId) {
+      let data = request.resource.data;
+      let event = getAfter(/databases/$(database)/documents/accountModeration/$(data.moderationEventId)).data;
+      return activeAdmin() && userId != request.auth.uid && resource.data.role in ['teacher','student']
+        && resource.data.status in ['pending','active','inactive'] && data.status in ['active','inactive']
+        && data.status != resource.data.status
+        && data.diff(resource.data).affectedKeys().hasOnly(['status','updatedAt','moderatedAt','moderatedBy','moderationEventId'])
+        && data.updatedAt == request.time && data.moderatedAt == request.time && data.moderatedBy == request.auth.uid
+        && event.userId == userId && event.actorId == request.auth.uid && event.createdAt == request.time
+        && event.previousStatus == resource.data.status && event.status == data.status
+        && (resource.data.role != 'teacher' || data.status != 'active' || qualifiedTeacher(userId));
+    }
+    match /accountModeration/{eventId} {
+      allow read: if activeAdmin();
+      allow create: if activeAdmin()
+        && request.resource.data.keys().hasOnly(['userId','actorId','previousStatus','status','reason','identityVerified','createdAt'])
+        && request.resource.data.userId != request.auth.uid && request.resource.data.actorId == request.auth.uid
+        && request.resource.data.reason is string && request.resource.data.reason.size() >= 5 && request.resource.data.reason.size() <= 500
+        && request.resource.data.createdAt == request.time && request.resource.data.identityVerified is bool
+        && get(/databases/$(database)/documents/users/$(request.resource.data.userId)).data.role in ['student','teacher']
+        && get(/databases/$(database)/documents/users/$(request.resource.data.userId)).data.status == request.resource.data.previousStatus
+        && request.resource.data.status in ['active','inactive','pending']
+        && (request.resource.data.previousStatus != request.resource.data.status || validTeacherDecision(request.resource.data.userId,eventId))
+        && (get(/databases/$(database)/documents/users/$(request.resource.data.userId)).data.role != 'teacher'
+          || request.resource.data.status != 'active' || request.resource.data.identityVerified == true)
+        && getAfter(/databases/$(database)/documents/users/$(request.resource.data.userId)).data.moderationEventId == eventId
+        && getAfter(/databases/$(database)/documents/users/$(request.resource.data.userId)).data.status == request.resource.data.status
+        && getAfter(/databases/$(database)/documents/users/$(request.resource.data.userId)).data.moderatedAt == request.time
+        && getAfter(/databases/$(database)/documents/users/$(request.resource.data.userId)).data.moderatedBy == request.auth.uid;
+      allow update, delete: if false;
+    }
+    function activeTeacher() {
+      return signedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'teacher'
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'active'
+        && request.auth.token.get('email_verified',false) == true && qualifiedTeacher(request.auth.uid)
+        && get(/databases/$(database)/documents/teacherApplications/$(request.auth.uid)).data.email == request.auth.token.email;
+    }
+    function ownsClass(classId) {
+      return activeTeacher() && get(/databases/$(database)/documents/classes/$(classId)).data.teacherId == request.auth.uid;
+    }
+    function activeOwnedMember(classId, userId) {
+      let classroom = get(/databases/$(database)/documents/classes/$(classId)).data;
+      let member = get(/databases/$(database)/documents/classMembers/$(userId + '_' + classId)).data;
+      return activeTeacher() && classroom.teacherId == request.auth.uid && classroom.status == 'active'
+        && member.userId == userId && member.classId == classId && member.status == 'active';
+    }
+    function teacherCanReport(userId) {
+      let link = get(/databases/$(database)/documents/teacherStudentLinks/$(request.auth.uid + '_' + userId)).data;
+      return activeTeacher() && link.teacherId == request.auth.uid && link.userId == userId
+        && activeOwnedMember(link.classId, userId);
+    }
+    function twoDigits(value) { return value < 10 ? '0' + string(value) : string(value); }
+    function dayKey(time) {
+      let local = time + duration.value(8, 'h');
+      return string(local.year()) + '-' + twoDigits(local.month()) + '-' + twoDigits(local.day());
+    }
+    function completionPath(kind, id) {
+      let records = kind == 'mission' ? 'studentProgress' : 'studentDailyChallenges';
+      return /databases/$(database)/documents/$(records)/$(request.auth.uid + '_' + id);
+    }
+    function expectedStreak() {
+      return resource.data.get('lastStreakDate', '') == dayKey(request.time)
+        ? (resource.data.get('learningStreak', 0) > 0 ? resource.data.learningStreak : 1)
+        : resource.data.get('lastStreakDate', '') == dayKey(request.time - duration.value(1, 'd'))
+          ? resource.data.get('learningStreak', 0) + 1 : 1;
+    }
+    function progressionLevel(xp) {
+      let policy = get(/databases/$(database)/documents/learningSettings/progression).data;
+      return policy.xpPerLevel is int && policy.xpPerLevel > 0 && policy.version is int && policy.version > 0
+        ? int(xp / policy.xpPerLevel) + 1 : -1;
+    }
+    function classMember(classId) {
+      let path = /databases/$(database)/documents/classMembers/$(request.auth.uid + '_' + classId);
+      return exists(path) && get(path).data.userId == request.auth.uid && get(path).data.status == 'active';
+    }
+    match /classJoinCodes/{code} {
+      allow get: if activeStudent() || (activeTeacher() && (!exists(/databases/$(database)/documents/classJoinCodes/$(code)) || ownsClass(resource.data.classId)));
+      allow list: if ownsClass(resource.data.classId);
+      allow create: if activeTeacher() && code.matches('^[A-Z0-9]{12}$')
+        && request.resource.data.keys().hasOnly(['classId','teacherId','className','teacherName','status','expiresAt','createdAt'])
+        && request.resource.data.get('className',getAfter(/databases/$(database)/documents/classes/$(request.resource.data.classId)).data.name) == getAfter(/databases/$(database)/documents/classes/$(request.resource.data.classId)).data.name
+        && request.resource.data.get('teacherName',getAfter(/databases/$(database)/documents/classes/$(request.resource.data.classId)).data.teacherName) == getAfter(/databases/$(database)/documents/classes/$(request.resource.data.classId)).data.teacherName
+        && ownsClass(request.resource.data.classId) && request.resource.data.teacherId == request.auth.uid
+        && getAfter(/databases/$(database)/documents/classes/$(request.resource.data.classId)).data.currentJoinCode == code
+        && getAfter(/databases/$(database)/documents/classes/$(request.resource.data.classId)).data.status == 'active'
+        && request.resource.data.status == 'active' && request.resource.data.createdAt == request.time
+        && request.resource.data.expiresAt is timestamp && request.resource.data.expiresAt > request.time
+        && request.resource.data.expiresAt <= request.time + duration.value(30, 'd');
+      allow update: if ownsClass(resource.data.classId)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+        && request.resource.data.status == 'revoked';
+      allow delete: if false;
+    }
+    match /classes/{classId} {
+      function validClass() {
+        let data = request.resource.data;
+        return data.keys().hasOnly(['name','description','teacherId','teacherName','status','currentJoinCode','createdAt','updatedAt'])
+          && data.name is string && data.name.size() > 0 && data.name.size() <= 100
+          && data.get('description','') is string && data.get('description','').size() <= 500
+          && data.teacherName is string && data.teacherName.size() <= 200
+          && data.status in ['active','archived'] && data.updatedAt == request.time
+          && data.currentJoinCode is string && (data.currentJoinCode == '' || data.currentJoinCode.matches('^[A-Z0-9]{12}$'));
+      }
+      allow get: if (activeStudent() && classMember(classId)) || (activeTeacher() && resource.data.teacherId == request.auth.uid);
+      allow list: if activeTeacher() && resource.data.teacherId == request.auth.uid;
+      allow create: if activeTeacher() && validClass() && request.resource.data.teacherId == request.auth.uid
+        && request.resource.data.status == 'active' && request.resource.data.currentJoinCode == '' && request.resource.data.createdAt == request.time;
+      allow update: if activeTeacher() && resource.data.teacherId == request.auth.uid && validClass()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name','description','status','currentJoinCode','updatedAt'])
+        && (request.resource.data.status == 'active' || request.resource.data.currentJoinCode == '')
+        && (request.resource.data.currentJoinCode == '' || (getAfter(/databases/$(database)/documents/classJoinCodes/$(request.resource.data.currentJoinCode)).data.classId == classId
+          && getAfter(/databases/$(database)/documents/classJoinCodes/$(request.resource.data.currentJoinCode)).data.teacherId == request.auth.uid));
+      allow delete: if false;
+    }
+    match /classes/{classId}/classmates/{studentId} {
+      allow read: if (activeStudent() && classMember(classId)) || ownsClass(classId);
+      allow create, update: if activeStudent() && request.auth.uid == studentId && classMember(classId)
+        && request.resource.data.keys().hasOnly(['displayName'])
+        && request.resource.data.displayName is string
+        && request.resource.data.displayName.size() > 0 && request.resource.data.displayName.size() <= 60;
+      allow delete: if (activeStudent() && request.auth.uid == studentId) || ownsClass(classId);
+    }
+    match /classMembers/{membershipId} {
+      allow get: if activeStudent() && (!exists(/databases/$(database)/documents/classMembers/$(membershipId)) || ownRecord());
+      allow list: if activeStudent() && ownRecord();
+      allow read: if ownsClass(resource.data.classId);
+      allow create: if activeStudent()
+        && request.resource.data.keys().hasOnly(['userId','classId','joinCode','status','joinedAt'])
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.classId is string && request.resource.data.joinCode is string
+        && request.resource.data.joinCode.matches('^[A-Z0-9]{12}$')
+        && membershipId == request.auth.uid + '_' + request.resource.data.classId
+        && request.resource.data.status == 'active' && request.resource.data.joinedAt == request.time
+        && get(/databases/$(database)/documents/classJoinCodes/$(request.resource.data.joinCode)).data.classId == request.resource.data.classId
+        && get(/databases/$(database)/documents/classJoinCodes/$(request.resource.data.joinCode)).data.status == 'active'
+        && get(/databases/$(database)/documents/classJoinCodes/$(request.resource.data.joinCode)).data.get('expiresAt', request.time + duration.value(1,'s')) > request.time
+        && get(/databases/$(database)/documents/classes/$(request.resource.data.classId)).data.status == 'active'
+        && get(/databases/$(database)/documents/classes/$(request.resource.data.classId)).data.get('currentJoinCode', request.resource.data.joinCode) == request.resource.data.joinCode;
+      allow delete: if !existsAfter(/databases/$(database)/documents/classes/$(resource.data.classId)/classmates/$(resource.data.userId)) && ((activeStudent() && ownRecord())
+        || (activeOwnedMember(resource.data.classId,resource.data.userId)
+          && membershipId == resource.data.userId + '_' + resource.data.classId));
+      allow update: if false;
+    }
+    match /classAssignments/{assignmentId} {
+      allow read: if activeStudent() && classMember(resource.data.classId) && resource.data.status in ['published','closed','withdrawn'];
+      allow read: if ownsClass(resource.data.classId);
+      allow create, update: if validPublication('assignment');
+      allow delete: if false;
+    }
+    match /classReviewPublicationState/{classId} {
+      allow get: if ownsClass(classId);
+      allow list, delete: if false;
+      allow create, update: if ownsClass(classId)
+        && get(/databases/$(database)/documents/classes/$(classId)).data.status == 'active'
+        && request.resource.data.keys().hasOnly(['classId','revision','updatedAt'])
+        && request.resource.data.classId == classId
+        && request.resource.data.revision is int
+        && request.resource.data.revision == (resource == null ? 1 : resource.data.revision + 1)
+        && request.resource.data.updatedAt == request.time;
+    }
+    match /classReviewAssignments/{assignmentId} {
+      allow read: if (activeStudent() && resource.data.userId == request.auth.uid && classMember(resource.data.classId) && resource.data.status in ['published','closed','withdrawn']) || ownsClass(resource.data.classId);
+      allow create, update: if (activeOwnedMember(request.resource.data.classId,request.resource.data.userId)
+        || (request.resource.data.status in ['closed','withdrawn'] && ownsClass(request.resource.data.classId)
+          && get(/databases/$(database)/documents/classes/$(request.resource.data.classId)).data.status == 'active'))
+        && request.resource.data.keys().hasOnly(['classId','userId','assignmentType','title','instructions','missionId','chapterId','status','publishedAt','updatedAt','dueAt','assignedAt','reviewTopic','reviewSceneId','reflectionQuestion','endedAt'])
+        && request.resource.data.get('reflectionQuestion','') is string && request.resource.data.get('reflectionQuestion','').size() <= 500
+        && request.resource.data.get('reviewTopic','') is string && request.resource.data.get('reviewTopic','').size() <= 150
+        && request.resource.data.get('reviewSceneId','') is string && request.resource.data.get('reviewSceneId','').size() <= 150
+        && (request.resource.data.status in ['closed','withdrawn'] || (request.resource.data.get('reviewTopic','') == '' ? request.resource.data.get('reviewSceneId','') == ''
+          : get(/databases/$(database)/documents/storyScenes/$(request.resource.data.reviewSceneId)).data.missionId == request.resource.data.missionId
+            && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.reviewSceneId)).data.status == 'active'
+            && request.resource.data.reviewTopic in get(/databases/$(database)/documents/storyScenes/$(request.resource.data.reviewSceneId)).data.reviewTopics))
+        && request.resource.data.assignmentType == 'targeted-review'
+        && request.resource.data.title is string && request.resource.data.title.size() > 0 && request.resource.data.title.size() <= 120
+        && request.resource.data.instructions is string && request.resource.data.instructions.size() <= 1500
+        && validActivityLifecycle()
+        && request.resource.data.updatedAt == request.time && request.resource.data.publishedAt == request.time
+        && (request.resource.data.get('dueAt',null) == null || request.resource.data.dueAt is timestamp)
+        && (request.resource.data.status in ['closed','withdrawn'] || (get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.chapterId == request.resource.data.chapterId
+        && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.status == 'active'
+        && get(/databases/$(database)/documents/chapters/$(request.resource.data.chapterId)).data.status == 'active'))
+        && (resource == null || (resource.data.classId == request.resource.data.classId && resource.data.userId == request.resource.data.userId && resource.data.missionId == request.resource.data.missionId && resource.data.chapterId == request.resource.data.chapterId))
+        && (resource == null || (!(request.resource.data.status in ['closed','withdrawn']) && resource.data.assignedAt == null) || (request.resource.data.get('reviewTopic','') == resource.data.get('reviewTopic','') && request.resource.data.get('reviewSceneId','') == resource.data.get('reviewSceneId','') && request.resource.data.get('reflectionQuestion','') == resource.data.get('reflectionQuestion','')))
+        && (resource != null && resource.data.assignedAt != null ? request.resource.data.assignedAt == resource.data.assignedAt
+          : (request.resource.data.status == 'published' ? request.resource.data.assignedAt == request.time : request.resource.data.assignedAt == null));
+      allow delete: if false;
+    }
+    match /classAnnouncements/{announcementId} {
+      allow read: if activeStudent() && classMember(resource.data.classId) && resource.data.status == 'published';
+      allow read: if ownsClass(resource.data.classId);
+      allow create, update: if validPublication('announcement');
+      allow delete: if false;
+    }
+    match /classFeedback/{feedbackId} {
+      allow get: if activeTeacher() && !exists(/databases/$(database)/documents/classFeedback/$(feedbackId));
+      allow read: if activeOwnedMember(resource.data.classId, resource.data.userId)
+        && resource.data.teacherId == request.auth.uid;
+      allow read: if activeStudent() && resource.data.userId == request.auth.uid && classMember(resource.data.classId);
+      function validFeedback() {
+        let data = request.resource.data;
+        return activeOwnedMember(data.classId,data.userId) && data.teacherId == request.auth.uid
+          && data.keys().hasOnly(['classId','userId','teacherId','missionId','chapterId','body','revision','createdAt','updatedAt','readAt'])
+          && data.missionId is string && data.chapterId is string
+          && feedbackId == data.classId + '_' + data.userId + '_' + data.missionId
+          && data.body is string && data.body.size() > 0 && data.body.size() <= 1500
+          && data.revision is int && data.revision == (resource == null ? 1 : resource.data.revision + 1)
+          && data.updatedAt == request.time && data.readAt == null
+          && get(/databases/$(database)/documents/missions/$(data.missionId)).data.status == 'active'
+          && get(/databases/$(database)/documents/missions/$(data.missionId)).data.chapterId == data.chapterId
+          && get(/databases/$(database)/documents/chapters/$(data.chapterId)).data.status == 'active'
+          && (resource == null ? data.createdAt == request.time : data.createdAt == resource.data.createdAt
+            && data.classId == resource.data.classId && data.userId == resource.data.userId
+            && data.teacherId == resource.data.teacherId && data.missionId == resource.data.missionId
+            && data.chapterId == resource.data.chapterId);
+      }
+      allow create, update: if validFeedback();
+      allow update: if activeStudent() && resource.data.userId == request.auth.uid && classMember(resource.data.classId)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['readAt'])
+        && resource.data.readAt == null && request.resource.data.readAt == request.time;
+      allow delete: if false;
+    }
+    match /classReviewReflections/{reviewId} {
+      allow get: if activeStudent() && !exists(/databases/$(database)/documents/classReviewReflections/$(reviewId))
+        && get(/databases/$(database)/documents/classReviewAssignments/$(reviewId)).data.userId == request.auth.uid
+        && get(/databases/$(database)/documents/classReviewAssignments/$(reviewId)).data.status in ['published','closed','withdrawn']
+        && classMember(get(/databases/$(database)/documents/classReviewAssignments/$(reviewId)).data.classId);
+      allow read: if (activeStudent() && resource.data.userId == request.auth.uid && classMember(resource.data.classId)) || ownsClass(resource.data.classId);
+      function validReflection(){
+        let data=request.resource.data;
+        let review=get(/databases/$(database)/documents/classReviewAssignments/$(reviewId)).data;
+        let attempt=get(/databases/$(database)/documents/studentQuizAttempts/$(data.attemptId)).data;
+        return activeStudent() && data.userId == request.auth.uid && classMember(data.classId)
+          && get(/databases/$(database)/documents/classes/$(data.classId)).data.status == 'active'
+          && review.userId == request.auth.uid && review.classId == data.classId && review.status == 'published'
+          && review.get('reflectionQuestion','') != '' && data.question == review.reflectionQuestion
+          && data.keys().hasOnly(['classId','userId','reviewId','question','body','attemptId','revision','submittedAt','response','respondedAt'])
+          && data.reviewId == reviewId && data.body is string && data.body.size()>0 && data.body.size()<=600
+          && attempt.userId == request.auth.uid && attempt.missionId == review.missionId && attempt.chapterId == review.chapterId
+          && attempt.passed == true && attempt.completedAt > review.assignedAt
+          && data.submittedAt == request.time && data.response == '' && data.respondedAt == null
+          && data.revision is int && (resource == null ? data.revision == 1
+            : data.revision == resource.data.revision+1 && data.classId == resource.data.classId && data.userId == resource.data.userId && data.reviewId == resource.data.reviewId);
+      }
+      allow create, update: if validReflection();
+      allow update: if activeOwnedMember(resource.data.classId,resource.data.userId)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['response','respondedAt'])
+        && request.resource.data.response is string && request.resource.data.response.size()>0 && request.resource.data.response.size()<=1500
+        && request.resource.data.respondedAt == request.time;
+      allow delete: if false;
+    }
+    match /classHelpRequests/{helpId} {
+      allow get: if activeStudent() && !exists(/databases/$(database)/documents/classHelpRequests/$(helpId));
+      allow read: if (activeStudent() && resource.data.userId == request.auth.uid && classMember(resource.data.classId)) || ownsClass(resource.data.classId);
+      function validHelp() {
+        let data = request.resource.data;
+        let assignment = data.get('assignmentKind','class-goal') == 'targeted-review'
+          ? get(/databases/$(database)/documents/classReviewAssignments/$(data.assignmentId)).data
+          : get(/databases/$(database)/documents/classAssignments/$(data.assignmentId)).data;
+        return activeStudent() && data.userId == request.auth.uid && classMember(data.classId)
+          && get(/databases/$(database)/documents/classes/$(data.classId)).data.status == 'active'
+          && data.keys().hasOnly(['classId','userId','assignmentId','assignmentKind','chapterId','missionId','reason','message','status','response','createdAt','updatedAt','answeredAt','revision','understanding','understandingAt'])
+          && data.get('understanding','') == '' && data.get('understandingAt',null) == null
+          && data.get('assignmentKind','class-goal') in ['class-goal','targeted-review']
+          && (data.get('assignmentKind','class-goal') != 'targeted-review' || assignment.userId == request.auth.uid)
+          && helpId == data.classId + '_' + data.userId + '_' + data.assignmentId
+          && assignment.classId == data.classId && assignment.status == 'published'
+          && assignment.missionId == data.missionId && assignment.chapterId == data.chapterId
+          && data.reason in ['lesson','question','next-step']
+          && data.message is string && data.message.size() <= 500
+          && data.status == 'open' && data.response == '' && data.answeredAt == null
+          && data.updatedAt == request.time && data.revision is int
+          && (resource == null ? data.revision == 1 && data.createdAt == request.time
+            : resource.data.status == 'answered' && data.revision == resource.data.revision + 1
+              && data.classId == resource.data.classId && data.userId == resource.data.userId
+              && data.assignmentId == resource.data.assignmentId && data.chapterId == resource.data.chapterId
+              && data.get('assignmentKind','class-goal') == resource.data.get('assignmentKind','class-goal')
+              && data.missionId == resource.data.missionId && data.createdAt == resource.data.createdAt);
+      }
+      allow create, update: if validHelp();
+      allow update: if activeStudent() && resource.data.userId == request.auth.uid && classMember(resource.data.classId)
+        && resource.data.status == 'answered'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['understanding','understandingAt'])
+        && request.resource.data.understanding in ['understood','needs-help'] && request.resource.data.understandingAt == request.time;
+      allow update: if activeOwnedMember(resource.data.classId,resource.data.userId)
+        && (resource.data.status == 'open' || resource.data.get('understanding','') == 'needs-help')
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','response','answeredAt','updatedAt','understanding','understandingAt'])
+        && request.resource.data.get('understanding','') == '' && request.resource.data.get('understandingAt',null) == null
+        && request.resource.data.status == 'answered'
+        && request.resource.data.response is string && request.resource.data.response.size() > 0 && request.resource.data.response.size() <= 1500
+        && request.resource.data.answeredAt == request.time && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+    }
+    match /teacherSupportNotes/{noteId} {
+      allow get: if activeTeacher() && !exists(/databases/$(database)/documents/teacherSupportNotes/$(noteId));
+      allow read: if activeOwnedMember(resource.data.classId,resource.data.userId) && resource.data.teacherId == request.auth.uid;
+      function validSupportNote() {
+        let data = request.resource.data;
+        return activeOwnedMember(data.classId,data.userId) && data.teacherId == request.auth.uid
+          && data.keys().hasOnly(['classId','userId','teacherId','missionId','chapterId','status','note','revision','createdAt','updatedAt','statusAt'])
+          && data.missionId is string && data.chapterId is string
+          && noteId == data.classId + '_' + data.userId + '_' + data.missionId
+          && data.note is string && data.note.size() > 0 && data.note.size() <= 1500
+          && data.status in ['planned','discussed'] && data.revision is int
+          && data.revision == (resource == null ? 1 : resource.data.revision + 1)
+          && data.updatedAt == request.time
+          && get(/databases/$(database)/documents/missions/$(data.missionId)).data.status == 'active'
+          && get(/databases/$(database)/documents/missions/$(data.missionId)).data.chapterId == data.chapterId
+          && get(/databases/$(database)/documents/chapters/$(data.chapterId)).data.status == 'active'
+          && (resource == null ? data.createdAt == request.time : data.createdAt == resource.data.createdAt
+            && data.classId == resource.data.classId && data.userId == resource.data.userId
+            && data.teacherId == resource.data.teacherId && data.missionId == resource.data.missionId && data.chapterId == resource.data.chapterId)
+          && (resource != null && resource.data.status == data.status ? data.statusAt == resource.data.statusAt : data.statusAt == request.time);
+      }
+      allow create, update: if validSupportNote();
+      allow delete: if false;
+    }
+    function validActivityLifecycle() {
+      let data=request.resource.data;
+      let ending=data.status in ['closed','withdrawn'];
+      return data.status in ['draft','published','closed','withdrawn']
+        && (resource == null ? !ending : !(resource.data.status in ['closed','withdrawn']))
+        && (ending ? (resource != null && resource.data.status == 'published' && data.endedAt == request.time
+          && data.missionId == resource.data.missionId && data.chapterId == resource.data.chapterId
+          && data.title == resource.data.title && data.instructions == resource.data.get('instructions','')
+          && data.get('dueAt',null) == resource.data.get('dueAt',null))
+          : data.get('endedAt',null) == null);
+    }
+    function validPublication(kind) {
+      let data = request.resource.data;
+      return ownsClass(data.classId)
+        && get(/databases/$(database)/documents/classes/$(data.classId)).data.status == 'active'
+        && (resource == null || resource.data.classId == data.classId)
+        && data.title is string && data.title.size() > 0 && data.title.size() <= 120
+        && (kind == 'announcement' ? data.status in ['draft','published'] : validActivityLifecycle()) && data.publishedAt == request.time && data.updatedAt == request.time
+        && ((kind == 'announcement'
+          && data.keys().hasOnly(['classId','title','body','status','publishedAt','updatedAt'])
+          && data.body is string && data.body.size() > 0 && data.body.size() <= 3000)
+        || (kind == 'assignment'
+          && data.keys().hasOnly(['classId','title','instructions','missionId','chapterId','status','publishedAt','updatedAt','dueAt','endedAt'])
+          && (data.get('dueAt', null) == null || data.dueAt is timestamp)
+          && data.instructions is string && data.instructions.size() <= 1500
+          && data.missionId is string && data.chapterId is string
+          && (data.status in ['closed','withdrawn'] || (get(/databases/$(database)/documents/missions/$(data.missionId)).data.chapterId == data.chapterId
+          && get(/databases/$(database)/documents/missions/$(data.missionId)).data.status == 'active'
+          && get(/databases/$(database)/documents/chapters/$(data.chapterId)).data.status == 'active'))));
+    }
+    match /teacherStudentLinks/{linkId} {
+      allow get: if activeTeacher() && resource.data.teacherId == request.auth.uid;
+      allow list, delete: if false;
+      allow create, update: if request.resource.data.keys().hasOnly(['teacherId','userId','classId'])
+        && request.resource.data.teacherId == request.auth.uid
+        && linkId == request.auth.uid + '_' + request.resource.data.userId
+        && activeOwnedMember(request.resource.data.classId, request.resource.data.userId);
+    }
+    match /studentCosmetics/{userId} {
+      allow get: if activeStudent() && request.auth.uid == userId;
+      allow list, delete: if false;
+      allow create, update: if activeStudent() && request.auth.uid == userId
+        && request.resource.data.keys().hasOnly(['frameId','updatedAt'])
+        && request.resource.data.updatedAt == request.time
+        && (request.resource.data.frameId == 'none'
+          || (request.resource.data.frameId == 'bamboo' && get(/databases/$(database)/documents/users/$(userId)).data.get('level',1) >= 3)
+          || (request.resource.data.frameId == 'sunburst' && get(/databases/$(database)/documents/users/$(userId)).data.get('level',1) >= 5)
+          || (request.resource.data.frameId == 'guardian' && get(/databases/$(database)/documents/users/$(userId)).data.get('level',1) >= 10));
+    }
+
+    match /studentEvidenceJournal/{entryId} {
+      allow get: if activeStudent() && (resource == null || ownRecord());
+      allow list: if activeStudent() && ownRecord();
+      allow delete: if activeStudent() && ownRecord();
+      allow update: if false;
+      allow create: if activeStudent()
+        && request.resource.data.keys().hasOnly(['userId','chapterId','missionId','sceneId','clueIndex','savedAt'])
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.chapterId is string && request.resource.data.missionId is string
+        && request.resource.data.sceneId is string && request.resource.data.clueIndex is int
+        && request.resource.data.clueIndex >= 0
+        && entryId == request.auth.uid + '_' + request.resource.data.sceneId + '_' + string(request.resource.data.clueIndex)
+        && request.resource.data.savedAt == request.time
+        && get(/databases/$(database)/documents/chapters/$(request.resource.data.chapterId)).data.status == 'active'
+        && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.chapterId == request.resource.data.chapterId
+        && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.status == 'active'
+        && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneId)).data.missionId == request.resource.data.missionId
+        && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneId)).data.status == 'active'
+        && request.resource.data.clueIndex < get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneId)).data.exploreItems.size();
+    }
+
+    match /studentReviewEvents/{eventId} {
+      allow read: if activeStudent() && ownRecord();
+      allow create: if activeStudent()
+        && request.resource.data.keys().hasOnly(['userId','chapterId','missionId','topic','sceneIds','kind','completedAt'])
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.kind == 'lesson-review'
+        && request.resource.data.chapterId is string && request.resource.data.missionId is string
+        && request.resource.data.topic is string && request.resource.data.topic.size() > 0 && request.resource.data.topic.size() <= 160
+        && request.resource.data.sceneIds is list && request.resource.data.sceneIds.size() > 0 && request.resource.data.sceneIds.size() <= 50
+        && request.resource.data.sceneIds[0] is string
+        && request.resource.data.completedAt == request.time
+        && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.chapterId == request.resource.data.chapterId
+        && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.status == 'active'
+        && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneIds[0])).data.missionId == request.resource.data.missionId
+        && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneIds[0])).data.status == 'active'
+        && get(/databases/$(database)/documents/storyScenes/$(request.resource.data.sceneIds[0])).data.reviewTopics.hasAny([request.resource.data.topic]);
+      allow update, delete: if false;
+    }
+    match /studentLearningDrafts/{draftId} {
+      function validDraft() {
+        let data = request.resource.data;
+        let chapter = get(/databases/$(database)/documents/chapters/$(data.chapterId)).data;
+        return data.keys().hasOnly(['userId','kind','chapterId','missionId','state','updatedAt'])
+          && data.userId == request.auth.uid
+          && data.kind in ['story','quiz','practice','chapter']
+          && draftId == request.auth.uid + '_' + data.kind + '_' + (data.kind == 'chapter' ? data.chapterId : data.missionId)
+          && data.chapterId is string && chapter.status == 'active'
+          && chapter.get('contentReady', true) != false
+          && data.state is map && data.updatedAt == request.time
+          && ((data.kind == 'chapter' && data.missionId == null)
+            || (data.kind != 'chapter' && data.missionId is string
+              && get(/databases/$(database)/documents/missions/$(data.missionId)).data.chapterId == data.chapterId
+              && get(/databases/$(database)/documents/missions/$(data.missionId)).data.status == 'active'));
+      }
+      allow get: if activeStudent() && (!exists(/databases/$(database)/documents/studentLearningDrafts/$(draftId)) || resource.data.userId == request.auth.uid);
+      allow list: if activeStudent() && resource.data.userId == request.auth.uid;
+      allow create: if activeStudent() && validDraft();
+      allow update: if activeStudent() && ownRecord() && validDraft();
+      allow delete: if activeStudent() && resource.data.userId == request.auth.uid;
+    }
+
+    match /learningSettings/bayaniAI {
+      allow read: if activeStudent();
+      allow write: if false;
+    }
+    match /learningSettings/progression {
+      allow read: if activeStudent();
+      allow write: if false;
+    }
+    match /learningSettings/securedAssessment { allow read: if activeStudent(); allow write: if false; }
+    match /serverAssessmentAttempts/{id} { allow read, write: if false; }
+    match /serverAssessmentRequests/{id} { allow read, write: if false; }
+    match /serverAssessmentHistory/{id} { allow read, write: if false; }
+    match /serverAssessmentUsage/{id} { allow read, write: if false; }
+    match /learningSettings/journeyFinale {
+      allow get: if activeStudent();
+      allow list, write: if false;
+    }
+    function rewardUpdate() { return false; }
+    function pairedReward(kind, id) {
+      let student = getAfter(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+      let previous = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+      return student.lastRewardKind == kind && student.lastRewardId == id
+        && student.xp == previous.get('xp', 0) + request.resource.data.xpEarned
+        && student.updatedAt == request.time;
+    }
+    function validCompletion() {
+      let data = request.resource.data;
+      return data.userId == request.auth.uid && data.completed == true
+        && data.bestScore is int && data.bestScore >= 0 && data.bestScore <= 100
+        && data.completedAt == request.time && data.updatedAt == request.time;
+    }
+    function scoreReplay() {
+      return ownRecord() && resource.data.completed == true
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['bestScore', 'updatedAt'])
+        && request.resource.data.bestScore is int
+        && request.resource.data.bestScore >= resource.data.bestScore
+        && request.resource.data.bestScore <= 100 && request.resource.data.updatedAt == request.time;
+    }
+    function validAvatarChange() {
+      let selected = request.resource.data.get('avatarId', null);
+      return selected == resource.data.get('avatarId', null)
+        || (selected is string && selected.size() > 0 && selected.size() <= 128 && !selected.matches('.*[/].*')
+          && get(/databases/$(database)/documents/avatars/$(selected)).data.status == 'active');
+    }
+    match /avatars/{avatarId} {
+      allow read: if activeStudent() || activeTeacher();
+      allow write: if false;
+    }
+    match /users/{userId} {
+      allow update: if validTeacherDecision(userId,request.resource.data.teacherVerificationReviewId)
+        && resource.data.role == 'teacher'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','teacherVerifiedRevision','teacherAccessType','teacherVerificationReviewId','moderationEventId','moderatedAt','moderatedBy','updatedAt'])
+        && request.resource.data.moderationEventId == request.resource.data.teacherVerificationReviewId
+        && request.resource.data.moderatedAt == request.time && request.resource.data.updatedAt == request.time && request.resource.data.moderatedBy == request.auth.uid
+        && request.resource.data.teacherVerifiedRevision == (getAfter(/databases/$(database)/documents/teacherApplications/$(userId)).data.status == 'approved' ? getAfter(/databases/$(database)/documents/teacherApplications/$(userId)).data.revision : 0)
+        && request.resource.data.teacherAccessType == (getAfter(/databases/$(database)/documents/teacherApplications/$(userId)).data.status == 'approved' ? getAfter(/databases/$(database)/documents/teacherApplications/$(userId)).data.applicantType : '')
+        && request.resource.data.status == (getAfter(/databases/$(database)/documents/teacherApplications/$(userId)).data.status == 'approved' ? 'active' : resource.data.status == 'inactive' ? 'inactive' : 'pending')
+        && getAfter(/databases/$(database)/documents/accountModeration/$(request.resource.data.moderationEventId)).data.userId == userId;
+      allow read: if activeAdmin();
+      allow update: if validModeration(userId);
+      allow read: if signedIn() && request.auth.uid == userId;
+      allow get: if teacherCanReport(userId);
+      allow create: if signedIn() && request.auth.uid == userId
+        && request.resource.data.keys().hasOnly([
+          'firstName', 'middleName', 'lastName', 'email', 'role', 'status', 'createdAt'
+        ])
+        && request.resource.data.keys().hasAll([
+          'firstName', 'lastName', 'email', 'role', 'status', 'createdAt'
+        ])
+        && request.resource.data.firstName is string
+        && request.resource.data.firstName.size() > 0 && request.resource.data.firstName.size() <= 100
+        && request.resource.data.lastName is string
+        && request.resource.data.lastName.size() > 0 && request.resource.data.lastName.size() <= 100
+        && request.resource.data.get('middleName', '') is string
+        && request.resource.data.get('middleName', '').size() <= 100
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.createdAt == request.time
+        && ((request.resource.data.role == 'student' && request.resource.data.status == 'active')
+          || (request.resource.data.role == 'teacher' && request.resource.data.status == 'pending'));
+      // Names can be edited; rewards require a paired first-completion write.
+      allow update: if signedIn() && request.auth.uid == userId && rewardUpdate();
+      allow update: if signedIn() && request.auth.uid == userId
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'firstName', 'middleName', 'lastName', 'avatarId', 'updatedAt', 'profileSetupCompletedAt'
+        ])
+        && request.resource.data.firstName is string
+        && request.resource.data.firstName.size() > 0 && request.resource.data.firstName.size() <= 100
+        && request.resource.data.lastName is string
+        && request.resource.data.lastName.size() > 0 && request.resource.data.lastName.size() <= 100
+        && request.resource.data.get('middleName', '') is string
+        && request.resource.data.get('middleName', '').size() <= 100
+        && validAvatarChange()
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['profileSetupCompletedAt'])
+          || (activeStudent() && resource.data.get('profileSetupCompletedAt',null) == null
+            && request.resource.data.profileSetupCompletedAt == request.time))
+        && request.resource.data.updatedAt == request.time;
+      allow update: if activeStudent() && request.auth.uid == userId
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['profileSetupDismissedAt','updatedAt'])
+        && resource.data.get('profileSetupDismissedAt',null) == null
+        && request.resource.data.profileSetupDismissedAt == request.time
+        && request.resource.data.updatedAt == request.time;
+    }
+    match /{catalog}/{contentId} {
+      allow read: if activeTeacher() && catalog in ['eras','chapters','missions','storyScenes'] && resource.data.status == 'active';
+      allow read: if activeStudent() && catalog in [
+        'eras', 'chapters', 'missions', 'storyScenes', 'quizzes', 'questions',
+        'practiceQuestions', 'artifacts', 'chapterChallenges', 'chapterChallengeQuestions',
+        'badges', 'dailyChallenges'
+      ];
+    }
+    match /{records}/{recordId} {
+      function protectedRecords() {
+        return records in ['studentProgress', 'studentChapterProgress', 'studentArtifacts',
+          'studentBadges', 'studentDailyChallenges', 'studentQuizAttempts'];
+      }
+      // Allow an owner to check a not-yet-created completion; lists still require userId filters.
+      allow get: if protectedRecords() && activeStudent()
+        && (!exists(/databases/$(database)/documents/$(records)/$(recordId)) || ownRecord());
+      allow list: if protectedRecords() && activeStudent() && ownRecord();
+      // Writes are allowed only by the specific rules below.
+    }
+    // Free-plan submissions validate structure and reward amounts; grading is in the browser.
+    match /studentProgress/{progressId} {
+      allow read: if teacherCanReport(resource.data.userId);
+      function validMission() {
+        let data = request.resource.data;
+        let mission = get(/databases/$(database)/documents/missions/$(data.missionId)).data;
+        let chapter = get(/databases/$(database)/documents/chapters/$(data.chapterId)).data;
+        let quiz = get(/databases/$(database)/documents/quizzes/$(data.quizId)).data;
+        return data.keys().hasOnly(['userId', 'chapterId', 'missionId', 'quizId', 'completed',
+            'bestScore', 'completedAt', 'updatedAt', 'xpEarned'])
+          && progressId == request.auth.uid + '_' + data.missionId
+          && mission.status == 'active' && mission.chapterId == data.chapterId
+          && chapter.status == 'active' && chapter.get('contentReady', true) != false
+          && quiz.status == 'active' && quiz.missionId == data.missionId
+          && quiz.passingScore is number && quiz.passingScore >= 0 && quiz.passingScore <= 100
+          && data.bestScore >= quiz.passingScore
+          && data.xpEarned is int && data.xpEarned >= 0 && data.xpEarned == mission.get('xpReward', 0)
+          && pairedReward('mission', data.missionId);
+      }
+      allow create, update, delete: if false;
+      allow create, update, delete: if false;
+    }
+    match /studentQuizAttempts/{attemptId} {
+      allow read: if teacherCanReport(resource.data.userId);
+      function firstAttemptCompletion(data) {
+        let path = completionPath('mission', data.missionId);
+        let progress = getAfter(path).data;
+        return !exists(path) && progress.userId == request.auth.uid
+          && progress.chapterId == data.chapterId && progress.missionId == data.missionId
+          && progress.quizId == data.quizId && progress.completed == true
+          && progress.completedAt == request.time && progress.updatedAt == request.time
+          && progress.bestScore == data.score && progress.xpEarned == data.response.xpReward;
+      }
+      function validAttempt() {
+        let data = request.resource.data;
+        let quiz = get(/databases/$(database)/documents/quizzes/$(data.quizId)).data;
+        let mission = get(/databases/$(database)/documents/missions/$(data.missionId)).data;
+        return data.keys().hasOnly(['userId', 'chapterId', 'missionId', 'quizId', 'attemptId',
+            'questionIds', 'answers', 'score', 'correctAnswers', 'totalQuestions', 'passed', 'topicsForReview', 'completedAt', 'response'])
+          && data.keys().hasAll(['userId', 'chapterId', 'missionId', 'quizId', 'attemptId', 'questionIds',
+            'answers', 'score', 'correctAnswers', 'totalQuestions', 'passed', 'topicsForReview', 'completedAt', 'response'])
+          && data.userId == request.auth.uid && attemptId == request.auth.uid + '_' + data.attemptId
+          && quiz.status == 'active' && quiz.missionId == data.missionId
+          && mission.status == 'active' && mission.chapterId == data.chapterId
+          && data.totalQuestions is int && data.totalQuestions > 0 && data.totalQuestions <= 200
+          && data.totalQuestions == quiz.questionCount && data.questionIds is list
+          && data.questionIds.size() == data.totalQuestions && data.questionIds.toSet().size() == data.totalQuestions
+          && data.answers is map && data.answers.keys().hasAll(data.questionIds) && data.answers.size() == data.totalQuestions
+          && data.correctAnswers is int && data.correctAnswers >= 0 && data.correctAnswers <= data.totalQuestions
+          && data.score is int && data.score == math.round(data.correctAnswers * 100.0 / data.totalQuestions)
+          && data.passed == (data.score >= quiz.passingScore)
+          && data.topicsForReview is list && data.topicsForReview.size() <= data.totalQuestions
+          && data.completedAt == request.time && data.response is map
+          && data.response.score == data.score && data.response.correctAnswers == data.correctAnswers
+          && data.response.passed == data.passed && data.response.topicsForReview == data.topicsForReview
+          && data.response.firstCompletion is bool && (!data.response.firstCompletion || data.passed)
+          && data.response.xpReward is int && data.response.xpReward >= 0
+          && data.response.xpReward == (data.response.firstCompletion ? mission.get('xpReward', 0) : 0)
+          && (!data.response.firstCompletion || firstAttemptCompletion(data));
+      }
+      allow create, update, delete: if false;
+      allow create, update, delete: if false;
+    }
+    match /studentChapterProgress/{progressId} {
+      allow read: if teacherCanReport(resource.data.userId);
+      function validChapter() {
+        let data = request.resource.data;
+        let challenge = get(/databases/$(database)/documents/chapterChallenges/$(data.challengeId)).data;
+        let chapter = get(/databases/$(database)/documents/chapters/$(data.chapterId)).data;
+        return data.keys().hasOnly(['userId', 'chapterId', 'challengeId', 'completed',
+            'bestScore', 'completedAt', 'updatedAt'])
+          && progressId == request.auth.uid + '_' + data.chapterId
+          && chapter.status == 'active' && chapter.get('contentReady', true) != false
+          && challenge.status == 'active' && challenge.chapterId == data.chapterId
+          && challenge.passingScore is number && challenge.passingScore >= 0 && challenge.passingScore <= 100
+          && data.bestScore >= challenge.passingScore;
+      }
+      allow create, update, delete: if false;
+      allow create, update, delete: if false;
+    }
+    match /studentDailyChallenges/{completionId} {
+      function validDaily() {
+        let data = request.resource.data;
+        let challenge = get(/databases/$(database)/documents/dailyChallenges/$(data.challengeId)).data;
+        return data.keys().hasOnly(['userId', 'challengeId', 'dateKey', 'completed', 'correct',
+            'selectedAnswer', 'xpEarned', 'bestScore', 'completedAt', 'updatedAt'])
+          && data.dateKey == dayKey(request.time)
+          && completionId == request.auth.uid + '_' + dayKey(request.time)
+          && challenge.status == 'active' && data.correct == true && data.bestScore == 100
+          && data.selectedAnswer == challenge.correctAnswer.upper()
+          && data.xpEarned is int && data.xpEarned >= 0 && data.xpEarned == challenge.get('xpReward', 0)
+          && pairedReward('daily', data.dateKey);
+      }
+      allow create, update, delete: if false;
+    }
+    match /studentArtifacts/{ownershipId} {
+      function validArtifact() {
+        let data = request.resource.data;
+        let artifact = get(/databases/$(database)/documents/artifacts/$(data.artifactId)).data;
+        let progress = getAfter(/databases/$(database)/documents/studentProgress/$(request.auth.uid + '_' + data.missionId)).data;
+        return data.keys().hasOnly(['userId', 'artifactId', 'missionId', 'chapterId', 'earnedAt'])
+          && data.userId == request.auth.uid && ownershipId == request.auth.uid + '_' + data.artifactId
+          && data.earnedAt == request.time && artifact.status == 'active'
+          && artifact.missionId == data.missionId && progress.chapterId == data.chapterId
+          && progress.userId == request.auth.uid && progress.completed == true;
+      }
+      allow create, update, delete: if false;
+    }
+    match /studentBadges/{ownershipId} {
+      function validBadge() {
+        let data = request.resource.data;
+        let badge = get(/databases/$(database)/documents/badges/$(data.badgeId)).data;
+        let progress = getAfter(/databases/$(database)/documents/studentChapterProgress/$(request.auth.uid + '_' + data.chapterId)).data;
+        return data.keys().hasOnly(['userId', 'badgeId', 'chapterId', 'challengeId', 'earnedAt'])
+          && data.userId == request.auth.uid && ownershipId == request.auth.uid + '_' + data.badgeId
+          && data.earnedAt == request.time && badge.status == 'active'
+          && badge.chapterId == data.chapterId && progress.challengeId == data.challengeId
+          && progress.userId == request.auth.uid && progress.completed == true;
+      }
+      allow create, update, delete: if false;
+    }
+match /studentPracticeProgress/{progressId} {
+
+  // Students can read only their own practice records.
+  allow read: if activeStudent()
+              && resource.data.userId == request.auth.uid;
+
+  // Students can create records only for themselves.
+  allow create: if activeStudent()
+                && request.resource.data.userId == request.auth.uid
+                && request.resource.data.keys().hasOnly([
+                  "userId",
+                  "chapterId",
+                  "missionId",
+                  "completedAt",
+                  "totalQuestions",
+                  "firstTryCorrectCount",
+                  "questionResults",
+                  "topicsForReview"
+                ])
+                && request.resource.data.keys().hasAll([
+                  "userId",
+                  "chapterId",
+                  "missionId",
+                  "completedAt",
+                  "totalQuestions",
+                  "firstTryCorrectCount",
+                  "questionResults",
+                  "topicsForReview"
+                ])
+                && request.resource.data.chapterId is string
+                && request.resource.data.missionId is string
+                && get(/databases/$(database)/documents/chapters/$(request.resource.data.chapterId)).data.status == 'active'
+                && get(/databases/$(database)/documents/chapters/$(request.resource.data.chapterId)).data.get('contentReady', true) != false
+                && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.chapterId == request.resource.data.chapterId
+                && get(/databases/$(database)/documents/missions/$(request.resource.data.missionId)).data.status == 'active'
+                && request.resource.data.completedAt == request.time
+                && request.resource.data.totalQuestions is int
+                && request.resource.data.totalQuestions > 0
+                && request.resource.data.totalQuestions <= 200
+                && request.resource.data.firstTryCorrectCount is int
+                && request.resource.data.firstTryCorrectCount >= 0
+                && request.resource.data.firstTryCorrectCount
+                   <= request.resource.data.totalQuestions
+                && request.resource.data.questionResults is list
+                && request.resource.data.questionResults.size()
+                   == request.resource.data.totalQuestions
+                && request.resource.data.topicsForReview is list
+                && request.resource.data.topicsForReview.size() <= request.resource.data.totalQuestions;
+
+  // Practice session records are append-only.
+  allow update, delete: if false;
+}
+  }
+}

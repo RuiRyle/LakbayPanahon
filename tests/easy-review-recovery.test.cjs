@@ -16,7 +16,7 @@ test('new easy items fill the six catalog gaps without changing existing assessm
 function route(passed,topics){
     const source=fs.readFileSync(require.resolve('../js/quiz.js'),'utf8');
     const start=source.indexOf('continueResultButton.addEventListener('),end=source.indexOf('/* ==========================================\n   ERROR',start);
-    let handler;const context={continueResultButton:{addEventListener:(event,fn)=>{handler=fn;}},lastQuizPassed:passed,lastQuizTopics:topics,chapterId:'chapter-1',missionId:'mission-1',URLSearchParams,window:{location:{href:''}}};
+    let handler;const context={continueResultButton:{addEventListener:(event,fn)=>{handler=fn;}},learningNavigation:{classroomReturn:null,carry:url=>url},lastQuizPassed:passed,lastQuizTopics:topics,chapterId:'chapter-1',missionId:'mission-1',URLSearchParams,window:{location:{href:''}}};
     vm.runInNewContext(source.slice(start,end),context);handler();return new URL(context.window.location.href,'https://example.test/');
 }
 test('failed quiz recovery goes to the diagnosed lesson topic with safe query encoding',()=>{

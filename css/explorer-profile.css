@@ -1,0 +1,97 @@
+﻿/* Explorer identity and personal portfolio. No profile or reward behavior changes. */
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-content{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #student-main .profile-page-heading{padding:0 0 14px;margin:0;border:0;border-bottom:1px solid #405d68;border-radius:0;background:transparent;box-shadow:none;min-height:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #student-main .profile-page-heading::before,body.explorer-profile-page.lakbay-theme[data-role="student"] #student-main .profile-page-heading::after{display:none}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #student-main .profile-page-heading h1{font-family:Georgia,serif;font-size:1.9rem;font-weight:500;color:#efe1c1;margin:6px 0 8px;line-height:1.2}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #student-main .profile-page-heading p{font-size:.86rem;line-height:1.6;color:#bfd0da;margin:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-identity-card{grid-column:1;min-width:0;overflow:hidden;border:1px solid #8b7d55;border-radius:18px;background:linear-gradient(110deg,#193e43,#112b40);box-shadow:0 12px 35px #020c192d}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-identity-banner{height:auto;min-height:0;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;background:#112a39;border-bottom:1px solid #55674f;font-size:.63rem;letter-spacing:.13em;color:#d6c18b}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-identity-banner::after{display:none}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-banner-star{font-size:1rem;color:#d8bf81}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-identity-body{display:grid;grid-template-columns:110px minmax(0,1fr) auto;align-items:center;gap:26px;padding:28px;text-align:left;min-height:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-avatar{width:100px;height:100px;margin:0;border:4px solid #16343e;outline:1px solid #baa472;outline-offset:3px;flex-shrink:0;background:#1c4146;box-shadow:none;position:relative;font-size:2.7rem}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-identity-copy{min-width:0;padding:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-role{font-size:.62rem;letter-spacing:.12em;color:#b6cdbf}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #profilePageName{font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.2;margin:8px 0;color:#f1e7cf;overflow-wrap:anywhere}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-identity-copy>p{font-size:.82rem;line-height:1.6;color:#bcd0d5;margin:7px 0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #profileExplorerTitle{font-size:.9rem;color:#e4ce96;margin-top:10px;font-weight:600}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-identity-actions{display:flex;align-items:flex-end;flex-direction:column;gap:14px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-account-status{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid #4b7564;border-radius:20px;background:#1a403a;font-size:.7rem;color:#c3decc;white-space:nowrap}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-account-status i{width:6px;height:6px;background:#8fbea0;box-shadow:none}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-edit-button{min-height:44px;margin:0;padding:10px 18px;border:1px solid #e2c98e;border-radius:9px;background:#d9bd7e;color:#112d3e;font:inherit;font-size:.83rem;font-weight:700;box-shadow:none;cursor:pointer}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-section{grid-column:1;padding:0;margin:0;border:0;background:transparent;box-shadow:none;min-width:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-section-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0;margin:0 0 14px;border:0;min-height:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-section-heading h2{font-size:1.18rem;line-height:1.4;color:#eee1c1;margin:5px 0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-section-heading p{font-size:.8rem;line-height:1.5;color:#b6cbd5;margin:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-stat{display:flex;align-items:flex-start;gap:12px;padding:16px;min-width:0;min-height:0;border:1px solid #45616c;border-radius:12px;background:#132f40;box-shadow:none}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-stat>div{min-width:0;flex:1}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-stat-icon{display:grid;place-items:center;flex-shrink:0;width:30px;height:30px;border:1px solid #73745a;border-radius:9px;background:#263f42;color:#e1c78b;font-size:1rem}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-stat:nth-child(3) .profile-stat-icon{background:#21463e;border-color:#5a7d65;color:#bad5bd}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-stat-label{font-size:.6rem;letter-spacing:.06em;color:#c6d5dc;line-height:1.5}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-stat strong{display:block;font-size:1.8rem;line-height:1.2;color:#efd5a0;margin:7px 0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-stat strong small{font-size:.7rem;color:#becfd6;margin-left:6px;font-weight:400}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-stat p{font-size:.72rem;line-height:1.6;color:#adc4cd;margin:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-level-track{height:5px;margin-top:9px;background:#36515b;border-radius:10px;overflow:hidden}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #profileLevelProgressFill{background:#c6ae76;transition:width .25s}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-stats-status{font-size:.76rem;line-height:1.5;margin:10px 0 0;color:#b1c8d0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #discoveryWall{grid-column:1;padding:22px;border:1px solid #697260;border-radius:16px;background:repeating-linear-gradient(0deg,transparent,transparent 27px,#cbbd9007 28px),linear-gradient(120deg,#19363c,#112c40);min-width:0;box-shadow:none}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:0;margin-bottom:12px;border:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-heading h2{font-family:Georgia,serif;font-size:1.45rem;font-weight:500;color:#ecdbb2;line-height:1.3;margin:6px 0 8px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-heading p{font-size:.84rem;line-height:1.65;color:#bfd0d8;max-width:65ch;margin:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #refreshDiscoveryWall{flex-shrink:0;min-height:40px;padding:8px 12px;border:1px solid #637567;border-radius:8px;background:#1e3e46;color:#e0ce9e;font-size:.76rem}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #discoveryWallStatus{font-size:.79rem;line-height:1.7;color:#bdd1d5;margin:12px 0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-card{position:relative;min-width:0;padding:18px 16px;border:1px solid #778274;border-top:3px solid #bdab78;border-radius:10px;background:#173d40;box-shadow:0 5px 12px #030f1a20;transform:none}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-card .discovery-wall-authored-icon{display:grid;place-items:center;width:100%;height:90px;margin:0 0 14px;border-radius:7px;background:radial-gradient(#cbb57318,transparent 70%),#102e39;font-size:3.2rem}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-card>svg{display:block;width:100%;height:90px;margin-bottom:14px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-card h3{font-size:1rem;color:#eedfbd;line-height:1.45;margin:8px 0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-card>p{font-size:.84rem;line-height:1.7;color:#c7d8de;margin:9px 0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px;padding-top:14px;border-top:1px solid #52675f}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-links a{min-height:40px;padding:9px 13px;border:1px solid #77826c;border-radius:8px;background:#1d3e45;color:#e6d3a7;font-size:.78rem}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #levelRewardsCollection{grid-column:1;padding:22px;border:1px solid #586c61;border-radius:16px;background:#122d3e;min-width:0;box-shadow:none}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #levelRewardsCollection h2{font-size:1.2rem;color:#ead9b3;line-height:1.4;margin:6px 0 10px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #levelRewardsCollection>p{font-size:.84rem;line-height:1.65;color:#bed0d8;margin:10px 0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card{display:flex;flex-direction:column;align-items:center;gap:7px;padding:18px 14px;border:1px solid #4f6e68;border-radius:12px;background:#18383e;text-align:center;min-width:0;box-shadow:none}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-frame-sample{display:grid;place-items:center;width:72px;height:72px;flex-shrink:0;margin:8px 0 14px;font-size:1.8rem;background:#193344;color:#ecdaad;position:relative}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card h3{font-size:.98rem;line-height:1.45;color:#ecdfbf;margin:4px 0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card p{font-size:.76rem;line-height:1.6;color:#bdd0d5;margin:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-state{font-size:.67rem;line-height:1.6;color:#c5d9cb}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card[data-unlocked=false]{opacity:1;background:#102638;border-color:#3c5363}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card[data-unlocked=false] :is(h3,p,.level-reward-state){color:#b1c2cd}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card:has(button[aria-pressed=true]){border-color:#c3ac72;background:#23443e;box-shadow:inset 0 2px #c3ac72}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card button{min-height:42px;width:100%;padding:9px 12px;margin-top:auto;border:1px solid #81917a;border-radius:8px;background:#cbb784;color:#102b3d;font:inherit;font-size:.77rem;font-weight:600;cursor:pointer}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card button:disabled{opacity:1;cursor:default;background:#203d47;color:#bdcbd1;border-color:#4c6570}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card button[aria-pressed=true]{background:#375a49;color:#e9d69d;border-color:#849869}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-details-card{grid-column:1;padding:22px;border:1px solid #415e6a;border-radius:16px;background:#112b3e;min-width:0;box-shadow:none}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-details-card dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 22px;margin:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-details-card dl>div{padding:13px 0;border:0;border-bottom:1px solid #385460;min-width:0;background:transparent;border-radius:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-details-card dt{font-size:.7rem;line-height:1.5;color:#adc3cc;margin-bottom:5px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-details-card dd{font-size:.9rem;line-height:1.55;color:#e1eaed;margin:0;overflow-wrap:anywhere}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-account-note{font-size:.76rem;line-height:1.65;margin:14px 0 0;padding:0;border:0;background:transparent;color:#b5cbd2}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-details-edit{min-height:40px;padding:8px 12px;border:1px solid #6e7b68;border-radius:8px;background:#1e3b44;color:#e2d09b;font-size:.78rem;cursor:pointer}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-links{grid-column:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-links>a{position:relative;display:block;padding:16px;border:1px solid #45626b;border-radius:12px;background:#15313e;min-height:0;color:#e4e9e7;box-shadow:none}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-links .profile-link-mark{position:static;display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;margin-right:8px;font-size:.68rem;border:1px solid #69765e;border-radius:8px;background:#244348;color:#d8c38c}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-links>a>span:not(.profile-link-mark){font-size:.58rem;letter-spacing:.07em;color:#afc8cf}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-links strong{display:flex;justify-content:space-between;gap:10px;font-size:.9rem;line-height:1.5;margin:10px 0 6px;color:#e7dcbd}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-links small{font-size:.74rem;line-height:1.6;color:#b7cbd3}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-content :is(button,a,summary):focus-visible{outline:3px solid #e5ce99;outline-offset:4px}
+@media(hover:hover){body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-links>a:hover{border-color:#b5a477;background:#1d3e45}body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card[data-unlocked=true]:hover{border-color:#a9a276}}
+@media(max-width:1100px){body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-stats{grid-template-columns:repeat(2,minmax(0,1fr))}body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-identity-body{grid-template-columns:84px minmax(0,1fr);gap:18px;padding:22px}body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-avatar{width:76px;height:76px}body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-identity-actions{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between}body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-grid{grid-template-columns:1fr}body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-heading{flex-wrap:wrap;gap:12px}body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-details-card dl{grid-template-columns:repeat(2,minmax(0,1fr))}body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-links{grid-template-columns:1fr}body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-section-heading{flex-wrap:wrap;gap:10px}}
+@media(max-width:450px){body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-identity-body{padding:20px 18px;gap:14px}body.explorer-profile-page.lakbay-theme[data-role="student"] #profilePageName{font-size:1.5rem}body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-stat{padding:13px 11px;gap:9px}body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-stat-icon{width:24px;height:24px;font-size:.85rem}body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-learning-stat strong{font-size:1.55rem}body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-stat-label{font-size:.56rem}body.explorer-profile-page.lakbay-theme[data-role="student"] :is(#discoveryWall,#levelRewardsCollection,.profile-details-card){padding:18px 16px}body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card{padding:15px 10px}body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card h3{font-size:.88rem}body.explorer-profile-page.lakbay-theme[data-role="student"] .level-reward-card button{font-size:.72rem}body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-details-card dl{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-content,body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-content *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Keep every portfolio section on the same content frame, including legacy grid placements. */
+body.explorer-profile-page.lakbay-theme[data-role="student"] #student-main .profile-page-content{grid-template-columns:minmax(0,1fr);grid-auto-columns:minmax(0,1fr)}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #student-main .profile-page-content>*{grid-column:1/-1;grid-row:auto;max-width:none;width:100%;box-sizing:border-box}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-role{background:transparent;padding:0}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-section-heading{text-align:left;align-items:center}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-stat-icon{flex-basis:auto}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #discoveryWall{margin:0}
+@media(max-width:700px){body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-section-heading{align-items:flex-start;text-align:left}}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-avatar[data-level-frame=bamboo]{outline:3px solid #90bf86;outline-offset:3px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-avatar[data-level-frame=sunburst]{outline:3px double #f3d071;outline-offset:3px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] .profile-page-avatar[data-level-frame=guardian]{outline:3px solid #f3d071;outline-offset:3px}
+body.explorer-profile-page.lakbay-theme[data-role="student"] #discoveryWall:has(.discovery-wall-grid:empty) #discoveryWallStatus{padding:18px;border:1px dashed #6d7e6a;border-radius:10px;background:#102b3a;color:#d4ddd8}

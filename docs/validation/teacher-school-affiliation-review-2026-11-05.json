@@ -1,0 +1,69 @@
+{
+  "mode": "locally-validated-candidate-not-published",
+  "preparedAt": "2026-11-05T11:32:40.143Z",
+  "project": "lakbaypanahon-1797e",
+  "liveRuleset": "projects/lakbaypanahon-1797e/rulesets/8db150b5-a75e-43c2-9403-b699fbd13819",
+  "liveSourceHash": "e443a188c8f38e027fa3cc8e19e1bd8ff64c709990fe11147310c2652684da6f",
+  "candidateSourceHash": "dc7779bd39bba7e3b2ee8b0fc350db98276261c94174719b6715bfef3ea8920f",
+  "matchesLive": false,
+  "outsideScopeMatches": true,
+  "changedScopes": [
+    "match /teacherApplications/{uid}",
+    "match /teacherApplicationReviews/{eventId}"
+  ],
+  "features": [
+    {
+      "name": "classJoinCodes",
+      "live": true,
+      "candidate": true
+    },
+    {
+      "name": "classFeedback",
+      "live": true,
+      "candidate": true
+    },
+    {
+      "name": "teacherSupportNotes",
+      "live": true,
+      "candidate": true
+    },
+    {
+      "name": "classHelpRequests",
+      "live": true,
+      "candidate": true
+    },
+    {
+      "name": "classReviewAssignments",
+      "live": true,
+      "candidate": true
+    },
+    {
+      "name": "classReviewReflections",
+      "live": true,
+      "candidate": true
+    },
+    {
+      "name": "classmates",
+      "live": true,
+      "candidate": true
+    }
+  ],
+  "candidateDirectory": "build/teacher-rules-readiness-h07F31",
+  "deploymentPerformed": false,
+  "pending": [
+    "Authorization to activate this simplified verification policy",
+    "Live source drift check before activation",
+    "Update the normal preview after rules activation"
+  ],
+  "reviewType": "school-affiliation",
+  "webPackage": "build/student-web-u25PgG",
+  "localPermissionChecks": 182,
+  "coreChecks": 129,
+  "qualificationChecks": 53,
+  "applicationPolicyTests": 8,
+  "applicationBrowserChecks": 46,
+  "authenticationAndApplicationPolicyChecks": 26,
+  "guidedSetupImplemented": true,
+  "unifiedSetupBrowserChecks": 24,
+  "unifiedSetupImplemented": true
+}

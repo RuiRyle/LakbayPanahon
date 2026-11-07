@@ -2,19 +2,31 @@ import {auth,db} from './firebase-config.js';
 import {onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
 import {collection,doc,getDoc,getDocs,deleteDoc,query,where} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 import {resolveJournalEntries} from './evidence-journal.js';
+import {createDiscoveryPinControl} from './discovery-pins.js';
 
 const journalHost=document.getElementById('evidenceJournalEntries'),journalStatus=document.getElementById('evidenceJournalStatus'),journalFilter=document.getElementById('evidenceJournalFilter'),journalRefresh=document.getElementById('refreshEvidenceJournal');
-let journalGeneration=0,journalEntries=[];
+let journalGeneration=0,journalEntries=[],journalView='cards';
+const journalSearch=document.getElementById('journalSearch'),chapterFilter=document.getElementById('journalChapterFilter');
+for(const button of document.querySelectorAll('[data-journal-view]'))button.addEventListener('click',()=>{
+ journalView=button.dataset.journalView;
+ for(const tab of document.querySelectorAll('[data-journal-view]'))tab.setAttribute('aria-pressed',String(tab===button));
+ renderEvidenceJournal();
+});
+journalSearch?.addEventListener('input',renderEvidenceJournal);chapterFilter?.addEventListener('change',renderEvidenceJournal);
 function journalText(tag,value){const node=document.createElement(tag);node.textContent=value;return node;}
 function renderEvidenceJournal(){
     journalHost.replaceChildren();
-    const selected=journalFilter.value,entries=journalEntries.filter(e=>!selected||e.missionId===selected);
-    if(!entries.length){journalHost.append(journalText('p','No discoveries saved here yet. Open clues in a lesson, then choose Save Opened Clues.'));return;}
+    journalHost.dataset.view=journalView;
+    const selected=journalFilter.value,search=(journalSearch?.value||'').trim().toLocaleLowerCase();
+    const entries=journalEntries.filter(e=>(!selected||e.missionId===selected)&&(!chapterFilter?.value||e.chapterId===chapterFilter.value)&&(!search||[e.title,e.missionTitle,e.chapterTitle,e.discovery].join(' ').toLocaleLowerCase().includes(search)));
+    if(journalView==='timeline')entries.sort((a,b)=>(a.chapterOrder-b.chapterOrder)||(a.missionOrder-b.missionOrder)||(a.sceneOrder-b.sceneOrder)||String(a.id).localeCompare(String(b.id)));
+    if(!entries.length){journalHost.append(journalText('p',journalEntries.length?'No discoveries match these filters. Try another search or chapter.':'No discoveries saved here yet. Open clues in a lesson, then choose Save Opened Clues.'));return;}
     const uid=auth.currentUser?.uid;
     for(const entry of entries){
         const card=document.createElement('article');card.className='evidence-journal-card';
-        card.append(journalText('span',entry.missionTitle),journalText('h3',entry.title),journalText('p',entry.discovery));
+        card.append(journalText('small',entry.chapterTitle||'Saved chapter'),journalText('span',entry.missionTitle),journalText('h3',entry.title),journalText('p',entry.discovery));
         if(entry.available){const link=journalText('a','Revisit the Explanation');link.className='text-button';link.href='story.html?'+new URLSearchParams({chapter:entry.chapterId,mission:entry.missionId,...(entry.topic?{reviewTopic:entry.topic}:{})});card.append(link);}
+        const menu=document.createElement('details');menu.className='journal-entry-actions';menu.append(journalText('summary','Discovery actions'));
         const remove=journalText('button','Remove from Journal');remove.type='button';remove.className='text-button';
         remove.addEventListener('click',async()=>{
             if(auth.currentUser?.uid!==uid)return;
@@ -22,13 +34,14 @@ function renderEvidenceJournal(){
             try{await deleteDoc(doc(db,'studentEvidenceJournal',entry.id));if(auth.currentUser?.uid!==uid)return;journalEntries=journalEntries.filter(e=>e.id!==entry.id);renderEvidenceJournal();journalStatus.textContent='Discovery removed. Your lesson progress is unchanged.';}
             catch{if(auth.currentUser?.uid===uid){remove.disabled=false;journalStatus.textContent='We could not remove this discovery. Try again when connected.';}}
         });
-        card.append(remove);journalHost.append(card);
+        if(entry.available)menu.append(createDiscoveryPinControl({userId:uid,kind:'journal',id:entry.id,isCurrent:()=>auth.currentUser?.uid===uid&&card.isConnected}));
+        menu.append(remove);card.append(menu);journalHost.append(card);
     }
 }
 async function loadEvidenceJournal(){
     const uid=auth.currentUser?.uid,request=++journalGeneration;
     const current=()=>request===journalGeneration&&auth.currentUser?.uid===uid;
-    journalEntries=[];journalHost.replaceChildren();journalRefresh.disabled=true;journalFilter.replaceChildren(new Option('All missions',''));
+    journalEntries=[];journalHost.replaceChildren();journalRefresh.disabled=true;journalFilter.replaceChildren(new Option('All missions',''));chapterFilter?.replaceChildren(new Option('All chapters',''));if(journalSearch)journalSearch.value='';
     journalStatus.textContent=uid?'Loading your saved discoveries...':'Sign in to view your journal.';
     if(!uid)return;
     try{
@@ -44,7 +57,11 @@ async function loadEvidenceJournal(){
             return rows;
         }));
         if(!current())return;
-        journalEntries=resolveJournalEntries(records,...catalog,uid);
+        journalEntries=resolveJournalEntries(records,...catalog,uid).map(entry=>{
+ const chapter=catalog[2].find(c=>c.id===entry.chapterId),mission=catalog[1].find(m=>m.id===entry.missionId),scene=catalog[0].find(c=>c.id===entry.sceneId);
+ return {...entry,chapterTitle:chapter?.title||'Unavailable chapter',chapterOrder:Number(chapter?.order)||0,missionOrder:Number(mission?.order)||0,sceneOrder:Number(scene?.order)||0};
+});
+        if(chapterFilter)for(const [id,title] of new Map(journalEntries.map(e=>[e.chapterId,e.chapterTitle])))chapterFilter.add(new Option(title,id));
         const options=new Map(journalEntries.map(e=>[e.missionId,e.missionTitle]));
         for(const [id,title]of options)journalFilter.add(new Option(title,id));
         renderEvidenceJournal();

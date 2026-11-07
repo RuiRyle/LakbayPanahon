@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+    body {
+        visibility: hidden;
+    }
+
+    body.authenticated {
+        visibility: visible;
+    }
+    .student-auth-recovery { visibility: visible; width: min(480px, calc(100% - 32px)); margin: auto; padding: 28px; border: 1px solid #b99b60; border-radius: 18px; color: #f4e9cf; background: #142b42; font: inherit; }
+    .student-auth-recovery::backdrop { background: #10243fe6; }
+    .student-auth-recovery h1 { font-size: 1.4rem; }
+    .student-auth-recovery p { line-height: 1.6; }
+    .student-auth-recovery button, .student-auth-recovery a { display: inline-block; min-height: 44px; padding: 12px; font: inherit; color: inherit; }
+    .student-auth-recovery button { background: #28445c; border: 1px solid #b99b60; border-radius: 8px; cursor: pointer; }
+</style>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Classroom details | LakbayPanahon</title>
+    <link rel="stylesheet" href="../css/workspace-loading.css">
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="stylesheet" href="../css/class-feedback.css?v=20261105-cycle-review">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
+    <link rel="stylesheet" href="../css/expedition.css">
+    <link rel="stylesheet" href="../css/teacher-workspace.css?v=20261105-cycle-review">
+    <link rel="stylesheet" href="../css/interface-clarity.css">
+</head>
+
+<body data-role="teacher" data-teacher-page="classes" class="lakbay-theme teacher-workspace workspace-loading">
+    <div id="teacherLoading" class="student-loading-shell" role="status" aria-live="polite">
+        <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p id="teacherLoadingMessage">Opening your teaching space...</p><div aria-hidden="true"><div class="student-loading-heading"></div><div class="student-loading-cards"><i></i><i></i><i></i></div><div class="student-loading-panel"></div></div></div></div>
+    </div>
+
+    
+
+    <a class="student-skip-link" href="#teacher-main">Skip to main content</a>
+    <div class="teacher-shell">
+        <header class="teacher-topbar topbar"><button id="teacherMenuToggle" type="button" class="secondary" aria-expanded="false" aria-controls="teacherSidebar" aria-label="Toggle classroom menu">☰</button><div class="student-page-title"><span class="student-page-title-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 3h13a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-2V3Zm0 14h16M8 7h8M8 11h6"/></svg></span><span class="student-page-title-copy"><small>TEACHING SPACE</small><strong id="teacherPageTitle">Teacher Dashboard</strong></span></div><button type="button" class="logout-button">Log Out</button></header>
+        <main id="teacher-main" tabindex="-1">
+            <div class="teacher-intro"><span class="eyebrow">TEACHER WORKSPACE</span><h1>Guide the next history discovery.</h1><p>Choose a class, check student learning, and share an existing mission.</p></div>
+            <p id="teacherStatus" class="teacher-status" role="status" aria-live="polite">Checking your classroom access...</p>
+            <div id="teacherContentLoading" class="teacher-inline-loading" aria-hidden="true" hidden><div class="student-loading-heading"></div><div class="student-loading-cards"><i></i><i></i><i></i></div><div class="student-loading-panel"></div></div>
+            <div class="teacher-actions"><button id="refreshTeacher" type="button" class="secondary">Refresh Classes</button></div>
+            <div class="teacher-layout">
+                <aside id="teacherSidebar" class="teacher-panel teacher-sidebar" aria-labelledby="yourClassesTitle">
+                    <a class="teacher-brand" href="teacher-dashboard.html"><img src="../assets/brand/lakbay-sun.svg" alt="" width="38" height="38"><span>LakbayPanahon<small>Philippine History</small></span></a>
+                    <h2 id="yourClassesTitle">Your Classes</h2>
+                    <p class="teacher-note">Choose a class to see students and share learning activities.</p>
+                    <div id="teacherClasses" class="teacher-class-list"></div>
+                    <details><summary>Create a class</summary>
+                        <form id="createClassForm">
+                            <label>Class name<input id="newClassName" required maxlength="100" placeholder="e.g. Grade 5 - Sampaguita"></label>
+                            <label>Description (optional)<textarea id="newClassDescription" maxlength="500"></textarea></label>
+                            <button type="submit">Create Class</button>
+                        </form>
+                    </details>
+                </aside>
+                <section id="teacherWelcome" class="teacher-panel teacher-welcome" aria-labelledby="teacherWelcomeTitle"><span class="eyebrow">START HERE</span><h2 id="teacherWelcomeTitle">Choose your classroom</h2><p>Select a class from Your Classes, or create your first class to invite students.</p><ol><li><strong>Invite.</strong> Share the class code with your students.</li><li><strong>Guide.</strong> Assign an existing history mission and add instructions.</li><li><strong>Support.</strong> Open a student's report to plan a review conversation.</li></ol><p class="teacher-note">Students keep their own learning progress and can also learn independently. Teachers guide learning; the system provides the lessons and rewards.</p></section>
+                <section id="teacherClassDetail" class="teacher-panel" hidden aria-labelledby="selectedClassTitle">
+                    <p id="classState" class="teacher-note"></p><h2 id="selectedClassTitle"></h2>
+                    <p id="archiveNote" hidden>Archived classes cannot accept invitations or publish activities. Student progress is preserved.</p>
+                    <nav class="teacher-tabs" aria-label="Class tools">
+                        <a href="teacher-dashboard.html" data-teacher-tab="overview" aria-pressed="false">Dashboard</a>
+                        <a href="teacher-classes.html" data-teacher-tab="classes" aria-pressed="true">My Classes</a>
+                        <a href="teacher-students.html" data-teacher-tab="students" aria-pressed="false">Student Progress</a>
+                        <a href="teacher-announcements.html" data-teacher-tab="announcements" aria-pressed="false">Announcements</a>
+                        <a href="teacher-assignments.html" data-teacher-tab="assignments" aria-pressed="false">Assigned Missions</a>
+                        <a href="teacher-settings.html" data-teacher-tab="settings" aria-pressed="false">Account Settings</a>
+                    </nav>
+                    <div id="teacher-overview">
+                        <div id="teacherClassSummary" class="teacher-summary" aria-label="Selected class summary"></div>
+                        <section class="teacher-next" aria-labelledby="teacherNextTitle"><span class="eyebrow">YOUR NEXT STEP</span><h3 id="teacherNextTitle"></h3><p id="teacherNextDescription"></p><div id="teacherNextActions" class="teacher-actions"></div></section>
+                        <div id="activeClassTools"><details class="teacher-invitation"><summary>Invite students &amp; manage class</summary>
+                            <h3>Invite students</h3><p>Students enter this code in <strong>My Class</strong>. Learning independently remains available without a class.</p>
+                            <p id="teacherJoinCode" class="teacher-code"></p><p id="teacherCodeExpiry" class="teacher-note"></p>
+                            <div class="teacher-actions"><button id="rotateTeacherCode" type="button">Generate New Code</button><button id="copyTeacherCode" type="button" class="secondary">Copy Code</button><button id="revokeTeacherCode" type="button" class="secondary">Revoke Code</button></div>
+                            <p class="teacher-note">Codes last 7 days. A new code replaces the old one. Existing students stay in your class.</p>
+                            <details class="teacher-settings"><summary>Edit class details</summary><form id="editClassForm"><label>Class name<input id="editClassName" required maxlength="100"></label><label>Description<textarea id="editClassDescription" maxlength="500"></textarea></label><button type="submit">Save Details</button></form></details>
+                        </details></div>
+                        <div class="teacher-actions"><button id="archiveClass" class="secondary" type="button">Archive Class</button></div>
+                    </div>
+                    <div id="teacher-students" hidden><h3 id="rosterCount"></h3><p class="teacher-note">These students joined this class. Open a report to discuss completed missions and topics to revisit. Refresh to load new joins or results.</p><form id="rosterSearchForm" class="teacher-roster-search" role="search"><label for="rosterSearch">Find a student by name<input id="rosterSearch" type="search" maxlength="200" placeholder="Enter a student name" autocomplete="off"></label><div class="teacher-actions"><button type="submit">Search Class</button><button id="clearRosterSearch" type="button" class="secondary">Show All Students</button></div></form><p id="rosterSearchStatus" class="teacher-note" role="status"></p><div id="teacherRoster"></div><div id="studentReport" aria-live="polite"></div></div>
+                    <div id="teacher-announcements" hidden><div class="teacher-publication-layout"><section class="teacher-editor-card"><span class="eyebrow">WRITE A MESSAGE</span><h3>New announcement</h3><p class="teacher-note">Share a reminder or a short learning prompt. Publish when it is ready for students.</p>
+                        <form id="announcementForm"><label>Title<input name="title" required maxlength="120"></label><label>Message<textarea name="body" required maxlength="3000"></textarea></label><label>Visibility<select name="status"><option value="draft">Save as draft</option><option value="published">Publish to students</option></select></label><div class="teacher-actions"><button type="submit">Save Announcement</button><button id="announcementCancel" type="button" class="secondary" hidden>Cancel Edit</button></div></form>
+                        </section><section class="teacher-library-card"><span class="eyebrow">YOUR CLASS MESSAGES</span><h3>Saved announcements</h3><p id="announcementSummary" class="teacher-note"></p><div id="announcementList"></div></section></div>
+                    </div>
+                    <div id="teacher-assignments" hidden><div class="teacher-publication-layout"><section class="teacher-editor-card"><span class="eyebrow">PLAN A LEARNING ACTIVITY</span><h3>Assign a mission</h3><p class="teacher-note">Choose a lesson, check its goal, and add instructions. Published missions appear in My Class. Students follow their normal prerequisites; earlier completion counts.</p>
+                        <form id="assignmentForm"><label>Mission<select id="assignmentMission" name="missionId" required></select></label><label>Instructions (optional)<textarea name="instructions" maxlength="1500"></textarea></label><label>Due date (optional)<input type="date" name="dueDate" aria-describedby="assignmentDueHelp"><small id="assignmentDueHelp">Due at 11:59 PM Philippine time. A deadline does not lock the lesson.</small></label><label>Visibility<select name="status"><option value="draft">Save as draft</option><option value="published">Publish to students</option></select></label><div class="teacher-actions"><button type="submit">Save Mission</button><button id="assignmentCancel" type="button" class="secondary" hidden>Cancel Edit</button></div></form>
+                        </section><section class="teacher-library-card"><span class="eyebrow">YOUR CLASS ACTIVITIES</span><h3>Saved missions</h3><p id="assignmentSummary" class="teacher-note"></p><div id="assignmentList"></div></section></div>
+                    </div>
+                </section>
+            </div>
+            <section class="teacher-panel teacher-guide" aria-labelledby="teacherGuideTitle"><span class="eyebrow">A CLASSROOM EXPLORATION ROUTINE</span><h2 id="teacherGuideTitle">Turn a history lesson into a discovery.</h2><ol><li><strong>Set the scene.</strong> Ask students what they already know about the lesson's people, place, or period.</li><li><strong>Look for evidence.</strong> Have students read the story and explain what a clue suggests.</li><li><strong>Talk it through.</strong> Invite students to compare ideas and support an explanation with evidence.</li><li><strong>Return and reflect.</strong> Ask students to revisit their Evidence Journal and explain one thing they learned.</li></ol></section>
+        </main>
+    </div>
+
+<script
+    type="module"
+    src="../js/auth-guard.js"
+></script>
+
+<script
+    type="module"
+    src="../js/logout.js"
+></script>
+
+
+    <script type="module" src="../js/page-transition.js"></script>
+    <script type="module" src="../js/expedition-ui.js"></script>
+    <script type="module" src="../js/teacher-workspace.js?v=20261105-cycle-review"></script>
+</body>
+
+</html>

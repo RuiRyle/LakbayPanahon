@@ -2,7 +2,7 @@ const studentRoutes = new Set([
     'student-dashboard.html', 'my-journey.html', 'chapters.html', 'era.html',
     'mission.html', 'story.html', 'quiz.html', 'practice.html',
     'chapter-challenge.html', 'my-class.html', 'achievements.html',
-    'my-profile.html', 'bayani-ai.html', 'settings.html'
+    'my-profile.html', 'bayani-ai.html', 'settings.html', 'history-timeline.html', 'journey-finale.html'
 ]);
 
 export function studentRouteForPage(page, pagesDirectory) {

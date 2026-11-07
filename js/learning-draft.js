@@ -1,5 +1,5 @@
 import { auth, db } from "./firebase-config.js";
-import { doc, getDocFromServer, setDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+import { doc, getDocFromServer, runTransaction, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
 const canonicalDraft = value => Array.isArray(value) ? value.map(canonicalDraft)
     : value && typeof value === "object" ? Object.fromEntries(Object.keys(value).sort().map(key=>[key,canonicalDraft(value[key])])) : value;
@@ -22,7 +22,23 @@ export function learningDraft(kind, chapterId, missionId, status) {
     const reference = doc(db, "studentLearningDrafts", `${uid}_${kind}_${missionId || chapterId}`);
     let pending = Promise.resolve(), closed = false, abandoned = false, revision = 0;
     let latestSignature = null;
-    const current = () => !closed && auth.currentUser?.uid === uid;
+    // Compare existing fields, including the server timestamp: no ownership
+    // fields or migration are needed for legacy drafts. Capture the baseline
+    // immediately, including for activities which intentionally skip read().
+    const version = snapshot => snapshot.exists() ? draftSignature(snapshot.data()) : null;
+    let expectedVersion, stale = false;
+    const initial = getDocFromServer(reference).then(snapshot => {
+        expectedVersion = version(snapshot);
+        return snapshot;
+    }, () => {
+        // Without an observed version, a later retry must not silently adopt
+        // another session's draft and overwrite it with local answers.
+        throw Object.assign(new Error('Draft baseline unavailable'), { code: 'draft-baseline-unavailable' });
+    });
+    // A failed initial read is surfaced on read/save, never an unhandled rejection.
+    initial.catch(() => {});
+    const conflict = () => Object.assign(new Error('Draft changed in another session'), { code: 'draft-conflict' });
+    const current = () => !closed && !stale && auth.currentUser?.uid === uid;
     let unsaved = false, saveFailed = false;
     const warnBeforeLeaving = event => {
         if (!unsaved || !current()) return;
@@ -50,7 +66,8 @@ export function learningDraft(kind, chapterId, missionId, status) {
     };
     const api = {
         async read() {
-            const snapshot = await getDocFromServer(reference);
+            await pending;
+            const snapshot = revision ? await getDocFromServer(reference) : await initial;
             if (!current() || !snapshot.exists()) return null;
             const state = snapshot.data().state;
             latestSignature = draftSignature(state);
@@ -73,12 +90,38 @@ export function learningDraft(kind, chapterId, missionId, status) {
                 // spend a write on an older snapshot that has not started saving.
                 if (!current() || savingRevision !== revision) return;
                 try {
-                    await setDoc(reference, { userId: uid, kind, chapterId, missionId, state: copy, updatedAt: serverTimestamp() });
+                    await initial;
+                    const wrote = await runTransaction(db, async transaction => {
+                        const snapshot = await transaction.get(reference);
+                        if (!current() || savingRevision !== revision) return;
+                        if (version(snapshot) !== expectedVersion) throw conflict();
+                        transaction.set(reference, { userId: uid, kind, chapterId, missionId, state: copy, updatedAt: serverTimestamp() });
+                        return true;
+                    });
+                    if (!wrote) return;
+                    // Obtain the committed server timestamp. If another session
+                    // advanced meanwhile, do not adopt its state as our baseline.
+                    const saved = await getDocFromServer(reference);
+                    if (!saved.exists() || draftSignature(saved.data().state) !== signature) throw conflict();
+                    expectedVersion = version(saved);
                     if (current() && savingRevision === revision) {
                         setUnsaved(false);
                         status.textContent = "Your place is saved. You can return after refreshing.";
                     }
                 } catch (error) {
+                    if (error?.code === 'draft-baseline-unavailable') {
+                        saveFailed = true;
+                        status.textContent = "Your saved place could not be checked. Reopen this activity when connected before continuing; this page cannot safely save your place.";
+                        if (status.retryButton) status.retryButton.hidden = true;
+                        return;
+                    }
+                    if (error?.code === 'draft-conflict') {
+                        stale = true;
+                        setUnsaved(false);
+                        status.textContent = "This activity changed in another session. Reopen it to continue from the saved place. This page will not overwrite that work.";
+                        if (status.retryButton) status.retryButton.hidden = true;
+                        return;
+                    }
                     if (current() && savingRevision === revision) {
                         latestSignature = null;
                         saveFailed = true;
@@ -100,8 +143,13 @@ export function learningDraft(kind, chapterId, missionId, status) {
             setUnsaved(false);
             if (status.retryButton) status.retryButton.hidden = true;
             await pending;
-            if (abandoned || auth.currentUser?.uid !== uid) return;
-            await deleteDoc(reference);
+            if (abandoned || stale || auth.currentUser?.uid !== uid) return;
+            await initial;
+            await runTransaction(db, async transaction => {
+                const snapshot = await transaction.get(reference);
+                if (abandoned || auth.currentUser?.uid !== uid || version(snapshot) !== expectedVersion) return;
+                if (snapshot.exists()) transaction.delete(reference);
+            });
         },
         close() { closed = true; abandoned = true; setUnsaved(false); if (status.retryButton) status.retryButton.hidden = true; }
     };

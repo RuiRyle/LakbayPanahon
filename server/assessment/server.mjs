@@ -45,6 +45,8 @@ export function createNodeHandler(processor,{timeoutMs=15000,maxBytes=65536}={})
 }
 
 export async function startServer(env=process.env) {
+    throw Error('Standalone assessment entry retired. Use the shared Firebase callable service.');
+    /* Retained historical startup is unreachable; no second reward authority. */
     // No credential loading, database access or listening port before this gate.
     const config=deploymentConfig(env);
     const [{initializeApp,applicationDefault},{getAuth},{getAppCheck},{getFirestore,FieldValue}]=await Promise.all([

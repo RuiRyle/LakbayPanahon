@@ -1,0 +1,57 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-05T11:49:40.817Z",
+  "mode": "real browser; mocked Firebase; no real account mutations",
+  "results": [
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "signed-out teacher starts with account creation in the unified page",
+        "auth callback waits for the teacher profile before advancing",
+        "account creation advances without navigating or creating another account",
+        "verification continues in the same setup page",
+        "passwords are cleared after successful account creation",
+        "teaching details reuse the registered name",
+        "email step focuses on verification instead of showing another form",
+        "verified email advances to teaching details on the same page",
+        "minimal teaching details submit and show review status",
+        "school-affiliation setup needs no extra account or PRC details",
+        "approved setup offers classroom workspace access",
+        "all setup stages stay on one page without horizontal overflow"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 1280,
+      "checks": [
+        "signed-out teacher starts with account creation in the unified page",
+        "auth callback waits for the teacher profile before advancing",
+        "account creation advances without navigating or creating another account",
+        "verification continues in the same setup page",
+        "passwords are cleared after successful account creation",
+        "teaching details reuse the registered name",
+        "email step focuses on verification instead of showing another form",
+        "verified email advances to teaching details on the same page",
+        "minimal teaching details submit and show review status",
+        "school-affiliation setup needs no extra account or PRC details",
+        "approved setup offers classroom workspace access",
+        "all setup stages stay on one page without horizontal overflow"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "pages/teacher-application.html",
+      "sha256": "4cb218509638ddc9107415589de473461c99aa949383609c052399d687744aad"
+    },
+    {
+      "file": "js/auth-ui.js",
+      "sha256": "e9fc277ae3c7b84a294aebdcc692e809183d4287c78ad9a8ebd0503a0b119c67"
+    },
+    {
+      "file": "js/teacher-application.js",
+      "sha256": "2e6289a88d34dae428e2ec8cd41f48c2ea2ce96416588a5327868e8c444437ba"
+    }
+  ]
+}

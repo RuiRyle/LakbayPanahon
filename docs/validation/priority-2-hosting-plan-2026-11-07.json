@@ -1,0 +1,63 @@
+{
+  "preparedAt": "2026-11-06T17:22:17.617Z",
+  "project": "lakbaypanahon-1797e",
+  "origin": "https://lakbaypanahon-1797e.web.app",
+  "baselineVersion": "projects/lakbaypanahon-1797e/sites/lakbaypanahon-1797e/versions/629e90f8a8b53fb4",
+  "rollbackVersion": "projects/lakbaypanahon-1797e/sites/lakbaypanahon-1797e/versions/629e90f8a8b53fb4",
+  "files": 575,
+  "updates": [
+    {
+      "file": "js/mission-assessment.js",
+      "before": "abbb7aa4c9660fce479c856cc94f1c80cffea63b278474f1c4f0193e6d817c9d",
+      "after": "7ca1081cd6319192af7f6607e309253201b08780b385d948e921713be223e649",
+      "sourceSha256": "128880f98452c64fd902ecd434464e4c0ba03cb2e3fae21f1d0a85ab56c2e4e6"
+    },
+    {
+      "file": "js/learning-draft.js",
+      "before": "b6dcf3a600380f84c76b6dbd88491cd0e47e25f18eaf698214199de009d917bf",
+      "after": "b62f7cd272d8a25f3c4e844f836102d8f01442db40afc72304f8e2693810eb7b",
+      "sourceSha256": "692d59242f6bf09cb36d5dd660d71f79442e705c5b0b973cedc1bfb0d1a83b75"
+    }
+  ],
+  "config": {
+    "headers": [
+      {
+        "headers": {
+          "X-Frame-Options": "SAMEORIGIN",
+          "Content-Security-Policy": "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://www.recaptcha.net 'sha256-Kjg16VcsMiZIatK2Y8AmMilRL/jOTsak7fqxg3C18PY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.googleapis.com https://www.google.com https://www.recaptcha.net https://lakbaypanahon-1797e.firebaseapp.com; frame-src 'self' https://www.google.com https://www.recaptcha.net https://recaptcha.google.com https://lakbaypanahon-1797e.firebaseapp.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests",
+          "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+          "Referrer-Policy": "no-referrer",
+          "X-Content-Type-Options": "nosniff"
+        },
+        "glob": "**"
+      },
+      {
+        "headers": {
+          "Cache-Control": "no-store"
+        },
+        "glob": "**/*.html"
+      },
+      {
+        "headers": {
+          "Cache-Control": "no-store"
+        },
+        "glob": "/"
+      },
+      {
+        "headers": {
+          "Cache-Control": "no-cache"
+        },
+        "glob": "**/*.{js,css}"
+      },
+      {
+        "headers": {
+          "Cache-Control": "public, max-age=86400"
+        },
+        "glob": "assets/**"
+      }
+    ]
+  },
+  "ruleset": "projects/lakbaypanahon-1797e/rulesets/7b56c656-fb38-44a3-9b69-38942be9a8c3",
+  "rulesSha256": "9a2b9a4f11e2a26f895c848e4b2aedcc1631d3e8d8a02923904d9968a552662f",
+  "onlyHosting": true
+}

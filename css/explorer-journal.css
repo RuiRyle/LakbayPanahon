@@ -1,0 +1,117 @@
+﻿/* Personal expedition notebook. Existing learning state owns every action. */
+body.explorer-journal-page.lakbay-theme[data-role="student"] #student-main .journey-page-heading{position:relative;overflow:hidden;min-height:0;padding:20px 24px;margin-bottom:18px;background:linear-gradient(105deg,#16383f,#102a40);border:1px solid #4d635e;border-radius:18px;gap:20px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] #student-main .journey-page-heading::after{content:'';position:absolute;inset:0 12% 0 50%;background:url('../assets/atlas/navigation.svg') center/cover;opacity:.09;pointer-events:none}
+body.explorer-journal-page.lakbay-theme[data-role="student"] #student-main .journey-page-heading h1{font-family:Georgia,serif;font-size:2rem;margin:5px 0 8px;color:#f2e4c6;line-height:1.2}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .adventure-emblem{display:none}
+body.explorer-journal-page.lakbay-theme[data-role="student"] #student-main .journey-page-heading p{font-size:.85rem;line-height:1.6;margin:7px 0 0;max-width:60ch}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-page-heading> :is(div,a){position:relative;z-index:1}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .adventure-tagline{font-size:.92rem;color:#d2c092}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-section-title{display:flex;align-items:center;gap:12px;margin:18px 0 12px;font-size:.72rem;color:#d5b978;letter-spacing:.08em}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-section-title span{font-size:.95rem;font-weight:600;letter-spacing:0;color:#e0e8e9}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-section-title::after{content:'';flex:1;height:1px;background:#47616a}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-load-status{margin-bottom:12px;gap:12px;font-size:.8rem}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-load-status p{margin:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-next{padding:20px 24px;margin-bottom:16px;border-radius:18px;background:linear-gradient(125deg,#193941,#132b3e);border:1px solid #83764f}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-next>h2{font-size:1rem;margin:0 0 6px;color:#eddbaf}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-next>p{font-size:.8rem;line-height:1.6;margin:0 0 14px;color:#bbced8}
+body.explorer-journal-page.lakbay-theme[data-role="student"] #journeyNextAction{display:flex;gap:22px;align-items:stretch;min-width:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-next-art{width:170px;min-height:160px;max-height:260px;object-fit:cover;align-self:stretch;border-radius:12px;border:1px solid #5a716a}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-details{min-width:0;flex:1}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-details h3{font-size:1.35rem;margin:8px 0;color:#f2e3bd}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-details p{font-size:.86rem;line-height:1.65;margin:8px 0;color:#c8d7df}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-status,body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-chapter-label{font-size:.66rem;letter-spacing:.06em;color:#d4c18a}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-action-button{margin:8px 12px 0 0;min-height:44px;padding:10px 18px;background:#dec58a;color:#10283c;border:1px solid #ecd8a7;box-shadow:none}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-review-link{font-size:.8rem;margin:8px 12px 0 0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-progress-track{height:6px;margin:12px 0;background:#324f5b}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-progress-fill{background:#d1b679;transition:width .3s}
+body.explorer-journal-page.lakbay-theme[data-role="student"] #journeyPageContent{display:flex;flex-direction:column;gap:16px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] #journeyPageContent[hidden]{display:none}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats{order:0;margin:0;gap:12px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats article{padding:14px 18px;border:1px solid #3f5a66;border-radius:12px;background:#132e40;display:flex;gap:12px;align-items:center;justify-content:space-between;min-width:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats strong{font-size:1.35rem;margin:0;white-space:nowrap;color:#e8d6a7}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats span{font-size:.78rem;color:#c6d5dd;line-height:1.5}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-discoveries-title{order:1;margin-bottom:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .lakbay-passport{order:2;margin:0;padding:22px;background:repeating-linear-gradient(0deg,transparent,transparent 27px,#ddc89406 28px),linear-gradient(110deg,#17333c,#102a40);border:1px solid #7a755c;border-radius:18px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-heading{gap:16px;margin-bottom:16px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-heading h2{font-family:Georgia,serif;color:#f0dba8;font-size:1.45rem;font-weight:500;margin:6px 0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-heading p{font-size:.84rem;line-height:1.6;margin:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-stamps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;max-height:400px;overflow:auto;padding:4px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-stamp{margin:0;padding:16px;border:1px solid #6b9984;border-radius:12px;background:#173d3a;transform:none;animation:journal-stamp .3s ease-out}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-stamp img{display:block;width:64px;height:42px;object-fit:cover;border-radius:7px;margin-bottom:10px;border:1px solid #577b6c}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-stamp h3,body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-pending h3{font-size:.93rem;line-height:1.45;margin:7px 0;color:#e6e5cf}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-stamp small{display:block;font-size:.73rem;line-height:1.5;color:#bfd5ce}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-stamp a{display:inline-flex;min-height:40px;align-items:center;color:#e4cf97;font-size:.78rem}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-pending{padding:16px;border:1px dashed #48606b;border-radius:12px;background:#112a3a}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-pending>span{font-size:.59rem;color:#a5bac4;letter-spacing:.07em}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-pending small{font-size:.73rem;line-height:1.5;color:#acbfc8}
+body.explorer-journal-page.lakbay-theme[data-role="student"] #learningCommunityPanel{order:3;margin:0;padding:14px 20px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] #evidenceJournal{order:4;margin:0;padding:22px;border:1px solid #627164;border-radius:18px;background:linear-gradient(120deg,#172f3b,#10283c)}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-heading h2{font-family:Georgia,serif;color:#f0ddb2;font-size:1.45rem;font-weight:500;margin:5px 0 8px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-heading p{font-size:.85rem;line-height:1.6;margin:0 0 16px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-view-switch{display:flex;gap:4px;width:fit-content;padding:4px;border:1px solid #4b6569;border-radius:10px;background:#0c2334;margin-bottom:14px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-view-switch button{font:inherit;font-size:.8rem;min-height:36px;padding:7px 14px;background:transparent;color:#bbd0d6;border:1px solid transparent;border-radius:7px;cursor:pointer}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-view-switch button[aria-pressed=true]{background:#d9c28d;color:#132b3e;border-color:#e8d7ac}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-controls label{flex:1;min-width:150px;font-size:.73rem;color:#c7d6dc;line-height:1.6}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-controls :is(input,select){display:block;width:100%;min-height:42px;margin-top:5px;padding:10px;border:1px solid #58706e;border-radius:9px;background:#0c2435;color:#e3ecef;font:inherit;font-size:.85rem;box-sizing:border-box}
+body.explorer-journal-page.lakbay-theme[data-role="student"] #evidenceJournalStatus{font-size:.77rem;line-height:1.6;color:#adc6cc;margin:12px 0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card{min-width:0;position:relative;padding:18px;border:1px solid #4c6966;border-radius:12px;background:#14343c;box-shadow:none;transition:background .18s,border-color .18s}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card>small{display:block;font-size:.68rem;color:#b1c6ce;line-height:1.6}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card>span{font-size:.72rem;line-height:1.6;color:#cdbc90}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card h3{font-size:1.03rem;line-height:1.4;margin:8px 0;color:#f0e0b9}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card>p{font-size:.87rem;line-height:1.75;color:#cedde0;margin:8px 0 12px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-entry-actions{margin-top:6px;border-top:1px solid #3e5e62;padding-top:6px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-entry-actions summary{cursor:pointer;min-height:40px;padding:9px 0;font-size:.78rem;line-height:1.5;color:#dec893}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-entry-actions .text-button{min-height:40px;font-size:.76rem;padding:8px 10px;margin:4px 6px 4px 0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-entry-actions .discovery-pin-control{padding:0;border:0;background:transparent}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-grid[data-view=notebook]{grid-template-columns:1fr}
+body.explorer-journal-page.lakbay-theme[data-role="student"] [data-view=notebook] .evidence-journal-card{padding:22px 26px;background:repeating-linear-gradient(0deg,transparent,transparent 27px,#d1c29a08 28px),#17313d;border-left:4px solid #b6a16d}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-grid[data-view=timeline]{grid-template-columns:1fr;border-left:1px solid #a58e5d;margin-left:8px;padding-left:20px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] [data-view=timeline] .evidence-journal-card::before{content:'';position:absolute;left:-26px;top:24px;width:9px;height:9px;border:2px solid #cfb577;border-radius:50%;background:#173b3d}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-progress-title{order:5;margin-bottom:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-body-grid{order:6;gap:18px;grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr)}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-body-grid>.journey-panel{padding:20px;border:1px solid #415e6a;border-radius:16px;background:#102b3e;min-width:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-section-heading h2{font-size:1.2rem;margin:5px 0 8px;color:#ebdfc1}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-section-heading p{font-size:.82rem;line-height:1.65;margin:0 0 16px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-era{position:relative;padding-left:16px;border-left:1px solid #8a7b52}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-era>h3{display:flex;gap:8px;align-items:center;color:#e2c98c;font-size:.93rem;line-height:1.4}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-chapter{position:relative;margin-bottom:10px;border:1px solid #3e596b;background:#122e41;border-radius:12px;overflow:visible}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-chapter::before{content:'';position:absolute;left:-23px;top:24px;width:10px;height:10px;border-radius:50%;border:2px solid #718793;background:#153044}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-chapter[data-state=current]{border-color:#ba9f67;box-shadow:inset 3px 0 #c9ab6a}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-chapter[data-state=complete]{border-color:#547e6b;background:#143a37}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-chapter[data-state=current]::before{background:#cbb177;border-color:#e4cf9e}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-chapter[data-state=complete]::before{background:#709c88;border-color:#96c3ae}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-chapter summary{padding:14px;gap:10px;font-size:.9rem;color:#e1e8e8}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-chapter-body{padding:0 14px 14px;font-size:.82rem;line-height:1.6}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-missions li{padding:11px 0;gap:10px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-missions h4{font-size:.85rem;line-height:1.5;margin:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-topic-card{padding:15px;margin-bottom:10px;border:1px solid #4e6862;border-radius:12px;background:#17373c}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-topic-card h3{font-size:1rem;margin:7px 0;color:#eddbaf}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-topic-card p{font-size:.82rem;line-height:1.65}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-topic-card a{font-size:.76rem;min-height:40px;padding:8px 10px;margin:5px 5px 0 0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-finale-entry{order:7;margin:0;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:18px 22px;border:1px solid #79704d;border-radius:16px;background:linear-gradient(110deg,#28392f,#102b3e)}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-finale-entry h2{font-size:1.15rem;color:#ecd5a2;margin:6px 0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-finale-entry p{font-size:.83rem;line-height:1.6;margin:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-goal-progress{margin-top:12px;color:#c5d7d9;font-size:.78rem}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-goal-progress progress{display:block;width:min(100%,400px);height:7px;accent-color:#d1b97f;margin-top:7px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .my-journey-content :is(a,button,input,select,summary):focus-visible{outline:3px solid #e1c78b;outline-offset:4px}
+@keyframes journal-stamp{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+@media(hover:hover){body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-stamp:hover{border-color:#c8b87b}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-chapter:hover{border-color:#9b946e}}
+@media(max-width:1000px){body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-body-grid{grid-template-columns:1fr}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats article{display:block}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats strong{margin-top:6px}}
+@media(max-width:600px){body.explorer-journal-page.lakbay-theme[data-role="student"] #student-main .journey-page-heading{padding:18px;flex-wrap:wrap;gap:12px}body.explorer-journal-page.lakbay-theme[data-role="student"] #student-main .journey-page-heading h1{font-size:1.75rem}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-next{padding:18px}body.explorer-journal-page.lakbay-theme[data-role="student"] #journeyNextAction{flex-direction:column;gap:14px}body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-next-art{width:100%;height:130px;min-height:0;object-position:center 55%}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats{gap:8px;grid-template-columns:repeat(3,minmax(0,1fr))}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats article{padding:12px 10px}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats span{font-size:.7rem}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats strong{font-size:1.05rem}body.explorer-journal-page.lakbay-theme[data-role="student"] :is(.lakbay-passport,#evidenceJournal){padding:18px 16px}body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-stamps{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}body.explorer-journal-page.lakbay-theme[data-role="student"] :is(.passport-stamp,.passport-pending){padding:12px}body.explorer-journal-page.lakbay-theme[data-role="student"] .passport-heading p{font-size:.8rem}body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-grid{grid-template-columns:1fr}body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-controls label{min-width:100%;width:100%}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-finale-entry{flex-direction:column;align-items:stretch}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats strong{white-space:normal}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-era>h3{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){body.explorer-journal-page.lakbay-theme[data-role="student"] .my-journey-content,body.explorer-journal-page.lakbay-theme[data-role="student"] .my-journey-content *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Reset inherited dashboard ornament and stretching inside the journal surfaces. */
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-stats article::before,body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-next::after,body.explorer-journal-page.lakbay-theme[data-role="student"] #evidenceJournal::before,body.explorer-journal-page.lakbay-theme[data-role="student"] #student-main .journey-page-heading::before{display:none;content:none}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-next .journey-details{display:block;min-height:0;height:auto;padding:0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;animation:none}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-next .journey-details>p{flex:none;min-height:0;margin:7px 0;font-size:.86rem;line-height:1.6}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-next .journey-details h3{margin:7px 0;font-size:1.35rem;line-height:1.3}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-next-art{height:190px;min-height:0;align-self:center}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card{display:block}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card>p{flex:none}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-heading{padding:0;border:0;min-height:0;margin-bottom:14px}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-section-heading{padding-bottom:12px;margin-bottom:14px;min-height:0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-controls{padding:0;border:0;background:transparent}
+@media(max-width:600px){body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-next-art{height:120px}body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-next .journey-details .journey-action-button{margin-right:0}}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-next .journey-chapter-label{display:block;margin:7px 0 0}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .journey-body-grid>.journey-review{align-self:start;height:auto;min-height:0}

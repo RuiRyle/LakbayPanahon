@@ -1,0 +1,103 @@
+﻿.bayani-content { max-width:1450px; margin:0 auto; padding:34px 32px 48px; }
+.bayani-heading { display:flex; justify-content:space-between; align-items:center; gap:24px; margin-bottom:28px; }
+.bayani-heading .eyebrow { font-size:.69rem; letter-spacing:.12em; }
+.bayani-heading h1 { font-size:clamp(1.8rem,2.5vw,2.6rem); color:#183153; line-height:1.18; margin:12px 0; }
+.bayani-heading h1 span { color:#a94141; }
+.bayani-heading p { color:#68758a; font-size:.94rem; line-height:1.6; }
+.bayani-back { color:#183153; text-decoration:none; white-space:nowrap; border-bottom:1px solid #d3b574; padding-bottom:5px; font-size:.85rem; }
+.bayani-layout { display:grid; grid-template-columns:290px minmax(0,1fr); gap:24px; align-items:start; }
+.bayani-companion { border:1px solid #2a466c; border-radius:22px; background:#10284c; overflow:hidden; box-shadow:0 8px 24px #020b1c30; }
+.bayani-companion-banner { position:relative; padding:28px 20px 24px; text-align:center; background:radial-gradient(ellipse at 50% 45%,#2e526d,#142d49 72%); color:#fff; }
+.bayani-companion-tag { display:inline-block; padding:6px 10px; border:1px solid #eac77555; border-radius:20px; color:#f1cf88; letter-spacing:.12em; font-size:.6rem; font-weight:800; }
+.bayani-emblem { width:126px; height:126px; margin:28px auto 22px; display:grid; place-items:center; border-radius:50%; border:1px solid #d8b46166; background:repeating-conic-gradient(from 0deg,#d8b46133 0deg 2deg,transparent 2deg 45deg); box-shadow:0 0 0 12px #ffffff04,0 0 0 23px #ffffff03; }
+.bayani-emblem span { display:grid; place-items:center; width:86px; height:86px; border-radius:26px 26px 36px 36px; background:linear-gradient(145deg,#f6dc99,#d4a447); color:#183153; font-family:Georgia,serif; font-size:3.8rem; font-weight:800; border:4px solid #ffecc2; box-shadow:0 9px 0 #071c2d55; transform:rotate(-7deg); }
+.bayani-companion h2 { color:#fff; margin:8px 0; font-size:1.5rem; }
+.bayani-companion-banner p { color:#c8d5e2; font-size:.83rem; line-height:1.65; margin:0; }
+.bayani-kit { padding:24px 18px 12px; }
+.bayani-kicker { font-size:.6rem; font-weight:800; letter-spacing:.12em; color:#8b6b36; display:block; }
+.bayani-kit>a { display:flex; gap:12px; align-items:center; padding:17px 0; color:#f4f7ff; text-decoration:none; border-bottom:1px solid #2a466c; transition:transform 160ms ease; }
+.bayani-kit>a:hover { transform:translateX(3px); }
+.bayani-kit>a>span:first-child { display:grid; place-items:center; border-radius:11px; background:#1b3c68; color:#ffd044; width:35px; height:35px; flex-shrink:0; font-size:1.1rem; }
+.bayani-kit>a>span:last-child { margin-left:auto; color:#ffe799; }
+.bayani-kit strong { display:block; font-size:.8rem; }
+.bayani-kit small { display:block; font-size:.69rem; color:#b5c5de; margin-top:4px; line-height:1.4; }
+.bayani-trail { display:flex; justify-content:center; align-items:center; gap:8px; margin:10px 18px 22px; padding:13px 6px; background:#0b2142; border:1px solid #2a466c; border-radius:10px; color:#ffe799; font-size:.65rem; font-weight:700; }
+.bayani-trail i { font-style:normal; opacity:.5; }
+.bayani-workspace { min-width:0; background:#10284c; border:1px solid #2a466c; border-radius:22px; box-shadow:0 8px 24px #020b1c30; overflow:hidden; }
+.bayani-chat-heading { padding:20px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; border-bottom:1px solid #2a466c; background:#10284c; }
+.bayani-chat-identity { display:flex; align-items:center; gap:12px; }
+.bayani-mini-emblem { display:grid; place-items:center; width:40px; height:44px; border-radius:12px 12px 17px 17px; background:#ffd044; color:#0b2142; font-size:1.6rem; font-family:Georgia,serif; font-weight:800; }
+.bayani-chat-heading h2 { font-size:1rem; color:#f4f7ff; margin:0 0 4px; }
+.bayani-chat-identity>div>span { color:#738096; font-size:.72rem; }
+.bayani-new-chat { background:#17365f; border:1px solid #456288; border-radius:10px; padding:9px 12px; color:#ffe799; font:inherit; font-size:.75rem; cursor:pointer; box-shadow:0 3px 0 #07162f; }
+.bayani-new-chat:hover { background:#1d4273; }
+.bayani-new-chat>span { color:#ffd044; font-size:1.05rem; margin-right:5px; }
+.bayani-connection { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:11px 24px; background:#0d2446; border-bottom:1px solid #2a466c; }
+.bayani-connection p { color:#b5c5de; font-size:.72rem; line-height:1.5; flex:1; min-width:150px; margin:0; }
+.bayani-status-dot { width:7px; height:7px; border-radius:50%; background:#9fabb6; flex-shrink:0; }
+.bayani-connection[data-state=ready] .bayani-status-dot { background:#568b62; box-shadow:0 0 0 3px #568b6215; }
+.bayani-connection[data-state=unavailable] { background:#382d39; }
+.bayani-connection[data-state=unavailable] .bayani-status-dot { background:#b58b32; }
+.bayani-connection[data-state=thinking] .bayani-status-dot,.bayani-connection[data-state=connecting] .bayani-status-dot { background:#b58b32; animation:bayani-pulse 1.3s ease-in-out infinite; }
+.bayani-connection button { font-size:.72rem; }
+.bayani-chat { min-height:300px; max-height:48vh; overflow-y:auto; background:radial-gradient(#7593b122 .7px,transparent .7px) 0 0/18px 18px,#0a1e3d; }
+.bayani-empty { text-align:center; padding:34px 20px 30px; }
+.bayani-discovery-mark { width:58px; height:58px; display:grid; place-items:center; margin:0 auto 20px; background:#1b3c68; color:#ffd044; border:1px solid #456288; border-radius:18px; font-size:2rem; transform:rotate(-8deg); box-shadow:5px 5px 0 #07162f; }
+.bayani-empty .bayani-kicker { font-size:.58rem; }
+.bayani-empty h3 { color:#f4f7ff; font-size:1.7rem; line-height:1.25; margin:12px 0; }
+.bayani-empty p { font-size:.8rem; line-height:1.7; color:#b5c5de; }
+.bayani-messages { padding:24px; }
+.bayani-messages:empty { display:none; }
+.bayani-message { max-width:88%; width:fit-content; padding:16px 19px; background:#1b3b50; color:#d2e3e8; border:1px solid #3d6173; border-radius:4px 17px 17px 17px; margin:0 0 18px; overflow-wrap:anywhere; box-shadow:none; animation:bayani-reveal 200ms ease-out; }
+.bayani-message.user { background:#203e5d; color:#fff; border-color:#203e5d; border-radius:17px 4px 17px 17px; margin-left:auto; }
+.bayani-message strong { color:#ffe799; font-size:.65rem; letter-spacing:.06em; }
+.bayani-message.user strong { color:#e8cf92; }
+.bayani-message p { white-space:pre-wrap; font-size:.86rem; line-height:1.75; margin:7px 0 0; }
+.bayani-composer { padding:20px 24px 15px; border-top:1px solid #2a466c; background:#10284c; }
+.bayani-composer label { display:block; font-size:.78rem; font-weight:700; color:#f4f7ff; margin-bottom:10px; }
+.bayani-composer textarea { box-sizing:border-box; width:100%; min-height:82px; resize:vertical; padding:14px; font:inherit; font-size:.84rem; color:#f4f7ff; background:#0a1e3d; border:1px solid #476184; border-radius:12px; }
+.bayani-composer textarea:focus { outline:2px solid #d6b363; outline-offset:2px; }
+.bayani-composer textarea:disabled { background:#0b2142; color:#b5c5de; }
+.bayani-composer>div { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:12px; }
+.bayani-composer>div>span { font-size:.65rem; color:#b5c5de; line-height:1.5; max-width:310px; }
+.bayani-composer button { border:1px solid #17324e; border-radius:10px; background:#203e5d; color:#fff; padding:11px 21px; font:inherit; font-size:.8rem; font-weight:700; cursor:pointer; box-shadow:0 3px 0 #10253c; transition:transform 150ms ease; }
+.bayani-composer button:hover:not(:disabled) { transform:translateY(-1px); }
+.bayani-composer button:disabled { opacity:.45; cursor:default; box-shadow:none; }
+.bayani-note { font-size:.64rem; color:#b5c5de; line-height:1.7; margin:0; padding:0 24px 20px; background:#10284c; }
+.bayani-content a:focus-visible,.bayani-content button:focus-visible { outline:3px solid #a94141; outline-offset:4px; }
+.bayani-empty[hidden] { display:none; }
+@keyframes bayani-pulse { 50% { opacity:.4; transform:scale(.8); } }
+@keyframes bayani-reveal { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+@media(prefers-reduced-motion:reduce) { .bayani-message,.bayani-status-dot { animation:none!important; } .bayani-kit>a,.bayani-composer button { transition:none; } }
+@media(max-width:1150px) { .bayani-layout { grid-template-columns:240px minmax(0,1fr); gap:18px; } .bayani-content { padding:28px 22px; } }
+@media(max-width:900px) { .bayani-layout { grid-template-columns:1fr; } .bayani-companion { display:none; } .bayani-heading { align-items:flex-start; } .bayani-chat { max-height:50vh; } }
+@media(max-width:600px) { .bayani-content { padding:24px 14px; } .bayani-heading { flex-direction:column; } .bayani-chat-heading,.bayani-composer { padding:18px; } .bayani-connection { padding:10px 18px; } .bayani-message { max-width:95%; } .bayani-new-chat { white-space:nowrap; } }
+.bayani-composer>div>span,.bayani-note { font-size:.72rem; }
+.bayani-connection p { font-size:.78rem; }
+.bayani-kit small { font-size:.74rem; }
+
+/* Keep the companion layout with a little extra reading space. */
+.bayani-layout { grid-template-columns:250px minmax(0,1fr); gap:22px; }
+.bayani-chat { min-height:360px; max-height:58vh; overscroll-behavior:contain; scrollbar-gutter:stable; }
+.bayani-message { max-width:94%; padding:18px 21px; }
+.bayani-message p { font-size:1rem; line-height:1.8; }
+.bayani-message strong { font-size:.75rem; }
+.bayani-composer textarea { font-size:1rem; min-height:90px; line-height:1.6; }
+.bayani-composer label { font-size:.88rem; }
+.bayani-composer button { min-height:44px; }
+@media(max-width:1150px) { .bayani-layout { grid-template-columns:220px minmax(0,1fr); gap:18px; } }
+@media(max-width:900px) { .bayani-layout { grid-template-columns:1fr; } .bayani-chat { max-height:58vh; } }
+@media(max-width:600px) {
+ .bayani-message { max-width:100%; padding:16px; }
+ .bayani-messages { padding:18px 14px; }
+ .bayani-composer>div { flex-wrap:wrap; gap:12px; }
+ .bayani-composer button { margin-left:auto; }
+}
+.bayani-message-content { margin-top:8px; color:inherit; font-size:1rem; line-height:1.8; }
+.bayani-message-content p { margin:0 0 .9em; color:inherit; font-size:inherit; line-height:inherit; white-space:pre-wrap; }
+.bayani-message-content p:last-child { margin-bottom:0; }
+.bayani-message-content :is(ul,ol) { display:grid; gap:8px; margin:10px 0 14px; padding-left:1.5rem; color:inherit; }
+.bayani-message-content li { padding-left:3px; line-height:1.75; }
+.bayani-message-content li::marker { color:#f1cf88; font-weight:800; }
+.bayani-message-content strong { color:#ffe799; }
+.bayani-message-content :is(ul,ol):last-child { margin-bottom:0; }

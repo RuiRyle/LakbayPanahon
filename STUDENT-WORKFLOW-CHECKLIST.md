@@ -1397,3 +1397,299 @@ See [recovery handoff verification](docs/recovery-handoff-verification.md).
 - Lesson access now reads the selected chapter document and only its era's chapters for ordering, while retaining fresh owned progress checks and the legacy missing-era fallback. Daily reward submission queries only active challenge documents, matching Home's existing selection. Twenty-six local access/reward checks passed; live Firestore remains paused at HTTP 429.
 - My Journey and student My Class now share the existing short-lived tab cache for teaching catalogs. Membership, published assignments, owned completion, attempts and drafts are still read fresh. Both mocked browser flows passed, including prerequisites, review/resume actions, assignment access and stale-session handling. No live Firestore reads or writes were made.
 - Reference-inspired navy/gold theme connected to 20 website pages, including student learning, account and public pages. Home has a four-chapter progress list derived from already loaded data; Daily Challenge and Bayani remain. Seven themed browser flows and 19 focused local checks passed. Desktop previews reviewed and narrow Home overflow corrected. No Firebase access or Hosting deployment; see docs/navy-gold-design.md.
+
+### 2026-11-06 ï¿½ Current teacher/student local acceptance
+
+- Current staged teacher/student workflow passed 129 emulator integration checks and 22 actual browser checks, including personal review evidence, private help, reflections, teacher guidance, class-wide reporting and teacher account settings.
+- Unique-invitation, classmates and private-help/review security suites also passed. Synthetic quiz evidence is limited to interaction validation; production deployment and external email delivery remain unverified by these runs.
+- Detailed scope and remaining external checks: docs/validation/teacher-student-acceptance-2026-11-06.md. Browser evidence: docs/validation/class-teaching-browser-2026-11-06.json. No production records changed and nothing deployed.
+
+### 2026-11-06 ï¿½ Read-only production readiness
+
+- Published Firestore rules match the current locally tested rules exactly.
+- Main Firebase Hosting site exists but has no live release; checked login/teacher/student routes return 404. Website publication remains outstanding.
+- Main Firebase domains are authorized for Auth. Actual email delivery and real-account acceptance remain unverified. No production configuration or records changed.
+- Evidence: docs/validation/production-readiness-2026-11-06.json and accompanying Markdown report.
+
+### 2026-11-06 ï¿½ Teacher Account Settings refinement
+
+- Added preferred name editing (Firebase Auth), catalog avatar selection (existing user avatarId), verified email/application status, browser display preferences and account help in a redesigned responsive account hub.
+- Approved teacher identity and credentials remain separate. No new Firestore fields. A narrow avatar-catalog read rule for approved teachers is locally tested and awaiting publication. Browser preference controls reuse existing motion, contrast and reading-size handlers.
+- Local settings, student preference/keyboard, dashboard and save-recovery checks passed. Production email/profile acceptance and website publication remain unverified by these local checks.
+- Details: docs/validation/teacher-account-settings-2026-11-06.md.
+
+### 2026-11-06 — Teaching dashboard to private guidance
+
+- Added classroom-scoped follow-up paging and direct learning-evidence links with a return path to the exact request.
+- Sent replies show their new saved guidance immediately; explanation counts update after response. Unsent guidance is protected on refresh/navigation.
+- Local dashboard/browser and emulator acceptance checks cover the completed loop. No production changes or deployment. Remaining teacher priorities: classroom workspace, assignment planning and progress evidence clarity.
+- Scope and limits: docs/validation/teacher-dashboard-guidance-loop-2026-11-06.md.
+
+### 2026-11-06 — Connected teaching workspace and planning clarity
+
+- Classroom links now retain the selected class across Overview, Students, Activities and Announcements.
+- Activity planners expose the learning goal and teaching purpose before the optional detailed preview; chronology is unchanged.
+- Individual progress summaries count distinct current-catalog mission completions. Duplicate/retired-record regression passed.
+- Classroom, announcement, activity, progress, dashboard and save-recovery local browser suites passed. Release package reference checks passed. No production deployment performed.
+
+### 2026-11-06 — Teacher logic hardening, priorities 1–2
+
+- Publication edits compare the opened record version inside the save transaction; stale edits retain their text rather than overwriting newer records. Publish/unpublish actions use the same guard.
+- Classroom publication/status/details/invitation changes separate confirmed writes from failed refreshes. Ambiguous results require a read-only status check before further changes; no automatic replay is sent.
+- Local policy, conflict, recovery and existing browser regression checks passed. No schema/rules/publication change in this pass.
+- Ordered remaining work and validation: docs/teacher-workflow-logic-hardening.md.
+
+### 2026-11-06 — Teacher activity lifecycle
+
+- Added Closed/Withdrawn for class goals and personal reviews, with server endedAt, confirmation, stale-edit protection, read-only ended cards and historical progress access.
+- Student history preserves earlier results/explanations/guidance, excludes ended work from active targets and blocks new help/explanation submissions. Existing guidance can still be answered/acknowledged. Independent learning and rewards are unchanged.
+- Lifecycle rule tests, existing permissions, cutoff policy tests, student/teacher browser fixtures and actual emulator walkthrough passed. Dictionaries updated for statuses and endedAt.
+- No production publication. New rules and frontend must be released together; lifecycle testing remains available in the isolated emulator. See docs/activity-lifecycle.md.
+
+### 2026-11-06 — Teacher follow-up inbox coverage
+
+- Removed the hard 100-record endpoint in help/explanation inboxes using class-scoped cursor pages and explicit Load more requests.
+- Added direct lookup of dashboard-linked records beyond page one, pending/all/answered filters, loaded-snapshot counts and complete-class-inbox links from the dashboard.
+- Later pages preserve reply drafts; failed reads retain the cursor for explicit retry. Account/class guards reject stale load completions.
+- Large mocked browser fixtures and actual SDK/emulator pagination/reply checks passed. No schema/rules changes or production deployment in this pass. See docs/teacher-inbox-pagination.md.
+
+### 2026-11-06 - Independent review learning steps
+
+- Teacher outcomes/reports and student review cards distinguish practice result, student explanation and teacher guidance.
+- Passing practice does not claim explanation/guidance completion. Student summaries now describe practice/activity goals explicitly.
+- Explanation checks run on demand. Revision resets the guidance stage; unavailable reads preserve known practice evidence.
+- Local policy, responsive browser and actual SDK/emulator walkthrough checks passed. See docs/review-learning-stages.md. No production deployment.
+
+### 2026-11-06 - Duplicate personal-review creation warning
+
+- New published review rounds check existing class/student/mission reviews before writing and require confirmation for an additional round.
+- Cancel/check failure preserves instructions; closed and withdrawn reviews are excluded.
+- Policy, syntax, save-recovery browser checks and release build passed. No deployment.
+- Remaining limits: concurrent-tab uniqueness and warning on existing draft publication. See docs/duplicate-review-warning.md.
+
+### 2026-11-06 - Remaining review publication safeguards and report scope
+
+- Existing draft publication now requires the same duplicate-round confirmation as new reviews.
+- Updated clients compare and advance a class publication revision atomically with review writes; intervening tab/device changes reject stale confirmations without submission.
+- Added owner-only coordination rules and documented all new attributes in the three data dictionaries.
+- Activity reports clarify current active roster scope, shown/eligible recipients, later joiners, former-member reviews and unavailable evidence.
+- Local policy/client, rules and responsive conflict/recovery checks passed. Matching frontend/rules remain unpublished. See docs/duplicate-review-warning.md for protocol limits.
+
+### 2026-11-06 - Instructional logic, priority 1: define learning evidence
+
+- Added a collapsed teacher report guide distinguishing rewards, completion, quiz practice, explanations, guidance and retention/application.
+- Individual/class exports explicitly state which evidence they assess and exclude. No automatic mastery or learning-gain score is introduced.
+- Prepared a study evidence framework and explanation-review criteria; teacher validation and actual learning evaluation remain outstanding.
+- Report-export unit checks and mobile/desktop Student Progress regressions passed. No new database fields/reads or deployment.
+- Continue with topic-specific adaptive support audit: docs/instructional-logic-roadmap.md.
+
+### 2026-11-06 - Adaptive support audit: evidence chronology
+
+- Confirmed topic-specific lesson/practice routes and explicit whole-lesson fallback behavior.
+- Fixed tied quiz diagnostics that could arbitrarily hide a topic; invalid/ambiguous chronology now retains support with an explanatory message.
+- Future-dated practice and lesson visits no longer count toward clearing recommendations.
+- Six new date-evidence tests, existing review/session checks and actual practice-module browser regression passed locally.
+- No production writes, schema changes or deployment. All-topic mapping/explanation content review remains pending; see docs/adaptive-support-evidence-audit.md.
+
+### 2026-11-06 - All-topic adaptive coverage and teacher review materials
+
+- Audited the offline verified-overlay catalog: 66 active missions, 330 topics; no structural mapping, practice-goal reachability or choice-feedback gaps found.
+- Added a repeatable local audit and four regression tests that deliberately remove mappings/text, break goal coverage/policies and remove/repeat feedback.
+- Prepared a 330-topic teacher review spreadsheet. Every row remains Not reviewed; coverage checks do not certify historical accuracy or teaching adequacy.
+- No content was rewritten without a verified finding. No production reads/writes or deployment. See docs/adaptive-topic-content-review.md.
+
+### 2026-11-06 - Meaningful teacher intervention follow-up
+
+- Review outcomes now show Before, support and follow-up, plus a specific suggested next step.
+- The loader compares attempts strictly after the current teacher guidance with the guidance-time baseline; earlier passing practice cannot count as a response to guidance.
+- Higher/same/lower practice observations remain separate from mastery, retention and claims that guidance caused improvement. Missing/ambiguous evidence requests another check.
+- Eleven policy checks and 28 mobile/desktop review-stage assertions passed. No new stored attributes/queries/rewards or deployment.
+- Location and interpretation: docs/teacher-intervention-evidence.md.
+
+### 2026-11-06 - Support labels grounded in evidence
+
+- Distinguished unavailable reads, absent quiz evidence, uncertain dates, specific review signals and no current signal.
+- Added reasons, teaching next steps and dated evidence; quiz activity is explicitly separate from attendance or ability.
+- Fixed teacher latest-result selection so future-dated attempts cannot create definite review diagnoses.
+- Five policy tests and responsive dashboard/progress regressions passed. No new stored attributes/queries or deployment.
+- See docs/teacher-support-labels.md. Next: retention/application check preparation.
+
+### 2026-11-06 - Draft retention/application pilot prepared
+
+- Prepared three student forms: initial, post-learning and delayed recall/application, covering three mapped concepts with nine fictional-example prompts.
+- Added a separate facilitator answer guide, analytic rubric, administration guide and blank scoring template.
+- Delayed recall and application are scored separately; missing responses, assistance and intervening practice are documented. No mastery threshold or causal learning claim is invented.
+- Generation/reference checks passed. These are unvalidated reviewer materials, excluded from the public website; no game changes or deployment.
+- Start with docs/evaluation/README.md. Qualified-teacher review and supervised pilot administration remain outstanding.
+
+### 2026-11-06 - Final local teacher/student relationship validation
+
+- Actual SDK/browser walkthrough passed 42 checks, now including a real saved post-guidance result and a qualified comparison against the guidance-time baseline.
+- Lifecycle/access revocation, publication-state rules, stale review publication, unavailable evidence, and failed-save/refresh recovery checks passed.
+- Extended walkthrough cleanup to remove its temporary publication-state record. No application defect found in this pass.
+- Built build/student-web-s3SJJb: 33 pages, 572 files, zero missing/rejected references; paired it with firestore.candidate.rules and recorded hashes.
+- Prepared docs/teacher-student-release-review.md. No production deployment or production learner-data changes. Human validation and trusted grading remain separately documented.
+
+### 2026-11-06 - Production release published and public checks passed
+
+- Published the reviewed website and matching Firestore rules to lakbaypanahon-1797e. Live URL: https://lakbaypanahon-1797e.web.app/pages/login.html.
+- Hosting release time: 2026-11-06T05:17:22.423Z. Live rule hash matches the reviewed candidate: 678be315fa0aecdbb09fc3cb88294c0f69493056e8c50389a254500234ac0496.
+- Login, teacher dashboard/settings/progress and student My Class routes return HTTP 200 with matching page content and CSP.
+- Isolated live browser check confirmed visible login inputs, enabled submit and no JavaScript exceptions. No account login or learner record writes were performed.
+- Recovery metadata saved before release. See docs/validation/teacher-student-production-release-2026-11-06.json.
+- Still pending: designated-account live teacher/student classroom acceptance, email delivery, qualified-teacher content review and supervised learning evaluation. Public route checks do not substitute for logged-in workflow acceptance.
+
+### 2026-11-06 - Further student/teacher bug, design and architecture review
+
+- Fixed cross-topic practice falsely advancing a topic's display stage.
+- Removed unnecessary full-class review scans for nonpublishing changes and unrelated completion-history reads from personal-review reports.
+- Kept teaching next steps visible while collapsing repeated evidence timelines; extracted outcome-card rendering from the loading/paging function.
+- Added targeted regression checks and passed local responsive classroom/progress, practice, navigation, keyboard-settings and save-recovery suites.
+- Staged build/student-web-mge53Y (33 pages, 572 files, no reference issues). No production deployment or schema/rules changes in this pass.
+- Findings, scope and architectural follow-up: docs/student-teacher-bug-design-review-2026-11-06.md.
+- Updated full SDK/emulator walkthrough passed all 42 checks after these fixes; no unexpected application exceptions. Live release remains unchanged.
+
+### 2026-11-06 - Clearer student-to-teacher learning handoff
+
+- Student classroom overview now preserves the teacher-selected concept when opening a personal review lesson.
+- Once practice goals are reached, a direct Check explanation and guidance button opens the correct completed review and its saved checklist, resets restrictive filters and moves keyboard focus.
+- Kept feedback warm and tied to actual practice evidence; no new XP, mastery claim, teacher gate or background reflection queries.
+- Student classroom browser suite passed 39 mobile and 39 desktop assertions. Individual student, teacher and interaction improvement tracks are documented in docs/student-teacher-experience-improvements.md.
+- Local changes only; no production deployment or schema/rules changes.
+
+### 2026-11-06 - Preserve topic when moving between practice and lessons
+
+- Fixed guided practice and its lesson shortcut opening the full mission instead of the selected review topic.
+- Added one contextual return shortcut to shared learning navigation; kept it separate from breadcrumb hierarchy and absent on general lessons.
+- Added route encoding/round-trip checks and actual practice regression assertions. Existing resume/recovery checks passed.
+- Classroom identity across all learning pages remains a separate review item; this patch preserves topic context only.
+- Local changes only. See docs/learning-topic-return-navigation.md.
+
+### 2026-11-06 - Return from learning to the originating classroom activity
+
+- Classroom lesson/quiz entry points now carry class/activity context across same-mission lessons, practice and quizzes. General or different-mission navigation does not inherit it.
+- Shared learning navigation offers Back to my class activity; successful classroom quizzes use it as the main return action.
+- Returning reloads current memberships/visible activities, opens the correct activity/history and gives useful unavailable/retry feedback. No arbitrary external return URL or context-based permission bypass.
+- Five route-policy tests, seven actual shared-navigation browser checks, 84 responsive classroom assertions and practice/quiz/navigation regressions passed.
+- Staged build/student-web-iowx98; no schema/rules changes or deployment. See docs/classroom-origin-return.md.
+
+### 2026-11-06 - Teacher evidence-to-action refinement
+
+- Individual report review signals now offer Write guidance and Plan personal review without reselecting the class, student or mission.
+- Single-topic context is checked against current mappings at the destination. Planner preparation defaults to an unsent draft, preserves existing-draft confirmation and rejects unavailable recipients/topics.
+- Contextual guidance actions protect unsent text when switching missions.
+- Fixed publication confirmation using the cleared target-selection set; it now uses the saved operation's recipient count and states the student destination.
+- Responsive assignment/report suites, new contextual-action assertions and save-recovery regressions passed. No schema/rules change or deployment.
+- Details: docs/teacher-evidence-action-flow.md.
+
+### 2026-11-06 - Larger-class loading and snapshot recovery
+
+- Added roster-only class reads for class report preparation and bounded student-report batches sharing teacher/class checks while retaining individual membership validation.
+- Reused names within the current loaded class instead of refetching them on every roster revisit; refresh/class/account changes retain their reset behavior.
+- Kept Prepare class report above its result table. Failed refreshes preserve the last completed snapshot with an explicit stale warning and cleared busy state.
+- 120-member client/read-count fixture passed. Responsive progress, cached-name and snapshot recovery checks passed; one unrelated viewport-animation timing failure passed on rerun with assertions unchanged.
+- No production benchmark or deployment claimed. Details and remaining limits: docs/teacher-large-class-loading.md.
+
+### 2026-11-06 - Meaningful explorer milestone celebration
+
+- Refined the level-up banner with actual unlocked title/frame details, a clear next milestone and correct wording after the last configured reward.
+- Added a single 280 ms entrance without sound, focus stealing or automatic dismissal. Reduced-motion preferences suppress/cancel animation.
+- Cached/pending snapshots do not announce newly earned levels; repeated levels and stale account callbacks remain suppressed.
+- Two policy tests, 28 responsive browser assertions and syntax checks passed. No XP/reward rules, new database traffic or deployment.
+- Details: docs/level-celebration-polish.md.
+
+### 2026-11-06 - Accumulated student/teacher improvements published
+
+- Published frontend build/student-web-shcyOn to https://lakbaypanahon-1797e.web.app at 2026-11-06T07:53:36.811Z (3:53 PM Philippine time).
+- Includes the recent bug/design fixes, focused review handoff, topic/classroom return navigation, teacher evidence-to-action planner, larger-class loading/snapshot recovery and milestone celebration polish.
+- Pre-release local SDK walkthrough passed all 42 checks; targeted planner/report/route/large-class/celebration checks passed.
+- All 15 checked live modules/styles/pages exactly match the release. Public login browser check passed; key route checks returned HTTP 200.
+- Firestore rules and learner records were unchanged. Previous Hosting recovery metadata is saved in backups/frontend-pre-update-1793951576987.json.
+- Release evidence: docs/validation/student-teacher-frontend-release-2026-11-06.json. This supersedes earlier local-only publication notes for these included changes.
+- Logged-in production acceptance and external content/learning validation remain separate; no account credentials were used in this release pass.
+
+### 2026-11-06 - Challenge and lesson text contrast
+
+- Added shared page-scoped contrast styles loaded last on challenge and mission lesson pages, resolving legacy dark/light surface mismatches.
+- Paired navy surfaces with warm off-white text, brown paper with dark brown ink, and readable feedback/review colors. Disabled submitted-answer text no longer fades out.
+- All 108 representative computed-color checks passed at 4.5:1 or better across mobile/desktop and normal/paper lesson modes.
+- Separate existing challenge gameplay fixtures still fail their Continue navigation assertion; they do not load the new stylesheet. No gameplay code changed in this pass.
+- Local only, no deployment. Details: docs/learning-text-contrast-fixes.md.
+
+### 2026-11-06 - One-mission misconception feedback pilot
+
+- Seafaring and the Balangay practice now connects authored wrong-choice explanations with an authored clue, a same-topic lesson return and a reflective prompt.
+- After a correct retry, stale coaching is removed; targeted practice offers Try another example when another same-topic item is actually available.
+- Existing assisted/first-try results, clean-session review policy, XP and mission progression are unchanged.
+- Pilot policy/catalog checks, actual pilot practice browser flow and existing nonpilot practice regression passed. No historical content rewrite or production publication.
+- Teacher/student validation and broader rollout remain pending. See docs/misconception-feedback-pilot.md.
+
+### 2026-11-06 - Accessible first-mission feedback pilot published
+
+- Enabled misconception feedback and next-example prompts for prologue-mission1, the first geography mission in era1-prologue, using existing authored choice feedback and clues. Balangay retains the pilot too.
+- First-mission actual practice browser fixture passed, alongside authored feedback checks and 108 sampled contrast checks.
+- Published build/student-web-c9aU08 to the existing production Hosting site, including the previously pending mission/challenge contrast fixes.
+- Six live module/style/page hash checks passed. No learner records, unlock requirements or Firestore rules changed.
+- Preview while signed in: /pages/practice.html?chapter=era1-prologue&mission=prologue-mission1&topic=archipelago&review=1. Choose a wrong answer to inspect the new feedback.
+- Separate existing challenge Continue-navigation fixture failures remain unresolved; this release changes no challenge gameplay JavaScript. See docs/learning-text-contrast-fixes.md.
+
+### 2026-11-06 - Priority 1: chapter continuation failures resolved locally
+
+- Repaired outdated chapter/evidence browser fixtures missing actual keepsake/art dependencies and single-quoted import stripping.
+- Isolated optional keepsake rendering failures so they cannot interrupt required saved-result/Continue controls.
+- Both challenge suites passed, including injected decoration failure, correct next chapter, unchanged reward data, retry/replay and session recovery.
+- No production deployment. See docs/chapter-continuation-investigation.md. Next: design-system consolidation with contrast regression coverage.
+
+### 2026-11-06 - Shared learning palette consolidation
+
+- Extracted surface/ink, selected, success and retry colors into css/learning-tokens.css; story and chapter challenge pages use the same tokens.
+- Replaced repeated raw component colors and removed most forced overrides, including the legacy challenge explanation paragraph color.
+- Preserved a documented scoped paper-ink override against the older global forced heading rule.
+- All 108 sampled contrast checks passed. No gameplay/layout/database changes or deployment. See docs/learning-palette-consolidation.md.
+
+### 2026-11-06 - Learning spacing and text hierarchy
+
+- Added shared reading rhythm tokens and component layout rules on stories/chapter challenges, separate from the palette mappings.
+- Improved question/heading hierarchy, line lengths, paragraph leading, review-body size, option spacing and touch-target sizing with mobile-specific padding.
+- All 108 contrast samples and six responsive layout variants passed; long question wrapping, body size, control height and overflow checks found no failures.
+- No gameplay/database changes or deployment. See docs/learning-spacing-hierarchy.md.
+
+### 2026-11-06 - Classroom keyboard accessibility pass
+
+- Teacher report opening focuses the learning heading; Back to Student List restores the originating student's report button where available.
+- Roster pagination moves focus to the new page description, with visible programmatic focus styles and reduced-motion-aware return scrolling.
+- Student classroom tabs expose selected-tab semantics without redundant toggle-button aria-pressed state.
+- Responsive teacher report/focus and student classroom/tab regressions passed. This is a targeted accessibility pass, not whole-site certification.
+- Local only, no deployment. See docs/classroom-keyboard-accessibility.md.
+
+### 2026-11-06 - Practice completion evidence integrity
+
+- Fixed same-time duplicate sessions inflating clean-session counts, multiple-attempt results claiming first-try success, contradictory duplicate rows and arbitrary selection between tied conflicting outcomes.
+- Kept existing question/session/difficulty policy, retries and rewards unchanged. Updated uncertain-evidence wording.
+- Eleven evidence-policy checks plus ordinary/pilot actual practice browser regressions passed locally.
+- Explicit remaining limitation: first-try answers do not prove unaided success; per-result hint-use tracking and legacy unknown handling need a separate implementation. No deployment/schema changes.
+- See docs/practice-evidence-logic-audit.md.
+
+### 2026-11-06 - Explicit practice hint-request evidence
+
+- Added per-question hintRequested evidence and current-question draft persistence; legacy/missing tracking stays unknown.
+- Session summaries separate in-app hint requests from first-try accuracy and explicitly avoid claiming unaided understanding or confirmed delivery.
+- Hint requests survive reload, reset per question and do not change existing first-try scores/review thresholds/rewards.
+- Policy, actual hint-request/draft browser, ordinary practice and first-mission pilot regressions passed. Dictionaries updated; evidence remains browser-reported, not independently enforced by nested-field rules.
+- Local only. See docs/practice-hint-evidence.md.
+
+### 2026-11-06 - Story completion UI hierarchy and structure
+
+- Reorganized completion into a heading, primary next step, recap and optional discovery sections while preserving controller IDs and existing activity behavior.
+- Added dedicated responsive presentation: readable navy/gold surfaces, stacked mobile quiz facts, consistent action grouping and clear optional extras.
+- Reworded completion as reaching the lesson end and exploring ideas rather than verified understanding; explicit topic-review heading selector avoids fragile first-paragraph assumptions.
+- Story-controller regression passed. Populated completion/full CSS fixtures passed combined 120 contrast samples and responsive layout checks.
+- Local only, deployment deferred. See docs/story-completion-polish.md.
+
+### 2026-11-06 - Friendlier story-completion game checkpoint
+
+- Added existing Bayani art, a restrained check badge and welcoming copy; emphasized a single next-step card with a clear gold action.
+- Grouped optional learning extras under one collapsed Explore more disclosure. Empty reminders/extras hide automatically; recap stays secondary.
+- Added a brief mascot entrance with system/saved reduced-motion support; no looping effects, sounds, new reward claims or focus stealing.
+- Actual story-controller regression and 128 combined contrast samples/layout fixtures passed, including optional activity visibility and reduced-motion checks.
+- Local only; deployment remains deferred as requested.

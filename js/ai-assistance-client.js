@@ -1,5 +1,5 @@
 
-import { functions } from "./firebase-config.js";
+import { functions } from "./firebase-functions.js";
 
 import {
     httpsCallable

@@ -1,7 +1,9 @@
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),{spawnSync}=require('node:child_process');
 const root=path.join(__dirname,'..');
 const temp=fs.mkdtempSync(path.join(os.tmpdir(),'lakbay-mission-flow-'));
-const source=name=>fs.readFileSync(path.join(root,'js',name),'utf8').replace(/import[\s\S]*?from\s+"[^"]+";/g,'').replace(/export /g,'');
+const {fixtureSource}=require('./fixtures/assessment-api-browser.cjs');
+const rawSource=name=>fs.readFileSync(path.join(root,'js',name),'utf8').replace(/import[\s\S]*?from\s+["'][^"']+["'];/g,'').replace(/export /g,'');
+const source=name=>fixtureSource(name,rawSource(name),'fixtureRecords');
 const fixture=require('./fixtures/mission-quiz-catalog.json'),plan=require('../data/mission-quiz-flow-migration.json');
 const catalogs={quizzes:fixture.quizzes,questions:fixture.questions};
 for(const write of plan.writes){const[name,id]=write.path.split('/');if(!catalogs[name])continue;const old=catalogs[name].find(q=>q.id===id);if(old)Object.assign(old,write.fields);else catalogs[name].push({id,...write.fields});}
@@ -13,6 +15,8 @@ let page=fs.readFileSync(path.join(root,'pages/quiz.html'),'utf8').replace(/<scr
 const styles=["student.css","quiz.css",'navy-gold-theme.css'].map(name=>fs.readFileSync(path.join(root,"css",name),"utf8")).join("\n");
 page=page.replace("</head>","<style>"+styles+"</style></head>");
 const script=`
+if(${process.argv.includes('--storage-blocked')})Object.defineProperty(window,'sessionStorage',{get(){throw Error('Storage blocked');}});
+
 function mountLearningNavigation(container, activity, search = window.location.search) {
     if (!container) return;
     const chapter = new URLSearchParams(search).get("chapter");
@@ -60,6 +64,7 @@ let fixtureAuthListener;
 const onAuthStateChanged=(_,fn)=>{fixtureAuthListener=fn;queueMicrotask(()=>fn(auth.currentUser));};
 window.alert=message=>{throw new Error(message);};
 const loadProgressionPolicy=async()=>fixtureRecords.get('learningSettings/progression');
+${source('student-session-storage.js')}
 ${source('daily-policy.js')}
 ${source('progression-policy.js')}
 ${source('activity-policy.js')}
@@ -105,6 +110,10 @@ async function answerSet(correct){
  document.getElementById('nextQuestionButton').click();await tick();
  check(questions[1].difficulty==='easy','Incorrect answer did not lower the next question difficulty');
  check(new Set(questions.map(question=>question.topic)).size===5,'Adaptive routing changed required topic coverage');
+ const laterId=questions[1].id;studentAnswers[laterId]='A';currentQuestionIndex=0;displayQuestion();
+ let resetPrompt='';window.confirm=message=>{resetPrompt=message;return false;};document.querySelector('.quiz-option[data-option="'+openingQuestion.correctAnswer+'"]').click();
+ check(studentAnswers[openingQuestion.id]===wrongOpeningAnswer&&studentAnswers[laterId]==='A'&&resetPrompt.includes('1 later question'),'Cancel did not preserve answers or explain reset');
+ window.confirm=()=>true;document.querySelector('.quiz-option[data-option="'+openingQuestion.correctAnswer+'"]').click();check(studentAnswers[openingQuestion.id]===openingQuestion.correctAnswer&&!studentAnswers[laterId],'Confirmed answer change did not reset adaptive answers');
  restartQuizButton.click();await tick();
  check(currentQuestionIndex===0&&questions.length===5&&Object.keys(studentAnswers).length===0,'Adaptive probe did not reset before browser flow checks');
  document.querySelector('#quizMissionBriefing button')?.click();
@@ -150,14 +159,16 @@ async function answerSet(correct){
  check(!quizResult.hidden&&quizResultTitle.textContent.includes('Training'),'Failed result not shown');
  check(document.getElementById('reinforcePassedTopicsLink').hidden,'Failure offered duplicate passing-only practice link');
  check(getComputedStyle(document.getElementById('reinforcePassedTopicsLink')).display==='none','Failed result displays hidden reinforcement link');
- check(document.getElementById('quizWeakTopics').children.length===3,'Weak topics missing');
+ check(document.querySelectorAll('#quizWeakTopics .result-topic-route').length===3,'Weak topics missing');
  check(fixtureRecords.get('users/test').xp===0,'Failure awarded XP');
  check(quizResult.dataset.outcome==='retry'&&document.getElementById('expeditionResultSummary').textContent.includes(Math.ceil(questions.length*requirePassingScore(currentQuiz)/100)+' correct'),'Recovery summary omits the required correct-answer count');
  const topicSceneLink=document.querySelector('.result-topic-route a');check(topicSceneLink&&new URL(topicSceneLink.href).searchParams.get('reviewTopic'),'Result does not route to teaching scenes');
 
  check(topicSceneLink.textContent==='1. Review the lesson'&&topicSceneLink.getAttribute('aria-label').includes('Review the lesson:'),'Recovery lesson step is unclear');
  const practiceStep=document.querySelector('.result-topic-route a:nth-of-type(2)');check(practiceStep.textContent==='2. Try practice'&&new URL(practiceStep.href).searchParams.get('topic')===new URL(topicSceneLink.href).searchParams.get('reviewTopic'),'Recovery practice step lost its topic');
- check(!retryQuizButton.hidden,'Retry unavailable');
+ check(!retryQuizButton.hidden&&retryQuizButton.textContent==='Retry Quiz Now','Explicit retry shortcut unavailable');
+ const extraTopics=document.querySelector('.quiz-other-review-topics');check(extraTopics&&!extraTopics.open&&extraTopics.querySelectorAll('.result-topic-route').length===2,'Recovery does not show one recommended topic first');check(document.querySelector('#quizWeakTopics > .result-topic-route').textContent.includes('Start here'),'Primary recovery recommendation missing');check(document.getElementById('reviewLessonLink').hidden,'Failure still displays duplicate general lesson action');
+ check(Boolean(continueResultButton.closest('.quiz-result-actions').compareDocumentPosition(document.getElementById('quizAnswerReview'))&Node.DOCUMENT_POSITION_FOLLOWING),'Recovery actions are buried below answer explanations');
  const missedReview=document.querySelector('.quiz-review-item.incorrect');
  check(missedReview.textContent.includes('Specific feedback <img src=x>')&&missedReview.textContent.includes('Database learning point'),'Authored feedback not shown');
  check(!missedReview.querySelector('img'),'Feedback rendered as HTML');
@@ -203,6 +214,10 @@ async function answerSet(correct){
  const navigation=document.querySelector('nav[aria-label="Learning path"]');
  check(navigation&&navigation.querySelector('[aria-current="page"]'),'Current learning activity not labeled');
  check(new URL(navigation.querySelectorAll('a')[1].href).searchParams.get('chapter')==='c1','Learning navigation lost chapter context');
+
+ quizSubmitted=true;studentAnswers={};lockedAnswers={};
+ questions=${JSON.stringify(require('../data/content-quality-fixes-migration.json').writes.filter(w=>w.fields.question).map(w=>({id:w.path.split('/')[1],...w.expected,...w.fields})))};
+ for(let i=0;i<questions.length;i++){currentQuestionIndex=i;displayQuestion();check(questionText.textContent===questions[i].question,'Revised question text did not render');check(quizOptions.querySelectorAll('button').length===4,'Revised choices did not render');check([...quizOptions.querySelectorAll('button')].some(b=>b.textContent.includes(questions[i]['option'+questions[i].correctAnswer])),'Revised scoring answer lost');}
  document.getElementById('result').textContent='PASS: fail/retry/pass, rewards, load recovery, auth refresh and delayed load/save after sign-out';
 })().catch(error=>{document.getElementById('result').textContent='FAIL: '+error.message;});
 `;

@@ -36,7 +36,6 @@ import {
 import {
     doc,
     setDoc,
-    getDoc,
     getDocFromServer,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
@@ -54,7 +53,7 @@ async function prepareAuthPersistence(remember = false) {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
+function initializeAuthUI() {
 
 
     // ======================================
@@ -228,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     showMessage(message,"Names must be 100 characters or fewer.","error");return;
                 }
                 if (!document.getElementById("studentTerms").checked) {
-                    showMessage(message,"Please read the test-version account notice and check the box to continue.","error");return;
+                    showMessage(message,"Please read the account notice and check the box to continue.","error");return;
                 }
                 if (createdStudent && createdStudent.email?.toLowerCase()!==email.toLowerCase()) {
                     showMessage(message,"Finish saving the account you just created before changing the email.","error");return;
@@ -369,6 +368,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (teacherForm) {
+        teacherForm.setAttribute?.('data-auth-ready','true');
+        const readyTeacherButton=teacherForm.querySelector('button[type="submit"]');if(readyTeacherButton)readyTeacherButton.disabled=false;
+        let teacherBusy=false,teacherComplete=false,createdTeacher=null;
 
         console.log(
             "Teacher registration form detected."
@@ -380,6 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
             async (event) => {
 
                 event.preventDefault();
+                if(teacherBusy||teacherComplete)return;
 
 
                 // --------------------------
@@ -476,6 +479,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
+                if ([firstName,middleName,lastName].some(name=>name.length>100)) {
+                    showMessage(message,"Names must be 100 characters or fewer.","error");return;
+                }
+                if(!document.getElementById("teacherTerms").checked){
+                    showMessage(message,"Read the teacher account notice and check the box to continue.","error");return;
+                }
+                if(createdTeacher&&createdTeacher.email?.toLowerCase()!==email.toLowerCase()){
+                    showMessage(message,"Finish saving the account you just created before changing the email.","error");return;
+                }
                 if (password.length < 6) {
 
                     showMessage(
@@ -504,6 +516,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 // START REGISTRATION
                 // ==================================
 
+                teacherBusy=true;
+                if(document.body.dataset?.unifiedTeacherSetup==='true')teacherForm.dataset.creating='true';
                 setButtonLoading(
                     submitButton,
                     true,
@@ -524,16 +538,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     // ==================================
 
                     await prepareAuthPersistence();
-                    const userCredential =
-                        await createUserWithEmailAndPassword(
-                            auth,
-                            email,
-                            password
-                        );
-
-
-                    const user =
-                        userCredential.user;
+                    let user=createdTeacher;
+                    if(!user&&auth.currentUser?.email?.toLowerCase()===email.toLowerCase())user=auth.currentUser;
+                    if(!user)user=(await createUserWithEmailAndPassword(auth,email,password)).user;
+                    createdTeacher=user;
+                    document.getElementById('teacherPassword').disabled=true;
+                    document.getElementById('teacherConfirmPassword').disabled=true;
+                    const current=()=>{if(auth.currentUser?.uid!==user.uid)throw Object.assign(Error('Your session changed. Sign in again before finishing your teacher profile.'),{code:'registration/session-changed'});};
+                    current();
 
 
                     console.log(
@@ -546,31 +558,28 @@ document.addEventListener("DOMContentLoaded", () => {
                     // CREATE FIRESTORE PROFILE
                     // ==================================
 
-                    await setDoc(
-                        doc(
-                            db,
-                            "users",
-                            user.uid
-                        ),
-                        {
-
-                            firstName: firstName,
-
-                            middleName: middleName,
-
-                            lastName: lastName,
-
-                            email: email,
-
-                            role: "teacher",
-
-                            status: "pending",
-
-                            createdAt:
-                                serverTimestamp()
-
+                    const profileRef=doc(db,'users',user.uid);
+                    const acceptable=profile=>profile?.role==='teacher'&&['pending','active'].includes(profile.status)&&profile.email?.toLowerCase()===email.toLowerCase();
+                    let confirmed;
+                    const existing=await getDocFromServer(profileRef);current();
+                    if(existing.exists()){
+                        confirmed=existing.data();
+                        if(!acceptable(confirmed))throw Object.assign(Error('This account already has a profile that cannot be registered as a teacher. Use Sign In or contact your administrator.'),{code:'registration/profile-conflict'});
+                    }else{
+                        try{
+                            await setDoc(profileRef,{firstName,middleName,lastName,email:user.email||email,role:'teacher',status:'pending',createdAt:serverTimestamp()});
+                            current();confirmed={status:'pending'};
+                        }catch(error){
+                            current();
+                            const saved=await getDocFromServer(profileRef).catch(()=>null);current();
+                            if(!saved?.exists()||!acceptable(saved.data()))throw error;
+                            confirmed=saved.data();
                         }
-                    );
+                    }
+                    current();teacherComplete=true;
+                    const continueLink=document.getElementById('teacherRegistrationContinue');
+                    if(continueLink){continueLink.href='teacher-application.html';continueLink.textContent='Continue teacher setup';continueLink.hidden=false;}
+                    if(document.body.dataset?.unifiedTeacherSetup==='true'){teacherForm.dataset.creating='false';if(continueLink)continueLink.hidden=true;document.getElementById('teacherPassword').value='';document.getElementById('teacherConfirmPassword').value='';teacherForm.reset();document.dispatchEvent(new CustomEvent('teacher-account-ready'));}
 
 
                     console.log(
@@ -584,7 +593,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     showMessage(
                         message,
-                        "Your teacher account has been created successfully. Please wait for Administrator verification before accessing teacher features.",
+                        "Your account is ready. Continue teacher setup to verify your email and add your teaching details. Classroom tools unlock after administrator approval. Your password is unchanged.",
                         "success"
                     );
 
@@ -603,14 +612,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     showMessage(
                         message,
-                        getRegistrationErrorMessage(
-                            error.code
-                        ),
+                        error.code?.startsWith('registration/')?error.message:error.code==='auth/session-persistence-unavailable'?getRegistrationErrorMessage(error.code):createdTeacher?"Your sign-in account is ready, but the teacher profile could not be confirmed. Retry Register as Teacher to finish. Keep the same email, or sign in again if your session expired.":getRegistrationErrorMessage(error.code),
                         "error"
                     );
 
 
                 } finally {
+                    teacherBusy=false;
+                    if(document.body.dataset?.unifiedTeacherSetup==='true')teacherForm.dataset.creating='false';
 
 
                     setButtonLoading(
@@ -618,6 +627,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         false,
                         "Register as Teacher"
                     );
+                    submitButton.disabled=teacherComplete;
 
 
                 }
@@ -640,6 +650,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (loginForm) {
+        loginForm.setAttribute?.("data-auth-ready","true");
+        const readyButton=loginForm.querySelector('button[type="submit"]');if(readyButton)readyButton.disabled=false;
+        clearMessage(document.getElementById("loginMessage"));
         let loginBusy = false;
 
         console.log(
@@ -759,9 +772,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                     const userSnapshot =
-                        await getDoc(
+                        await getDocFromServer(
                             userReference
                         );
+                    if(auth.currentUser?.uid!==user.uid)throw Object.assign(Error('Session changed.'),{code:'auth/session-changed'});
 
 
                     // ==================================
@@ -787,6 +801,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const userData =
                         userSnapshot.data();
+                    if(userData.role==='teacher'&&['pending','active'].includes(userData.status)&&(!userData.teacherVerifiedRevision||user.emailVerified!==true)){
+                        window.location.href='teacher-application.html';return;
+                    }
 
 
                     console.log(
@@ -880,6 +897,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         userData.status === "active"
                     ) {
 
+
+                        const teacherApplication=await getDocFromServer(doc(db,'teacherApplications',user.uid));
+                        if(auth.currentUser?.uid!==user.uid)throw Object.assign(Error('Session changed.'),{code:'auth/session-changed'});
+                        if(!teacherApplication.exists()||teacherApplication.data().status!=='approved'||teacherApplication.data().revision!==userData.teacherVerifiedRevision){window.location.href='teacher-application.html';return;}
 
                         console.log(
                             "Redirecting to Teacher Dashboard..."
@@ -1459,6 +1480,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         switch (errorCode) {
+            case "auth/session-changed":
+                return "Your sign-in session changed. Please sign in again.";
+            case "unavailable":
+            case "deadline-exceeded":
+                return "We could not check your current account access. Check your connection and try signing in again.";
 
             case "auth/session-persistence-unavailable":
                 return "Your browser could not apply your sign-in choice. Check its privacy settings, then try again.";
@@ -1537,4 +1563,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-});
+}
+
+if(document.readyState && document.readyState!=="loading")initializeAuthUI();
+else document.addEventListener("DOMContentLoaded",initializeAuthUI,{once:true});

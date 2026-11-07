@@ -1,0 +1,757 @@
+{
+  "mode": "diagnostic-unchanged-trusted-core-real-emulator",
+  "project": "demo-lakbaypanahon",
+  "baselineOptions": "SDK transaction defaults unchanged; no outer retry during each measured wave",
+  "matrix": [
+    {
+      "name": "same-student-scores-100-and-80",
+      "students": 1,
+      "requests": 2,
+      "concurrent": true,
+      "elapsedMs": 3852.6967000000004,
+      "successfulResponses": 2,
+      "failedResponses": 0,
+      "committedAttemptResults": 2,
+      "distinctCommittedAttempts": 2,
+      "latencyAll": {
+        "count": 2,
+        "p50Ms": 3182.0349000000024,
+        "p95Ms": 3799.4352,
+        "maxMs": 3799.4352
+      },
+      "latencySuccessful": {
+        "count": 2,
+        "p50Ms": 3182.0349000000024,
+        "p95Ms": 3799.4352,
+        "maxMs": 3799.4352
+      },
+      "transactionCallbacks": 4,
+      "transactionInvocations": 2,
+      "retryCallbacks": 2,
+      "queries": {
+        "chapters": 4,
+        "missions": 4,
+        "questions": 4,
+        "practiceQuestions": 4,
+        "studentQuizAttempts": 4,
+        "studentPracticeProgress": 4,
+        "studentReviewEvents": 4,
+        "artifacts": 4
+      },
+      "profiles": [
+        {
+          "uid": "diag-grades",
+          "xp": 45,
+          "level": 1
+        }
+      ],
+      "outcomes": [
+        {
+          "uid": "diag-grades",
+          "ok": true,
+          "ms": 3799.4352,
+          "result": {
+            "reviewQuestions": [
+              {
+                "id": "quiz-1-question-2",
+                "question": "A lesson picture shows homes. Another clue tells how families help one another. What do these clues tell us?",
+                "optionA": "People formed a community connected by relationships and responsibilities.",
+                "optionB": "Every early community had exactly the same homes.",
+                "optionC": "Homes alone reveal every rule followed by the people.",
+                "optionD": "The scene proves how all Philippine communities were organized.",
+                "topic": "barangay-community",
+                "topicLabel": "Barangay Community",
+                "difficulty": "medium",
+                "order": 2,
+                "correctAnswer": "A",
+                "explanation": "Family ties and shared duties show how people lived together. These clues do not tell us that every community was the same.",
+                "learningPoint": "A community includes people and their relationships. Houses alone cannot explain how people lived together.",
+                "historicalClue": "Family ties and shared duties show how people lived together. These clues do not tell us that every community was the same.",
+                "answerExplanations": {
+                  "A": "The family clue describes people helping one another. That shows relationships and responsibilities, as well as places to live.",
+                  "B": "These clues describe one teaching example. They do not show the homes in every community.",
+                  "C": "Homes tell us where people live. To learn about their rules and relationships, we need information about the people too.",
+                  "D": "One story community cannot describe all communities. Revisit Arrival in the Barangay and compare what the Homes and Families clues tell you."
+                }
+              },
+              {
+                "id": "quiz-1-question-3-adaptive-hard",
+                "question": "A fictional report says people shared tasks for a gathering, but some had obligations that limited their choices. Which interpretation fits both clues?",
+                "optionA": "Shared work proves that every person had equal rights and freedom.",
+                "optionB": "Different obligations mean that people did not cooperate.",
+                "optionC": "Cooperation can involve shared work even when people's rights or choices differ.",
+                "optionD": "The report proves that all early communities had the same social system.",
+                "topic": "community-cooperation",
+                "difficulty": "hard",
+                "correctAnswer": "C",
+                "explanation": "Working toward a shared purpose does not establish that people had equal rights or freedom. The report also cannot represent every community.",
+                "learningPoint": "Cooperation and unequal rights or choices can exist in the same situation.",
+                "answerExplanations": {
+                  "A": "The report mentions shared tasks and limited choices, so equal freedom is not supported.",
+                  "B": "People can cooperate through shared work while having different obligations.",
+                  "C": "Correct. It accounts for cooperation and the differences in people's choices.",
+                  "D": "One fictional report cannot establish how all communities were organized."
+                }
+              },
+              {
+                "id": "quiz-1-question-5-adaptive-hard",
+                "question": "Two fictional accounts describe different practices for using a shared place. What is the strongest conclusion from these clues?",
+                "optionA": "The accounts show that customs could differ; more evidence is needed to explain each practice or compare other communities.",
+                "optionB": "One practice must be correct for every community because both involve a shared place.",
+                "optionC": "The practices are written laws because people follow them.",
+                "optionD": "Different practices mean the communities had no shared expectations.",
+                "topic": "community-customs",
+                "difficulty": "hard",
+                "correctAnswer": "A",
+                "explanation": "The accounts support the idea that practices may differ. They do not establish that either practice was universal or that every expectation was a written law.",
+                "learningPoint": "Use evidence to compare customs without assuming they were universal or identical to written laws.",
+                "answerExplanations": {
+                  "A": "Correct. It recognizes variation and limits the conclusion to the accounts provided.",
+                  "B": "The accounts themselves describe different practices, so neither establishes a universal rule.",
+                  "C": "Following a practice does not by itself show that it was a written law.",
+                  "D": "Different practices can still guide expectations within each community."
+                }
+              },
+              {
+                "id": "quiz-1-question-1-adaptive-hard",
+                "question": "A fictional report says a datu heard two families' concerns and guided a discussion about a shared space. What conclusion is best supported?",
+                "optionA": "Every datu used the same process and had the same authority in every community.",
+                "optionB": "The datu helped guide a community matter in this report; more evidence is needed to compare other communities.",
+                "optionC": "The report proves that local customs never influenced community decisions.",
+                "optionD": "The families had no responsibilities because a leader was present.",
+                "topic": "datu-leadership",
+                "difficulty": "hard",
+                "correctAnswer": "B",
+                "explanation": "The report supports a limited conclusion about the datu's role in this situation. It does not establish one uniform practice for all communities.",
+                "learningPoint": "Match the size of a claim to the evidence; leadership practices could vary.",
+                "answerExplanations": {
+                  "A": "This generalizes one fictional report to every community without evidence.",
+                  "B": "Correct. It describes what the report supports and recognizes what it cannot establish.",
+                  "C": "The report does not say whether a local custom influenced the discussion.",
+                  "D": "A leader's involvement does not show that families had no responsibilities."
+                }
+              },
+              {
+                "id": "quiz-1-question-4-adaptive-hard",
+                "question": "A fictional account describes shared work and also says some people had obligations that restricted when they could leave. Which conclusion best reflects both details?",
+                "optionA": "Working together means everyone had the same rights.",
+                "optionB": "Different obligations prove that no one contributed to community life.",
+                "optionC": "The account establishes the exact social system used in every early Philippine community.",
+                "optionD": "People could contribute to shared work while having different duties and freedom.",
+                "topic": "social-organization",
+                "difficulty": "hard",
+                "correctAnswer": "D",
+                "explanation": "Shared work and unequal obligations can both be present. The account supports a limited comparison, not a rule for every community.",
+                "learningPoint": "Compare duties and choices without turning one account into a universal claim.",
+                "answerExplanations": {
+                  "A": "Shared work does not show that rights were equal.",
+                  "B": "Different obligations do not erase people's contributions.",
+                  "C": "One account cannot establish the same system for every community.",
+                  "D": "Correct. It includes both cooperation and differences in duties or freedom."
+                }
+              }
+            ],
+            "score": 100,
+            "correctAnswers": 5,
+            "totalQuestions": 5,
+            "passed": true,
+            "topicsForReview": [],
+            "firstCompletion": false,
+            "xpReward": 0,
+            "totalXp": 45,
+            "level": 1,
+            "bestScore": 100,
+            "learningStreak": 0,
+            "progressionPolicy": {
+              "xpPerLevel": 100,
+              "version": 1
+            },
+            "artifactResult": {
+              "artifact": {
+                "missionId": "mission-1",
+                "name": "Barangay Community Emblem",
+                "description": "A collectible representing the community life and leadership explored in this mission.",
+                "icon": "🏘️",
+                "rarity": "common",
+                "order": 1,
+                "status": "active",
+                "learningDetails": {
+                  "represents": "This collectible marks your investigation of Life in the Barangay.",
+                  "lessonConnection": "Barangay life involved local leadership, different social roles, customs and cooperation. Communities could organize themselves in different ways.",
+                  "reflectionQuestion": "Choose one idea from this lesson. What clue helped you understand it, and what would you still like to learn?",
+                  "collectibleNote": "This is a learning-game token, not an original historical object or a claim that you own cultural heritage."
+                },
+                "id": "artifact-1"
+              },
+              "newlyEarned": false
+            },
+            "badgeResult": {
+              "badge": null,
+              "newlyEarned": false
+            },
+            "adaptiveFollowup": {
+              "questionIds": [
+                "practice-1",
+                "practice5-1-adaptive",
+                "practice4-1-adaptive"
+              ],
+              "answers": {
+                "practice-1": "A",
+                "practice5-1-adaptive": "A",
+                "practice4-1-adaptive": "D"
+              },
+              "correctAnswers": 3,
+              "totalQuestions": 3,
+              "score": 100,
+              "items": [
+                {
+                  "questionId": "practice-1",
+                  "topic": "barangay-community",
+                  "difficulty": "medium",
+                  "selectedAnswer": "A",
+                  "correctAnswer": "A",
+                  "isCorrect": true
+                },
+                {
+                  "questionId": "practice5-1-adaptive",
+                  "topic": "community-cooperation",
+                  "difficulty": "hard",
+                  "selectedAnswer": "A",
+                  "correctAnswer": "A",
+                  "isCorrect": true
+                },
+                {
+                  "questionId": "practice4-1-adaptive",
+                  "topic": "community-customs",
+                  "difficulty": "hard",
+                  "selectedAnswer": "D",
+                  "correctAnswer": "D",
+                  "isCorrect": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "uid": "diag-grades",
+          "ok": true,
+          "ms": 3182.0349000000024,
+          "result": {
+            "reviewQuestions": [
+              {
+                "id": "quiz-1-question-5-retry",
+                "question": "An elder explains a custom, or shared practice, in one community. A learner says every early community used it. How should you respond?",
+                "optionA": "Agree because one example proves a rule for all places.",
+                "optionB": "Ignore the elder because customs cannot guide relationships.",
+                "optionC": "Assume every custom was also a written law.",
+                "optionD": "Use the example for this community. Look for more evidence about other places.",
+                "topic": "community-customs",
+                "topicLabel": "Community Customs",
+                "difficulty": "medium",
+                "order": 105,
+                "correctAnswer": "D",
+                "explanation": "Customs could differ. One community's practice does not tell us what happened in every other community.",
+                "learningPoint": "Customs can differ between communities and are not always written laws. One example does not describe every place.",
+                "historicalClue": "Customs could differ. One community's practice does not tell us what happened in every other community.",
+                "answerExplanations": {
+                  "A": "The elder describes one community's practice. One example does not tell us what happened in every place.",
+                  "B": "Customs can guide how people treat one another. The elder's example can help us understand this community.",
+                  "C": "People can learn and pass on a practice without writing it as a law. Revisit the Custom explanation in Working Together.",
+                  "D": "Use the example to understand this community. To describe other communities, look for information about those places too."
+                }
+              },
+              {
+                "id": "quiz-1-question-2-adaptive-easy",
+                "question": "A drawing shows several homes. A second clue says the families meet to plan how to meet a shared need. Which clue best shows a connection between people?",
+                "optionA": "The homes have different roof shapes.",
+                "optionB": "A path runs between two homes.",
+                "optionC": "The families plan together to meet a shared need.",
+                "optionD": "The drawing uses the same color for each doorway.",
+                "topic": "barangay-community",
+                "difficulty": "easy",
+                "correctAnswer": "C",
+                "explanation": "Planning together gives evidence about relationships and shared responsibilities. Details about buildings show places, but not by themselves how people are connected.",
+                "learningPoint": "A community involves people and relationships, not only a group of homes.",
+                "answerExplanations": {
+                  "A": "Different roofs describe buildings, not how the families relate.",
+                  "B": "A path shows a route between places but does not explain the families' relationships.",
+                  "C": "Correct. The families' shared planning is evidence of a relationship and responsibility.",
+                  "D": "A drawing choice does not show how people are connected."
+                }
+              },
+              {
+                "id": "quiz-1-question-3-retry",
+                "question": "Some people prepare a meeting place. Others bring materials or help with food. Why is this cooperation?",
+                "optionA": "Everyone must have the same role and place in society.",
+                "optionB": "People do different tasks to help the same gathering.",
+                "optionC": "Only the largest group has a responsibility.",
+                "optionD": "The work proves that every community followed the same practices.",
+                "topic": "community-cooperation",
+                "topicLabel": "Community Cooperation",
+                "difficulty": "medium",
+                "order": 103,
+                "correctAnswer": "B",
+                "explanation": "The groups do different tasks for the same purpose. Working together does not mean everyone had the same rights.",
+                "learningPoint": "Different tasks can support the same goal. Cooperation does not mean everyone has the same role, rights, or freedom.",
+                "historicalClue": "The groups do different tasks for the same purpose. Working together does not mean everyone had the same rights.",
+                "answerExplanations": {
+                  "A": "Preparing the place, bringing materials, and helping with food are different tasks. Sharing a goal does not mean everyone has the same role or social position.",
+                  "B": "Each group helps the gathering in a different way. The shared goal connects their work.",
+                  "C": "People bringing materials and helping with food also contribute. More than one group has a responsibility.",
+                  "D": "This example shows how these people help with one gathering. It cannot tell us what every community did. Revisit Life in the Community."
+                }
+              },
+              {
+                "id": "quiz-1-question-1-adaptive-hard",
+                "question": "A fictional report says a datu heard two families' concerns and guided a discussion about a shared space. What conclusion is best supported?",
+                "optionA": "Every datu used the same process and had the same authority in every community.",
+                "optionB": "The datu helped guide a community matter in this report; more evidence is needed to compare other communities.",
+                "optionC": "The report proves that local customs never influenced community decisions.",
+                "optionD": "The families had no responsibilities because a leader was present.",
+                "topic": "datu-leadership",
+                "difficulty": "hard",
+                "correctAnswer": "B",
+                "explanation": "The report supports a limited conclusion about the datu's role in this situation. It does not establish one uniform practice for all communities.",
+                "learningPoint": "Match the size of a claim to the evidence; leadership practices could vary.",
+                "answerExplanations": {
+                  "A": "This generalizes one fictional report to every community without evidence.",
+                  "B": "Correct. It describes what the report supports and recognizes what it cannot establish.",
+                  "C": "The report does not say whether a local custom influenced the discussion.",
+                  "D": "A leader's involvement does not show that families had no responsibilities."
+                }
+              },
+              {
+                "id": "quiz-1-question-4-adaptive-hard",
+                "question": "A fictional account describes shared work and also says some people had obligations that restricted when they could leave. Which conclusion best reflects both details?",
+                "optionA": "Working together means everyone had the same rights.",
+                "optionB": "Different obligations prove that no one contributed to community life.",
+                "optionC": "The account establishes the exact social system used in every early Philippine community.",
+                "optionD": "People could contribute to shared work while having different duties and freedom.",
+                "topic": "social-organization",
+                "difficulty": "hard",
+                "correctAnswer": "D",
+                "explanation": "Shared work and unequal obligations can both be present. The account supports a limited comparison, not a rule for every community.",
+                "learningPoint": "Compare duties and choices without turning one account into a universal claim.",
+                "answerExplanations": {
+                  "A": "Shared work does not show that rights were equal.",
+                  "B": "Different obligations do not erase people's contributions.",
+                  "C": "One account cannot establish the same system for every community.",
+                  "D": "Correct. It includes both cooperation and differences in duties or freedom."
+                }
+              }
+            ],
+            "score": 80,
+            "correctAnswers": 4,
+            "totalQuestions": 5,
+            "passed": true,
+            "topicsForReview": [
+              "community-customs"
+            ],
+            "firstCompletion": true,
+            "xpReward": 45,
+            "totalXp": 45,
+            "level": 1,
+            "bestScore": 80,
+            "learningStreak": 0,
+            "progressionPolicy": {
+              "xpPerLevel": 100,
+              "version": 1
+            },
+            "artifactResult": {
+              "artifact": {
+                "missionId": "mission-1",
+                "name": "Barangay Community Emblem",
+                "description": "A collectible representing the community life and leadership explored in this mission.",
+                "icon": "🏘️",
+                "rarity": "common",
+                "order": 1,
+                "status": "active",
+                "learningDetails": {
+                  "represents": "This collectible marks your investigation of Life in the Barangay.",
+                  "lessonConnection": "Barangay life involved local leadership, different social roles, customs and cooperation. Communities could organize themselves in different ways.",
+                  "reflectionQuestion": "Choose one idea from this lesson. What clue helped you understand it, and what would you still like to learn?",
+                  "collectibleNote": "This is a learning-game token, not an original historical object or a claim that you own cultural heritage."
+                },
+                "id": "artifact-1"
+              },
+              "newlyEarned": true
+            },
+            "badgeResult": {
+              "badge": null,
+              "newlyEarned": false
+            },
+            "adaptiveFollowup": {
+              "questionIds": [
+                "easy-review-mission-1-community-customs",
+                "practice4-1",
+                "practice-1-adaptive"
+              ],
+              "answers": {
+                "easy-review-mission-1-community-customs": "B",
+                "practice4-1": "D",
+                "practice-1-adaptive": "A"
+              },
+              "correctAnswers": 3,
+              "totalQuestions": 3,
+              "score": 100,
+              "items": [
+                {
+                  "questionId": "easy-review-mission-1-community-customs",
+                  "topic": "community-customs",
+                  "difficulty": "easy",
+                  "selectedAnswer": "B",
+                  "correctAnswer": "B",
+                  "isCorrect": true
+                },
+                {
+                  "questionId": "practice4-1",
+                  "topic": "community-customs",
+                  "difficulty": "medium",
+                  "selectedAnswer": "D",
+                  "correctAnswer": "D",
+                  "isCorrect": true
+                },
+                {
+                  "questionId": "practice-1-adaptive",
+                  "topic": "barangay-community",
+                  "difficulty": "hard",
+                  "selectedAnswer": "A",
+                  "correctAnswer": "A",
+                  "isCorrect": true
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "controls": [
+    {
+      "name": "point",
+      "query": false,
+      "writeSameCollection": true,
+      "forcedOverlap": true,
+      "maxAttempts": 1,
+      "ms": 25.460500000001048,
+      "outcomes": [
+        {
+          "ok": true
+        },
+        {
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "query-same",
+      "query": true,
+      "writeSameCollection": true,
+      "forcedOverlap": true,
+      "maxAttempts": 1,
+      "ms": 2044.2828999999983,
+      "outcomes": [
+        {
+          "ok": false,
+          "code": 10,
+          "message": "10 ABORTED: Transaction lock timeout."
+        },
+        {
+          "ok": false,
+          "code": 10,
+          "message": "10 ABORTED: Transaction lock timeout."
+        }
+      ]
+    },
+    {
+      "name": "query-other",
+      "query": true,
+      "writeSameCollection": false,
+      "forcedOverlap": true,
+      "maxAttempts": 1,
+      "ms": 26.911700000004203,
+      "outcomes": [
+        {
+          "ok": true
+        },
+        {
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "recovery": [
+    {
+      "name": "same-student-scores-100-and-80",
+      "recovered": [],
+      "finalXpAndCompletionConsistent": true
+    }
+  ],
+  "faults": [
+    {
+      "injectedRealCommitCollision": {
+        "code": 6,
+        "message": "6 ALREADY_EXISTS: entity already exists: EntityRef[partitionRef=dev~demo-lakbaypanahon, path=/users/diag-fault]"
+      },
+      "noPartialCompletionOrXp": true,
+      "retrySameAttemptSucceeded": true,
+      "lostAcknowledgementSimulation": "Committed result deliberately discarded before same-attempt replay",
+      "replayedTotalXp": 45
+    }
+  ],
+  "counts": {
+    "callbacks": 59,
+    "transactions": 56,
+    "retryCallbacks": 3
+  },
+  "limitations": [
+    "No Functions HTTP workers, real App Check, Cloud Run scaling or production indexes.",
+    "Students are synthetic eligible fixtures; measured save timing excludes sequential server issuance/answer preparation.",
+    "Samples differ by group size; percentile statistics are descriptive, not a capacity guarantee."
+  ],
+  "sameStudentIndependentRewards": {
+    "outcomes": [
+      {
+        "uid": "diag-mixed",
+        "ok": true,
+        "ms": 2077.059300000001,
+        "result": {
+          "reviewQuestions": [
+            {
+              "id": "quiz-1-question-4-retry",
+              "question": "People in a made-up community share work. Some must finish work owed to others before they can leave. What do both clues tell us?",
+              "optionA": "Cooperation proves everyone had equal freedom.",
+              "optionB": "Different duties mean people had no relationships.",
+              "optionC": "People could contribute together while having different rights and duties.",
+              "optionD": "Only leaders formed part of society.",
+              "topic": "social-organization",
+              "topicLabel": "Social Organization",
+              "difficulty": "medium",
+              "order": 104,
+              "correctAnswer": "C",
+              "explanation": "People could work together while having different rights and duties. Shared work does not prove equal freedom.",
+              "learningPoint": "People can cooperate while having different rights and duties. Sharing work alone does not prove equal freedom.",
+              "historicalClue": "People could work together while having different rights and duties. Shared work does not prove equal freedom.",
+              "answerExplanations": {
+                "A": "Some people must finish work before they can leave. They help with the shared work, but their choices are limited. Revisit Members of Early Society.",
+                "B": "The people are sharing work, so they are connected. Different duties do not remove those relationships.",
+                "C": "Both clues fit: people work together, while some have duties that limit their choices.",
+                "D": "The report describes people sharing work, not just leaders. Other community members also belong to society."
+              }
+            },
+            {
+              "id": "quiz-1-question-2-adaptive-hard",
+              "question": "A fictional sketch shows homes near one another. A separate account describes families sharing responsibilities. Which conclusion uses both clues without claiming too much?",
+              "optionA": "The people formed a community with relationships and responsibilities; the clues do not establish that all communities were alike.",
+              "optionB": "The homes prove that every family followed the same customs.",
+              "optionC": "Shared responsibilities prove that every person had equal freedom.",
+              "optionD": "The account explains every rule used by the people in the sketch.",
+              "topic": "barangay-community",
+              "difficulty": "hard",
+              "correctAnswer": "A",
+              "explanation": "The account supports a conclusion about relationships and responsibilities. Neither clue establishes that all communities shared the same customs or rights.",
+              "learningPoint": "Combine evidence while keeping conclusions limited to what the evidence supports.",
+              "answerExplanations": {
+                "A": "Correct. It combines the clues and avoids extending them to every community.",
+                "B": "Homes do not reveal every custom, and the sketch covers only one setting.",
+                "C": "Shared responsibilities do not prove equal freedom; the lesson notes that rights could differ.",
+                "D": "The account gives some information but cannot establish every rule."
+              }
+            },
+            {
+              "id": "quiz-1-question-3-adaptive-hard",
+              "question": "A fictional report says people shared tasks for a gathering, but some had obligations that limited their choices. Which interpretation fits both clues?",
+              "optionA": "Shared work proves that every person had equal rights and freedom.",
+              "optionB": "Different obligations mean that people did not cooperate.",
+              "optionC": "Cooperation can involve shared work even when people's rights or choices differ.",
+              "optionD": "The report proves that all early communities had the same social system.",
+              "topic": "community-cooperation",
+              "difficulty": "hard",
+              "correctAnswer": "C",
+              "explanation": "Working toward a shared purpose does not establish that people had equal rights or freedom. The report also cannot represent every community.",
+              "learningPoint": "Cooperation and unequal rights or choices can exist in the same situation.",
+              "answerExplanations": {
+                "A": "The report mentions shared tasks and limited choices, so equal freedom is not supported.",
+                "B": "People can cooperate through shared work while having different obligations.",
+                "C": "Correct. It accounts for cooperation and the differences in people's choices.",
+                "D": "One fictional report cannot establish how all communities were organized."
+              }
+            },
+            {
+              "id": "quiz-1-question-5-adaptive-hard",
+              "question": "Two fictional accounts describe different practices for using a shared place. What is the strongest conclusion from these clues?",
+              "optionA": "The accounts show that customs could differ; more evidence is needed to explain each practice or compare other communities.",
+              "optionB": "One practice must be correct for every community because both involve a shared place.",
+              "optionC": "The practices are written laws because people follow them.",
+              "optionD": "Different practices mean the communities had no shared expectations.",
+              "topic": "community-customs",
+              "difficulty": "hard",
+              "correctAnswer": "A",
+              "explanation": "The accounts support the idea that practices may differ. They do not establish that either practice was universal or that every expectation was a written law.",
+              "learningPoint": "Use evidence to compare customs without assuming they were universal or identical to written laws.",
+              "answerExplanations": {
+                "A": "Correct. It recognizes variation and limits the conclusion to the accounts provided.",
+                "B": "The accounts themselves describe different practices, so neither establishes a universal rule.",
+                "C": "Following a practice does not by itself show that it was a written law.",
+                "D": "Different practices can still guide expectations within each community."
+              }
+            },
+            {
+              "id": "quiz-1-question-1-adaptive-hard",
+              "question": "A fictional report says a datu heard two families' concerns and guided a discussion about a shared space. What conclusion is best supported?",
+              "optionA": "Every datu used the same process and had the same authority in every community.",
+              "optionB": "The datu helped guide a community matter in this report; more evidence is needed to compare other communities.",
+              "optionC": "The report proves that local customs never influenced community decisions.",
+              "optionD": "The families had no responsibilities because a leader was present.",
+              "topic": "datu-leadership",
+              "difficulty": "hard",
+              "correctAnswer": "B",
+              "explanation": "The report supports a limited conclusion about the datu's role in this situation. It does not establish one uniform practice for all communities.",
+              "learningPoint": "Match the size of a claim to the evidence; leadership practices could vary.",
+              "answerExplanations": {
+                "A": "This generalizes one fictional report to every community without evidence.",
+                "B": "Correct. It describes what the report supports and recognizes what it cannot establish.",
+                "C": "The report does not say whether a local custom influenced the discussion.",
+                "D": "A leader's involvement does not show that families had no responsibilities."
+              }
+            }
+          ],
+          "score": 100,
+          "correctAnswers": 5,
+          "totalQuestions": 5,
+          "passed": true,
+          "topicsForReview": [],
+          "firstCompletion": true,
+          "xpReward": 45,
+          "totalXp": 45,
+          "level": 1,
+          "bestScore": 100,
+          "learningStreak": 0,
+          "progressionPolicy": {
+            "xpPerLevel": 100,
+            "version": 1
+          },
+          "artifactResult": {
+            "artifact": {
+              "missionId": "mission-1",
+              "name": "Barangay Community Emblem",
+              "description": "A collectible representing the community life and leadership explored in this mission.",
+              "icon": "🏘️",
+              "rarity": "common",
+              "order": 1,
+              "status": "active",
+              "learningDetails": {
+                "represents": "This collectible marks your investigation of Life in the Barangay.",
+                "lessonConnection": "Barangay life involved local leadership, different social roles, customs and cooperation. Communities could organize themselves in different ways.",
+                "reflectionQuestion": "Choose one idea from this lesson. What clue helped you understand it, and what would you still like to learn?",
+                "collectibleNote": "This is a learning-game token, not an original historical object or a claim that you own cultural heritage."
+              },
+              "id": "artifact-1"
+            },
+            "newlyEarned": true
+          },
+          "badgeResult": {
+            "badge": null,
+            "newlyEarned": false
+          },
+          "adaptiveFollowup": {
+            "questionIds": [
+              "practice-1",
+              "practice5-1-adaptive",
+              "practice4-1-adaptive"
+            ],
+            "answers": {
+              "practice-1": "A",
+              "practice5-1-adaptive": "A",
+              "practice4-1-adaptive": "D"
+            },
+            "correctAnswers": 3,
+            "totalQuestions": 3,
+            "score": 100,
+            "items": [
+              {
+                "questionId": "practice-1",
+                "topic": "barangay-community",
+                "difficulty": "medium",
+                "selectedAnswer": "A",
+                "correctAnswer": "A",
+                "isCorrect": true
+              },
+              {
+                "questionId": "practice5-1-adaptive",
+                "topic": "community-cooperation",
+                "difficulty": "hard",
+                "selectedAnswer": "A",
+                "correctAnswer": "A",
+                "isCorrect": true
+              },
+              {
+                "questionId": "practice4-1-adaptive",
+                "topic": "community-customs",
+                "difficulty": "hard",
+                "selectedAnswer": "D",
+                "correctAnswer": "D",
+                "isCorrect": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "uid": "diag-mixed",
+        "ok": true,
+        "ms": 3277.437900000001,
+        "result": {
+          "reviewQuestions": [
+            {
+              "id": "daily-challenge-1",
+              "question": "What was the basic political and social unit of early Filipino communities?",
+              "optionA": "Barangay",
+              "optionB": "Province",
+              "optionC": "Kingdom",
+              "optionD": "Municipality",
+              "order": 1,
+              "correctAnswer": "A",
+              "explanation": "The barangay was the basic political and social unit of many early Filipino communities."
+            }
+          ],
+          "score": 100,
+          "correctAnswers": 1,
+          "totalQuestions": 1,
+          "passed": true,
+          "topicsForReview": [],
+          "firstCompletion": true,
+          "xpReward": 10,
+          "totalXp": 55,
+          "level": 1,
+          "bestScore": 100,
+          "learningStreak": 1,
+          "progressionPolicy": {
+            "xpPerLevel": 100,
+            "version": 1
+          },
+          "artifactResult": {
+            "artifact": null,
+            "newlyEarned": false
+          },
+          "badgeResult": {
+            "badge": null,
+            "newlyEarned": false
+          }
+        }
+      }
+    ],
+    "latency": {
+      "count": 2,
+      "p50Ms": 2077.059300000001,
+      "p95Ms": 3277.437900000001,
+      "maxMs": 3277.437900000001
+    },
+    "elapsedIncludingRecoveryMs": 3318.2281999999977,
+    "retryCallbacks": 1,
+    "expectedXp": 55,
+    "finalXp": 55,
+    "bothCompletionsSaved": true
+  },
+  "status": "diagnosis-completed-not-a-production-readiness-pass"
+}

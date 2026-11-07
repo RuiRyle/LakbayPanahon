@@ -1,0 +1,125 @@
+# Chapter 5 Mission 1: remaining mission content revision
+
+Prepared 31 October 2026. **Authoring review copy**. Check the separate Chapter 5 Mission 1 publication report for its current status. Source lessons, images, topic mappings, decision answer strings, difficulty policies and rewards are retained. Independent teaching/source review is pending.
+
+## chapter5-mission1
+
+Why did the expedition sail west, and whose interests did it meet?
+
+### Why seek a spice route?
+
+Cloves and nutmeg were valuable trade goods. European merchants and rulers wanted better access to them. Asian trading communities and routes already existed before these visitors arrived.
+
+In 1519, the Spanish Crown supported Magellan’s expedition to seek a westward route to the Spice Islands, now Maluku in Indonesia. Profit means money left after costs; ships, food and wages cost money too.
+
+Try this fictional funding task: a sponsor hopes a new route will help trade. Put that hope under “reason for sailing.” Whether the voyage makes a profit belongs under “result.” A hope cannot fill both boxes.
+
+**Key idea:** Spice access and possible profit helped motivate the voyage. A motive explains a choice; it does not guarantee success.
+
+<details>
+<summary>Reviewer: six question situations, supported answers and explanations</summary>
+
+- **Why would access to cloves and nutmeg interest a merchant?** The merchant hoped to earn money from valuable trade goods. A possible trading benefit helps explain a commercial motive.
+- **In a fictional proposal, ships and food cost money but sales are uncertain. What does the sponsor hope for?** Sales that leave money after the costs are paid. Profit is what remains after costs, not all the money received.
+- **Which reason helped motivate the Spanish-backed westward voyage?** Seeking access to valuable spice trade. The expedition sought a route to the Spice Islands.
+- **A report says the voyage created Asian trade. What correction fits the lesson?** Asian trading communities and networks already existed. The newcomers sought access to existing trade rather than creating it from nothing.
+- **What does a motive tell us?** A reason someone acts. Wanting access to spice trade helps explain why sponsors supported sailing.
+- **A sponsor hopes for profitable spice trade. What evidence is still needed to show profit?** The actual money received and the costs of the voyage. A reason to invest does not establish the financial result.
+
+</details>
+
+### Who supported the ships?
+
+A sponsor provides support for a project. Magellan was a Portuguese navigator sailing in Spanish service. His birthplace and the ruler backing his voyage are two different facts.
+
+Spain and Portugal competed over overseas routes and claims. Sponsors could seek trade and influence. Religious aims also formed part of European expansion, but rulers, merchants and crew members could have different priorities.
+
+In this fictional planning task, a ruler funds ships and expects influence. This tells us about the ruler’s goal. To learn whether a community accepted a demand, we need evidence of its response. Paying for ships cannot speak for the people they visit.
+
+**Key idea:** A sponsor supplies support. The Spanish Crown backed a Portuguese navigator; sponsorship does not show that local people agreed to foreign authority.
+
+<details>
+<summary>Reviewer: six question situations, supported answers and explanations</summary>
+
+- **A label says “Portuguese navigator in Spanish service.” Who backed this expedition?** The Spanish Crown. The sponsor and the navigator’s birthplace are different facts.
+- **A fictional ruler funds ships and wants influence. What does the funding establish?** The ruler supported the voyage and had an aim. Funding tells us about support; it cannot establish the destination community’s agreement.
+- **What does a sponsor do?** Provides support for an undertaking. The Spanish Crown supplied backing for the expedition.
+- **A merchant wants trade while a ruler seeks influence. How should a report describe their goals?** Different participants could support one voyage for different reasons. Joining one expedition does not mean sharing every priority.
+- **Magellan was Portuguese. Does this make the expedition Portuguese-sponsored?** No; his birthplace and Spanish sponsorship are separate facts. Identify who supplied backing rather than infer sponsorship from nationality.
+- **A sponsor claims authority over a destination. What additional evidence matters when studying local agreement?** The recorded responses of the people affected. An outside claim alone cannot establish what local people accepted.
+
+</details>
+
+### Follow the ocean sequence
+
+Start the outward journey in Spain. Cross the Atlantic toward South America, pass through the strait near its southern end, then continue across the Pacific toward Asia. A strait is a narrow water passage connecting larger waters.
+
+The expedition reached Philippine islands in 1521 while seeking the Spice Islands. Maluku, now part of Indonesia, and the Philippines are different places. Reaching one does not mean reaching the other.
+
+Follow the numbered boxes in the teaching diagram. They show order, not the exact positions of places on a map. The outline leaves out many stops and cannot tell you exact distances or sailing times. Survivors later completed a world circuit after Magellan’s death.
+
+**Key idea:** The broad outward sequence is Spain, Atlantic, southern South America, Pacific and Asian islands. The Philippines and Maluku are distinct.
+
+<details>
+<summary>Reviewer: six question situations, supported answers and explanations</summary>
+
+- **Which ocean comes before the southern South American passage on the outward route?** The Atlantic. The ships crossed the Atlantic before passing toward the Pacific.
+- **A classroom route card lists Spain, Atlantic, southern passage and Pacific. What does its order show?** The broad sequence toward Asian islands. The boxes summarize the journey rather than give exact geographic positions.
+- **Which broad sequence matches the outward voyage?** Spain, Atlantic, southern South America, Pacific, Asian islands. The southern passage connects the Atlantic part of the route with the Pacific crossing.
+- **A student marks the Philippines and Maluku as one destination. What should change?** Label them as distinct places on the journey. The Spice Islands are associated with Maluku in present-day Indonesia.
+- **What is a strait?** A narrow passage of water connecting larger waters. The expedition passed through a southern South American strait toward the Pacific.
+- **A simplified route omits distances and stops. What can a learner still explain from it?** The broad sequence, while noting that exact travel details are missing. A useful outline can show order without supplying precise navigation.
+
+</details>
+
+### Sort the reason and the result
+
+Ask two different questions: Why support a voyage? What happened afterward? A motive answers the first. An outcome answers the second. An event is something that happened along the way.
+
+Use these teaching summaries, not original quotations: Card A says sponsors sought a westward route to spice trade. Card B says surviving members later completed a circuit of the world. A explains an aim; B summarizes a later result.
+
+Match the card to your question. A later global circuit does not show that every earlier aim succeeded or every participant returned. Check the source and the particular result instead of turning a plan into a success story.
+
+**Key idea:** A motive is a reason for acting; an outcome is a result. Use evidence suited to the question you are answering.
+
+<details>
+<summary>Reviewer: six question situations, supported answers and explanations</summary>
+
+- **Which statement gives a motive rather than a completed result?** Sponsors wanted access to valuable spice trade. Wanted tells us about a reason for supporting the voyage.
+- **Which teaching card helps answer “What later happened?”** The card about surviving members completing a global circuit. A completed circuit is a later result, not the original reason for funding.
+- **What is an outcome?** A result of an action or sequence of events. Keep the result separate from the reason for acting.
+- **A report uses the later world circuit as proof that everyone returned. What should it say instead?** Surviving members completed the circuit; that does not mean everyone returned. A group outcome does not establish the experience of every original participant.
+- **Which question asks about a motive?** Why did sponsors support the voyage? Why asks for the reason behind a choice.
+- **A classroom card summarizes the trade aim. How should it be labelled?** A teaching summary, not an exact quotation from a historical participant. A useful paraphrase must not be presented as someone’s original words.
+
+</details>
+
+### Whose view is missing?
+
+A perspective is a viewpoint shaped by someone’s situation and interests. A sponsor might ask about trade and influence. People receiving unfamiliar visitors might ask about exchange, safety and their own authority.
+
+Try these fictional classroom cards: the sponsor says, “We want access to trade.” A local card asks, “What do the visitors want, and do we agree?” These invented prompts compare questions; they are not speeches by historical leaders.
+
+People in the islands had communities, knowledge and connections before the ships arrived. Local responses could include negotiation, cooperation or resistance. Calling a place new to Europeans must not erase its earlier history or make one response stand for everyone.
+
+**Key idea:** Compare an expedition’s aims with the interests and responses of communities already present. One viewpoint cannot represent everyone.
+
+<details>
+<summary>Reviewer: six question situations, supported answers and explanations</summary>
+
+- **Which report compares the visitors’ and local communities’ interests?** It names the trade aim and asks how local people understood and responded to contact. The report includes both the expedition’s aim and local participation.
+- **In a fictional meeting task, a sponsor asks about trade. What question could a local community card add?** What do the visitors want, and do we agree? This adds local interests and choice without inventing a historical speech.
+- **What is a perspective?** A viewpoint shaped by someone’s situation and interests. Different people can ask different questions about the same meeting.
+- **A report says arrival began all island history. What knowledge challenges that claim?** Communities and wider connections existed before the arrival. The expedition entered places with earlier histories.
+- **One community cooperated in an encounter. What should a report avoid assuming?** That every community responded in the same way. A particular response cannot represent all people and places.
+- **A student writes invented dialogue for a local leader. How should it be presented?** As a fictional learning prompt, clearly separated from recorded speech. Imagined dialogue can help comparison but cannot establish the leader’s exact words.
+
+</details>
+
+## Your expedition report
+
+Connect three ideas: why the expedition sailed, the broad route it followed, and whose interests it met. Explain the hope for spice access, follow the Atlantic-to-Pacific sequence, and keep the Philippines distinct from Maluku.
+
+Check your report: a sponsor’s aim is not a guaranteed result. Local communities already had histories and could make different choices. Label fictional cards and simplified diagrams honestly.
+
+Next, try the mission quiz. If an idea needs work, revisit its lesson and use targeted practice before retrying. Passing earns the mission reward once. Finish all four Chapter 5 missions and pass the chapter challenge for the chapter badge. The next mission investigates Homonhon, Limasawa and Cebu.

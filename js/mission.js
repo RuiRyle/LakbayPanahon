@@ -79,6 +79,15 @@ const chapterId =
 let loadedMissionStates = [];
 let missionLoadGeneration = 0;
 let missionUserId = null;
+let missionGuideUser = null;
+function emitMissionGuide() {
+    const mission = !missionContent.hidden && missionGuideUser === auth.currentUser
+        ? loadedMissionStates.find(item => item.id === selectedMissionId && item.isUnlocked) : null;
+    document.dispatchEvent(new CustomEvent('lakbay:mission-guide', {
+        detail: mission ? {mission, user: missionGuideUser} : null
+    }));
+}
+document.addEventListener('lakbay:request-mission-guide', emitMissionGuide);
 const retryMissionLoadButton = document.getElementById("retryMissionLoadButton");
 
 let selectedMissionId = null;
@@ -95,7 +104,10 @@ let isChapterChallengeCompleted = false;
 ========================================== */
 
 async function loadMissionPage() {
+    missionGuideUser = null;
+    emitMissionGuide();
     const generation = ++missionLoadGeneration;
+    const loadingUser = auth.currentUser;
     const loadingUid = auth.currentUser?.uid;
     const isCurrent = () => generation === missionLoadGeneration && auth.currentUser?.uid === loadingUid;
     missionContent.hidden = true;
@@ -203,7 +215,7 @@ if (!chapterAccessResult.allowed) {
 const eraBackLink = document.querySelector('.mission-back');
 if (eraBackLink && typeof chapter.eraId === 'string' && chapter.eraId) {
     eraBackLink.href = 'era.html?' + new URLSearchParams({era: chapter.eraId});
-    eraBackLink.textContent = 'Back to Era';
+    eraBackLink.textContent = 'Back to Chapters';
 }
 loadedChapterName =
     chapter.title ||
@@ -502,6 +514,8 @@ isChapterChallengeCompleted =
 
         missionContent.hidden =
             false;
+        missionGuideUser = loadingUser;
+        emitMissionGuide();
 
 
     } catch (error) {
@@ -532,9 +546,13 @@ function displaySelectedMission(mission) {
         return;
     }
 
+    missionTitle.dataset.chapterId=chapterId;missionTitle.dataset.missionId=mission.id;
+    document.dispatchEvent(new CustomEvent('lakbay:mission-selected',{detail:{chapterId,missionId:mission.id}}));
+
 
     selectedMissionId =
         mission.id;
+    emitMissionGuide();
 
 
         /* ==================================
@@ -584,10 +602,11 @@ if (missionStatusLabel) {
         missionLearningObjective.replaceChildren();
         if (objectives.length) {
             const list = document.createElement("ul");
-            for (const objective of objectives) {
+            for (const objective of objectives.slice(0,1)) {
                 const item = document.createElement("li");item.textContent=objective;list.append(item);
             }
             missionLearningObjective.append(list);
+            if(objectives.length>1){const details=document.createElement('details'),summary=document.createElement('summary'),more=document.createElement('ul');details.className='mission-more-goals';summary.textContent='More learning goals ('+(objectives.length-1)+')';for(const objective of objectives.slice(1)){const item=document.createElement('li');item.textContent=objective;more.append(item);}details.append(summary,more);missionLearningObjective.append(details);}
         }
         missionLearningGoal.hidden = !objectives.length;
     }
@@ -609,7 +628,7 @@ if (missionStatusLabel) {
     beginMissionButton.textContent =
         mission.isCompleted
             ? "Review Mission →"
-            : "Begin Mission →";
+            : "Start Lesson →";
 
 
     beginMissionButton.setAttribute(
@@ -1223,6 +1242,8 @@ function makeMissionSelectable(
 ========================================== */
 
 function showError(message) {
+    missionGuideUser = null;
+    emitMissionGuide();
     if (retryMissionLoadButton) retryMissionLoadButton.hidden = !auth.currentUser;
 
     if (missionLoading) {

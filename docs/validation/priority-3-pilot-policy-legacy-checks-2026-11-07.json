@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "mode": "demo-Auth-Firestore-real-callable-adapter-and-fixed-clock-core",
+  "checks": [
+    "Two-hour expiry issued exactly",
+    "Three new starts accepted; fourth rejected in a fixed server minute",
+    "Stable issuance replay still resumes at the start quota",
+    "Expired unfinished attempt rejected without XP, deletion or profile reset",
+    "Seeded count 60 rejects another new daily issuance; not 60 exercised quizzes",
+    "Actual catalog legacy replay preserves XP 777, best score 100 and original completion/artifact timestamps"
+  ]
+}

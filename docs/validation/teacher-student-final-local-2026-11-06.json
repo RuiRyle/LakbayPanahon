@@ -1,0 +1,32 @@
+{
+  "verifiedAt": "2026-11-06T05:14:40.791Z",
+  "mode": "isolated local emulator and mocked-browser validation; no production changes",
+  "status": "local-checks-passed-not-deployed",
+  "releaseDirectory": "build/student-web-s3SJJb",
+  "rulesSha256": "678be315fa0aecdbb09fc3cb88294c0f69493056e8c50389a254500234ac0496",
+  "manifestSha256": "741d4a2418e348f46c079d7337129e3e944007ae57fb24d32c639b54272db96b",
+  "checks": {
+    "actualTeacherStudentWalkthrough": 42,
+    "activityLifecycleEmulator": 27,
+    "publicationStateRules": 9,
+    "reviewPublicationClient": 8,
+    "classPolicy": 11,
+    "supportPolicy": 5,
+    "reviewStagesBrowser": 28,
+    "publicationRecoveryBrowser": 30,
+    "classActionRecoveryBrowser": 16
+  },
+  "sourceEvidence": "docs/validation/class-teaching-browser-2026-11-06.json",
+  "limits": [
+    "Quiz scores in full walkthrough are synthetic saved evidence, not trusted grading tests.",
+    "Human teaching adequacy and learning effectiveness remain unvalidated.",
+    "No live Firebase/Hosting smoke test or deployment performed.",
+    "Updated-client publication revision protocol does not serialize legacy/direct API writes."
+  ],
+  "build": {
+    "pages": 33,
+    "files": 572,
+    "missingReferences": 0,
+    "rejectedReferences": 0
+  }
+}

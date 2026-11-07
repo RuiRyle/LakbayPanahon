@@ -1,0 +1,11 @@
+# Bayani story narration control — 31 October 2026
+
+The plain Listen button in real mission scenes and the History Detective playground is now a character control using the existing original Bayani explorer artwork. The idle label is **Hear the story**, with a short invitation to tap Bayani. During narration it becomes **Stop story**, with an explicit speaking state. It remains narration, not an entry into generative chat.
+
+The character waves while speaking through the existing animated SVG and rests on the still image otherwise. Browser reduced-motion and the site's reduced-motion preference use the still image. The native button retains keyboard activation, visible focus and an accessible action label; portrait artwork is decorative to avoid repeating the name to screen readers. Narration-off and unavailable states explain the situation without removing the character. The playground uses one toggle rather than duplicate visible start/stop buttons.
+
+The original narrator, saved recordings, device-speech fallback, exact reading text/chunks, preference controls and stop-on-part/scene/page-change behavior remain. External narration-state events reset the control after stopping. This does not generate a new child voice, call an AI provider, consume voice credits or change any learning/progression rules.
+
+Verification: all **304 unit checks in 48 suites and 14 mocked browser fixtures pass**. The new exact 390px/1440px checks cover both character controls, decoded local artwork, narration requests, play/stop labels and pressed state, reduced motion, and off/on preferences. Mission Story and the playground's interaction/audio checks pass separately, including real decoding of the existing welcome recording. Preview mobile appearance and a simplified mission reading capture were inspected; fixtures do not establish physical-device listening or signed-in hosted acceptance. The mission presentation fixture was subsequently adjusted to apply the real reading-stage class, as the real mission controller does.
+
+Package: `build/student-web-MdErig/public`, 25 pages, 522 hash-verified files, zero missing/rejected references. No website deployment, rules publication, account/data modification or paid generation occurred.

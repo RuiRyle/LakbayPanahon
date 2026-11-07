@@ -1,0 +1,17 @@
+# History Detective Lab
+
+The preview is now branded **Clue Quest!** with an original illustrated tarsier guide, a symbolic island game board, numbered clickable clue spots, matching accessible clue-card controls, raised game buttons, a progress track and a discovery-bag counter. Its palette combines the project's navy with brighter teal, leafy green and gold; no white panel backgrounds were introduced. Bayani appears above the activity on narrow screens. The fictional game scenery is not presented as historical evidence. The underlying explanation, retry and completion rules are retained.
+
+The interface now uses one consistent five-step trail matching the five activity screens. Instructions name the exact actions (tap, move with arrows, check). Checking and continuing are shown in sequence so question screens have one main action at a time. The clue bag is collapsed by default, keeping collected paragraphs off the activity screen; opening clues is required while saving them is explicitly optional. Restart is behind an explanatory disclosure. The compact heading, smaller board and concise Bayani prompt reduce competing visual elements. Browser checks cover the progress count, collapsed bag and check-to-continue transitions. Ease of use still needs observation with Grade 5 learners; automated checks cannot establish child comprehension.
+
+Open `pages/story-playground.html` directly or choose **Try the History Detective Lab** on the homepage. No account, network request or Firebase write is required. Reloading the page clears preview state.
+
+The playable investigation uses a five-screen Look / Try / Explain / Discover flow: an opening case, three inspectable clues, an accessible arrow-controlled sequencing task, a claim/evidence choice with retry hints, and a discovery reveal. Bayani tips are prepared text, not live AI. Optional browser speech synthesis reads visible content on request and stops when navigating or leaving. Voice availability and pronunciation depend on the browser/device. All spoken lesson content remains visible. Reduced-motion preferences disable reveal animations.
+
+Content is adapted from `data/archaeology-pilot-lessons.json`, particularly archaeological context, site locations and respectful care. The illustration and practice case are explicitly imagined. The preview does not award XP, store account evidence or certify mastery.
+
+Production `pages/story.html` now loads a presentation-only reading enhancer: authored paragraphs appear one at a time, with previous/next, full explanation, and optional narration. Paragraph controls reset when a new scene is rendered. Authored text remains unchanged and existing lesson gates and reward handling remain in place. Short reading parts are not automatically generated summaries; very long authored paragraphs may still need editorial division. Custom investigations have not been authored for every production mission.
+
+Verification: `node tests/story-playground-browser.cjs` passes at desktop and narrow browser widths. It exercises clue gating, keeping clues, incorrect/correct ordering, explanation retry, discovery reveal, restart, no horizontal overflow, production reading controls and scene replacement. `node tests/story-browser.cjs` also passes the existing full story interaction regression. JavaScript syntax checks passed. Narration requires a manual listening check on the intended student devices.
+
+Local review screenshots are under `build/story-playground-review/`. No deployment was performed.

@@ -13,7 +13,7 @@ const deferred = () => {
 };
 const snapshot = profile => ({exists: () => profile !== null, data: () => profile});
 
-function fixture({role = 'student', user = {uid: 'student'}, topLevel = false, localPreferences = false} = {}) {
+function fixture({role = 'student', user = {uid: 'student',emailVerified:true}, topLevel = false, localPreferences = false} = {}) {
     const classes = new Set(['auth-checking']), handlers = new Map(), roots = [{inert: false}, {inert: false}];
     const dialogs = [], redirects = [], reads = [], errors = [], mounts = [];
     const state = {profile: activeStudent, readError: null, readGate: null, signOutError: null, signOutGate: null, signedOut: 0, audioStops: 0};
@@ -34,8 +34,9 @@ function fixture({role = 'student', user = {uid: 'student'}, topLevel = false, l
     const context = vm.createContext({window, URL, auth, db: {},
         document: {body, querySelectorAll: () => roots, createElement: () => {
             const callbacks = new Map();
+            const elements = {h1: {}, p: {}};
             const button = {addEventListener: (name, callback) => callbacks.set('button:' + name, callback), click: () => callbacks.get('button:click')()};
-            return {open: false, setAttribute() {}, querySelector: () => button,
+            return {open: false, setAttribute() {}, querySelector: selector => elements[selector] || button,
                 addEventListener: (name, callback) => callbacks.set(name, callback),
                 cancel: event => callbacks.get('cancel')(event),
                 showModal() { this.open = true; }, close() { this.open = false; }};
@@ -58,7 +59,7 @@ function fixture({role = 'student', user = {uid: 'student'}, topLevel = false, l
             const {profile, readError, readGate} = state;
             if (readGate) await readGate.promise;
             if (readError) throw readError;
-            return snapshot(profile);
+            return snapshot(reference.collection==='teacherApplications'?{status:'approved',revision:1}:profile);
         }
     });
     vm.runInContext(source, context);
@@ -329,11 +330,42 @@ test('top-level student URLs preserve the activity inside one fixed shell redire
     assert.equal(f.redirects.length, 1);
 });
 
-test('non-student verification errors also remain locked when sign-out fails', async () => {
+test('teacher verification errors stay locked and retryable without signing out', async () => {
     const f = fixture({role: 'teacher', topLevel: true});
     f.state.readError = Error('Offline');
     f.state.signOutError = Error('Storage failure');
     await f.check();
     assertLocked(f);
-    assert.deepEqual(f.redirects, ['login.html']);
+    assert.deepEqual(f.redirects, []);
+    assert.equal(f.state.signedOut, 0);
+    assert.equal(f.dialogs[0].open, true);
+    f.state.readError = null;
+    f.state.profile = {role: 'teacher', status: 'active',teacherVerifiedRevision:1};
+    await f.dialogs[0].querySelector('button').click();
+    assert.equal(f.authenticated(), true);
+    assert.equal(f.mounts.length, 0);
+});
+
+for (const status of ['pending', 'inactive', 'rejected', undefined]) {
+    test(`teacher ${status} is sent to the qualification application`, async () => {
+        const f = fixture({role: 'teacher', topLevel: true});
+        f.state.profile = {role: 'teacher', status};
+        await f.check();
+        assertLocked(f);
+        assert.deepEqual(f.redirects,['teacher-application.html']);
+        assert.equal(f.state.signedOut, 0);
+    });
+}
+
+test('student opening teacher workspace is redirected without mounting teacher content', async () => {
+    const f = fixture({role: 'teacher', topLevel: true});
+    await f.check();
+    assertLocked(f);
+    assert.deepEqual(f.redirects, ['student-shell.html']);
+});
+test('administrator server errors remain locked and retryable',async()=>{
+    const f=fixture({role:'admin',topLevel:true});f.state.readError=Error('Offline');await f.check();
+    assertLocked(f);assert.equal(f.state.signedOut,0);assert.equal(f.dialogs[0].open,true);
+    f.state.readError=null;f.state.profile={role:'admin',status:'active'};
+    await f.dialogs[0].querySelector('button').click();assert.equal(f.authenticated(),true);assert.equal(f.mounts.length,0);
 });

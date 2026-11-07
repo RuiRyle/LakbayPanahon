@@ -1,0 +1,109 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-06T07:51:11.713Z",
+  "mode": "actual modules and browser, mocked Firestore; no live records changed",
+  "results": [
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "opening a classroom through the real selector keeps its chosen ID during loading",
+        "switching classrooms preserves the newly chosen ID across busy-state updates",
+        "saved activity board is the main view and planning starts closed",
+        "classroom switcher sits in the page header",
+        "lesson catalog starts collapsed",
+        "saved board contains class goals, drafts, and personal reviews",
+        "personal review filter isolates student-specific practice",
+        "purpose and visibility filters work together",
+        "plan action opens a labelled dialog and focuses mission selection",
+        "planning dialog has an accessible name",
+        "activity planner clearly labels unsaved changes",
+        "unfinished planning remains visible on the activity board",
+        "closing keeps unfinished planning and offers Resume activity",
+        "reopening preserves the chosen mission",
+        "preview retains chronological readiness guidance",
+        "reduced-motion setting cancels planning animation",
+        "successful draft save returns to the matching board view",
+        "publishing returns to the actual saved Published activity view",
+        "activity confirmation identifies its actual classroom and publication state",
+        "personal review exposes student selection and explains fresh passing evidence",
+        "cancel planning resets purpose and returns to board",
+        "catalog preparation opens the planner with its chosen mission",
+        "editing saved activity opens its planning dialog",
+        "large activity libraries use six cards per page",
+        "activity paging controls are available",
+        "activity board fits 390px",
+        "planning dialog fits 390px",
+        "classroom navigation keeps four teaching destinations with current context",
+        "learning purpose is visible outside collapsed lesson details",
+        "closed activity is shown as read-only without edit or republish actions",
+        "closed activity retains its historical progress action",
+        "withdrawing stamps the ending time while preserving the record",
+        "evidence shortcut prepares the exact student, class and mission",
+        "prepared review remains an unsent draft",
+        "review preparation protects an existing unsent planner draft",
+        "former membership cannot overwrite the current plan",
+        "removed topic mapping is rejected rather than silently changed",
+        "save confirmation uses the saved recipient count and student destination"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 1440,
+      "checks": [
+        "opening a classroom through the real selector keeps its chosen ID during loading",
+        "switching classrooms preserves the newly chosen ID across busy-state updates",
+        "saved activity board is the main view and planning starts closed",
+        "classroom switcher sits in the page header",
+        "lesson catalog starts collapsed",
+        "saved board contains class goals, drafts, and personal reviews",
+        "personal review filter isolates student-specific practice",
+        "purpose and visibility filters work together",
+        "plan action opens a labelled dialog and focuses mission selection",
+        "planning dialog has an accessible name",
+        "activity planner clearly labels unsaved changes",
+        "unfinished planning remains visible on the activity board",
+        "closing keeps unfinished planning and offers Resume activity",
+        "reopening preserves the chosen mission",
+        "preview retains chronological readiness guidance",
+        "reduced-motion setting cancels planning animation",
+        "successful draft save returns to the matching board view",
+        "publishing returns to the actual saved Published activity view",
+        "activity confirmation identifies its actual classroom and publication state",
+        "personal review exposes student selection and explains fresh passing evidence",
+        "cancel planning resets purpose and returns to board",
+        "catalog preparation opens the planner with its chosen mission",
+        "editing saved activity opens its planning dialog",
+        "large activity libraries use six cards per page",
+        "activity paging controls are available",
+        "activity board fits 1440px",
+        "planning dialog fits 1440px",
+        "classroom navigation keeps four teaching destinations with current context",
+        "learning purpose is visible outside collapsed lesson details",
+        "closed activity is shown as read-only without edit or republish actions",
+        "closed activity retains its historical progress action",
+        "withdrawing stamps the ending time while preserving the record",
+        "evidence shortcut prepares the exact student, class and mission",
+        "prepared review remains an unsent draft",
+        "review preparation protects an existing unsent planner draft",
+        "former membership cannot overwrite the current plan",
+        "removed topic mapping is rejected rather than silently changed",
+        "save confirmation uses the saved recipient count and student destination"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "js/teacher-workspace.js",
+      "sha256": "7630c5c4049dda067a06e6ca3225378795d44740d0e49c595a873c2ae8e810c4"
+    },
+    {
+      "file": "js/teacher-class-client.js",
+      "sha256": "9f7c27036caefd062aeb1684ea3ec5ffb014a997ea9d8cdcbb52acd0fc980175"
+    },
+    {
+      "file": "css/teacher-workspace.css",
+      "sha256": "0c598547e88ab417723ea7c8812c6394eb8b3456d34853cca27e48204661e985"
+    }
+  ]
+}

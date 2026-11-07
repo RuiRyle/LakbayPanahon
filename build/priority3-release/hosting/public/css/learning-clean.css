@@ -1,0 +1,185 @@
+/* The preview owns this stylesheet. Mission rules are scoped below. */
+.clean-learning-preview {margin:0;background:#102b35;color:#e6e9df;font-family:'Segoe UI',Arial,sans-serif;font-size:16px;line-height:1.65;color-scheme:dark}
+.clean-learning-preview * {box-sizing:border-box}
+.clean-learning-preview [hidden] {display:none!important}
+.clean-learning-preview a {color:#cbdccf;text-decoration:none}
+.clean-learning-preview a:hover {text-decoration:underline}
+.lab-skip {position:absolute;top:-100px;padding:12px;background:#203f46;z-index:10}
+.lab-skip:focus {top:10px;left:10px}
+.clean-learning-preview .lab-header {max-width:1000px;margin:auto;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;font-size:.85rem;border-bottom:1px solid #36545a}
+.clean-learning-preview .lab-brand {display:flex;align-items:center;gap:10px;font-weight:750;color:#e5c688;font-size:1rem}
+.clean-learning-preview .detective-main {max-width:760px;margin:0 auto;padding:26px 24px 48px}
+.clean-learning-preview .lab-game-progress {display:flex;align-items:center;gap:18px;margin-bottom:18px;color:#b6c9c5;font-size:.8rem}
+.clean-learning-preview progress {appearance:none;border:0;border-radius:8px;height:6px;flex:1;min-width:0;overflow:hidden;background:#305157}
+.clean-learning-preview progress::-webkit-progress-bar {background:#305157}
+.clean-learning-preview progress::-webkit-progress-value {background:#dcbb7b;border-radius:8px}
+.clean-learning-preview progress::-moz-progress-bar {background:#dcbb7b}
+.clean-learning-preview .lab-stage {background:#173841;border:1px solid #3e5c5f;border-radius:20px;padding:30px;box-shadow:0 12px 32px #061c2429}
+.clean-learning-preview .lab-stage-heading {display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lesson-kicker {color:#b6cbbf;font-size:.67rem;letter-spacing:.12em;font-weight:750}
+.clean-learning-preview h1 {font-size:clamp(1.5rem,4vw,2rem);line-height:1.25;letter-spacing:-.025em;margin:20px 0 12px;max-width:25ch;color:#f0ead9}
+.clean-learning-preview h1:focus {outline:none}
+.clean-learning-preview h2 {font-size:1.08rem;margin:0 0 10px;line-height:1.4;color:#ecddb9}
+.clean-learning-preview h3 {font-size:1rem;line-height:1.4;margin:0 0 10px}
+.clean-learning-preview p {margin:0 0 14px}
+.clean-learning-preview #labBrief {color:#cad7d2;line-height:1.75;margin-bottom:22px}
+.clean-learning-preview button {font:inherit;cursor:pointer;min-height:44px;border:1px solid #62827f;background:#274b51;color:#e2e9df;border-radius:10px;padding:10px 14px;line-height:1.45;transition:background .15s}
+.clean-learning-preview button:hover:not(:disabled) {background:#355c5e}
+.clean-learning-preview button:disabled {opacity:.5;cursor:default}
+.clean-learning-preview :is(button,a,select,summary):focus-visible {outline:3px solid #efd18b;outline-offset:4px}
+.clean-learning-preview .lab-audio {display:flex;gap:8px}
+.clean-learning-preview .lab-audio button {background:transparent;border-color:#4f6d70;padding:6px 12px;font-size:.8rem;min-height:40px}
+.clean-learning-preview .lab-visual {margin:18px 0;border-radius:12px;overflow:hidden;background:#244b4e}
+.clean-learning-preview .lab-visual img {display:block;width:100%;height:150px;object-fit:cover;object-position:center}
+.clean-learning-preview .lab-caption {padding:7px 12px;color:#b9cfc5;font-size:.67rem;line-height:1.5}
+.lesson-goal {padding:14px 16px;border-left:3px solid #d6b475;background:#25464b;border-radius:0 10px 10px 0;margin:0 0 20px}
+.lesson-goal strong {display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:#dfc48b;margin-bottom:4px}
+.lesson-goal p {margin:0;font-size:.94rem;line-height:1.7}
+.lesson-explanation {margin:22px 0}
+.lesson-example {background:#d3b781;color:#382f22;border-radius:12px;padding:20px;margin:20px 0}
+.clean-learning-preview .lesson-example h2 {color:#382f22;font-size:1rem}
+.clean-learning-preview .lesson-example p {margin:0;color:#443a2b;line-height:1.8}
+.clean-learning-preview .lab-clues {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:14px}
+.clean-learning-preview .lab-clue {text-align:left;display:flex;align-items:center;gap:9px;padding:12px;min-height:70px;background:#23464c;border-color:#567774}
+.clean-learning-preview .lab-clue strong {font-size:.82rem;line-height:1.4}
+.clean-learning-preview .lab-clue small {display:none}
+.clean-learning-preview .lab-clue-icon {flex:none;color:#dfc089;font-size:1.2rem}
+.clean-learning-preview .lab-clue[aria-pressed=true] {background:#345446;border-color:#8eb18a}
+.clean-learning-preview .lab-clue[data-active=true] {outline:2px solid #dfc089;outline-offset:1px}
+.clean-learning-preview .lab-progress-note {font-size:.76rem;color:#afc8bc}
+.clean-learning-preview .lab-note {background:#d3b781;color:#382f22;border-radius:12px;padding:22px;margin:16px 0}
+.clean-learning-preview .lab-note p {line-height:1.85}
+.clean-learning-preview .lab-note h2 {color:#382f22}
+.clean-learning-preview .lab-note .clue-meaning {border-top:1px solid #8b734e55;padding-top:12px;margin-top:14px}
+.clean-learning-preview .lab-note button {background:#3a5d4a;color:#f1e9d3;border:0;font-size:.8rem}
+.clean-learning-preview .lab-guide {display:flex;align-items:center;gap:12px;padding-top:18px;margin-top:20px;border-top:1px solid #3c5b5e}
+.clean-learning-preview .lab-bayani-character {width:48px;height:50px;object-fit:contain;flex:none}
+.clean-learning-preview .lab-guide p {font-size:.82rem;line-height:1.65;color:#bacec3;margin:0}
+.clean-learning-preview .lab-actions {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}
+.clean-learning-preview .lab-actions #labBack {background:transparent;border-color:transparent;color:#b6cbc6;padding-left:0}
+.clean-learning-preview .lab-primary,.clean-learning-preview :is(#labCheckOrder,#labCheckExplanation,#labTransferCheck) {background:#dfbc79;color:#332d22;border:1px solid #e6cc99;border-bottom:3px solid #a3834e;font-weight:750;min-height:48px}
+.clean-learning-preview .lab-primary:hover:not(:disabled),.clean-learning-preview :is(#labCheckOrder,#labCheckExplanation,#labTransferCheck):hover:not(:disabled) {background:#e8ca91}
+.clean-learning-preview .lab-primary {margin-left:auto;min-width:132px}
+.clean-learning-preview .lab-order,.clean-learning-preview .lab-options {display:grid;gap:10px;margin:18px 0}
+.clean-learning-preview .lab-order-row {display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;background:#24464b;border:1px solid #4a6b6b;border-radius:12px}
+.clean-learning-preview .lab-order-row>span {display:flex;align-items:center;gap:12px}
+.clean-learning-preview .lab-order-row strong {font-size:.9rem;font-weight:600}
+.clean-learning-preview .lab-order-number {color:#e4c58a;font-weight:750}
+.clean-learning-preview .lab-order-controls {display:flex;gap:6px;flex:none}
+.clean-learning-preview .lab-order-controls button {padding:8px 12px}
+.clean-learning-preview .lab-option {display:flex;align-items:flex-start;gap:12px;text-align:left;padding:16px;background:#23464c}
+.clean-learning-preview .lab-option>span {color:#e1c38c;font-weight:750;flex:none}
+.clean-learning-preview .lab-option strong {font-size:.94rem;font-weight:500;line-height:1.6}
+.clean-learning-preview .lab-option[aria-pressed=true] {background:#345446;border-color:#9fb88a}
+.clean-learning-preview .lab-feedback:empty {display:none}
+.clean-learning-preview .lab-feedback {padding:16px;border-left:3px solid #a6c18c;background:#2c4d3c;color:#e0e9d3;border-radius:0 10px 10px 0;margin-top:18px;font-size:.94rem;line-height:1.8}
+.clean-learning-preview .lab-feedback[data-kind=hint] {background:#514733;border-color:#d8b77c;color:#f1dfbb}
+.clean-learning-preview .lab-stamp {width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:#466845;color:#dceac9;font-size:1.4rem;margin:0 0 16px}
+.clean-learning-preview .lab-summary-list {padding-left:20px;line-height:1.85}
+.clean-learning-preview .lab-summary-list li {padding-bottom:8px}
+.lesson-review {border-top:1px solid #54726d;margin:20px 0;padding-top:4px}
+.lesson-review summary {color:#cfdbce;font-size:.86rem}
+.lesson-review p {font-size:.88rem;color:#c4d3c9;line-height:1.8}
+.clean-learning-preview summary {cursor:pointer;min-height:44px;padding:12px 0;font-size:.82rem;color:#becfc5}
+.clean-learning-preview .lab-lesson-options {margin-top:22px}
+.clean-learning-preview .lab-lesson-options>details {border-bottom:1px solid #36545a}
+.clean-learning-preview #labBagCount {font-size:.7rem;margin-left:6px;color:#aebfb7}
+.clean-learning-preview .lab-lesson-options p,.clean-learning-preview .lab-lesson-options li {font-size:.85rem;color:#b5c7bf}
+.clean-learning-preview .lab-disclosure {font-size:.72rem!important;line-height:1.7;margin-top:20px}
+.narrator-options {margin-top:16px;padding:14px 0;border-top:1px solid #4b686b}
+.narrator-options label {display:grid;gap:8px;font-size:.85rem}
+.narrator-options select {min-width:0;width:100%;min-height:44px;background:#24464b;color:#e6e9df;border:1px solid #5f7c79;border-radius:8px;padding:8px;font:inherit}
+.narrator-options button {margin:10px 0}
+.narrator-options p {font-size:.8rem}
+@media(max-width:560px){.clean-learning-preview .lab-header{padding:14px 18px}.clean-learning-preview .detective-main{padding:20px 14px 40px}.clean-learning-preview .lab-stage{padding:22px 18px;border-radius:16px}.clean-learning-preview .lab-clues{grid-template-columns:1fr}.clean-learning-preview .lab-clue{min-height:48px;padding:10px 12px}.clean-learning-preview .lab-order-row{padding:12px;gap:8px}.clean-learning-preview .lab-order-row strong{font-size:.83rem}.clean-learning-preview .lab-order-controls button{padding:8px 11px}.clean-learning-preview .lab-note{padding:18px}.clean-learning-preview .lab-visual img{height:125px}}
+@media(prefers-reduced-motion:reduce){.clean-learning-preview *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Keep the authenticated mission shell, with the same focused lesson structure. */
+body.simple-lesson.lakbay-theme[data-role="student"] .main-content>.story-page {max-width:780px;padding-top:18px}
+body.simple-lesson.lakbay-theme[data-role="student"] .story-header {padding:4px 0;margin-bottom:16px}
+body.simple-lesson.lakbay-theme[data-role="student"] .story-header h1 {font-size:1.1rem;line-height:1.5;color:#c2d3cb;margin:0}
+body.simple-lesson.lakbay-theme[data-role="student"] .story-header #storyMissionTitle {font-size:1.1rem;line-height:1.5;margin:0;color:#c2d3cb}
+body.simple-lesson.lakbay-theme[data-role="student"] .story-header p {display:none}
+body.simple-lesson.lakbay-theme .story-reading-card {border:1px solid #456365;box-shadow:0 12px 32px #061c2429;border-radius:20px;background:#173841}
+body.simple-lesson.lakbay-theme .story-reading-content {display:block;max-width:none;padding:28px;background:#173841}
+body.simple-lesson.lakbay-theme .story-reading-card:not(.lesson-reading) #sceneTitle {display:block}
+body.simple-lesson.lakbay-theme #sceneTitle {font-size:clamp(1.4rem,3vw,1.85rem);line-height:1.35;margin:0 0 20px;letter-spacing:-.025em;color:#f0ead9}
+body.simple-lesson.lakbay-theme #sceneLabel {display:none}
+body.simple-lesson.lakbay-theme .story-visual,body.simple-lesson.lakbay-theme .story-scene-image {max-height:160px}
+body.simple-lesson.lakbay-theme .story-visual {border-bottom:1px solid #53716e}
+body.simple-lesson.lakbay-theme .story-reading-card.lesson-reading .story-text {font-size:1rem;padding:20px;line-height:1.85;background:#d3b781;border:0;border-radius:12px}
+body.simple-lesson.lakbay-theme :is(.story-learning-heading,.quick-check-heading) {display:none}
+body.simple-lesson.lakbay-theme .story-reading-content>.lesson-goal {margin:0 0 20px;padding:14px 16px;background:#25464b;border:0;border-left:3px solid #d6b475;border-radius:0 10px 10px 0}
+body.simple-lesson.lakbay-theme .lesson-goal strong {display:block;color:#e0c68f;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase}
+body.simple-lesson.lakbay-theme .lesson-goal p {margin:4px 0 0;line-height:1.75;color:#e1e8db;font-size:.95rem}
+.lesson-goal-details summary {cursor:pointer;font-size:.78rem;color:#bfcec0;min-height:44px;padding:10px 0}
+.lesson-goal-details ul {padding-left:20px;font-size:.9rem;line-height:1.8;margin:0 0 10px}
+body.simple-lesson.lakbay-theme #lessonUnderstanding {background:transparent;margin:0;padding:0}
+body.simple-lesson.lakbay-theme .lesson-explanation {margin:0 0 20px}
+body.simple-lesson.lakbay-theme .lesson-explanation h3 {font-size:1rem;line-height:1.4;color:#e6d4ab;margin:0 0 8px}
+body.simple-lesson.lakbay-theme .lesson-explanation p {font-size:1rem;line-height:1.85;color:#dae4d8;margin:0;white-space:pre-line}
+body.simple-lesson.lakbay-theme .lesson-example {padding:20px;background:#d3b781;color:#382f22;border-radius:12px}
+body.simple-lesson.lakbay-theme .lesson-example :is(h3,p) {color:#443a2b}
+body.simple-lesson.lakbay-theme .lesson-review {border-top:1px solid #4b6969;padding-top:0;margin:20px 0 0}
+body.simple-lesson.lakbay-theme .lesson-review summary {padding:12px 0;min-height:44px;color:#bdcfc3;font-size:.82rem;cursor:pointer}
+body.simple-lesson.lakbay-theme .lesson-review .lesson-explanation {margin:12px 0 20px}
+body.simple-lesson.lakbay-theme .lesson-review .lesson-explanation p {font-size:.9rem}
+body.simple-lesson.lakbay-theme .mission-bayani {border:0;border-top:1px solid #3e5d5e;border-radius:0;box-shadow:none;background:transparent;padding:16px 0 0;margin:20px 0 0;gap:12px}
+body.simple-lesson.lakbay-theme .mission-bayani img {width:48px;height:50px;filter:none}
+body.simple-lesson.lakbay-theme .mission-bayani>div {border:0;border-radius:0;background:transparent;padding:0}
+body.simple-lesson.lakbay-theme .mission-bayani p {font-size:.82rem;color:#bacec3;line-height:1.6}
+body.simple-lesson.lakbay-theme .lesson-flow {border:0;padding-top:0;margin-top:20px}
+body.simple-lesson.lakbay-theme .lesson-flow .begin-mission-button {min-height:48px;background:#dfbc79;color:#332d22;border:1px solid #e6cc99;border-bottom:3px solid #a3834e;border-radius:10px;box-shadow:none}
+body.simple-lesson.lakbay-theme :is(.story-discovery,.story-key-term,.historical-insight) {padding:16px;border-radius:12px;margin:12px 0;font-size:.94rem}
+body.simple-lesson.lakbay-theme .story-explore-choices {display:grid;grid-template-columns:1fr;gap:10px}
+body.simple-lesson.lakbay-theme .story-explore-result {padding:20px;border-radius:12px}
+body.simple-lesson.lakbay-theme .story-explore-result :is(p,strong,summary,.evidence-note-label) {color:#443a2b}
+body.simple-lesson.lakbay-theme .story-progress {display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px;border-radius:12px;background:transparent;border-color:#3d5b60;box-shadow:none;position:static}
+body.simple-lesson.lakbay-theme .lesson-step-count {font-size:.8rem;font-weight:500;color:#baccc2;letter-spacing:0}
+body.simple-lesson.lakbay-theme .story-ai-assistance {display:none}
+body.simple-lesson.lakbay-theme .story-progress-info {width:auto;flex:1;min-width:0}
+body.simple-lesson.lakbay-theme .story-progress-toolbar {flex:none;width:auto}
+body.simple-lesson.lakbay-theme .story-progress-track {width:100%;height:5px}
+body.simple-lesson.lakbay-theme .story-visual-caption {font-size:.73rem;font-weight:400;line-height:1.6;padding:9px 16px;text-align:left;background:#102b35}
+.lesson-image-open {position:absolute;right:12px;top:12px;min-height:40px;padding:8px 12px;border:1px solid #8eaaa2;border-radius:8px;background:#14343ee8;color:#e3e8da;font:inherit;font-size:.78rem;cursor:pointer}
+.lesson-image-dialog {position:fixed;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;width:min(1000px,calc(100vw - 40px));max-width:none;max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow:auto;overscroll-behavior:contain;background:#14343d;color:#e4e9de;border:1px solid #7e9783;border-radius:20px;padding:20px;box-sizing:border-box;box-shadow:0 28px 100px #0008}
+.lesson-image-dialog[open] {display:flex;flex-direction:column;gap:16px}
+body.lakbay-theme dialog.lesson-image-dialog[open] {animation:none;transform:translate(-50%,-50%)}
+.lesson-image-dialog::backdrop {background:#04181de8;backdrop-filter:blur(5px)}
+.lesson-image-dialog-header {display:flex;align-items:center;justify-content:space-between;gap:16px;flex:none}
+.lesson-image-dialog-header strong {font-size:1rem;font-weight:700;color:#e5ce9b}
+.lesson-image-dialog button {display:block;margin:0;padding:10px 16px;min-height:44px;background:#dfbc79;color:#332d22;border:0;border-radius:9px;font:inherit;font-size:.85rem;cursor:pointer}
+.lesson-image-dialog button:focus-visible {outline:3px solid #efd18b;outline-offset:4px}
+.lesson-image-dialog img {display:block;width:100%;height:auto;max-height:65vh;min-height:0;object-fit:contain;border-radius:10px;background:#0b2630}
+.lesson-image-dialog p {font-size:.85rem;line-height:1.7;margin:0;color:#c3d3c8;flex:none}
+.lesson-viewer-open {overflow:hidden;scrollbar-gutter:auto}
+#storySceneImage[role=button] {cursor:zoom-in}
+#storySceneImage[role=button]:focus-visible {outline:3px solid #efd18b;outline-offset:-4px}
+@media(max-width:560px){body.simple-lesson.lakbay-theme .story-reading-content{padding:22px 18px}body.simple-lesson.lakbay-theme .story-reading-card.lesson-reading .story-text{padding:18px}.clean-learning-preview .lab-stage-heading{align-items:center}}
+
+/* A restrained woven bookmark and paper details give the lesson its identity. */
+.clean-learning-preview {background-image:radial-gradient(ellipse at 10% 0%,#3d746527,transparent 52%),radial-gradient(ellipse at 100% 100%,#bd995112,transparent 55%)}
+.clean-learning-preview .lab-stage,body.simple-lesson.lakbay-theme .story-reading-card {position:relative;border-color:#66817580;box-shadow:0 5px 0 #08252e,0 18px 44px #061c2429}
+.clean-learning-preview .lab-stage::before {content:'';position:absolute;top:0;left:30px;width:64px;height:5px;background:repeating-linear-gradient(120deg,#e1be79 0 8px,#778c68 8px 12px,#25464b 12px 16px);border-radius:0 0 4px 4px}
+.clean-learning-preview .lesson-example,body.simple-lesson.lakbay-theme .lesson-example {position:relative;border:1px solid #e1c794;background-image:linear-gradient(115deg,#f1d49c18,transparent 65%);box-shadow:0 3px 0 #9c83574a}
+.clean-learning-preview .lab-note,body.simple-lesson.lakbay-theme .story-explore-result {box-shadow:0 3px 0 #9c83574a;border-top:3px solid #e6cc99}
+.clean-learning-preview .lab-clue {transition:background .16s,border-color .16s,box-shadow .16s}
+.clean-learning-preview .lab-clue[data-active=true] {outline:0;border-color:#e0bf80;box-shadow:inset 0 0 0 1px #e0bf80}
+.clean-learning-preview .lab-clue[aria-pressed=true] .lab-clue-icon {color:#bfd8aa}
+.clean-learning-preview .lab-guide {background:linear-gradient(90deg,#254b4030,transparent);border-radius:0 0 10px 10px}
+.clean-learning-preview .lab-guide p,body.simple-lesson.lakbay-theme .mission-bayani p {font-weight:400}
+.clean-learning-preview .lab-visual {position:relative;border:1px solid #6b928266}
+.clean-learning-preview .lab-visual img {width:100%;height:auto;max-height:210px;object-fit:contain}
+.clean-learning-preview .lab-image-trigger {display:block;position:relative;width:100%;border:0;border-radius:0;padding:0;background:#1e484d;cursor:zoom-in;line-height:0}
+.clean-learning-preview .lab-image-trigger:hover:not(:disabled) {background:#275259}
+.lab-image-hint {position:absolute;right:12px;bottom:12px;display:block;padding:8px 11px;border:1px solid #a5b59980;border-radius:8px;background:#10323ee8;color:#eceddf;font-size:.72rem;line-height:1.4;pointer-events:none}
+.clean-learning-preview .lab-primary:not(:disabled),body.simple-lesson.lakbay-theme .lesson-flow .begin-mission-button:not(:disabled) {box-shadow:0 3px 0 #755c31;transition:background .15s,box-shadow .15s}
+.clean-learning-preview .lab-primary:active:not(:disabled),body.simple-lesson.lakbay-theme .lesson-flow .begin-mission-button:active:not(:disabled) {box-shadow:0 1px 0 #755c31}
+@media(max-width:560px){.lesson-image-dialog{width:calc(100vw - 24px);max-height:calc(100dvh - 24px);padding:14px;border-radius:14px}.lesson-image-dialog[open]{gap:12px}.lesson-image-dialog img{max-height:62vh}.clean-learning-preview .lab-stage::before{left:20px}.lab-image-hint{bottom:8px;right:8px;font-size:.68rem}}
+@media(prefers-reduced-motion:reduce){.clean-learning-preview button,body.simple-lesson .lesson-flow button{transition:none!important}}
+.lesson-sound-options {margin-top:16px;padding:14px 0;border-top:1px solid #4b686b}
+.lesson-sound-options label,.narrator-options label {display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:8px 0;font-size:.85rem;color:#c9d9ce}
+.lesson-sound-options input[type=checkbox],.narrator-options input[type=checkbox] {width:18px;height:18px;accent-color:#dfbc79;flex:none}
+.lesson-sound-options input[type=range],.narrator-options input[type=range] {accent-color:#dfbc79;min-height:36px;width:160px;max-width:100%}
+.lesson-sound-options button {padding:9px 14px;min-height:44px;background:#274b51;color:#e2e9df;border:1px solid #62827f;border-radius:9px;font:inherit;font-size:.85rem;cursor:pointer}
+.lesson-sound-options p {font-size:.8rem;color:#b5c7bf;line-height:1.7;margin:10px 0 0}

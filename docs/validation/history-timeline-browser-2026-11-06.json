@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-06T10:27:47.841Z",
+  "mode": "actual app and Firebase SDK; isolated local emulator; no production changes",
+  "checks": [
+    "dedicated server opts into the demo emulator project",
+    "actual student authentication loads timeline and saved zero XP",
+    "real SDK remains in the isolated demo project",
+    "all 15 curriculum chapters and the introduction remain present",
+    "actual saved progress does not unlock later chapters",
+    "era progress uses actual local Firestore chapter results",
+    "refresh preserves the chosen era",
+    "reused chapter artwork loads successfully in the actual app",
+    "actual timeline has no page overflow at 1440px",
+    "shared saved-XP display stays visible at 1440px",
+    "actual timeline has no page overflow at 390px",
+    "shared saved-XP display stays visible at 390px",
+    "chapter action keeps its existing chapter route",
+    "actual chapter action navigates to the existing mission route"
+  ],
+  "screenshots": [
+    "docs/validation/history-timeline-1440-2026-11-06.png",
+    "docs/validation/history-timeline-cards-1440-2026-11-06.png",
+    "docs/validation/history-timeline-390-2026-11-06.png",
+    "docs/validation/history-timeline-cards-390-2026-11-06.png"
+  ]
+}

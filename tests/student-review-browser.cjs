@@ -54,6 +54,7 @@ for (const question of fixtureQuestions) {
     question.learningPoint = 'Exchange helps meet different needs';
 }
 let fixtureSaved = null, fixtureHistoryFailure = false;
+let fixtureWriteFailure=false,fixtureServerFailure=false,fixtureServerMismatch=false,fixtureServerReads=0;
 let fixtureAuthListener, fixtureLoadGate = null, fixtureContentFailure = false, fixtureEmptyBank = false;
 const onAuthStateChanged = (_, next) => { fixtureAuthListener = next; queueMicrotask(() => next(auth.currentUser)); };
 const collection = (_, name) => ({ name });
@@ -73,8 +74,9 @@ const getDocs = async ref => {
     return { docs, forEach: callback => docs.forEach(callback) };
 };
 const getDoc = async () => ({ exists: () => !!fixtureSaved, data: () => fixtureSaved });
+const getDocFromServer = async () => {fixtureServerReads++;if(fixtureServerFailure)throw Error('Offline');return {exists:()=>!!fixtureSaved,data:()=>fixtureServerMismatch?{...fixtureSaved,firstTryCorrectCount:999}:fixtureSaved,metadata:{fromCache:false,hasPendingWrites:false}};};
 const serverTimestamp = () => ({ toMillis: () => 200 });
-const setDoc = async (ref, values) => { fixtureSaved = values; fixtureSessions.push({ ...values, id: ref.id }); };
+const setDoc = async (ref, values) => { if(fixtureWriteFailure)throw Error('Write acknowledgement unavailable');fixtureSaved = values; fixtureSessions.push({ ...values, id: ref.id }); };
 ${source('quiz-draft-policy.js')}
 ${source('practice-review.js')}
 ${source('mission-review.js')}
@@ -113,6 +115,8 @@ const fixtureTick = () => new Promise(resolve => setTimeout(resolve, 40));
     fixtureCheck(practiceQuestionCard.hidden&&document.getElementById('guidedPracticeIntro'),'Review bypassed introduction');
     fixtureCheck(document.getElementById('guidedPracticeIntro').textContent.includes('A recap from Firestore')&&!document.getElementById('guidedPracticeIntro').querySelector('img'),'Refresher missing or unsafe');
     fixtureCheck(diagnosisCard.querySelector('a').href.includes('reviewTopic=trade'),'Review link skips guided flow');
+    fixtureCheck(new URL(document.querySelector('#guidedPracticeIntro a').href).searchParams.get('reviewTopic')===requestedTopic,'Guided practice lesson link lost its selected topic');
+    fixtureCheck(new URL(document.getElementById('practiceLessonLink').href).searchParams.get('reviewTopic')===requestedTopic,'Practice lesson shortcut lost its selected topic');
     renderReviewTopics(diagnosisCard,[{missionId:'m1',topic:'trade',label:'Trading communities',source:'quiz',missed:1,state:'lesson-revisited',lessonRevisited:true}],new Map([['m1','c1']]),'');
     fixtureCheck(diagnosisCard.querySelector('a').textContent==='Start Targeted Practice'&&new URL(diagnosisCard.querySelector('a').href).searchParams.get('review')==='1','Revisited lesson did not promote practice as next action');
     fixtureCheck([...diagnosisCard.querySelectorAll('a')].some(a=>a.textContent==='Revisit Lesson'&&new URL(a.href).searchParams.get('reviewTopic')==='trade'),'Revisited lesson route disappeared');
@@ -141,6 +145,16 @@ const fixtureTick = () => new Promise(resolve => setTimeout(resolve, 40));
     fixtureCheck(reviewText.includes('Community life'), 'Unpracticed topic was cleared');
     fixtureCheck(document.getElementById('practiceNextSteps').textContent.includes('Community life') && document.getElementById('practiceNextSteps').textContent.includes('Trading communities'), 'Completion guidance omitted remaining topic or retained resolved topic');
     fixtureCheck(document.getElementById('practiceSaveStatus').textContent.includes('has been saved'), 'Save status missing');
+    fixtureWriteFailure=true;fixtureServerMismatch=true;
+    await persistPracticeSession();
+    fixtureCheck(!retryPracticeSaveButton.hidden&&!practiceSaveStatus.textContent.includes('has been saved'),'Conflicting server record was presented as save success');
+    fixtureCheck(practiceResults.length===2,'Failed confirmation discarded answers');
+    fixtureServerMismatch=false;fixtureServerFailure=true;
+    retryPracticeSaveButton.click();await fixtureTick();
+    fixtureCheck(!retryPracticeSaveButton.hidden&&!practiceSaveStatus.textContent.includes('has been saved'),'Offline confirmation claimed success');
+    fixtureServerFailure=false;retryPracticeSaveButton.click();await fixtureTick();
+    fixtureCheck(practiceSaveStatus.textContent.includes('has been saved')&&retryPracticeSaveButton.hidden&&fixtureServerReads===3,'Matching server record did not recover the lost acknowledgement');
+    fixtureWriteFailure=false;
     fixtureSessions.push({id:'trade-followup',userId:'test',missionId:'m1',totalQuestions:1,firstTryCorrectCount:1,completedAt:{toMillis:()=>250},questionResults:[{questionId:'q2',firstTryCorrect:true}]});
     await refreshPracticeReview();
     fixtureCheck(!document.getElementById('practiceReviewTopics').textContent.includes('Trading communities')&&document.getElementById('practiceNextSteps').textContent.includes('practice goal reached'),'Varied evidence across sessions did not reach practice goal');

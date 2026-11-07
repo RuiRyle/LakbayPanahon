@@ -129,7 +129,8 @@ test('practice save failure is visible and retry reuses an acknowledged record',
         retryPracticeSaveButton: { hidden: true, disabled: false },
         retryMissionQuizButton: { disabled: false },
         serverTimestamp: () => 'timestamp',
-        getDoc: async () => ({ exists: () => !!stored, data: () => stored }),
+        getDocFromServer: async () => ({ exists: () => !!stored, data: () => stored,
+            metadata: {fromCache:false,hasPendingWrites:false} }),
         setDoc: async (_, data) => {
             writes++;
             if (writes === 1) throw new Error('Offline');
@@ -144,7 +145,7 @@ test('practice save failure is visible and retry reuses an acknowledged record',
         source.indexOf('async function finishPractice()'));
     const persist = source.slice(source.indexOf('async function persistPracticeSession()'),
         source.indexOf('retryPracticeSaveButton.addEventListener'));
-    vm.runInContext(save + persist + '\nglobalThis.persist = persistPracticeSession;', context);
+    vm.runInContext(read('quiz-draft-policy.js').replace(/export /g, '') + save + persist + '\nglobalThis.persist = persistPracticeSession;', context);
     await context.persist();
     assert.match(context.practiceSaveStatus.textContent, /could not confirm.*saved/);
     assert.match(context.practiceSaveStatus.textContent, /Retry Saving Progress/);

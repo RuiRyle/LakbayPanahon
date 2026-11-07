@@ -1,0 +1,12 @@
+# Teacher readiness progress — November 5, 2026
+
+1. Login startup: the login page no longer waits for the external Firebase module to complete before becoming visible. The module initializes correctly even when loaded after DOMContentLoaded. Sign-in is disabled until the secure handler is ready; premature native submission is prevented. A blocked download receives recovery guidance after ten seconds. Real-browser checks passed with normal, blocked, and restored SDK downloads (7 checks). Auth persistence and access-guard unit checks passed (44). These checks do not establish successful sign-in for the owner's real account, since no password was supplied or used.
+
+2. Production rules: read-only inspection confirmed the live rules do not match the new classroom features. An exact live backup, candidate and before/after comparison were prepared. A fresh isolated demo project on ports 8281/9298 tested the exact candidate without restarting the user's demo-lakbay-local emulator or using production records. 129 core teacher/student permission checks and 46 newer invitation/classmate/help/review checks passed. See `validation/teacher-current-rules-review-2026-11-05.json` and `teacher-current-rules-review-2026-11-05.md`. This is a validated candidate, not an activated release.
+
+3. Pending: authorization to activate the reviewed candidate, live-rule drift check immediately before that activation, then a real teacher/student interaction cycle. Human usability/device/PDF review remains separate. No live rules, accounts, classes or student learning data were changed in this work. Hosting was not deployed. The normal local web preview uses real Firebase; this is distinct from deploying the website.
+
+Staged web package: `build/student-web-LBP3Zo`. Existing preview assets were updated so the current login link includes the startup correction.
+
+
+Activation update (November 5, 2026): the user authorized activation. The candidate was published and its source hash read back successfully. Publication proof: `validation/teacher-current-rules-publication-2026-11-05.json`. The live teacher/student test was separately rejected by automatic approval review because temporary real-Firebase records/account creation and deletion require explicit test authorization. That command did not run; no live fixtures were created. A bounded test driver is prepared at `tests/teacher-current-cycle-live.cjs` and includes owned-fixture cleanup. Its synthetic score fixture is not a claim of completed gameplay.

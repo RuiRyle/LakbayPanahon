@@ -89,56 +89,6 @@ test('limited banks disclose repeats without changing assessment coverage',()=>{
  assert.throws(()=>pure.validateQuestionSet(bank,quiz,Array(5).fill(bank[0].id)),/complete question set/);
  assert.throws(()=>pure.requireMissionPolicy({...quiz,questionCount:undefined}),/Firestore/);
 });
-test('quiz diagnoses stay after one practice answer and a new quiz replaces old diagnoses',()=>{
- const timestamp=n=>({toMillis:()=>n});
- const questions=[{id:'p1',status:'active',missionId:'m1',topic:'trade',topicLabel:'Trade'}];
- const attempts=[{id:'a1',missionId:'m1',topicsForReview:['trade'],completedAt:timestamp(10)}];
- assert.equal(pure.missionReviewTopics(attempts,[],questions)[0].topic,'trade');
- assert.equal(pure.missionReviewTopics(attempts,[],questions)[0].source,'quiz');
- assert.equal(pure.missionReviewTopics(attempts,[],questions)[0].attempted,0);
- const sessions=[{id:'s1',missionId:'m1',completedAt:timestamp(20),questionResults:[{questionId:'p1',firstTryCorrect:true}]}];
- assert.equal(pure.missionReviewTopics(attempts,sessions,questions).length,1);
- assert.equal(pure.missionReviewTopics([...attempts,{id:'a2',missionId:'m1',topicsForReview:[],completedAt:timestamp(30)}],[],questions).length,0);
-});
-function fixture(){
- const records=new Map();
- for(const q of data.quizzes)records.set('quizzes/'+q.id,q);
- for(const q of data.questions)records.set('questions/'+q.id,q);
- records.set('learningSettings/progression',{xpPerLevel:100,version:1});
- records.set('users/alice',{role:'student',status:'active',xp:0,level:1});
- records.set('artifacts/art1',{id:'art1',missionId:'mission-1',status:'active'});
- const snapshot=(key)=>({exists:()=>records.has(key),data:()=>records.get(key)});
- const context=vm.createContext({console,auth:{currentUser:{uid:'alice'}},db:{},
-   requireLearningAccess:async()=>({xpReward:25}), requirePassingScore:q=>q.passingScore,
-   collection:(_,name)=>({name}),doc:(_,name,id)=>name+'/'+id,
-   where:(field,op,value)=>({field,value}),query:(ref,...filters)=>({...ref,filters}),
-   getDocs:async ref=>({docs:[...records].filter(([key,row])=>key.startsWith(ref.name+'/')&&(!ref.filters||ref.filters.every(f=>row[f.field]===f.value))).map(([key,row])=>({id:key.split('/')[1],data:()=>row}))}),
-   serverTimestamp:()=>({toMillis:()=>100}),
-   runTransaction:async(_,fn)=>{const writes=[];const result=await fn({get:async key=>snapshot(key),set:(key,value)=>writes.push(()=>records.set(key,value)),update:(key,value)=>writes.push(()=>records.set(key,{...records.get(key),...value}))});writes.forEach(write=>write());return result;}
- });
- vm.runInContext(read('daily-policy.js')+read('progression-policy.js')+read('mission-assessment.js')+read('student-rewards-client.js'),context);
- return {context,records};
-}
-test('0?2 answers fail with no XP; 3?5 complete and reward once; attempts survive retry',async()=>{
- for(let correct=0;correct<=5;correct++){
-   const {context,records}=fixture();
-   const questions=pure.selectMissionQuestions(bank,quiz).questions;
-   const answers=Object.fromEntries(questions.map((q,i)=>[q.id,i<correct?q.correctAnswer:(q.correctAnswer==='A'?'B':'A')]));
-   const input={kind:'mission',chapterId:'chapter-1',missionId:'mission-1',quizId:quiz.id,attemptId:'11111111-1111-4111-8111-111111111111',questionIds:questions.map(q=>q.id),answers};
-   const result=await context.submitStudentActivity(input);
-   assert.equal(result.passed,correct>=3);assert.equal(result.xpReward,correct>=3?25:0);
-   assert.equal(records.has('studentProgress/alice_mission-1'),correct>=3);
-   assert.equal(records.has('studentArtifacts/alice_art1'),correct>=3);
-   assert.equal(records.get('users/alice').xp,correct>=3?25:0);
-   assert.equal(records.get('studentQuizAttempts/alice_'+input.attemptId).correctAnswers,correct);
-   await context.submitStudentActivity(input);
-   assert.equal(records.get('users/alice').xp,correct>=3?25:0);
-   const otherId=questions[0].id;
-   await assert.rejects(context.submitStudentActivity({...input,answers:{...answers,[otherId]:answers[otherId]==='A'?'B':'A'}}),/different answers/);
-   if(correct>=3){const replay=await context.submitStudentActivity({...input,attemptId:'22222222-2222-4222-8222-222222222222'});assert.equal(replay.xpReward,0);}
- }
-});
-
 test('exhausted banks disclose questions seen on older attempts while avoiding the immediate previous set',()=>{
  const first=pure.selectMissionQuestions(bank,quiz).questions;
  const second=pure.selectMissionQuestions(bank,quiz,first.map(q=>q.id)).questions;
@@ -158,89 +108,6 @@ test('adaptive selection covers weak topics before repeating and changes difficu
  assert.equal(context.targetDifficulty,'medium');
  assert.equal(context.selectNextQuestion().id,'b-easy');
  context.currentQuestion={difficulty:'medium'};context.updateAdaptiveDifficulty(false);assert.equal(context.targetDifficulty,'easy');
-});
-
-test('reward transactions read Firestore progression and refresh cached replay displays',async()=>{
- const {context,records}=fixture();
- records.set('learningSettings/progression',{xpPerLevel:50,version:2});
- records.set('users/alice',{role:'student',status:'active',xp:90,level:1});
- const questions=pure.selectMissionQuestions(bank,quiz).questions;
- const input={kind:'mission',chapterId:'chapter-1',missionId:'mission-1',quizId:quiz.id,attemptId:'11111111-1111-4111-8111-111111111111',questionIds:questions.map(q=>q.id),answers:Object.fromEntries(questions.map(q=>[q.id,q.correctAnswer]))};
- const result=await context.submitStudentActivity(input);
- assert.equal(result.totalXp,115);assert.equal(result.level,3);assert.equal(records.get('users/alice').level,3);
- records.set('learningSettings/progression',{xpPerLevel:25,version:3});
- const replay=await context.submitStudentActivity(input);assert.equal(replay.level,5);assert.equal(replay.totalXp,115);
- assert.equal(records.get('users/alice').xp,115);
- records.delete('learningSettings/progression');
- const before=records.size;
- await assert.rejects(context.submitStudentActivity({...input,attemptId:'22222222-2222-4222-8222-222222222222'}),/progression/);
- assert.equal(records.size,before);assert.equal(records.get('users/alice').xp,115);
-});
-
-function replayFixture(correct=true) {
- const state=fixture(),selected=pure.selectMissionQuestions(bank,quiz).questions;
- const input={kind:'mission',chapterId:'chapter-1',missionId:'mission-1',quizId:quiz.id,
-  attemptId:'11111111-1111-4111-8111-111111111111',questionIds:selected.map(q=>q.id),
-  answers:Object.fromEntries(selected.map(q=>[q.id,correct?q.correctAnswer:q.correctAnswer==='A'?'B':'A']))};
- return {...state,input,key:'studentQuizAttempts/alice_'+input.attemptId};
-}
-
-test('a forged saved response cannot turn a failed replay into a passing reward display',async()=>{
- const {context,records,input,key}=replayFixture(false);
- await context.submitStudentActivity(input);
- const previous=records.get(key);
- previous.response={...previous.response,passed:true,score:100,firstCompletion:true,xpReward:9999};
- await assert.rejects(context.submitStudentActivity(input),/saved attempt could not be verified/);
- assert.equal(records.get('users/alice').xp,0);
- assert.equal(records.has('studentProgress/alice_mission-1'),false);
-});
-
-test('replay refuses inflated rewards and claimed completions without a matching saved completion',async()=>{
- for(const tamper of [
-  state=>{state.records.get(state.key).response.xpReward=9999;},
-  state=>{state.records.delete('studentProgress/alice_mission-1');},
-  state=>{state.records.get('studentProgress/alice_mission-1').completedAt={toMillis:()=>0};}
- ]) {
-  const state=replayFixture();await state.context.submitStudentActivity(state.input);tamper(state);
-  await assert.rejects(state.context.submitStudentActivity(state.input),/saved attempt could not be verified/);
- }
-});
-
-test('replay builds reward/catalog output from current records instead of arbitrary saved fields',async()=>{
- const {context,records,input,key}=replayFixture();await context.submitStudentActivity(input);
- Object.assign(records.get(key).response,{totalXp:999999,level:99999,learningStreak:9999,
-  redirectUrl:'javascript:alert(1)',artifactResult:{artifact:{id:'fake'},newlyEarned:false}});
- const result=await context.submitStudentActivity(input);
- assert.equal(result.totalXp,25);assert.equal(result.level,1);assert.equal(result.learningStreak,0);
- assert.equal(result.redirectUrl,undefined);assert.equal(result.artifactResult.artifact.id,'art1');
- assert.equal(result.artifactResult.newlyEarned,true);
-});
-
-test('inactive and changed accounts cannot receive an old successful replay',async()=>{
- const state=replayFixture();await state.context.submitStudentActivity(state.input);
- state.records.get('users/alice').status='disabled';
- await assert.rejects(state.context.submitStudentActivity(state.input),/active student account/);
- const next=replayFixture();let finish;
- next.context.requireLearningAccess=()=>new Promise(resolve=>{finish=()=>resolve({xpReward:25});});
- const pending=next.context.submitStudentActivity(next.input);
- next.context.auth.currentUser={uid:'bob'};finish();
- await assert.rejects(pending,/account changed/);
- assert.equal(next.records.has(next.key),false);
-});
-
-test('daily streaks advance on consecutive days, reset after gaps, and never grow on replay',async()=>{
- const now=new Date();
- for(const [offset,previousStreak,expected]of [[1,3,4],[2,3,1],[0,4,4]]){
-   const {context,records}=fixture();
-   const lastStreakDate=context.learningDateKey(new Date(now.getTime()-offset*86400000));
-   records.set('users/alice',{role:'student',status:'active',xp:0,level:1,learningStreak:previousStreak,lastStreakDate});
-   records.set('dailyChallenges/d1',{id:'d1',status:'active',order:1,correctAnswer:'A',xpReward:10});
-   const input={kind:'daily',challengeId:'d1',answer:'A'};
-   const result=await context.submitStudentActivity(input);assert.equal(result.learningStreak,expected);
-   assert.equal(records.get('users/alice').xp,10);
-   const replay=await context.submitStudentActivity(input);assert.equal(replay.learningStreak,expected);assert.equal(replay.xpReward,0);
-   assert.equal(records.get('users/alice').xp,10);
- }
 });
 
 test('quiz review ignores retired topics and malformed diagnoses',()=>{
@@ -272,23 +139,6 @@ test('freshness never replaces required topic/difficulty slots when only some sl
 
 test('scenario variants contain four distinct choices and answer-specific feedback',()=>{for(const quiz of data.quizzes.filter(q=>['quiz-1','quiz-2'].includes(q.id))){for(const q of data.questions.filter(q=>q.quizId===quiz.id)){assert.equal(new Set(['A','B','C','D'].map(k=>q['option'+k])).size,4);assert.ok(q['option'+q.correctAnswer]);for(const k of ['A','B','C','D'])assert.ok(q.answerExplanations[k]);}}});
 
-test('local preview grades mission answers without transactions or reward records',async()=>{
- const {context,records}=fixture();context.__lakbayExplorationPreview=true;
- context.runTransaction=()=>{throw Error('Preview must not write');};
- const selected=pure.selectMissionQuestions(bank,quiz).questions;
- const before=JSON.stringify([...records]);
- for(const correct of [0,3,5]){
-  const result=await context.submitStudentActivity({kind:'mission',chapterId:'c1',missionId:'mission-1',quizId:quiz.id,attemptId:'11111111-1111-4111-8111-111111111111',questionIds:selected.map(q=>q.id),answers:Object.fromEntries(selected.map((q,i)=>[q.id,i<correct?q.correctAnswer:q.correctAnswer==='A'?'B':'A']))});
-  assert.equal(result.preview,true);assert.equal(result.passed,correct>=3);assert.equal(result.xpReward,0);assert.equal(result.firstCompletion,false);assert.equal(result.artifactResult.newlyEarned,false);
- }
- assert.equal(JSON.stringify([...records]),before);
-});
 
-test('local preview can grade a chapter challenge without prerequisite completions or badge writes',async()=>{
- const {context,records}=fixture();context.__lakbayExplorationPreview=true;context.runTransaction=()=>{throw Error('Preview must not write');};
- records.set('missions/m-test',{chapterId:'preview-chapter',status:'active'});
- records.set('chapterChallenges/ch-test',{chapterId:'preview-chapter',status:'active',passingScore:70});
- records.set('chapterChallengeQuestions/q-test',{challengeId:'ch-test',status:'active',correctAnswer:'B'});
- const before=JSON.stringify([...records]);const result=await context.submitStudentActivity({kind:'chapter',chapterId:'preview-chapter',challengeId:'ch-test',answers:{'q-test':'B'}});
- assert.equal(result.passed,true);assert.equal(result.preview,true);assert.equal(result.badgeResult.newlyEarned,false);assert.equal(JSON.stringify([...records]),before);
-});
+// Reward authority, forged replays and transaction recovery are covered by
+// student-security.test.cjs against real Auth/Functions/Firestore emulators.

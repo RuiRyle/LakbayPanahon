@@ -1,0 +1,3 @@
+const {onCall,HttpsError}=require('firebase-functions/v2/https');
+const options={region:'asia-southeast1',serviceAccount:'assessment-runtime@lakbaypanahon-1797e.iam.gserviceaccount.com',enforceAppCheck:process.env.FUNCTIONS_EMULATOR!=='true',maxInstances:2,minInstances:0,concurrency:8,cpu:1,memory:'256MiB',timeoutSeconds:60};
+for(const name of ['startStudentAssessment','advanceStudentAssessment','resumeStudentAssessment','submitStudentActivity'])exports[name]=onCall(options,async()=>{throw new HttpsError('unavailable','Assessment saving is temporarily unavailable. Your earned progress is safe.');});

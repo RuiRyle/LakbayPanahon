@@ -1,11 +1,15 @@
 ﻿const fs=require('fs'),path=require('path'),os=require('os'),{spawnSync}=require('child_process');
 const root=path.join(__dirname,'..'),temp=fs.mkdtempSync(path.join(os.tmpdir(),'lakbay-collections-'));
-const source=fs.readFileSync(path.join(root,'js/achievements.js'),'utf8').replace(/import[\s\S]*?from\s+"[^"]+";/g,'');
+const source=fs.readFileSync(path.join(root,'js/achievements.js'),'utf8').replace(/import[\s\S]*?from\s+['"][^'"]+['"];/g,'');
 let html=fs.readFileSync(path.join(root,'pages/achievements.html'),'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'');
 const css=['student.css','achievements.css','navy-gold-theme.css'].map(n=>fs.readFileSync(path.join(root,'css',n),'utf8')).join('\n');
 const script=`
 ${fs.readFileSync(path.join(root,'js/student-status.js'),'utf8').replace(/export /g,'')}
+${fs.readFileSync(path.join(root,'js/discovery-pins.js'),'utf8').replace(/export /g,'')}
+${fs.readFileSync(path.join(root,'js/discovery-cases.js'),'utf8').replace(/export /g,'')}
+${fs.readFileSync(path.join(root,'js/museum-exhibits.js'),'utf8').replace(/^import .*;\r?\n/gm,'').replace(/export /g,'')}
 
+const loadDiscoveryCase=async()=>null;
 const auth={currentUser:{uid:'student'}},db={};let artifactFailure=false;
 const collection=(_,name)=>({name}),where=(field,op,value)=>({field,value}),query=(ref,...filters)=>({...ref,filters}),doc=(_,name,id)=>({name,id});
 const onAuthStateChanged=(_,fn)=>queueMicrotask(()=>fn(auth.currentUser));
@@ -18,7 +22,7 @@ const tick=()=>new Promise(r=>setTimeout(r,60)),check=(ok,message)=>{if(!ok)thro
  document.body.classList.add('authenticated');document.body.classList.remove('auth-checking');await tick();
  check(document.getElementById('earnedBadgeCount').textContent==='1'&&document.getElementById('artifactCount').textContent==='2','Collection counts incorrect');
  check(document.querySelectorAll('.achievement-badge-card').length===1&&document.querySelectorAll('.artifact-card').length===2,'Collections not separated');
- const educational=createArtifactCard({name:'Test discovery',chapterId:'chapter 1&x',missionId:'mission?2',learningDetails:{represents:'A lesson token <img src=x>',lessonConnection:'A saved lesson recap.',reflectionQuestion:'What did you learn?',collectibleNote:'Not an original object.'}});document.body.append(educational);const disclosure=educational.querySelector('details');check(disclosure&&!disclosure.open,'Learning panel must start closed');disclosure.querySelector('summary').click();check(disclosure.open&&educational.textContent.includes('What did you learn?'),'Learning panel did not open');check(!educational.querySelector('img')&&educational.textContent.includes('<img src=x>'),'Learning content interpreted as HTML');const lessonTarget=new URL(educational.querySelector('a').href);check(lessonTarget.searchParams.get('chapter')==='chapter 1&x'&&lessonTarget.searchParams.get('mission')==='mission?2','Lesson IDs not encoded');educational.remove();const legacy=createArtifactCard({name:'Legacy token'});check(!legacy.querySelector('details'),'Missing authored details invent a learning panel');
+ const educational=createArtifactCard({name:'Test discovery',chapterId:'chapter 1&x',missionId:'mission?2',learningDetails:{represents:'A lesson token <img src=x>',lessonConnection:'A saved lesson recap.',reflectionQuestion:'What did you learn?',collectibleNote:'Not an original object.'}});document.body.append(educational);const view=educational.querySelector('.artifact-view-button');check(view&&!educational.querySelector('details'),'Artifact card has duplicate learning controls');view.click();let exhibit=document.querySelector('.museum-exhibit');check(exhibit.open&&!exhibit.querySelector('img')&&exhibit.textContent.includes('<img src=x>'),'Exhibit text interpreted as HTML');exhibit.querySelectorAll('.museum-exhibit-views button')[1].click();check(exhibit.textContent.includes('What did you learn?'),'Reflection lost from exhibit');exhibit.querySelectorAll('.museum-exhibit-views button')[2].click();const lessonTarget=new URL(exhibit.querySelector('a').href);check(lessonTarget.searchParams.get('chapter')==='chapter 1&x'&&lessonTarget.searchParams.get('mission')==='mission?2','Lesson IDs not encoded');closeMuseumExhibit();educational.remove();const legacy=createArtifactCard({name:'Legacy token'});document.body.append(legacy);legacy.querySelector('.artifact-view-button').click();exhibit=document.querySelector('.museum-exhibit');exhibit.querySelectorAll('.museum-exhibit-views button')[2].click();check(exhibit.textContent.includes('unavailable')&&!exhibit.querySelector('a'),'Legacy exhibit invented a mission link');closeMuseumExhibit();legacy.remove();
 
  const badges=document.getElementById('badges'),artifacts=document.getElementById('artifacts'),badgeToggle=document.getElementById('toggleBadges'),artifactToggle=document.getElementById('toggleArtifacts');
  check(getComputedStyle(badges).display==='none'&&getComputedStyle(artifacts).display==='none','Collections must initially be closed');

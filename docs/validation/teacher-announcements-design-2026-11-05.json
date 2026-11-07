@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-05T18:50:27.545Z",
+  "mode": "actual modules and browser, mocked Firestore; no live records changed",
+  "results": [
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "board prioritizes saved posts and keeps the empty composer closed",
+        "classroom selector belongs to the compact page header",
+        "board initially shows published announcements separately from drafts",
+        "announcements avoid unrelated lesson catalogs",
+        "post filters show actual saved counts",
+        "draft view only shows private drafts",
+        "new announcement opens a labelled modal and focuses its title",
+        "composer opening starts a real browser animation",
+        "character count follows message text",
+        "typing visibly identifies unsaved message changes",
+        "closed unsaved message has a visible board reminder",
+        "closing the composer preserves unsent text and offers Resume message",
+        "closing restores focus to the board action",
+        "reopening resumes the unsent message",
+        "Escape-style cancellation closes without discarding unsent text",
+        "hidden unsent draft remains protected when switching classrooms",
+        "student preview reveals the current message",
+        "reduced-motion cancels dialog and preview animations []",
+        "failed save stays in the planner, preserves text, and does not report success",
+        "draft confirmation appears beside saved posts and explains visibility",
+        "successful save closes composer, clears text and opens the saved status view",
+        "saved draft appears on the board",
+        "editing a post opens the composer with its original class locked",
+        "cancel edit returns to board and clears editing state",
+        "publishing confirms success and reveals the actual saved post in Published",
+        "classroom switching updates recipient and board together",
+        "board pages large post collections five at a time",
+        "board paging reveals remaining saved posts",
+        "board has no horizontal overflow at 390px",
+        "composer fits 390px viewport",
+        "Save draft shortcut keeps a message private even when Publish was selected",
+        "cancelled discard keeps unsaved text",
+        "confirmed discard clears only unsaved work and removes its reminder"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 1440,
+      "checks": [
+        "board prioritizes saved posts and keeps the empty composer closed",
+        "classroom selector belongs to the compact page header",
+        "board initially shows published announcements separately from drafts",
+        "announcements avoid unrelated lesson catalogs",
+        "post filters show actual saved counts",
+        "draft view only shows private drafts",
+        "new announcement opens a labelled modal and focuses its title",
+        "composer opening starts a real browser animation",
+        "character count follows message text",
+        "typing visibly identifies unsaved message changes",
+        "closed unsaved message has a visible board reminder",
+        "closing the composer preserves unsent text and offers Resume message",
+        "closing restores focus to the board action",
+        "reopening resumes the unsent message",
+        "Escape-style cancellation closes without discarding unsent text",
+        "hidden unsent draft remains protected when switching classrooms",
+        "student preview reveals the current message",
+        "reduced-motion cancels dialog and preview animations []",
+        "failed save stays in the planner, preserves text, and does not report success",
+        "draft confirmation appears beside saved posts and explains visibility",
+        "successful save closes composer, clears text and opens the saved status view",
+        "saved draft appears on the board",
+        "editing a post opens the composer with its original class locked",
+        "cancel edit returns to board and clears editing state",
+        "publishing confirms success and reveals the actual saved post in Published",
+        "classroom switching updates recipient and board together",
+        "board pages large post collections five at a time",
+        "board paging reveals remaining saved posts",
+        "board has no horizontal overflow at 1440px",
+        "composer fits 1440px viewport",
+        "Save draft shortcut keeps a message private even when Publish was selected",
+        "cancelled discard keeps unsaved text",
+        "confirmed discard clears only unsaved work and removes its reminder"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "js/teacher-workspace.js",
+      "sha256": "64dda6d4cd3cac30a4e930862534534e937b15b1a5991459d8edcefbe33af2c2"
+    },
+    {
+      "file": "js/teacher-class-client.js",
+      "sha256": "c5c408c90118a287519358e50aa039c5dc09c24dca9a35d15f678695add6a4f1"
+    },
+    {
+      "file": "css/teacher-workspace.css",
+      "sha256": "7b23cf973525b991ac7575860dd5ac35c130a30e53ac38a24977d921a33e8dfd"
+    }
+  ]
+}

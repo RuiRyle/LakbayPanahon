@@ -1,0 +1,512 @@
+/* ==========================================
+   LAKBAYPANAHON
+   NAVY & GOLD LANDING PAGE THEME
+   Phase 1: Navigation + Hero
+========================================== */
+
+/* ---------- THEME COLORS ---------- */
+
+:root {
+    --lp-dark: #081b38;
+    --lp-navy: #0d274b;
+    --lp-card: #12325b;
+    --lp-gold: #e5b64f;
+    --lp-gold-light: #f6d98b;
+    --lp-text: #f8f5eb;
+    --lp-muted: #b8c8dc;
+}
+
+/* ---------- NAVIGATION ---------- */
+
+.header {
+    background: rgba(8, 27, 56, 0.97);
+    border-bottom: 1px solid rgba(229, 182, 79, 0.25);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+.logo-icon {
+    color: var(--lp-dark);
+    background: var(--lp-gold);
+    border-color: var(--lp-gold-light);
+}
+
+.logo-text span {
+    color: #ffffff;
+}
+
+.logo-text small {
+    color: var(--lp-muted);
+}
+
+.nav-links a {
+    color: #dce6f4;
+}
+
+.nav-links a:hover {
+    color: var(--lp-gold-light);
+}
+
+.nav-links a::after {
+    background: var(--lp-gold);
+}
+
+.nav-actions .btn-outline {
+    color: #ffffff;
+    border-color: rgba(229, 182, 79, 0.7);
+}
+
+.nav-actions .btn-outline:hover {
+    color: var(--lp-dark);
+    background: var(--lp-gold);
+}
+
+.nav-actions .btn-primary {
+    color: var(--lp-dark);
+    background: var(--lp-gold);
+    box-shadow: 0 6px 20px rgba(229, 182, 79, 0.18);
+}
+
+.nav-actions .btn-primary:hover {
+    background: var(--lp-gold-light);
+}
+
+.menu-button {
+    color: var(--lp-gold-light);
+}
+
+/* ---------- HERO BACKGROUND ---------- */
+
+.hero {
+    background:
+        radial-gradient(
+            circle at 82% 25%,
+            rgba(229, 182, 79, 0.11),
+            transparent 38%
+        ),
+        linear-gradient(
+            125deg,
+            #081b38 0%,
+            #0c2548 55%,
+            #102f56 100%
+        );
+}
+
+.hero::after {
+    border-color: rgba(229, 182, 79, 0.17);
+}
+
+.hero-decoration {
+    pointer-events: none;
+}
+
+.eyebrow {
+    color: var(--lp-gold-light);
+}
+
+.eyebrow span {
+    color: var(--lp-gold);
+}
+
+/* ---------- HERO TEXT ---------- */
+
+.hero h1 {
+    color: #ffffff;
+}
+
+.hero h1 span {
+    color: var(--lp-gold);
+}
+
+.hero-description {
+    color: var(--lp-muted);
+}
+
+.hero-note {
+    color: #c8d5e5;
+}
+
+.note-icon {
+    color: var(--lp-dark);
+    background: var(--lp-gold);
+}
+
+/* ---------- HERO BUTTONS ---------- */
+
+.hero-buttons .btn-primary {
+    color: var(--lp-dark);
+    background: var(--lp-gold);
+    border-color: var(--lp-gold);
+    box-shadow: 0 10px 28px rgba(229, 182, 79, 0.19);
+}
+
+.hero-buttons .btn-primary:hover {
+    background: var(--lp-gold-light);
+}
+
+.hero-buttons .btn-outline {
+    color: #ffffff;
+    border-color: rgba(229, 182, 79, 0.75);
+}
+
+.hero-buttons .btn-outline:hover {
+    color: var(--lp-dark);
+    background: var(--lp-gold);
+}
+
+/* ---------- LEARNING JOURNEY CARD ---------- */
+
+.history-card {
+    background: var(--lp-card);
+    border: 1px solid rgba(229, 182, 79, 0.65);
+
+    box-shadow:
+        0 25px 65px rgba(0, 0, 0, 0.28),
+        0 0 35px rgba(229, 182, 79, 0.07);
+
+    transform: rotate(0deg);
+}
+
+.history-card-top {
+    color: var(--lp-gold-light);
+    border-bottom-color: rgba(229, 182, 79, 0.2);
+}
+
+.chapter-label {
+    color: var(--lp-dark);
+    background: var(--lp-gold);
+}
+
+.history-illustration {
+    background:
+        radial-gradient(
+            circle at center,
+            #21466e 0%,
+            #102b50 70%,
+            #0b2241 100%
+        );
+}
+
+.sun-rays {
+    background:
+        repeating-conic-gradient(
+            rgba(229, 182, 79, 0.10) 0deg 8deg,
+            transparent 8deg 17deg
+        );
+}
+
+.book-icon {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(229, 182, 79, 0.35);
+}
+
+.illustration-content h3 {
+    color: #ffffff;
+}
+
+.illustration-content p {
+    color: #c8d5e5;
+}
+
+.journey-progress {
+    background: #0d274b;
+}
+
+.progress-heading {
+    color: var(--lp-muted);
+}
+
+.progress-heading span:first-child {
+    color: #ffffff;
+}
+
+.progress-bar {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.progress-value {
+    background: var(--lp-gold);
+}
+
+/* ---------- FLOATING REWARD CARDS ---------- */
+
+.floating-card {
+    background: #102b50;
+    border: 1px solid rgba(229, 182, 79, 0.55);
+
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.floating-card strong {
+    color: #ffffff;
+}
+
+.floating-card small {
+    color: var(--lp-muted);
+}
+
+.floating-icon {
+    color: var(--lp-dark);
+    background: var(--lp-gold);
+}
+
+/* ---------- TABLET / MOBILE NAVIGATION ---------- */
+
+@media (max-width: 950px) {
+    .nav-links.active {
+        background: #0b2343;
+        border-bottom-color: rgba(229, 182, 79, 0.3);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links.active a {
+        color: #ffffff;
+    }
+
+    .nav-links.active a:hover {
+        color: var(--lp-gold-light);
+    }
+}
+
+/* ---------- ACCESSIBILITY ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-buttons .btn,
+    .nav-actions .btn {
+        transition: none;
+    }
+}
+
+
+/* ==========================================
+   LAKBAYPANAHON DARK THEME
+   Phase 2: Complete Landing Page
+========================================== */
+
+/* ---------- FEATURES SECTION ---------- */
+
+.features {
+    background: #091d3b;
+}
+
+.features .section-label,
+.how-it-works .section-label,
+.about .section-label {
+    color: #e5b64f;
+}
+
+.features .section-heading h2,
+.how-it-works .section-heading h2,
+.about-content h2 {
+    color: #ffffff;
+}
+
+.features .section-heading p,
+.how-it-works .section-heading p {
+    color: #b8c8dc;
+}
+
+.feature-card {
+    background: linear-gradient(
+        145deg,
+        #112d53,
+        #0d2547
+    );
+
+    border: 1px solid rgba(229, 182, 79, 0.28);
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card:hover {
+    border-color: #e5b64f;
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.25),
+        0 0 18px rgba(229, 182, 79, 0.08);
+}
+
+.feature-icon {
+    background: #193b67;
+    border: 1px solid rgba(229, 182, 79, 0.35);
+}
+
+.feature-card h3 {
+    color: #ffffff;
+}
+
+.feature-card p {
+    color: #b8c8dc;
+}
+
+.feature-number {
+    color: rgba(229, 182, 79, 0.12);
+}
+
+/* ---------- HOW IT WORKS ---------- */
+
+.how-it-works {
+    background: #0d274b;
+}
+
+.step-number {
+    color: rgba(229, 182, 79, 0.11);
+}
+
+.step-icon {
+    color: #e5b64f;
+    background: #15355f;
+
+    border: 1px solid rgba(229, 182, 79, 0.5);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
+}
+
+.step h3 {
+    color: #ffffff;
+}
+
+.step p {
+    color: #b8c8dc;
+}
+
+.step-line {
+    background: linear-gradient(
+        to right,
+        #e5b64f,
+        rgba(229, 182, 79, 0.18)
+    );
+}
+
+/* ---------- ABOUT SECTION ---------- */
+
+.about {
+    background: #091d3b;
+}
+
+.about-badge {
+    background: radial-gradient(
+        circle,
+        #173a66,
+        #0d2547
+    );
+
+    border: 1px solid rgba(229, 182, 79, 0.55);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.22),
+        0 0 30px rgba(229, 182, 79, 0.07);
+}
+
+.about-badge-inner {
+    border-color: #e5b64f;
+}
+
+.about-badge-inner span {
+    color: #f6d98b;
+}
+
+.about-badge-inner small {
+    color: #e5b64f;
+}
+
+.about-content p {
+    color: #b8c8dc;
+}
+
+/* ---------- CALL TO ACTION ---------- */
+
+.cta {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(229, 182, 79, 0.12),
+            transparent 55%
+        ),
+        linear-gradient(
+            125deg,
+            #102f56,
+            #081b38
+        );
+
+    border-top: 1px solid rgba(229, 182, 79, 0.22);
+    border-bottom: 1px solid rgba(229, 182, 79, 0.22);
+}
+
+.cta-small {
+    color: #e5b64f;
+}
+
+.cta h2 {
+    color: #ffffff;
+}
+
+.cta p {
+    color: #c8d5e5;
+}
+
+.cta .btn-gold {
+    color: #081b38;
+    background: #e5b64f;
+
+    box-shadow: 0 10px 28px rgba(229, 182, 79, 0.18);
+}
+
+.cta .btn-gold:hover {
+    background: #f6d98b;
+}
+
+/* ---------- FOOTER ---------- */
+
+.footer {
+    background: #06162d;
+    color: #b8c8dc;
+}
+
+.footer-logo strong {
+    color: #ffffff;
+}
+
+.footer .logo-icon {
+    background: #e5b64f;
+    color: #081b38;
+}
+
+.footer-links a {
+    color: #dce6f4;
+}
+
+.footer-links a:hover {
+    color: #e5b64f;
+}
+
+.footer-bottom {
+    border-top-color: rgba(229, 182, 79, 0.2);
+}
+
+/* ---------- KEYBOARD ACCESSIBILITY ---------- */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #f6d98b;
+    outline-offset: 4px;
+}
+
+/* ---------- MOBILE REFINEMENTS ---------- */
+
+@media (max-width: 600px) {
+    .feature-card {
+        padding: 24px;
+    }
+
+    .about-badge {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta {
+        padding: 75px 0;
+    }
+
+    .footer-links a {
+        padding: 4px 0;
+    }
+}

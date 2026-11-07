@@ -1,6 +1,6 @@
 ﻿const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),{spawnSync}=require('node:child_process');
 const root=path.join(__dirname,'..'),temp=fs.mkdtempSync(path.join(os.tmpdir(),'lakbay-achievements-'));
-const source=fs.readFileSync(path.join(root,'js/achievements.js'),'utf8').replace(/import[\s\S]*?from\s+"[^"]+";/g,'');
+const source="function closeMuseumExhibit(){} function openMuseumExhibit(){} function createDiscoveryPinControl(){return document.createElement('span');} function studentLoadMessage(e,fallback){return fallback;}\n"+fs.readFileSync(path.join(root,'js/achievements.js'),'utf8').replace(/import[\s\S]*?from\s+"[^"]+";/g,'');
 let html=fs.readFileSync(path.join(root,'pages/achievements.html'),'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'');
 const script=`
 const auth={currentUser:{uid:'student'}},db={};let listener,mode='partial',gate=null,reads=0,artifactReads=0;

@@ -1,10 +1,28 @@
 # LakbayPanahon Data Dictionary
 
+Activity lifecycle (6 November 2026): `classAssignments` and `classReviewAssignments` support `closed` and `withdrawn` in addition to `draft`/`published`, with server-written `endedAt`. See [lifecycle policy](activity-lifecycle.md).
+
+
 ## Conventions
 
-Firestore document IDs are the primary identifiers. `PK` means document ID; `FK` means a string containing another document's ID (a logical reference, not a SQL-enforced foreign key). Timestamps are Firestore `Timestamp` values. A field marked optional may be absent. Nested maps/lists can have different shapes by activity type. This dictionary covers the 29 root collections referenced by the checked-in Firestore rules and application code; server-managed fields not exposed to the student client are marked accordingly.
+Focused review additions: `classReviewAssignments` may include `reviewTopic` (string, up to 150), `reviewSceneId` (string, up to 150) and `reflectionQuestion` (string, up to 500). The first two fields default to empty for whole-lesson review; the prompt defaults to empty for legacy reviews. `classReviewReflections/{reviewId}` stores the current explanation and teacher guidance. See the [complete field reference](classroom-learning-followups.md) and academic table 76.
+
+Classroom additions (5 November 2026): existing `classAssignments` represent shared class goals. Private `classReviewAssignments` use fresh quiz evidence after first publication; see [full fields and semantics](class-teaching-workflow.md). The `classHelpRequests` fields are documented in [private help](class-help-workflow.md), and the nested `classes/{classId}/classmates/{studentId}` display-name projection in [classmates](classmates-workflow.md). [Academic tables 73–75](data-dictionary-academic.md) contain the corresponding attribute tables. These additions are applied locally; online publication remains separate.
+
+Firestore document IDs are the primary identifiers. `PK` means document ID; `FK` means a string containing another document's ID (a logical reference, not a SQL-enforced foreign key). Timestamps are Firestore `Timestamp` values. A field marked optional may be absent. Nested maps/lists can have different shapes by activity type. This dictionary covers root collections referenced by the checked-in Firestore rules and application code; server-managed fields not exposed to the student client are marked accordingly. The teacher permission extensions are published; see [teacher workflow](teacher-workflow.md).
 
 ## Identity, classes, and configuration
+
+Teacher qualification extensions (see [workflow](teacher-qualification-workflow.md)):
+
+| Collection / document | Fields | Access and purpose |
+|---|---|---|
+| `users/{uid}` | `teacherVerifiedRevision` (integer), `teacherAccessType` (`school_teacher`, `licensed_teacher`, `student_teacher`, `facilitator` or empty), `teacherVerificationReviewId` (string) | Administrator-written eligibility metadata; contains no credential number or evidence image. Must match the current approved application. |
+| `teacherApplications/{uid}` | `userId`, `email`, `emailVerified`, `revision`, `status`, `updatedAt`; bounded `legalName`, `institution`, `locality`, `roleTitle`, `officialWebsite`, `workEmail`, `prcNumber`, `prcExpiresAt` (timestamp/null), `sponsorName`, `sponsorContact`, `statement`, `applicantType`, `acknowledged` | Applicant/administrator-only form. States: `draft`, `submitted`, `needs_changes`, `declined`, `approved`. Verified-email token required for submission. |
+| | `evidenceRevision`, `evidenceName`, `evidenceUploadedAt` (timestamp/null) | Private attachment metadata; zero/empty/null after removal or a review decision. |
+| | `decisionReason`, `reviewId`, `reviewedAt`, `reviewedBy` | Administrator decision metadata; applicant sees the reason, not private verification references. Cleared by a new applicant revision. |
+| `teacherEvidence/{uid}` | `userId`, `revision`, `name`, `mime`, `data` (bounded base64 image), `uploadedAt` | Private JPG/PNG, client limit 250 KB. Reads expire after 30 days; deletion on decision, encounter cleanup or trusted maintenance. No list/download-token access. |
+| `teacherApplicationReviews/{reviewId}` | `userId`, `actorId`, `revision`, `applicantType`, `decision`, `reason`, `checks` (`identity`, `affiliation`, `prc`, `endorsement` booleans), `affiliationReference`, `credentialReference`, `createdAt` | Immutable administrator-only verification record, atomically paired with the application, eligibility metadata and account audit using the same event ID. |
 
 | Collection / document | Field | Firestore type | Key / requirement | Description |
 |---|---|---|---|---|
@@ -13,10 +31,13 @@ Firestore document IDs are the primary identifiers. `PK` means document ID; `FK`
 | | `middleName` | string | Optional; up to 100 chars | User's middle name; empty string is accepted. |
 | | `lastName` | string | Required; 1–100 chars | User's last name. |
 | | `email` | string | Required | Must equal the authenticated account email on profile creation. |
-| | `role` | string | Required; `student` or `teacher` | Application role. |
+| | `role` | string | `student`/`teacher` self-registration; `admin` through trusted setup | Application role; account-management UI cannot promote roles. |
 | | `status` | string | Required; `active` student or `pending` teacher at creation | Account status used for access control. |
 | | `createdAt` | timestamp | Required on creation | Profile creation time. |
 | | `updatedAt` | timestamp | Optional | Most recent profile or reward update time. |
+| | `moderatedAt` | timestamp | Optional; server timestamp | Most recent administrator account-status decision. |
+| | `moderatedBy` | string | Optional; logical FK to administrator `users` | Administrator who made the last decision. |
+| | `moderationEventId` | string | Optional; FK to `accountModeration` | Last atomically paired decision record. |
 | | `avatarId` | string | Optional; logical FK to `avatars` | Selected avatar catalog document. |
 | | `profileSetupCompletedAt` | timestamp | Optional | Time initial profile setup was completed. |
 | | `profileSetupDismissedAt` | timestamp | Optional | Time initial profile setup was dismissed. |
@@ -26,6 +47,13 @@ Firestore document IDs are the primary identifiers. `PK` means document ID; `FK`
 | | `lastStreakDate` | string | Optional; `YYYY-MM-DD` in UTC+8 | Date key of the latest daily challenge streak update. |
 | | `lastRewardKind` | string | Optional; `mission` or `daily` | Type of the most recently paired reward transaction. |
 | | `lastRewardId` | string | Optional | Mission ID or daily date key associated with that reward transaction. |
+| `accountModeration/{eventId}` | document ID | string | PK; immutable | Administrator-only status-decision audit entry. |
+| | `userId` | string | Required; FK to student/teacher `users` | Account whose application access changed. |
+| | `actorId` | string | Required; active administrator UID | Decision author. |
+| | `previousStatus`, `status` | string | Required | Actual previous status and new `active`/`inactive` status. |
+| | `reason` | string | Required; 5–500 characters | Administrator-only reason for the decision. |
+| | `identityVerified` | boolean | Required; true for teacher activation | Administrator confirmation of teacher identity/eligibility review, not an automated verification result. |
+| | `createdAt` | timestamp | Required; server timestamp | Audit creation time, paired with the profile's moderation timestamp. |
 | `avatars/{avatarId}` | document ID | string | PK | Unique avatar option. |
 | | `name` | string | Required by profile catalog | Display name. |
 | | `status` | string | `active` or `inactive` | Only active avatars are available for selection. |
@@ -34,14 +62,21 @@ Firestore document IDs are the primary identifiers. `PK` means document ID; `FK`
 | | `order` | number | Optional | Sort order in the avatar picker. |
 | | `isDefault` | boolean | Optional | Identifies the default avatar. |
 | `classes/{classId}` | document ID | string | PK | Unique class. |
+| | `teacherId` | string | Required for teacher-managed classes; FK to `users` | Immutable owning teacher UID. |
+| | `currentJoinCode` | string | Required on new teacher-managed classes | Current 12-character code; empty string revokes new joins. Legacy records may omit it. |
+| | `createdAt`, `updatedAt` | timestamp | Required on new teacher-managed classes | Server creation/update times. |
 | | `status` | string | Required by membership/access logic; active class required | Class availability state. |
 | | `name` | string | Optional display field | Class name shown to a member. |
 | | `teacherName` | string | Optional display field | Teacher name shown to a member. |
 | | `description` | string | Optional display field | Class description. |
 | `classJoinCodes/{code}` | document ID | string | PK; 12 uppercase letters/digits | Server-managed class invitation code. |
+| | `teacherId` | string | Required for new teacher-issued codes | Owning teacher. |
+| | `createdAt` | timestamp | Required for new teacher-issued codes | Server creation time. |
 | | `classId` | string | Required logical FK to `classes` | Class that the code joins. |
 | | `status` | string | Must be `active` to join | Code availability. |
 | | `expiresAt` | timestamp | Optional | Code expiration time. |
+| | `className` | string | Optional; new codes | Classroom name snapshot shown before joining; must match the classroom when issued. |
+| | `teacherName` | string | Optional; new codes | Teacher display name snapshot shown before joining; must match the classroom when issued. |
 | `classMembers/{uid_classId}` | document ID | string | PK; `{userId}_{classId}` | Unique student membership in a class. |
 | | `userId` | string | Required; FK to `users`, must equal signed-in UID | Member account. |
 | | `classId` | string | Required logical FK to `classes` | Joined class. |
@@ -50,12 +85,18 @@ Firestore document IDs are the primary identifiers. `PK` means document ID; `FK`
 | | `joinedAt` | timestamp | Required | Membership creation time. |
 | `classAssignments/{assignmentId}` | document ID | string | PK | Unique class assignment. |
 | | `classId` | string | Required for class query; FK to `classes` | Assigned class. |
-| | `status` | string | `published` to be visible | Publication state. |
+| | `status` | string | `draft`, `published`, `closed`, `withdrawn` | Drafts are private; published activities are active; ended activities remain in student history. |
+| | `endedAt` | timestamp | Required for closed/withdrawn; absent/null otherwise | Server ending time; later independent learning does not change the ended activity outcome. |
 | | `missionId` | string | Optional logical FK to `missions` | Assigned mission. |
 | | `chapterId` | string | Optional logical FK to `chapters` | Chapter containing the assigned mission. |
 | | `title` | string | Optional | Assignment display title. |
 | | `instructions` | string | Optional | Teacher's assignment instructions. |
 | | `dueAt` | timestamp | Optional | Assignment deadline. |
+| | `publishedAt`, `updatedAt` | timestamp | Required by new teacher publisher | Server save/publication times. Drafts remain hidden from students. |
+| `teacherStudentLinks/{teacherUid_studentUid}` | document ID | string | PK; `{teacherId}_{userId}` | Report lookup; every read still checks live ownership and membership. Not a progress copy. |
+| | `teacherId` | string | Required; FK to `users` | Active approved teacher. |
+| | `userId` | string | Required; FK to `users` | Joined student whose learning records are requested. |
+| | `classId` | string | Required; FK to `classes` | Owned active class with active membership. Retaining this document does not retain access after the student leaves. |
 | `learningSettings/progression` | document ID | string | Fixed ID: `progression` | XP and review progression policy. |
 | | `xpPerLevel` | integer | Required; positive | XP needed for each level. |
 | | `version` | integer | Required; positive | Policy version. |
@@ -249,6 +290,121 @@ The repository also exports a callable Admin SDK reward function. The current br
 
 Adaptive mastery is derived from a student's existing `studentQuizAttempts`, `studentPracticeProgress`, and `studentReviewEvents` records; there is no separate aggregate mastery collection. Mission quiz startup uses this history to seed topic priorities and the starting difficulty, then updates the next-question choice from answers in the current attempt.
 
+## Browser personalization
+
+These settings are local storage entries, separate from the Firestore collections above.
+
+| Local storage key | Value | Use |
+|---|---|---|
+| `lakbay.reading-surface` | `paper` or `dark` | Device reading-surface preference; paper is the default. |
+| `lakbay.discovery-wall.v1.{encoded uid}` | JSON list of up to three `{kind, id}` maps | Personal profile pins. `kind` is `artifact` or `journal`; `id` is the artifact catalog document ID or saved journal document ID. Only references are stored. The profile verifies current ownership and authored content before rendering. Pins are local to this browser and do not grant access or affect rewards. |
+
 ## Schema basis
 
 Field names and constraints were compiled from `firestore.rules`, JavaScript client collection reads/writes, Firebase Functions, and repository content migration examples. Catalog and teacher/admin-managed records can contain optional fields not exhaustively constrained by student rules; compare those documents with a current Firestore export when an exact deployed-instance dictionary is required.
+# Narration preference
+
+`lakbay.narrator-voice` is a browser-local preference containing the selected Web Speech API voice URI. The mission and playground share it. A missing voice falls back to an available English voice or the device default. It contains no learning progress and is not stored in Firestore. The narrator uses a slightly brighter pitch and clear pace; the underlying voice and pronunciation depend on the device. Voice selection, voice-loading fallback and preserved narration text have automated checks; subjective audio quality has not been verified by listening.
+
+
+## Published class announcements (31 October 2026)
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| classAnnouncements/{announcementId} | document | Optional class message; separate from assignments. |
+| classId | string | Existing class ID. |
+| status | string | Only published messages are visible to joined active students. Drafts remain inaccessible. |
+| title | string | Required nonempty message heading, rendered as text. |
+| body | string | Required nonempty message body, rendered as text with line breaks preserved. |
+| publishedAt | timestamp, optional | Display/order time; shown in Philippine time. Missing timestamps are not invented. |
+
+Students cannot write announcements. Active members can read published messages; leaving revokes those reads. The current teacher contract allows qualified teachers to manage announcements for their owned active classes, including drafts. See [teacher workflow](teacher-workflow.md) and the `classAnnouncements` rules for the exact access checks.
+
+### Mission-specific teacher feedback
+
+| Collection / Document | Field | Type | Requirement | Description |
+| --- | --- | --- | --- | --- |
+| `classFeedback/{feedbackId}` | document ID | string | Required PK | Deterministic classId_userId_missionId; one current feedback message per student, class and mission. |
+| | `classId` | string | Required FK to classes | Owning class. |
+| | `userId` | string | Required FK to users | Student recipient; must be an active class member when the teacher sends. |
+| | `teacherId` | string | Required FK to users | Approved owning teacher; cannot change on revision. |
+| | `missionId` | string | Required FK to missions | Mission discussed by the feedback. |
+| | `chapterId` | string | Required FK to chapters | Must match the active mission's chapter. |
+| | `body` | string | Required, 1-1500 chars | Student-visible guidance. Never store private support notes here. |
+| | `revision` | integer | Required | Starts at 1 and increases by 1 per teacher update. |
+| | `createdAt` | timestamp | Required | Server timestamp on first send; preserved thereafter. |
+| | `updatedAt` | timestamp | Required | Server timestamp of the latest teacher send. |
+| | `readAt` | timestamp | Optional, nullable | Null on teacher send; only the recipient can set it to the server time. It means marked as read, not demonstrated understanding. |
+
+The student can read only their feedback while a class member. The owning teacher can send/read feedback only for active members of an active class. Students can change only readAt; sending a revision clears it. Private teacher notes are outside this entity. Messages do not change scores, mission completion or rewards. The new rules and local UI must be published before hosted use.
+
+### Private teacher follow-up
+
+| Collection / Document | Field | Type | Requirement | Description |
+| --- | --- | --- | --- | --- |
+| `teacherSupportNotes/{noteId}` | document ID | string | Required PK | Deterministic classId_userId_missionId; one current private follow-up per student, class and mission. |
+| | `classId` | string | Required FK to classes | Owned active class; active student membership required for reading and writing notes. |
+| | `userId` | string | Required FK to users | Student discussed in the follow-up. Students cannot access these records. |
+| | `teacherId` | string | Required FK to users | Approved owning teacher; other teachers cannot read this note. |
+| | `missionId` | string | Required FK to missions | Active mission discussed in the note. |
+| | `chapterId` | string | Required FK to chapters | Active chapter containing the mission. |
+| | `status` | string | Required | planned or discussed; teacher action, not student mastery or review resolution. |
+| | `note` | string | Required, 1-1500 chars | Private teacher note; never stored in student-visible feedback. |
+| | `revision` | integer | Required | Starts at 1 and increments on each save; prevents stale concurrent UI edits. |
+| | `createdAt` | timestamp | Required | First server save time; preserved on updates. |
+| | `updatedAt` | timestamp | Required | Latest server save time. |
+| | `statusAt` | timestamp | Required | Server time when status was set or changed. Ordinary note edits preserve it. Later quiz evidence is compared to this boundary without asserting causation or mastery. |
+
+Only the approved owning teacher can read or save a note for an active member of an active class. Students, other teachers and administrators have no rule granting access. Archive or leaving revokes the report access. Reopening a discussed note as planned creates a new statusAt boundary. This entity retains the latest note, not a full discussion-event history; it does not change feedback, scores, completion or rewards.
+
+The Historical Timeline reuses eras, chapters, missions and owned progress. It uses authored ordering/dateRange labels and normal journey prerequisites; it does not fabricate exact event dates or create a second curriculum store.
+
+Bayani generated review questions remain transient in the page: question, four options A-D, suggested answer and explanation. They are not saved as official questions, grades, mastery evidence or rewards. The generator receives bounded authored lesson text, not account identity, scores or answer keys.
+
+## Student level cosmetics (31 October 2026)
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| studentCosmetics/{uid} | document | Account-owned cosmetic preference; document ID equals the Auth UID. |
+| frameId | string | none, bamboo, sunburst or guardian. Server checks the saved profile level for earned frames. |
+| updatedAt | timestamp | Server time of the preference write. |
+
+Titles and cosmetic eligibility derive from the existing saved level; no extra XP or reward ownership counters are written. Only the owner can get/create/update the preference. Listing/deletion and extra fields are denied to students. Choosing Classic Explorer resets the equipped frame to none. Any future administrator account-erasure procedure must also remove the UID-keyed cosmetic document, rather than relying on userId-field queries.
+
+## Journey finale (31 October 2026)
+
+| Field | Type | Meaning |
+| --- | --- | --- |
+| learningSettings/journeyFinale | document | Frozen selected-journey requirements; active students can get this exact document, not list or write it. |
+| enabled | boolean | Must be true before the ending can be evaluated. |
+| id | string | Version identifier, currently philippine-history-journey-v1. |
+| title | string | Human-readable journey label. |
+| chapters | array of maps | Required id/title/eraId entries; currently 16 chapters including required prerequisites/prologue. |
+| missions | array of maps | Required id/chapterId pairs; currently 66 missions. |
+| finalChapterId | string | Last chapter challenge's finale destination, currently chapter-15. |
+
+The Journey Complete badge derives from fresh owned studentChapterProgress and studentProgress completions matching every configured requirement. It is not an extra studentBadges document, XP award or cosmetic preference. Its completion date is the latest valid required chapter completedAt; missing evidence dates stay unavailable. Catalog expansion must not silently redefine this frozen version.
+
+`lakbay.finale-reflection:{uid}:{definitionId}` stores an optional ungraded thought (maximum 1,000 characters) only in this browser after explicit Save. Clear removes it locally. It is never sent to Firestore or AI. A locally generated PNG completion card uses a transient explorer name and saved completion evidence, and is a system achievement rather than a school certificate.
+
+## Authored discovery activities and community
+
+`js/discovery-cases.js` contains three public authored companion cases mapped by chapterId + missionId: community-clues, trade-clues and boat-clues. Each contains a goal, setting, three labelled clues, a conclusion question/options/answer index, explanation, two comparison classifications/reasons, a Bayani claim/support index/evidence limit, and source metadata. These are practice content, not protected quiz keys or official assessment records. Activity answers and visited clues are transient page memory, cleared on disposal; no localStorage or Firestore record is added.
+
+The learning community derives counts from currently available ready catalog missions and owned completed studentProgress rows with matching chapterId and missionId. Five visual places reveal at one completion and at 25/50/75/100 percent of available missions. These are calculated decorations with lesson return links, not studentBadges or studentCosmetics ownership. Account changes clear the view. Catalog changes can change this visual's thresholds; the finale definition remains separately frozen.
+
+Museum dialogs reuse owned artifact catalog/learningDetails data. An optional string learningDetails.historicalUse is displayed when supplied; missing historical-use/provenance details are not invented. New dialogs are ephemeral and produce no reward writes.
+
+## All-mission learning guides
+
+`js/mission-learning-guides.js` supplies one authored guide for each of the 66 active chapterId/missionId pairs. Each has a central question, why-it-matters explanation, one application scenario, three choices, three explanations and editorial Grade 5 curriculum references. These are public authored companion practice, not official quiz results or AI-generated responses. Answers and optional explanations stay in page memory and are cleared on activity disposal/account change. No localStorage, Firestore scores or rewards are written.
+
+The published aggregate migration stores this object as missions/{id}.learningGuide, including a referenceNote that distinguishes editorial quarter/row locators from official competency codes. The frontend has the authored guides bundled, so the field is not required for rendering. No student write rule is added. Recap vocabulary derives from existing scene keyTerm/keyTermDefinition fields. Short-reading parts preserve the complete authored scene text while changing its presentation boundaries.
+
+## Review publication coordination
+
+`classReviewPublicationState/{classId}` stores `classId` (string, class reference matching document ID), `revision` (positive integer, starts at 1 and increases exactly by 1), and `updatedAt` (server timestamp). Updated teacher clients compare this revision before committing review writes, preventing stale duplicate-check confirmations across tabs/devices. Only the owning approved teacher can get it; writes require an active owned class. List/delete and student access are denied. This is implemented locally and requires matching rules/frontend publication. It is coordination metadata, not a review score or a database uniqueness constraint; intentional rounds and legacy/direct writes remain possible. See docs/duplicate-review-warning.md.
+
+## Practice hint-request evidence addition - 6 November 2026
+
+Storage: studentPracticeProgress.questionResults[].hintRequested (BOOLEAN OR NULL; optional for historical rows). True records an in-app AI hint request before that question was answered correctly; false records no request for a newly tracked question; absent/null means unknown. This does not prove hint delivery, unaided work or learning. studentLearningDrafts.state.hintRequested carries the same optional boolean/null for the current practice question across reloads; completed draft result rows retain the nested result attribute. No separate collection or authoritative grade is added. Current rules do not validate each nested flag individually; evidence remains browser-reported. Implemented locally; not yet published. See docs/practice-hint-evidence.md.

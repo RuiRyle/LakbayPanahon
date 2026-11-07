@@ -1,0 +1,29 @@
+{
+  "mode": "--published",
+  "startedAt": "2026-11-06T16:55:38.479Z",
+  "checks": [
+    "Authenticated student SDK reads exactly all 65 expected objective sentences",
+    "chapter10-mission1: all five objectives render exactly in the real student page",
+    "chapter10-mission2: all five objectives render exactly in the real student page",
+    "chapter10-mission3: all five objectives render exactly in the real student page",
+    "chapter10-mission5: all five objectives render exactly in the real student page",
+    "chapter11-mission1: all five objectives render exactly in the real student page",
+    "chapter12-mission2: all five objectives render exactly in the real student page",
+    "chapter12-mission3: all five objectives render exactly in the real student page",
+    "chapter14-mission2: all five objectives render exactly in the real student page",
+    "chapter14-mission3: all five objectives render exactly in the real student page",
+    "chapter14-mission4: all five objectives render exactly in the real student page",
+    "chapter9-mission1: all five objectives render exactly in the real student page",
+    "chapter9-mission3: all five objectives render exactly in the real student page",
+    "chapter9-mission4: all five objectives render exactly in the real student page",
+    "Live lesson paragraph is passed verbatim to the unchanged device narration utterance",
+    "Actual mission quiz loads its question/options from live content without submitting an attempt"
+  ],
+  "limits": [
+    "Actual local student HTML/JS and Firebase SDK against live Firestore; not hosted-page deployment acceptance.",
+    "Synthetic prerequisites belong only to a temporary test student and are removed; no real student progress is modified.",
+    "Quiz saving/reward protection verified separately by regression tests; this walkthrough does not submit quizzes or award rewards."
+  ],
+  "status": "pass",
+  "cleanup": "complete"
+}

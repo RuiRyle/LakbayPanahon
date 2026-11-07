@@ -53,7 +53,7 @@ let rejectingAccount = false;
 let recoveryDialog;
 function lockProtectedPage() {
     document.body.classList.remove("authenticated");
-    document.querySelectorAll(".student-app, .chapter-challenge-page").forEach(root => { root.inert = true; });
+    document.querySelectorAll(".student-app, .chapter-challenge-page, .teacher-shell").forEach(root => { root.inert = true; });
 }
 function redirectPage(destination) {
     if (guardSuspended || guardRedirecting) return;
@@ -66,7 +66,7 @@ function redirectPage(destination) {
 function hideGuardRecovery() {
     if (recoveryDialog?.open) recoveryDialog.close();
 }
-function showGuardRecovery() {
+function showGuardRecovery(accountStatus = null) {
     if (!recoveryDialog) {
         recoveryDialog = document.createElement("dialog");
         recoveryDialog.className = "student-auth-recovery";
@@ -76,6 +76,14 @@ function showGuardRecovery() {
         recoveryDialog.querySelector("button").addEventListener("click", () => checkPageAccess(auth.currentUser));
         document.body.append(recoveryDialog);
     }
+    const pending = accountStatus === "pending";
+    recoveryDialog.querySelector("h1").textContent = accountStatus
+        ? (pending ? "Your teacher account is awaiting approval" : "Your teacher account is unavailable")
+        : "Unable to check your account";
+    recoveryDialog.querySelector("p").textContent = accountStatus
+        ? (pending ? "An administrator must verify your account before you can use classroom tools. You can check again after approval." : "This account cannot access classroom tools. Contact your system administrator for help.")
+        : "Your session is still signed in. Check your connection and try again.";
+    recoveryDialog.querySelector("button").textContent = accountStatus ? "Check Again" : "Try Again";
     if (!recoveryDialog.open) recoveryDialog.showModal();
 }
 async function rejectAccount(generation) {
@@ -105,6 +113,13 @@ async function checkPageAccess(user) {
         // A previously cached active profile cannot authorize a protected page.
         const snapshot = await getDocFromServer(doc(db, "users", user.uid));
         if (!isCurrent()) return;
+        if (requiredRole === "teacher" && snapshot.exists() && snapshot.data().role === "teacher") {
+            const profile=snapshot.data();
+            if(profile.status!=='active'||!profile.teacherVerifiedRevision||user.emailVerified!==true){redirectPage('teacher-application.html');return;}
+            const application=await getDocFromServer(doc(db,'teacherApplications',user.uid));
+            if(!isCurrent())return;
+            if(!application.exists()||application.data().status!=='approved'||application.data().revision!==profile.teacherVerifiedRevision){redirectPage('teacher-application.html');return;}
+        }
         if (!snapshot.exists() || snapshot.data().status !== "active") {
             await rejectAccount(generation);
             return;
@@ -116,12 +131,12 @@ async function checkPageAccess(user) {
             return;
         }
         document.body.classList.add("authenticated");
-        document.querySelectorAll(".student-app, .chapter-challenge-page").forEach(root => { root.inert = false; });
+        document.querySelectorAll(".student-app, .chapter-challenge-page, .teacher-shell").forEach(root => { root.inert = false; });
         if (profile.role === "student") mountStudentProfile(profile);
     } catch (error) {
         if (!isCurrent()) return;
         console.error("Authentication guard error:", error);
-        if (requiredRole === "student") {
+        if (requiredRole === "student" || requiredRole === "teacher" || requiredRole === "admin") {
             lockProtectedPage();
             showGuardRecovery();
         } else {

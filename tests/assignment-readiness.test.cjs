@@ -1,0 +1,7 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const context=vm.createContext({});vm.runInContext(fs.readFileSync(require('node:path').join(__dirname,'../js/journey-path.js'),'utf8').replace(/export /g,''),context);
+const assignment={chapterId:'c2',missionId:'m3'};
+test('assigned locked mission points to an earlier available unfinished lesson',()=>{const result=context.assignmentReadiness([{id:'m1',chapterId:'c1',accessible:true,completed:true},{id:'m2',chapterId:'c1',accessible:true,completed:false},{id:'m3',chapterId:'c2',accessible:false}],assignment);assert.equal(result.state,'locked');assert.equal(result.next.id,'m2');});
+test('chapter check fallback never recommends a later mission',()=>{const result=context.assignmentReadiness([{id:'m1',chapterId:'c1',accessible:true,completed:true},{id:'m3',chapterId:'c2',accessible:false},{id:'m4',chapterId:'c3',accessible:true}],assignment);assert.equal(result.state,'locked');assert.equal(result.next,null);});
+test('ready and completed assignments retain their own lesson',()=>{for(const completed of [false,true]){const result=context.assignmentReadiness([{id:'m3',chapterId:'c2',accessible:true,completed}],assignment);assert.equal(result.state,completed?'complete':'ready');assert.equal(result.next.id,'m3');}});
+test('missing or mismatched chapter content remains unavailable',()=>{assert.equal(context.assignmentReadiness([{id:'m3',chapterId:'wrong',accessible:true}],assignment).state,'unavailable');});

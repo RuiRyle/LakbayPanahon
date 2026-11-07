@@ -1,0 +1,30 @@
+/* Explicit surface/text pairs for learning. Loaded last to resolve legacy palette clashes. */
+body.lakbay-theme{--learn-ink:#edf2f6;--learn-muted:#c4d2df;--learn-gold:#f0d59a;--learn-panel:#122b43;--learn-inset:#19364f;--learn-paper:#dec393;--learn-paper-ink:#30281d}
+body.lakbay-theme .chapter-challenge-page :is(.challenge-question-card,.challenge-review-explanation,.matching-row,.matching-label,.trade-goods-card,.trade-quantity-panel,.challenge-evidence-card){background:var(--learn-panel);color:var(--learn-ink)}
+body.lakbay-theme .chapter-challenge-page :is(#challengeQuestionText,.challenge-review-item h4,.matching-label,.trade-quantity-value,.trade-goods-card h3,.challenge-review-answer span,.challenge-review-explanation p,.challenge-evidence-card p){color:var(--learn-ink)!important}
+body.lakbay-theme .chapter-challenge-page :is(.matching-instructions,.trade-instructions,.trade-remaining,.trade-goods-card p,.trade-quantity-panel>p,.challenge-review-number,.challenge-learning-review-header p,.challenge-question-header,.challenge-review-answer-label){color:var(--learn-muted)!important}
+body.lakbay-theme .chapter-challenge-page :is(.challenge-review-explanation strong,.challenge-evidence-card strong,.challenge-learning-review-header h3){color:var(--learn-gold)!important}
+body.lakbay-theme .chapter-challenge-page :is(.challenge-option,.matching-select,.evidence-clue-select,.evidence-conclusion-select){background:#19364f;color:var(--learn-ink);border-color:#7590a4;color-scheme:dark}
+body.lakbay-theme .chapter-challenge-page .challenge-option :is(span,strong,p){color:inherit}
+body.lakbay-theme .chapter-challenge-page .challenge-option.selected{background:#304758;color:#fff0c9;border-color:#e5c37e}
+body.lakbay-theme .chapter-challenge-page .challenge-review-item.correct{background:#133d38;color:#c7f0df}
+body.lakbay-theme .chapter-challenge-page .challenge-review-item.incorrect{background:#402c3d;color:#ffe1e8}
+body.lakbay-theme .chapter-challenge-page .challenge-review-status{color:inherit!important}
+body.lakbay-theme .chapter-challenge-page :is(select option){background:#19364f;color:var(--learn-ink)}
+body.lakbay-theme .story-reading-content :is(.lesson-explanation,.story-discovery,.story-key-term,.historical-insight,.story-decision-feedback,.quick-check-feedback){background:var(--learn-panel);color:var(--learn-ink)}
+body.lakbay-theme .story-reading-content :is(.lesson-explanation,.story-discovery,.story-key-term,.historical-insight,.story-decision-feedback,.quick-check-feedback) :is(p,li,span,em){color:var(--learn-ink)!important}
+body.lakbay-theme .story-reading-content :is(.lesson-explanation,.story-discovery,.story-key-term,.historical-insight) :is(h3,strong){color:var(--learn-gold)!important}
+body.simple-lesson.lakbay-theme .story-reading-card.lesson-reading .story-text,
+body.simple-lesson.lakbay-theme .story-reading-content :is(.lesson-example,.story-explore-result){background:var(--learn-paper)!important;color:var(--learn-paper-ink)!important}
+body.simple-lesson.lakbay-theme .story-reading-card.lesson-reading .story-text :is(p,strong,span,li,em,h2,h3,small,summary),
+body.simple-lesson.lakbay-theme .story-reading-content :is(.lesson-example,.story-explore-result) :is(p,strong,span,li,em,h2,h3,small,summary){color:var(--learn-paper-ink)!important}
+body.simple-lesson.lakbay-theme .story-reading-content :is(.story-text,.lesson-example,.story-explore-result) a{color:#174d46!important;text-decoration:underline}
+body.lakbay-theme .story-reading-content :is(.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice){background:#19364f;color:var(--learn-ink);border-color:#7590a4}
+body.lakbay-theme .story-reading-content :is(.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice) :is(span,p,strong){color:inherit!important}
+body.lakbay-theme .story-reading-content :is(.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice).correct{background:#133d38;color:#c7f0df}
+body.lakbay-theme .story-reading-content :is(.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice).incorrect{background:#402c3d;color:#ffe1e8}
+body.lakbay-theme .chapter-challenge-page .challenge-review-answer.correct{background:#133d38;color:#c7f0df}
+body.lakbay-theme .chapter-challenge-page .challenge-review-answer.incorrect{background:#402c3d;color:#ffe1e8}
+body.lakbay-theme .chapter-challenge-page .challenge-review-answer :is(span,strong,p){color:inherit!important}
+body.lakbay-theme .chapter-challenge-page .challenge-option:disabled,
+body.lakbay-theme .story-reading-content :is(.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice):disabled{opacity:1}

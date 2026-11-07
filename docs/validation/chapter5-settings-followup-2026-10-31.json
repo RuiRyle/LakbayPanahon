@@ -1,0 +1,71 @@
+{
+  "checkedAt": "2026-10-31T08:49:02.576Z",
+  "mode": "focused-rerun-after-chrome-timeout",
+  "initialReport": "chapter5-student-regression-initial-2026-10-31.json",
+  "initialFailure": "autoplay-blocked Settings case: Chrome spawnSync ETIMEDOUT",
+  "productChangesMade": false,
+  "settings": {
+    "checkedAt": "2026-10-31T08:48:31.800Z",
+    "mode": "offline-chrome-real-preferences-code",
+    "audio": "Unavailable AudioContext or simulated autoplay refusal; no listening/sound-quality judgment",
+    "status": "pass",
+    "cases": [
+      {
+        "scenario": "default",
+        "page": "settings.html",
+        "width": 1440,
+        "status": "pass",
+        "message": "PASS: default settings controls, independent volumes, reading, focus, reset, layout and safe recovery",
+        "screenshot": "C:\\Users\\RUIRYL~1\\AppData\\Local\\Temp\\lakbay-settings-vckhTq\\default\\settings.png"
+      },
+      {
+        "scenario": "restored",
+        "page": "settings.html",
+        "width": 1280,
+        "status": "pass",
+        "message": "PASS: restored settings controls, independent volumes, reading, focus, reset, layout and safe recovery",
+        "screenshot": "C:\\Users\\RUIRYL~1\\AppData\\Local\\Temp\\lakbay-settings-vckhTq\\restored\\settings.png"
+      },
+      {
+        "scenario": "blocked",
+        "page": "settings.html",
+        "width": 1440,
+        "status": "pass",
+        "message": "PASS: blocked settings controls, independent volumes, reading, focus, reset, layout and safe recovery",
+        "screenshot": "C:\\Users\\RUIRYL~1\\AppData\\Local\\Temp\\lakbay-settings-vckhTq\\blocked\\settings.png"
+      },
+      {
+        "scenario": "write-blocked",
+        "page": "settings.html",
+        "width": 1440,
+        "status": "pass",
+        "message": "PASS: write-blocked settings controls, independent volumes, reading, focus, reset, layout and safe recovery",
+        "screenshot": "C:\\Users\\RUIRYL~1\\AppData\\Local\\Temp\\lakbay-settings-vckhTq\\write-blocked\\settings.png"
+      },
+      {
+        "scenario": "autoplay-blocked",
+        "page": "settings.html",
+        "width": 1440,
+        "status": "pass",
+        "message": "PASS: autoplay-blocked settings controls, independent volumes, reading, focus, reset, layout and safe recovery",
+        "screenshot": "C:\\Users\\RUIRYL~1\\AppData\\Local\\Temp\\lakbay-settings-vckhTq\\autoplay-blocked\\settings.png"
+      },
+      {
+        "scenario": "reading",
+        "page": "story.html",
+        "width": 1440,
+        "status": "pass",
+        "message": "PASS: reading settings controls, independent volumes, reading, focus, reset, layout and safe recovery",
+        "screenshot": "C:\\Users\\RUIRYL~1\\AppData\\Local\\Temp\\lakbay-settings-vckhTq\\reading\\settings.png"
+      },
+      {
+        "scenario": "focus",
+        "page": "quiz.html",
+        "width": 1440,
+        "status": "pass",
+        "message": "PASS: focus settings controls, independent volumes, reading, focus, reset, layout and safe recovery",
+        "screenshot": "C:\\Users\\RUIRYL~1\\AppData\\Local\\Temp\\lakbay-settings-vckhTq\\focus\\settings.png"
+      }
+    ]
+  }
+}

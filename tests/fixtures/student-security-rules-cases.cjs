@@ -66,4 +66,26 @@ cases.push(testCase('first completion cannot omit progress','DENY','studentQuizA
 cases.push(testCase('first completion cannot reuse older progress','DENY','studentQuizAttempts/alice_a1','create',first,{after:{'studentProgress/alice_m1':completion},existing:{'studentProgress/alice_m1':true}}));
 cases.push(testCase('first completion cannot use another owner','DENY','studentQuizAttempts/alice_a1','create',first,{after:{'studentProgress/alice_m1':{...completion,userId:'bob'}}}));
 cases.push(testCase('first completion must match recorded score','DENY','studentQuizAttempts/alice_a1','create',first,{after:{'studentProgress/alice_m1':{...completion,bestScore:100}}}));
+const news={classId:'class1',status:'published',title:'Our next discussion',body:'Bring your questions.'};
+const member={docs:{'classMembers/alice_class1':{userId:'alice',status:'active'}},existing:{'classMembers/alice_class1':true}};
+for(const method of ['get','list'])cases.push(testCase('member reads published announcement '+method,'ALLOW','classAnnouncements/news',method,null,{resource:news,...member}));
+cases.push(testCase('nonmember cannot read announcements','DENY','classAnnouncements/news','get',null,{resource:news}));
+cases.push(testCase('member cannot read announcement drafts','DENY','classAnnouncements/news','get',null,{resource:{...news,status:'draft'},...member}));
+cases.push(testCase('anonymous cannot read announcements','DENY','classAnnouncements/news','get',null,{resource:news,...member,uid:null}));
+for(const method of ['create','update','delete'])cases.push(testCase('student cannot '+method+' announcement','DENY','classAnnouncements/news',method,news,{resource:news,...member}));
+for(const [frameId,level,min]of [['bamboo',3,3],['sunburst',5,5],['guardian',10,10]]){
+ const cosmetic={frameId,updatedAt:time};
+ cases.push(testCase('earned '+frameId+' frame may be equipped','ALLOW','studentCosmetics/alice','create',cosmetic,{docs:{'users/alice':{...student,level}}}));
+ cases.push(testCase('locked '+frameId+' frame cannot be equipped','DENY','studentCosmetics/alice','create',cosmetic,{docs:{'users/alice':{...student,level:min-1}}}));
+}
+cases.push(testCase('owner reads own cosmetics','ALLOW','studentCosmetics/alice','get',null,{resource:{frameId:'none',updatedAt:time}}));
+cases.push(testCase('cosmetics cannot be enumerated','DENY','studentCosmetics/alice','list',null,{resource:{frameId:'none',updatedAt:time}}));
+cases.push(testCase('other account cosmetics stay private','DENY','studentCosmetics/bob','get',null,{resource:{frameId:'none',updatedAt:time}}));
+cases.push(testCase('cosmetics cannot change XP','DENY','studentCosmetics/alice','create',{frameId:'none',updatedAt:time,xp:999}));
+cases.push(testCase('unknown frame is rejected','DENY','studentCosmetics/alice','create',{frameId:'fake',updatedAt:time}));
+cases.push(testCase('another account cannot equip cosmetics','DENY','studentCosmetics/bob','create',{frameId:'none',updatedAt:time}));
+cases.push(testCase('active student reads finale definition','ALLOW','learningSettings/journeyFinale','get',null,{resource:{enabled:true,id:'v1'}}));
+cases.push(testCase('anonymous cannot read finale definition','DENY','learningSettings/journeyFinale','get',null,{resource:{enabled:true,id:'v1'},uid:null}));
+cases.push(testCase('student cannot change finale requirements','DENY','learningSettings/journeyFinale','update',{enabled:true,id:'forged'},{resource:{enabled:true,id:'v1'}}));
+cases.push(testCase('student cannot list finale configuration','DENY','learningSettings/journeyFinale','list',null,{resource:{enabled:true,id:'v1'}}));
 module.exports={cases};

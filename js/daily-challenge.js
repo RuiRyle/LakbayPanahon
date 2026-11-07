@@ -1,3 +1,4 @@
+import {beginAssessment} from './student-assessment-client.js';
 import { learningDateKey, selectDailyChallenge, millisecondsUntilLearningMidnight } from "./daily-policy.js";
 import { progressionState } from "./progression-policy.js";
 import { submitStudentActivity } from "./student-rewards-client.js";
@@ -525,6 +526,8 @@ async function openModal() {
 
     } else {
 
+        try{await beginAssessment({kind:'daily',challengeId:currentChallenge.id});}
+        catch(error){showModalState('content');feedbackElement.hidden=false;feedbackElement.textContent=error.message;submitButton.disabled=true;return;}
         prepareChallengeUI();
 
         showModalState(
@@ -1256,8 +1259,8 @@ function updateCompletedModal(
 
 
     completedElement.innerHTML = `
-        <div class="daily-complete-icon">
-            🏆
+        <div class="daily-complete-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M15 9h18v12a9 9 0 0 1-18 0V9Z" stroke="currentColor" stroke-width="2.5"/><path d="M15 13H9v5a8 8 0 0 0 8 8m16-13h6v5a8 8 0 0 1-8 8M24 30v8m-8 2h16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="m24 13 2 4 4 .5-3 3 .7 4.5-3.7-2-3.7 2 .7-4.5-3-3 4-.5Z" fill="currentColor"/></svg>
         </div>
 
         <span class="daily-complete-label">
@@ -1265,12 +1268,11 @@ function updateCompletedModal(
         </span>
 
         <h3>
-            Great work, History Explorer!
+            Another discovery, well earned!
         </h3>
 
         <p>
-            You completed today's History Challenge.
-            Come back tomorrow to continue your journey.
+            You completed today's history challenge. Keep that curiosity going, History Explorer!
         </p>
 
         <div class="daily-complete-rewards">
@@ -1290,7 +1292,10 @@ function updateCompletedModal(
             }
 
         </div>
+        <div class="daily-complete-return"><span aria-hidden="true">✦</span><div><strong>Your next discovery awaits</strong><p>Come back tomorrow for a new Daily Challenge. Explore a lesson while you wait!</p></div></div>
+        <button type="button" class="daily-complete-dismiss primary-button">Keep exploring <span aria-hidden="true">→</span></button>
     `;
+    completedElement.querySelector('.daily-complete-dismiss')?.addEventListener('click', closeModal);
 }
 
 

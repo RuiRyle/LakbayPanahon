@@ -1,0 +1,18 @@
+// LOCAL TEST ENTRY. No production credential, route or deployment is approved.
+import {initializeApp} from '../../build/priority3-stage0-release/functions/node_modules/firebase-admin/lib/app/index.js';
+import {initializeFirestore} from '../../build/priority3-stage0-release/functions/node_modules/firebase-admin/lib/firestore/index.js';
+import {getAuth} from '../../build/priority3-stage0-release/functions/node_modules/firebase-admin/lib/auth/index.js';
+import {getAppCheck} from '../../build/priority3-stage0-release/functions/node_modules/firebase-admin/lib/app-check/index.js';
+import {onCall} from '../../build/priority3-stage0-release/functions/node_modules/firebase-functions/lib/v2/providers/https.js';
+import core from '../priority3-netlify/service/student-assessment.js';
+let app,db;
+function initialize(env){if(env.LOCAL_ONLY!=='1'||env.GCLOUD_PROJECT!=='demo-lakbaypanahon'||env.FIRESTORE_EMULATOR_HOST!=='127.0.0.1:8180'||env.FIREBASE_AUTH_EMULATOR_HOST!=='127.0.0.1:9099')throw Error('Local demo only');for(const k of ['GCLOUD_PROJECT','FIRESTORE_EMULATOR_HOST','FIREBASE_AUTH_EMULATOR_HOST'])process.env[k]=env[k];process.env.GCE_METADATA_HOST='127.0.0.1:9';if(!app){app=initializeApp({projectId:env.GCLOUD_PROJECT});db=initializeFirestore(app,{preferRest:true});}}
+export class CoordinatorProbe{
+ constructor(ctx){this.ctx=ctx;ctx.storage.sql.exec('CREATE TABLE IF NOT EXISTS authority (id INTEGER PRIMARY KEY, generation INTEGER NOT NULL)');ctx.storage.sql.exec('INSERT OR IGNORE INTO authority VALUES (1,0)');}
+ async fetch(request){const current=()=>this.ctx.storage.sql.exec('SELECT generation FROM authority WHERE id=1').one().generation;if(request.method==='GET')return Response.json({generation:current()});const {expected}=await request.json();try{const generation=this.ctx.storage.transactionSync(()=>{if(current()!==expected)throw Error('stale-generation');this.ctx.storage.sql.exec('UPDATE authority SET generation=generation+1 WHERE id=1');return current();});return Response.json({generation});}catch{return Response.json({error:'stale-generation'},{status:409});}}
+}
+export default{async fetch(request,env){try{initialize(env);const route=new URL(request.url).pathname;if(route==='/capabilities'){const callable=onCall({enforceAppCheck:true},()=>({ok:true}));return Response.json({adminLoaded:true,firestorePreferRest:db._settings.preferRest===true,onCallExport:!!callable.__endpoint?.callableTrigger,gradingMark:core.mark({correctAnswer:'A'},'A')});}if(route==='/do'){return env.PROBE.get(env.PROBE.idFromName('local-coordinator')).fetch(request);}
+ const body=await request.json();if(route==='/auth'){try{const token=await getAuth(app).verifyIdToken(body.token,true);return Response.json({verified:true,uid:token.uid});}catch(e){return Response.json({verified:false,code:e.code},{status:401});}}
+ if(route==='/app-check'){const ac=getAppCheck(app);ac.appCheckTokenVerifier.signatureVerifier.keyFetcher.fetchPublicKeys=async()=>({'local-proof':body.publicKey});try{const token=await ac.verifyToken(body.token);return Response.json({verified:true,appId:token.appId});}catch(e){return Response.json({verified:false,code:e.code},{status:401});}}
+ if(route==='/transaction'){const ref=db.doc('workersCompatibility/counter');const result=await db.runTransaction(async tx=>{const old=await tx.get(ref);const query=await tx.get(db.collection('workersCompatibility').where('fixture','==',true));const count=(old.data()?.count||0)+1;tx.set(ref,{count,fixture:true});return{count,querySize:query.size};});return Response.json(result);}
+ return Response.json({error:'not-found'},{status:404});}catch(e){return Response.json({error:e.message,code:e.code||null},{status:500});}}};

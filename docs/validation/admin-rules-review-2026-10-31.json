@@ -1,0 +1,14 @@
+{
+  "mode": "offline-admin-rule-review",
+  "preparedAt": "2026-10-31T14:45:07.070Z",
+  "sourceHash": "0a98811d0bdbcb29302f04803568d43ec18b30c0ac84b7bb1cbed08fa90e5551",
+  "baselineSourceHash": "b87347f96c53a0319f349f7ec6d1ef1081e1138a34820b67980abcdde95883a3",
+  "baselineRuleset": "projects/lakbaypanahon-1797e/rulesets/8587c270-4d69-4b9a-ae99-ce011f5283a2",
+  "outsideScopeMatches": true,
+  "changedScopes": [
+    "match /users/{userId}",
+    "function activeAdmin",
+    "function validModeration",
+    "match /accountModeration/{eventId}"
+  ]
+}

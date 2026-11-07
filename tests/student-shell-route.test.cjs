@@ -5,6 +5,14 @@ const vm = require('node:vm');
 const context = vm.createContext({URL});
 vm.runInContext(fs.readFileSync(require.resolve('../js/student-shell-route.js'), 'utf8').replace(/export /g, ''), context);
 const base = 'https://example.test/app/pages/';
+test('journey finale stays inside the persistent student shell',()=>{
+    assert.equal(context.studentRouteForPage('journey-finale.html',base),'journey-finale.html');
+    assert.equal(new URL(context.shellUrlForPage(base+'student-shell.html','journey-finale.html')).searchParams.get('route'),'journey-finale.html');
+});
+test('historical timeline navigation stays inside the persistent student shell',()=>{
+    assert.equal(context.studentRouteForPage('history-timeline.html',base),'history-timeline.html');
+    assert.equal(new URL(context.shellUrlForPage(base+'student-shell.html',base+'history-timeline.html')).searchParams.get('route'),'history-timeline.html');
+});
 
 test('student shell preserves the exact active activity, encoded topic and hash', () => {
     const route = 'story.html?chapter=c1&mission=m1&reviewTopic=custom+%26+shared#clues';

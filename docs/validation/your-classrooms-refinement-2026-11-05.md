@@ -1,0 +1,7 @@
+# Your classrooms dashboard section — 5 November 2026
+
+Refined the overview's classroom section to match Classroom Pulse and Make a Difference: consistent section heading and description, initial emblem and active-class badge, separate saved student/goal/review counts, follow-up status, one primary student action and quieter learning/insight links. Card content and actions align across the desktop grid; mobile uses the existing single-column layout. Optional descriptions are limited to two display lines. The full description remains available in class management.
+
+Counts come from the existing bounded overview snapshot, without new reads. Each metric identifies its source independently; failed sources remain unavailable, and truncated sources retain a plus marker. Follow-up status includes unanswered questions, renewed requests for help and explanations without teacher guidance, restricted to loaded memberships. It is not a live notification or a grade. Shared snapshot scope/limit notes still apply.
+
+Verification: `node tests/teacher-overview-browser.cjs` passes 25 actual local browser/SDK checks, including separate classroom counts and pending guidance status, class-context links, mobile layout and reduced motion. Desktop and 390px classroom-section screenshots were captured and visually inspected (`teacher-your-classrooms-desktop.png`, `teacher-your-classrooms-mobile.png`). Disposable fixtures are cleaned up and user-created classes retained. No schema, permissions or production deployment changes were required.

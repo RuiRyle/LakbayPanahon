@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-05T19:28:37.341Z",
+  "mode": "actual Firebase SDK with isolated local emulators; synthetic fixtures; no production writes",
+  "checks": [
+    "real SDK first page explicitly reports incomplete coverage",
+    "real Firestore cursor reaches the 105th request",
+    "teacher reply to a later-page request is saved through the SDK",
+    "deep-linked later explanation opens directly without loading the earlier pages",
+    "full explanation inbox combines direct lookup and paged reads without duplicates",
+    "no unexpected JavaScript errors during paged inbox acceptance"
+  ]
+}

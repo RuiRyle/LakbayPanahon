@@ -1,0 +1,158 @@
+/* Shared student workspace rhythm. Page-specific learning activities retain their layouts. */
+body[data-role="student"].lakbay-theme{--student-page-width:1280px;--student-page-gap:24px;--student-page-edge:clamp(18px,2.8vw,34px);--student-panel-line:#3d576e;--student-copy:#c5d4e2;--student-heading:#edf3f8;--student-accent:#e8c77e}
+body[data-role="student"].lakbay-theme :is(button,input,select,textarea){font-family:inherit}
+body[data-role="student"].lakbay-theme .main-content>:is(.dashboard-content,.achievements-content,.my-journey-content,.my-class-content,.profile-page-content,.bayani-content,.settings-content,.history-timeline-content,.mission-page,.story-page,.quiz-page,.practice-page){box-sizing:border-box;width:min(100%,var(--student-page-width));max-width:var(--student-page-width);margin-inline:auto;padding:32px var(--student-page-edge) 64px;min-width:0}
+body[data-role="student"].lakbay-theme .topbar{padding-inline:var(--student-page-edge);gap:16px}
+body[data-role="student"].lakbay-theme .topbar-actions{min-width:0;gap:12px}
+body[data-role="student"].lakbay-theme .mobile-menu-button{width:44px;height:44px;min-width:44px;padding:8px;border:1px solid #405b73;border-radius:12px;background:#132b43;color:#edcf87;line-height:1;font-size:21px}
+body[data-role="student"].lakbay-theme .sidebar-nav{gap:6px}
+body[data-role="student"].lakbay-theme .sidebar-nav .nav-link{min-height:46px;gap:12px;border-radius:12px;font-size:.88rem}
+body[data-role="student"].lakbay-theme :is(.journey-page-heading,.class-page-heading,.profile-page-heading,.settings-heading,.bayani-heading,.history-timeline-content>header){position:relative;isolation:isolate;min-width:0;min-height:178px;box-sizing:border-box;padding:28px 30px;margin:0 0 var(--student-page-gap);border:1px solid var(--student-panel-line);border-radius:22px;background:radial-gradient(ellipse at 95% 0%,#28506a55,transparent 65%),linear-gradient(120deg,#112a43,#15344b);box-shadow:0 8px 24px #020f201a;gap:20px}
+body[data-role="student"].lakbay-theme :is(.journey-page-heading,.class-page-heading,.profile-page-heading,.settings-heading,.bayani-heading,.history-timeline-content>header)::before{content:'';position:absolute;left:30px;top:0;width:64px;height:3px;background:linear-gradient(90deg,#e7c67c,#77aa9a);border-radius:0 0 4px 4px;pointer-events:none}
+body[data-role="student"].lakbay-theme :is(.journey-page-heading,.class-page-heading,.profile-page-heading,.settings-heading,.bayani-heading,.history-timeline-content>header) h1{font-size:clamp(1.85rem,2.6vw,2.6rem);line-height:1.18;letter-spacing:-.035em;color:var(--student-heading);margin:10px 0 12px;overflow-wrap:anywhere}
+body[data-role="student"].lakbay-theme :is(.journey-page-heading,.class-page-heading,.profile-page-heading,.settings-heading,.bayani-heading,.history-timeline-content>header) p{max-width:65ch;margin:10px 0 0;font-size:.94rem;line-height:1.7;color:var(--student-copy)}
+body[data-role="student"].lakbay-theme :is(.journey-page-heading,.class-page-heading,.profile-page-heading,.settings-heading,.bayani-heading) .adventure-tagline{font-size:.92rem;line-height:1.5;color:#e6d3a5}
+body[data-role="student"].lakbay-theme :is(.journey-page-heading,.class-page-heading,.profile-page-heading) .adventure-emblem{width:190px;height:190px;right:24px;top:-20px;font-size:100px;opacity:.22}
+body[data-role="student"].lakbay-theme .journey-page-heading::after{opacity:.35}
+body[data-role="student"].lakbay-theme :is(.journey-load-status,.class-load-bar){gap:14px;min-width:0;margin:0 0 24px;padding:0;color:var(--student-copy)}
+body[data-role="student"].lakbay-theme :is(.journey-load-status,.class-load-bar) p{line-height:1.6}
+body[data-role="student"].lakbay-theme :is(.text-button,.quiz-secondary-button,.practice-secondary-button,.story-secondary-button){font-family:inherit;line-height:1.45;text-align:center;white-space:normal;overflow-wrap:anywhere}
+body[data-role="student"].lakbay-theme :is(.quiz-result-actions,.practice-actions,.story-actions,.class-join-panel form>div){gap:12px;flex-wrap:wrap}
+body[data-role="student"].lakbay-theme :is(.journey-panel,.class-join-panel,.student-class-card,.profile-learning-section,.profile-details-card,.settings-panel,.level-rewards-collection){border-color:var(--student-panel-line);border-radius:20px;box-shadow:0 6px 20px #020e1d18}
+/* The next learning action leads; collections and account details follow it. */
+body[data-role="student"].lakbay-theme .journey-next{padding:28px 30px;margin:0 0 24px;border-left:3px solid var(--student-accent)}
+body[data-role="student"].lakbay-theme .my-journey-content .journey-next .journey-details{max-width:none;padding:0;border:0;background:transparent;box-shadow:none;gap:12px}
+body[data-role="student"].lakbay-theme .journey-next>h2{font-size:1.1rem;margin:0 0 20px;color:#c9d9e5}
+body[data-role="student"].lakbay-theme .my-journey-content .journey-next .journey-details h3{font-size:clamp(1.3rem,2vw,1.75rem);line-height:1.35}
+body[data-role="student"].lakbay-theme .journey-stats{margin:0 0 24px}
+body[data-role="student"].lakbay-theme .lakbay-passport{margin:0 0 24px}
+body[data-role="student"].lakbay-theme .profile-page-content>.level-rewards-collection{grid-column:1/-1;width:100%;margin:0;box-sizing:border-box}
+body[data-role="student"].lakbay-theme .profile-page-content>.profile-learning-section{margin:0}
+body[data-role="student"].lakbay-theme .level-reward-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+body[data-role="student"].lakbay-theme .level-reward-card{display:flex;flex-direction:column;align-items:flex-start;padding:22px 18px}
+body[data-role="student"].lakbay-theme .level-reward-card h3{font-size:1.05rem;line-height:1.4;margin:10px 0 6px}
+body[data-role="student"].lakbay-theme .level-reward-card p{margin:0 0 18px}
+body[data-role="student"].lakbay-theme .level-reward-card button{margin-top:auto;width:100%}
+body[data-role="student"].lakbay-theme .era-card{display:flex;flex-direction:column;height:100%}
+body[data-role="student"].lakbay-theme .era-card .era-content{flex:1;min-height:0;gap:0}
+body[data-role="student"].lakbay-theme .era-card .era-content h3{line-height:1.4;margin:14px 0 10px}
+body[data-role="student"].lakbay-theme .era-card .era-button{justify-content:center;width:100%;box-sizing:border-box}
+body[data-role="student"].lakbay-theme .timeline-controls{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:24px 0 12px}
+body[data-role="student"].lakbay-theme .timeline-filter{display:grid;gap:9px;min-width:0;width:min(100%,380px)}
+body[data-role="student"].lakbay-theme .timeline-filter select{width:100%;margin:0;box-sizing:border-box;min-height:46px;font:inherit}
+body[data-role="student"].lakbay-theme .history-timeline-content>p{line-height:1.7;color:var(--student-copy)}
+body[data-role="student"].lakbay-theme .history-timeline-stop h3{font-size:1.2rem;line-height:1.4}
+body[data-role="student"].lakbay-theme :is(.timeline-period,.class-announcements){margin-top:28px}
+body[data-role="student"].lakbay-theme .class-announcement{padding:18px 20px;border-radius:0 12px 12px 0}
+body[data-role="student"].lakbay-theme .class-announcement h4{line-height:1.45}
+body[data-role="student"].lakbay-theme :is(.journey-page-heading,.class-page-heading,.profile-page-heading,.settings-heading,.bayani-heading,.history-timeline-content>header) :is(a,button):focus-visible{outline:3px solid #f5d58d;outline-offset:4px}
+@media(max-width:1180px){body[data-role="student"].lakbay-theme .level-reward-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){body[data-role="student"].lakbay-theme .main-content>:is(.dashboard-content,.achievements-content,.my-journey-content,.my-class-content,.profile-page-content,.bayani-content,.settings-content,.history-timeline-content,.mission-page,.story-page,.quiz-page,.practice-page){padding-top:24px;padding-bottom:48px}body[data-role="student"].lakbay-theme :is(.journey-page-heading,.class-page-heading,.profile-page-heading,.settings-heading,.bayani-heading,.history-timeline-content>header){padding:24px;min-height:0;flex-wrap:wrap;align-items:flex-start}body[data-role="student"].lakbay-theme .journey-next{padding:24px}body[data-role="student"].lakbay-theme .settings-storage-badge{margin:0}}
+@media(max-width:520px){body[data-role="student"].lakbay-theme{--student-page-edge:16px;--student-page-gap:20px}body[data-role="student"].lakbay-theme .main-content>:is(.dashboard-content,.achievements-content,.my-journey-content,.my-class-content,.profile-page-content,.bayani-content,.settings-content,.history-timeline-content,.mission-page,.story-page,.quiz-page,.practice-page){padding-top:20px;padding-bottom:40px}body[data-role="student"].lakbay-theme :is(.journey-page-heading,.class-page-heading,.profile-page-heading,.settings-heading,.bayani-heading,.history-timeline-content>header){padding:22px 20px;border-radius:18px;gap:16px}body[data-role="student"].lakbay-theme .topbar{gap:10px}body[data-role="student"].lakbay-theme .journey-next{padding:22px 20px}body[data-role="student"].lakbay-theme :is(.timeline-controls,.journey-load-status,.class-load-bar){flex-wrap:wrap;align-items:flex-start}body[data-role="student"].lakbay-theme .timeline-filter{width:100%}body[data-role="student"].lakbay-theme .level-reward-grid{grid-template-columns:1fr}body[data-role="student"].lakbay-theme .level-reward-card{padding:22px}body[data-role="student"].lakbay-theme .journey-page-heading::after{opacity:.15}}
+body[data-role="student"].lakbay-theme.lakbay-high-contrast :is(.journey-page-heading,.class-page-heading,.profile-page-heading,.settings-heading,.bayani-heading,.history-timeline-content>header,.journey-panel,.student-class-card,.level-rewards-collection){border-color:#a9c5da}
+/* Classroom workspace: generous spacing and one purpose per view. */
+body[data-role="student"].lakbay-theme .my-class-content{--class-space:32px;max-width:1440px;width:100%;padding-top:40px;padding-bottom:80px}
+body[data-role="student"].lakbay-theme .my-class-content .class-page-heading{min-height:210px;padding:36px 40px;margin-bottom:32px}
+body[data-role="student"].lakbay-theme .my-class-content .class-join-panel{padding:26px 30px;margin-bottom:26px;gap:24px 40px}
+body[data-role="student"].lakbay-theme .my-class-content .class-join-panel p{font-size:.9rem;line-height:1.7;margin-top:10px}
+body[data-role="student"].lakbay-theme .my-class-content .class-join-panel input{min-height:48px}
+body[data-role="student"].lakbay-theme .my-class-content .class-join-panel form>div{flex-wrap:nowrap}
+body[data-role="student"].lakbay-theme .my-class-content .class-switcher{gap:16px;margin-bottom:32px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+body[data-role="student"].lakbay-theme .my-class-content .class-switch-button{padding:24px;gap:10px;min-height:108px}
+body[data-role="student"].lakbay-theme .my-class-content .student-class-card{border-radius:24px;background:#0e2239;overflow:hidden}
+body[data-role="student"].lakbay-theme .my-class-content .student-class-card>header{padding:32px 36px;gap:28px}
+body[data-role="student"].lakbay-theme .my-class-content .student-class-card>header h2{font-size:1.8rem;line-height:1.3;margin:12px 0}
+body[data-role="student"].lakbay-theme .my-class-content .class-description{margin:24px 36px;max-width:75ch}
+.class-section-nav{display:flex;flex-wrap:wrap;gap:12px;padding:20px 36px;border-bottom:1px solid #34506a;background:#10283f}
+.class-section-button{font:inherit;font-weight:650;font-size:.92rem;background:transparent;border:1px solid transparent;border-radius:12px;padding:13px 22px;color:#b9ccdf;min-height:48px;cursor:pointer}
+.class-section-button:hover{background:#1b3850;color:#fff}.class-section-button[aria-pressed=true]{background:#eac774;color:#10243a;border-color:#eac774}
+body[data-role="student"].lakbay-theme .my-class-content :is(.class-learning-view,.class-updates-view,.class-community-view){padding:36px;min-width:0}
+body[data-role="student"].lakbay-theme .my-class-content :is(.class-learning-view,.class-updates-view,.class-community-view)[hidden]{display:none}
+body[data-role="student"].lakbay-theme .my-class-content :is(.class-next-step,.classmates-panel,.class-announcements,.class-feedback){margin:0 0 32px;padding:30px;border-radius:18px}
+body[data-role="student"].lakbay-theme .my-class-content .class-next-step{padding:32px 36px;background:radial-gradient(ellipse at 100% 0%,#2c566750,transparent 65%),linear-gradient(110deg,#1b3b49,#142e48)}
+body[data-role="student"].lakbay-theme .my-class-content .class-next-step h3{font-size:clamp(1.3rem,2vw,1.8rem);margin:16px 0;line-height:1.4;max-width:35ch}
+body[data-role="student"].lakbay-theme .my-class-content .class-next-step p{font-size:.95rem;line-height:1.85;max-width:68ch}
+body[data-role="student"].lakbay-theme .my-class-content .class-learning-view>h3{font-size:1.25rem;margin:34px 0 20px}
+body[data-role="student"].lakbay-theme .my-class-content .class-quest-progress{margin:0 0 20px;padding:20px 24px;gap:24px}
+body[data-role="student"].lakbay-theme .my-class-content .class-assignment{margin:20px 0;padding:26px 28px 26px 82px;border-radius:16px}
+body[data-role="student"].lakbay-theme .my-class-content .class-assignment:before{top:28px;left:24px}
+body[data-role="student"].lakbay-theme .my-class-content .class-assignment h4{font-size:1.15rem;line-height:1.5;margin:16px 0 12px}
+body[data-role="student"].lakbay-theme .my-class-content .class-assignment p{font-size:.92rem;line-height:1.8;max-width:70ch}
+body[data-role="student"].lakbay-theme .my-class-content .class-assignment .text-button{margin-top:16px;padding:12px 20px}
+body[data-role="student"].lakbay-theme .my-class-content .class-feedback-message{padding:24px;margin-top:22px}
+body[data-role="student"].lakbay-theme .my-class-content .classmates-list{gap:16px;margin:24px 0}.classmates-profile{padding-top:24px}
+@media(max-width:900px){body[data-role="student"].lakbay-theme .my-class-content{--class-space:24px}body[data-role="student"].lakbay-theme .my-class-content :is(.class-learning-view,.class-updates-view,.class-community-view){padding:24px}.class-section-nav{padding:18px 24px}}
+@media(max-width:600px){body[data-role="student"].lakbay-theme .my-class-content .class-page-heading{padding:26px 22px;min-height:0}body[data-role="student"].lakbay-theme .my-class-content .class-join-panel{padding:22px}body[data-role="student"].lakbay-theme .my-class-content .class-join-panel form>div{flex-wrap:wrap}body[data-role="student"].lakbay-theme .my-class-content .student-class-card>header{padding:24px 20px}body[data-role="student"].lakbay-theme .my-class-content :is(.class-learning-view,.class-updates-view,.class-community-view){padding:22px 16px}body[data-role="student"].lakbay-theme .my-class-content :is(.class-next-step,.classmates-panel,.class-announcements,.class-feedback){padding:22px 20px}.class-section-nav{padding:16px;gap:8px}.class-section-button{padding:12px;font-size:.82rem;flex:1}body[data-role="student"].lakbay-theme .my-class-content .class-assignment{padding:22px}body[data-role="student"].lakbay-theme .my-class-content .class-assignment:before{display:none}body[data-role="student"].lakbay-theme .my-class-content .class-quest-progress{padding:18px}}
+/* Joining becomes a secondary action once a student has a classroom. */
+body[data-role="student"].lakbay-theme .my-class-content .class-join-drawer{margin:0 0 28px;border:1px solid #35516e;border-radius:18px;background:#102740;overflow:hidden}
+body[data-role="student"].lakbay-theme .my-class-content .class-join-drawer[hidden]{display:none}
+body[data-role="student"].lakbay-theme .my-class-content .class-join-drawer>summary{padding:20px 26px;min-height:48px;box-sizing:border-box;cursor:pointer;font-weight:650;color:#edce85;line-height:1.6}
+body[data-role="student"].lakbay-theme .my-class-content .class-join-drawer>summary:focus-visible{outline:3px solid #edce85;outline-offset:-5px}
+body[data-role="student"].lakbay-theme .my-class-content .class-join-drawer .class-join-panel{border:0;border-top:1px solid #35516e;border-radius:0;box-shadow:none;margin:0;padding:26px}
+body[data-role="student"].lakbay-theme .my-class-content .class-join-drawer.has-classes{margin-top:32px;background:transparent;border-style:dashed}
+body[data-role="student"].lakbay-theme .my-class-content .class-join-drawer.has-classes>summary{font-size:.9rem;color:#bdd0df}
+@media(max-width:600px){body[data-role="student"].lakbay-theme .my-class-content .class-join-drawer>summary{padding:18px 20px}body[data-role="student"].lakbay-theme .my-class-content .class-join-drawer .class-join-panel{padding:20px}}
+/* Student roster, inspired by the teacher table without private assessment fields. */
+body[data-role="student"].lakbay-theme .my-class-content .classmates-panel{padding:0;border:0;background:transparent}
+.classmates-roster-toolbar{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:24px 0 18px;color:#edf3fa}.classmates-count{padding:8px 14px;border:1px solid #476079;border-radius:24px;color:#e7c77e;font-size:.82rem;white-space:nowrap}
+.classmates-table-wrap{overflow-x:auto;border:1px solid #355479;border-radius:16px;background:#102747}.classmates-table{width:100%;border-collapse:collapse;text-align:left;font-size:.9rem}.classmates-table caption{text-align:left;padding:20px 24px;color:#e8cf92;font-weight:650;background:#142f4e}.classmates-table th{padding:18px 24px;color:#a9bfd9;background:#132d4c;font-size:.8rem;white-space:nowrap}.classmates-table td{padding:20px 24px;border-top:1px solid #294666;color:#bcd0e5;line-height:1.5}.classmates-table tbody tr:nth-child(even){background:#132d4d}.classmates-table tbody tr:hover{background:#1a3957}.classmates-table tr.is-current-student{background:#1b3c4b}.classmate-identity{display:flex;align-items:center;gap:14px;color:#f0f4fa;min-width:160px;overflow-wrap:anywhere}.classmate-membership{display:inline-block;padding:6px 12px;border-radius:20px;background:#21445a;color:#d1e0ee;font-size:.75rem;white-space:nowrap}.is-current-student .classmate-membership{background:#e8c570;color:#10233c;font-weight:750}
+.classmates-pager{display:flex;align-items:center;justify-content:flex-end;gap:16px;margin-top:18px;color:#b9ccdf;font-size:.85rem}.classmates-name-settings{margin-top:28px;border-top:1px solid #35516e;padding-top:22px}.classmates-name-settings>summary{color:#e8cc8c;font-size:.9rem;cursor:pointer;padding:12px 0}.classmates-name-settings .classmates-profile{border:0;margin:0;padding-top:8px}
+@media(max-width:600px){.classmates-table td,.classmates-table th{padding:16px}.classmates-table caption{padding:18px 16px}.classmates-roster-toolbar{align-items:flex-start;flex-wrap:wrap}.classmates-pager{justify-content:space-between;gap:8px}}
+/* Student My Class hub: one classroom, four clear destinations. */
+body[data-role=student].lakbay-theme .my-class-content .class-page-heading{min-height:0;padding:28px 32px;border-radius:19px;background:radial-gradient(ellipse at 100% 0,#6c9e8a22,transparent 65%),linear-gradient(115deg,#1b4146,#132f49);border-color:#4a7474;gap:24px}
+body[data-role=student].lakbay-theme .my-class-content .class-page-heading h1{font-size:clamp(1.9rem,3vw,2.5rem);line-height:1.4;margin:8px 0 12px}
+body[data-role=student].lakbay-theme .my-class-content .class-page-heading p{font-size:.88rem;line-height:1.9;color:#b5cfd7}
+body[data-role=student].lakbay-theme .my-class-content .class-switcher{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;padding:20px 24px;border:1px solid #496d7c;border-radius:13px;background:#153344;margin:0 0 24px;font-size:.75rem;color:#c3d5dc;font-weight:650}
+.student-class-select{box-sizing:border-box;width:100%;max-width:500px;min-width:0;min-height:48px;padding:12px 14px;border:1px solid #608480;border-radius:10px;background:#0d273d;color:#e6ede5;font:inherit;line-height:1.8}
+body[data-role=student].lakbay-theme .my-class-content .student-class-card{border-radius:19px;border:1px solid #4b6f7d;background:#102b41;box-shadow:none}
+body[data-role=student].lakbay-theme .my-class-content .student-class-card>header{position:relative;padding:26px 30px;background:radial-gradient(ellipse at 0 0,#9fb7731a,transparent 65%),linear-gradient(110deg,#21483e,#14344b);border-color:#557767;gap:22px;align-items:flex-start}
+body[data-role=student].lakbay-theme .my-class-content .student-class-card>header h2{font-size:1.55rem;line-height:1.5;color:#eee9d5;margin:10px 0;overflow-wrap:anywhere}
+body[data-role=student].lakbay-theme .my-class-content .student-class-card>header p{font-size:.77rem;line-height:1.8;color:#b6cdd1}
+.student-class-options{flex-shrink:0}.student-class-options>summary{font-size:.68rem;padding:9px 12px;border:1px solid #6c837366;border-radius:8px;color:#bdcec9;cursor:pointer;line-height:1.8}.student-class-options[open]{max-width:170px}.student-class-options .text-button{margin-top:10px!important;font-size:.67rem!important;border-color:#96796a88!important;color:#dfbfae!important}
+body[data-role=student].lakbay-theme .my-class-content .class-description{font-size:.79rem;line-height:1.9;color:#aac6d2;margin:20px 30px;max-width:78ch}
+body[data-role=student].lakbay-theme .my-class-content .class-section-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:17px 24px;border-bottom:1px solid #426575;background:#0f293e}
+body[data-role=student].lakbay-theme .my-class-content .class-section-button{min-width:0;min-height:46px;font-size:.75rem;padding:10px 12px;line-height:1.8;border:1px solid #426170;border-radius:10px;color:#b5cdd7;background:#143246;font-weight:650;transition:background-color 150ms ease,border-color 150ms ease;transform:none}
+body[data-role=student].lakbay-theme .my-class-content .class-section-button[aria-selected=true]{background:#deca91;color:#183340;border-color:#deca91}
+body[data-role=student].lakbay-theme .my-class-content :is(.class-overview-view,.class-learning-view,.class-updates-view,.class-community-view){padding:28px;min-width:0}
+body[data-role=student].lakbay-theme .my-class-content [role=tabpanel][hidden]{display:none!important}
+body[data-role=student].lakbay-theme .my-class-content .class-next-step{margin:0 0 24px;padding:26px 28px;background:radial-gradient(ellipse at 100% 0,#77a98f20,transparent 60%),linear-gradient(120deg,#25463f,#18344a);border:1px solid #a29661;border-radius:15px}
+body[data-role=student].lakbay-theme .my-class-content .class-next-step h3{font-size:1.35rem;line-height:1.55;margin:14px 0;color:#eee8d2;max-width:44ch}
+body[data-role=student].lakbay-theme .my-class-content .class-next-step p{font-size:.82rem;line-height:1.95;color:#c1d3d8}
+body[data-role=student].lakbay-theme .my-class-content .class-next-step>.eyebrow{font-size:.6rem;letter-spacing:.12em;color:#e3cc8e}
+body[data-role=student].lakbay-theme .my-class-content .class-next-step .class-sharing-note{font-size:.66rem;margin-top:20px;padding-top:15px;color:#a3c0cd;line-height:1.9}
+body[data-role=student].lakbay-theme .my-class-content .class-next-step .text-button{font-size:.76rem;min-height:46px;padding:11px 16px;border-radius:9px;background:#dfc98c;color:#1a3440;box-shadow:none}
+.class-latest-note{padding:24px 26px;margin-bottom:24px;background:#153446;border:1px solid #5b7b7c;border-radius:14px}.class-latest-note>.eyebrow{font-size:.58rem;letter-spacing:.12em;color:#b8d5c3}.class-latest-note h3{font-size:1.08rem;line-height:1.7;color:#e3eadf;margin:13px 0 10px}.class-latest-note p{font-size:.8rem;line-height:1.95;color:#b3ccd5;max-width:76ch}.class-latest-note .text-button{min-height:42px;padding:9px 13px;border:1px solid #60847c;border-radius:9px;background:#224249;color:#d9d2ad;font-size:.72rem;cursor:pointer}
+.class-guidance-drawer{padding:0 21px;border:1px solid #6e7f67;border-radius:12px;background:#233e3d}.class-guidance-drawer>summary{padding:18px 0;min-height:44px;font-size:.79rem;line-height:1.8;color:#ded2a9;cursor:pointer}
+body[data-role=student].lakbay-theme .my-class-content .class-guidance-drawer .class-feedback{padding:18px 0 22px;margin:0;border:0;background:none}
+body[data-role=student].lakbay-theme .my-class-content .class-learning-view>h3{font-size:1.18rem;line-height:1.6;margin:0 0 20px}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment{padding:24px;margin:18px 0;border:1px solid #4d7576;border-radius:14px;background:linear-gradient(140deg,#1d3e47,#132e45);box-shadow:none;transform:none}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment:before{display:none}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment[data-state=complete]{background:linear-gradient(140deg,#24483d,#173344);border-color:#6c896b}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment[data-state=locked]{background:linear-gradient(140deg,#2a3c45,#172f42);border-color:#6d7b82}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment .assignment-purpose{display:inline-block;font-size:.56rem;padding:5px 9px;border:1px solid #81966a66;border-radius:20px;background:#8da16d12;color:#cbd9b9;line-height:1.8;margin:0 9px 6px 0}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment .assignment-state{font-size:.65rem;color:#ddc98f;line-height:1.9}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment h4{font-size:1.08rem;line-height:1.7;margin:13px 0 10px;color:#e4ebdd}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment p{font-size:.79rem;line-height:1.95;color:#adc8d3;max-width:80ch}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment .text-button{font-size:.72rem;min-height:44px;padding:10px 14px;border-radius:9px;box-shadow:none}
+body[data-role=student].lakbay-theme .my-class-content :is(.class-updates-view .class-announcements,.class-community-view .classmates-panel){margin:0;padding:24px;border-radius:14px;border:1px solid #4d737a;background:#153345}
+.class-announcement-author{font-size:.62rem;color:#a5c8c3;line-height:1.8;display:block;margin-bottom:11px}
+body[data-role=student].lakbay-theme .my-class-content .class-announcement{padding:23px;margin-top:20px;border:1px solid #507878;border-radius:12px;background:linear-gradient(135deg,#1e4145,#153146)}
+body[data-role=student].lakbay-theme .my-class-content .class-announcement h4{font-size:1.08rem;line-height:1.7;color:#e4eadb;margin:0 0 13px}
+body[data-role=student].lakbay-theme .my-class-content .class-announcement p{font-size:.81rem;line-height:1.95;white-space:pre-wrap;color:#bed2d8}
+body[data-role=student].lakbay-theme .my-class-content .class-announcement time{font-size:.64rem;line-height:1.8;color:#9dbcc9}
+body[data-role=student].lakbay-theme .my-class-content .classmate-avatar{background:#385b4a;color:#dcd6ad;border-color:#6f916d}
+body[data-role=student].lakbay-theme .my-class-content :is(.class-section-button,.student-class-select,summary,.text-button):focus-visible{outline:2px solid #e8d099;outline-offset:4px}
+@media(max-width:700px){body[data-role=student].lakbay-theme .my-class-content .class-page-heading{padding:24px 22px}body[data-role=student].lakbay-theme .my-class-content .student-class-card>header{padding:24px 22px;gap:16px}body[data-role=student].lakbay-theme .my-class-content .student-class-card>header h2{font-size:1.25rem}body[data-role=student].lakbay-theme .my-class-content .class-description{margin:18px 22px}body[data-role=student].lakbay-theme .my-class-content .class-section-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:16px}body[data-role=student].lakbay-theme .my-class-content :is(.class-overview-view,.class-learning-view,.class-updates-view,.class-community-view){padding:22px 16px}body[data-role=student].lakbay-theme .my-class-content .class-next-step{padding:23px 20px}body[data-role=student].lakbay-theme .my-class-content .class-next-step h3{font-size:1.18rem}.class-latest-note{padding:22px 20px}body[data-role=student].lakbay-theme .my-class-content .class-assignment{padding:22px 20px}.student-class-options{width:auto}body[data-role=student].lakbay-theme .my-class-content :is(.class-updates-view .class-announcements,.class-community-view .classmates-panel){padding:22px 18px}}
+@media(prefers-reduced-motion:reduce){body[data-role=student].lakbay-theme .my-class-content .class-section-button{transition:none}}
+body.lakbay-reduce-motion .my-class-content .class-section-button{transition:none}
+/* Small history-themed accents remain decorative and never obscure actions. */
+body[data-role=student].lakbay-theme .my-class-content .student-class-card>header:after{content:'';position:absolute;right:155px;top:15px;width:145px;height:125px;background:url('../assets/brand/expedition-community.svg') center/contain no-repeat;opacity:.08;pointer-events:none}
+body[data-role=student].lakbay-theme .my-class-content .student-class-card>header>:is(div,details){position:relative;z-index:1}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment{padding-left:82px}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment:before{display:block;content:'';position:absolute;left:24px;top:24px;width:40px;height:44px;border:1px solid #7a94735c;border-radius:10px;background:#758f6015 url('../assets/brand/expedition-atlas.svg') center/30px 30px no-repeat;transform:none}
+@media(max-width:700px){body[data-role=student].lakbay-theme .my-class-content .student-class-card>header:after,body[data-role=student].lakbay-theme .my-class-content .class-assignment:before{display:none}body[data-role=student].lakbay-theme .my-class-content .class-assignment{padding-left:20px}}
+body.lakbay-reduce-motion .my-class-content :is(.student-class-card,.class-empty-panel,.class-assignment,.class-join-panel button,.class-section-button){animation:none!important;transition:none!important}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment>.assignment-due{display:block;width:fit-content;max-width:100%;box-sizing:border-box;margin:16px 0 12px;padding:8px 11px;border:1px solid #657e6955;border-radius:8px;background:#788e5c12;font-size:.66rem;line-height:1.9;color:#d7cca4}
+body[data-role=student].lakbay-theme .my-class-content .class-assignment>.text-button{margin:8px 12px 0 0}
+/* Ended activities retain their own history, separate from active class work. */
+.class-ended-history{margin:22px 0;padding:18px 20px;border:1px solid #4e6678;border-radius:15px;background:#142d41}.class-ended-history>summary{cursor:pointer;min-height:30px;font-weight:700;color:#c4d2df}.class-ended-history[open]>summary{margin-bottom:20px}.class-assignment[data-ended=true]{border-color:#597082;background:linear-gradient(140deg,#193346,#152b3d)}.class-ended-note{line-height:1.7;color:#b8cbd9}.class-assignment[data-state=withdrawn] .assignment-state{background:#39404a;color:#e3d4c6;border:1px solid #766d68}.class-assignment[data-state=closed] .assignment-state{background:#263e50;color:#c9dfeb;border:1px solid #59768a}

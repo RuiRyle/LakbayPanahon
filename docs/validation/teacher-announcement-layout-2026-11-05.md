@@ -1,0 +1,7 @@
+# Announcement layout structure - November 5, 2026
+
+Reorganized the page into one classroom context, a focused composer and a bounded saved-message library. The dedicated class selector replaces the generic classroom accordion and duplicate recipient picker for a selected active class. Explicit recipient selection remains available before choosing a class or while viewing archived posts. Switching classrooms uses existing unsaved-edit confirmation and keeps message recipient and saved-post context aligned. Archived posts remain read-only.
+
+Unified spacing, green/navy/gold grading, clear published/private-draft badges, field placeholders, full-width save action and a subdued cancel action. Message visibility, preview, character count and editing tools remain available. Five-post pagination prevents a large saved library from overwhelming the page. Announcements now render only their own publication tools after loading a classroom, avoiding unrelated student-name/report rendering.
+
+Validation: 32 mocked announcement browser checks passed at 390px/1280px, covering class context, cancelled switching with an unsaved draft, recipient synchronization, filtering, editing and pagination. Student Progress regression passed all 78 checks. Clean package ujtnwW: 32 pages, 571 files, zero missing/rejected references. Updated localhost:56738 and checked HTTP 200. No live data changes or hosting deployment.

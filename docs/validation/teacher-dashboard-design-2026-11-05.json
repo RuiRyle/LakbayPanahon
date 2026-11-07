@@ -1,0 +1,73 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-06T05:03:59.035Z",
+  "mode": "actual modules and browser, mocked Firestore; no live records changed",
+  "results": [
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "aggregate overview skips unrelated mission and story catalogs",
+        "personalized welcome has one primary action",
+        "student follow-ups appear before the activity timeline",
+        "classroom cards have one direct Open classroom action",
+        "four focused teaching metrics",
+        "classroom and published goal counts reflect records",
+        "general actions do not silently select a class",
+        "active classrooms remain accessible",
+        "class card actions preserve classroom context",
+        "follow-up links target the exact student request",
+        "snapshot scope remains visible",
+        "classroom pulse contains saved activity",
+        "dashboard fits 390px without horizontal overflow",
+        "classroom hover stays stable",
+        "follow-up queue bounds the visible cards to four",
+        "paging makes requests beyond the first four accessible",
+        "classroom filter isolates the intended requests",
+        "paging and filtering reuse the loaded snapshot without new database reads",
+        "learning evidence links preserve student and return-request context",
+        "explanation filter stays separate from help questions"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 1280,
+      "checks": [
+        "aggregate overview skips unrelated mission and story catalogs",
+        "personalized welcome has one primary action",
+        "student follow-ups appear before the activity timeline",
+        "classroom cards have one direct Open classroom action",
+        "four focused teaching metrics",
+        "classroom and published goal counts reflect records",
+        "general actions do not silently select a class",
+        "active classrooms remain accessible",
+        "class card actions preserve classroom context",
+        "follow-up links target the exact student request",
+        "snapshot scope remains visible",
+        "classroom pulse contains saved activity",
+        "dashboard fits 1280px without horizontal overflow",
+        "classroom hover stays stable",
+        "follow-up queue bounds the visible cards to four",
+        "paging makes requests beyond the first four accessible",
+        "classroom filter isolates the intended requests",
+        "paging and filtering reuse the loaded snapshot without new database reads",
+        "learning evidence links preserve student and return-request context",
+        "explanation filter stays separate from help questions"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "js/teacher-workspace.js",
+      "sha256": "bc96d223acdacdd98581ee316f3f757ece0e269ad2d860ecddff3a0a6cebfbbf"
+    },
+    {
+      "file": "js/teacher-class-client.js",
+      "sha256": "11d7f8e375915e65a19f12e41700f540d03bbb9e8ade73b4dbe022b527f61674"
+    },
+    {
+      "file": "css/teacher-workspace.css",
+      "sha256": "0c598547e88ab417723ea7c8812c6394eb8b3456d34853cca27e48204661e985"
+    }
+  ]
+}

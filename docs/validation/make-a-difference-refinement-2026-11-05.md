@@ -1,0 +1,9 @@
+# Make a Difference refinement — 5 November 2026
+
+Refined the teacher dashboard follow-up panel into structured private-support cards: student initial/display name, class, request type, optional assigned activity title, short message/explanation preview, saved timestamp and a specific reply/review action. All follow-ups / Questions / Explanations filters reuse the loaded snapshot. Pending count retains the total snapshot scope; the footer identifies matching records and the four-card display limit. Dated requests sort oldest first, using understandingAt for renewed requests; undated records follow them. Failed sources do not imply everyone is caught up.
+
+Each action retains class, support type and request identity. Student Progress opens the corresponding support accordion, highlights the matching record, and focuses its reply field (or heading if a reply is no longer applicable). It does not submit a response. Request IDs are matched against already authorised class-scoped results; no new database permissions or queries are added. The shared renderer emits a load-complete event so deep links work whether records arrive before or after the page opens the accordion.
+
+The visual treatment aligns heading, filter and card spacing with Classroom Pulse. Question and explanation badges use distinct restrained gold/sage accents. Empty/error states remain explicit. Mobile filters fit three equal columns and actions meet the existing minimum target height.
+
+Verification: `node tests/teacher-overview-browser.cjs` passes 24 actual local-browser/SDK checks, including question/explanation filtering, exact private request context, and opening/focusing the matching reply form. Existing dashboard, classroom layout, mobile and reduced-motion checks remain passing. Desktop screenshot was visually inspected. Disposable fixtures are removed; user-created data remains. No production publication or schema changes were performed.

@@ -1,0 +1,13 @@
+# Unified teacher account setup — November 5, 2026
+
+Implementation is staged. The new school-affiliation policy is still awaiting authorization for activation, so the normal real-Firebase preview has not been switched to this candidate yet.
+
+Canonical entry: `pages/teacher-application.html`. The old `pages/teacher-register.html` address forwards to it before any data entry. Registration, email verification, teaching details and review status are now stages on this one page; account creation no longer sends a teacher to another application screen.
+
+Account creation reuses the existing authentication/profile logic. An in-progress flag prevents the application loader from racing the new profile write. Only after the profile is confirmed does an in-page event advance to email verification. Password and registration fields are cleared at that handoff. Email refresh advances to teaching details without changing the URL; the registered name is reused. Submission shows review status and collapses saved details. Approved teachers receive a workspace link. Returning teachers resume from their saved account/application state.
+
+Firebase scripts load asynchronously so the static page can render while they download. The creation button remains disabled until its authentication handler is ready, premature native submission is prevented, and a blocked download gets recovery guidance. Account operations retain session persistence, duplicate-submit protection and server permission checks.
+
+Validation: the unified account-to-approval browser exercise passed 12 checks at 390px and 1280px (24 total), including deliberately delayed profile creation, same-page transitions, cleared passwords and the no-extra-account guarantee. Existing application browser regression passed 46 checks; authentication/application-policy unit coverage passed 26 checks. All use mocked accounts or pure functions; no real signup, approval or verification email occurred. Web packaging audit passes. No live rules or hosting deployment in this step.
+
+Activation update — November 5, 2026: the user explicitly authorized the simplified policy and combined preview. The school-affiliation rules were activated and read back with the exact tested hash; see `teacher-school-affiliation-publication-2026-11-05.json`. The running preview at http://localhost:56738 was updated without restarting its server or resetting accounts/classes. Ten read-only real-browser checks passed, including normal/blocked/recovered auth-module loading, the old registration URL forwarding to the unified setup, ready account controls, and mobile width. No new real account or application was created by this verification. Firebase Hosting was not deployed.

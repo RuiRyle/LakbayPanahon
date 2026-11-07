@@ -50,15 +50,15 @@ const input={userId:'student',eras:[],chapters:[{id:'c 1&x',status:'active',titl
  renderStudentJourney(container,resolveStudentJourney({...input,missionProgress:[{userId:'student',missionId:'m?1',completed:true}],drafts:[{userId:'student',kind:'chapter',chapterId:'c 1&x',state:{version:'current'},updatedAt:{toMillis:()=>30}}]}));
  check(container.querySelector('a').textContent==='Resume Chapter Challenge','Chapter resume action missing');
  renderStudentJourney(container,resolveStudentJourney({...input,chapterProgress:[{userId:'student',chapterId:'c 1&x',completed:true}]}));
- check(container.querySelector('a').textContent==='Review Chapters','Finished state missing');
+ check(container.querySelector('a').textContent==='Celebrate My Journey'&&container.querySelector('a').getAttribute('href')==='journey-finale.html'&&[...container.querySelectorAll('a')].some(a=>a.textContent==='Review Chapters'),'Finished state lacks celebration or chapter review');
  const finished={...input,eras:[{id:'era &1',status:'active',order:1}],chapters:[{...input.chapters[0],eraId:'era &1'}],chapterProgress:[{userId:'student',chapterId:'c 1&x',completed:true,completedAt:{toMillis:()=>100}}],missionProgress:[{userId:'student',missionId:'m?1',completed:true}]};
  renderStudentJourney(container,resolveStudentJourney(finished));
- check(container.querySelector('a').textContent==='Revisit Your Latest Era'&&new URL(container.querySelector('a').href).searchParams.get('era')==='era &1','Finished student has no latest era action');
+ const eraReview=[...container.querySelectorAll('a')].find(a=>a.textContent==='Revisit Your Latest Era');check(eraReview&&new URL(eraReview.href).searchParams.get('era')==='era &1','Finished student has no latest era action');
  check(container.querySelectorAll('.journey-completion-stats dd')[0].textContent==='1'&&container.querySelectorAll('.journey-completion-stats dd')[1].textContent==='1','Saved completion counts missing');
  check([...container.querySelectorAll('a')].some(a=>a.textContent==='Explore Your Collection'&&a.href.endsWith('achievements.html')),'Collection action missing');
  check(!container.querySelector('img')&&container.textContent.includes('<img'),'Finished chapter title was injected as markup');
  renderStudentJourney(container,resolveStudentJourney({...finished,reviewTopics:[{missionId:'m?1',topic:'Trade & travel',label:'Trade',missed:1}]}));
- action=container.querySelector('a');target=new URL(action.href);
+ action=[...container.querySelectorAll('a')].find(a=>a.textContent==='Revisit This Topic');target=new URL(action.href);
  check(action.textContent==='Revisit This Topic'&&target.pathname.endsWith('story.html')&&target.searchParams.get('reviewTopic')==='Trade & travel'&&target.searchParams.get('chapter')==='c 1&x','Finished review did not open its lesson safely');
  let guidanceRefresh=0;
  renderStudentJourney(container,{...resolveStudentJourney(input),optionalGuidanceUnavailable:true},()=>guidanceRefresh++);

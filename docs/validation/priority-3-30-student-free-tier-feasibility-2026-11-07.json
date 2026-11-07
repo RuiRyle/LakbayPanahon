@@ -1,0 +1,105 @@
+{
+  "mode": "read-only-public-docs-and-local-evidence",
+  "date": "2026-11-07",
+  "currency": "USD-before-tax",
+  "productionQueries": false,
+  "productionChanges": false,
+  "billableTests": false,
+  "manifestSha256": "0b902b44931e19bde9e26db746c6518def3991367f85717f01014f28c3beb2ef",
+  "artifactHashesVerified": 242,
+  "sourceHashesVerified": 23,
+  "sourceOrArtifactDrift": [],
+  "assumptions": {
+    "students": 30,
+    "schoolDays": 20,
+    "perStudent": {
+      "newMissionQuizzes": 20,
+      "extraAttempts": 5,
+      "chapterChallenges": 4,
+      "dailyChallenges": 10,
+      "restores": 20
+    },
+    "requestsPerMissionAttempt": 13,
+    "requestsPerChapterOrDaily": 3,
+    "transportHeadroom": 0.1,
+    "reads": 1080000,
+    "writes": 33000,
+    "readsAreConservativePriorModelNotMeteredPostOptionA": true,
+    "activeSecondsPerRequest": [
+      0.5,
+      2
+    ],
+    "cpu": 1,
+    "memoryGiB": 0.25,
+    "recaptchaChecks": [
+      1200,
+      2400
+    ],
+    "builds": 8,
+    "minutesPerBuild": 5,
+    "retainedImagesGiB": 2,
+    "sharedAllowancesAvailable": true,
+    "regionalRatesNotFreshlyQuoted": true,
+    "roundRequestsUpPerStudent": true
+  },
+  "arithmetic": {
+    "requests": 12780,
+    "activeCpuSeconds": [
+      6390,
+      25560
+    ],
+    "activeGiBSeconds": [
+      1597.5,
+      6390
+    ],
+    "schoolDayReads": 54000,
+    "schoolDayWrites": 1650,
+    "paidReadsWithNoOtherReads": 80000,
+    "readCostAtPriorSingaporePlanningRate": 0.029520000000000005,
+    "readCostSensitivity": [
+      0.024,
+      0.048
+    ],
+    "registryAtTwoGiBWithUnusedFreeHalfGiB": 0.15000000000000002,
+    "buildMinutes": 40,
+    "grossBuildCostAtPriorAssumedRates": [
+      0.24,
+      0.624
+    ],
+    "conditionalCoreFloorBeforeBuildSourceBackupOtherUsage": 0.17952,
+    "requestsPerStudent": 426
+  },
+  "conclusions": {
+    "theoreticalFixedBlazeFee": 0,
+    "guaranteedZeroCostHostedCandidate": false,
+    "pilotAssessmentPlanningRange": [
+      2,
+      7
+    ],
+    "rangeIsNotCapOrWholeApplicationQuote": true,
+    "unquantifiedCosts": [
+      "Existing users/teacher/UI operations and database/index storage",
+      "Bayani AI/backend/TTS",
+      "Media Hosting/Storage traffic",
+      "Backup/export/restore/PITR and destination",
+      "Abuse, extra builds, scanning, paid metrics/network",
+      "Tax/currency conversion"
+    ],
+    "allEndpointUidThrottling": false
+  },
+  "sources": [
+    "https://firebase.google.com/docs/functions/get-started",
+    "https://firebase.google.com/docs/projects/billing/firebase-pricing-plans",
+    "https://cloud.google.com/run/pricing",
+    "https://cloud.google.com/build",
+    "https://cloud.google.com/artifact-registry/pricing",
+    "https://firebase.google.com/docs/firestore/pricing",
+    "https://docs.cloud.google.com/recaptcha/docs/billing-information",
+    "https://firebase.google.com/docs/hosting/usage-quotas-pricing",
+    "https://firebase.google.com/docs/firestore/manage-data/export-import",
+    "https://firebase.google.com/docs/storage/faqs-storage-changes-announced-sept-2024",
+    "https://firebase.google.com/docs/projects/billing/spend-caps",
+    "https://render.com/docs/free",
+    "https://developers.cloudflare.com/workers/platform/pricing/"
+  ]
+}

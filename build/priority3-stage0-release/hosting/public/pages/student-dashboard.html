@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Dashboard | LakbayPanahon</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/student.css"
+    >
+
+    <link
+    rel="stylesheet"
+    href="../css/student-dashboard.css"
+>
+
+    <link rel="stylesheet" href="../css/home-refined.css">
+    <link rel="stylesheet" href="../css/workspace-loading.css">
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/page-transition.css">
+    <link rel="stylesheet" href="../css/daily-challenge-theme.css">
+    <link rel="stylesheet" href="../css/home-practice-review.css">
+    <link rel="stylesheet" href="../css/expedition.css">
+<link rel="stylesheet" href="../css/level-rewards.css"><link rel="stylesheet" href="../css/student-layout.css"></head>
+
+
+<body
+    class="auth-checking lakbay-theme student-home-page"
+    data-role="student"
+>
+    <div class="student-loading-shell" role="status" aria-live="polite">
+        <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
+        <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p>Loading your learning space...</p><div class="student-loading-heading" aria-hidden="true"></div><div class="student-loading-cards" aria-hidden="true"><i></i><i></i><i></i></div><div class="student-loading-panel" aria-hidden="true"></div></div></div>
+    </div>
+
+
+    <div class="student-app">
+        <a class="student-skip-link" href="#student-main">Skip to main content</a>
+
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside class="sidebar">
+
+            <a
+                href="student-dashboard.html"
+                class="sidebar-logo"
+            >
+
+                <div class="logo-mark">
+                    LP
+                </div>
+
+                <div class="logo-name">
+
+                    <strong>
+                        LakbayPanahon
+                    </strong>
+
+                    <span>
+                        Philippine History
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="student-dashboard.html"
+                    class="nav-link active"
+                >
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v11h5v-7h4v7h5V10"/></svg></span>
+                    <span>Home</span>
+                </a>
+
+
+                <a
+                    href="my-journey.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 3h13a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-2V3Zm0 14h16M8 7h8M8 11h6"/></svg></span>
+                    <span>My Journey</span>
+                </a>
+
+
+                <a
+                    href="chapters.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
+                    <span>Explore Chapters</span>
+                </a>
+
+
+                <a
+                    href="my-class.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6M9 10h6"/></svg></span>
+                    <span>My Class</span>
+                </a>
+
+
+                <a
+                    href="bayani-ai.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 2.8 6.2L21 12l-6.2 2.8L12 21l-2.8-6.2L3 12l6.2-2.8L12 3Z"/></svg></span>
+                    <span>Bayani AI</span>
+                </a>
+
+
+                <a
+                    href="achievements.html"
+                    class="nav-link"
+                >
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
+                    <span>Achievements</span>
+                </a>
+                <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
+
+            <a href="history-timeline.html" class="nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M5 3v18M5 6h14M5 12h10M5 18h14" fill="none" stroke="currentColor" stroke-width="2"/></svg></span><span>Historical Timeline</span></a>
+</nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    type="button"
+                    class="nav-link logout-button"
+                >
+                    <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 4H4v16h5m5-13 5 5-5 5m-6-5h11"/></svg></span>
+                    <span>Log Out</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN AREA
+        ========================================== -->
+
+        <main tabindex="-1" id="student-main" class="main-content">
+
+
+            <!-- =====================================
+                 TOP BAR
+            ====================================== -->
+
+            <header class="topbar">
+
+                <button
+                    type="button"
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topbar-title">
+
+                    <span>
+                        Student Journey
+                    </span>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+
+                    <div class="xp-pill">
+
+                        <span>
+                            ⭐
+                        </span>
+
+                        <strong id="topXp">
+                            0 XP
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="profile-button"
+                        id="profileButton"
+                    >
+
+                        <div
+                            class="profile-avatar"
+                            id="profileAvatar"
+                        >
+                            S
+                        </div>
+
+
+                        <div class="profile-info">
+
+                            <strong id="topStudentName">
+                                Student
+                            </strong>
+
+                            <span id="topStudentLevel">
+                                Level 1
+                            </span>
+
+                        </div>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =====================================
+                 PAGE CONTENT
+            ====================================== -->
+
+            <div class="dashboard-content">
+
+
+                <!-- =================================
+                     WELCOME
+                ================================== -->
+
+                <section id="studentProfileSetup" class="dashboard-card student-setup-card" aria-labelledby="studentSetupTitle" hidden>
+                    <h2 id="studentSetupTitle">Make this journey yours</h2>
+                    <p>Check your name and choose an explorer avatar. You can also start learning right away.</p>
+                    <div class="student-setup-actions">
+                        <button id="openStudentSetup" type="button" class="primary-button">Set Up My Profile</button>
+                        <button id="dismissStudentSetup" type="button" class="quiz-secondary-button">Not Now</button>
+                    </div>
+                    <p id="studentSetupStatus" role="status" aria-live="polite"></p>
+                </section>
+
+                <section class="welcome-section">
+
+
+                    <div class="welcome-text"><span class="home-welcome-kicker">THE EXPLORER'S DESK</span>
+
+                        <span class="eyebrow">
+                            YOUR HISTORY JOURNEY
+                        </span>
+
+                        <h1>
+                            Magandang araw,
+                            <span id="studentFirstName">
+                                Student
+                            </span>!
+                            👋
+                        </h1>
+
+                        <p>
+                            Continue exploring the people, places,
+                            and events that shaped the Philippines.
+                        </p>
+
+                    </div>
+
+
+                    <!-- PLAYER PROGRESS -->
+
+                    <div class="level-card player-progress-card">
+
+                        <div class="level-icon">
+                            ⭐
+                        </div>
+
+
+                        <div class="player-progress-content">
+
+                            <div class="player-progress-heading">
+
+                                <div>
+
+                                    <span>
+                                        YOUR EXPLORER LEVEL
+                                    </span>
+
+                                    <strong id="studentLevel">
+                                        Level 1
+                                    </strong>
+
+                                </div>
+
+
+                                <strong
+                                    class="player-progress-xp"
+                                    id="levelProgressXp"
+                                >
+                                    Loading XP progress...
+                                </strong>
+
+                            </div>
+
+
+                            <div
+                                class="player-xp-track"
+                                role="progressbar"
+                                aria-label="Level progress"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-valuenow="0"
+                                id="levelProgressTrack"
+                            >
+
+                                <div
+                                    class="player-xp-fill"
+                                    id="levelProgressBar"
+                                    style="width: 0%;"
+                                ></div>
+
+                            </div>
+
+
+                            <small
+                                class="player-next-level"
+                                id="nextLevelText"
+                            >
+                                Loading next level...
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     STATS
+                ================================== -->
+
+                <section class="dashboard-grid" aria-label="Your next learning step">
+
+
+                    <!-- =============================
+                         CONTINUE JOURNEY
+                    ============================== -->
+
+                    <article
+                        class="dashboard-card journey-card journey-quest-card"
+                        id="journey" data-desk-theme="sea"
+                    >
+
+                        <div class="journey-quest-header">
+
+                            <div>
+
+                                <span class="card-label">
+                                    🧭 YOUR CURRENT JOURNEY
+                                </span>
+
+                                <h2>
+                                    Continue your journey
+                                </h2>
+
+                            </div>
+
+
+                            <span class="quest-badge">
+                                MAIN QUEST
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="journey-content journey-quest-content"
+                            id="newJourneyState"
+                        >
+
+                            <div class="journey-illustration quest-compass">
+                                🧭
+                            </div>
+
+
+                            <div class="journey-details">
+
+                                <span class="journey-status">
+                                    LOADING YOUR JOURNEY
+                                </span>
+
+                                <h3>
+                                    Preparing Your Adventure
+                                </h3>
+
+                                <p>
+                                    Checking your historical progress...
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="explorer-desk-heading"><span class="eyebrow">YOUR TIME TRAVELER'S DESK</span><p>Everything you need for your next discovery.</p></div>
+                        <nav id="explorerDesk" class="explorer-desk" aria-label="Your explorer tools"><a class="desk-object" href="chapters.html"><strong>Chapter map</strong><span>Choose a destination</span></a><a class="desk-object" href="my-journey.html#evidenceJournal"><strong>Evidence Journal</strong><span>Revisit your saved clues</span></a><a class="desk-object" href="achievements.html"><strong>Discovery Museum</strong><span>Explore your earned keepsakes</span></a></nav>
+                    </article>
+
+
+                    </section>
+
+                <section class="stats-grid">
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            ⭐
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Experience
+                            </span>
+
+                            <strong id="studentXp">
+                                0 XP
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            📖
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Missions Completed
+                            </span>
+
+                            <strong id="missionsCompleted">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            🏆
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Badges Earned
+                            </span>
+
+                            <strong id="badgesEarned">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            &#10024;
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Learning Companion
+                            </span>
+
+                            <strong><a href="bayani-ai.html">Bayani AI</a></strong>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =================================
+                     MAIN DASHBOARD GRID
+                ================================== -->
+
+
+
+                <section class="home-learning-trail" aria-labelledby="homeLearningTitle">
+                    <div class="home-learning-heading">
+                        <div class="home-learning-heading-copy">
+                            <span class="eyebrow">YOUR HISTORY ADVENTURE</span>
+                            <h2 id="homeLearningTitle">Your Lessons</h2>
+                            <p>Continue your current chapter or revisit a lesson you have completed.</p>
+                        </div>
+                        <a href="my-journey.html">View full journey <span aria-hidden="true">&rarr;</span></a>
+                    </div>
+                    <div id="homeLearningTrail" class="home-lesson-list" aria-live="polite">Loading your lessons...</div>
+                </section>
+
+
+<section class="home-discover" aria-labelledby="homeDiscoverTitle"><div class="home-section-title"><div><span class="eyebrow">A DIFFERENT WAY TO DISCOVER</span><h2 id="homeDiscoverTitle">Make room for curiosity.</h2></div><p>Take a daily challenge, ask Bayani AI, explore a chapter, or learn with your class.</p></div><div class="home-side-quests"><article class="dashboard-card home-daily-card" aria-labelledby="homeDailyTitle"><div class="home-quest-heading"><span class="home-quest-icon" aria-hidden="true">&#9889;</span><span class="card-label">A LITTLE HISTORY, EVERY DAY</span></div><h2 id="homeDailyTitle">Daily Challenge</h2><p class="daily-challenge-card-text">Take on today's history question. A small discovery to keep your journey moving.</p><div class="challenge-reward" hidden><span>Today's reward</span><strong id="dailyChallengeCardReward" aria-live="polite"></strong></div><button type="button" class="primary-button daily-challenge-start" id="dailyChallengeStart" disabled>Loading Daily Challenge...</button><div id="dailyChallengeCardCompleted" class="daily-challenge-card-completed" role="status" hidden><span class="daily-complete-check" aria-hidden="true">&#10003;</span><div><strong>Today's challenge complete</strong><p>Come back tomorrow for another discovery.</p></div></div></article><article class="dashboard-card home-bayani-card" id="bayaniAI"><div class="home-quest-heading"><span class="home-bayani-mark" aria-hidden="true">B<span>&#10022;</span></span><span class="card-label">YOUR HISTORY COMPANION</span></div><h2>Curiosity starts here.</h2><p>Ask Bayani AI to explain a lesson, explore an idea or help you think through Philippine history.</p><a href="bayani-ai.html" class="secondary-action-button">Chat with Bayani AI <span aria-hidden="true">&#8594;</span></a><small>Keep your questions about learning. Leave personal details out of chat.</small></article></div>
+<nav class="home-destinations" aria-label="Your learning spaces"><a href="chapters.html"><span class="destination-icon" aria-hidden="true">&#10022;</span><span class="eyebrow">EXPLORE</span><h3>Find your next chapter</h3><p>Explore the historical eras and lessons available to you.</p><span class="destination-action">Explore Chapters &#8594;</span></a><a href="my-class.html"><span class="destination-icon" aria-hidden="true">&#9873;</span><span class="eyebrow">LEARN TOGETHER</span><h3>Your class awaits</h3><p>Join your teacher's class and find your assigned missions.</p><span class="destination-action">Open My Class &#8594;</span></a></nav>
+                </section>
+
+
+                <section class="home-collection-panel" id="achievements" aria-labelledby="dashboardCollectionsTitle"><div class="home-collection-heading"><span class="home-collection-emblem" aria-hidden="true">&#127942;</span><div><span class="eyebrow">MILESTONES WORTH KEEPING</span><h2 id="dashboardCollectionsTitle">Your story, collected.</h2><p>Every chapter conquered and mission completed leaves something to remember.</p></div><a href="achievements.html" class="text-button">Open Collections &#8594;</a></div><div class="home-collection-shelves"><a href="achievements.html"><span class="shelf-symbol" aria-hidden="true">&#127941;</span><div><span class="shelf-label">CHAPTER MILESTONES</span><h3>Badges of achievement</h3><p>Celebrate the chapter challenges you complete.</p></div><span class="shelf-arrow" aria-hidden="true">&#8599;</span></a><a href="achievements.html"><span class="shelf-symbol" aria-hidden="true">&#127994;</span><div><span class="shelf-label">HISTORICAL KEEPSAKES</span><h3>Artifacts of discovery</h3><p>Revisit the collectibles earned on your missions.</p></div><span class="shelf-arrow" aria-hidden="true">&#8599;</span></a></div></section>
+
+    <section class="return-to-learn-panel" aria-labelledby="studentReturnTitle"><div class="home-review-heading"><div><span class="eyebrow">REMEMBER THIS</span><h2 id="studentReturnTitle">A clue from your past journey.</h2><p>Come back to something you learned a few days ago.</p></div></div><div id="studentReturnTopic" aria-live="polite">Finding a topic from your journey...</div></section>
+    <section class="practice-review-panel" aria-labelledby="studentReviewTitle">
+        <div class="home-review-heading"><div><span class="eyebrow">PERSONALIZED PRACTICE</span><h2 id="studentReviewTitle">A little practice. A stronger explorer.</h2><p>Topics to review, recommended from your saved quizzes and practice.</p></div><button type="button" class="text-button" id="reloadStudentReview">Refresh Review <span aria-hidden="true">&#8635;</span></button></div><p class="home-review-note">Practice at your own pace. Recommendations can include completed missions and update as you learn.</p>
+        <div id="studentReviewTopics" class="practice-review-grid" aria-live="polite"></div>
+    </section>
+            </div>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script
+        type="module"
+        src="../js/auth-guard.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/student.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/logout.js"
+    ></script>
+
+    <script
+        type="module"
+        src="../js/page-transition.js"
+    ></script>
+
+
+
+<div
+                        class="daily-modal-backdrop"
+                        id="dailyChallengeModal"
+                        hidden
+                    >
+
+                        <div
+                            class="daily-modal"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-labelledby="dailyChallengeModalTitle"
+                        >
+
+
+                            <div class="daily-modal-header">
+
+                                <div class="daily-modal-title-group">
+
+                                    <div class="daily-modal-icon">
+                                        &#9889;
+                                    </div>
+
+                                    <div>
+
+                                        <span class="card-label">
+                                            TODAY'S HISTORY CHALLENGE
+                                        </span>
+
+                                        <h2 id="dailyChallengeModalTitle">
+                                            Daily Challenge
+                                        </h2>
+
+                                    </div>
+
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="daily-modal-close"
+                                    id="dailyChallengeClose"
+                                    aria-label="Close Daily Challenge"
+                                >
+                                    �
+                                </button>
+
+                            </div>
+
+
+                            <div
+                                class="daily-modal-loading"
+                                id="dailyChallengeLoading"
+                            >
+
+                                <div class="daily-loading-icon">
+                                    &#8987;
+                                </div>
+
+                                <p>
+                                    Preparing today's challenge...
+                                </p>
+
+                            </div>
+
+
+                            <div
+                                class="daily-modal-content"
+                                id="dailyChallengeContent"
+                                hidden
+                            >
+
+                                <div class="daily-question-number">
+                                    DAILY QUESTION
+                                </div>
+
+
+                                <p
+                                    class="daily-challenge-question"
+                                    id="dailyChallengeQuestion"
+                                >
+                                    Today's question will appear here.
+                                </p>
+
+
+                                <div
+                                    class="daily-challenge-options"
+                                    id="dailyChallengeOptions"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="daily-challenge-option"
+                                        data-answer="A"
+                                    >
+
+                                        <span class="daily-option-letter">
+                                            A
+                                        </span>
+
+                                        <span id="dailyOptionA">
+                                            Option A
+                                        </span>
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="daily-challenge-option"
+                                        data-answer="B"
+                                    >
+
+                                        <span class="daily-option-letter">
+                                            B
+                                        </span>
+
+                                        <span id="dailyOptionB">
+                                            Option B
+                                        </span>
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="daily-challenge-option"
+                                        data-answer="C"
+                                    >
+
+                                        <span class="daily-option-letter">
+                                            C
+                                        </span>
+
+                                        <span id="dailyOptionC">
+                                            Option C
+                                        </span>
+
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="daily-challenge-option"
+                                        data-answer="D"
+                                    >
+
+                                        <span class="daily-option-letter">
+                                            D
+                                        </span>
+
+                                        <span id="dailyOptionD">
+                                            Option D
+                                        </span>
+
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="daily-challenge-feedback"
+                                    id="dailyChallengeFeedback"
+                                    hidden
+                                ></div>
+
+
+                                <div class="daily-modal-footer">
+
+                                    <div class="daily-modal-reward">
+
+                                        <span>
+                                            REWARD
+                                        </span>
+
+                                        <strong id="dailyChallengeReward">
+                                            +0 XP
+                                        </strong>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        class="primary-button daily-submit-button"
+                                        id="dailyChallengeSubmit"
+                                        disabled
+                                    >
+                                        Submit Answer
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="daily-challenge-empty"
+                                id="dailyChallengeEmpty"
+                                hidden
+                            >
+
+                                <div class="daily-empty-icon">
+                                    &#10024;
+                                </div>
+
+                                <strong>
+                                    No challenge available
+                                </strong>
+
+                                <p>
+                                    Check back later for another
+                                    Philippine History challenge.
+                                </p>
+
+                            </div>
+
+
+                            <div
+                                class="daily-challenge-completed"
+                                id="dailyChallengeCompleted"
+                                hidden
+                            >
+
+                                <div class="daily-challenge-completed-icon">
+                                    &#10003;
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Today's Challenge Complete!
+                                    </strong>
+
+                                    <p>
+                                        Today's discovery is complete!
+                                        A new Daily Challenge awaits tomorrow. Keep exploring your lessons today.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+<script type="module" src="../js/daily-challenge.js"></script>
+    <script type="module" src="../js/expedition-ui.js"></script>
+<script type="module" src="../js/level-rewards.js"></script></body>
+
+</html>

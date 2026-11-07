@@ -1,0 +1,13 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('fs');const context=vm.createContext({URLSearchParams,URL});vm.runInContext(fs.readFileSync('js/learning-navigation.js','utf8').replace(/export /g,''),context);
+test('targeted lesson and practice routes preserve mission, chapter and encoded topic',()=>{
+ const routes=context.learningTopicRoutes('?chapter=c%26x&mission=m%2F1&reviewTopic=Trade+%26+travel');const lesson=new URL(routes.lesson,'https://example.test/pages/'),practice=new URL(routes.practice,'https://example.test/pages/');assert.equal(lesson.searchParams.get('chapter'),'c&x');assert.equal(practice.searchParams.get('mission'),'m/1');assert.equal(practice.searchParams.get('topic'),'Trade & travel');assert.equal(lesson.searchParams.get('reviewTopic'),'Trade & travel');assert.equal(practice.searchParams.get('review'),'1');assert.equal(context.learningTopicRoutes(practice.search).lesson,routes.lesson);
+});
+test('general or incomplete learning routes do not invent a targeted destination',()=>{for(const route of ['?chapter=c&mission=m','?mission=m&topic=t','?chapter=c&topic=t','?chapter=c&mission=m&topic=+++'])assert.equal(context.learningTopicRoutes(route),null);});
+test('route construction cannot navigate to an arbitrary supplied return URL',()=>{const r=context.learningTopicRoutes('?chapter=c&mission=m&topic=https://other.test&returnTo=https://other.test');assert(r.lesson.startsWith('story.html?'));assert(r.practice.startsWith('practice.html?'));assert(!new URL(r.lesson,'https://example.test').searchParams.has('returnTo'));});
+
+test('classroom context follows only same-origin same-mission learning routes',()=>{
+ const search='?chapter=c&mission=m&classroom=class-one&activity=review-one',base='https://example.test/pages/story.html';
+ for(const route of ['story.html?chapter=c&mission=m','practice.html?chapter=c&mission=m&topic=trade','quiz.html?chapter=c&mission=m']){const result=new URL(context.carryClassroomContext(route,search,base));assert.equal(result.searchParams.get('classroom'),'class-one');assert.equal(result.searchParams.get('activity'),'review-one');}
+ for(const route of ['https://other.test/pages/quiz.html?chapter=c&mission=m','story.html?chapter=c&mission=next','my-journey.html','javascript:alert(1)'])assert.equal(context.carryClassroomContext(route,search,base),route);
+});
+test('malformed classroom identifiers do not produce a return context',()=>{for(const values of ['classroom=bad%2Fid&activity=a','classroom=c&activity=bad%00id','classroom=c','classroom=c&activity=a']){const search='?'+values+(values==='classroom=c&activity=a'?'':'&chapter=c&mission=m');assert.equal(context.classroomLearningContext(search),null);}});

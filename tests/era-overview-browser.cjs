@@ -4,7 +4,7 @@ const root = path.join(__dirname, '..'), temp = fs.mkdtempSync(path.join(os.tmpd
 let html = fs.readFileSync(path.join(root, 'pages/era.html'), 'utf8')
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(/<link\b[^>]*>/gi, '');
 const source = fs.readFileSync(path.join(root, 'js/chapters.js'), 'utf8').replace(/import[\s\S]*?from\s+"[^"]+";/g, '');
-const styles = ['student.css', 'chapters.css', 'navy-gold-theme.css'].map(name => fs.readFileSync(path.join(root, 'css', name), 'utf8')).join('\n');
+const styles = ['student.css', 'chapters.css', 'navy-gold-theme.css','student-layout.css','era-mission-simple.css'].map(name => fs.readFileSync(path.join(root, 'css', name), 'utf8')).join('\n');
 const script = `
 const instructionalSnapshot=(_,load)=>load();
 const auth={currentUser:{uid:'student'}}, db={};
@@ -44,7 +44,7 @@ const check=(ok,message)=>{if(!ok)throw Error(message);};
  const authored={id:'e1',title:'<img src=x onerror=alert(1)>',description:'A described era',learningObjectives:['Explain a source','Connect two events'],theme:'forest',dateRange:'A published period'};
  renderEraOverview(authored);renderEraOverviewProgress(authored,[{chapter:{id:'c1',title:'Chapter'},isUnlocked:true,isContentReady:true,isCompleted:true}],true);
  check(!hero.querySelector('h1 img')&&document.getElementById('eraDiscoveryList').children.length===2,'Authored content is unsafe or missing');
- check(action.textContent.startsWith('Revisit:')&&hero.dataset.theme==='forest','Completed era has no review action or theme');
+ check(action.textContent==='Review a chapter'&&hero.dataset.theme==='forest','Completed era has no review action or theme');
  failedCollection='chapters';await loadChapters('e2','Era two');check(action.hidden&&chapterList.querySelector('button'),'Failed reload retained stale action or lacks retry');
  failedCollection=null;eraCompleted=true;chapterList.querySelector('button').click();await tick();check(!action.hidden,'Retry did not recover overview');
  const width=document.documentElement.clientWidth;check(document.documentElement.scrollWidth<=width,'Overview causes horizontal overflow');check(hero.getBoundingClientRect().right<=width&&document.getElementById('eraDiscoveries').getBoundingClientRect().right<=width,'Overview content clips outside viewport');

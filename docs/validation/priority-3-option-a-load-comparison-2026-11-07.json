@@ -1,0 +1,426 @@
+{
+  "scope": "local-demo-transactions-not-production-capacity",
+  "before": [
+    {
+      "name": "sequential",
+      "requests": 5,
+      "successful": 5,
+      "failed": 0,
+      "distinctCommittedAttempts": 5,
+      "p50Ms": 305.5528000000013,
+      "p95Ms": 334.5548999999992,
+      "transactionInvocations": 5,
+      "callbackExecutions": 5,
+      "retryCallbacks": 0,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 5,
+        "missions": 5,
+        "questions": 5,
+        "practiceQuestions": 5,
+        "studentQuizAttempts": 5,
+        "studentPracticeProgress": 5,
+        "studentReviewEvents": 5,
+        "artifacts": 5
+      }
+    },
+    {
+      "name": "five",
+      "requests": 5,
+      "successful": 5,
+      "failed": 0,
+      "distinctCommittedAttempts": 5,
+      "p50Ms": 3474.818699999996,
+      "p95Ms": 8113.8413999999975,
+      "transactionInvocations": 5,
+      "callbackExecutions": 11,
+      "retryCallbacks": 6,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 11,
+        "missions": 11,
+        "questions": 11,
+        "practiceQuestions": 11,
+        "studentQuizAttempts": 11,
+        "studentPracticeProgress": 11,
+        "studentReviewEvents": 11,
+        "artifacts": 11
+      }
+    },
+    {
+      "name": "ten",
+      "requests": 10,
+      "successful": 10,
+      "failed": 0,
+      "distinctCommittedAttempts": 10,
+      "p50Ms": 9922.347899999993,
+      "p95Ms": 17959.2963,
+      "transactionInvocations": 10,
+      "callbackExecutions": 36,
+      "retryCallbacks": 26,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 36,
+        "missions": 36,
+        "questions": 36,
+        "practiceQuestions": 36,
+        "studentQuizAttempts": 36,
+        "studentPracticeProgress": 36,
+        "studentReviewEvents": 36,
+        "artifacts": 36
+      }
+    },
+    {
+      "name": "thirty",
+      "requests": 30,
+      "successful": 5,
+      "failed": 25,
+      "distinctCommittedAttempts": 5,
+      "p50Ms": 19695.907999999996,
+      "p95Ms": 22097.6091,
+      "transactionInvocations": 30,
+      "callbackExecutions": 143,
+      "retryCallbacks": 113,
+      "terminalAborted": 25,
+      "queryCounts": {
+        "chapters": 143,
+        "missions": 143,
+        "questions": 143,
+        "practiceQuestions": 143,
+        "studentQuizAttempts": 143,
+        "studentPracticeProgress": 143,
+        "studentReviewEvents": 143,
+        "artifacts": 143
+      }
+    },
+    {
+      "name": "same-student-identical-submission",
+      "requests": 3,
+      "successful": 3,
+      "failed": 0,
+      "distinctCommittedAttempts": 1,
+      "p50Ms": 3331.855899999995,
+      "p95Ms": 3704.2715000000026,
+      "transactionInvocations": 3,
+      "callbackExecutions": 5,
+      "retryCallbacks": 2,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 5,
+        "missions": 5,
+        "questions": 5,
+        "practiceQuestions": 5,
+        "studentQuizAttempts": 5,
+        "studentPracticeProgress": 5,
+        "studentReviewEvents": 5,
+        "artifacts": 3
+      }
+    },
+    {
+      "name": "same-student-distinct-attempts",
+      "requests": 2,
+      "successful": 2,
+      "failed": 0,
+      "distinctCommittedAttempts": 2,
+      "p50Ms": 2180.93789999999,
+      "p95Ms": 3760.0222999999824,
+      "transactionInvocations": 2,
+      "callbackExecutions": 3,
+      "retryCallbacks": 1,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 3,
+        "missions": 3,
+        "questions": 3,
+        "practiceQuestions": 3,
+        "studentQuizAttempts": 3,
+        "studentPracticeProgress": 3,
+        "studentReviewEvents": 3,
+        "artifacts": 3
+      }
+    }
+  ],
+  "after": [
+    {
+      "name": "sequential",
+      "requests": 5,
+      "successful": 5,
+      "failed": 0,
+      "distinctCommittedAttempts": 5,
+      "p50Ms": 278.7668999999987,
+      "p95Ms": 281.6350999999995,
+      "transactionInvocations": 5,
+      "callbackExecutions": 5,
+      "retryCallbacks": 0,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 5,
+        "missions": 5,
+        "questions": 5,
+        "practiceQuestions": 5,
+        "artifacts": 5
+      }
+    },
+    {
+      "name": "five",
+      "requests": 5,
+      "successful": 5,
+      "failed": 0,
+      "distinctCommittedAttempts": 5,
+      "p50Ms": 172.79129999999714,
+      "p95Ms": 175.57299999999668,
+      "transactionInvocations": 5,
+      "callbackExecutions": 5,
+      "retryCallbacks": 0,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 5,
+        "missions": 5,
+        "questions": 5,
+        "practiceQuestions": 5,
+        "artifacts": 5
+      }
+    },
+    {
+      "name": "ten",
+      "requests": 10,
+      "successful": 10,
+      "failed": 0,
+      "distinctCommittedAttempts": 10,
+      "p50Ms": 311.00010000000475,
+      "p95Ms": 326.8095999999932,
+      "transactionInvocations": 10,
+      "callbackExecutions": 10,
+      "retryCallbacks": 0,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 10,
+        "missions": 10,
+        "questions": 10,
+        "practiceQuestions": 10,
+        "artifacts": 10
+      }
+    },
+    {
+      "name": "thirty",
+      "requests": 30,
+      "successful": 30,
+      "failed": 0,
+      "distinctCommittedAttempts": 30,
+      "p50Ms": 849.6726999999955,
+      "p95Ms": 916.801300000021,
+      "transactionInvocations": 30,
+      "callbackExecutions": 30,
+      "retryCallbacks": 0,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 30,
+        "missions": 30,
+        "questions": 30,
+        "practiceQuestions": 30,
+        "artifacts": 30
+      }
+    },
+    {
+      "name": "same-student-identical-submission",
+      "requests": 3,
+      "successful": 3,
+      "failed": 0,
+      "distinctCommittedAttempts": 1,
+      "p50Ms": 6240.3620999999985,
+      "p95Ms": 6554.136499999993,
+      "transactionInvocations": 3,
+      "callbackExecutions": 8,
+      "retryCallbacks": 5,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 6,
+        "missions": 6,
+        "questions": 6,
+        "practiceQuestions": 6,
+        "artifacts": 6
+      }
+    },
+    {
+      "name": "same-student-distinct-attempts",
+      "requests": 2,
+      "successful": 2,
+      "failed": 0,
+      "distinctCommittedAttempts": 2,
+      "p50Ms": 2169.6963000000105,
+      "p95Ms": 3595.666200000007,
+      "transactionInvocations": 2,
+      "callbackExecutions": 3,
+      "retryCallbacks": 1,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 3,
+        "missions": 3,
+        "questions": 3,
+        "practiceQuestions": 3,
+        "artifacts": 3
+      }
+    }
+  ],
+  "repeat": [
+    {
+      "name": "thirty",
+      "requests": 30,
+      "successful": 30,
+      "failed": 0,
+      "distinctCommittedAttempts": 30,
+      "p50Ms": 1175.8315000000002,
+      "p95Ms": 1190.5037000000011,
+      "transactionInvocations": 30,
+      "callbackExecutions": 30,
+      "retryCallbacks": 0,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 30,
+        "missions": 30,
+        "questions": 30,
+        "practiceQuestions": 30,
+        "artifacts": 30
+      }
+    },
+    {
+      "name": "same-student-identical-submission",
+      "requests": 3,
+      "successful": 3,
+      "failed": 0,
+      "distinctCommittedAttempts": 1,
+      "p50Ms": 7144.825199999992,
+      "p95Ms": 7332.587899999999,
+      "transactionInvocations": 3,
+      "callbackExecutions": 8,
+      "retryCallbacks": 5,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 6,
+        "missions": 6,
+        "questions": 6,
+        "practiceQuestions": 6,
+        "artifacts": 6
+      }
+    },
+    {
+      "name": "same-student-distinct-attempts",
+      "requests": 2,
+      "successful": 2,
+      "failed": 0,
+      "distinctCommittedAttempts": 2,
+      "p50Ms": 3336.2868000000017,
+      "p95Ms": 10450.691900000005,
+      "transactionInvocations": 2,
+      "callbackExecutions": 4,
+      "retryCallbacks": 2,
+      "terminalAborted": 0,
+      "queryCounts": {
+        "chapters": 4,
+        "missions": 4,
+        "questions": 4,
+        "practiceQuestions": 4,
+        "artifacts": 4
+      }
+    }
+  ],
+  "allAfterFinalRecordsConsistent": true,
+  "mixedRewards": [
+    {
+      "finalXp": 55,
+      "expectedXp": 55,
+      "retryCallbacks": 1,
+      "p50Ms": 2069.2643999999855,
+      "p95Ms": 3676.1543999999994,
+      "bothCompletionsSaved": true
+    },
+    {
+      "finalXp": 55,
+      "expectedXp": 55,
+      "retryCallbacks": 1,
+      "p50Ms": 2087.966400000005,
+      "p95Ms": 3456.5742000000027,
+      "bothCompletionsSaved": true
+    }
+  ],
+  "faults": [
+    [
+      {
+        "injectedRealCommitCollision": {
+          "code": 6,
+          "message": "6 ALREADY_EXISTS: entity already exists: EntityRef[partitionRef=dev~demo-lakbaypanahon, path=/users/diag-fault]"
+        },
+        "noPartialCompletionOrXp": true,
+        "retrySameAttemptSucceeded": true,
+        "lostAcknowledgementSimulation": "Committed result deliberately discarded before same-attempt replay",
+        "replayedTotalXp": 45
+      }
+    ],
+    [
+      {
+        "injectedRealCommitCollision": {
+          "code": 6,
+          "message": "6 ALREADY_EXISTS: entity already exists: EntityRef[partitionRef=dev~demo-lakbaypanahon, path=/users/diag-fault]"
+        },
+        "noPartialCompletionOrXp": true,
+        "retrySameAttemptSucceeded": true,
+        "lostAcknowledgementSimulation": "Committed result deliberately discarded before same-attempt replay",
+        "replayedTotalXp": 45
+      }
+    ]
+  ],
+  "controls": [
+    {
+      "name": "point",
+      "query": false,
+      "writeSameCollection": true,
+      "forcedOverlap": true,
+      "maxAttempts": 1,
+      "ms": 33.75359999999637,
+      "outcomes": [
+        {
+          "ok": true
+        },
+        {
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "query-same",
+      "query": true,
+      "writeSameCollection": true,
+      "forcedOverlap": true,
+      "maxAttempts": 1,
+      "ms": 2030.460300000006,
+      "outcomes": [
+        {
+          "ok": false,
+          "code": 10,
+          "message": "10 ABORTED: Transaction lock timeout."
+        },
+        {
+          "ok": false,
+          "code": 10,
+          "message": "10 ABORTED: Transaction lock timeout."
+        }
+      ]
+    },
+    {
+      "name": "query-other",
+      "query": true,
+      "writeSameCollection": false,
+      "forcedOverlap": true,
+      "maxAttempts": 1,
+      "ms": 32.86110000000917,
+      "outcomes": [
+        {
+          "ok": true
+        },
+        {
+          "ok": true
+        }
+      ]
+    }
+  ]
+}

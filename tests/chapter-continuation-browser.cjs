@@ -1,8 +1,8 @@
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),{spawnSync}=require('node:child_process');
 const root=path.join(__dirname,'..'),temp=fs.mkdtempSync(path.join(os.tmpdir(),'lakbay-chapter-'));
-const source=name=>fs.readFileSync(path.join(root,'js',name),'utf8').replace(/import[\s\S]*?from\s+"[^"]+";/g,'').replace(/export /g,'');
+const source=name=>fs.readFileSync(path.join(root,'js',name),'utf8').replace(/import[\s\S]*?from\s+['"][^'"]+['"];\s*/g,'').replace(/export /g,'');
 let html=fs.readFileSync(path.join(root,'pages/chapter-challenge.html'),'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'');
-const themeCss=['student.css','chapter-challenge.css','navy-gold-theme.css'].map(file=>fs.readFileSync(path.join(root,'css',file),'utf8').replace(/@import[^;]+;/g,'')).join('\n');
+const themeCss=['student.css','chapter-challenge.css','navy-gold-theme.css','expedition.css'].map(file=>fs.readFileSync(path.join(root,'css',file),'utf8').replace(/@import[^;]+;/g,'')).join('\n');
 html=html.replace('</head>','<style>'+themeCss+'</style></head>');
 const script=`
 document.body.classList.remove('auth-checking');document.body.classList.add('authenticated');
@@ -20,8 +20,12 @@ fixtureQuestions.forEach((q,index)=>records.set('chapterChallengeQuestions/'+q.i
 const collection=(_,name)=>({name}),doc=(_,name,id)=>name+'/'+id,where=(field,op,value)=>({field,value}),query=(ref,...filters)=>({...ref,filters});
 let fixtureLoadGate=null,fixtureSaveGate=null,fixtureAuthListener,fixtureSaveFailure=false,fixtureWrites=0,fixtureLoadFailure=false;
 const getDoc=async key=>{if(fixtureLoadFailure)throw Error("Offline");if(key=== "chapters/c1" && fixtureLoadGate)await fixtureLoadGate;return ({id:key.split('/')[1],exists:()=>records.has(key),data:()=>records.get(key)});};
-const catalogReads=[];let continuationReadFailure=false,continuationReadGate=null;
+const catalogReads=[];let continuationReadFailure=false,continuationReadGate=null,fixtureArtifactFailure=false;
 const getDocs=async ref=>{
+ if(ref.name==='studentArtifacts'){
+  if(!ref.filters?.some(f=>f.field==='userId'&&f.value==='test')||!ref.filters?.some(f=>f.field==='chapterId'&&f.value==='c1'))throw Error('Unscoped keepsake ownership read');
+  if(fixtureArtifactFailure)throw Error('Optional collections unavailable');
+ }
  if(ref.name==='chapters'){if(!ref.filters?.some(f=>f.field==='eraId'&&f.value==='e1'))throw Error('Unscoped chapter continuation read');if(continuationReadGate)await continuationReadGate;if(continuationReadFailure)throw Error('Offline continuation');}
  if(ref.name==='missions'&&!ref.filters?.some(f=>f.field==='chapterId'))throw Error('Unscoped mission read');
  catalogReads.push(ref);
@@ -43,6 +47,8 @@ const fixtureDrafts=new Map(),fixtureDraftWrites=[];
 const draftStatus=container=>{const p=document.createElement('p');container.prepend(p);return p;};
 const learningDraft=(kind,chapter,mission)=>{const key=kind+chapter;let closed=false;return{read:async()=>fixtureDrafts.get(key)||null,save:state=>{if(!closed){fixtureDraftWrites.push(JSON.parse(JSON.stringify(state)));fixtureDrafts.set(key,JSON.parse(JSON.stringify(state)));}},clear:async()=>{closed=true;fixtureDrafts.delete(key);},close:()=>{closed=true;}};};
 ${source('chapter-continuation.js')}
+${source('explorer-art.js')}
+${source('chapter-keepsake.js')}
 ${source('chapter-challenge.js').replace(/window\.location\.href\s*=/g, 'fixtureNavigation =')}
 const tick=()=>new Promise(resolve=>setTimeout(resolve,40)),check=(value,message)=>{if(!value)throw Error(message);};
 async function answerAll(correct){
@@ -51,6 +57,7 @@ async function answerAll(correct){
    let submit=document.getElementById('submitChallengeAnswer');check(submit.disabled,'Unanswered question can be submitted');
    if(q.gameType==='matching'){
       const selects=[...document.querySelectorAll('.matching-select')];
+      check(selects.every((select,index)=>select.labels.length===1&&select.labels[0].textContent===q.matchingPairs[index].left),'Matching controls have no associated question labels');
       selects[0].value='One';selects[0].dispatchEvent(new Event('change'));selects[1].value='One';selects[1].dispatchEvent(new Event('change'));
       check(selects[0].value===''&&submit.disabled,'Duplicate matching answer was accepted');
       selects.forEach((select,index)=>{select.value=q.matchingPairs[correct?index:1-index].right;select.dispatchEvent(new Event('change'));});
@@ -105,8 +112,11 @@ async function answerAll(correct){
  check(records.has('studentBadges/test_b1')&&validatedChapterReward.newlyEarned,'Badge was not saved/displayed');
  check(records.get('users/test').xp===50,'Chapter unexpectedly changed mission XP');
  check(document.getElementById('chapterChallengeResult').textContent.includes('Chapter Complete'),'Success result missing');
+ check(document.querySelector('.chapter-keepsake[data-first="true"]'),'Saved completion has no discovery reveal');
  const luminance=color=>color.match(/[0-9.]+/g).slice(0,3).map(Number).map(value=>{const v=value/255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;}).reduce((sum,value,index)=>sum+value*[.2126,.7152,.0722][index],0);
  const contrast=(text,background)=>{const values=[luminance(text),luminance(background)].sort((a,b)=>b-a);return (values[0]+.05)/(values[1]+.05);};
+ const completionBanner=document.querySelector('.chapter-completion-banner');
+ for(const copy of completionBanner.querySelectorAll('strong,div > span'))check(contrast(getComputedStyle(copy).color,getComputedStyle(completionBanner).backgroundColor)>=4.5,'Chapter completion message has unreadable contrast');
  const nextPanel=document.querySelector('.chapter-next-unlock'),nextHeading=nextPanel.querySelector('h3');
  check(contrast(getComputedStyle(nextHeading).color,getComputedStyle(nextPanel).backgroundColor)>=4.5,'Next-step panel has unreadable heading contrast');
  check(contrast(getComputedStyle(document.getElementById('challengeResultPrimaryButton')).color,getComputedStyle(document.getElementById('challengeResultPrimaryButton')).backgroundColor)>=4.5,'Primary continuation button has unreadable text');
@@ -123,6 +133,9 @@ async function answerAll(correct){
  document.getElementById('challengeResultPrimaryButton').click();check(fixtureNavigation==='mission.html?chapter=c2','Wrong next chapter route');
  check(!document.querySelector('#chapterChallengeResult img'),'Chapter title rendered as HTML');
  check(catalogReads.some(ref=>ref.name==='missions'&&ref.filters?.some(f=>f.field==='chapterId'&&f.value==='c2')),'Next chapter was not checked with a scoped query');
+ fixtureArtifactFailure=true;await showChallengeResult();
+ check(document.querySelector('.chapter-keepsake')&&document.getElementById('challengeResultPrimaryButton').textContent==='Continue to Next Chapter','Optional keepsake failure blocked saved result or continuation');
+ fixtureArtifactFailure=false;
  continuationReadFailure=true;await showChallengeResult();
  check(document.getElementById('chapterChallengeResult').classList.contains('passed')&&records.get('studentChapterProgress/test_c1')?.completed,'Navigation failure changed acknowledged completion');
  check(document.getElementById('challengeResultPrimaryButton').textContent==='Return to Era','Read failure retained stale next chapter');
@@ -143,6 +156,8 @@ async function answerAll(correct){
  check(document.activeElement===nextStepButton,'Explicit keyboard retry lost focus after recovery');
  check(document.getElementById('retryChapterContinuationButton').hidden&&fixtureWrites===rewardsBeforeRetry,'Navigation retry resubmitted chapter rewards');
  nextStepButton.click();check(fixtureNavigation==='mission.html?chapter=c2','Recovered continuation lost the next chapter');
+ records.delete('chapters/c2');records.delete('missions/m2');records.set('learningSettings/journeyFinale',{enabled:true,finalChapterId:'c1'});await showChallengeResult();
+ check(document.getElementById('challengeResultPrimaryButton').textContent==='Open Journey Finale','Final saved chapter has no ending action');document.getElementById('challengeResultPrimaryButton').click();check(fixtureNavigation==='journey-finale.html','Final chapter does not route to the finale');records.delete('learningSettings/journeyFinale');
  const replay=await completeChapter();check(!replay.firstCompletion&&!validatedChapterReward.newlyEarned,'Replay duplicated badge');
  globalThis.__lakbayExplorationPreview=true;const beforePreviewWrites=fixtureWrites;await showChallengeResult();
  check(document.getElementById('chapterChallengeResult').textContent.includes('Preview: passing score')&&document.getElementById('chapterChallengeResult').textContent.includes('no chapter completion'),'Preview challenge claims saved completion');

@@ -1,0 +1,25 @@
+// Focused prompts for the existing unchanged easy-item choices and answer keys.
+module.exports={
+'spiritual-leadership':'Which responsibility is associated with a ritual specialist in the lesson?',
+'accusation-and-evidence':'A historical account accuses a person of involvement. What does the accusation alone establish?',
+'archipelago':'What geographical term describes a group of islands?',
+'island-groups':'How are Luzon, Visayas and Mindanao grouped in this geography lesson?',
+'land-water-livelihood':'A coastal place has access to water and nearby land. What should a livelihood explanation recognize?',
+'map-directions':'Which feature should you check to establish direction on a map?',
+'map-evidence':'How should you check what a symbol on a map means?',
+'moving-plates':'What does the lesson connect with the movement of tectonic plates?',
+'science-traditional-stories':'How should a class compare a traditional story with a scientific explanation respectfully?',
+'scientific-explanation':'New evidence challenges part of a scientific explanation. What should researchers do?',
+'sea-level-change':'What careful conclusion can be drawn about changing sea levels and coastlines?',
+'volcanic-processes':'How can volcanic activity contribute to changes in land?',
+'archaeological-context':'You notice a possible old object at a heritage site. What should you do?',
+'callao-evidence':'Which description fits Homo luzonensis in the Callao lesson?',
+'dating-and-inference':'A dating result concerns one sampled material. What should a report explain before applying it to other objects?',
+'evidence-and-respect':'How should a history game reward discovery while protecting real heritage?',
+'tabon-evidence':'What does the lesson’s evidence of ancient Homo sapiens remains at Tabon support?',
+'austronesian-languages':'What can the study of related Austronesian languages help investigate?',
+'batanes-connections':'What limit should accompany an explanation of the selected Batanes pottery finds?',
+'multiple-sources':'Two kinds of evidence appear to support different explanations. What should a researcher do?',
+'origins-and-identity':'A classmate tries to guess another child’s ancestry from appearance. What is a responsible response?',
+'population-movements':'What should an explanation of the peopling of the Philippines recognize?'
+};

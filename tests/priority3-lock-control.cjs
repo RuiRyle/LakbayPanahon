@@ -1,0 +1,10 @@
+// Minimal Firestore-emulator control; no assessment service or reward code.
+const assert=require('assert/strict'),fs=require('fs'),path=require('path'),{createRequire}=require('module');
+assert.equal(process.env.GCLOUD_PROJECT,'demo-lakbaypanahon');assert.equal(process.env.FIRESTORE_EMULATOR_HOST,'127.0.0.1:8180');
+const rf=createRequire(path.resolve('build/priority3-release/functions/package.json')),{initializeApp,deleteApp}=rf('firebase-admin/app'),{getFirestore}=rf('firebase-admin/firestore'),app=initializeApp({projectId:'demo-lakbaypanahon'}),db=getFirestore(app,'pilot-control');
+async function run(query,seed='none'){const name=(query?'pilotLockQueryControl':'pilotLockPointControl')+'_'+seed+'_'+Date.now();let waiting=0,release;const barrier=new Promise(r=>release=r),t=performance.now();
+ if(seed==='unrelated')await db.doc(name+'/prior').set({userId:'prior',missionId:'different'});
+ if(seed==='matching')for(const uid of ['u1','u2'])await db.doc(name+'/'+uid).set({userId:uid,missionId:'m'});
+ const results=await Promise.allSettled(['u1','u2'].map(uid=>db.runTransaction(async tx=>{if(query)await tx.get(db.collection(name).where('userId','==',uid).where('missionId','==','m'));else await tx.get(db.doc(name+'/'+uid));if(++waiting===2)release();await barrier;tx.set(db.doc(name+'/'+uid),{userId:uid,missionId:'m'});},{maxAttempts:1})));
+ return{query,seed,elapsedMs:performance.now()-t,results:results.map(r=>r.status==='fulfilled'?{status:'committed'}:{status:'rejected',code:r.reason.code,message:r.reason.message})};}
+(async()=>{const controls=[await run(false),await run(true),await run(true,'unrelated'),await run(true,'matching')];fs.writeFileSync('docs/validation/priority-3-pilot-lock-controls-2026-11-07.json',JSON.stringify({mode:'real-Firestore-emulator-no-assessment-code',database:'pilot-control',controls},null,2));console.log(JSON.stringify(controls,null,2));})().catch(e=>{console.error(e);process.exitCode=1;}).finally(async()=>{await db.terminate();await deleteApp(app);});

@@ -1,0 +1,42 @@
+{
+  "status": "pass",
+  "browser": "Installed headless Chrome",
+  "students": 30,
+  "traffic": {
+    "reads": 11850,
+    "writes": 480,
+    "deletes": 0,
+    "gets": 1380,
+    "queries": 1200,
+    "transactionCallbacks": 480
+  },
+  "privateCatalogDenied": true,
+  "network": {
+    "requests": 3984,
+    "byPath": {
+      "/google.firestore.v1.Firestore/Listen/channel": 3004,
+      "/v1/projects/demo-lakbaypanahon/databases/(default)/documents:batchGet": 490,
+      "/v1/projects/demo-lakbaypanahon/databases/(default)/documents:commit": 490
+    }
+  },
+  "probes": {
+    "status": "local-controls-pass-migration-blocker",
+    "tamperedHeadDenied": true,
+    "tamperedPackDenied": true,
+    "stalePublisherDenied": true,
+    "publishedEditInvalidatesAttempt": true,
+    "rollbackNewGeneration": 3,
+    "sameAttemptRecovery": true,
+    "authAndAppCheckPreserved": true,
+    "profileAndPauseFresh": true,
+    "legacyDirectEditsIgnored": true,
+    "blocker": "Legacy question writers must become draft-only or be replaced by atomic trusted publication before this can be secure for live content. Signed head replay by a compromised Admin writer is also not prevented by signature alone."
+  },
+  "limitations": [
+    "Actual web SDK and unchanged learning-draft module with import-only instrumentation; dashboard/story query shapes, not full application UI navigation.",
+    "30 synthetic users run sequentially in one Chrome page; concurrency measured separately in classroom backend workload.",
+    "No teacher browser trace or browser grading UI in this run.",
+    "Successful SDK operation counts exclude the denied private-catalog get; rule-dependent and index reads are not measured. Network request counts are not document read counts.",
+    "No production App Check attestation or hosted Netlify test."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "mode": "inert-procedure-proposal-no-settings-changed",
+  "checkedAt": "2026-11-07T05:11:48.427Z",
+  "productionApplicationAuthorized": false,
+  "project": "lakbaypanahon-1797e",
+  "appId": "1:831214660993:web:aeff983c8b3182358e4c80",
+  "selectedKey": {
+    "name": "projects/831214660993/keys/6LeByQIuAAAAAJxlrg4_Me5ymg5s-tFgOwVF7SeZ",
+    "publicSiteKey": "6LeByQIuAAAAAJxlrg4_Me5ymg5s-tFgOwVF7SeZ",
+    "sha256": "4dd79a7261ebeccc1a451e448dbac7f3ba1e246733d573b1cd759ec92bb41d3a",
+    "displayName": "LakbayPanahon Web",
+    "createTime": "2026-10-27T04:09:37Z",
+    "webSettings": {
+      "allowAllDomains": false,
+      "allowedDomains": [
+        "lakbaypanahon-1797e.web.app",
+        "lakbaypanahon-1797e.firebaseapp.com"
+      ],
+      "allowAmpTraffic": false,
+      "integrationType": "SCORE",
+      "challengeSecurityPreference": "CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED"
+    },
+    "selectionReason": "Existing correct-project restricted SCORE key; newest of two equivalent keys. Owner must confirm intended use before application; older key is not deleted."
+  },
+  "before": {
+    "appCheck": {
+      "name": "projects/831214660993/apps/1:831214660993:web:aeff983c8b3182358e4c80/recaptchaEnterpriseConfig",
+      "tokenTtl": "3600s",
+      "siteKey": "6LeByQIuAAAAADfEsS7IIj5lyqZW5Kzw-532E8Go",
+      "riskAnalysis": {
+        "minValidScore": 0.5
+      }
+    },
+    "frontendSetting": {
+      "document": "projects/lakbaypanahon-1797e/databases/(default)/documents/learningSettings/bayaniAI",
+      "updateTime": "2026-10-29T12:17:59.461532Z",
+      "publicSiteKey": "6LeByQIuAAAAADfEsS7IIj5lyqZW5Kzw-532E8Go"
+    }
+  },
+  "futureAppCheckChange": {
+    "resource": "projects/831214660993/apps/1:831214660993:web:aeff983c8b3182358e4c80/recaptchaEnterpriseConfig",
+    "updateMask": "siteKey",
+    "body": {
+      "name": "projects/831214660993/apps/1:831214660993:web:aeff983c8b3182358e4c80/recaptchaEnterpriseConfig",
+      "siteKey": "6LeByQIuAAAAAJxlrg4_Me5ymg5s-tFgOwVF7SeZ"
+    }
+  },
+  "futureFrontendSettingChange": {
+    "resource": "projects/lakbaypanahon-1797e/databases/(default)/documents/learningSettings/bayaniAI",
+    "updateMask": {
+      "fieldPaths": [
+        "appCheckSiteKey"
+      ]
+    },
+    "currentDocument": {
+      "updateTime": "2026-10-29T12:17:59.461532Z"
+    },
+    "body": {
+      "fields": {
+        "appCheckSiteKey": {
+          "stringValue": "6LeByQIuAAAAAJxlrg4_Me5ymg5s-tFgOwVF7SeZ"
+        }
+      }
+    }
+  },
+  "requiredEquality": "ReCaptchaEnterpriseProvider input === learningSettings/bayaniAI.appCheckSiteKey === recaptchaEnterpriseConfig.siteKey === selectedKey.publicSiteKey",
+  "preserve": [
+    "tokenTtl=3600s",
+    "riskAnalysis.minValidScore=0.5",
+    "Both existing restricted production domains",
+    "Bayani AI enabled/provider fields",
+    "All enforcement states",
+    "All student records"
+  ],
+  "mustRepeatReadsBeforeApplication": true
+}

@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-07",
+  "mode": "local-only-not-deployed",
+  "node": "22.23.4",
+  "unit": {
+    "passed": 204,
+    "failed": 0
+  },
+  "emulator": {
+    "passed": 28,
+    "failed": 0,
+    "project": "demo-lakbaypanahon",
+    "artifactConfig": "firebase.priority3-readiness-emulator.json"
+  },
+  "standaloneBrowserFixtures": {
+    "passed": 11,
+    "failed": 0
+  },
+  "artifacts": 236,
+  "hostingPaths": 577,
+  "preservedProductionPaths": 570,
+  "manifestSha256": "7d686adfff404dcbc7fed66721425cfa8d58216a4d9e8277f032037d6c49899d",
+  "productionChanged": false,
+  "activation": false,
+  "remainingDependencyAdvisories": {
+    "moderate": 6,
+    "high": 0,
+    "critical": 0
+  },
+  "productionGates": [
+    "billing and required APIs",
+    "dedicated runtime/build identity and IAM",
+    "real production App Check attestation",
+    "dependency risk review",
+    "operational limits, backup and separate deployment approval"
+  ]
+}

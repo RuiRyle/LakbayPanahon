@@ -1,5 +1,7 @@
 # Grade 5 student website playtest
 
+**Current procedure — 1 November 2026:** Use the [ready-to-run review kit](../student-review-kit.md) and its student handout. The preview is hosted, original progression is enforced, and exploration/testing mode is retired. No teacher or student group is available yet; no learner session or human acceptance is claimed. The dated adult dry run below is historical evidence only.
+
 Prepared 29 October 2026. This is a **plan**, not a completed student study. Automated Chrome checks confirm many links, saves and rewards; they do not establish that a Grade 5 learner understands or enjoys the experience.
 
 Adult website dry run on 29 October: an authenticated temporary student opened Era 4, Chapter 15 Mission 1, submitted its five-question quiz in preview, and opened the final challenge; no progress or rewards were saved and the account was removed. The first-scene screenshot revealed that the “modern teaching diagram” caption had dark text on a dark bar. The shared story CSS now gives that caption light, normal-case text, and the Chapter 15 Chrome check asserts the computed color. The authored mission has three main-content paragraphs per scene, roughly 130 words total; the learner session should still test whether that load is comfortable. This dry run did not include a child.
@@ -9,7 +11,7 @@ Adult website dry run on 29 October: an authenticated temporary student opened E
 1. Have an adult run the tasks once in the current local website. Confirm the story images, quiz, practice and result controls still work after the latest edits.
 2. Check historical accuracy and the intended Grade 5 wording with a curriculum reviewer. The current content has not received independent teacher approval.
 3. Use a supervised session and an approved student account. Avoid recording names, email addresses, faces, voice, chat text or screenshots of a child's account in this repository. Record only anonymous observations such as “Learner 1 missed the route clue.”
-4. Firebase Hosting has not been deployed. Run the website using the current local web server. The local **Open all lessons for testing** setting is per browser tab. In preview, quiz/challenge results do not save progress or rewards. Use normal locks only when you intentionally need to observe saved progression with an approved test account.
+4. Use the hosted URL in [current release status](../website-release-current.md), or the reviewed local package. The Hosting preview runs the normal application with real Firebase accounts, saved progression and one-time rewards. There is no exploration toggle. Arrange appropriate adult supervision and account/data handling before inviting learners; the preview URL alone is not approval for broad student rollout.
 
 ## Session A: first journey, about 20 minutes
 
@@ -25,7 +27,7 @@ Observe whether the learner can find the next action, understand the scene check
 
 ## Session B: later historical reasoning, about 20 minutes
 
-Use **Explore Chapters → Era 4 → Chapter 15 → Mission 1: Trade, Travel and the Sharing of Ideas**. Local exploration preview lets the learner open it without completing earlier chapters; explain that preview does not save rewards.
+Use **Explore Chapters → Era 4 → Chapter 15 → Mission 1: Trade, Travel and the Sharing of Ideas** only with an account that has legitimately reached it. Do not bypass prerequisites or alter a learner's completions. If that chapter is unavailable, have the adult content reviewer inspect the matching entries in the [private review packet](../learning-review-packet.md); keep this learner task marked not observed. Do not give the answer-key packet to learners.
 
 Ask the learner to:
 
