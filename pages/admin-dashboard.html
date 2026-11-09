@@ -22,36 +22,67 @@
     <link rel="stylesheet" href="../css/page-transition.css">
     <link rel="stylesheet" href="../css/expedition.css">
     <link rel="stylesheet" href="../css/teacher-workspace.css">
-    <link rel="stylesheet" href="../css/admin-workspace.css">
     <link rel="stylesheet" href="../css/teacher-application.css">
     <link rel="stylesheet" href="../css/interface-clarity.css">
+    <link rel="stylesheet" href="../css/admin-workspace.css">
 </head>
 
 <body data-role="admin" class="lakbay-theme teacher-workspace admin-workspace">
     <a class="student-skip-link" href="#admin-main">Skip to main content</a>
     <div class="teacher-shell">
-        <header class="teacher-topbar"><a class="teacher-brand" href="../index.html"><img src="../assets/brand/lakbay-sun.svg" alt="" width="42" height="42"><span>LakbayPanahon<br><small>Administrator workspace</small></span></a><button type="button" class="logout-button">Log Out</button></header>
+        <header class="teacher-topbar topbar"><button id="adminMenuToggle" type="button" class="secondary" aria-expanded="false" aria-controls="adminNavigation" aria-label="Toggle administrator menu">&#9776;</button><div class="student-page-title"><span class="student-page-title-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 3h13a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-2V3Zm0 14h16M8 7h8M8 11h6"/></svg></span><span class="student-page-title-copy"><small>ADMINISTRATION SPACE</small><strong id="adminPageTitle">Administrator Dashboard</strong></span></div></header>
+        <nav id="adminNavigation" class="teacher-sidebar admin-navigation" aria-label="Administrator navigation">
+            <a class="teacher-brand" href="#admin-main"><img src="../assets/brand/lakbay-sun.svg" alt="" width="44" height="44"><span>LakbayPanahon<small>Philippine History</small></span></a>
+            <div class="teacher-tabs">
+            <a data-teacher-tab="overview" href="#adminOverview" aria-pressed="true" aria-current="location"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v11h5v-7h4v7h5V10"/></svg> Overview</a>
+            <a data-teacher-tab="accounts" href="#adminDirectory" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 5v2"/></svg> Accounts &amp; reviews</a>
+            <a data-teacher-tab="environment" href="#adminEnvironment" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6h1m-1 11h1"/></svg> Administration</a>
+            </div>
+            <div class="teacher-sidebar-note"><button type="button" class="logout-button">Log Out</button></div>
+        </nav>
         <main id="admin-main" tabindex="-1">
-            <div class="teacher-intro"><span class="eyebrow">ACCOUNT MANAGEMENT</span><h1>Give the right people access.</h1><p>Review teacher requests and manage student and teacher account availability.</p></div>
+            <div class="teacher-intro teacher-intro-compact"><span class="eyebrow">ADMINISTRATION</span><h1 id="adminViewHeading" tabindex="-1">Administrator overview</h1><p id="adminViewDescription">Check pending applications and review your recorded decisions.</p></div>
             <p id="adminStatus" class="teacher-status" role="status" aria-live="polite">Checking administrator access...</p>
-            <div class="teacher-layout">
-                <section class="teacher-panel" aria-labelledby="accountListTitle"><h2 id="accountListTitle">Accounts</h2>
-                    <button id="reviewSubmittedApplications" type="button" class="secondary" aria-pressed="false">Review Submitted Applications</button><p class="teacher-note">Find new submissions and existing teachers awaiting qualification review.</p>
+            <details class="admin-overview" id="adminOverview" open>
+                <summary>Activity overview <span>Application queue and your decision records</span></summary>
+                <div class="admin-overview-body">
+                    <p class="teacher-note">View the application queue and your recorded decisions. Each snapshot shows when it was loaded.</p>
+                    <button id="loadAdminOverview" type="button" class="secondary">Load administration overview</button>
+                    <p id="adminOverviewStatus" class="teacher-note" role="status" aria-live="polite">Not loaded yet.</p>
+                    <div id="adminOverviewResults" class="admin-overview-grid" hidden></div>
+                </div>
+            </details>
+            <div id="adminAccountModes" class="admin-mode-bar" hidden><button id="adminApplicationsMode" type="button" class="secondary">Teacher applications</button><button id="adminExistingMode" type="button" class="secondary">Existing accounts</button><span>Verification decisions and account access are managed separately.</span></div>
+            <div class="teacher-layout" id="adminAccountsView">
+                <section id="adminDirectory" class="teacher-panel admin-directory" aria-labelledby="accountListTitle">
+                    <div class="admin-review-entry"><span class="eyebrow">TEACHER APPLICATIONS</span><h2>Application review</h2><p class="teacher-note">Check submitted applications and record your decision.</p><button id="reviewSubmittedApplications" type="button" class="secondary" aria-pressed="false">Review Submitted Applications</button></div>
+                    <div class="admin-filter-heading"><h3>Manage account access</h3><p class="teacher-note">Find an existing student or teacher account.</p></div>
                     <form id="accountFilters"><label>Account type<select id="accountRole"><option value="teacher">Teachers</option><option value="student">Students</option></select></label><label>Status<select id="accountStatusFilter"><option value="pending">Awaiting approval</option><option value="active">Active</option><option value="inactive">Inactive</option></select></label><button type="submit">Refresh Accounts</button></form>
-                    <div id="adminAccounts" class="admin-account-list"></div>
+                    <div class="admin-list-heading"><h2 id="accountListTitle">Accounts</h2><p id="accountListContext" class="teacher-note">Choose an account to see its details.</p></div>
+                    <label class="admin-search">Search this page<input id="adminAccountSearch" type="search" placeholder="Name or email" aria-describedby="adminSearchScope"></label><p id="adminSearchScope" class="teacher-note">Filters only the accounts on this page. Use filters and pagination to find other accounts.</p><p id="adminSearchStatus" class="teacher-note" role="status"></p><button id="adminResetFilters" type="button" class="secondary" hidden>Reset search &amp; filters</button><div id="adminAccounts" class="admin-account-list"></div>
                     <p id="accountPage" class="teacher-note"></p><div class="teacher-actions"><button id="previousAccounts" type="button" class="secondary" disabled>Previous</button><button id="nextAccounts" type="button" class="secondary" disabled>Next</button></div>
                 </section>
-                <section id="adminAccountDetail" class="teacher-panel" hidden aria-labelledby="accountName"><p id="accountCurrentStatus" class="teacher-note"></p><h2 id="accountName"></h2><p id="accountEmail"></p>
+                <section id="adminSelectionEmpty" class="teacher-panel admin-selection-empty" aria-labelledby="adminSelectionTitle"><span class="admin-selection-symbol" aria-hidden="true">&#9678;</span><span class="eyebrow">ACCOUNT REVIEW</span><h2 id="adminSelectionTitle">Select an account to begin</h2><p>Choose a name from the list to review teaching details, change account access or read past decisions.</p><p class="teacher-note">For a new teacher request, open Submitted Applications first.</p></section>
+                <section id="adminAccountDetail" class="teacher-panel" hidden aria-labelledby="accountName"><header class="admin-detail-heading"><span class="eyebrow">SELECTED ACCOUNT</span><p id="accountCurrentStatus" class="teacher-note"></p><h2 id="accountName" tabindex="-1"></h2><p id="accountEmail"></p></header>
+                    <div id="teacherQualificationReview" class="admin-detail-section"></div>
+                    <details class="admin-detail-section admin-access-details" open aria-labelledby="accessDecisionTitle"><summary id="accessDecisionTitle">Existing-account access</summary>
                     <p class="teacher-note">Changing access preserves saved learning records. Inactive accounts cannot use protected features. Administrator privileges are managed through trusted project setup.</p>
                     <form id="moderationForm"><label>Decision<select id="newAccountStatus"><option value="active">Activate / approve access</option><option value="inactive">Deactivate / decline access</option></select></label>
                         <label id="identityCheck" class="admin-verification"><input id="teacherIdentityVerified" type="checkbox"><span>I checked this teacher's identity and eligibility to access classroom tools.</span></label>
                         <label>Reason for this decision<textarea id="moderationReason" required minlength="5" maxlength="500" placeholder="Record the verification or account-management reason."></textarea></label>
                         <p class="teacher-note">This reason is saved in the administrator audit trail. Avoid unnecessary personal or sensitive details.</p><button id="saveAccountStatus" type="submit">Save Account Status</button>
                     </form>
-                    <div id="teacherQualificationReview"></div>
-                    <h3>Recorded decisions</h3><p class="teacher-note">Decisions appear in document order, 25 at a time. Each record shows its actual saved time.</p><div id="accountHistory"></div><button id="moreAccountHistory" type="button" class="secondary" hidden>Load More Decisions</button>
+                    <button id="checkAccountDecision" type="button" class="secondary" hidden>Check saved decision</button>
+                    </details>
+                    <section class="admin-detail-section" aria-labelledby="recordedDecisionsTitle"><h3 id="recordedDecisionsTitle">Recorded decisions</h3><p class="teacher-note">Decisions appear in document order, 25 at a time. Each record shows its actual saved time.</p><div id="accountHistory"></div><button id="moreAccountHistory" type="button" class="secondary" hidden>Load More Decisions</button></section>
                 </section>
             </div>
+            <section id="adminEnvironment" class="admin-administration" aria-labelledby="adminEnvironmentTitle">
+                <h2 id="adminEnvironmentTitle" class="admin-section-label">Records &amp; workspace</h2>
+                <div class="admin-admin-tools"><section class="admin-tool-card"><span class="eyebrow">SAVE RECOVERY</span><h3>Continue an account review</h3><p id="adminRecoverySummary">Select an account to inspect its history or reconcile a saved decision.</p><button id="adminReturnToReview" type="button" class="secondary" disabled>Return to selected account</button></section><section class="admin-tool-card"><span class="eyebrow">MONITORING SCOPE</span><h3>Administrative activity only</h3><p>Application queue and your decision records are available. Authentication, database and AI service health are not monitored here.</p><span class="admin-status-label">No live health feed</span></section></div>
+                <section class="admin-tool-card"><div class="admin-section-heading"><h3>Your decision records</h3><button id="adminRefreshRecords" class="secondary" type="button">Refresh records</button></div><p class="teacher-note">Up to 10 records in document order. Select an account for its full paginated history.</p><div id="adminRecordResults" class="admin-record-list"><p>Not loaded yet.</p></div></section>
+                <p class="teacher-note admin-workspace-notice">Account access and teacher verification are recorded. Curriculum, assessment settings and student rewards cannot be edited in this workspace.</p>
+            </section>
         </main>
     </div>
 

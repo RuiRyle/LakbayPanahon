@@ -801,7 +801,7 @@ function initializeAuthUI() {
 
                     const userData =
                         userSnapshot.data();
-                    if(userData.role==='teacher'&&['pending','active'].includes(userData.status)&&(!userData.teacherVerifiedRevision||user.emailVerified!==true)){
+                    if(userData.role==='teacher'&&['pending','active'].includes(userData.status)&&(userData.status==='pending'||!userData.teacherVerifiedRevision||user.emailVerified!==true)){
                         window.location.href='teacher-application.html';return;
                     }
 
@@ -1184,6 +1184,8 @@ function initializeAuthUI() {
 
     if (forgotPasswordForm) {
 
+        let resetRequestPending = false;
+
 
         forgotPasswordForm.addEventListener(
             "submit",
@@ -1191,6 +1193,8 @@ function initializeAuthUI() {
 
 
                 event.preventDefault();
+
+                if (resetRequestPending) return;
 
 
                 const email =
@@ -1242,6 +1246,7 @@ function initializeAuthUI() {
                 // START RESET REQUEST
                 // ==================================
 
+                resetRequestPending = true;
                 setButtonLoading(
                     submitButton,
                     true,
@@ -1297,6 +1302,8 @@ function initializeAuthUI() {
 
 
                 } finally {
+
+                    resetRequestPending = false;
 
 
                     setButtonLoading(

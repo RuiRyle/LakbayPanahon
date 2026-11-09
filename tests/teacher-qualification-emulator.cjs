@@ -4,7 +4,7 @@ const application=(uid,revision=1,status='submitted',type='licensed_teacher')=>(
 let seq=0;
 function decision(uid,revision,status='approved',opts={}){
  const id='review'+(++seq),checks={identity:true,affiliation:true,prc:true,endorsement:true,...opts.checks};
- const appType=opts.type||'licensed_teacher',reason='Identity and institution checked.',before=opts.before||'pending',after=status==='approved'?'active':before==='inactive'?'inactive':'pending';
+ const appType=opts.type||'licensed_teacher',reason='Identity and institution checked.',before=opts.before||'pending',after=opts.after||(status==='approved'?before:before==='inactive'?'inactive':'pending');
  return [write('teacherApplications/'+uid,{status,decisionReason:reason,reviewId:id,reviewedAt:SERVER,reviewedBy:opts.actor||'admin',updatedAt:SERVER,evidenceRevision:0,evidenceName:'',evidenceUploadedAt:null},true),write('users/'+uid,{status:after,teacherVerifiedRevision:status==='approved'?revision:0,teacherAccessType:status==='approved'?appType:'',teacherVerificationReviewId:id,moderationEventId:id,moderatedBy:opts.actor||'admin',moderatedAt:SERVER,updatedAt:SERVER},true),write('accountModeration/'+id,{userId:uid,actorId:opts.actor||'admin',previousStatus:before,status:after,reason,identityVerified:checks.identity,createdAt:SERVER}),write('teacherApplicationReviews/'+id,{userId:uid,actorId:opts.actor||'admin',revision,applicantType:appType,decision:status,reason,checks,affiliationReference:'Official school contact confirmed.',credentialReference:opts.credentialReference??'Official credential source checked.',createdAt:SERVER}),...(opts.keepEvidence?[]:[{delete:prefix+'teacherEvidence/'+uid}])];
 }
 async function main(){
@@ -43,9 +43,15 @@ async function main(){
  await check('applicant can see revision request','t1',read('t1','teacherApplications/t1'),true);
  await check('applicant cannot read administrator-only review details','t1',query('t1','teacherApplicationReviews',[['userId','t1']]),false);
  await check('resubmission advances revision','t1',save('t1','teacherApplications/t1',application('t1',4)),true);
- await check('completed qualified approval atomically activates teacher','admin',()=>commit('admin',decision('t1',4)),true);
+ await check('qualification approval cannot simultaneously activate account','admin',()=>commit('admin',decision('t1',4,'approved',{after:'active'})),false);
+ await check('completed qualified approval preserves pending account status','admin',()=>commit('admin',decision('t1',4)),true);
  await seed('classes/class1',{teacherId:'t1',status:'active'});
+ await check('approved but pending teacher cannot access owned class','t1',read('t1','classes/class1'),false);
+ const activation='separateActivation';await check('separate account activation requires its own audited write','admin',()=>commit('admin',[write('users/t1',{status:'active',updatedAt:SERVER,moderatedAt:SERVER,moderatedBy:'admin',moderationEventId:activation},true),write('accountModeration/'+activation,{userId:'t1',actorId:'admin',previousStatus:'pending',status:'active',reason:'Explicit activation after qualification review.',identityVerified:true,createdAt:SERVER})]),true);
  await check('qualified teacher accesses owned class','t1',read('t1','classes/class1'),true);
+ await seed('users/t4',{role:'teacher',status:'inactive',email:'t4@example.com'});await seed('teacherApplications/t4',application('t4'));
+ await check('review cannot reactivate an inactive account','admin',()=>commit('admin',decision('t4',1,'approved',{before:'inactive',after:'active'})),false);
+ await check('approval preserves an inactive account restriction','admin',()=>commit('admin',decision('t4',1,'approved',{before:'inactive'})),true);
  await check('resubmitting qualification invalidates old access','t1',save('t1','teacherApplications/t1',application('t1',5,'draft')),true);
  await check('old approval cannot authorize edited qualification','t1',read('t1','classes/class1'),false);
  await check('facilitator submits endorsement route','t2',save('t2','teacherApplications/t2',application('t2',1,'submitted','facilitator')),true);

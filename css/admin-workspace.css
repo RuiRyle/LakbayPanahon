@@ -9,3 +9,196 @@
 .admin-workspace .student-auth-recovery::backdrop { background: #10243fe6; }
 .admin-workspace .student-auth-recovery a { display: inline-block; padding: 12px; color: inherit; }
 .admin-workspace #accountEmail { overflow-wrap: anywhere; }
+
+/* Admin has no teacher sidebar: its directory is part of the page flow. */
+body.lakbay-theme.admin-workspace { padding: 0; background: #081729; }
+body.admin-workspace .teacher-shell { width: 100%; margin: 0; }
+body.admin-workspace .teacher-topbar { position: relative; justify-content: space-between; min-height: 84px; }
+.admin-workspace .teacher-topbar .teacher-brand { display: flex; gap: 12px; align-items: center; color: #edf3f8; text-decoration: none; font-weight: 800; }
+.admin-workspace .teacher-brand small { display: inline-block; margin-top: 4px; color: #c4d2df; font-size: .78rem; font-weight: 400; }
+.admin-workspace #admin-main { width: 100%; max-width: 1440px; margin: auto; padding: 32px clamp(18px,3vw,40px) 64px; }
+body.admin-workspace .teacher-intro { min-height: 170px; }
+body.admin-workspace .teacher-layout { display: grid; grid-template-columns: minmax(300px,360px) minmax(0,1fr); gap: 28px; align-items: start; }
+body.admin-workspace .teacher-panel { margin-bottom: 0; background: #10263e; }
+.admin-workspace .admin-directory { padding: 24px; }
+.admin-workspace .admin-review-entry { padding-bottom: 24px; border-bottom: 1px solid #3d576e; }
+.admin-workspace .admin-review-entry h2 { margin: 10px 0; font-size: 1.2rem; }
+.admin-workspace .admin-review-entry button { width: 100%; }
+.admin-workspace .admin-review-entry button[aria-pressed="true"] { background: #e4c57e; color: #172b3c; border-color: #e4c57e; }
+.admin-workspace .admin-filter-heading { margin: 24px 0 16px; }
+.admin-workspace .admin-filter-heading h3 { margin-bottom: 4px; }
+.admin-workspace .teacher-note { color: #c4d2df; font-size: .88rem; line-height: 1.7; }
+.admin-workspace #accountFilters { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.admin-workspace #accountFilters button { grid-column: 1 / -1; }
+.admin-workspace .admin-list-heading { border-top: 1px solid #3d576e; margin-top: 24px; padding-top: 24px; }
+.admin-workspace .admin-list-heading h2 { margin: 0 0 8px; font-size: 1.15rem; }
+.admin-workspace .admin-list-heading p { margin: 0; }
+.admin-workspace .admin-account-list { gap: 10px; margin: 18px 0; }
+.admin-workspace .admin-account-list button { position: relative; width: 100%; padding: 16px 18px; border: 1px solid #4b6882; background: #17334d; border-radius: 12px; color: #edf3f8; line-height: 1.5; transition: border-color 160ms ease,background-color 160ms ease; }
+.admin-workspace .admin-account-list button:hover { border-color: #e4c57e; background: #203d50; }
+.admin-workspace .admin-account-list button[aria-pressed="true"] { box-shadow: inset 4px 0 #e4c57e; background: #243e49; color: #fff0c9; }
+.admin-workspace .admin-account-list small { font-size: .85rem; color: inherit; opacity: 1; }
+.admin-workspace #accountPage { padding-top: 12px; border-top: 1px solid #3d576e; }
+.admin-workspace .teacher-actions { display: flex; gap: 12px; }
+.admin-workspace .teacher-actions button { flex: 1; }
+body.admin-workspace .admin-selection-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; min-height: 360px; padding: 40px; text-align: center; background: radial-gradient(ellipse at top,#1b4053,transparent 75%),#10263e; }
+.admin-workspace .admin-selection-empty h2,.admin-workspace .admin-selection-empty p { margin: 0; max-width: 46ch; }
+.admin-workspace .admin-selection-symbol { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 20px; border: 1px solid #78908e; background: #213d4a; color: #efd394; font-size: 2rem; }
+body.admin-workspace #adminAccountDetail { padding: 0; overflow: hidden; }
+.admin-workspace .admin-detail-heading { padding: 28px 32px; border-bottom: 1px solid #3d576e; background: linear-gradient(120deg,#17354c,#173c49); }
+.admin-workspace .admin-detail-heading h2 { margin: 12px 0 8px; font-size: clamp(1.5rem,2vw,2rem); overflow-wrap: anywhere; }
+.admin-workspace .admin-detail-heading p { margin: 8px 0 0; }
+.admin-workspace .admin-detail-section { padding: 28px 32px; }
+.admin-workspace .admin-detail-section + .admin-detail-section { border-top: 1px solid #3d576e; }
+.admin-workspace #teacherQualificationReview:empty { display: none; }
+.admin-workspace #moderationForm,.admin-workspace .qualification-review-form { display: grid; gap: 18px; margin-top: 22px; }
+.admin-workspace #moderationForm .teacher-note { margin: 0; }
+.admin-workspace textarea { min-height: 112px; resize: vertical; }
+.admin-workspace input:not([type="checkbox"]),.admin-workspace select,.admin-workspace textarea { width: 100%; min-width: 0; color: #edf3f8; background: #0b2035; border: 1px solid #6e889f; border-radius: 10px; font: inherit; padding: 12px; }
+.admin-workspace textarea::placeholder { color: #b5c8d9; }
+.admin-workspace button,.admin-workspace select { min-height: 48px; }
+.admin-workspace .qualification-review p,.admin-workspace #accountHistory p { overflow-wrap: anywhere; }
+.admin-workspace #accountHistory { display: grid; gap: 14px; }
+.admin-workspace #accountHistory article { padding: 18px; border: 1px solid #3d576e; border-radius: 12px; background: #0c2137; }
+.admin-workspace #accountHistory article p:last-child { margin-bottom: 0; }
+.admin-workspace #moreAccountHistory { margin-top: 18px; }
+.admin-workspace :is(button,a,input,select,textarea):focus-visible,.admin-workspace #accountName:focus { outline: 3px solid #efd394; outline-offset: 4px; }
+@media(max-width:900px) {
+ body.admin-workspace .teacher-layout { grid-template-columns: minmax(0,1fr); gap: 24px; }
+ .admin-workspace #admin-main { padding-top: 24px; }
+ body.admin-workspace .admin-selection-empty { min-height: 240px; }
+ .admin-workspace .admin-detail-heading,.admin-workspace .admin-detail-section { padding: 24px 20px; }
+}
+@media(prefers-reduced-motion:reduce) { .admin-workspace .admin-account-list button { transition: none; } }
+.lakbay-reduce-motion.admin-workspace .admin-account-list button { transition: none; }
+
+.admin-workspace .qualification-facts { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:22px 0;padding:20px;border:1px solid #48657b;border-radius:14px;background:#0c2137; }
+.admin-workspace .qualification-facts div { min-width:0; }
+.admin-workspace .qualification-facts dt { color:#c4d2df;font-size:.8rem;line-height:1.5;margin-bottom:6px; }
+.admin-workspace .qualification-facts dd { color:#edf3f8;font-size:1rem;line-height:1.6;margin:0;overflow-wrap:anywhere;white-space:pre-wrap; }
+.admin-workspace .qualification-step { min-width:0;display:grid;gap:18px;margin:0;padding:22px;border:1px solid #48657b;border-radius:14px;background:#102c43; }
+.admin-workspace .qualification-step legend { padding:0 8px;color:#efd394;font-size:1rem;font-weight:750; }
+.admin-workspace .qualification-step .application-check { display:flex;align-items:flex-start;gap:12px;line-height:1.65;padding:14px;border:1px solid #48657b;border-radius:10px;background:#0c2137;font-weight:500; }
+.admin-workspace .qualification-step input[type=checkbox] { flex:0 0 20px;width:20px;height:20px;margin-top:3px;accent-color:#e4c57e; }
+.admin-workspace .qualification-notice:not(:empty) { padding:16px;border-left:3px solid #efd394;background:#21394a;border-radius:8px;color:#edf3f8;line-height:1.7; }
+.admin-workspace .qualification-review > button { margin-top:16px; }
+@media(max-width:600px){.admin-workspace .qualification-facts { grid-template-columns:minmax(0,1fr);padding:16px; }.admin-workspace .qualification-step { padding:16px; }}
+
+.admin-workspace .admin-overview { margin:0 0 28px;border:1px solid #48657b;border-radius:16px;background:#10263e; }
+.admin-workspace .admin-overview > summary { padding:20px 24px;color:#efd394;font-weight:750;cursor:pointer;line-height:1.65; }
+.admin-workspace .admin-overview > summary span { display:block;margin-left:18px;color:#c4d2df;font-size:.85rem;font-weight:400; }
+.admin-workspace .admin-overview-body { padding:0 24px 24px; }
+.admin-workspace .admin-overview-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:24px; }
+.admin-workspace .admin-overview-grid > section { min-width:0;padding:24px;border:1px solid #48657b;border-radius:14px;background:#0c2137; }
+.admin-workspace .admin-overview-grid h2 { margin:0 0 16px;font-size:1.15rem; }
+.admin-workspace .admin-overview-number { margin:12px 0;color:#efd394;font-size:2.5rem;font-weight:800; }
+.admin-workspace .admin-overview-grid article { border-top:1px solid #3d576e;padding-top:16px;margin-top:16px;overflow-wrap:anywhere; }
+.admin-workspace .admin-overview-grid h3 { font-size:1rem;margin-bottom:8px; }
+.admin-workspace .admin-overview > summary:focus-visible { outline:3px solid #efd394;outline-offset:4px; }
+@media(max-width:900px){.admin-workspace .admin-overview-grid { grid-template-columns:minmax(0,1fr); }.admin-workspace .admin-overview-body { padding:0 18px 18px; }}
+
+/* Use the teacher/student workspace shell, not a separate admin theme. */
+body.lakbay-theme.admin-workspace { background:#081729; font-family:"Segoe UI Variable","Segoe UI",Arial,sans-serif; }
+body.admin-workspace .teacher-shell { width:calc(100% - 290px); margin:0 0 0 290px; }
+body.admin-workspace .teacher-topbar { position:sticky; top:0; min-height:96px; justify-content:space-between; padding:18px clamp(18px,3vw,40px); background:linear-gradient(100deg,#08172b,#0b1e38 72%,#0a1a30); }
+.admin-workspace #admin-main { width:100%; max-width:1280px; margin:auto; padding:32px clamp(18px,2.8vw,34px) 64px; }
+body.admin-workspace .admin-navigation { position:fixed; inset:0 auto 0 0; width:290px; display:flex; flex-direction:column; padding:30px 20px; overflow-y:auto; border-right:1px solid #30485e; background:#0b1e35; }
+.admin-workspace .admin-navigation .teacher-brand { display:flex;align-items:center;gap:12px;margin-bottom:36px;color:#edf3f8;font-size:1.05rem;font-weight:800;text-decoration:none; }
+.admin-workspace .admin-navigation .teacher-brand small { display:block;margin-top:4px;color:#e6c676;font-size:.75rem;font-weight:400; }
+.admin-workspace .admin-navigation .teacher-tabs a { text-decoration:none; }
+.admin-workspace .teacher-intro.teacher-intro-compact { min-height:128px; padding:22px 28px; }
+.admin-workspace .teacher-intro h1 { font-family:inherit; }
+body.admin-workspace .teacher-layout { grid-template-columns:minmax(260px,300px) minmax(0,1fr); gap:24px; }
+.admin-workspace .teacher-panel,.admin-workspace .admin-overview { border-color:#355477; border-radius:16px; }
+.admin-workspace .admin-detail-heading { background:linear-gradient(120deg,#17354c,#173c49); }
+.admin-workspace .admin-environment { margin-top:28px;padding:24px;border:1px solid #355477;border-radius:16px;background:#10263e;color:#c4d2df;line-height:1.7; }
+.admin-workspace .admin-environment h2 { font-size:1.1rem;color:#edf3f8;margin-top:0; }
+.admin-workspace :is(#adminOverview,#adminDirectory,#adminEnvironment) { scroll-margin-top:116px; }
+.admin-workspace #adminMenuToggle { display:none; }
+.admin-workspace .teacher-sidebar-note .logout-button { min-height:48px;background:transparent;border-color:transparent;box-shadow:none; }
+@media(max-width:1100px){body.admin-workspace .teacher-layout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:900px){body.admin-workspace .teacher-shell{width:100%;margin:0}body.admin-workspace .admin-navigation{transform:translateX(-100%);visibility:hidden;transition:transform .18s ease;z-index:40}body.admin-workspace.admin-menu-open .admin-navigation{transform:translateX(0);visibility:visible;top:80px;bottom:0}.admin-workspace #adminMenuToggle{display:block;min-height:44px;padding:8px 12px}body.admin-workspace .teacher-topbar{min-height:80px;gap:12px;justify-content:flex-start}.admin-workspace .teacher-topbar-subtitle{display:none}.admin-workspace #admin-main{padding:24px 18px 48px}}
+@media(prefers-reduced-motion:reduce){body.admin-workspace .admin-navigation{transition:none}}
+.admin-workspace .admin-search { display:grid;gap:6px;margin-top:16px; }
+.admin-workspace .admin-status-label { display:inline-block!important;margin-top:8px!important;padding:3px 8px;border:1px solid #58728a;border-radius:20px;font-size:.73rem!important;color:#edcf87!important; }
+body.admin-workspace[data-admin-view=overview] .admin-overview { margin-top:20px; }
+.admin-workspace .admin-overview-grid { align-items:start; }
+.admin-workspace .admin-overview-grid article { padding-top:12px;margin-top:12px; }
+.admin-workspace .admin-access-details > summary { cursor:pointer;font-weight:700;color:#edf3f8; }
+.admin-workspace .admin-selection-empty { min-height:220px!important; }
+.admin-workspace .admin-overview-grid > section { align-self:start; }
+
+/* Second pass: compact task surfaces, list-first discovery, bounded previews. */
+body.admin-workspace .teacher-intro.teacher-intro-compact { display:block;min-height:0;padding:0;margin:0 0 16px;border:0;background:none;box-shadow:none;overflow:visible; }
+body.admin-workspace .teacher-intro::before,body.admin-workspace .teacher-intro::after { display:none; }
+.admin-workspace .teacher-intro > .eyebrow { display:none; }
+.admin-workspace .teacher-intro h1 { font-size:1.65rem;margin:0 0 6px;line-height:1.3; }
+.admin-workspace .teacher-intro p { font-size:.88rem;line-height:1.5; }
+.admin-workspace #adminStatus { padding:10px 14px;margin:0 0 16px;border:1px solid #355477;border-radius:8px;font-size:.82rem;background:#10263e; }
+.admin-workspace #adminStatus[data-error=true] { border-color:#dfaa8b;color:#ffe1c8; }
+.admin-workspace .admin-overview { border:0;background:none;margin:0; }
+.admin-workspace .admin-overview > summary { display:none; }
+.admin-workspace .admin-overview-body { padding:0; }
+.admin-workspace .admin-overview-body > p:first-child { display:none; }
+.admin-workspace #loadAdminOverview { min-height:38px;padding:8px 14px; }
+.admin-workspace #adminOverviewStatus { font-size:.75rem;margin:10px 0 16px; }
+.admin-workspace .admin-overview-grid { gap:18px;margin-top:0;align-items:start; }
+.admin-workspace .admin-metrics { grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px; }
+.admin-workspace .admin-metric { display:grid;grid-template-columns:1fr auto;gap:8px;padding:18px 20px;border:1px solid #b39450;border-radius:10px;background:#10263e; }
+.admin-workspace .admin-metric span { font-size:.83rem;color:#e5cf98; }
+.admin-workspace .admin-metric strong { grid-row:1/3;grid-column:2;font-size:2rem;color:#edcf87; }
+.admin-workspace .admin-metric small { font-size:.73rem;color:#aebfd2; }
+.admin-workspace .admin-overview-grid > section { padding:20px;border-color:#355477;border-radius:10px; }
+.admin-workspace .admin-overview-grid h2 { font-size:1rem;margin-bottom:12px; }
+.admin-workspace .admin-overview-grid article { margin:10px 0 0;padding:10px 0 0; }
+.admin-workspace .admin-overview-grid article p { margin:4px 0;font-size:.75rem; }
+.admin-workspace .admin-overview-grid article h3 { margin:0;font-size:.86rem; }
+.admin-workspace .admin-overview-grid section > button { margin-top:14px; }
+.admin-workspace .admin-queue-row { display:grid;grid-template-columns:1fr auto;gap:5px 12px;padding:13px 0;border-top:1px solid #355477; }
+.admin-workspace .admin-queue-row strong { font-size:.88rem;overflow-wrap:anywhere; }
+.admin-workspace .admin-queue-row small { font-size:.76rem;color:#b5c8da;overflow-wrap:anywhere; }
+.admin-workspace .admin-queue-row button { grid-row:1/3;grid-column:2;align-self:center;min-height:36px;padding:7px 12px; }
+.admin-workspace .admin-mode-bar { display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #355477; }
+.admin-workspace .admin-mode-bar span { color:#aebfd2;font-size:.75rem; }
+.admin-workspace .admin-mode-bar button[aria-pressed=true] { color:#142438;background:#edcf87;border-color:#edcf87; }
+body.admin-workspace #adminAccountsView { grid-template-columns:minmax(0,1fr);gap:18px; }
+body.admin-workspace #adminAccountsView.has-selection { grid-template-columns:minmax(280px,.8fr) minmax(0,1.4fr); }
+.admin-workspace .admin-review-entry,.admin-workspace .admin-filter-heading { display:none; }
+.admin-workspace #accountFilters { grid-template-columns:1fr 1fr auto;align-items:end;margin:0 0 14px; }
+.admin-workspace #accountFilters button { grid-column:auto; }
+.admin-workspace [data-mode=applications] #accountFilters { display:none; }
+.admin-workspace .admin-list-heading { border:0;padding:0;margin:0 0 14px; }
+.admin-workspace .admin-list-heading p { font-size:.78rem; }
+.admin-workspace .admin-search { margin:0; }
+.admin-workspace #adminSearchScope { font-size:.73rem;margin:7px 0; }
+.admin-workspace .admin-account-list { gap:6px;max-height:480px;overflow-y:auto;padding:2px; }
+.admin-workspace .admin-account-list button { padding:12px 14px;border-radius:8px;min-height:66px; }
+.admin-workspace .admin-account-list small { margin-top:3px;font-size:.77rem; }
+body.admin-workspace .admin-selection-empty { min-height:0!important;display:block;padding:14px 18px;text-align:left;border-style:dashed; }
+.admin-workspace .admin-selection-empty :is(.admin-selection-symbol,.eyebrow),.admin-workspace .admin-selection-empty p:last-child { display:none; }
+.admin-workspace .admin-selection-empty h2 { font-size:.9rem;max-width:none;margin:0 0 4px; }
+.admin-workspace .admin-selection-empty p { font-size:.78rem;max-width:none; }
+.admin-workspace .admin-detail-heading,.admin-workspace .admin-detail-section { padding:18px 20px; }
+.admin-workspace .admin-detail-heading h2 { margin:6px 0;font-size:1.3rem; }
+.admin-workspace .qualification-facts { padding:14px;margin:14px 0;gap:10px; }
+.admin-workspace .qualification-step { padding:14px;gap:12px; }
+.admin-workspace .admin-admin-tools { display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px; }
+.admin-workspace .admin-tool-card { padding:20px;border:1px solid #355477;border-radius:10px;background:#10263e;min-width:0; }
+.admin-workspace .admin-tool-card h3 { margin:8px 0 10px;font-size:1rem; }
+.admin-workspace .admin-tool-card p { color:#b5c8da;font-size:.83rem;line-height:1.6; }
+.admin-workspace .admin-section-heading { display:flex;align-items:center;justify-content:space-between;gap:12px; }
+.admin-workspace .admin-section-label { font-size:1rem; }
+.admin-workspace .admin-record-list { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+.admin-workspace .admin-record-list article { border-top:1px solid #355477;padding:12px 0;min-width:0;overflow-wrap:anywhere; }
+.admin-workspace .admin-record-list article h3 { font-size:.9rem; }
+.admin-workspace .admin-record-list button { min-height:36px;font-size:.8rem;padding:7px 12px; }
+@media(max-width:1150px){body.admin-workspace #adminAccountsView.has-selection{grid-template-columns:1fr}.admin-workspace .admin-admin-tools{grid-template-columns:1fr}}
+@media(max-width:600px){.admin-workspace .admin-metrics,.admin-workspace .admin-record-list{grid-template-columns:1fr}.admin-workspace #accountFilters{grid-template-columns:1fr 1fr}.admin-workspace #accountFilters button{grid-column:1/-1}.admin-workspace .admin-mode-bar span{display:none}.admin-workspace .admin-overview-grid>section{padding:16px}}
+.admin-workspace .qualification-review { margin:0;padding:0;border:0; }
+.admin-workspace .qualification-review > h3 { margin-top:0; }
+.admin-workspace #adminAccountDetail .teacher-note { font-size:.78rem;line-height:1.6; }
+.admin-workspace #adminAccountDetail { scroll-margin-top:112px; }
+.admin-workspace .admin-metrics.teacher-summary { margin:0; }
+.admin-workspace .admin-metrics.teacher-summary > div { display:flex;flex-direction:column;gap:6px;padding:22px;border:1px solid #355477;border-radius:16px;background:#10284c;box-shadow:inset 0 1px #ffffff0a; }
+.admin-workspace .admin-metrics.teacher-summary strong { order:-1;font-size:2rem;line-height:1.2;color:#edcf87; }
+.admin-workspace .admin-metrics.teacher-summary span { margin:0;color:#c5d4e2;font-size:.88rem; }

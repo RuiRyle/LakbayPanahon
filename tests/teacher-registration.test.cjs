@@ -7,7 +7,7 @@ function fixture(){
  for(const [id,value]of Object.entries({teacherFirstName:' Ana ',teacherMiddleName:'',teacherLastName:' Cruz ',teacherEmail:'teacher@example.com',teacherPassword:'secret123',teacherConfirmPassword:'secret123'}))field(id,value);
  field('teacherTerms').checked=true;field('teacherRegisterMessage');field('teacherRegistrationContinue').hidden=true;
  const context=vm.createContext({auth,db:{},console:{log(){},error(){}},window:{},
-  document:{getElementById:id=>elements.get(id)||null,querySelectorAll:()=>[],addEventListener:(name,fn)=>{if(name==='DOMContentLoaded')fn();}},
+  document:{body:{dataset:{}},getElementById:id=>elements.get(id)||null,querySelectorAll:()=>[],addEventListener:(name,fn)=>{if(name==='DOMContentLoaded')fn();}},
   browserLocalPersistence:{},browserSessionPersistence:{kind:'session'},setPersistence:async()=>{calls.push('persistence');if(state.persistenceFailure)throw Error('Storage blocked');},
   createUserWithEmailAndPassword:async(_,email)=>{calls.push('create');const user={uid:'teacher',email};auth.currentUser=user;return{user};},
   doc:(_,name,id)=>name+'/'+id,serverTimestamp:()=>123,
@@ -36,7 +36,7 @@ test('lost teacher profile acknowledgement is confirmed without a second account
 });
 test('existing approved teacher stays approved and keeps the original profile',async()=>{
  const f=fixture();f.auth.currentUser={uid:'teacher',email:'teacher@example.com'};const profile={role:'teacher',status:'active',email:'teacher@example.com',firstName:'Original',createdAt:1};f.profiles.set('users/teacher',profile);
- await f.submit();assert.equal(f.calls.includes('create'),false);assert.equal(f.calls.includes('save'),false);assert.equal(f.profiles.get('users/teacher'),profile);assert.match(f.message(),/sign-in account is saved/);
+ await f.submit();assert.equal(f.calls.includes('create'),false);assert.equal(f.calls.includes('save'),false);assert.equal(f.profiles.get('users/teacher'),profile);assert.match(f.message(),/account is ready/);assert.match(f.message(),/password is unchanged/);
 });
 for(const profile of [{role:'student',status:'active'},{role:'teacher',status:'inactive'}])test('registration cannot replace '+profile.role+' '+profile.status+' profile',async()=>{
  const f=fixture();f.auth.currentUser={uid:'teacher',email:'teacher@example.com'};const saved={...profile,email:'teacher@example.com'};f.profiles.set('users/teacher',saved);await f.submit();assert.equal(f.calls.includes('save'),false);assert.equal(f.profiles.get('users/teacher'),saved);assert.match(f.message(),/already has a profile/);

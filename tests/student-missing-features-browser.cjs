@@ -28,9 +28,14 @@ const setups={
  'mission.html':`
  document.getElementById('missionContent').hidden=false;document.getElementById('missionLoading').hidden=true;document.getElementById('chapterTitle').textContent='Early Filipino Communities';document.getElementById('chapterDescription').textContent='Learn how early communities worked together.';
  let selectedMissionId;const chapterId='c1';const missionTitle=document.getElementById('missionTitle'),missionIntroduction=document.getElementById('missionIntroduction'),missionLearningGoal=document.getElementById('missionLearningGoal'),missionLearningObjective=document.getElementById('missionLearningObjective'),missionXp=document.getElementById('missionXp'),beginMissionButton=document.getElementById('beginMissionButton');
+ const auth={currentUser:{uid:'learner'}},missionGuideUser=auth.currentUser,missionContent=document.getElementById('missionContent');
+ const loadedMissionStates=[{id:'m1',isUnlocked:true}];let emittedGuide;
+ document.addEventListener('lakbay:mission-guide',event=>{emittedGuide=event.detail;});
+ ${source('mission.js').slice(source('mission.js').indexOf('function emitMissionGuide('),source('mission.js').indexOf("document.addEventListener('lakbay:request-mission-guide'"))}
  ${source('mission.js').slice(source('mission.js').indexOf('function displaySelectedMission('),source('mission.js').indexOf('function selectMission('))}
  displaySelectedMission({id:'m1',title:'How did early communities help one another?',introduction:'Explore the clues to explain how people shared work and resources.',learningObjectives:['Explain why communities shared work.','Compare roles in a community.','Use a clue to support your explanation.'],xpReward:25,isUnlocked:true,isCompleted:false});
  assert(beginMissionButton.textContent.includes('Start Lesson'),'Primary action is unclear');assert(document.getElementById('chapterTitle').tagName==='H1','Chapter has no main heading');const extra=missionLearningObjective.querySelector('details');assert(extra&&!extra.open&&extra.querySelectorAll('li').length===2,'Extra learning goals are not optional');assert(!document.querySelector('.mission-how-to-play').open,'Long instructions overwhelm the start screen');assert(beginMissionButton.compareDocumentPosition(document.querySelector('.mission-how-to-play'))&Node.DOCUMENT_POSITION_FOLLOWING,'Instructions appear before the start action');
+ assert(emittedGuide?.mission.id==='m1'&&emittedGuide.user===auth.currentUser,'Selected mission guide context was not emitted');
  extra.open=true;assert(extra.textContent.includes('Compare roles'),'Learning goals were removed');extra.open=false;
  `,
  'era.html':`

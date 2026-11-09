@@ -1,6 +1,8 @@
 // Animate same-origin page navigation while keeping special links native.
 // Modifier clicks, external links, downloads, and same-page links retain browser behavior.
+let pageNavigationPending=false;
 function restorePageAppearance() {
+    pageNavigationPending=false;
     document.body.classList.remove('page-leaving','page-entering');
     document.querySelectorAll('.route-transition-overlay').forEach(overlay=>overlay.remove());
     document.body.classList.add('page-visible');
@@ -22,7 +24,6 @@ function prepareLoginStartup(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',prepareLoginStartup,{once:true});
 else prepareLoginStartup();
-let pageNavigationPending=false;
 function shouldReduceMotion(){
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches||document.body.classList.contains('lakbay-reduce-motion');
 }
@@ -209,10 +210,12 @@ function playUiTone(context,frequency,endFrequency,duration,volume,type='sine',d
     gain.gain.exponentialRampToValueAtTime(.0001,start+duration);
     oscillator.connect(gain);
     gain.connect(context.destination);
+    oscillator.onended=()=>{oscillator.disconnect();gain.disconnect();};
     oscillator.start(start);
     oscillator.stop(start+duration+.012);
 }
 function playUiSound(kind,force=false){
+    if(document.hidden)return;
     if(window.LakbayLessonAudio?.narrating)return;
     if(window.LakbayLessonAudio&&kind==='correct')return;
     if((!uiSoundsEnabled&&!force)||uiSoundVolume<=0)return;

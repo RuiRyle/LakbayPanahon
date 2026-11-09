@@ -1,4 +1,5 @@
 import {auth,db} from './firebase-config.js';
+import {executeAdminDecision} from './admin-decision-recovery.js';
 import {doc,collection,query,where,orderBy,documentId,limit,startAfter,getDocFromServer,getDocsFromServer,runTransaction,serverTimestamp} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 
 function session() {
@@ -47,11 +48,20 @@ export async function loadAdminHistory(uid,cursor=null) {
     const page=snapshot.docs.slice(0,25);
     return {rows:page.map(d=>({...d.data(),id:d.id})),hasNext:snapshot.size>25,cursor:page.at(-1)?.id||null};
 }
+export async function loadAdminOverview() {
+    const s=session();await administrator(s);
+    const [applications,decisions]=await Promise.all([
+        getDocsFromServer(query(collection(db,'teacherApplications'),where('status','==','submitted'),orderBy(documentId()),limit(26))),
+        getDocsFromServer(query(collection(db,'accountModeration'),where('actorId','==',s.user.uid),orderBy(documentId()),limit(11)))
+    ]);s.check();
+    return {applications:applications.docs.slice(0,25).map(d=>({...d.data(),id:d.id})),moreApplications:applications.size>25,
+        decisions:decisions.docs.slice(0,10).map(d=>({...d.data(),id:d.id})),moreDecisions:decisions.size>10};
+}
 export async function moderateAccount({uid,expectedStatus,expectedRole,expectedVersion,status,reason,identityVerified=false}) {
     const s=session();await administrator(s);
     if(uid===s.user.uid)throw Error('You cannot change your own access.');
     const ref=targetRef(uid),event=doc(collection(db,'accountModeration'));
-    await runTransaction(db,async tx=>{
+    await executeAdminDecision(()=>runTransaction(db,async tx=>{
         const snapshot=await tx.get(ref);s.check();
         if(!snapshot.exists())throw Error('This account is unavailable.');
         const current=snapshot.data();
@@ -64,5 +74,5 @@ export async function moderateAccount({uid,expectedStatus,expectedRole,expectedV
         }
         tx.update(ref,{status:details.status,updatedAt:serverTimestamp(),moderatedAt:serverTimestamp(),moderatedBy:s.user.uid,moderationEventId:event.id});
         tx.set(event,{userId:uid,actorId:s.user.uid,previousStatus:current.status,...details,createdAt:serverTimestamp()});
-    });s.check();
+    }),async()=>{s.check();await administrator(s);const result=await getDocFromServer(event);s.check();return result;},{userId:uid,actorId:s.user.uid,previousStatus:expectedStatus,status,reason:String(reason||'').trim(),identityVerified:identityVerified===true});s.check();
 }

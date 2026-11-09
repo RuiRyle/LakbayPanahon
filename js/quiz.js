@@ -704,6 +704,8 @@ currentAttemptId = null;
             questionIds: savedDraft?.quizId === currentQuiz.id && savedDraft?.attemptId === currentAttemptId && Array.isArray(savedDraft.questionIds) ? savedDraft.questionIds : null });
         if (!isCurrent()) return;
         currentAttemptId = issued.attemptId;
+        // Resume the server-issued attempt after the completed draft is cleared.
+        studentTabStorage.setItem(attemptKey, currentAttemptId);
         securedQuiz=issued.secured===true;
         questions = issued.questions;
         missionQuestionBank = issued.questionBank || issued.questions;
@@ -1755,7 +1757,7 @@ lastAdaptiveFollowup = completionResult.adaptiveFollowup
     ? {...completionResult.adaptiveFollowup, preview:completionResult.preview === true}
     : null;
 lastArtifactResult = completionResult.artifactResult || null;
-studentTabStorage.removeItem('missionQuiz:' + currentUser.uid + ':' + currentQuiz.id);
+if(!securedQuiz)studentTabStorage.removeItem('missionQuiz:' + currentUser.uid + ':' + currentQuiz.id);
 studentTabStorage.removeItem('missionQuizSet:' + currentUser.uid + ':' + currentAttemptId);
 const correctAnswers = completionResult.correctAnswers;
 const percentage = completionResult.score;

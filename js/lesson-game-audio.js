@@ -33,8 +33,8 @@
         const level=.09*(volume/100)*(Number.isFinite(globalVolume)?Math.min(100,Math.max(0,globalVolume))/100:.85);
         if(level<=0)return false;lastAt=now;
         if(kind==='paper')paper(audio,level);
-        else if(kind==='success'){tone(audio,659.25,0,.17,level);tone(audio,880,.11,.25,level*.8);}
-        else if(kind==='retry'){tone(audio,440,0,.22,level*.7);tone(audio,523.25,.14,.2,level*.55);}
+        else if(kind==='success'){tone(audio,659.25,0,.14,level*.8);tone(audio,880,.09,.2,level*.7);tone(audio,1046.5,.18,.24,level*.45);}
+        else if(kind==='retry'){tone(audio,440,0,.16,level*.55);tone(audio,523.25,.1,.17,level*.45);}
         else tone(audio,587.33,0,.12,level*.65);
         return true;
     }

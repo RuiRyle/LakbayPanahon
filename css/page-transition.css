@@ -178,3 +178,15 @@ body.lakbay-reduce-motion *::after {
     transition: none !important;
 }
 body.lakbay-reduce-motion .route-transition-overlay { display: none !important; }
+
+/* Short, finite movement leaves the navigation stable while content arrives. */
+@keyframes lp-workspace-arrive { from { opacity:0;transform:translateY(8px); } to { opacity:1;transform:translateY(0); } }
+@media(prefers-reduced-motion:no-preference){
+ body.page-visible:not(.lakbay-reduce-motion) :is(#admin-main,#teacher-main) > :is(.teacher-intro,.teacher-layout,.admin-overview) { animation:lp-workspace-arrive 260ms ease-out both; }
+ body.page-visible:not(.lakbay-reduce-motion) :is(#admin-main,#teacher-main) > .teacher-layout { animation-delay:45ms; }
+ body.lakbay-theme:not(.lakbay-reduce-motion) :is(button,.nav-link,.teacher-tabs a) { transition:background-color 150ms ease,border-color 150ms ease,box-shadow 150ms ease; }
+ body.lakbay-theme:not(.lakbay-reduce-motion) button:active:not(:disabled) { translate:0 1px; }
+}
+body.lakbay-theme :is(button,a,input,select,textarea):focus-visible { outline:3px solid #edcf87;outline-offset:3px; }
+body.lakbay-theme :is(button,[role=button]):disabled { cursor:not-allowed; }
+@media(prefers-reduced-motion:reduce){.route-transition-overlay{display:none!important}body.page-leaving :is(main,.main-content){animation:none!important}}
