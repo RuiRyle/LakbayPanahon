@@ -3,7 +3,7 @@ import { getFunctions, connectFunctionsEmulator, httpsCallable } from 'https://w
 import { initializeAppCheck, ReCaptchaEnterpriseProvider, getToken } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-app-check.js';
 import { doc, getDocFromServer } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 import { firebaseEnvironment } from './firebase-environment.js';
-const functions = getFunctions(app, 'asia-southeast1');
+let functions = getFunctions(app, 'asia-southeast1');
 if (firebaseEnvironment?.mode === 'emulator') connectFunctionsEmulator(functions, '127.0.0.1', 5001);
 const attempts = new Map(),
   pendingActions = new Map();
@@ -11,8 +11,13 @@ let ready;
 let assessmentAppCheck;
 async function prepare() {
   if (firebaseEnvironment?.mode === 'emulator') return;
-  const snapshot = await getDocFromServer(doc(db, 'learningSettings', 'bayaniAI')),
+  const [snapshot,assessment] = await Promise.all([getDocFromServer(doc(db, 'learningSettings', 'bayaniAI')),getDocFromServer(doc(db,'learningSettings','securedAssessment'))]),
     siteKey = snapshot.data()?.appCheckSiteKey;
+  const endpoint=assessment.data()?.backendUrl;
+  if(endpoint){let url;try{url=new URL(endpoint);}catch{throw Error('Assessment backend configuration is invalid.');}
+    if(url.protocol!=='https:'||url.origin!==endpoint||url.username||url.password)throw Error('Assessment backend configuration is invalid.');
+    functions=getFunctions(app,endpoint);
+  }
   if (typeof siteKey !== 'string' || !siteKey) throw Error('Assessment verification is unavailable. Please try again later.');
   try {
     assessmentAppCheck = initializeAppCheck(app, {
