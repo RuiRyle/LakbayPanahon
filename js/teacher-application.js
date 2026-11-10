@@ -1,3 +1,4 @@
+import {appConfirm} from './app-dialog.js';
 import {auth} from './firebase-config.js';
 import {onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
 import {loadTeacherApplication,refreshTeacherEmail,sendTeacherVerification,saveTeacherApplication,readTeacherEvidence} from './teacher-application-client.js';
@@ -63,7 +64,7 @@ $('reloadApplication').addEventListener('click',()=>task(()=>load(),'Application
 $('viewTeacherEvidence').addEventListener('click',()=>task(()=>showTeacherEvidence(auth.currentUser.uid,application),'','Opening your private evidence...'));
 $('refreshTeacherEmail').addEventListener('click',()=>task(async()=>{await refreshTeacherEmail();$('teacherEmailStatus').textContent=auth.currentUser.email+(auth.currentUser.emailVerified?' — verified':' — verification needed');},()=>auth.currentUser?.emailVerified?'Email verified. Next: complete your teaching details.':'Email is not verified yet. Open the link in your inbox and check again.','Checking your email verification...'));
 $('sendTeacherVerification').addEventListener('click',()=>task(async()=>{await sendTeacherVerification();lastVerificationSent=Date.now();setTimeout(controls,60000);},'Verification email sent. Open it in your inbox, then return and check your status.','Sending verification link...'));
-$('reviseTeacherApplication').addEventListener('click',()=>{if(application?.status==='approved'&&!confirm('Changing an approved application requires a new review. Classroom access pauses when you save the revision; classes and student progress stay saved. Continue?'))return;editing=true;$('teacherSetupDetails').open=true;$('teacherSetupDetails').dataset.editing='true';controls();message('Edit your information, then save a draft or submit a new revision.');});
+$('reviseTeacherApplication').addEventListener('click',async ()=>{if(application?.status==='approved'&&!(await appConfirm('Changing an approved application requires a new review. Classroom access pauses when you save the revision; classes and student progress stay saved. Continue?')))return;editing=true;$('teacherSetupDetails').open=true;$('teacherSetupDetails').dataset.editing='true';controls();message('Edit your information, then save a draft or submit a new revision.');});
 function clear(){++epoch;busy=false;application=null;accountStatus=null;verifiedRevision=0;editing=false;form.reset();$('applicationWorkspace').hidden=true;$('teacherDecisionReason').textContent='';$('teacherEvidenceStatus').textContent='';$('teacherEmailStatus').textContent='';$('teacherApplicationStatus').textContent='';controls();}
 window.addEventListener('pagehide',clear);window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();});
 function resumeTeacherSetup(user){

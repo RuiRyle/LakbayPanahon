@@ -1,0 +1,21 @@
+/* Contrast corrections loaded last. Keep semantic states and paper reading distinct. */
+body.lakbay-theme{--lp-text:#edf3f8;--lp-muted:#becedc;--lp-gold-soft:#f1d797;}
+body.lakbay-theme.lakbay-high-contrast{--lp-text:#ffffff;--lp-muted:#e0eaf3;--lp-line:#a9c5da;}
+body.lakbay-theme.student-home-page[data-role=student] .home-bayani-card .secondary-action-button,
+body.lakbay-theme.student-headquarters[data-role=student] .home-bayani-card .secondary-action-button{background:#173e50;border:1px solid #8fbdc5;color:#edf6f7;box-shadow:none;}
+body.lakbay-theme.student-home-page[data-role=student] .home-bayani-card .secondary-action-button:hover{background:#245064;color:#fff;border-color:#bedcdf;}
+/* Labels inside a filled primary action must share its foreground, rather than muted page copy. */
+body.lakbay-theme :is(.primary-action-button,.journey-action-button,.daily-challenge-start,.profile-edit-button) :is(span,strong,small){color:inherit;}
+body.lakbay-theme :is(.quiz-option,.challenge-option,.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice):is(.selected,[aria-pressed=true]) :is(span,strong,small){color:inherit;}
+body.lakbay-theme :is(.quiz-option,.challenge-option,.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice):is(.correct,.incorrect) :is(span,strong,small){color:inherit;}
+/* Native select popups must not inherit a light option surface with light text. */
+body.lakbay-theme select option{background:#0b2036;color:#edf3f8;}
+body.lakbay-theme :is(input,textarea)::placeholder{color:#aebfd1;opacity:1;}
+body.lakbay-theme .teacher-status[data-error=true],body.lakbay-theme .teacher-status.error{color:#ffbec5;}
+body.lakbay-theme .teacher-note{color:#bdcddd;}
+body.lakbay-theme :is(.admin-status-label,.decision-badge) small{color:inherit;}
+/* Paper reading is an intentional light surface, not another navy panel. */
+body.lakbay-theme.paper-reading .story-reading-content select option{background:#fffaf0;color:#213447;}
+/* Some legacy page rules mark nested labels important; inherit the action's paired text color. */
+body.lakbay-theme :is(.primary-action-button,.journey-action-button,.daily-challenge-start,.profile-edit-button) :is(span,strong,small),
+body.lakbay-theme :is(.quiz-option,.challenge-option,.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice):is(.selected,[aria-pressed=true],.correct,.incorrect) :is(span,strong,small){color:inherit!important;}

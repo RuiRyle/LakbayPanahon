@@ -1,0 +1,91 @@
+{
+  "mode": "local-browser-real-modules-mocked-firestore",
+  "verifiedAt": "2026-11-07T13:41:30.043Z",
+  "pass": true,
+  "sources": [
+    {
+      "file": "js/admin-accounts.js",
+      "sha256": "97e1b036664415fa7e86f464b13e75f14cd8c8c7dc081d87afcb8620c8a0595b"
+    },
+    {
+      "file": "js/admin-workspace.js",
+      "sha256": "01d7e1cdcb4e4833a47aa2afdce9a4fb47973b8a9705d85d323e73220a0b7078"
+    },
+    {
+      "file": "js/auth-guard.js",
+      "sha256": "f425664feb178bcb4d3df2244de82ac079e04b1563c5af14dc7bb0d2430990a9"
+    },
+    {
+      "file": "pages/admin-dashboard.html",
+      "sha256": "3df57e164a75afc0cb4292d11455a098851ef88ed6cf5bccdda290a538274b10"
+    },
+    {
+      "file": "css/admin-workspace.css",
+      "sha256": "e0fb5e2cf494e698f47e99d2cbc6a27415556525a93cf1afc7ca66deb2d681a3"
+    }
+  ],
+  "results": [
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "pending-teacher queue paginates at 25",
+        "next account page",
+        "previous account page",
+        "submitted-application queue excludes incomplete accounts",
+        "profile names use safe text",
+        "cancelled refresh preserves the unsaved decision and queue",
+        "leaving with an unsaved decision requests browser confirmation",
+        "qualification draft also survives cancelled navigation",
+        "qualification save blocks account navigation",
+        "teacher approval requires verification",
+        "verified approval updates account",
+        "reason appears in audit history",
+        "deactivation appends audit record",
+        "teacher reactivation works after verification",
+        "student management does not show teacher verification",
+        "student deactivation preserves learning progress",
+        "stale account decision rejected without audit write",
+        "same-status profile change invalidates an old review",
+        "audit history is paginated",
+        "load more audit decisions without duplicates",
+        "read error hides stale account details",
+        "refresh recovers after read failure",
+        "offline admin guard stays locked with visible retry",
+        "no page overflow at 390px",
+        "sign out clears profiles and reasons"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 1280,
+      "checks": [
+        "pending-teacher queue paginates at 25",
+        "next account page",
+        "previous account page",
+        "submitted-application queue excludes incomplete accounts",
+        "profile names use safe text",
+        "cancelled refresh preserves the unsaved decision and queue",
+        "leaving with an unsaved decision requests browser confirmation",
+        "qualification draft also survives cancelled navigation",
+        "qualification save blocks account navigation",
+        "teacher approval requires verification",
+        "verified approval updates account",
+        "reason appears in audit history",
+        "deactivation appends audit record",
+        "teacher reactivation works after verification",
+        "student management does not show teacher verification",
+        "student deactivation preserves learning progress",
+        "stale account decision rejected without audit write",
+        "same-status profile change invalidates an old review",
+        "audit history is paginated",
+        "load more audit decisions without duplicates",
+        "read error hides stale account details",
+        "refresh recovers after read failure",
+        "offline admin guard stays locked with visible retry",
+        "no page overflow at 1280px",
+        "sign out clears profiles and reasons"
+      ]
+    }
+  ]
+}

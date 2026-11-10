@@ -1,5 +1,22 @@
 # Administrator account workflow
 
+## Current study-aligned navigation (10 November 2026)
+
+The scope authority is [Revised study scope and role boundaries](revised-study-scope.md). Administrator functions are user management, teacher verification, account-access decisions, bounded saved-activity oversight and decision recovery.
+
+| Page / entry | Actual behavior |
+|---|---|
+| Overview | Shows bounded loaded queues and the signed-in administrator's saved decisions; opens the relevant review. Counts are not database-wide totals. |
+| Teacher Applications / Teacher Verification | Reviews submitted qualifications. Approve & Activate confirms one guided operation, with separate audited qualification and activation transactions. Changes requested and decline preserve reasons. Missing submissions cannot be approved. |
+| Accounts / Account Access | Finds student and teacher accounts through bounded role/status queries, current-page search and pagination. Selected accounts expose access changes, confirmation, required reasons and saved history. Teacher activation still requires approved current qualifications. |
+| Decision Records | Searches/filters/exports the loaded administrator-owned snapshot. Saved actor, status, timestamp and reason are audit evidence; current profile identities are explicitly labelled as current. |
+| Administration | A task hub with four real destinations: Teacher Verification, Account Access, Decision Records, Account History & Recovery. It does not present service-health or privileged-security management as clickable capabilities. |
+| Account History & Recovery | Opens Accounts so the operator can find the affected account. An actual uncertain decision must be reconciled with its saved receipt before another write. Contextual controls remain visible only when a selected or uncertain decision exists. |
+
+Administrative activity monitoring means supported saved decision records, not live service-health monitoring. Security boundaries and environment are informational facts. No public role promotion, user deletion, curriculum editing, XP/grade edits or infrastructure/billing controls are offered.
+
+The sections below preserve earlier implementation/publication history; dated validation evidence is not a claim of current deployment or a replacement for current local acceptance.
+
 **Qualification update:** Teacher activation now requires the [submitted qualification review](teacher-qualification-workflow.md), including a verified-email submission and recorded identity, institutional and route-specific checks. Use **Review Submitted Applications**. The older identity checkbox alone cannot grant teacher access; the account-status tool can reactivate an already qualified account.
 
 Open `pages/admin-dashboard.html` using an active, trusted administrator account. The workspace manages student/teacher application access and teacher verification. It does not grant administrator roles, change curriculum, alter rewards/grades, or delete accounts and learning records.

@@ -1,0 +1,13 @@
+# Pending teacher visibility correction
+
+9 November 2026. Corrects the dashboard's previously too-narrow submitted-form interpretation. The Pending Teacher Applications panel now includes teacher profiles with status=pending even when their application document is missing or not submitted.
+
+The authorized overview loads pending teacher profiles (role=teacher AND status=pending, 26 fetched/25 displayed for overflow detection), retains its submitted-form query, and reads application documents only for those loaded pending profiles absent from the submitted snapshot. At most 25 additional point reads occur per explicit overview load. Submitted and pending entries are deduplicated by UID; students are excluded from this teacher queue but remain manageable in Accounts. No real-time listeners or global scans were added.
+
+Rows distinguish Application not submitted, Qualifications awaiting review, Approved—awaiting activation (only for a positive matching verified revision), Approval needs recheck, Changes requested and Application declined. Unrecognized statuses are not treated as approved. A failed application read fails the snapshot rather than labelling the application missing. The loaded queue count is bounded and may include submitted re-verification requests from existing teachers. View pending displays the separately bounded pending-profile count and opens Accounts with teacher/pending filters; the existing Teacher Applications destination remains the submitted-form queue.
+
+Review routes submitted qualifications to their application workflow and other pending accounts to existing account details. Nothing is automatically approved or activated. Existing server-side qualification, revision, confirmation, audit and activation checks remain unchanged. Normal Live Server uses the configured Firebase project; this implementation did not query or mutate that project.
+
+Changed `js/admin-accounts.js`, `js/admin-workspace.js`, `tests/admin-overview.test.cjs` and `tests/admin-workspace-browser.cjs`. Four service tests passed, including authorization/session refusal, explicit teacher/pending query constraints, deduplication and missing/approved/submitted stages. The real-module Chrome/mock-Firestore regression passed at 390/1280px, including the case where 26 pending teacher profiles exist but no qualification form is submitted. Accepted Stage 0 validation and scoped whitespace checks passed.
+
+No new real-emulator or production acceptance run is claimed. No account data, grading, XP, rewards, permissions, Rules, deployment, billing or accepted Priority 3 artifact was changed. No Git push occurred.

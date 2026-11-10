@@ -12,6 +12,8 @@ const page = fs.readFileSync(path.join(root, 'pages/practice.html'), 'utf8')
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(/<link\b[^>]*>/gi, '')
     .replace('</head>', `<style>${styles}</style></head>`);
 const script = `
+const appConfirm=async message=>window.confirm(message),appAlert=async message=>window.alert(message);
+
 function mountLearningNavigation(container, activity, search = window.location.search) {
     if (!container) return;
     const chapter = new URLSearchParams(search).get("chapter");

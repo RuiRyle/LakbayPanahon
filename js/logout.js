@@ -1,3 +1,4 @@
+import {appAlert} from './app-dialog.js';
 // ==========================================
 // LAKBAYPANAHON
 // LOGOUT
@@ -83,9 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     button.replaceChildren(...originalChildren);
 
 
-                    alert(
+                    (await appAlert(
                         "Unable to log out. Please try again."
-                    );
+                    ));
 
                 }
 

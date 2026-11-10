@@ -1,4 +1,5 @@
-function confirmAdditionalReview(duplicates){return window.confirm(new Set(duplicates.map(row=>row.userId)).size+' selected student(s) already have a published review for this mission. Passing practice does not close a review. Create an additional review round? Existing reviews and explanations will be kept.');}
+import {appConfirm} from './app-dialog.js';
+async function confirmAdditionalReview(duplicates){return (await appConfirm(new Set(duplicates.map(row=>row.userId)).size+' selected student(s) already have a published review for this mission. Passing practice does not close a review. Create an additional review round? Existing reviews and explanations will be kept.'));}
 import {auth} from './firebase-config.js';
 import {renderTeacherHelp,renderTeacherReflectionQueue} from './student-feedback.js';
 import {onAuthStateChanged,sendPasswordResetEmail,updateProfile} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
@@ -25,8 +26,8 @@ function teacherRouteURL(name, parameters = {}) {
     for (const [key, value] of Object.entries(parameters)) if (value) destination.searchParams.set(key, value);
     return destination.href;
 }
-function navigateTeacherPage(name, parameters) {
-    if (!allowDiscard()) return;
+async function navigateTeacherPage(name, parameters) {
+    if (!(await allowDiscard())) return;
     rememberEdits();
     const link = document.createElement('a'); link.href = teacherRouteURL(name, parameters);
     link.hidden = true; document.body.append(link); link.click(); link.remove();
@@ -95,9 +96,9 @@ $('teacher-overview').after(classManagement);
 const classroomSettingsPanel=classroomDetailPage?node('section',null,classManagement,'classroom-settings-panel'):null;if(classroomSettingsPanel){node('span','CLASSROOM SETTINGS',classroomSettingsPanel,'eyebrow');node('h3','Manage this classroom',classroomSettingsPanel);node('p','Update classroom information or change its status when your class is ready.',classroomSettingsPanel,'teacher-note');classroomSettingsPanel.append(classSettings,classSafety);}
 const dashboardFeed = document.createElement('div'); dashboardFeed.id = 'teacherDashboardFeed'; dashboardFeed.className = 'teacher-dashboard-feed';
 $('teacher-overview').append(dashboardFeed);
-const assignmentShortcut = button('Write Announcement', document.querySelector('.teacher-intro'), () => {
-    if (!detail) { tab('classes'); return; }
-    tab('announcements'); $('announcementForm').querySelector('input').focus();
+const assignmentShortcut = button('Write Announcement', document.querySelector('.teacher-intro'), async () => {
+    if (!detail) { (await tab('classes')); return; }
+    (await tab('announcements')); $('announcementForm').querySelector('input').focus();
 }, false);
 assignmentShortcut.classList.add('teacher-heading-action'); assignmentShortcut.hidden = true;
 $('teacher-overview').prepend($('teacherClassSummary'));
@@ -193,7 +194,7 @@ for (const name of ['students', 'announcements', 'assignments']) {
     node('span', 'CHOOSE YOUR CLASSROOM', empty, 'eyebrow');
     node('h3', {students:'See your students’ learning', announcements:'Keep your class informed', assignments:'Guide the next discovery'}[name], empty);
     node('p', 'Choose or create a class to ' + {students:'view joined students and their learning reports.',announcements:'write and publish announcements for your students.',assignments:'choose a history mission and add instructions.'}[name], empty);
-    button('Go to My Classes', empty, () => tab('classes'), false);
+    button('Go to My Classes', empty, async () => (await tab('classes')), false);
     section.append(content); emptySections.set(name, {empty, content});
 }
 let rosterPage = 0;
@@ -252,7 +253,7 @@ const announcementRecipientHelp=node('p','Compose your message first, then choos
 announcementRecipientLabel.after(announcementRecipientHelp);
 announcementRecipient.addEventListener('change',renderAnnouncementPreview);
 const announcementContext=node('section',null,null,'announcement-context');const announcementContextCopy=node('div',null,announcementContext);node('span','CLASSROOM MESSAGES',announcementContextCopy,'eyebrow');const announcementContextTitle=node('h2','Choose a classroom',announcementContextCopy);const announcementContextNote=node('p','Write a message now, or choose a class to see its saved posts.',announcementContextCopy);const announcementViewLabel=node('label','Classroom',announcementContext);const announcementClassView=node('select',null,announcementViewLabel);announcementClassView.id='announcementClassView';$('teacher-announcements').prepend(announcementContext);
-announcementClassView.addEventListener('change',()=>{if(!announcementClassView.value)return;if(busy||!allowDiscard()){announcementClassView.value=selected||'';return;}announcementPage=0;const classId=announcementClassView.value;task(()=>openClass(classId));});
+announcementClassView.addEventListener('change',async ()=>{if(!announcementClassView.value)return;if(busy||!(await allowDiscard())){announcementClassView.value=selected||'';return;}announcementPage=0;const classId=announcementClassView.value;task(async ()=>(await openClass(classId)));});
 function renderAnnouncementRecipients() {
     announcementClassView.replaceChildren();node('option','Choose a classroom',announcementClassView).value='';for(const classroom of classes)node('option',classroom.name+(classroom.status==='archived'?' (archived)':''),announcementClassView).value=classroom.id;announcementClassView.value=detail?.classroom.id||'';announcementClassView.disabled=busy||!workspaceReady;
     announcementContextTitle.textContent=detail?.classroom.name||'Choose a classroom';announcementContextNote.textContent=detail?(detail.classroom.status==='active'?'Write a message for this classroom and manage its saved posts.':'Archived classroom: saved posts are read-only. Choose an active class to publish.'):'Prepare a message now. Choose a classroom to browse its saved posts.';
@@ -291,8 +292,8 @@ function renderLessonCatalog(reset=false) {
         node('h3',item.title||item.name||item.id,card);
         node('p',missionGoal(item)||'Learning goal not supplied. Review the lesson before using it in class.',card,'teacher-note');
         const question=item.learningGuide?.question;if(typeof question==='string'&&question.trim())node('p','Discussion prompt: '+question,card);
-        button(detail?.classroom.status==='active'?'Prepare Assignment':'Choose a Receiving Class',card,()=>{
-            if(!allowDiscard())return;
+        button(detail?.classroom.status==='active'?'Prepare Assignment':'Choose a Receiving Class',card,async ()=>{
+            if(!(await allowDiscard()))return;
             if(detail?.classroom.status==='active'){
                 const form=$('assignmentForm');form.reset();delete form.dataset.recordId;$('assignmentCancel').hidden=true;
                 $('assignmentMission').value=item.id;renderAssignmentPreview();rememberEdits(['assignmentForm']);
@@ -339,13 +340,13 @@ const classReportPrepare=button('Prepare class report',classReportPanel,()=>{con
 classReportResults.before(classReportPrepare);
 
 let allRosterRequest=0;
-studentClassFilter.addEventListener('change',()=>{
-    if(busy||!allowDiscard()){studentClassFilter.value=detail?.classroom.id||'all';return;}
+studentClassFilter.addEventListener('change',async ()=>{
+    if(busy||!(await allowDiscard())){studentClassFilter.value=detail?.classroom.id||'all';return;}
     if(studentClassFilter.value==='all'){
         detail=null;selected=null;clearStudentReport();
         const url=new URL(location.href);url.searchParams.delete('class');url.searchParams.delete('student');history.replaceState(null,'',url.href);
-        tab('students');applyArchiveState();
-    }else {const classId=studentClassFilter.value;task(()=>openClass(classId));}
+        (await tab('students'));applyArchiveState();
+    }else {const classId=studentClassFilter.value;task(async ()=>(await openClass(classId)));}
 });
 function renderStudentClassFilter() {
     studentClassToolbar.dataset.view=detail?'roster':'directory';
@@ -364,7 +365,7 @@ function renderAllClassRoster() {
     ++allRosterRequest;allClassRoster.replaceChildren();
     const heading=node('header',null,allClassRoster,'progress-directory-heading');node('span','01 / CHOOSE A CLASSROOM',heading,'eyebrow');node('h3','Which class are you checking today?',heading);
     const active=classes.filter(c=>c.status==='active');
-    if(!active.length){node('p','Create or restore a class, then invite students to see them here.',allClassRoster,'teacher-note');button('Go to My Classes',allClassRoster,()=>tab('classes'));return;}
+    if(!active.length){node('p','Create or restore a class, then invite students to see them here.',allClassRoster,'teacher-note');button('Go to My Classes',allClassRoster,async ()=>(await tab('classes')));return;}
     node('p','Choose a classroom, then open a student report. Questions and support tools are available inside each class.',heading,'teacher-note');
     const searchLabel=node('label','Find a classroom',allClassRoster,'progress-class-search');const search=node('input',null,searchLabel);search.type='search';search.placeholder='Type a classroom name';search.setAttribute('aria-controls','teacherAllClassRoster');const searchStatus=node('p',active.length+' classrooms',searchLabel,'teacher-note');searchStatus.setAttribute('role','status');search.addEventListener('input',()=>{let count=0;for(const card of allClassRoster.querySelectorAll('.progress-class-choice')){card.hidden=!card.dataset.className.includes(search.value.trim().toLocaleLowerCase());if(!card.hidden)count++;}searchStatus.textContent=count?count+' matching classroom'+(count===1?'':'s'):'No classrooms match. Try another name.';});
     for(const classroom of active){
@@ -415,12 +416,12 @@ const editForms = ['createClassForm', 'editClassForm', 'announcementForm', 'assi
 const formSignature = form => JSON.stringify([...form.querySelectorAll('input, textarea, select')].map(input => [input.name || input.id, input.value]));
 function rememberEdits(ids = editForms) { for (const id of ids) if ($(id)) formBaselines.set(id, formSignature($(id))); for(const kind of ['announcement','assignment'])syncPublicationIndicators(kind); }
 function hasUnsavedEdits() { return !!pendingClassroomChange || editForms.some(id => $(id) && formBaselines.has(id) && formSignature($(id)) !== formBaselines.get(id)) || !!document.querySelector('.teacher-help-request form[data-sending=true]') || [...document.querySelectorAll('.teacher-help-request textarea')].some(input=>!input.disabled&&input.value.trim()); }
-function allowDiscard() {
+async function allowDiscard() {
     if(pendingClassroomChange){message('Check classroom status before switching or making another change.',true);return false;}
-    if(routeName==='settings'&&(profileSaving||preferredName.value.trim()!==accountNameBaseline)){if(profileSaving){message('Wait for your profile save to finish.',true);return false;}if(!window.confirm('Leave without saving your display name?'))return false;}
+    if(routeName==='settings'&&(profileSaving||preferredName.value.trim()!==accountNameBaseline)){if(profileSaving){message('Wait for your profile save to finish.',true);return false;}if(!(await appConfirm('Leave without saving your display name?')))return false;}
     if([...publicationWrites.values()].some(attempt=>attempt.uncertain)){message('Check save status before switching classrooms or refreshing. The previous save may already have reached the server.',true);return false;}
     if (!hasUnsavedEdits()) return true;
-    const discard = window.confirm('You have unsaved class details, instructions or messages. Discard those edits and continue?');
+    const discard = (await appConfirm('You have unsaved class details, instructions or messages. Discard those edits and continue?'));
     if (!discard) message('Your unsaved edits are still here. Save or cancel editing before switching or refreshing.');
     return discard;
 }
@@ -436,7 +437,7 @@ function button(text, parent, callback, secondary = true) {
     const el = node('button', text, parent, secondary ? 'secondary' : ''); el.type = 'button'; el.addEventListener('click', callback); return el;
 }
 const statusActions=node('div',null,null,'teacher-status-actions');statusActions.id='teacherStatusActions';statusActions.hidden=true;$('teacherStatus').after(statusActions);
-button('Reload Workspace',statusActions,()=>{if(busy||!allowDiscard())return;location.reload();});
+button('Reload Workspace',statusActions,async ()=>{if(busy||!(await allowDiscard()))return;location.reload();});
 function message(text, error = false, state = '') {
     const status=$('teacherStatus');status.textContent=text;status.dataset.error=String(error);
     status.dataset.state=state||(error?'error':text?'info':'idle');
@@ -507,10 +508,10 @@ function renderClassroomWorkspaceNavigation(name){
     $('teacherClassroomNavigation')?.remove();if(!detail||!['classes','students','assignments','announcements'].includes(name)||(name==='classes'&&!classroomDetailPage))return;
     const nav=node('nav',null,null,'classroom-workspace-nav');nav.id='teacherClassroomNavigation';nav.setAttribute('aria-label','Selected classroom workspace');const copy=node('div',null,nav,'classroom-workspace-context');node('span','WORKING IN',copy,'eyebrow');node('strong',detail.classroom.name,copy);const links=node('div',null,nav,'classroom-workspace-links');for(const [key,label]of [['classes','Overview'],['students','Students'],['assignments','Activities'],['announcements','Announcements']]){const link=node('a',label,links);link.href=key==='classes'?classroomURL(selected):teacherRouteURL(key);if(key===name)link.setAttribute('aria-current','page');}document.querySelector('.teacher-intro').after(nav);
 }
-function tab(name, parameters = {}) {
+async function tab(name, parameters = {}) {
     if (!sectionNames.includes(name)) return;
     if (workspaceReady && name !== routeName) {
-        navigateTeacherPage(name, parameters);
+        (await navigateTeacherPage(name, parameters));
         return;
     }
     renderClassroomWorkspaceNavigation(name);
@@ -599,7 +600,7 @@ function renderEmptyDashboard() {
     node('h3','Recent learning activity',activity);
     node('p',empty ? 'No classroom activity yet.' : 'Select a class to load recent activity.',activity);
     node('p','Saved quiz submissions and mission completions will appear here when students begin learning.',activity,'teacher-note');
-    button(empty ? 'Create Your First Class' : 'Choose a Class',activity,()=>tab('classes'),false);
+    button(empty ? 'Create Your First Class' : 'Choose a Class',activity,async ()=>(await tab('classes')),false);
     const support = node('section',null,feed,'teacher-dashboard-card teacher-checkins');
     node('h3','Needs attention',support);
     node('p',empty ? 'No student results to review yet.' : 'Student results have not been loaded for a class.',support);
@@ -730,14 +731,14 @@ function renderOverview() {
             const text = destination === 'assignments' ? missionGoal(missions.find(m => m.id === item.missionId)) || item.instructions : item.body;
             if (text) node('p', text.length > 180 ? text.slice(0,177) + '…' : text, entry);
             if (destination === 'assignments' && c.status === 'active') renderDashboardCompletion(entry, item);
-            if (destination === 'assignments' && c.status === 'active') button('View Mission Progress', entry, () => {
-                tab('assignments', {assignment: item.id});
+            if (destination === 'assignments' && c.status === 'active') button('View Mission Progress', entry, async () => {
+                (await tab('assignments', {assignment: item.id}));
                 const saved = [...$('assignmentList').children].find(row => row.dataset.publicationId === item.id);
                 saved?.querySelector('[data-assignment-progress]')?.click();
                 saved?.scrollIntoView({block:'start', behavior:'smooth'});
             });
         }
-        button(action, card, () => tab(destination));
+        button(action, card, async () => (await tab(destination)));
     }
     for (const [label, count] of [['Joined students', detail.members.length], ['Published missions', published(detail.assignments)]]) {
         const card = node('div', null, summary); node('strong', String(count), card); node('span', label, card);
@@ -750,11 +751,11 @@ function renderOverview() {
     $('teacherNextTitle').textContent = archived ? 'This class is archived' : !detail.members.length ? 'Invite your students' : !published(detail.assignments) ? 'Share a mission to explore' : 'Check in on student learning';
     $('teacherNextDescription').textContent = archived ? 'Restore this class from My Classes to invite students, publish activities and open reports.' : !detail.members.length ? 'Open My Classes to share an invitation code. Students join from My Class and keep their existing progress.' : !published(detail.assignments) ? 'Choose a published mission and explain what students should investigate. Their normal prerequisites still apply.' : 'Open a student report to see saved results and choose a topic to discuss.';
     if (!archived) {
-        if (!detail.members.length) button('Invite Students', actions, () => { tab('classes'); document.querySelector('.teacher-invitation').open = true; }, false);
-        else if (!published(detail.assignments)) button('Choose a Mission', actions, () => { tab('assignments'); $('assignmentMission').focus(); });
-        else button('Find a Student', actions, () => { tab('students'); $('rosterSearch').focus(); });
+        if (!detail.members.length) button('Invite Students', actions, async () => { (await tab('classes')); document.querySelector('.teacher-invitation').open = true; }, false);
+        else if (!published(detail.assignments)) button('Choose a Mission', actions, async () => { (await tab('assignments')); $('assignmentMission').focus(); });
+        else button('Find a Student', actions, async () => { (await tab('students')); $('rosterSearch').focus(); });
     }
-    else button('Manage Archived Class', actions, () => tab('classes'));
+    else button('Manage Archived Class', actions, async () => (await tab('classes')));
     $('teacherNextActions').closest('.teacher-next').hidden = !archived && !!detail.members.length && !!published(detail.assignments);
 }
 function renderDashboardActivity(results, batch, total) {
@@ -819,7 +820,7 @@ function renderQuizInsights(results,groupSize,total) {
         table(output,'Review topics in this loaded student group',['Mission','Topic','Students with current signal','Historical attempts'],rows.map(item=>[missions.find(m=>m.id===item.missionId)?.title||item.missionId,String(item.topic).replace(/([a-z])([A-Z])/g,'$1 $2').replace(/[-_]+/g,' '),item.currentStudents,item.historicalAttempts]));
     };
     filter.addEventListener('change',show);show();
-    button('Open Student Progress',host,()=>tab('students'));
+    button('Open Student Progress',host,async ()=>(await tab('students')));
 }
 function renderDashboardCompletion(parent, assignment) {
     const host = node('div', null, parent, 'teacher-completion-summary');
@@ -906,7 +907,7 @@ function renderDashboardCheckins() {
                 const current = epoch;
                 const fresh = await loadTeacherStudent(classId, member.userId);
                 if (current !== epoch || selected !== classId || !host.isConnected) return;
-                tab('students', {student: member.userId}); renderReport(name, fresh);
+                (await tab('students', {student: member.userId})); (await renderReport(name, fresh));
                 $('studentReport').scrollIntoView({block: 'start', behavior: 'smooth'});
             })).setAttribute('aria-label', 'Open student report for ' + name);
         });
@@ -950,12 +951,12 @@ function renderAssignmentPreview() {
     const due = form.elements.namedItem('dueDate').value;
     node('p', due ? 'Due: ' + due + ' at 11:59 PM (Philippine time).' : 'No due date. Students can work at their own pace.', assignmentPreview, 'teacher-note');
     if (instructions) { node('strong', 'Your guidance to students', assignmentPreview); node('p', instructions, assignmentPreview); }
-    node('p',personal?'Personal review: only selected students receive it. A new passing quiz result saved after publication is required; earlier completion does not finish this review.':'Class goal: a shared topic for your next lesson or discussion. Earlier completion counts, and students keep their own learning sequence.',assignmentPreview,'teacher-visibility');
+    node('p',personal?'Personal review: only selected students receive it. A new passing quiz result saved after publication is required; earlier completion does not finish this review.':'Class goal: a shared topic for your next lesson or discussion. A fresh passing quiz opened from this class assignment is required. Solo completion stays separate.',assignmentPreview,'teacher-visibility');
     node('p', published ? (personal?'Published: selected students will see their review in My Class.':'Published: active class members will see this goal in My Class.') : 'Draft: only you can see this activity until you publish it.', assignmentPreview, 'teacher-note');
     const readinessNotice=node('section',null,assignmentPreview,'teacher-assignment-readiness');
     node('strong','Check the learning sequence before setting a deadline',readinessNotice);
     node('p','Students who have not reached this mission will see it as locked, with a route to their next earlier lesson. Publishing does not unlock it. Allow time for prerequisite lessons and chapter checks, or assign an earlier mission first.',readinessNotice,'teacher-note');
-    node('p','Check readiness below before choosing the deadline. Results load only when requested, in groups of 20. Reviews use fresh quiz results; class goals count earlier completion. No duplicate completion rewards are granted.',readinessNotice,'teacher-note');
+    node('p','Check readiness below before choosing the deadline. Results load only when requested, in groups of 20. Reviews use fresh quiz results; class goals require assignment-linked submissions. No duplicate completion rewards are granted.',readinessNotice,'teacher-note');
     const readinessResults=node('div',null,readinessNotice);let readinessPage=0;
     const checkReadiness=async()=>{
       const classId=assignmentRecipient.value,missionId=mission.id,generation=epoch;
@@ -1078,7 +1079,7 @@ async function refresh(classId = selected || (routeName === 'classes'&&!classroo
             if(routeName==='classes'){
                 el=node('a',classroom.name,card,'classroom-card-toggle secondary');el.href=classroomURL(classroom.id);el.setAttribute('aria-label','Open classroom '+classroom.name);el.dataset.classId=classroom.id;node('h3',classroom.name,card,'classroom-card-name');node('p',classroom.description||'Students, learning activities, and classroom updates in one place.',card,'directory-card-description');node('span','Open classroom',card,'teacher-class-card-hint');
             }else{
-                el=button(classroom.name,card,()=>{if(!allowDiscard())return;task(()=>openClass(classroom.id));});el.dataset.classId=classroom.id;el.setAttribute('aria-label','Open class '+classroom.name);el.setAttribute('aria-pressed',String(classroom.id===classId));
+                el=button(classroom.name,card,async ()=>{if(!(await allowDiscard()))return;task(async ()=>(await openClass(classroom.id)));});el.dataset.classId=classroom.id;el.setAttribute('aria-label','Open class '+classroom.name);el.setAttribute('aria-pressed',String(classroom.id===classId));
             }
             if(classroom.description&&routeName!=='classes')node('p',classroom.description,card,'teacher-note');
             else if(routeName!=='classes')node('p','View students and manage learning activities.',card,'teacher-note');
@@ -1086,7 +1087,7 @@ async function refresh(classId = selected || (routeName === 'classes'&&!classroo
     }
     renderClassDirectory();
     if (classId && classes.some(c => c.id === classId)) await openClass(classId);
-    else { selected = null; detail = null; classOverview.replaceChildren();applyArchiveState(); $('teacherClassPickerLabel').textContent = 'Choose or create a class'; tab(activeTab); classPicker.open = activeTab === 'classes'; }
+    else { selected = null; detail = null; classOverview.replaceChildren();applyArchiveState(); $('teacherClassPickerLabel').textContent = 'Choose or create a class'; (await tab(activeTab)); classPicker.open = activeTab === 'classes'; }
 }
 async function openClass(classId) {
     for(const kind of ['announcement','assignment']){const notice=$(kind+'SaveNotice');if(notice)notice.hidden=true;}
@@ -1120,7 +1121,7 @@ async function openClass(classId) {
     const classStats=node('div',null,classOverview,'teacher-class-stats');
     for(const [value,label] of [[detail.members.length,'Joined students'],[detail.assignments.filter(a=>a.status==='published').length,'Learning activities'],[detail.announcements.filter(a=>a.status==='published').length,'Announcements']]){const stat=node('div',null,classStats);node('strong',String(value),stat);node('span',label,stat);}
     node('span','TEACHING TOOLS',classOverview,'active-room-tools-label');const classActions=node('div',null,classOverview,'teacher-actions active-room-actions');
-    for(const [label,description,destination,icon] of [['View students','Review progress and respond to questions.','students','students'],['Plan learning activity','Set a class goal or a personal review.','assignments','assignments'],['Post announcement','Share a reminder or learning prompt.','announcements','announcements']]){const control=button('',classActions,()=>tab(destination));const emblem=node('span',null,control,'active-room-action-icon');emblem.setAttribute('aria-hidden','true');const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');const shape=document.createElementNS('http://www.w3.org/2000/svg','path');shape.setAttribute('d',navigationIcons[icon]);svg.append(shape);emblem.append(svg);const copy=node('span',null,control,'active-room-action-copy');node('strong',label,copy);node('span',description,copy);node('span','→',control,'active-room-action-arrow').setAttribute('aria-hidden','true');}
+    for(const [label,description,destination,icon] of [['View students','Review progress and respond to questions.','students','students'],['Plan learning activity','Set a class goal or a personal review.','assignments','assignments'],['Post announcement','Share a reminder or learning prompt.','announcements','announcements']]){const control=button('',classActions,async ()=>(await tab(destination)));const emblem=node('span',null,control,'active-room-action-icon');emblem.setAttribute('aria-hidden','true');const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');const shape=document.createElementNS('http://www.w3.org/2000/svg','path');shape.setAttribute('d',navigationIcons[icon]);svg.append(shape);emblem.append(svg);const copy=node('span',null,control,'active-room-action-copy');node('strong',label,copy);node('span',description,copy);node('span','→',control,'active-room-action-arrow').setAttribute('aria-hidden','true');}
     document.querySelector('.teacher-invitation').open=routeName==='classes'&&c.status==='active';
     for(const card of document.querySelectorAll('.teacher-class-card[data-class-id]')){card.dataset.selected='false';}
     $('teacherClassPickerLabel').textContent = `${c.name} · ${c.status === 'archived' ? 'Archived' : 'Active'} · Change class`;
@@ -1139,12 +1140,12 @@ async function openClass(classId) {
     if(routeName==='classes'){
         // Classroom management does not need student profiles, reports, or
         // publication editors from the other teacher pages.
-        tab('classes');applyArchiveState();
+        (await tab('classes'));applyArchiveState();
         rememberEdits(['editClassForm','announcementForm','assignmentForm']);
         return;
     }
     if(routeName==='announcements'){
-        renderPublications('announcement');renderAnnouncementRecipients();renderAnnouncementPreview();tab('announcements');applyArchiveState();rememberEdits(['editClassForm','announcementForm','assignmentForm']);return;
+        renderPublications('announcement');renderAnnouncementRecipients();renderAnnouncementPreview();(await tab('announcements'));applyArchiveState();rememberEdits(['editClassForm','announcementForm','assignmentForm']);return;
     }
     const rosterURL=new URL(location.href);
     rosterQuery=routeName==='students'?(rosterURL.searchParams.get('search')||'').slice(0,200).trim().toLocaleLowerCase():'';
@@ -1159,7 +1160,7 @@ async function openClass(classId) {
     if (generation !== epoch) return;
     renderRoster(); renderPublications('announcement'); renderPublications('assignment'); renderOverview();renderAssignmentRecipients(); renderAssignmentPreview(); renderAnnouncementRecipients();renderAnnouncementPreview();
     document.querySelectorAll('#teacherClasses button').forEach(el => el.setAttribute('aria-pressed', String(el.dataset.classId === classId)));
-    tab(activeTab); applyArchiveState();
+    (await tab(activeTab)); applyArchiveState();
     rememberEdits(['editClassForm', 'announcementForm', 'assignmentForm']);
 }
 async function loadRosterNames() {
@@ -1225,22 +1226,22 @@ function renderRoster() {
         node('strong', names.get(member.userId) || `Name unavailable · Account ${member.userId.slice(-8)}`, identityCopy);
         if(!names.has(member.userId))node('p','Name unavailable. Refresh to try again.',identityCopy,'teacher-note');
         const actionCell=node('td',null,row);const rowActions=node('div',null,actionCell,'roster-row-actions');const reportButton = button('View report', rowActions, () => task(async () => {
-            if (!allowDiscard()) return;
+            if (!(await allowDiscard())) return;
             const generation = epoch; clearStudentReport();
             const report = await loadTeacherStudent(selected, member.userId);
             if (generation !== epoch) return;
             const name = [report.profile?.firstName, report.profile?.lastName].filter(Boolean).join(' ') || 'Student';
-            names.set(member.userId, name); renderRoster(); renderReport(name, report);
+            names.set(member.userId, name); renderRoster(); (await renderReport(name, report));
             $('studentReport').scrollIntoView({block: 'start', behavior: 'smooth'});
         }));
         reportButton.setAttribute('aria-label', 'View learning report for ' + (names.get(member.userId) || 'account ' + member.userId.slice(-8)));
         reportButton.dataset.reportOpen=member.userId;reportButton.setAttribute('aria-controls','studentReport');reportButton.setAttribute('aria-expanded',row.dataset.reportOpen);
         const management=node('details',null,rowActions,'teacher-member-management');
         const more=node('summary','More',management);more.setAttribute('aria-label','Membership actions for '+(names.get(member.userId)||'this student'));management.addEventListener('toggle',()=>{if(management.open)for(const other of root.querySelectorAll('.teacher-member-management[open]'))if(other!==management)other.open=false;});
-        const remove=button('Remove from Class',management,()=>{
-            if(busy||!allowDiscard())return;
+        const remove=button('Remove from Class',management,async ()=>{
+            if(busy||!(await allowDiscard()))return;
             const classId=selected,studentName=names.get(member.userId)||'this student';
-            if(!window.confirm(`Remove ${studentName} from ${detail.classroom.name}? They will lose access to this class’s announcements, assignments and feedback. Their personal learning progress and rewards stay saved. They can join again with an active invitation code; rotate or revoke the code in My Classes if needed.`))return;
+            if(!(await appConfirm(`Remove ${studentName} from ${detail.classroom.name}? They will lose access to this class’s announcements, assignments and feedback. Their personal learning progress and rewards stay saved. They can join again with an active invitation code; rotate or revoke the code in My Classes if needed.`)))return;
             rememberEdits();
             task(async()=>{
                 await removeTeacherClassMember(classId,member.userId);
@@ -1252,9 +1253,9 @@ function renderRoster() {
     });
     if(followupArea)root.append(followupArea);
 }
-$('rosterSearchForm').addEventListener('submit', event => {
+$('rosterSearchForm').addEventListener('submit', async event => {
     event.preventDefault();
-    if(!allowDiscard())return;
+    if(!(await allowDiscard()))return;
     task(async () => {
         if (!detail || detail.classroom.status !== 'active') return;
         const generation = epoch, classId = selected;
@@ -1272,8 +1273,8 @@ $('rosterSearchForm').addEventListener('submit', event => {
         if (generation === epoch) renderRoster();
     });
 });
-$('clearRosterSearch').addEventListener('click', () => {
-    if(!allowDiscard())return;
+$('clearRosterSearch').addEventListener('click', async () => {
+    if(!(await allowDiscard()))return;
     $('rosterSearch').value = '';rememberEdits();$('rosterSearchForm').requestSubmit();
 });
 function table(parent, caption, headings, rows) {
@@ -1284,11 +1285,11 @@ function table(parent, caption, headings, rows) {
     const body = node('tbody', null, table);
     rows.forEach(values => { const row = node('tr', null, body); values.forEach(value => node('td', String(value), row)); });
 }
-function focusTeacherGuidance(root,missionId){
+async function focusTeacherGuidance(root,missionId){
     const form=root.querySelector('#teacherFeedbackForm'),panel=form?.closest('.teacher-report-tool');
     if(!form||!panel)return;
     const select=form.elements.namedItem('missionId'),body=form.elements.namedItem('body');
-    if(select?.value&&select.value!==missionId&&body?.value.trim()&&!window.confirm('Use your unsent guidance for this different mission? Cancel to finish the original message. Your text will be kept.'))return;
+    if(select?.value&&select.value!==missionId&&body?.value.trim()&&!(await appConfirm('Use your unsent guidance for this different mission? Cancel to finish the original message. Your text will be kept.')))return;
     panel.open=true;if(select){select.value=missionId;select.dispatchEvent(new Event('change',{bubbles:true}));}
     panel.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});body?.focus({preventScroll:true});
 }
@@ -1296,7 +1297,7 @@ async function prepareEvidenceReview(classId,userId,missionId,topic=''){
     if(routeName!=='assignments'||selected!==classId||detail?.classroom.status!=='active'||!detail.members.some(member=>member.userId===userId))throw Error('This student is no longer available in the selected class. Refresh the class before planning a review.');
     const mission=missions.find(item=>item.id===missionId);if(!mission)throw Error('This mission is no longer available. Choose an available lesson.');
     if(topic&&!mission.reviewTopics?.some(item=>item.key===topic))throw Error('This review topic is no longer mapped to the lesson. Choose a topic from the current planner.');
-    if(!allowDiscard())return;
+    if(!(await allowDiscard()))return;
     const generation=epoch,form=$('assignmentForm');form.reset();delete form.dataset.recordId;delete form.dataset.expectedPublicationVersion;
     assignmentRecipient.value=classId;$('assignmentMission').value=missionId;assignmentPurpose.value='targeted-review';reviewTargets.clear();reviewTargets.add(userId);reviewPage=Math.floor(detail.members.findIndex(member=>member.userId===userId)/20);syncReviewTargets();renderReviewFocus();reviewTopic.value=topic;form.elements.namedItem('status').value='draft';
     await renderReviewTargets();if(generation!==epoch||selected!==classId)return;
@@ -1334,7 +1335,7 @@ function renderStudentLearningJourney(root,name,report,snapshot,support) {
     const evidenceIds=new Set([...report.progress.map(p=>p.missionId),...report.attempts.map(a=>a.missionId)]);
     let filter=evidenceIds.size?'evidence':'all',page=0;
     const controls=new Map();
-    const guide=id=>focusTeacherGuidance(root,id);
+    const guide=async id=>(await focusTeacherGuidance(root,id));
     const render=()=>{
         grid.replaceChildren();paging.replaceChildren();for(const [key,control]of controls)control.setAttribute('aria-pressed',String(key===filter));
         const visible=catalog.filter(m=>filter==='all'||filter==='completed'&&completedIds.has(m.id)||filter==='review'&&reviewIds.has(m.id)||filter==='evidence'&&evidenceIds.has(m.id));
@@ -1351,16 +1352,16 @@ function renderStudentLearningJourney(root,name,report,snapshot,support) {
             if(latest)node('small',date(latest.completedAt),card,'learning-mission-date');
             if(review){const topics=latest?.topicsForReview?.map(t=>String(t).replace(/[-_]+/g,' '));node('p',topics?.length?'Talk about: '+topics.join(', '):'Ask the student to explain a clue, then revisit the lesson together.',card,'learning-mission-prompt');}
             if(history.length){const attempts=node('details',null,card,'learning-attempts');node('summary','See saved attempts ('+history.length+')',attempts);node('p','Up to four dated attempts, oldest to newest. Questions may differ; scores alone do not establish mastery.',attempts);for(const attempt of [...history].filter(a=>Number.isFinite(a.completedAt?.toMillis?.())&&a.completedAt.toMillis()>0&&a.completedAt.toMillis()<=Date.now()).slice(0,4).reverse()){const row=node('div',null,attempts,'learning-score-row');node('span',date(attempt.completedAt),row);const track=node('span',null,row,'learning-score-track');const fill=node('span',null,track);fill.style.width=Number.isFinite(attempt.score)?Math.max(0,Math.min(100,attempt.score))+'%':'0%';track.setAttribute('aria-hidden','true');node('strong',Number.isFinite(attempt.score)?attempt.score+'%':'Unavailable',row);}}
-            if(root.querySelector('#teacherFeedbackForm'))button('Plan guidance →',card,()=>guide(mission.id)).classList.add('learning-guide-action');
+            if(root.querySelector('#teacherFeedbackForm'))button('Plan guidance →',card,async ()=>(await guide(mission.id))).classList.add('learning-guide-action');
         }
         if(visible.length>6){node('span','Page '+(page+1)+' of '+Math.ceil(visible.length/6),paging);if(page)button('Previous missions',paging,()=>{page--;render();});if((page+1)*6<visible.length)button('Next missions',paging,()=>{page++;render();});}
     };
     for(const [key,label]of [['evidence','With evidence'],['completed','Completed'],['review','Review signals'],['all','All missions']]){const control=button(label,filters,()=>{filter=key;page=0;render();});controls.set(key,control);}
     snapshot.after(journey);const checkin=node('details',null,null,'learning-checkin');node('summary','Suggested teaching conversation',checkin);support.before(checkin);checkin.append(support);render();
 }
-function renderReport(name, report) {
+async function renderReport(name, report) {
     const root = $('studentReport');
-    if (root.querySelector('#teacherFeedbackForm') && !allowDiscard()) return;
+    if (root.querySelector('#teacherFeedbackForm') && !(await allowDiscard())) return;
     document.body.classList.add('student-report-focused');root.replaceChildren();node('span','INDIVIDUAL LEARNING REPORT',root,'eyebrow'); node('h3', `${name}'s learning`, root);
     root.dataset.userId=report.userId||'';for(const row of document.querySelectorAll('#teacherRoster tr[data-user-id]')){const open=row.dataset.userId===report.userId;row.dataset.reportOpen=String(open);row.querySelector('button[data-report-open]')?.setAttribute('aria-expanded',String(open));}node('p',detail?.classroom.name||'Student learning records',root,'progress-report-class');
     if (report.userId && detail?.classroom.status==='active') {
@@ -1375,9 +1376,9 @@ function renderReport(name, report) {
         button('Download CSV',actions,()=>exportReport('csv'));
         button('Print Learning Report',actions,()=>exportReport('print'));
     }
-    const returnButton=button('Back to Student List', root, () => { if (!allowDiscard()) return; const returningUser=root.dataset.userId;clearStudentReport(); $('teacherRoster').scrollIntoView({block:'start', behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); const returningButton=[...$('teacherRoster').querySelectorAll('button[data-report-open]')].find(button=>button.dataset.reportOpen===returningUser);if(returningButton)returningButton.focus({preventScroll:true});else if (!$('rosterSearchForm').hidden) $('rosterSearch').focus(); });
+    const returnButton=button('Back to Student List', root, async () => { if (!(await allowDiscard())) return; const returningUser=root.dataset.userId;clearStudentReport(); $('teacherRoster').scrollIntoView({block:'start', behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); const returningButton=[...$('teacherRoster').querySelectorAll('button[data-report-open]')].find(button=>button.dataset.reportOpen===returningUser);if(returningButton)returningButton.focus({preventScroll:true});else if (!$('rosterSearchForm').hidden) $('rosterSearch').focus(); });
     returnButton.classList.add('teacher-report-return');root.prepend(returnButton);
-    if (report.userId && detail?.members.some(m=>m.userId===report.userId)) {renderTeacherSupport(root,report.userId,report.attempts);renderTeacherFeedback(root,report.userId,name);}
+    if (report.userId && detail?.members.some(m=>m.userId===report.userId)) {(await renderTeacherSupport(root,report.userId,report.attempts));renderTeacherFeedback(root,report.userId,name);}
     const completed = report.progress.filter((p,index,rows) => p.completed === true && missions.some(m=>m.id===p.missionId&&m.chapterId===p.chapterId) && rows.findIndex(item=>item.completed===true&&item.missionId===p.missionId&&item.chapterId===p.chapterId)===index);
     const snapshot=node('section',null,root,'teacher-report-snapshot');snapshot.setAttribute('aria-label','Learning snapshot');
     for(const [value,label] of [[completed.length,'Completed missions'],[report.attempts.length,'Saved quiz attempts'],[quizReviewSignals(report.attempts).review.length,'Missions with review signals']]){const card=node('div',null,snapshot);node('strong',String(value),card);node('span',label,card);}
@@ -1412,7 +1413,7 @@ function renderReport(name, report) {
             if (missionGoal(mission)) node('p', 'Lesson goal: ' + missionGoal(mission), item, 'teacher-note');
             if(mission&&report.userId&&detail?.classroom.status==='active'){
                 const actions=node('div',null,item,'teacher-actions teacher-evidence-actions');
-                button('Write guidance',actions,()=>focusTeacherGuidance(root,mission.id));
+                button('Write guidance',actions,async ()=>(await focusTeacherGuidance(root,mission.id)));
                 const mapped=[...new Set((attempt.topicsForReview||[]).filter(topic=>typeof topic==='string'&&topic.trim()).map(topic=>topic.trim()))];
                 const reviewLink=node('a','Plan personal review',actions,'teacher-class-link');reviewLink.href=teacherRouteURL('assignments',{planReview:'1',student:report.userId,mission:mission.id,...(mapped.length===1?{reviewTopic:mapped[0]}:{})});
                 node('p','Guidance stays private. Planning a review does not send it; confirm the student, focus and instructions first.',item,'teacher-note');
@@ -1470,7 +1471,7 @@ function renderReviewOutcomes(parent){
  const load=async()=>{if(busy)return;busy=true;loadButton.disabled=true;content.replaceChildren();node('p','Checking this group of reviews...',content,'teacher-note');try{const group=reviews.slice(page*10,(page+1)*10),results=[];for(const review of group){const result=(await loadTeacherAssignmentProgress(classId,review,[review.userId]))[0];if(generation!==epoch||selected!==classId||!host.isConnected)return;results.push({review,result});}content.replaceChildren();node('p','Reviews '+(page*10+1)+'–'+Math.min((page+1)*10,reviews.length)+' of '+reviews.length+'. Results loaded now.',content,'teacher-note');for(const {review,result} of results){renderReviewOutcomeCard(content,review,result,classId);}const actions=node('div',null,content,'teacher-actions');if(page>0)button('Previous reviews',actions,()=>{page--;load();});if((page+1)*10<reviews.length)button('Next reviews',actions,()=>{page++;load();});}catch{if(host.isConnected){content.replaceChildren();node('p','Review outcomes could not load. Try again.',content,'teacher-note');}}finally{busy=false;if(host.isConnected)loadButton.disabled=false;}};
  const loadButton=button('Check review outcomes',host,load);
 }
-function renderTeacherSupport(parent,userId,attempts) {
+async function renderTeacherSupport(parent,userId,attempts) {
     const host=node('details',null,parent,'teacher-support-panel');host.id='teacherPrivateFollowup';
     node('summary','Private teacher follow-up',host);
     node('p','Only you can read these notes. Use Planned or Discussed to record your next action. These statuses do not change the student’s review signals or learning results.',host,'teacher-note');
@@ -1486,15 +1487,15 @@ function renderTeacherSupport(parent,userId,attempts) {
     const history=node('div',null,host,'teacher-support-history');history.setAttribute('aria-live','polite');
     let rows=[],loaded=false,lastMission='';
     const dirty=()=>formBaselines.has(form.id)&&formSignature(form)!==formBaselines.get(form.id);
-    const discard=()=>!dirty()||window.confirm('Discard unsaved changes to this private follow-up?');
-    const selectMission=id=>{
+    const discard=async ()=>!dirty()||(await appConfirm('Discard unsaved changes to this private follow-up?'));
+    const selectMission=async id=>{
         mission.value=lastMission;
-        if(!discard())return;
+        if(!(await discard()))return;
         const saved=rows.find(item=>item.missionId===id);
         mission.value=id;lastMission=id;status.value=saved?.status||'planned';note.value=saved?.note||'';
         save.textContent=saved?'Update Private Follow-up':'Save Private Follow-up';rememberEdits(['teacherSupportForm']);
     };
-    mission.addEventListener('change',()=>selectMission(mission.value));
+    mission.addEventListener('change',async ()=>(await selectMission(mission.value)));
     const load=async()=>{
         notice.textContent='Loading private follow-ups...';loaded=false;
         try{
@@ -1515,16 +1516,16 @@ function renderTeacherSupport(parent,userId,attempts) {
                     table(row,'Recent quiz evidence after follow-up',['Submitted','Score','Saved result'],evidence.attempts.slice(0,3).map(a=>[date(a.completedAt),Number.isFinite(a.score)?a.score+'%':'Unavailable',a.passed===true?'Passed':a.passed===false?'Review suggested':'Unavailable']));
                 }
                 if(evidence.uncertain)node('p','Some attempt dates are missing, identical or in the future. A definite latest result cannot be inferred.',row,'teacher-note');
-                button('Edit Follow-up',row,()=>{selectMission(item.missionId);host.open=true;note.focus();});
+                button('Edit Follow-up',row,async ()=>{(await selectMission(item.missionId));host.open=true;note.focus();});
             }
-            if(!dirty())selectMission(lastMission);
+            if(!dirty())(await selectMission(lastMission));
         }catch{
             if(!current())return;
             notice.textContent='Private follow-ups could not load. Your learning report and student feedback remain available.';
-            history.replaceChildren();button('Retry Private Follow-ups',history,()=>{if(discard())load();});
+            history.replaceChildren();button('Retry Private Follow-ups',history,async ()=>{if((await discard()))(await load());});
         }
     };
-    button('Reload Private Follow-ups',host,()=>{if(discard()){form.reset();lastMission='';rememberEdits(['teacherSupportForm']);load();}});
+    button('Reload Private Follow-ups',host,async ()=>{if((await discard())){form.reset();lastMission='';rememberEdits(['teacherSupportForm']);(await load());}});
     form.addEventListener('submit',event=>{
         event.preventDefault();if(!current()||!loaded){message('Load private follow-ups before saving.',true);return;}
         const missionId=mission.value,noteText=note.value,nextStatus=status.value,revision=rows.find(item=>item.missionId===missionId)?.revision||0;
@@ -1533,7 +1534,7 @@ function renderTeacherSupport(parent,userId,attempts) {
             form.reset();lastMission='';rememberEdits(['teacherSupportForm']);await load();host.open=true;
         },'Private follow-up saved. It is not visible to the student.');
     });
-    rememberEdits(['teacherSupportForm']);load();
+    rememberEdits(['teacherSupportForm']);(await load());
 }
 function renderTeacherFeedback(parent,userId,name) {
     const host=node('section',null,parent,'teacher-feedback-panel');
@@ -1547,7 +1548,7 @@ function renderTeacherFeedback(parent,userId,name) {
     for(const item of missions)node('option',item.title||item.name||item.id,mission).value=item.id;
     const label=node('label','Your guidance',form),body=node('textarea',null,label);body.name='body';body.required=true;body.maxLength=1500;body.placeholder='Revisit the boat-building clue. How did boats help communities trade? Explain one connection in your own words.';
     const encouragement=node('details',null,form,'teacher-encouragement');node('summary','Write private encouragement',encouragement);node('p','Choose a starting point, then personalize it with something you observed. Messages do not change scores or rewards.',encouragement,'teacher-note');
-    for(const [title,prompt] of [['Recognize effort','You kept working on this topic. Which clue helped you move forward?'],['Recognize improvement','Your new explanation shows progress. Keep connecting your ideas to historical clues.'],['Recognize reasoning','You supported your explanation with a clue. Tell me how that clue connects to your idea.']])button(title,encouragement,()=>{if(body.value.trim()&&!window.confirm('Replace your current unsent guidance with this starting point?'))return;body.value=prompt;body.dispatchEvent(new Event('input',{bubbles:true}));body.focus();});
+    for(const [title,prompt] of [['Recognize effort','You kept working on this topic. Which clue helped you move forward?'],['Recognize improvement','Your new explanation shows progress. Keep connecting your ideas to historical clues.'],['Recognize reasoning','You supported your explanation with a clue. Tell me how that clue connects to your idea.']])button(title,encouragement,async ()=>{if(body.value.trim()&&!(await appConfirm('Replace your current unsent guidance with this starting point?')))return;body.value=prompt;body.dispatchEvent(new Event('input',{bubbles:true}));body.focus();});
     const submit=node('button','Send Feedback',form);submit.type='submit';
     const history=node('div',null,host);history.setAttribute('aria-live','polite');
     const load=async()=>{
@@ -1595,7 +1596,7 @@ function syncAssignmentBoard(){
 }
 if(routeName==='assignments'){
     document.body.classList.add('assignment-board-page');const hero=document.querySelector('.teacher-intro');hero.querySelector('h1').textContent='Learning activities';hero.querySelector('p').textContent='Give your class a shared goal, or help individual students revisit a topic.';
-    const classLabel=node('label','Classroom',hero,'assignment-class-context');assignmentClassView=node('select',null,classLabel);assignmentClassView.id='assignmentClassView';assignmentClassView.addEventListener('change',()=>{if(!assignmentClassView.value)return;if(busy||!allowDiscard()){assignmentClassView.value=selected||'';return;}const classId=assignmentClassView.value;task(()=>openClass(classId));});
+    const classLabel=node('label','Classroom',hero,'assignment-class-context');assignmentClassView=node('select',null,classLabel);assignmentClassView.id='assignmentClassView';assignmentClassView.addEventListener('change',async ()=>{if(!assignmentClassView.value)return;if(busy||!(await allowDiscard())){assignmentClassView.value=selected||'';return;}const classId=assignmentClassView.value;task(async ()=>(await openClass(classId)));});
     const editor=$('assignmentForm').closest('.teacher-editor-card'),library=$('assignmentList').closest('.teacher-library-card');
     const boardHeader=node('header',null,null,'assignment-board-heading');for(const child of [...library.children])if(child.matches('.eyebrow,h3,p.teacher-note'))boardHeader.append(child);library.prepend(boardHeader);assignmentNew=button('Plan an activity',boardHeader,openAssignmentComposer,false);assignmentNew.id='assignmentNew';assignmentNew.setAttribute('aria-haspopup','dialog');assignmentNew.setAttribute('aria-controls','assignmentComposeDialog');
     assignmentDialog=node('dialog',null,$('teacher-assignments'),'assignment-compose-dialog');assignmentDialog.id='assignmentComposeDialog';editor.querySelector('h3').id='assignmentComposeTitle';assignmentDialog.setAttribute('aria-labelledby','assignmentComposeTitle');assignmentDialog.append(editor);assignmentClose=button('Close',editor,closeAssignmentComposer);assignmentClose.classList.add('assignment-compose-close');assignmentClose.setAttribute('aria-label','Close activity and keep unsaved work');assignmentDialog.addEventListener('cancel',event=>{event.preventDefault();closeAssignmentComposer();});
@@ -1620,7 +1621,7 @@ if(['announcements','assignments'].includes(routeName)){
     const unsent=node('section',null,null,'publication-unsent');unsent.id=kind+'Unsent';unsent.hidden=true;node('p','You have unsaved '+noun+' changes on this page. Use Resume to continue.',unsent);notice.after(unsent);
     const state=node('p','',null,'publication-form-state');state.id=kind+'FormState';state.setAttribute('role','status');form.querySelector('.teacher-actions').before(state);
     const checkSave=button('Check save status',form.querySelector('.teacher-actions'),()=>checkPublicationSave(kind));checkSave.id=kind+'CheckSave';checkSave.hidden=true;
-    const discard=()=>{if(busy)return;if(publicationWrites.get(kind)?.uncertain){message('Check save status before discarding. The previous save may already have reached the server.',true);return;}if(!window.confirm('Discard unsaved '+noun+' changes? Your saved records stay unchanged.'))return;$(kind+'Cancel').click();$(kind==='announcement'?'announcementNew':'assignmentNew')?.focus({preventScroll:true});};
+    const discard=async ()=>{if(busy)return;if(publicationWrites.get(kind)?.uncertain){message('Check save status before discarding. The previous save may already have reached the server.',true);return;}if(!(await appConfirm('Discard unsaved '+noun+' changes? Your saved records stay unchanged.')))return;$(kind+'Cancel').click();$(kind==='announcement'?'announcementNew':'assignmentNew')?.focus({preventScroll:true});};
     const actions=form.querySelector('.teacher-actions'),saveDraft=button('Save draft',actions,()=>{form.elements.namedItem('status').value='draft';form.dispatchEvent(new Event('change',{bubbles:true}));form.requestSubmit();});saveDraft.classList.add('publication-save-draft');
     for(const host of [actions,unsent]){const control=button('Discard changes',host,discard);control.dataset.discardPublication=kind;control.classList.add('publication-discard');}
     form.addEventListener('reset',()=>{delete form.dataset.expectedPublicationVersion;publicationWrites.delete(kind);delete form.dataset.operationError;});
@@ -1635,7 +1636,7 @@ async function finishPublicationSave(kind,attempt){
     if(kind==='announcement'){renderAnnouncementRecipients();renderAnnouncementPreview();announcementFilter.value=attempt.values.status;announcementPage=0;}else{renderAssignmentRecipients();renderAssignmentPreview();assignmentFilter.value=attempt.values.status;assignmentPage=0;}
     const root=$(kind+'List');if(!refreshError&&detail?.classroom.id===attempt.classId)renderPublications(kind);else{root.replaceChildren();node('p','Your save was confirmed. This list could not refresh; refresh the saved list to view it.',root,'teacher-note');}
     rememberEdits([form.id]);showPublicationSuccess(kind,attempt.values,attempt.targets?.length||1);
-    const notice=$(kind+'SaveNotice');if(refreshError&&notice){notice.dataset.state='refresh-needed';notice.querySelector('p').textContent='Saved successfully for '+className+'. The list could not refresh. Do not submit again; refresh the saved list.';const retry=button('Refresh saved list',notice,()=>{if(!allowDiscard())return;task(async()=>{await refresh(attempt.classId);notice.hidden=true;},'Saved list refreshed.');});retry.classList.add('publication-refresh');}
+    const notice=$(kind+'SaveNotice');if(refreshError&&notice){notice.dataset.state='refresh-needed';notice.querySelector('p').textContent='Saved successfully for '+className+'. The list could not refresh. Do not submit again; refresh the saved list.';const retry=button('Refresh saved list',notice,async ()=>{if(!(await allowDiscard()))return;task(async()=>{await refresh(attempt.classId);notice.hidden=true;},'Saved list refreshed.');});retry.classList.add('publication-refresh');}
     $(kind==='announcement'?'announcementNew':'assignmentNew')?.focus({preventScroll:true});return refreshError;
 }
 function checkPublicationSave(kind){const attempt=publicationWrites.get(kind);if(!attempt||busy)return;task(async()=>{
@@ -1701,7 +1702,7 @@ function renderPublications(kind) {
                         node('p','Report scope: current active members in the loaded classroom roster. '+members.length+' shown of '+recipients.length+' eligible recipient(s). Former members are excluded; shared goals also include students who joined after publication. Unavailable results are not zero scores. Refresh the classroom to update membership.',progressHost,'teacher-note');
                         if (!members.length) { node('p', item.assignmentType==='targeted-review'?'The intended student is not a current active member. This review is preserved, but there is no eligible recipient in this report.':'No active members are in the loaded classroom roster. Invite students from My Classes.', progressHost); return; }
                         const completed = results.filter(r => r.progress?.completed === true && r.progress.chapterId === item.chapterId).length;
-                        node('p', item.assignmentType==='targeted-review'?`${completed} of ${members.length} displayed students reached the practice passing goal. Explanation and teacher guidance are tracked separately.`:`${completed} of ${members.length} displayed students completed this mission. Results loaded now; use Refresh Progress to check again.`, progressHost);
+                        node('p', item.assignmentType==='targeted-review'?`${completed} of ${members.length} displayed students reached the practice passing goal. Explanation and teacher guidance are tracked separately.`:`${completed} of ${members.length} displayed students submitted a passing quiz for this class assignment. Personal completion is shown separately.`, progressHost);
                         const filterLabel = node('label', 'Show students', progressHost, 'teacher-progress-filter');
                         const filter = node('select', null, filterLabel); filter.setAttribute('aria-label','Filter students by mission completion');
                         for (const [value,label] of [['all','All students in this group'],['completed',item.assignmentType==='targeted-review'?'Practice passed':'Completed'],['incomplete',item.assignmentType==='targeted-review'?'No passing result yet':'Not yet completed'],['unavailable','Unavailable results']]) node('option',label,filter).value=value;
@@ -1712,13 +1713,13 @@ function renderPublications(kind) {
                             const done = state.status === 'completed';
                             const name = roster.find(r => r.userId === result.userId)?.name || 'Name unavailable · Account ' + result.userId.slice(-8);
                             const evidence=record?.reviewEvidence,stages=record?.reviewStages||reviewLearningStages(evidence,null,{requested:!!item.reflectionQuestion,reflectionAvailable:false});
-                            return {state,values:[name,item.assignmentType==='targeted-review'?stages.practiceLabel:state.label,Number.isFinite(record?.bestScore)?record.bestScore+'%':'No result',state.timing,...(item.assignmentType==='targeted-review'?[stages.explanationLabel,stages.guidanceLabel,evidence?.baseline!=null?evidence.baseline+'%':'No baseline',evidence?.change!=null?(evidence.change>0?'+':'')+evidence.change+' percentage points':'Not enough evidence']:[])]};
+                            return {state,values:[name,item.assignmentType==='targeted-review'?stages.practiceLabel:state.label,Number.isFinite(record?.bestScore)?record.bestScore+'%':'No result',state.timing,...(item.assignmentType!=='targeted-review'?[record?.priorSoloCompleted?'Completed personally':'No personal completion']:[]),...(item.assignmentType==='targeted-review'?[stages.explanationLabel,stages.guidanceLabel,evidence?.baseline!=null?evidence.baseline+'%':'No baseline',evidence?.change!=null?(evidence.change>0?'+':'')+evidence.change+' percentage points':'Not enough evidence']:[])]};
                         });
                         const show = () => {
                             filtered.replaceChildren();
                             const visible = progressRows.filter(row=>filter.value === 'all' || row.state.status === filter.value);
                             node('p',`${visible.length} matching students in this loaded group. Filters apply to this group of ${members.length}, not the whole class.`,filtered,'teacher-note');
-                            if (visible.length) table(filtered, `Students ${page * 20 + 1}–${page * 20 + members.length} of ${recipients.length}`, ['Student',item.assignmentType==='targeted-review'?'Practice result':'Mission status',item.assignmentType==='targeted-review'?'Latest review score':'Best score','Deadline status',...(item.assignmentType==='targeted-review'?['Student explanation','Teacher guidance','Before review','Score change']:[])],visible.map(row=>row.values));
+                            if (visible.length) table(filtered, `Students ${page * 20 + 1}–${page * 20 + members.length} of ${recipients.length}`, ['Student',item.assignmentType==='targeted-review'?'Practice result':'Mission status',item.assignmentType==='targeted-review'?'Latest review score':'Best score','Deadline status',...(item.assignmentType!=='targeted-review'?['Personal journey']:[]),...(item.assignmentType==='targeted-review'?['Student explanation','Teacher guidance','Before review','Score change']:[])],visible.map(row=>row.values));
                             else node('p','No students match this filter in the loaded group.',filtered);
                         };
                         filter.addEventListener('change',show); show();
@@ -1733,8 +1734,8 @@ function renderPublications(kind) {
                 button('View Student Progress', actions, () => { loadPage(); }, false).dataset.assignmentProgress = 'true';
             }
             if(kind!=='assignment'||!['closed','withdrawn'].includes(item.status)){
-            button('Edit', actions, () => {
-                if(!allowDiscard())return;
+            button('Edit', actions, async () => {
+                if(!(await allowDiscard()))return;
                 const form = $(kind + 'Form'); form.dataset.recordId = item.id;form.dataset.expectedPublicationVersion=publicationVersion(item);form.dataset.assignmentType=item.assignmentType||'class-goal';
                 for (const field of ['title', 'body', 'instructions', 'missionId', 'status']) {
                     const input = form.elements.namedItem(field);
@@ -1751,21 +1752,23 @@ function renderPublications(kind) {
                 form.querySelector('input, select, textarea').focus();
                 message('Editing this classroom item. Save your changes or cancel.');
             });
-            button(item.status === 'published' ? 'Move to Draft' : 'Publish', actions, () => {if(!allowDiscard())return;runClassroomChange(()=>saveTeacherPublication(selected,kind,{...item,expectedVersion:publicationVersion(item),status:item.status==='published'?'draft':'published'},item.id,null,confirmAdditionalReview),'Classroom item updated.');});
+            button(item.status === 'published' ? 'Move to Draft' : 'Publish', actions, async () => {if(!(await allowDiscard()))return;runClassroomChange(()=>saveTeacherPublication(selected,kind,{...item,expectedVersion:publicationVersion(item),status:item.status==='published'?'draft':'published'},item.id,null,confirmAdditionalReview),'Classroom item updated.');});
             }
-            if(kind==='assignment'&&item.status==='published')for(const [nextStatus,label,explanation]of [['closed','Close activity','Finish this activity? Students can read its history and existing replies, but cannot send new requests or explanations. Earlier results and personal learning are kept.'],['withdrawn','Withdraw activity','Cancel this activity? It will no longer be required. Students can read its history and replies. Personal learning and rewards are unchanged.']])button(label,actions,()=>{if(!allowDiscard()||!window.confirm(explanation))return;runClassroomChange(()=>saveTeacherPublication(selected,'assignment',{...item,status:nextStatus,expectedVersion:publicationVersion(item)},item.id),label==='Close activity'?'Activity closed. Earlier results and messages are preserved.':'Activity withdrawn. It is no longer required.');});
+            if(kind==='assignment'&&item.status==='published')for(const [nextStatus,label,explanation]of [['closed','Close activity','Finish this activity? Students can read its history and existing replies, but cannot send new requests or explanations. Earlier results and personal learning are kept.'],['withdrawn','Withdraw activity','Cancel this activity? It will no longer be required. Students can read its history and replies. Personal learning and rewards are unchanged.']])button(label,actions,async ()=>{if(!(await allowDiscard())||!(await appConfirm(explanation)))return;runClassroomChange(()=>saveTeacherPublication(selected,'assignment',{...item,status:nextStatus,expectedVersion:publicationVersion(item)},item.id),label==='Close activity'?'Activity closed. Earlier results and messages are preserved.':'Activity withdrawn. It is no longer required.');});
             if(kind==='assignment'&&['closed','withdrawn'].includes(item.status))node('p',(item.endedAt?'Ended '+date(item.endedAt)+'. ':'')+'This activity is read-only. Create a new activity to assign the lesson again.',row,'teacher-note');
         }
     });
     if(kind==='assignment'&&sortedPublications.length>6){const paging=node('nav',null,root,'assignment-paging');paging.setAttribute('aria-label','Saved activity pages');node('span','Page '+(assignmentPage+1)+' of '+Math.ceil(sortedPublications.length/6),paging);if(assignmentPage)button('Previous activities',paging,()=>{assignmentPage--;renderPublications('assignment');});if((assignmentPage+1)*6<sortedPublications.length)button('Next activities',paging,()=>{assignmentPage++;renderPublications('assignment');});}
     if(kind==='announcement'&&sortedPublications.length>5){const paging=node('nav',null,root,'announcement-paging');paging.setAttribute('aria-label','Saved announcement pages');node('span','Page '+(announcementPage+1)+' of '+Math.ceil(sortedPublications.length/5),paging);if(announcementPage)button('Previous posts',paging,()=>{announcementPage--;renderPublications('announcement');});if((announcementPage+1)*5<sortedPublications.length)button('Next posts',paging,()=>{announcementPage++;renderPublications('announcement');});}
 }
-document.querySelectorAll('[data-teacher-tab]').forEach(el => el.addEventListener('click', event => {
+document.querySelectorAll('[data-teacher-tab]').forEach(el => el.addEventListener('click', async event => {
     if (event.defaultPrevented) return;
-    if (!workspaceReady || busy || !allowDiscard()) { event.preventDefault(); return; }
+    event.preventDefault();
+    if (!workspaceReady || busy || !(await allowDiscard())) { event.preventDefault(); return; }
     rememberEdits();
+    if(el.href)window.location.assign(el.href);
 }));
-$('refreshTeacher').addEventListener('click', () => { if (allowDiscard()) task(() => refresh(), 'Classes refreshed.'); });
+$('refreshTeacher').addEventListener('click', async () => { if ((await allowDiscard())) task(async () => (await refresh()), 'Classes refreshed.'); });
 $('createClassForm').addEventListener('submit', event => {
     event.preventDefault(); const name = $('newClassName').value, description = $('newClassDescription').value;
     task(async () => { const id=await createTeacherClass(name,description);$('createClassForm').reset();rememberEdits(['createClassForm']);goToClassroom(id); },'Class created. Opening your classroom...');
@@ -1810,7 +1813,7 @@ for (const kind of ['announcement','assignment']) $(kind + 'Cancel').addEventLis
     rememberEdits([kind + 'Form']);
     $(kind + 'Cancel').hidden = true; if (kind === 'assignment') {renderAssignmentRecipients();renderAssignmentPreview();} else {renderAnnouncementRecipients();renderAnnouncementPreview();} rememberEdits([kind+'Form']);if(kind==='announcement')closeAnnouncementComposer(false);if(kind==='assignment')closeAssignmentComposer();message('Editing cancelled.');
 });
-function clearWorkspace() {
+async function clearWorkspace() {
     pendingClassroomChange=null;classroomRecovery.hidden=true;
     teacherAccountData=null;accountNameBaseline='';preferredName.value='';nameStatus.textContent='';accountHeroName.textContent='Your account';accountHeroTitle.textContent='Account settings';accountHeroBadge.textContent='Teacher account';avatarGrid.replaceChildren();accountAvatar.textContent='T';verificationDetails.replaceChildren();verificationStatus.textContent='Checking your application...';delete verificationStatus.dataset.state;avatarSelect.replaceChildren();avatarSave.disabled=avatarSelect.disabled=true;for(const key of ['name','email','role','verified'])$('teacherAccount'+key).textContent='Loading...';
     $('teacherFollowupContext')?.remove();publicationWrites.clear();if(announcementDialog?.open)announcementDialog.close();if(assignmentDialog?.open)assignmentDialog.close();for(const kind of ['announcement','assignment']){const notice=$(kind+'SaveNotice');if(notice)notice.hidden=true;}
@@ -1838,16 +1841,16 @@ function clearWorkspace() {
     dashboardFeed.replaceChildren();
     $('teacherClassPickerLabel').textContent = 'Choose or create a class'; classPicker.open = true;
     rememberEdits();
-    tab(routeName); applyArchiveState();
+    (await tab(routeName)); applyArchiveState();
 }
 window.addEventListener('pagehide', clearWorkspace);
 window.addEventListener('pageshow', event => { if (event.persisted) location.reload(); });
-onAuthStateChanged(auth, user => {
-    clearWorkspace();
+onAuthStateChanged(auth, async user => {
+    (await clearWorkspace());
     if (!user) return;
     task(async () => {
         const generation = epoch;
-        if(routeName==='settings'){workspaceReady=true;renderTeacherAccount();tab('settings');return;}
+        if(routeName==='settings'){workspaceReady=true;renderTeacherAccount();(await tab('settings'));return;}
         // Classroom management has no mission picker; avoid reading the full
         // lesson/story catalog just to show the directory or class details.
         const needsCatalog=routeName!=='classes'&&routeName!=='announcements'&&(routeName!=='overview'||!!routeParameters.get('class'));
@@ -1882,7 +1885,7 @@ onAuthStateChanged(auth, user => {
             const generation = epoch, classId = selected;
             const report = await loadTeacherStudent(classId, studentId);
             if (generation !== epoch || classId !== selected) return;
-            renderReport([report.profile?.firstName, report.profile?.lastName].filter(Boolean).join(' ') || 'Student', report);
+            (await renderReport([report.profile?.firstName, report.profile?.lastName].filter(Boolean).join(' ') || 'Student', report));
             $('studentReport').scrollIntoView({block:'start', behavior:'smooth'});
         });
     });

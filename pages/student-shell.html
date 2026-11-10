@@ -22,6 +22,7 @@
         @keyframes shell-turn { to { transform: rotate(360deg); } }
         @media (prefers-reduced-motion: reduce) { .shell-compass { animation: none; } }
     </style>
+<link rel="stylesheet" href="../css/app-dialog.css">
 </head>
 <body>
     <div id="shellLoading" role="status"><span class="shell-compass" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z"/></svg></span><span id="shellLoadingMessage">Opening your learning journey…</span><div id="shellRecovery" hidden><p>Check your connection, then try again. Saved learning progress will stay in your account.</p><div class="shell-actions"><button id="shellRetry" type="button">Try Again</button><a href="student-dashboard.html">Go to Home</a></div></div></div>

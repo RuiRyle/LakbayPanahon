@@ -1,0 +1,39 @@
+{
+  "pass": true,
+  "mode": "fixed local package, actual browser/SDK and emulator Rules; synthetic accounts; no email delivery or grading claims",
+  "checks": [
+    "pending teacher signs in to unified application setup",
+    "pending teacher cannot directly open classroom dashboard",
+    "teacher submits school-affiliation application through actual form",
+    "overview fits 1440px",
+    "overview fits 900px",
+    "overview fits 390px",
+    "accounts fits 1440px",
+    "accounts fits 900px",
+    "accounts fits 390px",
+    "fixed package is explicitly connected to emulator",
+    "teacher-review fits 1440px",
+    "teacher-review fits 900px",
+    "teacher-review fits 390px",
+    "admin approves current application through UI with visible audit record",
+    "approval records the exact verified application revision",
+    "administration fits 1440px",
+    "administration fits 900px",
+    "administration fits 390px",
+    "empty-queue fits 1440px",
+    "empty-queue fits 900px",
+    "empty-queue fits 390px",
+    "approved teacher next login opens classroom dashboard",
+    "student without class membership can open independent learning",
+    "admin deactivates approved teacher through account form",
+    "deactivated teacher cannot return to classroom dashboard"
+  ],
+  "package": "build\\student-web-6boDOl",
+  "manifestSha256": "3c936f3d46480669deead09be59a5eba63aea6ae0b5d64d29868ff52eb379eed",
+  "confirmations": [
+    "Record approved for CrossRole teacher?\n\nApplicant-facing reason: Local acceptance identity and affiliation verified.\n\nApproval grants the reviewed teacher classroom access. Existing access is governed by the saved account status. This decision will be saved with its audit record.",
+    "Change access for cross-role-teacher-162f1f15-6e46-4e0c-b4bb-752a054b2cb0@example.com from active to inactive?\n\nReason: Synthetic access-revocation acceptance check.\n\nAn inactive account loses protected access. Saved learning records are preserved. The decision will be recorded."
+  ],
+  "cleanupErrors": [],
+  "verifiedAt": "2026-11-09T04:39:50.418Z"
+}

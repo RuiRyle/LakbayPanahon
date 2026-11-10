@@ -1,0 +1,18 @@
+{
+  "mode": "loopback-node-http-synthetic-signed-app-check",
+  "status": "pass",
+  "checks": [
+    "Invalid App Check denied with real emulator Auth",
+    "Signed start, issuance replay and resume over HTTP",
+    "Issued questions and adaptive follow-up completed over HTTP",
+    "Four duplicate HTTP submissions return passing results with exact mission XP, completed progress and artifact",
+    "Resume and same-attempt submit preserve XP after discarded acknowledgement",
+    "Account disabled after token issuance denied over HTTP"
+  ],
+  "limitations": [
+    "Fixture resets only demo-lakbaypanahon Firestore, separate from demo-lakbay-local.",
+    "Generated App Check signing fixture; not real provider attestation.",
+    "No cloud IAM, hosted limits, TLS, cold starts or production credentials tested."
+  ],
+  "awardedXp": 45
+}

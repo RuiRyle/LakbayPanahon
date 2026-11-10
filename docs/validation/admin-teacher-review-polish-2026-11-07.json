@@ -1,0 +1,115 @@
+{
+  "mode": "local-browser-real-modules-mocked-firestore",
+  "verifiedAt": "2026-11-07T14:32:50.588Z",
+  "pass": true,
+  "sources": [
+    {
+      "file": "js/admin-accounts.js",
+      "sha256": "f112b64d1f6d2d9561d6bd721a84467e9d92c7425e1d68c636397fc76d55d008"
+    },
+    {
+      "file": "js/admin-workspace.js",
+      "sha256": "c0ad5dccb310a3cb7a4853858a4d85a89b7382885fc9ab86b0311aab5681862f"
+    },
+    {
+      "file": "js/auth-guard.js",
+      "sha256": "f425664feb178bcb4d3df2244de82ac079e04b1563c5af14dc7bb0d2430990a9"
+    },
+    {
+      "file": "pages/admin-dashboard.html",
+      "sha256": "ad626f9c549e8d6cb7cecc24b4832540a0201cb1397f77c330c29b3eabdd0a86"
+    },
+    {
+      "file": "css/admin-workspace.css",
+      "sha256": "945ee2b736fd6b5c87174c56967e8c7e02e43aeaec5a4f5cb4023dfc1316d0b2"
+    }
+  ],
+  "results": [
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "admin shell has no unused teacher-sidebar offset",
+        "initial account review explains how to begin",
+        "pending-teacher queue paginates at 25",
+        "next account page",
+        "previous account page",
+        "submitted-application queue excludes incomplete accounts",
+        "profile names use safe text",
+        "selected account replaces the placeholder with clear queue context",
+        "account selection focuses the selected account heading",
+        "cancelled refresh preserves the unsaved decision and queue",
+        "leaving with an unsaved decision requests browser confirmation",
+        "application facts and verification/decision steps have a clear structure",
+        "licensed route shows its credential check without unrelated endorsement",
+        "qualification draft also survives cancelled navigation",
+        "qualification save blocks account navigation",
+        "teacher approval requires verification",
+        "saved qualification stays locked and preserves its reason after refresh failure",
+        "verified approval updates account",
+        "reason appears in audit history",
+        "deactivation appends audit record",
+        "teacher reactivation works after verification",
+        "student management does not show teacher verification",
+        "unconfirmed account save exposes read-only check and blocks resubmission",
+        "missing receipt preserves the draft without another write",
+        "late commit is confirmed by the exact receipt without replay",
+        "student deactivation preserves learning progress",
+        "confirmed account save remains successful and locked when refresh fails",
+        "saved account refresh does not write another decision",
+        "stale account decision rejected without audit write",
+        "same-status profile change invalidates an old review",
+        "audit history is paginated",
+        "load more audit decisions without duplicates",
+        "read error hides stale account details",
+        "refresh recovers after read failure",
+        "offline admin guard stays locked with visible retry",
+        "no page overflow at 390px",
+        "sign out clears profiles and reasons"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 1280,
+      "checks": [
+        "admin shell has no unused teacher-sidebar offset",
+        "initial account review explains how to begin",
+        "pending-teacher queue paginates at 25",
+        "next account page",
+        "previous account page",
+        "submitted-application queue excludes incomplete accounts",
+        "profile names use safe text",
+        "selected account replaces the placeholder with clear queue context",
+        "account selection focuses the selected account heading",
+        "cancelled refresh preserves the unsaved decision and queue",
+        "leaving with an unsaved decision requests browser confirmation",
+        "application facts and verification/decision steps have a clear structure",
+        "licensed route shows its credential check without unrelated endorsement",
+        "qualification draft also survives cancelled navigation",
+        "qualification save blocks account navigation",
+        "teacher approval requires verification",
+        "saved qualification stays locked and preserves its reason after refresh failure",
+        "verified approval updates account",
+        "reason appears in audit history",
+        "deactivation appends audit record",
+        "teacher reactivation works after verification",
+        "student management does not show teacher verification",
+        "unconfirmed account save exposes read-only check and blocks resubmission",
+        "missing receipt preserves the draft without another write",
+        "late commit is confirmed by the exact receipt without replay",
+        "student deactivation preserves learning progress",
+        "confirmed account save remains successful and locked when refresh fails",
+        "saved account refresh does not write another decision",
+        "stale account decision rejected without audit write",
+        "same-status profile change invalidates an old review",
+        "audit history is paginated",
+        "load more audit decisions without duplicates",
+        "read error hides stale account details",
+        "refresh recovers after read failure",
+        "offline admin guard stays locked with visible retry",
+        "no page overflow at 1280px",
+        "sign out clears profiles and reasons"
+      ]
+    }
+  ]
+}

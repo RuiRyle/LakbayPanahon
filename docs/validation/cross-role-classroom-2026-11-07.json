@@ -1,0 +1,523 @@
+{
+  "mode": "local-emulator-synthetic-identities-not-deployed",
+  "verifiedAt": "2026-11-07T14:38:33.868Z",
+  "sourceHash": "eb74bc329cb5846826cae7c422ae3b9cdd97bb6fae8931733cf2e99e08d409ba",
+  "steps": [
+    {
+      "name": "approved teacher creates class",
+      "status": "pass"
+    },
+    {
+      "name": "pending teacher denied class creation",
+      "status": "pass"
+    },
+    {
+      "name": "student denied class creation",
+      "status": "pass"
+    },
+    {
+      "name": "owner reads class",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher denied class read",
+      "status": "pass"
+    },
+    {
+      "name": "teacher queries owned classes",
+      "status": "pass"
+    },
+    {
+      "name": "teacher cannot query foreign classes",
+      "status": "pass"
+    },
+    {
+      "name": "class ownership cannot transfer",
+      "status": "pass"
+    },
+    {
+      "name": "owner edits class details",
+      "status": "pass"
+    },
+    {
+      "name": "atomic invitation generation",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot read invitation",
+      "status": "pass"
+    },
+    {
+      "name": "student may look up exact invitation",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot enumerate invitations",
+      "status": "pass"
+    },
+    {
+      "name": "student joins with active code",
+      "status": "pass"
+    },
+    {
+      "name": "joined student reads class",
+      "status": "pass"
+    },
+    {
+      "name": "nonmember cannot read class",
+      "status": "pass"
+    },
+    {
+      "name": "owner queries active roster",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot query roster",
+      "status": "pass"
+    },
+    {
+      "name": "teacher cannot modify membership",
+      "status": "pass"
+    },
+    {
+      "name": "owner establishes report link",
+      "status": "pass"
+    },
+    {
+      "name": "cannot link nonmember",
+      "status": "pass"
+    },
+    {
+      "name": "owner reads active member profile",
+      "status": "pass"
+    },
+    {
+      "name": "owner queries member studentProgress",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot query studentProgress",
+      "status": "pass"
+    },
+    {
+      "name": "nonmember report query denied studentProgress",
+      "status": "pass"
+    },
+    {
+      "name": "owner queries member studentQuizAttempts",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot query studentQuizAttempts",
+      "status": "pass"
+    },
+    {
+      "name": "nonmember report query denied studentQuizAttempts",
+      "status": "pass"
+    },
+    {
+      "name": "owner saves announcement draft",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot read draft",
+      "status": "pass"
+    },
+    {
+      "name": "owner publishes announcement",
+      "status": "pass"
+    },
+    {
+      "name": "member reads announcement",
+      "status": "pass"
+    },
+    {
+      "name": "nonmember cannot read announcement",
+      "status": "pass"
+    },
+    {
+      "name": "member queries published announcements",
+      "status": "pass"
+    },
+    {
+      "name": "teacher reads drafts and published items",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot publish",
+      "status": "pass"
+    },
+    {
+      "name": "owner assigns existing mission",
+      "status": "pass"
+    },
+    {
+      "name": "member reads assignment",
+      "status": "pass"
+    },
+    {
+      "name": "owner can check absent feedback before sending",
+      "status": "pass"
+    },
+    {
+      "name": "owner sends mission-specific student feedback",
+      "status": "pass"
+    },
+    {
+      "name": "recipient reads teacher feedback",
+      "status": "pass"
+    },
+    {
+      "name": "recipient queries feedback for own class",
+      "status": "pass"
+    },
+    {
+      "name": "owner queries recipient feedback",
+      "status": "pass"
+    },
+    {
+      "name": "nonrecipient cannot read feedback",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot read feedback",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot send teacher feedback",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot overwrite feedback",
+      "status": "pass"
+    },
+    {
+      "name": "recipient marks feedback read",
+      "status": "pass"
+    },
+    {
+      "name": "recipient cannot alter feedback message",
+      "status": "pass"
+    },
+    {
+      "name": "recipient cannot add score to feedback",
+      "status": "pass"
+    },
+    {
+      "name": "owner updates feedback revision and resets acknowledgement",
+      "status": "pass"
+    },
+    {
+      "name": "owner cannot skip feedback revision",
+      "status": "pass"
+    },
+    {
+      "name": "owner cannot store private fields in student feedback",
+      "status": "pass"
+    },
+    {
+      "name": "owner cannot send feedback to nonmember",
+      "status": "pass"
+    },
+    {
+      "name": "owner checks for absent private follow-up",
+      "status": "pass"
+    },
+    {
+      "name": "owner records private planned follow-up",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot read private follow-up",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot read private follow-up",
+      "status": "pass"
+    },
+    {
+      "name": "owner queries private follow-up",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot query private follow-up",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot create private follow-up",
+      "status": "pass"
+    },
+    {
+      "name": "private note rejects invalid status",
+      "status": "pass"
+    },
+    {
+      "name": "private note rejects score fields",
+      "status": "pass"
+    },
+    {
+      "name": "note edits preserve follow-up status time",
+      "status": "pass"
+    },
+    {
+      "name": "owner marks follow-up discussed with new time",
+      "status": "pass"
+    },
+    {
+      "name": "editing discussed note preserves discussion time",
+      "status": "pass"
+    },
+    {
+      "name": "stale support revision cannot overwrite newer note",
+      "status": "pass"
+    },
+    {
+      "name": "owner reopens follow-up with new status boundary",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot remove class member",
+      "status": "pass"
+    },
+    {
+      "name": "owning teacher removes class membership",
+      "status": "pass"
+    },
+    {
+      "name": "removal revokes teacher progress access",
+      "status": "pass"
+    },
+    {
+      "name": "removal revokes teacher private note access",
+      "status": "pass"
+    },
+    {
+      "name": "removal revokes student feedback access",
+      "status": "pass"
+    },
+    {
+      "name": "removed student retains personal progress",
+      "status": "pass"
+    },
+    {
+      "name": "removed student may rejoin with active invitation",
+      "status": "pass"
+    },
+    {
+      "name": "owner can set optional assignment deadline",
+      "status": "pass"
+    },
+    {
+      "name": "member reads dated assignment",
+      "status": "pass"
+    },
+    {
+      "name": "deadline rejects untyped string",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot change deadline",
+      "status": "pass"
+    },
+    {
+      "name": "other teacher cannot change deadline",
+      "status": "pass"
+    },
+    {
+      "name": "owner can remove optional deadline",
+      "status": "pass"
+    },
+    {
+      "name": "cannot assign wrong chapter",
+      "status": "pass"
+    },
+    {
+      "name": "teacher prepares second mission draft",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot read draft mission assignment",
+      "status": "pass"
+    },
+    {
+      "name": "teacher publishes second mission",
+      "status": "pass"
+    },
+    {
+      "name": "student queries published class missions",
+      "status": "pass"
+    },
+    {
+      "name": "nonmember cannot read mission assignment",
+      "status": "pass"
+    },
+    {
+      "name": "student saves completion attempt and paired reward",
+      "status": "pass"
+    },
+    {
+      "name": "teacher sees student-written mission completion",
+      "status": "pass"
+    },
+    {
+      "name": "teacher sees student-written attempt",
+      "status": "pass"
+    },
+    {
+      "name": "teacher sends guidance after student-earned completion",
+      "status": "pass"
+    },
+    {
+      "name": "student reads guidance after mission completion",
+      "status": "pass"
+    },
+    {
+      "name": "student acknowledges the post-mission guidance",
+      "status": "pass"
+    },
+    {
+      "name": "teacher records private follow-up for completed mission",
+      "status": "pass"
+    },
+    {
+      "name": "student cannot read post-mission private discussion",
+      "status": "pass"
+    },
+    {
+      "name": "follow-up preserves student-earned mission result",
+      "status": "pass"
+    },
+    {
+      "name": "feedback and support do not issue extra XP",
+      "status": "pass"
+    },
+    {
+      "name": "teacher cannot change student score",
+      "status": "pass"
+    },
+    {
+      "name": "student replay saves attempt with no second reward",
+      "status": "pass"
+    },
+    {
+      "name": "student can read unchanged XP after replay",
+      "status": "pass"
+    },
+    {
+      "name": "teacher reads active mission catalog",
+      "status": "pass"
+    },
+    {
+      "name": "teacher cannot edit curriculum",
+      "status": "pass"
+    },
+    {
+      "name": "rotate code and revoke old atomically",
+      "status": "pass"
+    },
+    {
+      "name": "old invitation no longer joins",
+      "status": "pass"
+    },
+    {
+      "name": "new invitation admits student",
+      "status": "pass"
+    },
+    {
+      "name": "revocation clears current invitation",
+      "status": "pass"
+    },
+    {
+      "name": "stale active code rejected after revocation",
+      "status": "pass"
+    },
+    {
+      "name": "archive clears invitation",
+      "status": "pass"
+    },
+    {
+      "name": "archived class prevents reporting",
+      "status": "pass"
+    },
+    {
+      "name": "archived class prevents teacher member removal",
+      "status": "pass"
+    },
+    {
+      "name": "archived class prevents feedback updates",
+      "status": "pass"
+    },
+    {
+      "name": "archived class prevents private follow-up writes",
+      "status": "pass"
+    },
+    {
+      "name": "archived class prevents publication",
+      "status": "pass"
+    },
+    {
+      "name": "student progress remains saved after archive",
+      "status": "pass"
+    },
+    {
+      "name": "restore class",
+      "status": "pass"
+    },
+    {
+      "name": "member may leave class",
+      "status": "pass"
+    },
+    {
+      "name": "leaving immediately revokes teacher progress read",
+      "status": "pass"
+    },
+    {
+      "name": "leaving immediately revokes teacher attempt query",
+      "status": "pass"
+    },
+    {
+      "name": "leaving immediately revokes teacher profile read",
+      "status": "pass"
+    },
+    {
+      "name": "student retains progress after leaving",
+      "status": "pass"
+    },
+    {
+      "name": "leaving revokes published announcement access",
+      "status": "pass"
+    },
+    {
+      "name": "leaving revokes published assignment access",
+      "status": "pass"
+    },
+    {
+      "name": "leaving revokes student feedback access",
+      "status": "pass"
+    },
+    {
+      "name": "leaving revokes teacher feedback access",
+      "status": "pass"
+    },
+    {
+      "name": "leaving revokes teacher private follow-up access",
+      "status": "pass"
+    },
+    {
+      "name": "leaving revokes feedback acknowledgement",
+      "status": "pass"
+    },
+    {
+      "name": "leaving revokes teacher access to new completion",
+      "status": "pass"
+    },
+    {
+      "name": "student retains new completion after leaving",
+      "status": "pass"
+    },
+    {
+      "name": "inactive teacher loses class access",
+      "status": "pass"
+    }
+  ]
+}

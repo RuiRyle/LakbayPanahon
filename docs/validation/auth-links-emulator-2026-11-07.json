@@ -1,0 +1,16 @@
+{
+  "pass": true,
+  "mode": "loopback Auth emulator with one temporary identity; no email delivery or frontend redemption-page claim",
+  "checks": [
+    "new identity starts with unverified email",
+    "generated verification code can be applied",
+    "fresh account lookup reports verified email after redemption",
+    "reset code validates before password change",
+    "reset code changes the account password",
+    "old password no longer signs in",
+    "replacement password signs in",
+    "used reset code cannot change the password again"
+  ],
+  "cleanup": "temporary identity deleted",
+  "verifiedAt": "2026-11-07T14:50:57.601Z"
+}

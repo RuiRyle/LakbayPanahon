@@ -1,0 +1,17 @@
+{
+  "archiveValid": true,
+  "mode": "frozen-archive-validation-only",
+  "fourEndpoints": [
+    "startStudentAssessment",
+    "advanceStudentAssessment",
+    "resumeStudentAssessment",
+    "submitStudentActivity"
+  ],
+  "protocolEnabled": false,
+  "workingSourceMatches": false,
+  "sourceDrift": [
+    "js/student-assessment-client.js",
+    "functions/student-assessment.js",
+    "firestore.assessment.rules"
+  ]
+}

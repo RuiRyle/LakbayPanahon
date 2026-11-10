@@ -1,0 +1,99 @@
+{
+  "mode": "local-browser-real-modules-mocked-firestore",
+  "verifiedAt": "2026-11-07T14:08:09.712Z",
+  "pass": true,
+  "sources": [
+    {
+      "file": "js/admin-accounts.js",
+      "sha256": "97e1b036664415fa7e86f464b13e75f14cd8c8c7dc081d87afcb8620c8a0595b"
+    },
+    {
+      "file": "js/admin-workspace.js",
+      "sha256": "20fbdb52f1be35886e315e01c254d5f8ce83a826f8360c8f8a8651674b4e94a1"
+    },
+    {
+      "file": "js/auth-guard.js",
+      "sha256": "f425664feb178bcb4d3df2244de82ac079e04b1563c5af14dc7bb0d2430990a9"
+    },
+    {
+      "file": "pages/admin-dashboard.html",
+      "sha256": "dda6a6d0d8d3dcfaacb4197fb04ccfb18c0c6d2982950913a87bbf658c3da8a6"
+    },
+    {
+      "file": "css/admin-workspace.css",
+      "sha256": "9c442257ea9286a4807245da94a88ba5218c13db3f0ffdba49585c04e330f9e4"
+    }
+  ],
+  "results": [
+    {
+      "state": "PASS",
+      "width": 1280,
+      "checks": [
+        "admin shell has no unused teacher-sidebar offset",
+        "initial account review explains how to begin",
+        "pending-teacher queue paginates at 25",
+        "next account page",
+        "previous account page",
+        "submitted-application queue excludes incomplete accounts",
+        "profile names use safe text",
+        "selected account replaces the placeholder with clear queue context",
+        "account selection focuses the selected account heading",
+        "cancelled refresh preserves the unsaved decision and queue",
+        "leaving with an unsaved decision requests browser confirmation",
+        "qualification draft also survives cancelled navigation",
+        "qualification save blocks account navigation",
+        "teacher approval requires verification",
+        "verified approval updates account",
+        "reason appears in audit history",
+        "deactivation appends audit record",
+        "teacher reactivation works after verification",
+        "student management does not show teacher verification",
+        "student deactivation preserves learning progress",
+        "stale account decision rejected without audit write",
+        "same-status profile change invalidates an old review",
+        "audit history is paginated",
+        "load more audit decisions without duplicates",
+        "read error hides stale account details",
+        "refresh recovers after read failure",
+        "offline admin guard stays locked with visible retry",
+        "no page overflow at 1280px",
+        "sign out clears profiles and reasons"
+      ]
+    },
+    {
+      "state": "PASS",
+      "width": 390,
+      "checks": [
+        "admin shell has no unused teacher-sidebar offset",
+        "initial account review explains how to begin",
+        "pending-teacher queue paginates at 25",
+        "next account page",
+        "previous account page",
+        "submitted-application queue excludes incomplete accounts",
+        "profile names use safe text",
+        "selected account replaces the placeholder with clear queue context",
+        "account selection focuses the selected account heading",
+        "cancelled refresh preserves the unsaved decision and queue",
+        "leaving with an unsaved decision requests browser confirmation",
+        "qualification draft also survives cancelled navigation",
+        "qualification save blocks account navigation",
+        "teacher approval requires verification",
+        "verified approval updates account",
+        "reason appears in audit history",
+        "deactivation appends audit record",
+        "teacher reactivation works after verification",
+        "student management does not show teacher verification",
+        "student deactivation preserves learning progress",
+        "stale account decision rejected without audit write",
+        "same-status profile change invalidates an old review",
+        "audit history is paginated",
+        "load more audit decisions without duplicates",
+        "read error hides stale account details",
+        "refresh recovers after read failure",
+        "offline admin guard stays locked with visible retry",
+        "no page overflow at 390px",
+        "sign out clears profiles and reasons"
+      ]
+    }
+  ]
+}

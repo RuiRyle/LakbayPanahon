@@ -63,7 +63,12 @@ export function reviewEvidence(assignment,attempts,userId,now=Date.now()) {
     const dated=relevant.filter(a=>Number.isFinite(a.completedAt?.toMillis?.())&&a.completedAt.toMillis()>0&&a.completedAt.toMillis()<=now&&Number.isFinite(a.score)&&a.score>=0&&a.score<=100);
     const within=dated.filter(a=>a.completedAt.toMillis()<=cutoff);
     const before=within.filter(a=>a.completedAt.toMillis()<=anchor).sort((a,b)=>b.completedAt.toMillis()-a.completedAt.toMillis());
-    const after=within.filter(a=>a.completedAt.toMillis()>anchor).sort((a,b)=>b.completedAt.toMillis()-a.completedAt.toMillis());
+    const after=within.filter(a=>a.completedAt.toMillis()>anchor&&
+        (!assignment.id||!assignment.classId||(a.classroom?.classId===assignment.classId&&a.classroom.assignmentId===assignment.id&&
+          a.classroom.version===(assignment.submissionVersion??1)&&Number.isFinite(a.classroom.issuedAt)&&
+          Number.isFinite(a.classroom.joinedAt)&&a.classroom.issuedAt>a.classroom.joinedAt&&
+          a.classroom.issuedAt>a.classroom.assignedAt&&a.classroom.assignedAt<=anchor&&a.classroom.issuedAt<=a.completedAt.toMillis())))
+        .sort((a,b)=>b.completedAt.toMillis()-a.completedAt.toMillis());
     // A later retry cannot move the date on which the review goal was first reached.
     const passed=after.filter(a=>a.passed===true).sort((a,b)=>a.completedAt.toMillis()-b.completedAt.toMillis()||String(a.id||'').localeCompare(String(b.id||'')))[0];
     const ambiguous=rows=>rows.length>1&&rows[0].completedAt.toMillis()===rows[1].completedAt.toMillis();

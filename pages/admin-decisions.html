@@ -20,14 +20,23 @@
     <link rel="stylesheet" href="../css/navy-gold-theme.css">
     <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
     <link rel="stylesheet" href="../css/page-transition.css">
+    <link rel="stylesheet" href="../css/workspace-loading.css">
     <link rel="stylesheet" href="../css/expedition.css">
     <link rel="stylesheet" href="../css/teacher-workspace.css">
     <link rel="stylesheet" href="../css/teacher-application.css">
     <link rel="stylesheet" href="../css/interface-clarity.css">
     <link rel="stylesheet" href="../css/admin-workspace.css">
+<link rel="stylesheet" href="../css/app-dialog.css">
+<link rel="stylesheet" href="../css/admin-decision-records.css">
+    <link rel="stylesheet" href="../css/contrast-refinements.css">
 </head>
 
-<body data-admin-page="records" data-role="admin" class="lakbay-theme teacher-workspace admin-workspace">
+<body data-admin-page="records" data-role="admin" class="lakbay-theme teacher-workspace admin-workspace workspace-loading">
+    <div id="adminLoading" class="student-loading-shell" role="status" aria-live="polite">
+        <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p id="adminLoadingMessage">Opening your administration space...</p><button id="adminLoadingRetry" type="button" hidden>Reload page</button><div aria-hidden="true"><div class="student-loading-heading"></div><div class="student-loading-cards"><i></i><i></i><i></i></div><div class="student-loading-panel"></div></div></div></div>
+    </div>
+    <script src="../js/admin-loading.js" defer></script>
     <a class="student-skip-link" href="#admin-main">Skip to main content</a>
     <div class="teacher-shell">
         <header class="teacher-topbar topbar"><button id="adminMenuToggle" type="button" class="secondary" aria-expanded="false" aria-controls="adminNavigation" aria-label="Toggle administrator menu">&#9776;</button><div class="student-page-title"><span class="student-page-title-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 3h13a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-2V3Zm0 14h16M8 7h8M8 11h6"/></svg></span><span class="student-page-title-copy"><small>ADMINISTRATION SPACE</small><strong id="adminPageTitle">Administrator Dashboard</strong></span></div><div class="admin-refresh-group"><button id="loadAdminOverview" type="button" class="admin-refresh-button" aria-label="Refresh dashboard data" title="Refresh dashboard data"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M6.1 7a7 7 0 0 1 11.6-1L20 9M4 15l2.3 3A7 7 0 0 0 18 17"/></svg></button><span id="adminHeaderSnapshot" class="admin-header-snapshot">Not updated yet</span></div></header>
@@ -40,7 +49,7 @@
             <a data-teacher-tab="records" href="admin-decisions.html" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg> Decision Records</a>
             <a data-teacher-tab="environment" href="admin-administration.html" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6h1m-1 11h1"/></svg> Administration</a>
             </div>
-            <div class="teacher-sidebar-note"><button type="button" class="logout-button">Log Out</button></div>
+            <div class="teacher-sidebar-note"><button type="button" class="logout-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v16h5M13 7l5 5-5 5M8 12h13"/></svg><span>Log Out</span></button></div>
         </nav>
         <main id="admin-main" tabindex="-1">
             <div class="teacher-intro teacher-intro-compact"><span class="eyebrow">ADMINISTRATION</span><h1 id="adminViewHeading" tabindex="-1">Administrator overview</h1><p id="adminViewDescription">Check pending applications and review your recorded decisions.</p></div>

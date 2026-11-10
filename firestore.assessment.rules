@@ -458,7 +458,9 @@ service cloud.firestore {
           && data.keys().hasOnly(['classId','title','body','status','publishedAt','updatedAt'])
           && data.body is string && data.body.size() > 0 && data.body.size() <= 3000)
         || (kind == 'assignment'
-          && data.keys().hasOnly(['classId','title','instructions','missionId','chapterId','status','publishedAt','updatedAt','dueAt','endedAt'])
+          && data.keys().hasOnly(['classId','title','instructions','missionId','chapterId','status','publishedAt','updatedAt','dueAt','endedAt','submissionVersion'])
+          && data.submissionVersion is int && data.submissionVersion > 0
+          && data.submissionVersion == (resource == null ? 1 : data.status in ['closed','withdrawn'] ? resource.data.get('submissionVersion',1) : resource.data.get('submissionVersion',0) + 1)
           && (data.get('dueAt', null) == null || data.dueAt is timestamp)
           && data.instructions is string && data.instructions.size() <= 1500
           && data.missionId is string && data.chapterId is string

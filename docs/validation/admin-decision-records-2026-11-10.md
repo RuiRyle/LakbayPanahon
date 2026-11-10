@@ -1,0 +1,9 @@
+# Decision Records visual refinement — 10 November 2026
+
+Used the supplied reference to introduce a navy/gold archive banner, four summary cards, searchable paginated records and a side-by-side selected-decision panel. On smaller screens the detail panel stacks below the list. Details show the saved account identifier, action, previous/new status, actor, Philippine time, record identifier and reason. The full account-history action retains the existing protected route.
+
+The current feed is the existing administrator-owned `accountModeration` snapshot: at most ten records, in document order. Summary cards and filters explicitly describe loaded records; they do not claim platform-wide totals. This feed does not supply account names/email/roles or the separate qualification decision types. The UI uses actual account identifiers and access-activation/deactivation labels rather than inventing applicant identities or presenting activations as qualification approvals. Search covers account ID, reason, actor and status; action filtering is local. Five records appear per page. CSV export includes only filtered loaded audit rows, quotes values and neutralizes leading spreadsheet formula characters.
+
+No Firestore reads were added and no data, permission rules or hosting changed. The separate qualification-review history is not merged into this feed by this presentation update.
+
+Validation: the isolated real-renderer Chrome fixture passes at 1440px and 390px, covering summaries, paging, search/action filtering, safe reason rendering, selected details, history routing, empty state and stale-session guards. JavaScript syntax and scoped whitespace checks pass. Public dependency inventory: 37 pages, 612 files, no missing/rejected references. The fixture uses synthetic data and is not hosted administrator acceptance. Earlier broad teacher/admin regression limitations remain recorded separately.

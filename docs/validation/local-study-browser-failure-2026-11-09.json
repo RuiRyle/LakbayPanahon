@@ -1,0 +1,22 @@
+{
+  "mode": "actual-pages-local-seeded-student",
+  "scenario": "failure-reload-retry",
+  "package": "build/student-web-SwUlGX",
+  "verifiedAt": "2026-11-09T03:50:17.863Z",
+  "pass": true,
+  "checks": [
+    "dedicated server opts into the demo emulator project",
+    "authenticated prologue lesson loads from seeded catalog",
+    "lesson reopens after browser reload",
+    "five answers submitted through actual quiz controls",
+    "actual quiz controls display the expected graded result",
+    "saved quiz result survives browser reload",
+    "lesson/result reloads preserve the one 40 XP award",
+    "failed result offers targeted lesson and practice links",
+    "explicit retry opens a fresh unanswered attempt"
+  ],
+  "limits": [
+    "Requires prior local-secured-catalog-smoke pass on fresh seeded student",
+    "Does not exercise full lesson interactions or a new student unlocking the next mission"
+  ]
+}

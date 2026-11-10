@@ -1,5 +1,25 @@
 # Student, teacher and administrator completion checklist
 
+## Active local finalization status — 9 November 2026
+
+The owner has confirmed the three-role interactions work and explicitly deferred deployment. **Do not continue hosting setup, create accounts/credentials, or repeat approved UI redesigns.** Preserve the reported manual acceptance. The older ordered queue below is historical where superseded by this section.
+
+The current finalization audit is [recorded here](validation/final-local-finalization-review-2026-11-09.md). Twenty-four focused suites passed: 175 TAP assertions and 15 custom assertions, with no failures. These cover student sessions/recovery, teacher policies/onboarding, administrator decisions, exports and AI-client boundaries. They are not a fresh browser run of every page.
+
+| Requirement | Current evidence | Remaining local work |
+|---|---|---|
+| Connected Student/Teacher/Administrator workflow | Owner reports successful manual walkthrough; local browser/Rules evidence retained | Reopen only for a reported defect or relevant change |
+| Assessment grading/replay/rewards | Local secured browser and backend evidence; latest signed HTTP regression passed | Preserve accepted core; no new reward implementation |
+| Administrator review and separate activation | Final local acceptance plus fresh policy/recovery tests passed | Session-scoped recovery and page-scoped search remain disclosed limits |
+| Local persistence | Backup/restore verified separately | Back up before stopping; no automatic persistence guarantee |
+| Independent learning and optional classroom | Implemented policy and prior interaction evidence | Preserve independence; avoid classroom requirements for personal progress |
+| AI assistance | Client/request/parser regression passed | Live generated responses and study-specific recommendation quality are not verified by these tests |
+| Content/evaluation | Existing content validation passed; study scope recorded | Subject-review and participant-evaluation completion require actual reviewer evidence |
+| Every lesson in the final catalog | Bounded browser and content checks available | Full final-catalog browser coverage is not claimed; owner walkthrough scope was not itemized |
+| Real email and hosted behavior | Deferred external acceptance | Not a reason to deploy during local finalization |
+
+No confirmed functional failure was found in this focused audit, so no speculative application changes were made. This is a locally accepted working foundation, not an assertion that all study deliverables or future release gates are complete.
+
 Evidence reconciled 7 November 2026 (Asia/Manila). This is the consolidated remaining-work queue, not a declaration of production readiness. Existing dated validation reports remain the evidence for their particular builds and environments.
 
 ## Current decision

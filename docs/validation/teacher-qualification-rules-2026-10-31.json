@@ -1,7 +1,7 @@
 {
   "mode": "local-emulator-synthetic-qualification-checks",
-  "verifiedAt": "2026-11-05T11:30:43.125Z",
-  "sourceHash": "dc7779bd39bba7e3b2ee8b0fc350db98276261c94174719b6715bfef3ea8920f",
+  "verifiedAt": "2026-11-09T09:46:24.824Z",
+  "sourceHash": "eb74bc329cb5846826cae7c422ae3b9cdd97bb6fae8931733cf2e99e08d409ba",
   "steps": [
     {
       "name": "unverified teacher may save private draft",
@@ -128,11 +128,31 @@
       "status": "pass"
     },
     {
-      "name": "completed qualified approval atomically activates teacher",
+      "name": "qualification approval cannot simultaneously activate account",
+      "status": "pass"
+    },
+    {
+      "name": "completed qualified approval preserves pending account status",
+      "status": "pass"
+    },
+    {
+      "name": "approved but pending teacher cannot access owned class",
+      "status": "pass"
+    },
+    {
+      "name": "separate account activation requires its own audited write",
       "status": "pass"
     },
     {
       "name": "qualified teacher accesses owned class",
+      "status": "pass"
+    },
+    {
+      "name": "review cannot reactivate an inactive account",
+      "status": "pass"
+    },
+    {
+      "name": "approval preserves an inactive account restriction",
       "status": "pass"
     },
     {

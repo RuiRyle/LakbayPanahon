@@ -4,7 +4,7 @@
 
 ## Candidate verification
 
-Locally rechecked the accepted manifest: SHA-256 **`126b79f89883777b7e20345ca31a0e8e2093ab36424b7be64e6fe8160ee0a07f`**. All source/artifact hashes match; 235 artifacts; activation false. Exactly four assessment callable exports and seven Hosting payloads are included. Hosting remains 577 proposed paths / 570 preserved production paths. No unrelated AI endpoint exports, teacher-rule changes, broad CSP additions or dependency upgrades are included.
+Locally rechecked the accepted manifest: SHA-256 **`126b79f89883777b7e20345ca31a0e8e2093ab36424b7be64e6fe8160eQe0a07f`**. All source/artifact hashes match; 235 artifacts; activation false. Exactly four assessment callable exports and seven Hosting payloads are included. Hosting remains 577 proposed paths / 570 preserved production paths. No unrelated AI endpoint exports, teacher-rule changes, broad CSP additions or dependency upgrades are included.
 
 Runtime identity is `assessment-runtime@lakbaypanahon-1797e.iam.gserviceaccount.com`. Important discrepancy to resolve before deployment: **the accepted package still sets maxInstances 10, does not explicitly set concurrency, and its inert policy proposes 10 starts/minute and 200/day.** These are not the discussed pilot proposal of max 2/concurrency 8 and 3 starts/minute/60 daily. Do not claim otherwise or silently override the accepted hash. A separately approved local configuration-only candidate/review is needed if those pilot settings are selected. No IAM grant is contained in this package; role JSON files are proposals.
 

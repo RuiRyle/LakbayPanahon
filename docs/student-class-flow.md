@@ -1,5 +1,7 @@
 # Student My Class
 
+**10 November correction, implemented locally:** [Separate classroom submissions](validation/classroom-submissions-2026-11-10.md) supersede the prior-completion policy below. Class assignments and targeted reviews require a fresh server-issued attempt linked to the class, assignment and version. Solo completion stays saved and appears separately. Matching backend, assignment-version rules and frontend activation is still required; this is not a production publication record.
+
 **Current local refinements (5 November 2026):** [Class goals and private reviews](class-teaching-workflow.md), [focused review and explanations](classroom-learning-followups.md), [private help](class-help-workflow.md), and [classmates](classmates-workflow.md) describe the revised workflow. The latest additions are verified locally and require separate online rules/site publication; earlier publication notes below do not certify these new collections. Class goals count prior mission completion, while private reviews require fresh passing evidence.
 
 **Teacher integration:** The [teacher workspace](teacher-workflow.md) now implements the class-management and publishing UI. Its reviewed permission rules are published and verified. The manual setup instructions below remain a trusted-administrator fallback. No demonstration class or automatic membership is introduced.

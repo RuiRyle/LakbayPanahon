@@ -1,3 +1,4 @@
+import {appAlert} from './app-dialog.js';
 import { stableDraftVersion } from "./quiz-draft-policy.js";
 import { learningDraft, draftStatus, restartControl } from "./learning-draft.js";
 import { mountLearningNavigation } from "./learning-navigation.js";
@@ -756,7 +757,7 @@ function displayPracticeQuestion() {
 
 checkAnswerButton.addEventListener(
     "click",
-    () => {
+    async () => {
 
         const question = currentQuestion;
 
@@ -775,7 +776,7 @@ checkAnswerButton.addEventListener(
                 practiceOptions.querySelector("button:not(:disabled)")?.focus({preventScroll:true});
                 return;
             }
-            alert("Please select an answer first.");
+            (await appAlert("Please select an answer first."));
             return;
         }
 

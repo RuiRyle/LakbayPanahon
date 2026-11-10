@@ -20,7 +20,7 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));let browser,ws;
  const send=(method,params={})=>new Promise(r=>{const next=++id;pending.set(next,r);ws.send(JSON.stringify({id:next,method,params}));});
  const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.result?.exceptionDetails)throw Error(r.result.exceptionDetails.text);return r.result?.result?.value;};
  const wait=async expression=>{for(let i=0;i<150;i++){if(await evaluate(expression).catch(()=>false))return;await pause(50);}throw Error('Timeout: '+expression);};
- for(const width of [1280,390]){
+ for(const width of [1380,900,390]){
   await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width===390});
   await send('Page.navigate',{url:origin+'/admin-dashboard.html'});await wait("document.body.classList.contains('authenticated')&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
   await evaluate("window.routeDocumentMarker='original'");
@@ -38,6 +38,24 @@ const pause=ms=>new Promise(r=>setTimeout(r,ms));let browser,ws;
    assert(await evaluate("window.routeDocumentMarker===undefined&&document.querySelector('[aria-current=location]').dataset.teacherTab==='"+view+"'"),'new document and active section for '+view+' at '+width);
    assert(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'page containment for '+view+' at '+width);
   }
+  await send('Page.navigate',{url:origin+'/admin-accounts.html'});await wait("document.querySelectorAll('#adminAccounts button[data-user-id]').length>0&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
+  assert(await evaluate("document.getElementById('accountRole').value==='all'&&document.getElementById('accountStatusFilter').value==='all'&&!!document.querySelector('.admin-account-toolbar')"),'reference toolbar defaults to all student and teacher accounts at '+width);
+  assert(await evaluate("document.querySelectorAll('#adminAccounts button[data-user-id]').length===25&&!document.getElementById('nextAccounts').disabled"),'all accounts retains bounded real pagination at '+width);
+  await evaluate("document.querySelector('[data-account-role=student]').click()");await wait("document.getElementById('admin-main').getAttribute('aria-busy')==='false'&&document.querySelector('[data-account-role=student]').getAttribute('aria-pressed')==='true'");
+  assert(await evaluate("[...document.querySelectorAll('#adminAccounts .admin-account-role')].every(row=>row.textContent==='Student')"),'student tab queries student accounts at '+width);
+  await evaluate("document.querySelector('[data-account-role=all]').click()");await wait("document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
+  await evaluate("document.getElementById('adminAccountSearch').value='no-match-for-this-name';document.getElementById('adminAccountSearch').dispatchEvent(new Event('input'))");
+  assert(await evaluate("[...document.querySelectorAll('#adminAccounts button[data-user-id]')].every(row=>row.hidden&&getComputedStyle(row).display==='none')&&!document.getElementById('adminResetFilters').hidden"),'search empty state hides unmatched rows and exposes reset at '+width);
+  await evaluate("document.getElementById('adminAccountSearch').value='';document.getElementById('adminAccountSearch').dispatchEvent(new Event('input'));document.querySelector('#adminAccounts button[data-user-id=t00]').click()");await wait("document.getElementById('adminAccountMetadata')?.children.length===4&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
+  assert(await evaluate("!!document.querySelector('.admin-detail-avatar')&&!!document.getElementById('moderationForm')&&!!document.getElementById('accountHistory')"),'selected account retains identity, status form and audit history at '+width);
+  assert(await evaluate("(()=>{document.querySelector('.admin-account-detail-actions button').click();return document.querySelector('.admin-access-details').open&&document.activeElement.id==='newAccountStatus'})()"),'Change status opens and focuses the preserved access form at '+width);
+  assert(await evaluate("document.getElementById('accountCurrentStatus').textContent==='Pending'&&document.getElementById('accountCurrentStatus').dataset.status==='pending'&&document.querySelector('.admin-account-detail-actions button').getAttribute('aria-expanded')==='true'"),'status badge and expanded state are accurate at '+width);
+  await evaluate('window.scrollTo(0,0)');await pause(200);fs.mkdirSync('docs/validation/admin-accounts-reference',{recursive:true});const detailsCapture=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});fs.writeFileSync('docs/validation/admin-accounts-reference/account-details-'+width+'.png',Buffer.from(detailsCapture.result.data,'base64'));
+  await evaluate("document.querySelector('.admin-account-detail-actions button').click()");
+  assert(await evaluate("(()=>{document.querySelectorAll('.admin-account-detail-actions button')[1].click();return document.querySelector('.admin-account-history-details').open})()"),'View history exposes the existing audit records at '+width);
+  await evaluate("document.querySelectorAll('.admin-account-detail-actions button')[1].click()");
+  assert(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'populated account directory containment at '+width);
+  await evaluate('window.scrollTo(0,0)');await pause(350);fs.mkdirSync('docs/validation/admin-accounts-reference',{recursive:true});const capture=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});fs.writeFileSync('docs/validation/admin-accounts-reference/accounts-'+width+'.png',Buffer.from(capture.result.data,'base64'));
   await send('Page.navigate',{url:origin+'/admin-applications.html?account=t00'});await wait("document.getElementById('accountName')?.textContent&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
   assert(await evaluate("!!document.querySelector('.qualification-review-form')&&document.body.dataset.adminView==='applications'"),'direct application URL loads authorized review at '+width);
   await evaluate("document.querySelector('.qualification-review-form').elements.reason.value='Keep unsaved review';window.confirm=()=>false;document.querySelector('[data-teacher-tab=accounts]').click()");

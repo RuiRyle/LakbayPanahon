@@ -15,6 +15,8 @@ let page=fs.readFileSync(path.join(root,'pages/quiz.html'),'utf8').replace(/<scr
 const styles=["student.css","quiz.css",'navy-gold-theme.css'].map(name=>fs.readFileSync(path.join(root,"css",name),"utf8")).join("\n");
 page=page.replace("</head>","<style>"+styles+"</style></head>");
 const script=`
+const appConfirm=async message=>window.confirm(message),appAlert=async message=>window.alert(message);
+
 if(${process.argv.includes('--storage-blocked')})Object.defineProperty(window,'sessionStorage',{get(){throw Error('Storage blocked');}});
 
 function mountLearningNavigation(container, activity, search = window.location.search) {
@@ -113,7 +115,7 @@ async function answerSet(correct){
  const laterId=questions[1].id;studentAnswers[laterId]='A';currentQuestionIndex=0;displayQuestion();
  let resetPrompt='';window.confirm=message=>{resetPrompt=message;return false;};document.querySelector('.quiz-option[data-option="'+openingQuestion.correctAnswer+'"]').click();
  check(studentAnswers[openingQuestion.id]===wrongOpeningAnswer&&studentAnswers[laterId]==='A'&&resetPrompt.includes('1 later question'),'Cancel did not preserve answers or explain reset');
- window.confirm=()=>true;document.querySelector('.quiz-option[data-option="'+openingQuestion.correctAnswer+'"]').click();check(studentAnswers[openingQuestion.id]===openingQuestion.correctAnswer&&!studentAnswers[laterId],'Confirmed answer change did not reset adaptive answers');
+ window.confirm=()=>true;document.querySelector('.quiz-option[data-option="'+openingQuestion.correctAnswer+'"]').click();await tick();check(studentAnswers[openingQuestion.id]===openingQuestion.correctAnswer&&!studentAnswers[laterId],'Confirmed answer change did not reset adaptive answers');
  restartQuizButton.click();await tick();
  check(currentQuestionIndex===0&&questions.length===5&&Object.keys(studentAnswers).length===0,'Adaptive probe did not reset before browser flow checks');
  document.querySelector('#quizMissionBriefing button')?.click();

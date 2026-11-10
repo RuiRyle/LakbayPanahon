@@ -5,6 +5,8 @@ const source=fs.readFileSync(path.join(root,'js/bayani-ai.js'),'utf8').replace(/
 const requestSource=fs.readFileSync(path.join(root,'js/bayani-request.js'),'utf8').replace(/export /g,'').replace('function withBayaniDeadline(','function actualBayaniDeadline(');
 const css=['student.css','bayani-ai.css','navy-gold-theme.css'].map(name=>fs.readFileSync(path.join(root,'css',name),'utf8').replace(/^\uFEFF/,'')).join('\n');
 const script=`
+const appConfirm=async message=>window.confirm(message),appAlert=async message=>window.alert(message);
+
 ${requestSource}
 let nextTimer=0;
 const deadlineTimers=new Map();

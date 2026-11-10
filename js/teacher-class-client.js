@@ -1,6 +1,7 @@
 import {auth, db} from './firebase-config.js';
 import {doc, collection, query, where, orderBy, documentId, startAfter, limit, getDocsFromServer, getDocFromServer, runTransaction, serverTimestamp, Timestamp, setDoc, updateDoc,writeBatch} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 import {classDetails, invitationCode, publishedDetails, assignmentDueMillis,reviewEvidence,publicationVersion,assignmentProgressState,reviewLearningStages,activeReviewDuplicates,reviewInterventionSummary} from './teacher-class-policy.js';
+import {classroomAssignmentEvidence} from './classroom-submission-policy.js';
 import {buildJourneyPath,assignmentReadiness} from './journey-path.js';
 
 function session() {
@@ -206,7 +207,11 @@ export async function loadTeacherAssignmentProgress(classId, missionId, userIds)
             const progress = await list(s, 'studentProgress', [where('userId', '==', userId)]); s.check();
             const data = progress.find(record => record.missionId === missionId) || null;
             if (data && (data.userId !== userId || data.missionId !== missionId)) throw Error('Progress context changed.');
-            if(assignment){const state=assignmentProgressState(data,assignment);return {userId,progress:data?{...data,completed:state.status==='completed'}:null,unavailable:state.status==='unavailable'};}
+            if(assignment){
+                const attempts=await list(s,'studentQuizAttempts',[where('userId','==',userId)]);s.check();
+                const evidence=classroomAssignmentEvidence(assignment,attempts,member.data(),userId);
+                return {userId,progress:{...evidence,chapterId:assignment.chapterId,missionId,priorSoloCompleted:!!data?.completed},unavailable:evidence.unavailable};
+            }
             return {userId, progress:data};
         }));
         s.check();
@@ -267,7 +272,7 @@ export async function saveTeacherPublication(classId, kind, values, id = null, c
         if(ending)fields.endedAt=serverTimestamp();
         if(review){if(previous&&(previous.userId!==values.userId||previous.missionId!==fields.missionId||previous.chapterId!==fields.chapterId))throw Error('Create a new review to change its student or mission.');fields.assignedAt=previous?.assignedAt||(fields.status==='published'?serverTimestamp():null);}
         if(prepared)advanceReviewPublication(tx,prepared,classId);
-        tx.set(ref, {...fields, classId, publishedAt: serverTimestamp(), updatedAt: serverTimestamp()});
+        tx.set(ref, {...fields, classId,...(kind==='assignment'&&!review?{submissionVersion:ending?(previous?.submissionVersion??1):(previous?.submissionVersion??0)+1}:{}), publishedAt: serverTimestamp(), updatedAt: serverTimestamp()});
     });
     s.check(); return ref.id;
 }

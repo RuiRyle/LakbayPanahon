@@ -25,6 +25,12 @@ Use the local Firebase emulators to test student lessons/quizzes, teacher workfl
 
 The first run downloads emulator tooling and installs the pinned backend dependencies. Internet is also needed for Firebase browser SDKs. No Firebase account, `firebase login`, payment card or billing activation is required. Do not run deploy commands.
 
+### Current development and the frozen candidate
+
+Local setup checks the frozen Priority 3 archive without rewriting it, then stages the current development assessment code and rules in a separate ignored build folder. This keeps classroom-assignment testing on matching frontend/backend versions. The development build is not an accepted production release.
+
+The strict historical command `node functions/stage0-gcloud-plan.cjs --validate` still rejects working-source changes; its deployment gate has not been relaxed. Local emulators use a synthetic credential fixture instead of inheriting your Firebase account credentials.
+
 ### Synthetic accounts
 
 | Role | Email | Password |
@@ -39,7 +45,7 @@ These credentials work only in the local demo project. Your classmates each get 
 
 1. Student: sign in, start the prologue lesson and mission quiz, answer questions, finish, reload the result, and check progress/next-mission access.
 2. Teacher: dashboard, classes and reports with synthetic accounts.
-3. Administrator: application categories, review decisions, separate account activation and history. Some queues initially have no submitted forms; the seeded teacher is already approved for dashboard testing.
+3. Administrator: application categories, review decisions, guided Approve & Activate with separate audit records, and account history. Some queues initially have no submitted forms; the seeded teacher is already approved for dashboard testing.
 4. Report bugs with role, page, steps, expected/actual behavior, browser and a screenshot. Never include tokens or passwords from real accounts.
 
 ### Save your local session before stopping

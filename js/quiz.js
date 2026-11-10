@@ -1,3 +1,4 @@
+import {appConfirm,appAlert} from './app-dialog.js';
 import { assessmentAction, assessmentState, forgetAssessment } from './student-assessment-client.js';
 let securedQuiz = false,
   assessmentBusy = false;
@@ -83,7 +84,7 @@ async function securedFollowupAction() {
       await submitQuiz(true);
     }
   } catch (error) {
-    alert(error.message);
+    (await appAlert(error.message));
   } finally {
     assessmentBusy = false;
     if (!quizSubmitted) nextQuestionButton.disabled = false;
@@ -1120,8 +1121,8 @@ function displayAdaptiveQuestion() {
     saveQuizDraftState();
 }
 
-function handleAdaptiveFollowupAction() {
-    if(securedQuiz){securedFollowupAction();return;}
+async function handleAdaptiveFollowupAction() {
+    if(securedQuiz){(await securedFollowupAction());return;}
     if (!adaptiveCurrentQuestion) return;
     const question = adaptiveCurrentQuestion;
     if (!adaptiveFeedbackVisible) {
@@ -1153,7 +1154,7 @@ function handleAdaptiveFollowupAction() {
 
     adaptiveFollowupComplete = true;
     saveQuizDraftState();
-    submitQuiz(true);
+    (await submitQuiz(true));
 }
 
 function displayMissionCheckpoints() {
@@ -1349,7 +1350,7 @@ function displayQuestion() {
 
             optionButton.addEventListener(
                 "click",
-                () => {
+                async () => {
 
                     if (
                         quizSubmitted ||
@@ -1364,7 +1365,7 @@ function displayQuestion() {
                     const previousAnswer = studentAnswers[question.id];
                     const laterAnsweredCount = previousAnswer && previousAnswer !== option.key
                         ? questions.slice(currentQuestionIndex + 1).filter(item=>studentAnswers[item.id]).length : 0;
-                    if(laterAnsweredCount&&!window.confirm('Change this answer? You will need to answer '+laterAnsweredCount+' later question'+(laterAnsweredCount===1?'':'s')+' again so the quiz can adapt. Keep your current answer by choosing Cancel.'))return;
+                    if(laterAnsweredCount&&!(await appConfirm('Change this answer? You will need to answer '+laterAnsweredCount+' later question'+(laterAnsweredCount===1?'':'s')+' again so the quiz can adapt. Keep your current answer by choosing Cancel.')))return;
                     studentAnswers[
                         question.id
                     ] =
@@ -1550,7 +1551,7 @@ nextQuestionButton.addEventListener(
 
         if (adaptiveFollowupStarted) {
             if (adaptiveFollowupComplete) await submitQuiz(true);
-            else handleAdaptiveFollowupAction();
+            else (await handleAdaptiveFollowupAction());
             return;
         }
 
@@ -1574,9 +1575,9 @@ nextQuestionButton.addEventListener(
         if (assessmentBusy) return;
         if (!selectedAnswer) {
 
-            alert(
+            (await appAlert(
                 "Choose an answer before continuing."
-            );
+            ));
 
             return;
 
@@ -1596,7 +1597,7 @@ nextQuestionButton.addEventListener(
            NEXT CHECKPOINT
         ================================== */
 
-        if(securedQuiz){assessmentBusy=true;quizOptions.inert=true;nextQuestionButton.disabled=true;try{await syncSecuredAnswer(currentQuestion,selectedAnswer);}catch(error){alert(error.message);return;}finally{assessmentBusy=false;quizOptions.inert=false;nextQuestionButton.disabled=false;}}
+        if(securedQuiz){assessmentBusy=true;quizOptions.inert=true;nextQuestionButton.disabled=true;try{await syncSecuredAnswer(currentQuestion,selectedAnswer);}catch(error){(await appAlert(error.message));return;}finally{assessmentBusy=false;quizOptions.inert=false;nextQuestionButton.disabled=false;}}
         if (!isLastQuestion) {
 
             const hasAnsweredLaterQuestion = questions.slice(currentQuestionIndex + 1)
@@ -1641,9 +1642,9 @@ nextQuestionButton.addEventListener(
         const allLocked = questions.every(question => ['A','B','C','D'].includes(studentAnswers[question.id]));
         if (!allLocked) {
 
-            alert(
+            (await appAlert(
                 "Answer every question before submitting."
-            );
+            ));
 
             return;
 
@@ -1681,7 +1682,7 @@ async function submitQuiz(flagsConfirmed=false) {
 
     }
 
-    if(flagsConfirmed&&!adaptiveFollowupStarted&&!adaptiveFollowupComplete){try{if(securedQuiz?await startSecuredFollowup():startAdaptiveFollowup())return;}catch(error){alert(error.message);return;}}
+    if(flagsConfirmed&&!adaptiveFollowupStarted&&!adaptiveFollowupComplete){try{if(securedQuiz?await startSecuredFollowup():startAdaptiveFollowup())return;}catch(error){(await appAlert(error.message));return;}}
 
 
     if(!flagsConfirmed){
@@ -1700,7 +1701,7 @@ async function submitQuiz(flagsConfirmed=false) {
             button.addEventListener('click',()=>{currentQuestionIndex=index;displayQuestion();questionText.tabIndex=-1;questionText.focus({preventScroll:true});});panel.append(button);
         });
         if(getAdaptiveQuestionLimit()>0){const adaptiveNote=document.createElement('p');adaptiveNote.className='adaptive-quiz-note';adaptiveNote.textContent='Next, try a few extra practice questions to find topics you can review. They do not change your mission score.';panel.append(adaptiveNote);}
-        const confirm=document.createElement('button');confirm.type='button';confirm.textContent=getAdaptiveQuestionLimit()>0?'Continue to Personalized Check':'Submit Answers';confirm.disabled=!questions.every(q=>['A','B','C','D'].includes(studentAnswers[q.id]));confirm.addEventListener('click',()=>{panel.hidden=true;submitQuiz(true);});panel.append(confirm);title.tabIndex=-1;title.focus();return;}
+        const confirm=document.createElement('button');confirm.type='button';confirm.textContent=getAdaptiveQuestionLimit()>0?'Continue to Personalized Check':'Submit Answers';confirm.disabled=!questions.every(q=>['A','B','C','D'].includes(studentAnswers[q.id]));confirm.addEventListener('click',async ()=>{panel.hidden=true;(await submitQuiz(true));});panel.append(confirm);title.tabIndex=-1;title.focus();return;}
     }
     quizSubmitted =
         true;
@@ -3121,7 +3122,7 @@ onAuthStateChanged(
 const reviewLessonLink = document.getElementById("reviewLessonLink");
 if (reviewLessonLink) reviewLessonLink.href = `story.html?${new URLSearchParams({chapter: chapterId || "", mission: missionId || ""})}`;
 
-retryQuizLoadButton?.addEventListener("click", () => loadQuiz());
+retryQuizLoadButton?.addEventListener("click", async () => (await loadQuiz()));
 
 const learningNavigation=mountLearningNavigation(document.querySelector(".quiz-page"), "Main Quiz")||{carry:url=>url};
 

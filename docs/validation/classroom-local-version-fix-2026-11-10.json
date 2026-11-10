@@ -1,0 +1,14 @@
+{
+  "pass": true,
+  "checks": [
+    "qualified teacher can publish version 1 through current Rules",
+    "republishing without a new version is denied",
+    "teacher revision increments submission version",
+    "student cannot publish teacher assignments",
+    "running Functions binds assessment to actual classroom assignment version",
+    "closing cannot invent another submission version",
+    "closing retains the accepted submission version",
+    "closed assignment invalidates unfinished classroom assessment"
+  ],
+  "mode": "actual local Auth, Firestore Rules and Functions, synthetic classroom"
+}

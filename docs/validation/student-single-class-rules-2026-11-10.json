@@ -1,0 +1,220 @@
+{
+  "mode": "server-rules-test-synthetic-mocks-not-deployed",
+  "verifiedAt": "2026-11-10T10:05:45.495Z",
+  "sourceHash": "3e650fbba820c278c0f4653c193eea9d011ae895ce52e236970eaa7619c4f748",
+  "issues": [],
+  "tests": [
+    {
+      "name": "first slot requires paired membership",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/studentClassSlots/alice"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_new"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_new"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "slot alone cannot reserve class",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "debugMessages": [
+        "Error: firestore.rules line [255], column [12]. Service call error. Function: [getAfter], Argument: [path_value {\n  segments {\n    simple: \"databases\"\n  }\n  segments {\n    simple: \"(default)\"\n  }\n  segments {\n    simple: \"documents\"\n  }\n  segments {\n    simple: \"classMembers\"\n  }\n  segments {\n    simple: \"alice_new\"\n  }\n}\n]."
+      ],
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/studentClassSlots/alice"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_new"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_new"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cannot move slot while old membership exists",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/studentClassSlots/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_old"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "leave or removal releases reservation",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/studentClassSlots/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_old"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_new"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_new"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "same-class slot remains idempotent",
+      "expectation": "ALLOW",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "exists",
+          "args": [
+            "/databases/%28default%29/documents/studentClassSlots/alice"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_new"
+          ]
+        },
+        {
+          "function": "getAfter",
+          "args": [
+            "/databases/%28default%29/documents/classMembers/alice_new"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "another student cannot reserve slot",
+      "expectation": "DENY",
+      "state": "SUCCESS",
+      "functionCalls": [
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        },
+        {
+          "function": "get",
+          "args": [
+            "/databases/%28default%29/documents/users/alice"
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Synthetic document mocks; no learner data is accessed.",
+    "Does not prove browser grades or progression claims truthful.",
+    "Does not emulate a multi-write SDK transaction or test App Check/hosting."
+  ]
+}

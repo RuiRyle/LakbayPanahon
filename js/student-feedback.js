@@ -1,3 +1,4 @@
+import {appConfirm} from './app-dialog.js';
 import {reviewLearningStages} from './teacher-class-policy.js';
 import {auth,db} from './firebase-config.js';
 import {collection,doc,query,where,orderBy,documentId,startAfter,limit,getDocsFromServer,getDocFromServer,setDoc,deleteDoc,runTransaction,serverTimestamp} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
@@ -79,7 +80,7 @@ export function renderReviewReflection(parent,classroom,assignment,evidence,isCu
  const save=node('button','Share my explanation',form,'text-button');save.type='submit';const retry=node('button','Refresh explanation',host,'text-button');retry.type='button';
  const ref=doc(db,'classReviewReflections',assignment.id);let loaded=false,busy=false,revision=0;const current=()=>isCurrent()&&auth.currentUser===user&&host.isConnected;
  const load=async()=>{if(busy)return;busy=true;save.disabled=retry.disabled=true;try{const snapshot=await getDocFromServer(ref);if(!current())return;previous.replaceChildren();loaded=true;const savedReflection=snapshot.exists()?snapshot.data():null;if(savedReflection&&(savedReflection.classId!==classroom.id||savedReflection.userId!==user.uid||savedReflection.reviewId!==assignment.id))throw Error('Review context changed');parent.dispatchEvent(new CustomEvent('review-reflection-changed',{detail:{reviewId:assignment.id,record:savedReflection}}));if(snapshot.exists()){const row=snapshot.data();revision=row.revision;body.value=row.body;if(ended){node('strong','Your saved explanation',previous);node('p',row.body,previous,'class-feedback-body');}state.textContent=row.response?'Your teacher responded to your explanation.':'Explanation shared. Your teacher can now read it.';if(row.response){node('strong','Your teacher’s guidance',previous);node('p',row.response,previous,'class-feedback-body');}save.textContent='Update my explanation';}else state.textContent=ended?'No explanation was shared before this activity ended.':'Explain the idea in your own words and include a clue.';}catch{if(current())state.textContent='Your saved explanation could not load. Refresh before sending.';}finally{busy=false;if(current()){save.disabled=!loaded||ended;retry.disabled=false;}}};
- host.addEventListener('toggle',()=>{if(host.open&&!loaded)load();});retry.addEventListener('click',()=>{if(body.value.trim()&&!window.confirm('Refresh and replace your current explanation with the saved version?'))return;load();});
+ host.addEventListener('toggle',()=>{if(host.open&&!loaded)load();});retry.addEventListener('click',async ()=>{if(body.value.trim()&&!(await appConfirm('Refresh and replace your current explanation with the saved version?')))return;load();});
  form.addEventListener('submit',async event=>{event.preventDefault();if(ended||!current()||busy||!loaded||!body.value.trim())return;const submittedText=body.value.trim();busy=true;save.disabled=true;body.readOnly=true;state.textContent='Sharing...';try{await runTransaction(db,async tx=>{const snapshot=await tx.get(ref);if(!current()||(snapshot.exists()?snapshot.data().revision:0)!==revision)throw Error('changed');tx.set(ref,{classId:classroom.id,userId:user.uid,reviewId:assignment.id,question:assignment.reflectionQuestion,body:submittedText,attemptId:evidence.passingAttemptId,revision:revision+1,submittedAt:serverTimestamp(),response:'',respondedAt:null});});if(current()){revision++;parent.dispatchEvent(new CustomEvent('review-reflection-changed',{detail:{reviewId:assignment.id,record:{classId:classroom.id,userId:user.uid,reviewId:assignment.id,body:submittedText,response:'',revision}}}));state.textContent='Explanation shared with your teacher. Your quiz result is unchanged.';previous.replaceChildren();save.textContent='Update my explanation';}}catch{if(current())state.textContent='Could not share your explanation. Your text is preserved; refresh if this record changed.';}finally{busy=false;if(current()){save.disabled=false;body.readOnly=false;}}});
 }
 // Shared, cursor-paged teacher inbox. Loading another page never replaces reply drafts.
@@ -137,7 +138,7 @@ function renderTeacherFollowupInbox(parent,classroom,members,studentName,isCurre
  }
  function sort(){for(const entry of [...records.values()].sort((a,b)=>Number(!pending(a.row))-Number(!pending(b.row))||(b.row.updatedAt?.toMillis?.()||b.row.submittedAt?.toMillis?.()||0)-(a.row.updatedAt?.toMillis?.()||a.row.submittedAt?.toMillis?.()||0)))list.append(entry.card);}
  async function load(reset=true){
-  if(busy||sending()||!current())return;if(reset&&dirty()&&!window.confirm('Refresh requests and discard your unsent guidance?'))return;
+  if(busy||sending()||!current())return;if(reset&&dirty()&&!(await appConfirm('Refresh requests and discard your unsent guidance?')))return;
   busy=true;controls();state.textContent=reset?'Loading '+(reflection?'explanations':'requests')+'...':'Loading the next page...';
   try{
    const snapshot=await getDocsFromServer(query(collection(db,name),where('classId','==',classroom.id),orderBy(documentId()),...(!reset&&cursor?[startAfter(cursor)]:[]),limit(101)));if(!current())return;
@@ -160,8 +161,8 @@ function renderTeacherFollowupInbox(parent,classroom,members,studentName,isCurre
   }catch{if(current()){targetState.textContent='The selected request could not load. Your current records and text are kept.';targetRetry.hidden=false;}}
   finally{busy=false;if(current())controls();}
  }
- filter.addEventListener('change',()=>{if(loaded)update();});refresh.addEventListener('click',()=>load(true));more.addEventListener('click',()=>load(false));targetRetry.addEventListener('click',()=>loadTarget(targetId));
- host.addEventListener('followups:target',event=>loadTarget(event.detail?.id));host.addEventListener('toggle',()=>{if(host.open&&!loaded&&!targetId)load(true);});if(!reflection)queueMicrotask(()=>load(true));
+ filter.addEventListener('change',()=>{if(loaded)update();});refresh.addEventListener('click',async ()=>(await load(true)));more.addEventListener('click',async ()=>(await load(false)));targetRetry.addEventListener('click',()=>loadTarget(targetId));
+ host.addEventListener('followups:target',event=>loadTarget(event.detail?.id));host.addEventListener('toggle',async ()=>{if(host.open&&!loaded&&!targetId)(await load(true));});if(!reflection)queueMicrotask(async ()=>(await load(true)));
  return host;
 }
 

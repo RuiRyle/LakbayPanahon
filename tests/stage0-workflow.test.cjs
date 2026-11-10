@@ -1,8 +1,9 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),http=require('node:http'),{createRequire}=require('node:module'),{spawnSync}=require('node:child_process');
-const {createPlan,validatePlan,validateCandidate,relativeFiles,base,hash}=require('../functions/stage0-gcloud-plan.cjs');
+const {createPlan,validatePlan,validateCandidate,validateCandidateArchive,relativeFiles,base,hash}=require('../functions/stage0-gcloud-plan.cjs');
 const root=path.resolve(__dirname,'..'),accepted=JSON.parse(fs.readFileSync(path.join(root,'build/priority3-release/manifest.json')));
 const readLog=file=>{const bytes=fs.readFileSync(file);return bytes.subarray(0,2).equals(Buffer.from([255,254]))?bytes.toString('utf16le').replace(/^\uFEFF/,''):bytes.toString('utf8');};
-test('Separate candidate preserves every accepted source and non-configuration artifact',()=>assert.equal(validateCandidate().valid,true));
+test('Frozen candidate preserves accepted archive artifacts independently of current development',()=>assert.equal(validateCandidateArchive().archiveValid,true));
+test('Strict candidate validation still rejects changed working sources',()=>{const a=validateCandidateArchive();if(a.sourceDrift.length)assert.throws(()=>validateCandidate(),/Accepted source changed/);else assert.equal(validateCandidate().valid,true);});
 for(const rollback of [false,true])test((rollback?'Rollback':'Release')+' binds both exact accounts and four callable exports with pilot scale',()=>{
  const plan=createPlan(rollback);assert.equal(validatePlan(plan,rollback),true);assert.equal(plan.operations.length,4);assert.equal(plan.productionExecutionEnabled,false);
  for(const op of plan.operations){assert.ok(op.argv.includes('--build-service-account='+plan.buildAccount));assert.ok(op.argv.includes('--service-account='+plan.runtimeAccount));for(const arg of ['--gen2','--runtime=nodejs22','--max-instances=2','--min-instances=0','--concurrency=8','--ignore-file=.gcloudignore','--no-allow-unauthenticated'])assert.ok(op.argv.includes(arg));}

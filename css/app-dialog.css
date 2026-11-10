@@ -1,0 +1,64 @@
+.lakbay-dialog{box-sizing:border-box;position:fixed;inset:0;margin:auto;width:min(520px,calc(100vw - 32px));max-height:calc(100dvh - 48px);overflow:auto;padding:30px;border:1px solid #d4b56b;border-radius:22px;background:linear-gradient(145deg,#112b4d,#0b1c35);color:#e5edf5;box-shadow:0 28px 90px #0009;font-family:inherit;animation:lakbay-dialog-enter .22s ease-out}
+.lakbay-dialog::backdrop{background:#020b1bd1;backdrop-filter:blur(5px)}
+.lakbay-dialog h2{margin:0 0 16px;color:#f0d48f;font-size:1.35rem;line-height:1.3}
+.lakbay-dialog p{margin:0;white-space:pre-line;overflow-wrap:anywhere;color:#d8e4f0;font-size:1rem;line-height:1.7}
+.lakbay-dialog-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:26px;flex-wrap:wrap}
+.lakbay-dialog-actions button{font:inherit;font-weight:700;min-width:100px;min-height:46px;border-radius:12px;padding:10px 22px;cursor:pointer;transition:transform .16s,background .16s}
+.lakbay-dialog-cancel{background:#18365a;color:#e0e9f3;border:1px solid #7591ae}
+.lakbay-dialog-ok{background:#efcc72;color:#10213b;border:1px solid #f5db9c}
+.lakbay-dialog-actions button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.lakbay-dialog-actions button:focus-visible{outline:3px solid #98c8f5;outline-offset:4px}
+@keyframes lakbay-dialog-enter{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.lakbay-dialog{animation:none}.lakbay-dialog-actions button{transition:none}}
+.lakbay-dialog {
+    width: min(540px, calc(100vw - 32px));
+    padding: 30px;
+    border: 1px solid #a78a4c;
+    border-radius: 24px;
+    background: radial-gradient(ellipse at 0 0, #27476588, transparent 62%), linear-gradient(145deg, #122c49, #0b1c32 75%);
+    box-shadow: 0 32px 110px #000b, 0 0 0 5px #d8b9690b, inset 0 1px #f4d78d26;
+    animation: lakbay-dialog-arrive .38s cubic-bezier(.2,.8,.2,1) both;
+}
+.lakbay-dialog::before {
+    content: ""; position: absolute; top: 0; left: 28px; right: 28px; height: 2px;
+    background: linear-gradient(90deg, transparent, #e6c477, transparent); pointer-events: none;
+}
+.lakbay-dialog::backdrop { background: #020b18c9; backdrop-filter: blur(7px); }
+.lakbay-dialog-header { display: flex; align-items: center; gap: 17px; margin-bottom: 22px; }
+.lakbay-dialog-header > div { min-width: 0; }
+.lakbay-dialog-emblem {
+    display: grid; place-items: center; flex: 0 0 66px; width: 66px; height: 66px;
+    border-radius: 50%; color: #e9cc86; background: radial-gradient(circle, #d9b76516, #091a2e);
+    border: 1px solid #d7b76955; box-shadow: inset 0 0 0 4px #10263d, 0 6px 20px #0003;
+}
+.lakbay-dialog-emblem svg { width: 54px; height: 54px; fill: none; stroke: currentColor; stroke-width: 1; }
+.lakbay-dialog-emblem svg circle:nth-child(2) { stroke-dasharray: 1 5; opacity: .5; }
+.lakbay-dialog-emblem .compass-north { fill: #efd28a; stroke: #efd28a; }
+.lakbay-dialog-emblem .compass-south { fill: #6485a3; stroke: #91abc0; }
+.lakbay-dialog-emblem .compass-center { fill: #f0d893; stroke: #0d243d; }
+.lakbay-dialog-caption { display: block; margin-bottom: 6px; color: #a8bdcf; font-size: .72rem; font-weight: 600; letter-spacing: .045em; line-height: 1.5; }
+.lakbay-dialog .lakbay-dialog-header h2 { margin: 0; color: #f0d48f; font-size: 1.4rem; overflow-wrap: anywhere; }
+.lakbay-dialog #lakbayDialogMessage {
+    padding: 18px 20px; background: #07182b66; border: 1px solid #6e92b226;
+    border-left: 3px solid #c3a465; border-radius: 4px 14px 14px 4px; color: #d6e3ee;
+    line-height: 1.75;
+}
+.lakbay-dialog-actions { margin-top: 24px; padding-top: 20px; border-top: 1px solid #89a2ba20; gap: 12px; }
+.lakbay-dialog-actions button { min-width: 112px; border-radius: 11px; transition: transform .2s, box-shadow .2s, background .2s; }
+.lakbay-dialog-cancel { background: #142d47; border-color: #6989a55c; color: #c4d5e4; }
+.lakbay-dialog-ok { background: linear-gradient(180deg, #f2d78f, #d9b45e); border-color: #efd48d; color: #10233b; box-shadow: 0 3px 0 #8f7135, inset 0 1px #fff2c875; }
+.lakbay-dialog-actions .lakbay-dialog-ok:hover { box-shadow: 0 5px 0 #8f7135, 0 8px 24px #d4ad5520; }
+.lakbay-dialog-actions button:active { transform: translateY(1px); }
+.lakbay-dialog-actions .lakbay-dialog-ok:active { box-shadow: 0 1px 0 #8f7135; }
+@keyframes lakbay-dialog-arrive { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
+@media(max-width:480px) {
+    .lakbay-dialog { padding: 23px 20px; }
+    .lakbay-dialog-emblem { flex-basis: 54px; width: 54px; height: 54px; }
+    .lakbay-dialog-emblem svg { width: 46px; height: 46px; }
+    .lakbay-dialog .lakbay-dialog-header h2 { font-size: 1.2rem; }
+    .lakbay-dialog-actions button { flex: 1; min-width: 90px; }
+}
+@media(prefers-reduced-motion:reduce) {
+    .lakbay-dialog { animation: none; }
+    .lakbay-dialog-actions button { transition: none; }
+}

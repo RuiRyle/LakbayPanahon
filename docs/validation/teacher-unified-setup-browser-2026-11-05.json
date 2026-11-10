@@ -1,6 +1,6 @@
 {
   "pass": true,
-  "verifiedAt": "2026-11-05T11:49:40.817Z",
+  "verifiedAt": "2026-11-10T05:09:02.042Z",
   "mode": "real browser; mocked Firebase; no real account mutations",
   "results": [
     {
@@ -10,11 +10,14 @@
         "signed-out teacher starts with account creation in the unified page",
         "auth callback waits for the teacher profile before advancing",
         "account creation advances without navigating or creating another account",
+        "created teacher sees the exact next step without interpreting account statuses",
         "verification continues in the same setup page",
         "passwords are cleared after successful account creation",
         "teaching details reuse the registered name",
         "email step focuses on verification instead of showing another form",
         "verified email advances to teaching details on the same page",
+        "verified setup focuses on the form and removes repeated email instructions",
+        "next action focuses the first missing teaching detail",
         "minimal teaching details submit and show review status",
         "school-affiliation setup needs no extra account or PRC details",
         "approved setup offers classroom workspace access",
@@ -28,11 +31,14 @@
         "signed-out teacher starts with account creation in the unified page",
         "auth callback waits for the teacher profile before advancing",
         "account creation advances without navigating or creating another account",
+        "created teacher sees the exact next step without interpreting account statuses",
         "verification continues in the same setup page",
         "passwords are cleared after successful account creation",
         "teaching details reuse the registered name",
         "email step focuses on verification instead of showing another form",
         "verified email advances to teaching details on the same page",
+        "verified setup focuses on the form and removes repeated email instructions",
+        "next action focuses the first missing teaching detail",
         "minimal teaching details submit and show review status",
         "school-affiliation setup needs no extra account or PRC details",
         "approved setup offers classroom workspace access",
@@ -43,15 +49,15 @@
   "sources": [
     {
       "file": "pages/teacher-application.html",
-      "sha256": "4cb218509638ddc9107415589de473461c99aa949383609c052399d687744aad"
+      "sha256": "4dd59d425d4a81953b33d5d98b16aa8cedc3af87e1672e4b5796d3be1dc7bc01"
     },
     {
       "file": "js/auth-ui.js",
-      "sha256": "e9fc277ae3c7b84a294aebdcc692e809183d4287c78ad9a8ebd0503a0b119c67"
+      "sha256": "c6e422861d7491c797276ea830f80ab4f2cdad04d7a10024c030d119bd8160aa"
     },
     {
       "file": "js/teacher-application.js",
-      "sha256": "2e6289a88d34dae428e2ec8cd41f48c2ea2ce96416588a5327868e8c444437ba"
+      "sha256": "b766e75ab7fde08f2545d7f1ff0574fb6cf92677903e8f74bfd5ddec6d47fed1"
     }
   ]
 }

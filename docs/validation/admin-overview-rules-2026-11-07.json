@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "verifiedAt": "2026-11-07T14:36:52.580Z",
+  "mode": "read-only loopback demo-lakbay-teacher fixture; helper uses limit 100, client bounds tested separately",
+  "checks": [
+    {
+      "uid": "admin",
+      "collection": "teacherApplications",
+      "status": 200
+    },
+    {
+      "uid": "admin",
+      "collection": "accountModeration",
+      "status": 200
+    },
+    {
+      "uid": "student",
+      "collection": "accountModeration",
+      "status": 403
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "pass": true,
+  "mode": "fixed local package, actual browser/SDK and emulator Rules; synthetic accounts; no email delivery or grading claims",
+  "checks": [
+    "teacher submits application through actual UI/SDK to local Rules",
+    "duplicate needs_changes submission stays locked behind one confirmation",
+    "saved needs_changes state is confirmed from emulator",
+    "needs_changes does not grant teacher access",
+    "teacher can revise and resubmit after needs_changes",
+    "duplicate declined submission stays locked behind one confirmation",
+    "saved declined state is confirmed from emulator",
+    "declined does not grant teacher access",
+    "teacher can revise and resubmit after declined",
+    "duplicate approved submission stays locked behind one confirmation",
+    "saved approved state is confirmed from emulator",
+    "Approve & Activate grants access only after qualification approval",
+    "qualification approval and activation have separate audit IDs",
+    "qualification audit independently preserves pending access",
+    "paired qualification audit resolves through authorized service",
+    "approved active teacher reaches protected dashboard",
+    "teacher cannot call protected administrator directory service",
+    "student access moderation preserves XP",
+    "stale account version is rejected by real transaction",
+    "Decision Records displays exact saved qualification outcome",
+    "decision-records fits 1440px",
+    "decision-records fits 900px",
+    "decision-records fits 390px"
+  ],
+  "package": "build\\student-web-563LyE",
+  "recommendation": "Connected workflow passed; synthetic fault recovery separately tested",
+  "cleanupErrors": [],
+  "verifiedAt": "2026-11-10T11:38:48.747Z"
+}

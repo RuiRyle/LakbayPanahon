@@ -8,7 +8,7 @@ const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
 function createPlan(rollback=false){return{mode:'local-plan-only-no-execution',productionExecutionEnabled:false,project,region,cliVersion:'592.0.0',buildAccount,runtimeAccount,invocation:'platform-private-pending-separate-IAM-approval',protocol:{enabled:false,protocolVersion:1,attemptTtlSeconds:7200,perMinuteAttempts:3,perStudentDailyAttempts:60},operations:names.map(name=>({name,argv:['functions','deploy',name,'--gen2','--project='+project,'--region='+region,'--runtime=nodejs22','--entry-point='+name,'--source='+ (rollback?'rollback/functions':'functions'),'--build-service-account='+buildAccount,'--service-account='+runtimeAccount,'--max-instances=2','--min-instances=0','--concurrency=8','--cpu=1','--memory=256Mi','--timeout=60s','--trigger-http','--no-allow-unauthenticated','--ingress-settings=all','--security-level=secure-always','--update-labels=deployment-callable=true,lakbay-assessment-workflow=reviewed-gcloud','--env-vars-file=deployment/runtime-env.json','--ignore-file=.gcloudignore']}))};}
 function validatePlan(plan,rollback=false){const expected=createPlan(rollback);if(JSON.stringify(plan)!==JSON.stringify(expected))throw Error('Deployment intent differs from exact reviewed pilot configuration');return true;}
 function inventory(dir){const rows=[];function walk(folder){for(const e of fs.readdirSync(folder,{withFileTypes:true})){if(e.name==='node_modules')continue;const full=path.join(folder,e.name);if(e.isSymbolicLink())throw Error('Symlink in release');if(e.isDirectory())walk(full);else rows.push({file:path.relative(dir,full).replaceAll('\\','/'),sha256:hash(fs.readFileSync(full))});}}walk(dir);return rows.sort((a,b)=>a.file.localeCompare(b.file));}
-function validateCandidate(dir=base){
+function validateCandidateArchive(dir=base){
  const policy=JSON.parse(fs.readFileSync(path.join(dir,'policy/disabled-proposal.json')));if(JSON.stringify(policy)!==JSON.stringify(createPlan().protocol))throw Error('Policy mismatch');
  const env=JSON.parse(fs.readFileSync(path.join(dir,'deployment/runtime-env.json')));if(JSON.stringify(env)!==JSON.stringify({FIREBASE_CONFIG:JSON.stringify({projectId:project,storageBucket:project+'.firebasestorage.app'}),FUNCTION_REGION:region}))throw Error('Runtime environment mismatch');
  for(const rollback of [false,true]){
@@ -29,10 +29,12 @@ function validateCandidate(dir=base){
   const original=fs.readFileSync(path.join(root,'build/priority3-release',file),'utf8');
   if(fs.readFileSync(path.join(dir,file),'utf8')!==original.replace('maxInstances:10',"maxInstances:2,minInstances:0,concurrency:8,cpu:1,memory:'256MiB',timeoutSeconds:60"))throw Error('Change beyond approved SDK configuration: '+file);
  }
- for(const item of accepted.sourceFiles)if(hash(fs.readFileSync(path.join(root,item.file)))!==item.sha256)throw Error('Accepted source changed: '+item.file);
+ const sourceDrift=accepted.sourceFiles.filter(item=>hash(fs.readFileSync(path.join(root,item.file)))!==item.sha256).map(item=>item.file);
+ if(hash(fs.readFileSync(path.join(root,'firestore.assessment.rules')))!==hash(fs.readFileSync(path.join(dir,'rules/firestore.rules'))))sourceDrift.push('firestore.assessment.rules');
  const added=new Set(['deployment/deploy-plan.json','deployment/rollback-plan.json','deployment/runtime-env.json','deployment/identity-binding.json','functions/.gcloudignore','rollback/functions/.gcloudignore','preparation.json','manifest.json']);
  for(const item of inventory(dir))if(!accepted.inventory.some(x=>x.file===item.file)&&!added.has(item.file))throw Error('Unreviewed additional artifact: '+item.file);
- return{valid:true,mode:'local-validation-only',fourEndpoints:names,protocolEnabled:false};
+ return{archiveValid:true,mode:'frozen-archive-validation-only',fourEndpoints:names,protocolEnabled:false,workingSourceMatches:sourceDrift.length===0,sourceDrift};
 }
+function validateCandidate(dir=base){const archive=validateCandidateArchive(dir);if(!archive.workingSourceMatches)throw Error('Accepted source changed: '+archive.sourceDrift[0]);return{valid:true,mode:'local-validation-only',fourEndpoints:names,protocolEnabled:false};}
 if(require.main===module){if(process.argv.slice(2).some(x=>x!=='--validate'))throw Error('No production execution mode exists; only --validate is allowed');console.log(JSON.stringify(validateCandidate()));}
-module.exports={createPlan,validatePlan,validateCandidate,inventory,relativeFiles,base,hash};
+module.exports={createPlan,validatePlan,validateCandidate,validateCandidateArchive,inventory,relativeFiles,base,hash};

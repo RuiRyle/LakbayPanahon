@@ -24,9 +24,9 @@ export function moderationDetails(profile,status,reason,identityVerified) {
     return {status,reason:note,identityVerified:identityVerified===true};
 }
 export async function loadAdminAccounts({role='teacher',status='pending',cursor=null}={}) {
-    if(!['teacher','student'].includes(role)||!['pending','active','inactive'].includes(status))throw Error('Choose a valid account filter.');
+    if(!['all','teacher','student'].includes(role)||!['all','pending','active','inactive'].includes(status))throw Error('Choose a valid account filter.');
     const s=session();await administrator(s);
-    const snapshot=await getDocsFromServer(query(collection(db,'users'),where('role','==',role),where('status','==',status),orderBy(documentId()),...(cursor?[startAfter(cursor)]:[]),limit(26)));s.check();
+    const snapshot=await getDocsFromServer(query(collection(db,'users'),where('role',role==='all'?'in':'==',role==='all'?['teacher','student']:role),...(status==='all'?[]:[where('status','==',status)]),orderBy(documentId()),...(cursor?[startAfter(cursor)]:[]),limit(26)));s.check();
     const page=snapshot.docs.slice(0,25);
     return {rows:page.map(d=>({...d.data(),id:d.id})),hasNext:snapshot.size>25,cursor:page.at(-1)?.id||null};
 }
@@ -107,7 +107,7 @@ export async function moderateAccount({uid,expectedStatus,expectedRole,expectedV
         if(!snapshot.exists())throw Error('This account is unavailable.');
         const current=snapshot.data();
         const version=current.updatedAt?.toMillis?.()||current.createdAt?.toMillis?.()||0;
-        if(current.status!==expectedStatus||current.role!==expectedRole||version!==expectedVersion)throw Error('This account changed while you were reviewing it. Refresh before deciding.');
+        if(current.status!==expectedStatus||current.role!==expectedRole||version!==expectedVersion)throw Object.assign(Error('This account changed while you were reviewing it. Refresh before deciding.'),{code:'admin/stale-account'});
         const details=moderationDetails(current,status,reason,identityVerified);
         if(current.role==='teacher'&&status==='active'){
             const application=await tx.get(doc(db,'teacherApplications',uid));s.check();
@@ -116,4 +116,15 @@ export async function moderateAccount({uid,expectedStatus,expectedRole,expectedV
         tx.update(ref,{status:details.status,updatedAt:serverTimestamp(),moderatedAt:serverTimestamp(),moderatedBy:s.user.uid,moderationEventId:event.id});
         tx.set(event,{userId:uid,actorId:s.user.uid,previousStatus:current.status,...details,createdAt:serverTimestamp()});
     }),async()=>{s.check();await administrator(s);const result=await getDocFromServer(event);s.check();return result;},{userId:uid,actorId:s.user.uid,previousStatus:expectedStatus,status,reason:String(reason||'').trim(),identityVerified:identityVerified===true});s.check();
+}
+// Pair an account audit with its immutable qualification review, never infer a review outcome from account status.
+export async function loadAdminDecisionReview(record){
+    const s=session();await administrator(s);
+    if(!record||typeof record.id!=='string'||!record.id||record.id.includes('/'))throw Error('Invalid decision record.');
+    targetRef(record.userId);
+    const snapshot=await getDocFromServer(doc(db,'teacherApplicationReviews',record.id));s.check();
+    if(!snapshot.exists())return null;
+    const review=snapshot.data();
+    if(review.userId!==record.userId||review.actorId!==record.actorId||review.reason!==record.reason||!['approved','declined','needs_changes'].includes(review.decision)||!Number.isInteger(review.revision)||review.revision<1)throw Error('Qualification audit does not match this account decision. Inspect its saved history.');
+    return {decision:review.decision,revision:review.revision};
 }

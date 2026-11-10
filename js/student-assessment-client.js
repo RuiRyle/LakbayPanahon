@@ -26,7 +26,16 @@ async function prepare() {
   }
 }
 function key(identity) {
-  return auth.currentUser?.uid + ':' + identity.kind + ':' + (identity.missionId || identity.chapterId || identity.challengeId);
+  const context=classroomIdentity(identity).classroom;
+  return auth.currentUser?.uid + ':' + identity.kind + ':' + (identity.missionId || identity.chapterId || identity.challengeId)+(context?':class:'+context.classId+':'+context.assignmentId:'');
+}
+function classroomIdentity(identity){
+  if(identity.kind!=='mission')return identity;
+  const params=new URLSearchParams(globalThis.location?.search||'');
+  const classId=params.get('classroom'),assignmentId=params.get('activity');
+  const valid=value=>typeof value==='string'&&/^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/.test(value);
+  if((classId||assignmentId)&&(!valid(classId)||!valid(assignmentId)))throw Error('Reopen this assignment from My Class.');
+  return classId&&assignmentId?{...identity,classroom:{classId,assignmentId}}:identity;
 }
 async function call(name, data) {
   const uid = auth.currentUser?.uid;
@@ -52,6 +61,7 @@ async function call(name, data) {
     return result;
   } catch (error) {
     const code = error.details?.assessmentCode || '';
+    if(/classroom-(unavailable|changed)/.test(code))throw Object.assign(Error('This class activity or your membership changed. Return to My Class, refresh, and open the current assignment. Your personal progress is safe.'),{code:'assessment/restart-required'});
     if (/revision-conflict|request-conflict/.test(code)) throw Error('This assessment changed in another session. Reopen it to continue from your saved place.');
     if (/expired|content-changed|attempt-unavailable|restart-required/.test(code)) throw Object.assign(Error('Please restart this unfinished assessment. Your completed missions and earned rewards are still saved.'), {
       code: 'assessment/restart-required'
@@ -67,6 +77,7 @@ export async function beginAssessment(identity, {
   retry = false,
   completedReview = false
 } = {}) {
+  identity=classroomIdentity(identity);
   const storageKey = 'securedAssessment:' + key(identity);
   let cached;
   try {
@@ -77,7 +88,8 @@ export async function beginAssessment(identity, {
       const state = await call('resumeStudentAssessment', {
         attemptId: attemptId || cached.attemptId
       });
-      if (!state.result || completedReview) {
+      if(JSON.stringify(state.classroom?{classId:state.classroom.classId,assignmentId:state.classroom.assignmentId}:null)!==JSON.stringify(identity.classroom||null))throw Object.assign(Error('Reopen this assignment from My Class.'),{code:'assessment/restart-required'});
+      if (!state.result || (completedReview && !identity.classroom)) {
         attempts.set(key(identity), state);
         return state;
       }

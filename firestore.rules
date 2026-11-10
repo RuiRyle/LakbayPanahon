@@ -240,11 +240,27 @@ service cloud.firestore {
         && request.resource.data.displayName.size() > 0 && request.resource.data.displayName.size() <= 60;
       allow delete: if (activeStudent() && request.auth.uid == studentId) || ownsClass(classId);
     }
+    // One reservation per Auth UID serializes concurrent joins to different classes.
+    // A removed/left membership releases its reservation without requiring a teacher profile write.
+    match /studentClassSlots/{studentId} {
+      allow get: if activeStudent() && request.auth.uid == studentId;
+      allow create, update: if activeStudent() && request.auth.uid == studentId
+        && request.resource.data.keys().hasOnly(['classId'])
+        && request.resource.data.classId is string
+        && request.resource.data.classId.size() > 0
+        && !request.resource.data.classId.matches('.*[/].*')
+        && (!exists(/databases/$(database)/documents/studentClassSlots/$(studentId))
+          || resource.data.classId == request.resource.data.classId
+          || !exists(/databases/$(database)/documents/classMembers/$(studentId + '_' + resource.data.classId)))
+        && getAfter(/databases/$(database)/documents/classMembers/$(studentId + '_' + request.resource.data.classId)).data.userId == studentId
+        && getAfter(/databases/$(database)/documents/classMembers/$(studentId + '_' + request.resource.data.classId)).data.status == 'active';
+    }
     match /classMembers/{membershipId} {
       allow get: if activeStudent() && (!exists(/databases/$(database)/documents/classMembers/$(membershipId)) || ownRecord());
       allow list: if activeStudent() && ownRecord();
       allow read: if ownsClass(resource.data.classId);
       allow create: if activeStudent()
+        && getAfter(/databases/$(database)/documents/studentClassSlots/$(request.auth.uid)).data.classId == request.resource.data.classId
         && request.resource.data.keys().hasOnly(['userId','classId','joinCode','status','joinedAt'])
         && request.resource.data.userId == request.auth.uid
         && request.resource.data.classId is string && request.resource.data.joinCode is string
@@ -461,7 +477,9 @@ service cloud.firestore {
           && data.keys().hasOnly(['classId','title','body','status','publishedAt','updatedAt'])
           && data.body is string && data.body.size() > 0 && data.body.size() <= 3000)
         || (kind == 'assignment'
-          && data.keys().hasOnly(['classId','title','instructions','missionId','chapterId','status','publishedAt','updatedAt','dueAt','endedAt'])
+          && data.keys().hasOnly(['classId','title','instructions','missionId','chapterId','status','publishedAt','updatedAt','dueAt','endedAt','submissionVersion']
+          && data.submissionVersion is int && data.submissionVersion > 0
+          && data.submissionVersion == (resource == null ? 1 : data.status in ['closed','withdrawn'] ? resource.data.get('submissionVersion',1) : resource.data.get('submissionVersion',0) + 1))
           && (data.get('dueAt', null) == null || data.dueAt is timestamp)
           && data.instructions is string && data.instructions.size() <= 1500
           && data.missionId is string && data.chapterId is string

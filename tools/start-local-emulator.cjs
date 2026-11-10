@@ -21,7 +21,7 @@ async function main(){
  const bundledRuntime=path.join(root,'build/node22/node-v22.23.4-win-x64/node.exe');
  const nodeRuntime=Number(process.versions.node.split('.')[0])===22?process.execPath:bundledRuntime;
  const runtime=path.dirname(nodeRuntime);
- if(secured){require('../functions/stage0-gcloud-plan.cjs').validateCandidate(candidate);if(!fs.existsSync(nodeRuntime)||!fs.existsSync(path.join(candidate,'functions/node_modules/firebase-admin')))throw Error('Install Node.js 22 and run npm ci, then npm run setup:local.');}
+ if(secured){require('../functions/stage0-gcloud-plan.cjs').validateCandidateArchive(candidate);if(!fs.existsSync(nodeRuntime)||!fs.existsSync(path.join(candidate,'functions/node_modules/firebase-admin')))throw Error('Install Node.js 22 and run npm ci, then npm run setup:local.');}
  // Never reseed an existing demo session or start a second emulator suite.
  let running;
  try{const response=await fetch('http://127.0.0.1:4400/emulators',{signal:AbortSignal.timeout(1200)});if(response.ok)running=await response.json();}catch{}
@@ -30,11 +30,18 @@ async function main(){
  if(build.error)throw Error('Local website build could not start: '+build.error.message);
  if(build.status!==0)throw Error(String(build.stdout||'')+String(build.stderr||'')||'Local website build exited with status '+build.status);
  const folder=resolvePackage();
+ const localBackend=secured?require('./prepare-local-assessment.cjs').prepareLocalBackend():null;
+ if(secured)console.log('Using current local development backend; frozen Priority 3 archive is unchanged.');
  const config=path.join(folder,'emulator-config.json');
- fs.writeFileSync(config,JSON.stringify({firestore:{rules:secured?require('./admin-review-rules.cjs').prepare():path.join(root,'firestore.rules')},...(secured?{functions:[{source:path.relative(folder,path.join(candidate,'functions')).split(path.sep).join('/'),codebase:'local-assessment'}]}:{}),emulators:{auth:{host:'127.0.0.1',port:9099},firestore:{host:'127.0.0.1',port:8180},...(secured?{functions:{host:'127.0.0.1',port:5001}}:{}),ui:{enabled:true,host:'127.0.0.1',port:4000},hub:{host:'127.0.0.1',port:4400},logging:{host:'127.0.0.1',port:4500},singleProjectMode:true}},null,2));
+ fs.writeFileSync(config,JSON.stringify({firestore:{rules:secured?localBackend.rules:path.join(root,'firestore.rules')},...(secured?{functions:[{source:path.relative(folder,localBackend.functions).split(path.sep).join('/'),codebase:'local-assessment'}]}:{}),emulators:{auth:{host:'127.0.0.1',port:9099},firestore:{host:'127.0.0.1',port:8180},...(secured?{functions:{host:'127.0.0.1',port:5001}}:{}),ui:{enabled:true,host:'127.0.0.1',port:4000},hub:{host:'127.0.0.1',port:4400},logging:{host:'127.0.0.1',port:4500},singleProjectMode:true}},null,2));
  let cli;try{cli=require.resolve('firebase-tools/lib/bin/firebase.js');}catch{cli=process.env.APPDATA?path.join(process.env.APPDATA,'npm/node_modules/firebase-tools/lib/bin/firebase.js'):'';}
  if(!fs.existsSync(cli))throw Error('Firebase CLI is required.');
- const child=spawn(secured?nodeRuntime:process.execPath,[cli,'emulators:start','--only',secured?'auth,firestore,functions':'auth,firestore','--project',project,'--config',config,...(restore?['--import',restore]:[])],{cwd:root,env:secured?{...process.env,PATH:runtime+path.delimiter+process.env.PATH}:process.env,stdio:['ignore','pipe','pipe'],windowsHide:true});
+ // Explicit synthetic ADC prevents Firebase CLI from exporting cached operator credentials.
+ const credentialFile=path.join(folder,'emulator-only-credentials.json');
+ fs.writeFileSync(credentialFile,JSON.stringify({type:'authorized_user',client_id:'local-emulator-only',client_secret:'not-a-real-client-secret',refresh_token:'not-a-real-refresh-token'}));
+ const emulatorEnv={...process.env,GOOGLE_APPLICATION_CREDENTIALS:credentialFile,GOOGLE_CLOUD_PROJECT:project,GCLOUD_PROJECT:project,METADATA_SERVER_DETECTION:'none',FIREBASE_CLI_DISABLE_USAGE_TRACKING:'1',...(secured?{PATH:runtime+path.delimiter+process.env.PATH}:{})};
+ for(const name of ['FIREBASE_TOKEN','GOOGLE_OAUTH_ACCESS_TOKEN','CLOUDSDK_AUTH_ACCESS_TOKEN'])delete emulatorEnv[name];
+ const child=spawn(secured?nodeRuntime:process.execPath,[cli,'emulators:start','--only',secured?'auth,firestore,functions':'auth,firestore','--project',project,'--config',config,...(restore?['--import',restore]:[])],{cwd:root,env:emulatorEnv,stdio:['ignore','pipe','pipe'],windowsHide:true});
  child.stdout.on('data',chunk=>process.stdout.write(chunk));child.stderr.on('data',chunk=>process.stderr.write(chunk));
  let exited=false;child.on('exit',()=>{exited=true;});
  const stop=()=>{server?.closeAllConnections();server?.close();if(!exited){if(process.platform==='win32')spawnSync('taskkill',['/PID',String(child.pid),'/T','/F'],{stdio:'ignore',windowsHide:true});else child.kill('SIGINT');}};let server;

@@ -1,11 +1,11 @@
 {
   "mode": "local-browser-real-modules-mocked-firebase",
-  "verifiedAt": "2026-11-05T11:48:44.004Z",
+  "verifiedAt": "2026-11-10T05:09:00.542Z",
   "pass": true,
   "sources": [
     {
       "file": "js/teacher-application.js",
-      "sha256": "2e6289a88d34dae428e2ec8cd41f48c2ea2ce96416588a5327868e8c444437ba"
+      "sha256": "b766e75ab7fde08f2545d7f1ff0574fb6cf92677903e8f74bfd5ddec6d47fed1"
     },
     {
       "file": "js/teacher-application-client.js",
@@ -13,11 +13,11 @@
     },
     {
       "file": "js/teacher-application-review.js",
-      "sha256": "29e125f95b0c5dc2ea180a04efe0cff0a9424cc092130346a5fb0cfc22078efd"
+      "sha256": "9efd9ab169122e535ea5612dce7daaec4a08446f0cf5621de57832861dcb39e3"
     },
     {
       "file": "js/teacher-review-panel.js",
-      "sha256": "88057d9817ae96918924968344dc0ff2f2560c8524d14ca83830898cdb1caab1"
+      "sha256": "2fee783c5e2597b2704f9ce45890bc1848a955e72156ff2a92a6e3e80bcc8044"
     },
     {
       "file": "js/teacher-evidence-viewer.js",
@@ -25,11 +25,11 @@
     },
     {
       "file": "pages/teacher-application.html",
-      "sha256": "4cb218509638ddc9107415589de473461c99aa949383609c052399d687744aad"
+      "sha256": "4dd59d425d4a81953b33d5d98b16aa8cedc3af87e1672e4b5796d3be1dc7bc01"
     },
     {
       "file": "css/teacher-application.css",
-      "sha256": "d5b1699071b4a9e8f8f92c770b880976b5e554f3d4a6b4c6ca0ba8cc27a93f48"
+      "sha256": "3bf23537cde69743d7b29cd9e85a6e284fc5564d5809fdb19e98fa8cc01fd05e"
     }
   ],
   "results": [
@@ -42,12 +42,15 @@
         "default school route asks for no PRC or supervisor details",
         "only three profile fields are required and extras start collapsed",
         "new setup reuses the registered teacher name",
+        "unverified teacher sees one clear verification action",
         "unverified email cannot submit",
         "draft saves complete form values while controls are disabled",
         "email action has resend cooldown",
         "email status refresh preserves unsaved application details",
+        "verification feedback uses the refreshed email state",
         "verified application and private image save together",
         "submitted application highlights administrator review",
+        "submitted teacher is told to wait rather than fill in another form",
         "submitted setup shows review status instead of an open application form",
         "submitted application waits for administrator review",
         "evidence opens as a private image without public download URL",
@@ -55,10 +58,13 @@
         "closing evidence clears private image URL",
         "revision request shows reason and editable fields",
         "resubmission advances application revision",
+        "qualification approval explains the final administrator step without implying dashboard access",
+        "outdated approval cannot present a ready dashboard action",
         "approved teacher gets classroom action",
         "editing approval returns to draft and pauses classroom access",
         "expired evidence is physically removed when application is opened",
         "no horizontal overflow at 390px",
+        "sign out clears next-step guidance",
         "sign out clears application identity and fields"
       ]
     },
@@ -71,12 +77,15 @@
         "default school route asks for no PRC or supervisor details",
         "only three profile fields are required and extras start collapsed",
         "new setup reuses the registered teacher name",
+        "unverified teacher sees one clear verification action",
         "unverified email cannot submit",
         "draft saves complete form values while controls are disabled",
         "email action has resend cooldown",
         "email status refresh preserves unsaved application details",
+        "verification feedback uses the refreshed email state",
         "verified application and private image save together",
         "submitted application highlights administrator review",
+        "submitted teacher is told to wait rather than fill in another form",
         "submitted setup shows review status instead of an open application form",
         "submitted application waits for administrator review",
         "evidence opens as a private image without public download URL",
@@ -84,10 +93,13 @@
         "closing evidence clears private image URL",
         "revision request shows reason and editable fields",
         "resubmission advances application revision",
+        "qualification approval explains the final administrator step without implying dashboard access",
+        "outdated approval cannot present a ready dashboard action",
         "approved teacher gets classroom action",
         "editing approval returns to draft and pauses classroom access",
         "expired evidence is physically removed when application is opened",
         "no horizontal overflow at 1280px",
+        "sign out clears next-step guidance",
         "sign out clears application identity and fields"
       ]
     }

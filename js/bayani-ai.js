@@ -1,3 +1,4 @@
+import {appConfirm} from './app-dialog.js';
 ﻿import {auth} from './firebase-config.js';
 import {onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
 import {connectBayani} from './bayani-client.js';
@@ -52,8 +53,8 @@ form.addEventListener('submit',async event=>{event.preventDefault();const messag
  finally{if(request===generation&&auth.currentUser?.uid===uid){busy=false;input.disabled=send.disabled=false;syncChatAppearance();input.focus({preventScroll:true});}}
 });
 retry.addEventListener('click',connect);
-document.getElementById('newBayaniChat').addEventListener('click',()=>{
- if((busy||history.length||input.value.trim())&&!window.confirm('Start a new chat? Your current conversation and unsent question will be cleared.'))return;
+document.getElementById('newBayaniChat').addEventListener('click',async ()=>{
+ if((busy||history.length||input.value.trim())&&!(await appConfirm('Start a new chat? Your current conversation and unsent question will be cleared.')))return;
  if(!client){connect();return;}
  generation++;
  history=[];busy=false;log.replaceChildren();input.value='';

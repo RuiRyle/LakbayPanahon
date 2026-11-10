@@ -4,6 +4,8 @@ const {createHash} = require('node:crypto');
 const root = path.resolve(__dirname, '..'), temp = fs.mkdtempSync(path.join(os.tmpdir(), 'lakbay-teacher-ui-'));
 const strip = name => fs.readFileSync(path.join(root,name),'utf8').replace(/import[\s\S]*?from\s*['"][^'"]+['"];?/g,'').replace(/export /g,'');
 const mocks = `
+window.fixtureErrors=[];window.addEventListener("unhandledrejection",event=>window.fixtureErrors.push(String(event.reason?.stack||event.reason)));window.addEventListener("error",event=>window.fixtureErrors.push(event.message));
+const appConfirm=async message=>window.confirm(message),appAlert=async message=>window.alert(message);
 const records = new Map(), auth = {currentUser:{uid:'teacher1',emailVerified:true}}, db = {};
 let nextId = 0, readFailure = false, signingOut = false;
 const stamp = ms => ({toMillis:()=>ms,toDate:()=>new Date(ms)});
@@ -41,14 +43,14 @@ const mountStudentProfile = ()=>{throw Error('Teacher mounted student profile');
 `;
 const exercise = `
 const checks=[];
-const waitFor=async(test,label)=>{for(let i=0;i<100;i++){if(test())return;await new Promise(r=>setTimeout(r,5));}throw Error('Timed out: '+label+'; '+document.getElementById('teacherStatus').textContent);};
+const waitFor=async(test,label)=>{for(let i=0;i<100;i++){if(test())return;await new Promise(r=>setTimeout(r,5));}throw Error('Timed out: '+label+' status='+document.getElementById('teacherStatus')?.textContent+' errors='+JSON.stringify(window.fixtureErrors)+'; '+document.getElementById('teacherStatus').textContent);};
 const check=(value,label)=>{if(!value)throw Error(label);checks.push(label);};
-const idle=()=>waitFor(()=>!busy,'action complete');
+const idle=async()=>{await new Promise(r=>setTimeout(r,20));return waitFor(()=>!busy,'action complete');};
 const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));
 (async()=>{
  window.confirm=message=>{throw Error('Unexpected confirmation: '+message);};
  check(getComputedStyle(document.getElementById('teacherLoading')).visibility==='visible','student-style loading shell is visible before classroom access finishes');
- await waitFor(()=>document.body.classList.contains('authenticated')&&!busy&&document.getElementById('teacherStatus').textContent.includes('Choose a class'),'initial access');
+ await waitFor(()=>document.body.classList.contains('authenticated')&&!busy&&workspaceReady,'initial access');
  check(getComputedStyle(document.getElementById('teacherLoading')).display==='none','loading shell clears when classroom loading finishes');
  document.body.classList.add('lakbay-reduce-motion');tab('students');
  check(sectionAnimation===null,'saved reduced-motion preference suppresses section entrance animations');

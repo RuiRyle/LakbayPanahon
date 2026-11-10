@@ -166,7 +166,24 @@ function createAssessmentService(store, {
     }
     const practice = kind === 'mission' ? (await tx.list('practiceQuestions', 'missionId', mission.id)).filter(active).sort((a, b) => a.id.localeCompare(b.id)) : [];
     if (mission && !integer(mission.xpReward)) fail('assessment/content-unavailable');
-    return {chapter,mission,activity,bank,practice,collection,threshold:activity.passingScore,reward:mission?mission.xpReward:0};
+    const classroom=await verifyClassroom(tx,uid,input);
+    return {chapter,mission,activity,bank,practice,collection,threshold:activity.passingScore,reward:mission?mission.xpReward:0,classroom};
+  }
+  async function verifyClassroom(tx,uid,input){
+    if(!input.classroom)return null;
+    const request=input.classroom;
+    if(input.kind!=='mission'||!id(request.classId)||!id(request.assignmentId))fail('assessment/classroom-unavailable');
+    const [classroom,member,normalAssignment]=await Promise.all([tx.get('classes/'+request.classId),tx.get('classMembers/'+own(uid,request.classId)),tx.get('classAssignments/'+request.assignmentId)]);
+    const assignment=normalAssignment||await tx.get('classReviewAssignments/'+request.assignmentId);
+    const millis=value=>value?.toMillis?.(),stamp=value=>Number.isInteger(value?.seconds)&&Number.isInteger(value?.nanoseconds)?value.seconds+':'+value.nanoseconds:'ms:'+millis(value);
+    const joined=millis(member?.joinedAt),assigned=millis(normalAssignment?assignment?.publishedAt:assignment?.assignedAt),version=assignment?.submissionVersion??1;
+    if(!active(classroom)||member?.userId!==uid||member.classId!==request.classId||!active(member)||assignment?.status!=='published'||
+      assignment.classId!==request.classId||assignment.chapterId!==input.chapterId||assignment.missionId!==input.missionId||
+      (!normalAssignment&&assignment.userId!==uid)||
+      !Number.isFinite(joined)||!Number.isFinite(assigned)||joined<=0||assigned<=0||Math.max(joined,assigned)>=clock()||!integer(version,1))fail('assessment/classroom-unavailable');
+    const context={classId:request.classId,assignmentId:request.assignmentId,version,joinedAtKey:stamp(member.joinedAt),joinedAt:joined,assignedAt:assigned,issuedAt:input.issuedAt??clock()};
+    if(input.issuedAt!==undefined&&(request.version!==context.version||request.joinedAtKey!==context.joinedAtKey||request.assignedAt!==context.assignedAt||input.issuedAt<=Math.max(joined,assigned)))fail('assessment/classroom-changed');
+    return context;
   }
   async function issuanceContext(tx, uid, input, shared) {
     const ctx = await verificationContext(tx, uid, input, shared);
@@ -251,6 +268,7 @@ function createAssessmentService(store, {
       missionId: a.missionId || null,
       quizId: a.quizId || null,
       challengeId: a.challengeId || null,
+      classroom: a.classroom || null,
       expiresAt: a.expiresAt,
       passingScore: a.threshold,
       questions: a.questions.map(q => publicQuestion(q, !!a.result || Object.hasOwn(a.answers, q.id))),
@@ -347,9 +365,9 @@ function createAssessmentService(store, {
   return {
     start: (uid, input) => {
       bounds(input);
-      if (!exact(input, ['kind', 'chapterId', 'missionId', 'quizId', 'challengeId', 'requestId']) || !uuid(input.requestId)) fail('assessment/invalid-request');
+      if (!exact(input, ['kind', 'chapterId', 'missionId', 'quizId', 'challengeId', 'requestId','classroom']) || !uuid(input.requestId)) fail('assessment/invalid-request');
       const required=input.kind==='mission'?['kind','requestId','chapterId','missionId','quizId']:input.kind==='chapter'?['kind','requestId','chapterId','challengeId']:['kind','requestId','challengeId'];
-      if(!exact(input,required)||required.some(key=>input[key]===undefined))fail('assessment/invalid-request');
+      if(!exact(input,[...required,'classroom'])||required.some(key=>input[key]===undefined)||input.classroom&&(!exact(input.classroom,['classId','assignmentId'])||input.kind!=='mission'))fail('assessment/invalid-request');
       return transact(uid, async (tx, profile, policy, shared) => {
         const requestPath = 'serverAssessmentRequests/' + own(uid, input.requestId),
           existing = await tx.get(requestPath),
@@ -376,6 +394,7 @@ function createAssessmentService(store, {
         if (!uuid(attemptId)) fail('assessment/not-active');
         const a = {
           ...input,
+          ...(ctx.classroom?{classroom:ctx.classroom}:{}),
           userId: uid,
           attemptId,
           attemptNumber:ctx.attemptNumber||1,
@@ -627,6 +646,7 @@ function createAssessmentService(store, {
             missionId: a.missionId,
             quizId: a.quizId,
             attemptId: a.attemptId,
+            ...(a.classroom?{classroom:a.classroom}:{}),
             questionIds: a.questions.map(q => q.id),
             answers: a.answers,
             score,

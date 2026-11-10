@@ -1,11 +1,21 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const read=name=>fs.readFileSync(path.join(__dirname,'../js',name),'utf8').replace(/import[\s\S]*?from\s+['"][^'"]+['"];?/g,'').replace(/export /g,'');
 test('Functions package policy copies match the browser policies exactly',()=>{require('../functions/sync-assessment-policy.cjs').sync(true);});
-function transport(){let lost=false,gate,release;const requests=[],states=new Map(),storage=new Map(),context=vm.createContext({app:{},auth:{currentUser:{uid:'alice'}},db:{},firebaseEnvironment:{mode:'emulator'},crypto:{randomUUID:require('node:crypto').randomUUID},getFunctions:()=>({}),connectFunctionsEmulator:()=>{},sessionStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},httpsCallable:(_,name)=>async data=>{
+function transport(){let lost=false,gate,release;const requests=[],states=new Map(),storage=new Map(),context=vm.createContext({URLSearchParams,app:{},auth:{currentUser:{uid:'alice'}},db:{},firebaseEnvironment:{mode:'emulator'},crypto:{randomUUID:require('node:crypto').randomUUID},getFunctions:()=>({}),connectFunctionsEmulator:()=>{},sessionStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v),removeItem:k=>storage.delete(k)},httpsCallable:(_,name)=>async data=>{
  requests.push({name,data:JSON.parse(JSON.stringify(data))});if(gate)await gate;
  let state;if(name==='startStudentAssessment'){state=states.get(data.requestId)||{attemptId:require('node:crypto').randomUUID(),revision:0,answers:{},questions:[]};states.set(data.requestId,state);}else if(name==='advanceStudentAssessment'){state={attemptId:data.attemptId,revision:data.revision+1,answers:{[data.questionId]:data.answer},questions:[]};}else if(name==='submitStudentActivity')return{data:{score:100,totalXp:25,passed:true}};
  if(lost){lost=false;throw Error('Lost acknowledgement');}return{data:state};}});vm.runInContext(read('student-assessment-client.js'),context);return{context,requests,lose:()=>lost=true,hold:()=>{gate=new Promise(r=>release=r);},release:()=>{gate=null;release();}};}
 const identity={kind:'mission',chapterId:'c1',missionId:'m1',quizId:'quiz1'};
+
+test('classroom issuance is isolated from solo and other assignment caches',async()=>{
+ const f=transport();await f.context.beginAssessment(identity);const solo=f.context.assessmentState(identity);
+ f.context.location={search:'?classroom=c1&activity=a1'};
+ assert.equal(f.context.assessmentState(identity),undefined);
+ await f.context.beginAssessment(identity);assert.equal(f.requests.at(-1).data.classroom.assignmentId,'a1');
+ assert.notEqual(f.context.assessmentState(identity).attemptId,solo.attemptId);
+ f.context.location.search='?classroom=c1&activity=a2';assert.equal(f.context.assessmentState(identity),undefined);
+ f.context.location.search='';assert.equal(f.context.assessmentState(identity).attemptId,solo.attemptId);
+});
 test('uncertain issuance and answer acknowledgements retry with stable idempotency identifiers',async()=>{const f=transport();f.lose();await assert.rejects(f.context.beginAssessment(identity),/Lost/);await f.context.beginAssessment(identity);assert.equal(f.requests[0].data.requestId,f.requests[1].data.requestId);f.lose();await assert.rejects(f.context.assessmentAction(identity,{action:'answer',questionId:'q1',answer:'A'}),/Lost/);await f.context.assessmentAction(identity,{action:'answer',questionId:'q1',answer:'A'});assert.equal(f.requests[2].data.requestId,f.requests[3].data.requestId);assert.equal(f.requests[2].data.revision,f.requests[3].data.revision);});
 test('late responses from a different account are discarded',async()=>{const f=transport();f.hold();const pending=f.context.beginAssessment(identity);await new Promise(r=>setImmediate(r));f.context.auth.currentUser={uid:'bob'};f.release();await assert.rejects(pending,/account changed/);assert.equal(f.context.assessmentState(identity),undefined);});
 test('reward facade and exploration preview have no canonical browser writer',()=>{for(const file of ['student-rewards-client.js','assessment-preview.js','mission-assessment-client.js'])assert.doesNotMatch(fs.readFileSync(path.join(__dirname,'../js',file),'utf8'),/\b(?:setDoc|updateDoc|deleteDoc|runTransaction|httpsCallable)\s*\(/,file);});

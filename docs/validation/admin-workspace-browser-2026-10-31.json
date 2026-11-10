@@ -1,15 +1,15 @@
 {
   "mode": "local-browser-real-modules-mocked-firestore",
-  "verifiedAt": "2026-10-31T15:46:12.363Z",
-  "pass": true,
+  "verifiedAt": "2026-11-10T10:12:07.776Z",
+  "pass": false,
   "sources": [
     {
       "file": "js/admin-accounts.js",
-      "sha256": "97e1b036664415fa7e86f464b13e75f14cd8c8c7dc081d87afcb8620c8a0595b"
+      "sha256": "0e62afcf389da17422b6daa00f06154a43ff58ecd2cb4c60ce5ea91818ea3be5"
     },
     {
       "file": "js/admin-workspace.js",
-      "sha256": "1cbcf4f8a47357e35932bbc315589be868835fce55d8a647a659d8577ccab3ff"
+      "sha256": "151e1319924775c1a34fc1900479049afc203636bc254fcc2684f99122079288"
     },
     {
       "file": "js/auth-guard.js",
@@ -17,67 +17,23 @@
     },
     {
       "file": "pages/admin-dashboard.html",
-      "sha256": "c6a3633dca084a7226a21b34864bd8e281de449e41fecae1ace6d6607cdf55a0"
+      "sha256": "5e625fe966930d184d0a0e19de9afe7cbd5f57825058879d9e0c64a46c331a95"
     },
     {
       "file": "css/admin-workspace.css",
-      "sha256": "e0fb5e2cf494e698f47e99d2cbc6a27415556525a93cf1afc7ca66deb2d681a3"
+      "sha256": "78f92136779e29c6b662899ff643eacaf23c0cd95351fdc1b489c460e9a21d57"
     }
   ],
   "results": [
     {
-      "state": "PASS",
-      "width": 1280,
-      "checks": [
-        "pending-teacher queue paginates at 25",
-        "next account page",
-        "previous account page",
-        "submitted-application queue excludes incomplete accounts",
-        "profile names use safe text",
-        "teacher approval requires verification",
-        "verified approval updates account",
-        "reason appears in audit history",
-        "deactivation appends audit record",
-        "teacher reactivation works after verification",
-        "student management does not show teacher verification",
-        "student deactivation preserves learning progress",
-        "stale account decision rejected without audit write",
-        "same-status profile change invalidates an old review",
-        "audit history is paginated",
-        "load more audit decisions without duplicates",
-        "read error hides stale account details",
-        "refresh recovers after read failure",
-        "offline admin guard stays locked with visible retry",
-        "no page overflow at 1280px",
-        "sign out clears profiles and reasons"
-      ]
+      "state": "FAIL",
+      "width": 390,
+      "error": "Error: quick actions keep comfortable pointer and keyboard targets\n    at check (file:///C:/Users/RUIRYL~1/AppData/Local/Temp/lakbay-admin-ui-nfkEU8/frame.html:8636:45)\n    at file:///C:/Users/RUIRYL~1/AppData/Local/Temp/lakbay-admin-ui-nfkEU8/frame.html:8670:2"
     },
     {
-      "state": "PASS",
-      "width": 390,
-      "checks": [
-        "pending-teacher queue paginates at 25",
-        "next account page",
-        "previous account page",
-        "submitted-application queue excludes incomplete accounts",
-        "profile names use safe text",
-        "teacher approval requires verification",
-        "verified approval updates account",
-        "reason appears in audit history",
-        "deactivation appends audit record",
-        "teacher reactivation works after verification",
-        "student management does not show teacher verification",
-        "student deactivation preserves learning progress",
-        "stale account decision rejected without audit write",
-        "same-status profile change invalidates an old review",
-        "audit history is paginated",
-        "load more audit decisions without duplicates",
-        "read error hides stale account details",
-        "refresh recovers after read failure",
-        "offline admin guard stays locked with visible retry",
-        "no page overflow at 390px",
-        "sign out clears profiles and reasons"
-      ]
+      "state": "FAIL",
+      "width": 1280,
+      "error": "Error: quick actions keep comfortable pointer and keyboard targets\n    at check (file:///C:/Users/RUIRYL~1/AppData/Local/Temp/lakbay-admin-ui-nfkEU8/frame.html:8636:45)\n    at file:///C:/Users/RUIRYL~1/AppData/Local/Temp/lakbay-admin-ui-nfkEU8/frame.html:8670:2"
     }
   ]
 }

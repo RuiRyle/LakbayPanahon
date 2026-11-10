@@ -1,3 +1,4 @@
+import {appConfirm} from './app-dialog.js';
 import { auth, db } from "./firebase-config.js";
 import { doc, getDocFromServer, runTransaction, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
@@ -177,7 +178,7 @@ export function restartControl(container, label, restart) {
     button.textContent = label;
     button.hidden = true;
     button.addEventListener("click", async () => {
-        if (button.disabled || !window.confirm("Start this activity over? Your unfinished answers will reset. Completed missions and earned rewards will stay saved.")) return;
+        if (button.disabled || !(await appConfirm("Start this activity over? Your unfinished answers will reset. Completed missions and earned rewards will stay saved."))) return;
         button.disabled = true;
         container.inert = true;
         try { await restart(); }
