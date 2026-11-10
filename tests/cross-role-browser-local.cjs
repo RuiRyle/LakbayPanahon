@@ -18,7 +18,7 @@ async function logout(){await evaluate("(async()=>{const {auth}=await import('/j
 const check=(ok,label)=>{assert.ok(ok,label);checks.push(label);console.log('PASS: '+label);};
 async function captureAdmin(name){
  if(!process.argv.includes('--screenshots'))return;
- const destination=path.join(__dirname,'../docs/validation/admin-second-pass');fs.mkdirSync(destination,{recursive:true});
+ const destination=path.join(__dirname,'../docs/validation/admin-reference-final');fs.mkdirSync(destination,{recursive:true});
  for(const width of [1440,900,390]){
   await send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:false});
   await evaluate(['teacher-review','student-access'].includes(name)?"document.getElementById('adminAccountDetail').scrollIntoView({block:'start'})":'window.scrollTo(0,0)');await pause(350);
@@ -43,7 +43,7 @@ async function captureAdmin(name){
  await evaluate("(()=>{const f=document.getElementById('teacherApplicationForm');f.elements.legalName.value='CrossRole teacher';f.elements.institution.value='Synthetic Review School';f.elements.roleTitle.value='Grade 5 facilitator';document.getElementById('teacherQualificationAcknowledged').checked=true;f.requestSubmit();})()");
  await wait("document.getElementById('teacherApplicationStatus')?.textContent.startsWith('Submitted')");
  const submitted=await request(rest+'/teacherApplications/'+teacher.uid);check(submitted.fields.status.stringValue==='submitted','teacher submits school-affiliation application through actual form');await logout();
- await login(operator);await wait("location.pathname.endsWith('admin-dashboard.html')&&document.getElementById('adminStatus')?.textContent.startsWith('Overview ready')");
+ await login(operator);await wait("location.pathname.endsWith('admin-dashboard.html')&&document.getElementById('admin-main')?.getAttribute('aria-busy')==='false'&&!document.getElementById('adminOverviewResults')?.hidden");
  await send('Page.enable');
  socket.addEventListener('message',event=>{const message=JSON.parse(event.data);if(message.method==='Page.javascriptDialogOpening'){(report.confirmations??=[]).push(message.params.message);send('Page.handleJavaScriptDialog',{accept:true}).catch(()=>{});}});
  await captureAdmin('overview');
@@ -58,7 +58,7 @@ async function captureAdmin(name){
  await login(teacher);await wait("location.pathname.endsWith('teacher-application.html')&&!document.getElementById('applicationWorkspace').hidden&&document.getElementById('teacherApplicationStatus').textContent==='More information requested'&&!document.querySelector('#teacherApplicationForm button[type=submit]').disabled");
  await evaluate("(()=>{const f=document.getElementById('teacherApplicationForm');f.elements.legalName.value='CrossRole teacher';f.elements.institution.value='Synthetic Review School';f.elements.roleTitle.value='Grade 5 facilitator';document.getElementById('teacherQualificationAcknowledged').checked=true;f.requestSubmit();})()");
  await wait("document.getElementById('teacherApplicationStatus')?.textContent.startsWith('Submitted')");check((await request(rest+'/teacherApplications/'+teacher.uid)).fields.revision.integerValue==='2','teacher resubmits requested changes as a new revision');await logout();
- await login(operator);await wait("document.getElementById('adminStatus')?.textContent.startsWith('Overview ready')");
+ await login(operator);await wait("document.getElementById('admin-main')?.getAttribute('aria-busy')==='false'&&!document.getElementById('adminOverviewResults')?.hidden");
  await evaluate("document.querySelector('[data-teacher-tab=accounts]').click()");await evaluate("document.getElementById('adminApplicationsMode').click()");await wait("[...document.querySelectorAll('#adminAccounts button')].some(b=>b.dataset.userId==="+JSON.stringify(teacher.uid)+")");
  await evaluate("[...document.querySelectorAll('#adminAccounts button')].find(b=>b.dataset.userId==="+JSON.stringify(teacher.uid)+").click()");await wait("!!document.querySelector('.qualification-review-form')");
  await captureAdmin('teacher-review');
@@ -73,15 +73,16 @@ async function captureAdmin(name){
  await logout();await login(teacher);await wait("location.pathname.endsWith('teacher-application.html')&&document.getElementById('teacherApplicationStatus')?.textContent.startsWith('Approved')");
  check(await evaluate("document.getElementById('openApprovedWorkspace').hidden&&document.getElementById('teacherSetupTitle').textContent.includes('activation pending')"),'approved teacher sees activation-pending state without classroom access');
  await go('teacher-dashboard.html');await wait("location.pathname.endsWith('teacher-application.html')");check(true,'direct classroom navigation is denied before activation');await logout();
- await login(operator);await wait("document.getElementById('adminStatus')?.textContent.startsWith('Overview ready')");await evaluate("document.querySelector('[data-teacher-tab=accounts]').click()");
+ await login(operator);await wait("document.getElementById('admin-main')?.getAttribute('aria-busy')==='false'&&!document.getElementById('adminOverviewResults')?.hidden");await evaluate("document.querySelector('[data-teacher-tab=accounts]').click()");
  await evaluate("[...document.querySelectorAll('#adminAccounts button')].find(b=>b.dataset.userId==="+JSON.stringify(teacher.uid)+").click()");await wait("!document.getElementById('saveAccountStatus').disabled&&!!document.getElementById('accountName').textContent");
  await evaluate("(()=>{document.getElementById('newAccountStatus').value='active';document.getElementById('teacherIdentityVerified').checked=true;document.getElementById('moderationReason').value='Separate activation after approved qualifications.';document.getElementById('moderationForm').requestSubmit();})()");await wait("document.getElementById('accountCurrentStatus').textContent.includes('active')&&!document.getElementById('saveAccountStatus').disabled");check(true,'explicit confirmed activation grants account access with a separate audit record');
- await evaluate("(()=>{document.querySelector('[data-teacher-tab=environment]').click();document.getElementById('adminRefreshRecords').click();})()");await wait("document.getElementById('adminStatus').textContent==='Administration overview loaded.'");await captureAdmin('administration');
- await evaluate("(()=>{document.querySelector('[data-teacher-tab=accounts]').click();document.getElementById('adminApplicationsMode').click();})()");await wait("document.getElementById('adminAccounts').textContent.includes('No accounts match')");await captureAdmin('empty-queue');await logout();
+ await evaluate("document.querySelector('[data-teacher-tab=records]').click()");await captureAdmin('decision-records');
+ await evaluate("(()=>{document.querySelector('[data-teacher-tab=environment]').click();document.getElementById('adminRefreshRecords').click();})()");await wait("document.getElementById('admin-main').getAttribute('aria-busy')==='false'&&document.getElementById('adminStatus').textContent===''");await captureAdmin('administration');
+ await evaluate("(()=>{document.querySelector('[data-teacher-tab=accounts]').click();document.getElementById('adminApplicationsMode').click();})()");await wait("document.getElementById('adminAccounts').textContent.includes('No submitted applications')");await captureAdmin('empty-queue');await logout();
  await login(teacher);await wait("location.pathname.endsWith('teacher-dashboard.html')&&document.body.classList.contains('authenticated')&&!document.getElementById('refreshTeacher').disabled");check(true,'approved teacher next login opens classroom dashboard');await logout();
  await login(student);await wait("document.body.dataset.role==='student'&&document.body.classList.contains('authenticated')&&!!document.getElementById('student-main')");
  check(await evaluate("document.body.classList.contains('authenticated')"),'student without class membership can open independent learning');await logout();
- await login(operator);await wait("location.pathname.endsWith('admin-dashboard.html')&&document.getElementById('adminStatus')?.textContent.startsWith('Overview ready')");
+ await login(operator);await wait("location.pathname.endsWith('admin-dashboard.html')&&document.getElementById('admin-main')?.getAttribute('aria-busy')==='false'&&!document.getElementById('adminOverviewResults')?.hidden");
  await evaluate("document.querySelector('[data-teacher-tab=accounts]').click()");
  await evaluate("(()=>{document.getElementById('accountRole').value='student';document.getElementById('accountStatusFilter').value='active';document.getElementById('accountFilters').requestSubmit();})()");await wait("[...document.querySelectorAll('#adminAccounts button')].some(b=>b.dataset.userId==="+JSON.stringify(student.uid)+")");
  await evaluate("(()=>{const search=document.getElementById('adminAccountSearch');search.value="+JSON.stringify(student.email)+";search.dispatchEvent(new Event('input'));})()");check(await evaluate("[...document.querySelectorAll('#adminAccounts button')].filter(b=>!b.hidden).length===1"),'scoped search finds the synthetic student in the filtered account page');
@@ -104,7 +105,7 @@ async function captureAdmin(name){
  // Directory-only synthetic profiles force a real second page without creating extra login fixtures.
  for(let i=0;i<27;i++){const record='users/zz-pagination-'+fixture+'-'+String(i).padStart(2,'0');owned.push(record);await request(rest+'/'+record,'PATCH',{fields:fields({role:'teacher',status:'pending',firstName:'Synthetic pagination',lastName:String(i),email:'pagination-'+i+'@example.com',createdAt:new Date()})});}
  report.fixtureMatrix={teachers:matrix,students:['active','inactive'],directoryOnlyPaginationProfiles:27};
- await login(operator);await wait("document.getElementById('adminStatus')?.textContent.startsWith('Overview ready')");await captureAdmin('matrix-overview');await evaluate("document.querySelector('[data-teacher-tab=accounts]').click()");
+ await login(operator);await wait("document.getElementById('admin-main')?.getAttribute('aria-busy')==='false'&&!document.getElementById('adminOverviewResults')?.hidden");await captureAdmin('matrix-overview');await evaluate("document.querySelector('[data-teacher-tab=accounts]').click()");
  await evaluate("(()=>{document.getElementById('accountStatusFilter').value='pending';document.getElementById('accountFilters').requestSubmit();})()");await wait("document.querySelectorAll('#adminAccounts button').length===25&&!document.getElementById('nextAccounts').disabled");
  const firstPage=await evaluate("[...document.querySelectorAll('#adminAccounts button')].map(b=>b.dataset.userId)");await captureAdmin('matrix-existing-accounts');await evaluate("document.getElementById('nextAccounts').click()");await wait("document.getElementById('accountPage').textContent.includes('Page 2')&&!document.getElementById('previousAccounts').disabled");
  check(!(await evaluate("[...document.querySelectorAll('#adminAccounts button')].map(b=>b.dataset.userId)")).some(id=>firstPage.includes(id)),'populated real account pagination has no duplicate rows across pages');

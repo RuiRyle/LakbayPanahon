@@ -53,6 +53,7 @@ form.addEventListener('submit',async event=>{event.preventDefault();const messag
 });
 retry.addEventListener('click',connect);
 document.getElementById('newBayaniChat').addEventListener('click',()=>{
+ if((busy||history.length||input.value.trim())&&!window.confirm('Start a new chat? Your current conversation and unsent question will be cleared.'))return;
  if(!client){connect();return;}
  generation++;
  history=[];busy=false;log.replaceChildren();input.value='';

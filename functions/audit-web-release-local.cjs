@@ -1,7 +1,7 @@
 // Static dependency inventory only. Does not authenticate, deploy or contact Firebase.
 const fs=require('node:fs'),path=require('node:path');
 const root=path.join(__dirname,'..');
-const pages=['index.html','404.html',...['student-dashboard','student-shell','journey-finale','my-journey','my-class','history-timeline','chapters','era','mission','story','story-playground','quiz','practice','chapter-challenge','achievements','my-profile','bayani-ai','settings','login','register','teacher','teacher-register','teacher-application','teacher-dashboard','teacher-classes','teacher-classroom','teacher-students','teacher-announcements','teacher-assignments','teacher-settings','admin-dashboard'].map(n=>'pages/'+n+'.html')];
+const pages=['index.html','404.html',...['student-dashboard','student-shell','journey-finale','my-journey','my-class','history-timeline','chapters','era','mission','story','story-playground','quiz','practice','chapter-challenge','achievements','my-profile','bayani-ai','settings','login','register','teacher','teacher-register','teacher-application','teacher-dashboard','teacher-classes','teacher-classroom','teacher-students','teacher-announcements','teacher-assignments','teacher-settings','admin-dashboard','admin-applications','admin-accounts','admin-decisions','admin-administration'].map(n=>'pages/'+n+'.html')];
 const selected=new Set(),missing=[],rejected=[],queue=[...pages];
 const supported=/\.(?:html|js|css|png|jpe?g|webp|gif|svg|ico|woff2?|ttf|mp3|wav|ogg|mp4)$/i;
 function add(from,reference){

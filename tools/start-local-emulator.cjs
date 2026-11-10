@@ -18,8 +18,10 @@ async function main(){
   if(marker.projectId!==project||marker.secured!==true||!metadata.auth||!metadata.firestore)throw Error('Not a complete secured local backup.');
  }
  const candidate=path.join(root,'build/priority3-stage0-release');
- const runtime=path.join(root,'build/node22/node-v22.23.4-win-x64');
- if(secured){require('../functions/stage0-gcloud-plan.cjs').validateCandidate(candidate);if(!fs.existsSync(path.join(runtime,'node.exe'))||!fs.existsSync(path.join(candidate,'functions/node_modules/firebase-admin')))throw Error('The verified Node 22 runtime and prepared backend dependencies are required for --secured.');}
+ const bundledRuntime=path.join(root,'build/node22/node-v22.23.4-win-x64/node.exe');
+ const nodeRuntime=Number(process.versions.node.split('.')[0])===22?process.execPath:bundledRuntime;
+ const runtime=path.dirname(nodeRuntime);
+ if(secured){require('../functions/stage0-gcloud-plan.cjs').validateCandidate(candidate);if(!fs.existsSync(nodeRuntime)||!fs.existsSync(path.join(candidate,'functions/node_modules/firebase-admin')))throw Error('Install Node.js 22 and run npm ci, then npm run setup:local.');}
  // Never reseed an existing demo session or start a second emulator suite.
  let running;
  try{const response=await fetch('http://127.0.0.1:4400/emulators',{signal:AbortSignal.timeout(1200)});if(response.ok)running=await response.json();}catch{}
@@ -30,9 +32,9 @@ async function main(){
  const folder=resolvePackage();
  const config=path.join(folder,'emulator-config.json');
  fs.writeFileSync(config,JSON.stringify({firestore:{rules:secured?require('./admin-review-rules.cjs').prepare():path.join(root,'firestore.rules')},...(secured?{functions:[{source:path.relative(folder,path.join(candidate,'functions')).split(path.sep).join('/'),codebase:'local-assessment'}]}:{}),emulators:{auth:{host:'127.0.0.1',port:9099},firestore:{host:'127.0.0.1',port:8180},...(secured?{functions:{host:'127.0.0.1',port:5001}}:{}),ui:{enabled:true,host:'127.0.0.1',port:4000},hub:{host:'127.0.0.1',port:4400},logging:{host:'127.0.0.1',port:4500},singleProjectMode:true}},null,2));
- const cli=path.join(process.env.APPDATA,'npm/node_modules/firebase-tools/lib/bin/firebase.js');
+ let cli;try{cli=require.resolve('firebase-tools/lib/bin/firebase.js');}catch{cli=process.env.APPDATA?path.join(process.env.APPDATA,'npm/node_modules/firebase-tools/lib/bin/firebase.js'):'';}
  if(!fs.existsSync(cli))throw Error('Firebase CLI is required.');
- const child=spawn(secured?path.join(runtime,'node.exe'):process.execPath,[cli,'emulators:start','--only',secured?'auth,firestore,functions':'auth,firestore','--project',project,'--config',config,...(restore?['--import',restore]:[])],{cwd:root,env:secured?{...process.env,PATH:runtime+path.delimiter+process.env.PATH}:process.env,stdio:['ignore','pipe','pipe'],windowsHide:true});
+ const child=spawn(secured?nodeRuntime:process.execPath,[cli,'emulators:start','--only',secured?'auth,firestore,functions':'auth,firestore','--project',project,'--config',config,...(restore?['--import',restore]:[])],{cwd:root,env:secured?{...process.env,PATH:runtime+path.delimiter+process.env.PATH}:process.env,stdio:['ignore','pipe','pipe'],windowsHide:true});
  child.stdout.on('data',chunk=>process.stdout.write(chunk));child.stderr.on('data',chunk=>process.stderr.write(chunk));
  let exited=false;child.on('exit',()=>{exited=true;});
  const stop=()=>{server?.closeAllConnections();server?.close();if(!exited){if(process.platform==='win32')spawnSync('taskkill',['/PID',String(child.pid),'/T','/F'],{stdio:'ignore',windowsHide:true});else child.kill('SIGINT');}};let server;

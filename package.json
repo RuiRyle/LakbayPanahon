@@ -1,0 +1,13 @@
+{
+  "name": "lakbaypanahon-local-development",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": "22.x" },
+  "scripts": {
+    "setup:local": "node tools/setup-local-development.cjs",
+    "start:local": "node tools/start-local-emulator.cjs --secured",
+    "backup:local": "node tools/backup-local-emulator.cjs",
+    "test:local-setup": "node --test tests/local-development-setup.test.cjs"
+  },
+  "devDependencies": { "firebase-tools": "15.33.0" }
+}

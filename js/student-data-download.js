@@ -6,15 +6,25 @@ import {collectLearningData} from './student-data-export.js';
 const button = document.getElementById('downloadLearningData');
 const status = document.getElementById('learningDataDownloadStatus');
 let generation = 0;
+let pendingDownload = null;
 const deadline = task => {
     let timer;
     return Promise.race([task, new Promise((_, reject) => { timer = setTimeout(() => reject(Error('The download took too long. Check your connection and try again.')), 20000); })]).finally(() => clearTimeout(timer));
 };
-onAuthStateChanged(auth, () => { generation++; if (button) button.disabled = !auth.currentUser; if (status) status.textContent = ''; });
-window.addEventListener('pagehide', () => { generation++; });
+onAuthStateChanged(auth, () => { generation++; pendingDownload=null; if (button) button.disabled = !auth.currentUser; if (status) status.textContent = ''; });
+window.addEventListener('pagehide', () => { generation++; pendingDownload=null; });
+window.addEventListener('pageshow', event => {
+    if (!event.persisted) return;
+    generation++; pendingDownload=null;
+    if (button) button.disabled = !auth.currentUser;
+    if (status) status.textContent = auth.currentUser ? 'You can download a fresh copy of your learning data.' : 'Sign in again to download your learning data.';
+});
 button?.addEventListener('click', async () => {
-    const user = auth.currentUser, request = ++generation;
+    const user = auth.currentUser;
+    if (user && pendingDownload?.user === user) return;
+    const request = ++generation;
     if (!user) { status.textContent = 'Sign in again to download your learning data.'; return; }
+    pendingDownload = {user, request};
     const current = () => {
         if (generation !== request || auth.currentUser !== user) throw Error('Your session changed. No file was downloaded.');
     };
@@ -49,6 +59,7 @@ button?.addEventListener('click', async () => {
     } catch (error) {
         if (generation === request && auth.currentUser === user) status.textContent = error?.code === 'permission-denied' ? 'Your account cannot read all required records. No file was downloaded. Sign in again or ask for help.' : 'Download unsuccessful. ' + (error?.message || 'Check your connection and try again.');
     } finally {
+        if (pendingDownload?.request === request) pendingDownload = null;
         if (generation === request && auth.currentUser === user) button.disabled = false;
     }
 });

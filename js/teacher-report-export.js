@@ -6,13 +6,15 @@ export const learningEvidenceGuide = Object.freeze([
  {label:'Teacher guidance',meaning:'A sent response records support provided. It does not establish that the student understood or improved.',next:'Check the student response and look for subsequent practice or explanation evidence.'},
  {label:'Retention and application',meaning:'Current completion and immediate retry results do not establish lasting learning or transfer to another example.',next:'Use a later check and a new example during learning evaluation. No retention score is inferred here.'}
 ]);
+function reportTime(value){try{const ms=value?.toMillis?.();return Number.isFinite(ms)&&Number.isFinite(new Date(ms).getTime())?ms:null;}catch{return null;}}
+function reportScore(value){return Number.isFinite(value)&&value>=0&&value<=100?value:'Unavailable';}
 export function learningReportRows({studentName,className,report,missions,generatedAt=new Date()}) {
-    const timestamp=value=>{const ms=value?.toMillis?.();return Number.isFinite(ms)?new Date(ms).toISOString():'Unavailable';};
+    const timestamp=value=>{const ms=reportTime(value);return ms===null?'Unavailable':new Date(ms).toISOString();};
     const title=id=>missions.find(m=>m.id===id)?.title||missions.find(m=>m.id===id)?.name||id||'Unknown mission';
     const topic=value=>String(value).replace(/([a-z])([A-Z])/g,'$1 $2').replace(/[-_]+/g,' ');
     const rows=[['LakbayPanahon student learning report'],['Student',studentName],['Class',className],['Generated (UTC)',generatedAt.toISOString()],['Scope','Saved mission progress and browser-graded quiz attempts; not a verified exam or measure of ability. Completion is not mastery; XP is not a learning score. Explanations, guidance, retention and transfer are not assessed by this export. Private teacher notes and student-visible feedback are excluded.'],[],['Record type','Mission','Completed','Score (%)','Saved result','Recorded time (UTC)','Topics to revisit']];
-    for(const record of report.progress)rows.push(['Mission progress',title(record.missionId),record.completed===true?'Yes':'Not yet completed',Number.isFinite(record.bestScore)?record.bestScore:'Unavailable','Best saved mission score',timestamp(record.completedAt),'']);
-    for(const attempt of [...report.attempts].sort((a,b)=>(b.completedAt?.toMillis?.()||0)-(a.completedAt?.toMillis?.()||0)))rows.push(['Quiz attempt',title(attempt.missionId),'',Number.isFinite(attempt.score)?attempt.score:'Unavailable',attempt.passed===true?'Passed':attempt.passed===false?'Review suggested':'Unavailable',timestamp(attempt.completedAt),Array.isArray(attempt.topicsForReview)?attempt.topicsForReview.map(topic).join('; '):'']);
+    for(const record of report.progress)rows.push(['Mission progress',title(record.missionId),record.completed===true?'Yes':'Not yet completed',reportScore(record.bestScore),'Best saved mission score',timestamp(record.completedAt),'']);
+    for(const attempt of [...report.attempts].sort((a,b)=>(reportTime(b.completedAt)||0)-(reportTime(a.completedAt)||0)))rows.push(['Quiz attempt',title(attempt.missionId),'',reportScore(attempt.score),attempt.passed===true?'Passed':attempt.passed===false?'Review suggested':'Unavailable',timestamp(attempt.completedAt),Array.isArray(attempt.topicsForReview)?attempt.topicsForReview.map(topic).join('; '):'']);
     if(!report.progress.length&&!report.attempts.length)rows.push(['No saved learning records available']);
     return rows;
 }
@@ -47,7 +49,7 @@ export function classroomReportRows({className,students,missions,generatedAt=new
         if(!student.report){rows.push([student.name,'Unavailable','','','','','']);continue;}
         const {report}=student,name=[report.profile?.firstName,report.profile?.lastName].filter(Boolean).join(' ')||student.name;
         const completed=new Set(report.progress.filter(p=>p.completed===true&&missionKeys.has(p.chapterId+'|'+p.missionId)).map(p=>p.chapterId+'|'+p.missionId)).size;
-        const attempts=report.attempts.filter(a=>missionKeys.has(a.chapterId+'|'+a.missionId)&&Number.isFinite(a.completedAt?.toMillis?.())&&a.completedAt.toMillis()>0&&a.completedAt.toMillis()<=generatedAt.getTime()).sort((a,b)=>b.completedAt.toMillis()-a.completedAt.toMillis());
+        const attempts=report.attempts.filter(a=>missionKeys.has(a.chapterId+'|'+a.missionId)&&reportTime(a.completedAt)!==null&&reportTime(a.completedAt)>0&&reportTime(a.completedAt)<=generatedAt.getTime()).sort((a,b)=>reportTime(b.completedAt)-reportTime(a.completedAt));
         const latest=attempts[0],ambiguous=latest&&attempts[1]?.completedAt.toMillis()===latest.completedAt.toMillis();
         rows.push([name,'Available',completed,missionKeys.size,latest&&!ambiguous&&Number.isFinite(latest.score)&&latest.score>=0&&latest.score<=100?latest.score:'Unavailable',!latest?'No dated quiz attempt':ambiguous?'Latest attempt unclear':latest.passed===true?'Passed':latest.passed===false?'Review suggested':'Unavailable',latest&&!ambiguous?new Date(latest.completedAt.toMillis()).toISOString():'Unavailable']);
     }

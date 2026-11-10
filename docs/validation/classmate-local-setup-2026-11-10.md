@@ -1,0 +1,11 @@
+# Classmate local testing preparation
+
+10 November 2026. Added root package/lockfile, pinned Firebase CLI 15.33.0, `setup:local`, `start:local`, `backup:local` and a README with Node 22 / JDK 21+ prerequisites and synthetic credentials. Setup installs the accepted backend's locked dependencies without running dependency scripts or deploying. The launcher supports installed Node 22 and a project-local Firebase CLI, with the existing bundled runtime/global-CLI fallback for this workspace. No Firebase login is required.
+
+A staged-files-only checkout under `build/classmate-clean-check` started without local backend dependencies. Verified npm ci (671 development packages), npm run setup:local (244 backend packages), accepted candidate validation, npm run test:local-setup (3 passes), and the website build (37 pages, 608 files, no missing/rejected references). Existing-session startup was deliberately rejected without reseeding. A second emulator suite was not started because the user's session is running. The current full local session's quiz/browser proof is recorded separately; fresh-machine cold startup and non-Windows execution remain untested.
+
+Fresh checkout exposed Git CRLF conversion of byte-hashed artifacts. `.gitattributes` now preserves exact accepted bytes for the two candidate directories and the accepted source inventory. Staged artifact changes are line-ending preservation only: git diff --cached --ignore-space-at-eol reports no text-content changes for the protected artifacts. Existing accepted hash values and validator requirements were not changed. This accounts for the large raw line diff.
+
+Current source regression: 57 focused unit checks passed; administrator (252), page navigation (42), teacher application (58) and unified onboarding (30) synthetic browser checks passed. Optional Bayani chat/review recovery browser suites passed. These fixtures do not establish hosted readiness or AI availability in the local suite. No new full cross-role browser acceptance is claimed.
+
+Private backups, main-project provisioning scripts, credentials, tokens, node_modules and downloaded runtimes are excluded. Historical generated evidence and unrelated provider experiments remain local. No production deployment, billing activation or main-database writes are part of the push.

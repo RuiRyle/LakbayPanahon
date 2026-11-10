@@ -1,5 +1,19 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const context=vm.createContext({Date,Blob});vm.runInContext(fs.readFileSync(require.resolve('../js/teacher-report-export.js'),'utf8').replace(/export /g,''),context);
+
+test('malformed timestamps and invalid scores cannot break or misrepresent an individual export',()=>{
+ const broken={toMillis(){throw Error('bad timestamp');}},overflow={toMillis:()=>1e20};
+ const report={progress:[{missionId:'m',bestScore:101,completedAt:overflow}],attempts:[{missionId:'m',score:-1,completedAt:broken},{missionId:'m',score:0,completedAt:{toMillis:()=>1000}}]};
+ const rows=context.learningReportRows({studentName:'Synthetic',className:'Class',missions:[],report});
+ assert.equal(rows[7][3],'Unavailable');assert.equal(rows[7][5],'Unavailable');
+ assert.equal(rows[8][3],0);assert.equal(rows[9][3],'Unavailable');assert.equal(rows[9][5],'Unavailable');
+ assert.equal(report.progress[0].bestScore,101,'source records remain unchanged');
+});
+test('classroom export skips unusable dates while retaining valid dated evidence',()=>{
+ const report={progress:[],attempts:[{chapterId:'c',missionId:'m',score:100,completedAt:{toMillis(){throw Error('bad');}}},{chapterId:'c',missionId:'m',score:80,passed:true,completedAt:{toMillis:()=>1000}}]};
+ const rows=context.classroomReportRows({className:'Class',students:[{name:'Synthetic',report}],missions:[{chapterId:'c',id:'m'}]});
+ assert.equal(rows[7][4],80);assert.equal(rows[7][5],'Passed');
+});
 test('learning export includes records and explicit unknowns, excludes private fields',()=>{
     const rows=context.learningReportRows({studentName:'Ana',className:'Grade 5',missions:[{id:'m1',title:'Boats'}],generatedAt:new Date('2026-11-05T00:00:00Z'),report:{profile:{email:'private@example.com'},note:'PRIVATE NOTE',feedback:'PRIVATE FEEDBACK',progress:[{missionId:'m1',completed:true,bestScore:80}],attempts:[{missionId:'m1',score:40,passed:false,topicsForReview:['boat_use'],completedAt:{toMillis:()=>1000}}]}});
     const serialized=JSON.stringify(rows);assert.ok(serialized.includes('Boats'));assert.ok(serialized.includes('boat use'));assert.ok(serialized.includes('Unavailable'));assert.ok(serialized.includes('1970-01-01T00:00:01.000Z'));

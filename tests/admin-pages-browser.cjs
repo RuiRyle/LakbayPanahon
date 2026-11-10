@@ -1,0 +1,47 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),{spawn,spawnSync}=require('node:child_process');
+const prepared=spawnSync(process.execPath,['tests/admin-workspace-browser.cjs','--route-fixture'],{encoding:'utf8',windowsHide:true});
+if(prepared.status!==0)throw Error(prepared.stderr||'Fixture preparation failed');
+const temp=prepared.stdout.trim(),fixture=fs.readFileSync(path.join(temp,'frame.html'),'utf8');
+const start=fixture.indexOf('const checks=[];\nlet accountHeadingFocused'),end=fixture.lastIndexOf('</script>');
+if(start<0)throw Error('Unknown fixture boundary');
+const base=fixture.slice(0,start)+fixture.slice(end);
+const routes={'admin-dashboard.html':'overview','admin-applications.html':'applications','admin-accounts.html':'accounts','admin-decisions.html':'records','admin-administration.html':'environment'};
+const checks=[];const assert=(ok,message)=>{if(!ok)throw Error(message);checks.push(message);};
+const server=http.createServer((req,res)=>{const file=new URL(req.url,'http://localhost').pathname.slice(1),page=routes[file];if(!page){res.writeHead(404);res.end();return;}let html=base.replace('data-role="admin"','data-admin-page="'+page+'" data-role="admin"');const transition=fs.readFileSync('js/page-transition.js','utf8');html=html.replace('</body>','<script>'+transition+'</script></body>');res.setHeader('Content-Type','text/html');res.end(html);});
+const pause=ms=>new Promise(r=>setTimeout(r,ms));let browser,ws;
+(async()=>{
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin='http://127.0.0.1:'+server.address().port;
+ const profile=fs.mkdtempSync(path.join(temp,'route-browser-'));
+ browser=spawn('C:/Program Files/Google/Chrome/Application/chrome.exe',['--headless','--disable-gpu','--no-first-run','--remote-debugging-port=0','--user-data-dir='+profile,'about:blank'],{windowsHide:true,stdio:'ignore'});
+ let port;for(let i=0;i<100;i++){try{port=fs.readFileSync(path.join(profile,'DevToolsActivePort'),'utf8').split('\n')[0];break;}catch{await pause(50);}}if(!port)throw Error('Chrome unavailable');
+ const tabs=await(await fetch('http://127.0.0.1:'+port+'/json')).json();ws=new WebSocket(tabs.find(t=>t.type==='page').webSocketDebuggerUrl);await new Promise(r=>ws.addEventListener('open',r,{once:true}));let id=0;const pending=new Map();
+ ws.addEventListener('message',event=>{const v=JSON.parse(event.data);if(pending.has(v.id)){pending.get(v.id)(v);pending.delete(v.id);}});
+ const send=(method,params={})=>new Promise(r=>{const next=++id;pending.set(next,r);ws.send(JSON.stringify({id:next,method,params}));});
+ const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.result?.exceptionDetails)throw Error(r.result.exceptionDetails.text);return r.result?.result?.value;};
+ const wait=async expression=>{for(let i=0;i<150;i++){if(await evaluate(expression).catch(()=>false))return;await pause(50);}throw Error('Timeout: '+expression);};
+ for(const width of [1280,390]){
+  await send('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width===390});
+  await send('Page.navigate',{url:origin+'/admin-dashboard.html'});await wait("document.body.classList.contains('authenticated')&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
+  await evaluate("window.routeDocumentMarker='original'");
+  assert(await evaluate("(()=>{document.querySelector('.admin-queue-row button').click();return !!document.querySelector('.route-transition-overlay')})()"),'Overview Review starts compass navigation at '+width);
+  await wait("location.pathname==='/admin-applications.html'&&new URLSearchParams(location.search).get('account')==='t00'&&!!document.querySelector('.qualification-review-form')&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
+  assert(await evaluate("document.body.dataset.adminView==='applications'&&!!document.getElementById('accountName').textContent"),'Overview Review carries the selected applicant into the new document at '+width);
+  await send('Page.navigate',{url:origin+'/admin-dashboard.html'});await wait("!!document.querySelector('.admin-quick-actions')&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
+  assert(await evaluate("(()=>{document.querySelector('.admin-quick-actions [data-destination=records]').click();return !!document.querySelector('.route-transition-overlay')})()"),'Quick Actions uses compass navigation at '+width);
+  await wait("location.pathname==='/admin-decisions.html'&&document.body.dataset.adminView==='records'&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
+  await send('Page.navigate',{url:origin+'/admin-dashboard.html'});await wait("!!document.querySelector('.admin-quick-actions')&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
+  for(const [file,view]of Object.entries(routes).filter(([file])=>file!=='admin-dashboard.html')){
+   assert(await evaluate("new URL(document.querySelector('[data-teacher-tab="+view+"]').href).pathname==='/"+file+"'"),'real destination URL for '+view+' at '+width);
+   assert(await evaluate("(()=>{document.querySelector('[data-teacher-tab="+view+"]').click();return !!document.querySelector('.route-transition-overlay')})()"),'compass transition for '+view+' at '+width);
+   await wait("location.pathname==='/"+file+"'&&document.body.dataset.adminView==='"+view+"'&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
+   assert(await evaluate("window.routeDocumentMarker===undefined&&document.querySelector('[aria-current=location]').dataset.teacherTab==='"+view+"'"),'new document and active section for '+view+' at '+width);
+   assert(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'page containment for '+view+' at '+width);
+  }
+  await send('Page.navigate',{url:origin+'/admin-applications.html?account=t00'});await wait("document.getElementById('accountName')?.textContent&&document.getElementById('admin-main').getAttribute('aria-busy')==='false'");
+  assert(await evaluate("!!document.querySelector('.qualification-review-form')&&document.body.dataset.adminView==='applications'"),'direct application URL loads authorized review at '+width);
+  await evaluate("document.querySelector('.qualification-review-form').elements.reason.value='Keep unsaved review';window.confirm=()=>false;document.querySelector('[data-teacher-tab=accounts]').click()");
+  assert(await evaluate("location.pathname==='/admin-applications.html'&&!document.querySelector('.route-transition-overlay')&&document.querySelector('.qualification-review-form').elements.reason.value==='Keep unsaved review'"),'cancelled navigation preserves unsaved review at '+width);
+ }
+ fs.writeFileSync('docs/validation/admin-pages-navigation-2026-11-09.json',JSON.stringify({pass:true,mode:'local-http-real-pages-compass-mocked-Firebase',checks},null,2)+'\n');console.log(JSON.stringify({pass:true,checks:checks.length}));
+})().catch(error=>{console.error(error);process.exitCode=1;}).finally(async()=>{ws?.close();browser?.kill();await new Promise(r=>server.close(r));});

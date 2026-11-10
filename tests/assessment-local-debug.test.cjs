@@ -1,0 +1,4 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
+const source=fs.readFileSync('js/local-app-check-debug.js','utf8');const setup=source;
+test('debug attestation requires loopback and explicit tab opt-in',()=>{for(const [host,flag,expected]of [['localhost','true',true],['127.0.0.1','true',true],['[::1]','true',true],['localhost',null,false],['example.com','true',false],['localhost.example.com','true',false]]){const context=vm.createContext({location:{hostname:host},sessionStorage:{getItem:()=>flag}});vm.runInContext(setup,context);assert.equal(context.FIREBASE_APPCHECK_DEBUG_TOKEN===true,expected,host);}});
+test('blocked storage retains ordinary verification',()=>{const context=vm.createContext({location:{hostname:'localhost'},sessionStorage:{getItem(){throw Error('blocked');}}});vm.runInContext(setup,context);assert.equal(context.FIREBASE_APPCHECK_DEBUG_TOKEN,undefined);});

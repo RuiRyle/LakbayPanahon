@@ -192,6 +192,12 @@ body.admin-workspace .admin-selection-empty { min-height:0!important;display:blo
 .admin-workspace .admin-record-list article { border-top:1px solid #355477;padding:12px 0;min-width:0;overflow-wrap:anywhere; }
 .admin-workspace .admin-record-list article h3 { font-size:.9rem; }
 .admin-workspace .admin-record-list button { min-height:36px;font-size:.8rem;padding:7px 12px; }
+/* Keep compact desktop rows while making their actions comfortable to tap. */
+@media (max-width:900px) {
+    .admin-workspace :is(.admin-queue-row button,.admin-record-list button,#loadAdminOverview) {
+        min-height:44px;
+    }
+}
 @media(max-width:1150px){body.admin-workspace #adminAccountsView.has-selection{grid-template-columns:1fr}.admin-workspace .admin-admin-tools{grid-template-columns:1fr}}
 @media(max-width:600px){.admin-workspace .admin-metrics,.admin-workspace .admin-record-list{grid-template-columns:1fr}.admin-workspace #accountFilters{grid-template-columns:1fr 1fr}.admin-workspace #accountFilters button{grid-column:1/-1}.admin-workspace .admin-mode-bar span{display:none}.admin-workspace .admin-overview-grid>section{padding:16px}}
 .admin-workspace .qualification-review { margin:0;padding:0;border:0; }
@@ -202,3 +208,757 @@ body.admin-workspace .admin-selection-empty { min-height:0!important;display:blo
 .admin-workspace .admin-metrics.teacher-summary > div { display:flex;flex-direction:column;gap:6px;padding:22px;border:1px solid #355477;border-radius:16px;background:#10284c;box-shadow:inset 0 1px #ffffff0a; }
 .admin-workspace .admin-metrics.teacher-summary strong { order:-1;font-size:2rem;line-height:1.2;color:#edcf87; }
 .admin-workspace .admin-metrics.teacher-summary span { margin:0;color:#c5d4e2;font-size:.88rem; }
+
+/* Final refinement: compact summaries, scan-friendly rows and contextual tools. */
+.admin-workspace .admin-welcome{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 24px;margin-bottom:16px;border:1px solid #52718a;border-radius:14px;background:linear-gradient(115deg,#17344c,#10263e 70%,#294b56);}
+.admin-workspace .admin-welcome h2{font-size:1.6rem;margin:0 0 6px;border-left:4px solid #edcf87;padding-left:14px;}
+.admin-workspace .admin-welcome p{margin:0;color:#d0deeb;font-size:.9rem;}
+.admin-workspace .admin-welcome-sun{font-size:3.5rem;color:#edcf87;opacity:.6;}
+.admin-workspace .admin-header-snapshot{margin-left:auto;padding:7px 12px;border:1px solid #355477;border-radius:20px;color:#c5d4e2;font-size:.75rem;white-space:nowrap;}
+body.admin-workspace[data-admin-view=overview] .teacher-intro{display:none;}
+.admin-workspace .admin-snapshot-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;margin-bottom:14px;}
+.admin-workspace .admin-snapshot-toolbar #adminOverviewStatus{margin:0;}
+.admin-workspace .admin-quick-actions button{margin:0;padding:9px 12px;width:100%;}
+.admin-workspace .admin-overview-grid .admin-quick-actions>button{margin-top:0;}
+.admin-workspace .admin-quick-actions h2{margin:0 0 6px;}
+.admin-workspace .admin-quick-actions h2{display:flex;align-items:center;gap:9px;}
+.admin-workspace .admin-quick-heading-icon{width:23px;height:23px;flex-shrink:0;fill:none;stroke:#edcf87;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round;}
+.admin-workspace .admin-metrics.teacher-summary small{line-height:1.4;}
+@media(max-width:600px){.admin-workspace .admin-header-snapshot{display:none;}}
+.admin-workspace #adminQueueBadge{margin-left:auto;background:#edcf87;color:#11263b;min-width:24px;padding:2px 6px;border-radius:20px;font-size:.75rem;text-align:center;}
+.admin-workspace .admin-overview-grid{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;}
+.admin-workspace .admin-overview-grid>.admin-metrics{grid-column:1/-1;grid-template-columns:repeat(4,minmax(0,1fr));}
+.admin-workspace .admin-pending-panel{grid-column:1;grid-row:2;}
+.admin-workspace .admin-quick-actions{grid-column:2;grid-row:2;display:grid;gap:8px;align-content:start;}
+.admin-workspace .admin-quick-actions button{text-align:left;min-height:44px;}
+.admin-workspace .admin-quick-actions button:first-of-type{background:#edcf87;color:#10243e;border-color:#edcf87;}
+.admin-workspace .admin-decision-preview{grid-column:1;grid-row:3;}
+.admin-workspace .admin-overview-notices{grid-column:2;grid-row:3;}
+.admin-workspace .admin-overview-grid>section{border-radius:12px;}
+.admin-workspace .admin-record-reason{color:#d8e3ec;line-height:1.5;font-size:.85rem;}
+.admin-workspace .admin-queue-status{font-size:.7rem;color:#edcf87;grid-column:1;}
+.admin-workspace .admin-workspace-info{margin-bottom:14px;}
+.admin-workspace .admin-metrics.teacher-summary strong{overflow-wrap:anywhere;}
+@media(max-width:1100px){.admin-workspace .admin-overview-grid>.admin-metrics{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:700px){.admin-workspace .admin-overview-grid{grid-template-columns:minmax(0,1fr);}.admin-workspace .admin-overview-grid>section{grid-column:1;grid-row:auto;}.admin-workspace .admin-quick-actions{order:1;}.admin-workspace .admin-welcome{padding:16px;}.admin-workspace .admin-welcome h2{font-size:1.3rem;}.admin-workspace .admin-welcome-sun{display:none;}.admin-workspace .admin-overview-grid>.admin-metrics{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.admin-workspace .admin-metrics.teacher-summary > div { padding:16px 18px;gap:3px;border-radius:10px; }
+.admin-workspace .admin-metrics.teacher-summary strong { font-size:1.65rem; }
+.admin-workspace .admin-metrics.teacher-summary small { font-size:.75rem;color:#b5c8da; }
+.admin-workspace #adminDirectory { padding:18px; }
+.admin-workspace #accountFilters { grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px; }
+.admin-workspace #accountFilters button { grid-column:1/-1;justify-self:start; }
+.admin-workspace #accountFilters label { min-width:0; }
+.admin-workspace #accountFilters select { width:100%;min-width:0; }
+.admin-workspace .admin-account-list button { display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 12px;min-height:64px;text-align:left; }
+.admin-workspace .admin-account-list button > small:not(.admin-status-label) { grid-column:1;overflow-wrap:anywhere; }
+.admin-workspace .admin-account-list .admin-status-label { grid-column:2;grid-row:1/3;align-self:center;margin:0!important;font-size:.7rem!important; }
+.admin-workspace .admin-status-label[data-status=active] { color:#a9e3c4!important;border-color:#497d6a; }
+.admin-workspace .admin-status-label[data-status=inactive] { color:#d0d9e3!important;border-color:#617386; }
+.admin-workspace .admin-admin-tools { margin-top:16px;grid-template-columns:1fr;gap:12px; }
+.admin-workspace .admin-tool-card[hidden] { display:none; }
+.admin-workspace .admin-admin-tools .admin-tool-card { padding:14px 18px; }
+.admin-workspace .admin-admin-tools .admin-tool-card h3 { margin:4px 0; }
+.admin-workspace #adminEnvironment > .admin-tool-card { padding:18px; }
+.admin-workspace #adminOverviewStatus { font-size:.75rem; }
+@media(min-width:1151px){
+ .admin-workspace #adminDirectory { position:sticky;top:100px;align-self:start; }
+ .admin-workspace #adminAccountsView:not(.has-selection) #accountFilters { grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto; }
+ .admin-workspace #adminAccountsView:not(.has-selection) #accountFilters button { grid-column:auto; }
+}
+@media(max-width:600px){
+ .admin-workspace .admin-account-list button { grid-template-columns:minmax(0,1fr); }
+ .admin-workspace .admin-account-list .admin-status-label { grid-column:1;grid-row:auto;justify-self:start; }
+ .admin-workspace .admin-section-heading { flex-wrap:wrap; }
+}
+
+/* Reference proportions: a compact school-administration command center. */
+@media(min-width:901px){
+ body.admin-workspace .teacher-shell{width:calc(100% - 242px);margin-left:242px;}
+ body.admin-workspace .admin-navigation{width:242px;padding:18px 16px;background:linear-gradient(115deg,#06172c,#081d35);}
+ body.admin-workspace .teacher-topbar{min-height:66px;height:66px;padding:10px 24px;}
+ .admin-workspace #admin-main{max-width:1440px;padding:18px 24px 32px;}
+ .admin-workspace .admin-navigation .teacher-brand{margin-bottom:28px;font-size:1rem;gap:10px;}
+ .admin-workspace .admin-navigation .teacher-tabs{gap:4px;}
+ body.admin-workspace .admin-navigation .teacher-tabs [data-teacher-tab]{min-width:0;width:100%;min-height:44px;padding:9px 10px;font-size:.8rem;border-radius:10px;gap:9px;white-space:nowrap;}
+ .admin-workspace .admin-navigation .teacher-tabs a::before{display:none;}
+ .admin-workspace .admin-navigation .teacher-tabs a[aria-current]{box-shadow:inset 3px 0 #edcf87;}
+}
+.admin-workspace .admin-welcome{position:relative;overflow:hidden;min-height:94px;padding:16px 20px;margin-bottom:12px;background:radial-gradient(circle at 75% 100%,#edcf8738 0,transparent 34%),linear-gradient(110deg,#12314a,#1b3c51);}
+body.admin-workspace[data-admin-view=overview] .admin-overview{margin-top:0;}
+.admin-workspace .admin-navigation .teacher-tabs::before,.admin-workspace .admin-navigation .teacher-tabs::after{display:none;}
+.admin-workspace .admin-welcome h2{font-size:1.55rem;line-height:1.2;margin:0 0 6px;padding-left:14px;}
+.admin-workspace .admin-welcome p{font-size:.88rem;line-height:1.45;}
+.admin-workspace .admin-welcome-sun{font-size:3.8rem;line-height:1;opacity:.4;}
+.admin-workspace .admin-snapshot-toolbar{gap:10px;margin-bottom:12px;}
+.admin-workspace #loadAdminOverview{padding:6px 12px;min-height:34px;font-size:.75rem;}
+.admin-workspace .admin-overview-grid{gap:16px;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);}
+.admin-workspace .admin-overview-grid>.admin-metrics{gap:14px;}
+.admin-workspace .admin-metrics.teacher-summary>div{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:12px;row-gap:2px;align-content:center;min-height:112px;padding:14px;border-radius:12px;background:linear-gradient(120deg,#102d46,#0a2037);}
+.admin-workspace .admin-metric::before{content:'\2713';display:grid;place-items:center;grid-column:1;grid-row:1/4;align-self:start;width:40px;height:40px;border-radius:50%;background:#25465f;color:#e5eff8;font-size:1.35rem;}
+.admin-workspace .admin-metric:first-child::before{content:'\2637';color:#edcf87;background:#edcf8720;}
+.admin-workspace .admin-metric:nth-child(3)::before{content:'\2659';}
+.admin-workspace .admin-metric:nth-child(4)::before{content:'\25F7';}
+.admin-workspace .admin-metrics.teacher-summary>div:first-child{border-color:#e3bd54;background:linear-gradient(110deg,#edcf8718,#10283e);}
+.admin-workspace .admin-metrics.teacher-summary strong{grid-column:2;grid-row:1;font-size:1.45rem;line-height:1.2;order:initial;color:#f0f4f8;}
+.admin-workspace .admin-metrics.teacher-summary span{grid-column:2;grid-row:2;font-size:.85rem;letter-spacing:0;text-transform:none;font-weight:600;line-height:1.35;}
+.admin-workspace .admin-metrics.teacher-summary small{grid-column:2;grid-row:3;font-size:.73rem;line-height:1.4;}
+.admin-workspace .admin-metric:last-child strong{font-size:1.1rem;}
+.admin-workspace .admin-overview-grid>section{padding:16px;border-radius:12px;background:linear-gradient(120deg,#102c43,#091f35);}
+.admin-workspace .admin-overview-grid h2{font-size:1rem;margin:0 0 12px;line-height:1.3;}
+.admin-workspace .admin-queue-row{padding:10px 12px;margin:8px 0;border:1px solid #355477;border-radius:10px;background:#0a2037;}
+.admin-workspace .admin-queue-row strong{font-size:.85rem;}
+.admin-workspace .admin-queue-row small{font-size:.73rem;}
+.admin-workspace .admin-overview-grid .admin-quick-actions{gap:7px;}
+.admin-workspace .admin-overview-grid .admin-quick-actions>button{min-height:36px;padding:7px 12px;border-radius:8px;font-size:.8rem;line-height:1.35;}
+.admin-workspace .admin-overview-grid article{padding-top:10px;margin-top:10px;}
+.admin-workspace .admin-overview-grid article h3{font-size:.82rem;margin-bottom:4px;}
+.admin-workspace .admin-overview-grid article p{font-size:.75rem;margin:4px 0;}
+.admin-workspace .admin-decision-preview>.teacher-note,.admin-workspace .admin-overview-notices .teacher-note{font-size:.8rem;line-height:1.5;margin:8px 0;}
+@media(max-width:1100px){.admin-workspace .admin-overview-grid>.admin-metrics{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:700px){
+ .admin-workspace .admin-overview-grid{grid-template-columns:minmax(0,1fr);}
+ .admin-workspace .admin-overview-grid>section{grid-column:1;grid-row:auto;}
+ .admin-workspace .admin-metrics.teacher-summary>div{grid-template-columns:minmax(0,1fr);min-height:108px;padding:12px;}
+ .admin-workspace .admin-metric::before{display:none;}
+ .admin-workspace .admin-metrics.teacher-summary :is(strong,span,small){grid-column:1;}
+ .admin-workspace .admin-overview-grid .admin-quick-actions>button,.admin-workspace #loadAdminOverview{min-height:44px;}
+ .admin-workspace .admin-welcome h2{font-size:1.25rem;}
+}
+
+/* Pending applications follow the reference's identity / status / action rows. */
+body.admin-workspace[data-admin-view=applications] #adminAccountModes{display:none;}
+body.admin-workspace[data-admin-view=applications] .teacher-intro{margin-bottom:16px;}
+.admin-workspace #adminAccountsView[data-workspace=applications] #adminAccountDetail{background:linear-gradient(125deg,#102d45,#0a2137);}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-detail-heading{padding:12px 150px 12px 18px;border-bottom:1px solid #355477;}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-detail-heading h2{font-size:.92rem;}
+.admin-workspace #adminAccountsView[data-workspace=applications] #accountCurrentStatus{display:none;}
+.admin-workspace .qualification-review-heading{padding-bottom:12px;margin-bottom:14px;}
+.admin-workspace .qualification-applicant-card{display:grid;grid-template-columns:54px minmax(0,1fr) minmax(140px,.65fr);gap:14px;align-items:center;padding:16px;border:1px solid #3d5b74;border-radius:12px;background:linear-gradient(115deg,#16364f,#10283e);margin:0 0 16px;}
+.admin-workspace .qualification-applicant-avatar{display:grid;place-items:center;width:54px;height:58px;border-radius:12px;background:#2b4a64;color:#e3edf6;font-size:1.2rem;font-weight:650;}
+.admin-workspace .qualification-applicant-identity h4{font-size:1.1rem;margin:0 0 7px;}
+.admin-workspace .qualification-applicant-identity p{margin:4px 0;font-size:.75rem;line-height:1.4;overflow-wrap:anywhere;}
+.admin-workspace .qualification-current-status{align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:7px;padding-left:16px;border-left:1px solid #46647e;}
+.admin-workspace .qualification-current-status>strong{font-size:.76rem;}
+.admin-workspace .qualification-current-status p{margin:0;font-size:.72rem;line-height:1.4;color:#c2d2e0;}
+.admin-workspace .qualification-current-status .qualification-review-badge{order:initial;}
+.admin-workspace .qualification-information-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(200px,.9fr);gap:14px;align-items:start;}
+.admin-workspace .qualification-information-main,.admin-workspace .qualification-information-side{display:grid;gap:14px;min-width:0;}
+.admin-workspace .qualification-information-grid :is(.qualification-facts-panel,.qualification-summary-panel,.qualification-documents-panel,.qualification-history-panel){margin:0;padding:14px;border:1px solid #3d5b74;border-radius:11px;background:linear-gradient(120deg,#142f46,#0e253b);min-width:0;}
+.admin-workspace .qualification-information-grid h4{font-size:.86rem;margin:0 0 12px;padding-bottom:9px;border-bottom:1px solid #355477;}
+.admin-workspace .qualification-summary-item{display:flex;gap:8px;align-items:start;font-size:.73rem;line-height:1.5;margin:9px 0;color:#c5d5e3;}
+.admin-workspace .qualification-summary-item>span:first-child{color:#c5d5e3;}
+.admin-workspace .qualification-summary-item[data-available=true]>span:first-child{color:#a9dfbd;}
+.admin-workspace .qualification-documents-panel p{font-size:.76rem;overflow-wrap:anywhere;}
+.admin-workspace .qualification-documents-panel button,.admin-workspace .qualification-history-panel button{min-height:44px;font-size:.73rem;padding:8px 10px;}
+.admin-workspace .qualification-history-preview{padding:9px 0;border-bottom:1px solid #355477;overflow-wrap:anywhere;}
+.admin-workspace .qualification-history-preview strong{font-size:.76rem;}
+.admin-workspace .qualification-history-preview p{font-size:.73rem;margin:5px 0;}
+.admin-workspace .qualification-decision-choices{padding-top:12px;border-top:1px solid #46647e;}
+.admin-workspace .qualification-review-form>button[type=submit]{justify-self:end;min-height:44px;margin-top:4px;}
+@media(max-width:1250px){.admin-workspace .qualification-information-grid{grid-template-columns:minmax(0,1fr);}.admin-workspace .qualification-information-side{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:600px){.admin-workspace .qualification-applicant-card{grid-template-columns:44px minmax(0,1fr);padding:12px;gap:10px;}.admin-workspace .qualification-applicant-avatar{width:44px;height:48px;}.admin-workspace .qualification-current-status{grid-column:1/-1;border-left:0;border-top:1px solid #46647e;padding:10px 0 0;}.admin-workspace .qualification-information-side{grid-template-columns:1fr;}.admin-workspace #adminAccountsView[data-workspace=applications] .admin-detail-heading{padding:12px 16px;}}
+.admin-workspace #adminAccountsView[data-workspace=applications].has-selection{grid-template-columns:minmax(250px,.65fr) minmax(0,1.65fr);align-items:start;gap:14px;}
+.admin-workspace #adminAccountsView[data-workspace=applications] #adminDirectory{padding:16px;}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-access-details{display:none;}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-detail-heading{padding:16px 20px;}
+.admin-workspace .admin-application-back{margin-top:10px;padding:7px 12px;min-height:44px;font-size:.76rem;}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-detail-heading{position:relative;padding:14px 150px 14px 20px;}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-detail-heading .eyebrow{display:none;}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-detail-heading h2{font-size:1.1rem;margin:4px 0;}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-detail-heading p{margin:4px 0;font-size:.75rem;}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-application-back{position:absolute;right:16px;top:16px;margin:0;}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-account-list button{grid-template-columns:minmax(0,1fr);gap:4px;}
+.admin-workspace #adminAccountsView[data-workspace=applications] .admin-account-list .admin-status-label{grid-column:1;grid-row:auto;justify-self:start;}
+@media(max-width:600px){.admin-workspace #adminAccountsView[data-workspace=applications] .admin-detail-heading{padding:14px 18px;}.admin-workspace #adminAccountsView[data-workspace=applications] .admin-application-back{position:static;margin-top:8px;}}
+.admin-workspace .qualification-review-heading{position:relative;display:flex;flex-direction:column;gap:7px;margin-bottom:16px;padding:0 0 14px;border-bottom:1px solid #355477;}
+.admin-workspace .qualification-review-heading h3{margin:0;font-size:1.45rem;line-height:1.3;}
+.admin-workspace .qualification-review-heading p{margin:0;color:#bdcfde;font-size:.8rem;line-height:1.5;}
+.admin-workspace .qualification-review-badge{order:-1;align-self:start;border:1px solid #d6b55d;border-radius:7px;padding:4px 9px;background:#edcf87;color:#10243e;font-weight:650;font-size:.72rem;}
+.admin-workspace .qualification-facts-panel{border:1px solid #46647e;border-radius:11px;padding:14px;background:linear-gradient(120deg,#132f46,#0c2238);margin:14px 0;}
+.admin-workspace .qualification-facts-panel h4{font-size:.9rem;margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid #355477;}
+.admin-workspace .qualification-facts-panel .qualification-facts{border:0;background:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:0;}
+.admin-workspace .qualification-facts-panel .qualification-facts>div{display:grid;grid-template-columns:minmax(120px,.8fr) minmax(0,1.2fr);gap:12px;padding:9px 0;border-bottom:1px solid #355477;}
+.admin-workspace .qualification-facts-panel .qualification-facts>div:last-child{border-bottom:0;}
+.admin-workspace .qualification-facts-panel dt{font-size:.75rem;color:#bacee0;}
+.admin-workspace .qualification-facts-panel dd{margin:0;font-size:.8rem;overflow-wrap:anywhere;}
+.admin-workspace .qualification-decision-choices{display:flex;flex-wrap:wrap;gap:9px;}
+.admin-workspace .qualification-decision-choices button{flex:1;min-height:44px;padding:9px 12px;font-size:.8rem;}
+.admin-workspace .qualification-decision-choices [data-decision=approved]{background:#173d32;border-color:#62a37f;color:#d0f1dd;}
+.admin-workspace .qualification-decision-choices [data-decision=needs_changes]{background:#edcf87;border-color:#edcf87;color:#10243e;}
+.admin-workspace .qualification-decision-choices [data-decision=declined]{background:#492c31;border-color:#bd7777;color:#ffe1e1;}
+.admin-workspace .qualification-decision-choices [aria-pressed=true]{outline:2px solid #edcf87;outline-offset:2px;}
+@media(max-width:1150px){.admin-workspace #adminAccountsView[data-workspace=applications].has-selection{grid-template-columns:minmax(0,1fr);}}
+@media(max-width:600px){.admin-workspace .qualification-facts-panel .qualification-facts>div{grid-template-columns:1fr;gap:4px;}.admin-workspace .qualification-decision-choices{flex-direction:column;}}
+.admin-workspace .admin-overview-column{display:flex;flex-direction:column;gap:20px;min-width:0;}
+.admin-workspace .admin-overview-column>section{min-width:0;padding:18px;border:1px solid #48657b;border-radius:12px;background:linear-gradient(120deg,#102c43,#091f35);}
+.admin-workspace .admin-overview-grid{column-gap:20px;row-gap:20px;}
+.admin-workspace .admin-overview-column :is(.admin-pending-heading,.admin-activity-heading){padding-bottom:12px;margin-bottom:12px;}
+.admin-workspace .admin-overview-column .admin-queue-scope{margin:0 0 12px;}
+.admin-workspace .admin-overview-column .admin-queue-row{margin:10px 0;}
+.admin-workspace .admin-overview-column .admin-queue-row:last-child{margin-bottom:0;}
+.admin-workspace .admin-overview-column .admin-quick-actions{gap:9px;}
+.admin-workspace .admin-overview-column .admin-quick-actions h2{margin-bottom:8px;}
+.admin-workspace .admin-overview-column .admin-workspace-notice-box{margin-top:0;}
+@media(max-width:700px){
+ .admin-workspace .admin-overview-column{gap:16px;}
+ .admin-workspace .admin-overview-column>section{padding:16px;}
+ .admin-workspace .admin-overview-grid{gap:16px;}
+}
+.admin-workspace .admin-pending-panel{height:auto;min-height:0;}
+.admin-workspace .admin-pending-panel>.admin-queue-row:last-child{margin-bottom:0;}
+.admin-workspace .admin-refresh-group{display:flex;align-items:center;gap:8px;margin-left:auto;}
+.admin-workspace .admin-refresh-group #loadAdminOverview{display:grid;place-items:center;width:36px;min-width:36px;height:36px;min-height:36px;padding:7px;border:1px solid #52708a;border-radius:50%;background:#102c43;color:#edcf87;}
+.admin-workspace .admin-refresh-button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.admin-workspace .admin-snapshot-toolbar[data-state=ready]{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
+.admin-workspace .admin-snapshot-toolbar[data-state=error]{padding:10px 12px;border:1px solid #a88552;border-radius:8px;background:#3b3022;}
+@media(max-width:700px){.admin-workspace .admin-refresh-group #loadAdminOverview{width:44px;min-width:44px;height:44px;}.admin-workspace .admin-refresh-group .admin-header-snapshot{display:none;}}
+@keyframes admin-surface-enter{from{opacity:.35;transform:translateY(7px);}to{opacity:1;transform:translateY(0);}}
+@keyframes admin-refresh-turn{to{transform:rotate(360deg);}}
+@keyframes admin-card-arrive{
+ from{opacity:0;transform:translateY(10px);}
+ to{opacity:1;transform:translateY(0);}
+}
+@keyframes admin-card-icon-arrive{
+ from{opacity:.6;transform:scale(.94) rotate(-3deg);}
+ to{opacity:1;transform:scale(1) rotate(0);}
+}
+@media(prefers-reduced-motion:no-preference){
+ body.admin-workspace:not(.lakbay-reduce-motion) :is(.admin-welcome,.admin-metric,.admin-pending-panel,.admin-quick-actions,.admin-decision-preview,.admin-overview-notices){animation:admin-surface-enter .28s ease-out both;}
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metric:nth-child(2){animation-delay:.035s;}
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metric:nth-child(3){animation-delay:.07s;}
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metric:nth-child(4){animation-delay:.105s;}
+ body.admin-workspace:not(.lakbay-reduce-motion) :is(.admin-quick-action,.admin-queue-row,.admin-refresh-button){transition:background-color .15s ease,border-color .15s ease,box-shadow .15s ease;}
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-refresh-button[aria-busy=true] svg{animation:admin-refresh-turn 1s linear infinite;}
+}
+@media(prefers-reduced-motion:no-preference){
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metrics>.admin-metric{
+  animation:admin-card-arrive .52s cubic-bezier(.22,1,.36,1) backwards;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,border-color .3s ease;
+ }
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metrics>.admin-metric:nth-child(1){animation-delay:.03s;}
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metrics>.admin-metric:nth-child(2){animation-delay:.09s;}
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metrics>.admin-metric:nth-child(3){animation-delay:.15s;}
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metrics>.admin-metric:nth-child(4){animation-delay:.21s;}
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metric .admin-summary-icon{animation:admin-card-icon-arrive .52s cubic-bezier(.22,1,.36,1) backwards;animation-delay:inherit;transition:transform .3s cubic-bezier(.22,1,.36,1),background-color .3s ease;}
+}
+@media(prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine){
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metrics>.admin-metric:hover{transform:translateY(-3px);border-color:#a9bfd0;box-shadow:0 8px 18px #020b1a45;}
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metrics>.admin-metric:first-child:hover{border-color:#f2d58c;box-shadow:0 10px 22px #020b1a55,0 0 18px #edcf8714;}
+ body.admin-workspace:not(.lakbay-reduce-motion) .admin-metric:hover .admin-summary-icon{transform:rotate(-2deg) scale(1.03);}
+}
+.admin-workspace .admin-welcome{min-height:96px;padding:18px 20px;background:linear-gradient(105deg,#17364e,#18384e 60%,#1a3b50);border-color:#58768e;}
+.admin-workspace .admin-welcome>div{position:relative;z-index:1;max-width:78%;}
+.admin-workspace .admin-welcome h2{font-size:1.6rem;font-weight:700;letter-spacing:-.025em;}
+.admin-workspace .admin-welcome p{color:#d8e4ee;font-size:.85rem;line-height:1.5;}
+.admin-workspace .admin-welcome-landscape{position:absolute;right:0;bottom:0;width:40%;height:100%;pointer-events:none;}
+.admin-workspace .admin-metric::before{display:none!important;}
+.admin-workspace .admin-metrics.teacher-summary>.admin-metric{grid-template-columns:44px minmax(0,1fr);column-gap:12px;row-gap:3px;min-height:116px;padding:15px;border-color:#52708a;box-shadow:inset 0 1px 0 #ffffff08;}
+.admin-workspace .admin-summary-icon{grid-column:1;grid-row:1/4;align-self:start;width:44px;height:44px;padding:10px;box-sizing:border-box;fill:none;stroke:#d7e7f5;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;border-radius:50%;background:#284b66;}
+.admin-workspace .admin-metric:first-child .admin-summary-icon{color:#edcf87;stroke:currentColor;background:#edcf871c;}
+.admin-workspace .admin-metrics.teacher-summary strong{font-size:1.55rem;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+.admin-workspace .admin-metrics.teacher-summary span{font-size:.82rem;font-weight:650;line-height:1.4;color:#e1eaf2;}
+.admin-workspace .admin-metrics.teacher-summary small{font-size:.71rem;line-height:1.45;color:#bdcfde;}
+.admin-workspace .admin-metric:last-child strong{font-size:1.15rem;}
+@media(max-width:1100px){.admin-workspace .admin-welcome>div{max-width:84%;}.admin-workspace .admin-welcome-landscape{opacity:.7;width:45%;}}
+@media(max-width:700px){
+ .admin-workspace .admin-welcome>div{max-width:100%;}
+ .admin-workspace .admin-welcome-landscape{width:65%;opacity:.28;}
+ .admin-workspace .admin-welcome h2{font-size:1.25rem;}
+ .admin-workspace .admin-metrics.teacher-summary>.admin-metric{grid-template-columns:30px minmax(0,1fr);padding:12px;gap:7px;align-content:start;min-height:132px;}
+ .admin-workspace .admin-summary-icon{grid-column:1;grid-row:1;width:30px;height:30px;padding:6px;}
+ .admin-workspace .admin-metrics.teacher-summary strong{grid-column:2;grid-row:1;align-self:center;font-size:1.4rem;}
+ .admin-workspace .admin-metrics.teacher-summary :is(span,small){grid-column:1/-1;}
+ .admin-workspace .admin-metric:last-child strong{font-size:1rem;}
+}
+.admin-workspace .admin-activity-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-bottom:10px;border-bottom:1px solid #355477;}
+.admin-workspace .admin-activity-heading h2{display:flex;align-items:center;gap:9px;margin:0;}
+.admin-workspace .admin-activity-heading svg{width:22px;height:22px;fill:none;stroke:#edcf87;stroke-width:1.7;flex-shrink:0;stroke-linecap:round;}
+.admin-workspace .admin-activity-view-all,.admin-workspace .admin-activity-link{color:#edcf87;background:transparent;border:0;box-shadow:none;text-decoration:underline;text-underline-offset:3px;padding:5px 0;font-size:.73rem;min-height:32px;}
+.admin-workspace .admin-activity-scope{font-size:.72rem;color:#b5c8da;line-height:1.45;margin:10px 0;}
+.admin-workspace .admin-overview-grid .admin-activity-row{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;padding:12px 0;margin:0;border-top:0;border-bottom:1px solid #355477;}
+.admin-workspace .admin-activity-row:last-child{border-bottom:0;}
+.admin-workspace .admin-activity-mark{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#214f46;color:#b9ead1;font-size:1rem;}
+.admin-workspace .admin-activity-row[data-status=inactive] .admin-activity-mark{background:#59482f;color:#f2d59e;}
+.admin-workspace .admin-activity-content{min-width:0;}
+.admin-workspace .admin-overview-grid .admin-activity-content h3{font-size:.83rem;margin:0 0 4px;}
+.admin-workspace .admin-overview-grid .admin-activity-content p{margin:4px 0;font-size:.75rem;line-height:1.45;}
+.admin-workspace .admin-activity-account{color:#b5c8da;overflow-wrap:anywhere;}
+.admin-workspace .admin-activity-reason{color:#dce6ee;overflow-wrap:anywhere;}
+.admin-workspace .admin-activity-time{display:block;font-size:.71rem;color:#b5c8da;}
+.admin-workspace .admin-activity-empty{display:grid;justify-items:center;text-align:center;gap:7px;padding:18px 12px;margin-top:12px;border:1px solid #355477;border-radius:10px;background:linear-gradient(120deg,#1a3850,#10263d);}
+.admin-workspace .admin-activity-empty-icon{font-size:1.8rem;color:#c0d1e2;}
+.admin-workspace .admin-activity-empty strong{font-size:.85rem;}
+.admin-workspace .admin-activity-empty .teacher-note{margin:0;font-size:.75rem;line-height:1.45;}
+.admin-workspace .admin-overview-notices>.admin-activity-heading,.admin-workspace .admin-decision-preview>.admin-activity-heading{min-height:44px;}
+.admin-workspace .admin-workspace-notice-box{display:grid;grid-template-columns:20px minmax(0,1fr);align-items:start;gap:10px;margin-top:12px;padding:12px;border:1px solid #46647e;border-radius:10px;background:linear-gradient(115deg,#203e55,#142d43);}
+.admin-workspace .admin-notice-information{display:grid;place-items:center;width:18px;height:18px;margin-top:2px;border:1.5px solid #c5d7e6;border-radius:50%;font-size:.75rem;font-weight:700;line-height:1;color:#deebf5;}
+.admin-workspace .admin-notice-copy{min-width:0;}
+.admin-workspace .admin-notice-copy>strong{display:block;color:#edcf87;font-size:.83rem;line-height:1.4;}
+.admin-workspace .admin-notice-copy>p{margin:5px 0 0;font-size:.75rem;line-height:1.5;color:#d5e1ec;overflow-wrap:anywhere;}
+.admin-workspace .admin-notice-limitation{margin:10px 0 0;padding-left:2px;font-size:.71rem;line-height:1.45;color:#b5c8da;}
+@media(max-width:700px){.admin-workspace .admin-activity-view-all,.admin-workspace .admin-activity-link{min-height:44px;}}
+.admin-workspace .admin-overview-grid .admin-quick-actions>.admin-quick-action{display:grid;grid-template-columns:24px minmax(0,1fr) 14px;align-items:center;gap:10px;padding:9px 12px;min-height:56px;text-align:left;border:1px solid #60788c;background:linear-gradient(110deg,#17364d,#0b2036);color:#e6edf5;white-space:normal;}
+.admin-workspace .admin-overview-grid .admin-quick-actions>.admin-quick-action:first-of-type{background:linear-gradient(110deg,#f4d88d,#e8c575);border-color:#edcf87;color:#10243e;}
+.admin-workspace .admin-quick-action>svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;}
+.admin-workspace .admin-quick-copy{display:grid;gap:3px;min-width:0;}
+.admin-workspace .admin-quick-copy strong{font-size:.8rem;font-weight:650;line-height:1.3;}
+.admin-workspace .admin-quick-copy small{font-size:.68rem;font-weight:400;line-height:1.4;color:#bacbd9;overflow-wrap:anywhere;}
+.admin-workspace .admin-quick-action:first-of-type .admin-quick-copy small{color:#263d50;}
+.admin-workspace .admin-quick-arrow{font-size:1.1rem;justify-self:end;}
+.admin-workspace .admin-overview-grid .admin-quick-actions>.admin-quick-action:hover:not(:disabled){border-color:#edcf87;box-shadow:inset 0 0 0 1px #edcf8740;}
+.admin-workspace .admin-overview-grid .admin-quick-actions>.admin-quick-action:focus-visible{outline:3px solid #f4d58d;outline-offset:3px;}
+.admin-workspace .admin-overview-grid .admin-quick-actions>.admin-quick-action:disabled{opacity:.55;cursor:wait;}
+.admin-workspace .admin-queue-scope{color:#b5c8da;font-size:.74rem;line-height:1.45;margin:0 0 10px;}
+.admin-workspace .admin-queue-empty{padding:12px;border:1px dashed #52718a;border-radius:10px;background:#0a2037;}
+.admin-workspace .admin-queue-empty>strong{font-size:.85rem;}
+.admin-workspace .admin-queue-empty .teacher-note{font-size:.77rem;line-height:1.5;margin:7px 0 10px;}
+.admin-workspace .admin-queue-empty button{font-size:.76rem;padding:7px 10px;min-height:44px;white-space:normal;}
+.admin-workspace .admin-pending-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #355477;padding-bottom:10px;margin-bottom:12px;}
+.admin-workspace .admin-pending-heading h2{display:flex;align-items:center;gap:9px;margin:0;font-size:1rem;}
+.admin-workspace .admin-pending-heading h2 svg{width:22px;height:22px;flex-shrink:0;fill:none;stroke:#edcf87;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+.admin-workspace .admin-pending-heading .admin-queue-view-all{padding:4px 0;min-height:32px;background:transparent;color:#edcf87;border:0;text-decoration:underline;text-underline-offset:3px;font-size:.75rem;white-space:nowrap;box-shadow:none;}
+.admin-workspace .admin-queue-row{grid-template-columns:42px minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:10px 12px;margin:8px 0;background:linear-gradient(110deg,#19374f,#0a2037);}
+.admin-workspace .admin-queue-avatar{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:linear-gradient(145deg,#527596,#304c6a);color:#f1f5fb;font-size:.95rem;font-weight:600;}
+.admin-workspace .admin-queue-identity{min-width:0;}
+.admin-workspace .admin-queue-identity strong,.admin-workspace .admin-queue-identity small{display:block;line-height:1.4;overflow-wrap:anywhere;}
+.admin-workspace .admin-queue-identity small{margin-top:3px;}
+.admin-workspace .admin-queue-row .admin-queue-status{grid-column:auto;white-space:nowrap;border:1px solid #a89455;padding:2px 7px;border-radius:20px;background:#edcf8710;font-size:.66rem;line-height:1.4;}
+.admin-workspace .admin-queue-row button{grid-column:auto;grid-row:auto;border-color:#c5a85f;color:#edcf87;padding:5px 10px;min-height:32px;font-size:.75rem;}
+@media(max-width:1150px){
+ .admin-workspace .admin-queue-row{grid-template-columns:38px minmax(0,1fr) auto;gap:8px;}
+ .admin-workspace .admin-queue-avatar{width:38px;height:38px;grid-row:1/3;}
+ .admin-workspace .admin-queue-row .admin-queue-status{grid-column:2;justify-self:start;}
+ .admin-workspace .admin-queue-row button{grid-column:3;grid-row:1/3;min-height:44px;}
+ .admin-workspace .admin-pending-heading{flex-wrap:wrap;}
+}
+@media(max-width:600px){.admin-workspace .admin-pending-heading .admin-queue-view-all{min-height:44px;}.admin-workspace .admin-queue-row{padding:10px 8px;}.admin-workspace .admin-queue-identity strong{font-size:.8rem;}}
+
+/* Compact application status navigation. */
+.admin-application-tabs{display:flex;gap:4px;margin:14px 0;padding:4px;background:#071b2d;border:1px solid #355477;border-radius:10px;}
+.admin-application-tabs[hidden]{display:none;}
+.admin-application-tabs button{flex:1;min-width:0;padding:8px 5px;background:transparent;color:#dce8f3;border:1px solid transparent;border-radius:7px;font-size:.78rem;}
+.admin-application-tabs button[aria-pressed=true]{background:#f5cf70;color:#102139;border-color:#f5cf70;}
+.admin-application-tabs button:focus-visible{outline:2px solid #ffe09a;outline-offset:3px;}
+body[data-admin-view=applications] .admin-account-list button{position:relative;padding-right:28px;}
+body[data-admin-view=applications] .admin-account-list button::after{content:'\203a';position:absolute;right:12px;top:18px;font-size:22px;color:#e7cf8d;}
+
+.admin-workspace .admin-application-tabs button{box-shadow:none;line-height:1.3;}
+body[data-admin-view=applications] #adminAccountDetail .admin-detail-heading{height:0;min-height:0;padding:0!important;border:0;}
+body[data-admin-view=applications] #adminAccountDetail .admin-detail-heading>h2,body[data-admin-view=applications] #adminAccountDetail .admin-detail-heading>p{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);}
+body[data-admin-view=applications] .qualification-review-heading{padding-right:120px;}
+body[data-admin-view=applications] .admin-application-back{z-index:1;}
+@media(max-width:600px){body[data-admin-view=applications] #adminAccountDetail .admin-detail-heading{height:auto;min-height:44px;padding:0 16px!important;}body[data-admin-view=applications] .qualification-review-heading{padding-right:0;}}
+
+/* Teacher Applications: reference-aligned workspace proportions. */
+body[data-admin-view=applications] #admin-main{padding:14px 14px 28px;max-width:none;}
+body[data-admin-view=applications] .teacher-intro{display:none;}
+body[data-admin-view=applications] #adminAccountsView[data-workspace=applications]{grid-template-columns:264px minmax(0,1fr);gap:14px;align-items:start;}
+body[data-admin-view=applications] #adminDirectory{padding:16px!important;background:linear-gradient(120deg,#102c43,#092038);border-radius:13px;}
+body[data-admin-view=applications] .admin-list-heading h2{font-size:1.12rem;margin:0 0 6px;}
+body[data-admin-view=applications] #accountListContext{font-size:.75rem;line-height:1.45;margin-bottom:12px;}
+body[data-admin-view=applications] .admin-application-tabs{margin:12px 0;gap:0;padding:3px;}
+body[data-admin-view=applications] .admin-application-tabs button{padding:7px 3px;font-size:.7rem;min-height:34px;white-space:nowrap;}
+body[data-admin-view=applications] .admin-search{font-size:.75rem;}
+body[data-admin-view=applications] .admin-search input{min-height:36px;padding:8px 10px;font-size:.75rem;}
+body[data-admin-view=applications] #adminSearchScope{font-size:.67rem;line-height:1.4;margin:6px 0 10px;}
+body[data-admin-view=applications] .admin-account-list{gap:8px;}
+body[data-admin-view=applications] .admin-account-list button{padding:10px 28px 10px 12px;font-size:.8rem;min-height:76px;border-radius:9px;}
+body[data-admin-view=applications] #adminAccountDetail{padding:14px;border-radius:13px;}
+body[data-admin-view=applications] #teacherQualificationReview{margin:0;padding:0;border:0;}
+body[data-admin-view=applications] .qualification-review-heading{gap:6px;margin-bottom:12px;padding-bottom:10px;}
+body[data-admin-view=applications] .qualification-review-heading h3{font-size:1.4rem;}
+body[data-admin-view=applications] .qualification-review-heading p{font-size:.74rem;}
+body[data-admin-view=applications] .qualification-applicant-card{padding:14px;gap:14px;margin-bottom:14px;}
+body[data-admin-view=applications] .qualification-information-grid{grid-template-columns:minmax(0,1.55fr) minmax(190px,1fr);gap:12px;}
+body[data-admin-view=applications] .qualification-information-side{grid-template-columns:1fr;}
+body[data-admin-view=applications] .qualification-information-main,body[data-admin-view=applications] .qualification-information-side{gap:12px;}
+body[data-admin-view=applications] .qualification-information-grid section{padding:12px;}
+body[data-admin-view=applications] .qualification-facts-panel .qualification-facts>div{padding:6px 0;gap:10px;}
+body[data-admin-view=applications] .qualification-information-grid h4{margin-bottom:8px;padding-bottom:8px;}
+body[data-admin-view=applications] .qualification-summary-item{font-size:.7rem;margin:7px 0;}
+body[data-admin-view=applications] .qualification-review-form>.qualification-decision-choices{margin:4px 0 12px;padding:14px 0;border-top:1px solid #355477;border-bottom:1px solid #355477;}
+body[data-admin-view=applications] .qualification-review-form .qualification-step{gap:9px;padding:12px;}
+body[data-admin-view=applications] .qualification-step .application-check{padding:9px;line-height:1.4;font-size:.76rem;}
+@media(min-width:1050px){body[data-admin-view=applications] #adminDirectory{min-height:calc(100vh - 112px);display:flex;flex-direction:column;}body[data-admin-view=applications] #accountPage{margin-top:auto;padding-top:16px;}body[data-admin-view=applications] .admin-account-list{max-height:calc(100vh - 400px);overflow-y:auto;}}
+@media(max-width:1049px){body[data-admin-view=applications] #adminAccountsView[data-workspace=applications]{grid-template-columns:230px minmax(0,1fr);}body[data-admin-view=applications] .qualification-information-grid{grid-template-columns:1fr;}body[data-admin-view=applications] .qualification-information-side{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:700px){body[data-admin-view=applications] #adminAccountsView[data-workspace=applications]{grid-template-columns:1fr;}body[data-admin-view=applications] .qualification-information-side{grid-template-columns:1fr;}body[data-admin-view=applications] #admin-main{padding:12px;}body[data-admin-view=applications] .admin-account-list{max-height:260px;overflow-y:auto;}}
+
+body.admin-workspace[data-admin-view=applications] .teacher-intro.teacher-intro-compact{display:none!important;}
+body.admin-workspace[data-admin-view=applications] #adminAccountsView[data-workspace=applications].has-selection{grid-template-columns:264px minmax(0,1fr);}
+body.admin-workspace[data-admin-view=applications] #adminDirectory{justify-content:flex-start;gap:0;}
+body[data-admin-view=applications] #adminSearchStatus:empty{display:none;}
+body[data-admin-view=applications] .qualification-facts-panel .qualification-facts>div{padding:5px 0;}
+body[data-admin-view=applications] .qualification-facts-panel .qualification-facts dt,body[data-admin-view=applications] .qualification-facts-panel .qualification-facts dd{line-height:1.4;}
+@media(max-width:1049px){body.admin-workspace[data-admin-view=applications] #adminAccountsView[data-workspace=applications].has-selection{grid-template-columns:230px minmax(0,1fr);}}
+@media(max-width:700px){body.admin-workspace[data-admin-view=applications] #adminAccountsView[data-workspace=applications].has-selection{grid-template-columns:1fr;}}
+
+body[data-admin-view=applications] .admin-account-list .admin-status-label{white-space:normal;line-height:1.4;max-width:100%;}
+body[data-admin-view=applications] .admin-application-access-link{margin-top:14px;min-height:44px;}
+
+/* Match the supplied review reference: compact content and bottom decision bar. */
+body.admin-workspace[data-admin-view=applications] #adminAccountsView{align-items:stretch;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory{min-height:590px;position:static;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail{padding:12px 14px;}
+body[data-admin-view=applications] .admin-refresh-group{visibility:hidden;}
+body.admin-workspace[data-admin-view=applications] .admin-application-back{position:fixed;top:14px;right:18px;z-index:20;min-height:36px;}
+body[data-admin-view=applications] .qualification-review-heading{padding-right:92px;min-height:84px;}
+body[data-admin-view=applications] .qualification-heading-cap{position:absolute;right:8px;top:12px;width:76px;height:58px;fill:none;stroke:#edcf87;stroke-width:2.4;opacity:.22;}
+body[data-admin-view=applications] .qualification-review-heading h3{font-size:1.45rem;}
+body[data-admin-view=applications] .qualification-applicant-card{margin-bottom:12px;padding:14px;}
+body[data-admin-view=applications] .qualification-information-grid .teacher-note{font-size:.69rem;line-height:1.4;}
+body[data-admin-view=applications] .qualification-facts-panel .qualification-facts>div{grid-template-columns:minmax(110px,1fr) minmax(0,1.25fr);padding:6px 0;}
+body[data-admin-view=applications] .qualification-information-grid h4{font-size:.85rem;}
+body[data-admin-view=applications] .qualification-review-form>.qualification-decision-choices{display:flex;gap:14px;margin:12px 0 0;padding:16px 8px;border-bottom:0;justify-content:center;}
+body[data-admin-view=applications] .qualification-decision-choices button{max-width:240px;border-radius:7px;min-height:42px;font-size:.88rem;}
+body[data-admin-view=applications] .qualification-decision-choices button::before{margin-right:8px;font-size:1.1rem;}
+body[data-admin-view=applications] .qualification-decision-choices [data-decision=approved]::before{content:'\2713';}
+body[data-admin-view=applications] .qualification-decision-choices [data-decision=needs_changes]::before{content:'\270e';}
+body[data-admin-view=applications] .qualification-decision-choices [data-decision=declined]::before{content:'\00d7';}
+body[data-admin-view=applications] .qualification-verification-details{border:1px solid #355477;border-radius:8px;margin-top:4px;padding:10px 12px;}
+body[data-admin-view=applications] .qualification-verification-details>summary{cursor:pointer;font-size:.76rem;color:#edcf87;min-height:28px;}
+body[data-admin-view=applications] .qualification-verification-details[open]{display:grid;gap:12px;}
+body[data-admin-view=applications] .qualification-verification-details>label{display:grid;gap:6px;margin-top:10px;}
+@media(max-width:700px){body.admin-workspace[data-admin-view=applications] #adminDirectory{min-height:0;}body[data-admin-view=applications] .qualification-review-heading{padding-right:0;}body[data-admin-view=applications] .qualification-heading-cap{display:none;}body[data-admin-view=applications] .qualification-facts-panel .qualification-facts>div{grid-template-columns:1fr;}body[data-admin-view=applications] .qualification-decision-choices button{max-width:none;}body.admin-workspace[data-admin-view=applications] .admin-application-back{top:22px;right:10px;font-size:.7rem;}}
+
+body.admin-workspace[data-admin-view=applications] #adminAccountsView[data-workspace=applications] .admin-detail-heading .admin-application-back{position:fixed;top:14px;right:18px;margin:0;}
+@media(max-width:700px){body.admin-workspace[data-admin-view=applications] #adminAccountsView[data-workspace=applications] .admin-detail-heading .admin-application-back{top:22px;right:10px;}}
+
+/* Final reference geometry: 1170 x 760 reference, scalable review workspace. */
+@media(min-width:1050px){
+ body.admin-workspace[data-admin-view=applications] .admin-navigation{width:208px;padding:16px 12px;}
+ body.admin-workspace[data-admin-view=applications] .teacher-shell{width:calc(100% - 208px);margin-left:208px;}
+ body.admin-workspace[data-admin-view=applications] .teacher-topbar{height:66px;min-height:66px;padding:10px 24px;}
+ body.admin-workspace[data-admin-view=applications] #admin-main{padding:14px 12px 24px;}
+ body.admin-workspace[data-admin-view=applications] #adminAccountsView[data-workspace=applications]{grid-template-columns:264px minmax(0,1fr);gap:12px;align-items:start;}
+ body.admin-workspace[data-admin-view=applications] #adminAccountsView[data-workspace=applications].has-selection{grid-template-columns:264px minmax(0,1fr);}
+ body.admin-workspace[data-admin-view=applications] #adminDirectory{height:578px;min-height:578px;display:flex;flex-direction:column;padding:16px 12px!important;}
+ body.admin-workspace[data-admin-view=applications] .admin-account-list{flex:1;min-height:0;max-height:none;overflow:auto;margin:10px 0 0;padding:0 2px 0 0;scrollbar-width:thin;scrollbar-color:#45647d transparent;}
+ body.admin-workspace[data-admin-view=applications] #accountPage{margin:0;padding:14px 8px 10px;border-top:1px solid #355477;}
+ body.admin-workspace[data-admin-view=applications] #adminDirectory>.teacher-actions{margin:0;justify-content:flex-end;gap:8px;}
+ body.admin-workspace[data-admin-view=applications] #adminDirectory>.teacher-actions button{min-height:30px;padding:5px 10px;font-size:.72rem;}
+}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-list-heading{margin:0;}
+body.admin-workspace[data-admin-view=applications] #accountListContext{margin:6px 0 0;font-size:.73rem;line-height:1.4;}
+body.admin-workspace[data-admin-view=applications] .admin-application-tabs{margin:16px 0 10px;}
+body.admin-workspace[data-admin-view=applications] .admin-search{display:block;margin:0;font-size:0;}
+body.admin-workspace[data-admin-view=applications] .admin-search input{font-size:.73rem;height:34px;min-height:34px;border-radius:8px;margin:0;}
+body.admin-workspace[data-admin-view=applications] #adminSearchScope{font-size:.64rem;line-height:1.3;margin:5px 0;}
+body.admin-workspace[data-admin-view=applications] #adminSearchStatus{margin:3px 0;font-size:.67rem;}
+body.admin-workspace[data-admin-view=applications] .admin-account-list button{min-height:74px;padding:8px 25px 8px 12px;gap:3px;border-radius:10px;box-shadow:none;font-size:.8rem;}
+body.admin-workspace[data-admin-view=applications] .admin-account-list button small{font-size:.67rem;line-height:1.3;}
+body.admin-workspace[data-admin-view=applications] .admin-account-list .admin-status-label{padding:1px 7px;font-size:.63rem;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail{padding:12px 14px;background:linear-gradient(120deg,#0c273f,#092138);}
+body.admin-workspace[data-admin-view=applications] .qualification-review-heading{min-height:82px;padding:0 88px 12px 10px;margin:0 0 10px;border:0;gap:6px;}
+body.admin-workspace[data-admin-view=applications] .qualification-review-heading h3{font-size:1.4rem;line-height:1.2;font-weight:750;}
+body.admin-workspace[data-admin-view=applications] .qualification-review-heading p{font-size:.7rem;line-height:1.4;}
+body.admin-workspace[data-admin-view=applications] .qualification-review-badge{font-size:.65rem;padding:4px 9px;border-radius:6px;}
+body.admin-workspace[data-admin-view=applications] .qualification-applicant-card{padding:16px 18px;grid-template-columns:60px minmax(0,1fr) minmax(160px,.7fr);gap:18px;margin-bottom:16px;border-radius:11px;min-height:120px;}
+body.admin-workspace[data-admin-view=applications] .qualification-applicant-avatar{height:60px;width:60px;border-radius:11px;}
+body.admin-workspace[data-admin-view=applications] .qualification-applicant-identity h4{font-size:1.1rem;margin:0 0 6px;}
+body.admin-workspace[data-admin-view=applications] .qualification-applicant-identity p{font-size:.7rem;margin:4px 0;line-height:1.35;}
+body.admin-workspace[data-admin-view=applications] .qualification-information-grid{grid-template-columns:minmax(0,1.6fr) minmax(200px,1fr);gap:14px;}
+body.admin-workspace[data-admin-view=applications] .qualification-information-main,body.admin-workspace[data-admin-view=applications] .qualification-information-side{gap:12px;}
+body.admin-workspace[data-admin-view=applications] .qualification-information-grid section{padding:12px;border-radius:11px;}
+body.admin-workspace[data-admin-view=applications] .qualification-information-grid h4{font-size:.83rem;margin:0 0 8px;padding:0 0 8px;}
+body.admin-workspace[data-admin-view=applications] .qualification-facts-panel .qualification-facts>div{padding:5px 2px;grid-template-columns:minmax(110px,1fr) minmax(0,1.15fr);gap:10px;}
+body.admin-workspace[data-admin-view=applications] .qualification-facts-panel .qualification-facts dt,body.admin-workspace[data-admin-view=applications] .qualification-facts-panel .qualification-facts dd{font-size:.67rem;line-height:1.4;}
+body.admin-workspace[data-admin-view=applications] .qualification-summary-item{font-size:.69rem;line-height:1.35;margin:7px 0;}
+body.admin-workspace[data-admin-view=applications] .qualification-summary-item[data-available=true]>span:first-child{background:#68c542;color:white;border-radius:50%;width:16px;height:16px;text-align:center;flex:0 0 16px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-summary-panel>.teacher-note{font-size:.64rem;line-height:1.3;margin:8px 0 0;}
+body.admin-workspace[data-admin-view=applications] .qualification-documents-panel{min-height:120px;}
+body.admin-workspace[data-admin-view=applications] .qualification-documents-panel p,body.admin-workspace[data-admin-view=applications] .qualification-history-panel p{font-size:.69rem;line-height:1.4;}
+body.admin-workspace[data-admin-view=applications] .qualification-history-panel button{min-height:28px;padding:4px 8px;font-size:.67rem;}
+body.admin-workspace[data-admin-view=applications] .qualification-review-form{margin-top:16px;gap:8px;}
+body.admin-workspace[data-admin-view=applications] .qualification-review-form>.qualification-decision-choices{margin:0;padding:16px 8px 6px;gap:16px;}
+body.admin-workspace[data-admin-view=applications] .qualification-decision-choices button{min-height:42px;padding:8px 12px;box-shadow:none;border-width:1px;font-size:.83rem;}
+body.admin-workspace[data-admin-view=applications] .qualification-decision-choices [data-decision=approved]{border-color:#68bd49;background:linear-gradient(#184935,#103729);}
+body.admin-workspace[data-admin-view=applications] .qualification-decision-choices [data-decision=needs_changes]{border-color:#f8d677;background:linear-gradient(#ffe092,#f6c447);}
+body.admin-workspace[data-admin-view=applications] .qualification-decision-choices [data-decision=declined]{border-color:#ee6058;background:linear-gradient(#743632,#512a2d);}
+body.admin-workspace[data-admin-view=applications] .qualification-verification-details{margin-top:6px;padding:8px 10px;background:#0c253c;}
+@media(max-width:1049px){body.admin-workspace[data-admin-view=applications] .qualification-information-grid{grid-template-columns:1fr;}body.admin-workspace[data-admin-view=applications] .qualification-information-side{grid-template-columns:repeat(2,minmax(0,1fr));}body.admin-workspace[data-admin-view=applications] .qualification-applicant-card{grid-template-columns:44px minmax(0,1fr);padding:12px;}body.admin-workspace[data-admin-view=applications] .qualification-current-status{grid-column:1/-1;border-left:0;border-top:1px solid #355477;padding:10px 0 0;}}
+@media(max-width:700px){body.admin-workspace[data-admin-view=applications] .qualification-information-side{grid-template-columns:1fr;}body.admin-workspace[data-admin-view=applications] .qualification-facts-panel .qualification-facts>div{grid-template-columns:1fr;}body.admin-workspace[data-admin-view=applications] .qualification-review-heading{padding:0 0 12px;}}
+
+@media(min-width:1050px){
+ body.admin-workspace[data-admin-view=applications] .admin-navigation{overflow-x:hidden;}
+ body.admin-workspace[data-admin-view=applications] .admin-navigation .teacher-tabs [data-teacher-tab]{font-size:.72rem;padding:9px 8px;gap:6px;}
+ body.admin-workspace[data-admin-view=applications] #adminQueueBadge{min-width:18px;font-size:.62rem;padding:2px 4px;}
+ body.admin-workspace[data-admin-view=applications] .admin-navigation .teacher-brand{gap:7px;font-size:.9rem;}
+ body.admin-workspace[data-admin-view=applications] .admin-navigation .teacher-brand small{font-size:.65rem;}
+}
+body.admin-workspace[data-admin-view=applications] .qualification-information-grid h4::before{content:'\25a4';font-size:1rem;margin-right:8px;font-weight:400;color:#d6e3ee;}
+body.admin-workspace[data-admin-view=applications] .qualification-history-panel h4::before{content:'\21b6';}
+body.admin-workspace[data-admin-view=applications] .qualification-documents-panel h4::before{content:'\1f4ce';}
+
+body.admin-workspace[data-admin-view=applications] .qualification-facts-panel .qualification-facts dt{margin:0;}
+body.admin-workspace[data-admin-view=applications] .qualification-summary-item{margin:5px 0;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-summary-panel>.teacher-note{margin-top:6px;}
+
+/* Focused left-panel treatment. Review details and page geometry are unchanged. */
+body.admin-workspace[data-admin-view=applications] #adminDirectory{border:1px solid #2c506d;border-radius:14px;background:linear-gradient(115deg,#0d2a43,#0a2239);box-shadow:inset 0 1px 0 #ffffff04;gap:0;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-list-heading h2{font-size:1.12rem;line-height:1.3;letter-spacing:-.02em;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory #accountListContext{font-size:.72rem;line-height:1.45;margin:6px 0 0;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-application-tabs{flex:0 0 auto;gap:0;border-radius:10px;margin:16px 0 12px;padding:3px;background:#092038;border-color:#31516d;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-application-tabs button{display:flex;align-items:center;justify-content:center;gap:4px;min-height:30px;padding:5px 3px;font-size:.65rem;line-height:1.25;border-radius:7px;font-weight:600;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-application-tabs button[aria-pressed=true]{background:linear-gradient(#ffdf88,#f6cb61);color:#172438;border-color:#f6cf70;}
+body.admin-workspace[data-admin-view=applications] .admin-applicant-tab-count{display:inline-grid;place-items:center;min-width:15px;height:15px;padding:0 3px;border-radius:50%;background:#1c3546;color:#ffe193;font-size:.6rem;}
+.admin-applicant-search-icon{display:none;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-search{position:relative;display:block;flex:0 0 auto;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-search input{height:34px;min-height:34px;padding:7px 10px 7px 32px;background:#081e33;border:1px solid #31516d;border-radius:8px;font-size:.7rem;color:#e3edf6;box-shadow:none;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-search-icon{display:block;position:absolute;left:10px;top:9px;width:15px;height:15px;fill:none;stroke:#cfdeeb;stroke-width:1.7;stroke-linecap:round;pointer-events:none;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory #adminSearchScope{flex:0 0 auto;margin:6px 0 0;font-size:.62rem;color:#a5bacd;line-height:1.35;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list{display:flex;flex-direction:column;gap:8px;padding-right:2px;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#3f6079 transparent;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button{flex:0 0 auto;display:grid;grid-template-columns:minmax(0,1fr);align-content:center;text-align:left;gap:3px;padding:9px 27px 9px 12px;min-height:74px;border:1px solid #31536e;border-radius:10px;background:linear-gradient(110deg,#143149,#0c263d);color:#f0f4fa;box-shadow:none;font-size:.77rem;line-height:1.3;font-weight:700;transition:background-color .15s,border-color .15s;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button small{font-weight:400;color:#d0dfeb;font-size:.66rem;line-height:1.35;overflow-wrap:anywhere;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button[aria-pressed=true]{border-color:#f6cf70;background:linear-gradient(110deg,#1b374b,#112b40);box-shadow:inset 0 0 0 1px #f6cf7040;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button:hover{border-color:#94a8ae;background:#1a374e;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button:focus-visible{outline:2px solid #ffe19b;outline-offset:2px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button::after{content:'\203a';right:12px;top:50%;transform:translateY(-50%);font-size:24px;color:#e2eaf0;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list .admin-status-label{justify-self:start;padding:1px 6px;border:1px solid #b59a50;border-radius:20px;background:#112d40;color:#f5d36d;font-size:.61rem;line-height:1.3;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory #accountPage{flex:0 0 auto;font-size:.72rem;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory>.teacher-actions{flex:0 0 auto;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory>.teacher-actions button{width:32px;min-width:32px;height:30px;min-height:30px;font-size:0;padding:0;border-radius:7px;background:#102c43;border:1px solid #31536e;box-shadow:none;}
+body.admin-workspace[data-admin-view=applications] #previousAccounts::after{content:'\2039';font-size:22px;}
+body.admin-workspace[data-admin-view=applications] #nextAccounts::after{content:'\203a';font-size:22px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory>.teacher-actions button:disabled{opacity:.4;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-list-state{padding:14px 6px;font-size:.75rem;line-height:1.5;color:#bfcede;}
+@media(min-width:701px) and (max-width:1049px){body.admin-workspace[data-admin-view=applications] #adminDirectory{height:578px;min-height:0;display:flex;flex-direction:column;padding:14px 12px!important;}body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list{flex:1;min-height:0;overflow:auto;margin-top:12px;}body.admin-workspace[data-admin-view=applications] #adminDirectory #accountPage{margin:10px 0 0;border-top:1px solid #31516d;padding-top:12px;}}
+@media(max-width:700px){body.admin-workspace[data-admin-view=applications] #adminDirectory{padding:14px!important;}body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list{max-height:280px;overflow:auto;margin-top:12px;}body.admin-workspace[data-admin-view=applications] #adminDirectory>.teacher-actions{justify-content:flex-end;}}
+@media(prefers-reduced-motion:reduce){body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button{transition:none;}}
+
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button[hidden]{display:none!important;}
+
+.admin-applicant-pagination{display:contents;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-pagination{display:flex;align-items:center;justify-content:space-between;gap:8px;flex:0 0 auto;border-top:1px solid #31516d;padding:11px 8px 0;margin-top:12px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-pagination #accountPage{margin:0;padding:0;border:0;min-width:0;font-size:.71rem;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-pagination .teacher-actions{display:flex;flex-wrap:nowrap;gap:8px;margin:0;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-pagination button{flex:0 0 30px;width:30px;min-width:30px;height:30px;min-height:30px;padding:0;font-size:0;border:1px solid #31516d;border-radius:7px;background:#102c43;box-shadow:none;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-pagination button:disabled{opacity:.4;}
+
+/* Right-hand reference panel: status-led header and applicant identity. */
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading{padding-left:10px;gap:5px;min-height:80px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading h3{font-size:1.5rem;font-weight:750;line-height:1.2;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading p{font-size:.72rem;line-height:1.4;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-badge{font-size:.68rem;padding:3px 9px;line-height:1.4;border-radius:5px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-card{border-color:#315570;background:linear-gradient(110deg,#102f48,#0b243a);border-radius:11px;margin-bottom:16px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-avatar{background:linear-gradient(135deg,#294b65,#203c54);border:1px solid #34546c;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-avatar svg{width:40px;height:40px;fill:#dce6ee;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-identity h4{font-size:1.2rem;margin-bottom:6px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-identity p{display:flex;align-items:center;gap:8px;font-size:.72rem;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-identity p svg{width:15px;height:15px;flex:0 0 15px;fill:none;stroke:#d2dfe9;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status{padding-left:24px;gap:7px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status>strong{font-size:.76rem;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status>p{font-size:.7rem;line-height:1.35;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status .qualification-account-stage{font-size:.64rem;color:#9fb6cb;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid{gap:14px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid h4{font-size:.87rem;line-height:1.4;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid h4::before{display:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts-panel .qualification-facts dt,body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts-panel .qualification-facts dd{font-size:.7rem;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-summary-item{font-size:.71rem;}
+@media(max-width:1049px){body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status{padding-left:0;}}
+
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid h4{display:flex;align-items:center;gap:8px;}
+.qualification-section-icon{width:18px;height:18px;flex:0 0 18px;fill:none;stroke:#d9e4ed;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+
+body.admin-workspace[data-admin-view=applications] .qualification-submission-guidance{margin:14px 0 0;padding:12px 14px;background:#102e44;border:1px solid #355570;border-radius:9px;font-size:.76rem;line-height:1.5;color:#c7d8e6;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail>section[hidden]{display:none!important;}
+body.admin-workspace[data-admin-view=applications] .qualification-review[data-application-status=not_submitted] .qualification-review-badge{background:#253d51;border-color:#5d7b92;color:#e2ebf2;}
+body.admin-workspace[data-admin-view=applications] .qualification-review[data-application-status=not_submitted] .qualification-applicant-card{margin-bottom:16px;}
+
+/* Review-panel finishing pass: aligned cards, readable details and restrained feedback. */
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail{box-shadow:0 5px 18px #020c171f;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading h3{letter-spacing:-.025em;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-card{box-shadow:inset 0 1px 0 #ffffff04;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-identity h4{letter-spacing:-.015em;overflow-wrap:anywhere;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid{grid-template-areas:'facts summary' 'documents history';align-items:stretch;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-main,body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-side{display:contents;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts-panel{grid-area:facts;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-summary-panel{grid-area:summary;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-documents-panel{grid-area:documents;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-history-panel{grid-area:history;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid>div>section,body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid>aside>section{border-color:#31536b;box-shadow:inset 0 1px 0 #ffffff03;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid h4{color:#eef3f8;letter-spacing:-.01em;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts dt{color:#acc1d3;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts dd{color:#f0f4f8;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-summary-item[data-available=false]{color:#a9bed0;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review[data-application-status=approved] .qualification-review-badge{background:#173d32;border-color:#5d9e7b;color:#cef1da;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review[data-application-status=declined] .qualification-review-badge{background:#482b32;border-color:#b7757c;color:#ffe0e2;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review[data-application-status=needs_changes] .qualification-review-badge{background:#503f20;border-color:#c9a757;color:#ffe4a1;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-document-row{display:flex;align-items:center;gap:12px;padding:9px 10px;border:1px solid #31516b;border-radius:8px;background:#17334a;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-document-name{flex:1;min-width:0;margin:0;font-weight:600;overflow-wrap:anywhere;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-document-row button{flex:0 0 auto;min-height:34px;padding:6px 10px;font-size:.68rem;border-radius:6px;background:#102a40;border-color:#486a83;box-shadow:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail :is(button,a,summary):focus-visible{outline:2px solid #ffe199;outline-offset:3px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-history-panel button{background:transparent;color:#e7cd8a;border-color:#63766f;box-shadow:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-decision-choices button{transition:background-color .15s,border-color .15s,box-shadow .15s;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-decision-choices button:hover:not(:disabled){filter:brightness(1.08);}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-verification-details{border-color:#36546b;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-verification-details summary{font-weight:600;padding:3px 0;}
+@media(max-width:1049px){body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:'facts' 'summary' 'documents' 'history';}}
+@media(max-width:600px){body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-document-row{align-items:flex-start;flex-direction:column;}body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-document-row button{align-self:flex-end;min-height:40px;}}
+@media(prefers-reduced-motion:reduce){body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-decision-choices button{transition:none;}}
+
+/* Pair the applicant directory with the review surface. */
+@media(min-width:701px){
+ body.admin-workspace[data-admin-view=applications] #adminAccountsView[data-workspace=applications],body.admin-workspace[data-admin-view=applications] #adminAccountsView[data-workspace=applications].has-selection{align-items:stretch;gap:14px;}
+ body.admin-workspace[data-admin-view=applications] #adminDirectory{height:auto;min-height:578px;align-self:stretch;padding:14px!important;display:flex;flex-direction:column;border-radius:13px;border-color:#31536b;background:linear-gradient(120deg,#0c273f,#092138);box-shadow:0 5px 18px #020c171f;}
+ body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list{flex:1 1 0;contain:size;min-height:180px;max-height:none;overflow:auto;margin-top:12px;}
+ body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-pagination{margin-top:14px;padding:14px 0 0;}
+}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-list-heading h2{letter-spacing:-.02em;color:#eef3f8;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory #accountListContext{color:#b9cddd;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button{border-color:#31536b;background:linear-gradient(110deg,#143149,#0c263d);}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button[aria-pressed=true]{border-color:#f6cf70;background:linear-gradient(110deg,#1e3a4c,#122d42);box-shadow:inset 3px 0 #f6cf70;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-pagination button:focus-visible{outline:2px solid #ffe199;outline-offset:3px;}
+@media(max-width:700px){body.admin-workspace[data-admin-view=applications] #adminDirectory{height:auto;min-height:0;border-radius:13px;border-color:#31536b;background:linear-gradient(120deg,#0c273f,#092138);}body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list{contain:none;max-height:280px;}}
+
+@media(min-width:701px){
+ body.admin-workspace[data-admin-view=applications] #adminDirectory{height:clamp(360px,calc(100dvh - 104px),760px);min-height:0;align-self:start;position:sticky;top:80px;}
+ body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list{min-height:0;}
+}
+
+/* Action-oriented queue labels with room for readable text. */
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-application-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-application-tabs button{min-height:34px;font-size:.7rem;white-space:normal;line-height:1.3;padding:6px 4px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory #adminSearchScope{font-size:.69rem;line-height:1.4;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button small{font-size:.7rem;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list .admin-status-label{font-size:.66rem;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading p,body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status>p{font-size:.75rem;}
+
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-list-heading{position:relative;padding-right:30px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory #accountListContext{margin-right:-30px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-refresh-applications{position:absolute;top:0;right:0;display:grid;place-items:center;width:30px;min-width:30px;height:30px;min-height:30px;padding:0;border-radius:7px;font-size:1.15rem;background:#102c43;border:1px solid #3d6078;box-shadow:none;color:#edcf87;}
+.admin-refresh-applications[hidden]{display:none!important;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-refresh-applications:focus-visible{outline:2px solid #ffe199;outline-offset:3px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-verification-details>summary{font-size:.8rem;line-height:1.5;}
+
+/* Cohesive review-desk design: fewer competing outlines, warmer identity and depth. */
+body.admin-workspace[data-admin-view=applications]{background:#071525;}
+body.admin-workspace[data-admin-view=applications] #admin-main{background:radial-gradient(ellipse at 75% 0,#17445b26,transparent 58%);}
+body.admin-workspace[data-admin-view=applications] #adminDirectory{border-color:#284359;background:linear-gradient(160deg,#122c42,#0a1d30 75%);box-shadow:0 12px 30px #02091440,inset 0 1px 0 #ffffff07;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-list-heading h2{font-size:1.13rem;letter-spacing:-.025em;line-height:1.3;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory #accountListContext{color:#aec2d2;font-size:.75rem;line-height:1.5;margin-top:8px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-application-tabs{background:#071b2d;border-color:#213f56;padding:5px;gap:5px;border-radius:11px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-application-tabs button{font-size:.73rem;min-height:40px;border:0;color:#b9cada;transition:background-color .18s,color .18s;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-application-tabs button:hover{background:#1b354a;color:#fff;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-application-tabs button[aria-pressed=true]{background:linear-gradient(130deg,#f8d981,#e9bd57);color:#162638;box-shadow:0 3px 10px #020c1724;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-search input{height:39px;min-height:39px;background:#0a1d2f;border-color:#304c63;font-size:.75rem;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-search-icon{top:12px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory #adminSearchScope{font-size:.68rem;color:#96afc2;margin-top:8px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list{gap:10px;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button{position:relative;min-height:99px;padding:13px 22px 13px 55px;gap:5px;background:#10283d;border-color:#29465d;border-radius:11px;transition:transform .18s,border-color .18s,background-color .18s;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button:hover{transform:translateX(2px);background:#18354a;border-color:#728378;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button[aria-pressed=true]{background:linear-gradient(120deg,#293c40,#173448);border-color:#e8c46f;box-shadow:inset 3px 0 #edcf87,0 5px 14px #020c1720;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-name{font-size:.81rem;line-height:1.3;font-weight:700;overflow-wrap:anywhere;color:#f1f5f8;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-list-avatar{position:absolute;left:11px;top:15px;display:grid;place-items:center;width:33px;height:35px;border-radius:10px;background:linear-gradient(145deg,#345268,#203b52);color:#e8d49f;font-size:.7rem;font-weight:750;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button small{font-size:.69rem;color:#b8ccdb;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list .admin-status-label{grid-column:1;margin-top:1px;border:0;padding:3px 7px;background:#273b47;color:#e6cf8b;font-size:.64rem;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-status-label[data-status=not_submitted],body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-status-label[data-status=draft]{background:#20364a;color:#b9cddb;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-status-label[data-status=approved]{background:#183f37;color:#b8e5ce;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-status-label[data-status=declined]{background:#452d39;color:#f1bdc7;}
+body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-applicant-pagination{border-color:#2b465b;color:#a8bdcd;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail{padding:18px;background:linear-gradient(145deg,#112c43,#0b2034 72%);border-color:#335067;border-radius:14px;box-shadow:0 12px 30px #02091440,inset 0 1px 0 #ffffff07;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading{position:relative;min-height:99px;margin:-4px -4px 14px;padding:7px 95px 12px 8px;background:radial-gradient(ellipse at 93% 20%,#dfbd6820,transparent 60%);border-bottom:1px solid #385162;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading h3{font-size:1.58rem;letter-spacing:-.035em;color:#f3f5f7;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading p{font-size:.76rem;line-height:1.5;color:#b8cede;max-width:490px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-heading-cap{width:84px;height:64px;right:4px;top:16px;stroke:#e9c675;opacity:.32;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-badge{font-size:.68rem;padding:4px 10px;border-radius:6px;background:linear-gradient(120deg,#ffe09a,#eac36b);}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-card{padding:18px;gap:16px;border-color:#3b586d;border-radius:12px;background:linear-gradient(110deg,#1a3b51,#10283d);box-shadow:inset 0 1px 0 #ffffff04;margin-bottom:16px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-avatar{background:linear-gradient(145deg,#8b784d,#394b4c);border-color:#b9a36c55;border-radius:14px;width:60px;height:64px;box-shadow:0 4px 12px #06142130;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-avatar svg{fill:#fff0c7;width:39px;height:39px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-identity h4{font-size:1.23rem;color:#f6f7f8;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-identity p{font-size:.75rem;line-height:1.45;color:#c0d1dd;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status{border-color:#46616f;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status>strong{color:#d7e4ec;font-size:.74rem;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid{gap:14px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid>div>section,body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid>aside>section{padding:14px;background:linear-gradient(145deg,#142f45,#10263a);border-color:#2a485f;border-radius:11px;box-shadow:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid h4{font-size:.9rem;font-weight:700;gap:9px;border-color:#2e4b61;padding-bottom:11px;margin-bottom:9px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-section-icon{color:#e4ca87;stroke:#e4ca87;width:19px;height:19px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts-panel .qualification-facts>div{padding:7px 0;border-color:#29475b;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts dt,body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts dd{font-size:.74rem;line-height:1.5;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-summary-item{font-size:.74rem;line-height:1.45;margin:7px 0;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-summary-item[data-available=true]>span:first-child{background:#2e7157;color:#d7f1df;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-form>.qualification-decision-choices{padding-top:16px;border-color:#3a5465;gap:12px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-decision-choices button{min-height:44px;font-size:.85rem;box-shadow:0 3px 8px #00000018;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-decision-choices [aria-pressed=true]{outline:1px solid #f6db94;outline-offset:3px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-submission-guidance{background:#142f42;border-color:#415a66;border-left:3px solid #c8aa64;font-size:.77rem;}
+@keyframes admin-review-surface-arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:no-preference){body.admin-workspace[data-admin-view=applications] #adminDirectory,body.admin-workspace[data-admin-view=applications] #adminAccountDetail{animation:admin-review-surface-arrive .28s cubic-bezier(.2,.7,.2,1) both;}body.admin-workspace[data-admin-view=applications] #adminAccountDetail{animation-delay:.045s;}}
+@media(prefers-reduced-motion:reduce){body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button,body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-application-tabs button{transition:none;}}
+@media(max-width:1049px){body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-card{grid-template-columns:60px minmax(0,1fr);}.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status{padding-left:0;}}
+@media(max-width:700px){body.admin-workspace[data-admin-view=applications] #adminAccountDetail{padding:14px;}body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading{min-height:0;padding:5px 4px 14px;}body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading h3{font-size:1.4rem;}body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-card{padding:14px;gap:12px;}body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button{min-height:95px;}}
+
+/* Keep primary actions compact and avoid a transformed ancestor for the fixed Back control. */
+@keyframes admin-review-surface-arrive{from{opacity:0}to{opacity:1}}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail{padding:16px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading{min-height:86px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-card{padding:16px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-summary-item{margin:5px 0;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts-panel .qualification-facts>div{padding:6px 0;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-documents-panel p,body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-history-panel>p{margin:6px 0 10px;line-height:1.5;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review[data-application-status=not_submitted] .qualification-review-badge,body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review[data-application-status=draft] .qualification-review-badge{background:#263e50;color:#d8e5ee;border-color:#58758b;}
+@media(prefers-reduced-motion:no-preference){body.admin-workspace[data-admin-view=applications] #adminDirectory .admin-account-list button{animation:admin-review-surface-arrive .22s ease-out both;}}
+body.admin-workspace.lakbay-reduce-motion[data-admin-view=applications] #adminDirectory,body.admin-workspace.lakbay-reduce-motion[data-admin-view=applications] #adminAccountDetail,body.admin-workspace.lakbay-reduce-motion[data-admin-view=applications] #adminDirectory .admin-account-list button{animation:none;transition:none;}
+
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading{min-height:80px;padding-top:3px;padding-bottom:8px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-card{padding:14px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-identity p{margin:3px 0;font-size:.73rem;line-height:1.35;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid h4{padding-bottom:8px;margin-bottom:8px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-summary-item{font-size:.7rem;line-height:1.35;margin:4px 0;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts-panel .qualification-facts dt,body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts-panel .qualification-facts dd{font-size:.73rem;line-height:1.45;}
+body.admin-workspace[data-admin-view=applications] .teacher-topbar>.admin-application-back{position:fixed;top:14px;right:18px;margin:0;z-index:20;}
+@media(max-width:700px){body.admin-workspace[data-admin-view=applications] .teacher-topbar>.admin-application-back{top:22px;right:10px;}}
+
+@media(max-width:700px){
+ body.admin-workspace[data-admin-view=applications] .teacher-topbar{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;padding:12px;}
+ body.admin-workspace[data-admin-view=applications] .teacher-topbar .admin-refresh-group{display:none;}
+ body.admin-workspace[data-admin-view=applications] .teacher-topbar .student-page-title{min-width:0;gap:0;}
+ body.admin-workspace[data-admin-view=applications] .teacher-topbar .student-page-title-icon{display:none;}
+ body.admin-workspace[data-admin-view=applications] .teacher-topbar .student-page-title-copy{min-width:0;}
+ body.admin-workspace[data-admin-view=applications] #adminPageTitle{font-size:.85rem;white-space:normal;line-height:1.3;}
+ body.admin-workspace[data-admin-view=applications] .teacher-topbar>.admin-application-back{position:static;min-height:36px;padding:8px;font-size:.68rem;white-space:nowrap;}
+ body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-detail-heading{height:0;min-height:0;padding:0!important;}
+}
+
+/* A single review desk replaces the four competing detail cards. */
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid.admin-review-desk{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(190px,.9fr);grid-template-areas:'dossier readiness';gap:0;align-items:stretch;border:1px solid #2d4b60;border-radius:12px;background:linear-gradient(120deg,#102a40,#0d2337);overflow:hidden;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-dossier{grid-area:dossier;min-width:0;margin:0;padding:0;border:0;background:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-readiness{grid-area:readiness;min-width:0;padding:16px;border-left:1px solid #2d4b60;background:#142d403d;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs{display:flex;gap:3px;padding:7px 10px 0;border-bottom:1px solid #2d4b60;background:#0a20324d;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs button{flex:1;min-width:0;min-height:42px;border:0;border-bottom:2px solid transparent;border-radius:6px 6px 0 0;padding:9px 5px;background:transparent;box-shadow:none;color:#a9c0d1;font-size:.74rem;font-weight:600;transition:color .18s,background-color .18s,border-color .18s;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs button:hover{background:#263e4e;color:#f5e4b8;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs button[aria-selected=true]{color:#f5d78f;border-bottom-color:#edce7f;background:linear-gradient(0deg,#d7b56a13,transparent);}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tab-content{padding:16px;min-height:212px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-desk :is(.qualification-facts-panel,.qualification-documents-panel,.qualification-history-panel,.qualification-summary-panel){grid-area:auto;min-height:0;padding:0;margin:0;border:0;border-radius:0;background:none;box-shadow:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-desk [role=tabpanel][hidden]{display:none!important;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-desk h4{font-size:.87rem;margin:0 0 12px;padding:0 0 10px;border-color:#2e4b60;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-desk .qualification-facts>div{padding:9px 0;border-color:#29465a;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-readiness .qualification-summary-item{font-size:.72rem;line-height:1.5;margin:9px 0;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-readiness>.qualification-summary-panel>.teacher-note{margin-top:14px;color:#9eb6c8;font-size:.67rem;line-height:1.5;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-desk .qualification-section-icon{width:17px;height:17px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-form>.qualification-decision-choices{margin-top:4px;padding-top:16px;}
+@keyframes admin-review-tab-reveal{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:no-preference){body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tab-content>[role=tabpanel]:not([hidden]){animation:admin-review-tab-reveal .22s cubic-bezier(.2,.65,.3,1);}}
+@media(prefers-reduced-motion:reduce){body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs button{transition:none;}}
+body.admin-workspace.lakbay-reduce-motion[data-admin-view=applications] #adminAccountDetail .admin-review-tab-content>[role=tabpanel]{animation:none;}
+body.admin-workspace.lakbay-reduce-motion[data-admin-view=applications] #adminAccountDetail .admin-review-tabs button{transition:none;}
+@media(max-width:1049px){body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid.admin-review-desk{grid-template-columns:minmax(0,1fr);grid-template-areas:'dossier' 'readiness';}body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-readiness{border-left:0;border-top:1px solid #2d4b60;}}
+@media(max-width:600px){body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs{padding-inline:6px;}body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs button{font-size:.72rem;}body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tab-content{padding:14px;min-height:0;}}
+
+/* Continuous review sheet: no nested four-card grid or checklist box. */
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-information-grid.admin-review-desk{display:flex;flex-direction:column;gap:0;border:0;border-radius:0;background:none;overflow:visible;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-dossier{order:2;border:0;border-radius:0;background:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-readiness{order:1;padding:12px 0 16px;border:0;border-bottom:1px solid #304b60;background:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-readiness .qualification-summary-panel{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;border:0;border-radius:0;padding:0;background:none;box-shadow:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-readiness h4{width:100%;border:0;padding:0;margin:0 0 4px;font-size:.75rem;color:#b8cad8;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-readiness .qualification-summary-item{margin:0;font-size:.71rem;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-readiness .teacher-note{width:100%;margin:2px 0 0!important;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs{padding:12px 0 0;gap:16px;background:none;border-bottom:1px solid #304b60;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs button{flex:0 1 auto;padding:10px 4px;min-width:90px;border-radius:0;background:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs button[aria-selected=true]{background:none;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tab-content{padding:18px 0 8px;min-height:180px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tab-content h4{border:0;margin:0 0 14px;padding:0;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-applicant-card{border:0;border-radius:0;padding:14px 0 20px;background:none;box-shadow:none;margin-bottom:0;border-bottom:1px solid #304b60;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-review-heading{background:none;border:0;margin-bottom:4px;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status{border:0;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-facts-panel .qualification-facts{border:0;background:none;box-shadow:none;border-radius:0;}
+body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-submission-guidance{border:0;border-left:2px solid #c8aa64;border-radius:0;background:none;padding:8px 12px;}
+@media(max-width:600px){body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs{gap:6px;}body.admin-workspace[data-admin-view=applications] #adminAccountDetail .admin-review-tabs button{flex:1;min-width:0;}body.admin-workspace[data-admin-view=applications] #adminAccountDetail .qualification-current-status{padding-top:12px;}}

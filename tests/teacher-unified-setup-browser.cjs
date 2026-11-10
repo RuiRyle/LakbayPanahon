@@ -11,12 +11,17 @@ const checks=[],check=(ok,label)=>{if(!ok)throw Error(label);checks.push(label);
  check(document.body.dataset.setupPhase==='account'&&!document.getElementById('teacherSetupAccount').hidden,'auth callback waits for the teacher profile before advancing');
  holdProfile=false;releaseProfile();await waitFor(()=>document.body.dataset.setupPhase==='email'&&!busy,'email step');
  check(location.href===original&&creations===1,'account creation advances without navigating or creating another account');
+ check(document.getElementById('teacherNextStepTitle').textContent==='Verify your email','created teacher sees the exact next step without interpreting account statuses');
+
  check(document.getElementById('teacherSetupAccount').hidden&&document.getElementById('teacherEmailStatus').textContent.includes('new.teacher@example.com'),'verification continues in the same setup page');
  check(document.getElementById('teacherPassword').value===''&&document.getElementById('teacherConfirmPassword').value==='','passwords are cleared after successful account creation');
  check(document.getElementById('teacherApplicationForm').elements.legalName.value==='Ana Teacher','teaching details reuse the registered name');
  check(getComputedStyle(document.querySelector('.application-form-card')).display==='none','email step focuses on verification instead of showing another form');
  verified=true;document.getElementById('refreshTeacherEmail').click();await waitFor(()=>document.body.dataset.setupPhase==='details'&&!busy,'details step');
  check(location.href===original&&getComputedStyle(document.querySelector('.application-form-card')).display!=='none','verified email advances to teaching details on the same page');
+ check(document.getElementById('teacherNextAction').textContent==='Complete my details'&&getComputedStyle(document.querySelector('.application-email-card')).display==='none','verified setup focuses on the form and removes repeated email instructions');
+ document.getElementById('teacherNextAction').click();check(document.activeElement===document.getElementById('teacherApplicationForm').elements.institution,'next action focuses the first missing teaching detail');
+
  const f=document.getElementById('teacherApplicationForm');f.elements.institution.value='Example School';f.elements.roleTitle.value='Grade 5 teacher';document.getElementById('teacherQualificationAcknowledged').checked=true;f.requestSubmit();await waitFor(()=>document.body.dataset.setupPhase==='review'&&!busy,'review step');
  check(records.get('teacherApplications/new-teacher').status==='submitted'&&!document.getElementById('teacherSetupDetails').open,'minimal teaching details submit and show review status');
  check(records.get('teacherApplications/new-teacher').prcNumber===''&&creations===1,'school-affiliation setup needs no extra account or PRC details');

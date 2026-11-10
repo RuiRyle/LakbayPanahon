@@ -13,6 +13,8 @@ const withBayaniDeadline=(operation,milliseconds)=>actualBayaniDeadline(operatio
  clearTimer(id){deadlineTimers.delete(id);}
 });
 const auth={currentUser:{uid:'student'}};
+let confirmReset=true,resetConfirmations=0;
+window.confirm=()=>{resetConfirmations++;return confirmReset;};
 let listener,connectionFails=true,connectionGate=null,replyFails=false,replyError=Error('Offline'),replyText='Explanation <img src=x onerror=bad>',gate=null,calls=[],connections=0;
 const onAuthStateChanged=(_,fn)=>{listener=fn;queueMicrotask(()=>fn(auth.currentUser));};
 const connectBayani=async()=>{
@@ -78,9 +80,16 @@ const expireDeadline=milliseconds=>{
  check(!log.children.length&&input.disabled,'Late reply leaked after logout');
  auth.currentUser={uid:'other'};listener(auth.currentUser);await tick();
  check(log.children.length===1&&history.length===0,'New account retained previous chat');
+ input.value='Keep my typed question';confirmReset=false;
+ const beforeCancelledReset=log.textContent;
+ document.getElementById('newBayaniChat').click();await tick();
+ check(input.value==='Keep my typed question'&&log.textContent===beforeCancelledReset&&resetConfirmations===1,'Cancelling New Chat lost the draft or conversation');
+ confirmReset=true;
  const beforeNewChat=connections;document.getElementById('newBayaniChat').click();await tick();
  check(history.length===0&&!input.value&&log.children.length===0&&connections===beforeNewChat,'New chat did not clear locally');
  let releaseReset;gate=new Promise(r=>releaseReset=r);submit('Question before reset');await tick();
+ confirmReset=false;const pendingLog=log.textContent;document.getElementById('newBayaniChat').click();
+ check(busy&&log.textContent===pendingLog,'Cancelling New Chat interrupted the pending reply');confirmReset=true;
  document.getElementById('newBayaniChat').click();gate=null;releaseReset();await tick();
  check(!log.children.length&&history.length===0&&connections===beforeNewChat,'Late reply returned after New Chat');
  submit('Question before leaving');await tick();window.dispatchEvent(new PageTransitionEvent('pagehide'));

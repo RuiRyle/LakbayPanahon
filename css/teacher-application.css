@@ -41,3 +41,25 @@ body[data-setup-phase=email] .application-layout{display:block}body[data-setup-p
 body[data-setup-phase=review] .application-sidebar{grid-template-columns:1fr!important}body[data-setup-phase=review] .application-email-card{display:none!important}
 body[data-setup-phase=email] .application-email-card h2{font-size:1.5rem}body[data-setup-phase=email] .application-email-card .application-side-actions{grid-template-columns:1fr 1fr}body[data-setup-phase=email] .application-email-card .application-email-status{font-size:.95rem}
 @media(max-width:760px){body[data-unified-teacher-setup=true] .application-steps{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-unified-teacher-setup=true] .application-steps li{padding:14px 12px;gap:10px}body[data-unified-teacher-setup=true] .application-steps li:nth-child(odd){border-right:1px solid #3b5569}body[data-unified-teacher-setup=true] .application-steps li:nth-last-child(-n+2){border-bottom:0}body[data-unified-teacher-setup=true] .application-steps small{display:none}body[data-unified-teacher-setup=true] .application-step-number{width:28px;height:30px}body[data-setup-phase=email] .application-email-card .application-side-actions{grid-template-columns:1fr}.teacher-setup-account #teacherRegisterForm{padding:24px 20px}}
+
+/* A single next action makes the existing setup stages understandable. */
+.teacher-next-step{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 0 22px;padding:20px 24px;border:1px solid #8b7950;border-left:3px solid #efcf78;border-radius:12px;background:linear-gradient(110deg,#17334a,#10283c);}
+.teacher-next-step[hidden]{display:none;}
+.teacher-next-step h2{font-size:1.15rem;margin:6px 0 8px;color:#f1f5f8;line-height:1.3;}
+.teacher-next-step p{max-width:720px;margin:0;color:#c2d2df;font-size:.83rem;line-height:1.6;}
+.teacher-next-step>button{flex:0 0 auto;min-height:44px;border-radius:8px;padding:10px 16px;}
+body[data-setup-phase=details] .application-email-card{display:none;}
+@media(max-width:760px){.teacher-next-step{align-items:stretch;flex-direction:column;gap:16px;padding:18px;}.teacher-next-step>button{width:100%;}.teacher-next-step p{font-size:.8rem;}}
+
+/* Keep the next task and form visible without a large introductory screen. */
+.teacher-application-page .application-hero{padding:8px 0 0;margin-bottom:16px;}
+.teacher-application-page .application-hero h1{font-size:clamp(1.5rem,3vw,2rem);line-height:1.25;margin:10px 0;}
+.teacher-application-page .application-hero>p{font-size:.85rem;line-height:1.5;margin:0 0 16px;max-width:760px;}
+.teacher-application-page .application-steps{margin:16px 0 0;}
+.teacher-application-page .application-steps li{padding:12px 16px;}
+.teacher-application-page .teacher-next-step{padding:16px 20px;margin-bottom:16px;}
+.teacher-application-page .application-form-heading{padding:20px 24px;}
+body[data-setup-phase=details][data-application-state=none] .application-sidebar{display:none;}
+body[data-setup-phase=details][data-application-state=none] .application-layout{display:block;}
+body[data-setup-phase=details][data-application-state=none] .application-form-card{max-width:880px;margin:auto;}
+@media(max-width:520px){.teacher-application-page .application-steps li{padding:10px;}.teacher-application-page .teacher-next-step{padding:16px;}.teacher-application-page .application-form-heading{padding:18px 20px;}}
