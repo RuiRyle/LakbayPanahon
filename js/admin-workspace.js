@@ -355,11 +355,16 @@ $('checkAccountDecision').addEventListener('click',()=>task(async()=>{
     if(!await pending.check())return 'The decision is still unconfirmed. Your review is preserved. Check again when connected; do not submit another decision.';
     pendingAccountDecision=null;return refreshSavedAccount(pending.uid);
 }));
+let moderationConfirmationPending=false;
 $('moderationForm').addEventListener('submit',async event=>{
-    event.preventDefault();if(busy||!selected||pendingAccountDecision||savedAccountUid)return;
+    event.preventDefault();if(busy||moderationConfirmationPending||!selected||pendingAccountDecision||savedAccountUid)return;
     const values={uid:selected.id,expectedRole:selected.role,expectedStatus:selected.status,expectedVersion:selected.updatedAt?.toMillis?.()||selected.createdAt?.toMillis?.()||0,status:$('newAccountStatus').value,reason:$('moderationReason').value,identityVerified:$('teacherIdentityVerified').checked};
     const generation=epoch;
-    if(!(await appConfirm(`Change access for ${selected.email||selected.id} from ${selected.status} to ${values.status}?\n\nReason: ${values.reason.trim()}\n\nAn inactive account loses protected access. Saved learning records are preserved. The decision will be recorded.`)))return;
+    moderationConfirmationPending=true;
+    let confirmed;
+    try{confirmed=await appConfirm(`Change access for ${selected.email||selected.id} from ${selected.status} to ${values.status}?\n\nReason: ${values.reason.trim()}\n\nAn inactive account loses protected access. Saved learning records are preserved. The decision will be recorded.`);}
+    finally{moderationConfirmationPending=false;}
+    if(!confirmed||generation!==epoch||busy||selected?.id!==values.uid||pendingAccountDecision||savedAccountUid)return;
     task(async()=>{try{await moderateAccount(values);}catch(error){if(generation===epoch&&error.code==='admin/decision-unknown')pendingAccountDecision={uid:values.uid,check:error.checkDecision};throw error;}if(generation===epoch)return refreshSavedAccount(values.uid);},'','Saving account access decision…');
 });
 function clear(){document.body.classList.add('workspace-loading');for(const key of Object.keys(viewMessages))delete viewMessages[key];++epoch;busy=false;pendingAccountDecision=null;savedAccountUid=null;applicationQueue=false;clearDetail();cursors=[null];hasNext=false;nextCursor=null;historyCursor=null;historyNext=false;$('adminAccounts').replaceChildren();$('adminRecordResults').replaceChildren();$('adminOverviewResults').replaceChildren();$('adminQueueBadge').hidden=true;$('adminOverviewResults').hidden=true;$('adminOverviewStatus').textContent='Not loaded yet.';$('adminHeaderSnapshot').textContent='Not updated yet';$('loadAdminOverview').setAttribute('aria-busy','false');$('loadAdminOverview').disabled=false;$('adminOverviewStatus').parentElement.dataset.state='idle';$('adminOverview').open=false;message('');controls();}

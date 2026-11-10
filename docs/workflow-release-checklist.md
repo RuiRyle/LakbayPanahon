@@ -1,5 +1,11 @@
 # Student, teacher and administrator completion checklist
 
+## Current reconciliation — 10 November 2026
+
+Latest core classroom acceptance: [ten real local integration checks pass](validation/classroom-final-local-2026-11-10.md), including the actual join confirmation, fresh assignment-linked trusted result, no duplicate XP, teacher reporting, guidance and acknowledgement. Cleanup and backup are recorded. Extended lifecycle/network edges and the broad teacher/admin regression failures remain open. No production release occurred.
+
+Use the [current project finalization checklist](project-finalization-checklist.md) as the active finish list. The accepted 9 November foundation remains valid within its scope. Later one-class enrollment, dialogs, Decision Records and separate classroom submissions require their specific regression checks. Current signed-in join/submission integration and broad teacher/admin regression remain open. Deployment and billing remain deferred. Older queues below are historical and must not be counted as an additive backlog.
+
 ## Active local finalization status — 9 November 2026
 
 The owner has confirmed the three-role interactions work and explicitly deferred deployment. **Do not continue hosting setup, create accounts/credentials, or repeat approved UI redesigns.** Preserve the reported manual acceptance. The older ordered queue below is historical where superseded by this section.

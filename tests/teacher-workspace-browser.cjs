@@ -52,13 +52,14 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  check(getComputedStyle(document.getElementById('teacherLoading')).visibility==='visible','student-style loading shell is visible before classroom access finishes');
  await waitFor(()=>document.body.classList.contains('authenticated')&&!busy&&workspaceReady,'initial access');
  check(getComputedStyle(document.getElementById('teacherLoading')).display==='none','loading shell clears when classroom loading finishes');
- document.body.classList.add('lakbay-reduce-motion');tab('students');
+ document.body.classList.add('lakbay-reduce-motion');await tab('students');
  check(sectionAnimation===null,'saved reduced-motion preference suppresses section entrance animations');
- document.body.classList.remove('lakbay-reduce-motion');tab('overview');
+ document.body.classList.remove('lakbay-reduce-motion');await tab('overview');
  check(document.getElementById('teacherClasses').textContent.includes('No classes'),'honest empty class state');
- check(document.querySelectorAll('#teacherWelcome .teacher-summary > div').length===4&&document.getElementById('teacherWelcome').textContent.includes('Recent learning activity')&&document.getElementById('teacherWelcome').textContent.includes('Needs attention'),'new dashboard layout is visible before any class exists');
- check(document.querySelector('.teacher-heading-action').textContent==='Create Your First Class'&&!document.querySelector('.teacher-heading-action').hidden,'dashboard offers class creation before any class exists');
- tab('assignments');
+ check(document.querySelectorAll('#teacherWelcome .overview-metric').length===4&&document.getElementById('teacherWelcome').textContent.includes('Needs your guidance')&&document.getElementById('teacherWelcome').textContent.includes('Create your first class'),'new dashboard layout is visible before any class exists');
+ check(document.querySelector('#teacherWelcome .overview-actions a')?.textContent==='Create your first class'&&document.querySelector('#teacherWelcome .overview-actions a')?.getAttribute('href').includes('teacher-classes.html'),'dashboard offers class creation before any class exists');
+ await tab('assignments');
+ document.querySelector('#teacherLessonCatalog > summary').click();
  check(document.getElementById('teacherLessonCatalog').open&&document.getElementById('teacherCatalogResults').textContent.includes('Balangay Adventures')&&document.getElementById('teacherCatalogResults').textContent.includes('Explain how boats connected communities.'),'teacher can browse mission titles and learning goals before creating a class');
  check(!document.getElementById('assignmentForm').hidden,'assignment composer is available before class creation');
  document.getElementById('assignmentMission').value='m1';document.querySelector('#assignmentForm [name=instructions]').value='Keep these lesson instructions';submit('assignmentForm');await idle();
@@ -68,22 +69,22 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  check(document.getElementById('teacherCatalogResults').textContent.includes('No matching lessons'),'lesson search provides an honest no-match state');
  catalogSearch.value='boats';catalogSearch.dispatchEvent(new Event('input'));
  check(document.getElementById('teacherCatalogResults').textContent.includes('Balangay Adventures'),'lesson search matches authored learning objectives');
- document.querySelector('#teacherCatalogResults button').click();
+ document.querySelector('#teacherCatalogResults button').click();await idle();
  check(document.getElementById('teacherCatalogResults').textContent.includes('Create a class to publish')&&document.querySelector('#teacherCatalogResults a').getAttribute('href')==='teacher-classes.html','browsing requires a class only when preparing to publish');
- tab('overview');
- tab('announcements');
+ await tab('overview');
+ await tab('announcements');
  check(!document.getElementById('announcementForm').hidden&&!document.querySelector('#teacher-announcements .teacher-section-content').hidden,'announcement editor is available before class creation');
  document.querySelector('#announcementForm [name=title]').value='Welcome explorers';document.querySelector('#announcementForm [name=body]').value='Bring one history question.';
  submit('announcementForm');await idle();
  check(document.getElementById('teacherStatus').textContent.includes('Choose an active receiving class')&&document.querySelector('#announcementForm [name=body]').value==='Bring one history question.','saving without a recipient keeps composed announcement text');
- document.getElementById('announcementForm').reset();rememberEdits(['announcementForm']);tab('overview');
+ document.getElementById('announcementForm').reset();rememberEdits(['announcementForm']);await tab('overview');
  check(document.querySelector('#teacherSidebar .teacher-tabs')!==null,'classroom sections use student-style sidebar navigation');
  check(document.getElementById('teacherSidebar').parentElement===document.body,'fixed sidebar is outside the animated main and shell');
  check(getComputedStyle(document.querySelector('.teacher-shell')).paddingTop==='0px','workspace shell has no inherited outer padding');
  check(getComputedStyle(document.body).padding==='0px','teacher page overrides legacy role-wide body padding');
  check(document.querySelector('.teacher-topbar').getBoundingClientRect().top===0,'teacher topbar starts at the top of the viewport');
  document.body.classList.add('page-visible');document.getElementById('teacher-main').style.transform='translateX(0)';
- if(innerWidth<901){document.getElementById('teacherMenuToggle').click();check(document.getElementById('teacherMenuToggle').getAttribute('aria-expanded')==='true'&&getComputedStyle(document.getElementById('teacherSidebar')).display!=='none','mobile menu opens classroom navigation');document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}));check(document.getElementById('teacherMenuToggle').getAttribute('aria-expanded')==='false','escape closes mobile classroom navigation');}
+ if(innerWidth<901){document.getElementById('teacherMenuToggle').click();await idle();check(document.getElementById('teacherMenuToggle').getAttribute('aria-expanded')==='true'&&getComputedStyle(document.getElementById('teacherSidebar')).display!=='none','mobile menu opens classroom navigation');document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape'}));check(document.getElementById('teacherMenuToggle').getAttribute('aria-expanded')==='false','escape closes mobile classroom navigation');}
  else {const bounds=document.getElementById('teacherSidebar').getBoundingClientRect();check(bounds.left===0&&bounds.top===0&&bounds.right<=document.getElementById('teacher-main').getBoundingClientRect().left,'desktop sidebar remains anchored to viewport during main transforms');}
  for(const name of ['students','announcements','assignments','classes','overview']) {
   if(innerWidth<901)document.getElementById('teacherMenuToggle').click();
@@ -91,7 +92,7 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
   control.scrollIntoView({block:'center'});
   const bounds=control.getBoundingClientRect(),target=document.elementFromPoint(bounds.left+bounds.width/2,bounds.top+bounds.height/2);
   check(control.getAttribute('aria-disabled')==='false'&&control.contains(target),'sidebar '+name+' is enabled and reachable before a class exists');
-  control.click();
+  control.click();await idle();
   check(control.getAttribute('aria-current')==='page'&&activeTab===name,'sidebar '+name+' click changes the active page without a class');
   if(name==='overview')check(!document.getElementById('teacherWelcome').hidden,'dashboard welcomes a teacher without classes');
   else check(!document.getElementById('teacherClassDetail').hidden&&!document.getElementById('teacher-'+name).hidden,'empty '+name+' page stays visible');
@@ -103,29 +104,29 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  submit('createClassForm');await idle();
  check(selected&&document.getElementById('selectedClassTitle').textContent==='Grade 5 - Sampaguita','create class and select it');
  const firstClassId=selected;
- tab('assignments');lessonCatalog.open=true;renderLessonCatalog();document.querySelector('#teacherCatalogResults button').click();
+ await tab('assignments');lessonCatalog.open=true;renderLessonCatalog();document.querySelector('#teacherCatalogResults button').click();await idle();
  check(document.getElementById('assignmentMission').value==='m1'&&document.getElementById('assignmentPreview').textContent.includes('Explain how boats connected communities.'),'catalog action prepares the selected mission for the active class');
- document.getElementById('assignmentForm').reset();rememberEdits(['assignmentForm']);tab('overview');
+ document.getElementById('assignmentForm').reset();rememberEdits(['assignmentForm']);await tab('overview');
  const dashboardDetail=detail;
- detail=null;selected=null;tab('overview');
- check(document.getElementById('teacherWelcome').textContent.includes('All your classes')&&document.querySelector('#teacherAllClassCards a').href.includes('class='+firstClassId),'teacher-wide dashboard exposes class actions without selecting a class');
- document.querySelector('#teacherAllClassCards button').click();await idle();
- check(document.getElementById('teacherAllClassCards').textContent.includes('0 joined students'),'teacher-wide summary loads saved class counts on request');
- detail=dashboardDetail;selected=firstClassId;tab('overview');
+ detail=null;selected=null;await tab('overview');
+ check(document.getElementById('teacherWelcome').textContent.includes('Your classrooms')&&document.querySelector('#teacherAllClassCards a').href.includes('class='+firstClassId),'teacher-wide dashboard exposes class actions without selecting a class');
+ await waitFor(()=>document.querySelector('#teacherAllClassCards [data-room-stat=students] strong')?.textContent==='0','classroom snapshot');
+ check(document.querySelector('#teacherAllClassCards [data-room-stat=students] strong').textContent==='0','teacher-wide summary loads saved class counts');
+ detail=dashboardDetail;selected=firstClassId;await tab('overview');
  records.set('classes/other',{name:'Other class',teacherId:'teacher1',status:'active',description:''});
- document.getElementById('refreshTeacher').click();
+ document.getElementById('refreshTeacher').click();await Promise.resolve();
  check(!document.getElementById('teacherContentLoading').hidden&&document.getElementById('teacherStatus').dataset.busy==='true','class refresh shows skeleton and busy feedback during the actual request');
  await idle();
  check(document.getElementById('teacherContentLoading').hidden,'class loading skeleton clears after the request');
  const originalConfirm=window.confirm;let confirmCalls=0;window.confirm=()=>{confirmCalls++;return false;};
  document.querySelector('#announcementForm [name=body]').value='Keep my unsaved message';
- document.querySelector('#teacherClasses [data-class-id=other]').click();await idle();
+ document.querySelector('#teacherClasses button[data-class-id=other]').click();await idle();
  check(selected===firstClassId&&document.querySelector('#announcementForm [name=body]').value==='Keep my unsaved message','cancel class switching preserves unsaved message');
  document.getElementById('refreshTeacher').click();await idle();
- check(confirmCalls===2&&document.querySelector('#announcementForm [name=body]').value==='Keep my unsaved message','cancel refresh preserves unsaved edits');
- window.confirm=()=>true;document.querySelector('#teacherClasses [data-class-id=other]').click();await idle();
+ check(confirmCalls===2&&document.querySelector('#announcementForm [name=body]').value==='Keep my unsaved message','cancel refresh preserves unsaved edits: confirmations='+confirmCalls+', message='+document.querySelector('#announcementForm [name=body]').value);
+ window.confirm=()=>true;document.querySelector('#teacherClasses button[data-class-id=other]').click();await idle();
  check(selected==='other'&&!document.querySelector('#announcementForm [name=body]').value,'confirmed class switch discards old edits');
- tab('assignments');
+ await tab('assignments');
  document.getElementById('assignmentMission').value='m1';document.querySelector('#assignmentForm [name=instructions]').value='Preserve assignment guidance while changing class.';document.querySelector('#assignmentForm [name=dueDate]').value='2026-11-08';
  document.getElementById('assignmentRecipient').value=firstClassId;document.getElementById('assignmentRecipient').dispatchEvent(new Event('change'));
  check(document.getElementById('assignmentMission').value==='m1'&&document.querySelector('#assignmentForm [name=instructions]').value.includes('Preserve assignment')&&document.querySelector('#assignmentForm [name=dueDate]').value==='2026-11-08'&&document.getElementById('assignmentPreview').textContent.includes('Grade 5 - Sampaguita'),'changing assignment recipient preserves mission instructions and deadline and updates audience preview');
@@ -133,8 +134,8 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  const routedAssignment=[...records].find(([key,value])=>key.startsWith('classAssignments/')&&value.instructions==='Preserve assignment guidance while changing class.');
  check(routedAssignment?.[1].classId===firstClassId&&selected===firstClassId,'assignment saves to the explicitly chosen class rather than the old page context');
  records.delete(routedAssignment[0]);await refresh(firstClassId);
- document.querySelector('#teacherClasses [data-class-id=other]').click();await idle();
- tab('announcements');
+ document.querySelector('#teacherClasses button[data-class-id=other]').click();await idle();
+ await tab('announcements');
  document.querySelector('#announcementForm [name=title]').value='Recipient test';document.querySelector('#announcementForm [name=body]').value='Keep this message while choosing a class.';
  document.getElementById('announcementRecipient').value=firstClassId;document.getElementById('announcementRecipient').dispatchEvent(new Event('change'));
  check(document.querySelector('#announcementForm [name=body]').value==='Keep this message while choosing a class.'&&document.getElementById('announcementPreview').textContent.includes('Grade 5 - Sampaguita'),'recipient changes preserve composed text and update its audience preview');
@@ -143,20 +144,20 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  check(routedAnnouncement?.[1].classId===firstClassId&&selected===firstClassId,'saving routes the composed announcement to its chosen receiving class');
  records.delete(routedAnnouncement[0]);await refresh(firstClassId);
  document.getElementById('announcementForm').reset();rememberEdits(['announcementForm']);
- document.querySelector('#teacherClasses [data-class-id="'+firstClassId+'"]').click();await idle();window.confirm=originalConfirm;
- check(document.querySelector('#teacherClasses [data-class-id="'+firstClassId+'"]').getAttribute('aria-pressed')==='true','class selection follows ID rather than list position');
- tab('students');
+ document.querySelector('#teacherClasses button[data-class-id="'+firstClassId+'"]').click();await idle();window.confirm=originalConfirm;
+ check(document.querySelector('#teacherClasses button[data-class-id="'+firstClassId+'"]').getAttribute('aria-pressed')==='true','class selection follows ID rather than list position');
+ await tab('students');
  document.getElementById('teacherStudentClassFilter').value='all';document.getElementById('teacherStudentClassFilter').dispatchEvent(new Event('change'));await idle();
  check(!document.getElementById('teacherAllClassRoster').hidden&&document.getElementById('teacherAllClassRoster').textContent.includes('Other class'),'student progress offers all active classes without a selected class');
  document.querySelector('#teacherAllClassRoster button').click();await idle();
  check(document.getElementById('teacherAllClassRoster').textContent.includes('No students have joined'),'all-class student view distinguishes an empty roster from unloaded results');
  document.getElementById('teacherStudentClassFilter').value=firstClassId;document.getElementById('teacherStudentClassFilter').dispatchEvent(new Event('change'));await idle();
  check(selected===firstClassId&&document.getElementById('teacherAllClassRoster').hidden&&!document.getElementById('teacher-students').hidden,'specific-class filter restores the roster without leaving Student Progress');
- document.querySelector('[data-teacher-tab="announcements"]').click();
- document.querySelector('#teacherClasses [data-class-id=other]').click();await idle();
+ document.querySelector('[data-teacher-tab="announcements"]').click();await idle();
+ document.querySelector('#teacherClasses button[data-class-id=other]').click();await idle();
  check(!document.getElementById('teacher-announcements').hidden&&activeTab==='announcements','changing class preserves the selected workspace page');
- document.querySelector('#teacherClasses [data-class-id="'+firstClassId+'"]').click();await idle();
- tab('overview');
+ document.querySelector('#teacherClasses button[data-class-id="'+firstClassId+'"]').click();await idle();
+ await tab('overview');
  document.getElementById('rotateTeacherCode').click();await idle();
  const oldCode=document.getElementById('teacherJoinCode').textContent;
  check(/^[A-Z0-9]{12}$/.test(oldCode),'generate 12 character code');
@@ -165,27 +166,27 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  document.getElementById('editClassName').value='Grade 5 - Explorers';submit('editClassForm');await idle();
  check(document.getElementById('selectedClassTitle').textContent==='Grade 5 - Explorers','edit class details');
  records.set('classMembers/student1_'+selected,{userId:'student1',classId:selected,status:'active'});
- records.set('studentProgress/student1_m1',{userId:'student1',missionId:'m1',completed:true,bestScore:80,completedAt:serverTimestamp()});
+ records.set('studentProgress/student1_m1',{userId:'student1',missionId:'m1',chapterId:'c1',completed:true,bestScore:80,completedAt:serverTimestamp()});
  records.set('studentQuizAttempts/student1_a1',{userId:'student1',missionId:'m1',score:40,passed:false,topicsForReview:['boat use'],completedAt:serverTimestamp()});
  records.set('studentQuizAttempts/student1_a2',{userId:'student1',missionId:'m1',score:80,passed:true,topicsForReview:[],completedAt:serverTimestamp()});
  document.getElementById('refreshTeacher').click();await idle();
- document.querySelector('[data-teacher-tab="students"]').click();
+ document.querySelector('[data-teacher-tab="students"]').click();await idle();
  check(document.getElementById('rosterCount').textContent==='1 joined student','load joined roster');
  document.getElementById('teacherStudentClassFilter').value='all';document.getElementById('teacherStudentClassFilter').dispatchEvent(new Event('change'));await idle();
  document.querySelector('#teacherAllClassRoster button').click();await idle();
  check(document.getElementById('teacherAllClassRoster').textContent.includes('Ana Example'),'all-class roster loads joined student names on request');
- const allClassReport=document.querySelector('#teacherAllClassRoster a');
+ const allClassReport=document.querySelector('#teacherAllClassRoster a[href*="student="]');
  check(new URL(allClassReport.href).searchParams.get('class')===firstClassId&&new URL(allClassReport.href).searchParams.get('student')==='student1','all-class report link carries both membership context and student identity');
  document.getElementById('teacherStudentClassFilter').value=firstClassId;document.getElementById('teacherStudentClassFilter').dispatchEvent(new Event('change'));await idle();
  for(let i=0;i<21;i++){const uid='search'+String(i).padStart(2,'0');records.set('users/'+uid,{firstName:i===20?'Zelda':'Learner',lastName:'Search '+i});records.set('classMembers/'+uid+'_'+selected,{userId:uid,classId:selected,status:'active'});}
  document.getElementById('refreshTeacher').click();await idle();
- tab('overview');document.querySelector('#teacherCheckins button').click();await idle();
- check(document.getElementById('teacherCheckins').textContent.includes('Students 1-20 of 22')&&document.getElementById('teacherCheckins').textContent.includes('No saved quiz attempts yet'),'check-ins bound reads and keep missing quiz evidence neutral');
+ await tab('overview');document.querySelector('#teacherCheckins button').click();await idle();
+ check(document.getElementById('teacherCheckins').textContent.includes('Students 1-20 of 22')&&document.getElementById('teacherCheckins').textContent.includes('No quiz evidence yet'),'check-ins bound reads and keep missing quiz evidence neutral');
  [...document.querySelectorAll('#teacherCheckins button')].find(b=>b.textContent==='Next Group').click();await idle();
  check(document.getElementById('teacherCheckins').textContent.includes('Students 21-22 of 22'),'check-ins paginate the remaining class members');
  readFailure=true;[...document.querySelectorAll('#teacherCheckins button')].find(b=>b.textContent==='Refresh Check-ins').click();await idle();
  check(document.getElementById('teacherCheckins').textContent.includes('Results unavailable')&&!document.getElementById('teacherCheckins').textContent.includes('No clear review signal'),'failed reads are unavailable rather than a successful learning result');
- readFailure=false;tab('students');
+ readFailure=false;await tab('students');
  document.getElementById('rosterSearch').value='zELda';submit('rosterSearchForm');await idle();
  check(document.getElementById('teacherRoster').textContent.includes('Zelda Search 20')&&!document.getElementById('teacherRoster').textContent.includes('Learner Search 0'),'class-wide case-insensitive name search reaches students beyond first page');
  check(document.getElementById('rosterSearchStatus').textContent.includes('1 matching student'),'search announces result count');
@@ -198,20 +199,23 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  check(document.getElementById('teacherClassSummary').textContent.includes('1Joined students'),'selected class summary uses joined membership');
  check(document.querySelectorAll('#teacherClassSummary > div').length===4&&!document.getElementById('teacherClassSummary').textContent.includes('Published announcements')&&!document.getElementById('teacherClassSummary').textContent.includes('Active classes'),'dashboard summaries prioritize joined students and missions in the selected class');
  check(document.getElementById('teacherNextTitle').textContent==='Share a mission to explore','next step guides a joined class with no published assignment');
- tab('overview');
+ await tab('overview');
  check(document.getElementById('teacherDashboardFeed').firstElementChild.id==='teacherRecentActivity'&&document.getElementById('teacherDashboardFeed').children[1].id==='teacherCheckins','student check-ins lead the dashboard before routine updates');
  check(document.getElementById('teacherCheckins').textContent.includes('Load Student Check-ins'),'dashboard check-ins wait for teacher request');
  check(document.getElementById('teacherCheckins').dataset.state==='not-loaded'&&document.getElementById('teacherCheckins').textContent.includes('Not checked yet'),'unloaded check-ins are distinct from zero review signals');
  records.set('studentQuizAttempts/student1_latest',{userId:'student1',missionId:'m1',passed:false,score:40,topicsForReview:['boat use'],completedAt:stamp(Date.now()+1000)});
  document.querySelector('#teacherCheckins button').click();await idle();
- check(document.querySelector('#teacherCheckins [aria-live] > article')?.textContent.includes('Suggested conversation')&&document.getElementById('teacherCheckins').textContent.includes('1 student with review signals'),'current review signals appear directly in the actionable group');
+ check(document.getElementById('teacherCheckins').textContent.includes('Evidence needs checking')&&!document.querySelector('#teacherCheckins [aria-live] > article'),'future-dated results stay uncertain rather than becoming a review judgment');
  check(document.getElementById('teacherQuizInsights').dataset.state==='loaded'&&document.getElementById('teacherQuizInsights').textContent.includes('uncertain dates'),'quiz topic insights load with the same group and disclose ambiguous dates');
+ records.get('studentQuizAttempts/student1_latest').completedAt=stamp(Date.now()-1);
+ [...document.querySelectorAll('#teacherCheckins button')].find(b=>b.textContent==='Refresh Check-ins').click();await idle();
+ check(document.querySelector('#teacherCheckins [aria-live] > article')?.textContent.includes('Review suggested')&&document.getElementById('teacherCheckins').textContent.includes('1 student with review signals'),'valid current review signals appear in the actionable group');
  check(document.getElementById('teacherCheckins').textContent.includes('Ana Example')&&document.getElementById('teacherCheckins').textContent.includes('Results below cover only this group'),'dashboard check-ins use joined student records and scoped counts');
  document.querySelector('#teacherCheckins .teacher-dashboard-entry button').click();await idle();
  check(!document.getElementById('teacher-students').hidden&&document.getElementById('studentReport').textContent.includes('Ana Example'),'dashboard check-in opens fresh student report');
  records.delete('studentQuizAttempts/student1_latest');
  document.querySelector('#teacherRoster button').click();await idle();
- check(document.getElementById('studentReport').textContent.includes('Ana Example')&&document.getElementById('studentReport').textContent.includes('1 completed missions'),'report shows student name and earlier independent completion');
+ check(document.getElementById('studentReport').textContent.includes('Ana Example')&&document.getElementById('studentReport').textContent.includes('1 completed mission'),'report shows student name and earlier independent completion');
  check(document.getElementById('studentReport').textContent.includes('Review and retry')&&document.getElementById('studentReport').textContent.includes('boat use'),'report shows failed attempt and review topic');
  const feedbackForm=document.getElementById('teacherFeedbackForm');
  check(!!feedbackForm,'joined student report offers mission-specific feedback');
@@ -227,29 +231,29 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  check(records.get('studentProgress/student1_m1').bestScore===80,'teacher feedback does not change saved learning scores');
  feedbackForm.elements.body.value='Keep this unfinished guidance';
  const feedbackConfirm=window.confirm;window.confirm=()=>false;
- [...document.querySelectorAll('#studentReport button')].find(b=>b.textContent==='Back to Student List').click();
+ [...document.querySelectorAll('#studentReport button')].find(b=>b.textContent==='Back to Student List').click();await idle();
  check(document.getElementById('teacherFeedbackForm').elements.body.value==='Keep this unfinished guidance','canceling navigation preserves unsent teacher feedback');
  window.confirm=feedbackConfirm;feedbackForm.reset();rememberEdits(['teacherFeedbackForm']);
  await waitFor(()=>document.getElementById('teacherSupportForm')&&!document.getElementById('teacherSupportForm').hidden,'private follow-up loads');
  const supportForm=document.getElementById('teacherSupportForm');document.getElementById('teacherPrivateFollowup').open=true;
- supportForm.elements.missionId.value='m1';supportForm.elements.missionId.dispatchEvent(new Event('change'));
+ supportForm.elements.missionId.value='m1';supportForm.elements.missionId.dispatchEvent(new Event('change'));await idle();
  supportForm.elements.note.value='<img src=x> PRIVATE SUPPORT: discuss the evidence clue.';
  submit('teacherSupportForm');await idle();
  const supportKey='teacherSupportNotes/'+selected+'_student1_m1';
- check(records.get(supportKey)?.status==='planned'&&records.get(supportKey)?.revision===1,'teacher saves a mission-specific planned follow-up');
+ check(records.get(supportKey)?.status==='planned'&&records.get(supportKey)?.revision===1,'teacher saves a mission-specific planned follow-up: '+document.getElementById('teacherStatus').textContent);
  check(document.querySelector('.teacher-support-history').textContent.includes('PRIVATE SUPPORT')&&!document.querySelector('.teacher-support-history img')&&!document.querySelector('.teacher-feedback-panel').textContent.includes('PRIVATE SUPPORT'),'private follow-up text is safe and separate from student-visible feedback');
- [...document.querySelectorAll('.teacher-support-history button')].find(b=>b.textContent==='Edit Follow-up').click();
+ [...document.querySelectorAll('.teacher-support-history button')].find(b=>b.textContent==='Edit Follow-up').click();await idle();
  supportForm.elements.status.value='discussed';submit('teacherSupportForm');await idle();
  const discussedAt=records.get(supportKey).statusAt.toMillis();
  check(records.get(supportKey).status==='discussed'&&records.get(supportKey).revision===2,'teacher can record that the follow-up was discussed');
- [...document.querySelectorAll('.teacher-support-history button')].find(b=>b.textContent==='Edit Follow-up').click();supportForm.elements.note.value='Discussion note revised without changing the discussion date.';
+ [...document.querySelectorAll('.teacher-support-history button')].find(b=>b.textContent==='Edit Follow-up').click();await idle();supportForm.elements.note.value='Discussion note revised without changing the discussion date.';
  submit('teacherSupportForm');await idle();
  check(records.get(supportKey).statusAt.toMillis()===discussedAt,'editing a note preserves its follow-up evidence boundary');
- [...document.querySelectorAll('.teacher-support-history button')].find(b=>b.textContent==='Edit Follow-up').click();records.get(supportKey).revision++;
+ [...document.querySelectorAll('.teacher-support-history button')].find(b=>b.textContent==='Edit Follow-up').click();await idle();records.get(supportKey).revision++;
  supportForm.elements.note.value='Do not silently overwrite the other session.';submit('teacherSupportForm');await idle();
  check(document.getElementById('teacherStatus').textContent.includes('another session')&&!records.get(supportKey).note.includes('silently overwrite'),'stale follow-up revisions preserve the newer server note and the local draft');
  check(records.get('studentProgress/student1_m1').bestScore===80&&records.get(feedbackKey).body==='Revisit the trade clue, then explain one connection.','private follow-up changes neither the student score nor the sent feedback');
- window.confirm=()=>false;[...document.querySelectorAll('#studentReport button')].find(b=>b.textContent==='Back to Student List').click();
+ window.confirm=()=>false;[...document.querySelectorAll('#studentReport button')].find(b=>b.textContent==='Back to Student List').click();await idle();
  check(document.getElementById('teacherSupportForm').elements.note.value.includes('silently overwrite'),'canceling report navigation preserves a private follow-up draft');
  document.getElementById('rosterSearch').value='another student';submit('rosterSearchForm');await idle();
  check(document.getElementById('teacherSupportForm').elements.note.value.includes('silently overwrite'),'canceling a roster search preserves private follow-up text in the current report');
@@ -274,21 +278,21 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  check(JSON.stringify(printedRows).includes('93')&&!JSON.stringify(printedRows).includes('Revisit the trade clue'),'print export contains current learning evidence without teacher feedback');
  downloadLearningReport=originalDownload;printLearningReport=originalPrint;records.delete('studentQuizAttempts/student1_exportfresh');
  const sample={progress:[],attempts:[{missionId:'m1',passed:false,topicsForReview:['boat use'],completedAt:stamp(1000)},{missionId:'m1',passed:true,topicsForReview:[],completedAt:stamp(2000)}]};
- renderReport('Ana Example',sample);
+ await renderReport('Ana Example',sample);
  check(!document.querySelector('#studentReport .teacher-next').textContent.includes('boat use'),'successful retry removes older review signal from check-in');
- sample.attempts.push({missionId:'m1',passed:false,topicsForReview:['new review topic'],completedAt:stamp(3000)});renderReport('Ana Example',sample);
+ sample.attempts.push({missionId:'m1',passed:false,topicsForReview:['new review topic'],completedAt:stamp(3000)});await renderReport('Ana Example',sample);
  check(document.querySelector('#studentReport .teacher-next').textContent.includes('new review topic'),'latest failed attempt supplies current check-in topic');
- sample.attempts.push({missionId:'m1',passed:true,topicsForReview:[],completedAt:stamp(3000)});renderReport('Ana Example',sample);
+ sample.attempts.push({missionId:'m1',passed:true,topicsForReview:[],completedAt:stamp(3000)});await renderReport('Ana Example',sample);
  check(document.querySelector('#studentReport .teacher-next').textContent.includes('cannot be determined'),'equal timestamps do not fabricate latest outcome');
  const reportSample={progress:[],attempts:[{missionId:'m1',score:40,passed:false,topicsForReview:['boat_use'],completedAt:stamp(1000)},{missionId:'m1',score:80,passed:true,topicsForReview:[],completedAt:stamp(2000)}]};
- renderReport('Ana Example',reportSample);
+ await renderReport('Ana Example',reportSample);
  check(document.querySelector('.teacher-report-comparison').textContent.includes('+40 percentage points'),'report compares recent scores as percentage points');
  check(document.getElementById('studentReport').textContent.includes('boat use')&&!document.getElementById('studentReport').textContent.includes('boat_use'),'saved topic IDs receive readable formatting');
  check(document.querySelectorAll('#studentReport .teacher-report-history').length===2&&!document.querySelector('#studentReport .teacher-report-records').open,'completion and attempt histories sit inside collapsed learning details');
- check(document.querySelector('#studentReport h3').nextElementSibling.classList.contains('teacher-report-snapshot')&&document.querySelector('.teacher-report-snapshot').nextElementSibling.classList.contains('teacher-next'),'report leads with a learning snapshot and the current teaching check-in');
- reportSample.attempts.push({missionId:'m1',score:20,passed:false,topicsForReview:['boat_use'],completedAt:stamp(3000)});renderReport('Ana Example',reportSample);
+ check(!!document.querySelector('#studentReport .learning-profile')&&!!document.querySelector('#studentReport .teacher-report-snapshot')&&!!document.querySelector('#studentReport .teacher-next'),'report leads with a learning snapshot and the current teaching check-in');
+ reportSample.attempts.push({missionId:'m1',score:20,passed:false,topicsForReview:['boat_use'],completedAt:stamp(3000)});await renderReport('Ana Example',reportSample);
  check(document.querySelector('#studentReport .teacher-next').textContent.includes('Lesson goal: Explain how boats connected communities.')&&document.querySelector('#studentReport .teacher-next').textContent.includes('which clue supports'),'check-in uses authored lesson goal and an evidence discussion prompt');
- reportSample.attempts.push({missionId:'m1',score:100,passed:true,topicsForReview:[]});renderReport('Ana Example',reportSample);
+ reportSample.attempts.push({missionId:'m1',score:100,passed:true,topicsForReview:[]});await renderReport('Ana Example',reportSample);
  check(document.querySelector('.teacher-report-comparison').textContent.includes('Order unavailable'),'missing attempt date prevents a fabricated comparison');
  const insightNow=Date.now();
  renderDashboardActivity([{status:'fulfilled',value:{profile:{firstName:'Ana',lastName:'Example'},progress:[{missionId:'m1',completed:true,completedAt:stamp(insightNow-3000)}],attempts:[{missionId:'m1',score:40,completedAt:stamp(insightNow-2000)},{missionId:'m1',score:80,completedAt:stamp(insightNow-1000)},{missionId:'undated',score:100},{missionId:'future',score:99,completedAt:stamp(insightNow+60000)}]}}],[{userId:'student1'}],1);
@@ -302,9 +306,9 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  check(document.querySelector('#teacherQuizInsights table').textContent.includes('boat use')&&document.querySelector('#teacherQuizInsights table').textContent.includes('Balangay Adventures'),'historical topic filter shows readable mission-specific earlier diagnostic records');
  renderQuizInsights([{status:'rejected'}],1,22);
  check(document.getElementById('teacherQuizInsights').dataset.state==='unavailable'&&!document.querySelector('#teacherQuizInsights table'),'failed topic reads display unavailable without fabricated zero counts');
- [...document.querySelectorAll('#studentReport button')].find(b=>b.textContent==='Back to Student List').click();
+ [...document.querySelectorAll('#studentReport button')].find(b=>b.textContent==='Back to Student List').click();await idle();
  check(document.getElementById('studentReport').childElementCount===0,'returning to the student list closes the previous report');
- document.querySelector('[data-teacher-tab="announcements"]').click();
+ document.querySelector('[data-teacher-tab="announcements"]').click();await idle();
  const form=document.getElementById('announcementForm');
  form.elements.title.value='Our next discovery';form.elements.body.value='<img src=x onerror=alert(1)> Find evidence.';
  form.dispatchEvent(new Event('input',{bubbles:true}));
@@ -313,13 +317,14 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  submit('announcementForm');await idle();
  check(document.getElementById('announcementList').textContent.includes('Draft')&&!document.querySelector('#announcementList img'),'draft rendered safely as text');
  [...document.querySelectorAll('#announcementList button')].find(b=>b.textContent==='Publish').click();await idle();
- check(document.getElementById('announcementList').textContent.includes('Published to this class'),'publish announcement');
+ announcementFilter.value='published';announcementFilter.dispatchEvent(new Event('change'));
+ check(document.getElementById('announcementList').textContent.includes('Published to this class'),'publish announcement: '+document.getElementById('teacherStatus').textContent+'; '+document.getElementById('announcementList').textContent);
  check(document.getElementById('announcementSummary').textContent.includes('1 published'),'announcement summary reflects publication state');
- [...document.querySelectorAll('#announcementList button')].find(b=>b.textContent==='Edit').click();
+ [...document.querySelectorAll('#announcementList button')].find(b=>b.textContent==='Edit').click();await idle();
  check(document.getElementById('announcementPreview').textContent.includes('Our next discovery')&&form.querySelector('[type=submit]').textContent==='Update Published Announcement','edit restores message preview and identifies published update');
- form.elements.body.value='Unsaved replacement';form.dispatchEvent(new Event('input',{bubbles:true}));document.getElementById('announcementCancel').click();
+ form.elements.body.value='Unsaved replacement';form.dispatchEvent(new Event('input',{bubbles:true}));document.getElementById('announcementCancel').click();await idle();
  check(detail.announcements[0].body.includes('Find evidence.')&&!document.getElementById('announcementPreview').textContent.includes('Unsaved replacement'),'cancel edit preserves saved announcement and clears preview');
- [...document.querySelectorAll('#announcementList button')].find(b=>b.textContent==='Edit').click();
+ [...document.querySelectorAll('#announcementList button')].find(b=>b.textContent==='Edit').click();await idle();
  form.elements.body.value='Bring one historical clue to our discussion.';submit('announcementForm');await idle();
  check(detail.announcements.length===1&&document.getElementById('announcementList').textContent.includes('Bring one historical clue'),'edit updates same announcement');
  document.querySelector('[data-teacher-tab="assignments"]').click();
@@ -336,12 +341,12 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  document.getElementById('teacherAssignmentFilter').value='published';document.getElementById('teacherAssignmentFilter').dispatchEvent(new Event('change'));
  check(document.getElementById('assignmentList').textContent.includes('No assignments match'),'published assignment filter hides drafts with a clear empty state');
  document.getElementById('teacherAssignmentFilter').value='all';document.getElementById('teacherAssignmentFilter').dispatchEvent(new Event('change'));
- document.querySelector('#assignmentList button').click();
+ document.querySelector('#assignmentList button').click();await idle();
  check(document.getElementById('assignmentRecipient').disabled&&document.getElementById('assignmentRecipient').value===selected,'editing a saved assignment locks its original receiving class');
  check(document.querySelector('#assignmentForm [name=dueDate]').value==='2026-11-05','editing restores the saved assignment deadline');
  check(document.getElementById('assignmentPreview').textContent.includes('Explain how boats connected communities.'),'editing restores selected mission preview');
  document.querySelector('#assignmentForm [name=status]').value='published';document.querySelector('#assignmentForm [name=status]').dispatchEvent(new Event('change',{bubbles:true}));
- check(document.querySelector('#assignmentForm [type=submit]').textContent==='Publish Mission to Class'&&document.getElementById('assignmentPreview').textContent.includes('active class members'),'publication preview and action identify student audience');
+ check(document.querySelector('#assignmentForm [type=submit]').textContent==='Publish class goal'&&document.getElementById('assignmentPreview').textContent.includes('active class members'),'publication preview and action identify student audience');
  document.getElementById('assignmentMission').value='m1';document.querySelector('#assignmentForm [name=status]').value='published';submit('assignmentForm');await idle();
  check(document.getElementById('assignmentList').textContent.includes('Balangay Adventures')&&detail.assignments[0].chapterId==='c1','publish existing mission with correct chapter');
  check(detail.assignments.length===1&&detail.assignments[0].status==='published'&&document.getElementById('assignmentSummary').textContent.includes('1 published'),'editing publishes the same assignment without creating a duplicate');
@@ -354,7 +359,7 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  records.set('classMembers/student2_'+selected,{userId:'student2',classId:selected,status:'active'});
  document.getElementById('refreshTeacher').click();await idle();
  const progressAction=()=>[...document.querySelectorAll('#assignmentList button')].find(b=>b.textContent==='View Student Progress');
- tab('overview');
+ await tab('overview');
  check(document.querySelector('.teacher-completion-summary').dataset.state==='not-loaded','mission completion is unknown before loading saved records');
  document.querySelector('.teacher-completion-summary button').click();await idle();
  check(document.querySelector('.teacher-completion-summary').textContent.includes('1 of 2 available student records show completion'),'dashboard completion summary uses loaded saved mission records');
@@ -365,7 +370,7 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  check(document.querySelector('.teacher-heading-action').textContent==='Write Announcement'&&document.getElementById('teacherNextActions').closest('.teacher-next').hidden,'ready classes have one primary assignment action and no repeated next-step panel');
  document.querySelector('.teacher-heading-action').click();
  check(activeTab==='announcements'&&document.activeElement.name==='title','primary dashboard action focuses announcement writing');
- tab('overview');[...document.querySelectorAll('#teacherDashboardFeed button')].find(b=>b.textContent==='View Mission Progress').click();await idle();
+ await tab('overview');[...document.querySelectorAll('#teacherDashboardFeed button')].find(b=>b.textContent==='View Mission Progress').click();await idle();
  check(activeTab==='assignments'&&document.querySelector('.teacher-assignment-progress').textContent.includes('1 of 2 displayed students completed'),'dashboard assignment opens the matching mission progress using saved results');
  progressAction().click();await idle();
  check(document.querySelector('.teacher-assignment-progress').textContent.includes('1 of 2 displayed students completed'),'assignment summary counts earlier independent completion');
@@ -377,7 +382,7 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  check(document.querySelector('.teacher-assignment-progress table').textContent.includes('Ana Example')&&!document.querySelector('.teacher-assignment-progress table').textContent.includes('Ben Example'),'completed filter shows the student with existing independent completion');
  records.get('classMembers/student2_'+selected).status='left';progressAction().click();await idle();
  check(document.querySelector('.teacher-assignment-progress').textContent.includes('Unavailable'),'changed membership yields unavailable rather than fabricated incomplete result');
- records.get('classMembers/student2_'+selected).status='active';document.getElementById('refreshTeacher').click();await idle();tab('students');
+ records.get('classMembers/student2_'+selected).status='active';document.getElementById('refreshTeacher').click();await idle();await tab('students');
  const removeMember=()=>[...document.querySelectorAll('.teacher-remove-member')].find(b=>b.getAttribute('aria-label').includes('Ben Example'));
  const removalConfirm=window.confirm;window.confirm=()=>false;removeMember().click();await idle();
  check(records.has('classMembers/student2_'+selected),'canceling membership removal leaves the student joined');
@@ -414,14 +419,14 @@ const submit=id=>document.getElementById(id).dispatchEvent(new Event('submit',{b
  await waitFor(()=>document.body.classList.contains('authenticated'),'approval retry');
  check(!document.querySelector('.teacher-shell').inert,'qualified approval releases teacher workspace');
  check(document.documentElement.scrollWidth<=innerWidth+1,'no page overflow at '+innerWidth+'px');
- for(const name of sectionNames){tab(name);check(!document.getElementById('teacher-'+name).hidden&&document.documentElement.scrollWidth<=innerWidth+1,'selected '+name+' layout fits '+innerWidth+'px');}
- tab('overview');
+ for(const name of sectionNames){await tab(name);check(!document.getElementById('teacher-'+name).hidden&&document.documentElement.scrollWidth<=innerWidth+1,'selected '+name+' layout fits '+innerWidth+'px');}
+ await tab('overview');
  if(!location.search.includes('preview')){
   await signOut();
   check(document.getElementById('teacherClasses').childElementCount===0&&document.getElementById('studentReport').childElementCount===0,'sign out clears classroom and learner data');
   check(getComputedStyle(document.getElementById('teacherLoading')).display!=='none'&&!document.getElementById('teacherLoading').textContent.includes('Ana Example'),'sign out restores neutral loading without student information');
  }
- if(location.search.includes('preview')){const destination=new URLSearchParams(location.search).get('tab')||'overview';if(destination==='loading')clearWorkspace();else {tab(destination);if(destination==='overview'){document.querySelector('#teacherCheckins button')?.click();await idle();}}window.scrollTo(0,0);document.getElementById('teacherSidebar').scrollTop=0;document.querySelector('#createClassForm').closest('details').open=false;}
+ if(location.search.includes('preview')){const destination=new URLSearchParams(location.search).get('tab')||'overview';if(destination==='loading')clearWorkspace();else {await tab(destination);if(destination==='overview'){document.querySelector('#teacherCheckins button')?.click();await idle();}}window.scrollTo(0,0);document.getElementById('teacherSidebar').scrollTop=0;document.querySelector('#createClassForm').closest('details').open=false;}
  parent.postMessage({state:'PASS',width:innerWidth,checks},'*');
 })().catch(error=>parent.postMessage({state:'FAIL',width:innerWidth,error:error.stack},'*'));
 `;
@@ -431,9 +436,10 @@ html = html.replace('../assets/brand/lakbay-sun.svg','data:image/svg+xml;base64,
 const css = ['css/workspace-loading.css','css/navy-gold-theme.css','css/page-transition.css','css/expedition.css','css/teacher-workspace.css','css/class-feedback.css'].map(file=>fs.readFileSync(path.join(root,file),'utf8')).join('\n').replaceAll("url('../assets/brand/lakbay-sun.svg')", "url('data:image/svg+xml;base64,"+fs.readFileSync(path.join(root,'assets/brand/lakbay-sun.svg')).toString('base64')+"')");
 const guard = strip('js/auth-guard.js').replace(/window\.location\.replace\(destination\);/g,'window.__lastGuardRedirect=destination;');
 // Exercise each section in place here; real document navigation is covered by teacher-pages-browser.cjs.
-const workspace = strip('js/teacher-workspace.js').replace('if (workspaceReady && name !== routeName)', 'if (false && workspaceReady && name !== routeName)');
-const navigationHarness = `document.addEventListener('click', event => { const link=event.target.closest?.('a[data-teacher-tab]'); if(link){event.preventDefault();tab(link.dataset.teacherTab);} },true);`;
-html = html.replace('</head>',`<style>${css}</style></head>`).replace('</body>',`<script type="module">${mocks}\n${strip('js/teacher-class-policy.js')}\n${strip('js/teacher-class-client.js')}
+// This combined fixture exercises every route; real overview intentionally skips catalog reads.
+const workspace = strip('js/teacher-workspace.js').replace(/const needsCatalog=[^;]+;/,'const needsCatalog=true;').replace(/function goToClassroom\(id\)\{[^\n]+\}/,'async function goToClassroom(id){await refresh(id);}') .replace('if (workspaceReady && name !== routeName)', 'if (false && workspaceReady && name !== routeName)');
+const navigationHarness = `document.addEventListener('click', async event => { const link=event.target.closest?.('a[data-teacher-tab]'); if(link){event.preventDefault();if(await allowDiscard())await tab(link.dataset.teacherTab);} },true);`;
+html = html.replace('</head>',`<style>${css}</style></head>`).replace('</body>',`<script type="module">${mocks}\n${strip('js/classroom-submission-policy.js')}\n${strip('js/teacher-class-policy.js')}\n${strip('js/teacher-class-client.js')}
 ${strip('js/teacher-support-policy.js')}
 ${strip('js/teacher-quiz-insights.js')}
 ${strip('js/teacher-report-export.js')}\n${guard}\n${workspace}\n${navigationHarness}\n${exercise}</script></body>`);
@@ -441,8 +447,8 @@ fs.writeFileSync(path.join(temp,'frame.html'),html);
 fs.writeFileSync(path.join(temp,'index.html'),`<!doctype html><html><body><output id="result">RUNNING</output><iframe style="width:390px;height:850px" src="frame.html"></iframe><iframe style="width:1280px;height:850px" src="frame.html"></iframe><script>const results=[];addEventListener('message',e=>{if(typeof e.data==='object'&&['PASS','FAIL'].includes(e.data.state)){results.push(e.data);if(results.length===2)document.getElementById('result').textContent=JSON.stringify(results);}});</script></body></html>`);
 const result = spawnSync('C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',[
     '--headless','--disable-gpu','--no-first-run','--no-default-browser-check','--allow-file-access-from-files',
-    '--user-data-dir='+path.join(temp,'browser'),'--dump-dom','--virtual-time-budget=10000','file:///'+path.join(temp,'index.html').replaceAll('\\','/')
-],{encoding:'utf8',timeout:30000,maxBuffer:6*1024*1024,windowsHide:true});
+    '--user-data-dir='+path.join(temp,'browser'),'--dump-dom','--virtual-time-budget=30000','file:///'+path.join(temp,'index.html').replaceAll('\\','/')
+],{encoding:'utf8',timeout:45000,maxBuffer:6*1024*1024,windowsHide:true});
 if(result.error)throw result.error;
 const match=result.stdout.match(/<output id="result">([^<]+)<\/output>/);
 let results;try{results=JSON.parse(match?.[1].replaceAll('&amp;','&').replaceAll('&gt;','>').replaceAll('&lt;','<'));}catch{}

@@ -27,7 +27,7 @@ async function run(width){
  for(const [key,file] of [['classes','teacher-classes.html'],['students','teacher-students.html'],['announcements','teacher-announcements.html'],['assignments','teacher-assignments.html'],['overview','teacher-dashboard.html']]){
   const previous=d,link=d.querySelector('[data-teacher-tab="'+key+'"]');
   check(new URL(link.href).pathname==='/'+file&&(key==='overview'?!new URL(link.href).searchParams.has('class'):new URL(link.href).searchParams.get('class')==='routeclass'),'real '+key+' link keeps selected class at '+width);
-  link.click();check(!!d.querySelector('.route-transition-overlay'),'shared compass transition appears for '+key+' at '+width);
+  link.click();await Promise.resolve();check(!!d.querySelector('.route-transition-overlay'),'shared compass transition appears for '+key+' at '+width);
   d=await ready(frame,key);check(d!==previous&&frame.contentWindow.location.pathname==='/'+file,'new HTML document opens for '+key+' at '+width);
   if(key==='assignments')check(d.querySelector('#teacherCatalogResults').textContent.includes('Balangay Adventures'),'assignment destination initializes the lesson catalog after account loading at '+width);
   check((key==='overview'?!d.querySelector('#teacherWelcome').hidden:!d.querySelector('#teacher-'+key).hidden)&&d.querySelector('[aria-current="page"]').dataset.teacherTab===key,'correct page and active navigation for '+key+' at '+width);
@@ -55,7 +55,7 @@ const server = http.createServer((request,response)=>{
     const file = url.pathname.slice(1);
     if(!routes.includes(file)){response.writeHead(404);response.end();return;}
     let html = read('pages/'+file).replace(/<script[\s\S]*?<\/script>/g,'').replace(/<link[^>]+>/g,'');
-    html=html.replace('</head>','<style>'+css+'</style></head>').replace('</body>','<script type="module">'+mocks+'\n'+seeds+'\n'+strip('js/teacher-class-policy.js')+'\n'+strip('js/teacher-class-client.js')+'\n'+strip('js/teacher-support-policy.js')+'\n'+strip('js/teacher-quiz-insights.js')+'\n'+strip('js/teacher-report-export.js')+'\n'+strip('js/auth-guard.js')+'\n'+strip('js/teacher-workspace.js')+'\n'+strip('js/page-transition.js')+'</script></body>');
+    html=html.replace('</head>','<style>'+css+'</style></head>').replace('</body>','<script type="module">'+mocks+'\n'+seeds+'\n'+strip('js/classroom-submission-policy.js')+'\n'+strip('js/teacher-class-policy.js')+'\n'+strip('js/teacher-class-client.js')+'\n'+strip('js/teacher-support-policy.js')+'\n'+strip('js/teacher-quiz-insights.js')+'\n'+strip('js/teacher-report-export.js')+'\n'+strip('js/auth-guard.js')+'\n'+strip('js/teacher-workspace.js')+'\n'+strip('js/page-transition.js')+'</script></body>');
     response.end(html);
 });
 (async()=>{

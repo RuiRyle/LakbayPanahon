@@ -837,7 +837,7 @@ function renderDashboardCompletion(parent, assignment) {
             const unavailable = results.filter(r => r.unavailable || (r.progress && r.progress.chapterId !== assignment.chapterId)).length;
             const completed = results.filter(r => !r.unavailable && r.progress?.chapterId === assignment.chapterId && r.progress.completed === true).length;
             host.dataset.state = unavailable === results.length ? 'unavailable' : unavailable ? 'partial' : 'loaded';
-            status.textContent = unavailable === results.length ? 'Completion results unavailable for this group. Try again.' : `${completed} of ${members.length - unavailable} available student records show completion. ${unavailable} unavailable results. ${assignment.assignmentType==='targeted-review'?'Only new passing results after this review count.':'Earlier independent completion counts.'}`;
+            status.textContent = unavailable === results.length ? 'Completion results unavailable for this group. Try again.' : `${completed} of ${members.length - unavailable} available student records show completion. ${unavailable} unavailable results. ${assignment.assignmentType==='targeted-review'?'Only new passing results after this review count.':'Only passing quizzes opened from this class assignment count. Personal completion stays separate.'}`;
             if (detail.members.length > 20) status.textContent += ' This summary covers the first 20 students only; open View Mission Progress for more.';
             load.textContent = 'Refresh Completion Summary';
         } catch (error) {
@@ -1698,7 +1698,7 @@ function renderPublications(kind) {
                         if (generation !== epoch || selected !== classId || !progressHost.isConnected) return;
                         progressHost.replaceChildren();
                         node('h4', 'Saved mission progress', progressHost);
-                        node('p',item.assignmentType==='targeted-review'?'This review needs a new passing quiz result saved after publication. Historical mission completion does not finish it.':'Class goal: earlier independent completion counts. Students may need earlier lessons or chapter checks before they can start.',progressHost,'teacher-note');
+                        node('p',item.assignmentType==='targeted-review'?'This review needs a new passing quiz result saved after publication. Historical mission completion does not finish it.':'Class goal: a fresh passing quiz opened from this class assignment is required. Personal completion stays separate. Students may need earlier lessons or chapter checks before they can start.',progressHost,'teacher-note');
                         node('p','Report scope: current active members in the loaded classroom roster. '+members.length+' shown of '+recipients.length+' eligible recipient(s). Former members are excluded; shared goals also include students who joined after publication. Unavailable results are not zero scores. Refresh the classroom to update membership.',progressHost,'teacher-note');
                         if (!members.length) { node('p', item.assignmentType==='targeted-review'?'The intended student is not a current active member. This review is preserved, but there is no eligible recipient in this report.':'No active members are in the loaded classroom roster. Invite students from My Classes.', progressHost); return; }
                         const completed = results.filter(r => r.progress?.completed === true && r.progress.chapterId === item.chapterId).length;
@@ -1766,7 +1766,7 @@ document.querySelectorAll('[data-teacher-tab]').forEach(el => el.addEventListene
     event.preventDefault();
     if (!workspaceReady || busy || !(await allowDiscard())) { event.preventDefault(); return; }
     rememberEdits();
-    if(el.href)window.location.assign(el.href);
+    if(el.href){const destination=document.createElement('a');destination.href=el.href;destination.hidden=true;document.body.append(destination);destination.click();destination.remove();}
 }));
 $('refreshTeacher').addEventListener('click', async () => { if ((await allowDiscard())) task(async () => (await refresh()), 'Classes refreshed.'); });
 $('createClassForm').addEventListener('submit', event => {

@@ -241,11 +241,27 @@ service cloud.firestore {
         && request.resource.data.displayName.size() > 0 && request.resource.data.displayName.size() <= 60;
       allow delete: if (activeStudent() && request.auth.uid == studentId) || ownsClass(classId);
     }
+    // One reservation per Auth UID serializes concurrent joins to different classes.
+    // A removed/left membership releases its reservation without requiring a teacher profile write.
+    match /studentClassSlots/{studentId} {
+      allow get: if activeStudent() && request.auth.uid == studentId;
+      allow create, update: if activeStudent() && request.auth.uid == studentId
+        && request.resource.data.keys().hasOnly(['classId'])
+        && request.resource.data.classId is string
+        && request.resource.data.classId.size() > 0
+        && !request.resource.data.classId.matches('.*[/].*')
+        && (!exists(/databases/$(database)/documents/studentClassSlots/$(studentId))
+          || resource.data.classId == request.resource.data.classId
+          || !exists(/databases/$(database)/documents/classMembers/$(studentId + '_' + resource.data.classId)))
+        && getAfter(/databases/$(database)/documents/classMembers/$(studentId + '_' + request.resource.data.classId)).data.userId == studentId
+        && getAfter(/databases/$(database)/documents/classMembers/$(studentId + '_' + request.resource.data.classId)).data.status == 'active';
+    }
     match /classMembers/{membershipId} {
       allow get: if activeStudent() && (!exists(/databases/$(database)/documents/classMembers/$(membershipId)) || ownRecord());
       allow list: if activeStudent() && ownRecord();
       allow read: if ownsClass(resource.data.classId);
       allow create: if activeStudent()
+        && getAfter(/databases/$(database)/documents/studentClassSlots/$(request.auth.uid)).data.classId == request.resource.data.classId
         && request.resource.data.keys().hasOnly(['userId','classId','joinCode','status','joinedAt'])
         && request.resource.data.userId == request.auth.uid
         && request.resource.data.classId is string && request.resource.data.joinCode is string
@@ -263,6 +279,7 @@ service cloud.firestore {
       allow update: if false;
     }
     match /classAssignments/{assignmentId} {
+      allow get: if activeTeacher() && !exists(/databases/$(database)/documents/classAssignments/$(assignmentId));
       allow read: if activeStudent() && classMember(resource.data.classId) && resource.data.status in ['published','closed','withdrawn'];
       allow read: if ownsClass(resource.data.classId);
       allow create, update: if validPublication('assignment');
@@ -280,6 +297,7 @@ service cloud.firestore {
         && request.resource.data.updatedAt == request.time;
     }
     match /classReviewAssignments/{assignmentId} {
+      allow get: if activeTeacher() && !exists(/databases/$(database)/documents/classReviewAssignments/$(assignmentId));
       allow read: if (activeStudent() && resource.data.userId == request.auth.uid && classMember(resource.data.classId) && resource.data.status in ['published','closed','withdrawn']) || ownsClass(resource.data.classId);
       allow create, update: if (activeOwnedMember(request.resource.data.classId,request.resource.data.userId)
         || (request.resource.data.status in ['closed','withdrawn'] && ownsClass(request.resource.data.classId)
@@ -308,6 +326,7 @@ service cloud.firestore {
       allow delete: if false;
     }
     match /classAnnouncements/{announcementId} {
+      allow get: if activeTeacher() && !exists(/databases/$(database)/documents/classAnnouncements/$(announcementId));
       allow read: if activeStudent() && classMember(resource.data.classId) && resource.data.status == 'published';
       allow read: if ownsClass(resource.data.classId);
       allow create, update: if validPublication('announcement');
