@@ -13,6 +13,7 @@ async function prepare() {
   if (firebaseEnvironment?.mode === 'emulator') return;
   const [snapshot,assessment] = await Promise.all([getDocFromServer(doc(db, 'learningSettings', 'bayaniAI')),getDocFromServer(doc(db,'learningSettings','securedAssessment'))]),
     siteKey = snapshot.data()?.appCheckSiteKey;
+  if(assessment.data()?.enabled===false)throw Error('Quiz saving is not activated yet. Your progress is safe. Please wait while the assessment backend is connected.');
   const endpoint=assessment.data()?.backendUrl;
   if(endpoint){let url;try{url=new URL(endpoint);}catch{throw Error('Assessment backend configuration is invalid.');}
     if(url.protocol!=='https:'||url.origin!==endpoint||url.username||url.password)throw Error('Assessment backend configuration is invalid.');

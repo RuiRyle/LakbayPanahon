@@ -1,4 +1,4 @@
-import {beginAssessment} from './student-assessment-client.js';
+import {beginAssessment,forgetAssessment} from './student-assessment-client.js';
 import { learningDateKey, selectDailyChallenge, millisecondsUntilLearningMidnight } from "./daily-policy.js";
 import { progressionState } from "./progression-policy.js";
 import { submitStudentActivity } from "./student-rewards-client.js";
@@ -265,7 +265,7 @@ async function loadDailyChallenge() {
     if (startButton) { startButton.hidden=false; startButton.disabled=true; startButton.textContent="Loading Daily Challenge..."; }
     if (cardCompleted) cardCompleted.hidden=true;
     try {
-        const snapshot=await getDocs(query(collection(db,"dailyChallenges"),where('status','==','active')));
+        const snapshot=await getDocs(query(collection(db,"dailyChallengeCards"),where('status','==','active')));
         if (auth.currentUser?.uid!==uid || currentUser?.uid!==uid) return false;
         const now=new Date();
         currentChallenge=selectDailyChallenge(snapshot.docs.map(item=>({...item.data(),id:item.id})),now);
@@ -526,7 +526,7 @@ async function openModal() {
 
     } else {
 
-        try{await beginAssessment({kind:'daily',challengeId:currentChallenge.id});}
+        try{const issued=await beginAssessment({kind:'daily',challengeId:currentChallenge.id});if(issued.questions?.[0])currentChallenge={...currentChallenge,...issued.questions[0]};}
         catch(error){showModalState('content');feedbackElement.hidden=false;feedbackElement.textContent=error.message;submitButton.disabled=true;return;}
         prepareChallengeUI();
 
@@ -730,42 +730,7 @@ if (submitButton) {
                 }
                 return;
             }
-            const correctAnswer =
-                String(
-                    currentChallenge
-                        .correctAnswer ||
-                    ""
-                ).toUpperCase();
-
-
-            const studentAnswer =
-                String(
-                    selectedAnswer
-                ).toUpperCase();
-
-
-            const isCorrect =
-                studentAnswer ===
-                correctAnswer;
-
-
-            // ==================================
-            // INCORRECT ANSWER
-            // ==================================
-
-            if (!isCorrect) {
-
-                showIncorrectFeedback(
-                    correctAnswer
-                );
-
-                return;
-            }
-
-
-            // ==================================
-            // CORRECT ANSWER
-            // ==================================
+            const studentAnswer=String(selectedAnswer).toUpperCase();
 
             await completeDailyChallenge(
                 studentAnswer
@@ -810,8 +775,16 @@ async function completeDailyChallenge(
         const result = await submitStudentActivity({
             kind: "daily", challengeId: currentChallenge.id, answer: studentAnswer
         });
-        if (!result.passed) throw new Error("The answer could not be confirmed.");
         if (auth.currentUser?.uid!==submissionUid) return;
+        if (!result.passed) {
+            forgetAssessment({kind:'daily',challengeId:currentChallenge.id});
+            showIncorrectFeedback();
+            submitButton.textContent='Submit Answer';
+            return;
+        }
+        // A confirmed passing daily result establishes this submitted choice.
+        // No answer key is required in the public card or pre-submit state.
+        currentChallenge={...currentChallenge,correctAnswer:studentAnswer};
         document.dispatchEvent(new CustomEvent("lakbay:answer-correct"));
         const xpAwarded = result.xpReward;
         const updatedXp = result.totalXp;

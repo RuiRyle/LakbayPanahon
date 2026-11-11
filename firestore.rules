@@ -278,8 +278,6 @@ service cloud.firestore {
       allow update: if false;
     }
     match /classAssignments/{assignmentId} {
-      // A create-only transaction must be able to confirm its reserved ID is absent.
-      allow get: if activeTeacher() && !exists(/databases/$(database)/documents/classAssignments/$(assignmentId));
       allow read: if activeStudent() && classMember(resource.data.classId) && resource.data.status in ['published','closed','withdrawn'];
       allow read: if ownsClass(resource.data.classId);
       allow create, update: if validPublication('assignment');
@@ -297,7 +295,6 @@ service cloud.firestore {
         && request.resource.data.updatedAt == request.time;
     }
     match /classReviewAssignments/{assignmentId} {
-      allow get: if activeTeacher() && !exists(/databases/$(database)/documents/classReviewAssignments/$(assignmentId));
       allow read: if (activeStudent() && resource.data.userId == request.auth.uid && classMember(resource.data.classId) && resource.data.status in ['published','closed','withdrawn']) || ownsClass(resource.data.classId);
       allow create, update: if (activeOwnedMember(request.resource.data.classId,request.resource.data.userId)
         || (request.resource.data.status in ['closed','withdrawn'] && ownsClass(request.resource.data.classId)
@@ -326,7 +323,6 @@ service cloud.firestore {
       allow delete: if false;
     }
     match /classAnnouncements/{announcementId} {
-      allow get: if activeTeacher() && !exists(/databases/$(database)/documents/classAnnouncements/$(announcementId));
       allow read: if activeStudent() && classMember(resource.data.classId) && resource.data.status == 'published';
       allow read: if ownsClass(resource.data.classId);
       allow create, update: if validPublication('announcement');
@@ -477,9 +473,7 @@ service cloud.firestore {
           && data.keys().hasOnly(['classId','title','body','status','publishedAt','updatedAt'])
           && data.body is string && data.body.size() > 0 && data.body.size() <= 3000)
         || (kind == 'assignment'
-          && data.keys().hasOnly(['classId','title','instructions','missionId','chapterId','status','publishedAt','updatedAt','dueAt','endedAt','submissionVersion']
-          && data.submissionVersion is int && data.submissionVersion > 0
-          && data.submissionVersion == (resource == null ? 1 : data.status in ['closed','withdrawn'] ? resource.data.get('submissionVersion',1) : resource.data.get('submissionVersion',0) + 1))
+          && data.keys().hasOnly(['classId','title','instructions','missionId','chapterId','status','publishedAt','updatedAt','dueAt','endedAt'])
           && (data.get('dueAt', null) == null || data.dueAt is timestamp)
           && data.instructions is string && data.instructions.size() <= 1500
           && data.missionId is string && data.chapterId is string
@@ -577,26 +571,19 @@ service cloud.firestore {
       allow read: if activeStudent();
       allow write: if false;
     }
+    match /learningSettings/securedAssessment {
+      allow get: if activeStudent();
+      allow list, write: if false;
+    }
+    match /serverAssessmentAttempts/{id} { allow read, write: if false; }
+    match /serverAssessmentRequests/{id} { allow read, write: if false; }
+    match /serverAssessmentHistory/{id} { allow read, write: if false; }
+    match /serverAssessmentUsage/{id} { allow read, write: if false; }
     match /learningSettings/journeyFinale {
       allow get: if activeStudent();
       allow list, write: if false;
     }
-    function rewardUpdate() {
-      let next = request.resource.data;
-      let kind = next.lastRewardKind;
-      let path = completionPath(kind, next.lastRewardId);
-      let completion = getAfter(path).data;
-      return activeStudent() && kind in ['mission', 'daily'] && !exists(path)
-        && completion.userId == request.auth.uid && completion.completed == true
-        && completion.completedAt == request.time
-        && next.diff(resource.data).affectedKeys().hasOnly(kind == 'daily'
-          ? ['xp', 'level', 'updatedAt', 'lastRewardKind', 'lastRewardId', 'learningStreak', 'lastStreakDate']
-          : ['xp', 'level', 'updatedAt', 'lastRewardKind', 'lastRewardId'])
-        && next.xp is int && next.xp == resource.data.get('xp', 0) + completion.xpEarned
-        && next.level == progressionLevel(next.xp) && next.updatedAt == request.time
-        && (kind != 'daily' || (next.lastStreakDate == dayKey(request.time)
-          && next.learningStreak == expectedStreak()));
-    }
+    function rewardUpdate() { return false; }
     function pairedReward(kind, id) {
       let student = getAfter(/databases/$(database)/documents/users/$(request.auth.uid)).data;
       let previous = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
@@ -684,9 +671,9 @@ service cloud.firestore {
     match /{catalog}/{contentId} {
       allow read: if activeTeacher() && catalog in ['eras','chapters','missions','storyScenes'] && resource.data.status == 'active';
       allow read: if activeStudent() && catalog in [
-        'eras', 'chapters', 'missions', 'storyScenes', 'quizzes', 'questions',
-        'practiceQuestions', 'artifacts', 'chapterChallenges', 'chapterChallengeQuestions',
-        'badges', 'dailyChallenges'
+        'eras', 'chapters', 'missions', 'storyScenes', 'quizzes',
+        'practiceQuestions', 'artifacts', 'chapterChallenges',
+        'badges', 'dailyChallengeCards'
       ];
     }
     match /{records}/{recordId} {
@@ -719,8 +706,8 @@ service cloud.firestore {
           && data.xpEarned is int && data.xpEarned >= 0 && data.xpEarned == mission.get('xpReward', 0)
           && pairedReward('mission', data.missionId);
       }
-      allow create: if activeStudent() && validCompletion() && validMission();
-      allow update: if activeStudent() && scoreReplay();
+      allow create, update, delete: if false;
+      allow create, update, delete: if false;
     }
     match /studentQuizAttempts/{attemptId} {
       allow read: if teacherCanReport(resource.data.userId);
@@ -760,8 +747,8 @@ service cloud.firestore {
           && data.response.xpReward == (data.response.firstCompletion ? mission.get('xpReward', 0) : 0)
           && (!data.response.firstCompletion || firstAttemptCompletion(data));
       }
-      allow create: if activeStudent() && validAttempt();
-      allow update, delete: if false;
+      allow create, update, delete: if false;
+      allow create, update, delete: if false;
     }
     match /studentChapterProgress/{progressId} {
       allow read: if teacherCanReport(resource.data.userId);
@@ -777,8 +764,8 @@ service cloud.firestore {
           && challenge.passingScore is number && challenge.passingScore >= 0 && challenge.passingScore <= 100
           && data.bestScore >= challenge.passingScore;
       }
-      allow create: if activeStudent() && validCompletion() && validChapter();
-      allow update: if activeStudent() && scoreReplay();
+      allow create, update, delete: if false;
+      allow create, update, delete: if false;
     }
     match /studentDailyChallenges/{completionId} {
       function validDaily() {
@@ -793,7 +780,7 @@ service cloud.firestore {
           && data.xpEarned is int && data.xpEarned >= 0 && data.xpEarned == challenge.get('xpReward', 0)
           && pairedReward('daily', data.dateKey);
       }
-      allow create: if activeStudent() && validCompletion() && validDaily();
+      allow create, update, delete: if false;
     }
     match /studentArtifacts/{ownershipId} {
       function validArtifact() {
@@ -806,7 +793,7 @@ service cloud.firestore {
           && artifact.missionId == data.missionId && progress.chapterId == data.chapterId
           && progress.userId == request.auth.uid && progress.completed == true;
       }
-      allow create: if activeStudent() && validArtifact();
+      allow create, update, delete: if false;
     }
     match /studentBadges/{ownershipId} {
       function validBadge() {
@@ -819,7 +806,7 @@ service cloud.firestore {
           && badge.chapterId == data.chapterId && progress.challengeId == data.challengeId
           && progress.userId == request.auth.uid && progress.completed == true;
       }
-      allow create: if activeStudent() && validBadge();
+      allow create, update, delete: if false;
     }
 match /studentPracticeProgress/{progressId} {
 

@@ -54,3 +54,12 @@ test('targeted classroom reviews also reject unrelated solo attempts',()=>{
  const linked={...attempt,classroom:{classId:'class',assignmentId:'review',version:1,issuedAt:ms-100,joinedAt:ms-2000,assignedAt:ms-1000}};
  assert.equal(context.reviewEvidence(assignment,[linked],'u',ms).completed,true);
 });
+
+test('classroom best score and completion survive a lower later retry while latest stays accurate',()=>{
+ const assignment={id:'a',classId:'class',chapterId:'c',missionId:'m',status:'published',publishedAt:stamp(ms-2000),submissionVersion:1},member={userId:'u',classId:'class',status:'active',joinedAt:stamp(ms-1000)};
+ const attempt={id:'pass',userId:'u',chapterId:'c',missionId:'m',passed:true,score:80,completedAt:stamp(ms-100),classroom:{classId:'class',assignmentId:'a',version:1,joinedAtKey:'ms:'+(ms-1000),assignedAt:ms-2000,issuedAt:ms-500}};
+ const evidence=context.classroomAssignmentEvidence(assignment,[attempt,{...attempt,id:'retry',passed:false,score:40,completedAt:stamp(ms)}],member,'u',ms);
+ assert.equal(evidence.completed,true);assert.equal(evidence.bestScore,80);assert.equal(evidence.latest,40);assert.equal(evidence.passingAttemptId,'pass');
+});
+
+test('editable main questions do not reveal answer keys or explanations before submission',async()=>{const f=fixture();for(let i=0;i<5;i++)Object.assign(f.rows.get('questions/q'+i),{explanation:'PRIVATE_FEEDBACK',answerExplanations:{A:'PRIVATE_FEEDBACK'}});let state=await f.service.start('u',{...f.identity,requestId:randomUUID()});for(let i=0;i<5;i++){assert.ok(state.questions.every(q=>!('correctAnswer' in q)&&!('explanation' in q)&&!('answerExplanations' in q)));const q=state.questions[i];state=await f.service.advance('u',{attemptId:state.attemptId,revision:state.revision,requestId:randomUUID(),action:'answer',questionId:q.id,answer:'A'});assert.ok(!JSON.stringify(state.questions).includes('PRIVATE_FEEDBACK'));}const result=await f.service.submit('u',{attemptId:state.attemptId,revision:state.revision});assert.equal(result.passed,true);const resumed=await f.service.resume('u',{attemptId:state.attemptId});assert.equal(resumed.questions[0].correctAnswer,'A');});

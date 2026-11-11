@@ -23,8 +23,12 @@ function buildCandidate(source){
  }
  const marker='    match /learningSettings/journeyFinale {';
  if(!candidate.includes(marker))throw Error('Missing secured policy insertion point');
+ const policyRule=candidate.includes('match /learningSettings/securedAssessment')?'':'    match /learningSettings/securedAssessment { allow get: if activeStudent(); allow list, write: if false; }\n';
  const privateRules=['serverAssessmentAttempts','serverAssessmentRequests','serverAssessmentHistory','serverAssessmentUsage'].map(name=>`    match /${name}/{id} { allow read, write: if false; }`).join('\n');
- candidate=candidate.replace(marker,`    match /learningSettings/securedAssessment { allow read: if activeStudent(); allow write: if false; }\n${privateRules}\n${marker}`);
+ candidate=candidate.replace(marker,`${policyRule}${privateRules}\n${marker}`);
+ // Main/chapter answer-bearing banks are server-only. Practice and daily
+ // public projections must be migrated separately before this candidate ships.
+ candidate=candidate.replace("'quizzes', 'questions',","'quizzes',").replace("'chapterChallenges', 'chapterChallengeQuestions',","'chapterChallenges',").replace("'badges', 'dailyChallenges'","'badges', 'dailyChallengeCards'");
  return '// LOCAL TRUSTED-ASSESSMENT CUTOVER CANDIDATE. Not published.\n'+candidate;
 }
 function main(){

@@ -271,7 +271,7 @@ function createAssessmentService(store, {
       classroom: a.classroom || null,
       expiresAt: a.expiresAt,
       passingScore: a.threshold,
-      questions: a.questions.map(q => publicQuestion(q, !!a.result || Object.hasOwn(a.answers, q.id))),
+      questions: a.questions.map(q => publicQuestion(q, !!a.result)),
       answers: a.answers,
       followupQuestions: a.followups.map(q => publicQuestion(q, !!a.followupAnswers[q.id] || !!a.result)),
       followupAnswers: a.followupAnswers,

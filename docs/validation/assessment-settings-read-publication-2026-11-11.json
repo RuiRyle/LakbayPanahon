@@ -1,0 +1,34 @@
+{
+  "publishedAt": "2026-11-10T17:15:27.192Z",
+  "pass": true,
+  "tests": [
+    {
+      "name": "student read",
+      "expectation": "ALLOW"
+    },
+    {
+      "name": "anonymous read",
+      "expectation": "DENY"
+    },
+    {
+      "name": "inactive read",
+      "expectation": "DENY"
+    },
+    {
+      "name": "teacher read",
+      "expectation": "DENY"
+    },
+    {
+      "name": "student write",
+      "expectation": "DENY"
+    },
+    {
+      "name": "student collection list",
+      "expectation": "DENY"
+    }
+  ],
+  "scope": "active-student get of learningSettings/securedAssessment only",
+  "ruleset": "projects/lakbaypanahon-1797e/rulesets/0c9cb237-bb3d-439b-a21a-bca8b9d98f3b",
+  "backup": "build/render-rules-review/backup-1794330921580.json",
+  "dataWritten": false
+}
