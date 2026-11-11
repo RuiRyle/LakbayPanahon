@@ -95,6 +95,7 @@ let selectedMatches = {};
 let selectedTradeQuantity = 0;
 
 let correctAnswers = 0;
+let securedChapter=false,confirmedChapterReceipt=null;
 
 
 let studentAnswers = {};
@@ -440,47 +441,10 @@ async function loadChapterChallenge() {
            LOAD QUESTIONS
         ================================== */
 
-        const questionSnapshot =
-            await getDocs(
-                query(collection(db,"chapterChallengeQuestions"),where("challengeId","==",activeChallenge.id))
-            );
-        if (!isCurrent()) return;
-
-
-        challengeQuestions = [];
-
-
-        questionSnapshot.forEach(
-            (documentSnapshot) => {
-
-                const question =
-                    documentSnapshot.data();
-
-
-                if (
-                    question.challengeId ===
-                        activeChallenge.id &&
-
-                    question.status ===
-                        "active"
-                ) {
-
-                    challengeQuestions.push({
-
-                        id:
-                            documentSnapshot.id,
-
-                        ...question
-
-                    });
-
-                }
-
-            }
-        );
-
-
-        if(globalThis.__lakbayExplorationPreview!==true)await beginAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id});
+        const issued=await beginAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id},{completedReview:true});
+        if(!isCurrent())return;
+        securedChapter=issued.secured!==false;confirmedChapterReceipt=issued.result||null;if(confirmedChapterReceipt)correctAnswers=confirmedChapterReceipt.correctAnswers;
+        challengeQuestions=issued.questions||[];
         if(!isCurrent())return;
         challengeQuestions.sort(
             (a, b) =>
@@ -828,9 +792,7 @@ function createQuestionInterface() {
 
 function renderMatchingGame(question, optionsContainer, submitButton) {
 
-    const pairs = Array.isArray(question.matchingPairs)
-        ? question.matchingPairs
-        : [];
+    const pairs = Array.isArray(question.matchingPairs) ? question.matchingPairs : (question.matchingLeft||[]).map((left,index)=>({left,right:question.matchingRight?.[index]}));
 
     selectedMatches = {};
 
@@ -976,11 +938,11 @@ function renderTradeSimulation(
     // Check that Firestore has valid trading data.
     if (
         !Number.isInteger(startingQuantity) ||
-        !Number.isInteger(requiredQuantity) ||
+        (!securedChapter&&!Number.isInteger(requiredQuantity)) ||
         !Number.isInteger(rewardQuantity) ||
         startingQuantity < 1 ||
-        requiredQuantity < 1 ||
-        requiredQuantity > startingQuantity ||
+        (!securedChapter&&requiredQuantity < 1) ||
+        (!securedChapter&&requiredQuantity > startingQuantity) ||
         rewardQuantity < 1 ||
         !tradeGood ||
         !rewardGood
@@ -1499,6 +1461,13 @@ function submitCurrentAnswer() {
     const gameType =
         getChallengeGameType(question);
     let answerWasCorrect = false;
+    if(securedChapter){
+        if(question.evidenceTask){if(!selectedAnswer?.evidenceId||!selectedAnswer?.conclusion)return;studentAnswers[question.id]={...selectedAnswer};}
+        else if(gameType==='matching'){if(!(question.matchingLeft||[]).every(left=>selectedMatches[left]))return;studentAnswers[question.id]={gameType:'matching',matches:{...selectedMatches}};}
+        else if(gameType==='tradeSimulation'){if(!Number.isInteger(selectedTradeQuantity)||selectedTradeQuantity<1||selectedTradeQuantity>Number(question.startingQuantity))return;studentAnswers[question.id]={gameType:'tradeSimulation',quantity:selectedTradeQuantity};}
+        else{if(!selectedAnswer)return;studentAnswers[question.id]=selectedAnswer;}
+        currentQuestionIndex++;saveChapterDraft();if(currentQuestionIndex>=challengeQuestions.length)showChallengeResult();else displayCurrentQuestion();return;
+    }
 
     /* ======================================
        MATCHING GAME
@@ -2318,7 +2287,7 @@ let validatedChapterReward = null;
 async function completeChapter() {
     const generation = chapterSessionGeneration;
     validatedChapterReward = null;
-    const result = await submitStudentActivity({
+    const result = confirmedChapterReceipt || await submitStudentActivity({
         kind: "chapter", chapterId, challengeId: activeChallenge.id,
         answers: studentAnswers
     });
@@ -2350,6 +2319,11 @@ async function showChallengeResult() {
 }
 async function renderChallengeResult() {
     const generation = chapterSessionGeneration;
+    if(securedChapter&&!confirmedChapterReceipt){
+        try{const result=await submitStudentActivity({kind:'chapter',chapterId,challengeId:activeChallenge.id,answers:studentAnswers});if(generation!==chapterSessionGeneration)return;confirmedChapterReceipt=result;correctAnswers=result.correctAnswers;
+            try{const review=await beginAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id},{completedReview:true});if(generation!==chapterSessionGeneration)return;if(review.result)challengeQuestions=review.questions;}catch{/* A confirmed grade stays valid if optional review refresh fails. */}
+        }catch(error){if(generation===chapterSessionGeneration){challengeStatus.textContent='Your result could not be confirmed. Keep this page open and retry saving.';showSaveErrorResult(0,challengeQuestions.length,requirePassingScore(activeChallenge));}return;}
+    }
 
     const quizContainer =
         document.getElementById(
@@ -3363,7 +3337,12 @@ insertChallengeLearningReview(
    RESTART CHALLENGE
 ========================================== */
 
-function restartChallenge() {
+async function restartChallenge() {
+    if(securedChapter){
+        const generation=chapterSessionGeneration;
+        try{forgetAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id});const issued=await beginAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id},{retry:true});if(generation!==chapterSessionGeneration)return;challengeQuestions=issued.questions;confirmedChapterReceipt=null;}
+        catch{showError('A new challenge could not start. Try loading again. Your saved progress is safe.');return;}
+    }
 
     const resultContainer =
         document.getElementById(

@@ -35,7 +35,8 @@ function mark(q, a) {
 }
 function publicQuestion(q, feedback = false) {
   const out = {};
-  for (const key of ['id', 'question', 'optionA', 'optionB', 'optionC', 'optionD', 'topic', 'topicLabel', 'difficulty', 'gameType', 'instructions', 'startingQuantity', 'matchingLeft', 'matchingRight', 'order']) if (q[key] !== undefined) out[key] = q[key];
+  for (const key of ['id', 'question', 'optionA', 'optionB', 'optionC', 'optionD', 'topic', 'topicLabel', 'difficulty', 'gameType', 'instructions', 'startingQuantity', 'rewardQuantity', 'tradeGood', 'rewardGood', 'matchingLeft', 'matchingRight', 'order']) if (q[key] !== undefined) out[key] = q[key];
+  if(q.gameType==='matching'&&Array.isArray(q.matchingPairs)){out.matchingLeft=q.matchingPairs.map(pair=>pair.left);out.matchingRight=q.matchingPairs.map(pair=>pair.right).sort();}
   if (q.evidenceTask) out.evidenceTask = {
     instructions: q.evidenceTask.instructions,
     cards: q.evidenceTask.cards

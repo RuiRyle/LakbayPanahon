@@ -1,10 +1,13 @@
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),{spawnSync}=require('node:child_process');
 const root=path.join(__dirname,'..'),temp=fs.mkdtempSync(path.join(os.tmpdir(),'lakbay-chapter-'));
-const source=name=>fs.readFileSync(path.join(root,'js',name),'utf8').replace(/import[\s\S]*?from\s+['"][^'"]+['"];\s*/g,'').replace(/export /g,'');
+const {fixtureSource}=require('./fixtures/assessment-api-browser.cjs');
+const rawSource=name=>fs.readFileSync(path.join(root,'js',name),'utf8').replace(/import[\s\S]*?from\s+['"][^'"]+['"];\s*/g,'').replace(/export /g,'');
+const source=name=>fixtureSource(name,rawSource(name),'records');
 let html=fs.readFileSync(path.join(root,'pages/chapter-challenge.html'),'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'');
 const themeCss=['student.css','chapter-challenge.css','navy-gold-theme.css','expedition.css'].map(file=>fs.readFileSync(path.join(root,'css',file),'utf8').replace(/@import[^;]+;/g,'')).join('\n');
 html=html.replace('</head>','<style>'+themeCss+'</style></head>');
 const script=`
+const appConfirm=async message=>window.confirm(message),appAlert=async message=>window.alert(message);
 document.body.classList.remove('auth-checking');document.body.classList.add('authenticated');
 const auth={currentUser:{uid:'test'}},db={},records=new Map();
 records.set('users/test',{role:'student',status:'active',xp:50,level:1});records.set('learningSettings/progression',{xpPerLevel:100,version:1});

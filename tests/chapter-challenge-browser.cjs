@@ -5,6 +5,8 @@ const rawSource=name=>fs.readFileSync(path.join(root,'js',name),'utf8').replace(
 const source=name=>fixtureSource(name,rawSource(name),'records');
 let html=fs.readFileSync(path.join(root,'pages/chapter-challenge.html'),'utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'');
 const script=`
+globalThis.fixtureSecureChapter=${process.argv.includes('--secured')};
+const appConfirm=async message=>window.confirm(message),appAlert=async message=>window.alert(message);
 const auth={currentUser:{uid:'test'}},db={},records=new Map();
 records.set('users/test',{role:'student',status:'active',xp:50,level:1});records.set('learningSettings/progression',{xpPerLevel:100,version:1});
 records.set('chapters/c1',{id:'c1',status:'active',title:'Test Chapter'});records.set('missions/m1',{id:'m1',chapterId:'c1',status:'active'});records.set('studentProgress/test_m1',{userId:'test',missionId:'m1',chapterId:'c1',completed:true});
@@ -19,7 +21,7 @@ fixtureQuestions.forEach((q,index)=>records.set('chapterChallengeQuestions/'+q.i
 const collection=(_,name)=>({name}),doc=(_,name,id)=>name+'/'+id,where=(field,op,value)=>({field,value}),query=(ref,...filters)=>({...ref,filters});
 let fixtureLoadGate=null,fixtureSaveGate=null,fixtureAuthListener,fixtureSaveFailure=false,fixtureWrites=0,fixtureLoadFailure=false;
 const getDoc=async key=>{if(fixtureLoadFailure)throw Error("Offline");if(key=== "chapters/c1" && fixtureLoadGate)await fixtureLoadGate;return ({id:key.split('/')[1],exists:()=>records.has(key),data:()=>records.get(key)});};
-const getDocs=async ref=>{const docs=[...records].filter(([key,row])=>key.startsWith(ref.name+'/')&&(!ref.filters||ref.filters.every(f=>row[f.field]===f.value))).map(([key,row])=>({id:key.split('/')[1],data:()=>row}));return{docs,forEach:fn=>docs.forEach(fn)};};
+const getDocs=async ref=>{if(globalThis.fixtureSecureChapter&&ref.name==='chapterChallengeQuestions')throw Error('Browser attempted a private answer-bank read');const docs=[...records].filter(([key,row])=>key.startsWith(ref.name+'/')&&(!ref.filters||ref.filters.every(f=>row[f.field]===f.value))).map(([key,row])=>({id:key.split('/')[1],data:()=>row}));return{docs,forEach:fn=>docs.forEach(fn)};};
 const serverTimestamp=()=>({toMillis:()=>100});
 const runTransaction=async(_,fn)=>{fixtureWrites++;if(fixtureSaveFailure)throw Error("Offline");const writes=[];const result=await fn({get:getDoc,set:(key,row)=>writes.push(()=>records.set(key,row)),update:(key,row)=>writes.push(()=>records.set(key,{...records.get(key),...row}))});writes.forEach(fn=>fn());if(fixtureSaveGate)await fixtureSaveGate;return result;};
 const requireLearningAccess=async()=>records.get('chapters/c1');class LearningAccessError extends Error{}
@@ -71,7 +73,7 @@ async function answerAll(correct){
  }
 }
 (async()=>{
- await tick();check(!beginChallengeButton.disabled,'Challenge did not unlock');
+ await tick();check(!beginChallengeButton.disabled,'Challenge did not unlock');if(globalThis.fixtureSecureChapter)check(challengeQuestions.every(q=>!('correctAnswer' in q)&&!('matchingPairs' in q)&&!('requiredQuantity' in q)),'Issued chapter questions leaked grading keys');
  fixtureLoadFailure=true;await loadChapterChallenge();
  check(beginChallengeButton.disabled&&!retryChapterLoadButton.hidden&&!chapterLoadPending,'Load failure lacks recovery');
  fixtureLoadFailure=false;retryChapterLoadButton.click();await tick();
@@ -88,7 +90,7 @@ async function answerAll(correct){
  beginChallengeButton.click();await answerAll(false);
  check(!!document.getElementById('chapterChallengeResult')&&!records.has('studentChapterProgress/test_c1'),'Failure incorrectly completed chapter');
  fixtureSaveFailure=true;
- document.getElementById('challengeResultPrimaryButton').click();await answerAll(true);
+ document.getElementById('challengeResultPrimaryButton').click();await tick();await answerAll(true);
  check(!records.has('studentChapterProgress/test_c1'),'Failed save completed chapter');
  check(document.getElementById('challengeResultPrimaryButton').textContent.includes('Retry Saving'),'Save failure requires retake');
  const savedAnswers=JSON.stringify(studentAnswers),writesBefore=fixtureWrites;
@@ -111,7 +113,7 @@ async function answerAll(correct){
  document.getElementById('challengeResultPrimaryButton').click();check(fixtureNavigation==='mission.html?chapter=c2','Wrong next chapter route');
  check(!document.querySelector('#chapterChallengeResult img'),'Chapter title rendered as HTML');
  const savedRenderer=renderChapterKeepsake;renderChapterKeepsake=()=>{throw Error('Optional decoration failed');};const beforeDecorationFailure=JSON.stringify({xp:records.get('users/test').xp,badge:records.get('studentBadges/test_b1')});await showChallengeResult();check(!document.getElementById('challengeResultPrimaryButton').disabled,'Optional keepsake failure blocked Continue');document.getElementById('challengeResultPrimaryButton').click();check(fixtureNavigation==='mission.html?chapter=c2','Optional keepsake failure lost the next chapter route');check(JSON.stringify({xp:records.get('users/test').xp,badge:records.get('studentBadges/test_b1')})===beforeDecorationFailure,'Optional keepsake retry changed saved rewards');renderChapterKeepsake=savedRenderer;
- const replay=await completeChapter();check(!replay.firstCompletion&&!validatedChapterReward.newlyEarned,'Replay duplicated badge');
+ const replay=await completeChapter();if(globalThis.fixtureSecureChapter)check([...records.keys()].filter(k=>k.startsWith('studentBadges/')).length===1,'Receipt replay created a second badge');else check(!replay.firstCompletion&&!validatedChapterReward.newlyEarned,'Replay duplicated badge');
  globalThis.__lakbayExplorationPreview=true;const beforePreviewWrites=fixtureWrites;await showChallengeResult();
  check(document.getElementById('chapterChallengeResult').textContent.includes('Preview: passing score')&&document.getElementById('chapterChallengeResult').textContent.includes('no chapter completion'),'Preview challenge claims saved completion');
  check(fixtureWrites===beforePreviewWrites,'Preview challenge saved completion');globalThis.__lakbayExplorationPreview=false;
@@ -126,7 +128,7 @@ async function answerAll(correct){
  auth.currentUser={uid:'test'};fixtureAuthListener(auth.currentUser);await tick();
  check(!beginChallengeButton.disabled,'Fresh sign-in did not recover');
  document.getElementById('result').textContent='PASS: chapter load retry, interactions, save retry without retake, duplicate prevention, badge/replay and session recovery';
-})().catch(error=>{document.getElementById('result').textContent='FAIL: '+error.message;});
+})().catch(error=>{document.getElementById('result').textContent='FAIL: '+error.stack;});
 `;
 html=html.replace('</body>','<output id="result">RUNNING</output><script type="module">'+script+'</script></body>');
 const file=path.join(temp,'chapter.html');fs.writeFileSync(file,html);
