@@ -1,0 +1,4 @@
+﻿const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');const source=fs.readFileSync('js/local-app-check-debug.js','utf8');
+function check(host,flag,token){const context=vm.createContext({location:{hostname:host},sessionStorage:{getItem:key=>key==='bayaniAppCheckDebug'?flag:token}});vm.runInContext(source,context);return context.FIREBASE_APPCHECK_DEBUG_TOKEN;}
+test('explicit replacement token works only on opted-in loopback pages',()=>{const token='12345678-1234-4123-8123-123456789abc';assert.equal(check('127.0.0.1','true',token),token);assert.equal(check('example.com','true',token),undefined);assert.equal(check('127.0.0.1','false',token),undefined);});
+test('missing or malformed replacement preserves normal SDK debug generation',()=>{assert.equal(check('localhost','true',null),true);assert.equal(check('localhost','true','not-a-token'),true);});
