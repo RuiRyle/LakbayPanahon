@@ -1862,7 +1862,7 @@ onAuthStateChanged(auth, async user => {
         missions.forEach(m => node('option', `${m.chapterTitle || m.chapterId} · ${m.title || m.name || m.id}`, $('assignmentMission')).value = m.id);
         renderLessonCatalog(true);
         await refresh();
-    }, ['overview','classes','students','settings'].includes(routeName)?'':'Choose a class or create your first one.').then(async () => {
+    }, ()=>detail||['overview','classes','students','settings'].includes(routeName)?'':'Choose a class or create your first one.').then(async () => {
         if (!detail || !auth.currentUser) return;
         if(routeName==='students'&&(routeParameters.has('followup')||routeParameters.has('fromRequest'))){
             const context=node('section',null,null,'teacher-followup-context');context.id='teacherFollowupContext';context.setAttribute('aria-label','Follow-up navigation');document.querySelector('.teacher-intro').after(context);const contextCopy=node('div',null,context);node('span','TEACHING FOLLOW-UP',contextCopy,'eyebrow');node('h2',routeParameters.has('fromRequest')?'Review the learning evidence':'Respond to your student',contextCopy);node('p','',contextCopy,'teacher-note').id='teacherFollowupContextStatus';const actions=node('div',null,context,'teacher-actions');const back=node('a','Back to dashboard',actions,'teacher-class-link');back.href=teacherRoutes.overview;

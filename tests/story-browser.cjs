@@ -152,7 +152,7 @@ const tick=()=>new Promise(resolve=>setTimeout(resolve,50)),check=(value,message
  await loadStory();check(topicReviewMapped&&scenes.length===1,'Mapped topic did not isolate its teaching scene');
  check(document.getElementById('topicReviewNotice')&&!storyDraftReady,'Topic review missing or overwrites normal draft');
  check(!completedQuickChecks.size,'Reading review cleared understanding checks');
- storyCompleteSection.hidden=false;await loadLessonQuizInfo();check(quizButton.textContent.includes('Targeted Practice')&&!quizButton.disabled,'Review completion routes to quiz rather than practice');
+ storyCompleteSection.hidden=false;await loadLessonQuizInfo();check(quizButton.textContent.includes('Practice for This Topic')&&!quizButton.disabled,'Review completion routes to quiz rather than practice');
  check(new URL(topicPracticeUrl(),'https://example.com').searchParams.get('topic')==='trade','Practice lost reviewed topic');
  fixtureReviewSaveFails=true;reviewSavePending=null;await loadLessonQuizInfo();
  check(!quizButton.disabled&&document.getElementById('lessonQuizRequirements').textContent.includes('could not save'),'Review save failure blocked practice or claimed a saved review');

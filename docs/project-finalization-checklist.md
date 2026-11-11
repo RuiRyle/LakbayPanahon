@@ -1,10 +1,27 @@
-# Current project finalization checklist — 10 November 2026
+# Project finalization status - 11 November 2026
 
-Reconciled against the accepted 9 November local baseline and subsequent changes. Old unchecked entries in the large student checklist are historical evidence, not an additive count of missing features. Preserve the owner's earlier successful three-role walkthrough and reopen the flows affected by new changes.
+Current direction: no-billing Render backend with the original Firebase project. This supersedes the older local-only deployment hold below. No paid plan is authorized. The frontend is currently tested through Live Server, not a publicly hosted website.
 
-**Active direction:** finish integrated local delivery. Billing and deployment remain deferred; this checklist does not authorize either.
+## Current acceptance
 
-**10 November follow-up:** The [current local classroom core](validation/classroom-final-local-2026-11-10.md) now passes ten actual SDK/browser/trusted-grading checks: joining, second-class denial, separate solo/class completion, zero duplicate XP, teacher result, guidance and read acknowledgement. The extended edge cases listed below remain open; the core join/submission path no longer lacks integration evidence. Temporary data cleanup is verified and a new local backup is recorded. Broad teacher/admin regressions are the next priority.
+- [x] Trusted Render backend deployed; Auth/App Check and Firestore access verified in the owner's browser.
+- [x] Restricted production rules published with 31 synthetic Rules API checks; browser canonical reward writers and main/chapter answer-bank reads denied.
+- [x] Public daily cards separated; grading configuration activated without changing existing student records.
+- [x] Backend dependency patch installed and tested on Node 22; zero known advisories at that audit.
+- [x] Mission and chapter hosted happy paths accepted by the owner; refresh/sign-out/sign-in and reward preservation also reported successful.
+- [x] Teacher/admin synthetic regression and actual-document teacher navigation fixtures passed. Classroom local integration, concurrency/replay and simulated save-recovery evidence recorded.
+- [x] Consolidated frontend package check: 37 pages, zero missing/rejected references; quiz, lesson, practice and 18 sampled contrast checks pass. Included in the consolidation source commit.
+- [ ] Complete current-catalog interactive/content review; do not treat one chapter walkthrough as all-catalog acceptance.
+- [ ] Resolve genuine Bayani responses, provider suitability for minors and quality acceptance.
+- [ ] Record real content-review and study evaluation evidence.
+- [ ] Establish operator/contact, retention and school/guardian arrangements before public learner use.
+- [ ] Freeze and document the final presentation/release build after required acceptance.
+
+Owner reports: [hosted acceptance](validation/owner-hosted-acceptance-2026-11-11.md). Scope/limits are explicit; these reports are not independent automated observations.
+
+## Historical local checklist
+
+The following preserves earlier evidence and open items at that date. Its local-only deployment hold and missing-core-test notes are superseded by the current status above.
 
 ## Existing foundation
 

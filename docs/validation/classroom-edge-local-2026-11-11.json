@@ -1,0 +1,20 @@
+{
+  "verifiedAt": "2026-11-10T16:18:37.682Z",
+  "pass": true,
+  "mode": "actual local Functions, Firestore and Auth; temporary fixture only",
+  "checks": [
+    "assignment revision invalidates an in-progress quiz",
+    "removed student cannot advance a pending classroom quiz",
+    "rejoining does not revive a quiz issued under old membership",
+    "closing an assignment blocks its pending quiz",
+    "closed assignment cannot issue a new quiz",
+    "repeated answer request replays the same revision",
+    "fresh valid classroom attempt can complete after earlier invalidated attempts"
+  ],
+  "cleanupCompleted": true,
+  "limits": [
+    "Owner REST seeds mutations; does not certify teacher UI/security rules for each mutation",
+    "Answers supplied programmatically; not a learner usability test",
+    "Replayed requests simulate a lost response; not an actual network disconnection"
+  ]
+}

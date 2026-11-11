@@ -1745,7 +1745,7 @@ async function loadLessonQuizInfo() {
         if(!reviewSavePending)reviewSavePending=recordLessonReview({chapterId,missionId,topic:reviewTopic,sceneIds:scenes.map(scene=>scene.id)}).catch(()=>{reviewSavePending=null;return false;});
         const recorded=await reviewSavePending;
         if(reviewGeneration!==storySessionGeneration||auth.currentUser?.uid!==reviewUid)return;
-        quizButton.textContent='Apply It in Targeted Practice';quizButton.disabled=false;
+        quizButton.textContent='Start Practice for This Topic';quizButton.disabled=false;
         if(reviewGeneration===storySessionGeneration&&auth.currentUser?.uid===reviewUid&&!recorded)document.getElementById('lessonQuizRequirements').textContent+=' We could not save that you revisited this lesson. You can still continue to practice.';
         return;
     }

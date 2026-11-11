@@ -23,5 +23,5 @@ export function classroomAssignmentEvidence(assignment,attempts,membership,userI
     if(valid.length!==relevant.length)return {unavailable:true,completed:false};
     const ordered=[...valid].sort((a,b)=>a.completedAt.toMillis()-b.completedAt.toMillis()||String(a.id).localeCompare(String(b.id)));
     const passed=ordered.find(a=>a.passed===true),latest=ordered.at(-1);
-    return {unavailable:false,completed:!!passed,completedAt:passed?.completedAt||null,bestScore:latest?.score??null,latest:latest?.score??null,attempted:ordered.length>0,passingAttemptId:passed?.id||null};
+    return {unavailable:false,completed:!!passed,completedAt:passed?.completedAt||null,bestScore:ordered.length?Math.max(...ordered.map(a=>a.score)):null,latest:latest?.score??null,attempted:ordered.length>0,passingAttemptId:passed?.id||null};
 }

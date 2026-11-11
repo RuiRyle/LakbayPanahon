@@ -55,9 +55,9 @@ fixtureRecords.set('artifacts/a1',{id:'a1',missionId:'mission-1',status:'active'
 const collection=(_,name)=>({name}),doc=(_,name,id)=>name+'/'+id;
 const where=(field,op,value)=>({field,value}),query=(ref,...filters)=>({...ref,filters});
 const getDoc=async key=>({id:key.split('/')[1],exists:()=>fixtureRecords.has(key),data:()=>fixtureRecords.get(key)});
-let fixtureLoadGate=null,fixtureSaveGate=null,fixtureLoadFailure=false;
+let fixtureLoadGate=null,fixtureSaveGate=null,fixtureLoadFailure=false,fixtureSubmitFailure=false;
 const getDocs=async ref=>{if(ref.name==='quizzes'&&!(ref.filters||[]).some(filter=>filter.field==='missionId'&&filter.value==='mission-1'))throw Error('Unscoped quiz read');if(fixtureLoadFailure)throw Error("Content unavailable");if(ref.name=== "questions" && fixtureLoadGate) await fixtureLoadGate;const docs=[...fixtureRecords].filter(([key,row])=>key.startsWith(ref.name+'/')&&(!ref.filters||ref.filters.every(f=>row[f.field]===f.value))).map(([key,row])=>({id:key.split('/')[1],data:()=>row}));return{docs,forEach:fn=>docs.forEach(fn)};};
-const runTransaction=async(_,fn)=>{const writes=[];const value=await fn({get:getDoc,set:(key,row)=>writes.push(()=>fixtureRecords.set(key,row)),update:(key,row)=>writes.push(()=>fixtureRecords.set(key,{...fixtureRecords.get(key),...row}))});writes.forEach(fn=>fn());if(fixtureSaveGate) await fixtureSaveGate;return value;};
+const runTransaction=async(_,fn)=>{if(fixtureSubmitFailure){fixtureSubmitFailure=false;throw Object.assign(Error('Simulated network unavailable'),{code:'unavailable'});}const writes=[];const value=await fn({get:getDoc,set:(key,row)=>writes.push(()=>fixtureRecords.set(key,row)),update:(key,row)=>writes.push(()=>fixtureRecords.set(key,{...fixtureRecords.get(key),...row}))});writes.forEach(fn=>fn());if(fixtureSaveGate) await fixtureSaveGate;return value;};
 const serverTimestamp=()=>({toMillis:()=>Date.now()});
 class LearningAccessError extends Error{}
 const requireLearningAccess=async()=>fixtureRecords.get('missions/mission-1');
@@ -180,7 +180,13 @@ async function answerSet(correct){
  first=questions.map(q=>q.id);
  retryQuizButton.click();await tick();
  check(questions.every(q=>!first.includes(q.id)),'Retry reused question set');
- await answerSet(3);
+ fixtureSubmitFailure=true;await answerSet(3);
+ const uncertainAttempt=currentAttemptId,uncertainAnswers=JSON.stringify(studentAnswers);
+ check(!quizSubmitted&&!nextQuestionButton.disabled&&quizResult.hidden,'Failed save must leave quiz open and retry enabled');
+ check(document.body.textContent.includes('could not confirm')&&document.body.textContent.includes('Keep this page open'),'Failed save needs clear uncertainty and recovery guidance');
+ check(fixtureDrafts.has('quizmission-1'),'Failed save must retain the quiz draft');
+ nextQuestionButton.click();document.querySelector('#flagReviewPanel button:last-child')?.click();await tick();
+ check(currentAttemptId===uncertainAttempt&&JSON.stringify(studentAnswers)===uncertainAnswers,'Retry must preserve attempt and answers');
  check(quizResultTitle.textContent.includes('Passed'),'Passing result not shown');
  await tick();const fieldNotes=document.getElementById('missionLearningSummary');check(fieldNotes&&fieldNotes.textContent.includes('What your quiz shows')&&fieldNotes.textContent.includes('What you can revisit'),'Mission learning summary missing');check(fieldNotes.querySelector('a[href*="reviewTopic="]'),'Learning summary omits topic-review action');check(!fieldNotes.querySelector('img'),'Summary interprets catalog text as HTML');check(fieldNotes.querySelector('.learning-summary-next')?.href.includes('chapter-challenge.html'),'All completed missions do not offer chapter challenge');
 
@@ -220,7 +226,7 @@ async function answerSet(correct){
  quizSubmitted=true;studentAnswers={};lockedAnswers={};
  questions=${JSON.stringify(require('../data/content-quality-fixes-migration.json').writes.filter(w=>w.fields.question).map(w=>({id:w.path.split('/')[1],...w.expected,...w.fields})))};
  for(let i=0;i<questions.length;i++){currentQuestionIndex=i;displayQuestion();check(questionText.textContent===questions[i].question,'Revised question text did not render');check(quizOptions.querySelectorAll('button').length===4,'Revised choices did not render');check([...quizOptions.querySelectorAll('button')].some(b=>b.textContent.includes(questions[i]['option'+questions[i].correctAnswer])),'Revised scoring answer lost');}
- document.getElementById('result').textContent='PASS: fail/retry/pass, rewards, load recovery, auth refresh and delayed load/save after sign-out';
+ document.getElementById('result').textContent='PASS: fail/retry/pass, rewards, failed-save recovery, load recovery, auth refresh and delayed load/save after sign-out';
 })().catch(error=>{document.getElementById('result').textContent='FAIL: '+error.message;});
 `;
 page=page.replace('</body>','<output id="result">RUNNING</output><script type="module">'+script+'</script></body>');

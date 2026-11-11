@@ -844,7 +844,7 @@ function renderMissionBriefing(){
  if(Number.isFinite(currentMission.xpReward)&&currentMission.xpReward>=0){const reward=document.createElement('span');reward.textContent='Up to '+currentMission.xpReward+' XP on first completion';requirements.append(reward);}
  add('p','Each question is a checkpoint in your mission. Answer one at a time. Your answers help choose which question comes next.');
  add('p','If you change an earlier answer, answers after it will be cleared so you can answer them again. Marking a question for review does not change your score.');
-  if(getAdaptiveQuestionLimit()>0)add('p','After the mission questions, you will try a few extra practice questions. These help you find topics to review. They do not change your mission score.','adaptive-quiz-note');
+  if(getAdaptiveQuestionLimit()>0)add('p','Your steps: answer '+questions.length+' quiz questions. Check your answers. Try '+getAdaptiveQuestionLimit()+' extra practice questions, then see your result. Only the quiz questions count toward your score.','adaptive-quiz-note');
  add('p','A successful attempt completes the mission. Replaying a completed mission does not award its XP again.','briefing-reward-note');
  const actions=document.createElement('div');actions.className='briefing-actions';const lesson=document.createElement('a');lesson.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId});lesson.textContent='Revisit Lesson';
  const begin=document.createElement('button');begin.type='button';begin.className='begin-mission-button';begin.textContent='Begin Expedition';begin.addEventListener('click',()=>{if(!currentUser||quizSubmitted)return;quizStarted=true;briefing.remove();questionCard.hidden=false;displayQuestion();questionText.tabIndex=-1;questionText.focus({preventScroll:true});});
@@ -1111,12 +1111,12 @@ function displayAdaptiveQuestion() {
         } else historicalClueText.textContent = '';
     }
 
-    questionProgress.textContent = `Personalized check ${adaptiveQuestionIndex + 1} of ${adaptiveQuestionLimit}`;
-    answeredProgress.textContent = 'This follow-up guides recommendations; it does not change your mission score.';
+    questionProgress.textContent = `Extra Practice: ${adaptiveQuestionIndex + 1} of ${adaptiveQuestionLimit}`;
+    answeredProgress.textContent = 'Only your '+questions.length+' quiz answers count toward your score. Finish this practice to see your result.';
     quizProgressFill.style.width = `${Math.round(100 * (questions.length + adaptiveQuestionIndex + (adaptiveFeedbackVisible ? 1 : 0)) / (questions.length + adaptiveQuestionLimit))}%`;
     nextQuestionButton.disabled = !adaptiveFeedbackVisible && !answer;
     nextQuestionButton.textContent = adaptiveFeedbackVisible
-        ? (adaptiveFollowupComplete ? 'Retry Save' : adaptiveQuestionIds.length < adaptiveQuestionLimit ? 'Next Personalized Check' : 'Finish & Save')
+        ? (adaptiveFollowupComplete ? 'Retry Save' : adaptiveQuestionIds.length < adaptiveQuestionLimit ? 'Next Practice Question' : 'Save & See My Result')
         : 'Check Answer';
     saveQuizDraftState();
 }
@@ -1687,21 +1687,21 @@ async function submitQuiz(flagsConfirmed=false) {
 
     if(!flagsConfirmed){
         const panel=document.getElementById('flagReviewPanel');
-        if(panel){panel.replaceChildren();panel.hidden=false;const title=document.createElement('h3');title.textContent='Your expedition journal';panel.append(title);const note=document.createElement('p');note.textContent='Check your choices before submitting. Select a question to change your answer. A review flag means you wanted another look; it does not mean your answer is wrong.';panel.append(note);
+        if(panel){panel.replaceChildren();panel.hidden=false;const title=document.createElement('h3');title.textContent='Check your quiz answers';panel.append(title);const note=document.createElement('p');note.textContent='You answered all '+questions.length+' quiz questions. Tap a question if you want to change your answer. A review mark is just a reminder.';panel.append(note);
         const answered=questions.filter(q=>['A','B','C','D'].includes(studentAnswers[q.id])).length;
         const summary=document.createElement('p');summary.className='quiz-journal-summary';summary.textContent=answered+' of '+questions.length+' answered ? '+questions.filter(q=>flaggedQuestions.has(q.id)).length+' marked for review';panel.append(summary);
         questions.forEach((question,index)=>{
             const button=document.createElement('button');button.type='button';button.className='quiz-journal-question';
             const answer=studentAnswers[question.id];const valid=['A','B','C','D'].includes(answer);
             button.dataset.flagged=String(flaggedQuestions.has(question.id));button.dataset.answered=String(valid);
-            const label=document.createElement('strong');label.textContent='Question '+(index+1)+(flaggedQuestions.has(question.id)?' ? Review flag':'');
+            const label=document.createElement('strong');label.textContent='Question '+(index+1)+(flaggedQuestions.has(question.id)?' ? Review marked':'');
             const prompt=document.createElement('span');prompt.textContent=question.question;
             const choice=document.createElement('span');choice.className='quiz-journal-choice';choice.textContent=valid?'Your choice: '+answer+' ? '+(question['option'+answer]||''):'Not answered yet';
             button.append(label,prompt,choice);
             button.addEventListener('click',()=>{currentQuestionIndex=index;displayQuestion();questionText.tabIndex=-1;questionText.focus({preventScroll:true});});panel.append(button);
         });
-        if(getAdaptiveQuestionLimit()>0){const adaptiveNote=document.createElement('p');adaptiveNote.className='adaptive-quiz-note';adaptiveNote.textContent='Next, try a few extra practice questions to find topics you can review. They do not change your mission score.';panel.append(adaptiveNote);}
-        const confirm=document.createElement('button');confirm.type='button';confirm.textContent=getAdaptiveQuestionLimit()>0?'Continue to Personalized Check':'Submit Answers';confirm.disabled=!questions.every(q=>['A','B','C','D'].includes(studentAnswers[q.id]));confirm.addEventListener('click',async ()=>{panel.hidden=true;(await submitQuiz(true));});panel.append(confirm);title.tabIndex=-1;title.focus();return;}
+        if(getAdaptiveQuestionLimit()>0){const adaptiveNote=document.createElement('p');adaptiveNote.className='adaptive-quiz-note';adaptiveNote.textContent='Next: '+getAdaptiveQuestionLimit()+' short practice question'+(getAdaptiveQuestionLimit()===1?'':'s')+'. These do not change your quiz score. After practice, choose Save & See My Result.';panel.append(adaptiveNote);}
+        const confirm=document.createElement('button');confirm.type='button';confirm.textContent=getAdaptiveQuestionLimit()>0?'Start Extra Practice ('+getAdaptiveQuestionLimit()+')':'Save & See My Result';confirm.disabled=!questions.every(q=>['A','B','C','D'].includes(studentAnswers[q.id]));confirm.addEventListener('click',async ()=>{panel.hidden=true;(await submitQuiz(true));});panel.append(confirm);title.tabIndex=-1;title.focus();return;}
     }
     quizSubmitted =
         true;

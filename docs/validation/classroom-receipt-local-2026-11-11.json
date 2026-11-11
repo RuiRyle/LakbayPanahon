@@ -1,0 +1,17 @@
+{
+  "verifiedAt": "2026-11-10T16:22:03.374Z",
+  "pass": true,
+  "mode": "actual local Functions, Firestore and Auth; temporary fixture only",
+  "checks": [
+    "concurrent completed submissions return an identical receipt",
+    "concurrent classroom submission completes successfully",
+    "replayed completion preserves receipt and does not award XP again",
+    "concurrent submission writes one public quiz attempt"
+  ],
+  "cleanupCompleted": true,
+  "limits": [
+    "Owner REST seeds mutations; does not certify teacher UI/security rules for each mutation",
+    "Answers supplied programmatically; not a learner usability test",
+    "Replayed requests simulate a lost response; not an actual network disconnection"
+  ]
+}

@@ -19,3 +19,15 @@ body.lakbay-theme.paper-reading .story-reading-content select option{background:
 /* Some legacy page rules mark nested labels important; inherit the action's paired text color. */
 body.lakbay-theme :is(.primary-action-button,.journey-action-button,.daily-challenge-start,.profile-edit-button) :is(span,strong,small),
 body.lakbay-theme :is(.quiz-option,.challenge-option,.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice):is(.selected,[aria-pressed=true],.correct,.incorrect) :is(span,strong,small){color:inherit!important;}
+/* Quiz reading surfaces: keep text paired with navy panels, including legacy hint copy. */
+body.lakbay-theme[data-role=student] :is(.quiz-mission-briefing,.flag-review-panel,.adaptive-followup-intro,.adaptive-quiz-note,.adaptive-result-summary){background:#142e49;background-image:none;border-color:#627e97;color:#e4edf5;}
+body.lakbay-theme[data-role=student] :is(.quiz-mission-briefing h2,.quiz-mission-briefing h3,.flag-review-panel h3,.adaptive-followup-intro strong){color:#f1d797;}
+body.lakbay-theme[data-role=student] :is(.quiz-mission-briefing>p,.quiz-mission-briefing ul,.quiz-mission-briefing li,.quiz-mission-briefing .briefing-reward-note,.flag-review-panel p,.adaptive-followup-intro p,.adaptive-quiz-note,.adaptive-result-summary){color:#d5e2ee;}
+body.lakbay-theme[data-role=student] :is(.quiz-mission-briefing .eyebrow,.adaptive-followup-kicker,.briefing-actions a){color:#f1d797;}
+body.lakbay-theme[data-role=student] :is(.briefing-requirements span,.quiz-review-tools button,.flag-review-panel button.quiz-journal-question,.flag-review-panel .quiz-journal-summary){background:#1b3a57;background-image:none;border-color:#6c879f;color:#e4edf5;}
+body.lakbay-theme[data-role=student] .flag-review-panel button.quiz-journal-question[data-flagged=true]{background:#34403d;color:#f5dfaa;border-color:#d7b568;}
+body.lakbay-theme[data-role=student] .quiz-journal-question :is(strong,span,.quiz-journal-choice){color:inherit;}
+body.lakbay-theme[data-role=student] :is(.mission-checkpoint-label,.mission-checkpoint .checkpoint-state,#answeredProgress,.quiz-review-tools span){color:#d5e2ee;}
+body.lakbay-theme[data-role=student] :is(.learning-summary-block p,.learning-summary-block li,.mission-learning-summary p){color:#d5e2ee;}
+body.lakbay-theme[data-role=student] :is(.begin-mission-button,#nextQuestionButton):not(:disabled){background:#e6c475;background-image:none;border-color:#e6c475;color:#12243a;}
+body.lakbay-theme[data-role=student] :is(.begin-mission-button,#nextQuestionButton):not(:disabled) :is(span,strong,small){color:inherit;}

@@ -437,7 +437,7 @@ function renderGuidedPracticeIntro(mission,resume) {
     const intro=document.createElement('section');intro.id='guidedPracticeIntro';intro.className='guided-practice-intro';intro.setAttribute('aria-labelledby','guidedPracticeTitle');
     const add=(tag,value)=>{const el=document.createElement(tag);el.textContent=value;intro.append(el);return el;};
     const topic=allPracticeQuestions.find(q=>q.topic?.trim()===requestedTopic);
-    add('span','UNDERSTAND ? PRACTISE ? TRY AGAIN').className='eyebrow';
+    add('span','REVIEW LESSON / PRACTICE / RETRY QUIZ').className='eyebrow';
     const title=add('h2',topic?.topicLabel||topic?.topic||'Your personalized review');title.id='guidedPracticeTitle';title.tabIndex=-1;
     const evidence=missionReviewTopics(missionQuizAttempts,previousSessions,allPracticeQuestions,lessonReviewEvents).find(t=>t.topic===requestedTopic);
     add('p',evidence?.source==='quiz'?'Your saved mission quiz recommended this topic for review. Take a moment to revisit the lesson before answering new practice questions.':evidence?'Your saved practice suggests another look at this topic. Review the lesson ideas, then practise at your own pace.':'You chose to review this topic. Revisit the lesson ideas, then practise when you feel ready.');
@@ -446,7 +446,7 @@ function renderGuidedPracticeIntro(mission,resume) {
     add('p','Practice adjusts difficulty as you answer and explains your mistakes. It does not award mission XP or complete the mission.');
     const actions=document.createElement('div');actions.className='guided-practice-actions';
     const lesson=document.createElement('a');lesson.textContent='Review Lesson';lesson.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,...(requestedTopic?{reviewTopic:requestedTopic}:{})});lesson.className='text-button';
-    const begin=document.createElement('button');begin.type='button';begin.className='begin-mission-button';begin.textContent='Start Targeted Practice';
+    const begin=document.createElement('button');begin.type='button';begin.className='begin-mission-button';begin.textContent='Start Practice';
     begin.addEventListener('click',()=>{intro.remove();practiceQuestionCard.hidden=false;practiceQuestion.tabIndex=-1;practiceQuestion.focus({preventScroll:true});});
     actions.append(lesson,begin);intro.append(actions);practiceQuestionCard.hidden=true;practiceContent.prepend(intro);title.focus({preventScroll:true});
 }
@@ -542,8 +542,8 @@ async function loadPractice() {
         if (practiceQuestions.length === 0) {
 
             showError(
-                requestedTopic ? "This topic has no active practice questions. Return to your dashboard to choose another topic."
-                    : "No practice questions are available for this mission yet."
+                requestedTopic ? "Practice for this topic is not available yet. Choose Review Lesson below, or Retry Mission Quiz When Ready."
+                    : "Practice for this mission is not available yet. Choose Review Lesson below, or Retry Mission Quiz When Ready."
             );
 
             return;
