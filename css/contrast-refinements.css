@@ -31,3 +31,14 @@ body.lakbay-theme[data-role=student] :is(.mission-checkpoint-label,.mission-chec
 body.lakbay-theme[data-role=student] :is(.learning-summary-block p,.learning-summary-block li,.mission-learning-summary p){color:#d5e2ee;}
 body.lakbay-theme[data-role=student] :is(.begin-mission-button,#nextQuestionButton):not(:disabled){background:#e6c475;background-image:none;border-color:#e6c475;color:#12243a;}
 body.lakbay-theme[data-role=student] :is(.begin-mission-button,#nextQuestionButton):not(:disabled) :is(span,strong,small){color:inherit;}
+/* Completed assessment reviews must not mix legacy paper colors with navy text. */
+body.lakbay-theme[data-role=student] :is(.quiz-review-answer,.challenge-review-answer).correct{background:#103b3d;color:#d4f7e7;}
+body.lakbay-theme[data-role=student] :is(.quiz-review-answer,.challenge-review-answer).incorrect{background:#412942;color:#ffe0e6;}
+body.lakbay-theme[data-role=student] :is(.quiz-review-answer,.challenge-review-answer) :is(span,strong){color:inherit!important;}
+body.lakbay-theme[data-role=student] :is(.quiz-review-item,.challenge-review-item).correct :is(.quiz-review-status,.challenge-review-status){color:#b1f7da;}
+body.lakbay-theme[data-role=student] :is(.quiz-review-item,.challenge-review-item).incorrect :is(.quiz-review-status,.challenge-review-status){color:#ffced8;}
+body.lakbay-theme[data-role=student] :is(.quiz-review-explanation,.challenge-review-explanation){background:#142e49;background-image:none;color:#e4edf5;}
+body.lakbay-theme[data-role=student] :is(.quiz-review-explanation,.challenge-review-explanation) strong{color:#f1d797;}
+body.lakbay-theme[data-role=student] :is(.quiz-review-explanation,.challenge-review-explanation) p{color:#e4edf5;}
+/* Letter badges have their own surface: inheriting a selected button's text is unsafe. */
+body.lakbay-theme[data-role=student] :is(.quiz-option,.practice-option,.challenge-option):is(.selected,.correct,.incorrect) :is(.quiz-option-letter,.practice-option-letter,.challenge-option-letter){background:#24466e;color:#f1d797!important;}
