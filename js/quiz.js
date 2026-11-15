@@ -745,7 +745,7 @@ currentAttemptId = null;
             0;
 
 
-        if(securedQuiz){studentAnswers={...issued.answers};quizStarted=Object.keys(issued.answers).length>0;currentQuestionIndex=Math.min(Object.keys(issued.answers).length,questions.length-1);if(issued.followupStarted){adaptiveFollowupStarted=true;adaptiveQuestionLimit=issued.followupLimit;adaptiveQuestionIds=issued.followupQuestions.map(q=>q.id);adaptiveAnswers={...issued.followupAnswers};adaptiveQuestionIndex=Math.max(0,adaptiveQuestionIds.length-1);adaptiveCurrentQuestion=issued.followupQuestions.at(-1)||null;adaptiveFeedbackVisible=!!adaptiveAnswers[adaptiveCurrentQuestion?.id];adaptiveQuestionPool=issued.followupQuestions;}}
+        if(securedQuiz){studentAnswers={...issued.answers};quizStarted=Object.keys(issued.answers).length>0;currentQuestionIndex=Math.min(Object.keys(issued.answers).length,questions.length-1);}
         const currentDraftVersion = quizDraftVersion(currentQuiz, questions, adaptiveQuestionPool, missionQuestionBank);
         const canResumeDraft = !securedQuiz && savedDraft?.version === currentDraftVersion && savedDraft?.attemptId === currentAttemptId &&
             JSON.stringify(savedDraft.questionIds) === JSON.stringify(questions.map(q => q.id));
@@ -759,33 +759,12 @@ currentAttemptId = null;
                 }
             }
             if (Number.isInteger(savedDraft.index)) currentQuestionIndex = Math.max(0, Math.min(savedDraft.index, questions.length - 1));
-            const savedAdaptiveIds = Array.isArray(savedDraft.adaptiveQuestionIds) ? savedDraft.adaptiveQuestionIds : [];
-            if (savedDraft.adaptiveFollowupStarted === true && savedAdaptiveIds.length > 0 &&
-                new Set(savedAdaptiveIds).size === savedAdaptiveIds.length &&
-                savedAdaptiveIds.every(id => adaptiveQuestionPool.some(question => question.id === id))) {
-                adaptiveFollowupStarted = true;
-                adaptiveQuestionIds = [...savedAdaptiveIds];
-                adaptiveQuestionIndex = Math.max(0, Math.min(Number(savedDraft.adaptiveQuestionIndex) || 0, adaptiveQuestionIds.length - 1));
-                adaptiveQuestionLimit = getAdaptiveQuestionLimit();
-                adaptiveDifficultyLevels = getAdaptiveDifficultyLevels();
-                adaptiveAnswers = Object.fromEntries(Object.entries(savedDraft.adaptiveAnswers || {})
-                    .filter(([id, answer]) => adaptiveQuestionIds.includes(id) && ['A','B','C','D'].includes(answer)));
-                adaptiveCurrentQuestion = adaptiveQuestionPool.find(question => question.id === adaptiveQuestionIds[adaptiveQuestionIndex]) || null;
-                adaptiveSelectedAnswer = ['A','B','C','D'].includes(savedDraft.adaptiveSelectedAnswer) ? savedDraft.adaptiveSelectedAnswer : null;
-                adaptiveFeedbackVisible = savedDraft.adaptiveFeedbackVisible === true && Boolean(adaptiveAnswers[adaptiveCurrentQuestion?.id]);
-                adaptiveFollowupComplete = savedDraft.adaptiveFollowupComplete === true;
-                adaptiveTargetDifficulty = adaptiveDifficultyLevels.includes(savedDraft.adaptiveTargetDifficulty)
-                    ? savedDraft.adaptiveTargetDifficulty : getInitialAdaptiveDifficulty(diagnoseMissionTopics(questions, studentAnswers));
-                adaptiveTopicWeights = savedDraft.adaptiveTopicWeights && typeof savedDraft.adaptiveTopicWeights === 'object'
-                    ? {...savedDraft.adaptiveTopicWeights} : makeAdaptiveTopicWeights(diagnoseMissionTopics(questions, studentAnswers));
-                adaptiveTopicAttempts = savedDraft.adaptiveTopicAttempts && typeof savedDraft.adaptiveTopicAttempts === 'object'
-                    ? {...savedDraft.adaptiveTopicAttempts} : {};
-            }
+            // Legacy extra-practice drafts resume their main answers for review.
             if (savedDraft.missionTopicMastery && typeof savedDraft.missionTopicMastery === 'object' && !Array.isArray(savedDraft.missionTopicMastery)) {
                 missionTopicMastery = {...savedDraft.missionTopicMastery};
             }
         }
-        if (savedDraft && savedDraft.attemptId === currentAttemptId && savedDraft.version !== currentDraftVersion) {
+        if (!securedQuiz && savedDraft && savedDraft.attemptId === currentAttemptId && savedDraft.version !== currentDraftVersion) {
             const resumeNotice = document.getElementById("quizSetNotice");
             if (resumeNotice) resumeNotice.textContent += " The quiz content changed, so your saved answers have been reset. Completed progress and rewards are unchanged.";
         }
@@ -796,8 +775,7 @@ currentAttemptId = null;
         if(savedDraft&&savedDraft.attemptId!==currentAttemptId){const note=document.getElementById('quizSetNotice');if(note)note.textContent+=' Please restart this unfinished quiz with verified saving. Your completed missions and earned rewards are still saved.';}
         quizDraftReady = true;
         restartQuizButton.hidden = !savedDraft;
-        if (adaptiveFollowupStarted && adaptiveCurrentQuestion) displayAdaptiveQuestion();
-        else displayQuestion();
+        displayQuestion();
         renderMissionBriefing();
 
         quizLoading.hidden =
@@ -809,6 +787,7 @@ currentAttemptId = null;
         quizContent.hidden =
             false;
         if(securedQuiz&&issued.result){adaptiveFollowupComplete=true;await submitQuiz(true);}
+        else if(securedQuiz&&issued.followupStarted){await submitQuiz();}
 
 
     } catch (error) {
@@ -844,7 +823,7 @@ function renderMissionBriefing(){
  if(Number.isFinite(currentMission.xpReward)&&currentMission.xpReward>=0){const reward=document.createElement('span');reward.textContent='Up to '+currentMission.xpReward+' XP on first completion';requirements.append(reward);}
  add('p','Each question is a checkpoint in your mission. Answer one at a time. Your answers help choose which question comes next.');
  add('p','If you change an earlier answer, answers after it will be cleared so you can answer them again. Marking a question for review does not change your score.');
-  if(getAdaptiveQuestionLimit()>0)add('p','Your steps: answer '+questions.length+' quiz questions. Check your answers. Try '+getAdaptiveQuestionLimit()+' extra practice questions, then see your result. Only the quiz questions count toward your score.','adaptive-quiz-note');
+  add('p','Your steps: answer '+questions.length+' quiz questions. Check your answers, then save to see your result. Lesson review and extra practice come after saving.','adaptive-quiz-note');
  add('p','A successful attempt completes the mission. Replaying a completed mission does not award its XP again.','briefing-reward-note');
  const actions=document.createElement('div');actions.className='briefing-actions';const lesson=document.createElement('a');lesson.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId});lesson.textContent='Revisit Lesson';
  const begin=document.createElement('button');begin.type='button';begin.className='begin-mission-button';begin.textContent='Begin Expedition';begin.addEventListener('click',()=>{if(!currentUser||quizSubmitted)return;quizStarted=true;briefing.remove();questionCard.hidden=false;displayQuestion();questionText.tabIndex=-1;questionText.focus({preventScroll:true});});
@@ -1682,8 +1661,6 @@ async function submitQuiz(flagsConfirmed=false) {
 
     }
 
-    if(flagsConfirmed&&!adaptiveFollowupStarted&&!adaptiveFollowupComplete){try{if(securedQuiz?await startSecuredFollowup():startAdaptiveFollowup())return;}catch(error){(await appAlert(error.message));return;}}
-
 
     if(!flagsConfirmed){
         const panel=document.getElementById('flagReviewPanel');
@@ -1700,8 +1677,8 @@ async function submitQuiz(flagsConfirmed=false) {
             button.append(label,prompt,choice);
             button.addEventListener('click',()=>{currentQuestionIndex=index;displayQuestion();questionText.tabIndex=-1;questionText.focus({preventScroll:true});});panel.append(button);
         });
-        if(getAdaptiveQuestionLimit()>0){const adaptiveNote=document.createElement('p');adaptiveNote.className='adaptive-quiz-note';adaptiveNote.textContent='Next: '+getAdaptiveQuestionLimit()+' short practice question'+(getAdaptiveQuestionLimit()===1?'':'s')+'. These do not change your quiz score. After practice, choose Save & See My Result.';panel.append(adaptiveNote);}
-        const confirm=document.createElement('button');confirm.type='button';confirm.textContent=getAdaptiveQuestionLimit()>0?'Start Extra Practice ('+getAdaptiveQuestionLimit()+')':'Save & See My Result';confirm.disabled=!questions.every(q=>['A','B','C','D'].includes(studentAnswers[q.id]));confirm.addEventListener('click',async ()=>{panel.hidden=true;(await submitQuiz(true));});panel.append(confirm);title.tabIndex=-1;title.focus();return;}
+        const saveNote=document.createElement('p');saveNote.className='adaptive-quiz-note';saveNote.textContent='Save these answers to see your score. You can review the lesson and try practice after your result is saved.';panel.append(saveNote);
+        const confirm=document.createElement('button');confirm.type='button';confirm.textContent='Save & See My Result';confirm.disabled=!questions.every(q=>['A','B','C','D'].includes(studentAnswers[q.id]));confirm.addEventListener('click',async ()=>{panel.hidden=true;(await submitQuiz(true));});panel.append(confirm);title.tabIndex=-1;title.focus();return;}
     }
     quizSubmitted =
         true;
@@ -1745,7 +1722,8 @@ if (!isCurrent()) return;
 quizDraftReady = false;
 if (saveStatus) saveStatus.textContent = completionResult.preview ? 'Preview result only. No score, completion or reward was saved.' : 'Your quiz result is saved.';
 restartQuizButton.hidden = true;
-await quizDraft?.clear().catch(() => {});
+// The official receipt is already committed. Draft cleanup must not delay it.
+void quizDraft?.clear().catch(() => {});
 if (!isCurrent()) return;
 console.log(
     "Mission Quiz full completion result:",

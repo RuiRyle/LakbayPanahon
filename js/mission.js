@@ -779,7 +779,7 @@ function displayMissionPath(
                 item.innerHTML = `
 
                     <div class="mission-path-node">
-                        ${isSelected ? "🧭" : "✓"}
+                        ${isSelected ? "" : "✓"}
                     </div>
 
                     <div class="mission-path-content">
@@ -812,7 +812,7 @@ function displayMissionPath(
                         >
                             ${
                                 isSelected
-                                    ? "🧭 Reviewing Mission"
+                                    ? " Reviewing Mission"
                                     : "✓ Completed"
                             }
                         </span>
@@ -846,7 +846,7 @@ function displayMissionPath(
                 item.innerHTML = `
 
                     <div class="mission-path-node">
-                        🧭
+                        <span class="interface-icon interface-icon--compass" aria-hidden="true"></span>
                     </div>
 
                     <div class="mission-path-content">
@@ -873,7 +873,7 @@ function displayMissionPath(
                         <span
                             class="mission-state-chip current-chip"
                         >
-                            🧭 Current Mission
+                             Current Mission
                         </span>
 
                     </div>
@@ -904,7 +904,7 @@ function displayMissionPath(
                 item.innerHTML = `
 
                     <div class="mission-path-node">
-                        🔓
+                        <span class="interface-icon interface-icon--key-round" aria-hidden="true"></span>
                     </div>
 
                     <div class="mission-path-content">
@@ -931,7 +931,7 @@ function displayMissionPath(
                         <span
                             class="mission-state-chip unlocked-chip"
                         >
-                            🔓 Unlocked
+                             Unlocked
                         </span>
 
                     </div>
@@ -965,7 +965,7 @@ function displayMissionPath(
                 item.innerHTML = `
 
                     <div class="mission-path-node">
-                        🔒
+                        <span class="interface-icon interface-icon--lock" aria-hidden="true"></span>
                     </div>
 
                     <div class="mission-path-content">
@@ -990,7 +990,7 @@ function displayMissionPath(
                         <span
                             class="mission-state-chip locked-chip"
                         >
-                            🔒 Locked
+                             Locked
                         </span>
 
                     </div>
@@ -1027,7 +1027,7 @@ function displayMissionPath(
         challengeItem.innerHTML = `
 
             <div class="mission-path-node">
-                🏆
+                <span class="interface-icon interface-icon--trophy" aria-hidden="true"></span>
             </div>
 
             <div class="mission-path-content">
@@ -1057,7 +1057,7 @@ function displayMissionPath(
 >
     ${isChapterChallengeCompleted
         ? "✓ Chapter Completed"
-        : "🏆 Ready for Final Challenge"}
+        : " Ready for Final Challenge"}
 </span>
 
             </div>
@@ -1125,7 +1125,7 @@ function displayMissionPath(
         challengeItem.innerHTML = `
 
             <div class="mission-path-node">
-                🔒
+                <span class="interface-icon interface-icon--lock" aria-hidden="true"></span>
             </div>
 
             <div class="mission-path-content">
@@ -1145,7 +1145,7 @@ function displayMissionPath(
                 <span
                     class="mission-state-chip locked-chip"
                 >
-                    🔒 Final Challenge Locked
+                     Final Challenge Locked
                 </span>
 
             </div>

@@ -129,7 +129,7 @@ async function loadCollection(user, view) {
 const supportedBadgeRarities = new Set(["common", "uncommon", "rare", "epic", "legendary", "special"]);
 function createBadgeCard(badge) {
     const card = document.createElement("article"); card.className = "achievement-badge-card";
-    const icon = document.createElement("div"); icon.className = "achievement-badge-icon"; icon.textContent = badge.icon || "🏅";
+    const icon = document.createElement("div"); icon.className = "achievement-badge-icon"; icon.innerHTML = '<span class="interface-icon interface-icon--trophy" aria-hidden="true"></span>';
     const content = document.createElement("div"); content.className = "achievement-badge-content";
     const rarity = document.createElement("span"); rarity.className = "achievement-badge-rarity";
     const rarityValue = String(badge.rarity || "achievement").trim().toLowerCase();

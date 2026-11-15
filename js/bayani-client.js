@@ -1,3 +1,4 @@
+import {sharedAppCheck,verifyAppCheck} from './app-verification.js';
 ﻿import {app,auth,db} from './firebase-config.js';
 import {doc,getDocFromServer} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 import {createBayaniBackendClient,validateBayaniBackendEndpoint} from './bayani-backend-client.js';
@@ -18,17 +19,9 @@ export async function connectBayani() {
     if(provider==='anthropic') validateBayaniBackendEndpoint(settings.backendEndpoint);
     else if(typeof settings.model!=='string'||!settings.model.trim()||typeof settings.systemInstruction!=='string'||!settings.systemInstruction.trim()) throw Error('Bayani AI settings are incomplete. Please try again later.');
     if(!settings.appCheckSiteKey)throw Error('Bayani AI is still being connected. Please try again later.');
-    // Explicit opt-in for this local browser tab; never activate debug mode on a hosted domain.
-    const localHost = ['localhost','127.0.0.1','[::1]'].includes(globalThis.location?.hostname);
-    let debugRequested=false;
-    try { debugRequested=localHost&&globalThis.sessionStorage?.getItem('bayaniAppCheckDebug')==='true'; } catch { /* Optional local preference; ordinary App Check still applies. */ }
-    if(debugRequested) {
-        globalThis.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
-    }
-    const {initializeAppCheck,ReCaptchaEnterpriseProvider,getToken}=await import('https://www.gstatic.com/firebasejs/12.4.0/firebase-app-check.js');
-    if(!connectBayani.appCheck)connectBayani.appCheck=initializeAppCheck(app,{provider:new ReCaptchaEnterpriseProvider(settings.appCheckSiteKey),isTokenAutoRefreshEnabled:true});
+    const appCheck=sharedAppCheck(settings.appCheckSiteKey);
     if(auth.currentUser?.uid!==uid)throw Error('Your session changed. Please reconnect.');
-    if(provider==='anthropic') return createBayaniBackendClient({auth,appCheck:connectBayani.appCheck,getAppCheckToken:getToken,settings});
+    if(provider==='anthropic') return createBayaniBackendClient({auth,appCheck,getAppCheckToken:(_instance,force)=>verifyAppCheck(settings.appCheckSiteKey,force),settings});
     const sdk=await import('https://www.gstatic.com/firebasejs/12.4.0/firebase-ai.js');
     if(auth.currentUser?.uid!==uid)throw Error('Your session changed. Please reconnect.');
     return createFirebaseBayaniClient({sdk,settings,user:auth.currentUser});

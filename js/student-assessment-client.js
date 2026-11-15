@@ -1,14 +1,15 @@
 import { app, auth, db } from './firebase-config.js';
 import { getFunctions, connectFunctionsEmulator, httpsCallable } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-functions.js';
-import { initializeAppCheck, ReCaptchaEnterpriseProvider, getToken } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-app-check.js';
+import {sharedAppCheck,verifyAppCheck} from './app-verification.js';
 import { doc, getDocFromServer } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 import { firebaseEnvironment } from './firebase-environment.js';
 let functions = getFunctions(app, 'asia-southeast1');
 if (firebaseEnvironment?.mode === 'emulator') connectFunctionsEmulator(functions, '127.0.0.1', 5001);
 const attempts = new Map(),
+  issuanceRequests = new Map(),
   pendingActions = new Map();
 let ready;
-let assessmentAppCheck;
+let assessmentSiteKey;
 async function prepare() {
   if (firebaseEnvironment?.mode === 'emulator') return;
   const [snapshot,assessment] = await Promise.all([getDocFromServer(doc(db, 'learningSettings', 'bayaniAI')),getDocFromServer(doc(db,'learningSettings','securedAssessment'))]),
@@ -20,16 +21,8 @@ async function prepare() {
     functions=getFunctions(app,endpoint);
   }
   if (typeof siteKey !== 'string' || !siteKey) throw Error('Assessment verification is unavailable. Please try again later.');
-  try {
-    assessmentAppCheck = initializeAppCheck(app, {
-      provider: new ReCaptchaEnterpriseProvider(siteKey),
-      isTokenAutoRefreshEnabled: true
-    });
-  } catch (error) {
-    if (error.code !== 'appCheck/already-initialized') throw error;
-    // Another feature already initialized this app. The Functions SDK uses
-    // that existing provider; do not replace Bayani's App Check configuration.
-  }
+  assessmentSiteKey=siteKey;
+  sharedAppCheck(siteKey);
 }
 function key(identity) {
   const context=classroomIdentity(identity).classroom;
@@ -53,14 +46,8 @@ async function call(name, data) {
   await ready;
   // The Functions SDK sends this token automatically. Fail before issuance if
   // attestation is unavailable; never substitute a debug token in production.
-  if (firebaseEnvironment?.mode !== 'emulator' && assessmentAppCheck) {
-    try {
-      const attestation = await getToken(assessmentAppCheck, false);
-      if (!attestation?.token) throw Error('Missing attestation');
-    } catch {
-      throw Error('App verification is unavailable. Please try again later.');
-    }
-  }
+  if (firebaseEnvironment?.mode !== 'emulator') await verifyAppCheck(assessmentSiteKey);
+  if (auth.currentUser?.uid !== uid) throw Error('Your account changed. Reopen the activity.');
   try {
     const result = (await httpsCallable(functions, name)(data)).data;
     if (auth.currentUser?.uid !== uid) throw Error('Your account changed. Reopen the activity.');
@@ -95,7 +82,7 @@ export async function beginAssessment(identity, {
         attemptId: attemptId || cached.attemptId
       });
       if(JSON.stringify(state.classroom?{classId:state.classroom.classId,assignmentId:state.classroom.assignmentId}:null)!==JSON.stringify(identity.classroom||null))throw Object.assign(Error('Reopen this assignment from My Class.'),{code:'assessment/restart-required'});
-      if (!state.result || (completedReview && !identity.classroom)) {
+      if (!state.result || completedReview) {
         attempts.set(key(identity), state);
         return state;
       }
@@ -105,7 +92,10 @@ export async function beginAssessment(identity, {
       cached = null;
     }
   }
-  const request = requestId || !retry && cached?.requestId || crypto.randomUUID();
+  const request = requestId || !retry && (cached?.requestId || issuanceRequests.get(storageKey)) || crypto.randomUUID();
+  // Keep the same issuance request after a lost response even when browser
+  // storage is blocked. A retry must not create another server attempt.
+  issuanceRequests.set(storageKey, request);
   try {
     sessionStorage.setItem(storageKey, JSON.stringify({
       requestId: request
@@ -115,6 +105,7 @@ export async function beginAssessment(identity, {
     ...identity,
     requestId: request
   });
+  issuanceRequests.delete(storageKey);
   attempts.set(key(identity), state);
   try {
     sessionStorage.setItem(storageKey, JSON.stringify({
@@ -164,6 +155,7 @@ export async function submitAssessment(identity) {
 }
 export function forgetAssessment(identity) {
   attempts.delete(key(identity));
+  issuanceRequests.delete('securedAssessment:' + key(identity));
   try {
     sessionStorage.removeItem('securedAssessment:' + key(identity));
   } catch {}

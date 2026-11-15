@@ -5,7 +5,7 @@ import { mountLearningNavigation } from "./learning-navigation.js";
 import { missionReviewTopics, missionTopicStates, requirePracticePolicy } from "./mission-review.js";
 import { requestAiAssistance, aiAssistanceAvailable } from "./ai-assistance-client.js";
 import { requireLearningAccess, LearningAccessError } from "./learning-access.js";
-import { reviewTopicsFromHistory, renderReviewTopics,practiceMisconceptionSupport,renderPracticeMisconceptionClue,summarizePracticeHints } from "./practice-review.js";
+import { reviewTopicsFromHistory, renderReviewTopics,retiredPracticeActivity,renderRetiredPractice,practiceMisconceptionSupport,practiceRetryHint,renderPracticeMisconceptionClue,summarizePracticeHints } from "./practice-review.js";
 
 import { db, auth } from "./firebase-config.js";
 
@@ -109,6 +109,7 @@ const reviewMode = document.getElementById("practiceReviewMode");
 
 let practiceQuestions = [];
 let allPracticeQuestions = [];
+let practiceHistoryCatalog = [];
 let remainingQuestions = [];
 let currentQuestion = null;
 
@@ -297,10 +298,13 @@ function analyzePracticeHistory() {
 
 function renderPracticeReview() {
     const topics = missionReviewTopics(missionQuizAttempts, previousSessions, allPracticeQuestions, lessonReviewEvents);
+    const historical = retiredPracticeActivity(previousSessions, practiceHistoryCatalog, currentUser?.uid);
     renderReviewTopics(reviewContainer, topics, new Map([[missionId, chapterId]]),
         practiceHistoryUnavailable ? "Saved review topics are temporarily unavailable. You can still complete practice."
+            : historical.length ? "No current-question review topics are shown. Your earlier practice appears below."
             : previousSessions.length ? "Your latest saved attempts show no topics needing extra review."
             : "Finish practice to start tracking topics for review.");
+    renderRetiredPractice(reviewContainer, historical);
     const focus = requestedTopic ? allPracticeQuestions.find(question =>
         typeof question.topic === "string" && question.topic.trim() === requestedTopic) : null;
     const label = focus?.topicLabel || focus?.topic;
@@ -512,6 +516,7 @@ async function loadPractice() {
                 (Number(b.order) || 0)
             );
 
+        practiceHistoryCatalog = allQuestions.filter(question => question.missionId === missionId);
         allPracticeQuestions = [...practiceQuestions];
         await loadPracticeHistory();
         if (!isCurrent()) return;
@@ -915,6 +920,7 @@ function handleIncorrectAnswer(
     chosenAnswer
 ) {
     lastIncorrectAnswer = chosenAnswer;
+    practiceFeedback.querySelector('.practice-misconception-coaching')?.remove();
 
     questionMastered = false;
 
@@ -950,11 +956,9 @@ function handleIncorrectAnswer(
         "Not quite yet.";
 
     // Authors can provide a hint without exposing the full solution.
-    const hint = [question.answerHints?.[chosenAnswer], question.hint, question.historicalClue, question.explanation]
-        .find(value => typeof value === "string" && value.trim());
-    practiceExplanation.textContent = hint?.trim() || "Revisit the lesson, then compare the remaining choices. You can try again.";
+    practiceExplanation.textContent = 'Hint: ' + practiceRetryHint(question,chosenAnswer);
 
-    const support=['prologue-mission1','chapter3-mission1'].includes(missionId)?practiceMisconceptionSupport(question,chosenAnswer,missionId):null;
+    const support=practiceMisconceptionSupport(question,chosenAnswer,missionId);
     if(support){practiceExplanation.textContent='Why this choice needs another look: '+support.reason;renderPracticeMisconceptionClue(practiceFeedback,support,chapterId,missionId);}
     selectedAnswer = null;
 
@@ -1227,6 +1231,7 @@ onAuthStateChanged(auth, (user) => {
         remainingQuestions = [];
         previousSessions = [];
         missionQuizAttempts = [];
+        practiceHistoryCatalog = [];
         practiceResults.length = 0;
 
         showError(

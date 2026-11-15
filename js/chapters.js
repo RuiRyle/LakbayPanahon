@@ -184,7 +184,7 @@ import {
                  card.innerHTML = `
 
                      <div class="era-image">
-                         <span>🧭</span>
+                         <span><span class="interface-icon interface-icon--compass" aria-hidden="true"></span></span>
                      </div>
 
                      <div class="era-content">
@@ -602,7 +602,7 @@ import {
                  } else if (!isUnlocked) {
 
                      statusText =
-                         "🔒 LOCKED";
+                         " LOCKED";
 
                  }
 
@@ -626,7 +626,7 @@ import {
                  } else if (!isUnlocked) {
 
                      buttonText =
-                         "🔒 Complete Previous Chapter";
+                         " Complete Previous Chapter";
 
                  }
 

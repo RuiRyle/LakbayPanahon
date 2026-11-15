@@ -4,11 +4,34 @@ import { collection, getDocs, getDocsFromServer, getDocFromServer, doc, onSnapsh
 
 export let studentAvatars = [];
 let catalogPromise = null;
+export function validAvatarImage(value) {
+    return typeof value === "string" && /^\/assets\/avatars\/[a-z0-9][a-z0-9-]*\.(png|webp|jpg)$/.test(value);
+}
+export function renderAvatarPortrait(element, avatar, initial = "S") {
+    element.textContent = avatar?.kind === "emoji" && avatar.status === "active" ? avatar.icon : initial;
+    element.classList.remove("has-avatar-portrait");
+    if (avatar?.kind !== "image" || !validAvatarImage(avatar.imageUrl)) return;
+    const image = document.createElement("img");
+    image.src = avatar.imageUrl;
+    image.alt = "";
+    image.decoding = "async";
+    image.className = "student-avatar-portrait";
+    image.addEventListener("error", () => {
+        if (image.parentNode === element) {
+            element.textContent = initial;
+            element.classList.remove("has-avatar-portrait");
+        }
+    }, {once:true});
+    element.textContent = "";
+    element.append(image);
+    element.classList.add("has-avatar-portrait");
+}
 export function normalizeAvatarCatalog(documents) {
     return documents.filter(avatar => typeof avatar.id === "string" && avatar.id && !avatar.id.includes("/") &&
         typeof avatar.name === "string" && avatar.name.trim() &&
         ["active", "inactive"].includes(avatar.status) &&
-        (avatar.kind === "initials" || avatar.kind === "emoji" && typeof avatar.icon === "string" && avatar.icon.trim()))
+        (avatar.kind === "initials" || avatar.kind === "emoji" && typeof avatar.icon === "string" && avatar.icon.trim() ||
+            avatar.kind === "image" && validAvatarImage(avatar.imageUrl)))
         .map(avatar => ({...avatar, name: avatar.name.trim()}))
         .sort((a,b) => (Number(a.order) || 0) - (Number(b.order) || 0) || a.id.localeCompare(b.id));
 }
@@ -114,7 +137,7 @@ function applyStudentIdentity(profile) {
         topLevel.textContent = `Level ${level}`;
     }
     document.querySelectorAll("#profileAvatar, [data-student-avatar]:not(.student-profile-preview)").forEach(element => {
-        element.textContent = avatar?.kind === "emoji" ? avatar.icon : Array.from(firstName)[0].toUpperCase();
+        renderAvatarPortrait(element, avatar, Array.from(firstName)[0].toUpperCase());
     });
 }
 
@@ -452,7 +475,7 @@ export function mountStudentProfile(initialProfile) {
         const current = studentAvatars.find(avatar => avatar.id === profile.avatarId);
         const choices = [...active];
         if (profile.avatarId && !active.some(avatar => avatar.id === profile.avatarId)) {
-            choices.push(current || {id:profile.avatarId, name:"Current avatar", kind:"initials"});
+            choices.push(current?.kind === "emoji" ? {id:profile.avatarId, name:"Current initial", kind:"initials"} : current || {id:profile.avatarId, name:"Current avatar", kind:"initials"});
         }
         grid.replaceChildren();
         const defaultAvatar = active.find(avatar => avatar.isDefault === true);
@@ -465,7 +488,7 @@ export function mountStudentProfile(initialProfile) {
             radio.checked = avatar.id === selected;
             const icon = document.createElement("span");
             icon.className = "student-avatar-symbol"; icon.setAttribute("aria-hidden", "true");
-            icon.textContent = avatar.kind === "emoji" ? avatar.icon : Array.from(profile.firstName || "Student")[0].toUpperCase();
+            renderAvatarPortrait(icon, avatar, Array.from(profile.firstName || "Student")[0].toUpperCase());
             const name = document.createElement("span"); name.textContent = avatar.name;
             label.append(radio,icon,name); grid.append(label);
         }
@@ -492,7 +515,7 @@ export function mountStudentProfile(initialProfile) {
     refreshCatalog();
     function updatePreview() {
         const avatar = studentAvatars.find(item => item.id === selectedAvatarId());
-        preview.textContent = avatar?.kind === "emoji" ? avatar.icon : Array.from(form.elements.firstName.value.trim() || "Student")[0].toUpperCase();
+        renderAvatarPortrait(preview, avatar, Array.from(form.elements.firstName.value.trim() || "Student")[0].toUpperCase());
     }
     let profileOpener = null;
     let confirmingSave = false;

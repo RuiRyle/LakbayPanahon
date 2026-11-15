@@ -406,9 +406,9 @@ function createAssessmentService(store, {
           followups: [],
           followupAnswers: {},
           followupStarted: false,
-          followupLimit: input.kind === 'mission' ? Math.min(3, ctx.practice.filter(q => shared.selectAdaptiveQuestion([q], {
-            difficultyLevels: followupLevels(ctx.activity.practicePolicy||{},ctx.practice)
-          })).length) : 0,
+          // Official results depend on main answers only. Topic practice is a
+          // separate post-result activity, not a condition for saving a score.
+          followupLimit: 0,
           practicePolicy: ctx.activity.practicePolicy || {},
           mastery: ctx.mastery,
           seen: ctx.seen,
@@ -516,7 +516,15 @@ function createAssessmentService(store, {
         }
         if (a.revision !== input.revision) fail('assessment/revision-conflict');
         if (a.questions.some(q => !Object.hasOwn(a.answers, q.id))) fail('assessment/incomplete');
-        if (a.kind === 'mission' && a.followupLimit && (!a.followupStarted || a.followups.length !== a.followupLimit || a.followups.some(q => !Object.hasOwn(a.followupAnswers, q.id)))) fail('assessment/incomplete');
+        // An unfinished legacy attempt may contain partially answered practice.
+        // Discard only that incomplete supplement at commit; keep the official
+        // main answers, and preserve complete legacy practice/receipts unchanged.
+        if (a.kind === 'mission' && a.followupLimit && (!a.followupStarted || a.followups.length !== a.followupLimit || a.followups.some(q => !Object.hasOwn(a.followupAnswers, q.id)))) {
+          a.followups = [];
+          a.followupAnswers = {};
+          a.followupLimit = 0;
+          a.followupStarted = false;
+        }
         const correctAnswers = a.questions.filter(q => mark(q, a.answers[q.id])).length,
           score = Math.round(correctAnswers / a.questions.length * 100),
           passed = score >= ctx.threshold,

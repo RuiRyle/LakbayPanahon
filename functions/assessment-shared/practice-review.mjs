@@ -34,6 +34,51 @@ export function reviewTopicsFromHistory(sessions, questions) {
     return [...topics.values()].sort((a, b) => b.missed - a.missed || a.label.localeCompare(b.label));
 }
 
+// Display-only history. Never feeds current-topic goals, difficulty, scores or rewards.
+export function retiredPracticeActivity(sessions, questions, userId, now = Date.now()) {
+    if (typeof userId !== 'string' || !userId) return [];
+    const retired = new Map(questions.filter(q => q.status === 'inactive' && q.id && q.missionId)
+        .map(q => [`${q.missionId}/${q.id}`, q]));
+    const rows = [], seen = new Set();
+    const time = session => {
+        try { return typeof session?.completedAt?.toMillis === 'function' ? session.completedAt.toMillis() : NaN; }
+        catch { return NaN; }
+    };
+    const ordered = sessions.filter(s => s?.userId === userId && Number.isFinite(time(s)) &&
+        time(s) > 0 && time(s) <= now && Array.isArray(s.questionResults))
+        .slice().sort((a,b) => time(b) - time(a) || String(b.id || '').localeCompare(String(a.id || '')));
+    for (const session of ordered) for (const result of session.questionResults) {
+        if (!result || typeof result.firstTryCorrect !== 'boolean') continue;
+        const key = `${session.missionId}/${result.questionId}`, question = retired.get(key);
+        if (!question || seen.has(key)) continue;
+        seen.add(key);
+        rows.push({questionId: question.id, missionId: question.missionId,
+            label: question.topicLabel || question.topic || 'Earlier question',
+            completedAt: time(session), firstTryCorrect: result.firstTryCorrect,
+            attempts: Number.isInteger(result.attempts) && result.attempts > 0 ? result.attempts : null,
+            hintRequested: typeof result.hintRequested === 'boolean' ? result.hintRequested : null});
+    }
+    return rows;
+}
+
+export function renderRetiredPractice(container, activity) {
+    if (!activity.length) return;
+    const section = document.createElement('section');section.className = 'practice-history';
+    const heading = document.createElement('h3');heading.textContent = 'Earlier practice';
+    const note = document.createElement('p');
+    note.textContent = 'These questions have changed. Your earlier answers stay saved and do not count as answers to the current questions.';
+    const details = document.createElement('details'), summary = document.createElement('summary'), list = document.createElement('ul');
+    summary.textContent = 'Latest saved answers to earlier questions';
+    for (const row of activity) {
+        const item = document.createElement('li'), date = new Date(row.completedAt).toLocaleDateString();
+        item.textContent = `${row.label} — ${date}: ${row.firstTryCorrect ? 'first answer correct' : 'first answer not correct'}.` +
+            (row.attempts === null ? '' : ` Attempts: ${row.attempts}.`) +
+            (row.hintRequested === true ? ' A hint was requested.' : row.hintRequested === null ? ' Hint use was not recorded.' : ' No hint request was recorded.');
+        list.append(item);
+    }
+    details.append(summary,list);section.append(heading,note,details);container.append(section);
+}
+
 export function practiceTopicUrl(chapterId, missionId, topic) {
     const params = new URLSearchParams({ chapter: chapterId, mission: missionId, topic });
     return `practice.html?${params}`;
@@ -83,18 +128,25 @@ export function renderReviewTopics(container, topics, chaptersByMission, emptyMe
         container.append(card);
     }
 }
+export function practiceRetryHint(question,chosenAnswer){
+    const selected=String(chosenAnswer||'').trim().toUpperCase();
+    // A full explanation or historical summary can contain the solution.
+    // Only explicitly authored hints belong in the retry clue.
+    const clue=[['A','B','C','D'].includes(selected)?question?.answerHints?.[selected]:null,question?.hint]
+        .find(value=>typeof value==='string'&&value.trim());
+    return clue?.trim()||'Compare the remaining choices with the evidence in the lesson.';
+}
 export function practiceMisconceptionSupport(question,chosenAnswer,missionId){
-    if(!['prologue-mission1','chapter3-mission1'].includes(missionId)||(question.missionId&&question.missionId!==missionId))return null;
+    if(!question||typeof missionId!=='string'||!missionId.trim()||(question.missionId&&question.missionId!==missionId))return null;
     const selected=String(chosenAnswer||'').trim().toUpperCase(),correct=String(question.correctAnswer||'').trim().toUpperCase();
     if(!['A','B','C','D'].includes(selected)||!['A','B','C','D'].includes(correct)||selected===correct)return null;
     const reason=question.answerExplanations?.[selected];if(typeof reason!=='string'||!reason.trim())return null;
-    const clue=[question.answerHints?.[selected],question.hint,question.historicalClue].find(value=>typeof value==='string'&&value.trim());
-    return {reason:reason.trim(),clue:clue?.trim()||'Compare the remaining choices with the evidence in the lesson.',topic:typeof question.topic==='string'?question.topic.trim():''};
+    return {reason:reason.trim(),clue:practiceRetryHint(question,selected),topic:typeof question.topic==='string'?question.topic.trim():''};
 }
 export function renderPracticeMisconceptionClue(parent,support,chapterId,missionId){
     parent.querySelector('.practice-misconception-coaching')?.remove();
     const section=document.createElement('aside');section.className='practice-misconception-coaching';
-    const heading=document.createElement('strong');heading.textContent='Look for this clue';
+    const heading=document.createElement('strong');heading.textContent='Hint for your next try';
     const clue=document.createElement('p');clue.textContent=support.clue;
     const prompt=document.createElement('p');prompt.textContent='Which detail helps you rule out that choice? Compare the evidence, then try again.';
     const lesson=document.createElement('a');lesson.className='text-button';lesson.textContent='Revisit this lesson topic';lesson.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,...(support.topic?{reviewTopic:support.topic}:{})});

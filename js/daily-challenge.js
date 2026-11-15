@@ -391,7 +391,7 @@ function showAvailableCard() {
             false;
 
         startButton.textContent =
-            "⚡ Start Challenge";
+            " Start Challenge";
     }
 }
 
@@ -756,7 +756,7 @@ async function completeDailyChallenge(
     }
 
 
-    const submissionUid=currentUser.uid, submissionDate=currentChallengeDate;
+    const submissionUid=currentUser.uid, submissionDate=currentChallengeDate, submissionId=currentChallenge.id, submissionCard=currentChallenge;
     isSubmitting = true;
 
 
@@ -775,10 +775,13 @@ async function completeDailyChallenge(
         const result = await submitStudentActivity({
             kind: "daily", challengeId: currentChallenge.id, answer: studentAnswer
         });
-        if (auth.currentUser?.uid!==submissionUid) return;
+        if (auth.currentUser?.uid!==submissionUid||currentUser?.uid!==submissionUid||currentChallengeDate!==submissionDate||getTodayDateKey()!==submissionDate||currentChallenge?.id!==submissionId||currentChallenge!==submissionCard) return;
+        const review=result.reviewQuestions?.find(q=>q.id===submissionId);
+        const picked=review?.answerExplanations?.[studentAnswer];
+        const receiptFeedback=typeof picked==='string'&&picked.trim()?picked:typeof review?.explanation==='string'?review.explanation:'';
         if (!result.passed) {
             forgetAssessment({kind:'daily',challengeId:currentChallenge.id});
-            showIncorrectFeedback();
+            showIncorrectFeedback(receiptFeedback);
             submitButton.textContent='Submit Answer';
             return;
         }
@@ -814,7 +817,7 @@ async function completeDailyChallenge(
 
         showCorrectFeedback(
             xpAwarded,
-            updatedStreak
+            updatedStreak, receiptFeedback
         );
 
 
@@ -1009,7 +1012,7 @@ function updateDisplayedProgress(
 
 function showCorrectFeedback(
     xpAwarded,
-    streak
+    streak, receiptFeedback = ""
 ) {
 
     if (!feedbackElement) {
@@ -1018,22 +1021,22 @@ function showCorrectFeedback(
 
 
     const explanation =
-        currentChallenge?.explanation ||
+        receiptFeedback ||
         "Great work! You remembered an important part of Philippine History.";
 
 
     const rewardMessage =
         xpAwarded > 0
-            ? `⭐ +${xpAwarded} XP earned`
-            : "⭐ Today's XP reward was already collected";
+            ? ` +${xpAwarded} XP earned`
+            : " Today's XP reward was already collected";
 
 
     const streakMessage =
         streak
             ? (
                 streak === 1
-                    ? "🔥 1 Day Learning Streak"
-                    : `🔥 ${streak} Day Learning Streak`
+                    ? " 1 Day Learning Streak"
+                    : ` ${streak} Day Learning Streak`
             )
             : "";
 
@@ -1080,7 +1083,7 @@ function showCorrectFeedback(
 // ==========================================
 
 function showIncorrectFeedback(
-    correctAnswer
+    receiptFeedback = ""
 ) {
 
     if (!feedbackElement) {
@@ -1150,6 +1153,7 @@ function showIncorrectFeedback(
         submitButton.textContent =
             "Try Again";
     }
+    if(receiptFeedback){const note=document.createElement('p');note.textContent=receiptFeedback;feedbackElement.appendChild(note);}
 }
 
 
@@ -1225,8 +1229,8 @@ function updateCompletedModal(
         streak
             ? (
                 streak === 1
-                    ? "🔥 1 Day Streak"
-                    : `🔥 ${streak} Day Streak`
+                    ? " 1 Day Streak"
+                    : ` ${streak} Day Streak`
             )
             : "";
 
@@ -1251,7 +1255,7 @@ function updateCompletedModal(
         <div class="daily-complete-rewards">
 
             <strong>
-                ⭐ +${displayedReward} XP
+                 +${displayedReward} XP
             </strong>
 
             ${

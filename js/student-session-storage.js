@@ -10,7 +10,7 @@ export const studentTabStorage = {
 // its authentication storage; browser preferences and saved Firestore data stay intact.
 export function clearStudentSessionData(storage, uid) {
     if (!storage || typeof uid !== 'string' || !uid) return;
-    const ownedPrefixes = ['missionQuiz:', 'missionQuizSet:', 'previewDraft:']
+    const ownedPrefixes = ['missionQuiz:', 'missionQuizSet:', 'previewDraft:', 'securedAssessment:']
         .map(prefix => prefix + uid + ':');
     let keys;
     try {

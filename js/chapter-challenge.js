@@ -95,7 +95,7 @@ let selectedMatches = {};
 let selectedTradeQuantity = 0;
 
 let correctAnswers = 0;
-let securedChapter=false,confirmedChapterReceipt=null;
+let securedChapter=false,confirmedChapterReceipt=null,completedChapterAnswers=null;
 
 
 let studentAnswers = {};
@@ -360,7 +360,7 @@ async function loadChapterChallenge() {
 
 
             challengeStatus.textContent =
-                "🔒 Complete all chapter missions to unlock this challenge.";
+                " Complete all chapter missions to unlock this challenge.";
 
 
             return;
@@ -444,7 +444,7 @@ async function loadChapterChallenge() {
         const issued=await beginAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id},{completedReview:true});
         if(!isCurrent())return;
         securedChapter=issued.secured!==false;confirmedChapterReceipt=issued.result||null;if(confirmedChapterReceipt)correctAnswers=confirmedChapterReceipt.correctAnswers;
-        challengeQuestions=issued.questions||[];
+        challengeQuestions=issued.result?.reviewQuestions||issued.questions||[];completedChapterAnswers=issued.result?{...(issued.answers||{})}:null;if(issued.result)studentAnswers={...(issued.answers||{})};
         if(!isCurrent())return;
         challengeQuestions.sort(
             (a, b) =>
@@ -501,13 +501,20 @@ async function loadChapterChallenge() {
         chapterDraftVersion=stableDraftVersion({id:activeChallenge.id,passingScore:activeChallenge.passingScore,questions:challengeQuestions});
         updateChallengeInfo();
 
+        if (confirmedChapterReceipt) {
+            if (!isCurrent()) return;
+            challengeStarted = true;
+            await showChallengeResult();
+            return;
+        }
+
 
         beginChallengeButton.disabled =
             false;
 
 
         challengeStatus.textContent =
-            "🏆 Chapter Challenge unlocked!";
+            " Chapter Challenge unlocked!";
 
 
         beginChallengeButton.onclick = startChallenge;
@@ -1211,7 +1218,7 @@ if (gameType === "historicalDecision") {
         "historical-decision-icon";
 
     decisionIcon.textContent =
-        "⚖️";
+        "";
 
     const decisionLabel =
         document.createElement("strong");
@@ -1608,6 +1615,7 @@ function submitCurrentAnswer() {
 ========================================== */
 
 function createChallengeLearningReview() {
+    const reviewAnswers=confirmedChapterReceipt?(completedChapterAnswers||{}):studentAnswers;
 
     const reviewSection =
         document.createElement(
@@ -1720,7 +1728,7 @@ let studentAnswerText = "";
 
 let correctAnswerText = "";
 
-if(question.evidenceTask){const answer=studentAnswers[question.id];isCorrect=evidenceDecisionCorrect(question,answer);studentAnswerText='Clue: '+(question.evidenceTask.cards.find(c=>c.id===answer?.evidenceId)?.label||answer?.evidenceId||'Not selected')+'; conclusion: '+getChallengeOptionText(question,answer?.conclusion);correctAnswerText='Clue: '+(question.evidenceTask.cards.find(c=>c.id===question.evidenceTask.correctEvidenceId)?.label||question.evidenceTask.correctEvidenceId)+'; conclusion: '+getChallengeOptionText(question,question.correctAnswer);} else if (isMatching) {
+if(question.evidenceTask){const answer=reviewAnswers[question.id];isCorrect=evidenceDecisionCorrect(question,answer);studentAnswerText='Clue: '+(question.evidenceTask.cards.find(c=>c.id===answer?.evidenceId)?.label||answer?.evidenceId||'Not selected')+'; conclusion: '+getChallengeOptionText(question,answer?.conclusion);correctAnswerText='Clue: '+(question.evidenceTask.cards.find(c=>c.id===question.evidenceTask.correctEvidenceId)?.label||question.evidenceTask.correctEvidenceId)+'; conclusion: '+getChallengeOptionText(question,question.correctAnswer);} else if (isMatching) {
 
     const pairs =
         Array.isArray(question.matchingPairs)
@@ -1728,7 +1736,7 @@ if(question.evidenceTask){const answer=studentAnswers[question.id];isCorrect=evi
             : [];
 
     const savedAnswer =
-        studentAnswers[question.id];
+        reviewAnswers[question.id];
 
     const matches =
         savedAnswer?.gameType === "matching"
@@ -1761,7 +1769,7 @@ if(question.evidenceTask){const answer=studentAnswers[question.id];isCorrect=evi
     ====================================== */
 
     const savedAnswer =
-        studentAnswers[question.id];
+        reviewAnswers[question.id];
 
     const offeredQuantity =
         savedAnswer?.gameType === "tradeSimulation"
@@ -1788,7 +1796,7 @@ if(question.evidenceTask){const answer=studentAnswers[question.id];isCorrect=evi
 
     const studentAnswerKey =
         String(
-            studentAnswers[question.id] || ""
+            reviewAnswers[question.id] || ""
         ).trim().toUpperCase();
 
     const correctAnswerKey =
@@ -1814,10 +1822,9 @@ if(question.evidenceTask){const answer=studentAnswers[question.id];isCorrect=evi
 }
 
 
-            const explanation =
-    typeof question.explanation === "string"
-        ? question.explanation.trim()
-        : "";
+            const picked=confirmedChapterReceipt?completedChapterAnswers?.[question.id]:reviewAnswers[question.id];
+            const selectedFeedback=!question.evidenceTask&&getChallengeGameType(question)!=='matching'&&getChallengeGameType(question)!=='tradeSimulation'&&['A','B','C','D'].includes(picked)?question.answerExplanations?.[picked]:null;
+            const explanation=typeof selectedFeedback==='string'&&selectedFeedback.trim()?selectedFeedback:typeof question.explanation==='string'?question.explanation.trim():'';
 
             const reviewItem =
                 document.createElement(
@@ -2320,8 +2327,8 @@ async function showChallengeResult() {
 async function renderChallengeResult() {
     const generation = chapterSessionGeneration;
     if(securedChapter&&!confirmedChapterReceipt){
-        try{const result=await submitStudentActivity({kind:'chapter',chapterId,challengeId:activeChallenge.id,answers:studentAnswers});if(generation!==chapterSessionGeneration)return;confirmedChapterReceipt=result;correctAnswers=result.correctAnswers;
-            try{const review=await beginAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id},{completedReview:true});if(generation!==chapterSessionGeneration)return;if(review.result)challengeQuestions=review.questions;}catch{/* A confirmed grade stays valid if optional review refresh fails. */}
+        try{const result=await submitStudentActivity({kind:'chapter',chapterId,challengeId:activeChallenge.id,answers:studentAnswers});if(generation!==chapterSessionGeneration)return;confirmedChapterReceipt=result;completedChapterAnswers={...studentAnswers};correctAnswers=result.correctAnswers;
+            if(Array.isArray(result.reviewQuestions))challengeQuestions=result.reviewQuestions;
         }catch(error){if(generation===chapterSessionGeneration){challengeStatus.textContent='Your result could not be confirmed. Keep this page open and retry saving.';showSaveErrorResult(0,challengeQuestions.length,requirePassingScore(activeChallenge));}return;}
     }
 
@@ -2551,7 +2558,7 @@ async function renderChallengeResult() {
         resultContainer.innerHTML = `
 
             <div class="challenge-result-icon">
-                🏆
+                <span class="interface-icon interface-icon--trophy" aria-hidden="true"></span>
             </div>
 
 
@@ -2651,7 +2658,7 @@ async function renderChallengeResult() {
                         <div class="chapter-next-unlock">
 
                             <div class="chapter-next-unlock-icon">
-                                🗺
+                                <span class="interface-icon interface-icon--compass" aria-hidden="true"></span>
                             </div>
 
                             <div>
@@ -2815,9 +2822,7 @@ insertChallengeLearningReview(
 
                 if (badgeIcon) {
 
-                    badgeIcon.textContent =
-                        badge.icon ||
-                        "🏅";
+                    badgeIcon.innerHTML = '<span class="interface-icon interface-icon--trophy" aria-hidden="true"></span>';
 
                 }
 
@@ -2887,7 +2892,7 @@ insertChallengeLearningReview(
 
                     smallIcon.textContent =
                         badge.icon ||
-                        "🏅";
+                        "";
 
                 }
 
@@ -3071,7 +3076,7 @@ insertChallengeLearningReview(
     resultContainer.innerHTML = `
 
         <div class="challenge-result-icon">
-            📚
+            <span class="interface-icon interface-icon--book-open" aria-hidden="true"></span>
         </div>
 
 
@@ -3142,6 +3147,8 @@ insertChallengeLearningReview(
     intro.appendChild(
         resultContainer
     );
+
+    insertChallengeLearningReview(resultContainer);
 
     document.dispatchEvent(new CustomEvent("lakbay:needs-practice", {
         detail: { delayMs: 320 }
@@ -3226,7 +3233,7 @@ function showSaveErrorResult(
     resultContainer.innerHTML = `
 
         <div class="challenge-result-icon">
-            ⚠️
+            ⚠
         </div>
 
 
@@ -3340,7 +3347,7 @@ insertChallengeLearningReview(
 async function restartChallenge() {
     if(securedChapter){
         const generation=chapterSessionGeneration;
-        try{forgetAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id});const issued=await beginAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id},{retry:true});if(generation!==chapterSessionGeneration)return;challengeQuestions=issued.questions;confirmedChapterReceipt=null;}
+        try{forgetAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id});const issued=await beginAssessment({kind:'chapter',chapterId,challengeId:activeChallenge.id},{retry:true});if(generation!==chapterSessionGeneration)return;challengeQuestions=issued.questions;confirmedChapterReceipt=null;completedChapterAnswers=null;}
         catch{showError('A new challenge could not start. Try loading again. Your saved progress is safe.');return;}
     }
 
