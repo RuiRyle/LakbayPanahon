@@ -1,60 +1,34 @@
-import {sharedAppCheck,verifyAppCheck} from './app-verification.js';
-﻿import {app,auth,db} from './firebase-config.js';
-import {doc,getDocFromServer} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
-import {createBayaniBackendClient,validateBayaniBackendEndpoint} from './bayani-backend-client.js';
+import {auth,db} from './firebase-config.js';
+import {collection,query,where,getDocsFromServer} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
+import {findLessonAnswer,normalizeQuestion} from './bayani-knowledge.js';
 
-// Model selection and authored assistant instructions belong to Firestore.
-export async function connectBayani() {
-    if(!auth.currentUser)throw Error('Please sign in to use Bayani AI.');
-    const uid=auth.currentUser.uid;
-    const snapshot=await getDocFromServer(doc(db,'learningSettings','bayaniAI'));
-    if(auth.currentUser?.uid!==uid)throw Error('Your session changed. Please reconnect.');
-    const settings=snapshot.exists()?snapshot.data():null;
-    if(settings?.enabled!==true)throw Error('Bayani AI is not available yet. Please try again later.');
-    // Older Firebase AI Logic settings predate the provider field.
-    const provider = settings.provider ?? 'gemini';
-    if(!['gemini','anthropic'].includes(provider)) throw Error('Bayani AI provider settings are incomplete.');
-    if(provider==='anthropic'&&settings.minorsUseApproved!==true) throw Error('Bayani AI is being prepared for student use. You can continue with your lessons and practice.');
-    if(!Number.isInteger(settings.maxMessageCharacters)||settings.maxMessageCharacters<1||settings.maxMessageCharacters>4000)throw Error('Bayani AI settings are incomplete. Please try again later.');
-    if(provider==='anthropic') validateBayaniBackendEndpoint(settings.backendEndpoint);
-    else if(typeof settings.model!=='string'||!settings.model.trim()||typeof settings.systemInstruction!=='string'||!settings.systemInstruction.trim()) throw Error('Bayani AI settings are incomplete. Please try again later.');
-    if(!settings.appCheckSiteKey)throw Error('Bayani AI is still being connected. Please try again later.');
-    const appCheck=sharedAppCheck(settings.appCheckSiteKey);
-    if(auth.currentUser?.uid!==uid)throw Error('Your session changed. Please reconnect.');
-    if(provider==='anthropic') return createBayaniBackendClient({auth,appCheck,getAppCheckToken:(_instance,force)=>verifyAppCheck(settings.appCheckSiteKey,force),settings});
-    const sdk=await import('https://www.gstatic.com/firebasejs/12.4.0/firebase-ai.js');
-    if(auth.currentUser?.uid!==uid)throw Error('Your session changed. Please reconnect.');
-    return createFirebaseBayaniClient({sdk,settings,user:auth.currentUser});
-}
-
-export function createFirebaseBayaniClient({sdk,settings,user}) {
-    const {getAI,GoogleAIBackend,getGenerativeModel,HarmCategory,HarmBlockThreshold}=sdk;
-    const ai=getAI(app,{backend:new GoogleAIBackend()});
-    const model=getGenerativeModel(ai,{
-        model:settings.model,
-        systemInstruction:settings.systemInstruction,
-        generationConfig:{maxOutputTokens:1024,temperature:.5},
-        safetySettings:['HARM_CATEGORY_HARASSMENT','HARM_CATEGORY_HATE_SPEECH','HARM_CATEGORY_SEXUALLY_EXPLICIT','HARM_CATEGORY_DANGEROUS_CONTENT'].map(category=>({category:HarmCategory[category],threshold:HarmBlockThreshold.BLOCK_LOW_AND_ABOVE}))
-    });
-    const current=()=>{
-        if(auth.currentUser!==user||auth.currentUser?.uid!==user.uid)throw Object.assign(Error('Your session changed. Please reconnect.'),{code:'bayani/unauthenticated'});
-    };
-    return {
-        settings:{maxMessageCharacters:settings.maxMessageCharacters,welcomeMessage:typeof settings.welcomeMessage==='string'?settings.welcomeMessage:''},
-        async send(message,history=[]) {
+export async function connectBayani(){
+    const user=auth.currentUser;
+    const current=()=>{if(!user||auth.currentUser?.uid!==user.uid)throw Object.assign(Error('Please sign in again.'),{code:'bayani/unauthenticated'});};
+    current();
+    // Load only published active mission metadata; retrieve scenes for matching missions on demand.
+    const snapshot=await getDocsFromServer(query(collection(db,'missions'),where('status','==','active')));
+    current();
+    const missions=snapshot.docs.map(d=>({...d.data(),id:d.id}));
+    return {settings:{maxMessageCharacters:2000,welcomeMessage:'I am Bayani, your lesson-based Philippine History chatbot. Ask about a lesson topic. I find published lesson passages; I do not generate new facts or reveal quiz answers.'},async send(message){
+        current();
+        const early=findLessonAnswer(message,[]);
+        if(/contact details|quiz answer|unresolved source/.test(early))return early;
+        // Match titles/objectives first; avoid downloading the entire lesson catalog.
+        const terms=normalizeQuestion(message).split(' ').filter(t=>t.length>3);
+        const candidates=missions.map(m=>({m,score:terms.filter(t=>normalizeQuestion([m.title,m.name,...(Array.isArray(m.learningObjectives)?m.learningObjectives:[])].join(' ')).includes(t)).length})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
+        const passages=[];
+        for(const {m} of candidates){
+            const scenes=await getDocsFromServer(query(collection(db,'storyScenes'),where('missionId','==',m.id)));
             current();
-            if(typeof message!=='string'||!message.trim()||message.length>settings.maxMessageCharacters||!Array.isArray(history)||history.length%2!==0)throw Object.assign(Error('Invalid history question.'),{code:'bayani/invalid-request'});
-            const recent=history.slice(-12).map((entry,index)=>{
-                const text=entry?.parts?.[0]?.text;
-                if(entry?.role!==(index%2===0?'user':'model')||entry.parts.length!==1||typeof text!=='string'||!text.trim()||text.length>12000)throw Object.assign(Error('Invalid conversation.'),{code:'bayani/invalid-request'});
-                return {role:entry.role,parts:[{text}]};
-            });
-            const chat=model.startChat({history:recent});
-            const result=await chat.sendMessage(message.trim());
-            current();
-            const answer=result.response.text();
-            if(typeof answer!=='string'||!answer.trim())throw Object.assign(Error('Bayani AI returned no text.'),{code:'bayani/no-content'});
-            return answer;
+            for(const d of scenes.docs){const s=d.data();if(s.status&&s.status!=='active')continue;
+                if(typeof s.content!=='string')continue;
+                for(const text of s.content.split(/\n\s*\n/).map(t=>t.trim()).filter(t=>t.length>40&&t.length<=1800)){
+                    if(/coral|galleon|galyon/i.test(text))continue;
+                    passages.push({title:[m.title||m.name||m.id,s.title||d.id].join(' — '),text,url:new URL('story.html?'+new URLSearchParams({mission:m.id,chapter:m.chapterId}),location.href).href});
+                }
+            }
         }
-    };
+        current();return findLessonAnswer(message,passages);
+    }};
 }
