@@ -256,8 +256,8 @@
                     <section class="bayani-workspace" aria-labelledby="chatTitle">
                         <header class="bayani-chat-heading"><div class="bayani-chat-identity"><span class="bayani-mini-emblem" aria-hidden="true"><img src="../assets/brand/bayani-explorer-still.svg" alt="" width="32" height="33"></span><div><h2 id="chatTitle">Discovery chat</h2></div></div><button id="newBayaniChat" class="bayani-new-chat" type="button"><span aria-hidden="true">+</span> New Chat</button></header>
                         <details id="bayaniRecentChats" class="bayani-recent-chats" hidden>
-                            <summary>Recent chats</summary>
-                            <p>Saved in this browser for your account.</p>
+                            <summary><span>Conversation history</span><span class="bayani-history-hint">Revisit a discovery</span></summary>
+                            <p>Your last 10 conversations, saved on this browser for your account.</p>
                             <ul></ul>
                             <p class="bayani-history-status" role="status"></p>
                         </details>
@@ -265,7 +265,7 @@
                         <div class="bayani-chat"><div id="bayaniEmpty" class="bayani-empty"><div class="bayani-discovery-mark" aria-hidden="true"><span class="interface-icon interface-icon--compass"></span></div><div><h3>What would you like to explore?</h3><p>Ask a history question or use a starter below.</p></div></div><section id="bayaniMessages" class="bayani-messages" role="log" aria-live="polite" aria-relevant="additions" aria-atomic="false" aria-label="Conversation with Bayani AI"></section></div>
                         <div class="bayani-writing-area"><div class="bayani-prompt-kit" aria-label="Question starters"><span>Question starters</span><button type="button" class="bayani-prompt" disabled data-bayani-prompt="Help me understand this idea from my history lesson: ">Explain an idea</button><button type="button" class="bayani-prompt" disabled data-bayani-prompt="Give me a hint without revealing the answer. My question is: ">Give me a hint</button><button type="button" class="bayani-prompt" disabled data-bayani-prompt="Help me think about what this historical clue tells us: ">Explore a clue</button></div>
                         <form id="bayaniForm" class="bayani-composer"><label for="bayaniInput">Your question</label><textarea id="bayaniInput" aria-describedby="bayaniPrivacyNote bayaniAccuracyNote" rows="2" placeholder="Write your history question here..." required disabled></textarea><div><span id="bayaniPrivacyNote"><span class="interface-icon interface-icon--lock" aria-hidden="true"></span> Keep personal details out of chat.</span><button id="sendBayani" type="submit" disabled>Send <span aria-hidden="true">&rarr;</span></button></div></form>
-                        <p id="bayaniAccuracyNote" class="bayani-note">Bayani AI generates explanations and can make mistakes. Check important facts against reliable sources and your lessons. This page clears your chat when you leave or start a new chat.</p></div>
+                        <p id="bayaniAccuracyNote" class="bayani-note">Bayani AI generates explanations and can make mistakes. Check important facts against reliable sources and your lessons. Your last 10 chats are saved in this browser for your account. You can reopen or delete them in Conversation history.</p></div>
                     </section>
                 </div>
             </div>

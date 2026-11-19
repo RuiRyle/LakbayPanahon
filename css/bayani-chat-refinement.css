@@ -1,77 +1,214 @@
 ﻿/* Presentation only: retain the existing chat renderer, controls and notices. */
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading{padding:18px 22px;margin:0 0 18px;min-height:0;border:1px solid #3a5364;border-radius:16px;background:linear-gradient(110deg,#153242,#0e2538);box-shadow:none;gap:20px}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading::after{display:none}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading .eyebrow{font-size:.62rem;letter-spacing:.12em;color:#a7bfbf}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading .eyebrow{font-size:var(--lp-type-label);letter-spacing:.12em;color:#a7bfbf}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading h1{font-size:clamp(1.35rem,2vw,1.9rem);line-height:1.25;margin:5px 0 6px;color:#e6edf0}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading h1 span{color:#e4c88c}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading p{font-size:.85rem;margin:0;color:#becfd8;line-height:1.55}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-back{font-size:.78rem;line-height:1.6;color:#e4ce9e;min-height:36px;display:flex;align-items:center}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading p{font-size:var(--lp-type-label);margin:0;color:#becfd8;line-height:1.55}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-back{font-size:var(--lp-type-label);line-height:1.6;color:#e4ce9e;min-height:44px;display:flex;align-items:center}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:20px;align-items:start}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion{display:block;min-width:0;border-radius:18px;border:1px solid #3c5563;background:#102a3b;box-shadow:none}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion:has(.bayani-guide-links) {
+    border-color:#5d746e; border-radius:4px 16px 4px 16px; overflow:visible;
+    background:repeating-linear-gradient(120deg,#c3a66d 0 2px,#796443 2px 5px) top / 100% 2px no-repeat,#102a3b;
+}
+.bayani-guide-card {
+    padding:16px 14px; min-width:0;
+    background:radial-gradient(ellipse at 90% 0%,#31534c65,transparent 80%);
+}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-guide-card h2 { margin:0 0 6px; }
+.bayani-guide-card p { margin:0; color:#c5d8df; line-height:1.6; font-size:var(--lp-type-label); }
+.bayani-guide-links { display:grid; gap:8px; min-width:0; padding:12px 14px 16px; border-top:1px solid #395861; }
+.bayani-guide-links h3 { margin:0 0 2px; color:#ead19b; font-size:var(--lp-type-label); }
+.bayani-guide-links a {
+    display:grid; grid-template-columns:24px minmax(0,1fr) auto; align-items:center; gap:8px;
+    min-height:48px; padding:8px; border:1px solid #55727b; border-radius:4px 10px 4px 10px;
+    background:#142f42; color:#e7f0f3; text-decoration:none; text-align:left; line-height:1.35;
+    font-size:var(--lp-type-label); overflow-wrap:anywhere;
+}
+.bayani-guide-links a > span { color:var(--lp-gold-soft); }
+.bayani-guide-links a:is(:hover,:focus-visible) { border-color:var(--lp-gold-soft); background:#204650; }
+.bayani-guide-links a:focus-visible { outline:2px solid var(--lp-gold-soft); outline-offset:2px; }
+@media (601px <= width <= 950px) {
+    .bayani-guide-links { border-top:0; border-inline-start:1px solid #395861; }
+}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-banner{padding:20px 16px 18px;background:radial-gradient(ellipse at 50% 35%,#31534c50,transparent 70%),#112c3e}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-tag{border:0;padding:0;color:#c8b782;font-size:.6rem;letter-spacing:.12em}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-tag{border:0;padding:0;color:#c8b782;font-size:var(--lp-type-label);letter-spacing:.12em}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-emblem{width:88px;height:88px;margin:22px auto 20px;border:1px solid #b89c5b;border-radius:50%;background:repeating-conic-gradient(from 0deg,#d9bb7566 0deg 2deg,transparent 2deg 30deg);box-shadow:0 0 0 7px #d9bb7509,0 0 0 8px #d9bb7526;animation:bayani-sun-idle 6s ease-in-out infinite}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-emblem span{width:58px;height:58px;border-radius:50%;font-size:2rem;border:2px solid #eddaa6;background:linear-gradient(140deg,#f1dba4,#c7a457);color:#173043;transform:none;box-shadow:0 0 18px #dbc17f1a}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion h2{font-size:1.15rem;color:#f1e7d1;margin:8px 0}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-banner p{font-size:.8rem;line-height:1.6;color:#bfd0d8}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-banner p{font-size:var(--lp-type-label);line-height:1.6;color:#bfd0d8}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit{padding:16px 14px 4px}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kicker{color:#d7be84;font-size:.6rem;letter-spacing:.1em}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kicker{color:#d7be84;font-size:var(--lp-type-label);letter-spacing:.1em}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit>a{padding:13px 0;gap:9px;border-color:#334d5b;min-height:44px}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit>a>span:first-child{width:30px;height:30px;border-radius:9px;background:#1d3d48;font-size:1rem}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit strong{font-size:.78rem;color:#e4ecee;line-height:1.4}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit small{font-size:.72rem;color:#b1c6cf;line-height:1.5;margin-top:3px}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-trail{margin:12px 14px 16px;padding:10px 0;border:0;border-top:1px solid #36505b;border-radius:0;background:transparent;color:#c8b985;font-size:.61rem;gap:6px}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit strong{font-size:var(--lp-type-label);color:#e4ecee;line-height:1.4}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit small{font-size:var(--lp-type-label);color:#b1c6cf;line-height:1.5;margin-top:3px}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-trail{margin:12px 14px 16px;padding:10px 0;border:0;border-top:1px solid #36505b;border-radius:0;background:transparent;color:#c8b985;font-size:var(--lp-type-label);gap:6px}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-workspace{min-width:0;border:1px solid #4b626b;border-radius:18px;background:#112b3d;box-shadow:0 16px 45px #020c192b;overflow:hidden}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-heading{padding:16px 22px;background:#163242;border-bottom:1px solid #38525e;gap:12px}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-heading h2{font-size:1.13rem;line-height:1.35;margin:0 0 3px;color:#f2e8d1}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-identity>div>span{font-size:.74rem;color:#b6c9cf}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-identity>div>span{font-size:var(--lp-type-label);color:#b6c9cf}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-mini-emblem{width:36px;height:36px;flex-shrink:0;border-radius:50%;border:1px solid #ead39c;background:linear-gradient(135deg,#e7cd91,#bda264);color:#173044;font-size:1.35rem;box-shadow:0 0 0 4px #d3b77c12}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat{min-height:40px;padding:8px 12px;white-space:nowrap;background:#1c3b49;color:#e8d4a2;border:1px solid #61736a;border-radius:9px;box-shadow:none;font-size:.76rem}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat{min-height:44px;padding:8px 12px;white-space:nowrap;background:#1c3b49;color:#e8d4a2;border:1px solid #61736a;border-radius:9px;box-shadow:none;font-size:var(--lp-type-label)}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-connection{padding:8px 22px;background:#112a3b;border-bottom:1px solid #304955;gap:9px}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-connection p{font-size:.75rem;color:#bdcfd6;min-width:0;line-height:1.6}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-connection p{font-size:var(--lp-type-label);color:#bdcfd6;min-width:0;line-height:1.6}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-status-dot{width:6px;height:6px}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-connection[data-state=ready] .bayani-status-dot{background:#88baa5;box-shadow:0 0 0 3px #88baa515}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-connection[data-state=unavailable]{background:#302f2e}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-connection[data-state=unavailable] {
+    background:#302d29; border-inline-start:3px solid #d2ae65;
+}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat{height:clamp(260px,38vh,420px);min-height:0;max-height:none;overflow-y:auto;background:radial-gradient(ellipse at 5% 0%,#25444022,transparent 65%),#0c2233;scrollbar-color:#526d70 #0c2233;scrollbar-gutter:stable;overscroll-behavior:contain}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat:has(#bayaniEmpty:not([hidden])) {
+    height:auto; scrollbar-gutter:auto; overflow:visible;
+}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat:has(#bayaniEmpty:not([hidden])) .bayani-messages { padding:0; }
+body.bayani-chat-page.lakbay-theme[data-role="student"] #bayaniEmpty:not([hidden]) {
+    display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:12px; text-align:start;
+    width:fit-content; max-width:calc(100% - 24px); margin:20px 12px; padding:14px;
+    border:1px solid #537471; border-radius:4px 16px 16px 16px;
+    background:linear-gradient(120deg,#1d4144,#102e3f);
+}
+body.bayani-chat-page.lakbay-theme[data-role="student"] #bayaniEmpty h3 { margin:0 0 4px; font-size:clamp(1.05rem,2vw,1.4rem); line-height:1.35; }
+body.bayani-chat-page.lakbay-theme[data-role="student"] #bayaniEmpty p { margin:0; }
+body.bayani-chat-page.lakbay-theme[data-role="student"] #bayaniEmpty .bayani-discovery-mark { margin:0; }
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-mini-emblem img { display:block; width:80%; height:auto; }
+.bayani-writing-area { border-top:1px solid #527179; background:#112b3d; }
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-empty{padding:28px 18px}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-discovery-mark{width:42px;height:42px;margin-bottom:15px;font-size:1.5rem;border:1px solid #6f785e;border-radius:50%;background:#1e3a40;color:#dfc68f;box-shadow:none;transform:none}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-empty h3{font-family:Georgia,serif;font-size:1.55rem;font-weight:500;color:#f0e3c6;margin:10px 0}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-empty p{font-size:.84rem;color:#bfd0d9;line-height:1.65}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-empty p{font-size:var(--lp-type-label);color:#bfd0d9;line-height:1.65}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-messages{padding:22px;min-width:0}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message{width:fit-content;max-width:min(88%,68ch);box-sizing:border-box;padding:14px 17px;margin:0 0 16px;border:1px solid #39585c;border-radius:4px 16px 16px 16px;background:#18383e;color:#e0e9e9;box-shadow:none;overflow-wrap:anywhere;animation:bayani-reveal .22s ease-out}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message.user{margin-left:auto;border-radius:16px 4px 16px 16px;background:#263e54;border-color:#526575;color:#edf0f2}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message>strong{font-size:.68rem;letter-spacing:.05em;color:#b0d0c3}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message>strong{font-size:var(--lp-type-label);letter-spacing:.05em;color:#b0d0c3}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message.user>strong{color:#e7d19b}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message p,body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message-content{font-size:.95rem;line-height:1.75;color:inherit}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message-content strong{color:#f0dfb8;font-size:inherit;letter-spacing:normal}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt-kit{display:flex;flex-wrap:wrap;gap:7px;padding:12px 22px 0;background:#112b3d;border:0;margin:0}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt-kit>span{width:100%;font-size:.72rem;color:#b3c8d1;line-height:1.5}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt{font:inherit;font-size:.73rem;min-height:34px;padding:6px 11px;background:#193744;border:1px solid #47625f;border-radius:20px;color:#e3d5b2;box-shadow:none;cursor:pointer}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt-kit>span{width:100%;font-size:var(--lp-type-label);color:#b3c8d1;line-height:1.5}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt{font:inherit;font-size:.8125rem;min-height:44px;padding:6px 11px;background:#193744;border:1px solid #58756e;border-radius:4px 10px 4px 10px;color:#e3d5b2;box-shadow:none;cursor:pointer}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt:disabled{opacity:.5;cursor:default}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer{padding:14px 22px 10px;background:#112b3d;border:0}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer label{font-size:.8rem;margin-bottom:8px;color:#e5e9e7}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer label{font-size:var(--lp-type-label);margin-bottom:8px;color:#e5e9e7}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer textarea{display:block;min-height:76px;max-height:260px;resize:vertical;padding:12px 14px;border:1px solid #63776e;border-radius:12px;background:#0b2233;color:#edf1ef;font-size:.95rem;line-height:1.6;transition:border-color .18s,box-shadow .18s}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer textarea::placeholder{color:#a5b9c5;opacity:1}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer textarea:focus{outline:2px solid #dfc48c;outline-offset:2px;border-color:#d4b980;box-shadow:0 0 0 5px #ddc38d0d}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer>div{margin-top:10px;gap:14px;align-items:center}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer>div>span{font-size:.7rem;line-height:1.5;max-width:42ch;color:#b9ccd3}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer>div>span{font-size:var(--lp-type-label);line-height:1.5;max-width:42ch;color:#b9ccd3}
 body.bayani-chat-page.lakbay-theme[data-role="student"] #sendBayani{min-height:42px;flex-shrink:0;padding:10px 22px;border:1px solid #e0c58d;border-radius:10px;background:linear-gradient(135deg,#e7ce94,#c7a966);color:#10283b;box-shadow:none;font-weight:750}
 body.bayani-chat-page.lakbay-theme[data-role="student"] #sendBayani:disabled{opacity:.48}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-note{padding:0 22px 16px;background:#112b3d;font-size:.7rem;line-height:1.6;color:#b3c7d0}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-note{padding:0 22px 16px;background:#112b3d;font-size:var(--lp-type-label);line-height:1.6;color:#b3c7d0}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-content :is(a,button,textarea):focus-visible{outline:3px solid #e5cc94;outline-offset:4px}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-content :is(button,a){transition:background .18s,border-color .18s,transform .18s}
 @keyframes bayani-sun-idle{50%{box-shadow:0 0 0 7px #d9bb7512,0 0 0 8px #d9bb7540,0 0 24px #d9bb7510;transform:translateY(-2px)}}
 @media(hover:hover){body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat:hover,body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt:not(:disabled):hover{background:#274b50;border-color:#b4a775}body.bayani-chat-page.lakbay-theme[data-role="student"] #sendBayani:not(:disabled):hover{transform:translateY(-1px);background:#ead39f}}
 @media(max-width:1150px){body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-layout{grid-template-columns:190px minmax(0,1fr);gap:16px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit{padding-inline:12px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit>a{gap:7px}}
 @media(max-width:950px){body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-layout{grid-template-columns:minmax(0,1fr)}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-workspace{grid-column:1;grid-row:1}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion{grid-row:2;display:grid;grid-template-columns:190px minmax(0,1fr)}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-banner{grid-row:1/3;padding:18px 14px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-emblem{width:64px;height:64px;margin:16px auto}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-emblem span{width:46px;height:46px;font-size:1.6rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit{padding:16px 18px 0}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-trail{margin:8px 18px 14px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat{height:clamp(240px,35vh,350px)}}
-@media(max-width:600px){body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading{padding:16px;gap:8px;flex-direction:column;align-items:flex-start}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading h1{font-size:1.5rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading .eyebrow{font-size:.58rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-back{font-size:.74rem;min-height:32px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-heading{padding:14px;gap:8px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-identity{gap:9px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-heading h2{font-size:1rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-identity>div>span{font-size:.67rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat{padding:7px 9px;font-size:.7rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-connection{padding:8px 14px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat{height:250px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-messages{padding:16px 12px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message{max-width:94%;padding:12px 14px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message p,body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message-content{font-size:.94rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt-kit{padding:12px 14px 0}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer{padding:12px 14px 10px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer>div{flex-wrap:nowrap;gap:10px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer>div>span{font-size:.66rem;flex:1}body.bayani-chat-page.lakbay-theme[data-role="student"] #sendBayani{margin:0;padding:10px 16px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-note{padding:0 14px 14px;font-size:.68rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion{grid-template-columns:minmax(0,1fr)}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-banner{grid-row:auto;display:grid;grid-template-columns:64px minmax(0,1fr);gap:4px 16px;text-align:left;align-items:center;padding:18px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-tag{grid-column:2;grid-row:1}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-emblem{grid-column:1;grid-row:1/4;margin:0}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion h2{grid-column:2;margin:0}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-banner p{grid-column:2;font-size:.75rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-banner p br{display:none}}
+@media(max-width:600px){body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading{padding:16px;gap:8px;flex-direction:column;align-items:flex-start}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading h1{font-size:1.5rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-heading .eyebrow{font-size:var(--lp-type-label)}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-back{font-size:var(--lp-type-label);min-height:44px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-heading{padding:14px;gap:8px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-identity{gap:9px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-heading h2{font-size:1rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-identity>div>span{font-size:var(--lp-type-label)}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat{padding:7px 9px;font-size:var(--lp-type-label)}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-connection{padding:8px 14px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat{height:250px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-messages{padding:16px 12px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message{max-width:94%;padding:12px 14px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message p,body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message-content{font-size:.94rem}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt-kit{padding:12px 14px 0}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer{padding:12px 14px 10px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer>div{flex-wrap:nowrap;gap:10px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer>div>span{font-size:var(--lp-type-label);flex:1}body.bayani-chat-page.lakbay-theme[data-role="student"] #sendBayani{margin:0;padding:10px 16px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-note{padding:0 14px 14px;font-size:var(--lp-type-label)}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion{grid-template-columns:minmax(0,1fr)}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-banner{grid-row:auto;display:grid;grid-template-columns:64px minmax(0,1fr);gap:4px 16px;text-align:left;align-items:center;padding:18px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-tag{grid-column:2;grid-row:1}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-emblem{grid-column:1;grid-row:1/4;margin:0}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion h2{grid-column:2;margin:0}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-banner p{grid-column:2;font-size:var(--lp-type-label)}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-companion-banner p br{display:none}}
 @media(prefers-reduced-motion:reduce){body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-content,body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-content *{animation:none!important;transition:none!important;scroll-behavior:auto!important}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-content :is(a,button):hover{transform:none}}
 /* Override shared banner selectors that include ID-specific lesson headings. */
-body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading{padding:16px 22px;min-height:0;margin-bottom:18px;border-radius:16px;background:linear-gradient(110deg,#153242,#0e2538)}
-body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading h1{font-size:clamp(1.35rem,2vw,1.9rem);line-height:1.25;margin:5px 0 6px}
-body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading p{font-size:.85rem;line-height:1.55;margin:0}
+body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading {
+    display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:14px 26px;
+    padding:clamp(16px,2.2vw,30px); min-height:0; margin-bottom:18px;
+    border-color:#74816e; border-radius:4px 20px 4px 20px;
+    background:
+        repeating-linear-gradient(120deg,#c3a66d 0 2px,#796443 2px 5px) top / 100% 2px no-repeat,
+        repeating-radial-gradient(ellipse at 92% 48%,#adccaf14 0 1px,transparent 2px 18px),
+        linear-gradient(115deg,#153242 45%,#244842);
+}
+body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading h1{font-size:clamp(1.5rem,3vw,2.6rem);line-height:1.2;margin:6px 0 8px}
+.bayani-hero-copy { min-width:0; overflow-wrap:anywhere; }
+.bayani-hero-copy .bayani-back {
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    margin-top:12px; min-height:44px; white-space:normal;
+}
+.bayani-hero-portrait {
+    display:grid; place-items:center; inline-size:clamp(68px,11vw,142px); aspect-ratio:1;
+    border:1px solid #ad9561; border-radius:50%;
+    background:repeating-radial-gradient(circle,#efd3951b 0 1px,transparent 2px 12px),#102d3c;
+    box-shadow:inset 0 0 0 4px #dec08018;
+}
+.bayani-hero-portrait img { display:block; width:88%; height:auto; }
+body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading p{font-size:var(--lp-type-label);line-height:1.55;margin:0}
 body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading::before{display:none}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-emblem{background:url('../assets/brand/lakbay-sun.svg') center/66% no-repeat,repeating-conic-gradient(from 0deg,#d9bb7533 0deg 2deg,transparent 2deg 30deg),#193a42}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-kit>a{background:transparent}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-trail span{background:transparent;color:#d6c18e}
-@media(max-width:600px){body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading{padding:14px 16px;gap:6px}body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading h1{font-size:1.4rem}body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading p{font-size:.8rem}}
+@media(max-width:600px){body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading{padding:14px 16px;gap:10px}body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading p{font-size:var(--lp-type-label)}}
+
+/* Bayani standalone conversation readability pilot. */
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message p,body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message-content{font-size:var(--lp-type-body);line-height:1.75}
+
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-content :is(h1,h2,h3,p,small,span,a,button,label,li){overflow-wrap:anywhere}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-content :is(a,button,textarea){box-sizing:border-box;min-height:44px}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer textarea{font-size:var(--lp-type-body);min-height:96px;width:100%;min-width:0}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-content :is(a,button,textarea):focus-visible{outline:3px solid var(--lp-focus);outline-offset:4px}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-heading{flex-wrap:wrap}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-connection{flex-wrap:wrap}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-identity{min-width:0}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message-content :is(ul,ol){padding-inline-start:1.4em}
+@media(forced-colors:active){body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message{border:1px solid CanvasText}}
+
+@media(max-width:600px){body.bayani-chat-page.lakbay-theme[data-role="student"] #student-main .bayani-heading{padding-block:12px}}
+
+.bayani-recent-chats {
+    padding: .15rem clamp(12px, 3vw, 22px);
+    border-block-end: 1px solid #58767d;
+    background: linear-gradient(115deg, #1b3b43, #132b40);
+    color: #e3eff2;
+}
+.bayani-recent-chats summary {
+    min-height: 44px;
+    align-content: center;
+    color: #ffe0a1;
+    font-weight: 750;
+    cursor: pointer;
+}
+.bayani-recent-chats p { margin: .35rem 0 .7rem; font-size: .875rem; }
+.bayani-recent-chats ul { display: grid; gap: .45rem; margin: .5rem 0; padding: 0; list-style: none; }
+.bayani-recent-chats li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .45rem; }
+.bayani-recent-chats button {
+    min-height: 44px;
+    padding: .45rem .7rem;
+    border: 1px solid #68858d;
+    border-radius: 8px;
+    background: #10283c;
+    color: #e7f2f5;
+    font: inherit;
+    text-align: start;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+.bayani-recent-chats button:hover,
+.bayani-recent-chats button[aria-current=true] { border-color: #e1bf77; color: #ffe0a1; }
+.bayani-recent-chats :is(summary, button):focus-visible { outline: 3px solid #ffe0a1; outline-offset: 2px; }
+/* Conversation workspace refresh: scoped to Bayani, including stored-chat previews. */
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-workspace{border-radius:22px;overflow:hidden;border:1px solid #496873;background:#0d2435;box-shadow:0 18px 44px #020c1924}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-heading{padding:20px 24px;background:linear-gradient(120deg,#193d47,#142d43);border-bottom:1px solid #42616a;gap:16px}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-identity h2{font-size:1.15rem;letter-spacing:-.02em}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat{border-radius:12px;background:#e6c780;color:#10283c;border:1px solid #e6c780;font-weight:750;padding:11px 18px}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat span{color:inherit}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-recent-chats{padding:4px 24px;background:#102a3b;border-color:#395966}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-recent-chats summary{padding:10px 0;min-height:48px}
+.bayani-history-hint{margin-inline-start:12px;font-size:.78rem;font-weight:400;color:#c0d3db}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-recent-chats ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0;max-height:360px;overflow-y:auto;padding:3px}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-recent-chats li{position:relative;display:flex;flex-direction:column;gap:0;border:1px solid #496976;border-radius:14px;background:#173447;overflow:hidden;min-width:0}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-recent-chats .bayani-history-open{display:flex;flex-direction:column;gap:8px;flex:1;padding:16px;border:0;border-radius:0;background:transparent;min-width:0}
+.bayani-history-open strong{font-size:.95rem;line-height:1.5;color:#f1deb2}
+.bayani-history-preview{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:.85rem;line-height:1.6;color:#d1e0e7}
+.bayani-history-meta{font-size:.75rem;line-height:1.5;color:#b9cfd5}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-recent-chats .bayani-history-delete{align-self:flex-end;margin:0 10px 8px;padding:7px 12px;min-height:44px;font-size:.8rem;color:#f3c5c9;border:0;background:transparent}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-history-open[aria-current=true]{background:#234449;box-shadow:inset 3px 0 #e6c780}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-connection{padding:10px 24px;background:#102638;border-bottom:1px solid #304d5c}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat{padding:24px;background:radial-gradient(ellipse at 100% 0%,#193d473d,transparent 65%),#0c2132;min-height:240px}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-empty{max-width:640px;margin:20px auto;padding:28px;border:1px dashed #63818b;border-radius:18px;background:#143344;text-align:left}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-empty h3{font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.4;color:#f2e3c2}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-writing-area{padding:20px 24px;background:#132e40;border-top:1px solid #42606d}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer textarea{border-radius:14px;background:#0a2030;border:1px solid #6c8994;padding:16px;line-height:1.65;color:#edf4f8}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message{border-radius:16px;padding:18px 20px;margin-bottom:16px;max-width:94%}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message.user{margin-inline-start:auto;background:#21434b;border-color:#658681}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message.assistant{background:#163247;border-color:#426479}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message>strong{font-size:.78rem;letter-spacing:.04em;color:#edd49e}
+@media(max-width:600px){body.bayani-chat-page.lakbay-theme[data-role="student"] :is(.bayani-chat-heading,.bayani-writing-area,.bayani-chat){padding:16px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-recent-chats{padding-inline:16px}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-recent-chats ul{grid-template-columns:1fr}.bayani-history-hint{display:none}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-empty{padding:20px;margin:10px 0}body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message{max-width:100%;padding:15px}}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat span{color:inherit!important}

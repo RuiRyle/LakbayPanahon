@@ -31,16 +31,27 @@ function renderRecentChats() {
  }
  try {
   const chats = readChats(uid);
-  if (!chats.length) notice.textContent = 'Your chats will appear here after Bayani replies.';
+  if (!chats.length) notice.textContent = 'Your discoveries start here. Ask a question and your conversation will be saved for next time.';
   for (const chat of chats) {
    if (typeof chat?.title !== 'string' || !Array.isArray(chat.turns)) continue;
    const row = document.createElement('li');
    const open = document.createElement('button');
    const remove = document.createElement('button');
    open.type = remove.type = 'button';
-   open.textContent = chat.title;
+   open.className = 'bayani-history-open';
+   const title = document.createElement('strong');title.textContent = chat.title;
+   const preview = document.createElement('span');preview.className = 'bayani-history-preview';
+   const reply = chat.turns.find(turn => turn?.role === 'model' && typeof turn.parts?.[0]?.text === 'string');
+   preview.textContent = reply ? reply.parts[0].text.replace(/[*#]/g,'').slice(0,110) : 'Open this conversation';
+   const meta = document.createElement('small');meta.className = 'bayani-history-meta';
+   const messages = chat.turns.length;
+   const date = new Date(chat.updatedAt);
+   meta.textContent = (chat.id === activeChatId ? 'Current chat ? ' : '') + messages + ' messages' + (Number.isFinite(date.getTime()) ? ' ? ' + date.toLocaleDateString(undefined,{month:'short',day:'numeric'}) : '');
+   open.append(title,preview,meta);
+   open.setAttribute('aria-label','Open chat: ' + chat.title);
    if (chat.id === activeChatId) open.setAttribute('aria-current', 'true');
    remove.textContent = 'Delete';
+   remove.className = 'bayani-history-delete';
    remove.setAttribute('aria-label', 'Delete chat: ' + chat.title);
    open.onclick = async () => {
     if (auth.currentUser?.uid !== uid || busy) return;
@@ -95,7 +106,7 @@ function saveCurrentChat(uid) {
   const chats = readChats(uid).filter(chat => chat.id !== activeChatId);
   const question = history[0].parts[0].text;
   const title = question.length > 60 ? question.slice(0, 59) + '…' : question;
-  chats.unshift({id: activeChatId, title, turns: history});
+  chats.unshift({id: activeChatId, title, turns: history, updatedAt: new Date().toISOString()});
   localStorage.setItem(chatStorageKey(uid), JSON.stringify(chats.slice(0, 10)));
   renderRecentChats();
  } catch {
