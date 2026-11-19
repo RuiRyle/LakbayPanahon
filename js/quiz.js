@@ -828,10 +828,6 @@ currentAttemptId = null;
 
         quizContent.hidden =
             false;
-        if(new URLSearchParams(window.location.search).get('start')==='1' && !quizStarted && !(securedQuiz && (issued.result || issued.followupStarted))){
-            // The lesson completion screen already supplied the start action.
-            document.querySelector('#quizMissionBriefing .begin-mission-button')?.click();
-        }
         if(securedQuiz&&issued.result){adaptiveFollowupComplete=true;await submitQuiz(true);}
         else if(securedQuiz&&issued.followupStarted){await submitQuiz();}
 

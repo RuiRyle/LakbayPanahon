@@ -1708,16 +1708,11 @@ if (backToMissionButton) {
 }
 
 if (quizButton) {
-    quizButton.addEventListener("click", async () => {
+    quizButton.addEventListener("click", () => {
         if(reviewTopic){window.location.href=topicPracticeUrl();return;}
-        // Fullscreen belongs to the persistent shell so it survives frame navigation.
-        try {
-            const host = window.parent !== window && window.parent.location.origin === window.location.origin ? window.parent.document : document;
-            if (!host.fullscreenElement && host.fullscreenEnabled) await host.documentElement.requestFullscreen();
-        } catch { /* Browser denial must not prevent starting the quiz. */ }
         window.location.href =
             learningNavigation.carry(`quiz.html?chapter=${encodeURIComponent(chapterId || "")}` +
-            `&mission=${encodeURIComponent(missionId || "")}&start=1`);
+            `&mission=${encodeURIComponent(missionId || "")}`);
     });
 }
 
