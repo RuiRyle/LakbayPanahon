@@ -13,10 +13,12 @@ export async function connectBayani(){
     return {settings:{maxMessageCharacters:2000,welcomeMessage:'I am Bayani, your lesson-based Philippine History chatbot. Ask about a lesson topic. I find published lesson passages; I do not generate new facts or reveal quiz answers.'},async send(message){
         current();
         const early=findLessonAnswer(message,[]);
-        if(/contact details|quiz answer|unresolved source/.test(early))return early;
+        if(/contact details|quiz answer|unresolved source|Philippine History questions only/.test(early))return early;
         // Match titles/objectives first; avoid downloading the entire lesson catalog.
         const terms=normalizeQuestion(message).split(' ').filter(t=>t.length>3);
-        const candidates=missions.map(m=>({m,score:terms.filter(t=>normalizeQuestion([m.title,m.name,...(Array.isArray(m.learningObjectives)?m.learningObjectives:[])].join(' ')).includes(t)).length})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
+        if(terms.includes('lapulapu'))terms.push('mactan');
+        if(terms.includes('rizal'))terms.push('rizal');
+        const candidates=missions.map(m=>({m,score:terms.filter(t=>normalizeQuestion([m.title,m.name,m.id,m.description,m.learningObjective,...(Array.isArray(m.learningObjectives)?m.learningObjectives:[])].join(' ')).includes(t)).length})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
         const passages=[];
         for(const {m} of candidates){
             const scenes=await getDocsFromServer(query(collection(db,'storyScenes'),where('missionId','==',m.id)));

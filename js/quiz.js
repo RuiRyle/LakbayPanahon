@@ -1,7 +1,42 @@
 import {appConfirm,appAlert} from './app-dialog.js';
+import { animateAssessmentArrival } from './assessment-motion.js';
 import { assessmentAction, assessmentState, forgetAssessment } from './student-assessment-client.js';
 let securedQuiz = false,
   assessmentBusy = false;
+let quizExpedition = null;
+const expeditionPanel = document.getElementById('quizExpedition');
+const lifelineButton = document.getElementById('quizLifeline');
+lifelineButton?.addEventListener('click', async () => {
+    if (!quizExpedition || assessmentBusy || lifelineButton.disabled) return;
+    const question = questions[currentQuestionIndex];
+    const generation = quizSessionGeneration;
+    assessmentBusy = true;
+    lifelineButton.disabled = true;
+    nextQuestionButton.disabled = true;
+    let applied = false;
+    try {
+        const state = await assessmentAction(securedIdentity(), {action:'lifeline', questionId:question.id});
+        if (generation !== quizSessionGeneration) return;
+        quizExpedition = state.expedition;
+        studentAnswers = {...state.answers};
+        applied = true;
+        const feedback = document.getElementById('quizExpeditionFeedback');
+        delete feedback.dataset.outcome;
+        feedback.textContent = 'Bayani crossed out one wrong choice.';
+        animateAssessmentArrival(feedback);
+    } catch (error) {
+        if (generation === quizSessionGeneration) await appAlert(error.message);
+    } finally {
+        if (generation === quizSessionGeneration) {
+            assessmentBusy = false;
+            displayQuestion();
+            if (applied && questions[currentQuestionIndex]?.id === question.id) {
+                quizOptions.classList.add('bayani-lifeline-reveal');
+                questionText.focus();
+            }
+        }
+    }
+});
 const securedIdentity = () => ({
   kind: 'mission',
   chapterId,
@@ -10,7 +45,7 @@ const securedIdentity = () => ({
 });
 async function syncSecuredAnswer(question, answer) {
   const state = await assessmentAction(securedIdentity(), {
-    action: 'answer',
+    action: quizExpedition ? 'lockAnswer' : 'answer',
     questionId: question.id,
     answer
   });
@@ -19,6 +54,7 @@ async function syncSecuredAnswer(question, answer) {
   studentAnswers = {
     ...state.answers
   };
+  if (quizExpedition) quizExpedition = state.expedition;
   return state;
 }
 async function startSecuredFollowup() {
@@ -447,6 +483,7 @@ async function loadQuiz() {
         previousSaveStatus.textContent = '';
     }
     quizContent.hidden = true;
+    quizContent.classList.remove('quiz-result-handoff');
     quizError.hidden = true;
     quizLoading.hidden = false;
     if (retryQuizLoadButton) retryQuizLoadButton.hidden = true;
@@ -708,6 +745,13 @@ currentAttemptId = null;
         // Resume the server-issued attempt after the completed draft is cleared.
         studentTabStorage.setItem(attemptKey, currentAttemptId);
         securedQuiz=issued.secured===true;
+        quizExpedition=securedQuiz ? issued.expedition || null : null;
+        const expeditionFeedback = document.getElementById('quizExpeditionFeedback');
+        if (expeditionFeedback) {
+            expeditionFeedback.textContent = '';
+            delete expeditionFeedback.dataset.outcome;
+            expeditionPanel.querySelectorAll('.heart-lost').forEach(token => token.classList.remove('heart-lost'));
+        }
         questions = issued.questions;
         missionQuestionBank = issued.questionBank || issued.questions;
         seenMissionQuestionIds = issued.seenQuestionIds || [];
@@ -720,16 +764,14 @@ currentAttemptId = null;
         const passingRequirement = document.getElementById("quizPassingRequirement");
         if (passingRequirement) passingRequirement.textContent = "Answer all " + questions.length + " questions. You need at least " + Math.ceil(questions.length * requirePassingScore(currentQuiz) / 100) + " correct (" + currentQuiz.passingScore + "%) to complete the mission.";
         const notice = document.getElementById("quizSetNotice");
-        if (notice) notice.textContent = "Your answers help choose questions for you. This mission still has " + questions.length + " questions and the same passing goal. Any extra practice helps you review; it does not change your mission score."
-            + (questions.some(question=>seenMissionQuestionIds.includes(question.id)) ? " You may recognize a question from an earlier try. Use what you learned to explain it again." : "");
+        if (notice) notice.textContent = questions.some(question=>seenMissionQuestionIds.includes(question.id))
+            ? "You may recognize a question from an earlier attempt." : "";
 
         /* ==================================
            DISPLAY QUIZ INFORMATION
         ================================== */
 
-        quizTitle.textContent =
-            currentQuiz.title ||
-            `${currentMission.title || "Mission"} Quiz`;
+        quizTitle.textContent = currentMission.title || currentQuiz.title || "Mission Quiz";
 
 
         quizDescription.textContent =
@@ -786,6 +828,10 @@ currentAttemptId = null;
 
         quizContent.hidden =
             false;
+        if(new URLSearchParams(window.location.search).get('start')==='1' && !quizStarted && !(securedQuiz && (issued.result || issued.followupStarted))){
+            // The lesson completion screen already supplied the start action.
+            document.querySelector('#quizMissionBriefing .begin-mission-button')?.click();
+        }
         if(securedQuiz&&issued.result){adaptiveFollowupComplete=true;await submitQuiz(true);}
         else if(securedQuiz&&issued.followupStarted){await submitQuiz();}
 
@@ -812,22 +858,59 @@ currentAttemptId = null;
 
 function renderMissionBriefing(){
  document.getElementById('quizMissionBriefing')?.remove();
+ const progress=document.querySelector('.quiz-progress-card');
+ if(progress)progress.hidden=!quizStarted;
  questionCard.hidden=!quizStarted;
  if(quizStarted)return;
  const briefing=document.createElement('section');briefing.id='quizMissionBriefing';briefing.className='quiz-mission-briefing';briefing.setAttribute('aria-labelledby','quizBriefingTitle');
  const add=(tag,value,className)=>{const el=document.createElement(tag);el.textContent=value;if(className)el.className=className;briefing.append(el);return el;};
- add('span','EXPEDITION BRIEFING','eyebrow');const title=add('h2',currentMission.title||'Your mission');title.id='quizBriefingTitle';
+ const title=add('h2','Ready to begin?');title.id='quizBriefingTitle';
+ const icon=document.createElement('span');
+ icon.className='interface-icon interface-icon--compass';
+ icon.setAttribute('aria-hidden','true');
+ title.prepend(icon);
+ add('p',quizExpedition ? 'Start with three hearts. A wrong answer costs one heart. Use Bayani once to cross out a wrong choice. You can finish for your score even if you run out of hearts.' : 'Answer one question at a time. Review your answers before you submit.');
+ const guide=document.createElement('details');guide.className='quiz-briefing-guide';
+ const summary=document.createElement('summary');summary.textContent='How this quiz works';guide.append(summary);
  const objectives=Array.isArray(currentMission.learningObjectives)?currentMission.learningObjectives:[currentMission.learningObjective];
- const list=document.createElement('ul');for(const value of objectives)if(typeof value==='string'&&value.trim()){const item=document.createElement('li');item.textContent=value;list.append(item);}if(list.children.length){add('h3','Your investigation');briefing.append(list);}
-  const requirements=add('div','','briefing-requirements');for(const value of [questions.length+' mission checkpoints',Math.ceil(questions.length*requirePassingScore(currentQuiz)/100)+' correct to pass']){const chip=document.createElement('span');chip.textContent=value;requirements.append(chip);}
- if(Number.isFinite(currentMission.xpReward)&&currentMission.xpReward>=0){const reward=document.createElement('span');reward.textContent='Up to '+currentMission.xpReward+' XP on first completion';requirements.append(reward);}
- add('p','Each question is a checkpoint in your mission. Answer one at a time. Your answers help choose which question comes next.');
- add('p','If you change an earlier answer, answers after it will be cleared so you can answer them again. Marking a question for review does not change your score.');
-  add('p','Your steps: answer '+questions.length+' quiz questions. Check your answers, then save to see your result. Lesson review and extra practice come after saving.','adaptive-quiz-note');
- add('p','A successful attempt completes the mission. Replaying a completed mission does not award its XP again.','briefing-reward-note');
+ const list=document.createElement('ul');for(const value of objectives)if(typeof value==='string'&&value.trim()){const item=document.createElement('li');item.textContent=value;list.append(item);}
+ if(list.children.length){const heading=document.createElement('h3');heading.textContent='Topics covered';guide.append(heading,list);}
+ const mechanics=document.createElement('p');mechanics.textContent='Your answers help select later questions. Changing an earlier answer clears the answers after it. Flags help you review before submitting. You’ll see your score after saving.';guide.append(mechanics);
+ if(Number.isFinite(currentMission.xpReward)&&currentMission.xpReward>0){const reward=document.createElement('p');reward.className='briefing-reward-note';reward.textContent='Earn up to '+currentMission.xpReward+' XP the first time you complete this mission.';guide.append(reward);}
  const actions=document.createElement('div');actions.className='briefing-actions';const lesson=document.createElement('a');lesson.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId});lesson.textContent='Revisit Lesson';
- const begin=document.createElement('button');begin.type='button';begin.className='begin-mission-button';begin.textContent='Begin Expedition';begin.addEventListener('click',()=>{if(!currentUser||quizSubmitted)return;quizStarted=true;briefing.remove();questionCard.hidden=false;displayQuestion();questionText.tabIndex=-1;questionText.focus({preventScroll:true});});
- actions.append(lesson,begin);briefing.append(actions);questionCard.before(briefing);
+ const begin=document.createElement('button');begin.type='button';begin.className='begin-mission-button';begin.textContent='Start Mission Quiz';begin.addEventListener('click',async()=>{
+    if (!currentUser || quizSubmitted || begin.disabled) return;
+    const generation = quizSessionGeneration;
+    const countdown = document.getElementById('quizCountdown');
+    begin.disabled = true;
+    try {
+        if (countdown?.showModal) {
+            const number = countdown.querySelector('strong');
+            number.textContent = '3';
+            delete countdown.dataset.finalBeat;
+            countdown.showModal();
+            for (let count = 3; count > 0; count--) {
+                number.textContent = String(count);
+                if (count === 1) countdown.dataset.finalBeat = '';
+                else document.dispatchEvent(new CustomEvent('lakbay:countdown-tick'));
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                if (!countdown.open || generation !== quizSessionGeneration || !currentUser) return;
+            }
+            countdown.close();
+        }
+        quizStarted=true;
+        renderMissionBriefing();
+        displayQuestion();
+        document.dispatchEvent(new CustomEvent('lakbay:compass-ready'));
+        questionText.tabIndex=-1;
+        questionText.focus();
+    } finally {
+        if (countdown?.open) countdown.close();
+        begin.disabled = false;
+        if (begin.isConnected && generation === quizSessionGeneration) begin.focus();
+    }
+ });
+ actions.append(begin,lesson);briefing.append(actions,guide);questionCard.before(briefing);
 }
 
 function getMissionDifficultyLevels() {
@@ -1138,11 +1221,13 @@ async function handleAdaptiveFollowupAction() {
 
 function displayMissionCheckpoints() {
  if(!missionCheckpoints)return;
- missionCheckpoints.replaceChildren();missionCheckpoints.setAttribute('role','list');missionCheckpoints.setAttribute('aria-label','Expedition checkpoints. Answered does not mean correct.');
+ missionCheckpoints.replaceChildren();missionCheckpoints.setAttribute('role','list');missionCheckpoints.setAttribute('aria-label','Mission Quiz questions. Answered does not mean correct.');
  questions.forEach((question,index)=>{
   const answered=Boolean(studentAnswers[question.id]),current=index===currentQuestionIndex;
+  const flagged=flaggedQuestions.has(question.id);
   const checkpoint=document.createElement('div');checkpoint.className='mission-checkpoint'+(answered?' answered':'')+(current?' current':'');checkpoint.setAttribute('role','listitem');if(current)checkpoint.setAttribute('aria-current','step');
-  checkpoint.setAttribute('aria-label','Checkpoint '+(index+1)+', '+(answered?'answered':'unanswered')+(current?', current':''));
+  checkpoint.classList.toggle('flagged',flagged);
+  checkpoint.setAttribute('aria-label','Question '+(index+1)+', '+(answered?'answered':'unanswered')+(current?', current':'')+(flagged?', marked for review':''));
   const dot=document.createElement('button');dot.className='mission-checkpoint-dot';dot.textContent=String(index+1);dot.type='button';dot.setAttribute('aria-label','Go to question '+(index+1));dot.disabled=!quizStarted||quizSubmitted||index>currentQuestionIndex;dot.addEventListener('click',()=>{if(!quizStarted||quizSubmitted||index>currentQuestionIndex)return;currentQuestionIndex=index;displayQuestion();questionText.tabIndex=-1;questionText.focus({preventScroll:true});});
   const copy=document.createElement('span');copy.className='mission-checkpoint-label';copy.textContent='Question '+(index+1);
   const state=document.createElement('small');state.className='checkpoint-state';state.textContent=(answered?'Answered':current?'Current':'Unanswered')+(flaggedQuestions.has(question.id)?' - Review Later':'');
@@ -1161,7 +1246,7 @@ function displayQuestion() {
     const clueLabel=document.getElementById('historicalClueLabel');
     if(clueLabel)clueLabel.textContent='HISTORICAL CLUE DISCOVERED';
     if(flagButton){const flagged=flaggedQuestions.has(questions[currentQuestionIndex]?.id);flagButton.setAttribute('aria-pressed',String(flagged));flagButton.textContent=flagged?'Remove Review Mark':'Review Later';flagButton.disabled=quizSubmitted;}
-    if(flagCount)flagCount.textContent=flaggedQuestions.size+' question'+(flaggedQuestions.size===1?'':'s')+' marked for review';
+    if(flagCount)flagCount.textContent=flaggedQuestions.size?flaggedQuestions.size+' marked for review':'';
     const flagPanel=document.getElementById('flagReviewPanel');if(flagPanel){flagPanel.hidden=true;flagPanel.replaceChildren();}
 
     saveQuizDraftState();
@@ -1183,6 +1268,8 @@ function displayQuestion() {
 
     const questionPosition =
         currentQuestionIndex + 1;
+    quizOptions.classList.remove('bayani-lifeline-reveal');
+    animateAssessmentArrival(questionCard, `${quizSessionGeneration}:${currentQuestionIndex}:${question.id}`);
 
 
     const answerLocked = quizSubmitted;
@@ -1261,6 +1348,7 @@ function displayQuestion() {
 
             optionButton.dataset.option =
                 option.key;
+            optionButton.setAttribute("aria-pressed", String(studentAnswers[question.id] === option.key));
 
 
             if (
@@ -1430,6 +1518,8 @@ function displayQuestion() {
 
     questionProgress.textContent =
         `Question ${questionPosition} of ${questions.length}`;
+    const focusProgress = document.getElementById('quizFocusProgress');
+    if (focusProgress) focusProgress.textContent = questionProgress.textContent;
 
 
     const answeredCount =
@@ -1439,12 +1529,14 @@ function displayQuestion() {
 
 
     answeredProgress.textContent =
-        `${answeredCount} of ${questions.length} answered - graded after submission`;
+        answeredCount === questions.length
+            ? 'All checkpoints answered. Ready to review.'
+            : `${answeredCount} of ${questions.length} answered`;
 
 
     const progress =
         (
-            questionPosition /
+            answeredCount /
             questions.length
         ) * 100;
 
@@ -1454,6 +1546,41 @@ function displayQuestion() {
 
 
     displayMissionCheckpoints();
+    if (expeditionPanel) {
+        expeditionPanel.hidden = !quizExpedition;
+        document.getElementById('quizAnswerHelp').textContent = quizExpedition
+            ? 'Choose one answer, then lock it in.'
+            : 'Choose one answer. You can change it before saving.';
+        if (quizExpedition) {
+            const removed = quizExpedition.lifeline;
+            document.getElementById('quizHearts').textContent = quizExpedition.hearts + ' of 3 hearts';
+            expeditionPanel.querySelectorAll('.quiz-heart-tokens span').forEach((token, index) => {
+                token.classList.toggle('spent', index >= quizExpedition.hearts);
+            });
+            const locked = Boolean(assessmentState(securedIdentity())?.answers?.[question.id]);
+            lifelineButton.disabled = Boolean(removed) || locked;
+            lifelineButton.querySelector('span').textContent = removed ? 'Bayani lifeline used' : 'Use Bayani lifeline';
+            previousQuestionButton.hidden = true;
+            if (flagButton) flagButton.hidden = true;
+            missionCheckpoints.querySelectorAll('button').forEach(button => button.disabled = true);
+            if (locked) quizOptions.querySelectorAll('button').forEach(button => button.disabled = true);
+            if (removed?.questionId === question.id) {
+                const option = quizOptions.querySelector('[data-option="' + removed.option + '"]');
+                if (option) {
+                    option.disabled = true;
+                    option.classList.add('quiz-option-eliminated');
+                    const marker = document.createElement('span');
+                    marker.className = 'bayani-eliminated-label';
+                    marker.textContent = 'Ruled out by Bayani';
+                    const copy = option.querySelector('.quiz-option-text');
+                    const label = document.createElement('span');
+                    label.className = 'bayani-eliminated-copy';
+                    copy.replaceWith(label);
+                    label.append(copy, marker);
+                }
+            }
+        }
+    }
 
 
     /* ==================================
@@ -1482,7 +1609,9 @@ function displayQuestion() {
 
 
     nextQuestionButton.disabled = !hasSelectedAnswer || quizSubmitted;
-    nextQuestionButton.textContent = isLastQuestion ? 'Review My Answers' : 'Next Question';
+    nextQuestionButton.textContent = quizExpedition
+        ? (assessmentState(securedIdentity())?.answers?.[question.id] ? 'See Results' : 'Lock In Answer')
+        : isLastQuestion ? 'Review Answers' : 'Next Question';
 }
 
 /* ==========================================
@@ -1522,7 +1651,7 @@ nextQuestionButton.addEventListener(
     "click",
     async () => {
 
-        if (quizSubmitted) {
+        if (quizSubmitted || assessmentBusy) {
 
             return;
 
@@ -1576,7 +1705,42 @@ nextQuestionButton.addEventListener(
            NEXT CHECKPOINT
         ================================== */
 
+        if (quizExpedition && assessmentState(securedIdentity())?.answers?.[currentQuestion.id]) {
+            await submitQuiz(true);
+            return;
+        }
+        const heartsBeforeAnswer = quizExpedition?.hearts;
         if(securedQuiz){assessmentBusy=true;quizOptions.inert=true;nextQuestionButton.disabled=true;try{await syncSecuredAnswer(currentQuestion,selectedAnswer);}catch(error){(await appAlert(error.message));return;}finally{assessmentBusy=false;quizOptions.inert=false;nextQuestionButton.disabled=false;}}
+        if (quizExpedition) {
+            document.dispatchEvent(new CustomEvent('lakbay:answer-lock'));
+            const feedback = document.getElementById('quizExpeditionFeedback');
+            const lostHeart = quizExpedition.hearts < heartsBeforeAnswer;
+            expeditionPanel.querySelectorAll('.quiz-heart-tokens > span').forEach((token, index) => {
+                token.classList.toggle('heart-lost', lostHeart && index === quizExpedition.hearts);
+            });
+            feedback.dataset.outcome = quizExpedition.lastCorrect ? 'correct' : 'missed';
+            feedback.textContent = quizExpedition.lastCorrect
+                ? 'Correct. Checkpoint cleared.'
+                : quizExpedition.hearts ? 'Incorrect. You lost a heart.' : 'No hearts left. You can finish for your quiz score.';
+            animateAssessmentArrival(feedback);
+            if (isLastQuestion) {
+                // The last checkpoint stays visible while the student moves to review.
+                requestAnimationFrame(() => {
+                    if (questions[currentQuestionIndex]?.id === currentQuestion.id) {
+                        animateAssessmentArrival(quizOptions.querySelector('.answer-locked.selected'));
+                    }
+                });
+            }
+            if (quizExpedition.lastCorrect || lostHeart) {
+                document.dispatchEvent(new CustomEvent(quizExpedition.lastCorrect ? 'lakbay:answer-correct' : 'lakbay:heart-lost'));
+            }
+            if (isLastQuestion) {
+                displayQuestion();
+                if (lostHeart) quizOptions.querySelector('.answer-locked.selected')?.classList.add('heart-loss-answer');
+                nextQuestionButton.focus();
+                return;
+            }
+        }
         if (!isLastQuestion) {
 
             const hasAnsweredLaterQuestion = questions.slice(currentQuestionIndex + 1)
@@ -1631,7 +1795,7 @@ nextQuestionButton.addEventListener(
 
 
         /* ==================================
-           SUBMIT MISSION TRIAL
+           SUBMIT MISSION QUIZ
         ================================== */
 
         await submitQuiz();
@@ -1664,24 +1828,28 @@ async function submitQuiz(flagsConfirmed=false) {
 
     if(!flagsConfirmed){
         const panel=document.getElementById('flagReviewPanel');
-        if(panel){panel.replaceChildren();panel.hidden=false;const title=document.createElement('h3');title.textContent='Check your quiz answers';panel.append(title);const note=document.createElement('p');note.textContent='You answered all '+questions.length+' quiz questions. Tap a question if you want to change your answer. A review mark is just a reminder.';panel.append(note);
+        if(panel){panel.replaceChildren();panel.hidden=false;const title=document.createElement('h3');title.textContent='Review your answers';panel.append(title);
         const answered=questions.filter(q=>['A','B','C','D'].includes(studentAnswers[q.id])).length;
-        const summary=document.createElement('p');summary.className='quiz-journal-summary';summary.textContent=answered+' of '+questions.length+' answered ? '+questions.filter(q=>flaggedQuestions.has(q.id)).length+' marked for review';panel.append(summary);
+        const marked=questions.filter(q=>flaggedQuestions.has(q.id)).length;
+        const summary=document.createElement('p');summary.className='quiz-journal-summary';summary.textContent=answered+' of '+questions.length+' answered'+(marked?' · '+marked+' marked for review':'');panel.append(summary);
         questions.forEach((question,index)=>{
             const button=document.createElement('button');button.type='button';button.className='quiz-journal-question';
             const answer=studentAnswers[question.id];const valid=['A','B','C','D'].includes(answer);
             button.dataset.flagged=String(flaggedQuestions.has(question.id));button.dataset.answered=String(valid);
-            const label=document.createElement('strong');label.textContent='Question '+(index+1)+(flaggedQuestions.has(question.id)?' ? Review marked':'');
+            const label=document.createElement('strong');label.textContent='Question '+(index+1)+(flaggedQuestions.has(question.id)?' · Marked for review':'');
             const prompt=document.createElement('span');prompt.textContent=question.question;
-            const choice=document.createElement('span');choice.className='quiz-journal-choice';choice.textContent=valid?'Your choice: '+answer+' ? '+(question['option'+answer]||''):'Not answered yet';
-            button.append(label,prompt,choice);
-            button.addEventListener('click',()=>{currentQuestionIndex=index;displayQuestion();questionText.tabIndex=-1;questionText.focus({preventScroll:true});});panel.append(button);
+            const choice=document.createElement('span');choice.className='quiz-journal-choice';choice.textContent=valid?'Your choice: '+answer+' - '+(question['option'+answer]||''):'Not answered yet';
+            const edit=document.createElement('span');edit.className='quiz-journal-edit';edit.textContent=valid?'Change answer':'Answer question';
+            button.append(label,prompt,choice,edit);
+            button.addEventListener('click',()=>{currentQuestionIndex=index;displayQuestion();questionText.tabIndex=-1;questionText.focus();});panel.append(button);
         });
-        const saveNote=document.createElement('p');saveNote.className='adaptive-quiz-note';saveNote.textContent='Save these answers to see your score. You can review the lesson and try practice after your result is saved.';panel.append(saveNote);
-        const confirm=document.createElement('button');confirm.type='button';confirm.textContent='Save & See My Result';confirm.disabled=!questions.every(q=>['A','B','C','D'].includes(studentAnswers[q.id]));confirm.addEventListener('click',async ()=>{panel.hidden=true;(await submitQuiz(true));});panel.append(confirm);title.tabIndex=-1;title.focus();return;}
+        const saveNote=document.createElement('p');saveNote.className='quiz-submit-note';saveNote.textContent='Submit your answers to see your score.';panel.append(saveNote);
+        animateAssessmentArrival(panel);
+        const confirm=document.createElement('button');confirm.type='button';confirm.className='quiz-submit-final';confirm.textContent='Submit Quiz';confirm.disabled=answered!==questions.length;confirm.addEventListener('click',async ()=>{panel.hidden=true;await submitQuiz(true);});panel.append(confirm);title.tabIndex=-1;title.focus();return;}
     }
     quizSubmitted =
         true;
+    quizContent.classList.add('quiz-result-handoff');
 
     const saveStatus = document.getElementById('quizSaveStatus');
     if (saveStatus) {
@@ -1719,6 +1887,7 @@ const completionResult = await submitStudentActivity({
 
 
 if (!isCurrent()) return;
+quizContent.classList.remove('quiz-result-handoff');
 quizDraftReady = false;
 if (saveStatus) saveStatus.textContent = completionResult.preview ? 'Preview result only. No score, completion or reward was saved.' : 'Your quiz result is saved.';
 restartQuizButton.hidden = true;
@@ -1822,6 +1991,7 @@ lastQuizPassed = passed;
     } catch (error) {
 
         if (!isCurrent()) return;
+        quizContent.classList.remove('quiz-result-handoff');
         console.error(
             "Unable to submit quiz:",
             error
@@ -2169,14 +2339,19 @@ function displayAnswerReview({playCorrectCue=false}={}) {
             );
 
 
-            reviewItem.appendChild(
-                answers
-            );
-
-
-            reviewItem.appendChild(
-                explanationBox
-            );
+            if (isCorrect) {
+                reviewItem.append(answers, explanationBox);
+            } else {
+                const comparison = document.createElement('details');
+                comparison.className = 'quiz-missed-comparison';
+                const summary = document.createElement('summary');
+                summary.textContent = 'Compare answers';
+                const content = document.createElement('div');
+                content.className = 'quiz-missed-comparison-content';
+                content.append(answers, explanationBox);
+                comparison.append(summary, content);
+                reviewItem.append(comparison);
+            }
 
 
             quizAnswerReviewList.appendChild(
@@ -2296,15 +2471,18 @@ function getOptionText(
 async function renderMissionLearningSummary(correctAnswers){
  document.getElementById('missionLearningSummary')?.remove();
  const panel=document.createElement('section');panel.id='missionLearningSummary';panel.className='mission-learning-summary';panel.setAttribute('aria-labelledby','missionLearningSummaryTitle');
- const heading=document.createElement('h3');heading.id='missionLearningSummaryTitle';heading.textContent='Your mission field notes';panel.append(heading);
- function block(title){const part=document.createElement('div');part.className='learning-summary-block';const h=document.createElement('h4');h.textContent=title;part.append(h);panel.append(part);return part;}
+ const heading=document.createElement('h3');heading.id='missionLearningSummaryTitle';heading.textContent='Your next step';panel.append(heading);
+ const pending=copy(panel,'Checking your saved chapter progress...');
+ const notes=document.createElement('details');notes.className='quiz-result-notes';
+ const summary=document.createElement('summary');summary.textContent='Mission field notes';notes.append(summary);panel.append(notes);
+ function block(title){const part=document.createElement('div');part.className='learning-summary-block';const h=document.createElement('h4');h.textContent=title;part.append(h);notes.append(part);return part;}
  function copy(host,value){const p=document.createElement('p');p.textContent=value;host.append(p);return p;}
  const objectives=(Array.isArray(currentMission.learningObjectives)?currentMission.learningObjectives:[currentMission.learningObjective]).filter(v=>typeof v==='string'&&v.trim());
  if(objectives.length){const part=block('What this mission taught');const list=document.createElement('ul');for(const objective of objectives){const item=document.createElement('li');item.textContent=objective;list.append(item);}part.append(list);}
  const demonstrated=block('What your quiz shows');copy(demonstrated,correctAnswers+' of '+questions.length+' questions answered correctly. You met this mission passing requirement. This result does not prove every topic is fully understood.');
  const review=block('What you can revisit');if(lastQuizTopics.length){for(const topic of lastQuizTopics){const question=questions.find(q=>q.topic===topic);const link=document.createElement('a');link.textContent=question?.topicLabel||topic;link.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,reviewTopic:topic});review.append(link);}copy(review,'These recommendations come from this quiz. Saved practice can provide more evidence as you learn.');}else copy(review,'No missed topics were identified in this quiz. You can revisit the lesson whenever you want.');
  const artifact=lastArtifactResult?.artifact;if(artifact){const collection=block(lastArtifactResult.newlyEarned?'What you collected':'Your mission collectible');copy(collection,artifact.name||artifact.title||'Mission collectible');if(typeof artifact.learningDetails?.lessonConnection==='string')copy(collection,artifact.learningDetails.lessonConnection);else if(typeof artifact.description==='string')copy(collection,artifact.description);const link=document.createElement('a');link.href='achievements.html';link.textContent='Explore My Collections';collection.append(link);}
- const next=block('Your next step');const pending=copy(next,'Checking your saved chapter progress...');quizResultMessage.after(panel);
+ document.querySelector('.quiz-result-actions').after(panel);
  const uid=currentUser?.uid,generation=quizSessionGeneration,scopeMission=missionId;const current=()=>auth.currentUser?.uid===uid&&quizSessionGeneration===generation&&document.getElementById('missionLearningSummary')===panel&&!quizResult.hidden;
  try{const [missionSnapshot,progressSnapshot,challengeSnapshot]=await Promise.all([getDocs(query(collection(db,'missions'),where('chapterId','==',chapterId))),getDocs(query(collection(db,'studentProgress'),where('userId','==',uid))),getDocs(query(collection(db,'chapterChallenges'),where('chapterId','==',chapterId)))]);if(!current())return;
  const rows=snapshot=>snapshot.docs.map(d=>({...d.data(),id:d.id})),missions=rows(missionSnapshot).filter(m=>m.status==='active').sort((a,b)=>(Number(a.order)||0)-(Number(b.order)||0)||a.id.localeCompare(b.id));
@@ -2314,8 +2492,41 @@ async function renderMissionLearningSummary(correctAnswers){
  const action=document.createElement('a');action.className='learning-summary-next';
  if(nextMission){pending.textContent='Available next: '+(nextMission.title||'Next mission')+'.';action.textContent='Open Next Lesson';action.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:nextMission.id});}
  else if(missions.length&&missions.every(m=>completed.has(m.id))&&rows(challengeSnapshot).some(c=>c.status==='active')){pending.textContent='All missions in this chapter are complete. The chapter challenge is available; your chapter completion is checked there.';action.textContent='Open Chapter Challenge';action.href='chapter-challenge.html?'+new URLSearchParams({chapter:chapterId});}
- else{pending.textContent='Your mission is complete. My Journey shows your available learning steps.';action.textContent='Open My Journey';action.href='my-journey.html';}next.append(action);
- }catch{if(current()){pending.textContent='Your mission result is saved, but the next step could not be checked. Open My Journey to try again.';const link=document.createElement('a');link.href='my-journey.html';link.textContent='Open My Journey';next.append(link);}}
+ else{pending.textContent='Your mission is complete. My Journey shows your available learning steps.';action.textContent='Open My Journey';action.href='my-journey.html';}notes.before(action);
+ }catch{if(current()){pending.textContent='Your mission result is saved, but the next step could not be checked. Open My Journey to try again.';const link=document.createElement('a');link.href='my-journey.html';link.textContent='Open My Journey';notes.before(link);}}
+}
+
+async function showPreviousQuizScore(summary, score) {
+    const uid = currentUser?.uid;
+    if (!uid || !securedQuiz || globalThis.__lakbayExplorationPreview === true) return;
+    const generation = quizSessionGeneration;
+    const attemptId = currentAttemptId;
+    const quizId = currentQuiz.id;
+    try {
+        const snapshot = await getDocs(query(collection(db, 'studentQuizAttempts'),
+            where('userId', '==', uid), where('quizId', '==', quizId)));
+        if (generation !== quizSessionGeneration || currentUser?.uid !== uid ||
+            attemptId !== currentAttemptId || !summary.isConnected) return;
+        const attempts = snapshot.docs.map(row => row.data()).filter(row =>
+            row.userId === uid && row.quizId === quizId && row.chapterId === chapterId && row.missionId === missionId);
+        const current = attempts.find(row => row.attemptId === attemptId);
+        const timestamp = current?.completedAt?.toMillis?.();
+        if (!Number.isFinite(timestamp)) return;
+        const scope = row => row.classroom
+            ? JSON.stringify([row.classroom.classId, row.classroom.assignmentId, row.classroom.version])
+            : null;
+        const previous = attempts.filter(row => row.totalQuestions === current.totalQuestions &&
+            scope(row) === scope(current) && Number.isFinite(row.score) && row.score >= 0 && row.score <= 100 &&
+            row.completedAt?.toMillis?.() < timestamp)
+            .sort((a, b) => b.completedAt.toMillis() - a.completedAt.toMillis())[0];
+        if (!previous) return;
+        const comparison = document.createElement('p');
+        comparison.className = 'quiz-previous-score';
+        comparison.textContent = 'Previous attempt: ' + previous.score + '% · This attempt: ' + score + '%';
+        summary.append(comparison);
+    } catch {
+        // The current result is usable even when previous attempts cannot be read.
+    }
 }
 
 function showResult(
@@ -2323,6 +2534,9 @@ function showResult(
     correctAnswers,
     passed
 ) {
+    if (document.fullscreenElement === document.documentElement) {
+        void document.exitFullscreen().catch(() => {});
+    }
 
     questionCard.hidden =
         true;
@@ -2330,6 +2544,7 @@ function showResult(
 
     quizResult.hidden =
         false;
+    animateAssessmentArrival(quizResult);
     quizResultTitle.tabIndex = -1;
     queueMicrotask(() => { if (!quizResult.hidden && currentUser) quizResultTitle.focus({preventScroll:true}); });
 
@@ -2344,25 +2559,32 @@ function showResult(
 
     document.getElementById('missionLearningSummary')?.remove();
     quizResult.dataset.outcome=passed?'passed':'retry';
+    if(quizAnswerReview)quizAnswerReview.open=false;
     document.getElementById('expeditionResultSummary')?.remove();
     const expeditionSummary=document.createElement('div');expeditionSummary.id='expeditionResultSummary';expeditionSummary.className='expedition-result-summary';
-    const tag=document.createElement('span');tag.className='eyebrow';tag.textContent=passed?'EXPEDITION COMPLETE':'YOUR RECOVERY ROUTE';
-    const total=document.createElement('strong');total.textContent=correctAnswers+' / '+questions.length+' mission questions correct';
-    const requirement=document.createElement('p');requirement.textContent='You need '+Math.ceil(questions.length*requirePassingScore(currentQuiz)/100)+' correct to pass. '+(passed?'Continue your journey, or revisit any topics below.':'Your next step: review one missed topic. Then practise it and retry the mission quiz.');
-    expeditionSummary.append(tag,total,requirement);
+    const total=document.createElement('strong');total.textContent=correctAnswers+' of '+questions.length+' correct';
+    const requirement=document.createElement('p');requirement.textContent='Passing goal: '+Math.ceil(questions.length*requirePassingScore(currentQuiz)/100)+' correct';
+    expeditionSummary.append(total,requirement);
+    if (quizExpedition) {
+        const trail = document.createElement('p');
+        trail.className = 'quiz-result-trail';
+        trail.textContent = quizExpedition.hearts
+            ? 'Expedition cleared with ' + quizExpedition.hearts + (quizExpedition.hearts === 1 ? ' heart left.' : ' hearts left.')
+            : 'Expedition ended with zero hearts. Your quiz score is shown above.';
+        expeditionSummary.append(trail);
+    }
     if(lastAdaptiveFollowup){const adaptiveSummary=document.createElement('p');adaptiveSummary.className='adaptive-result-summary';adaptiveSummary.textContent='Extra practice: '+lastAdaptiveFollowup.correctAnswers+' of '+lastAdaptiveFollowup.totalQuestions+' correct. This does not change your mission score. '+(lastAdaptiveFollowup.preview?'This preview was not saved.':'Check the topics below to see what you can review.');expeditionSummary.append(adaptiveSummary);}
-    quizResultMessage.after(expeditionSummary);
+    const debrief = quizResultMessage.closest('.quiz-debrief-header');
+    debrief.querySelector('.quiz-debrief-score').append(expeditionSummary);
+    void showPreviousQuizScore(expeditionSummary, percentage);
     const hasPassRewardCue=passed&&globalThis.__lakbayExplorationPreview!==true&&(
         lastCompletionResult?.firstCompletion===true||lastArtifactResult?.newlyEarned===true
     );
     displayAnswerReview({
-        playCorrectCue:passed&&globalThis.__lakbayExplorationPreview!==true&&!hasPassRewardCue
+        playCorrectCue:passed&&!quizExpedition&&globalThis.__lakbayExplorationPreview!==true&&!hasPassRewardCue
     });
     const reinforcement = document.getElementById("quizReinforcementSummary");
-    if (reinforcement) reinforcement.textContent = passed
-        ? lastQuizTopics.length ? "Mission complete. You can continue your journey and optionally strengthen the topics below. Passing does not mean every topic was answered correctly."
-            : "You answered every question correctly on this attempt. Continue your journey or revisit the lesson whenever you want."
-        : "These topics were identified from this attempt. Review the explanations and choose practice, lesson review or a quiz retry.";
+    if (reinforcement) reinforcement.textContent = lastQuizTopics.length ? "Topics to revisit" : "";
     const reinforceLink = document.getElementById("reinforcePassedTopicsLink");
     if (reinforceLink) {
         reinforceLink.hidden = !passed || !lastQuizTopics.length;
@@ -2378,22 +2600,26 @@ function showResult(
         }
         if(otherTopics)topicBox.append(otherTopics);
     }
-    retryQuizButton.textContent=passed?'Replay Mission Quiz':'Retry Quiz Now';
+    retryQuizButton.textContent=passed?'Replay Quiz':'Retry Quiz';
     retryQuizButton.title=passed?'Replay this mission quiz.':'Optional shortcut. Reviewing the lesson and practising first is recommended.';
     const generalReviewLink=document.getElementById('reviewLessonLink');if(generalReviewLink)generalReviewLink.hidden=!passed&&lastQuizTopics.length>0;
-    // Put the recovery route before the long answer explanations on failure.
-    // Move the same controls back below rewards for a passing result.
     const resultActions=continueResultButton.closest('.quiz-result-actions');
-    const recoveryAnchor=passed?document.getElementById('missionRewardCard'):expeditionSummary;
-    if(recoveryAnchor&&reinforcement&&topicBox&&resultActions)recoveryAnchor.after(reinforcement,topicBox,resultActions);
+    resultActions?.prepend(continueResultButton);
+    if (resultActions) debrief.after(resultActions);
+    if (reinforcement && topicBox && resultActions) {
+        const reviewAnchor = passed && quizAnswerReview ? quizAnswerReview : resultActions;
+        reviewAnchor.after(reinforcement, topicBox);
+    }
 
 
     /* ======================================
        PASSED
     ====================================== */
 
-    if (globalThis.__lakbayExplorationPreview===true) {
-        quizResultIcon.textContent='🧭';
+    const preview = globalThis.__lakbayExplorationPreview === true;
+    quizResultIcon.classList.toggle('interface-icon--trophy', passed && !preview);
+    quizResultIcon.classList.toggle('interface-icon--compass', !passed || preview);
+    if (preview) {
         if(quizResultEyebrow)quizResultEyebrow.textContent='TESTING PREVIEW';
         quizResultTitle.textContent=passed?'Preview: passing score':'Preview: try again';
         quizResultMessage.textContent=correctAnswers+' of '+questions.length+' correct. This test result does not complete the mission or award XP and artifacts.';
@@ -2405,14 +2631,12 @@ function showResult(
     }
     if (passed) {
 
-       quizResultIcon.textContent =
-    "\u{1F3C6}";
 
 
 if (quizResultEyebrow) {
 
     quizResultEyebrow.textContent =
-        "MISSION TRIAL COMPLETE";
+        "MISSION QUIZ COMPLETE";
 
 }
 
@@ -2452,7 +2676,7 @@ quizResultTitle.textContent =
         if (firstCompletion) {
 
            quizResultMessage.textContent =
-    `You completed the Mission Trial with ${correctAnswers} out of ${questions.length} checkpoints correct. Your journey can continue!`;
+    "You passed the quiz and completed this mission.";
 
         }
 
@@ -2467,7 +2691,7 @@ quizResultTitle.textContent =
             earnedArtifact
         ) {
 quizResultMessage.textContent =
-    `You completed the Mission Trial with ${correctAnswers} out of ${questions.length} checkpoints correct. Your mission XP was already collected, but you discovered an artifact that was missing from your collection.`;
+    "You passed again and collected the missing artifact. The mission XP was already awarded.";
 
         }
 
@@ -2479,7 +2703,7 @@ quizResultMessage.textContent =
         else {
 
            quizResultMessage.textContent =
-    `You completed the Mission Trial with ${correctAnswers} out of ${questions.length} checkpoints correct. You already completed this mission, so its XP and artifact rewards have already been collected.`;
+    "You passed again. Your mission rewards were already collected.";
 
         }
 
@@ -2493,7 +2717,7 @@ quizResultMessage.textContent =
 
 
         continueResultButton.textContent =
-            "Continue Journey \u2192";
+            learningNavigation.classroomReturn ? "Back to Class Activity" : "Continue Your Expedition →";
 
 
         return;
@@ -2537,28 +2761,24 @@ quizResultMessage.textContent =
     }
 
 
-    quizResultIcon.textContent =
-    "\u{1F9ED}";
 
 
 if (quizResultEyebrow) {
 
     quizResultEyebrow.textContent =
-        "MISSION TRIAL \u2014 TRAINING NEEDED";
+        "MISSION QUIZ RESULT";
 
 }
 
 
 quizResultTitle.textContent =
-    "More Training Needed";
-
-
-    const passingScore =
-        requirePassingScore(currentQuiz);
+    "Quiz not passed yet";
 
 
    quizResultMessage.textContent =
-    `You answered ${correctAnswers} out of ${questions.length} mission questions correctly. You need at least ${Math.ceil(questions.length * passingScore / 100)} correct to pass. Review a missed topic in the lesson, try practice, then return when you feel ready.`;
+    lastQuizTopics.length
+        ? "Review the suggested topic, then practise before retrying."
+        : "Revisit the lesson, then try the quiz again.";
 
 
     /*
@@ -2703,12 +2923,25 @@ function displayMissionRewards() {
             hasArtifactReward &&
             artifact
         ) {
+            const museumLink = document.getElementById('artifactMuseumLink');
+            if (museumLink) {
+                museumLink.hidden = !artifact.id;
+                if (artifact.id) museumLink.href = 'achievements.html?' + new URLSearchParams({exhibit:artifact.id});
+            }
 
             if (artifactRewardIcon) {
 
                 artifactRewardIcon.textContent =
                     artifact.icon ||
                     "\u{1F3FA}";
+                if (artifact.id === 'prologue-mission1-map-keepsake' ||
+                    /^[a-z0-9][a-z0-9_-]*\.(?:svg|png)$/i.test(artifact.learningImage || '')) {
+                    const image = document.createElement('img');
+                    image.src = '../assets/story/' + (artifact.id === 'prologue-mission1-map-keepsake'
+                        ? 'prologue-island-map.svg' : artifact.learningImage);
+                    image.alt = '';
+                    artifactRewardIcon.replaceChildren(image);
+                }
 
             }
 
@@ -2833,10 +3066,9 @@ continueResultButton.addEventListener(
 
         if (lastQuizPassed) {
 
-            window.location.href = learningNavigation.classroomReturn ||
-                `mission.html?chapter=${encodeURIComponent(
-                    chapterId
-                )}`;
+            const destination = new URLSearchParams({chapter: chapterId});
+            if (lastCompletionResult?.firstCompletion && missionId) destination.set('completedMission', missionId);
+            window.location.href = learningNavigation.classroomReturn || ('mission.html?' + destination);
 
             return;
 
@@ -3102,6 +3334,28 @@ if (reviewLessonLink) reviewLessonLink.href = `story.html?${new URLSearchParams(
 
 retryQuizLoadButton?.addEventListener("click", async () => (await loadQuiz()));
 
-const learningNavigation=mountLearningNavigation(document.querySelector(".quiz-page"), "Main Quiz")||{carry:url=>url};
+const learningNavigation=mountLearningNavigation(document.querySelector(".quiz-page"), "Mission Quiz")||{carry:url=>url};
+const quizFocusExit = document.getElementById('quizFocusExit');
+if (quizFocusExit) quizFocusExit.href = learningNavigation.classroomReturn ||
+    (chapterId ? 'mission.html?' + new URLSearchParams({chapter:chapterId}) : 'chapters.html');
+const quizFullscreen = document.getElementById('quizFullscreen');
+const quizFullscreenDocument = (() => { try { return window.parent !== window && window.parent.location.origin === window.location.origin ? window.parent.document : document; } catch { return document; } })();
+if (quizFullscreen && quizFullscreenDocument.fullscreenEnabled && quizFullscreenDocument.documentElement.requestFullscreen) {
+    quizFullscreen.hidden = false;
+    const syncQuizFullscreen = () => { quizFullscreen.textContent = quizFullscreenDocument.fullscreenElement ? 'Exit full screen' : 'Full screen'; };
+    quizFullscreenDocument.addEventListener('fullscreenchange', syncQuizFullscreen);
+    window.addEventListener('pagehide', () => quizFullscreenDocument.removeEventListener('fullscreenchange', syncQuizFullscreen), {once:true});
+    syncQuizFullscreen();
+    quizFullscreen.addEventListener('click', async () => {
+        const status = document.getElementById('quizFullscreenStatus');
+        status.textContent = '';
+        try {
+            if (quizFullscreenDocument.fullscreenElement) await quizFullscreenDocument.exitFullscreen();
+            else await quizFullscreenDocument.documentElement.requestFullscreen();
+        } catch {
+            status.textContent = 'Full screen is unavailable. You can keep playing here.';
+        }
+    });
+}
 
 document.getElementById('flagQuestionButton')?.addEventListener('click',()=>{if(quizSubmitted||!currentUser)return;const id=questions[currentQuestionIndex]?.id;if(!id)return;if(flaggedQuestions.has(id))flaggedQuestions.delete(id);else flaggedQuestions.add(id);displayQuestion();});

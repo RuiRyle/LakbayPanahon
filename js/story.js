@@ -327,17 +327,13 @@ function renderTopicReviewNotice(){
     const heading=document.createElement('div');heading.className='topic-review-heading';
     const mark=document.createElement('span');mark.className='topic-review-mark';mark.setAttribute('aria-hidden','true');mark.textContent='↻';
     const headingCopy=document.createElement('div');headingCopy.className='topic-review-heading-copy';
-    const eyebrow=document.createElement('span');eyebrow.className='topic-review-eyebrow';eyebrow.textContent='YOUR PERSONALIZED REVIEW';
-    const title=document.createElement('h2');title.textContent='Review the lesson: '+reviewTopic;
-    headingCopy.append(eyebrow,title);heading.append(mark,headingCopy);
-    const copy=document.createElement('p');copy.textContent=topicReviewMapped?'These story scenes teach the topic recommended for review. Explore the explanations and complete any scene checks, then apply what you learned in practice.':'A specific scene link has not been configured for this topic yet. Review the full mission lesson, then continue to targeted practice.';
-    const note=document.createElement('p');note.textContent='This review keeps your unfinished lesson position unchanged. Revisiting content does not award XP or clear a review recommendation.';
-    const full=document.createElement('a');full.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId});full.className='text-button';full.textContent='Open Full Lesson';
+    const title=document.createElement('h2');title.textContent='Review the lesson: '+reviewTopic.replace(/[-_]+/g,' ');
+    headingCopy.append(title);heading.append(mark,headingCopy);
+    const copy=document.createElement('p');copy.textContent=topicReviewMapped?'Look at the source and Bayani’s clue, then try a few practice questions.':'Read through the lesson, then try a few questions on your review topic.';
+    const full=document.createElement('a');full.href=learningNavigation.carry('story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId}));full.className='text-button';full.textContent='Open Full Lesson';
     const back=document.createElement('a');back.href='my-journey.html';back.className='text-button';back.textContent='Back to My Journey';
-    const steps=document.createElement('ol');steps.className='review-flow-steps';steps.setAttribute('aria-label','Learning recovery steps');
-    for(const [index,label] of ['Review the lesson','Apply in practice','Choose your next step'].entries()){const item=document.createElement('li');if(index===0)item.setAttribute('aria-current','step');const number=document.createElement('span');number.setAttribute('aria-hidden','true');number.textContent=String(index+1);item.append(number,document.createTextNode(label));steps.append(item);}
     const actions=document.createElement('div');actions.className='topic-review-actions';actions.append(full,back);
-    panel.append(heading,steps,copy,note,actions);storyContent.prepend(panel);
+    panel.append(heading,copy,actions);storyContent.prepend(panel);
 }
 
 async function loadStory() {
@@ -389,6 +385,7 @@ async function loadStory() {
         }
 
         const chapter = chapterSnapshot.data();
+        document.getElementById('storyReadingCard').dataset.expeditionEra = chapter.eraId || '';
         const mission = missionSnapshot.data();
         loadedStoryMission = mission;
 
@@ -461,6 +458,7 @@ async function loadStory() {
         const existingLessonScenes = scenes.map(({ clueHunt, ...scene }) => scene);
         storyContentVersion = stableDraftVersion(existingLessonScenes).split("").reduce((hash,char) => Math.imul(hash ^ char.charCodeAt(0),16777619),2166136261).toString();
         currentSceneIndex = 0;
+        let restoredScene = false;
 
         reviewSavePending=null;
         storyTradePlans.clear();storyRoutePlans.clear();storyExhibitPlans.clear();
@@ -483,10 +481,14 @@ async function loadStory() {
             for(const [id,plan] of Object.entries(savedDraft.routePlans||{}))if(scenes.some(scene=>scene.id===id&&scene.routeActivity))storyRoutePlans.set(id,plan);
             for(const [id,plan] of Object.entries(savedDraft.exhibitPlans||{}))if(scenes.some(scene=>scene.id===id&&scene.exhibitActivity))storyExhibitPlans.set(id,plan);
             const index = scenes.findIndex(scene=>scene.id===savedDraft.sceneId);
-            if (index >= 0) currentSceneIndex = index;
+            if (index >= 0) {
+                currentSceneIndex = index;
+                restoredScene = true;
+            }
         }
         restartStoryButton.hidden = !savedDraft;
         storyCompleteSection.hidden = true;
+        storyCompleteSection.classList.remove('lesson-dossier-arrival');
         storyReadingCard.hidden = false;
 
         displayScene();
@@ -505,6 +507,16 @@ async function loadStory() {
         storyLoading.hidden = true;
         storyError.hidden = true;
         storyContent.hidden = false;
+        if (restoredScene && !storyReadingCard.hidden) {
+            const resume = document.createElement('p');
+            resume.className = 'lesson-resume-note';
+            resume.textContent = 'Resuming scene ' + (currentSceneIndex + 1) + ' of ' + scenes.length;
+            resume.tabIndex = -1;
+            sceneTitle.before(resume);
+            storyReadingCard.classList.add('lesson-resumed');
+            resume.focus({preventScroll:true});
+            resume.scrollIntoView({block:'nearest',behavior:'instant'});
+        }
         storyGuideUser = loadingUser;
         emitStoryMissionGuide();
 
@@ -525,6 +537,8 @@ async function loadStory() {
    ========================================================= */
 
 function displayScene() {
+    storyReadingCard.classList.remove('lesson-resumed');
+    storyReadingCard.querySelector('.lesson-resume-note')?.remove();
     if (previousStoryButton) previousStoryButton.disabled=currentSceneIndex===0;
     const scene = getCurrentScene();
 
@@ -721,6 +735,12 @@ function displayStoryExplore(scene) {
         const iconBox = document.createElement("span");
 
         iconBox.className = "story-explore-choice-icon";
+        iconBox.setAttribute('aria-hidden','true');
+        const showFallback = () => {
+            const icon = document.createElement('span');
+            icon.className = 'interface-icon interface-icon--search';
+            iconBox.replaceChildren(icon);
+        };
 
         const imageUrl = clean(item.imageUrl);
 
@@ -731,13 +751,11 @@ function displayStoryExplore(scene) {
             image.alt = "";
             image.loading = "lazy";
 
-            image.onerror = () => {
-                iconBox.textContent = clean(item.icon) || "🔎";
-            };
+            image.onerror = showFallback;
 
             iconBox.appendChild(image);
         } else {
-            iconBox.textContent = clean(item.icon) || "🔎";
+            showFallback();
         }
 
         const contentBox = document.createElement("span");
@@ -779,6 +797,10 @@ function displayStoryExplore(scene) {
         reflection.append(reflectionSummary,reflectionCopy);result.append(reflection);
 
         const alreadyExplored = exploredItems.has(index);
+        const clueState = document.createElement('span');
+        clueState.className = 'lesson-clue-state';
+        clueState.textContent = alreadyExplored ? 'Hide clue' : 'Open clue';
+        button.append(clueState);
 
         result.hidden = !alreadyExplored;
 
@@ -792,11 +814,14 @@ function displayStoryExplore(scene) {
         }
 
         button.addEventListener("click", () => {
+            const firstReveal = !exploredItems.has(index);
             exploredItems.add(index);
 
             button.classList.add("explored");
 
             result.hidden = !result.hidden;
+            if (firstReveal && !result.hidden) window.LakbayLessonAudio?.play(imageUrl.includes('map') ? 'map' : 'paper');
+            clueState.textContent = result.hidden ? 'Reopen clue' : 'Hide clue';
 
             button.setAttribute(
                 "aria-expanded",
@@ -1132,8 +1157,10 @@ function handleStoryDecision(
 
         showDecisionFeedback(
             false,
-            "Think about the community again.",
-            "That choice does not best fit the historical situation. Review the clues and try another answer."
+            "Take another look at the clues.",
+            /^prologue-mission1-scene[12356]$/.test(scene.id)
+                ? "Check the map labels and compare them with your answer. You can review the lesson notes before trying again."
+                : "That choice does not best fit the historical situation. Review the clues and try another answer."
         );
 
         return;
@@ -1531,6 +1558,9 @@ function updateContinueButton(scene) {
     guide.hidden = !nextStep;
     document.dispatchEvent(new CustomEvent('mission-quest-update', {detail: {
         sceneId: scene.id,
+        startAtEvidence: topicReviewMapped && currentSceneIndex === 0 && Boolean(sceneHelp(scene)?.explanation?.trim()),
+        reviewBookmark: topicReviewMapped && currentSceneIndex === 0,
+        lastScene: currentSceneIndex === scenes.length - 1,
         targetId: nextStep?.[0]?.id || null,
         tip: nextStep ? nextStep[2] : 'Great exploring! Continue when you are ready for the next part.',
         ready: !nextStep,
@@ -1653,6 +1683,7 @@ if (continueStoryButton) {
         }
 
         storyReadingCard.hidden = true;
+        storyCompleteSection.classList.add('lesson-dossier-arrival');
         storyCompleteSection.hidden = false;
         saveStoryPlace(scene, true);
         loadLessonQuizInfo();
@@ -1677,11 +1708,16 @@ if (backToMissionButton) {
 }
 
 if (quizButton) {
-    quizButton.addEventListener("click", () => {
+    quizButton.addEventListener("click", async () => {
         if(reviewTopic){window.location.href=topicPracticeUrl();return;}
+        // Fullscreen belongs to the persistent shell so it survives frame navigation.
+        try {
+            const host = window.parent !== window && window.parent.location.origin === window.location.origin ? window.parent.document : document;
+            if (!host.fullscreenElement && host.fullscreenEnabled) await host.documentElement.requestFullscreen();
+        } catch { /* Browser denial must not prevent starting the quiz. */ }
         window.location.href =
             learningNavigation.carry(`quiz.html?chapter=${encodeURIComponent(chapterId || "")}` +
-            `&mission=${encodeURIComponent(missionId || "")}`);
+            `&mission=${encodeURIComponent(missionId || "")}&start=1`);
     });
 }
 
@@ -1736,8 +1772,8 @@ async function loadLessonQuizInfo() {
         quizInfoRequest++;
         storyCompleteSection.querySelector('h2').textContent='Lesson review complete';
         storyCompleteSection.querySelector('.eyebrow').textContent='TOPIC REVIEW';
-        storyCompleteSection.querySelector('.lesson-finish-heading p').textContent='You finished reviewing this topic. Now try a few practice questions to use what you learned.';
-        document.getElementById('lessonQuizRequirements').textContent='Practice helps you check what you understand. After practice, you can try the mission quiz again.';
+        storyCompleteSection.querySelector('.lesson-finish-heading p').textContent='Try a few questions on this topic before returning to the mission quiz.';
+        document.getElementById('lessonQuizRequirements').textContent='';
         document.getElementById('lessonRecap').replaceChildren();
         document.getElementById('retryLessonQuizInfo').hidden=true;
         quizButton.textContent='Saving Lesson Review...';quizButton.disabled=true;
@@ -1745,7 +1781,7 @@ async function loadLessonQuizInfo() {
         if(!reviewSavePending)reviewSavePending=recordLessonReview({chapterId,missionId,topic:reviewTopic,sceneIds:scenes.map(scene=>scene.id)}).catch(()=>{reviewSavePending=null;return false;});
         const recorded=await reviewSavePending;
         if(reviewGeneration!==storySessionGeneration||auth.currentUser?.uid!==reviewUid)return;
-        quizButton.textContent='Start Practice for This Topic';quizButton.disabled=false;
+        quizButton.textContent='Start Topic Practice';quizButton.disabled=false;
         if(reviewGeneration===storySessionGeneration&&auth.currentUser?.uid===reviewUid&&!recorded)document.getElementById('lessonQuizRequirements').textContent+=' We could not save that you revisited this lesson. You can still continue to practice.';
         return;
     }
@@ -1761,12 +1797,29 @@ async function loadLessonQuizInfo() {
     recap.replaceChildren();
     const mission = loadedStoryMission || {};
     if (typeof mission.lessonRecap === "string" && mission.lessonRecap.trim()) {
-        const review=document.createElement('details'),summary=document.createElement('summary');summary.textContent='Review the key ideas';review.append(summary);
+        const review=document.createElement('details'),summary=document.createElement('summary');review.className='lesson-recap-ideas';summary.textContent='Review the key ideas';review.append(summary);
         const parts=window.LakbayLessonText?.readingParts(mission.lessonRecap.trim())||[mission.lessonRecap.trim()];
         for(const part of parts){const paragraph=document.createElement('p');paragraph.textContent=part;review.append(paragraph);}recap.append(review);
     }
     const words=new Map();for(const scene of scenes){if(typeof scene.keyTerm==='string'&&scene.keyTerm.trim()&&typeof scene.keyTermDefinition==='string'&&scene.keyTermDefinition.trim())words.set(scene.keyTerm.trim(),scene.keyTermDefinition.trim());}
-    if(words.size){const toolkit=document.createElement('details'),summary=document.createElement('summary');toolkit.className='lesson-knowledge-toolkit';summary.textContent='Words and ideas to remember';toolkit.append(summary);for(const [term,definition]of words){const item=document.createElement('details'),label=document.createElement('summary'),copy=document.createElement('p');label.textContent=term;copy.textContent=definition;item.append(label,copy);toolkit.append(item);}recap.append(toolkit);}
+    if (words.size) {
+        const glossary = document.createElement('details');
+        glossary.className = 'lesson-recap-glossary';
+        const summary = document.createElement('summary');
+        summary.textContent = 'Words to remember';
+        const definitions = document.createElement('dl');
+        for (const [term, definition] of words) {
+            const entry = document.createElement('div');
+            const label = document.createElement('dt');
+            const copy = document.createElement('dd');
+            label.textContent = term;
+            copy.textContent = definition;
+            entry.append(label, copy);
+            definitions.append(entry);
+        }
+        glossary.append(summary, definitions);
+        recap.append(glossary);
+    }
     const objectives = Array.isArray(mission.learningObjectives) ? mission.learningObjectives : [mission.learningObjective];
     const list = document.createElement("ul");
     for (const objective of objectives) if (typeof objective === "string" && objective.trim()) {
@@ -1778,16 +1831,18 @@ async function loadLessonQuizInfo() {
         if (generation !== storySessionGeneration || request !== quizInfoRequest) return;
         const quiz = snapshot.docs.map(row=>row.data()).find(row=>row.status === "active");
         requireMissionPolicy(quiz);
-        details.textContent = quiz.questionCount + " questions. Answer at least " + Math.ceil(quiz.questionCount * quiz.passingScore / 100) + " correctly to pass (" + quiz.passingScore + "%). Mission XP is awarded once. If you do not pass, review your feedback, practise and retry.";
+        const requiredCorrect = Math.ceil(quiz.questionCount * quiz.passingScore / 100);
+        details.textContent = briefing
+            ? "You can review your feedback and try again if you need another attempt."
+            : quiz.questionCount + " questions. Answer at least " + requiredCorrect + " correctly to pass (" + quiz.passingScore + "%). Mission XP is awarded once.";
         if (briefing) {
-            const heading=document.createElement('h3');heading.textContent='Next: the mission quiz';briefing.append(heading);
+            const heading=document.createElement('h3');heading.textContent='Mission quiz';briefing.append(heading);
             const stats=document.createElement('dl');
             const stat=(label,value)=>{const card=document.createElement('div');const term=document.createElement('dt');term.textContent=label;const detail=document.createElement('dd');detail.textContent=value;card.append(term,detail);stats.append(card);};
             stat('Questions',String(quiz.questionCount));
-            stat('Correct answers to pass',Math.ceil(quiz.questionCount*quiz.passingScore/100)+' of '+quiz.questionCount);
+            stat('To pass',requiredCorrect+' of '+quiz.questionCount+' correct');
             if (Number.isFinite(mission.xpReward) && mission.xpReward > 0) stat('XP for your first pass',String(mission.xpReward)+' XP');
             briefing.append(stats);
-            const help=document.createElement('p');help.textContent='Not ready yet? Review the lesson. If you miss the passing score, we will guide you back to the topics to learn, then you can practise and try again.';briefing.append(help);
             briefing.hidden=false;
         }
         quizButton.textContent='Start Mission Quiz';
