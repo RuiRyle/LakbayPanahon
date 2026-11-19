@@ -1,39 +1,46 @@
-import {auth,db} from './firebase-config.js';
-import {collection,query,where,getDocsFromServer} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
-import {findLessonAnswer,normalizeQuestion} from './bayani-knowledge.js';
-import {preparedHistoryAnswer} from './bayani-history.js';
-
+import {app,auth,db} from './firebase-config.js';
+import {doc,getDocFromServer} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
+import {sharedAppCheck,verifyAppCheck} from './app-verification.js';
 export async function connectBayani(){
-    const user=auth.currentUser;
-    const current=()=>{if(!user||auth.currentUser?.uid!==user.uid)throw Object.assign(Error('Please sign in again.'),{code:'bayani/unauthenticated'});};
-    current();
-    // Load only published active mission metadata; retrieve scenes for matching missions on demand.
-    const snapshot=await getDocsFromServer(query(collection(db,'missions'),where('status','==','active')));
-    current();
-    const missions=snapshot.docs.map(d=>({...d.data(),id:d.id}));
-    return {settings:{maxMessageCharacters:2000,welcomeMessage:'I am Bayani, your Philippine History study chatbot. Ask about Lapulapu, Rizal, Bonifacio, the Katipunan or other history topics. I use prepared, source-based explanations and published lessons. I cannot answer every question or reveal quiz answers.'},async send(message,history=[]){
-        current();
-        const early=findLessonAnswer(message,[]);
-        if(/contact details|quiz answer|unresolved source|Philippine History questions only/.test(early))return early;
-        const prepared=preparedHistoryAnswer(message,history);
-        if(prepared)return prepared;
-        // Match titles/objectives first; avoid downloading the entire lesson catalog.
-        const terms=normalizeQuestion(message).split(' ').filter(t=>t.length>3);
-        if(terms.includes('lapulapu'))terms.push('mactan');
-        if(terms.includes('rizal'))terms.push('rizal');
-        const candidates=missions.map(m=>({m,score:terms.filter(t=>normalizeQuestion([m.title,m.name,m.id,m.description,m.learningObjective,...(Array.isArray(m.learningObjectives)?m.learningObjectives:[])].join(' ')).includes(t)).length})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
-        const passages=[];
-        for(const {m} of candidates){
-            const scenes=await getDocsFromServer(query(collection(db,'storyScenes'),where('missionId','==',m.id)));
+ const user=auth.currentUser;
+ const current=()=>{if(!user||auth.currentUser!==user)throw Object.assign(Error('Please sign in again.'),{code:'bayani/unauthenticated'});};
+ current();
+ const snapshot=await getDocFromServer(doc(db,'learningSettings','bayaniAI'));
+ current();const settings=snapshot.exists()?snapshot.data():null;
+ if(settings?.enabled!==true||!['gemini',undefined,null].includes(settings.provider))throw Object.assign(Error('Bayani AI is unavailable. Please try again later.'),{code:'bayani/unavailable'});
+ if(typeof settings.model!=='string'||!settings.model.trim()||typeof settings.systemInstruction!=='string'||!settings.systemInstruction.trim()||!Number.isInteger(settings.maxMessageCharacters)||settings.maxMessageCharacters<1||settings.maxMessageCharacters>4000)throw Error('Bayani AI settings are incomplete.');
+ sharedAppCheck(settings.appCheckSiteKey);await verifyAppCheck(settings.appCheckSiteKey);current();
+ const sdk=await import('https://www.gstatic.com/firebasejs/12.4.0/firebase-ai.js');current();
+ return createFirebaseBayaniClient({sdk,settings,user});
+}
+export function createFirebaseBayaniClient({sdk,settings,user}) {
+    const {getAI,GoogleAIBackend,getGenerativeModel,HarmCategory,HarmBlockThreshold}=sdk;
+    const ai=getAI(app,{backend:new GoogleAIBackend()});
+    const model=getGenerativeModel(ai,{
+        model:settings.model,
+        systemInstruction:settings.systemInstruction,
+        generationConfig:{maxOutputTokens:1024,temperature:.5},
+        safetySettings:['HARM_CATEGORY_HARASSMENT','HARM_CATEGORY_HATE_SPEECH','HARM_CATEGORY_SEXUALLY_EXPLICIT','HARM_CATEGORY_DANGEROUS_CONTENT'].map(category=>({category:HarmCategory[category],threshold:HarmBlockThreshold.BLOCK_LOW_AND_ABOVE}))
+    });
+    const current=()=>{
+        if(auth.currentUser!==user||auth.currentUser?.uid!==user.uid)throw Object.assign(Error('Your session changed. Please reconnect.'),{code:'bayani/unauthenticated'});
+    };
+    return {
+        settings:{maxMessageCharacters:settings.maxMessageCharacters,welcomeMessage:typeof settings.welcomeMessage==='string'?settings.welcomeMessage:''},
+        async send(message,history=[]) {
             current();
-            for(const d of scenes.docs){const s=d.data();if(s.status&&s.status!=='active')continue;
-                if(typeof s.content!=='string')continue;
-                for(const text of s.content.split(/\n\s*\n/).map(t=>t.trim()).filter(t=>t.length>40&&t.length<=1800)){
-                    if(/coral|galleon|galyon/i.test(text))continue;
-                    passages.push({title:[m.title||m.name||m.id,s.title||d.id].join(' — '),text,url:new URL('story.html?'+new URLSearchParams({mission:m.id,chapter:m.chapterId}),location.href).href});
-                }
-            }
+            if(typeof message!=='string'||!message.trim()||message.length>settings.maxMessageCharacters||!Array.isArray(history)||history.length%2!==0)throw Object.assign(Error('Invalid history question.'),{code:'bayani/invalid-request'});
+            const recent=history.slice(-12).map((entry,index)=>{
+                const text=entry?.parts?.[0]?.text;
+                if(entry?.role!==(index%2===0?'user':'model')||entry.parts.length!==1||typeof text!=='string'||!text.trim()||text.length>12000)throw Object.assign(Error('Invalid conversation.'),{code:'bayani/invalid-request'});
+                return {role:entry.role,parts:[{text}]};
+            });
+            const chat=model.startChat({history:recent});
+            const result=await chat.sendMessage(message.trim());
+            current();
+            const answer=result.response.text();
+            if(typeof answer!=='string'||!answer.trim())throw Object.assign(Error('Bayani AI returned no text.'),{code:'bayani/no-content'});
+            return answer;
         }
-        current();return findLessonAnswer(message,passages);
-    }};
+    };
 }
