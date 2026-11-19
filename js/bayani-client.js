@@ -1,6 +1,7 @@
 import {auth,db} from './firebase-config.js';
 import {collection,query,where,getDocsFromServer} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 import {findLessonAnswer,normalizeQuestion} from './bayani-knowledge.js';
+import {preparedHistoryAnswer} from './bayani-history.js';
 
 export async function connectBayani(){
     const user=auth.currentUser;
@@ -10,10 +11,12 @@ export async function connectBayani(){
     const snapshot=await getDocsFromServer(query(collection(db,'missions'),where('status','==','active')));
     current();
     const missions=snapshot.docs.map(d=>({...d.data(),id:d.id}));
-    return {settings:{maxMessageCharacters:2000,welcomeMessage:'I am Bayani, your lesson-based Philippine History chatbot. Ask about a lesson topic. I find published lesson passages; I do not generate new facts or reveal quiz answers.'},async send(message){
+    return {settings:{maxMessageCharacters:2000,welcomeMessage:'I am Bayani, your Philippine History study chatbot. Ask about Lapulapu, Rizal, Bonifacio, the Katipunan or other history topics. I use prepared, source-based explanations and published lessons. I cannot answer every question or reveal quiz answers.'},async send(message,history=[]){
         current();
         const early=findLessonAnswer(message,[]);
         if(/contact details|quiz answer|unresolved source|Philippine History questions only/.test(early))return early;
+        const prepared=preparedHistoryAnswer(message,history);
+        if(prepared)return prepared;
         // Match titles/objectives first; avoid downloading the entire lesson catalog.
         const terms=normalizeQuestion(message).split(' ').filter(t=>t.length>3);
         if(terms.includes('lapulapu'))terms.push('mactan');
