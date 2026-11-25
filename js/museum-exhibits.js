@@ -2,47 +2,60 @@ import {discoveryLessonUrl} from './discovery-cases.js';
 import {loadDiscoveryCase} from './discovery-case-loader.js';
 import {artifactLessonArt} from './artifact-lesson-art.js';
 
+const maritimeEvidence = "https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/";
+const burialJars = "https://www.nationalmuseum.gov.ph/our-collections/archaeology/burial-jars/";
+const manunggulJar = {
+    name: "Manunggul Jar",
+    image: "manunggul",
+    details: [["Period", "c. 890–710 BCE"], ["Found at", "Manunggul Cave, Lipuun Point, Quezon, Palawan"], ["Material", "Earthenware (fired clay)"], ["Use", "Secondary burial"]],
+    inspection: "Find the two figures on the boat-shaped lid. The front figure has crossed arms, and the figure behind holds a paddle on the original jar.",
+    description: "This burial jar from Palawan held human bones after an initial burial. Moving the remains to a vessel afterward is called secondary burial.",
+    lessonConnection: "The clay vessel and its sculpted lid show how potters used their skills to make objects for burial rituals.",
+    context: "The National Museum of the Philippines lists the Manunggul Jar as a National Cultural Treasure. The boat on its lid is commonly interpreted as a journey to the afterlife. That interpretation draws on the carving and the jar’s burial use.",
+    reflection: "Which part of the lid would you point to as evidence for the idea of a journey?",
+    sources: [
+        ["National Museum of the Philippines · Burial jars", burialJars],
+        ["Cultural Center of the Philippines · The Manunggul Jar", "https://epa.culturalcenter.gov.ph/3/82/2227/"]
+    ]
+};
+
 const historicalObjects = new Map([
     ["chapter3-mission1-artifact", {
         name: "Butuan Boat",
         image: "balangay",
-        inspection: "Look for the planks along the hull. Their joins are clues to how boatbuilders assembled the vessel.",
-        description: "A wooden boat from Butuan, Mindanao. Its surviving planks offer clues about how early Philippine communities built boats for travel by sea.",
-        lessonConnection: "In Seafaring and the Balangay, the boat’s construction is a clue to the skills that made sea travel possible.",
-        context: "The National Museum dates the Butuan boats to between the late 8th and early 10th centuries. Similar construction techniques appear elsewhere in Southeast Asia.",
-        reflection: "What can the way a boat is built tell us about connections between communities?",
-        source: "National Museum · Butuan boats and maritime connections",
-        url: "https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/"
+        details: [["Period", "Mostly 8th–10th centuries CE"], ["Found at", "Butuan City, Mindanao"], ["Material", "Wood"], ["Type", "Plank-built watercraft"]],
+        caption: "Reconstruction of a Butuan boat",
+        inspection: "Follow the rows of planks along the hull. On the surviving wood, the joints help archaeologists work out how the planks were attached.",
+        description: "Several early wooden boats were excavated in Butuan City. This exhibit represents those surviving boat remains as a group.",
+        lessonConnection: "The shape and construction of the hull help explain the skills early boatbuilders used to make vessels for travel by water.",
+        context: "Much of the dated wood falls between the 8th and 10th centuries CE. Archaeologists found related boatbuilding techniques elsewhere in Southeast Asia. The similarities help researchers study connections between boatbuilding traditions.",
+        reflection: "What kinds of clues would you compare if you wanted to find out whether two boats were made using similar techniques?",
+        sources: [
+            ["National Museum of the Philippines · Butuan boats and maritime connections", maritimeEvidence],
+            ["Ligaya Lacsina · Study of the Butuan boat remains", "https://minpaku.repo.nii.ac.jp/record/8907/files/KH_047_1_04.pdf"]
+        ]
     }],
     ["chapter4-mission1-artifact", {
         name: "Laguna Copperplate Inscription",
         image: "copperplate",
-        inspection: "Look for the rows of writing on the plate. The marks show how a record could be kept on metal.",
-        description: "A thin sheet of copper bearing an inscription in a script resembling Early Kawi. The date recorded in the inscription corresponds to 900 CE.",
-        lessonConnection: "In Ancient Writing and Communication, this copperplate shows that people could record information on materials other than paper.",
-        context: "The inscription gives historians a written record to study alongside archaeological finds. Its script also offers a clue to connections between communities in Southeast Asia.",
+        caption: "Illustration of the copper sheet",
+        details: [["Inscribed date", "900 CE"], ["Reported findspot", "Lumbang River, Laguna"], ["Material", "Copper"], ["Script", "Early Kawi-style"]],
+        inspection: "Use the National Museum’s photo of the original to find the rows of writing. Then compare what you see with the linked translation.",
+        description: "This thin copper sheet records the cancellation of a debt owed by a man named Namwaran. According to Antoon Postma’s translation, the release also covered his descendants.",
+        lessonConnection: "The plate shows how a community could keep an important agreement in writing so it could be checked later.",
+        context: "The inscription dates itself to the Saka year 822, which corresponds to 900 CE. Its script resembles Early Kawi, a writing tradition used in Southeast Asia. Postma’s translation identifies people, places, and units for weighing gold.",
         reflection: "What can a written record tell you that a tool or pot might leave unanswered?",
-        source: "National Museum · Laguna Copperplate Inscription",
-        url: "https://www.nationalmuseum.gov.ph/2022/09/20/the-9th-to-10th-century-archaeological-evidence-of-maritime-relations-between-the-philippines-and-the-islands-of-southeast-asia/"
+        sources: [
+            ["National Museum of the Philippines · Laguna Copperplate Inscription", maritimeEvidence],
+            ["Antoon Postma · Translation and commentary", "https://www.sealang.net/oldmalay/archives/postma1992laguna.pdf"]
+        ]
     }],
-    ["chapter4-mission2-artifact", {
-        name: "Manunggul Jar",
-        image: "manunggul",
-        inspection: "Look for the small boat on the lid. Its placement connects the decoration to the jar's ceremonial use.",
-        description: "An earthenware burial vessel from Palawan. Its lid carries a small boat, connecting pottery craftsmanship with ideas about a journey after death.",
-        lessonConnection: "In Indigenous Arts, Crafts, and Technologies, the jar shows how potters used clay and decoration to make an object for a ceremony.",
-        context: "The National Museum identifies the jar as an example of secondary burial. Its exhibition places it alongside other objects that help explain burial traditions in Philippine communities.",
-        reflection: "Which detail would help you explain what this vessel was used for?",
-        source: "National Museum · Kaban ng Lahi Gallery",
-        url: "https://www.nationalmuseum.gov.ph/exhibitions/anthropology/kaban/"
-    }]
+    ["chapter4-mission2-artifact", manunggulJar],
+    ["chapter-2-artifact-2", manunggulJar]
 ]);
 
 export function historicalObjectFor(artifact) {
-    const byId = historicalObjects.get(artifact.id);
-    if (byId) return byId;
-    const name = (artifact.name || artifact.title || '').trim().toLowerCase();
-    return [...historicalObjects.values()].find(object => object.name.toLowerCase() === name);
+    return historicalObjects.get(artifact.id);
 }
 
 export function artifactDisplayName(artifact) {
@@ -62,6 +75,37 @@ const tokenArtwork = new Map([
     ["chapter4-mission4-artifact", "heritage"]
 ]);
 const goldOrnamentId = 'chapter-2-artifact-1';
+const exhibitSubjects = new Map([
+    [goldOrnamentId, {
+        kind: "Representative object",
+        caption: "Illustration of a gold bead necklace",
+        description: "This model represents a type of gold ornament. The National Museum’s collection includes beads, necklaces, and other ornaments. People used gold ornaments for personal adornment and in some burial practices.",
+        context: "Archaeologists record where an ornament was found and what lay beside it. An ornament found in a grave can help researchers understand burial customs.",
+        sources: [["National Museum of the Philippines · Ornaments collection", "https://www.nationalmuseum.gov.ph/our-collections/archaeology/ornaments/"]]
+    }],
+    ["chapter-2-artifact-3", {
+        kind: "Historic site",
+        caption: "Lesson map of the southern Philippines",
+        details: [["Location", "Tubig Indangan, Simunul, Tawi-Tawi"], ["Date in local tradition", "1380 CE"], ["Designation", "National Historical Landmark"]],
+        description: "The historical marker associates this mosque site with Sheik Makhdum’s arrival in 1380. The date belongs to the tradition about the site. The standing mosque has been rebuilt.",
+        context: "The National Historical Commission’s registry identifies the mosque as a National Historical Landmark. The marker records that ipil wood posts attributed to the earlier mosque were preserved.",
+        sources: [["National Historical Commission of the Philippines · Mosque marker", "https://philhistoricsites.nhcp.gov.ph/registry_database/sheik-makhdum-mosque/"]]
+    }],
+    ["chapter2-mission2-learning-keepsake", {
+        caption: "Lesson illustration for the evidence card",
+        description: "Use this evidence card to examine the boat and figures on the Manunggul Jar’s lid. The real vessel was found in Manunggul Cave in Palawan.",
+        context: manunggulJar.context,
+        sources: manunggulJar.sources
+    }],
+    ["prologue-mission3-learning-keepsake", {
+        description: "This card compares finds from two caves. Callao Cave in Cagayan yielded remains that researchers identified as Homo luzonensis. Tabon Cave in Palawan yielded remains of Homo sapiens.",
+        context: "The two sites preserve evidence from different periods. Scientists study where the fossils were found and how old they are to build a picture of early life in the Philippine islands.",
+        sources: [
+            ["National Museum of the Philippines · Cagayan collections", "https://www.nationalmuseum.gov.ph/our-museums/regional-area-and-site-museums/cagayan-2-2/"],
+            ["National Museum of the Philippines · Tabon Cave research", "https://www.nationalmuseum.gov.ph/2022/10/28/60th-anniversary-of-the-tabon-caves-archaeological-research-and-opening-of-the-stories-of-origins-exhibit/"]
+        ]
+    }]
+]);
 
 const museumFacts = new Map([
     ["chapter3-mission1-artifact", {
@@ -117,7 +161,7 @@ function artifactArtworkName(artifact) {
 export function createArtifactArtwork(artifact, className) {
     const visual = document.createElement("div");
     visual.className = className;
-    visual.setAttribute("aria-hidden", "true");
+    if (className !== "museum-exhibit-visual") visual.setAttribute("aria-hidden", "true");
 
     const fallback = document.createElement("small");
     fallback.className = "artifact-image-status";
@@ -156,7 +200,7 @@ export function createArtifactArtwork(artifact, className) {
         image.hidden = false;
         visual.dataset.artworkState = 'ready';
     }, {once: true});
-    const alternatives = [...new Set([lessonArtwork, collectionArtwork])]
+    const alternatives = (historicalObjectFor(artifact) ? [] : [...new Set([lessonArtwork, collectionArtwork])])
         .filter(url => url && url !== source);
     image.addEventListener("error", () => {
         const next = alternatives.shift();
@@ -183,16 +227,38 @@ function unlockMuseumScroll(){if(!currentDialog&&previousOverflow!==null){docume
 export function closeMuseumExhibit(){if(currentDialog){const dialog=currentDialog;currentDialog=null;dialog.close();dialog.remove();}unlockMuseumScroll();}
 export function openMuseumExhibit(artifact,{isCurrent=()=>true,trigger=document.activeElement}={}){
  const object = historicalObjectFor(artifact);
+ const subject = object || exhibitSubjects.get(artifact.id);
  if(!isCurrent())return;closeMuseumExhibit();const origin=trigger,dialog=document.createElement('dialog');currentDialog=dialog;dialog.className='museum-exhibit';dialog.setAttribute('aria-labelledby','museumExhibitTitle');
  const el=(tag,value)=>{const n=document.createElement(tag);if(value!==undefined)n.textContent=value;return n;};
- const header=el('header');header.className='museum-exhibit-header';const close=el('button','Close');close.type='button';close.className='museum-exhibit-close';close.setAttribute('aria-label','Close exhibit');const title=el('h2',artifactDisplayName(artifact));title.id='museumExhibitTitle';const label=el('p','YOUR DISCOVERY MUSEUM');label.className='museum-exhibit-kicker';const heading=el('div');heading.append(label,title);header.append(heading,close);dialog.append(header);
+ const header=el('header');header.className='museum-exhibit-header';const close=el('button','Close');close.type='button';close.className='museum-exhibit-close';close.setAttribute('aria-label','Close exhibit');const title=el('h2',artifactDisplayName(artifact));title.id='museumExhibitTitle';const label=el('p','Discovery Museum');label.className='museum-exhibit-kicker';const heading=el('div');heading.append(label,title);header.append(heading,close);dialog.append(header);
  const visual = createArtifactArtwork(artifact, "museum-exhibit-visual");
- dialog.append(visual);
+ const figure = el('figure');
+ figure.className = 'museum-exhibit-display';
+ const caption = el('figcaption', subject?.caption || (object ? 'Illustration of the object' : 'Mission illustration'));
+ caption.className = 'museum-artwork-credit';
+ figure.append(visual, caption);
+ dialog.append(figure);
  const tabs=el('div');tabs.className='discovery-inline museum-exhibit-views';tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Exhibit views');const body=el('div');body.className='museum-exhibit-body';body.setAttribute('aria-live','polite');body.tabIndex=0;body.setAttribute('role','region');body.setAttribute('aria-label','Exhibit text');const learning=artifact.learningDetails||{};let activity=null,caseState='idle',selectedSection=0;
  const validMission=typeof artifact.chapterId==='string'&&artifact.chapterId&&!artifact.chapterId.includes('/')&&typeof artifact.missionId==='string'&&artifact.missionId&&!artifact.missionId.includes('/');
  const current=()=>currentDialog===dialog&&dialog.open&&isCurrent();
  const galleryArt=origin?.closest('.achievement-artifact-card, .chapter-exhibit-objects > button')?.querySelector('img.artifact-card-illustration');
  const exhibitArt=visual.querySelector('img.artifact-card-illustration');
+ const kind = object ? 'Historical artifact' : subject?.kind || 'Learning keepsake';
+ if (exhibitArt) {
+  const inspect = el('button', 'Enlarge artwork');
+  inspect.type = 'button';
+  inspect.className = 'museum-artwork-toggle';
+  inspect.setAttribute('aria-expanded', 'false');
+  inspect.hidden = exhibitArt.hidden;
+  exhibitArt.addEventListener('load', () => { inspect.hidden = false; }, {once:true});
+  inspect.addEventListener('click', () => {
+   const enlarged = figure.classList.toggle('museum-display-enlarged');
+   inspect.setAttribute('aria-expanded', String(enlarged));
+   inspect.textContent = enlarged ? 'Reduce artwork' : 'Enlarge artwork';
+   figure.scrollIntoView({block:'nearest', behavior:'instant'});
+  });
+  figure.append(inspect);
+ }
  let flight, closing=false;
  function moveArtwork(source, destination) {
   if (!current() || matchMedia('(prefers-reduced-motion: reduce)').matches ||
@@ -243,41 +309,57 @@ export function openMuseumExhibit(artifact,{isCurrent=()=>true,trigger=document.
   body.append(section);
  }
 
- function renderOverview() {
- if (artifact.id === goldOrnamentId) {
-  const caption = el('p', 'Representative illustration of a gold bead necklace.');
-  caption.className = 'museum-artwork-credit';
-  const reference = el('a', 'National Museum ornaments collection');
-  reference.href = 'https://www.nationalmuseum.gov.ph/our-collections/archaeology/ornaments/';
-  caption.append(' ', reference);
-  body.append(caption);
- } else if (!object && Object.hasOwn(artifactLessonArt, artifact.id)) {
-  const caption = el('p', artifact.id === 'chapter-2-artifact-3'
-   ? 'Lesson map showing regional context for this site.'
-   : 'Lesson illustration for this collectible.');
-  caption.className = 'museum-artwork-credit';
-  body.append(caption);
+ function sourceLink(label, url) {
+  const source = el('a', label);
+  source.href = url;
+  source.target = '_blank';
+  source.rel = 'noopener noreferrer';
+  source.className = 'museum-fact-source';
+  return source;
  }
-  const summary = [object?.description, artifact.description, learning.represents].find(text => typeof text === 'string' && text.trim())
+
+ function addSources() {
+  if (!subject?.sources?.length) return;
+  const section = el('section');
+  section.className = 'museum-sources';
+  const list = el('ul');
+  for (const [label, url] of subject.sources) {
+   const entry = el('li');
+   entry.append(sourceLink(label, url));
+   list.append(entry);
+  }
+  section.append(el('h3', 'Sources'), list);
+  body.append(section);
+ }
+
+ function renderOverview() {
+  const typeLabel = el('p', kind);
+  typeLabel.className = 'museum-exhibit-kind';
+  body.append(typeLabel);
+  const summary = [subject?.description, artifact.description, learning.represents].find(text => typeof text === 'string' && text.trim())
    || 'This collectible marks a mission discovery.';
-  addInfo(object ? 'The historical object' : 'Your mission collectible', summary);
+  addInfo(object ? 'About this artifact' : subject?.kind ? 'About this exhibit' : 'About this keepsake', summary, 'museum-info-intro');
+  if (subject?.details?.length) {
+   const details = el('dl');
+   details.className = 'museum-exhibit-details';
+   for (const [term, value] of subject.details) {
+    const item = el('div');
+    item.append(el('dt', term), el('dd', value));
+    details.append(item);
+   }
+   body.append(details);
+  }
   addInfo('Look closely', object?.inspection || object?.reflection || learning.reflectionQuestion);
   const connection = object?.lessonConnection || learning.lessonConnection || learning.represents;
   if (connection?.trim?.() !== summary.trim()) addInfo('Why it matters', connection);
-  const image = visual.querySelector('img');
-  if (image) {
-   const inspect = el('button', 'Enlarge artwork');
-   inspect.type = 'button';
-   inspect.className = 'discovery-choice';
-   inspect.setAttribute('aria-pressed', String(visual.classList.contains('museum-art-enlarged')));
-   inspect.hidden = image.hidden;
-   image.addEventListener('load', () => { inspect.hidden = image.hidden; }, {once:true});
-   inspect.addEventListener('click', () => {
-    const enlarged = visual.classList.toggle('museum-art-enlarged');
-    inspect.setAttribute('aria-pressed', String(enlarged));
-    visual.scrollIntoView({block:'nearest', behavior:'instant'});
-   });
-   body.append(inspect);
+  addSources();
+  const fact = museumFacts.get(artifact.id);
+  if (fact) {
+   const section = el('section');
+   section.className = 'museum-info museum-info-note museum-info-fact';
+   const source = sourceLink(fact.source, fact.url);
+   section.append(el('h3', 'Did you know?'), el('p', fact.text), source);
+   body.append(section);
   }
   if (validMission) {
    const missionLink = el('a', 'Revisit the mission');
@@ -285,23 +367,11 @@ export function openMuseumExhibit(artifact,{isCurrent=()=>true,trigger=document.
    missionLink.href = discoveryLessonUrl({chapterId:artifact.chapterId, missionId:artifact.missionId});
    body.append(missionLink);
   }
-  const fact = museumFacts.get(artifact.id);
-  if (fact) {
-   const section = el('section');
-   section.className = 'museum-info museum-info-note museum-info-fact';
-   const source = el('a', fact.source);
-   source.href = fact.url;
-   source.target = '_blank';
-   source.rel = 'noopener noreferrer';
-   source.className = 'museum-fact-source';
-   section.append(el('h3', 'Did you know?'), el('p', fact.text), source);
-   body.append(section);
-  }
  }
 
  function renderContext() {
   body.append(el('h3', 'Historical context'));
-  const explanation = object?.context || learning.historicalUse || activity?.explanation;
+  const explanation = subject?.context || learning.historicalUse || activity?.explanation;
   if (explanation) {
    body.append(el('p', explanation));
   } else if (!validMission) {
@@ -325,14 +395,7 @@ export function openMuseumExhibit(artifact,{isCurrent=()=>true,trigger=document.
     body.append(retry);
    }
   }
-  if (object) {
-   const source = el('a', object.source);
-   source.href = object.url;
-   source.target = '_blank';
-   source.rel = 'noopener noreferrer';
-   source.className = 'museum-fact-source';
-   body.append(source);
-  }
+  addSources();
   addInfo('Reflection question', object?.reflection || learning.reflectionQuestion || 'Find one claim in the lesson and the clue that supports it.', 'museum-info-reflection');
  }
 
@@ -343,7 +406,6 @@ export function openMuseumExhibit(artifact,{isCurrent=()=>true,trigger=document.
    addInfo('Collected on', label);
   }
   addInfo('About this collectible', learning.collectibleNote || 'You collected this learning token by completing its associated mission.');
-  addInfo('About the artwork', object ? 'This digital exhibit uses an illustrative interpretation of the historical object.' : 'Illustrative interpretation of an in-game collectible.');
   if (validMission) {
    const link = el('a', 'Revisit the mission that earned this');
    link.className = 'text-button museum-exhibit-lesson';

@@ -183,9 +183,6 @@ body.discovery-museum-page.lakbay-theme[data-role="student"] .achievement-summar
 .museum-exhibit-visual {
     overflow: hidden;
 }
-.museum-exhibit-visual.museum-art-enlarged .artifact-card-illustration {
-    transform: scale(1.45);
-}
 .museum-exhibit-body .museum-exhibit-lesson {
     display: inline-flex;
     align-items: center;
@@ -352,6 +349,7 @@ body.discovery-museum-page.lakbay-theme[data-role="student"] .artifact-card-acti
     border: 1px solid #f5d48f;
     border-radius: 10px;
     background: linear-gradient(145deg, #ffe9b4, #e6be77);
+    background-color: #ffe9b4;
     color: #132a3c;
     font-weight: 750;
     text-decoration: none;
@@ -361,31 +359,120 @@ body.discovery-museum-page.lakbay-theme[data-role="student"] .artifact-card-acti
     background: #fff0c8;
 }
 body.discovery-museum-page.lakbay-theme[data-role="student"] dialog.museum-exhibit {
-    border-color: #d4ae72;
-    background: linear-gradient(155deg, #1c3b4b, #102538 70%);
-    box-shadow: 0 0 0 4px #caa46a25, 0 24px 80px #000a;
+    width: min(1000px, calc(100% - 2rem));
+    max-height: calc(100dvh - 32px);
+    border-color: #c5a36b;
+    border-radius: 22px;
+    background: #102638;
+    box-shadow: 0 0 0 4px #caa46a20, 0 24px 80px #000a;
+    scrollbar-color: #718e96 #102638;
+}
+body.discovery-museum-page.lakbay-theme[data-role="student"] dialog.museum-exhibit[open] {
+    grid-template-columns: minmax(230px, 34%) minmax(0, 1fr);
 }
 .discovery-museum-page dialog.museum-exhibit::backdrop {
-    background: #04121cdd;
+    background: #04121cd4;
     backdrop-filter: blur(5px);
 }
 body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-header {
-    border-bottom-color: #a38a59;
-    background: linear-gradient(105deg, #1c3b4a, #233f49 75%, #544937);
+    padding: 18px clamp(16px, 3vw, 36px);
+    border-bottom-color: #7d7257;
+    background: radial-gradient(ellipse at 10% 0%, #335554, transparent 76%), #172f41;
+}
+body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-kicker {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    color: #f0d39b;
+    font-size: .72rem;
+    font-weight: 750;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+.museum-exhibit-kicker::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
 }
 body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-header h2 {
-    color: #fff0cb;
-    font-size: clamp(1.2rem, 3vw, 1.85rem);
-    font-weight: 700;
+    color: #fff0d0;
+    font-size: clamp(1.35rem, 3.6vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.12;
 }
 body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-close:hover {
     border-color: #eac885;
     background: #324d56;
 }
+.museum-exhibit-display {
+    grid-area: 2 / 1 / span 2 / 2;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    align-self: start;
+    min-width: 0;
+    margin: 18px 0 18px 18px;
+    overflow: hidden;
+    border: 1px solid #8b7e5e;
+    border-radius: 16px;
+    background: #142e40;
+    box-shadow: 0 8px 25px #07192769;
+}
 body.discovery-museum-page.lakbay-theme[data-role="student"] dialog.museum-exhibit .museum-exhibit-visual {
-    border-color: #b19a69;
-    background: radial-gradient(ellipse at 50% 32%, #6e6450, #26494b 48%, #122a3c 84%);
-    box-shadow: inset 0 0 0 4px #e8c98b24, 0 8px 18px #07192769;
+    grid-area: auto;
+    grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+    min-height: 0;
+    height: clamp(160px, 34dvh, 325px);
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid #7f765e;
+    border-radius: 0;
+    background:
+        radial-gradient(ellipse at 50% 60%, #8a7855 0%, #385655 43%, transparent 74%),
+        repeating-linear-gradient(90deg, #1f3a46 0 1px, #122c3e 1px 20px);
+    box-shadow: inset 0 0 38px #07182390;
+}
+body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-display .artifact-card-illustration {
+    grid-area: 1 / 1;
+    width: 81%;
+    height: 87%;
+    filter: drop-shadow(0 12px 14px #031218aa);
+}
+.museum-exhibit-display .museum-artwork-credit {
+    padding: .5rem .65rem 0;
+    color: #d1e1df;
+    font-size: .8rem;
+    line-height: 1.35;
+    text-align: center;
+}
+.museum-exhibit-display:has([data-artwork-state="unavailable"]) .museum-artwork-credit {
+    display: none;
+}
+.museum-exhibit .museum-artwork-toggle {
+    justify-self: center;
+    min-height: 44px;
+    margin: 0 .5rem;
+    padding: .35rem .65rem;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #ffe5ae;
+    font: 650 .82rem/1.2 system-ui, sans-serif;
+    text-decoration: underline;
+    text-underline-offset: .2em;
+    cursor: var(--lakbay-cursor-hand, pointer);
+}
+.museum-exhibit .museum-artwork-toggle:hover {
+    background: #203f50;
+    color: #fff4d3;
+}
+body.discovery-museum-page.lakbay-theme[data-role="student"] dialog.museum-exhibit .museum-display-enlarged .museum-exhibit-visual {
+    height: clamp(220px, 49dvh, 425px);
+}
+body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-display-enlarged .artifact-card-illustration {
+    width: 98%;
+    height: 94%;
 }
 body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-views button:not([aria-pressed="true"]):hover {
     background: #22465a;
@@ -393,9 +480,115 @@ body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-vie
 }
 body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-views button[aria-pressed="true"] {
     background: linear-gradient(145deg, #ffe7ad, #ddbc7d);
+    background-color: #ffe7ad;
+    color: #172d3b;
     font-weight: 750;
+}
+body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-body {
+    max-height: min(64dvh, 560px);
+    scroll-padding-block: 1rem;
+    padding: 16px clamp(16px, 2.5vw, 28px) 22px;
+}
+body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-body .museum-exhibit-kind {
+    width: fit-content;
+    margin: 0 0 .7rem;
+    padding: .25rem .6rem;
+    border: 1px solid #647e80;
+    border-radius: 6px;
+    background: #203d47;
+    color: #f8e0ae;
+    font: 700 .72rem/1.4 system-ui, sans-serif;
+    letter-spacing: .045em;
+}
+.museum-exhibit-body .museum-info-intro {
+    padding-bottom: .25rem;
+}
+.museum-exhibit-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0 0 1rem;
+    overflow: hidden;
+    border: 1px solid #506e76;
+    border-radius: 10px;
+    background: #506e76;
+}
+.museum-exhibit-details > div {
+    padding: .65rem .8rem;
+    background: #183647;
+    overflow-wrap: anywhere;
+}
+.museum-exhibit-details dt {
+    color: #fadca3;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .045em;
+}
+.museum-exhibit-details dd {
+    margin: .22rem 0 0;
+    color: #e6eff0;
+    font-size: .9rem;
+    line-height: 1.35;
+}
+.museum-sources {
+    margin-block: 1rem;
+    padding: .8rem .9rem;
+    border-top: 1px solid #7d7257;
+    border-bottom: 1px solid #45636e;
+    background: #142e40;
+}
+.museum-sources ul {
+    margin: 0;
+    padding-inline-start: 1rem;
+    color: #ebcd91;
+}
+.museum-sources li + li {
+    border-top: 1px solid #45636e;
+}
+.museum-sources .museum-fact-source {
+    margin: 0;
+}
+.museum-exhibit-body .museum-fact-source:hover {
+    color: #fff2cf;
 }
 body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-body :is(.museum-info-note, .museum-info-reflection) {
     border-inline-start-color: #d8ab6d;
     background: #18384a;
+}
+@media (max-width: 700px) {
+    body.discovery-museum-page.lakbay-theme[data-role="student"] dialog.museum-exhibit[open] {
+        max-height: min(744px, calc(100dvh - 32px));
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto auto minmax(0, 1fr);
+    }
+    .museum-exhibit-display {
+        grid-area: 2 / 1;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-rows: auto auto;
+        margin: 10px 12px 0;
+    }
+    body.discovery-museum-page.lakbay-theme[data-role="student"] dialog.museum-exhibit .museum-exhibit-visual {
+        grid-column: 1 / -1;
+        height: clamp(96px, 17dvh, 150px);
+    }
+    .museum-exhibit-display .museum-artwork-credit {
+        align-self: center;
+        padding: .35rem .6rem;
+        text-align: start;
+    }
+    body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-views {
+        margin: 10px 12px 0;
+    }
+    body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-body {
+        max-height: min(42dvh, 435px);
+    }
+}
+@media (max-height: 560px) {
+    body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-body {
+        min-height: min-content;
+    }
+    body.discovery-museum-page.lakbay-theme[data-role="student"] .museum-exhibit-body {
+        max-height: none;
+        overflow: visible;
+    }
 }
