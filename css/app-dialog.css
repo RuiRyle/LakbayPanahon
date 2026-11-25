@@ -3,7 +3,7 @@
 .lakbay-dialog h2{margin:0 0 16px;color:#f0d48f;font-size:1.35rem;line-height:1.3}
 .lakbay-dialog p{margin:0;white-space:pre-line;overflow-wrap:anywhere;color:#d8e4f0;font-size:1rem;line-height:1.7}
 .lakbay-dialog-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:26px;flex-wrap:wrap}
-.lakbay-dialog-actions button{font:inherit;font-weight:700;min-width:100px;min-height:46px;border-radius:12px;padding:10px 22px;cursor:pointer;transition:transform .16s,background .16s}
+.lakbay-dialog-actions button{font:inherit;font-weight:700;min-width:100px;min-height:46px;border-radius:12px;padding:10px 22px;cursor:var(--lakbay-cursor-hand, pointer);transition:transform .16s,background .16s}
 .lakbay-dialog-cancel{background:#18365a;color:#e0e9f3;border:1px solid #7591ae}
 .lakbay-dialog-ok{background:#efcc72;color:#10213b;border:1px solid #f5db9c}
 .lakbay-dialog-actions button:hover{transform:translateY(-2px);filter:brightness(1.08)}

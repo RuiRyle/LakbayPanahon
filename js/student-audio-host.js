@@ -1,5 +1,4 @@
 const SOUND_ENABLED_KEY = "lakbay-ui-sounds";
-const SOUND_VOLUME_KEY = "lakbay-ui-sound-volume";
 const MUSIC_ENABLED_KEY = "lakbay-background-music";
 const MUSIC_VOLUME_KEY = "lakbay-background-music-volume";
 
@@ -23,20 +22,30 @@ let musicTimer = null;
 let musicStarted = false;
 let musicOrigin = 0;
 let nextStep = 0;
-const stepSeconds = 60 / 116 / 2;
-const stepsPerLoop = 32;
-const chords = [
+// Standalone adventure theme, played persistently by the Student shell.
+const musicStepSeconds=60/104/2;
+const musicStepsPerLoop=64;
+const musicChords=[
+    [98,196,246.94,293.66],
     [130.81,196,261.63,329.63],
-    [196,246.94,293.66,392],
-    [174.61,220,261.63,349.23],
-    [196,246.94,293.66,392]
+    [146.83,220,293.66,369.99],
+    [98,196,246.94,392]
 ];
-const melody = [
-    [0,523.25,392],[2,659.25,523.25],[4,783.99,659.25],[6,659.25,523.25],
-    [8,587.33,392],[10,783.99,493.88],[12,987.77,587.33],[14,783.99,493.88],
-    [16,698.46,523.25],[18,880,698.46],[20,1046.5,880],[22,880,698.46],
-    [24,587.33,392],[26,783.99,493.88],[28,987.77,587.33],[30,783.99,493.88]
+const musicMelody=[
+    [0,392],[4,493.88],[8,587.33],[12,659.25],
+    [16,587.33],[20,493.88],[24,440],[28,493.88],
+    [32,493.88],[36,587.33],[40,659.25],[44,587.33],
+    [48,493.88],[52,587.33],[56,659.25],[60,392]
 ];
+let backgroundMusicStarted=false;
+let backgroundMusicGain=null;
+let backgroundMusicTimer=null;
+let nextMusicStep=0;
+let musicEpoch=0;
+let backgroundMusicFocusLevel=1;
+let transientFocusActive=false;
+let narrationFocusActive=false;
+const effectTones = new Set();
 
 try {
     musicEnabled = localStorage.getItem(MUSIC_ENABLED_KEY) !== "off";
@@ -46,244 +55,150 @@ function getContext() {
     try {
         const AudioContextClass = window.AudioContext || window.webkitAudioContext;
         if (!AudioContextClass) return null;
-        context ??= new AudioContextClass();
-        if (context.state === "suspended") context.resume().catch(() => {});
+        if (!context || context.state === "closed") context = new AudioContextClass();
+        if (context.state !== "running") context.resume().catch(() => {});
         return context;
     } catch {
         return null;
     }
 }
 
-function makeEnvelope(gain, start, duration, peak, attack, release) {
-    gain.gain.setValueAtTime(.0001, start);
-    gain.gain.exponentialRampToValueAtTime(peak, start + attack);
-    gain.gain.setValueAtTime(peak, start + duration - release);
-    gain.gain.exponentialRampToValueAtTime(.0001, start + duration);
-}
-
-function scheduleMusicVoice(destination, frequency, start, duration, peak, options = {}) {
-    const oscillator = context.createOscillator();
-    const filter = context.createBiquadFilter();
-    const gain = context.createGain();
-    oscillator.type = options.wave || "sine";
-    oscillator.frequency.setValueAtTime(frequency, start);
-    filter.type = "lowpass";
-    filter.frequency.setValueAtTime(options.cutoff || 1100, start);
-    filter.Q.setValueAtTime(.25, start);
-    makeEnvelope(gain, start, duration, peak, options.attack ?? .08, options.release ?? .2);
+function scheduleMusicVoice(context,destination,frequency,start,duration,peak,options={}){
+    const oscillator=context.createOscillator();
+    const filter=context.createBiquadFilter();
+    const gain=context.createGain();
+    oscillator.type=options.wave||'sine';
+    oscillator.frequency.setValueAtTime(frequency,start);
+    filter.type='lowpass';
+    filter.frequency.setValueAtTime(options.cutoff||1400,start);
+    filter.Q.setValueAtTime(.35,start);
+    const attack=options.attack??.08;
+    const release=Math.min(options.release??.18,duration-attack-.01);
+    gain.gain.setValueAtTime(.0001,start);
+    gain.gain.exponentialRampToValueAtTime(peak,start+attack);
+    gain.gain.setValueAtTime(peak,start+duration-release);
+    gain.gain.exponentialRampToValueAtTime(.0001,start+duration);
     oscillator.connect(filter);
     filter.connect(gain);
     gain.connect(destination);
     oscillator.start(start);
-    oscillator.stop(start + duration + .04);
+    oscillator.stop(start+duration+.04);
 }
-
-function scheduleFlute(destination, frequency, start, duration, peak) {
-    const flute = context.createOscillator();
-    const filter = context.createBiquadFilter();
-    const gain = context.createGain();
-    const vibrato = context.createOscillator();
-    const vibratoDepth = context.createGain();
-    flute.type = "triangle";
-    flute.frequency.setValueAtTime(frequency, start);
-    filter.type = "lowpass";
-    filter.frequency.setValueAtTime(1500, start);
-    filter.Q.setValueAtTime(.2, start);
-    makeEnvelope(gain, start, duration, peak, .08, .14);
-    vibrato.type = "sine";
-    vibrato.frequency.setValueAtTime(4.8, start);
-    vibratoDepth.gain.setValueAtTime(.4, start);
+function scheduleFluteNote(context,destination,frequency,start,duration,peak){
+    const flute=context.createOscillator();
+    const fluteFilter=context.createBiquadFilter();
+    const fluteGain=context.createGain();
+    const vibrato=context.createOscillator();
+    const vibratoDepth=context.createGain();
+    flute.type='triangle';
+    flute.frequency.setValueAtTime(frequency,start);
+    fluteFilter.type='lowpass';
+    fluteFilter.frequency.setValueAtTime(1450,start);
+    fluteFilter.Q.setValueAtTime(.2,start);
+    fluteGain.gain.setValueAtTime(.0001,start);
+    fluteGain.gain.exponentialRampToValueAtTime(peak,start+.14);
+    fluteGain.gain.setValueAtTime(peak,start+duration-.38);
+    fluteGain.gain.exponentialRampToValueAtTime(.0001,start+duration);
+    vibrato.type='sine';
+    vibrato.frequency.setValueAtTime(4.8,start);
+    vibratoDepth.gain.setValueAtTime(.65,start);
     vibrato.connect(vibratoDepth);
     vibratoDepth.connect(flute.frequency);
-    flute.connect(filter);
-    filter.connect(gain);
-    gain.connect(destination);
+    flute.connect(fluteFilter);
+    fluteFilter.connect(fluteGain);
+    fluteGain.connect(destination);
     flute.start(start);
     vibrato.start(start);
-    flute.stop(start + duration + .04);
-    vibrato.stop(start + duration + .04);
+    flute.stop(start+duration+.04);
+    vibrato.stop(start+duration+.04);
 }
-
-function scheduleSaxophone(destination, frequency, start, duration, peak) {
-    const reed = context.createOscillator();
-    const body = context.createOscillator();
-    const reedBand = context.createBiquadFilter();
-    const warmth = context.createBiquadFilter();
-    const mix = context.createGain();
-    const gain = context.createGain();
-    const vibrato = context.createOscillator();
-    const vibratoDepth = context.createGain();
-    reed.type = "sawtooth";
-    reed.frequency.setValueAtTime(frequency, start);
-    body.type = "triangle";
-    body.frequency.setValueAtTime(frequency, start);
-    reedBand.type = "bandpass";
-    reedBand.frequency.setValueAtTime(920, start);
-    reedBand.Q.setValueAtTime(.72, start);
-    warmth.type = "lowpass";
-    warmth.frequency.setValueAtTime(1750, start);
-    warmth.Q.setValueAtTime(.18, start);
-    mix.gain.setValueAtTime(.58, start);
-    vibrato.type = "sine";
-    vibrato.frequency.setValueAtTime(5.1, start);
-    vibratoDepth.gain.setValueAtTime(.32, start);
+function scheduleSaxophoneNote(context,destination,frequency,start,duration,peak){
+    const reed=context.createOscillator();
+    const body=context.createOscillator();
+    const band=context.createBiquadFilter();
+    const warmth=context.createBiquadFilter();
+    const mix=context.createGain();
+    const gain=context.createGain();
+    const vibrato=context.createOscillator();
+    const vibratoDepth=context.createGain();
+    reed.type='sawtooth';
+    reed.frequency.setValueAtTime(frequency,start);
+    body.type='triangle';
+    body.frequency.setValueAtTime(frequency,start);
+    band.type='bandpass';
+    band.frequency.setValueAtTime(920,start);
+    band.Q.setValueAtTime(.72,start);
+    warmth.type='lowpass';
+    warmth.frequency.setValueAtTime(1750,start);
+    warmth.Q.setValueAtTime(.18,start);
+    mix.gain.setValueAtTime(.58,start);
+    vibrato.type='sine';
+    vibrato.frequency.setValueAtTime(5.1,start);
+    vibratoDepth.gain.setValueAtTime(.32,start);
     vibrato.connect(vibratoDepth);
     vibratoDepth.connect(reed.frequency);
     vibratoDepth.connect(body.frequency);
-    makeEnvelope(gain, start, duration, peak, .075, .13);
-    reed.connect(reedBand);
-    body.connect(reedBand);
-    reedBand.connect(warmth);
+    gain.gain.setValueAtTime(.0001,start);
+    gain.gain.exponentialRampToValueAtTime(peak,start+.075);
+    gain.gain.setValueAtTime(peak,start+duration-.13);
+    gain.gain.exponentialRampToValueAtTime(.0001,start+duration);
+    reed.connect(band);
+    body.connect(band);
+    band.connect(warmth);
     warmth.connect(mix);
     mix.connect(gain);
     gain.connect(destination);
     reed.start(start);
     body.start(start);
     vibrato.start(start);
-    reed.stop(start + duration + .04);
-    body.stop(start + duration + .04);
-    vibrato.stop(start + duration + .04);
+    reed.stop(start+duration+.04);
+    body.stop(start+duration+.04);
+    vibrato.stop(start+duration+.04);
 }
-
-function scheduleStrings(destination, frequency, start, duration, pan) {
-    const filter = context.createBiquadFilter();
-    const gain = context.createGain();
-    const stereo = context.createStereoPanner();
-    filter.type = "lowpass";
-    filter.frequency.setValueAtTime(720, start);
-    filter.Q.setValueAtTime(.25, start);
-    makeEnvelope(gain, start, duration, .013, .35, .3);
-    stereo.pan.setValueAtTime(pan, start);
+function scheduleStringHarmony(context,destination,frequency,start,duration,peak,pan=0){
+    const filter=context.createBiquadFilter();
+    const gain=context.createGain();
+    const stereo=context.createStereoPanner();
+    filter.type='lowpass';
+    filter.frequency.setValueAtTime(760,start);
+    filter.Q.setValueAtTime(.25,start);
+    gain.gain.setValueAtTime(.0001,start);
+    gain.gain.exponentialRampToValueAtTime(peak,start+.8);
+    gain.gain.setValueAtTime(peak,start+duration-.9);
+    gain.gain.exponentialRampToValueAtTime(.0001,start+duration);
+    stereo.pan.setValueAtTime(pan,start);
     filter.connect(gain);
     gain.connect(stereo);
     stereo.connect(destination);
-    [-5,5].forEach(detune => {
-        const voice = context.createOscillator();
-        voice.type = "sawtooth";
-        voice.frequency.setValueAtTime(frequency, start);
-        voice.detune.setValueAtTime(detune, start);
+    [-5,5].forEach(detune=>{
+        const voice=context.createOscillator();
+        voice.type='sawtooth';
+        voice.frequency.setValueAtTime(frequency,start);
+        voice.detune.setValueAtTime(detune,start);
         voice.connect(filter);
         voice.start(start);
-        voice.stop(start + duration + .04);
+        voice.stop(start+duration+.04);
     });
 }
 
-function scheduleCello(destination, frequency, start, duration) {
-    const lowTone = context.createOscillator();
-    const bodyTone = context.createOscillator();
-    const filter = context.createBiquadFilter();
-    const gain = context.createGain();
-    lowTone.type = "sine";
-    lowTone.frequency.setValueAtTime(frequency / 2, start);
-    bodyTone.type = "triangle";
-    bodyTone.frequency.setValueAtTime(frequency, start);
-    filter.type = "lowpass";
-    filter.frequency.setValueAtTime(520, start);
-    filter.Q.setValueAtTime(.22, start);
-    makeEnvelope(gain, start, duration, .017, .32, .38);
-    lowTone.connect(filter);
-    bodyTone.connect(filter);
-    filter.connect(gain);
-    gain.connect(destination);
-    lowTone.start(start);
-    bodyTone.start(start);
-    lowTone.stop(start + duration + .04);
-    bodyTone.stop(start + duration + .04);
-}
-
-function scheduleHighStrings(destination, frequency, start, duration) {
-    const filter = context.createBiquadFilter();
-    const gain = context.createGain();
-    const stereo = context.createStereoPanner();
-    filter.type = "lowpass";
-    filter.frequency.setValueAtTime(1850, start);
-    filter.Q.setValueAtTime(.2, start);
-    makeEnvelope(gain, start, duration, .009, .42, .38);
-    stereo.pan.setValueAtTime(.2, start);
-    filter.connect(gain);
-    gain.connect(stereo);
-    stereo.connect(destination);
-    [-4, 4].forEach(detune => {
-        const voice = context.createOscillator();
-        voice.type = "triangle";
-        voice.frequency.setValueAtTime(frequency, start);
-        voice.detune.setValueAtTime(detune, start);
-        voice.connect(filter);
-        voice.start(start);
-        voice.stop(start + duration + .04);
-    });
-}
-
-function scheduleSoftStrum(destination, chord, start) {
-    chord.forEach((frequency, index) => {
-        scheduleMusicVoice(destination, frequency, start + index * .025, .72, .016, {
-            wave: "triangle",
-            cutoff: 780,
-            attack: .035,
-            release: .55
-        });
-    });
-}
-
-function scheduleWarmPluck(destination, frequency, start, peak, pan) {
-    const body = context.createOscillator();
-    const upperPartial = context.createOscillator();
-    const filter = context.createBiquadFilter();
-    const gain = context.createGain();
-    const stereo = context.createStereoPanner();
-    body.type = "sine";
-    body.frequency.setValueAtTime(frequency, start);
-    upperPartial.type = "triangle";
-    upperPartial.frequency.setValueAtTime(frequency * 2, start);
-    filter.type = "lowpass";
-    filter.frequency.setValueAtTime(1250, start);
-    filter.frequency.exponentialRampToValueAtTime(760, start + .38);
-    filter.Q.setValueAtTime(.3, start);
-    makeEnvelope(gain, start, .68, peak, .025, .42);
-    stereo.pan.setValueAtTime(pan, start);
-    body.connect(filter);
-    upperPartial.connect(filter);
-    filter.connect(gain);
-    gain.connect(stereo);
-    stereo.connect(destination);
-    body.start(start);
-    upperPartial.start(start);
-    body.stop(start + .72);
-    upperPartial.stop(start + .72);
-}
-
-function scheduleAhead() {
-    if (!musicGain || !musicStarted || !context) return;
-    const elapsed = context.currentTime - musicOrigin;
-    const currentStep = Math.max(0, Math.floor(elapsed / stepSeconds));
-    if (currentStep - nextStep > stepsPerLoop * 2) nextStep = currentStep;
-    while (nextStep * stepSeconds - elapsed < .2) {
-        const step = nextStep % stepsPerLoop;
-        const start = musicOrigin + nextStep * stepSeconds;
-        if (step % 8 === 0) {
-            const chord = chords[Math.floor(step / 8)];
-            chord.forEach((frequency, index) => scheduleMusicVoice(
-                musicGain, frequency, start, 1.92, index === 0 ? .031 : .023,
-                { wave: "sine", cutoff: index === 0 ? 480 : 950, attack: .22, release: .35 }
-            ));
-            chord.slice(1).forEach((frequency, index) => scheduleStrings(
-                musicGain, frequency, start, 1.92, (index - 1) * .28
-            ));
-            scheduleCello(musicGain, chord[0], start, 1.92);
-            scheduleHighStrings(musicGain, chord[3] * 2, start, 1.92);
-            scheduleWarmPluck(musicGain, chord[0], start, .028, -.16);
+function scheduleAhead(){
+    if(!musicGain||!musicStarted||!context)return;
+    const elapsed=context.currentTime-musicOrigin;
+    const currentStep=Math.max(0,Math.floor(elapsed/musicStepSeconds));
+    if(currentStep-nextStep>musicStepsPerLoop*2)nextStep=currentStep;
+    const horizon=.2;
+    while(nextStep*musicStepSeconds-elapsed<horizon){
+        const step=nextStep%musicStepsPerLoop;
+        const start=Math.max(context.currentTime+.015,context.currentTime+nextStep*musicStepSeconds-elapsed);
+        if(step%16===0){
+            const chord=musicChords[Math.floor(step/16)];
+            chord.forEach((frequency,index)=>scheduleMusicVoice(context,musicGain,frequency,start,5.52,index===0 ? .034 : .026,{wave:'sine',cutoff:index===0?460:900,attack:.8,release:.9}));
+            chord.slice(1).forEach((frequency,index)=>scheduleStringHarmony(context,musicGain,frequency,start,5.52,.014,(index-1)*.28));
         }
-        if (step % 8 === 4) {
-            const chord = chords[Math.floor(step / 8)];
-            scheduleWarmPluck(musicGain, chord[2], start, .023, .16);
-        }
-        if (step % 4 === 0) scheduleSoftStrum(musicGain, chords[Math.floor(step / 8)], start);
-        const note = melody.find(([at]) => at === step);
-        if (note) {
-            // Let the sax carry alternating notes while the flute answers in
-            // the gaps. This keeps their tones distinct instead of stacking.
-            if (step % 4 === 0) scheduleSaxophone(musicGain, note[1], start, .44, .052);
-            else scheduleFlute(musicGain, note[1], start, .44, .029);
+        const melodyNote=musicMelody.find(note=>note[0]===step);
+        if(melodyNote){
+            if(step%8===0) scheduleSaxophoneNote(context,musicGain,melodyNote[1],start,1.8,.055);
+            else scheduleFluteNote(context,musicGain,melodyNote[1],start,1.8,.034);
         }
         nextStep++;
     }
@@ -294,7 +209,9 @@ function musicLevel() {
 }
 
 function setFocusMode(mode = "normal") {
-    focusMusicLevel = mode === "focus" ? 0 : mode === "reading" ? .28 : 1;
+    narrationFocusActive = mode === "narration";
+    if (narrationFocusActive) stopEffects();
+    focusMusicLevel = mode === "focus" ? 0 : mode === "narration" ? .08 : mode === "reading" ? .28 : 1;
     if (musicGain && context) {
         const now = context.currentTime;
         musicGain.gain.cancelScheduledValues(now);
@@ -379,29 +296,60 @@ function playTone(audio, frequency, endFrequency, duration, volume, type, delay 
     gain.gain.exponentialRampToValueAtTime(.0001, start + duration);
     oscillator.connect(gain);
     gain.connect(audio.destination);
+    effectTones.add(oscillator);
+    oscillator.onended = () => {
+        effectTones.delete(oscillator);
+        oscillator.disconnect();
+        gain.disconnect();
+    };
     oscillator.start(start);
     oscillator.stop(start + duration + .012);
+}
+
+function stopEffects() {
+    for (const tone of effectTones) {
+        try { tone.stop(); } catch {}
+    }
+    effectTones.clear();
 }
 
 function playSound(kind, volume = 1, force = false) {
     let effectsEnabled = true;
     try { effectsEnabled = localStorage.getItem(SOUND_ENABLED_KEY) !== "off"; } catch {}
-    if ((!effectsEnabled && !force) || volume <= 0) return;
+    if (document.hidden || narrationFocusActive || (!effectsEnabled && !force) || !(volume > 0)) return false;
     const audio = getContext();
-    if (!audio) return;
+    if (!audio || (audio.state !== "running" && window.navigator?.userActivation?.isActive === false)) return false;
     const level = Math.min(1, Math.max(0, Number(volume) || 0));
-    if (kind === "hover") {
+    if (kind === "activate") {
+        playTone(audio, 470, 390, .055, .035 * level, "triangle");
+    } else if (kind === "clue-saved") {
+        playTone(audio, 587, 587, .13, .048 * level, "sine");
+        playTone(audio, 784, 784, .18, .04 * level, "sine", .08);
+    } else if (kind === "hover") {
         playTone(audio, 620, 740, .055, .07 * level, "sine");
     } else if (kind === "toggle") {
         playTone(audio, 650, 820, .085, .11 * level, "triangle");
         playTone(audio, 850, 1060, .105, .085 * level, "sine", .055);
     } else if (kind === "correct") {
-        playTone(audio, 659, 784, .09, .075 * level, "sine");
-        playTone(audio, 784, 988, .12, .07 * level, "sine", .075);
-    } else if (kind === "challenge-start") {
-        playTone(audio, 196, 261.63, .2, .075 * level, "triangle");
-        playTone(audio, 392, 523.25, .2, .09 * level, "triangle", .1);
-        playTone(audio, 523.25, 659.25, .26, .085 * level, "sine", .2);
+        playTone(audio, 659, 784, .09, .075 * level, "sine", .045);
+        playTone(audio, 784, 988, .12, .07 * level, "sine", .12);
+    } else if (kind === "retry") {
+        playTone(audio, 440, 415, .15, .06 * level, "sine");
+        playTone(audio, 523, 523, .17, .05 * level, "sine", .09);
+    } else if (kind === "heart-lost") {
+        playTone(audio, 370, 220, .19, .052 * level, "sine", .045);
+    } else if (kind === "countdown-tick") {
+        playTone(audio, 790, 495, .052, .055 * level, "triangle");
+    } else if (kind === "compass-ready") {
+        playTone(audio, 880, 610, .085, .065 * level, "triangle");
+        playTone(audio, 1175, 988, .105, .045 * level, "sine", .04);
+    } else if (kind === "answer-lock") {
+        playTone(audio, 760, 450, .04, .042 * level, "triangle");
+    } else if (kind === "seal-stamp") {
+        playTone(audio, 175, 75, .09, .064 * level, "triangle");
+    } else if (kind === "finale-arrival") {
+        playTone(audio, 262, 392, .19, .052 * level, "triangle");
+        playTone(audio, 392, 523, .22, .042 * level, "sine", .11);
     } else if (kind === "chapter-complete") {
         playTone(audio, 523.25, 659.25, .17, .075 * level, "triangle");
         playTone(audio, 659.25, 783.99, .17, .08 * level, "triangle", .12);
@@ -428,6 +376,7 @@ function playSound(kind, volume = 1, force = false) {
         playTone(audio, 520, 690, .09, .12 * level, "triangle");
         playTone(audio, 780, 930, .105, .09 * level, "sine", .04);
     }
+    return true;
 }
 
 window.LakbayStudentAudio = {
@@ -437,11 +386,15 @@ window.LakbayStudentAudio = {
     setVolume: setMusicVolume,
     setFocusMode,
     isPlaying: isMusicPlaying,
+    unlockEffects() { getContext(); },
+    stopEffects,
     playSound
 };
 
 window.addEventListener("pagehide", stopMusic);
+window.addEventListener("pagehide", stopEffects);
 document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopEffects();
     if (!document.hidden && musicEnabled && musicStarted && context?.state === "suspended") {
         context.resume().catch(() => {});
     }

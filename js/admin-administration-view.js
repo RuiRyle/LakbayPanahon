@@ -1,18 +1,87 @@
-// Presentation only: administration tools use existing routes and recovery controls.
-export function mountAdministration(root,{environment=null}={}){
- const el=(tag,copy,parent,cls)=>{const node=document.createElement(tag);if(copy)node.textContent=copy;if(cls)node.className=cls;parent?.append(node);return node;};
- const oldTitle=root.querySelector('#adminEnvironmentTitle'),recovery=root.querySelector('#adminReturnToReview').closest('.admin-tool-card'),recordsButton=root.querySelector('#adminOpenRecords');
- const banner=el('header','',null,'administration-banner');const title=el('h1','Administration',banner);title.id=oldTitle.id;el('p','Verify teachers, manage user access and review saved administrative decisions.',banner);
- const art=()=>{const img=document.createElement('img');img.src='../assets/brand/administration-landscape.svg';img.alt='';img.setAttribute('aria-hidden','true');return img;};banner.append(art());
- const grid=el('div','',null,'administration-tool-grid');
- const paths={status:'M7 6h50v31H7z M2 44h60M15 23h8l5-10 8 20 5-10h9',security:'M32 4 55 13v18c0 14-23 25-23 25S9 45 9 31V13L32 4Zm-9 26h18v15H23z M26 30v-7a6 6 0 0 1 12 0v7',logs:'M12 5h33v42H12z M19 15h19M19 23h14M19 31h10 M42 36a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm7 16 10 9',recovery:'M10 14c0-12 44-12 44 0s-44 12-44 0Zm0 0v28c0 7 13 10 23 9M10 28c0 7 13 10 25 9 M39 42a12 12 0 1 1 1 15 M39 42h12v-9'};
- function tile(title,copy,badge,kind,href){const card=el(href?'a':'details','',grid,'administration-tile');if(href)card.href=href;const face=href?card:el('summary','',card);const icon=el('span','',face,'administration-tile-icon');icon.setAttribute('aria-hidden','true');icon.innerHTML='<svg viewBox="0 0 64 64"><path d="'+paths[kind]+'"/></svg>';const content=el('span','',face,'administration-tile-copy');el('strong',title,content);el('span',copy,content,'administration-tile-description');el('span',badge,content,'administration-tool-badge');el('span','\u203a',face,'administration-tile-arrow').setAttribute('aria-hidden','true');return card;}
- const applications=tile('Teacher Verification','Review submitted qualifications and record approval, changes requested or decline.','Open teacher applications','security','admin-applications.html');
- const accounts=tile('Account Access','Find students and teachers, review their details and confirm permitted access changes.','Manage student & teacher accounts','status','admin-accounts.html');
- const logs=tile('Decision Records','Inspect your saved administrative decisions, reasons and account history.','View saved decision records','logs','admin-decisions.html');
- const recover=tile('Account History & Recovery','Find the affected account and check its saved decision before repeating an uncertain action.','Find an account to review','recovery','admin-accounts.html');
- const recoveryContext=el('section','',null,'administration-recovery-context');recoveryContext.append(recovery);
- const info=el('section','',null,'administration-platform');el('h3','Platform Information',info);el('p','Current workspace setup and administrative scope.',info);const data=el('dl','',info);for(const [label,value]of [['Platform','LakbayPanahon'],['Purpose','Gamified Philippine History Learning Platform'],['Environment',environment?.mode==='emulator'?'Local Firebase emulators':'Configured Firebase connection'],['Administrative scope','Teacher verification and student/teacher account access'],['Activity monitoring','Your saved administrative decision records'],['Security boundary','Active administrators only; no role promotion or learning-record editing']]){const row=el('div','',data);el('dt',label,row);el('dd',value,row);}info.append(art());
- const retained=el('div','',null,'administration-retained-action');retained.hidden=true;retained.append(recordsButton);
- root.replaceChildren(banner,grid,recoveryContext,info,retained);root.classList.add('administration-reference');
+export function mountAdministration(root, { environment = null } = {}) {
+    const add = (tag, copy, parent, className) => {
+        const node = document.createElement(tag);
+        if (copy) node.textContent = copy;
+        if (className) node.className = className;
+        parent?.append(node);
+        return node;
+    };
+    const icon = (parent, path, className) => {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('aria-hidden', 'true');
+        if (className) svg.classList.add(className);
+        const shape = document.createElementNS(svg.namespaceURI, 'path');
+        shape.setAttribute('d', path);
+        svg.append(shape);
+        parent.append(svg);
+    };
+    const headingId = root.getAttribute('aria-labelledby');
+    const banner = add('header', null, null, 'administration-banner');
+    const title = add('h1', 'Admin Tools', banner);
+    title.id = headingId;
+    add('p', 'Find a decision, check an interrupted save, or go straight to approved teachers waiting for access.', banner);
+    const art = add('img', null, banner);
+    art.src = '../assets/brand/administration-landscape.svg';
+    art.alt = '';
+
+    const tools = add('div', null, null, 'admin-tools-content');
+    const shortcuts = add('section', null, tools);
+    const shortcutTitle = add('h2', 'Go to a task', shortcuts, 'admin-tools-heading');
+    shortcutTitle.id = 'adminToolShortcuts';
+    shortcuts.setAttribute('aria-labelledby', shortcutTitle.id);
+    const grid = add('div', null, shortcuts, 'administration-tool-grid');
+    for (const [key, label, description, href, shape] of [
+        ['logs', 'Find a saved decision', 'Search your recent reviews and access changes.', 'admin-decisions.html',
+            'M12 7v5l3 2m6-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z'],
+        ['status', 'Check an account', 'Look up a student or teacher and open their full decision history.', 'admin-accounts.html',
+            'M15 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM3 21v-3a8 8 0 0 1 12-7m1 7 2 2 4-4'],
+        ['recovery', 'Activate approved teachers', 'Open applications that are approved and still need classroom access.', 'admin-applications.html?category=activation',
+            'M9 3H5v18h14v-8M9 2h6v4H9zM9 13l3 3 8-8']
+    ]) {
+        const tile = add('a', null, grid, 'administration-tile');
+        tile.href = href;
+        tile.dataset.tool = key;
+        icon(add('span', null, tile, 'administration-tile-icon'), shape);
+        const copy = add('span', null, tile, 'administration-tile-copy');
+        add('strong', label, copy);
+        add('span', description, copy, 'administration-tile-description');
+        add('span', '›', tile, 'administration-tile-arrow').setAttribute('aria-hidden', 'true');
+    }
+
+    const guide = add('section', null, tools, 'admin-recovery-guide');
+    const guideHeading = add('div', null, guide, 'administration-guide-heading');
+    icon(guideHeading, 'M5 7h14v14H5zM8 7V4h8v3M9 14l2 2 4-4', 'administration-guide-icon');
+    const guideTitle = add('h2', 'Check whether a decision saved', guideHeading);
+    guideTitle.id = 'adminRecoveryGuide';
+    guide.setAttribute('aria-labelledby', guideTitle.id);
+    add('p', 'If you lost your connection while saving, check for the existing decision before you submit again.', guide);
+
+    const paths = add('div', null, guide, 'administration-recovery-paths');
+    const current = add('details', null, paths, 'administration-recovery-step');
+    add('summary', 'The review is still open', current);
+    add('p', 'When the page offers Check saved decision or Check activation result, use it to look up the original attempt. Wait for confirmation before deciding whether to retry.', current);
+    const history = add('details', null, paths, 'administration-recovery-step');
+    add('summary', 'I left the review page', history);
+    const steps = add('ol', null, history);
+    add('li', 'Find the student or teacher in User Accounts and open View decision history.', steps);
+    add('li', 'Match the action, saved reason, and time. Choose Load More Decisions if you need older records.', steps);
+    add('li', 'Teacher approval and classroom activation may have separate records. Confirm the step you were saving before submitting again.', steps);
+    add('a', 'Open User Accounts', history, 'administration-disclosure-link').href = 'admin-accounts.html';
+
+    const info = add('details', null, tools, 'administration-platform');
+    add('summary', 'What administrators can manage', info);
+    const facts = add('dl', null, info);
+    for (const [label, value] of [
+        ['Teacher applications', 'Review qualifications, request changes, or record approval or decline.'],
+        ['Account access', 'Manage access for students and approved teachers.'],
+        ['Decision history', 'Check saved reasons, access changes, and timestamps.'],
+        ['Environment', environment?.mode === 'emulator' ? 'Local test environment' : 'LakbayPanahon website']
+    ]) {
+        const row = add('div', null, facts);
+        add('dt', label, row);
+        add('dd', value, row);
+    }
+    root.replaceChildren(banner, tools);
+    root.classList.add('administration-reference');
 }

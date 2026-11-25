@@ -9,57 +9,469 @@
 body.lakbay-theme dialog.private-evidence-dialog[open] { animation:none;transform:none; }
 .private-evidence-dialog::backdrop { background:#081629e8; }
 @media(max-width:650px){.application-columns{grid-template-columns:1fr;}}
-/* The application is a full-width onboarding page, not a sidebar workspace. */
-body.teacher-workspace.teacher-application-page{background:#08192b;color:#e8eef3}
-body.teacher-workspace.teacher-application-page .teacher-shell{width:100%;margin:0;min-height:100vh;background:radial-gradient(ellipse at 100% 0,#22485a33,transparent 45%),#08192b}
-body.teacher-workspace.teacher-application-page .application-topbar{padding:16px max(24px,calc((100vw - 1200px)/2));min-height:84px;gap:22px;background:#0c2036;border-bottom:1px solid #324c62}
-.application-topbar .teacher-brand{display:flex;align-items:center;gap:12px;color:#edf3f6;text-decoration:none;font-size:1.05rem;font-weight:800;line-height:1.3}.application-topbar .teacher-brand small{display:block;margin-top:5px;color:#d9bd79;font-size:.7rem;font-weight:400}.application-header-label{margin-left:auto;font-size:.64rem;letter-spacing:.12em;color:#a9bdcb}.application-topbar .logout-button{margin-left:0;min-height:42px;border-radius:10px;font-size:.78rem}
-body.teacher-application-page #application-main{max-width:1200px;margin:auto;padding:42px 24px 64px}
-.application-hero{padding:30px 0 0;margin-bottom:24px;max-width:none}.application-hero>.eyebrow{color:#e6ca8b;font-size:.68rem;letter-spacing:.14em}.application-hero h1{font-size:clamp(1.8rem,3.3vw,2.8rem);line-height:1.2;letter-spacing:-.035em;margin:16px 0;color:#f0ece2}.application-hero>p{max-width:72ch;font-size:.92rem;line-height:1.9;color:#afc5d4;margin:0}
-.application-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;padding:0;margin:32px 0 0;border:1px solid #3b5569;border-radius:15px;background:#112b40;overflow:hidden}.application-steps li{display:flex;align-items:center;gap:13px;padding:20px 22px;border-right:1px solid #3b5569;min-width:0}.application-steps li:last-child{border-right:0}.application-step-number{display:grid;place-items:center;flex-shrink:0;width:34px;height:36px;border:1px solid #5e7584;border-radius:10px;background:#1a3549;color:#a9c0ce;font-size:.8rem;font-weight:800}.application-steps strong{display:block;color:#cedae2;font-size:.8rem;line-height:1.6}.application-steps small{display:block;color:#94adbd;font-size:.7rem;line-height:1.6;margin-top:3px}.application-steps li[data-state=current]{background:#76674220}.application-steps li[data-state=current] .application-step-number{color:#142b3e;background:#e8c983;border-color:#e8c983}.application-steps li[data-state=complete] .application-step-number{color:#b9e0ce;background:#285047;border-color:#5f8c78}.application-steps li[data-state=current] strong{color:#efddb6}
-body.teacher-application-page .application-message{margin:20px 0 24px;min-height:0;line-height:1.8;font-size:.83rem;color:#bdcfda;border-radius:10px}.application-message:empty{display:none}.application-message[data-error=true]{background:#5d343332;border:1px solid #99685d;padding:14px 18px;color:#f0c0ad}
-.application-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;align-items:start;gap:26px}.application-sidebar{grid-column:2;grid-row:1;display:grid;gap:22px;min-width:0}.application-form-card{grid-column:1;grid-row:1;min-width:0}
-body.teacher-workspace.teacher-application-page .teacher-panel{padding:26px;border:1px solid #38566d;border-radius:17px;box-shadow:0 8px 24px #020b1515;background:#10283e;margin:0}.application-sidebar .eyebrow,.application-form-heading .eyebrow{font-size:.59rem;letter-spacing:.12em;color:#d4bd83}.application-sidebar h2{font-size:1.08rem;line-height:1.5;margin:12px 0 18px;color:#eee7d8}.application-status-label{font-size:.8rem;line-height:1.8;padding:12px 14px;background:#1c354b;border:1px solid #466078;border-radius:10px;color:#cddce5;margin:0 0 16px;overflow-wrap:anywhere}.application-status-card[data-status=approved] .application-status-label{background:#21463e;border-color:#5b8974;color:#c6ead6}.application-status-card[data-status=submitted] .application-status-label{background:#50462b55;border-color:#8c7a50;color:#ead8ad}.application-status-card[data-status=needs_changes] .application-status-label,.application-status-card[data-status=declined] .application-status-label{background:#5a393034;border-color:#8b6655;color:#e9c1a4}.application-decision:empty{display:none}.application-decision{padding-left:12px;border-left:2px solid #c8aa69;color:#d6dfe4;font-size:.8rem;line-height:1.9;overflow-wrap:anywhere}.application-sidebar .teacher-note{font-size:.76rem;line-height:1.85;color:#a9c0d1}.application-email-status{color:#dfd5b9;font-size:.81rem;line-height:1.9;overflow-wrap:anywhere}.application-small-note{font-size:.7rem;line-height:1.85;color:#91adbf;margin:18px 0 0}.application-side-actions{display:grid;gap:10px;margin:20px 0 0}.application-side-actions>button,.application-side-actions>a{width:100%;min-height:44px;font-size:.76rem;text-align:center;line-height:1.6;border-radius:10px;padding:11px 14px}
-body.teacher-workspace.teacher-application-page .application-form-card{padding:0;overflow:hidden;background:#112b41}.application-form-heading{padding:28px 30px;border-bottom:1px solid #3b556a;background:linear-gradient(120deg,#1b3b4d,#142e45)}.application-form-heading h2{font-size:1.45rem;letter-spacing:-.02em;margin:12px 0;color:#eee9de}.application-form-heading p{font-size:.82rem;line-height:1.8;color:#adc3d3;margin:0}
-.teacher-application-page #teacherApplicationForm{display:block;max-width:none;margin:0}.application-fieldset{display:block;min-width:0;margin:0;padding:28px 30px 30px;border:0;border-bottom:1px solid #355166}.application-fieldset legend{float:left;width:100%;padding:0;margin:0 0 12px;font-weight:750;font-size:.98rem;color:#e2e9eb;line-height:1.7}.application-fieldset legend>span{display:inline-block;color:#dfc484;font-size:.66rem;letter-spacing:.04em;margin-right:10px;vertical-align:middle}.application-fieldset legend>small{font-weight:400;font-size:.7rem;color:#9db6c7;margin-left:8px}.application-fieldset>.application-section-help{clear:both;margin:0 0 22px;font-size:.78rem;line-height:1.85;color:#9fb9cb}.teacher-application-page .application-fieldset label{display:grid;gap:9px;font-size:.79rem;font-weight:600;color:#d0dfe8;line-height:1.6;margin:0 0 20px}.application-fieldset label>small{font-size:.67rem;font-weight:400;color:#94adbd;margin-top:-5px}
-.teacher-application-page .application-fieldset input:not([type=checkbox]),.teacher-application-page .application-fieldset textarea,.teacher-application-page .application-fieldset select{width:100%;min-width:0;min-height:46px;border:1px solid #4c687e;border-radius:10px;padding:12px 14px;background:#0b2135;color:#edf1f4;font:inherit;font-weight:400;line-height:1.6;color-scheme:dark}.teacher-application-page .application-fieldset input::placeholder,.teacher-application-page .application-fieldset textarea::placeholder{color:#7e9aad;font-size:.76rem}.teacher-application-page .application-fieldset textarea{resize:vertical;min-height:124px}.teacher-application-page .application-fieldset :is(input,select,textarea):focus-visible{outline:2px solid #dfc180;outline-offset:3px;border-color:#dfc180;box-shadow:none}.application-columns{gap:18px}.application-field-help{font-size:.71rem;line-height:1.85;color:#9eb8c9;margin:-8px 0 20px}.application-fieldset>label:last-child{margin-bottom:0}
-.application-upload{padding:20px;border:1px dashed #6b8079;border-radius:12px;background:#24423d24;margin-bottom:20px}.application-upload>label{margin-bottom:6px!important;color:#e1d3b0!important}.application-upload>p{font-size:.72rem;line-height:1.8;color:#a4bdcd;margin:6px 0 14px}.teacher-application-page .application-upload input[type=file]{padding:8px;background:#102a3d;font-size:.72rem;overflow:hidden}.application-upload input::file-selector-button{padding:9px 12px;margin-right:12px;border:1px solid #6c7e7a;border-radius:7px;background:#294657;color:#e8d6ad;cursor:pointer;font:inherit}.application-upload #applicationFileName{margin:12px 0 0;overflow-wrap:anywhere}.teacher-application-page .application-check{display:flex!important;align-items:flex-start;gap:12px;font-size:.76rem!important;font-weight:400!important;line-height:1.9!important}.teacher-application-page .application-check input{width:18px!important;height:18px!important;min-height:18px!important;padding:0!important;margin:4px 0 0;flex-shrink:0;accent-color:#dfbf76}.teacher-application-page .application-check span{min-width:0}.application-privacy{border:1px solid #3b596e;border-radius:10px;padding:0 15px;background:#0d253a}.application-privacy summary{font-size:.75rem;line-height:1.8;padding:14px 0;color:#d7c595;cursor:pointer}.application-privacy p{font-size:.72rem;line-height:1.9;color:#a5bed0;margin:0 0 16px}
-.application-submit-area{padding:26px 30px 30px;background:#0e263b}.application-acknowledgement{margin:0 0 24px!important;padding:16px;border:1px solid #486173;border-radius:10px;background:#173247}.application-submit-row{display:flex;align-items:center;flex-wrap:wrap;gap:20px}.application-submit-row>p{flex:1 1 160px;font-size:.71rem;color:#9cb6c9;line-height:1.85;margin:0}.application-submit-row .teacher-actions{margin:0;display:flex;gap:10px;flex-wrap:wrap}.application-submit-row button{min-height:46px;padding:12px 18px;border-radius:10px;font-size:.78rem}.application-page-footer{text-align:center;font-size:.7rem;color:#8ca6b7;padding:0 24px 28px}
-@keyframes application-arrive{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.teacher-application-page .application-hero{animation:application-arrive 240ms ease-out}.application-form-card,.application-sidebar{animation:application-arrive 200ms ease-out}
-@media(max-width:950px){.application-layout{grid-template-columns:minmax(0,1fr) 270px;gap:20px}.application-steps li{padding:18px 15px}.application-steps strong{font-size:.73rem}.application-steps small{font-size:.65rem}.application-form-heading,.application-fieldset,.application-submit-area{padding-inline:24px}}
-@media(max-width:760px){body.teacher-application-page #application-main{padding:24px 18px 42px}.application-layout{grid-template-columns:1fr}.application-sidebar{grid-column:1;grid-row:1;grid-template-columns:1fr 1fr;gap:16px}.application-form-card{grid-column:1;grid-row:2}.application-hero{padding-top:12px}.application-header-label{display:none}.application-topbar .logout-button{margin-left:auto}.application-steps{grid-template-columns:1fr}.application-steps li{border-right:0;border-bottom:1px solid #3b5569;padding:14px 18px}.application-steps li:last-child{border-bottom:0}.application-steps li>div{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}.application-steps strong{font-size:.79rem}.application-steps small{font-size:.68rem;margin:0}}
-@media(max-width:520px){.application-sidebar{grid-template-columns:1fr}.application-columns{grid-template-columns:1fr;gap:0}.application-form-heading,.application-fieldset,.application-submit-area{padding:24px 20px}.application-form-heading h2{font-size:1.25rem}body.teacher-workspace.teacher-application-page .application-topbar{padding:14px 18px;min-height:76px}.application-topbar .teacher-brand{font-size:.92rem}.application-topbar .teacher-brand img{width:34px;height:34px}.application-submit-row .teacher-actions{width:100%;display:grid;grid-template-columns:1fr}.application-submit-row button{width:100%}}
-@media(prefers-reduced-motion:reduce){.teacher-application-page .application-hero,.application-form-card,.application-sidebar{animation:none}}
-body.lakbay-reduce-motion.teacher-application-page :is(.application-hero,.application-form-card,.application-sidebar){animation:none}
-.application-route-note{padding:16px 18px;border:1px solid #6c785d;border-left:3px solid #d8bd7c;border-radius:10px;background:#354b352b;color:#c8d7d9;font-size:.8rem;line-height:1.9;margin:0 0 20px}.application-optional-details{border:1px solid #456175;border-radius:12px;background:#0f293d}.application-optional-details>summary{padding:18px 20px;font-size:.8rem;line-height:1.8;color:#d8cba9;cursor:pointer}.application-optional-content{padding:8px 20px 22px}.application-optional-content>.application-columns{margin-top:12px}
-.application-details-toggle{padding:22px 28px;font-weight:700;color:#ddc993;font-size:.88rem;line-height:1.7;cursor:pointer}.application-form-card[data-editing=true]>.application-details-toggle{display:none}.application-form-card[data-editing=false][open]>.application-details-toggle{border-bottom:1px solid #3b556a}
-.teacher-application-page[data-setup-editing=false] .application-layout{grid-template-columns:1fr}.teacher-application-page[data-setup-editing=false] .application-sidebar{grid-column:1;grid-row:1;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.teacher-application-page[data-setup-editing=false] .application-form-card{grid-column:1;grid-row:2}.teacher-application-page[data-setup-editing=false] .application-status-card h2{font-size:1.25rem}.teacher-application-page[data-setup-editing=false] #openApprovedWorkspace{min-height:48px}
-@media(max-width:650px){.teacher-application-page[data-setup-editing=false] .application-sidebar{grid-template-columns:1fr}.application-details-toggle{padding:20px}}
-/* One continuous setup, with a single focused task visible at a time. */
-body[data-unified-teacher-setup=true] .application-steps{grid-template-columns:repeat(4,minmax(0,1fr))}.teacher-workspace.teacher-application-page .teacher-setup-account{max-width:720px;margin:0 auto;padding:0;overflow:hidden}.teacher-setup-account #teacherRegisterForm{padding:28px 30px;margin:0;border:0;display:block;max-width:none}.teacher-setup-account .application-form-heading a{color:#e5c987;text-underline-offset:3px}.teacher-setup-account .teacher-actions{margin:24px 0 0}.teacher-setup-account .teacher-actions button{min-height:48px;width:100%;border-radius:10px}.teacher-setup-account .setup-registration-help{margin:20px 0 0}.teacher-setup-account .form-message{display:none;font-size:.8rem;line-height:1.8;padding:14px;border-radius:10px}.teacher-setup-account .form-message.error{display:block;background:#59362c55;color:#edc0ae;border:1px solid #98694f}.teacher-setup-account .form-message.success{display:block;background:#254b3d55;color:#c6e5d5;border:1px solid #5c8877}
-body[data-setup-phase=email] .application-layout{display:block}body[data-setup-phase=email] .application-sidebar{display:block;max-width:680px;margin:auto}body[data-setup-phase=email] .application-form-card,body[data-setup-phase=email] .application-status-card{display:none!important}
-body[data-setup-phase=review] .application-sidebar{grid-template-columns:1fr!important}body[data-setup-phase=review] .application-email-card{display:none!important}
-body[data-setup-phase=email] .application-email-card h2{font-size:1.5rem}body[data-setup-phase=email] .application-email-card .application-side-actions{grid-template-columns:1fr 1fr}body[data-setup-phase=email] .application-email-card .application-email-status{font-size:.95rem}
-@media(max-width:760px){body[data-unified-teacher-setup=true] .application-steps{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-unified-teacher-setup=true] .application-steps li{padding:14px 12px;gap:10px}body[data-unified-teacher-setup=true] .application-steps li:nth-child(odd){border-right:1px solid #3b5569}body[data-unified-teacher-setup=true] .application-steps li:nth-last-child(-n+2){border-bottom:0}body[data-unified-teacher-setup=true] .application-steps small{display:none}body[data-unified-teacher-setup=true] .application-step-number{width:28px;height:30px}body[data-setup-phase=email] .application-email-card .application-side-actions{grid-template-columns:1fr}.teacher-setup-account #teacherRegisterForm{padding:24px 20px}}
 
-/* A single next action makes the existing setup stages understandable. */
-.teacher-next-step{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 0 22px;padding:20px 24px;border:1px solid #8b7950;border-left:3px solid #efcf78;border-radius:12px;background:linear-gradient(110deg,#17334a,#10283c);}
-.teacher-next-step[hidden]{display:none;}
-.teacher-next-step h2{font-size:1.15rem;margin:6px 0 8px;color:#f1f5f8;line-height:1.3;}
-.teacher-next-step p{max-width:720px;margin:0;color:#c2d2df;font-size:.83rem;line-height:1.6;}
-.teacher-next-step>button{flex:0 0 auto;min-height:44px;border-radius:8px;padding:10px 16px;}
-body[data-setup-phase=details] .application-email-card{display:none;}
-@media(max-width:760px){.teacher-next-step{align-items:stretch;flex-direction:column;gap:16px;padding:18px;}.teacher-next-step>button{width:100%;}.teacher-next-step p{font-size:.8rem;}}
+body.teacher-application-page {
+    --apply-ink: #172f40;
+    --apply-muted: #465e6b;
+    --apply-gold: #f5d390;
+    --apply-paper: #f9f5ec;
+    --apply-line: #d9d0bf;
+    --apply-inset: clamp(18px, 3.4vw, 40px);
+    --apply-shadow: 0 20px 50px #02091254;
+    margin: 0;
+    color: #edf4f7;
+    background: #091a2b;
+}
 
-/* Keep the next task and form visible without a large introductory screen. */
-.teacher-application-page .application-hero{padding:8px 0 0;margin-bottom:16px;}
-.teacher-application-page .application-hero h1{font-size:clamp(1.5rem,3vw,2rem);line-height:1.25;margin:10px 0;}
-.teacher-application-page .application-hero>p{font-size:.85rem;line-height:1.5;margin:0 0 16px;max-width:760px;}
-.teacher-application-page .application-steps{margin:16px 0 0;}
-.teacher-application-page .application-steps li{padding:12px 16px;}
-.teacher-application-page .teacher-next-step{padding:16px 20px;margin-bottom:16px;}
-.teacher-application-page .application-form-heading{padding:20px 24px;}
-body[data-setup-phase=details][data-application-state=none] .application-sidebar{display:none;}
-body[data-setup-phase=details][data-application-state=none] .application-layout{display:block;}
-body[data-setup-phase=details][data-application-state=none] .application-form-card{max-width:880px;margin:auto;}
-@media(max-width:520px){.teacher-application-page .application-steps li{padding:10px;}.teacher-application-page .teacher-next-step{padding:16px;}.teacher-application-page .application-form-heading{padding:18px 20px;}}
+body.teacher-application-page .teacher-shell {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    background: radial-gradient(ellipse at 58% 0%, #234653, transparent 47rem), #091a2b;
+}
+
+body.teacher-application-page .application-topbar {
+    min-height: 72px;
+    padding: 10px max(18px, calc((100% - 1120px) / 2));
+    border-bottom: 1px solid #9e85534d;
+    background: #0a1d2bea;
+    backdrop-filter: blur(16px);
+}
+.application-topbar .teacher-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    color: #f5f5ed;
+    font-weight: 750;
+    line-height: 1.12;
+    text-decoration: none;
+}
+.application-topbar img { width: 38px; height: 38px; flex: none; }
+.application-topbar small { display: block; margin-top: 5px; color: var(--apply-gold); font-size: .72rem; font-weight: 500; }
+.application-topbar nav { display: flex; align-items: center; gap: 12px; margin-inline-start: auto; }
+.application-topbar nav > :is(a, button) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: #eaf2f5;
+    font-size: .88rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.application-topbar nav > .application-sign-in { border: 1px solid #c7a66c; background: #edd49415; color: #ffe4ab; }
+.application-topbar nav > a:hover { background: #f2d79926; color: #ffe9bf; }
+
+.teacher-application-page #application-main {
+    width: min(calc(100% - 36px), 1120px);
+    margin: 0 auto;
+    padding: clamp(18px, 3.2vw, 42px) 0 clamp(36px, 5vw, 65px);
+}
+.application-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    min-height: clamp(225px, 22vw, 310px);
+    padding: clamp(22px, 4.8vw, 54px);
+    border: 1px solid #b799625e;
+    border-radius: 22px;
+    background: #112b3d;
+    box-shadow: var(--apply-shadow);
+}
+.application-hero::before, .application-hero::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    pointer-events: none;
+}
+.application-hero::before {
+    background: url("../assets/landing/hero-coastal-dawn.webp") center 52% / cover no-repeat;
+}
+.application-hero::after {
+    background: linear-gradient(90deg, #0b2031fa, #0b2031e6 33%, #0b20317d 59%, transparent 92%),
+        linear-gradient(0deg, #0b2031ba, transparent 63%);
+}
+.application-hero-copy { width: min(100%, 37rem); min-width: 0; }
+.application-hero .application-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 13px;
+    color: var(--apply-gold);
+    font-size: .74rem;
+    font-weight: 760;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+.application-eyebrow::before { width: 22px; height: 1px; content: ""; background: currentColor; }
+body.teacher-application-page .application-hero h1 {
+    margin: 0 0 12px;
+    color: #fff3d7;
+    font: 700 clamp(2.2rem, 4.6vw, 4.45rem) / 1.04 Georgia, serif;
+    letter-spacing: -.042em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+}
+#teacherSetupDescription {
+    max-width: 48ch;
+    margin: 0;
+    color: #e4edf2;
+    font-size: clamp(.93rem, 1.25vw, 1.06rem);
+    line-height: 1.6;
+}
+.application-signed-in {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    max-width: min(100%, 23rem);
+    min-width: 0;
+    margin: 0;
+    padding: 8px 12px 8px 8px;
+    border: 1px solid #c7b18983;
+    border-radius: 10px;
+    color: #edf5f8;
+    background: #0b2233ee;
+    font-size: .87rem;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+.application-signed-in strong { display: block; color: var(--apply-gold); font-size: .72rem; font-weight: 740; }
+.application-account-icon { display: grid; flex: 0 0 30px; place-items: center; height: 30px; border-radius: 7px; color: var(--apply-gold); background: #47656150; }
+.application-account-icon svg { width: 17px; height: 17px; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; }
+
+.application-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 16px 0 clamp(22px, 2.8vw, 34px);
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #466071;
+    border-radius: 13px;
+    background: #102638;
+    list-style: none;
+}
+.application-steps li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 13px clamp(9px, 1.9vw, 21px);
+    color: #d3e2e9;
+    font-size: .9rem;
+    line-height: 1.32;
+}
+.application-steps li + li { border-inline-start: 1px solid #466071; }
+.application-steps strong, .application-steps small { display: block; }
+.application-steps small { margin-top: 3px; color: #b8ccd6; font-size: .77rem; line-height: 1.4; }
+.application-step-number {
+    position: relative;
+    display: grid;
+    flex: 0 0 32px;
+    place-items: center;
+    height: 32px;
+    border: 1px solid #6c8794;
+    border-radius: 50%;
+    font-size: .8rem;
+    font-weight: 750;
+}
+.application-steps [data-state="current"] { color: #ffe5ae; background: linear-gradient(120deg, #785b362f, #172f3d); box-shadow: inset 0 -3px #e8bf78; }
+.application-steps [data-state="current"] .application-step-number { border-color: #f4d498; color: #122433; background: #f4d498; }
+.application-steps [data-state="complete"] .application-step-number { border-color: #81b0a6; color: transparent; background: #254e49; }
+.application-steps [data-state="complete"] .application-step-number::after { position: absolute; color: #e0f5e9; content: "\2713"; }
+.application-step-complete:not([hidden]) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.application-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(255px, 310px);
+    grid-template-areas: "form sidebar";
+    align-items: start;
+    gap: clamp(16px, 2.5vw, 27px);
+}
+.application-sidebar { grid-area: sidebar; display: grid; gap: 16px; min-width: 0; }
+body.teacher-application-page .application-sidebar > .teacher-panel {
+    min-width: 0;
+    margin: 0;
+    padding: clamp(18px, 2.8vw, 27px);
+    border: 1px solid #547080;
+    border-radius: 15px;
+    color: #f0f5f7;
+    background: linear-gradient(145deg, #19394b, #102639);
+    box-shadow: var(--apply-shadow);
+    overflow-wrap: anywhere;
+}
+.application-sidebar h2 {
+    margin: 0 0 15px;
+    color: #ffedc9;
+    font: 700 clamp(1.4rem, 2.1vw, 1.8rem) / 1.18 Georgia, serif;
+}
+.application-sidebar > .application-guide { border-block-start: 3px solid #dcba79; }
+.registration-next-steps { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.registration-next-steps li { display: grid; grid-template-columns: 9px minmax(0, 1fr); gap: 10px; }
+.registration-next-steps li + li { padding-top: 14px; border-top: 1px solid #456273; }
+.registration-next-steps li::before { width: 7px; height: 7px; margin-top: .49rem; border-radius: 2px; transform: rotate(45deg); background: #e0bd7a; content: ""; }
+.registration-next-steps strong { color: #f2f5f4; font-size: .93rem; }
+.registration-next-steps p, .application-sidebar :is(.teacher-note, .application-email-status, .application-next-step p, .application-feedback p) {
+    margin: 4px 0 0;
+    color: #cadce4;
+    font-size: .89rem;
+    line-height: 1.57;
+}
+.application-sidebar .application-email-status { margin-bottom: 8px; color: #fff0ce; font-weight: 750; }
+.application-sidebar .teacher-note:empty, .application-feedback:has(.application-decision:empty) { display: none; }
+.application-status-label {
+    display: inline-flex;
+    max-width: 100%;
+    margin: 0;
+    padding: 6px 10px;
+    border: 1px solid #77909b;
+    border-radius: 7px;
+    color: #eaf4f8;
+    background: #29465a;
+    font-size: .82rem;
+    font-weight: 720;
+    line-height: 1.45;
+}
+.application-status-card[data-status="submitted"] .application-status-label { border-color: #b99861; color: #ffe6b1; background: #4b3c23; }
+.application-status-card[data-status="approved"] .application-status-label { border-color: #7eb3a1; color: #dbf6e7; background: #245045; }
+.application-status-card:is([data-status="declined"], [data-status="needs_changes"]) .application-status-label { border-color: #c78b76; color: #ffe1d4; background: #513534; }
+.application-next-step, .application-feedback {
+    margin-top: 13px;
+    padding: 12px 14px;
+    border: 1px solid #4b6b7c;
+    border-inline-start: 3px solid #dfbc7b;
+    border-radius: 8px;
+    background: #102639;
+}
+.application-next-step h3, .application-feedback h3 { margin: 0; color: #f7edd7; font-size: .94rem; }
+.application-sidebar .application-side-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 17px 0 0; }
+.application-side-actions > :is(a, button) { max-width: 100%; min-height: 44px; padding: 9px 13px; border-radius: 8px; white-space: normal; }
+
+body.teacher-application-page .application-form-card {
+    grid-area: form;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e6d5b9;
+    border-radius: 16px;
+    color: var(--apply-ink);
+    background: var(--apply-paper);
+    box-shadow: var(--apply-shadow);
+    color-scheme: light;
+    --lp-text: #172f40;
+    --lp-muted: #465e6b;
+}
+.teacher-application-page #teacherApplicationForm { display: block; max-width: none; margin: 0; }
+.application-form-heading { padding: 21px var(--apply-inset); border-bottom: 1px solid var(--apply-line); background: #f0e7d8; }
+body.teacher-application-page .application-form-heading h2 { margin: 0 0 5px; color: #183444; font: 700 clamp(1.42rem, 2.2vw, 1.82rem) / 1.2 Georgia, serif; }
+.application-form-heading p { margin: 0; color: var(--apply-muted); font-size: .87rem; line-height: 1.5; }
+.application-details-toggle { padding: 14px var(--apply-inset); color: #244653; font-weight: 750; cursor: var(--lakbay-cursor-hand, pointer); }
+.application-form-card[data-editing="true"] > .application-details-toggle,
+.application-form-card[data-editing="false"] :is(.application-submit-area, .application-form-heading) { display: none; }
+.application-form-card[data-editing="false"][open] .application-details-toggle { border-bottom: 1px solid var(--apply-line); }
+.application-fieldset {
+    display: flow-root;
+    min-width: 0;
+    margin: 0;
+    padding: 21px var(--apply-inset) 24px;
+    border: 0;
+    border-bottom: 1px solid var(--apply-line);
+}
+.teacher-application-page #teacherApplicationForm .application-fieldset > legend {
+    float: left;
+    display: block;
+    width: 100%;
+    margin: 0 0 14px;
+    padding: 0;
+    color: var(--apply-ink);
+    font: 750 1.06rem / 1.35 system-ui, sans-serif;
+}
+.application-fieldset .application-columns { clear: both; gap: 15px 16px; }
+.teacher-name-fields { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px 16px; }
+#teacherApplicationName { grid-column: 1 / -1; }
+.teacher-application-page #teacherApplicationForm label {
+    display: grid;
+    align-content: start;
+    gap: 6px;
+    min-width: 0;
+    margin: 0;
+    color: var(--apply-ink);
+    font-size: .9rem;
+    font-weight: 690;
+    line-height: 1.4;
+}
+.teacher-field-optional { color: var(--apply-muted); font-size: .81em; font-weight: 500; }
+.teacher-application-page #teacherApplicationForm :is(input:not([type="checkbox"]), select, textarea) {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    margin: 0;
+    padding: 10px 12px;
+    border: 1px solid #91a1a2;
+    border-radius: 8px;
+    color: var(--apply-ink);
+    background: #fffdf8;
+    font: 400 1rem / 1.45 system-ui, sans-serif;
+    color-scheme: light;
+    transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+.teacher-application-page #teacherApplicationForm :is(input, textarea)::placeholder { color: #526973; }
+.teacher-application-page #teacherApplicationForm textarea { resize: vertical; }
+.teacher-application-page #teacherApplicationForm :is(input, select, textarea):focus-visible { border-color: #287172; box-shadow: 0 0 0 3px #31787924; }
+.teacher-application-page #teacherApplicationForm [aria-invalid="true"] { border-color: #ab4837; }
+.teacher-application-page #teacherApplicationForm :is(input, textarea, select):disabled { opacity: 1; color: #4b6068; background: #ebe8df; }
+.teacher-application-page :is(button, a, input, textarea, select, summary, [tabindex="-1"]):focus-visible { outline: 2px solid #f6d38c; outline-offset: 3px; }
+.application-form-card :is(button, a, input, textarea, select, summary, [tabindex="-1"]):focus-visible { outline-color: #236268; }
+.teacher-application-page :is(input, textarea, select, [tabindex="-1"]) { scroll-margin-block-start: 86px; }
+.teacher-application-page .password-field { --password-toggle-color: #2a5c62; --password-toggle-hover: #e3eee7; --password-toggle-focus: #236268; margin-top: 6px; }
+body.teacher-application-page #teacherApplicationForm .password-field > input { padding-inline-end: 58px; }
+#teacherPasswordHelp, .application-route-note, .registration-submit-note {
+    display: block;
+    margin: 7px 0 0;
+    color: var(--apply-muted);
+    font-size: .82rem;
+    line-height: 1.55;
+}
+.teacher-application-page #teacherApplicationForm .application-route-field { margin-top: 16px; }
+#licensedTeacherFields:not([hidden]), #endorsedTeacherFields:not([hidden]) { margin-top: 13px; padding: 14px; border: 1px solid #a9b8b1; border-radius: 8px; background: #edf0e8; }
+.application-optional-section { padding-block: 15px; }
+.application-optional-details, .application-privacy { border: 1px solid #abb4ab; border-radius: 9px; background: #f2efe6; }
+.application-optional-details > summary, .application-privacy > summary {
+    min-height: 44px;
+    padding: 12px 14px;
+    color: #224853;
+    font-size: .91rem;
+    font-weight: 750;
+    cursor: var(--lakbay-cursor-hand, pointer);
+}
+.application-optional-details > summary small { margin-inline-start: 6px; color: var(--apply-muted); font-weight: 500; }
+.application-optional-details[open] > summary, .application-privacy[open] > summary { border-bottom: 1px solid #b5bdb3; }
+.application-optional-content { display: grid; gap: 14px; padding: 15px; }
+.application-upload { min-width: 0; padding: 12px; border: 1px dashed #8ea19b; border-radius: 8px; background: #edf1e8; }
+.application-upload p, .application-privacy p { color: var(--apply-muted); font-size: .86rem; line-height: 1.55; }
+.application-upload p { margin: 5px 0 9px; overflow-wrap: anywhere; }
+.application-privacy p { margin: 12px 14px; }
+.application-upload [type="file"]::file-selector-button { margin-inline-end: 8px; padding: 5px 8px; border: 1px solid #94aba4; border-radius: 5px; color: #234c52; background: #e0ece3; cursor: var(--lakbay-cursor-hand, pointer); }
+.application-file-status p:empty { display: none; }
+.application-file-status p[data-error="true"] { color: #8d3027; }
+.teacher-application-page #teacherApplicationForm .application-check { display: flex; align-items: flex-start; gap: 11px; font-weight: 550; }
+.teacher-application-page #teacherApplicationForm .application-check input { flex: 0 0 20px; width: 20px; height: 20px; min-height: 20px; margin: 0; accent-color: #245d61; }
+.application-submit-area { padding: 17px var(--apply-inset) 21px; background: #f0e7d8; }
+.teacher-application-page #teacherApplicationForm .application-acknowledgement { margin-bottom: 15px; }
+.application-submit-area .application-submit-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; margin: 0; gap: 9px; }
+.application-submit-actions button, #applicationFormFeedback button { min-height: 45px; padding: 9px 16px; border-radius: 8px; font-size: .9rem; }
+body.teacher-application-page #teacherApplicationForm .secondary { border: 1px solid #819a93; color: #1e4e53; background: #fffcf3; box-shadow: none; }
+body.teacher-application-page #teacherApplicationForm .secondary:hover:not(:disabled) { background: #e5eee4; }
+body.teacher-application-page :is(.application-primary, #openApprovedWorkspace, #refreshTeacherEmail) {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f5d7a0;
+    border-radius: 8px;
+    color: #152a37;
+    background: linear-gradient(125deg, #ffe6ae, #e8bd76);
+    box-shadow: 0 3px 0 #956b3e;
+    font-weight: 760;
+    text-decoration: none;
+}
+body.teacher-application-page .application-primary {
+    min-width: min(100%, 13rem);
+    color: #fff2d7;
+    border-color: #1b464a;
+    background: linear-gradient(130deg, #2b6264, #173b43);
+    box-shadow: 0 3px 0 #123237;
+}
+body.teacher-application-page :is(.application-primary, #openApprovedWorkspace, #refreshTeacherEmail):hover:not(:disabled) { filter: brightness(1.12); }
+.registration-submit-note { text-align: end; }
+
+.teacher-application-page[data-setup-phase="account"] :is(.application-status-card, .application-email-card),
+.teacher-application-page:not([data-setup-phase="account"]) .application-guide,
+.teacher-application-page:not([data-setup-phase="email"]) .application-email-card,
+.teacher-application-page[data-application-state="none"]:not([data-setup-phase="account"]) .application-sidebar,
+.teacher-application-page[data-setup-phase="email"] .application-form-card { display: none; }
+.teacher-application-page:is([data-setup-phase="email"], [data-setup-phase="review"]) .application-layout {
+    width: min(100%, 770px);
+    margin-inline: auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "sidebar" "form";
+}
+.teacher-application-page[data-setup-phase="email"] .application-sidebar > .application-email-card { border-inline-start: 3px solid #e4bd77; }
+.teacher-application-page[data-setup-phase="details"][data-application-state="none"] .application-layout {
+    width: min(100%, 850px);
+    margin-inline: auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "form";
+}
+.teacher-application-page :is(.application-message, #teacherRegisterMessage) {
+    margin: 0 0 12px;
+    padding: 11px 14px;
+    border: 1px solid #63808e;
+    border-radius: 8px;
+    color: #eef4f5;
+    background: #1a3747;
+    font-size: .9rem;
+    line-height: 1.55;
+}
+.teacher-application-page :is(.application-message[data-error="true"], #teacherRegisterMessage.error) { color: #ffe2d7; border-color: #bd897b; background: #553737; }
+.teacher-application-page .application-submit-area :is(.application-message[data-error="true"], #teacherRegisterMessage.error) { border-color: #be8a7b; color: #782c23; background: #f9e6df; }
+.teacher-application-page :is(.application-message, #teacherRegisterMessage):empty { display: none; }
+#retryTeacherSetup, #applicationFormFeedback button { margin-bottom: 12px; }
+
+.application-page-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 18px;
+    width: min(calc(100% - 36px), 1120px);
+    margin: 0 auto;
+    padding: 10px 0 23px;
+    border-top: 1px solid #48606d;
+    color: #baced8;
+    font-size: .84rem;
+}
+.application-page-footer > * { display: inline-flex; min-height: 44px; align-items: center; }
+.application-page-footer a { color: #eed4a1; text-underline-offset: 3px; }
+
+@media (max-width: 800px) {
+    .application-layout, .teacher-application-page[data-setup-phase="account"] .application-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "form" "sidebar"; }
+    .teacher-application-page[data-setup-phase="details"] .application-layout { grid-template-areas: "sidebar" "form"; }
+    .application-hero::before { background-image: url("../assets/landing/hero-coastal-dawn-mobile.webp"); background-position: center 52%; }
+    .application-hero::after { background: linear-gradient(90deg, #0b2031f2, #0b20317a), linear-gradient(0deg, #0b2031bb, transparent 75%); }
+}
+@media (max-width: 560px) {
+    body.teacher-application-page .application-topbar { min-height: 62px; padding: 7px 14px; gap: 6px; }
+    .application-topbar nav { gap: 4px; }
+    .application-topbar img { width: 32px; height: 32px; }
+    .application-topbar .teacher-brand { font-size: .94rem; }
+    .application-topbar nav .application-back-link { display: none; }
+    .teacher-application-page #application-main { width: calc(100% - 24px); }
+    .application-hero { min-height: 207px; padding: 20px; border-radius: 15px; }
+    .application-steps { margin-top: 12px; }
+    .application-steps li { flex-direction: column; justify-content: flex-start; align-items: center; gap: 5px; padding: 9px 5px; text-align: center; font-size: .75rem; }
+    .application-step-number { width: 25px; height: 25px; flex-basis: 25px; font-size: .73rem; }
+    .application-steps small { display: none; }
+    .teacher-name-fields, .teacher-application-page .application-columns { grid-template-columns: minmax(0, 1fr); }
+    .application-submit-area .application-submit-actions, .application-sidebar .application-side-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+    .application-submit-actions .application-primary { grid-row: 1; }
+    .registration-submit-note { text-align: start; }
+}
+@media (prefers-reduced-motion: no-preference) {
+    body.teacher-application-page:not(.lakbay-reduce-motion) .application-hero::before { animation: teacher-application-landscape 1.2s ease-out both; }
+    body.teacher-application-page:not(.lakbay-reduce-motion) .application-layout { animation: teacher-application-arrive 320ms ease-out both; }
+}
+@keyframes teacher-application-landscape { from { transform: scale(1.04); } to { transform: scale(1); } }
+@keyframes teacher-application-arrive { from { opacity: .7; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+@media (forced-colors: active) {
+    .application-steps li[aria-current="step"] { outline: 2px solid Highlight; outline-offset: -3px; }
+}

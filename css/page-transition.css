@@ -1,3 +1,5 @@
+@import url('./lakbay-cursors.css');
+
 /* A bold compass loading transition keeps the LakbayPanahon expedition identity. */
 @view-transition { navigation: auto; }
 ::view-transition-group(root) {
@@ -17,8 +19,8 @@
     to { opacity: 1; transform: translateX(0); }
 }
 @keyframes lp-expedition-backdrop {
-    from { opacity: 0; backdrop-filter: blur(0); }
-    to { opacity: 1; backdrop-filter: blur(7px); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 @keyframes lp-compass-orbit { to { transform: rotate(1turn); } }
 @keyframes lp-compass-needle {
@@ -46,7 +48,7 @@ body.page-leaving :is(main,.main-content) {
     overflow: hidden;
     background: radial-gradient(ellipse at 50% 48%,#153857e8 0%,#0a1f39f2 52%,#061329fa 100%);
     pointer-events: none;
-    animation: lp-expedition-backdrop 260ms ease-out both;
+    animation: lp-expedition-backdrop 180ms ease-out both;
 }
 .route-transition-overlay::before {
     position: absolute;
@@ -54,6 +56,13 @@ body.page-leaving :is(main,.main-content) {
     background: repeating-radial-gradient(ellipse at 17% 76%,transparent 0 48px,#d7b5680d 49px 50px,transparent 51px 94px);
     content: "";
     animation: lp-compass-pulse 3.2s ease-in-out infinite;
+}
+.route-transition-overlay--arrival {
+    animation: lp-compass-arrival 340ms ease-out both;
+}
+@keyframes lp-compass-arrival {
+    0%, 25% { opacity: 1; }
+    100% { opacity: 0; }
 }
 .route-compass-loader {
     position: relative;
@@ -101,7 +110,7 @@ body.page-leaving :is(main,.main-content) {
     background: radial-gradient(circle at 38% 32%,#244d6c,#112b49 59%,#07182f 100%);
     box-shadow: 0 0 0 7px #d7b56813,0 0 38px #d7b56842,inset 0 2px 18px #d7b56812;
     color: #d7b568;
-    animation: lp-compass-needle 640ms cubic-bezier(.2,.85,.25,1) both;
+    animation: lp-compass-needle 300ms cubic-bezier(.2,.85,.25,1) both;
 }
 .route-transition-compass::before,
 .route-transition-compass::after {
@@ -132,7 +141,14 @@ body.page-leaving :is(main,.main-content) {
 body.page-visible:not([data-role]) :is(main,.main-content),
 body.page-visible.authenticated :is(main,.main-content),
 body.page-visible.authenticated[data-role]:not([data-role="student"]) > :is(h1,p,button) {
-    animation: lp-content-arrive 540ms cubic-bezier(.22,.8,.24,1) both;
+    animation: lp-content-arrive 300ms cubic-bezier(.22,.8,.24,1) both;
+}
+/* A sideways entrance can briefly widen a phone's scrollable viewport. */
+@media (max-width: 650px) {
+    body.page-visible.landing-page:not([data-role]) > main,
+    body.page-visible.authenticated[data-role="student"] .main-content {
+        animation-name: lp-native-arrive;
+    }
 }
 @media (max-width: 560px) {
     .route-compass-loader { width: min(70vw,260px); }
@@ -144,19 +160,6 @@ body.page-visible.authenticated[data-role]:not([data-role="student"]) > :is(h1,p
     body.page-visible.authenticated[data-role]:not([data-role="student"]) > :is(h1,p,button),
     .route-transition-overlay,.route-transition-overlay::before,.route-transition-compass,
     .route-compass-orbit,.route-compass-star { animation: none !important; }
-}
-/* LakbayPanahon pointer set. */
-body.lakbay-theme {
-    cursor: url('../assets/brand/lakbay-cursor-arrow.svg') 4 3, auto;
-}
-body.lakbay-theme :is(a[href],button:not(:disabled),[role="button"]:not([aria-disabled="true"]),summary,select,input[type="checkbox"]:not(:disabled),input[type="radio"]:not(:disabled),label[for]) {
-    cursor: url('../assets/brand/lakbay-cursor-hand.svg') 12 7, pointer;
-}
-body.lakbay-theme :is(input:not(:disabled):not([aria-disabled="true"]):not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="range"]),textarea:not(:disabled):not([aria-disabled="true"]),[contenteditable="true"]:not([aria-disabled="true"])) {
-    cursor: text;
-}
-body.lakbay-theme :is(button:disabled,input:disabled,[aria-disabled="true"]) {
-    cursor: not-allowed;
 }
 /* Keep the added settings shortcut visually consistent with the navigation. */
 body.lakbay-theme .settings-nav-link .nav-icon svg {
@@ -188,5 +191,41 @@ body.lakbay-reduce-motion .route-transition-overlay { display: none !important; 
  body.lakbay-theme:not(.lakbay-reduce-motion) button:active:not(:disabled) { translate:0 1px; }
 }
 body.lakbay-theme :is(button,a,input,select,textarea):focus-visible { outline:3px solid #edcf87;outline-offset:3px; }
-body.lakbay-theme :is(button,[role=button]):disabled { cursor:not-allowed; }
 @media(prefers-reduced-motion:reduce){.route-transition-overlay{display:none!important}body.page-leaving :is(main,.main-content){animation:none!important}}
+
+.quiz-countdown {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    box-sizing: border-box;
+    width: min(calc(100% - 32px), 320px);
+    padding: 30px;
+    border: 1px solid #c7ab70;
+    border-radius: 24px;
+    background: radial-gradient(ellipse at top, #28504f, #11283c 75%);
+    color: #ffe0a1;
+    text-align: center;
+}
+.quiz-countdown::backdrop { background: #081524e8; }
+.quiz-countdown .interface-icon { display: inline-block; width: 68px; height: 68px; animation: lp-compass-needle 900ms ease-out both; }
+.quiz-countdown p { margin-block: 12px 4px; }
+.quiz-countdown strong { font: 800 3.2rem/1.2 var(--lp-font-game); }
+.lakbay-reduce-motion .quiz-countdown .interface-icon { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+    .quiz-countdown .interface-icon { animation: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+    body:not(.lakbay-reduce-motion) .quiz-countdown[data-final-beat][open] .interface-icon {
+        animation: compass-settle .34s ease-out both;
+    }
+    body:not(.lakbay-reduce-motion) .quiz-countdown[data-final-beat][open],
+    body:not(.lakbay-reduce-motion) .quiz-countdown[data-final-beat][open]::backdrop {
+        animation: countdown-dissolve .22s .78s ease-in both;
+    }
+}
+@keyframes compass-settle {
+    0% { transform: rotate(-12deg); }
+    66% { transform: rotate(3deg); }
+    100% { transform: none; }
+}
+@keyframes countdown-dissolve { to { opacity: 0; } }

@@ -87,8 +87,8 @@ body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message p,body.b
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message-content strong{color:#f0dfb8;font-size:inherit;letter-spacing:normal}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt-kit{display:flex;flex-wrap:wrap;gap:7px;padding:12px 22px 0;background:#112b3d;border:0;margin:0}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt-kit>span{width:100%;font-size:var(--lp-type-label);color:#b3c8d1;line-height:1.5}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt{font:inherit;font-size:.8125rem;min-height:44px;padding:6px 11px;background:#193744;border:1px solid #58756e;border-radius:4px 10px 4px 10px;color:#e3d5b2;box-shadow:none;cursor:pointer}
-body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt:disabled{opacity:.5;cursor:default}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt{font:inherit;font-size:.8125rem;min-height:44px;padding:6px 11px;background:#193744;border:1px solid #58756e;border-radius:4px 10px 4px 10px;color:#e3d5b2;box-shadow:none;cursor:var(--lakbay-cursor-hand, pointer)}
+body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-prompt:disabled{opacity:.5;cursor:var(--lakbay-cursor-arrow, default)}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer{padding:14px 22px 10px;background:#112b3d;border:0}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer label{font-size:var(--lp-type-label);margin-bottom:8px;color:#e5e9e7}
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-composer textarea{display:block;min-height:76px;max-height:260px;resize:vertical;padding:12px 14px;border:1px solid #63776e;border-radius:12px;background:#0b2233;color:#edf1ef;font-size:.95rem;line-height:1.6;transition:border-color .18s,box-shadow .18s}
@@ -163,7 +163,7 @@ body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message-content 
     align-content: center;
     color: #ffe0a1;
     font-weight: 750;
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 }
 .bayani-recent-chats p { margin: .35rem 0 .7rem; font-size: .875rem; }
 .bayani-recent-chats ul { display: grid; gap: .45rem; margin: .5rem 0; padding: 0; list-style: none; }
@@ -178,7 +178,7 @@ body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-message-content 
     font: inherit;
     text-align: start;
     overflow-wrap: anywhere;
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 }
 .bayani-recent-chats button:hover,
 .bayani-recent-chats button[aria-current=true] { border-color: #e1bf77; color: #ffe0a1; }

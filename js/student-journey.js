@@ -28,12 +28,15 @@ export function resolveStudentJourney({userId, chapters, eras = [], missions, ch
         const completedCount = chapterMissions.filter(row=>completedMissions.has(row.id)).length;
         const challenge = ordered(challenges.filter(row=>row.chapterId===chapter.id&&row.status==="active"))[0];
         const attempt = mission ? history.find(row=>row.missionId===mission.id&&row.chapterId===chapter.id) : null;
-        const draft = mission ? owned(drafts).filter(row => row.missionId === mission.id && row.chapterId === chapter.id &&
+        const savedDrafts = mission ? owned(drafts).filter(row => row.missionId === mission.id && row.chapterId === chapter.id &&
             row.state && ['story','quiz','practice'].includes(row.kind) && row.updatedAt?.toMillis?.() > 0 &&
             (row.kind !== 'practice' || (typeof row.state.sessionId === 'string' && !owned(practiceSessions).some(session=>session.id===row.state.sessionId))) &&
             (row.kind !== 'quiz' || (typeof row.state.attemptId === 'string' && !history.some(attempt=>attempt.attemptId===row.state.attemptId))))
-            .sort((a,b)=>b.updatedAt.toMillis()-a.updatedAt.toMillis() || String(a.id).localeCompare(String(b.id)))[0] || null : null;
-        candidates.push({draft,kind:mission?"mission":chapterMissions.length&&challenge?"challenge":"waiting",chapter,mission,attempt,eraTitle:era?.title||era?.name||'',eraTheme:era?.theme||'sea',
+            .sort((a,b)=>b.updatedAt.toMillis()-a.updatedAt.toMillis() ||
+                Number(b.kind==='quiz')-Number(a.kind==='quiz') || String(a.id).localeCompare(String(b.id))) : [];
+        const draft=savedDrafts.find(row=>row.kind!=='story'||row.state.completed!==true)||savedDrafts[0]||null;
+        const otherDraft=savedDrafts.find(row=>row.kind!==draft?.kind&&['quiz','practice'].includes(row.kind))||null;
+        candidates.push({draft,otherDraft,kind:mission?"mission":chapterMissions.length&&challenge?"challenge":"waiting",chapter,mission,attempt,eraTitle:era?.title||era?.name||'',eraTheme:era?.theme||'sea',
             totalMissions:chapterMissions.length,completedCount,eraOrder:eraOrder.get(eraId)??Number.MAX_SAFE_INTEGER});
     }
     if (!candidates.length) {
@@ -71,15 +74,40 @@ export function missionRecoveryAction(state) {
 }
 export function renderStudentJourney(container, state, retry) {
     container.replaceChildren();
+    container.dataset.journeyState = state.kind;
     const details = document.createElement("div"); details.className="journey-details";
+    if (state.kind === 'mission' && !state.started && !state.draft && !state.attempt) {
+        details.dataset.firstJourneyStep = '';
+    }
     const text = (tag,value,className) => {const element=document.createElement(tag);element.textContent=value;if(className)element.className=className;details.append(element);return element;};
     const link = (label,page,params,secondary=false) => {const element=document.createElement("a");element.className=secondary?"text-button journey-review-link":"primary-button journey-action-button";element.textContent=label;element.href=page+(params?'?'+new URLSearchParams(params):'');details.append(element);return element;};
     if (state.kind === "error") {
-        text("h3","We could not load your journey.");text("p","Try again when your connection is ready.");
-        const button=text("button","Retry Loading Journey","primary-button");button.type="button";button.addEventListener("click",retry);
+        const message = text("p","We could not load your journey. Check your connection and try again.","lp-status-panel");
+        message.dataset.state = "error";
+        message.setAttribute("role", "status");
+        const button=text("button","Retry Loading Journey","primary-button journey-action-button");
+        button.type="button";
+        button.addEventListener("click", async () => {
+            if (button.disabled) return;
+            const restoreFocus = document.activeElement === button;
+            button.disabled = true;
+            message.dataset.state = "loading";
+            message.textContent = "Loading your journey…";
+            try { await retry(); }
+            catch {
+                message.dataset.state = "error";
+                message.textContent = "We could not load your journey. Check your connection and try again.";
+            }
+            finally {
+                button.disabled = false;
+                if (restoreFocus && document.activeElement === document.body) container.querySelector('button, a')?.focus();
+            }
+        });
     } else if (state.kind === "unavailable") {
+        text("span","Lessons unavailable","journey-status");
         text("h3","Your learning journey is being prepared.");text("p","No lessons are currently available. Check back soon.");
     } else if (state.kind === "locked") {
+        text("span","Earlier chapters required","journey-status");
         text("h3","Complete the earlier chapters to continue.");
         text("p","Open your learning path to see the requirements. You can still revisit completed lessons.");
         link("View Learning Path","my-journey.html");
@@ -112,7 +140,12 @@ export function renderStudentJourney(container, state, retry) {
         link('Explore Your Collection','achievements.html',null,true);
         if(summary?.review||summary?.latestChapter?.eraId)link('Choose an Era','chapters.html',null,true);
     } else {
-        text("span",state.kind==="challenge"?"FINAL CHALLENGE READY":state.kind==="waiting"?"CONTENT PREPARING":state.started?"YOUR NEXT MISSION":"YOUR FIRST MISSION","journey-status");
+        const journeyStatus = state.kind === 'challenge' ? 'FINAL CHALLENGE READY'
+            : state.kind === 'waiting' ? 'CONTENT PREPARING'
+            : state.draft?.kind === 'quiz' ? 'QUIZ IN PROGRESS'
+            : state.draft?.kind === 'practice' ? 'PRACTICE IN PROGRESS'
+            : state.started ? 'YOUR NEXT MISSION' : 'YOUR FIRST MISSION';
+        text('span',journeyStatus,'journey-status');
         text("span",state.chapter.title || "Historical Chapter","journey-chapter-label");
         text("h3",state.mission?.title || (state.kind==="challenge"?"Chapter Challenge":"More lessons are being prepared."));
         if(state.eraTitle)text('p',state.eraTitle,'journey-meta');
@@ -131,11 +164,12 @@ export function renderStudentJourney(container, state, retry) {
             const remainingTopics = state.reviewTopics ?? state.attempt?.topicsForReview;
             const needsPractice = state.attempt?.passed === false && Array.isArray(remainingTopics) && remainingTopics.length > 0;
             const readyToRetry = state.attempt?.passed === false && Array.isArray(state.reviewTopics) && !state.reviewTopics.length;
+            const practiceParams=draft=>({...params,...(draft?.state.topic?{topic:draft.state.topic}:{})});
             if (state.draft?.kind === "practice") {
-                link("Resume Practice","practice.html",{...params,...(state.draft.state.topic ? {topic:state.draft.state.topic} : {})});
+                link("Resume Practice","practice.html",practiceParams(state.draft));
                 text("p","Continue your saved questions and adaptive practice progress.");
                 link("Review Lesson","story.html",params,true);
-                link("Retry Mission Quiz","quiz.html",params,true);
+                link(state.otherDraft?.kind==='quiz'?'Resume Quiz':'Retry Mission Quiz',"quiz.html",params,true);
             } else if (needsPractice && state.draft?.kind !== "quiz") {
                 const action = missionRecoveryAction(state);
                 link(action.label, action.page, action.params);
@@ -148,18 +182,30 @@ export function renderStudentJourney(container, state, retry) {
                 text("p", "Your saved review evidence currently shows no topics needing extra practice. Retry the main quiz when ready; practice alone does not complete the mission.");
                 link(state.draft?.kind === "story" ? "Resume Lesson" : "Review Lesson", "story.html", params, true);
             } else {
-                link(state.draft ? (state.draft.kind === "quiz" ? "Resume Quiz" : "Resume Lesson") : state.started?"Continue Mission":"Start Learning", state.draft?.kind === "quiz" ? "quiz.html" : "story.html",params);
-                if (state.draft) text("p", "Your saved place will be restored when you open this activity.");
-                if (state.attempt?.passed === false) {
-                    if (needsPractice) link("Review Missed Topics", "practice.html", params, true);
-                    if (state.draft?.kind !== "quiz") link("Retry Mission Quiz", "quiz.html", params, true);
+                link(state.draft ? (state.draft.kind === "quiz" ? "Resume Quiz" : "Resume Lesson") : state.started?"Continue Mission":"Start your first mission", state.draft?.kind === "quiz" ? "quiz.html" : "story.html",params);
+                if (state.draft?.kind === 'quiz') {
+                    const {index, questionIds, adaptiveFollowupStarted} = state.draft.state ?? {};
+                    const count = Array.isArray(questionIds) ? questionIds.length : 0;
+                    const position = !adaptiveFollowupStarted && Number.isInteger(index) && index >= 0 && index < count;
+                    text('p', position ? `Saved at question ${index + 1} of ${count}.` : 'Open the quiz to pick up where you left off.');
+                } else if (state.draft?.kind === 'story') {
+                    text('p', state.draft.state?.completed
+                        ? 'Your lesson is complete. Open it to start the mission quiz.'
+                        : 'Open the lesson to return to your saved scene.');
                 }
+                if (state.attempt?.passed === false) {
+                    if (needsPractice&&state.otherDraft?.kind!=='practice') link("Review Missed Topics", "practice.html", params, true);
+                    if (state.draft?.kind !== "quiz"&&state.otherDraft?.kind!=='quiz') link("Retry Mission Quiz", "quiz.html", params, true);
+                }
+                if(state.otherDraft?.kind==='practice')link('Resume Practice','practice.html',practiceParams(state.otherDraft),true);
+                if(state.otherDraft?.kind==='quiz')link('Resume Quiz','quiz.html',params,true);
             }
         } else if (state.kind === "challenge") link(state.draft ? "Resume Chapter Challenge" : "Take Chapter Challenge","chapter-challenge.html",{chapter:state.chapter.id});
         else link("Explore Other Chapters","chapters.html");
     }
     if (state.optionalGuidanceUnavailable) {
-        text("p", "Some saved resume or practice details are temporarily unavailable. You can still open your mission; existing saved work will be checked there.");
+        const guidance = text("p", "Some saved resume or practice details are temporarily unavailable. Open your mission to check your saved work.", "lp-status-panel");
+        guidance.dataset.state = "unconfirmed";
         const button = text("button", "Refresh Saved Guidance", "text-button");
         button.type = "button";button.addEventListener("click",retry);
     }

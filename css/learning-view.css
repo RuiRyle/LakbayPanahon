@@ -1,0 +1,19 @@
+.learning-view-controls {display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.learning-view-controls button {
+    min-height:44px;padding:6px 12px;border:1px solid #6b7c85;border-radius:8px;
+    background:#132d43;color:#ffe0a0;font:inherit;cursor:var(--lakbay-cursor-hand, pointer);
+}
+.learning-view-controls button:focus-visible {outline:2px solid #ffe0a0;outline-offset:3px}
+.learning-view-controls [hidden],.learning-view-controls [role=status]:empty {display:none}
+.quiz-preflight-view,.chapter-challenge-page > .learning-view-controls {margin-block:10px}
+body.mission-quiz-web:has(#quizContent:not([hidden]) .quiz-progress-card:not([hidden])) .quiz-preflight-view {display:none}
+@media(min-width:1024px){
+    body.story-focus-view .sidebar {display:none}
+    body.story-focus-view #student-main {margin-inline-start:0;width:100%}
+    body.story-focus-view .story-reading-card:has(> .story-visual:not([hidden]):is([data-artwork-state="loading"],[data-artwork-state="ready"],[data-artwork-state="unavailable"])) {
+        display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:start;
+    }
+}
+@media(max-width:1023px){
+    .learning-view-controls [data-learning-navigation] {display:none}
+}

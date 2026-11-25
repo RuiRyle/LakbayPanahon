@@ -1,4 +1,5 @@
 import {appAlert} from './app-dialog.js';
+import { navigatePage } from "./route-navigation.js";
 import { stableDraftVersion } from "./quiz-draft-policy.js";
 import { learningDraft, draftStatus, restartControl } from "./learning-draft.js";
 import { mountLearningNavigation } from "./learning-navigation.js";
@@ -59,6 +60,7 @@ const practiceAiHintResponse =
     if (practiceAiHintResponse) {
         practiceAiHintResponse.textContent = "";
         practiceAiHintResponse.hidden = true;
+        practiceAiHintButton?.setAttribute("aria-expanded", "false");
     }
 }
 
@@ -130,6 +132,7 @@ let practiceLoadStarted = false;
 let previousSessions = [];
 let reviewTopics = [];
 let practiceHistoryUnavailable = false;
+let practiceReviewEventsUnavailable = false;
 
 const practiceResults = [];
 // Reuse this ID after a failed response so retries cannot create duplicates.
@@ -155,6 +158,7 @@ const restartPracticeButton = restartControl(practiceContent,"Start Practice Ove
     }
 });
 const practiceChoices = document.getElementById("practiceChoices");
+const practiceAnswerHelp = document.getElementById("practiceAnswerHelp");
 const retryPracticeLoadButton = document.getElementById("retryPracticeLoadButton");
 
 let difficultyLevels = [];
@@ -297,10 +301,11 @@ function analyzePracticeHistory() {
 }
 
 function renderPracticeReview() {
-    const topics = missionReviewTopics(missionQuizAttempts, previousSessions, allPracticeQuestions, lessonReviewEvents);
+    const unavailable = practiceHistoryUnavailable || practiceReviewEventsUnavailable;
+    const topics = unavailable ? [] : missionReviewTopics(missionQuizAttempts, previousSessions, allPracticeQuestions, lessonReviewEvents);
     const historical = retiredPracticeActivity(previousSessions, practiceHistoryCatalog, currentUser?.uid);
     renderReviewTopics(reviewContainer, topics, new Map([[missionId, chapterId]]),
-        practiceHistoryUnavailable ? "Saved review topics are temporarily unavailable. You can still complete practice."
+        unavailable ? "Saved review topics are temporarily unavailable. You can still complete practice."
             : historical.length ? "No current-question review topics are shown. Your earlier practice appears below."
             : previousSessions.length ? "Your latest saved attempts show no topics needing extra review."
             : "Finish practice to start tracking topics for review.");
@@ -315,32 +320,109 @@ function renderPracticeReview() {
 
 async function refreshPracticeReview() {
     const generation = practiceSessionGeneration;
-    await loadPracticeHistory();
-    if (generation !== practiceSessionGeneration) return;
-    renderPracticeReview();
-    renderPracticeNextSteps();
+    let unavailable = false;
+    try {
+        await Promise.all([loadPracticeHistory(), loadPracticeReviewEvents()]);
+        if (generation !== practiceSessionGeneration) return;
+        renderPracticeReview();
+    } catch {
+        unavailable = true;
+    }
+    if (generation === practiceSessionGeneration) {
+        renderPracticeNextSteps(unavailable || practiceHistoryUnavailable || practiceReviewEventsUnavailable);
+    }
 }
 
-function renderPracticeNextSteps() {
+async function loadPracticeReviewEvents() {
+    const generation = practiceSessionGeneration, uid = currentUser?.uid;
+    if (!uid) return;
+    const current = () => generation === practiceSessionGeneration && currentUser?.uid === uid;
+    try {
+        const events = await getDocs(query(collection(db,'studentReviewEvents'),where('userId','==',uid)));
+        if (!current()) return;
+        lessonReviewEvents = events.docs.map(row=>({...row.data(),id:row.id})).filter(event=>event.userId===uid);
+        practiceReviewEventsUnavailable = false;
+    } catch {
+        if (!current()) return;
+        lessonReviewEvents = [];
+        practiceReviewEventsUnavailable = true;
+    }
+}
+
+function showPracticeFinishAction(card = null) {
+    const action = document.getElementById('practiceRecommendedAction');
+    const note = document.getElementById('practiceFinishNextNote');
+    if (!action || !note) return;
+    const recommendation = learningNavigation.classroomReturn ? null : card?.querySelector('.practice-review-actions .primary-button');
+    action.hidden = !recommendation;
+    if (recommendation) {
+        action.href = learningNavigation.carry(recommendation.getAttribute('href'));
+        action.textContent = recommendation.textContent;
+    } else {
+        action.removeAttribute('href');
+        action.textContent = '';
+    }
+    retryMissionQuizButton.classList.toggle('begin-mission-button', !recommendation);
+    retryMissionQuizButton.classList.toggle('text-button', Boolean(recommendation));
+    note.textContent = recommendation
+        ? 'Next up: ' + card.querySelector('h3').textContent + '.'
+        : learningNavigation.classroomReturn
+            ? 'Return to the assigned quiz when you’re ready.'
+            : 'Take the mission quiz when you’re ready, or return to My Journey.';
+}
+
+function setPracticeSaveRecovery(unconfirmed) {
+    retryMissionQuizButton.classList.toggle('begin-mission-button', !unconfirmed);
+    retryMissionQuizButton.classList.toggle('text-button', unconfirmed);
+    retryMissionQuizButton.textContent = unconfirmed ? 'Continue to Quiz' : 'Retry Mission Quiz';
+    if (unconfirmed) document.getElementById('practiceFinishNextNote').textContent =
+        'Retry saving before you leave to make sure this practice appears in your progress.';
+}
+
+function renderPracticeNextSteps(unavailable = false) {
     const container = document.getElementById("practiceNextSteps");
     if (!container || !practiceFinished) return;
     container.replaceChildren();
-    if (practiceHistoryUnavailable) {
-        container.textContent = "Your session was saved, but remaining review topics could not be confirmed. You can retry the quiz or refresh your review later.";
+    showPracticeFinishAction();
+    if (unavailable) {
+        const notice = document.createElement('p');
+        notice.className = 'lp-status-panel';
+        notice.dataset.state = 'unconfirmed';
+        notice.textContent = 'Your practice was saved. Your review goals could not be checked.';
+        const retry = document.createElement('button');
+        retry.type = 'button';
+        retry.className = 'text-button';
+        retry.id = 'retryPracticeReview';
+        retry.textContent = 'Check Review Goals Again';
+        retry.addEventListener('click', async () => {
+            const restoreFocus = document.activeElement === retry;
+            retry.disabled = true;
+            notice.dataset.state = 'loading';
+            notice.textContent = 'Checking your saved review goals…';
+            await refreshPracticeReview();
+            if (restoreFocus && document.activeElement === document.body) {
+                (container.querySelector('button') || document.getElementById('practiceNextStepsTitle'))?.focus();
+            }
+        });
+        container.append(notice,retry);
         return;
     }
     const topics = missionReviewTopics(missionQuizAttempts, previousSessions, allPracticeQuestions, lessonReviewEvents).filter(topic=>topic.missionId===missionId);
     const heading = document.createElement("h3");
-    heading.textContent = topics.length ? "Topics still worth reviewing" : "Ready for another quiz attempt?";
+    heading.id = 'practiceNextStepsTitle';
+    heading.tabIndex = -1;
+    heading.textContent = topics.length ? "Topics to keep practicing" : "Your review status";
     const description = document.createElement("p");
-    description.textContent = topics.length ? "Your saved evidence suggests more practice on these topics. You can also retry the main quiz when ready."
-        : "Your saved evidence currently shows no topics needing extra review. The main quiz will check your understanding.";
+    description.textContent = topics.length ? "Based on your saved progress, these topics could use another look."
+        : "Your saved progress currently shows no topics that need extra review.";
     container.append(heading, description);
     const reached=missionTopicStates(missionQuizAttempts,previousSessions,allPracticeQuestions,lessonReviewEvents).filter(t=>t.missionId===missionId&&t.state==='practice-goal-reached');
     for(const topic of reached){const note=document.createElement('p');note.className='practice-goal-reached';note.textContent=topic.label+': practice goal reached using '+topic.distinctCorrect+' different questions across '+topic.cleanSessions+' successful sessions. This is practice evidence; the mission quiz still checks your understanding.';container.append(note);}
     if (topics.length) {
         const cards = document.createElement("div");cards.className="practice-review-grid";
         renderReviewTopics(cards,topics,new Map([[missionId,chapterId]]),"");container.append(cards);
+        const topicCards = [...cards.querySelectorAll('.practice-review-topic')];
+        showPracticeFinishAction(topicCards.find(card => card.dataset.topic === requestedTopic) || topicCards[0]);
         for(const topic of topics.filter(t=>t.evidenceAvailable)){
             const details=document.createElement('details'),summary=document.createElement('summary'),explanation=document.createElement('p');
             details.className='practice-goal-explanation';summary.textContent='Why is '+topic.label+' still recommended?';
@@ -441,18 +523,26 @@ function renderGuidedPracticeIntro(mission,resume) {
     const intro=document.createElement('section');intro.id='guidedPracticeIntro';intro.className='guided-practice-intro';intro.setAttribute('aria-labelledby','guidedPracticeTitle');
     const add=(tag,value)=>{const el=document.createElement(tag);el.textContent=value;intro.append(el);return el;};
     const topic=allPracticeQuestions.find(q=>q.topic?.trim()===requestedTopic);
-    add('span','REVIEW LESSON / PRACTICE / RETRY QUIZ').className='eyebrow';
+    const emblem=add('span','');emblem.className='guided-practice-emblem';emblem.setAttribute('aria-hidden','true');
+    const icon=document.createElement('span');icon.className='interface-icon interface-icon--compass';emblem.append(icon);
+    add('span','TARGETED PRACTICE').className='eyebrow';
     const title=add('h2',topic?.topicLabel||topic?.topic||'Your personalized review');title.id='guidedPracticeTitle';title.tabIndex=-1;
     const evidence=missionReviewTopics(missionQuizAttempts,previousSessions,allPracticeQuestions,lessonReviewEvents).find(t=>t.topic===requestedTopic);
-    add('p',evidence?.source==='quiz'?'Your saved mission quiz recommended this topic for review. Take a moment to revisit the lesson before answering new practice questions.':evidence?'Your saved practice suggests another look at this topic. Review the lesson ideas, then practise at your own pace.':'You chose to review this topic. Revisit the lesson ideas, then practise when you feel ready.');
-    if(typeof mission?.lessonRecap==='string'&&mission.lessonRecap.trim()){add('h3','Mission refresher');add('p',mission.lessonRecap).className='guided-practice-recap';}
-    else add('p','Open the lesson for a refresher. You can return here when you are ready to practise.');
-    add('p','Practice adjusts difficulty as you answer and explains your mistakes. It does not award mission XP or complete the mission.');
+    add('p',evidence?.source==='quiz'?'Recommended based on your saved quiz.':evidence?'Recommended based on your saved practice.':'You chose this topic to review.').className='guided-practice-source';
+    add('p','Try a question, check the explanation, then return to the mission quiz when you’re ready.');
     const actions=document.createElement('div');actions.className='guided-practice-actions';
     const lesson=document.createElement('a');lesson.textContent='Review Lesson';lesson.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,...(requestedTopic?{reviewTopic:requestedTopic}:{})});lesson.className='text-button';
     const begin=document.createElement('button');begin.type='button';begin.className='begin-mission-button';begin.textContent='Start Practice';
-    begin.addEventListener('click',()=>{intro.remove();practiceQuestionCard.hidden=false;practiceQuestion.tabIndex=-1;practiceQuestion.focus({preventScroll:true});});
-    actions.append(lesson,begin);intro.append(actions);practiceQuestionCard.hidden=true;practiceContent.prepend(intro);title.focus({preventScroll:true});
+    begin.addEventListener('click',()=>{intro.remove();practiceQuestionCard.hidden=false;practiceQuestion.tabIndex=-1;practiceQuestion.focus();});
+    const quiz=document.createElement('a');quiz.textContent='Back to Mission Quiz';quiz.href='quiz.html?'+practiceRoute;
+    actions.append(begin,lesson,quiz);intro.append(actions);
+    if(typeof mission?.lessonRecap==='string'&&mission.lessonRecap.trim()){
+        const refresher=add('details','');refresher.className='guided-practice-refresher';
+        const label=document.createElement('summary');label.textContent='Mission refresher';
+        const recap=document.createElement('p');recap.className='guided-practice-recap';recap.textContent=mission.lessonRecap;
+        refresher.append(label,recap);
+    }
+    practiceQuestionCard.hidden=true;practiceContent.prepend(intro);title.focus({preventScroll:true});
 }
 
 async function loadPractice() {
@@ -520,7 +610,7 @@ async function loadPractice() {
         allPracticeQuestions = [...practiceQuestions];
         await loadPracticeHistory();
         if (!isCurrent()) return;
-        try{const events=await getDocs(query(collection(db,'studentReviewEvents'),where('userId','==',currentUser.uid)));if(!isCurrent())return;lessonReviewEvents=events.docs.map(d=>({...d.data(),id:d.id})).filter(e=>e.userId===currentUser.uid);}catch{lessonReviewEvents=[];}
+        await loadPracticeReviewEvents();
         if(!isCurrent())return;
         reviewTopics = missionReviewTopics(missionQuizAttempts, previousSessions, allPracticeQuestions, lessonReviewEvents).map(item => item.topic);
         practiceDraft?.close();
@@ -649,6 +739,13 @@ function displayPracticeQuestion() {
         return;
     }
 
+    // Presentation only: reflect authored topic/difficulty without inferring mastery.
+    const context = document.getElementById("practiceTopicContext");
+    if (context) {
+        const topic = typeof question.topicLabel === "string" && question.topicLabel.trim() ? question.topicLabel.trim() : question.topic;
+        context.textContent = topic ? "Topic: " + topic : "";
+        context.hidden = !context.textContent;
+    }
     resetPracticeAiHint();
 
     selectedAnswer = null;
@@ -661,8 +758,13 @@ function displayPracticeQuestion() {
     practiceQuestion.textContent =
         question.question || "Practice Question";
 
-    practiceProgress.textContent =
-        `${currentPracticeIndex + 1} of ${Math.min(practiceQuestions.length, practicePolicy.questionLimit)}`;
+    const roundLength = Math.min(practiceQuestions.length, practicePolicy.questionLimit);
+    practiceProgress.textContent = `Question ${currentPracticeIndex + 1} of ${roundLength}`;
+    const roundMeter = document.getElementById('practiceRoundMeter');
+    if (roundMeter) {
+        roundMeter.max = roundLength;
+        roundMeter.value = currentPracticeIndex + 1;
+    }
 
     practiceFeedback.hidden = true;
 
@@ -678,6 +780,7 @@ function displayPracticeQuestion() {
 
     checkAnswerButton.disabled = false;
     checkAnswerButton.textContent = "Check Answer";
+    practiceAnswerHelp.textContent = "Choose an answer, then select Check Answer.";
 
     practiceOptions.innerHTML = "";
 
@@ -696,12 +799,14 @@ function displayPracticeQuestion() {
         button.type = "button";
         button.className = "practice-option";
         button.dataset.option = option.key;
+        button.setAttribute("aria-pressed", "false");
 
         const optionLetter =
             document.createElement("span");
 
         optionLetter.className =
             "practice-option-letter";
+        optionLetter.setAttribute("aria-hidden", "true");
 
         optionLetter.textContent = option.key;
 
@@ -731,12 +836,15 @@ function displayPracticeQuestion() {
                     optionButton.classList.remove(
                         "selected"
                     );
+                    optionButton.setAttribute("aria-pressed", "false");
                 });
 
             button.classList.add("selected");
+            button.setAttribute("aria-pressed", "true");
 
             checkAnswerButton.textContent =
                 "Check Answer";
+            practiceAnswerHelp.textContent = "Answer selected. Select Check Answer when you’re ready.";
             savePracticeDraft();
         });
 
@@ -806,6 +914,7 @@ checkAnswerButton.addEventListener(
 
         } else {
 
+            document.dispatchEvent(new CustomEvent('lakbay:lesson-retry'));
             handleIncorrectAnswer(
                 question,
                 chosenAnswer
@@ -866,6 +975,7 @@ function renderCorrectPracticeFeedback(question,correctAnswer) {
                 "incorrect"
             );
 
+            button.setAttribute("aria-pressed", String(optionLetter === correctAnswer));
             if (optionLetter === correctAnswer) {
                 button.classList.add("correct");
             }
@@ -884,7 +994,8 @@ function renderCorrectPracticeFeedback(question,correctAnswer) {
     );
 
     practiceFeedbackTitle.textContent =
-        "You got it!";
+        "Correct. Here’s why.";
+    practiceAnswerHelp.textContent = "Read the explanation below.";
 
     const correctExplanation = question.answerExplanations?.[correctAnswer];
     const explanation = typeof correctExplanation === "string" && correctExplanation.trim()
@@ -892,6 +1003,7 @@ function renderCorrectPracticeFeedback(question,correctAnswer) {
     practiceExplanation.textContent = explanation || "That is the correct answer. Revisit the lesson if you want to explore the idea again.";
     if (typeof question.learningPoint === "string" && question.learningPoint.trim()) {
         const point = document.createElement("p");
+        point.className = "practice-feedback-key-idea";
         point.textContent = "Key idea: " + question.learningPoint.trim();
         practiceExplanation.appendChild(point);
     }
@@ -902,10 +1014,14 @@ function renderCorrectPracticeFeedback(question,correctAnswer) {
 
     checkAnswerButton.textContent =
         isFinalQuestion
-            ? "Finish Practice →"
-            : "Next Practice Question →";
-    if(['prologue-mission1','chapter3-mission1'].includes(missionId)&&!isFinalQuestion&&requestedTopic===question.topic&&remainingQuestions.some(item=>item.id!==question.id&&item.topic===question.topic)){
-        practiceExplanation.textContent+=' Next, use this idea in a different practice question. A first-try answer and an answer after help remain separate in your saved practice result.';
+            ? "See Practice Summary"
+            : "Next Question";
+    if (!isFinalQuestion && requestedTopic && requestedTopic === question.topic &&
+        remainingQuestions.length && remainingQuestions.every(item => item.topic === question.topic)) {
+        const prompt = document.createElement("p");
+        prompt.className = "practice-feedback-next";
+        prompt.textContent = "Try using this idea on a different question.";
+        practiceExplanation.appendChild(prompt);
         checkAnswerButton.textContent='Try another example';
     }
 
@@ -953,7 +1069,8 @@ function handleIncorrectAnswer(
     );
 
     practiceFeedbackTitle.textContent =
-        "Not quite yet.";
+        "Try again with this clue";
+    practiceAnswerHelp.textContent = "Read the clue below, then choose another answer.";
 
     // Authors can provide a hint without exposing the full solution.
     practiceExplanation.textContent = 'Hint: ' + practiceRetryHint(question,chosenAnswer);
@@ -966,11 +1083,12 @@ function handleIncorrectAnswer(
         .querySelectorAll(".practice-option")
         .forEach((button) => {
             button.classList.remove("selected");
+            button.setAttribute("aria-pressed", "false");
         });
 
     checkAnswerButton.textContent = "Choose Another Answer";
     practiceFeedbackTitle.tabIndex = -1;
-    practiceFeedbackTitle.focus({preventScroll:true});
+    practiceFeedbackTitle.focus();
     savePracticeDraft();
 }
 
@@ -989,7 +1107,7 @@ function goToNextPracticeQuestion() {
         displayPracticeQuestion();
         savePracticeDraft();
         practiceQuestion.tabIndex = -1;
-        practiceQuestion.focus({preventScroll:true});
+        practiceQuestion.focus();
         return;
     }
 
@@ -1099,21 +1217,20 @@ async function finishPractice() {
 
     practiceQuestionCard.hidden = true;
     practiceComplete.hidden = false;
-    const completeTitle = document.getElementById("practiceCompleteTitle");
-    if (completeTitle) { completeTitle.tabIndex=-1; completeTitle.focus({preventScroll:true}); }
+    const firstTryCount = practiceResults.filter(result => result.firstTryCorrect).length;
+    document.getElementById("practiceFinishScore").textContent =
+        `${firstTryCount} of ${practiceResults.length} correct on the first try`;
+    practiceComplete.querySelector(".practice-finish-review").open = false;
+    document.getElementById("practiceCompleteTitle").focus();
 
     const summary = document.getElementById("practiceSessionSummary");
     if (summary) {
         summary.replaceChildren();
-        const title=document.createElement('h3');title.textContent='Your practice discoveries';summary.append(title);
-        const accuracy = document.createElement("p");accuracy.className='practice-session-score';
-        accuracy.textContent = practiceResults.filter(result=>result.firstTryCorrect).length + " of " + practiceResults.length + " answered correctly on the first try. Practice does not complete the mission; retry the main quiz when ready.";
-        const hintCounts=summarizePracticeHints(practiceResults);accuracy.textContent+=' In-app hint requests: '+hintCounts.requested+'; no recorded in-app request: '+hintCounts.notRequested+'; unknown: '+hintCounts.unknown+'. A first-try answer does not prove unaided understanding. A request does not confirm a hint was delivered.';
-        summary.append(accuracy);
         const topicCards=document.createElement('div');topicCards.className='practice-session-topics';summary.append(topicCards);
         for (const topic of new Set(practiceResults.map(result=>result.topic).filter(Boolean))) {
             const results = practiceResults.filter(result=>result.topic===topic);
-            const question = allPracticeQuestions.find(question=>question.topic?.trim()===topic);
+            const example = results.find(result=>!result.firstTryCorrect)||results[0];
+            const question = allPracticeQuestions.find(question=>question.id===example.questionId);
             const card=document.createElement('section');
             const label=document.createElement('h4');label.textContent=question?.topicLabel||topic;
             const line=document.createElement('p');
@@ -1121,29 +1238,44 @@ async function finishPractice() {
             card.dataset.support=String(neededHelp);
             line.textContent=neededHelp?'You worked through this topic with another try. Revisit the lesson if you want a reminder.':'You answered these questions correctly on your first try in this session.';
             card.append(label,line);
+            if(typeof question?.learningPoint==='string'&&question.learningPoint.trim()){
+                const takeaway=document.createElement('p');takeaway.className='practice-takeaway';
+                takeaway.textContent='Remember: '+question.learningPoint.trim();card.append(takeaway);
+            }
             if(neededHelp){const link=document.createElement('a');link.className='text-button';link.textContent='Revisit this lesson';link.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,reviewTopic:topic});card.append(link);}
             topicCards.append(card);
         }
+        const hints=document.createElement('details');hints.className='practice-session-details';
+        const heading=document.createElement('summary');heading.textContent='About this practice round';
+        const detail=document.createElement('p');const hintCounts=summarizePracticeHints(practiceResults);
+        detail.textContent='In-app hint requests: '+hintCounts.requested+'; no recorded in-app request: '+hintCounts.notRequested+'; unknown: '+hintCounts.unknown+'. Requests do not confirm that a hint was delivered. Practice does not complete the mission or award mission XP.';
+        hints.append(heading,detail);summary.append(hints);
     }
     await persistPracticeSession();
 }
 
 async function persistPracticeSession() {
     if (!currentUser || practiceSavePending) return;
+    setPracticeSaveRecovery(false);
+    showPracticeFinishAction();
     if(globalThis.__lakbayExplorationPreview===true){
+        practiceSaveStatus.dataset.state='preview';
         practiceSaveStatus.textContent='Preview practice complete. This session was not saved to your learning record.';
         const next=document.getElementById('practiceNextSteps');if(next)next.textContent='You can review the lesson or try its mission quiz. Preview work does not change your saved recommendations.';
         retryPracticeSaveButton.hidden=true;retryMissionQuizButton.disabled=false;return;
     }
     const generation = practiceSessionGeneration;
+    const focusedBeforeSave = document.activeElement;
     practiceSavePending = true;
     retryPracticeSaveButton.hidden = true;
     retryPracticeSaveButton.disabled = true;
     retryMissionQuizButton.disabled = true;
+    practiceSaveStatus.dataset.state = 'saving';
     practiceSaveStatus.textContent = "Saving your practice progress… Keep this page open until saving finishes.";
     const nextSteps = document.getElementById("practiceNextSteps");
-    if (nextSteps) nextSteps.textContent = "Checking your saved review evidence...";
+    if (nextSteps) nextSteps.replaceChildren();
 
+    let saved = false;
     try {
 
         await savePracticeSession();
@@ -1151,8 +1283,11 @@ async function persistPracticeSession() {
         practiceDraftReady = false;
         await practiceDraft?.clear().catch(()=>{});
         if (generation !== practiceSessionGeneration) return;
-        practiceSaveStatus.textContent = "Your practice progress has been saved.";
-        await refreshPracticeReview();
+        saved = true;
+        practiceSaveStatus.dataset.state = 'saved';
+        practiceSaveStatus.textContent = learningNavigation.classroomReturn
+            ? "Your practice progress has been saved. Pass the assigned quiz to complete the class review."
+            : "Your practice progress has been saved.";
 
     } catch (error) {
 
@@ -1165,14 +1300,23 @@ async function persistPracticeSession() {
         console.warn(
             "Practice was completed, but this session's learning record was not saved."
         );
-        practiceSaveStatus.textContent = "We could not confirm that your practice was saved. Keep this page open, check your connection, then choose Retry Saving Progress. If you continue to the quiz now, this practice may not appear in your progress.";
+        practiceSaveStatus.dataset.state = 'unconfirmed';
+        practiceSaveStatus.textContent = "We could not confirm that your practice was saved. Choose Retry Saving Progress before continuing.";
         retryPracticeSaveButton.hidden = false;
-        if (nextSteps) nextSteps.textContent = "Your latest session is not saved yet, so updated recommendations cannot be confirmed.";
+        setPracticeSaveRecovery(true);
+        if (nextSteps) nextSteps.textContent = "Updated recommendations will appear after your save is confirmed.";
     } finally {
         if (generation !== practiceSessionGeneration) return;
         practiceSavePending = false;
         retryPracticeSaveButton.disabled = false;
         retryMissionQuizButton.disabled = false;
+        if (!saved && [focusedBeforeSave, document.body].includes(document.activeElement)) {
+            retryPracticeSaveButton.focus();
+        }
+    }
+    if (saved && generation === practiceSessionGeneration) {
+        if (nextSteps) nextSteps.textContent = 'Checking your saved review goals…';
+        await refreshPracticeReview();
     }
 }
 
@@ -1186,12 +1330,8 @@ retryMissionQuizButton.addEventListener(
     "click",
     () => {
 
-        window.location.href =
-            learningNavigation.carry(`quiz.html?chapter=${encodeURIComponent(
-                chapterId
-            )}&mission=${encodeURIComponent(
-                missionId
-            )}`);
+        const destination = 'quiz.html?' + new URLSearchParams({chapter: chapterId, mission: missionId});
+        navigatePage(learningNavigation.carry(destination));
     }
 );
 
@@ -1291,6 +1431,7 @@ practiceAiHintButton?.addEventListener(
         practiceAiHintButton.disabled = true;
 
         practiceAiHintResponse.hidden = false;
+        practiceAiHintButton.setAttribute("aria-expanded", "true");
         practiceAiHintResponse.textContent =
             "Kinukuha ang AI hint...";
 
@@ -1323,6 +1464,11 @@ if (practiceRetryLink) practiceRetryLink.href = 'quiz.html?' + practiceRoute;
 retryPracticeLoadButton?.addEventListener("click", () => loadPractice());
 
 const learningNavigation=mountLearningNavigation(document.querySelector(".practice-page"), "Adaptive Practice")||{carry:url=>url};
+const finishReturn = practiceComplete.querySelector('.practice-continue-journey');
+if (finishReturn && learningNavigation.classroomReturn) {
+    finishReturn.href = learningNavigation.classroomReturn;
+    finishReturn.textContent = 'Back to My Class';
+}
 
 function savePracticeDraft() {
     if (!practiceDraftReady || !currentQuestion || practiceFinished) return;

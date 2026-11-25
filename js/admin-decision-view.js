@@ -1,81 +1,394 @@
-// Presentation of the administrator-owned snapshot; never invent account identities.
-export function mountDecisionRecords(host, records, {moreAvailable=false,onHistory=()=>{},isCurrent=()=>true,resolveAccount=null,resolveReview=null}={}) {
-    const mountToken=Symbol('decision-view');host.decisionMount=mountToken;const current=()=>isCurrent()&&host.decisionMount===mountToken;const profiles=new Map(),reviews=new Map();
-    host.replaceChildren();host.className='decision-workspace';
-    const el=(tag,value,parent,cls)=>{const n=document.createElement(tag);if(value!==null&&value!==undefined)n.textContent=value;if(cls)n.className=cls;parent?.append(n);return n;};
-    const accountIdentity=r=>{const p=profiles.get(r.userId);return {name:p?[p.firstName,p.lastName].filter(Boolean).join(' ')||p.email||r.userId:r.userId||'Account unavailable',email:p?.email||'Account ID: '+(r.userId||'Unavailable'),role:p?.role==='teacher'?'Teacher':p?.role==='student'?'Student':'Not available'};};
-    const initials=r=>{const p=profiles.get(r.userId);return p?[p.firstName,p.lastName].filter(Boolean).map(n=>Array.from(n)[0]).slice(0,2).join('').toUpperCase()||'ID':'ID';};
-    const qualification=r=>reviews.get(r.id);
-    const workflow=r=>qualification(r)?'Teacher qualification review':r.previousStatus===r.status?'Review outcome unavailable':'Account access';
-    const action=r=>qualification(r)?({approved:'Qualifications approved',declined:'Application declined',needs_changes:'Changes requested'}[qualification(r).decision]):r.previousStatus===r.status?'Recorded review':r.status==='active'?'Access activated':r.status==='inactive'?'Access deactivated':'Access changed';
-    const tone=r=>r.previousStatus===r.status?'review':r.status==='active'?'active':r.status==='inactive'?'inactive':'review';
-    const date=r=>{try{return new Intl.DateTimeFormat('en-PH',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Manila'}).format(r.createdAt.toDate());}catch{return 'Date unavailable';}};
-    const banner=el('header',null,host,'decision-banner');
-    el('span','ADMINISTRATION ARCHIVE',banner,'decision-banner-kicker');
-    el('h2','Decision Records',banner);
-    el('p','Review saved decisions for teacher qualifications and account access.',banner);
-    const landscape=el('div',null,banner,'decision-banner-landscape');landscape.setAttribute('aria-hidden','true');
-    landscape.innerHTML='<svg viewBox="0 0 400 120" focusable="false"><g stroke="#e1c16f" opacity=".25"><path d="M220 110 100 0m120 110L155 0m65 110L200 0m20 110L245 0m-25 110L300 0m-80 110L370 25"/></g><circle cx="220" cy="110" r="45" fill="#e0bc65" opacity=".7"/><path d="M0 120V100l60-30 80 25 95-35 85 35 80-20v45Z" fill="#21435d"/><path d="m0 120 100-25 80 20 110-28 110 20v13Z" fill="#0c263e"/><g fill="#173b55" stroke="#6e8da5" opacity=".65"><path d="M337 120V53h28v67m-33-67 19-20 19 20ZM346 33V23h10v10m-5-10V13m-4 107v-23a4 4 0 0 1 8 0v23m-8-52v14h8V68a4 4 0 0 0-8 0Z"/></g></svg>';
-    const summary=el('div',null,host,'decision-summary');
-    const statIcons={total:'M12 3 2 8l10 5 10-5-10-5ZM2 12l10 5 10-5M2 16l10 5 10-5',active:'m5 12 4 4L19 6',inactive:'m6 6 12 12M18 6 6 18',review:'M12 8v5m0 3v1M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18'};
-    for(const [label,value,kind,note]of [['Loaded records',records.length,'total','Your saved decisions'],['Access activated',records.filter(r=>tone(r)==='active').length,'active','Account access granted'],['Access deactivated',records.filter(r=>tone(r)==='inactive').length,'inactive','Account access restricted'],['Other reviews',records.filter(r=>tone(r)==='review').length,'review','Qualification and other saved reviews']]){
-        const card=el('div',null,summary,'decision-stat');card.dataset.tone=kind;const icon=el('span',null,card,'decision-stat-icon');icon.setAttribute('aria-hidden','true');icon.innerHTML='<svg viewBox="0 0 24 24"><path d="'+statIcons[kind]+'"/></svg>';const copy=el('div',null,card);el('strong',String(value),copy);el('span',label,copy);el('small',note,copy);
-    }
-    el('p','Your account-access decisions · up to 10 loaded in document order'+(moreAvailable?' · more records available through account history.':'.')+' Summary and filters apply to this loaded snapshot.',host,'decision-scope');
-    const layout=el('div',null,host,'decision-layout'),list=el('section',null,layout,'decision-list-panel'),detail=el('section',null,layout,'decision-detail-panel');
-    detail.setAttribute('aria-label','Selected decision details');detail.setAttribute('aria-live','polite');
-    const header=el('header',null,list,'decision-panel-header');el('h3','All Decision Records',header);
-    const exportButton=el('button','↓ Export',header,'decision-export');exportButton.type='button';exportButton.textContent='Export CSV';
-    const filters=el('div',null,list,'decision-filters');
-    const searchLabel=el('label','Search records',filters),search=el('input',null,searchLabel);search.type='search';search.placeholder='Name, email, account ID or reason';search.setAttribute('aria-label','Search loaded decision records');search.maxLength=200;
-    const actionLabel=el('label','Action',filters),select=el('select',null,actionLabel);
-    for(const [value,label]of [['all','All actions'],['active','Activated'],['inactive','Deactivated'],['review','Other reviews']]){const option=el('option',label,select);option.value=value;}
-    const roleLabel=el('label','Current role',filters),roleSelect=el('select',null,roleLabel);for(const [value,label]of [['all','All roles'],['Teacher','Teachers'],['Student','Students']]){const option=el('option',label,roleSelect);option.value=value;}
-    const dateLabel=el('label','Saved date',filters),dateSelect=el('select',null,dateLabel);for(const [value,label]of [['all','All dates'],['7','Last 7 days'],['30','Last 30 days']]){const option=el('option',label,dateSelect);option.value=value;}
-    const reset=el('button','Reset filters',list,'decision-reset');reset.type='button';reset.hidden=true;
-    const table=el('div',null,list,'decision-table');table.setAttribute('role','list');table.setAttribute('aria-label','Decision records');
-    const footer=el('div',null,list,'decision-pagination'),count=el('span','',footer),previous=el('button','← Previous',footer),next=el('button','Next →',footer);previous.type=next.type='button';previous.textContent='Previous';next.textContent='Next';
-    let page=0,selected=null,filtered=[];
-    function details(record){
-        detail.replaceChildren();el('h3','Decision details',detail,'decision-detail-title');
-        if(!record){el('div','\u25c7',detail,'decision-detail-empty-icon').setAttribute('aria-hidden','true');el('h4','Choose a record',detail);el('p','Select a decision to see its status change, reason and saved audit details.',detail);return;}
-        const identity=el('div',null,detail,'decision-identity');el('span','ID',identity,'decision-avatar').setAttribute('aria-hidden','true');const name=el('div',null,identity);el('h4',accountIdentity(record).name,name);el('p',accountIdentity(record).email,name,'decision-account-id');identity.querySelector('.decision-avatar').textContent=initials(record);
-        const badge=el('span',action(record),detail,'decision-badge');badge.dataset.tone=tone(record);
-        const fields=el('dl',null,detail,'decision-fields');
-        for(const [label,value]of [['Workflow',workflow(record)],['Application revision',qualification(record)?String(qualification(record).revision):'Not applicable or unavailable'],['Current role',accountIdentity(record).role],['Action',action(record)],['Previous status',record.previousStatus||'Unavailable'],['New status',record.status||'Unavailable'],['Decided by',record.actorId||'Unavailable'],['Date & time',date(record)+' (PH)'],['Record ID',record.id||'Unavailable']]){el('dt',label,fields);el('dd',value,fields);}
-        const reason=el('section',null,detail,'decision-reason');el('h4','Reason for decision',reason);el('p',record.reason||'No reason available in this record.',reason);
-        const history=el('button','↶ View full account history',detail,'decision-history');history.textContent='View full account history';history.type='button';history.disabled=!record.userId;
-        history.addEventListener('click',()=>{if(current()&&record.userId)onHistory(record);});
-    }
-    function draw(){
-        if(!current())return;
-        const term=search.value.trim().toLocaleLowerCase();
-        filtered=records.filter(r=>{let saved=NaN;try{saved=r.createdAt.toDate().getTime();}catch{}return(select.value==='all'||tone(r)===select.value)&&(roleSelect.value==='all'||accountIdentity(r).role===roleSelect.value)&&(dateSelect.value==='all'||Number.isFinite(saved)&&saved<=Date.now()&&saved>=Date.now()-Number(dateSelect.value)*86400000)&&[accountIdentity(r).name,accountIdentity(r).email,action(r),workflow(r),qualification(r)?.decision,r.userId,r.reason,r.actorId,r.status].some(value=>String(value||'').toLocaleLowerCase().includes(term));});
-        reset.hidden=!term&&select.value==='all'&&roleSelect.value==='all'&&dateSelect.value==='all';
-        page=Math.min(page,Math.max(0,Math.ceil(filtered.length/5)-1));table.replaceChildren();
-        const headings=el('div',null,table,'decision-table-heading');for(const title of ['Account / Applicant','Action','Role','Saved (PH)',''])el('span',title,headings);
-        for(const record of filtered.slice(page*5,page*5+5)){
-            const row=el('button',null,table,'decision-row');row.type='button';row.setAttribute('aria-pressed',String(selected===record));row.setAttribute('aria-label',action(record)+' for account '+record.userId);
-            const account=el('span',null,row,'decision-row-account');el('span','ID',account,'decision-avatar').setAttribute('aria-hidden','true');const copy=el('span',null,account);el('strong',accountIdentity(record).name,copy);el('small',accountIdentity(record).email,copy);account.querySelector('.decision-avatar').textContent=initials(record);
-            const badge=el('span',action(record),row,'decision-badge');badge.dataset.tone=tone(record);el('span',accountIdentity(record).role,row,'decision-row-role');el('span',date(record),row,'decision-row-date');el('span','\u203a',row,'decision-row-chevron').setAttribute('aria-hidden','true');
-            row.addEventListener('click',()=>{if(!current())return;selected=record;draw();details(record);table.querySelector('[aria-pressed="true"]')?.focus({preventScroll:true});});
-        }
-        if(!filtered.length)el('p',records.length?'No records match these filters.':'No account-access decisions have been recorded by your administrator account.',table,'decision-empty');
-        count.setAttribute('role','status');count.textContent=filtered.length?'Showing '+(page*5+1)+' - '+Math.min(page*5+5,filtered.length)+' of '+filtered.length+' loaded':'0 records';previous.disabled=page===0;next.disabled=(page+1)*5>=filtered.length;exportButton.disabled=!filtered.length;
-        if(selected&&!filtered.includes(selected)){selected=null;details(null);}
-    }
-    search.addEventListener('input',()=>{page=0;draw();});select.addEventListener('change',()=>{page=0;draw();});roleSelect.addEventListener('change',()=>{page=0;draw();});dateSelect.addEventListener('change',()=>{page=0;draw();});reset.addEventListener('click',()=>{search.value='';select.value=roleSelect.value=dateSelect.value='all';page=0;draw();search.focus();});previous.addEventListener('click',()=>{page--;draw();});next.addEventListener('click',()=>{page++;draw();});
-    exportButton.addEventListener('click',()=>{
-        if(!current()||!filtered.length)return;
-        const cell=value=>'"'+String(value??'').replace(/^[=+@\-\t\r]/,"'$&").replaceAll('"','""')+'"';
-        const rows=[['Record ID','Account ID','Workflow','Application revision','Action','Previous status','New status','Administrator ID','Date (PH)','Reason'],...filtered.map(r=>[r.id,r.userId,workflow(r),qualification(r)?.revision||'',action(r),r.previousStatus,r.status,r.actorId,date(r),r.reason])];
-        const url=URL.createObjectURL(new Blob(['\uFEFF'+rows.map(row=>row.map(cell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}));
-        const a=document.createElement('a');a.href=url;a.download='lakbaypanahon-loaded-decision-records.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-    });
-    details(null);draw();
-    if(resolveAccount||resolveReview){const status=el('p','Loading account identities and paired review records...',host,'decision-identity-scope');status.setAttribute('role','status');Promise.all([
-        ...(resolveAccount?[...new Set(records.map(r=>r.userId).filter(Boolean))].map(async uid=>{try{const result=await resolveAccount(uid);if(current())profiles.set(uid,result.profile||result);}catch{}}):[]),
-        ...(resolveReview?records.map(async record=>{try{const review=await resolveReview(record);if(current()&&review)reviews.set(record.id,review);}catch{}}):[])
-    ]).then(()=>{if(!current())return;status.textContent='Names, emails and roles reflect current account profiles. Saved decisions and reasons remain unchanged. Qualification outcomes are shown only when a matching review record is available. '+(records.some(r=>!profiles.has(r.userId))?'Some profiles are unavailable; their account IDs are shown.':'');draw();details(selected);});}
+﻿const decisionDate = new Intl.DateTimeFormat('en-PH', {dateStyle:'long',timeZone:'Asia/Manila'});
+const decisionTime = new Intl.DateTimeFormat('en-PH', {timeStyle:'short',timeZone:'Asia/Manila'});
 
+export function accountStatusLabel(status) {
+    return {active:'Active',pending:'Pending',inactive:'Inactive'}[status] || 'Unavailable';
+}
+
+function hasClearAccessOutcome(record) {
+    return record.previousStatus !== record.status && ['active','inactive'].includes(record.status);
+}
+
+export function describeAdminDecision(record, review) {
+    if (review) return {
+        label:{approved:'Qualifications approved',declined:'Application declined',needs_changes:'Changes requested'}[review.decision],
+        tone:{approved:'active',declined:'inactive',needs_changes:'review'}[review.decision],
+        type:'review', workflow:'Teacher qualification review'
+    };
+    if (hasClearAccessOutcome(record)) return {
+        label:record.status === 'active' ? 'Access activated' : 'Access deactivated',
+        tone:record.status, type:record.status, workflow:'Account access'
+    };
+    return {label:'Review decision recorded',tone:'review',type:'review',workflow:'Review outcome unavailable'};
+}
+
+export function decisionAccessSummary(record) {
+    const previous = accountStatusLabel(record.previousStatus);
+    const result = accountStatusLabel(record.status);
+    if (previous === 'Unavailable' || result === 'Unavailable') return 'Account status unavailable';
+    return previous === result ? 'Access stayed ' + result.toLowerCase() : previous + ' → ' + result;
+}
+
+export function mountDecisionRecords(host, initialRecords, {
+    moreAvailable=false,onHistory=()=>{},isCurrent=()=>true,resolveAccount=null,resolveReview=null,
+    resolveDetails=null,initialRecordId=null
+}={}) {
+    const mountToken = Symbol('decision-view');
+    host.decisionMount = mountToken;
+    const current = () => isCurrent() && host.decisionMount === mountToken;
+    const profiles = new Map();
+    const reviews = new Map();
+    const restored = host.decisionState;
+    const pageSize = 5;
+    let records = initialRecords;
+    let page = restored?.page ?? Math.max(0,Math.floor(records.findIndex(record=>record.id===initialRecordId)/pageSize));
+    let selected = restored ? restored.selected : initialRecordId;
+    let filtered = [];
+    let activeRow = null;
+    let resolving = false;
+    let detailsRequest = 0;
+    let focusInitial = !restored && Boolean(initialRecordId);
+
+    host.replaceChildren();
+    host.className = 'decision-workspace';
+    const el = (tag,value,parent,cls) => {
+        const node = document.createElement(tag);
+        if (value !== null) node.textContent = value;
+        if (cls) node.className = cls;
+        parent?.append(node);
+        return node;
+    };
+    const action = record => describeAdminDecision(record,reviews.get(record.id));
+    const identity = record => {
+        const profile = profiles.get(record.userId);
+        const name = [profile?.firstName,profile?.lastName].filter(Boolean).join(' ');
+        const studentId = profile?.role === 'student' && /^LP-[A-F0-9]{12}$/.test(profile.studentId || '') ? profile.studentId : '';
+        return {
+            name:name || profile?.email || studentId || record.userId || 'Account unavailable',
+            contact:profile?.email || studentId,
+            role:{teacher:'Teacher',student:'Student'}[profile?.role] || '',
+            initials:name.split(/\s+/).filter(Boolean).slice(0,2).map(part=>Array.from(part)[0]).join('').toUpperCase() || 'ID'
+        };
+    };
+    const savedDate = record => {
+        try {
+            const date = record.createdAt.toDate();
+            return Number.isFinite(date.getTime()) ? date : null;
+        } catch { return null; }
+    };
+    const dayLabel = date => date ? decisionDate.format(date) : 'Date unavailable';
+    const savedTime = (record,parent,full=false) => {
+        const date = savedDate(record);
+        const label = date ? (full ? dayLabel(date) + ' · ' : '') + decisionTime.format(date) : 'Time unavailable';
+        const time = el('time',label,parent,full?'decision-detail-date':'decision-row-date');
+        if (date) time.dateTime = date.toISOString();
+        return time;
+    };
+    const badge = (record,parent) => {
+        const outcome = action(record);
+        const item = el('span',outcome.label,parent,'decision-badge');
+        item.dataset.tone = outcome.tone;
+        return item;
+    };
+
+    const banner = el('header',null,host,'decision-banner');
+    el('h1','Decision Records',banner);
+    el('p','Track the reviews and account changes you’ve saved.',banner);
+    const list = el('section',null,host,'decision-list-panel');
+    const header = el('header',null,list,'decision-panel-header');
+    const heading = el('div',null,header);
+    el('h3','Recent activity',heading);
+    const scope = el('p','Shows up to 10 of your decisions, newest first. Times are in the Philippines.',heading,'decision-scope');
+    scope.id = 'adminDecisionListScope';
+    const exportButton = el('button','Export CSV',header,'decision-export');
+    exportButton.type = 'button';
+
+    const filters = el('div',null,list,'decision-filters');
+    filters.setAttribute('role','group');
+    filters.setAttribute('aria-label','Find recent decisions');
+    filters.setAttribute('aria-describedby',scope.id);
+    const searchLabel = el('label','Search records',filters);
+    const search = el('input',null,searchLabel);
+    search.type = 'search';
+    search.placeholder = 'Name, email, ID, reason';
+    search.maxLength = 200;
+    const advanced = el('details',null,filters,'decision-advanced');
+    el('summary','Filters',advanced);
+    const advancedFields = el('div',null,advanced,'decision-advanced-fields');
+    const filter = (label, options) => {
+        const select = el('select',null,el('label',label,advancedFields));
+        for (const [value,title] of options) el('option',title,select).value = value;
+        return select;
+    };
+    const type = filter('Action',[['all','All actions'],['active','Access activated'],['inactive','Access deactivated'],['review','Review decisions']]);
+    const role = filter('Current role',[['all','All roles'],['Teacher','Teachers'],['Student','Students']]);
+    const date = filter('Saved date',[['all','All dates'],['7','Last 7 days'],['30','Last 30 days']]);
+    const reset = el('button','Clear filters',advancedFields,'decision-reset');
+    reset.type = 'button';
+
+    if (restored) {
+        search.value = restored.search;
+        type.value = restored.type;
+        role.value = restored.role;
+        date.value = restored.date;
+        advanced.open = restored.advanced;
+    }
+
+    const status = el('p','',list,'decision-identity-scope');
+    status.setAttribute('role','status');
+    const table = el('div',null,list,'decision-table');
+    const footer = el('div',null,list,'decision-pagination');
+    const count = el('span','',footer);
+    count.setAttribute('role','status');
+    const buttons = el('div',null,footer,'decision-page-buttons');
+    const previous = el('button','Previous',buttons);
+    const next = el('button','Next',buttons);
+    previous.type = next.type = 'button';
+
+    const detail = el('section',null,null,'decision-detail-panel');
+    detail.id = 'adminDecisionDetail';
+    detail.setAttribute('aria-label','Selected decision details');
+
+    function saveView() {
+        host.decisionState = {search:search.value,type:type.value,role:role.value,date:date.value,advanced:advanced.open,page,selected};
+    }
+
+    function openDetail(record, row, focus=false) {
+        activeRow?.setAttribute('aria-expanded','false');
+        activeRow?.removeAttribute('aria-controls');
+        activeRow = row;
+        row.setAttribute('aria-expanded','true');
+        row.setAttribute('aria-controls',detail.id);
+        detail.replaceChildren();
+        row.after(detail);
+        const account = identity(record);
+        const detailHeader = el('div',null,detail,'decision-detail-header');
+        const title = el('h4','Decision details',detailHeader,'decision-detail-title');
+        title.tabIndex = -1;
+        const close = el('button','Close details',detailHeader,'decision-detail-back');
+        close.type = 'button';
+        close.addEventListener('click',()=>{
+            if (!current()) return;
+            clearSelection();
+            saveView();
+            row.focus();
+        });
+        const change = el('div',null,detail,'decision-access');
+        const changeCopy = el('div',null,change);
+        el('span','Account access at the time',changeCopy,'decision-field-label');
+        el('strong',decisionAccessSummary(record),changeCopy);
+        savedTime(record,change,true);
+        const reason = el('section',null,detail,'decision-reason');
+        el('h4','Saved reason',reason);
+        el('p',record.reason || 'No reason was recorded.',reason);
+
+        const detailActions = el('div',null,detail,'decision-detail-actions');
+        const history = el('button','Open account history',detailActions,'decision-history');
+        history.type = 'button';
+        history.disabled = !record.userId;
+        history.addEventListener('click',()=>{if(current() && record.userId)onHistory(record);});
+        const audit = el('details',null,detailActions,'decision-audit');
+        el('summary','Audit details',audit);
+        const fields = el('dl',null,audit,'decision-fields');
+        const review = reviews.get(record.id);
+        for (const [label,value] of [
+            ['Record type',action(record).workflow],['Current role',account.role || 'Unavailable'],
+            ['Application revision',review && String(review.revision)],['Administrator ID',record.actorId || 'Unavailable'],
+            ['Account ID',record.userId || 'Unavailable'],['Record ID',record.id || 'Unavailable']
+        ]) {
+            if (value) { el('dt',label,fields);el('dd',value,fields); }
+        }
+        if (focus) focusDetail();
+    }
+    function focusDetail() {
+        const title = detail.querySelector('.decision-detail-title');
+        title.focus({preventScroll:true});
+        title.scrollIntoView({block:'nearest'});
+    }
+
+    function clearSelection() {
+        selected = null;
+        activeRow?.setAttribute('aria-expanded','false');
+        activeRow?.removeAttribute('aria-controls');
+        activeRow = null;
+        detail.remove();
+    }
+
+    function detailDependentFilters() {
+        return (resolveAccount||resolveDetails) && (search.value.trim() || role.value!=='all')
+            || (resolveReview||resolveDetails) && type.value!=='all';
+    }
+    function draw(keepSelected=false) {
+        if (!current()) return;
+        const term = search.value.trim().toLocaleLowerCase();
+        const now = Date.now();
+        reset.hidden = !term && [type,role,date].every(control=>control.value==='all');
+        if (resolving && detailDependentFilters()) {
+            table.replaceChildren();
+            count.textContent = '';
+            buttons.hidden = exportButton.disabled = true;
+            saveView();
+            return;
+        }
+        filtered = records.filter(record=>{
+            const account = identity(record);
+            const outcome = action(record);
+            const saved = savedDate(record)?.getTime();
+            return (type.value==='all' || type.value===outcome.type)
+                && (role.value==='all' || role.value===account.role)
+                && (date.value==='all' || saved<=now && saved>=now-Number(date.value)*86400000)
+                && [account.name,account.contact,account.role,record.userId,record.id,record.reason,outcome.label,record.status]
+                    .some(value=>String(value||'').toLocaleLowerCase().includes(term));
+        });
+        if (keepSelected && selected) {
+            const index = filtered.findIndex(record=>record.id===selected);
+            if (index>=0) page=Math.floor(index/pageSize);
+        }
+        page = Math.min(page,Math.max(0,Math.ceil(filtered.length/pageSize)-1));
+        const offset = page*pageSize;
+        const visible = filtered.slice(offset,offset+pageSize);
+        if (!visible.some(record=>record.id===selected)) clearSelection();
+        table.replaceChildren();
+        let group;
+        let day;
+        for (const record of visible) {
+            const date = dayLabel(savedDate(record));
+            if (date !== day) {
+                group = el('ol',null,table,'decision-day');
+                group.setAttribute('role','list');
+                group.setAttribute('aria-label',date);
+                const groupTitle = el('h4',date,null,'decision-day-title');
+                group.before(groupTitle);
+                day = date;
+            }
+            const account = identity(record);
+            const card = el('li',null,group,'decision-entry');
+            const row = el('button',null,card,'decision-row');
+            row.type = 'button';
+            row.dataset.recordId = record.id;
+            row.setAttribute('aria-expanded','false');
+            row.setAttribute('aria-label',action(record).label+' for '+account.name);
+            const person = el('span',null,row,'decision-row-account');
+            el('span',account.initials,person,'decision-avatar').setAttribute('aria-hidden','true');
+            const copy = el('span',null,person,'decision-row-name');
+            el('strong',account.name,copy);
+            if (account.contact && account.contact !== account.name) el('small',account.contact,copy);
+            const outcome = el('span',null,row,'decision-row-outcome');
+            badge(record,outcome);
+            if (record.reason) el('small',record.reason,outcome,'decision-row-reason');
+            const timing = el('span',null,row,'decision-row-timing');
+            savedTime(record,timing);
+            el('span','›',timing,'decision-row-chevron').setAttribute('aria-hidden','true');
+            row.addEventListener('click',()=>{
+                if (!current()) return;
+                if (selected===record.id) clearSelection();
+                else { selected=record.id;openDetail(record,row,true); }
+                saveView();
+            });
+            if (selected===record.id) openDetail(record,row);
+        }
+        if (!filtered.length) el('p',records.length?'No records match your search or filters.':'Your saved reviews and account changes will appear here.',table,'decision-empty');
+        count.textContent = filtered.length ? (offset+1)+'–'+Math.min(offset+pageSize,filtered.length)+' of '+filtered.length+(filtered.length===1?' record':' records') : '0 records';
+        buttons.hidden = filtered.length <= pageSize;
+        previous.disabled = page===0;
+        next.disabled = offset+pageSize>=filtered.length;
+        exportButton.disabled = resolving || !filtered.length;
+        saveView();
+        if (focusInitial && !resolving) {
+            focusInitial = false;
+            if (detail.isConnected) focusDetail();
+        }
+    }
+
+    function filterChanged() { page=0;draw(); }
+    search.addEventListener('input',filterChanged);
+    for (const control of [type,role,date]) control.addEventListener('change',filterChanged);
+    advanced.addEventListener('toggle',()=>{if(current())saveView();});
+    reset.addEventListener('click',()=>{
+        search.value='';
+        type.value=role.value=date.value='all';
+        filterChanged();
+        search.focus();
+    });
+    for (const [button, direction] of [[previous,-1],[next,1]]) button.addEventListener('click',()=>{
+        if (!current() || button.disabled) return;
+        page+=direction;
+        draw();
+        (button.disabled ? table.querySelector('.decision-row') : button)?.focus({preventScroll:!button.disabled});
+    });
+
+    exportButton.addEventListener('click',()=>{
+        if (!current() || exportButton.disabled) return;
+        const cell = value => '"'+String(value??'').replace(/^[=+@\-\t\r]/,"'$&").replaceAll('"','""')+'"';
+        const rows = [['Record ID','Account ID','Workflow','Application revision','Action','Previous status','New status','Administrator ID','Date (PH)','Reason']];
+        for (const record of filtered) {
+            const outcome = action(record);
+            const date = savedDate(record);
+            rows.push([record.id,record.userId,outcome.workflow,reviews.get(record.id)?.revision,outcome.label,record.previousStatus,record.status,record.actorId,date ? dayLabel(date)+' '+decisionTime.format(date) : 'Date unavailable',record.reason]);
+        }
+        const csv = new Blob(['\uFEFF'+rows.map(row=>row.map(cell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});
+        const url = URL.createObjectURL(csv);
+        const link = document.createElement('a');
+        link.href=url;
+        link.download='lakbaypanahon-decision-records.csv';
+        link.click();
+        setTimeout(()=>URL.revokeObjectURL(url),1000);
+    });
+
+    const more = el('p','Open an account’s history for older decisions.',list,'decision-more-note');
+    function redraw() {
+        const focused = document.activeElement;
+        const focusedId = focused?.closest('.decision-row')?.dataset.recordId;
+        const focusedInDetail = detail.contains(focused);
+        const controlIndex = [...detail.querySelectorAll('button,summary')].indexOf(focused);
+        const auditOpen = detail.querySelector('.decision-audit')?.open;
+        draw(true);
+        if (auditOpen && detail.isConnected) detail.querySelector('.decision-audit').open=true;
+        if (focusedInDetail) (detail.isConnected
+            ? detail.querySelectorAll('button,summary')[controlIndex] || detail.querySelector('.decision-detail-title')
+            : search).focus({preventScroll:true});
+        if (focusedId) ([...table.querySelectorAll('.decision-row')].find(row=>row.dataset.recordId===focusedId)||search).focus({preventScroll:true});
+    }
+    function update(nextRecords, hasMore, initial=false) {
+        if (!current()) return;
+        records=nextRecords;
+        more.hidden=!hasMore;
+        const request=++detailsRequest;
+        const userIds=[...new Set(records.map(record=>record.userId).filter(Boolean))];
+        const unresolvedUsers=(resolveAccount||resolveDetails) ? userIds.filter(uid=>!profiles.has(uid)) : [];
+        const unresolvedReviews=(resolveReview||resolveDetails) ? records.filter(record=>!reviews.has(record.id)) : [];
+        resolving=Boolean(unresolvedUsers.length||unresolvedReviews.length);
+        if (!resolving) {
+            status.textContent='';
+            redraw();
+            return;
+        }
+        status.textContent=initial?'Loading account details…':'';
+        if (initial || !detailDependentFilters()) redraw();
+        else exportButton.disabled=true;
+        const enrichAccount = async uid => {
+            try {const result=await resolveAccount(uid);return [uid,result?.profile||result];} catch {return [uid,null];}
+        };
+        const enrichReview = async record => {
+            try {return [record.id,await resolveReview(record)];} catch {return [record.id,null];}
+        };
+        const details=resolveDetails
+            ? resolveDetails(unresolvedUsers,unresolvedReviews)
+            : Promise.all([Promise.all(unresolvedUsers.map(enrichAccount)),Promise.all(unresolvedReviews.map(enrichReview))])
+                .then(([profiles,reviews])=>({profiles,reviews}));
+        details.catch(()=>({profiles:[],reviews:[]})).then(resolved=>{
+            if (!current() || request!==detailsRequest) return;
+            resolving = false;
+            for (const [uid,profile] of resolved.profiles) profiles.set(uid,profile);
+            for (const [id,review] of resolved.reviews) reviews.set(id,review);
+            for (const uid of profiles.keys()) if (!userIds.includes(uid)) profiles.delete(uid);
+            const visibleIds=new Set(records.map(record=>record.id));
+            for (const id of reviews.keys()) if (!visibleIds.has(id)) reviews.delete(id);
+            status.textContent = (resolveAccount||resolveDetails) && userIds.some(uid=>!profiles.get(uid))
+                ? 'Account IDs are shown where names are unavailable.' : '';
+            redraw();
+        });
+    }
+    update(initialRecords,moreAvailable,true);
+    return {update};
 }

@@ -38,16 +38,17 @@
     window.LakbayNarrator = {
         get enabled(){return enabled;},
         stop:stopPlayback,
-        play(text,{onend=()=>{},onerror=()=>{}}={}){
+        play(text,{onend=()=>{},onerror=()=>{},onpart=()=>{}}={}){
             stopPlayback();if(!enabled||volume===0){onend();return;}
             const parts=(Array.isArray(text)?text:[text]).filter(part=>typeof part==='string'&&part.trim());
             if(!parts.length){onend();return;}
             const token=++version;
             const finish=error=>{if(token!==version)return;version++;playback=null;notify(false);(error?onerror:onend)();};
-            function deviceVoice(part,next){
+            function deviceVoice(part,next,started){
                 if(token!==version)return;
                 if(!speech||!window.SpeechSynthesisUtterance){finish(true);return;}
                 const utterance=window.LakbayNarrator.create(part);playback={utterance};
+                utterance.onstart=started;
                 utterance.onend=next;utterance.onerror=()=>finish(true);
                 try{speech.speak(utterance);}catch{finish(true);}
             }
@@ -56,11 +57,13 @@
                 if(token!==version)return;
                 if(index>=parts.length){finish(false);return;}
                 const part=parts[index],advance=()=>next(index+1),clip=recordedClip(part);
+                const started=()=>{if(token===version)onpart(index);};
                 if(clip){
                     const audio=new Audio(clip);audio.volume=volume/100;playback={audio};let failed=false;
-                    const fallback=()=>{if(failed||token!==version)return;failed=true;audio.pause();deviceVoice(part,advance);};
+                    const fallback=()=>{if(failed||token!==version)return;failed=true;audio.pause();deviceVoice(part,advance,started);};
+                    audio.onplaying=()=>{if(!failed)started();};
                     audio.onended=advance;audio.onerror=fallback;audio.play().catch(fallback);
-                }else deviceVoice(part,advance);
+                }else deviceVoice(part,advance,started);
             }
             next(0);
         },
@@ -76,7 +79,8 @@
             return utterance;
         }
     };
-    const host = document.querySelector('.lesson-options') || document.querySelector('.lab-full');
+    const quickSettings = document.getElementById('lessonAudioSettings');
+    const host = quickSettings || document.querySelector('.lesson-options') || document.querySelector('.lab-full');
     if (!host || !speech || !window.SpeechSynthesisUtterance) return;
     const panel = document.createElement('div');panel.className = 'narrator-options';
     const label = document.createElement('label');label.textContent = 'Narrator voice';
@@ -109,16 +113,42 @@
         status.textContent='Voice selected. Tap Try voice or Listen to hear it.';
     });
     toggle.addEventListener('change',()=>{enabled=toggle.checked;save('lakbay.narration-enabled',enabled?'on':'off');stop();document.dispatchEvent(new CustomEvent('lakbay:narration-preference'));});
-    volumeControl.addEventListener('input',()=>{volume=Number(volumeControl.value);save('lakbay.narration-volume',volume);if(volume===0)stop();});
-    sample.addEventListener('click',()=>{
+    const quickLabel=document.querySelector('[data-quick-voice]');
+    const quickVolume=quickLabel?.querySelector('input');
+    const quickPreview=document.querySelector('[data-quick-voice-preview]');
+    const quickStatus=document.querySelector('[data-quick-voice-status]');
+    const quickLevel=quickLabel?.querySelector('[data-quick-voice-level]');
+    const volumeControls=[volumeControl,quickVolume].filter(Boolean);
+    for(const control of volumeControls){
+        control.value=String(volume);
+        control.addEventListener('input',()=>{
+            volume=Number(control.value);
+            save('lakbay.narration-volume',volume);
+            for(const slider of volumeControls)slider.value=String(volume);
+            if(quickLevel)quickLevel.textContent=volume+'%';
+            if(volume===0)stop();
+            else if(playback?.audio)playback.audio.volume=volume/100;
+        });
+    }
+    function playSample(status){
         stop();
         if(!enabled){status.textContent='Turn on Narration to try a voice.';return;}
+        if(volume===0){status.textContent='Raise the voice volume to hear a sample.';return;}
         status.textContent='Playing voice sample…';
         window.LakbayNarrator.play("Kumusta, explorer! I'm Bayani. Ready to discover Philippine history? Let's look closely at our first clue. Take your time—we'll figure it out together!",{
             onend:()=>{status.textContent='Voice sample finished. Lesson narration uses a recording when one is available.';},
             onerror:()=>{status.textContent='Audio could not play. Try another available voice.';}
         });
-    });
+    }
+    sample.addEventListener('click',()=>playSample(status));
+    if(quickLabel&&quickPreview&&quickStatus){
+        volumeLabel.hidden=true;
+        sample.hidden=true;
+        if(quickLevel)quickLevel.textContent=volume+'%';
+        quickLabel.hidden=false;
+        quickPreview.hidden=false;
+        quickPreview.addEventListener('click',()=>playSample(quickStatus));
+    }
     speech.addEventListener('voiceschanged',refresh);
     window.addEventListener('pagehide',stopPlayback);
     document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});

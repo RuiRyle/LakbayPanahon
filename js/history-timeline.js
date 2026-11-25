@@ -27,10 +27,17 @@ async function load(){
   groups=buildJourneyPath({userId:uid,eras,chapters,missions,missionProgress,chapterProgress,challenges:[]});
   for(const group of groups)filter.add(new Option(group.title||'Learning chapters',group.id||'unassigned'));
   if([...filter.options].some(option=>option.value===selected))filter.value=selected;
-  render();filter.disabled=false;status.textContent=groups.length?'Choose a period or follow the chapters in order.':'No timeline topics are published yet. You can return to My Journey.';
+  render();filter.disabled=false;status.textContent=groups.length?'Timeline up to date.':'No timeline topics are published yet. You can return to My Journey.';
  }catch(error){if(request===generation)status.textContent=studentLoadMessage(error,'The timeline could not load. Use Refresh Timeline to try again.');}
  finally{if(request===generation)retry.disabled=false;}
 }
-filter.addEventListener('change',render);retry.addEventListener('click',load);onAuthStateChanged(auth,load);
+filter.addEventListener('change',()=>{
+ const previous=selectedEra;
+ render();
+ if (previous === selectedEra) return;
+ const heading=host.querySelector('.timeline-period-heading');
+ heading?.classList.add('timeline-period-arrival');
+});
+retry.addEventListener('click',load);onAuthStateChanged(auth,load);
 window.addEventListener('pagehide',()=>{generation++;groups=[];revealObserver?.disconnect();host.replaceChildren();});
 window.addEventListener('pageshow',event=>{if(event.persisted)load();});

@@ -32,7 +32,7 @@ body.lakbay-theme .daily-complete-rewards strong { background: #e5b64f0e; border
 .daily-complete-return>span { color: #a5d7c4; font-size: 1.35rem; line-height: 1.2; }
 body.lakbay-theme .daily-complete-return strong { display: block; color: #d5efdf; font-size: .82rem; margin-bottom: 5px; }
 body.lakbay-theme .daily-complete-return p { color: #bcd5d8; font-size: .77rem; margin: 0; }
-body.lakbay-theme .daily-complete-dismiss { display: inline-flex; align-items: center; justify-content: center; gap: 14px; margin-top: 21px; min-height: 44px; padding: 12px 23px; border: 1px solid #e1c281; border-radius: 11px; background: #e5bf70; color: #10233d; font-size: .82rem; font-weight: 750; cursor: pointer; }
+body.lakbay-theme .daily-complete-dismiss { display: inline-flex; align-items: center; justify-content: center; gap: 14px; margin-top: 21px; min-height: 44px; padding: 12px 23px; border: 1px solid #e1c281; border-radius: 11px; background: #e5bf70; color: #10233d; font-size: .82rem; font-weight: 750; cursor: var(--lakbay-cursor-hand, pointer); }
 body.lakbay-theme .daily-complete-dismiss:hover { background: #f1d393; }
 body.lakbay-theme .home-daily-card .daily-challenge-card-completed { align-items: flex-start; gap: 12px; padding: 17px; background: linear-gradient(120deg,#153e38,#12343c); border: 1px solid #65a58b66; border-radius: 14px; color: #cbf0db; }
 body.lakbay-theme .home-daily-card .daily-challenge-card-completed strong { display: block; color: #d2f4de; font-size: .83rem; line-height: 1.5; }
@@ -40,8 +40,69 @@ body.lakbay-theme .home-daily-card .daily-challenge-card-completed p { color: #b
 body.lakbay-theme .daily-complete-check { flex: 0 0 29px; display: grid; place-items: center; width: 29px; height: 29px; color: #c8f5da; background: #79bb9620; border: 1px solid #87c5a660; border-radius: 50%; }
 body.lakbay-theme .daily-modal-loading, body.lakbay-theme .daily-challenge-empty { background: #0d2540; color: #edf3fa; }
 body.lakbay-theme .daily-modal-loading p, body.lakbay-theme .daily-challenge-empty p { color: #b9cddd; }
+body.lakbay-theme .daily-modal-loading .daily-loading-icon {
+    box-sizing:border-box;
+    width:52px;
+    height:52px;
+    border:1px solid #bda36577;
+    border-radius:50%;
+    background:transparent;
+    color:#ecd9a6;
+}
+.daily-loading-icon svg {width:28px;height:28px;fill:currentColor}
+@keyframes daily-compass-turn {to {transform:rotate(1turn)}}
+@media (prefers-reduced-motion:no-preference) {
+    body.lakbay-theme:not(.lakbay-reduce-motion) .daily-modal-loading:not([hidden]) .daily-loading-icon {
+        animation:daily-compass-turn 7s linear infinite;
+    }
+}
 body.lakbay-theme .daily-challenge-empty strong { color: #f0d18c; }
 body.lakbay-theme .daily-challenge-completed[hidden], body.lakbay-theme .daily-challenge-card-completed[hidden] { display: none !important; }
-@media (prefers-reduced-motion: no-preference) { body.lakbay-theme .daily-challenge-completed:not([hidden]) .daily-complete-icon { animation: daily-success-arrive .45s ease-out both; } @keyframes daily-success-arrive { from { opacity: 0; transform: translateY(8px) scale(.9); } to { opacity: 1; transform: none; } } }
+@media (prefers-reduced-motion: no-preference) { body.lakbay-theme .daily-challenge-completed[data-daily-fresh-result]:not([hidden]) .daily-complete-icon { animation: daily-success-arrive .45s ease-out both; } @keyframes daily-success-arrive { from { opacity: 0; transform: translateY(8px) scale(.9); } to { opacity: 1; transform: none; } } }
 @media (max-width: 600px) { body.lakbay-theme .daily-challenge-completed { padding: 28px 18px 23px; } .daily-complete-return { padding: 14px; } body.lakbay-theme .daily-complete-dismiss { width: 100%; } }
+
+.daily-complete-answer:not([hidden]) {
+    width: 100%;
+    box-sizing: border-box;
+    padding: .85rem 1rem;
+    border: 1px solid #5e8a82;
+    border-radius: 12px;
+    background: #163b40;
+    color: #ddf3e9;
+    text-align: start;
+    overflow-wrap: anywhere;
+}
+.daily-complete-answer p { margin: .25rem 0 0; }
+.daily-complete-answer strong { color: #f5de9f; }
+#checkDailySavedResult { margin-top: .65rem; min-height: 44px; }
 body.lakbay-theme.lakbay-reduce-motion .daily-complete-icon { animation: none !important; }
+/* Modal status is separate from the changing question and feedback. */
+body.lakbay-theme #dailyChallengeStatus { margin: 0; padding: 12px 20px; background: #0d2540; color: #becedc; font-size: .875rem; line-height: 1.5; }
+.daily-dispatch-open .daily-question-number {
+    width: fit-content;
+    border: 1px solid #cdaa68;
+    border-radius: 5px;
+    padding: 4px 9px;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body:not(.lakbay-reduce-motion) .daily-dispatch-open:not([hidden]) .daily-question-number {
+        transform-origin: top;
+        animation: daily-dispatch-unfold .48s ease-out;
+    }
+}
+@keyframes daily-dispatch-unfold {
+    from { transform: perspective(900px) rotateX(-16deg); opacity: .65; }
+    to { transform: none; opacity: 1; }
+}
+body.lakbay-theme #dailyChallengeCompleted:not([data-daily-fresh-result]) .daily-complete-icon { inline-size:46px; block-size:46px; }
+@media (max-width: 600px) {
+    body.lakbay-theme #dailyChallengeModal .daily-modal-content { padding:14px 12px 12px; }
+    body.lakbay-theme .daily-modal .daily-challenge-question { margin-block-end:.7rem; }
+    body.lakbay-theme .daily-modal .daily-challenge-option { padding:10px; min-height:52px; }
+    body.lakbay-theme .daily-modal .daily-modal-footer {
+        flex-direction:row; align-items:center; justify-content:space-between; gap:8px;
+        margin-block-start:.75rem; padding-block-start:.75rem;
+    }
+    body.lakbay-theme .daily-modal .daily-submit-button { flex:1 1 130px; width:auto; }
+    body.lakbay-theme .daily-modal .daily-modal-reward { flex:0 1 auto; }
+}

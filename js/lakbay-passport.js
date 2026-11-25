@@ -18,22 +18,24 @@ export function passportEntries(groups, progress, userId) {
             return record ? { id: chapter.id, eraId: era.id, title: chapter.title || 'Historical chapter', era: era.title || era.name || 'Philippine history', date: completionDate(record.completedAt) } : null;
         }).filter(Boolean));
 }
-export function renderPassport(container, entries) {
+export function renderPassport(container, entries, badgeArtwork) {
     if (!container) return;
     container.replaceChildren();
     if (!entries.length) {
-        container.append(node('p', 'Your first stamp is waiting. Complete a chapter challenge to record a new destination in your passport.'));
+        container.append(node('p', 'Complete a chapter challenge to earn your first passport stamp.', 'passport-empty'));
         return;
     }
+    const grid = node('div', '', 'passport-destinations');
+    container.append(grid);
     for (const entry of entries) {
         const stamp = node('article', '', 'passport-stamp');
         const image=document.createElement('img');image.alt='';image.width=48;image.height=48;
         const symbols={'chapter-1':'maritime','chapter-2':'archive','chapter-3':'navigation','chapter-4':'archive','chapter-5':'navigation','chapter-9':'maritime','chapter-11':'voices','chapter-12':'voices','chapter-14':'voices','chapter-15':'voices'};
-        image.src='../assets/atlas/'+(symbols[entry.id]||'archive')+'.svg';image.loading='lazy';stamp.append(image);
+        image.src='../assets/atlas/'+(symbols[entry.id]||'archive')+'.svg';image.loading='lazy';stamp.append(badgeArtwork?.(entry.id) || image);
         stamp.append(node('span', 'CHAPTER COMPLETED', 'stamp-mark'), node('h3', entry.title), node('small', entry.era));
         if (entry.date) stamp.append(node('small', 'Completed ' + entry.date));
         const link = node('a', 'Revisit chapter');
         link.href = 'mission.html?' + new URLSearchParams({ chapter: entry.id });
-        stamp.append(link); container.append(stamp);
+        stamp.append(link); grid.append(stamp);
     }
 }

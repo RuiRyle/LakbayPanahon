@@ -29,7 +29,7 @@
 .bayani-mini-emblem { display:grid; place-items:center; width:40px; height:44px; border-radius:12px 12px 17px 17px; background:#ffd044; color:#0b2142; font-size:1.6rem; font-family:Georgia,serif; font-weight:800; }
 .bayani-chat-heading h2 { font-size:1rem; color:#f4f7ff; margin:0 0 4px; }
 .bayani-chat-identity>div>span { color:#738096; font-size:.72rem; }
-.bayani-new-chat { background:#17365f; border:1px solid #456288; border-radius:10px; padding:9px 12px; color:#ffe799; font:inherit; font-size:.75rem; cursor:pointer; box-shadow:0 3px 0 #07162f; }
+.bayani-new-chat { background:#17365f; border:1px solid #456288; border-radius:10px; padding:9px 12px; color:#ffe799; font:inherit; font-size:.75rem; cursor:var(--lakbay-cursor-hand, pointer); box-shadow:0 3px 0 #07162f; }
 .bayani-new-chat:hover { background:#1d4273; }
 .bayani-new-chat>span { color:#ffd044; font-size:1.05rem; margin-right:5px; }
 .bayani-connection { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:11px 24px; background:#0d2446; border-bottom:1px solid #2a466c; }
@@ -60,9 +60,9 @@
 .bayani-composer textarea:disabled { background:#0b2142; color:#b5c5de; }
 .bayani-composer>div { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:12px; }
 .bayani-composer>div>span { font-size:.65rem; color:#b5c5de; line-height:1.5; max-width:310px; }
-.bayani-composer button { border:1px solid #17324e; border-radius:10px; background:#203e5d; color:#fff; padding:11px 21px; font:inherit; font-size:.8rem; font-weight:700; cursor:pointer; box-shadow:0 3px 0 #10253c; transition:transform 150ms ease; }
+.bayani-composer button { border:1px solid #17324e; border-radius:10px; background:#203e5d; color:#fff; padding:11px 21px; font:inherit; font-size:.8rem; font-weight:700; cursor:var(--lakbay-cursor-hand, pointer); box-shadow:0 3px 0 #10253c; transition:transform 150ms ease; }
 .bayani-composer button:hover:not(:disabled) { transform:translateY(-1px); }
-.bayani-composer button:disabled { opacity:.45; cursor:default; box-shadow:none; }
+.bayani-composer button:disabled { opacity:.45; cursor:var(--lakbay-cursor-arrow, default); box-shadow:none; }
 .bayani-note { font-size:.64rem; color:#b5c5de; line-height:1.7; margin:0; padding:0 24px 20px; background:#10284c; }
 .bayani-content a:focus-visible,.bayani-content button:focus-visible { outline:3px solid #a94141; outline-offset:4px; }
 .bayani-empty[hidden] { display:none; }

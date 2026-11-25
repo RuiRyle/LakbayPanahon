@@ -4,18 +4,19 @@ export const LEARNING_DATA_COLLECTIONS = Object.freeze([
     'studentLearningDrafts', 'studentEvidenceJournal', 'studentArtifacts',
     'studentBadges', 'classMembers'
 ]);
+export class LearningDataExportError extends Error {}
 
 // Read-only, owner-scoped snapshot. Failures never produce a partial download.
 export async function collectLearningData({user, assertCurrent, readProfile, readCosmetics, listPage, now = () => new Date(), maxRecords = 5000}) {
-    if (!user || typeof user.uid !== 'string' || !user.uid || /[\/\u0000-\u001f]/.test(user.uid)) throw Error('Sign in again to download your learning data.');
+    if (!user || typeof user.uid !== 'string' || !user.uid || /[\/\u0000-\u001f]/.test(user.uid)) throw new LearningDataExportError('Sign in again to download your learning data.');
     const check = () => assertCurrent(user);
     check();
     const profile = await readProfile(user.uid);
     check();
-    if (!profile || profile.id !== user.uid || profile.data?.role !== 'student' || profile.data?.status !== 'active') throw Error('An active student account is required.');
+    if (!profile || profile.id !== user.uid || profile.data?.role !== 'student' || profile.data?.status !== 'active') throw new LearningDataExportError('An active student account is required.');
     const cosmetics = await readCosmetics(user.uid);
     check();
-    if (cosmetics && cosmetics.id !== user.uid) throw Error('The account changed. No file was downloaded.');
+    if (cosmetics && cosmetics.id !== user.uid) throw new LearningDataExportError('The download could not verify record ownership.');
     const records = {};
     for (const name of LEARNING_DATA_COLLECTIONS) {
         const rows = [], seen = new Set();
@@ -24,13 +25,13 @@ export async function collectLearningData({user, assertCurrent, readProfile, rea
             check();
             const page = await listPage(name, user.uid, cursor);
             check();
-            if (!Array.isArray(page) || page.length > 100) throw Error('The download could not verify a page of records.');
+            if (!Array.isArray(page) || page.length > 100) throw new LearningDataExportError('The download could not verify a page of records.');
             for (const row of page) {
-                if (!row || typeof row.id !== 'string' || !row.id || row.id.includes('/') || row.data?.userId !== user.uid || seen.has(row.id)) throw Error('The download could not verify record ownership.');
+                if (!row || typeof row.id !== 'string' || !row.id || row.id.includes('/') || row.data?.userId !== user.uid || seen.has(row.id)) throw new LearningDataExportError('The download could not verify record ownership.');
                 seen.add(row.id);
                 rows.push(row);
             }
-            if (rows.length > maxRecords) throw Error('This account has too many records for a browser download. No file was downloaded.');
+            if (rows.length > maxRecords) throw new LearningDataExportError('This account has too many records for a browser download. Ask an adult for help with a data copy.');
             if (page.length < 100) break;
             cursor = page.at(-1).id;
         }

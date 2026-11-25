@@ -26,7 +26,7 @@ body.lakbay-theme #storyCompleteSection #lessonRecap:empty{display:none}
 body.lakbay-theme #storyCompleteSection .lesson-finish-recap:not(:has(#lessonRecap>*)){display:none}
 body.lakbay-theme #storyCompleteSection #lessonRecap :is(p,li){color:#d4e1e8;font-size:1rem;line-height:1.8}
 body.lakbay-theme #storyCompleteSection #lessonRecap>details{margin:12px 0;padding:12px 16px;border:1px solid #456879;border-radius:12px;background:#132e43}
-body.lakbay-theme #storyCompleteSection summary{cursor:pointer;color:#f0d59a;font-weight:650;line-height:1.65;min-height:44px;align-content:center}
+body.lakbay-theme #storyCompleteSection summary{cursor:var(--lakbay-cursor-hand, pointer);color:#f0d59a;font-weight:650;line-height:1.65;min-height:44px;align-content:center}
 body.lakbay-theme #storyCompleteSection .lesson-finish-extras{margin:0 30px 28px;border:1px solid #456879;border-radius:14px;background:#112d40;padding:12px 18px}
 body.lakbay-theme #storyCompleteSection .lesson-finish-extras>summary small{display:block;font-size:.8rem;font-weight:400;color:#c6d8de;margin:4px 0}
 body.lakbay-theme #storyCompleteSection .finish-extra-activities{display:grid;gap:14px;margin-top:16px}
@@ -39,3 +39,49 @@ body.lakbay-theme #storyCompleteSection:not([hidden]) .finish-guide img{animatio
 @media(max-width:600px){body.lakbay-theme #storyCompleteSection .lesson-finish-heading{padding:24px 20px;gap:16px;align-items:flex-start}.finish-guide{width:68px}.finish-guide-badge{width:26px;height:26px;font-size:.9rem}body.lakbay-theme #storyCompleteSection .lesson-finish-next{margin:20px 16px;padding:18px}body.lakbay-theme #storyCompleteSection .lesson-quiz-briefing dl{grid-template-columns:1fr;gap:8px}body.lakbay-theme #storyCompleteSection .lesson-quiz-briefing dl>div{display:flex;justify-content:space-between;align-items:center;gap:12px}body.lakbay-theme #storyCompleteSection dd{margin:0}body.lakbay-theme #storyCompleteSection .lesson-finish-actions{align-items:stretch;flex-direction:column}body.lakbay-theme #storyCompleteSection .lesson-finish-actions button{width:100%}body.lakbay-theme #storyCompleteSection .lesson-finish-recap{margin:0 20px}body.lakbay-theme #storyCompleteSection .lesson-finish-extras{margin:0 16px 24px}}
 @media(prefers-reduced-motion:reduce){body.lakbay-theme #storyCompleteSection .finish-guide img{animation:none}body.lakbay-theme #storyCompleteSection button{transition:none!important;transform:none!important}}
 body.lakbay-reduce-motion #storyCompleteSection .finish-guide img{animation:none!important}body.lakbay-reduce-motion #storyCompleteSection button{transition:none!important;transform:none!important}
+
+/* Opt-in lesson web metadata and focus; completion values remain data-driven. */
+body.story-web-page #storyCompleteSection :is(.eyebrow,.finish-step-label,dt,.lesson-finish-extras>summary small){font-size:var(--lp-type-label);line-height:1.65}
+body.story-web-page #storyCompleteSection :is(h2,h3,p,dt,dd,summary,button,li){overflow-wrap:anywhere;min-width:0}
+body.story-web-page #storyCompleteSection :is(button,a,summary,h2):focus-visible{outline-color:var(--lp-focus)}
+
+/* Mission checkpoint */
+body.lakbay-theme #storyCompleteSection .lesson-finish-heading {
+    padding:clamp(18px,3vw,30px); gap:clamp(12px,3vw,28px);
+    background:repeating-linear-gradient(120deg,#c3a66d 0 2px,#756243 2px 5px) top / 100% 3px no-repeat,
+        repeating-radial-gradient(ellipse at 100% 50%,#afcabb14 0 1px,transparent 2px 17px),
+        linear-gradient(115deg,#214746,#112a40);
+}
+body.lakbay-theme #storyCompleteSection .lesson-finish-heading h2 { margin:4px 0; }
+body.lakbay-theme #storyCompleteSection .lesson-finish-heading p { margin:4px 0 0; }
+body.lakbay-theme #storyCompleteSection .lesson-finish-next {
+    padding:clamp(15px,2.7vw,24px); border-radius:4px 18px 4px 18px;
+    background:linear-gradient(140deg,#183a41,#122d41 74%);
+}
+body.lakbay-theme #storyCompleteSection .lesson-quiz-briefing dl {
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,155px),1fr)); gap:9px;
+}
+body.lakbay-theme #storyCompleteSection .lesson-quiz-briefing dl>div {
+    border-radius:4px 12px 4px 12px; border-inline-start:3px solid #bca16b;
+}
+body.lakbay-theme #storyCompleteSection .lesson-quiz-briefing dl>div:nth-child(2) { border-inline-start-color:#a1cabb; }
+body.lakbay-theme #storyCompleteSection .lesson-quiz-briefing dl>div:nth-child(3) { border-inline-start-color:#a5bdd6; }
+body.lakbay-theme #storyCompleteSection .lesson-finish-actions { margin-top:14px; }
+body.lakbay-theme #storyCompleteSection .lesson-finish-recap { padding-block:16px; }
+@media(max-width:600px) {
+    body.lakbay-theme #storyCompleteSection .lesson-quiz-briefing dl { grid-template-columns:minmax(0,1fr); }
+}
+body.lakbay-theme #storyCompleteSection.lesson-dossier-arrival .lesson-finish-next {
+    border-block-start: 3px solid #e3bd79;
+    box-shadow: 0 4px 0 #081f2d, inset 0 3px #e3bd7938;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body.lakbay-theme:not(.lakbay-reduce-motion) #storyCompleteSection.lesson-dossier-arrival .lesson-finish-next {
+        transform-origin: top;
+        animation: lesson-dossier-open .58s cubic-bezier(.18,.72,.3,1);
+    }
+}
+@keyframes lesson-dossier-open {
+    from { transform: perspective(800px) rotateX(-20deg); opacity: .6; }
+    to { transform: none; opacity: 1; }
+}

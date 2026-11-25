@@ -1,11 +1,5 @@
+import {chapterArtworkFor} from './chapter-artwork.js';
 // Display-only renderer. All ordering, completion and access come from buildJourneyPath.
-const chapterArtwork = {
-    'era1-prologue': '../assets/brand/expedition-atlas.svg',
-    'chapter-1': '../assets/story/chapter-1-mission-1-scene-1.png',
-    'chapter-2': '../assets/story/chapter-2-mission-1-scene-1.png',
-    'chapter-3': '../assets/story/chapter3-mission1-scene1.png',
-    'chapter-4': '../assets/story/learning-guide-chapter4-mission1-scene1.svg'
-};
 const timelineText = (tag, value, className) => {
     const node = document.createElement(tag);
     node.textContent = value;
@@ -24,12 +18,8 @@ function timelinePicture(chapter) {
     frame.setAttribute('aria-hidden', 'true');
     const image = document.createElement('img');
     image.alt = ''; image.loading = 'lazy'; image.decoding = 'async';
-    const fallback = chapterArtwork[chapter.id] || '../assets/brand/expedition-archive.svg';
-    // Authored HTTPS imagery may override the existing local decorative illustration.
-    let source = fallback;
-    if (typeof chapter.imageUrl === 'string') {
-        try { const url = new URL(chapter.imageUrl); if (url.protocol === 'https:') source = url.href; } catch {}
-    }
+    const fallback = '../assets/brand/expedition-archive.svg';
+    const source = chapterArtworkFor(chapter.id)?.src || fallback;
     image.addEventListener('error', () => {
         if (image.dataset.fallback) { image.remove(); return; }
         image.dataset.fallback = 'true'; image.src = fallback;
@@ -41,12 +31,16 @@ export function renderHistoryTimeline(host, groups, selected = '') {
     const visible = groups.filter(group => !selected || (group.id || 'unassigned') === selected);
     if (!visible.length) return;
     const periods = timelineText('div', '', 'timeline-periods');
+    const destinations = new Map();
     for (const era of visible) {
         const section = timelineText('section', '', 'timeline-period');
         const heading = timelineText('div', '', 'timeline-period-heading');
         const symbol = timelineText('span', '\u25c8', 'timeline-period-symbol'); symbol.setAttribute('aria-hidden', 'true');
         const title = timelineText('div', ''); title.append(timelineText('h2', era.title || 'Learning chapters'));
         if (era.dateRange) title.append(timelineText('p', era.dateRange, 'timeline-date'));
+        const destination = title.querySelector('h2');
+        destination.tabIndex = -1;
+        destinations.set(era, destination);
         heading.append(symbol, title); section.append(heading);
         if (era.description) section.append(timelineText('p', era.description, 'timeline-era-description'));
         const list = timelineText('ol', '', 'history-timeline-list');
@@ -83,23 +77,50 @@ export function renderHistoryTimeline(host, groups, selected = '') {
         }
         section.append(list); periods.append(section);
     }
-    const side = timelineText('aside', '', 'timeline-side'); side.setAttribute('aria-label', 'Era progress and learning highlights');
-    const panel = timelineText('section', '', 'timeline-side-panel');
-    panel.append(timelineText('span', 'YOUR EXPEDITION', 'eyebrow'), timelineText('h2', selected ? 'Era progress' : 'Progress by era'));
+    const side = timelineText('aside', '', 'timeline-side'); side.setAttribute('aria-label', 'Lesson shortcut and era index');
+    const panel = timelineText('section', '', 'timeline-side-panel timeline-progress-panel');
+    const header = timelineText('div', '', 'timeline-ledger-heading');
+    const emblem = timelineText('span', '', 'timeline-ledger-emblem');
+    emblem.setAttribute('aria-hidden', 'true');
+    emblem.append(timelineText('span', '', 'interface-icon interface-icon--compass'));
+    header.append(emblem, timelineText('h2', 'Jump to an era'));
+    panel.append(header);
     for (const era of visible) {
         const complete = era.chapters.filter(chapter => chapter.completed).length;
-        const meter = timelineText('div', '', 'timeline-era-meter');
-        meter.append(timelineText('strong', era.title || 'Learning chapters'));
+        const title = era.title || 'Learning chapters';
+        const meter = timelineText('button', '', 'timeline-era-meter');
+        meter.type = 'button';
+        meter.addEventListener('click', () => destinations.get(era).focus());
+        meter.dataset.eraId = era.id;
+        const scene = timelineText('span', '', 'timeline-era-scene');
+        scene.setAttribute('aria-hidden', 'true');
+        meter.append(scene, timelineText('strong', title, 'timeline-index-title'));
         const count = timelineText('div', '', 'timeline-era-count');
         count.append(timelineText('b', complete + ' / ' + era.chapters.length), timelineText('span', 'chapters complete'));
-        meter.append(count, timelineMeter(complete, era.chapters.length, 'Chapter completion: ' + era.title)); panel.append(meter);
+        meter.append(count); panel.append(meter);
     }
-    panel.append(timelineText('p', 'Chapter completion comes from your saved chapter results. Finishing missions alone does not complete a chapter.'));
-    const highlights = timelineText('section', '', 'timeline-side-panel');
-    highlights.append(timelineText('span', 'LOOK CLOSER', 'eyebrow'), timelineText('h2', 'Learning highlights'), timelineText('p', 'A few of the published lessons along this trail.'));
-    const lessons = timelineText('ul', '', 'timeline-highlights');
-    const titles = [...new Set(visible.flatMap(era => era.chapters.flatMap(chapter => chapter.missions.map(mission => mission.title).filter(Boolean))))].slice(0, 4);
-    for (const name of titles) lessons.append(timelineText('li', name));
-    if (!titles.length) lessons.append(timelineText('li', 'Lesson highlights will appear when missions are published.'));
-    highlights.append(lessons); side.append(panel, highlights); host.append(periods, side);
+
+    const highlights = timelineText('section', '', 'timeline-side-panel timeline-highlights-panel');
+    const highlightsHeader = timelineText('div', '', 'timeline-ledger-heading');
+    const book = timelineText('span', '', 'timeline-ledger-emblem');
+    book.setAttribute('aria-hidden', 'true');
+    book.append(timelineText('span', '', 'interface-icon interface-icon--book-open'));
+    const available = visible.flatMap(era => era.chapters.filter(chapter => chapter.accessible)
+        .flatMap(chapter => chapter.missions.filter(mission => mission.accessible)
+            .map(mission => ({chapter, mission}))));
+    const pick = available.find(({mission}) => !mission.completed) || available.at(-1);
+    highlightsHeader.append(book, timelineText('h2', pick?.mission.completed ? 'Lesson to revisit' : 'Your next lesson'));
+    highlights.append(highlightsHeader);
+    if (pick) {
+        const {chapter, mission} = pick;
+        const art = timelinePicture(chapter);
+        art.classList.add('timeline-lesson-cover');
+        const link = timelineText('a', mission.completed ? 'Revisit lesson' : 'Open lesson', 'timeline-chapter-action');
+        link.href = 'story.html?' + new URLSearchParams({chapter: chapter.id, mission: mission.id});
+        highlights.append(art, timelineText('p', chapter.title, 'timeline-lesson-chapter'),
+            timelineText('h3', mission.title || 'History mission'), link);
+    } else {
+        highlights.append(timelineText('p', 'No open lessons in this view. Choose another period to find one.'));
+    }
+    side.append(highlights, panel); host.append(periods, side);
 }

@@ -7,9 +7,17 @@
     if(!Number.isFinite(volume))volume=35;volume=Math.min(100,Math.max(0,volume));
     let context,narrating=false,lastAt=-Infinity;
     const activeNodes=new Set();
+    const heardClues=new WeakSet();
+    const gameSoundsEnabled=()=>window.LakbayStudentEffects?.enabled??(read('lakbay-ui-sounds','on')!=='off');
+    function gameSoundVolume(){
+        if(window.LakbayStudentEffects)return window.LakbayStudentEffects.volume;
+        const stored=read('lakbay-ui-sound-volume','85');
+        const value=stored.trim()===''?85:Number(stored);
+        return Number.isFinite(value)?Math.min(100,Math.max(0,value))/100:.85;
+    }
     function silence(){for(const node of activeNodes){try{node.stop();}catch{}}activeNodes.clear();}
     function audioContext(){
-        try{const Type=window.AudioContext||window.webkitAudioContext;if(!Type)return null;context??=new Type();if(context.state==='suspended')context.resume().catch(()=>{});return context;}catch{return null;}
+        try{const Type=window.AudioContext||window.webkitAudioContext;if(!Type)return null;if(!context||context.state==='closed')context=new Type();if(context.state!=='running')context.resume().catch(()=>{});return context;}catch{return null;}
     }
     function tone(audio,frequency,delay,duration,level){
         const source=audio.createOscillator(),gain=audio.createGain(),start=audio.currentTime+delay;
@@ -26,13 +34,14 @@
         source.onended=()=>{activeNodes.delete(source);source.disconnect();filter.disconnect();gain.disconnect();};source.start();
     }
     function play(kind){
-        if(!enabled||narrating||document.hidden||read('lakbay-ui-sounds','on')==='off'||volume===0)return false;
+        const level=.09*(volume/100)*gameSoundVolume();
+        if(!enabled||narrating||document.hidden||!gameSoundsEnabled()||level<=0)return false;
         const now=performance.now();if(now-lastAt<90)return false;
-        const audio=audioContext();if(!audio)return false;
-        const globalVolume=Number(read('lakbay-ui-sound-volume','85'));
-        const level=.09*(volume/100)*(Number.isFinite(globalVolume)?Math.min(100,Math.max(0,globalVolume))/100:.85);
-        if(level<=0)return false;lastAt=now;
+        const audio=audioContext();
+        if(!audio||(audio.state!=='running'&&window.navigator?.userActivation?.isActive===false))return false;
+        lastAt=now;
         if(kind==='paper')paper(audio,level);
+        else if(kind==='map')tone(audio,784,0,.065,level*.63);
         else if(kind==='success'){tone(audio,659.25,0,.14,level*.8);tone(audio,880,.09,.2,level*.7);tone(audio,1046.5,.18,.24,level*.45);}
         else if(kind==='retry'){tone(audio,440,0,.16,level*.55);tone(audio,523.25,.1,.17,level*.45);}
         else tone(audio,587.33,0,.12,level*.65);
@@ -40,25 +49,28 @@
     }
     window.LakbayLessonAudio={play,get enabled(){return enabled;},get narrating(){return narrating;}};
     document.addEventListener('lakbay:narration-state',event=>{narrating=Boolean(event.detail?.active);if(narrating)silence();});
-    document.addEventListener('pointerdown',()=>{if(enabled&&read('lakbay-ui-sounds','on')!=='off')audioContext();},{once:true});
-    document.addEventListener('keydown',()=>{if(enabled&&read('lakbay-ui-sounds','on')!=='off')audioContext();},{once:true});
+    document.addEventListener('lakbay:game-sound-preference',()=>{if(!gameSoundsEnabled()||gameSoundVolume()===0)silence();});
+    const unlock=event=>{
+        if(event.isTrusted&&!event.repeat&&!document.hidden&&enabled&&gameSoundsEnabled()&&volume>0&&gameSoundVolume()>0)audioContext();
+    };
+    for(const event of ['pointerup','keydown','click'])document.addEventListener(event,unlock,true);
     document.addEventListener('click',event=>{
         const target=event.target instanceof Element?event.target:null;
-        if(target?.closest('.story-explore-choice,[data-clue]'))play('paper');
-        else if(target?.closest('.lesson-flow button,#labNext,#labBack'))play('next');
+        const clue=target?.closest('[data-clue]');
+        if(clue&&!heardClues.has(clue)&&play('paper'))heardClues.add(clue);
     });
     document.addEventListener('lakbay:answer-correct',()=>play('success'));
     document.addEventListener('lakbay:lesson-retry',()=>play('retry'));
     window.addEventListener('pagehide',()=>{silence();context?.suspend().catch(()=>{});});
     document.addEventListener('visibilitychange',()=>{if(document.hidden)silence();});
-    const host=document.querySelector('.lesson-options')||document.querySelector('.lab-full');if(!host)return;
+    const host=document.getElementById('lessonAudioSettings')||document.querySelector('.lesson-options')||document.querySelector('.lab-full');if(!host)return;
     const panel=document.createElement('div');panel.className='lesson-sound-options';
-    const label=document.createElement('label'),toggle=document.createElement('input');toggle.type='checkbox';toggle.checked=enabled;label.append(toggle,document.createTextNode('Game sounds'));
-    const levelLabel=document.createElement('label');levelLabel.textContent='Effects volume';const slider=document.createElement('input');slider.type='range';slider.min='0';slider.max='100';slider.value=String(volume);levelLabel.append(slider);
-    const sample=document.createElement('button');sample.type='button';sample.textContent='Try game sounds';
+    const label=document.createElement('label'),toggle=document.createElement('input');toggle.type='checkbox';toggle.checked=enabled;label.append(toggle,document.createTextNode('Lesson effects'));
+    const levelLabel=document.createElement('label');levelLabel.textContent='Lesson effect volume';const slider=document.createElement('input');slider.type='range';slider.min='0';slider.max='100';slider.value=String(volume);levelLabel.append(slider);
+    const sample=document.createElement('button');sample.type='button';sample.dataset.lessonSoundPreview='';sample.textContent='Try lesson effects';
     const note=document.createElement('p');note.setAttribute('role','status');note.textContent='Soft paper and discovery sounds. Effects pause during narration.';
     toggle.addEventListener('change',()=>{enabled=toggle.checked;write(key,enabled?'on':'off');if(!enabled)silence();});
     slider.addEventListener('input',()=>{volume=Number(slider.value);write(volumeKey,volume);if(volume===0)silence();});
-    sample.addEventListener('click',()=>{if(!play('success'))note.textContent=narrating?'Stop narration to try game sounds.':!enabled?'Turn on Game sounds to try them.':read('lakbay-ui-sounds','on')==='off'?'Sound effects are muted in your account Settings.':'Audio could not play, or the effects volume is set to zero.';else note.textContent='A soft discovery chime. Effects pause during narration.';});
+    sample.addEventListener('click',()=>{if(!play('success'))note.textContent=narrating?'Stop narration to try lesson effects.':!enabled?'Turn on Lesson effects to try them.':!gameSoundsEnabled()?'Turn on Game sounds to hear lesson effects.':volume===0||gameSoundVolume()===0?'Raise the effect volume to hear the sample.':'Sound could not play. Select the sample to try again.';else note.textContent='A soft discovery chime. Effects pause during narration.';});
     panel.append(label,levelLabel,sample,note);host.append(panel);
 })();

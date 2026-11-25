@@ -10,6 +10,15 @@ export function requireMissionPolicy(quiz) {
     }
     return quiz;
 }
+
+export function minimumMissionCorrect(questionCount, passingScore) {
+    // Official mission scores round the percentage before comparing it with the goal.
+    for (let correct = 0; correct < questionCount; correct++) {
+        if (Math.round(correct / questionCount * 100) >= passingScore) return correct;
+    }
+    return questionCount;
+}
+
 function shuffled(items, random) {
     const result = items.slice();
     for (let i = result.length - 1; i > 0; i--) {

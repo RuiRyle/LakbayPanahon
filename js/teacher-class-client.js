@@ -1,5 +1,5 @@
 import {auth, db} from './firebase-config.js';
-import {doc, collection, query, where, orderBy, documentId, startAfter, limit, getDocsFromServer, getDocFromServer, runTransaction, serverTimestamp, Timestamp, setDoc, updateDoc,writeBatch} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
+import {doc, collection, query, where, orderBy, documentId, startAfter, limit, getDocsFromServer, getDocFromServer, onSnapshot, runTransaction, serverTimestamp, Timestamp, setDoc, updateDoc,writeBatch} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 import {classDetails, invitationCode, publishedDetails, assignmentDueMillis,reviewEvidence,publicationVersion,assignmentProgressState,reviewLearningStages,activeReviewDuplicates,reviewInterventionSummary} from './teacher-class-policy.js';
 import {classroomAssignmentEvidence} from './classroom-submission-policy.js';
 import {buildJourneyPath,assignmentReadiness} from './journey-path.js';
@@ -165,6 +165,22 @@ export async function loadTeacherRosterNames(classId, userIds) {
     }
     return result;
 }
+export async function loadTeacherSharedAppearances(classId, userIds) {
+    const s = session();
+    const classroom = refFor('classes', classId);
+    const ids = [...new Set(userIds)];
+    if (!ids.length) return new Map();
+    if (ids.length > 20) throw Error('Load up to 20 student portraits at a time.');
+    // This projection is already readable by the class owner. Private cosmetics stay owner-only.
+    const snapshot = await getDocsFromServer(query(collection(classroom, 'classmates'), where(documentId(), 'in', ids)));
+    s.check();
+    const appearances = new Map();
+    for (const item of snapshot.docs) {
+        const {avatarId,frameId} = item.data();
+        if (typeof avatarId === 'string') appearances.set(item.id, {avatarId,frameId});
+    }
+    return appearances;
+}
 export async function loadTeacherMissions({includeReviewTopics=true}={}) {
     const s = session(); await approved(s);
     const [missions, chapters, scenes] = await Promise.all([
@@ -218,6 +234,25 @@ export async function loadTeacherAssignmentProgress(classId, missionId, userIds)
         batch.forEach((item, index) => results.push(item.status === 'fulfilled' ? item.value : {userId:ids[index], unavailable:true}));
     }
     return results;
+}
+export function watchTeacherAssignmentProgress(assignment,loaded,onChange,onError){
+    const {user}=session();
+    let active=true;
+    const stops=loaded.map(({userId,progress,unavailable})=>{
+        if(unavailable)return null;
+        const restrictions=[where('userId','==',userId),where('missionId','==',assignment.missionId)];
+        if(assignment.assignmentType!=='targeted-review')restrictions.push(where('classroom.assignmentId','==',assignment.id));
+        let seen;
+        return onSnapshot(query(collection(db,'studentQuizAttempts'),...restrictions),{includeMetadataChanges:true},snapshot=>{
+            if(!active||auth.currentUser!==user||snapshot.metadata.fromCache||snapshot.metadata.hasPendingWrites)return;
+            const key=snapshot.docs.map(row=>row.id).join('|');
+            if(seen===key)return;
+            const first=seen===undefined;
+            seen=key;
+            if(!first||snapshot.docs.some(row=>(row.data().completedAt?.toMillis?.()||0)>(progress?.latestAt?.toMillis?.()||0)))onChange();
+        },()=>{if(active&&auth.currentUser===user)onError();});
+    });
+    return ()=>{active=false;stops.forEach(stop=>stop?.());};
 }
 export function newTeacherPublicationId(){return doc(collection(db,'classAssignments')).id;}
 function reviewPublishError(message){return Object.assign(Error(message),{code:'failed-precondition'});}
@@ -307,13 +342,15 @@ export async function loadTeacherReadiness(classId,missionId,userIds){
     for(let offset=0;offset<userIds.length;offset+=5){const group=await Promise.allSettled(userIds.slice(offset,offset+5).map(async userId=>{const member=await getDocFromServer(refFor('classMembers',userId+'_'+classId));s.check();if(!member.exists()||member.data().userId!==userId||member.data().status!=='active')throw Error('Membership changed.');await setDoc(refFor('teacherStudentLinks',s.user.uid+'_'+userId),{teacherId:s.user.uid,userId,classId});s.check();const [profile,progress,chapterProgress,attempts]=await Promise.all([getDocFromServer(refFor('users',userId)),list(s,'studentProgress',[where('userId','==',userId)]),list(s,'studentChapterProgress',[where('userId','==',userId)]),list(s,'studentQuizAttempts',[where('userId','==',userId)])]);s.check();const report={profile:profile.exists()?profile.data():null,progress,attempts};const path=buildJourneyPath({userId,eras,chapters,missions,challenges:[],chapterProgress,missionProgress:report.progress}).flatMap(e=>e.chapters.flatMap(c=>c.missions));return {userId,name:[report.profile?.firstName,report.profile?.lastName].filter(Boolean).join(' ')||'Student',...assignmentReadiness(path,{missionId,chapterId:mission.chapterId}),latestScore:[...report.attempts].filter(a=>a.missionId===missionId&&a.chapterId===mission.chapterId).sort((a,b)=>(b.completedAt?.toMillis?.()||0)-(a.completedAt?.toMillis?.()||0))[0]?.score};}));group.forEach((r,i)=>results.push(r.status==='fulfilled'?r.value:{userId:userIds[offset+i],state:'unknown'}));s.check();}
     return results;
 }
-export async function loadTeacherFeedback(classId, userId) {
+export async function loadTeacherFeedback(classId, userId, missionId = null) {
     const s = session(); await owned(s, classId);
     const membership = await getDocFromServer(refFor('classMembers', userId + '_' + classId)); s.check();
     if (!membership.exists() || membership.data().status !== 'active' || membership.data().userId !== userId) throw Error('This student is no longer an active member.');
-    return list(s, 'classFeedback', [where('classId','==',classId),where('userId','==',userId),where('teacherId','==',s.user.uid)]);
+    const filters=[where('classId','==',classId),where('userId','==',userId),where('teacherId','==',s.user.uid)];
+    if(missionId)filters.push(where('missionId','==',missionId));
+    return list(s,'classFeedback',filters);
 }
-export async function sendTeacherFeedback(classId, userId, missionId, body) {
+export async function sendTeacherFeedback(classId, userId, missionId, body, expectedRevision = null) {
     const message = String(body ?? '').trim();
     if (!message || message.length > 1500) throw Error('Write feedback using 1 to 1500 characters.');
     const s = session(); await owned(s, classId);
@@ -325,6 +362,10 @@ export async function sendTeacherFeedback(classId, userId, missionId, body) {
         if (!mission.exists() || mission.data().status !== 'active') throw Error('Choose an available mission.');
         const old = previous.exists() ? previous.data() : null;
         if (old && (old.classId !== classId || old.userId !== userId || old.missionId !== missionId || old.teacherId !== s.user.uid)) throw Error('Feedback context changed. Refresh and try again.');
+        if(expectedRevision!==null&&expectedRevision!==(old?.revision||0)){
+            if(old?.body===message)return;
+            throw Error('Feedback changed since you opened it. Copy your draft, then reopen this feedback to review the latest message.');
+        }
         tx.set(target,{classId,userId,teacherId:s.user.uid,missionId,chapterId:mission.data().chapterId,body:message,revision:(old?.revision || 0)+1,createdAt:old?.createdAt || serverTimestamp(),updatedAt:serverTimestamp(),readAt:null});
     }); s.check();
 }

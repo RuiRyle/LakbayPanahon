@@ -5,16 +5,23 @@ const frame = document.getElementById("studentRouteFrame");
 const loading = document.getElementById("shellLoading");
 const recovery = document.getElementById('shellRecovery');
 const loadingMessage = document.getElementById('shellLoadingMessage');
+const compass = document.getElementById('shellLoadingCompass');
+const retry = document.getElementById('shellRetry');
 let loadTimer;
 function showRecovery() {
     loading.hidden = false;
     recovery.hidden = false;
-    loadingMessage.textContent = 'Your learning page has not opened yet.';
+    if (compass) compass.hidden = true;
+    frame.inert = true;
+    loadingMessage.textContent = 'We could not open this learning page.';
+    if (document.activeElement === frame || document.activeElement === document.body) retry.focus();
 }
 function startLoading() {
     clearTimeout(loadTimer);
     loading.hidden = false;
     recovery.hidden = true;
+    if (compass) compass.hidden = false;
+    frame.inert = true;
     loadingMessage.textContent = 'Opening your learning journey…';
     loadTimer = setTimeout(showRecovery, 20000);
 }
@@ -33,17 +40,28 @@ function syncCurrentRoute() {
 
 frame.addEventListener("load", () => {
     clearTimeout(loadTimer);
-    loading.hidden = true;
     try {
+        const page = new URL(frame.contentWindow.location.href);
+        if (page.href === 'about:blank') {
+            loadTimer = setTimeout(showRecovery,20000);
+            return;
+        }
+        if (page.origin !== pagesDirectory.origin || !frame.contentDocument ||
+            frame.contentDocument.body?.hasAttribute('data-student-route-missing')) {
+            showRecovery();
+            return;
+        }
+        loading.hidden = true;
+        frame.inert = false;
         const pageTitle = frame.contentDocument?.title;
         if (pageTitle) document.title = `${pageTitle} | LakbayPanahon`;
         syncCurrentRoute();
         frame.contentWindow.addEventListener('hashchange', syncCurrentRoute);
         frame.contentWindow.addEventListener('popstate', syncCurrentRoute);
-    } catch {}
+    } catch { showRecovery(); }
 });
 frame.addEventListener('error', () => { clearTimeout(loadTimer); showRecovery(); });
-document.getElementById('shellRetry').addEventListener('click', () => {
+retry.addEventListener('click', () => {
     const currentRoute = studentRouteForPage(new URLSearchParams(window.location.search).get('route') || '', pagesDirectory);
     startLoading();
     frame.src = new URL(currentRoute || routeUrl.href, pagesDirectory).href;

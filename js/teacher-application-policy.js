@@ -1,5 +1,9 @@
 export const EVIDENCE_MAX_BYTES=250*1024;
 export const EVIDENCE_DAYS=30;
+export function teacherEvidenceExpired(uploadedAt){
+ const time=typeof uploadedAt?.toMillis==='function'?uploadedAt.toMillis():NaN;
+ return !Number.isFinite(time)||time+EVIDENCE_DAYS*86400000<=Date.now();
+}
 export const APPLICANT_LABELS={school_teacher:'School-affiliated teacher',licensed_teacher:'Licensed teacher',student_teacher:'Student teacher',facilitator:'Learning facilitator'};
 export function applicationFields(values,submit=false){
  const result={};
@@ -28,7 +32,7 @@ export function reviewFields(application,values){
  const affiliationReference=String(values.affiliationReference||'').trim(),credentialReference=String(values.credentialReference||'').trim();
  if(affiliationReference.length>500||credentialReference.length>500)throw Error('Verification references must be 500 characters or fewer.');
  if(decision==='approved'){
-  if(!application.emailVerified)throw Error('The application must be submitted with a verified email.');
+  if(application.emailVerified!==true)throw Error('The applicant must verify their email before you can approve this application.');
   if(!checks.identity||!checks.affiliation||affiliationReference.length<5)throw Error('Record identity and independent institution verification.');
   if(application.applicantType!=='school_teacher'){
    if(application.applicantType==='licensed_teacher'?!checks.prc:!checks.endorsement)throw Error('Complete the PRC or endorsement check for this route.');

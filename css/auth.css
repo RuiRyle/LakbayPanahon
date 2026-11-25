@@ -605,7 +605,7 @@ input {
 
     border-radius: 12px;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 
     transition:
         border-color 0.2s ease,
@@ -821,11 +821,6 @@ input {
 }
 
 
-.input-wrapper:has(.password-toggle) input {
-    padding-right: 67px;
-}
-
-
 .input-icon {
     position: absolute;
 
@@ -841,29 +836,6 @@ input {
     font-size: 13px;
 
     pointer-events: none;
-}
-
-
-.password-toggle {
-    position: absolute;
-
-    right: 13px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    padding: 3px;
-
-    color: var(--navy);
-
-    background: transparent;
-
-    border: 0;
-
-    font-size: 9px;
-    font-weight: 800;
-
-    cursor: pointer;
 }
 
 
@@ -897,7 +869,7 @@ input {
 
     font-size: 10px;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 }
 
 
@@ -997,7 +969,7 @@ input {
     font-size: 12px;
     font-weight: 800;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 
     box-shadow:
         0 8px 20px rgba(24, 49, 83, 0.16);
@@ -1353,7 +1325,211 @@ input {
 
 #studentRegistrationContinue[hidden] { display: none; }
 #studentRegistrationContinue { margin-top: 1rem; text-align: center; text-decoration: none; }
+.student-access-choice:not([hidden]) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 44px;
+    margin-block: 8px;
+    color: #f0d497;
+    font-weight: 700;
+    text-underline-offset: 4px;
+}
+body.lakbay-theme .auth-page.student-access-page {
+    display: block;
+    min-height: 100dvh;
+    background: radial-gradient(ellipse at 50% 0%, #254a56, #0e2437 75%);
+}
+body.lakbay-theme .student-access-page .auth-form-section {
+    max-width: 520px;
+    margin-inline: auto;
+    background: transparent;
+}
+body.lakbay-theme .student-access-page .auth-form-container {
+    padding: clamp(17px, 4vw, 30px);
+    border: 1px solid #947b53;
+    border-radius: 16px;
+    background: #142f43;
+}
+.student-access-page .auth-form { display: grid; gap: 12px; }
+.student-access-page fieldset:not([hidden]) { display: grid; gap: 10px; padding: 12px; border: 1px solid #657d87; border-radius: 8px; }
+.student-access-page label:not([hidden]) { display: grid; gap: 4px; }
+body.lakbay-theme .student-access-page input {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid #617d8d;
+    border-radius: 8px;
+    min-height: 44px;
+    background: #11283a;
+    color: #f7f3e8;
+    font: inherit;
+}
+.student-access-page .student-access-options { display: flex; flex-wrap: wrap; gap: 8px 15px; margin-block-start: 14px; }
+.student-access-page a { color: #f0d497; }
+.student-access-page .student-access-options a:not([hidden]) { display: inline-flex; align-items: center; min-height: 44px; }
+.student-access-page [hidden] { display: none; }
+.student-access-help { margin-block-start: 20px; padding: 16px; border: 1px solid #526d80; border-radius: 12px; background: #10283a; }
+.student-access-help h2 { margin: 0 0 8px; color: #f0d497; font-size: 1.13rem; }
+.student-access-help p { margin-block: 8px; line-height: 1.6; }
+.student-access-key { display: grid; gap: 8px; margin-block: 16px; }
+.student-access-key div { padding: 10px 12px; background: #0b2133; border: 1px solid #536d80; border-radius: 8px; }
+.student-access-key dt { font-weight: 600; }
+.student-access-key dd { margin: 2px 0 0; overflow-wrap: anywhere; color: #f0d497; }
 .registration-notice { margin: 22px 0 16px; padding: 17px 19px; border: 1px solid #49617c; border-radius: 13px; background: #10263f; color: #c8d7e6; }
 .registration-notice h2 { margin: 0 0 9px; color: #edd194; font-size: .94rem; line-height: 1.5; }
 .registration-notice p { margin: 0; color: #c8d7e6; font-size: .81rem; line-height: 1.7; }
 .registration-notice p + p { margin-top: 9px; color: #aebfd1; }
+/* Batch 1: web-first authentication; retain desktop branding and responsive form access. */
+body.lakbay-theme .auth-page :is(label, .input-help, .remember-me, .form-message, .auth-note, .auth-button, .secondary-button, .auth-divider p, .login-prompt, .teacher-registration-link, .registration-notice p) { font-size: .875rem; line-height: 1.6; }
+body.lakbay-theme .auth-page :is(.back-home, #forgotPasswordButton, .auth-note a, a[href="teacher-register.html"]) { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; line-height: 1.5; }
+body.lakbay-theme .auth-page #forgotPasswordButton { padding: 8px 4px; }
+body.lakbay-theme .auth-page label:has(input[type="checkbox"]) { min-height: 44px; cursor: var(--lakbay-cursor-hand, pointer); }
+@media (max-width: 900px) {
+    body.lakbay-theme .auth-page .auth-showcase { padding: 20px 24px; }
+    body.lakbay-theme .auth-page .showcase-content { margin: 16px 0 0; }
+    body.lakbay-theme .auth-page .showcase-content h1 { font-size: clamp(1.35rem, 4vw, 1.75rem); line-height: 1.25; margin: 8px 0; }
+    body.lakbay-theme .auth-page .showcase-content > p { font-size: .875rem; margin: 8px 0 0; }
+    body.lakbay-theme .auth-page :is(.journey-card, .register-benefits) { display: none; }
+    body.lakbay-theme .auth-page .auth-form-section { padding: 20px 24px 48px; }
+}
+@media (max-width: 600px) {
+    body.lakbay-theme .auth-page .auth-showcase { padding: 16px; }
+    body.lakbay-theme .auth-page .showcase-content { margin-top: 12px; }
+    body.lakbay-theme .auth-page .showcase-content > p { display: none; }
+    body.lakbay-theme .auth-page .auth-form-section { padding: 16px 16px 40px; }
+}
+body.lakbay-theme .auth-page .login-prompt { align-items: center; flex-wrap: wrap; }
+body.lakbay-theme .auth-page .auth-divider { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+body.lakbay-theme .auth-page .login-prompt a { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; }
+
+body.lakbay-theme .auth-page .auth-form-container .auth-form {
+    padding-block-start: 1rem;
+    border-block-start: 1px solid #748784;
+}
+body.lakbay-theme .auth-page .auth-form-container :is(h1,h2) { text-wrap: balance; }
+
+/* Login's harbor scene sits behind the existing desktop introduction. */
+.login-harbor {isolation:isolate}
+.login-harbor-art {
+    position:absolute; inset:0; z-index:-2; pointer-events:none;
+    background:#123646 url('../assets/atlas/profile-history-journey.jpg') 44% center / cover no-repeat;
+}
+.login-harbor::before {
+    content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+    background:linear-gradient(0deg,#081c2fea,transparent 21%),
+        linear-gradient(90deg,#091e33ef 0%,#0a2138d9 44%,#10273755 100%);
+}
+.login-harbor .showcase-content {padding-block:2rem}
+.login-harbor .showcase-content h1 {max-width:16ch;text-wrap:balance}
+.login-harbor .showcase-content > p {max-width:42ch;color:#e2eaf1}
+.login-harbor .login-harbor-caption {
+    display:flex;align-items:center;gap:10px;position:relative;margin:0;
+    font-size:.82rem;line-height:1.5;color:#f4e4bf;
+}
+.login-harbor-caption span {width:32px;height:2px;background:#dfbc71;flex:none}
+@media(min-width:901px) and (prefers-reduced-motion:no-preference){
+    .login-harbor-art {animation:login-harbor-arrival 4.5s cubic-bezier(.22,.6,.32,1) both}
+    .login-harbor-caption span {transform-origin:left;animation:login-harbor-line 1.3s ease-out both}
+}
+@keyframes login-harbor-arrival {from{transform:scale(1.055) translateX(-1%)}to{transform:scale(1)}}
+@keyframes login-harbor-line {from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(max-width:900px){
+    .login-harbor .showcase-content {padding:0}
+    .login-harbor .login-harbor-caption {display:none}
+    .login-harbor-art {background-position:center 55%}
+}
+
+.login-help-link {
+    margin: 12px 0 0;
+    text-align: center;
+    font-size: .86rem;
+}
+.login-help-link a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #f0d497;
+    text-underline-offset: 3px;
+}
+.login-account-help {
+    margin-top: 16px;
+    padding: 16px;
+    scroll-margin-top: 16px;
+    border: 1px solid #617b88;
+    border-radius: 12px;
+    background: #173449;
+    color: #e1ebf2;
+}
+.login-account-help h2 {
+    margin: 0 0 8px;
+    color: #f4dfaf;
+    font-size: 1.05rem;
+}
+.login-account-help p {
+    margin: 8px 0 0;
+    font-size: .86rem;
+    line-height: 1.65;
+}
+.login-account-help:focus, .login-help-link a:focus-visible {
+    outline: 2px solid #f0d497;
+    outline-offset: 3px;
+}
+
+.reset-preview-note,
+.reset-delivery-help {
+    margin-block: 12px;
+    padding: 12px 14px;
+    border: 1px solid #6a8790;
+    border-radius: 10px;
+    background: #173449;
+    color: #e1ebf2;
+    font-size: .9rem;
+    line-height: 1.55;
+}
+.reset-preview-note { border-inline-start: 3px solid #e5be76; }
+.reset-delivery-help h3 { margin: 0 0 7px; color: #f7dea9; font-size: 1rem; }
+.reset-delivery-help ul { display: grid; gap: 5px; margin: 0; padding-inline-start: 19px; }
+.reset-cooldown { margin-block: 4px 0; color: #d3e0e8; font-size: .85rem; text-align: center; }
+.reset-student-id { margin-block-start: 16px; padding-block-start: 14px; border-block-start: 1px solid #526d80; }
+.reset-student-id h3 { margin: 0 0 6px; color: #f7dea9; font-size: 1rem; }
+.reset-student-id p { margin: 0; color: #d3e0e8; font-size: .9rem; line-height: 1.55; }
+.reset-student-id-options { display: flex; flex-wrap: wrap; align-items: start; column-gap: 12px; }
+
+.reset-flow-heading {
+    display: grid;
+    justify-items: start;
+    gap: 12px;
+    margin-block-end: 22px;
+}
+.reset-flow-icon {
+    display: grid;
+    place-items: center;
+    inline-size: 54px;
+    block-size: 54px;
+    border: 1px solid #826a42;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #57462d, #292e39);
+    color: #ffe2a2;
+    box-shadow: 0 8px 24px #050d1566;
+}
+.reset-flow-heading .form-label, .reset-flow-heading p { margin: 0; }
+.auth-action-page .auth-form-container { max-width: 31rem; }
+body.lakbay-theme .auth-action-page .reset-flow-heading h1 {
+    margin: 0;
+    color: var(--lp-text, #eef4fa);
+    font: 700 clamp(1.8rem, 4vw, 2.55rem)/1.16 Georgia, serif;
+}
+.auth-action-page .showcase-content .auth-action-tagline {
+    font: 700 clamp(1.7rem, 3.8vw, 3.05rem)/1.15 Georgia, serif;
+    text-wrap: balance;
+}
+.auth-action-page .auth-action-form input { padding-inline-start: 14px; }
+.auth-action-page .auth-action-controls { display: grid; gap: 10px; }
+.auth-action-page .auth-action-controls > a { text-decoration: none; }
+.auth-action-page .form-message:not(:empty) { margin-block: 12px; }
+.auth-action-page[data-state="done"] .reset-flow-icon {
+    color: #e2f2d8;
+    border-color: #77a183;
+    background: #244739;
+}
+.auth-action-page [hidden], #finishAccountSetup[hidden] { display: none !important; }

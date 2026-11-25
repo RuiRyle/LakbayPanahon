@@ -21,7 +21,7 @@
 .journey-era:first-child h3 { margin-top:8px; }
 .journey-era h3 .text-button{margin-left:auto;min-height:44px;display:inline-flex;align-items:center;padding:8px 11px;border:1px solid #ded0ab;border-radius:9px;background:#fffaf0;color:#725422;text-transform:none;letter-spacing:normal;font-size:.78rem;font-weight:700;text-decoration:none}
 .journey-chapter { border:1px solid #e4e7ec; border-radius:12px; margin-bottom:12px; overflow:hidden; }
-.journey-chapter summary { cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px; background:#f8fafc; list-style:none; }
+.journey-chapter summary { cursor:var(--lakbay-cursor-hand, pointer); display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px; background:#f8fafc; list-style:none; }
 .journey-chapter summary::after { content:'+'; font-size:1.2rem; color:#667085; }
 .journey-chapter[open] summary::after { content:'\2212'; }
 .journey-chapter-name { font-weight:700; color:#183153; flex:1; }

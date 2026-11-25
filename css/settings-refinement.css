@@ -11,7 +11,7 @@ body.student-settings-page.lakbay-theme[data-role="student"] .settings-section-l
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-section-links a{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border:1px solid #4f6a6c;border-radius:22px;background:#15323f;color:#dccb9f;font-size:.8rem;line-height:1.5;text-decoration:none}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:18px;align-items:start;margin:0 0 20px}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-primary-column,body.student-settings-page.lakbay-theme[data-role="student"] .settings-side-column{display:grid;gap:18px;min-width:0}
-body.student-settings-page.lakbay-theme[data-role="student"] .settings-panel{padding:22px;border:1px solid #45616b;border-radius:16px;background:#112c3e;box-shadow:none;margin:0;min-width:0}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-panel{padding:var(--lp-space-6);border:1px solid var(--lp-line);border-radius:var(--lp-radius-panel);background:var(--lp-surface);box-shadow:var(--lp-shadow-panel);margin:0;min-width:0}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-panel-heading{display:flex;align-items:center;gap:12px;padding:0;margin-bottom:10px;border:0}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-panel-heading h2{font-size:1.16rem;color:#ece2c9;line-height:1.35;margin:4px 0 0}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-panel-mark{width:38px;height:38px;flex-shrink:0;border:1px solid #69775f;border-radius:10px;background:#23434a;color:#d8c28b}
@@ -23,7 +23,7 @@ body.student-settings-page.lakbay-theme[data-role="student"] .settings-option-ic
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-option-copy{min-width:0}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-option-copy h3{font-size:.9rem;line-height:1.5;color:#e1e9e9;margin:0 0 4px}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-option-copy p{font-size:.78rem;line-height:1.65;color:#b4cad4;margin:0;max-width:65ch}
-body.student-settings-page.lakbay-theme[data-role="student"] .settings-switch{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:52px;min-height:46px;padding:2px;border:0;background:transparent;box-shadow:none;cursor:pointer}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-switch{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:52px;min-height:46px;padding:2px;border:0;background:transparent;box-shadow:none;cursor:var(--lakbay-cursor-hand, pointer)}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-switch-track{width:42px;height:24px;padding:3px;border:1px solid #6f858a;border-radius:20px;background:#1a3448;box-sizing:border-box;position:relative}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-switch-track>span{display:block;position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#bdcbd2;box-shadow:none;transform:none}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-switch[aria-checked=true] .settings-switch-track{background:#cbb47b;border-color:#dfc991}
@@ -35,13 +35,13 @@ body.student-settings-page.lakbay-theme[data-role="student"] .settings-volume-la
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-volume-label output{color:#e2cca0;font-size:.75rem;font-variant-numeric:tabular-nums}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-volume-controls{display:flex;gap:14px;align-items:center;min-width:0}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-volume-controls input[type=range]{flex:1;min-width:0;width:100%;height:30px;accent-color:#d2b87c}
-body.student-settings-page.lakbay-theme[data-role="student"] .settings-preview-button{flex-shrink:0;min-height:40px;padding:8px 12px;border:1px solid #697b68;border-radius:8px;background:#1d3f46;color:#e6d2a0;font:inherit;font-size:.76rem;line-height:1.5;box-shadow:none;cursor:pointer}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-preview-button{flex-shrink:0}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-music-status{font-size:.73rem;line-height:1.6;color:#b3c9d1;margin:8px 0 0}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-reading-control{min-width:125px;max-width:180px;font-size:.68rem;color:#b9cbd1}
-body.student-settings-page.lakbay-theme[data-role="student"] #studentReadingSize{display:block;min-height:42px;width:100%;padding:9px 10px;border:1px solid #6b7d6f;border-radius:8px;background:#0c2637;color:#e6e9df;font:inherit;font-size:.8rem;margin-top:5px}
+body.student-settings-page.lakbay-theme[data-role="student"] #studentReadingSize{display:block;width:100%;margin-top:5px}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid #3f5b66}
-body.student-settings-page.lakbay-theme[data-role="student"] .settings-saved-note{font-size:.73rem;color:#b8cdd3;line-height:1.5;margin:0}
-body.student-settings-page.lakbay-theme[data-role="student"] .settings-reset-button{min-height:40px;padding:8px 12px;border:1px solid #72806b;border-radius:8px;background:transparent;color:#dfcca0;font:inherit;font-size:.75rem;cursor:pointer}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-saved-note{margin:0}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-reset-button{flex-shrink:0}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-account-panel{padding:20px;border:1px solid #526a63;border-radius:16px;background:#18383e;min-height:0;box-shadow:none}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-account-panel h2{font-size:1.15rem;color:#ecdfbd;margin:6px 0 10px}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-account-panel p{font-size:.82rem;line-height:1.7;color:#c2d4da;margin:0 0 14px}
@@ -64,14 +64,15 @@ body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-ques
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-questions details[open]>summary{color:#e3cb94}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-disclosure-icon{flex-shrink:0;width:22px;height:22px;border-color:#5d736b;border-radius:6px;background:#193840;color:#dbc896}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-answer{padding:0 0 14px}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-questions details:not([open]) > .settings-data-answer { display:none; }
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-answer p{font-size:.8rem;line-height:1.75;color:#c0d1d8}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-support{padding:19px;border:1px solid #7c795b;border-top:3px solid #b5a371;border-radius:12px;background:linear-gradient(120deg,#1c3639,#142e3e)}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-support h3{font-size:1.12rem;color:#f0ddb1;margin:0 0 10px}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-support h4{font-size:.9rem;color:#e7dcc0;margin:18px 0 8px}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-support p{font-size:.8rem;line-height:1.75;color:#c5d4d9;margin:0 0 10px}
-body.student-settings-page.lakbay-theme[data-role="student"] #downloadLearningData{display:inline-flex;align-items:center;min-height:44px;padding:10px 14px;border:1px solid #e2c994;border-radius:9px;background:#d8be83;color:#102b3e;font-size:.79rem;line-height:1.5;margin:4px 0 10px}
+body.student-settings-page.lakbay-theme[data-role="student"] #downloadLearningData{margin:4px 0 10px}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-support .settings-support-note{font-size:.73rem;line-height:1.7;padding-top:10px;border-color:#506357;color:#c1cecc}
-body.student-settings-page.lakbay-theme[data-role="student"] .settings-content :is(button,a,input,select,summary):focus-visible{outline:3px solid #e5cc92;outline-offset:4px}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-content :is(button,a,input,select,summary):focus-visible{outline:3px solid var(--lp-focus);outline-offset:4px}
 @media(hover:hover){body.student-settings-page.lakbay-theme[data-role="student"] .settings-section-links a:hover{background:#24464a;border-color:#a99f73}body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-card:hover{border-color:#9c9870}}
 @media(max-width:1050px){body.student-settings-page.lakbay-theme[data-role="student"] .settings-layout{grid-template-columns:minmax(0,1fr)}body.student-settings-page.lakbay-theme[data-role="student"] .settings-side-column{grid-template-columns:1fr 1fr}body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-guidance{grid-template-columns:1fr}}
 @media(max-width:650px){body.student-settings-page.lakbay-theme[data-role="student"] #student-main .settings-heading{padding:18px;align-items:flex-start;flex-direction:column;gap:14px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-storage-badge{padding:9px 12px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-section-links{gap:7px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-section-links a{font-size:.74rem;padding:8px 12px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-panel{padding:18px 16px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-option{grid-template-columns:26px minmax(0,1fr) 48px;gap:10px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-option-icon{width:26px;height:26px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-option-copy h3{font-size:.85rem}body.student-settings-page.lakbay-theme[data-role="student"] .settings-option-copy p{font-size:.77rem}body.student-settings-page.lakbay-theme[data-role="student"] .settings-volume-row{padding-left:36px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-volume-controls{gap:10px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-reading-option{grid-template-columns:26px minmax(0,1fr)}body.student-settings-page.lakbay-theme[data-role="student"] .settings-reading-control{grid-column:2;max-width:none;width:100%;margin-top:5px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-side-column{grid-template-columns:1fr}body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-actions{grid-template-columns:1fr}body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-card{padding:16px}body.student-settings-page.lakbay-theme[data-role="student"] .settings-data-guidance{gap:20px}}
@@ -81,3 +82,59 @@ body.student-settings-page.lakbay-theme[data-role="student"] .settings-option>.s
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-option>.settings-option-copy{grid-column:2;grid-row:1}
 body.student-settings-page.lakbay-theme[data-role="student"] .settings-option>.settings-switch{grid-column:3;grid-row:1;justify-self:end;margin:0}
 @media(max-width:650px){body.student-settings-page.lakbay-theme[data-role="student"] .settings-reading-option>.settings-reading-control{grid-column:2;grid-row:2}}
+
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-reading-sample {
+    margin-block:16px;padding:16px 20px;border-radius:8px;
+    border:1px solid #ab9258;border-inline-start:3px solid #d7b775;
+    background:#142f44;color:#f3e6cb;
+}
+.settings-reading-sample strong {color:#efd496}
+.settings-reading-sample p {margin:5px 0 0;font-size:var(--lp-type-body,1rem);line-height:1.6}
+html[data-student-text-size="large"] .settings-reading-sample p {font-size:1.15rem}
+html[data-student-text-size="larger"] .settings-reading-sample p {font-size:1.3rem}
+html[data-student-contrast="high"] .settings-reading-sample {border-color:currentColor}
+
+body.student-settings-page.lakbay-theme[data-role="student"] #student-main .settings-heading {
+    gap: .8rem 1.25rem;
+    background: radial-gradient(ellipse at top right, #31564f, transparent 62%), #142f43;
+    border-color: #6c877e;
+}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-section-links {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .4rem;
+    padding: .4rem;
+    border: 1px solid #4f6c78;
+    border-radius: 11px;
+    background: #0e2838;
+}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-section-links a {
+    min-height: 44px;
+    justify-content: space-between;
+    gap: .45rem;
+    padding: .55rem .65rem;
+    border-radius: 7px;
+    background: #153746;
+    color: #f0e2bd;
+    overflow-wrap: anywhere;
+}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-section-links a::after {
+    content: '';
+    flex: 0 0 .4rem;
+    block-size: .4rem;
+    border: solid currentColor;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+body.student-settings-page.lakbay-theme[data-role="student"] #accountSettingsTitle {
+    scroll-margin-block-start: 7rem;
+}
+body.student-settings-page.lakbay-theme[data-role="student"] .settings-reading-sample {
+    background: linear-gradient(128deg, #23453f, #163647 85%);
+    border-radius: 5px 13px 5px 13px;
+}
+@media (max-width: 650px) {
+    body.student-settings-page.lakbay-theme[data-role="student"] .settings-section-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

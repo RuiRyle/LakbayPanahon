@@ -25,17 +25,50 @@ export function mountEvidenceSaver({scene,chapterId,missionId,anchor,explored}) 
     const copy=document.createElement('p');copy.textContent='Keep the clues you opened so you can find them later. Saving a clue does not earn XP or mean you have mastered it.';
     const save=document.createElement('button');save.type='button';save.className='text-button';save.textContent='Save Opened Clues';
     const link=document.createElement('a');link.href='my-journey.html#evidenceJournal';link.textContent='Open My Journal';link.className='text-button';
-    const status=document.createElement('p');status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+    const status=document.createElement('p');status.className='lp-status-panel';status.setAttribute('role','status');status.setAttribute('aria-live','polite');
     save.addEventListener('click',async()=>{
         if(auth.currentUser?.uid!==uid)return;
         const indices=explored();
-        if(!indices.length){status.textContent='Open a clue above, then save it here.';return;}
-        save.disabled=true;status.textContent='Saving your clues...';
+        if(!indices.length){status.dataset.state='';status.textContent='Open a clue above, then save it here.';return;}
+        status.classList.remove('journal-save-confirmed');
+        save.disabled=true;status.dataset.state='saving';status.textContent='Saving your clues…';
+        const slowSaveNotice=setTimeout(()=>{
+            if(auth.currentUser?.uid===uid&&host.isConnected)status.textContent='Still saving your clues. Keep this lesson open and wait for confirmation.';
+        },6000);
         try{
             const current=await saveEvidenceClues({chapterId,missionId,sceneId:scene.id,indices});
-            if(current&&host.isConnected)status.textContent='Your opened clues are saved. You can find them in My Journey.';
-        }catch{if(auth.currentUser?.uid===uid&&host.isConnected)status.textContent='We could not confirm all clues were saved. Check your connection and try again; saved clues will not be duplicated.';}
-        finally{if(auth.currentUser?.uid===uid&&host.isConnected)save.disabled=false;}
+            if(current&&host.isConnected){
+                status.dataset.state='saved';
+                status.textContent='Clues saved. Find them in your Evidence Journal.';
+                status.classList.add('journal-save-confirmed');
+                document.dispatchEvent(new CustomEvent('lakbay:clue-saved'));
+                if (!matchMedia('(prefers-reduced-motion: reduce)').matches &&
+                    !document.body.classList.contains('lakbay-reduce-motion') && save.animate) {
+                    const from=save.getBoundingClientRect(), to=link.getBoundingClientRect();
+                    const slip=document.createElement('span');
+                    slip.className='journal-save-slip';
+                    slip.setAttribute('aria-hidden','true');
+                    slip.style.left=(from.left+from.width/2)+'px';
+                    slip.style.top=(from.top+from.height/2)+'px';
+                    document.body.append(slip);
+                    const x=to.left+to.width/2-from.left-from.width/2;
+                    const y=to.top+to.height/2-from.top-from.height/2;
+                    const motion=slip.animate([
+                        {transform:'translate(-50%, -50%) rotate(-10deg)',opacity:0},
+                        {transform:'translate(-50%, calc(-50% - 16px)) rotate(-5deg)',opacity:1,offset:.24},
+                        {transform:`translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(8deg) scale(.25)`,opacity:0}
+                    ],{duration:420,easing:'ease-in-out'});
+                    void motion.finished.catch(()=>{}).finally(()=>slip.remove());
+                }
+            }
+        }catch{if(auth.currentUser?.uid===uid&&host.isConnected){
+            status.dataset.state='retry';
+            status.textContent='We could not confirm all clues were saved. Check your connection and try again. Saved clues will not be duplicated.';
+        }}
+        finally{
+            clearTimeout(slowSaveNotice);
+            if(auth.currentUser?.uid===uid&&host.isConnected)save.disabled=false;
+        }
     });
     host.append(heading,copy,save,link,status);anchor.after(host);
 }

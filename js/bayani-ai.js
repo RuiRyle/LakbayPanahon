@@ -157,7 +157,7 @@ async function connect(){const request=++generation,uid=auth.currentUser?.uid;cl
 }
 form.addEventListener('submit',async event=>{event.preventDefault();const message=input.value.trim();if(!client||busy||!message)return;if(message.length>client.settings.maxMessageCharacters)return;const request=generation,uid=auth.currentUser?.uid,requestClient=client,requestHistory=history;busy=true;input.disabled=send.disabled=true;retry.hidden=true;status.textContent='Bayani is thinking...';const userBubble=bubble('user',message);input.value='';
  try{const answer=await withBayaniDeadline(()=>requestClient.send(message,requestHistory),BAYANI_REPLY_TIMEOUT_MS);if(request!==generation||auth.currentUser?.uid!==uid)return;if(typeof answer!=='string'||!answer.trim())throw Object.assign(Error('Bayani returned no text.'),{code:'bayani/no-content'});bubble('assistant',answer);history.push({role:'user',parts:[{text:message}]},{role:'model',parts:[{text:answer}]});saveCurrentChat(uid);status.textContent='Ready to chat.';}
- catch(error){if(request!==generation||auth.currentUser?.uid!==uid)return;userBubble.remove();input.value=message;status.textContent=chatFailure(error)+' Your question is still here.';}
+ catch(error){if(request!==generation||auth.currentUser?.uid!==uid)return;userBubble.remove();input.value=message;status.textContent=chatFailure(error)+' Your question is still here. Select Send to try again.';}
  finally{if(request===generation&&auth.currentUser?.uid===uid){busy=false;input.disabled=send.disabled=false;syncChatAppearance();input.focus({preventScroll:true});}}
 });
 retry.addEventListener('click',connect);

@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
 <link rel="stylesheet" href="../css/interface-icons.css">
+    <link rel="stylesheet" href="../css/password-field.css">
 </head>
 
 
@@ -45,7 +46,8 @@
              LEFT SIDE
         =================================== -->
 
-        <section class="auth-showcase">
+        <section class="auth-showcase login-harbor">
+            <div class="login-harbor-art" aria-hidden="true"></div>
 
 
             <!-- LOGO -->
@@ -105,64 +107,9 @@
 
 
 
-                <div class="journey-card">
-
-
-                    <div class="journey-icon">
-                        <svg class="interface-icon" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M12 5v16" />
-  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
-</svg>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            Your Journey Continues
-                        </strong>
-
-                        <span>
-                            Learn, complete missions, earn rewards,
-                            and discover history.
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-
             </div>
 
-
-
-            <!-- DECORATIONS -->
-
-            <div
-                class="showcase-decoration decoration-one"
-            ></div>
-
-            <div
-                class="showcase-decoration decoration-two"
-            ></div>
-
-
-
-            <p class="showcase-footer">
-                LakbayPanahon • Philippine History Learning
-            </p>
+            <p class="login-harbor-caption"><span aria-hidden="true"></span> A young explorer studies a map &middot; Artist&rsquo;s illustration</p>
 
 
         </section>
@@ -229,6 +176,7 @@
                     <form
                         id="loginForm"
                         class="auth-form"
+                        method="post"
                     >
 
 
@@ -267,7 +215,6 @@
                                 <input
                                     type="email"
                                     id="loginEmail"
-                                    name="email"
                                     placeholder="Enter your email address"
                                     autocomplete="email"
                                     required
@@ -294,20 +241,20 @@
                                 </label>
 
 
-                                <button
-                                    type="button"
+                                <a
+                                    href="#account-help"
                                     id="forgotPasswordButton"
                                     class="forgot-link"
                                 >
                                     Forgot Password?
-                                </button>
+                                </a>
 
 
                             </div>
 
 
 
-                            <div class="input-wrapper">
+                            <div class="input-wrapper password-field">
 
 
                                 <span class="input-icon">
@@ -332,7 +279,6 @@
                                 <input
                                     type="password"
                                     id="loginPassword"
-                                    name="password"
                                     placeholder="Enter your password"
                                     autocomplete="current-password"
                                     required
@@ -342,10 +288,14 @@
                                 <button
                                     type="button"
                                     class="password-toggle"
-                                    data-target="loginPassword"
+                                    aria-controls="loginPassword"
                                     aria-label="Show password"
                                 >
-                                    Show
+                                    <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                        <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/>
+                                        <circle cx="12" cy="12" r="2.5"/>
+                                        <path class="password-eye-slash" d="m4 4 16 16"/>
+                                    </svg>
                                 </button>
 
 
@@ -413,6 +363,15 @@
 
                     </form>
 
+                    <section id="finishAccountSetup" class="reset-delivery-help" aria-labelledby="finishAccountSetupTitle" hidden>
+                        <h3 id="finishAccountSetupTitle">Finish your account setup</h3>
+                        <div class="reset-student-id-options">
+                            <a class="student-access-choice" href="register.html?mode=finish-setup">Finish Student Setup</a>
+                            <a class="student-access-choice" href="teacher-application.html">Finish Teacher Setup</a>
+                        </div>
+                    </section>
+                    <a class="student-access-choice" href="student-access.html" data-student-access-link>Sign in with a username</a>
+
 
 
                     <!-- ==================================
@@ -446,18 +405,20 @@
 
 
 
+
                     <!-- TEACHER REGISTRATION -->
 
                     <p class="teacher-registration-link">
 
                         Are you an Araling Panlipunan teacher?
 
-                        <a href="teacher-register.html">
+                        <a href="teacher-application.html">
                             Register as Teacher
                         </a>
 
                     </p>
 
+                    <p class="login-help-link"><a href="#account-help">Account help for students and guardians</a></p>
 
                 </div>
 
@@ -476,7 +437,13 @@
 
                     <!-- RESET HEADING -->
 
-                    <div class="forgot-password-header">
+                    <div class="form-heading reset-flow-heading">
+                        <div class="reset-flow-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                                <rect x="4" y="10" width="16" height="11" rx="3"/>
+                                <path d="M8 10V7a4 4 0 1 1 8 0v3m-4 4v3"/>
+                            </svg>
+                        </div>
 
 
                         <span class="form-label">
@@ -484,19 +451,19 @@
                         </span>
 
 
-                        <h2>
+                        <h2 id="resetPasswordTitle">
                             Reset your password
                         </h2>
 
 
                         <p>
-                            Enter the email address connected to
-                            your LakbayPanahon account. We will
-                            send you a password reset link.
+                            Enter your sign-in email and we’ll send a link to choose a new password.
                         </p>
 
 
                     </div>
+
+                    <p class="reset-preview-note" id="resetPreviewNote" hidden>This local preview uses Firebase test accounts. Reset links appear in the emulator log instead of your inbox.</p>
 
 
 
@@ -507,6 +474,7 @@
                     <form
                         id="forgotPasswordForm"
                         class="auth-form"
+                        method="post"
                     >
 
 
@@ -545,7 +513,6 @@
                                 <input
                                     type="email"
                                     id="resetEmail"
-                                    name="resetEmail"
                                     placeholder="Enter your email address"
                                     autocomplete="email"
                                     required
@@ -572,8 +539,9 @@
                         <!-- SEND RESET BUTTON -->
 
                         <button
-                            type="submit"
+                            type="submit" disabled
                             class="auth-button"
+                            aria-describedby="resetPasswordCooldown"
                         >
 
                             Send Reset Link
@@ -583,6 +551,18 @@
                             </span>
 
                         </button>
+
+                        <p id="resetPasswordCooldown" class="reset-cooldown" hidden></p>
+
+                        <section id="resetDeliveryHelp" class="reset-delivery-help" aria-labelledby="resetDeliveryTitle" hidden>
+                            <h3 id="resetDeliveryTitle">Email hasn’t arrived?</h3>
+                            <ul>
+                                <li>Check Spam or Junk. Search your inbox for “Reset your password” or “LakbayPanahon”.</li>
+                                <li>Check the address above. If you used a different email to sign up, enter that address and request a link.</li>
+                                <li>Use the latest reset email. If its link expired or was already used, request a fresh one.</li>
+                                <li>If you can no longer open that inbox, ask the school or adult who helped you register for guidance.</li>
+                            </ul>
+                        </section>
 
 
 
@@ -599,10 +579,25 @@
 
                     </form>
 
+                    <section class="reset-student-id" aria-labelledby="resetStudentIdTitle">
+                        <h3 id="resetStudentIdTitle">Sign in with a username?</h3>
+                        <p>Recover your account with your saved backup key or ask your current teacher for a private reset code.</p>
+                        <div class="reset-student-id-options">
+                            <a class="student-access-choice" href="student-access.html?mode=backup">Use my backup key</a>
+                            <a class="student-access-choice" href="student-access.html?mode=reset" data-student-access-link>Use a teacher’s reset code</a>
+                        </div>
+                    </section>
 
                 </div>
 
 
+                <section id="account-help" class="login-account-help" aria-labelledby="loginAccountHelpTitle" tabindex="-1">
+                    <h2 id="loginAccountHelpTitle">Student account help</h2>
+                    <p><strong>Forgot your password?</strong> Choose <strong>Forgot Password?</strong> on the login form and enter your sign-in email. Check your inbox and spam folder for the reset link.</p>
+                    <p><strong>Use a username?</strong> <a href="student-access.html?mode=backup">Recover with your backup key</a> or <a href="student-access.html?mode=reset">use a reset code from your current teacher</a>.</p>
+                    <p><strong>Need help getting in or requesting a copy, correction, or deletion?</strong> Ask a parent or guardian to help you speak with the school or adult who gave you access. LakbayPanahon has no public support inbox or request form yet.</p>
+                    <p>If you can sign in, go to <strong>Settings → Account help</strong> for your learning-data download and things you can change yourself. Keep passwords, reset links, and downloaded files private.</p>
+                </section>
             </div>
 
 
@@ -625,6 +620,7 @@
 
 
     <script type="module" src="../js/page-transition.js"></script>
+    <script type="module" src="../js/password-field.js"></script>
     <script type="module" src="../js/expedition-ui.js"></script>
 </body>
 

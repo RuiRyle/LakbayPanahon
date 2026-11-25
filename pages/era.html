@@ -31,10 +31,11 @@
 <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
 <link rel="stylesheet" href="../css/interface-icons.css">
+    <link rel="stylesheet" href="../css/student-expedition-polish.css">
 </head>
 
 <body
-    class="auth-checking era-detail-page lakbay-theme"
+    class="auth-checking era-detail-page lakbay-theme lp-web-navigation"
     data-role="student"
 >
     <div class="student-loading-shell" role="status" aria-live="polite">
@@ -112,7 +113,7 @@
                     class="nav-link active" aria-current="page"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
-                    <span>Explore Chapters</span>
+                    <span>Chapter Map</span>
                 </a>
 
 
@@ -145,7 +146,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
-                    <span>Achievements</span>
+                    <span>Discovery Museum</span>
                 </a>
                 <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
 
@@ -219,17 +220,17 @@
                      PAGE INTRODUCTION
                 ================================== -->
 
-                <nav class="era-breadcrumb" aria-label="Learning path"><a href="chapters.html">All eras</a><span aria-hidden="true">/</span><span>Era overview</span></nav>
+                <nav class="era-breadcrumb" aria-label="Learning path"><a href="chapters.html">All eras</a><span aria-hidden="true">/</span><span aria-current="page">Era overview</span></nav>
                 <section id="eraArrival" class="era-arrival" aria-labelledby="eraArrivalTitle" hidden></section>
                 <section id="eraOverview" class="era-overview" hidden aria-labelledby="eraOverviewTitle">
-                    <div class="era-overview-copy"><span class="expedition-label">TIME PERIOD</span><p id="eraOverviewPeriod" class="era-period" hidden></p><h1 id="eraOverviewTitle">Loading your destination...</h1><p id="eraOverviewDescription" class="era-page-help"></p><details class="era-about"><summary>How to explore this era</summary><p class="era-page-help">Choose a chapter to start learning. Each chapter has short missions and a final challenge.</p></details><p id="eraOverviewAccess" class="era-access-note" role="status"></p><section id="eraProgressPanel" class="era-progress-panel" hidden aria-label="Your era progress"><div><strong id="eraProgressText"></strong><span id="eraProgressHint"></span></div><span id="eraCompletionPercent" aria-label="Era completion percentage"></span><progress id="eraProgress" max="1" value="0" aria-label="Completed chapters"></progress></section><div class="era-overview-actions"><a id="eraContinue" class="era-primary-action" hidden>Continue your adventure</a><a href="#chapterSection" class="era-secondary-action">See all chapters</a></div><p id="eraNextChapterName" class="era-next-chapter" hidden></p></div>
+                    <div class="era-overview-copy"><span class="expedition-label">TIME PERIOD</span><p id="eraOverviewPeriod" class="era-period" hidden></p><h1 id="eraOverviewTitle">Loading your destination...</h1><p id="eraOverviewDescription" class="era-page-help"></p><details class="era-about"><summary>How to explore this era</summary><p class="era-page-help">Choose a chapter to start learning. Each chapter has short missions and a final challenge.</p></details><p id="eraOverviewAccess" class="era-access-note" role="status"></p><section id="eraProgressPanel" class="era-progress-panel" hidden aria-label="Your era progress"><div><strong id="eraProgressText"></strong><span id="eraProgressHint"></span></div><span id="eraCompletionPercent" aria-label="Era completion percentage"></span><progress id="eraProgress" max="1" value="0" aria-label="Completed chapters"></progress></section><div class="era-overview-actions"><a id="eraContinue" class="era-primary-action lp-button lp-button-primary" hidden>Continue learning</a><a href="#chapterSection" class="era-secondary-action lp-button lp-button-secondary">See all chapters</a></div><p id="eraNextChapterName" class="era-next-chapter" hidden></p></div>
                     <div id="eraOverviewArt" class="era-overview-art" aria-hidden="true"></div>
                 </section>
 
                 <details open id="eraDiscoveries" class="era-discoveries" hidden><summary id="eraDiscoveriesTitle">What will I learn in this time period?</summary><ul id="eraDiscoveryList"></ul></details>
                 <div
-                    id="eraLoading"
-                    class="learning-message"
+                    id="eraLoading" role="status" aria-live="polite"
+                    class="learning-message lp-compass-loading"
                 >
                     Loading your journey...
                 </div>
@@ -241,7 +242,7 @@
                 ================================== -->
 
                 <div
-                    id="eraError"
+                    id="eraError" role="alert"
                     class="learning-message error-message"
                     hidden
                 >
@@ -298,8 +299,8 @@
 
 
                     <div
-                        id="chapterLoading"
-                        class="learning-message"
+                        id="chapterLoading" role="status" aria-live="polite"
+                        class="learning-message lp-compass-loading"
                         hidden
                     >
                         Loading chapters...

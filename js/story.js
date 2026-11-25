@@ -1,11 +1,13 @@
 import {mountEvidenceSaver} from './evidence-journal.js';
+import { navigatePage } from "./route-navigation.js";
+import { animateAssessmentArrival } from './assessment-motion.js';
 import { evaluateRoute, renderRouteInvestigation } from "./story-route.js";
 import {evaluateExhibit, renderExhibit} from "./story-exhibit.js";
 import { recordLessonReview } from "./review-events.js";
 import { validateTradeActivity, evaluateTradePlan } from './story-trade.js';
 import { stableDraftVersion } from "./quiz-draft-policy.js";
 import { mountLearningNavigation } from "./learning-navigation.js";
-import { requireMissionPolicy } from "./mission-assessment.js";
+import { minimumMissionCorrect, requireMissionPolicy } from "./mission-assessment.js";
 import { learningDraft, draftStatus, restartControl } from "./learning-draft.js";
 
 
@@ -397,7 +399,9 @@ async function loadStory() {
         }
 
         storyMissionTitle.textContent =
-            clean(mission.title) || "Story Mission";
+            clean(mission.title) || "Lesson";
+        const finishMission = document.getElementById('lessonFinishMission');
+        if (finishMission) finishMission.textContent = storyMissionTitle.textContent;
 
         storyChapterTitle.textContent =
             clean(chapter.title) || "Historical Chapter";
@@ -510,7 +514,7 @@ async function loadStory() {
         if (restoredScene && !storyReadingCard.hidden) {
             const resume = document.createElement('p');
             resume.className = 'lesson-resume-note';
-            resume.textContent = 'Resuming scene ' + (currentSceneIndex + 1) + ' of ' + scenes.length;
+            resume.textContent = `Resuming scene ${currentSceneIndex + 1} of ${scenes.length}`;
             resume.tabIndex = -1;
             sceneTitle.before(resume);
             storyReadingCard.classList.add('lesson-resumed');
@@ -546,12 +550,6 @@ function displayScene() {
     return;
 }
 
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        storyReadingCard.classList.remove('story-scene-arrival');
-        void storyReadingCard.offsetWidth;
-        storyReadingCard.classList.add('story-scene-arrival');
-    }
-
 resetStoryAiExplanation();
 
     document.dispatchEvent(new CustomEvent('mission-scene-start'));
@@ -562,17 +560,19 @@ resetStoryAiExplanation();
         for(const [label,value] of [['Period',scene.dateRange||scene.period],['Place',scene.location||scene.place]]){
             if(typeof value==='string'&&value.trim()){const detail=document.createElement('span');detail.textContent=label+': '+value;setting.append(detail);}
         }
+        setting.hidden = !setting.childElementCount;
     }
     const totalScenes = scenes.length;
     
     const trail=document.getElementById('storySceneTrail');
     if(trail){trail.replaceChildren();for(const [index,entry] of scenes.entries()){const marker=document.createElement('li');marker.textContent=String(index+1);marker.title=entry.title||'Scene '+(index+1);marker.setAttribute('aria-label','Scene '+(index+1)+': '+(entry.title||'Learning scene'));if(index===currentSceneIndex)marker.setAttribute('aria-current','step');trail.append(marker);}}
-    sceneLabel.textContent = `SCENE ${sceneNumber}`;
+    sceneLabel.textContent = `Scene ${sceneNumber}`;
 
     sceneTitle.textContent =
         clean(scene.title) || `Scene ${sceneNumber}`;
 
     displaySceneVisual(scene);
+    animateAssessmentArrival(sceneTitle, scene.id);
     displayStoryText(scene);
     displayStoryExplore(scene);
     displayStoryClueHunt(scene);
@@ -635,6 +635,10 @@ function displaySceneVisual(scene) {
     storyVisualCaption.hidden = true;
     storyVisualCaption.textContent = "";
 
+    const artworkStatus = storyVisualFallback.querySelector('[data-story-artwork-status]');
+    storyVisual.dataset.artworkState = 'symbolic';
+    if (artworkStatus) artworkStatus.textContent = 'Travel back in time';
+
     if (!isSafeImageUrl(imageUrl)) {
         return;
     }
@@ -643,20 +647,25 @@ function displaySceneVisual(scene) {
         imageAlt ||
         `Illustration for ${clean(scene.title) || "this scene"}`;
 
+    storyVisual.dataset.artworkState = 'loading';
+    if (artworkStatus) artworkStatus.textContent = 'Loading illustration…';
+    if (imageCaption) {
+        storyVisualCaption.textContent = imageCaption;
+        storyVisualCaption.hidden = false;
+    }
+
     storySceneImage.onload = () => {
         storySceneImage.hidden = false;
         storyVisualFallback.hidden = true;
-
-        if (imageCaption) {
-            storyVisualCaption.textContent = imageCaption;
-            storyVisualCaption.hidden = false;
-        }
+        storyVisual.dataset.artworkState = 'ready';
+        animateAssessmentArrival(storySceneImage, scene.id);
     };
 
     storySceneImage.onerror = () => {
         storySceneImage.hidden = true;
         storyVisualFallback.hidden = false;
-        storyVisualCaption.hidden = true;
+        storyVisual.dataset.artworkState = 'unavailable';
+        if (artworkStatus) artworkStatus.textContent = 'Illustration unavailable. You can keep reading.';
     };
 
     storySceneImage.src = imageUrl;
@@ -708,6 +717,7 @@ function displayStoryExplore(scene) {
     }
 
     const items = getExploreItems(scene);
+    const progress = $("storyClueProgress");
 
     storyExploreChoices.replaceChildren();
 
@@ -721,17 +731,22 @@ function displayStoryExplore(scene) {
 
     storyExploreIntroduction.textContent =
         clean(scene.exploreIntroduction) ||
-        "Explore each clue to discover more.";
+        "Open each clue before moving on.";
 
     const exploredItems = getExploredItemsForScene(scene);
+    const showClueProgress = () => {
+        if (!progress) return;
+        const opened = items.reduce((count, item, index) => count + Number(exploredItems.has(index)), 0);
+        progress.textContent = opened === items.length ? 'All clues opened' : `${opened} of ${items.length} clues opened`;
+        progress.classList.toggle('is-complete', opened === items.length);
+    };
+    showClueProgress();
 
     items.forEach((item, index) => {
         const button = document.createElement("button");
 
         button.type = "button";
         button.className = "story-explore-choice";
-        const clueNumber=document.createElement('span');clueNumber.className='evidence-object-number';clueNumber.textContent='CLUE '+String(index+1).padStart(2,'0');
-
         const iconBox = document.createElement("span");
 
         iconBox.className = "story-explore-choice-icon";
@@ -772,7 +787,7 @@ function displayStoryExplore(scene) {
         hint.textContent =
             clean(item.hint) || "Choose to learn more.";
 
-        contentBox.append(clueNumber,title, hint);
+        contentBox.append(title, hint);
         button.append(iconBox, contentBox);
 
         const result = document.createElement("div");
@@ -781,16 +796,12 @@ function displayStoryExplore(scene) {
         result.id='scene-'+scene.id+'-clue-'+index;
         button.setAttribute('aria-controls',result.id);
 
-        const resultTitle = document.createElement("strong");
-
-        resultTitle.textContent = clean(item.title);
-
         const resultText = document.createElement("p");
 
         resultText.textContent = clean(item.discovery);
 
-        const observationLabel=document.createElement('span');observationLabel.className='evidence-note-label';observationLabel.textContent='WHAT THIS CLUE REVEALS';
-        result.append(observationLabel,resultTitle, resultText);
+        const observationLabel=document.createElement('strong');observationLabel.className='evidence-note-label';observationLabel.textContent='What this clue tells you';
+        result.append(observationLabel, resultText);
         const reflection=document.createElement('details');reflection.className='evidence-reflection';
         const reflectionSummary=document.createElement('summary');reflectionSummary.textContent='Think like a history explorer';
         const reflectionCopy=document.createElement('p');reflectionCopy.textContent='What can you observe in this clue? Which part of the explanation does it support? What would you still need to find out?';
@@ -829,6 +840,7 @@ function displayStoryExplore(scene) {
             );
 
             updateStoryClueHuntUnlock(scene);
+            if (firstReveal) showClueProgress();
             updateContinueButton(scene);
         });
 
@@ -1702,17 +1714,14 @@ if (continueStoryButton) {
 
 if (backToMissionButton) {
     backToMissionButton.addEventListener("click", () => {
-        window.location.href =
-            `mission.html?chapter=${encodeURIComponent(chapterId || "")}`;
+        navigatePage('mission.html?' + new URLSearchParams({chapter: chapterId || ''}));
     });
 }
 
 if (quizButton) {
     quizButton.addEventListener("click", () => {
-        if(reviewTopic){window.location.href=topicPracticeUrl();return;}
-        window.location.href =
-            learningNavigation.carry(`quiz.html?chapter=${encodeURIComponent(chapterId || "")}` +
-            `&mission=${encodeURIComponent(missionId || "")}`);
+        const quizUrl = 'quiz.html?' + new URLSearchParams({chapter: chapterId || '', mission: missionId || ''});
+        navigatePage(reviewTopic ? topicPracticeUrl() : learningNavigation.carry(quizUrl));
     });
 }
 
@@ -1764,20 +1773,25 @@ async function loadLessonQuizInfo() {
     if (briefing) { briefing.hidden = true; briefing.replaceChildren(); }
     if(reviewTopic){
         if (!auth.currentUser || storyCompleteSection.hidden) return;
-        quizInfoRequest++;
+        const request = ++quizInfoRequest;
         storyCompleteSection.querySelector('h2').textContent='Lesson review complete';
-        storyCompleteSection.querySelector('.eyebrow').textContent='TOPIC REVIEW';
         storyCompleteSection.querySelector('.lesson-finish-heading p').textContent='Try a few questions on this topic before returning to the mission quiz.';
         document.getElementById('lessonQuizRequirements').textContent='';
         document.getElementById('lessonRecap').replaceChildren();
-        document.getElementById('retryLessonQuizInfo').hidden=true;
+        const retry = document.getElementById('retryLessonQuizInfo');
+        retry.hidden=true;
+        retry.textContent='Retry saving lesson review';
         quizButton.textContent='Saving Lesson Review...';quizButton.disabled=true;
         const reviewGeneration=storySessionGeneration,reviewUid=auth.currentUser.uid;
-        if(!reviewSavePending)reviewSavePending=recordLessonReview({chapterId,missionId,topic:reviewTopic,sceneIds:scenes.map(scene=>scene.id)}).catch(()=>{reviewSavePending=null;return false;});
+        if(!reviewSavePending)reviewSavePending=recordLessonReview({chapterId,missionId,topic:reviewTopic,sceneIds:scenes.map(scene=>scene.id)}).catch(()=>false);
         const recorded=await reviewSavePending;
-        if(reviewGeneration!==storySessionGeneration||auth.currentUser?.uid!==reviewUid)return;
+        if(reviewGeneration!==storySessionGeneration||request!==quizInfoRequest||auth.currentUser?.uid!==reviewUid)return;
         quizButton.textContent='Start Topic Practice';quizButton.disabled=false;
-        if(reviewGeneration===storySessionGeneration&&auth.currentUser?.uid===reviewUid&&!recorded)document.getElementById('lessonQuizRequirements').textContent+=' We could not save that you revisited this lesson. You can still continue to practice.';
+        if(!recorded){
+            reviewSavePending=null;
+            document.getElementById('lessonQuizRequirements').textContent='We could not save that you revisited this lesson. You can retry or continue to practice.';
+            retry.hidden=false;
+        }
         return;
     }
     if (!auth.currentUser || storyCompleteSection.hidden) return;
@@ -1786,6 +1800,7 @@ async function loadLessonQuizInfo() {
     const details = document.getElementById("lessonQuizRequirements");
     const recap = document.getElementById("lessonRecap");
     const retry = document.getElementById("retryLessonQuizInfo");
+    retry.textContent = 'Retry loading quiz details';
     quizButton.disabled = true;
     retry.hidden = true;
     details.textContent = "Loading quiz requirements...";
@@ -1826,7 +1841,7 @@ async function loadLessonQuizInfo() {
         if (generation !== storySessionGeneration || request !== quizInfoRequest) return;
         const quiz = snapshot.docs.map(row=>row.data()).find(row=>row.status === "active");
         requireMissionPolicy(quiz);
-        const requiredCorrect = Math.ceil(quiz.questionCount * quiz.passingScore / 100);
+        const requiredCorrect = minimumMissionCorrect(quiz.questionCount, quiz.passingScore);
         details.textContent = briefing
             ? "You can review your feedback and try again if you need another attempt."
             : quiz.questionCount + " questions. Answer at least " + requiredCorrect + " correctly to pass (" + quiz.passingScore + "%). Mission XP is awarded once.";

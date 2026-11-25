@@ -15,6 +15,7 @@ import { renderDashboardExpedition } from './dashboard-expedition.js';
 // ==========================================
 
 import { renderStudentIdentity } from "./student-profile.js";
+import { onVerifiedStudentChange } from "./auth-guard.js";
 import {
     auth,
     db
@@ -22,14 +23,8 @@ import {
 
 
 import {
-    onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
-
-
-import {
     collection,
     doc,
-    getDoc,
     getDocFromServer,
     getDocs,
     query,
@@ -42,7 +37,10 @@ import {
 // ==========================================
 
 let dashboardGeneration = 0;
-async function loadStudentDashboard(user) {
+let dashboardAccess = null;
+async function loadStudentDashboard(access) {
+        dashboardAccess = access;
+        const user = access?.user;
         const expeditionArt=document.getElementById('homeExpeditionArt');if(expeditionArt?.replaceChildren)expeditionArt.replaceChildren();
         document.getElementById("dashboardRetryProgression")?.remove();
         const generation = ++dashboardGeneration;
@@ -67,44 +65,17 @@ async function loadStudentDashboard(user) {
 
         try {
 
-            // ==================================
-            // LOAD STUDENT PROFILE
-            // ==================================
-
-            const userSnapshot =
-                await getDoc(
-                    doc(
-                        db,
-                        "users",
-                        user.uid
-                    )
-                );
-
-
             if (!isCurrent()) return;
-            if (!userSnapshot.exists()) {
-                for (const id of ['studentXp','topXp','studentLevel','topStudentLevel','missionsCompleted','badgesEarned','levelProgressXp','nextLevelText']) setText(id, 'Not loaded');
+            const student = access.profile;
 
-                const panel = document.getElementById('newJourneyState');
-                if (panel) {
-                    panel.textContent = 'Your student profile could not be found. Try loading again. If this keeps happening, ask your teacher for help.';
-                    appendDashboardRetry(panel, 'Retry Loading Dashboard');
-                }
-
-                return;
-            }
-
-
-            const student =
-                userSnapshot.data();
-
-
-            if (
-                student.role !== "student"
-            ) {
-                return;
-            }
-
+            // A level-settings read is independent of access, drafts and the next lesson.
+            const sharedMissionProgress = getDocs(query(collection(db,'studentProgress'),where('userId','==',user.uid)));
+            const progressionSnapshot = getDocFromServer(doc(db,"learningSettings","progression"));
+            const dashboardSections = Promise.allSettled([
+                loadCompletedMissionCount(user.uid,sharedMissionProgress),
+                loadCurrentJourney(user.uid,sharedMissionProgress,progressionSnapshot),
+                loadBadgeCount(user.uid)
+            ]);
 
             // ==================================
             // BASIC STUDENT INFORMATION
@@ -121,7 +92,7 @@ async function loadStudentDashboard(user) {
 
 
             let progressionPolicy = null;
-            try { progressionPolicy = await loadProgressionPolicy(); }
+            try { progressionPolicy = await loadProgressionPolicy(progressionSnapshot); }
             catch (error) { console.warn(error.message); }
             if (!isCurrent()) return;
             const level = progressionPolicy ? progressionState(xp, progressionPolicy).level : "Unavailable";
@@ -190,7 +161,8 @@ async function loadStudentDashboard(user) {
             loadPlayerProgress(
                 xp,
                 level,
-                progressionPolicy
+                progressionPolicy,
+                user.uid
             );
 
 
@@ -203,12 +175,7 @@ async function loadStudentDashboard(user) {
             // DASHBOARD DATA
             // ==================================
 
-            const sharedMissionProgress = getDocs(query(collection(db,'studentProgress'),where('userId','==',user.uid)));
-            const sections = await Promise.allSettled([
-                loadCompletedMissionCount(user.uid,sharedMissionProgress),
-                loadCurrentJourney(user.uid,sharedMissionProgress),
-                loadBadgeCount(user.uid)
-            ]);
+            const sections = await dashboardSections;
             if (!isCurrent()) return;
             for (const section of sections) if (section.status === "rejected") {
                 console.warn("A dashboard section could not finish loading:", section.reason);
@@ -229,7 +196,7 @@ async function loadStudentDashboard(user) {
         }
 
 }
-onAuthStateChanged(auth, loadStudentDashboard);
+onVerifiedStudentChange(loadStudentDashboard);
 
 
 // ==========================================
@@ -239,7 +206,8 @@ onAuthStateChanged(auth, loadStudentDashboard);
 function loadPlayerProgress(
     xp,
     level,
-    policy
+    policy,
+    userId
 ) {
     if (!policy) {
         setText("levelProgressXp", "Level settings unavailable");
@@ -272,6 +240,29 @@ function loadPlayerProgress(
 
         levelProgressBar.style.width =
             `${levelProgressPercent}%`;
+        const deltaNotice = document.getElementById('dashboardXpGain');
+        if (deltaNotice) deltaNotice.hidden = true;
+        let previous;
+        try {
+            const key = 'lakbay-confirmed-dashboard-xp:' + userId;
+            const stored = sessionStorage.getItem(key);
+            if (stored !== null) previous = Number(stored);
+            sessionStorage.setItem(key, String(xp));
+        } catch {}
+        if (Number.isFinite(previous) && previous >= 0 && xp > previous) {
+            if (deltaNotice) {
+                deltaNotice.textContent = '+' + (xp - previous) + ' XP since your last dashboard visit';
+                deltaNotice.hidden = false;
+            }
+            if (levelProgressBar.animate && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+                !document.body.classList.contains('lakbay-reduce-motion')) {
+                const prior = progressionState(previous, policy);
+                const frames = [{width:prior.percent+'%'}];
+                if (prior.level !== level) frames.push({width:'100%',offset:.48},{width:'0%',offset:.49});
+                frames.push({width:levelProgressPercent+'%'});
+                levelProgressBar.animate(frames,{duration:450,easing:'ease-out'});
+            }
+        }
     }
 
 
@@ -368,7 +359,7 @@ async function loadCompletedMissionCount(
 // CURRENT JOURNEY
 // ==========================================
 
-async function loadCurrentJourney(userId,sharedProgress=null) {
+async function loadCurrentJourney(userId,sharedProgress=null,progressionSnapshot=null) {
     if (auth.currentUser?.uid !== userId) return;
     const request = Symbol("journey-request");
     loadCurrentJourney.request = request;
@@ -384,15 +375,40 @@ async function loadCurrentJourney(userId,sharedProgress=null) {
     if(reviewReload)reviewReload.disabled=true;
     try {
         const names = ["chapters", "eras", "missions", "chapterChallenges", "studentChapterProgress", "studentProgress", "studentQuizAttempts", "studentLearningDrafts", "studentPracticeProgress", "practiceQuestions", "studentReviewEvents", "returnPolicy"];
-        const results = await Promise.allSettled(names.map(name => name === "returnPolicy"
-            ? getDocFromServer(doc(db,"learningSettings","progression")) : name === "practiceQuestions"
+        const requests = names.map(name => name === "returnPolicy"
+            ? progressionSnapshot ?? getDocFromServer(doc(db,"learningSettings","progression")) : name === "practiceQuestions"
             ? Promise.resolve({docs:[]}) : name === 'studentProgress' && sharedProgress ? sharedProgress : name.startsWith("student")
             ? getDocs(query(collection(db,name),where("userId","==",userId)))
-            : instructionalSnapshot(name,()=>getDocs(collection(db,name)))));
+            : instructionalSnapshot(name,()=>getDocs(collection(db,name))));
+        const optionalResults = Promise.allSettled(requests.slice(9));
+        const results = await Promise.allSettled(requests.slice(0,9));
         if (!isCurrent()) return;
         const rows = snapshot => snapshot.docs.map(item=>({...item.data(),id:item.id}));
         const failedCore = results.slice(0,7).find(result=>result.status === "rejected");
         if (failedCore) throw failedCore.reason;
+        const [chapters,eras,missions,challenges,chapterProgress,missionProgress,attempts,drafts,practiceHistory] =
+            results.map(result=>result.status==="fulfilled"?rows(result.value):[]);
+        const journeyData={userId,chapters,eras,missions,challenges,chapterProgress,missionProgress,attempts,drafts,practiceSessions:practiceHistory};
+        const preview=resolveStudentJourney(journeyData);
+        // Failed attempts and completed journeys may still need topic evidence to pick an action.
+        const showCoreEarly=preview.kind!=="complete"&&preview.attempt?.passed!==false;
+        const renderJourney=state=>{
+            if(trail)renderHomeLearningTrail(trail,journeyData,state);
+            renderStudentJourney(container,state,()=>loadCurrentJourney(userId));
+            if(document.getElementById('homeExpeditionArt')){
+                renderDashboardExpedition(state,eras,async missionId=>rows(await instructionalSnapshot(
+                    'dashboard-mission-art:'+missionId,
+                    ()=>getDocs(query(collection(db,'storyScenes'),where('missionId','==',missionId)))
+                )),isCurrent);
+            }
+            const desk=document.getElementById('explorerDesk');
+            if(desk?.replaceChildren)renderExplorerDesk(desk,state);
+        };
+        preview.optionalGuidanceUnavailable=results.slice(7).some(result=>result.status==="rejected");
+        if(showCoreEarly)renderJourney(preview);
+        const optional=await optionalResults;
+        if(!isCurrent())return;
+        results.push(...optional);
         // Avoid downloading every mission's bank on every dashboard visit.
         if (results[8].status === "fulfilled") {
             try {
@@ -402,12 +418,14 @@ async function loadCurrentJourney(userId,sharedProgress=null) {
             } catch (reason) { results[9] = {status:"rejected",reason}; }
         } else results[9] = {status:"rejected",reason:results[8].reason};
         if (!isCurrent()) return;
-        const snapshots = results.map(result=>result.status === "fulfilled" ? result.value : {docs:[]});
-        const [chapters,eras,missions,challenges,chapterProgress,missionProgress,attempts,drafts,practiceHistory,practiceQuestions,reviewEvents] = snapshots.slice(0,11).map(rows);
+        const [practiceQuestions,reviewEvents]=results.slice(9,11).map(result=>result.status==="fulfilled"?rows(result.value):[]);
         const reviewAvailable = results[8].status === "fulfilled" && results[9].status === "fulfilled" && results[10].status === "fulfilled";
         const topics=reviewAvailable?missionReviewTopics(attempts.filter(row=>row.userId===userId),practiceHistory.filter(row=>row.userId===userId),practiceQuestions,reviewEvents):undefined;
-        const state = resolveStudentJourney({userId,chapters,eras,missions,challenges,chapterProgress,missionProgress,attempts,drafts,practiceSessions:practiceHistory,reviewTopics:topics});
-        if(trail)renderHomeLearningTrail(trail,{userId,chapters,eras,missions,challenges,chapterProgress,missionProgress},state);
+        const state=resolveStudentJourney({...journeyData,reviewTopics:topics});
+        state.optionalGuidanceUnavailable=results.slice(7,11).some(result=>result.status==="rejected");
+        if(!showCoreEarly||state.optionalGuidanceUnavailable!==preview.optionalGuidanceUnavailable){
+            renderJourney(state);
+        }
         if(returnPanel){
             if(reviewAvailable&&results[11].status==='fulfilled'){
                 const activeEras=new Set(eras.filter(era=>era.status==='active').map(era=>era.id));
@@ -426,10 +444,6 @@ async function loadCurrentJourney(userId,sharedProgress=null) {
                 } catch {returnPanel.textContent='Your memory check is being prepared. Use Refresh Review later.';}
             }else returnPanel.textContent='Your past learning could not be checked right now. Use Refresh Review to try again.';
         }
-        state.optionalGuidanceUnavailable = results.slice(7,11).some(result=>result.status === "rejected");
-        renderStudentJourney(container,state,()=>loadCurrentJourney(userId));
-        if(document.getElementById('homeExpeditionArt'))renderDashboardExpedition(state,eras);
-        const desk=document.getElementById('explorerDesk');if(desk?.replaceChildren)renderExplorerDesk(desk,state);
         if(reviewPanel){
             if(reviewAvailable){
                 const activeEras=new Set(eras.filter(era=>era.status==='active').map(era=>era.id));
@@ -440,16 +454,20 @@ async function loadCurrentJourney(userId,sharedProgress=null) {
         }
     } catch (error) {
         console.warn("Journey loading failed:",error);
-        if (isCurrent()) {renderStudentJourney(container,{kind:"error"},()=>loadCurrentJourney(userId));const desk=document.getElementById('explorerDesk');if(desk?.replaceChildren)renderExplorerDesk(desk,{});if(trail)trail.textContent='Your lessons could not load. Use Refresh Review to try again.';if(reviewPanel)reviewPanel.textContent='We could not load your review topics. Try Refresh Review again.';if(returnPanel)returnPanel.textContent='Your past learning could not be checked right now. Use Refresh Review to try again.';}
+        if (isCurrent()) {
+            renderStudentJourney(container, {kind:"error"}, () => loadCurrentJourney(userId));
+            document.getElementById('homeExpeditionArt')?.replaceChildren();
+            const desk=document.getElementById('explorerDesk');
+            if(desk?.replaceChildren)renderExplorerDesk(desk,{});
+            if(trail)trail.textContent='Your lessons could not load. Retry from Continue Journey.';
+            if(reviewPanel)reviewPanel.textContent='We could not load your review topics. Try Refresh Review again.';
+            if(returnPanel)returnPanel.textContent='Your past learning could not be checked right now. Use Refresh Review to try again.';
+        }
     } finally {
         if(isCurrent()&&reviewReload)reviewReload.disabled=false;
     }
 }
 document.getElementById('reloadStudentReview')?.addEventListener('click',()=>{if(auth.currentUser)loadCurrentJourney(auth.currentUser.uid);});
-window.addEventListener("pageshow",event=>{
-    if(event.persisted && auth.currentUser) loadStudentDashboard(auth.currentUser);
-});
-
 async function loadBadgeCount(
     userId
 ) {
@@ -534,7 +552,7 @@ function appendDashboardRetry(container,label,id,retry) {
     button.addEventListener("click",async()=>{
         if(button.disabled || !auth.currentUser)return;
         button.disabled=true;
-        try { await (retry ? retry() : loadStudentDashboard(auth.currentUser)); }
+        try { await (retry ? retry() : loadStudentDashboard(dashboardAccess)); }
         finally { button.disabled=false; }
     });
     container.append(button);

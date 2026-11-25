@@ -35,12 +35,14 @@
 <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
 <link rel="stylesheet" href="../css/interface-icons.css">
+    <link rel="stylesheet" href="../css/adventure-pilot.css">
+    <link rel="stylesheet" href="../css/student-expedition-polish.css">
 </head>
 
 
 <body
-    class="auth-checking lakbay-theme student-home-page student-headquarters"
-    data-role="student"
+    class="lp-craft-pilot auth-checking lakbay-theme lp-web-navigation student-home-page student-headquarters"
+    data-role="student" data-visual-pilot="craft"
 >
     <div class="student-loading-shell" role="status" aria-live="polite">
         <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
@@ -107,7 +109,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
-                    <span>Explore Chapters</span>
+                    <span>Chapter Map</span>
                 </a>
 
 
@@ -134,7 +136,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
-                    <span>Achievements</span>
+                    <span>Discovery Museum</span>
                 </a>
                 <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
 
@@ -262,52 +264,23 @@
                      WELCOME
                 ================================== -->
 
-                <section id="studentProfileSetup" class="dashboard-card student-setup-card" aria-labelledby="studentSetupTitle" hidden>
-                    <h2 id="studentSetupTitle">Make this journey yours</h2>
-                    <p>Check your name and choose an explorer avatar. You can also start learning right away.</p>
-                    <div class="student-setup-actions">
-                        <button id="openStudentSetup" type="button" class="primary-button">Set Up My Profile</button>
-                        <button id="dismissStudentSetup" type="button" class="quiz-secondary-button">Not Now</button>
-                    </div>
-                    <p id="studentSetupStatus" role="status" aria-live="polite"></p>
-                </section>
-
                 <section class="welcome-section">
                     <div class="hq-welcome-art" aria-hidden="true"></div>
 
 
-                    <div class="welcome-text"><span class="home-welcome-kicker">YOUR HISTORY EXPLORER'S HEADQUARTERS</span>
-
-                        <span class="eyebrow">
-                            YOUR HISTORY JOURNEY
-                        </span>
+                    <div class="welcome-text"><span class="home-welcome-kicker">YOUR PHILIPPINE HISTORY JOURNEY</span>
 
                         <h1>
                             Magandang araw,
                             <span id="studentFirstName">
                                 Student
                             </span>!
-                            <svg class="interface-icon" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" />
-  <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" />
-  <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" />
-  <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
-</svg>
+                            <img class="hq-welcome-sun" src="../assets/brand/lakbay-sun.svg" alt="" width="32" height="32">
 
                         </h1>
 
                         <p>
-                            Start with your next lesson below. Read, explore, and check what you learned at your own pace.
+                            Pick up your next lesson, check your class assignments, or revisit a topic when you’re ready.
                         </p>
 
                     </div>
@@ -317,77 +290,29 @@
 
                     <div class="level-card player-progress-card">
 
-                        <div class="level-icon">
-                            <svg class="interface-icon" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-</svg>
-
-                        </div>
-
-
                         <div class="player-progress-content">
-
                             <div class="player-progress-heading">
-
+                                <span class="hq-level-crest" aria-hidden="true">
+                                    <span class="interface-icon interface-icon--compass"></span>
+                                </span>
                                 <div>
-
-                                    <span>
-                                        YOUR EXPLORER LEVEL
-                                    </span>
-
-                                    <strong id="studentLevel">
-                                        Level 1
-                                    </strong>
-
+                                    <span>YOUR EXPLORER LEVEL</span>
+                                    <strong id="studentLevel">Level 1</strong>
+                                    <p id="dashboardExplorerTitle" class="hq-explorer-title"></p>
                                 </div>
-
-
-                                <strong
-                                    class="player-progress-xp"
-                                    id="levelProgressXp"
-                                >
-                                    Loading XP progress...
-                                </strong>
-
                             </div>
 
-
-                            <div
-                                class="player-xp-track"
-                                role="progressbar"
-                                aria-label="Level progress"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                                aria-valuenow="0"
-                                id="levelProgressTrack"
-                            >
-
-                                <div
-                                    class="player-xp-fill"
-                                    id="levelProgressBar"
-                                    style="width: 0%;"
-                                ></div>
-
+                            <div class="hq-xp-meter">
+                                <strong class="player-progress-xp" id="levelProgressXp">Loading XP progress...</strong>
+                                <div class="player-xp-track" role="progressbar" aria-label="Level progress"
+                                    aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="levelProgressTrack">
+                                    <div class="player-xp-fill" id="levelProgressBar" style="width: 0%;"></div>
+                                </div>
+                                <small class="player-next-level" id="nextLevelText">Loading next level...</small>
+                                <p id="dashboardXpGain" class="dashboard-xp-gain" role="status" hidden></p>
                             </div>
 
-
-                            <small
-                                class="player-next-level"
-                                id="nextLevelText"
-                            >
-                                Loading next level...
-                            </small>
-
+                            <p id="nextExplorerReward" class="next-explorer-reward">Loading explorer rewards...</p>
                         </div>
 
                     </div>
@@ -430,19 +355,15 @@
   <circle cx="12" cy="12" r="10" />
   <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
 </svg>
- YOUR NEXT STEP
+ YOUR LEARNING PATH
                                 </span>
 
                                 <h2>
-                                    Continue your expedition
+                                    Continue your journey
                                 </h2>
 
                             </div>
 
-
-                            <span class="quest-badge">
-                                START HERE
-                            </span>
 
                         </div>
 
@@ -492,34 +413,53 @@
 
                         <div id="homeExpeditionArt" class="hq-current-art" aria-hidden="true"></div>
                         </div>
-                        <div class="explorer-desk-heading"><span class="eyebrow">LEARNING TOOLS</span><p>Choose a tool whenever you need it.</p></div>
+                        <section id="studentProfileSetup" class="student-setup-card home-optional-setup" aria-labelledby="studentSetupTitle" hidden>
+                            <span class="home-setup-icon interface-icon interface-icon--compass" aria-hidden="true"></span>
+                            <div>
+                                <h3 id="studentSetupTitle">Choose your explorer avatar</h3>
+                                <p id="studentSetupStatus" role="status">Preview a portrait now, or do it later in My Profile.</p>
+                            </div>
+                            <div class="student-setup-actions">
+                                <button type="button" id="openStudentSetup" class="lp-button lp-button-secondary">Preview avatars</button>
+                                <button type="button" id="dismissStudentSetup" class="lp-button lp-button-secondary">Maybe later</button>
+                            </div>
+                        </section>
+                        <div class="explorer-desk-heading"><span class="eyebrow">LESSON TOOLS</span></div>
                         <nav id="explorerDesk" class="explorer-desk" aria-label="Your explorer tools"><a class="desk-object" href="chapters.html"><strong>Browse chapters</strong><span>Choose a destination</span></a><a class="desk-object" href="my-journey.html#evidenceJournal"><strong>My saved clues</strong><span>Revisit your saved clues</span></a><a class="desk-object" href="achievements.html"><strong>My achievements</strong><span>Explore your earned keepsakes</span></a></nav>
                     </article>
 
 
                     </section>
 
-                <section class="stats-grid">
+                <section class="hq-quick-access" aria-labelledby="homeQuickAccessTitle">
+                    <h2 id="homeQuickAccessTitle">Quick access</h2>
+                    <nav class="home-destinations" aria-labelledby="homeQuickAccessTitle">
+                        <a class="hq-destination hq-destination--class" href="my-class.html">
+                            <span class="hq-destination-emblem" aria-hidden="true"><span class="interface-icon interface-icon--landmark"></span></span>
+                            <span><strong>My Class</strong><span>Class announcements and assigned missions</span></span>
+                        </a>
+                        <a class="hq-destination hq-destination--review" href="#practice-review">
+                            <span class="hq-destination-emblem" aria-hidden="true"><span class="interface-icon interface-icon--book-open"></span></span>
+                            <span><strong>Practice Review</strong><span>Topics to revisit from your saved work</span></span>
+                        </a>
+                        <a class="hq-destination hq-destination--timeline" href="history-timeline.html">
+                            <span class="hq-destination-emblem" aria-hidden="true"><span class="interface-icon interface-icon--scroll-text"></span></span>
+                            <span><strong>History Timeline</strong><span>See when events happened and how they connect</span></span>
+                        </a>
+                        <a class="hq-destination hq-destination--museum" href="achievements.html">
+                            <span class="hq-destination-emblem" aria-hidden="true"><span class="interface-icon interface-icon--amphora"></span></span>
+                            <span><strong>Discovery Museum</strong><span>Explore artifacts and earned chapter honors</span></span>
+                        </a>
+                    </nav>
+                </section>
+
+                <section class="stats-grid" aria-labelledby="homeProgressTitle">
+                    <h2 id="homeProgressTitle">Progress at a glance</h2>
 
 
-                    <article class="stat-card">
+                    <article class="stat-card" data-record="xp">
 
-                        <div class="stat-icon">
-                            <svg class="interface-icon" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-</svg>
-
-                        </div>
+                        <div class="stat-icon" aria-hidden="true"><img class="record-sun" src="../assets/brand/lakbay-sun.svg" alt=""></div>
 
                         <div>
 
@@ -536,7 +476,7 @@
                     </article>
 
 
-                    <article class="stat-card">
+                    <article class="stat-card" data-record="missions">
 
                         <div class="stat-icon">
                             <svg class="interface-icon" aria-hidden="true" focusable="false"
@@ -571,7 +511,7 @@
                     </article>
 
 
-                    <article class="stat-card">
+                    <article class="stat-card" data-record="badges">
 
                         <div class="stat-icon">
                             <svg class="interface-icon" aria-hidden="true" focusable="false"
@@ -610,11 +550,9 @@
                     </article>
 
 
-                    <article class="stat-card">
+                    <article class="stat-card" data-record="level">
 
-                        <div class="stat-icon">
-                            &#10024;
-                        </div>
+                        <div class="stat-icon" aria-hidden="true"><i class="record-compass"></i></div>
 
                         <div>
 
@@ -641,9 +579,9 @@
                 <section class="home-learning-trail" aria-labelledby="homeLearningTitle">
                     <div class="home-learning-heading">
                         <div class="home-learning-heading-copy">
-                            <span class="eyebrow">YOUR HISTORY ADVENTURE</span>
-                            <h2 id="homeLearningTitle">Your Historical Journey</h2>
-                            <p>Continue your current chapter or revisit a lesson you have completed.</p>
+                            <span class="hq-field-guide-label"><span class="interface-icon interface-icon--compass" aria-hidden="true"></span> CHAPTER TRAIL</span>
+                            <h2 id="homeLearningTitle">Your chapter trail</h2>
+                            <p>See which chapters you’ve finished and which one is next.</p>
                         </div>
                         <a href="my-journey.html">View full journey <span aria-hidden="true">&rarr;</span></a>
                     </div>
@@ -651,18 +589,75 @@
                 </section>
 
 
-<section class="home-discover" aria-labelledby="homeDiscoverTitle"><div class="home-section-title"><div><span class="eyebrow">A DIFFERENT WAY TO DISCOVER</span><h2 id="homeDiscoverTitle">Make room for curiosity.</h2></div><p>Take a daily challenge, ask Bayani AI, explore a chapter, or learn with your class.</p></div><div class="hq-activity-content"><div class="home-side-quests"><article class="dashboard-card home-daily-card" aria-labelledby="homeDailyTitle"><div class="home-quest-heading"><span class="home-quest-icon" aria-hidden="true">&#9889;</span><span class="card-label">A LITTLE HISTORY, EVERY DAY</span></div><h2 id="homeDailyTitle">Daily History Challenge</h2><p class="daily-challenge-card-text">Take on today's history question. A small discovery to keep your journey moving.</p><div class="challenge-reward" hidden><span>Today's reward</span><strong id="dailyChallengeCardReward" aria-live="polite"></strong></div><button type="button" class="primary-button daily-challenge-start" id="dailyChallengeStart" disabled>Loading Daily Challenge...</button><div id="dailyChallengeCardCompleted" class="daily-challenge-card-completed" role="status" hidden><span class="daily-complete-check" aria-hidden="true">&#10003;</span><div><strong>Today's challenge complete</strong><p>Come back tomorrow for another discovery.</p></div></div></article><article class="dashboard-card home-bayani-card" id="bayaniAI"><div class="home-quest-heading"><span class="home-bayani-mark" aria-hidden="true">B<span>&#10022;</span></span><span class="card-label">YOUR HISTORY COMPANION</span></div><h2>Ask Bayani</h2><p>Ask Bayani AI to explain a lesson, explore an idea or help you think through Philippine history.</p><div class="hq-bayani-prompts" aria-label="Suggested history questions"><a href="bayani-ai.html?prompt=communities">How did early communities work together?</a><a href="bayani-ai.html?prompt=trade">How did seafaring connect communities?</a></div><a href="bayani-ai.html" class="secondary-action-button">Chat with Bayani AI <span aria-hidden="true">&#8594;</span></a><small>Keep your questions about learning. Leave personal details out of chat.</small></article></div>
-<nav class="home-destinations" aria-label="Your learning spaces"><a href="chapters.html"><span class="destination-icon" aria-hidden="true">&#10022;</span><span class="eyebrow">EXPLORE</span><h3>Find your next chapter</h3><p>Explore the historical eras and lessons available to you.</p><span class="destination-action">Explore Chapters &#8594;</span></a><a href="my-class.html"><span class="destination-icon" aria-hidden="true">&#9873;</span><span class="eyebrow">LEARN TOGETHER</span><h3>Your class awaits</h3><p>Join your teacher's class and find your assigned missions.</p><span class="destination-action">Open My Class &#8594;</span></a></nav></div>
+<section class="home-discover" aria-labelledby="homeDiscoverTitle"><div class="home-section-title"><span class="hq-field-guide-label"><span class="interface-icon interface-icon--compass" aria-hidden="true"></span> SIDE ACTIVITIES</span><h2 id="homeDiscoverTitle">Discover &amp; Explore</h2><p>Take a daily challenge or ask Bayani a history question.</p></div><div class="hq-activity-content"><div class="home-side-quests"><article class="dashboard-card home-daily-card" aria-labelledby="homeDailyTitle"><div class="home-quest-heading"><span class="home-quest-icon" aria-hidden="true"><span class="interface-icon interface-icon--compass"></span></span><span class="card-label">DAILY EXPEDITION</span></div><h2 id="homeDailyTitle">Daily History Challenge</h2><p class="daily-challenge-card-text">Take on today's history question. A small discovery to keep your journey moving.</p><div class="challenge-reward" hidden><span>Today's reward</span><strong id="dailyChallengeCardReward" aria-live="polite"></strong></div><button type="button" class="primary-button daily-challenge-start lp-button lp-button-primary" id="dailyChallengeStart" disabled>Loading Daily Challenge...</button><div id="dailyChallengeCardCompleted" class="daily-challenge-card-completed" role="status" hidden><span class="daily-complete-check" aria-hidden="true">&#10003;</span><div><strong>Today's challenge complete</strong><p>Come back tomorrow for another discovery.</p></div></div></article>
+<article class="dashboard-card home-bayani-card" id="bayaniAI" aria-labelledby="homeBayaniTitle">
+    <div class="hq-bayani-intro">
+        <div>
+            <span class="card-label">YOUR HISTORY COMPANION</span>
+            <h2 id="homeBayaniTitle">Ask Bayani</h2>
+            <p>Chat with Bayani AI about a lesson or a question from Philippine history.</p>
+        </div>
+        <div class="hq-bayani-portrait" aria-hidden="true">
+            <img src="../assets/brand/bayani-explorer-still.svg" alt="" width="96" height="100" loading="lazy">
+        </div>
+    </div>
+    <div class="hq-bayani-prompts" role="group" aria-labelledby="homeBayaniPromptsTitle">
+        <span id="homeBayaniPromptsTitle" class="hq-bayani-prompt-label">Try a question</span>
+        <a href="bayani-ai.html?prompt=communities"><span class="interface-icon interface-icon--landmark" aria-hidden="true"></span><span>How did early communities work together?</span><span aria-hidden="true">&#8594;</span></a>
+        <a href="bayani-ai.html?prompt=trade"><span class="interface-icon interface-icon--compass" aria-hidden="true"></span><span>How did seafaring connect communities?</span><span aria-hidden="true">&#8594;</span></a>
+    </div>
+    <a href="bayani-ai.html" class="secondary-action-button lp-button lp-button-secondary">Chat with Bayani AI <span aria-hidden="true">&#8594;</span></a>
+    <small>Keep your questions about learning. Leave personal details out of chat.</small>
+</article></div></div>
                 </section>
 
 
                 </div>
 
-                <section class="home-collection-panel" id="achievements" aria-labelledby="dashboardCollectionsTitle"><div class="home-collection-heading"><span class="home-collection-emblem" aria-hidden="true">&#127942;</span><div><span class="eyebrow">MILESTONES WORTH KEEPING</span><h2 id="dashboardCollectionsTitle">Your story, collected.</h2><p>Every chapter explored and mission completed leaves something to remember.</p></div><a href="achievements.html" class="text-button">Open Collections &#8594;</a></div><button type="button" id="refreshHomeCollections" class="text-button hq-refresh-collections">Refresh collection previews</button><div class="home-collection-shelves"><a href="achievements.html"><span class="shelf-symbol" aria-hidden="true">&#127941;</span><div><span class="shelf-label">CHAPTER MILESTONES</span><h3>Badges of achievement</h3><div id="homeBadgePreview" class="hq-collection-preview" aria-live="polite">Loading saved badges...</div><p>Celebrate the chapter challenges you complete.</p></div><span class="shelf-arrow" aria-hidden="true">&#8599;</span></a><a href="achievements.html"><span class="shelf-symbol" aria-hidden="true">&#127994;</span><div><span class="shelf-label">HISTORICAL KEEPSAKES</span><h3>Artifacts of discovery</h3><div id="homeArtifactPreview" class="hq-collection-preview" aria-live="polite">Loading saved artifacts...</div><p>Revisit the collectibles earned on your missions.</p></div><span class="shelf-arrow" aria-hidden="true">&#8599;</span></a></div></section>
+                <section class="home-collection-panel" id="achievements" aria-labelledby="dashboardCollectionsTitle">
+    <div class="home-collection-heading">
+        <span class="home-collection-emblem" aria-hidden="true"><span class="interface-icon interface-icon--trophy"></span></span>
+        <div>
+            <h2 id="dashboardCollectionsTitle">Your Collections</h2>
+            <p>See the badges and historical keepsakes you earn along the way.</p>
+        </div>
+    </div>
+    <div class="home-collection-shelves">
+        <a class="hq-collection-shelf hq-collection-shelf--badges" href="achievements.html" aria-labelledby="homeBadgeShelfTitle">
+            <div class="hq-shelf-heading">
+                <span class="shelf-symbol" aria-hidden="true"><span class="interface-icon interface-icon--trophy"></span></span>
+                <div><span class="shelf-label">CHAPTER MILESTONES</span><h3 id="homeBadgeShelfTitle">Achievement Badges</h3></div>
+                <span class="shelf-arrow" aria-hidden="true">&#8594;</span>
+            </div>
+            <div id="homeBadgePreview" class="hq-collection-preview" aria-live="polite">Loading saved badges...</div>
+        </a>
+        <a class="hq-collection-shelf hq-collection-shelf--artifacts" href="achievements.html" aria-labelledby="homeArtifactShelfTitle">
+            <div class="hq-shelf-heading">
+                <span class="shelf-symbol" aria-hidden="true"><span class="interface-icon interface-icon--amphora"></span></span>
+                <div><span class="shelf-label">HISTORICAL KEEPSAKES</span><h3 id="homeArtifactShelfTitle">Discovered Artifacts</h3></div>
+                <span class="shelf-arrow" aria-hidden="true">&#8594;</span>
+            </div>
+            <div id="homeArtifactPreview" class="hq-collection-preview" aria-live="polite">Loading saved artifacts...</div>
+        </a>
+    </div>
+    <div class="hq-collection-actions">
+        <a href="achievements.html" class="text-button lp-button lp-button-secondary">Open Collections <span aria-hidden="true">&#8594;</span></a>
+        <button type="button" id="refreshHomeCollections" class="text-button hq-refresh-collections lp-button lp-button-secondary">Refresh previews</button>
+    </div>
+</section>
 
     <section class="return-to-learn-panel" aria-labelledby="studentReturnTitle"><div class="home-review-heading"><div><span class="eyebrow">REMEMBER THIS</span><h2 id="studentReturnTitle">History Recall</h2><p>Come back to something you learned a few days ago.</p></div></div><div id="studentReturnTopic" aria-live="polite">Finding a topic from your journey...</div></section>
-    <section class="practice-review-panel" aria-labelledby="studentReviewTitle">
-        <div class="home-review-heading"><div><span class="eyebrow">PERSONALIZED PRACTICE</span><h2 id="studentReviewTitle">Strengthen your understanding</h2><p>Topics to review, recommended from your saved quizzes and practice.</p></div><button type="button" class="text-button" id="reloadStudentReview">Refresh Review <span aria-hidden="true">&#8635;</span></button></div><p class="home-review-note">Practice at your own pace. Recommendations can include completed missions and update as you learn.</p>
+    <section class="practice-review-panel" id="practice-review" aria-labelledby="studentReviewTitle" tabindex="-1">
+        <div class="home-review-heading">
+            <div class="hq-review-intro">
+                <span class="hq-review-emblem" aria-hidden="true"><span class="interface-icon interface-icon--book-open"></span></span>
+                <div>
+                    <h2 id="studentReviewTitle">Practice Review</h2>
+                    <p>Find topics to revisit based on your saved quizzes and practice, including completed missions.</p>
+                </div>
+            </div>
+            <button type="button" class="text-button lp-button lp-button-secondary" id="reloadStudentReview">Refresh Review <span aria-hidden="true">&#8635;</span></button>
+        </div>
         <div id="studentReviewTopics" class="practice-review-grid" aria-live="polite"></div>
     </section>
             </div>
@@ -717,17 +712,11 @@
 
                                 <div class="daily-modal-title-group">
 
-                                    <div class="daily-modal-icon">
-                                        &#9889;
-                                    </div>
+                                    <div class="daily-modal-icon" aria-hidden="true"><span class="interface-icon interface-icon--compass"></span></div>
 
                                     <div>
 
-                                        <span class="card-label">
-                                            TODAY'S HISTORY CHALLENGE
-                                        </span>
-
-                                        <h2 id="dailyChallengeModalTitle">
+                                        <h2 id="dailyChallengeModalTitle" tabindex="-1">
                                             Daily Challenge
                                         </h2>
 
@@ -748,14 +737,15 @@
                             </div>
 
 
-                            <div
+                            <p id="dailyChallengeStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+<div
                                 class="daily-modal-loading"
-                                id="dailyChallengeLoading"
+                                id="dailyChallengeLoading" role="status" aria-live="polite" aria-atomic="true"
                             >
 
-                                <div class="daily-loading-icon">
-                                    &#8987;
-                                </div>
+                                <span class="daily-loading-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" focusable="false"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z"/></svg>
+                                </span>
 
                                 <p>
                                     Preparing today's challenge...
@@ -791,7 +781,7 @@
                                     <button
                                         type="button"
                                         class="daily-challenge-option"
-                                        data-answer="A"
+                                        data-answer="A" aria-pressed="false"
                                     >
 
                                         <span class="daily-option-letter">
@@ -808,7 +798,7 @@
                                     <button
                                         type="button"
                                         class="daily-challenge-option"
-                                        data-answer="B"
+                                        data-answer="B" aria-pressed="false"
                                     >
 
                                         <span class="daily-option-letter">
@@ -825,7 +815,7 @@
                                     <button
                                         type="button"
                                         class="daily-challenge-option"
-                                        data-answer="C"
+                                        data-answer="C" aria-pressed="false"
                                     >
 
                                         <span class="daily-option-letter">
@@ -842,7 +832,7 @@
                                     <button
                                         type="button"
                                         class="daily-challenge-option"
-                                        data-answer="D"
+                                        data-answer="D" aria-pressed="false"
                                     >
 
                                         <span class="daily-option-letter">
@@ -860,7 +850,7 @@
 
                                 <div
                                     class="daily-challenge-feedback"
-                                    id="dailyChallengeFeedback"
+                                    id="dailyChallengeFeedback" role="status" aria-live="polite" aria-atomic="true"
                                     hidden
                                 ></div>
 
@@ -896,7 +886,7 @@
 
                             <div
                                 class="daily-challenge-empty"
-                                id="dailyChallengeEmpty"
+                                id="dailyChallengeEmpty" role="status" aria-live="polite" aria-atomic="true"
                                 hidden
                             >
 
@@ -912,13 +902,14 @@
                                     Check back later for another
                                     Philippine History challenge.
                                 </p>
+                                <button type="button" id="retryDailyLoad" class="text-button" hidden>Retry Daily Challenge</button>
 
                             </div>
 
 
                             <div
                                 class="daily-challenge-completed"
-                                id="dailyChallengeCompleted"
+                                id="dailyChallengeCompleted" role="status" aria-live="polite" aria-atomic="true"
                                 hidden
                             >
 

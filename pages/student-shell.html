@@ -15,19 +15,28 @@
         #shellRecovery { max-width: 340px; padding: 0 20px; text-align: center; }
         #shellRecovery[hidden] { display: none; }
         .shell-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-        .shell-actions button, .shell-actions a { border: 1px solid #d8b968; border-radius: 10px; background: #ecd9a6; color: #081629; padding: 12px 16px; font: inherit; text-decoration: none; cursor: pointer; }
+        .shell-actions button, .shell-actions a { border: 1px solid #d8b968; border-radius: 10px; background: #ecd9a6; color: #081629; padding: 12px 16px; font: inherit; text-decoration: none; }
         .shell-actions :focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
-        .shell-compass { width: 52px; height: 52px; border: 1px solid #bda36577; border-radius: 50%; display: grid; place-items: center; color: #ecd9a6; animation: shell-turn 7s linear infinite; }
-        .shell-compass svg { width: 28px; height: 28px; fill: currentColor; }
-        @keyframes shell-turn { to { transform: rotate(360deg); } }
-        @media (prefers-reduced-motion: reduce) { .shell-compass { animation: none; } }
     </style>
 <link rel="stylesheet" href="../css/app-dialog.css">
 <link rel="stylesheet" href="../css/interface-icons.css">
+<link rel="stylesheet" href="../css/interface-clarity.css">
+<link rel="stylesheet" href="../css/page-transition.css">
 </head>
 <body>
-    <div id="shellLoading" role="status"><span class="shell-compass" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1Z"/></svg></span><span id="shellLoadingMessage">Opening your learning journey…</span><div id="shellRecovery" hidden><p>Check your connection, then try again. Saved learning progress will stay in your account.</p><div class="shell-actions"><button id="shellRetry" type="button">Try Again</button><a href="student-dashboard.html">Go to Home</a></div></div></div>
+    <div id="shellLoading">
+        <div id="shellLoadingCompass" aria-hidden="true"><span class="lp-compass-mark"></span></div>
+        <span id="shellLoadingMessage" role="status">Opening your learning journey…</span>
+        <div id="shellRecovery" hidden>
+            <p>Check your connection, then try again. Saved learning progress stays in your account.</p>
+            <div class="shell-actions">
+                <button id="shellRetry" type="button">Try Again</button>
+                <a href="student-shell.html?route=my-journey.html">Back to Journey</a>
+            </div>
+        </div>
+    </div>
     <iframe id="studentRouteFrame" title="LakbayPanahon student workspace" allow="autoplay; fullscreen" referrerpolicy="same-origin"></iframe>
+    <script type="module" src="../js/page-transition.js"></script>
     <script type="module" src="../js/student-shell.js"></script>
 </body>
 </html>

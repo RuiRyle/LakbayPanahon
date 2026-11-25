@@ -41,12 +41,21 @@ export function renderExhibit({host,activity,state,explored,onChange,onConfirmed
     }
     const check=add('button','Check My Exhibit','begin-mission-button');check.type='button';
     const revise=add('button','Revise My Exhibit','text-button');revise.type='button';
+    const progress = add('p', '', 'exhibit-building-progress');
+    progress.setAttribute('role', 'status');
+    board.before(progress);
     const feedback=add('p','','exhibit-match-feedback');feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');
     function explain(outcome){
         feedback.textContent=outcome.correct+' of '+outcome.total+' connections fit the clues. '+(outcome.valid?activity.successMessage:activity.retryMessage);
         for(const {pair,note,card}of notes){const correct=outcome.checks.find(item=>item.id===pair.id).correct;card.dataset.correct=String(correct);note.textContent=correct?pair.feedback:'Read this card again and compare it with the connection you selected.';}
     }
-    function sync(){inputs.forEach(input=>input.disabled=!explored||confirmed);check.disabled=!explored||confirmed;revise.hidden=!confirmed;}
+    function sync() {
+        const filled = inputs.filter(input => input.value).length;
+        progress.textContent = confirmed ? 'Exhibit complete' : filled + ' of ' + inputs.length + ' exhibit cards filled';
+        inputs.forEach(input => input.disabled = !explored || confirmed);
+        check.disabled = !explored || confirmed;
+        revise.hidden = !confirmed;
+    }
     check.addEventListener('click',()=>{if(!explored)return;const outcome=evaluateExhibit(activity,matches);confirmed=outcome.valid;explain(outcome);notify();sync();if(confirmed)onConfirmed();});
     revise.addEventListener('click',()=>{confirmed=false;feedback.textContent='You can change the exhibit. Check it again before explaining.';notes.forEach(item=>{item.note.textContent='';delete item.card.dataset.correct;});notify();sync();});
     if(confirmed)explain(evaluateExhibit(activity,matches));sync();

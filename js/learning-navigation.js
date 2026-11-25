@@ -20,9 +20,11 @@ export function learningTopicRoutes(search){
 }
 export function mountLearningNavigation(container, activity, search = window.location.search) {
     if (!container) return;
-    const chapter = new URLSearchParams(search).get("chapter");
+    const params = new URLSearchParams(search);
+    const chapter = params.get("chapter");
+    const fromJournal=activity==='Lesson'&&params.get('fromJournal')==='1';
     const nav = document.createElement("nav");
-    nav.className = "learning-navigation";
+    nav.className = "learning-navigation lp-breadcrumb";
     nav.setAttribute("aria-label", "Learning path");
     const list = document.createElement("ol");
     const add = (label, href) => {
@@ -33,12 +35,12 @@ export function mountLearningNavigation(container, activity, search = window.loc
         else element.setAttribute("aria-current", "page");
         item.append(element);list.append(item);
     };
-    add("Chapters", "chapters.html");
+    add("Chapter Map", "chapters.html");
     if (chapter) add("Mission Journey", "mission.html?" + new URLSearchParams({chapter}));
     const topicRoutes=learningTopicRoutes(search);
     add(activity);
     nav.append(list);
-    if(topicRoutes&&['Lesson','Adaptive Practice'].includes(activity)){
+    if(!fromJournal&&topicRoutes&&['Lesson','Adaptive Practice'].includes(activity)){
         const shortcut=document.createElement('a');shortcut.className='learning-topic-return';
         shortcut.textContent=activity==='Lesson'?'Back to targeted practice':'Review this lesson topic';
         shortcut.href=activity==='Lesson'?topicRoutes.practice:topicRoutes.lesson;
@@ -47,6 +49,13 @@ export function mountLearningNavigation(container, activity, search = window.loc
     const context=classroomLearningContext(search),carry=href=>carryClassroomContext(href,search,window.location.href);
     if(context){
         const back=document.createElement('a');back.className='learning-classroom-return';back.textContent='Back to my class activity';back.href='my-class.html?'+new URLSearchParams({classroom:context.classroom,activity:context.activity});nav.append(back);
+    }
+    if(fromJournal){
+        const back=document.createElement('a');
+        back.className='learning-topic-return';
+        back.textContent='Back to Evidence Journal';
+        back.href='my-journey.html?fromJournal=1#evidenceJournal';
+        nav.append(back);
     }
     container.prepend(nav);
     if(context){

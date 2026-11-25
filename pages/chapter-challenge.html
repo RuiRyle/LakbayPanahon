@@ -30,9 +30,10 @@
 <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
 <link rel="stylesheet" href="../css/interface-icons.css">
+    <link rel="stylesheet" href="../css/learning-view.css">
 </head>
 
-<body data-role="student" class="auth-checking lakbay-theme">
+<body data-role="student" class="auth-checking lakbay-theme challenge-web-page">
     <div class="student-loading-shell" role="status" aria-live="polite">
         <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
         <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p>Loading your learning space...</p><div class="student-loading-heading" aria-hidden="true"></div><div class="student-loading-cards" aria-hidden="true"><i></i><i></i><i></i></div><div class="student-loading-panel" aria-hidden="true"></div></div></div>
@@ -40,16 +41,21 @@
 
 
     <main class="chapter-challenge-page">
+        <div class="learning-view-controls" aria-label="Learning view"><button type="button" data-learning-fullscreen hidden>Full screen</button><span role="status" data-learning-fullscreen-status></span></div>
+        <dialog id="chapterCountdown" class="quiz-countdown chapter-countdown" aria-label="Starting Chapter Challenge">
+            <span class="interface-icon interface-icon--compass" aria-hidden="true"></span>
+            <p>Starting Chapter Challenge</p>
+            <strong aria-hidden="true"></strong>
+        </dialog>
 
         <section class="chapter-challenge-intro" aria-labelledby="challengeChapterTitle">
             <header class="chapter-finale-heading">
                 <div class="finale-crest" aria-hidden="true">
-                    <div class="chapter-challenge-icon">&#x1F6E1;&#xFE0F;</div>
-                    <span>FINAL TRIAL</span>
+                    <div class="chapter-challenge-icon"><span class="interface-icon interface-icon--compass"></span></div>
                 </div>
 
                 <div class="finale-title-group">
-                    <span class="card-label">CHAPTER FINAL BOSS</span>
+                    <span class="card-label">CHAPTER CHALLENGE</span>
                     <h1 id="challengeChapterTitle">Loading Chapter...</h1>
                     <p id="challengeDescription">
                         Every mission led to this final challenge. Bring your discoveries together and earn your chapter reward.
@@ -57,19 +63,20 @@
                 </div>
             </header>
 
-            <div class="chapter-challenge-info" aria-label="Final trial requirements">
-                <div><strong>10</strong><span>Questions</span></div>
-                <div><strong>70%</strong><span>Passing Score</span></div>
-                <div><strong>&#x1F3C5;</strong><span>Chapter Reward</span></div>
+            <div class="chapter-challenge-info" role="group" aria-label="Chapter Challenge requirements">
+                <div><strong>Loading</strong><span>Questions</span></div>
+                <div><strong>Loading</strong><span>Passing Score</span></div>
+                <div><strong>Chapter badge</strong><span>Earned on first pass</span></div>
             </div>
+            <p class="chapter-finale-instructions">Choose your answers using clues from the lessons. After you finish, review your answers and explanations.</p>
 
             <footer class="chapter-finale-actions">
-                <button id="beginChallengeButton" type="button" disabled>Enter the Final Trial &rarr;</button>
-                <button id="backToMissionsButton" type="button">&larr; Back to Missions</button>
-                <button id="retryChapterLoadButton" type="button" hidden>Try Loading Again</button>
+                <button id="beginChallengeButton" class="lp-button lp-button-primary" type="button" disabled>Begin Chapter Challenge &rarr;</button>
+                <button id="backToMissionsButton" class="lp-button lp-button-secondary" type="button">&larr; Back to Missions</button>
+                <button id="retryChapterLoadButton" class="lp-button lp-button-secondary" type="button" hidden>Try Loading Again</button>
             </footer>
 
-            <p id="challengeStatus" role="status">Checking your progress...</p>
+            <p id="challengeStatus" role="status" aria-atomic="true">Checking your progress...</p>
         </section>
 
     </main>
@@ -88,6 +95,6 @@
 
     <script type="module" src="../js/page-transition.js"></script>
     <script type="module" src="../js/expedition-ui.js"></script>
-<script type="module" src="../js/level-rewards.js"></script></body>
+<script type="module" src="../js/level-rewards.js"></script><script type="module" src="../js/learning-view.js"></script></body>
 
 </html>

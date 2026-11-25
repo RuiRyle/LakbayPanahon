@@ -1,4 +1,12 @@
 /* Shared visual theme. Loaded after page styles; learning states remain owned by JS. */
+@font-face {
+    font-family: "Oxanium";
+    src: url("../assets/fonts/oxanium-variable.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 200 800;
+    font-display: swap;
+}
+
 body.lakbay-theme {
     --lp-bg: #081629;
     --lp-sidebar: #0b1e35;
@@ -20,6 +28,31 @@ body.lakbay-theme {
     --border: var(--lp-line);
     --shadow: 0 14px 34px #02091438;
     --red: var(--lp-red);
+    /* Opt-in web components inherit the final palette and accessibility preferences. */
+    --lp-font-ui: "Segoe UI Variable", "Segoe UI", Arial, sans-serif;
+    --lp-font-game: "Oxanium", "Bahnschrift", "Segoe UI Variable", "Segoe UI", sans-serif;
+    --lp-type-body: 1rem;
+    --lp-type-label: .875rem;
+    --lp-space-1: 4px;
+    --lp-space-2: 8px;
+    --lp-space-3: 12px;
+    --lp-space-4: 16px;
+    --lp-space-6: 24px;
+    --lp-space-8: 32px;
+    --lp-radius-control: 12px;
+    --lp-radius-panel: 16px;
+    --lp-shadow-panel: 0 8px 24px #020b1c20;
+    --lp-surface: var(--lp-panel);
+    --lp-surface-hover: var(--lp-panel-raised);
+    --lp-action: var(--lp-gold);
+    --lp-action-ink: #081629;
+    --lp-control-line: #7590a4;
+    --lp-focus: #f4d58d;
+    --lp-state-success-surface: #133d38;
+    --lp-state-success-text: #c7f0df;
+    --lp-state-error-surface: #402c3d;
+    --lp-state-error-text: #ffe1e8;
+    --lp-motion-fast: 150ms;
     background: var(--lp-bg);
     color: var(--lp-text);
     color-scheme: dark;
@@ -33,6 +66,17 @@ body.lakbay-theme :is(h1,h2,h3,h4,h5,h6) {
     font-family: "Segoe UI Variable", "Segoe UI", Arial, sans-serif;
     font-weight: 720;
     letter-spacing: -.02em;
+}
+/* Use the game display face for interface landmarks. Lesson and exhibit
+   typography can keep their own more specific editorial treatments. */
+body.lakbay-theme :is(h1, h2) {
+    font-family: var(--lp-font-game);
+}
+
+body.lakbay-theme :is(.student-page-title-copy strong, .student-xp-copy strong),
+body.lakbay-theme :is(#studentLevel, #levelProgressXp) {
+    font-family: var(--lp-font-game);
+    font-variant-numeric: tabular-nums;
 }
 body.lakbay-theme :is(p,small,dt,dd,label,legend) { color: var(--lp-muted); }
 body.lakbay-theme :is(a,button,input,textarea,select,summary):focus-visible {
@@ -148,7 +192,7 @@ body.lakbay-theme :is(.text-button,.secondary-action-button,.quiz-secondary-butt
     border-color: var(--lp-gold); background: #1a3862;
 }
 body.lakbay-theme :is(.journey-review-link,.destination-action,.artifact-lesson-link,.back-home,.forgot-link,.login-prompt a,.auth-note a) { color: var(--lp-gold-soft); }
-body.lakbay-theme button:disabled { cursor: not-allowed; opacity: .6; transform: none; box-shadow: none; }
+body.lakbay-theme button:disabled { cursor: var(--lakbay-cursor-blocked, not-allowed); opacity: .6; transform: none; box-shadow: none; }
 /* Home follows the reference: compact greeting, gold stat frames, lesson list and mission rail. */
 body.lakbay-theme.student-home-page .dashboard-content {
     max-width: 1480px; padding: 28px 32px 56px; display: grid;
@@ -681,7 +725,7 @@ body.lakbay-theme .student-profile-saved-content button {
     background: var(--lp-gold);
     color: #07162f;
     font-weight: 800;
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 }
 body.lakbay-theme .student-profile-saved-content button:hover { filter: brightness(1.06); }
 body.lakbay-theme .student-profile-saved-dialog[open] { animation: profile-saved-arrive .2s ease-out; }
@@ -924,6 +968,7 @@ body.lakbay-theme :is(.return-recall-options button[data-result=correct],.daily-
 }
 body.lakbay-theme .class-assignment[data-state=locked] { background: #0d2446; }
 body.lakbay-theme .student-setup-actions #dismissStudentSetup {
+    min-height: 44px;
     background: #17365f; color: var(--lp-gold-soft); border-color: var(--lp-line-soft);
 }
 body.lakbay-theme :is(.home-review-note,.dashboard-content #studentReviewTopics>p,
@@ -2579,7 +2624,7 @@ body.lakbay-theme .chapter-badge-status { background:#183e45; border:1px solid #
 body.lakbay-theme #challengeResultBackButton:hover { background:#24476c; color:var(--lp-gold-soft); }
 body.lakbay-theme .chapter-continuation-status { flex-basis:100%; grid-column:1/-1; width:100%; box-sizing:border-box; margin:0; padding:12px 16px; border:1px solid #3b587d; border-radius:12px; background:#10294c; font-size:.85rem; line-height:1.65; text-align:center; }
 body.lakbay-theme .chapter-continuation-status[data-state=error] { border-color:#a98c4d; background:#23334b; }
-body.lakbay-theme .chapter-continuation-retry { min-height:44px; padding:10px 16px; border:1px solid #a98c4d; border-radius:11px; background:#17365b; color:#f1dfa9; font:inherit; font-size:.82rem; cursor:pointer; }
+body.lakbay-theme .chapter-continuation-retry { min-height:44px; padding:10px 16px; border:1px solid #a98c4d; border-radius:11px; background:#17365b; color:#f1dfa9; font:inherit; font-size:.82rem; cursor:var(--lakbay-cursor-hand, pointer); }
 body.lakbay-theme .chapter-continuation-retry:hover { background:#25466a; border-color:#f0c75e; }
 body.lakbay-theme .chapter-continuation-retry:focus-visible { outline:3px solid #f0c75e; outline-offset:4px; }
 body.lakbay-theme .chapter-continuation-retry[hidden] { display:none!important; }
@@ -3457,6 +3502,8 @@ body.lakbay-theme .sidebar-nav .nav-link:is(.active,[aria-current=page])::before
 html[data-student-text-size="large"] { font-size: 112.5%; }
 html[data-student-text-size="larger"] { font-size: 125%; }
 body.lakbay-theme.lakbay-high-contrast {
+    --lp-control-line: #a9c5da;
+    --lp-focus: #ffffff;
     --lp-bg: #050d18;
     --lp-sidebar: #061326;
     --lp-panel: #0c2037;
@@ -3722,7 +3769,7 @@ body.lakbay-theme .student-profile-saved-content button {
     font-size: .9rem;
     font-weight: 800;
     box-shadow: 0 4px 0 #98773d, 0 10px 22px rgba(0, 0, 0, .18);
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
     transition: transform .16s ease, filter .16s ease, box-shadow .16s ease;
 }
 
@@ -4313,7 +4360,7 @@ body[data-role="student"].lakbay-theme .sidebar .nav-icon svg {
     body.lakbay-theme .topbar .student-topbar-profile .profile-avatar { flex-basis: 36px; width: 36px; height: 36px; }
 }
 @media (max-width: 520px) {
-    body[data-role="student"].lakbay-theme .topbar { gap: 7px; padding-inline: 10px; }
+    body[data-role="student"].lakbay-theme .topbar { flex-wrap: wrap; gap: 7px; padding-inline: 10px; }
     body[data-role="student"].lakbay-theme .topbar .topbar-actions { gap: 6px; }
     body.lakbay-theme .topbar .student-page-title { gap: 7px; }
     body.lakbay-theme .student-page-title-icon { flex-basis: 34px; width: 34px; height: 34px; }
@@ -4323,7 +4370,7 @@ body[data-role="student"].lakbay-theme .sidebar .nav-icon svg {
     body.lakbay-theme .topbar .student-xp-pill { min-height: 42px; gap: 6px; padding: 4px 8px 4px 5px; border-radius: 14px; }
     body.lakbay-theme .student-xp-icon { flex-basis: 30px; width: 30px; height: 30px; border-radius: 9px; }
     body.lakbay-theme .student-xp-copy small { display: none; }
-    body.lakbay-theme .topbar .student-topbar-profile { min-height: 42px; gap: 6px; padding: 4px 7px 4px 4px; border-radius: 14px; }
+    body.lakbay-theme .topbar .student-topbar-profile { min-height: 44px; gap: 6px; padding: 4px 7px 4px 4px; border-radius: 14px; }
     body.lakbay-theme .topbar .student-topbar-profile .profile-avatar { flex-basis: 32px; width: 32px; height: 32px; }
     body.lakbay-theme .topbar .student-topbar-profile .profile-info strong { max-width: 66px; font-size: .75rem; }
     body.lakbay-theme .topbar .student-topbar-profile .profile-info span { display: none; }
@@ -4638,3 +4685,27 @@ body[data-role="student"].lakbay-theme :is(
     }
 }
 
+
+/* Shared navigation finish for the three signed-in workspaces. */
+body.lakbay-theme[data-role] :is(.student-app, .teacher-shell) .topbar {
+    border-block-end-color: #71827b;
+    background-image: linear-gradient(105deg, #0c2034, #173846 58%, #10263d);
+    box-shadow: 0 4px 16px #0615234d;
+}
+body.lakbay-theme[data-role] .student-page-title-icon {
+    border-color: #998453;
+    background: radial-gradient(ellipse at top, #2d4e58, #142e43);
+    color: #f4d48d;
+}
+body.lakbay-theme[data-role] :is(.sidebar-nav, .teacher-sidebar) :is(a,button)[aria-current=page],
+body.lakbay-theme[data-role] .sidebar-nav .nav-link.active {
+    border-inline-start-color: #e6c47b;
+    background-image: linear-gradient(100deg, #304e53, #173148);
+    box-shadow: inset 2px 0 #e6c47b;
+    color: #ffebc0;
+}
+@media (hover: hover) {
+    body.lakbay-theme[data-role] :is(.sidebar-nav, .teacher-sidebar) :is(a,button):not(.active,[aria-current=page]):hover {
+        box-shadow: inset 0 0 0 1px #afba9c55;
+    }
+}

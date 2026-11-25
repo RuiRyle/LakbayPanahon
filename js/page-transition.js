@@ -1,23 +1,35 @@
-// Animate same-origin page navigation while keeping special links native.
-// Modifier clicks, external links, downloads, and same-page links retain browser behavior.
-let pageNavigationPending=false;
+// Share the compass across document changes while keeping browser navigation intact.
+let pendingRoute = null;
+let routeNavigationTimer, routeRecoveryTimer;
 function restorePageAppearance() {
-    pageNavigationPending=false;
+    window.clearTimeout(routeNavigationTimer);
+    window.clearTimeout(routeRecoveryTimer);
+    pendingRoute = null;
     document.body.classList.remove('page-leaving','page-entering');
     document.querySelectorAll('.route-transition-overlay').forEach(overlay=>overlay.remove());
     document.body.classList.add('page-visible');
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',restorePageAppearance,{once:true});
-else restorePageAppearance();
-window.addEventListener('pageshow',restorePageAppearance);
+function showInitialPageAppearance(event) {
+    if (event?.persisted || !pendingRoute) restorePageAppearance();
+    const historyReturn = event?.type === 'pageshow' &&
+        (event.persisted || window.performance?.getEntriesByType?.('navigation')[0]?.type === 'back_forward');
+    if (historyReturn && !pendingRoute && !shouldReduceMotion()) {
+        const overlay = showRouteTransition();
+        overlay.classList.add('route-transition-overlay--arrival');
+        window.setTimeout(() => overlay.remove(), 360);
+    }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',showInitialPageAppearance,{once:true});
+else showInitialPageAppearance();
+window.addEventListener('pageshow',showInitialPageAppearance);
 // Login stays visible while the remote authentication module downloads.
 // Do not allow a native form submission before its secure handler is ready.
 function prepareLoginStartup(){
-    const form=document.getElementById('loginForm')||document.getElementById('teacherRegisterForm');if(!form)return;
+    const form=document.getElementById('loginForm')||document.getElementById('teacherApplicationForm')||document.getElementById('studentRegisterForm');if(!form)return;
     form.addEventListener('submit',event=>{if(form.dataset.authReady!=='true')event.preventDefault();});
     window.setTimeout(()=>{
         if(form.dataset.authReady==='true')return;
-        const message=document.getElementById('loginMessage')||document.getElementById('teacherRegisterMessage');if(!message)return;
+        const message=document.getElementById('loginMessage')||document.getElementById('teacherRegisterMessage')||document.getElementById('studentRegisterMessage');if(!message)return;
         message.textContent='Secure sign-in is taking longer than expected. Check your internet connection and reload this page. Your account details have not been sent.';
         message.classList.add('error');
     },10000);
@@ -27,11 +39,8 @@ else prepareLoginStartup();
 function shouldReduceMotion(){
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches||document.body.classList.contains('lakbay-reduce-motion');
 }
-function showRouteTransition() {
-    const overlay=document.createElement('div');
-    overlay.className='route-transition-overlay';
-    overlay.setAttribute('aria-hidden','true');
-    overlay.innerHTML=`
+function fillRouteCompass(host) {
+    host.innerHTML = `
         <div class="route-compass-loader">
             <div class="route-compass-orbit route-compass-orbit--outer"></div>
             <div class="route-compass-orbit route-compass-orbit--inner"></div>
@@ -51,11 +60,69 @@ function showRouteTransition() {
                 </svg>
             </div>
         </div>`;
-    document.body.append(overlay);
 }
+
+function showRouteTransition() {
+    const overlay = document.createElement('div');
+    overlay.className = 'route-transition-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    fillRouteCompass(overlay);
+    (document.fullscreenElement || document.querySelector('dialog[open]') || document.body).append(overlay);
+    return overlay;
+}
+
+const shellCompass = document.getElementById('shellLoadingCompass');
+if (shellCompass) fillRouteCompass(shellCompass);
+
+function localDestination(href) {
+    try {
+        const destination = new URL(href, window.location.href);
+        return ['http:', 'https:'].includes(destination.protocol) && destination.origin === window.location.origin
+            ? destination : null;
+    } catch {
+        return null;
+    }
+}
+
+function isCurrentDocument(destination) {
+    return destination.pathname === window.location.pathname && destination.search === window.location.search;
+}
+
+function beginRouteTransition(destination, replace = false) {
+    document.querySelector('.route-transition-overlay--arrival')?.remove();
+    document.body.classList.remove('page-visible');
+    document.body.classList.add('page-leaving');
+    showRouteTransition();
+    const route = { destination, replace };
+    pendingRoute = route;
+    routeRecoveryTimer = window.setTimeout(restorePageAppearance, 2400);
+    return route;
+}
+
+function navigateWithCompass(href, { replace = false, reload = false } = {}) {
+    const destination = localDestination(href);
+    const go = () => {
+        if (reload) window.location.reload();
+        else if (replace) window.location.replace(href);
+        else window.location.assign(href);
+    };
+    if (pendingRoute) {
+        if (!replace || (pendingRoute.replace && pendingRoute.destination === destination?.href)) return;
+        restorePageAppearance();
+    }
+    if (!destination || shouldReduceMotion() || (!reload && isCurrentDocument(destination))) {
+        go();
+        return;
+    }
+    beginRouteTransition(destination.href, replace);
+    routeNavigationTimer = window.setTimeout(go, 220);
+}
+
+window.LakbayPageTransition = navigateWithCompass;
+
 document.addEventListener('click',event=>{
-    if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||pageNavigationPending)return;
-    if(shouldReduceMotion())return;
+    if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+    if(!pendingRoute&&shouldReduceMotion())return;
 
     const clickedElement=event.target instanceof Element?event.target:null;
     const link=clickedElement?.closest('a[href]');
@@ -63,25 +130,22 @@ document.addEventListener('click',event=>{
     const targetWindow=(link.getAttribute('target')||'').toLowerCase();
     if(targetWindow&&targetWindow!=='_self')return;
 
-    let destination;
-    try{destination=new URL(link.href,window.location.href);}catch{return;}
-    if(!['http:','https:'].includes(destination.protocol)||destination.origin!==window.location.origin)return;
-    if(destination.pathname===window.location.pathname&&destination.search===window.location.search)return;
+    const destination = localDestination(link.href);
+    if (!destination || isCurrentDocument(destination)) return;
     event.preventDefault();
-    pageNavigationPending=true;
-    document.body.classList.remove('page-visible');
-    document.body.classList.add('page-leaving');
-    showRouteTransition();
-    // Briefly show the requested transition before replacing the document.
-    // Reduced-motion navigation bypasses this handler above.
-    window.setTimeout(()=>window.location.assign(destination.href),220);
-        // If a beforeunload prompt is canceled, restore the current page.
-        window.setTimeout(()=>{
-            pageNavigationPending=false;
-            document.body.classList.remove('page-leaving');
-            document.querySelectorAll('.route-transition-overlay').forEach(overlay=>overlay.remove());
-            document.body.classList.add('page-visible');
-        },900);
+    navigateWithCompass(destination.href);
+});
+
+// Same-origin native form submissions and browser navigation keep their original request.
+window.navigation?.addEventListener('navigate', event => {
+    if (pendingRoute || shouldReduceMotion() || event.defaultPrevented || event.destination.sameDocument ||
+        event.downloadRequest !== null || event.sourceElement?.closest('a[rel~="external"]')) return;
+    const destination = localDestination(event.destination.url);
+    if (!destination) return;
+    const route = beginRouteTransition(destination.href);
+    event.signal.addEventListener('abort', () => {
+        if (pendingRoute === route) restorePageAppearance();
+    }, { once: true });
 });
 
 // Shared, accessible menu behavior across every student route.
@@ -141,9 +205,10 @@ let uiSoundVolume=.85;
 let backgroundMusicVolume=.8;
 let preferenceStorageAvailable=true;
 let uiAudioContext=null;
-let lastCardHoverSoundAt=0;
+const uiToneNodes=new Set();
 try{
-    uiSoundsEnabled=localStorage.getItem(UI_SOUND_PREFERENCE_KEY)!=='off';
+    const storedSounds=localStorage.getItem(UI_SOUND_PREFERENCE_KEY);
+    uiSoundsEnabled=storedSounds!=='off';
     uiReducedMotionEnabled=localStorage.getItem(UI_MOTION_PREFERENCE_KEY)==='on';
     backgroundMusicEnabled=localStorage.getItem(UI_MUSIC_PREFERENCE_KEY)!=='off';
     uiFocusAudioEnabled=localStorage.getItem(UI_FOCUS_AUDIO_PREFERENCE_KEY)!=='off';
@@ -189,14 +254,48 @@ function getSharedAudioHost(){
     if(window.self===window.top)return null;
     try{return window.parent.LakbayStudentAudio||null;}catch{return null;}
 }
+function getSharedEffectsHost(){
+    const host=preferenceStorageAvailable?getSharedAudioHost():null;
+    return typeof host?.unlockEffects==='function'?host:null;
+}
 function getUiAudioContext(){
     try{
         const AudioContextClass=window.AudioContext||window.webkitAudioContext;
         if(!AudioContextClass)return null;
-        uiAudioContext??=new AudioContextClass();
-        if(uiAudioContext.state==='suspended')uiAudioContext.resume().catch(()=>{});
+        if(!uiAudioContext||uiAudioContext.state==='closed')uiAudioContext=new AudioContextClass();
+        if(uiAudioContext.state!=='running')uiAudioContext.resume().catch(()=>{});
         return uiAudioContext;
     }catch{return null;}
+}
+function stopUiEffects(){
+    for(const tone of uiToneNodes){try{tone.stop();}catch{}}
+    uiToneNodes.clear();
+}
+function applyGameSoundPreference(){
+    if(!uiSoundsEnabled||uiSoundVolume===0){
+        stopUiEffects();
+        getSharedEffectsHost()?.stopEffects();
+    }
+    document.dispatchEvent(new Event('lakbay:game-sound-preference'));
+}
+function unlockUiEffects(event){
+    if(!event.isTrusted||event.repeat||document.hidden||!document.body.classList.contains('authenticated')||
+        !uiSoundsEnabled||uiSoundVolume<=0)return;
+    const host=getSharedEffectsHost();
+    if(host)host.unlockEffects();
+    else getUiAudioContext();
+}
+if(document.body.dataset.role==='student'){
+    window.LakbayStudentEffects={get enabled(){return uiSoundsEnabled;},get volume(){return uiSoundVolume;}};
+    for(const event of ['pointerup','keydown','click'])document.addEventListener(event,unlockUiEffects,true);
+    window.addEventListener('storage',event=>{
+        if(event.key!==null&&event.key!==UI_SOUND_PREFERENCE_KEY&&event.key!==UI_SOUND_VOLUME_KEY)return;
+        try{uiSoundsEnabled=localStorage.getItem(UI_SOUND_PREFERENCE_KEY)!=='off';}catch{return;}
+        uiSoundVolume=readAudioVolume(UI_SOUND_VOLUME_KEY,.85);
+        syncPreferenceSwitches();syncVolumeControls();applyGameSoundPreference();
+    });
+    window.addEventListener('pagehide',stopUiEffects);
+    document.addEventListener('visibilitychange',()=>{if(document.hidden)stopUiEffects();});
 }
 function playUiTone(context,frequency,endFrequency,duration,volume,type='sine',delay=0){
     const start=context.currentTime+delay;
@@ -210,31 +309,56 @@ function playUiTone(context,frequency,endFrequency,duration,volume,type='sine',d
     gain.gain.exponentialRampToValueAtTime(.0001,start+duration);
     oscillator.connect(gain);
     gain.connect(context.destination);
-    oscillator.onended=()=>{oscillator.disconnect();gain.disconnect();};
+    uiToneNodes.add(oscillator);
+    oscillator.onended=()=>{uiToneNodes.delete(oscillator);oscillator.disconnect();gain.disconnect();};
     oscillator.start(start);
     oscillator.stop(start+duration+.012);
 }
+document.addEventListener('click',event=>{
+    if(!event.isTrusted || event.button!==0 || !(event.target instanceof Element))return;
+    // Public pages with their own audio host already handle activation sounds.
+    if(window.LakbayStudentAudio)return;
+    const control=event.target.closest('button,a[href],summary,[role="button"],[role="tab"],input[type="submit"]');
+    if(!control || control.matches(':disabled,[aria-disabled="true"]') ||
+        control.closest('[inert],[data-sound-preview],[data-lesson-sound-preview],[data-preference-switch],[data-clue],[data-start-countdown]'))return;
+    playUiSound('activate');
+},true);
 function playUiSound(kind,force=false){
-    if(document.hidden)return;
-    if(window.LakbayLessonAudio?.narrating)return;
-    if(window.LakbayLessonAudio&&kind==='correct')return;
-    if((!uiSoundsEnabled&&!force)||uiSoundVolume<=0)return;
-    const sharedHost=getSharedAudioHost();
-    if(sharedHost){sharedHost.playSound(kind,uiSoundVolume,force);return;}
+    if(document.hidden||narrationFocusActive||window.LakbayLessonAudio?.narrating)return false;
+    if(window.LakbayLessonAudio&&['correct','retry'].includes(kind))return false;
+    if((!uiSoundsEnabled&&!force)||uiSoundVolume<=0)return false;
+    const sharedHost=getSharedEffectsHost();
+    if(sharedHost)return sharedHost.playSound(kind,uiSoundVolume,force);
     const context=getUiAudioContext();
-    if(!context)return;
-    if(kind==='hover'){
-        playUiTone(context,620,740,.055,.07*uiSoundVolume,'sine');
+    if(!context||(context.state!=='running'&&window.navigator?.userActivation?.isActive===false))return false;
+    if(kind==='activate'){
+        playUiTone(context,470,390,.055,.035*uiSoundVolume,'triangle');
+    }else if(kind==='clue-saved'){
+        playUiTone(context,587,587,.13,.048*uiSoundVolume,'sine');
+        playUiTone(context,784,784,.18,.04*uiSoundVolume,'sine',.08);
     }else if(kind==='toggle'){
         playUiTone(context,650,820,.085,.11*uiSoundVolume,'triangle');
         playUiTone(context,850,1060,.105,.085*uiSoundVolume,'sine',.055);
     }else if(kind==='correct'){
-        playUiTone(context,659,784,.09,.075*uiSoundVolume,'sine');
-        playUiTone(context,784,988,.12,.07*uiSoundVolume,'sine',.075);
-    }else if(kind==='challenge-start'){
-        playUiTone(context,196,261.63,.2,.075*uiSoundVolume,'triangle');
-        playUiTone(context,392,523.25,.2,.09*uiSoundVolume,'triangle',.1);
-        playUiTone(context,523.25,659.25,.26,.085*uiSoundVolume,'sine',.2);
+        playUiTone(context,659,784,.09,.075*uiSoundVolume,'sine',.045);
+        playUiTone(context,784,988,.12,.07*uiSoundVolume,'sine',.12);
+    }else if(kind==='retry'){
+        playUiTone(context,440,415,.15,.06*uiSoundVolume,'sine');
+        playUiTone(context,523,523,.17,.05*uiSoundVolume,'sine',.09);
+    }else if(kind==='heart-lost'){
+        playUiTone(context,370,220,.19,.052*uiSoundVolume,'sine',.045);
+    }else if(kind==='countdown-tick'){
+        playUiTone(context,790,495,.052,.055*uiSoundVolume,'triangle');
+    }else if(kind==='compass-ready'){
+        playUiTone(context,880,610,.085,.065*uiSoundVolume,'triangle');
+        playUiTone(context,1175,988,.105,.045*uiSoundVolume,'sine',.04);
+    }else if(kind==='answer-lock'){
+        playUiTone(context,760,450,.04,.042*uiSoundVolume,'triangle');
+    }else if(kind==='seal-stamp'){
+        playUiTone(context,175,75,.09,.064*uiSoundVolume,'triangle');
+    }else if(kind==='finale-arrival'){
+        playUiTone(context,262,392,.19,.052*uiSoundVolume,'triangle');
+        playUiTone(context,392,523,.22,.042*uiSoundVolume,'sine',.11);
     }else if(kind==='chapter-complete'){
         playUiTone(context,523.25,659.25,.17,.075*uiSoundVolume,'triangle');
         playUiTone(context,659.25,783.99,.17,.08*uiSoundVolume,'triangle',.12);
@@ -261,10 +385,18 @@ function playUiSound(kind,force=false){
         playUiTone(context,520,690,.09,.12*uiSoundVolume,'triangle');
         playUiTone(context,780,930,.105,.09*uiSoundVolume,'sine',.04);
     }
+    return true;
 }
 if(document.body.dataset.role==='student'){
     document.addEventListener('lakbay:answer-correct',()=>playUiSound('correct'));
-    document.addEventListener('lakbay:chapter-challenge-started',()=>playUiSound('challenge-start'));
+    document.addEventListener('lakbay:lesson-retry',()=>playUiSound('retry'));
+    document.addEventListener('lakbay:clue-saved',()=>playUiSound('clue-saved'));
+    document.addEventListener('lakbay:heart-lost',()=>playUiSound('heart-lost'));
+    document.addEventListener('lakbay:chapter-challenge-started',()=>playUiSound('compass-ready'));
+    document.addEventListener('lakbay:finale-arrival',()=>playUiSound('finale-arrival'));
+    for(const cue of ['countdown-tick','compass-ready','answer-lock','seal-stamp']){
+        document.addEventListener('lakbay:'+cue,()=>playUiSound(cue));
+    }
     document.addEventListener('lakbay:chapter-completed',()=>playUiSound('chapter-complete'));
     document.addEventListener('lakbay:needs-practice',event=>{
         const delay=Math.max(0,Number(event.detail?.delayMs)||0);
@@ -419,7 +551,7 @@ function getBackgroundMusicGainLevel(){
     return Math.max(.0001,Math.min(1.4,backgroundMusicVolume*1.4*backgroundMusicFocusLevel));
 }
 function getPageAudioFocusMode(){
-    if(narrationFocusActive)return 'focus';
+    if(narrationFocusActive)return 'narration';
     if(!uiFocusAudioEnabled)return 'normal';
     if(transientFocusActive)return 'focus';
     const page=window.location.pathname.split('/').pop()?.toLowerCase();
@@ -430,7 +562,7 @@ function getPageAudioFocusMode(){
 function applyPageAudioFocus(){
     if(document.body.dataset.role!=='student')return;
     const mode=getPageAudioFocusMode();
-    backgroundMusicFocusLevel=mode === 'focus' ? 0 : mode === 'reading' ? .28 : 1;
+    backgroundMusicFocusLevel=mode === 'focus' ? 0 : mode === 'narration' ? .08 : mode === 'reading' ? .28 : 1;
     const sharedHost=getSharedAudioHost();
     if(sharedHost?.setFocusMode)sharedHost.setFocusMode(mode);
     else if(backgroundMusicGain&&uiAudioContext){
@@ -440,8 +572,9 @@ function applyPageAudioFocus(){
     }
     const status=document.querySelector('[data-music-status]');
     if(status&&mode==='focus')status.textContent='Music is paused while you focus. It will return when you leave this activity.';
+    else if(status&&mode==='narration')status.textContent='Music is softer while Bayani reads.';
     else if(status&&mode==='reading')status.textContent='Music is softer while you read. It will return to normal afterward.';
-    else if(status&&/while you (focus|read)/.test(status.textContent)){
+    else if(status&&/while (you (focus|read)|Bayani reads)/.test(status.textContent)){
         const playing=backgroundMusicEnabled&&Boolean(sharedHost?.isPlaying?.()||backgroundMusicStarted);
         updateMusicStatus(!backgroundMusicEnabled?'Background music is turned off.':playing?'The adventure theme is playing.':'Press Start music to begin playback.',playing);
     }
@@ -451,7 +584,11 @@ if(document.body.dataset.role==='student'){
         transientFocusActive=Boolean(event.detail?.active);
         applyPageAudioFocus();
     });
-    document.addEventListener('lakbay:narration-state',event=>{narrationFocusActive=Boolean(event.detail?.active);applyPageAudioFocus();});
+    document.addEventListener('lakbay:narration-state',event=>{
+        narrationFocusActive=Boolean(event.detail?.active);
+        if(narrationFocusActive)stopUiEffects();
+        applyPageAudioFocus();
+    });
 }
 function getMusicEpoch(){
     try{
@@ -599,7 +736,7 @@ function syncVolumeControls(){
         const percent=Math.round(value*100);
         input.value=String(percent);
         input.style.setProperty('--range-fill',`${percent}%`);
-        const output=input.closest('.settings-volume-row')?.querySelector('[data-volume-output]');
+        const output=input.closest('.settings-volume-row,.lesson-volume-row')?.querySelector('[data-volume-output]');
         if(output)output.textContent=`${percent}%`;
     });
 }
@@ -609,7 +746,7 @@ function syncReadingSizeControl(){
 function addStudentSettingsLink(){
     if(document.body.dataset.role!=='student')return;
     const nav=document.querySelector('.sidebar-nav');
-    if(!nav||nav.querySelector('.settings-nav-link'))return;
+    if(!nav||nav.querySelector('a[href="settings.html"]'))return;
     const link=document.createElement('a');
     link.href='settings.html';
     link.className='nav-link settings-nav-link';
@@ -618,7 +755,7 @@ function addStudentSettingsLink(){
         link.classList.add('active');
         link.setAttribute('aria-current','page');
     }
-    nav.append(link);
+    (nav.querySelector('.atlas-nav-group[aria-label="My Account"]')||nav).append(link);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{addStudentSettingsLink();syncPreferenceSwitches();syncVolumeControls();syncReadingSizeControl();syncPreferenceStorageStatus();},{once:true});
 else{addStudentSettingsLink();syncPreferenceSwitches();syncVolumeControls();syncReadingSizeControl();syncPreferenceStorageStatus();}
@@ -631,7 +768,7 @@ function resetStudentPreferences(){
     uiReadingSize='standard';
     uiSoundVolume=.85;
     backgroundMusicVolume=.8;
-    for(const [key,value] of [[UI_SOUND_PREFERENCE_KEY,'on'],[UI_MOTION_PREFERENCE_KEY,'off'],[UI_MUSIC_PREFERENCE_KEY,'on'],[UI_FOCUS_AUDIO_PREFERENCE_KEY,'on'],[UI_CONTRAST_PREFERENCE_KEY,'off'],[UI_SOUND_VOLUME_KEY,'85'],[UI_MUSIC_VOLUME_KEY,'80'],[UI_READING_SIZE_PREFERENCE_KEY,'standard']])saveStudentPreference(key,value);
+    for(const [key,value] of [[UI_SOUND_PREFERENCE_KEY,uiSoundsEnabled?'on':'off'],[UI_MOTION_PREFERENCE_KEY,'off'],[UI_MUSIC_PREFERENCE_KEY,'on'],[UI_FOCUS_AUDIO_PREFERENCE_KEY,'on'],[UI_CONTRAST_PREFERENCE_KEY,'off'],[UI_SOUND_VOLUME_KEY,'85'],[UI_MUSIC_VOLUME_KEY,'80'],[UI_READING_SIZE_PREFERENCE_KEY,'standard']])saveStudentPreference(key,value);
     document.body.classList.remove('lakbay-reduce-motion');
     document.body.classList.remove('lakbay-high-contrast');
     applyPageAudioFocus();
@@ -639,6 +776,7 @@ function resetStudentPreferences(){
     syncPreferenceSwitches();
     syncVolumeControls();
     syncReadingSizeControl();
+    applyGameSoundPreference();
     const status=document.querySelector('[data-preferences-reset-status]');
     if(status)status.textContent='Your settings are back to their defaults.';
     const host=getSharedAudioHost();
@@ -654,8 +792,12 @@ document.addEventListener('click',event=>{
         resetStudentPreferences();
         return;
     }
-    if(target?.closest('[data-sound-preview]')){
-        playUiSound('toggle',true);
+    const soundPreview=target?.closest('[data-sound-preview]');
+    if(soundPreview){
+        const played=playUiSound(soundPreview.dataset.soundPreview==='countdown'?'countdown-tick':'toggle',true);
+        const status=soundPreview.closest('.settings-volume-row,.lesson-audio-mixer')?.querySelector('[data-sound-status]');
+        if(status)status.textContent=played?'Sound sample played.':uiSoundVolume===0?'Raise the effect volume to hear the sample.':
+            narrationFocusActive||window.LakbayLessonAudio?.narrating?'Stop narration to hear the sound sample.':'Sound could not play. Select the sound sample to try again.';
         return;
     }
     if(target?.closest('[data-music-start]')){
@@ -673,6 +815,7 @@ document.addEventListener('click',event=>{
         if(preferenceSwitch.dataset.preferenceSwitch==='sounds'){
             uiSoundsEnabled=!uiSoundsEnabled;
             saveStudentPreference(UI_SOUND_PREFERENCE_KEY,uiSoundsEnabled?'on':'off');
+            applyGameSoundPreference();
         }else if(preferenceSwitch.dataset.preferenceSwitch==='motion'){
             uiReducedMotionEnabled=!uiReducedMotionEnabled;
             saveStudentPreference(UI_MOTION_PREFERENCE_KEY,uiReducedMotionEnabled?'on':'off');
@@ -701,9 +844,6 @@ document.addEventListener('click',event=>{
         if(uiSoundsEnabled)playUiSound('toggle');
         return;
     }
-    if(window.LakbayLessonAudio&&target?.closest('.story-page,.lesson-image-dialog'))return;
-    if(uiSoundsEnabled&&target?.closest('#beginChallengeButton'))return;
-    if(uiSoundsEnabled&&target?.closest('a[href],button:not(:disabled),[role="button"]:not([aria-disabled="true"]),summary,input[type="checkbox"]:not(:disabled),input[type="radio"]:not(:disabled)'))playUiSound('activate');
 },true);
 document.addEventListener('change',event=>{
     if(!['student','teacher'].includes(document.body.dataset.role))return;
@@ -733,26 +873,14 @@ document.addEventListener('input',event=>{
     }else{
         uiSoundVolume=value;
         saveStudentPreference(UI_SOUND_VOLUME_KEY,String(percent));
+        applyGameSoundPreference();
     }
     syncVolumeControls();
-},true);
-const movingCardSelector='.dashboard-card,.stat-card,.home-lesson-row,.home-destinations>a,.home-collection-shelves>a,.journey-stats article,.journey-topic-card,.journey-chapter summary,.chapter-card,.era-card,.achievement-summary-card,.achievement-badge-card,.achievement-artifact-card,.evidence-journal-card,.class-assignment,.mission-path-item,.mission-step,.story-reading-card,.practice-card,.quiz-question-card,.chapter-challenge-intro,.feature-card,.destination-card,.student-class-card';
-document.addEventListener('pointerover',event=>{
-    if(!uiSoundsEnabled||document.body.dataset.role!=='student'||event.pointerType!=='mouse')return;
-    const target=event.target instanceof Element?event.target:null;
-    const card=target?.closest(movingCardSelector);
-    if(!card)return;
-    if(window.LakbayLessonAudio&&card.closest('.story-page'))return;
-    const previous=event.relatedTarget instanceof Element?event.relatedTarget.closest(movingCardSelector):null;
-    if(previous===card)return;
-    const style=getComputedStyle(card);
-    if(!style.transitionDuration.split(',').some(value=>parseFloat(value)>0))return;
-    const now=performance.now();
-    if(now-lastCardHoverSoundAt<260)return;
-    lastCardHoverSoundAt=now;
-    playUiSound('hover');
 },true);
 if(document.body.dataset.role==='student'){
     applyPageAudioFocus();
     startBackgroundMusic();
 }
+
+const redirect = document.body.dataset.pageRedirect;
+if (redirect) navigateWithCompass(redirect, { replace: true });

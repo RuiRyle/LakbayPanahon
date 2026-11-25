@@ -1,16 +1,12 @@
 import {auth,db} from './firebase-config.js';
 import {collection,getDocs,query,where} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
+import {chapterArtworkFor} from './chapter-artwork.js';
 
 const artNames={
  'early-philippine-communities':'maritime',
  'spanish-exploration-colonial-rule':'navigation',
  'colonial-economic-social-cultural-change':'archive',
  'resistance-national-consciousness':'voices'
-};
-const chapterScenes={
- 'chapter-1':'../assets/story/chapter-1-mission-1-scene-1.png',
- 'chapter-2':'../assets/story/chapter-2-mission-1-scene-1.png',
- 'chapter-3':'../assets/story/chapter3-mission1-scene1.png'
 };
 let renderVersion=0;
 const text=(tag,value,cls)=>{const node=document.createElement(tag);node.textContent=value;if(cls)node.className=cls;return node;};
@@ -35,8 +31,13 @@ document.addEventListener('lakbay:era-rendered',async event=>{
   card.dataset.expeditionState=destination.isCompleted?'completed':available&&!currentMarked?'current':available?'available':'locked';
   if(available&&!destination.isCompleted&&!currentMarked)currentMarked=true;
   const button=card.querySelector('.chapter-button');
+  button.classList.add('lp-button',button.disabled?'lp-button-secondary':'lp-button-primary');
   if(!button.disabled)button.textContent=destination.isCompleted?'Review Chapter':'Continue Chapter';
-  if(!available){const hint=text('p',destination.isContentReady?'Complete the required earlier chapters to open this chapter.':'This chapter is being prepared.','era-chapter-requirement');card.querySelector('.chapter-content').append(hint);}
+  if(!available){
+   const hint=text('p',destination.lockedReason || 'This chapter is unavailable.','era-chapter-requirement');
+   card.querySelector('.chapter-content').append(hint);
+   button.hidden = true;
+  }
   const progress=text('p','Checking saved mission progress…','era-mission-progress');card.querySelector('.chapter-content').insertBefore(progress,button);
   const side=text('div','','era-chapter-actions');
   const status=card.querySelector('.chapter-label');
@@ -45,9 +46,21 @@ document.addEventListener('lakbay:era-rendered',async event=>{
   card.append(side);
   const milestone=card.querySelector('.chapter-number');const visual=text('div','','era-chapter-visual');
   if(milestone)visual.append(milestone);
-  const sceneUrl=chapterScenes[destination.chapter.id];
-  if(sceneUrl){const thumb=document.createElement('img');thumb.src=sceneUrl;thumb.alt='';thumb.loading='lazy';thumb.decoding='async';thumb.addEventListener('error',()=>thumb.remove(),{once:true});visual.append(thumb);}
+  const chapterArtwork=chapterArtworkFor(destination.chapter.id);
+  if(chapterArtwork){const thumb=document.createElement('img');thumb.src=chapterArtwork.src;thumb.alt='';thumb.loading='lazy';thumb.decoding='async';thumb.addEventListener('error',()=>thumb.remove(),{once:true});visual.append(thumb);}
   card.prepend(visual);
+  if (available && chapterArtwork) button.addEventListener('click', () => {
+   if (matchMedia('(prefers-reduced-motion: reduce)').matches || document.body.classList.contains('lakbay-reduce-motion')) return;
+   const image = visual.querySelector('img');
+   if (!image?.naturalWidth) return;
+   const {x,y,width,height} = image.getBoundingClientRect();
+   if (width < 1 || height < 1 || y >= innerHeight || y + height <= 0) return;
+   try {
+    sessionStorage.setItem('lakbay-chapter-art-handoff', JSON.stringify({
+     chapter:destination.chapter.id, x,y,width,height, at:Date.now()
+    }));
+   } catch {}
+  }, {capture:true});
  }
  // The existing objectives remain intact; icons are purely decorative.
  for(const item of document.querySelectorAll('#eraDiscoveryList li'))item.classList.add('era-discovery-tile');

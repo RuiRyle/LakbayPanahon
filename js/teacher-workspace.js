@@ -1,13 +1,32 @@
 import {appConfirm} from './app-dialog.js';
+import { reloadPage } from './route-navigation.js';
+import { mountTeacherStudentAccess } from './teacher-student-access.js';
 async function confirmAdditionalReview(duplicates){return (await appConfirm(new Set(duplicates.map(row=>row.userId)).size+' selected student(s) already have a published review for this mission. Passing practice does not close a review. Create an additional review round? Existing reviews and explanations will be kept.'));}
 import {auth} from './firebase-config.js';
 import {renderTeacherHelp,renderTeacherReflectionQueue} from './student-feedback.js';
+import {loadAvatarCatalog,renderAvatarPortrait} from './student-profile.js';
 import {onAuthStateChanged,sendPasswordResetEmail,updateProfile} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
 import {assignmentDueInput, assignmentProgressState, publishedDetails, assignmentDueMillis,publicationVersion,reviewLearningStages,reviewInterventionSummary} from './teacher-class-policy.js';
 import {followupQuizEvidence,quizSupportSignals,quizSupportLabel} from './teacher-support-policy.js';
 import {summarizeQuizTopics} from './teacher-quiz-insights.js';
 import {learningEvidenceGuide,learningReportRows,classroomReportRows,downloadLearningReport,printLearningReport} from './teacher-report-export.js';
-import {loadTeacherAccountSettings,saveTeacherAccountAvatar,newTeacherPublicationId,loadTeacherDashboard,loadTeacherClasses, createTeacherClass, editTeacherClass, setTeacherClassStatus, rotateTeacherCode, loadTeacherClass,loadTeacherClassRoster,loadTeacherStudentBatch, loadTeacherStudent, loadTeacherRosterNames, loadTeacherMissions, loadTeacherAssignmentProgress, saveTeacherPublication,createTeacherReviews,loadTeacherReadiness, loadTeacherFeedback, sendTeacherFeedback, loadTeacherSupportNotes, saveTeacherSupportNote, removeTeacherClassMember} from './teacher-class-client.js?v=20261105-class-management';
+import {loadTeacherAccountSettings,saveTeacherAccountAvatar,newTeacherPublicationId,loadTeacherDashboard,loadTeacherClasses, createTeacherClass, editTeacherClass, setTeacherClassStatus, rotateTeacherCode, loadTeacherClass,loadTeacherClassRoster,loadTeacherStudentBatch, loadTeacherStudent, loadTeacherRosterNames, loadTeacherSharedAppearances, loadTeacherMissions, loadTeacherAssignmentProgress, watchTeacherAssignmentProgress, saveTeacherPublication,createTeacherReviews,loadTeacherReadiness, loadTeacherFeedback, sendTeacherFeedback, loadTeacherSupportNotes, saveTeacherSupportNote, removeTeacherClassMember} from './teacher-class-client.js?v=20261125-class-handoff';
+
+async function showTeacherStudentPortraits(classId, portraits) {
+    if (!classId || !portraits.length) return;
+    const generation = epoch, user = auth.currentUser;
+    const appearances = await loadTeacherSharedAppearances(classId, portraits.map(({userId})=>userId)).catch(()=>null);
+    if (!appearances?.size || generation !== epoch || auth.currentUser !== user) return;
+    const catalog = [...appearances.values()].some(({avatarId})=>avatarId) ? await loadAvatarCatalog().catch(()=>[]) : [];
+    if (generation !== epoch || auth.currentUser !== user) return;
+    const avatars = new Map(catalog.map(avatar=>[avatar.id,avatar]));
+    for (const {userId,element} of portraits) {
+        const appearance = appearances.get(userId);
+        if (!appearance || !element.isConnected) continue;
+        renderAvatarPortrait(element, avatars.get(appearance.avatarId), element.textContent);
+        if (['none','bamboo','sunburst','guardian','compass','navigator'].includes(appearance.frameId)) element.dataset.levelFrame = appearance.frameId;
+    }
+}
 
 const $ = id => document.getElementById(id);
 function clearStudentReport(){const report=$('studentReport');report.replaceChildren();document.body.classList.remove('student-report-focused');delete report.dataset.userId;for(const row of document.querySelectorAll('#teacherRoster tr[data-user-id]')){row.dataset.reportOpen='false';row.querySelector('button[data-report-open]')?.setAttribute('aria-expanded','false');}}
@@ -15,6 +34,7 @@ const teacherRoutes = {overview:'teacher-dashboard.html',classes:'teacher-classe
 const routeName = document.body.dataset.teacherPage || 'overview';
 const routeParameters = new URLSearchParams(location.search);
 const classroomDetailPage=location.pathname.endsWith('/teacher-classroom.html');
+const setStudentAccessClass = classroomDetailPage ? mountTeacherStudentAccess(document.querySelector('.teacher-invitation')) : null;
 if(classroomDetailPage)document.body.classList.add('classroom-detail-page');
 else if(routeName==='classes')document.body.classList.add('classroom-directory-page');
 function classroomURL(id){const url=new URL('teacher-classroom.html',location.href);url.searchParams.set('class',id);return url.href;}
@@ -104,6 +124,8 @@ assignmentShortcut.classList.add('teacher-heading-action'); assignmentShortcut.h
 $('teacher-overview').prepend($('teacherClassSummary'));
 const logoutControl = document.querySelector('.logout-button');
 sidebarNote.append(logoutControl); sidebar.append(sidebarNote);
+const classroomNavigation = node('p','Classroom',null,'teacher-navigation-group');
+classNavigation.querySelector('[data-teacher-tab="classes"]').before(classroomNavigation);
 const navigationIcons = {settings:'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 3v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6',overview:'M3 11 12 3l9 8M5 10v11h5v-7h4v7h5V10',students:'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M17 4a4 4 0 0 1 0 8M22 21v-2a4 4 0 0 0-3-4',announcements:'M4 10h4l12-6v16l-12-6H4v-4ZM8 14l2 7H6l-2-7',assignments:'M4 3h13a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-2V3Zm0 14h16M8 7h8M8 11h6'};
 for (const control of classNavigation.querySelectorAll('[data-teacher-tab]')) {
     const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
@@ -137,7 +159,34 @@ nameForm.addEventListener('submit',async event=>{event.preventDefault();const us
 const avatarLabel=node('label','Profile avatar',accountCard),avatarSelect=node('select',null,avatarLabel);avatarSelect.id='teacherAvatarChoice';avatarSelect.disabled=true;const avatarSave=button('Save avatar',accountCard,async()=>{const user=auth.currentUser;if(!user||!teacherAccountData)return;avatarSave.disabled=avatarSelect.disabled=true;avatarStatus.textContent='Saving your avatar...';const id=avatarSelect.value;try{await saveTeacherAccountAvatar(id);if(auth.currentUser!==user)return;teacherAccountData.profile.avatarId=id;renderAccountAvatar();avatarStatus.textContent='Avatar saved.';}catch(error){if(auth.currentUser===user)avatarStatus.textContent='Your avatar could not be confirmed as saved. Your selection is kept; try again when connected.';}finally{if(auth.currentUser===user)avatarSave.disabled=avatarSelect.disabled=false;}});avatarSave.disabled=true;const avatarStatus=node('p','Avatar choices load from the available collection.',accountCard,'teacher-note');avatarStatus.setAttribute('role','status');
 const securityCard=accountPanel('account-security','ACCOUNT SECURITY','Password and access','Send a reset link to your sign-in email. Your current password is never displayed.');
 const identityList=node('dl',null,securityCard,'teacher-account-identity');for(const [key,label]of [['name','Display name'],['email','Sign-in email'],['role','Account role'],['verified','Email verification']]){const entry=node('div',null,identityList);node('dt',label,entry);node('dd','Loading...',entry).id='teacherAccount'+key;}
-const resetPassword=button('Send password-reset email',securityCard,async()=>{const user=auth.currentUser;if(!user?.email||resetPassword.dataset.sent==='true')return;resetPassword.disabled=true;accountSecurityStatus.textContent='Sending your reset link...';try{await sendPasswordResetEmail(auth,user.email);if(auth.currentUser!==user)return;resetPassword.dataset.sent='true';accountSecurityStatus.textContent='Password-reset email sent. Check your inbox and spam folder. You can continue using your teaching space.';}catch(error){if(auth.currentUser!==user)return;accountSecurityStatus.textContent=error.code==='auth/too-many-requests'?'Too many requests. Wait before trying again. No automatic retry was sent.':'The reset email could not be sent. Check your connection and try again. No automatic retry was sent.';resetPassword.disabled=false;}});resetPassword.id='teacherPasswordReset';
+let teacherResetTimer;
+const resetPassword = button('Send password-reset email', securityCard, async () => {
+    const user = auth.currentUser;
+    if (!user?.email || resetPassword.disabled) return;
+    resetPassword.disabled = true;
+    accountSecurityStatus.textContent = 'Requesting your reset link…';
+    const emulator = Boolean(auth.emulatorConfig);
+    try {
+        await sendPasswordResetEmail(auth, user.email, emulator ? undefined : { url: 'https://lakbaypanahon.web.app/pages/login.html' });
+        if (auth.currentUser !== user) return;
+        accountSecurityStatus.textContent = emulator
+            ? 'Reset requested. In the local preview, look for the link in the Firebase emulator log.'
+            : 'Reset requested. Check your inbox and Spam or Junk. You can request another link in one minute.';
+        teacherResetTimer = setTimeout(() => {
+            if (auth.currentUser === user) {
+                resetPassword.disabled = false;
+                resetPassword.textContent = 'Resend password-reset email';
+            }
+        }, 60000);
+    } catch (error) {
+        if (auth.currentUser !== user) return;
+        accountSecurityStatus.textContent = ['auth/too-many-requests', 'auth/quota-exceeded'].includes(error.code)
+            ? 'Too many reset requests. Wait a few minutes and try again.'
+            : 'The reset email could not be sent. Check your connection and try again.';
+        resetPassword.disabled = false;
+    }
+});
+resetPassword.id = 'teacherPasswordReset';
 const accountSecurityStatus=node('p','',securityCard,'teacher-note');accountSecurityStatus.id='teacherAccountSecurityStatus';accountSecurityStatus.setAttribute('role','status');
 const displayPanel=accountPanel('account-display','YOUR COMFORT','Display preferences','Changes apply immediately. These preferences are shared by this browser, not stored in your teacher account.');
 const preferenceStatus=node('p','',displayPanel,'teacher-note');preferenceStatus.setAttribute('role','status');
@@ -150,7 +199,7 @@ const accountHelp=accountPanel('account-help','ACCOUNT HELP','Find the right set
 function renderAccountAvatar(){const avatar=teacherAccountData?.avatars.find(item=>item.id===teacherAccountData.profile.avatarId);accountAvatar.textContent=avatar?.kind==='emoji'?avatar.icon:Array.from(auth.currentUser?.displayName||'Teacher')[0].toUpperCase();}
 async function loadAccountDetails(){const user=auth.currentUser;avatarSave.disabled=avatarSelect.disabled=true;try{const data=await loadTeacherAccountSettings();if(auth.currentUser!==user)return;teacherAccountData=data;avatarSelect.replaceChildren();for(const avatar of data.avatars)node('option',avatar.name||avatar.id,avatarSelect).value=avatar.id;if(data.avatars.some(a=>a.id===data.profile.avatarId))avatarSelect.value=data.profile.avatarId;else if(data.avatars.some(a=>a.kind==='initials'))avatarSelect.value=data.avatars.find(a=>a.kind==='initials').id;avatarSave.disabled=avatarSelect.disabled=!data.avatars.length;avatarStatus.textContent=data.avatarUnavailable?'Avatar choices could not load. Your current avatar has not changed. Refresh account details to retry.':data.avatars.length?'Choose an avatar, then save your choice.':'No avatars are available yet. Your initials remain visible.';renderAccountAvatar();renderAvatarGrid();accountHeroBadge.textContent=data.application?.status==='approved'&&data.application.revision===data.profile.teacherVerifiedRevision?'Verified teacher':'Teacher account';verificationStatus.textContent=data.application?.status==='approved'&&data.application.revision===data.profile.teacherVerifiedRevision?'Approved teacher':'Verification needs attention';verificationStatus.dataset.state=data.application?.status==='approved'?'approved':'pending';verificationDetails.replaceChildren();for(const [label,value]of [['Approved name',data.application?.legalName||[data.profile.firstName,data.profile.lastName].filter(Boolean).join(' ')],['School or affiliation',data.application?.institution]]){if(typeof value==='string'&&value.trim()){const row=node('div',null,verificationDetails);node('dt',label,row);node('dd',value,row);}}}catch(error){if(auth.currentUser!==user)return;avatarStatus.textContent='Avatar choices could not load. Your current selection has not changed.';verificationStatus.textContent='Verification details could not refresh. Try again when connected.';}}
 button('Refresh account details',verificationPanel,()=>loadAccountDetails());
-function renderTeacherAccount(){const user=auth.currentUser;teacherAccountData=null;accountNameBaseline=user?.displayName||'';preferredName.value=accountNameBaseline;accountHeroName.textContent=user?.displayName||'Your teaching account';accountHeroTitle.textContent='Account settings';$('teacherAccountname').textContent=user?.displayName||'No display name provided';$('teacherAccountemail').textContent=user?.email||'Email unavailable';$('teacherAccountrole').textContent='Teacher';$('teacherAccountverified').textContent=user?.emailVerified?'Verified':'Not verified';delete resetPassword.dataset.sent;resetPassword.disabled=!user?.email;accountSecurityStatus.textContent='';renderAccountAvatar();loadAccountDetails();}
+function renderTeacherAccount(){const user=auth.currentUser;teacherAccountData=null;accountNameBaseline=user?.displayName||'';preferredName.value=accountNameBaseline;accountHeroName.textContent=user?.displayName||'Your teaching account';accountHeroTitle.textContent='Account settings';$('teacherAccountname').textContent=user?.displayName||'No display name provided';$('teacherAccountemail').textContent=user?.email||'Email unavailable';$('teacherAccountrole').textContent='Teacher';$('teacherAccountverified').textContent=user?.emailVerified?'Verified':'Not verified';clearTimeout(teacherResetTimer);resetPassword.disabled=!user?.email;resetPassword.textContent='Send password-reset email';accountSecurityStatus.textContent='';renderAccountAvatar();loadAccountDetails();}
 window.addEventListener('beforeunload',event=>{if(routeName==='settings'&&(profileSaving||preferredName.value.trim()!==accountNameBaseline)){event.preventDefault();event.returnValue='';}});
 
 // Settings show one focused panel while keeping unsaved form values in the DOM.
@@ -205,7 +254,7 @@ assignmentRecipient.id='assignmentRecipient';assignmentRecipient.name='recipient
 const assignmentRecipientHelp=node('p','Prepare the mission and instructions, then choose a receiving class before saving.',null,'teacher-note');assignmentRecipientLabel.after(assignmentRecipientHelp);
 document.querySelector('#teacher-assignments .teacher-editor-card h3').textContent='Plan a class goal or personal review';
 document.querySelector('#teacher-assignments .teacher-editor-card>p').textContent='Choose the teaching purpose, select a topic, and explain what students should learn. Check readiness before publishing.';
-document.querySelector('#teacher-assignments .teacher-library-card h3').textContent='Class goals and personal reviews';
+document.querySelector('#teacher-assignments .teacher-library-card h3').textContent='Saved activities';
 assignmentRecipient.addEventListener('change',renderAssignmentPreview);
 const purposeLabel=node('label','Teaching purpose',null),assignmentPurpose=node('select',null,purposeLabel);
 assignmentPurpose.name='assignmentType';assignmentPurpose.id='assignmentPurpose';
@@ -253,7 +302,16 @@ const announcementRecipientHelp=node('p','Compose your message first, then choos
 announcementRecipientLabel.after(announcementRecipientHelp);
 announcementRecipient.addEventListener('change',renderAnnouncementPreview);
 const announcementContext=node('section',null,null,'announcement-context');const announcementContextCopy=node('div',null,announcementContext);node('span','CLASSROOM MESSAGES',announcementContextCopy,'eyebrow');const announcementContextTitle=node('h2','Choose a classroom',announcementContextCopy);const announcementContextNote=node('p','Write a message now, or choose a class to see its saved posts.',announcementContextCopy);const announcementViewLabel=node('label','Classroom',announcementContext);const announcementClassView=node('select',null,announcementViewLabel);announcementClassView.id='announcementClassView';$('teacher-announcements').prepend(announcementContext);
-announcementClassView.addEventListener('change',async ()=>{if(!announcementClassView.value)return;if(busy||!(await allowDiscard())){announcementClassView.value=selected||'';return;}announcementPage=0;const classId=announcementClassView.value;task(async ()=>(await openClass(classId)));});
+async function selectPublicationClass(control) {
+    const classId=control.value;
+    const visibleClass=detail?.classroom.id||'';
+    const generation=epoch;
+    control.value=visibleClass;
+    if(!classId||classId===visibleClass||busy||!(await allowDiscard())||generation!==epoch||busy)return;
+    if(control===announcementClassView)announcementPage=0;
+    task(()=>openClass(classId));
+}
+announcementClassView.addEventListener('change',()=>selectPublicationClass(announcementClassView));
 function renderAnnouncementRecipients() {
     announcementClassView.replaceChildren();node('option','Choose a classroom',announcementClassView).value='';for(const classroom of classes)node('option',classroom.name+(classroom.status==='archived'?' (archived)':''),announcementClassView).value=classroom.id;announcementClassView.value=detail?.classroom.id||'';announcementClassView.disabled=busy||!workspaceReady;
     announcementContextTitle.textContent=detail?.classroom.name||'Choose a classroom';announcementContextNote.textContent=detail?(detail.classroom.status==='active'?'Write a message for this classroom and manage its saved posts.':'Archived classroom: saved posts are read-only. Choose an active class to publish.'):'Prepare a message now. Choose a classroom to browse its saved posts.';
@@ -267,12 +325,12 @@ function renderAnnouncementRecipients() {
 }
 const lessonCatalog=node('details',null,null,'teacher-lesson-catalog');lessonCatalog.id='teacherLessonCatalog';
 node('summary','Browse history lessons',lessonCatalog);
-node('p','Explore the existing missions and learning goals. Browsing does not assign a lesson or change student progress. Choose a class when you are ready to prepare an assignment.',lessonCatalog,'teacher-note');
+node('p','Find a lesson and open it in the activity planner.',lessonCatalog,'teacher-note');
 const catalogSearchLabel=node('label','Find a lesson',lessonCatalog),catalogSearch=node('input',null,catalogSearchLabel);
 catalogSearch.type='search';catalogSearch.placeholder='Search by mission, chapter or learning goal';catalogSearch.maxLength=200;
 const catalogChapterLabel=node('label','Chapter',lessonCatalog),catalogChapter=node('select',null,catalogChapterLabel);
 const catalogResults=node('div',null,lessonCatalog);catalogResults.id='teacherCatalogResults';catalogResults.setAttribute('aria-live','polite');
-$('teacher-assignments').prepend(lessonCatalog);
+$('teacher-assignments').append(lessonCatalog);
 let catalogPage=0,catalogInitialized=false;
 function renderLessonCatalog(reset=false) {
     if(reset){catalogSearch.value='';catalogChapter.replaceChildren();node('option','All chapters',catalogChapter).value='';
@@ -386,14 +444,21 @@ function renderAllClassRoster() {
                 output.replaceChildren();
                 if(!members.length)node('p','No students have joined this class yet.',output,'teacher-note');
                 else node('p',`Students ${page*20+1}-${page*20+group.length} of ${members.length} in this class.`,output,'teacher-note');
+                const portraits=[];
                 for(const member of group){
                     const row=node('div',null,output,'teacher-dashboard-entry');
                     const identity=identities.find(item=>item.userId===member.userId);
-                    const name=identity?.name||'Name unavailable · Account '+member.userId.slice(-8);node('strong',name,row);
+                    const name=identity?.name||'Name unavailable · Account '+member.userId.slice(-8);
+                    const identityWrap=node('div',null,row,'teacher-roster-identity');
+                    const portrait=node('span',Array.from(identity?.name||'S')[0].toLocaleUpperCase(),identityWrap,'teacher-roster-avatar teacher-student-portrait');
+                    portrait.setAttribute('aria-hidden','true');
+                    portraits.push({userId:member.userId,element:portrait});
+                    node('strong',name,identityWrap);
                     const link=node('a','View Learning Report',row,'teacher-class-link');
                     const url=new URL(teacherRoutes.students,location.href);url.searchParams.set('class',classroom.id);url.searchParams.set('student',member.userId);link.href=url.href;
                     link.setAttribute('aria-label','View learning report for '+name+' in '+classroom.name);
                 }
+                showTeacherStudentPortraits(classroom.id,portraits);
                 controls.replaceChildren();button('Refresh Students',controls,load);
                 if(page>0)button('Previous Students',controls,()=>{page--;load();});
                 if((page+1)*20<members.length)button('Next Students',controls,()=>{page++;load();});
@@ -412,7 +477,7 @@ function runClassroomChange(work,success,preserveClassEdits=false){if(pendingCla
         try{await refresh(classId);}catch{pendingClassroomChange={classId,draft};classroomRecovery.hidden=false;classroomRecoveryText.textContent=success+' The change was saved, but the view could not refresh. Check classroom status before making another change.';}
     },()=>pendingClassroomChange?(committed?'Change saved. Use Check classroom status to refresh the view.':'Check classroom status before retrying.'):success);
 }
-const editForms = ['createClassForm', 'editClassForm', 'announcementForm', 'assignmentForm','teacherFeedbackForm','teacherSupportForm'];
+const editForms = ['createClassForm', 'editClassForm', 'announcementForm', 'assignmentForm','teacherFeedbackForm','teacherSupportForm','assignmentFeedbackForm'];
 const formSignature = form => JSON.stringify([...form.querySelectorAll('input, textarea, select')].map(input => [input.name || input.id, input.value]));
 function rememberEdits(ids = editForms) { for (const id of ids) if ($(id)) formBaselines.set(id, formSignature($(id))); for(const kind of ['announcement','assignment'])syncPublicationIndicators(kind); }
 function hasUnsavedEdits() { return !!pendingClassroomChange || editForms.some(id => $(id) && formBaselines.has(id) && formSignature($(id)) !== formBaselines.get(id)) || !!document.querySelector('.teacher-help-request form[data-sending=true]') || [...document.querySelectorAll('.teacher-help-request textarea')].some(input=>!input.disabled&&input.value.trim()); }
@@ -437,7 +502,7 @@ function button(text, parent, callback, secondary = true) {
     const el = node('button', text, parent, secondary ? 'secondary' : ''); el.type = 'button'; el.addEventListener('click', callback); return el;
 }
 const statusActions=node('div',null,null,'teacher-status-actions');statusActions.id='teacherStatusActions';statusActions.hidden=true;$('teacherStatus').after(statusActions);
-button('Reload Workspace',statusActions,async ()=>{if(busy||!(await allowDiscard()))return;location.reload();});
+button('Reload Workspace',statusActions,async ()=>{if(busy||!(await allowDiscard()))return;reloadPage();});
 function message(text, error = false, state = '') {
     const status=$('teacherStatus');status.textContent=text;status.dataset.error=String(error);
     status.dataset.state=state||(error?'error':text?'info':'idle');
@@ -520,10 +585,10 @@ async function tab(name, parameters = {}) {
     assignmentShortcut.hidden = !workspaceReady || !detail || detail?.classroom.status === 'archived' || name !== 'overview';
     assignmentShortcut.textContent = detail ? 'Write Announcement' : classes.length ? 'Choose a Class' : 'Create Your First Class';
     closeTeacherMenu();
-    const headings = {overview:['Teacher Dashboard', 'Your classes, student follow-ups, and teaching priorities in one place.'],classes:['My Classes', 'Organize your classroom, invite students, and manage class details.'],students:['Student Progress', 'Understand student learning, respond to questions, and guide the next step.'],announcements:['Class announcements', 'Prepare clear messages and choose when students can see them.'],assignments:['Assigned missions', 'Choose a lesson and guide your class through its learning goal.'],settings:['Account settings','Manage your sign-in and find the settings for your teaching space.']};
+    const headings = {overview:['Teacher Dashboard', 'Your classes, student follow-ups, and teaching priorities in one place.'],classes:['My Classes', 'Organize your classroom, invite students, and manage class details.'],students:['Student Progress', 'Understand student learning, respond to questions, and guide the next step.'],announcements:['Class announcements', 'Write, review, and publish messages for a classroom.'],assignments:['Learning Activities', 'Plan a class goal or a personal review for a student.'],settings:['Account settings','Manage your sign-in and find the settings for your teaching space.']};
     document.querySelector('.teacher-intro h1').textContent = headings[name][0];
     document.querySelector('.teacher-intro p').textContent = headings[name][1];
-    $('teacherPageTitle').textContent = {overview:'Teacher Dashboard',classes:'My Classes',students:'Student Progress',announcements:'Announcements',assignments:'Assigned Missions',settings:'Account Settings'}[name];
+    $('teacherPageTitle').textContent = {overview:'Teacher Dashboard',classes:'My Classes',students:'Student Progress',announcements:'Announcements',assignments:'Learning Activities',settings:'Account Settings'}[name];
     $('teacherClassSummary').hidden = !detail || name !== 'overview';
     document.querySelector('.teacher-intro').classList.add('teacher-intro-compact');
     if (name === 'classes') classPicker.open = true;
@@ -554,7 +619,7 @@ async function tab(name, parameters = {}) {
         emptySections.get('assignments').empty.hidden=true;
         emptySections.get('assignments').content.hidden=false;$('assignmentForm').hidden=!workspaceReady;
         renderAssignmentRecipients();renderAssignmentPreview();
-        if(!detail){$('assignmentList').replaceChildren();$('assignmentSummary').textContent='Prepare an assignment without selecting a class first. Choose a class in the toolbar to review its saved assignments.';}
+        if(!detail){$('assignmentList').replaceChildren();$('assignmentSummary').textContent='Choose a classroom to see its saved activities. You can start a plan now and choose its classroom later.';}
         renderLessonCatalog(!catalogInitialized);
         lessonCatalog.open=false;
     }
@@ -607,38 +672,115 @@ function renderEmptyDashboard() {
     node('p','After students join, this panel will help you find topics to discuss and open their learning reports.',support,'teacher-note');
 }
 let overviewPage=0,overviewRequest=0;
+const overviewClassGroupSize = 6;
 function renderAllClassesDashboard(root) {
     root.replaceChildren();root.classList.add('teacher-overview-home');
     const generation=epoch,request=++overviewRequest,current=()=>generation===epoch&&request===overviewRequest&&root.isConnected&&!detail;
-    const active=classes.filter(c=>c.status==='active');overviewPage=Math.min(overviewPage,Math.max(0,Math.ceil(active.length/6)-1));
-    const visible=active.slice(overviewPage*6,(overviewPage+1)*6);
+    const active=classes.filter(c=>c.status==='active');
+    const groupCount=Math.ceil(active.length/overviewClassGroupSize);
+    overviewPage=Math.min(overviewPage,Math.max(0,groupCount-1));
+    const groupStart=overviewPage*overviewClassGroupSize;
+    const visible=active.slice(groupStart,groupStart+overviewClassGroupSize);
     const route=(name,classId,parameters={})=>{const url=new URL(teacherRoutes[name],location.href);if(classId)url.searchParams.set('class',classId);for(const [key,value] of Object.entries(parameters))if(value)url.searchParams.set(key,value);return url.href;};
     const action=(parent,label,name,classId,primary=false,parameters={})=>{const link=node('a',label,parent,primary?'overview-button is-primary':'overview-button');link.href=route(name,classId,parameters);return link;};
-    const hero=node('header',null,root,'overview-hero');const greeting=node('div',null,hero);node('span','YOUR TEACHING DESK',greeting,'eyebrow');
-    const teacherName=(auth.currentUser?.displayName||active.find(c=>c.teacherName)?.teacherName||'').trim();node('h1',teacherName?'Welcome back, '+teacherName+'.':'Your teaching day, in focus.',greeting).id='teacherWelcomeTitle';
-    node('p',active.length?'See where your classes are, respond to students, and plan their next discovery.':'Start your classroom, invite students, and guide their history journey.',greeting);
-    const heroAside=node('div',null,hero,'overview-hero-aside');node('span',new Intl.DateTimeFormat('en-PH',{weekday:'long',month:'long',day:'numeric',timeZone:'Asia/Manila'}).format(new Date()),heroAside,'overview-date');
-    const heroActions=node('div',null,heroAside,'overview-actions');action(heroActions,active.length?'Plan a learning activity':'Create your first class',active.length?'assignments':'classes',active.length===1?active[0].id:null,true);
+    const hero=node('header',null,root,'overview-hero');
+    const greeting=node('div',null,hero,'workspace-hero-copy');
+    const today=new Intl.DateTimeFormat('en-PH',{weekday:'long',month:'long',day:'numeric',timeZone:'Asia/Manila'}).format(new Date());
+    node('p',today,greeting,'workspace-hero-date');
+    const teacherName=(auth.currentUser?.displayName||active.find(c=>c.teacherName)?.teacherName||'').trim();
+    node('h1',teacherName?'Welcome back, '+teacherName:'Teacher dashboard',greeting).id='teacherWelcomeTitle';
+    node('p',active.length?'See who needs help, check class progress, and plan your next activity.':'Create a class and share its invitation code with your students.',greeting);
+    const heroActions=node('div',null,greeting,'overview-actions workspace-hero-actions');
+    action(heroActions,active.length?'Plan a learning activity':'Create your first class',active.length?'assignments':'classes',active.length===1?active[0].id:null,true);
+    if(active.length)action(heroActions,'My classes','classes');
     const metrics=node('div',null,root,'overview-metrics');metrics.setAttribute('aria-label','Teaching overview summary');
     const iconPaths={classes:'M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6M9 10h6',students:navigationIcons.students,goals:'M5 21V3m0 1h14l-3 4 3 4H5',responses:'M21 11a8 8 0 0 1-8 8H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v4ZM8 8h8M8 12h5'};
     const metric=(label,note,icon)=>{const card=node('article',null,metrics,'overview-metric');card.dataset.metric=icon;const emblem=node('span','',card,'overview-metric-icon');emblem.setAttribute('aria-hidden','true');const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',iconPaths[icon]);svg.append(path);emblem.append(svg);const copy=node('div',null,card);node('span',label,copy,'overview-metric-label');const value=node('strong','—',copy);node('small',note,copy);return value;};
-    metric('Active classes','Your active learning spaces','classes').textContent=String(active.length);
-    const students=metric('Students in view','Across the classrooms below','students'),goals=metric('Class learning goals','Published activities in view','goals'),pending=metric('Needs a response','Questions and explanations','responses');
+    metric('Active classes','Across your workspace','classes').textContent=String(active.length);
+    const students=metric('Students in view','In the classes shown below','students'),goals=metric('Published activities','In the classes shown below','goals'),pending=metric('Awaiting a reply','Student questions and explanations','responses');
     const scope=node('p',active.length?'Loading a classroom snapshot…':'No class data yet. Your overview will fill in as students join.',root,'overview-scope');scope.setAttribute('role','status');
     const columns=node('div',null,root,'overview-columns');
-    const attention=node('section',null,columns,'overview-panel overview-attention');node('span','MAKE A DIFFERENCE',attention,'eyebrow');const attentionHeading=node('div',null,attention,'overview-panel-heading');node('h3','Needs your guidance',attentionHeading);const attentionCount=node('span','Checking',attentionHeading,'overview-count-pill');node('p','Private questions and explanations, with one clear next action.',attention,'teacher-note');
-    const attentionFilters=node('div',null,attention,'attention-filters');attentionFilters.setAttribute('role','group');attentionFilters.setAttribute('aria-label','Filter student follow-ups');const attentionList=node('div',null,attention,'overview-attention-list');const attentionStatus=node('p','',attention,'attention-status');attentionStatus.setAttribute('role','status');
-    let attentionItems=[],attentionResults=[],attentionFilter='all',attentionLoaded=false,attentionIncomplete=false,attentionPage=0,attentionClass='all';const attentionButtons=[];
-    const attentionClassLabel=node('label','Classroom',attentionFilters,'attention-class-filter'),attentionClassSelect=node('select',null,attentionClassLabel);node('option','All classrooms in view',attentionClassSelect).value='all';for(const classroom of visible)node('option',classroom.name,attentionClassSelect).value=classroom.id;attentionClassSelect.addEventListener('change',()=>{attentionClass=attentionClassSelect.value;attentionPage=0;renderAttention();});const attentionPaging=node('div',null,attention,'attention-paging');
-    const inboxLinks=node('details',null,attention,'attention-full-inboxes');node('summary','Open a classroom inbox',inboxLinks);node('p','The dashboard is a limited snapshot. Class inboxes can load more records on demand.',inboxLinks,'teacher-note');for(const classroom of visible){const row=node('div',null,inboxLinks,'attention-class-inbox');node('strong',classroom.name,row);action(row,'Questions','students',classroom.id,false,{followup:'help'});action(row,'Explanations','students',classroom.id,false,{followup:'explanation'});}
+    const attention=node('section',null,columns,'overview-panel overview-attention');
+    const attentionHeading=node('div',null,attention,'overview-panel-heading');
+    node('h2','Student follow-ups',attentionHeading).id='overviewAttentionHeading';
+    attention.setAttribute('aria-labelledby','overviewAttentionHeading');
+    const attentionCount=node('span','Checking',attentionHeading,'overview-count-pill');
+    const attentionScope=node('div',null,attention,'attention-class-scope');
+    attentionScope.hidden=!visible.length;
+    const scopeText=groupCount>1
+        ? 'Classes '+(groupStart+1)+'–'+(groupStart+visible.length)+' of '+active.length+' active'
+        : visible.length+' active '+(visible.length===1?'class':'classes')+' in view';
+    const attentionScopeLabel=node('p',scopeText,attentionScope,'attention-scope-label');
+    attentionScopeLabel.id='overviewAttentionScope';
+    attentionScopeLabel.tabIndex=-1;
+    if(groupCount>1){
+        const groupNav=node('nav',null,attentionScope,'attention-group-navigation');
+        groupNav.setAttribute('aria-label','Dashboard class groups');
+        const showGroup=offset=>{
+            overviewPage+=offset;
+            renderAllClassesDashboard(root);
+            $('overviewAttentionScope').focus();
+        };
+        if(overviewPage>0)button('Previous classes',groupNav,()=>showGroup(-1));
+        if(overviewPage+1<groupCount)button('Next classes',groupNav,()=>showGroup(1));
+    }
+    const attentionFilters=node('div',null,attention,'attention-filters');
+    attentionFilters.hidden=!visible.length;
+    attentionFilters.setAttribute('role','group');
+    attentionFilters.setAttribute('aria-label','Filter student follow-ups');
+    let attentionItems=[],attentionResults=new Map(),attentionFilter='all',attentionLoaded=false,attentionPage=0;
+    const attentionButtons=[];
+    const attentionClassLabel=node('label','Classroom',attentionFilters,'attention-class-filter');
+    attentionClassLabel.hidden=visible.length<2;
+    const attentionClassSelect=node('select',null,attentionClassLabel);
+    node('option','All classrooms in view',attentionClassSelect).value='';
+    for(const classroom of visible)node('option',classroom.name,attentionClassSelect).value=classroom.id;
+    const inboxLinks=node('details',null,attention,'attention-full-inboxes');
+    inboxLinks.hidden=!visible.length;
+    inboxLinks.open=visible.length===1;
+    node('summary','Open a class inbox',inboxLinks);
+    node('p','See more questions and explanations in each classroom.',inboxLinks,'teacher-note');
+    const inboxRows=new Map();
+    for(const classroom of visible){
+        const row=node('div',null,inboxLinks,'attention-class-inbox');
+        inboxRows.set(classroom.id,row);
+        node('strong',classroom.name,row);
+        for(const [label,followup] of [['Questions','help'],['Explanations','explanation']]){
+            const link=action(row,label,'students',classroom.id,false,{followup});
+            link.setAttribute('aria-label',label+' for '+classroom.name);
+        }
+    }
+    attentionClassSelect.addEventListener('change',()=>{
+        const classId=attentionClassSelect.value;
+        for(const [id,row] of inboxRows)row.hidden=!!classId&&id!==classId;
+        if(classId)inboxLinks.open=true;
+        attentionPage=0;
+        renderAttention();
+    });
+    const attentionStatus=node('p','',attention,'attention-status');attentionStatus.setAttribute('role','status');
+    const attentionList=node('div',null,attention,'overview-attention-list');
+    const attentionPaging=node('div',null,attention,'attention-paging');
+    attention.append(inboxLinks);
     const requestTime=item=>item.row.understanding==='needs-help'?(item.row.understandingAt||item.row.updatedAt):(item.row.submittedAt||item.row.updatedAt);
     const renderAttention=()=>{
-        if(!attentionLoaded)return;attentionList.replaceChildren();attentionPaging.replaceChildren();const matching=attentionItems.filter(item=>attentionClass==='all'||item.classroom.id===attentionClass).filter(item=>attentionFilter==='all'||(attentionFilter==='explanations'?!!item.row.reviewId:!item.row.reviewId));
+        if(!attentionLoaded)return;
+        attentionList.replaceChildren();attentionPaging.replaceChildren();
+        const classId=attentionClassSelect.value;
+        const matching=attentionItems.filter(item=>!classId||item.classroom.id===classId).filter(item=>attentionFilter==='all'||(attentionFilter==='explanations'?!!item.row.reviewId:!item.row.reviewId));
+        const coverage=classId?[attentionResults.get(classId)]:[...attentionResults.values()];
+        const unavailable=coverage.some(result=>result?.unavailable);
+        const limited=coverage.some(result=>result?.limited);
         for(const item of attentionButtons){item.control.disabled=false;item.control.setAttribute('aria-pressed',String(item.value===attentionFilter));}
-        attentionPage=Math.min(attentionPage,Math.max(0,Math.ceil(matching.length/4)-1));attentionStatus.textContent=matching.length?'Showing '+(attentionPage*4+1)+'-'+Math.min((attentionPage+1)*4,matching.length)+' of '+matching.length+' matching follow-ups. Oldest dated requests first.':'No pending '+(attentionFilter==='all'?'follow-ups':attentionFilter)+' in this snapshot.';
-        if(!matching.length){const empty=node('div',null,attentionList,'attention-empty');node('strong',attentionIncomplete?'Some follow-ups are unavailable':attentionItems.length?'Nothing waiting in this category':'You’re caught up',empty);node('p',attentionIncomplete?'Refresh the dashboard or open Student Progress to check the class.':attentionItems.length?'Try another filter to view the remaining requests.':'No unanswered questions or explanations in this snapshot. Keep checking in with your class.',empty);return;}
+        attentionPage=Math.min(attentionPage,Math.max(0,Math.ceil(matching.length/4)-1));
+        const resultMessage=matching.length
+            ? 'Showing '+(attentionPage*4+1)+'–'+Math.min((attentionPage+1)*4,matching.length)+' of '+matching.length+' matching follow-ups. Oldest dated requests first.'
+            : unavailable?'':'No pending '+(attentionFilter==='all'?'follow-ups':attentionFilter)+' in this snapshot.';
+        const coverageMessage=unavailable
+            ? 'Some records could not load. Open a class inbox or refresh the dashboard.'
+            : limited?'The dashboard reached its 100-record limit for at least one list. Open a class inbox to check for more.':'';
+        attentionStatus.textContent=[resultMessage,coverageMessage].filter(Boolean).join(' ');
         for(const item of matching.slice(attentionPage*4,(attentionPage+1)*4)){
-            const record=attentionResults.find(result=>result.classId===item.classroom.id)?.collections,roster=record?.classmates.rows||[],name=roster.find(person=>person.id===item.row.userId)?.displayName||'Student account '+item.row.userId.slice(-8),explanation=!!item.row.reviewId;
+            const record=attentionResults.get(item.classroom.id)?.collections,roster=record?.classmates.rows||[],name=roster.find(person=>person.id===item.row.userId)?.displayName||'Student account '+item.row.userId.slice(-8),explanation=!!item.row.reviewId;
             const row=node('article',null,attentionList,'overview-followup attention-card');row.dataset.followupType=explanation?'explanation':'question';const header=node('div',null,row,'attention-student');node('span',name.slice(0,1).toLocaleUpperCase(),header,'attention-avatar').setAttribute('aria-hidden','true');const identity=node('div',null,header);node('strong',name,identity);node('span',item.classroom.name,identity,'overview-row-context');
             node('span',item.kind,row,'overview-followup-kind');const assignmentId=item.row.reviewId||item.row.assignmentId,assignment=[...(record?.classAssignments.rows||[]),...(record?.classReviewAssignments.rows||[])].find(entry=>entry.id===assignmentId);if(assignment)node('h4',assignment.title,row,'attention-lesson');
             const message=explanation?item.row.body:item.row.message;node('p',message?(message.length>170?message.slice(0,167)+'…':message):'This student asked for help with a learning activity.',row,'attention-preview');
@@ -649,7 +791,7 @@ function renderAllClassesDashboard(root) {
         if(matching.length>4){const previous=button('Previous requests',attentionPaging,()=>{attentionPage--;renderAttention();});previous.disabled=attentionPage===0;node('span','Page '+(attentionPage+1)+' of '+Math.ceil(matching.length/4),attentionPaging);const next=button('Next requests',attentionPaging,()=>{attentionPage++;renderAttention();});next.disabled=(attentionPage+1)*4>=matching.length;}
     };
     for(const [value,label] of [['all','All follow-ups'],['questions','Questions'],['explanations','Explanations']]){const control=button(label,attentionFilters,()=>{attentionFilter=value;attentionPage=0;renderAttention();});control.disabled=true;control.setAttribute('aria-pressed',String(value==='all'));attentionButtons.push({value,control});}
-    const activity=node('section',null,columns,'overview-panel overview-activity');node('span','CLASSROOM PULSE',activity,'eyebrow');const pulseHeading=node('div',null,activity,'pulse-heading');node('h3','What’s happening in your classes',pulseHeading);const pulseCount=node('span','Loading',pulseHeading,'pulse-count');node('p','Follow student check-ins and the learning updates you shared.',activity,'teacher-note');
+    const activity=node('section',null,columns,'overview-panel overview-activity');const pulseHeading=node('div',null,activity,'pulse-heading');node('h2','Recent classroom activity',pulseHeading);const pulseCount=node('span','Loading',pulseHeading,'pulse-count');
     const pulseToolbar=node('div',null,activity,'pulse-filters');pulseToolbar.setAttribute('role','group');pulseToolbar.setAttribute('aria-label','Filter classroom activity');
     let pulseEvents=[],pulseFilter='all',pulseLoaded=false;const pulseButtons=[];
     const activityList=node('ol',null,activity,'overview-event-list pulse-timeline');
@@ -669,7 +811,7 @@ function renderAllClassesDashboard(root) {
         }
     };
     for(const [value,label] of [['all','All activity'],['students','Student check-ins'],['teaching','Teaching updates']]){const control=button(label,pulseToolbar,()=>{pulseFilter=value;renderPulse();});control.setAttribute('aria-pressed',String(value==='all'));control.disabled=true;pulseButtons.push({value,button:control});}
-    const classesPanel=node('section',null,root,'overview-panel overview-classrooms');const classHeading=node('div',null,classesPanel,'overview-section-heading');const classHeadingCopy=node('div',null,classHeading);node('span','CONTINUE TEACHING',classHeadingCopy,'eyebrow');node('h3','Your classrooms',classHeadingCopy);node('p','Open a class, guide its learning, or follow up with students.',classHeadingCopy,'teacher-note');action(classHeading,'Manage classes','classes');
+    const classesPanel=node('section',null,root,'overview-panel overview-classrooms');const classHeading=node('div',null,classesPanel,'overview-section-heading');node('h2','Your classrooms',classHeading);action(classHeading,'Manage classes','classes');
     const cards=node('div',null,classesPanel,'overview-class-grid');cards.id='teacherAllClassCards';const classOutputs=new Map();
     for(const classroom of visible){const card=node('article',null,cards,'overview-class-card');card.dataset.classId=classroom.id;const header=node('header',null,card,'room-card-heading');node('span',classroom.name.trim().slice(0,1).toLocaleUpperCase(),header,'overview-class-emblem').setAttribute('aria-hidden','true');const identity=node('div',null,header,'room-card-identity');node('span','ACTIVE CLASS',identity,'overview-class-label');node('h4',classroom.name,identity);
         if(classroom.description)node('p',classroom.description,card,'room-description');
@@ -679,7 +821,6 @@ function renderAllClassesDashboard(root) {
     }
     if(!active.length){pulseCount.textContent='0 recent';attentionCount.textContent='0 pending';for(const value of [students,goals,pending])value.textContent='0';node('p','No requests yet. Students can ask for help after you publish a learning activity.',attentionList,'overview-empty');node('li','Classroom activity will appear as you and your students begin.',activityList,'overview-empty');node('p','Create a class and share its invitation code. Students keep their personal progress when they join.',cards,'overview-empty');action(cards,'Set up a class','classes',null,true);return;}
     node('p','Checking student follow-ups…',attentionList,'overview-empty');node('li','Loading recent classroom updates…',activityList,'overview-empty');
-    if(active.length>6){const pages=node('div',null,classesPanel,'overview-actions');node('p','Class group '+(overviewPage+1)+' of '+Math.ceil(active.length/6),pages,'teacher-note');if(overviewPage>0)button('Previous classes',pages,()=>{overviewPage--;renderAllClassesDashboard(root);});if((overviewPage+1)*6<active.length)button('Next classes',pages,()=>{overviewPage++;renderAllClassesDashboard(root);});}
     const load=async()=>{
       try{const results=await loadTeacherDashboard(visible.map(c=>c.id));if(!current())return;
         const userIds=new Set(),requests=[],events=[];let goalCount=0,reviewCount=0,partial=false,limited=false,memberLimited=false;
@@ -696,10 +837,18 @@ function renderAllClassesDashboard(root) {
           for(const row of collections.classReviewReflections.rows){if(eligible(row)&&!row.response)requests.push({classroom,row,kind:'Understanding check to review'});if(eligible(row))events.push({classroom,label:row.response?'Explanation feedback sent':'Student shared an explanation',title:reviews.find(a=>a.id===row.reviewId)?.title||'Personal review',at:row.response?row.respondedAt:row.submittedAt,route:'students'});}
           for(const item of [...shared,...reviews,...collections.classAnnouncements.rows.filter(a=>a.status==='published')])events.push({classroom,label:item.assignmentType==='targeted-review'?'Personal review published':item.missionId?'Class learning goal shared':'Announcement published',title:item.title,at:item.updatedAt,route:item.missionId?'assignments':'announcements',assignmentId:item.missionId?item.id:null});
         }
-        const anyMemberError=results.some(r=>r.unavailable||r.collections?.classMembers.unavailable),anyGoalError=results.some(r=>r.unavailable||r.collections?.classAssignments.unavailable),anyHelpError=results.some(r=>r.unavailable||r.collections?.classMembers.unavailable||r.collections?.classHelpRequests.unavailable||r.collections?.classReviewReflections.unavailable);
-        students.textContent=anyMemberError?'—':String(userIds.size)+(memberLimited?'+':'');goals.textContent=anyGoalError?'—':String(goalCount)+(limited?'+':'');pending.textContent=anyHelpError?'—':String(requests.length)+(limited?'+':'');
-        scope.textContent='Snapshot: '+new Intl.DateTimeFormat('en-PH',{hour:'numeric',minute:'2-digit',timeZone:'Asia/Manila'}).format(new Date())+' · '+visible.length+' of '+active.length+' active classes · '+reviewCount+' published personal reviews.'+(active.length>6?' Counts cover this class group.':'')+(partial?' Some data could not load; unavailable counts are shown as —.':'')+(limited?' Large lists are limited to 100 records per type per class; + indicates a partial count.':'');
-        attentionCount.textContent=anyHelpError?'Unavailable':requests.length+' pending';requests.sort((a,b)=>(requestTime(a)?.toMillis?.()||Infinity)-(requestTime(b)?.toMillis?.()||Infinity));attentionItems=requests;attentionResults=results;attentionIncomplete=anyHelpError;attentionLoaded=true;renderAttention();if(anyHelpError){attentionStatus.textContent+=' Some sources could not load. Refresh or open Student Progress to check.';if(!requests.length)attentionList.replaceChildren(node('p','Follow-ups could not be fully checked. Refresh to retry.',null,'overview-empty'));}
+        const anyMemberError=results.some(r=>r.unavailable||r.collections?.classMembers.unavailable),anyGoalError=results.some(r=>r.unavailable||r.collections?.classAssignments.unavailable);
+        attentionResults=new Map(results.map(({classId,collections,unavailable})=>{
+            const sources=collections&&[collections.classMembers,collections.classHelpRequests,collections.classReviewReflections];
+            return [classId,{collections,unavailable:unavailable||sources?.some(source=>source.unavailable),limited:sources?.some(source=>source.limited)}];
+        }));
+        const anyHelpError=[...attentionResults.values()].some(result=>result.unavailable);
+        const anyHelpLimited=[...attentionResults.values()].some(result=>result.limited);
+        students.textContent=anyMemberError?'—':String(userIds.size)+(memberLimited?'+':'');goals.textContent=anyGoalError?'—':String(goalCount)+(limited?'+':'');pending.textContent=anyHelpError?'—':String(requests.length)+(anyHelpLimited?'+':'');
+        scope.textContent='Snapshot: '+new Intl.DateTimeFormat('en-PH',{hour:'numeric',minute:'2-digit',timeZone:'Asia/Manila'}).format(new Date())+' · '+visible.length+' of '+active.length+' active classes · '+reviewCount+' published personal reviews.'+(groupCount>1?' Counts cover this class group.':'')+(partial?' Some data could not load; unavailable counts are shown as —.':'')+(limited?' Large lists are limited to 100 records per type per class; + indicates a partial count.':'');
+        attentionCount.textContent=anyHelpError||anyHelpLimited?requests.length+' found':requests.length+' pending';
+        requests.sort((a,b)=>(requestTime(a)?.toMillis?.()||Infinity)-(requestTime(b)?.toMillis?.()||Infinity));
+        attentionItems=requests;attentionLoaded=true;renderAttention();
         pulseEvents=events.filter(event=>Number.isFinite(event.at?.toMillis?.())&&event.at.toMillis()<=Date.now()).sort((a,b)=>b.at.toMillis()-a.at.toMillis());pulseLoaded=true;renderPulse();if(partial)pulseStatus.textContent+=' Some sources could not load; refresh to retry.';
       }catch{if(current()){for(const value of [students,goals,pending])value.textContent='—';pulseCount.textContent='Unavailable';attentionCount.textContent='Unavailable';scope.textContent='Classroom summary could not load. Your saved data is unchanged.';attentionList.replaceChildren();node('p','Refresh the dashboard to try again.',attentionList,'overview-empty');activityList.replaceChildren();node('li','Activity unavailable.',activityList,'overview-empty');for(const output of classOutputs.values())output.result.textContent='Summary unavailable.';button('Retry overview',attentionList,()=>renderAllClassesDashboard(root));}}
     };load();
@@ -723,11 +872,23 @@ function renderOverview() {
     ]) {
         const card = node('section', null, dashboardFeed, 'teacher-dashboard-card');
         node('h3', heading, card);
-        const recent = items.filter(item => item.status === 'published').sort((a,b) => (b.updatedAt?.toMillis?.() || 0) - (a.updatedAt?.toMillis?.() || 0)).slice(0,destination === 'announcements' ? 2 : 3);
+        const isAssignment = destination === 'assignments';
+        const upcoming = Date.now();
+        const futureDue = item => {
+            const due = item.dueAt?.toMillis?.();
+            return Number.isFinite(due) && due >= upcoming ? due : Infinity;
+        };
+        const recent = items.filter(item => item.status === 'published').sort((a,b) =>
+            (isAssignment ? (futureDue(a) - futureDue(b) || 0) : 0) ||
+            (b.updatedAt?.toMillis?.() || 0) - (a.updatedAt?.toMillis?.() || 0)
+        ).slice(0,isAssignment ? 3 : 2);
         if (!recent.length) node('p', destination === 'assignments' ? 'No missions published yet. Choose a lesson when your class is ready.' : 'No announcements published yet. Share a short reminder with your class.', card, 'teacher-note');
         for (const item of recent) {
             const entry = node('article', null, card, 'teacher-dashboard-entry');
             node('strong', item.title, entry);
+            if (isAssignment && Number.isFinite(item.dueAt?.toMillis?.())) {
+                node('p', 'Due ' + date(item.dueAt) + ' (Philippine time)', entry, 'teacher-deadline');
+            }
             const text = destination === 'assignments' ? missionGoal(missions.find(m => m.id === item.missionId)) || item.instructions : item.body;
             if (text) node('p', text.length > 180 ? text.slice(0,177) + '…' : text, entry);
             if (destination === 'assignments' && c.status === 'active') renderDashboardCompletion(entry, item);
@@ -938,7 +1099,22 @@ function renderAssignmentPreview() {
     if(guidanceLabel.firstChild?.nodeType===3)guidanceLabel.firstChild.textContent=personal?'Review guidance (required)':'Class learning prompt (optional)';
     form.elements.namedItem('instructions').placeholder=personal?'Explain which idea to revisit and what the student should try next.':'Example: Explore early trade. Be ready to explain how communities exchanged goods.';
     const recipient=classes.find(c=>c.id===assignmentRecipient.value&&c.status==='active');
-    form.querySelector('[type="submit"]').textContent = published ? (personal?'Assign personal review':'Publish class goal') : 'Save activity draft';
+    const due = form.elements.namedItem('dueDate').value;
+    form.querySelector('[type="submit"]').textContent=published?(personal?'Send personal review':'Publish to class'):'Save draft';
+    const summary=$('assignmentSubmitSummary');
+    if(summary){
+        summary.replaceChildren();
+        for(const [label,value] of [
+            ['Classroom',recipient?.name||'Choose a class'],
+            ['Mission',mission?.title||mission?.name||'Choose a mission'],
+            ['Due date',due?due+' · 11:59 PM PH':'No due date'],
+            ['Visibility',published?(personal?'Selected students only':'Active class members'):'Private draft']
+        ]){
+            const field=node('div',null,summary);
+            node('dt',label,field);
+            node('dd',value,field);
+        }
+    }
     if (!mission) { node('p', 'Select a mission to preview its chapter and learning goal.', assignmentPreview); return; }
     if(personal){const topic=mission.reviewTopics?.find(t=>t.key===reviewTopic.value);node('p',topic?'Review focus: '+topic.label:'Review focus: whole lesson. Only authored topic-to-scene mappings are offered.',assignmentPreview,'teacher-note');}
     node('span', 'MISSION PREVIEW', assignmentPreview, 'eyebrow');
@@ -948,7 +1124,6 @@ function renderAssignmentPreview() {
     node('strong', 'Learning goal', assignmentPreview);
     node('p', missionGoal(mission) || 'A learning objective has not been supplied for this mission. Review the lesson before assigning it.', assignmentPreview);
     const instructions = form.elements.namedItem('instructions').value.trim();
-    const due = form.elements.namedItem('dueDate').value;
     node('p', due ? 'Due: ' + due + ' at 11:59 PM (Philippine time).' : 'No due date. Students can work at their own pace.', assignmentPreview, 'teacher-note');
     if (instructions) { node('strong', 'Your guidance to students', assignmentPreview); node('p', instructions, assignmentPreview); }
     node('p',personal?'Personal review: only selected students receive it. A new passing quiz result saved after publication is required; earlier completion does not finish this review.':'Class goal: a shared topic for your next lesson or discussion. A fresh passing quiz opened from this class assignment is required. Solo completion stays separate.',assignmentPreview,'teacher-visibility');
@@ -964,7 +1139,7 @@ function renderAssignmentPreview() {
       readinessButton.disabled=true;readinessResults.replaceChildren();node('p','Checking saved learning progress...',readinessResults,'teacher-note');
       const current=()=>generation===epoch&&readinessResults.isConnected&&assignmentRecipient.value===classId&&$('assignmentMission').value===missionId;
       try{const record=detail?.classroom.id===classId?detail:await loadTeacherClass(classId);if(!current())return;const members=record.members.slice(readinessPage*20,(readinessPage+1)*20);const results=await loadTeacherReadiness(classId,missionId,members.map(m=>m.userId));if(!current())return;readinessResults.replaceChildren();node('p','Readiness for students '+(members.length?readinessPage*20+1:0)+'–'+Math.min((readinessPage+1)*20,record.members.length)+' of '+record.members.length+'. Refresh after students make progress.',readinessResults,'teacher-note');
-      if(!members.length)node('p','No students have joined this class.',readinessResults);else table(readinessResults,'Readiness for this mission',['Student','Learning position','Latest saved score'],results.map(result=>[result.name||'Student account '+result.userId.slice(-8),({complete:'Already completed',ready:'Ready to start',locked:'Earlier learning needed',unavailable:'Content unavailable',unknown:'Could not verify'})[result.state],Number.isFinite(result.latestScore)?result.latestScore+'%':'No result']));
+      if(!members.length)node('p','No students have joined this class.',readinessResults);else table(readinessResults,'Readiness for this mission',['Student','Learning position','Latest saved score'],results.map(result=>[result.name||'Student account '+result.userId.slice(-8),({complete:'Mission completed in My Journey',ready:'Ready to start',locked:'Earlier learning needed',unavailable:'Content unavailable',unknown:'Could not verify'})[result.state],Number.isFinite(result.latestScore)?result.latestScore+'%':'No result']));
       const actions=node('div',null,readinessResults,'teacher-actions');if(readinessPage>0)button('Previous group',actions,()=>{readinessPage--;checkReadiness();});if((readinessPage+1)*20<record.members.length)button('Next group',actions,()=>{readinessPage++;checkReadiness();});
       }catch{if(current()){readinessResults.replaceChildren();node('p','Readiness could not be verified. Retry before choosing a deadline.',readinessResults);}}finally{if(readinessButton.isConnected)readinessButton.disabled=false;}
     };
@@ -1021,6 +1196,18 @@ $('announcementForm').elements.namedItem('title').placeholder='Give your message
 $('announcementForm').addEventListener('input', renderAnnouncementPreview);
 $('announcementForm').addEventListener('change', renderAnnouncementPreview);
 let directoryPage=0;
+function classDirectoryStorageKey(){
+    const uid=auth.currentUser?.uid;
+    return uid ? 'lakbay:teacher-class-directory:'+uid : null;
+}
+function restoreClassDirectory(){
+    let saved;
+    const key=classDirectoryStorageKey();
+    try{if(key)saved=JSON.parse(sessionStorage.getItem(key));}catch{}
+    $('classroomDirectorySearch').value=typeof saved?.search==='string'?saved.search.slice(0,100):'';
+    $('classroomDirectoryState').value=['active','archived','all'].includes(saved?.state)?saved.state:'active';
+    directoryPage=Number.isSafeInteger(saved?.page)&&saved.page>=0?saved.page:0;
+}
 function setupClassDirectory(){
     if($('classroomDirectoryFilters'))return;
     const hero=document.querySelector('.teacher-intro');hero.classList.add('classroom-directory-hero');hero.querySelector('h1').textContent='My Classes';hero.querySelector('p').textContent='Find a classroom, open its workspace, and keep your teaching organized.';
@@ -1028,26 +1215,30 @@ function setupClassDirectory(){
     const create=button('Create classroom',heroActions,()=>{classCreation.open=true;classCreation.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});$('newClassName').focus({preventScroll:true});},false);create.id='directoryCreateClassroom';classCreation.id='classroomCreatePanel';create.setAttribute('aria-controls','classroomCreatePanel');create.setAttribute('aria-expanded',String(classCreation.open));classCreation.addEventListener('toggle',()=>create.setAttribute('aria-expanded',String(classCreation.open)));
     node('span','Set up a space for your learners.',heroActions,'directory-action-help');
     const filters=node('div',null,null,'classroom-directory-filters');filters.id='classroomDirectoryFilters';
-    const searchLabel=node('label','Find a classroom',filters),search=node('input',null,searchLabel);search.type='search';search.id='classroomDirectorySearch';search.placeholder='Search by class name';
+    const searchLabel=node('label','Find a classroom',filters),search=node('input',null,searchLabel);search.type='search';search.id='classroomDirectorySearch';search.placeholder='Search by class name';search.maxLength=100;
     const statusLabel=node('label','Show',filters),state=node('select',null,statusLabel);state.id='classroomDirectoryState';for(const [value,label] of [['active','Active classrooms'],['archived','Archived classrooms'],['all','All classrooms']])node('option',label,state).value=value;
-    const resultCount=node('span','',filters,'directory-result-count');resultCount.id='directoryResultCount';
+    const resultCount=node('span','',filters,'directory-result-count');resultCount.id='directoryResultCount';resultCount.tabIndex=-1;resultCount.setAttribute('aria-describedby','directoryPageSummary');
     $('teacherClasses').before(classCreation,filters);const empty=node('section',null,null,'classroom-directory-empty');empty.id='classroomDirectoryEmpty';empty.hidden=true;filters.after(empty);
     const pager=node('nav',null,null,'classroom-directory-pagination');pager.id='classroomDirectoryPagination';pager.setAttribute('aria-label','Classroom pages');$('teacherClasses').after(pager);
     for(const control of [search,state])control.addEventListener('input',()=>{directoryPage=0;renderClassDirectory();});
     classPicker.querySelector('summary').addEventListener('click',event=>event.preventDefault());
 }
-function renderClassDirectory(){
+function renderClassDirectory(focusResults=false){
     if(routeName!=='classes'||classroomDetailPage||!$('classroomDirectoryFilters'))return;
-    const query=$('classroomDirectorySearch').value.trim().toLocaleLowerCase(),state=$('classroomDirectoryState').value,cards=[...$('teacherClasses').querySelectorAll('.teacher-class-card')];
+    const search=$('classroomDirectorySearch').value,query=search.trim().toLocaleLowerCase(),state=$('classroomDirectoryState').value,cards=[...$('teacherClasses').querySelectorAll('.teacher-class-card')];
     const matches=cards.filter(card=>(state==='all'||(card.dataset.archived==='true'?'archived':'active')===state)&&card.querySelector('.classroom-card-name').textContent.toLocaleLowerCase().includes(query));
     directoryPage=Math.min(directoryPage,Math.max(0,Math.ceil(matches.length/12)-1));
+    const key=classDirectoryStorageKey();
+    try{if(key)sessionStorage.setItem(key,JSON.stringify({search,state,page:directoryPage}));}catch{}
     $('directoryResultCount').textContent=matches.length+' matching classroom'+(matches.length===1?'':'s');
     for(const card of cards)card.hidden=true;for(const card of matches.slice(directoryPage*12,directoryPage*12+12))card.hidden=false;
     for(const group of $('teacherClasses').querySelectorAll('.teacher-class-group')){group.hidden=![...group.querySelectorAll('.teacher-class-card')].some(card=>!card.hidden);if(group.tagName==='DETAILS')group.open=true;}
     const empty=$('classroomDirectoryEmpty');empty.hidden=matches.length>0;empty.replaceChildren();
-    if(!matches.length){node('span',classes.length?'FIND YOUR CLASSROOM':'A NEW CHAPTER',empty,'eyebrow');node('h3',classes.length?'No classrooms match your search.':'Your first classroom starts here.',empty);node('p',classes.length?'Try another name or switch the classroom filter.':'Create a classroom, share its invitation, and start learning together.',empty);button(classes.length?'Clear filters':'Create your first classroom',empty,()=>{if(!classes.length){$('directoryCreateClassroom').click();return;}$('classroomDirectorySearch').value='';$('classroomDirectoryState').value='active';directoryPage=0;renderClassDirectory();});}
-    const pager=$('classroomDirectoryPagination');pager.replaceChildren();const results=node('p',matches.length?('Showing '+(directoryPage*12+1)+' - '+Math.min((directoryPage+1)*12,matches.length)+' of '+matches.length+' classrooms'):'No matching classrooms',pager,'teacher-note');results.setAttribute('role','status');results.setAttribute('aria-live','polite');
-    if(directoryPage>0)button('Previous',pager,()=>{directoryPage--;renderClassDirectory();});if((directoryPage+1)*12<matches.length)button('Next',pager,()=>{directoryPage++;renderClassDirectory();});
+    if(!matches.length){node('span',classes.length?'FIND YOUR CLASSROOM':'A NEW CHAPTER',empty,'eyebrow');node('h3',classes.length?'No classrooms match your search.':'Your first classroom starts here.',empty);node('p',classes.length?'Try another name or switch the classroom filter.':'Create a classroom, share its invitation, and start learning together.',empty);button(classes.length?'Clear filters':'Create your first classroom',empty,()=>{if(!classes.length){$('directoryCreateClassroom').click();return;}$('classroomDirectorySearch').value='';$('classroomDirectoryState').value='all';directoryPage=0;renderClassDirectory();$('classroomDirectorySearch').focus();});}
+    const pager=$('classroomDirectoryPagination');pager.replaceChildren();const results=node('p',matches.length?('Showing '+(directoryPage*12+1)+' - '+Math.min((directoryPage+1)*12,matches.length)+' of '+matches.length+' classrooms'):'No matching classrooms',pager,'teacher-note');results.id='directoryPageSummary';results.setAttribute('role','status');results.setAttribute('aria-live','polite');
+    const changePage=delta=>{directoryPage+=delta;renderClassDirectory(true);};
+    if(directoryPage>0)button('Previous',pager,()=>changePage(-1));if((directoryPage+1)*12<matches.length)button('Next',pager,()=>changePage(1));
+    if(focusResults){const count=$('directoryResultCount');count.scrollIntoView({block:'center',behavior:'instant'});count.focus({preventScroll:true});}
 }
 async function refresh(classId = selected || (routeName === 'classes'&&!classroomDetailPage ? null : routeParameters.get('class'))) {
     if(routeName==='classes'){const workspace=classManagement.querySelector('.classroom-workspace'),invitation=$('activeClassTools');classManagement.append(workspace,invitation);}
@@ -1061,7 +1252,7 @@ async function refresh(classId = selected || (routeName === 'classes'&&!classroo
     classListLoaded = true;
     classPicker.open = !classes.length;
     const list = $('teacherClasses'); list.replaceChildren();
-    if(routeName==='classes'&&!classroomDetailPage)setupClassDirectory();
+    if(routeName==='classes'&&!classroomDetailPage){setupClassDirectory();restoreClassDirectory();}
     if (!classes.length&&!(routeName==='classes'&&!classroomDetailPage)) node('p', 'No classes yet. Create your first class below.', list);
     for (const archived of [false, true]) {
         const group = classes.filter(c => (c.status === 'archived') === archived);
@@ -1090,6 +1281,7 @@ async function refresh(classId = selected || (routeName === 'classes'&&!classroo
     else { selected = null; detail = null; classOverview.replaceChildren();applyArchiveState(); $('teacherClassPickerLabel').textContent = 'Choose or create a class'; (await tab(activeTab)); classPicker.open = activeTab === 'classes'; }
 }
 async function openClass(classId) {
+    setStudentAccessClass?.(null);
     for(const kind of ['announcement','assignment']){const notice=$(kind+'SaveNotice');if(notice)notice.hidden=true;}
     assignmentPage=0;
     assignmentFilter.value = 'all';
@@ -1115,6 +1307,7 @@ async function openClass(classId) {
     }
     history.replaceState(null, '', currentURL.href);
     const c = detail.classroom;
+    setStudentAccessClass?.(c.status === 'active' ? c.id : null);
     classOverview.replaceChildren();
     const identity=node('header',null,classOverview,'active-room-identity');node('span',c.name.trim().slice(0,1).toLocaleUpperCase(),identity,'active-room-emblem').setAttribute('aria-hidden','true');const identityCopy=node('div',null,identity);node('span',c.status==='active'?'ACTIVE CLASSROOM':'ARCHIVED CLASSROOM',identityCopy,'eyebrow');node('h2',classroomDetailPage?'Classroom overview':c.name,identityCopy);
     node('p',c.description||'A shared space for history lessons, classroom updates, and student support.',classOverview,'teacher-note');
@@ -1218,11 +1411,17 @@ function renderRoster() {
     const headings = node('tr', null, node('thead', null, roster));
     for (const heading of ['Student', 'Learning report']) node('th', heading, headings).scope = 'col';
     const rows = node('tbody', null, roster);
+    const portraits=[];
     members.slice(rosterPage * 20, (rosterPage + 1) * 20).forEach(member => {
         const row = node('tr', null, rows);
         row.dataset.userId=member.userId;row.dataset.reportOpen=String($('studentReport').dataset.userId===member.userId&&!!$('studentReport').children.length);
         const identity = node('td', null, row);
-        const identityWrap=node('div',null,identity,'teacher-roster-identity');node('span',(names.get(member.userId)||'S').slice(0,1).toLocaleUpperCase(),identityWrap,'teacher-roster-avatar').setAttribute('aria-hidden','true');const identityCopy=node('div',null,identityWrap);identityWrap.querySelector('.teacher-roster-avatar').dataset.tone=String([...member.userId].reduce((n,c)=>n+c.charCodeAt(0),0)%3);
+        const identityWrap=node('div',null,identity,'teacher-roster-identity');
+        const portrait=node('span',Array.from(names.get(member.userId)||'S')[0].toLocaleUpperCase(),identityWrap,'teacher-roster-avatar teacher-student-portrait');
+        portrait.setAttribute('aria-hidden','true');
+        portrait.dataset.tone=String([...member.userId].reduce((n,c)=>n+c.charCodeAt(0),0)%3);
+        portraits.push({userId:member.userId,element:portrait});
+        const identityCopy=node('div',null,identityWrap);
         node('strong', names.get(member.userId) || `Name unavailable · Account ${member.userId.slice(-8)}`, identityCopy);
         if(!names.has(member.userId))node('p','Name unavailable. Refresh to try again.',identityCopy,'teacher-note');
         const actionCell=node('td',null,row);const rowActions=node('div',null,actionCell,'roster-row-actions');const reportButton = button('View report', rowActions, () => task(async () => {
@@ -1251,6 +1450,7 @@ function renderRoster() {
         });
         remove.classList.add('teacher-remove-member');remove.setAttribute('aria-label','Remove '+(names.get(member.userId)||'account '+member.userId.slice(-8))+' from this class');
     });
+    if(routeName==='students')showTeacherStudentPortraits(selected,portraits);
     if(followupArea)root.append(followupArea);
 }
 $('rosterSearchForm').addEventListener('submit', async event => {
@@ -1284,6 +1484,7 @@ function table(parent, caption, headings, rows) {
     headings.forEach(label => node('th', label, head).scope = 'col');
     const body = node('tbody', null, table);
     rows.forEach(values => { const row = node('tr', null, body); values.forEach(value => node('td', String(value), row)); });
+    return wrap;
 }
 async function focusTeacherGuidance(root,missionId){
     const form=root.querySelector('#teacherFeedbackForm'),panel=form?.closest('.teacher-report-tool');
@@ -1311,16 +1512,21 @@ function renderStudentLearningJourney(root,name,report,snapshot,support) {
     const reviewIds=new Set(signals.review.filter(a=>!signals.ambiguous.has(a.missionId)).map(a=>a.missionId));
     const completedIds=new Set(catalog.filter(m=>report.progress.some(p=>p.missionId===m.id&&p.chapterId===m.chapterId&&p.completed===true)).map(m=>m.id));
     const hero=node('header',null,null,'learning-profile');
-    const avatar=node('span',name.split(/\s+/).filter(Boolean).slice(0,2).map(part=>part[0]).join(''),hero,'learning-profile-avatar');avatar.setAttribute('aria-hidden','true');
+    const avatar=node('span',name.split(/\s+/).filter(Boolean).slice(0,2).map(part=>Array.from(part)[0]).join(''),hero,'learning-profile-avatar teacher-student-portrait');avatar.setAttribute('aria-hidden','true');
     const identity=node('div',null,hero,'learning-profile-identity');
     for(const element of [...root.children])if(element.matches('.eyebrow,h3,.progress-report-class'))identity.append(element);
     const validDates=[...report.progress.map(p=>p.completedAt),...report.attempts.map(a=>a.completedAt)].filter(t=>Number.isFinite(t?.toMillis?.())&&t.toMillis()>0&&t.toMillis()<=Date.now()).sort((a,b)=>b.toMillis()-a.toMillis());
     node('p',validDates.length?'Latest saved learning: '+date(validDates[0]):'No dated learning activity saved yet',identity,'learning-profile-date');
+    if (/^LP-[A-F0-9]{12}$/.test(report.profile?.studentId || '')) {
+        node('p', report.profile.username ? 'Username for classroom recovery: ' + report.profile.username
+            : 'Existing Student ID for classroom recovery: ' + report.profile.studentId, identity, 'teacher-note');
+    }
     const coverage=node('div',null,hero,'learning-coverage');
     const percent=catalog.length?Math.round(completedIds.size/catalog.length*100):0;
     const ring=node('div',null,coverage,'learning-coverage-ring');ring.style.setProperty('--coverage',percent+'%');ring.setAttribute('role','img');ring.setAttribute('aria-label',completedIds.size+' of '+catalog.length+' current catalog missions completed');node('strong',catalog.length?percent+'%':'—',ring);
-    const coverageCopy=node('div',null,coverage);node('strong',completedIds.size+' / '+catalog.length+' missions',coverageCopy);node('span','Current catalog completed',coverageCopy);node('small','Completion, not a mastery score',coverageCopy);
+    const coverageCopy=node('div',null,coverage);node('strong',completedIds.size+' / '+catalog.length+' missions',coverageCopy);node('span','Completed in the current catalog',coverageCopy);
     snapshot.before(hero);
+    if(routeName==='students'&&report.userId)showTeacherStudentPortraits(selected,[{userId:report.userId,element:avatar}]);
     const evidenceGuide=node('details',null,null,'learning-evidence-guide');
     node('summary','What does this learning evidence tell us?',evidenceGuide);
     node('p','Use these signals together to plan support. This report does not calculate a mastery or learning-gain score.',evidenceGuide,'teacher-note');
@@ -1376,12 +1582,26 @@ async function renderReport(name, report) {
         button('Download CSV',actions,()=>exportReport('csv'));
         button('Print Learning Report',actions,()=>exportReport('print'));
     }
-    const returnButton=button('Back to Student List', root, async () => { if (!(await allowDiscard())) return; const returningUser=root.dataset.userId;clearStudentReport(); $('teacherRoster').scrollIntoView({block:'start', behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); const returningButton=[...$('teacherRoster').querySelectorAll('button[data-report-open]')].find(button=>button.dataset.reportOpen===returningUser);if(returningButton)returningButton.focus({preventScroll:true});else if (!$('rosterSearchForm').hidden) $('rosterSearch').focus(); });
+    const returnButton=button('Back to Student List',root,async()=>{
+        if(!(await allowDiscard()))return;
+        const returningUser=root.dataset.userId;
+        clearStudentReport();
+        const roster=$('teacherRoster');
+        const returningButton=[...roster.querySelectorAll('button[data-report-open]')].find(control=>control.dataset.reportOpen===returningUser);
+        if(returningButton){
+            returningButton.scrollIntoView({block:'center',behavior:'instant'});
+            returningButton.focus({preventScroll:true});
+        }else{
+            roster.scrollIntoView({block:'start',behavior:'instant'});
+            if(!$('rosterSearchForm').hidden)$('rosterSearch').focus();
+        }
+    });
     returnButton.classList.add('teacher-report-return');root.prepend(returnButton);
     if (report.userId && detail?.members.some(m=>m.userId===report.userId)) {(await renderTeacherSupport(root,report.userId,report.attempts));renderTeacherFeedback(root,report.userId,name);}
     const completed = report.progress.filter((p,index,rows) => p.completed === true && missions.some(m=>m.id===p.missionId&&m.chapterId===p.chapterId) && rows.findIndex(item=>item.completed===true&&item.missionId===p.missionId&&item.chapterId===p.chapterId)===index);
     const snapshot=node('section',null,root,'teacher-report-snapshot');snapshot.setAttribute('aria-label','Learning snapshot');
-    for(const [value,label] of [[completed.length,'Completed missions'],[report.attempts.length,'Saved quiz attempts'],[quizReviewSignals(report.attempts).review.length,'Missions with review signals']]){const card=node('div',null,snapshot);node('strong',String(value),card);node('span',label,card);}
+    const signals=quizReviewSignals(report.attempts);
+    for(const [value,label] of [[completed.length,'Completed missions'],[report.attempts.length,'Saved quiz attempts'],[signals.review.length,'Missions with review signals']]){const card=node('div',null,snapshot);node('strong',String(value),card);node('span',label,card);}
     const recordCounts=node('p', `${completed.length} completed ${completed.length===1?'mission':'missions'} · ${report.attempts.length} saved quiz ${report.attempts.length===1?'attempt':'attempts'}`, root,'teacher-note');
     node('p', 'Use these saved learning records alongside classroom discussion and the explanations the student shares.', root, 'teacher-note');
     const title = id => missions.find(m => m.id === id)?.title || missions.find(m => m.id === id)?.name || id || 'Unknown mission';
@@ -1391,7 +1611,7 @@ async function renderReport(name, report) {
     node('summary', 'Completed missions (' + completed.length + ')', completionHistory);
     if (completed.length) table(completionHistory, 'Completed missions', ['Mission', 'Best score', 'Completed'], completed.map(p => [title(p.missionId), Number.isFinite(p.bestScore) ? p.bestScore + '%' : 'Unavailable', date(p.completedAt)]));
     else node('p', 'No completed missions are saved yet.', root);
-    const {attempts, ambiguous, review} = quizReviewSignals(report.attempts);
+    const {attempts, ambiguous, review} = signals;
     const topicCounts=new Map();
     for(const attempt of attempts)for(const topic of new Set(Array.isArray(attempt.topicsForReview)?attempt.topicsForReview:[]))topicCounts.set(topic,(topicCounts.get(topic)||0)+1);
     if(topicCounts.size){
@@ -1400,7 +1620,7 @@ async function renderReport(name, report) {
         table(recurring,'Topics recorded across quiz history',['Topic','Saved attempts'],[...topicCounts].sort((a,b)=>b[1]-a[1]).map(([topic,count])=>[topicLabel(topic),count]));
     }
     const support = node('section', null, root, 'teacher-next'); node('h4', 'Plan a learning check-in', support);
-    const supportStatus=quizSupportLabel(quizReviewSignals(report.attempts));node('p',supportStatus.label+': '+supportStatus.reason,support,'teacher-note');
+    const supportStatus=quizSupportLabel(signals);node('p',supportStatus.label+': '+supportStatus.reason,support,'teacher-note');
     if (review.length) {
         node('p', 'These missions have a review signal in their latest saved attempt. Ask the student what they understand before deciding what support to give.', support);
         const list = node('ul', null, support);
@@ -1414,8 +1634,10 @@ async function renderReport(name, report) {
             if(mission&&report.userId&&detail?.classroom.status==='active'){
                 const actions=node('div',null,item,'teacher-actions teacher-evidence-actions');
                 button('Write guidance',actions,async ()=>(await focusTeacherGuidance(root,mission.id)));
-                const mapped=[...new Set((attempt.topicsForReview||[]).filter(topic=>typeof topic==='string'&&topic.trim()).map(topic=>topic.trim()))];
-                const reviewLink=node('a','Plan personal review',actions,'teacher-class-link');reviewLink.href=teacherRouteURL('assignments',{planReview:'1',student:report.userId,mission:mission.id,...(mapped.length===1?{reviewTopic:mapped[0]}:{})});
+                const topics=new Set((attempt.topicsForReview||[]).filter(topic=>typeof topic==='string').map(topic=>topic.trim()));
+                const mapped=(mission.reviewTopics||[]).filter(topic=>topics.has(topic.key)&&topic.sceneId);
+                if(mapped.length===1)node('p','Lesson review focus: '+mapped[0].label,item,'teacher-note');
+                const reviewLink=node('a',mapped.length===1?'Plan review for '+mapped[0].label:'Plan personal review',actions,'teacher-class-link');reviewLink.href=teacherRouteURL('assignments',{planReview:'1',student:report.userId,mission:mission.id,...(mapped.length===1?{reviewTopic:mapped[0].key}:{})});
                 node('p','Guidance stays private. Planning a review does not send it; confirm the student, focus and instructions first.',item,'teacher-note');
             }
             node('p', typeof mission?.learningGuide?.question === 'string' && mission.learningGuide.question.trim() ? 'Ask: ' + mission.learningGuide.question : 'Ask: What happened, and which clue supports your explanation?', item);
@@ -1452,6 +1674,22 @@ async function renderReport(name, report) {
     const exports=root.querySelector('.teacher-report-exports');
     if(exports){const tools=node('details',null,root,'teacher-report-tool');node('summary','Print or download learning records',tools);tools.append(exports);node('p','Exports contain fresh learning records only. Private notes and feedback messages are excluded.',tools,'teacher-note');}
     renderStudentLearningJourney(root,name,report,snapshot,support);
+    if(routeName==='students'){
+        const checkin=support.closest('details');
+        if(checkin){
+            const shortcuts=node('div',null,null,'teacher-report-shortcuts');
+            shortcuts.setAttribute('role','group');
+            shortcuts.setAttribute('aria-label','Go to report section');
+            for(const [label,section] of [['Topics to revisit',checkin],['Learning history',records]]){
+                button(label,shortcuts,()=>{
+                    section.open=true;
+                    section.scrollIntoView({block:'start',behavior:'instant'});
+                    section.querySelector('summary')?.focus({preventScroll:true});
+                },false);
+            }
+            snapshot.after(shortcuts);
+        }
+    }
     const reportHeading=root.querySelector('.learning-profile h3')||root.querySelector('h3');if(reportHeading){reportHeading.tabIndex=-1;reportHeading.focus({preventScroll:true});}
 }
 function renderReviewOutcomeCard(parent,review,result,classId){
@@ -1577,7 +1815,7 @@ function renderTeacherFeedback(parent,userId,name) {
     rememberEdits(['teacherFeedbackForm']);load();
 }
 let assignmentPage=0;
-const assignmentFilterLabel = node('label','Show assignments',null,'teacher-progress-filter');
+const assignmentFilterLabel = node('label','Status',null,'teacher-progress-filter');
 const assignmentFilter = node('select',null,assignmentFilterLabel);
 assignmentFilter.id = 'teacherAssignmentFilter';
 for (const [value,label] of [['all','All saved assignments'],['published','Published to students'],['draft','Drafts'],['closed','Closed activities'],['withdrawn','Withdrawn activities'],['past-due','Published · due date passed']]) node('option',label,assignmentFilter).value=value;
@@ -1585,6 +1823,13 @@ $('assignmentList').before(assignmentFilterLabel);
 assignmentFilter.addEventListener('change',()=>{assignmentPage=0; if (detail) renderPublications('assignment'); });
 
 let assignmentDialog=null,assignmentNew=null,assignmentClose=null,assignmentClassView=null,assignmentPurposeFilter=null;
+let assignmentClearFilters=null,assignmentFilterStatus=null;
+function clearAssignmentFilters() {
+    assignmentFilter.value='all';
+    if (assignmentPurposeFilter) assignmentPurposeFilter.value='all';
+    assignmentFilter.dispatchEvent(new Event('change'));
+    assignmentFilter.focus();
+}
 function openAssignmentComposer(){if(routeName!=='assignments'||busy||!workspaceReady)return;if(!assignmentDialog.open)assignmentDialog.showModal();$('assignmentMission').focus({preventScroll:true});assignmentDialog.dispatchEvent(new Event('assignment-compose-open',{bubbles:true}));}
 function closeAssignmentComposer(){if(!assignmentDialog?.open||busy)return;assignmentDialog.close();assignmentNew.focus({preventScroll:true});syncAssignmentBoard();syncPublicationIndicators('assignment');}
 function syncAssignmentBoard(){
@@ -1592,18 +1837,31 @@ function syncAssignmentBoard(){
     const form=$('assignmentForm');assignmentNew.textContent=form.dataset.recordId?'Continue editing':form.elements.namedItem('missionId').value||form.elements.namedItem('instructions').value.trim()?'Resume activity':'Plan an activity';assignmentNew.disabled=busy||!workspaceReady||detail?.classroom.status==='archived';assignmentClose.disabled=busy;
     assignmentClassView.replaceChildren();node('option','Choose a classroom',assignmentClassView).value='';for(const classroom of classes)node('option',classroom.name+(classroom.status==='archived'?' (archived)':''),assignmentClassView).value=classroom.id;assignmentClassView.value=detail?.classroom.id||'';assignmentClassView.disabled=busy||!workspaceReady;
     assignmentRecipientLabel.hidden=detail?.classroom.status==='active';if(detail?.classroom.status==='active'){assignmentRecipient.value=selected;assignmentRecipientHelp.textContent='For '+detail.classroom.name+'. Published activities appear in My Class.';}
-    const personal=assignmentPurpose.value==='targeted-review';document.getElementById('assignmentPurposeNote').textContent=personal?'Personal review: selected students revisit a topic. A new passing quiz result and their explanation help you check understanding.':'Class goal: guide everyone toward a shared topic or discussion. Earlier completion counts; students keep their normal lesson sequence.';
+    const personal=assignmentPurpose.value==='targeted-review';document.getElementById('assignmentPurposeNote').textContent=personal?'Personal review: selected students revisit a topic. A new passing quiz result and their explanation help you check understanding.':'Class goal: students open the activity in My Class and pass a fresh quiz to reach the goal. Earlier solo completion stays in their personal journey.';
 }
 if(routeName==='assignments'){
-    document.body.classList.add('assignment-board-page');const hero=document.querySelector('.teacher-intro');hero.querySelector('h1').textContent='Learning activities';hero.querySelector('p').textContent='Give your class a shared goal, or help individual students revisit a topic.';
-    const classLabel=node('label','Classroom',hero,'assignment-class-context');assignmentClassView=node('select',null,classLabel);assignmentClassView.id='assignmentClassView';assignmentClassView.addEventListener('change',async ()=>{if(!assignmentClassView.value)return;if(busy||!(await allowDiscard())){assignmentClassView.value=selected||'';return;}const classId=assignmentClassView.value;task(async ()=>(await openClass(classId)));});
+    document.body.classList.add('assignment-board-page');const hero=document.querySelector('.teacher-intro');
+    const classLabel=node('label','Classroom',hero,'assignment-class-context');assignmentClassView=node('select',null,classLabel);assignmentClassView.id='assignmentClassView';assignmentClassView.addEventListener('change',()=>selectPublicationClass(assignmentClassView));
     const editor=$('assignmentForm').closest('.teacher-editor-card'),library=$('assignmentList').closest('.teacher-library-card');
     const boardHeader=node('header',null,null,'assignment-board-heading');for(const child of [...library.children])if(child.matches('.eyebrow,h3,p.teacher-note'))boardHeader.append(child);library.prepend(boardHeader);assignmentNew=button('Plan an activity',boardHeader,openAssignmentComposer,false);assignmentNew.id='assignmentNew';assignmentNew.setAttribute('aria-haspopup','dialog');assignmentNew.setAttribute('aria-controls','assignmentComposeDialog');
     assignmentDialog=node('dialog',null,$('teacher-assignments'),'assignment-compose-dialog');assignmentDialog.id='assignmentComposeDialog';editor.querySelector('h3').id='assignmentComposeTitle';assignmentDialog.setAttribute('aria-labelledby','assignmentComposeTitle');assignmentDialog.append(editor);assignmentClose=button('Close',editor,closeAssignmentComposer);assignmentClose.classList.add('assignment-compose-close');assignmentClose.setAttribute('aria-label','Close activity and keep unsaved work');assignmentDialog.addEventListener('cancel',event=>{event.preventDefault();closeAssignmentComposer();});
     const purposeNote=node('p','',null,'assignment-purpose-note');purposeNote.id='assignmentPurposeNote';purposeLabel.after(purposeNote);
     const briefing=node('section',null,null,'assignment-learning-brief');briefing.id='assignmentLearningBrief';briefing.setAttribute('aria-label','Activity learning brief');const preview=node('details',null,null,'assignment-preview-toggle');node('summary','Lesson preview and readiness check',preview);assignmentPreview.before(preview);preview.append(assignmentPreview);preview.before(briefing);
     const due=$('assignmentForm').elements.namedItem('dueDate').closest('label'),visibility=$('assignmentForm').elements.namedItem('status').closest('label'),options=node('div',null,null,'assignment-compose-options');due.before(options);options.append(due,visibility);
+    const submitActions=$('assignmentForm').querySelector('.teacher-actions');
+    const submitSummary=node('dl',null,null,'assignment-submit-summary');
+    submitSummary.id='assignmentSubmitSummary';
+    submitSummary.setAttribute('aria-label','Activity before saving');
+    submitActions.before(submitSummary);
     const toolbar=node('div',null,null,'assignment-board-filters');assignmentFilterLabel.before(toolbar);toolbar.append(assignmentFilterLabel);const purpose=node('label','Teaching purpose',toolbar);assignmentPurposeFilter=node('select',null,purpose);assignmentPurposeFilter.id='assignmentPurposeFilter';for(const [value,label]of [['all','All activities'],['class-goal','Class goals'],['targeted-review','Personal reviews']])node('option',label,assignmentPurposeFilter).value=value;assignmentPurposeFilter.addEventListener('change',()=>{assignmentPage=0;if(detail)renderPublications('assignment');});
+    toolbar.setAttribute('role','group');
+    toolbar.setAttribute('aria-label','Filter learning activities');
+    assignmentClearFilters=button('Clear filters',toolbar,clearAssignmentFilters);
+    assignmentClearFilters.classList.add('lp-button','lp-button-secondary');
+    assignmentClearFilters.disabled=true;
+    assignmentFilterStatus=node('p','',toolbar,'teacher-note assignment-filter-status');
+    assignmentFilterStatus.setAttribute('role','status');
+    assignmentFilterStatus.setAttribute('aria-atomic','true');
 }
 
 function syncPublicationIndicators(kind){
@@ -1617,7 +1875,7 @@ function syncPublicationIndicators(kind){
 function showPublicationSuccess(kind,values,recipientCount=1){const notice=$(kind+'SaveNotice');if(!notice)return;notice.querySelectorAll('.publication-refresh').forEach(node=>node.remove());notice.hidden=false;notice.dataset.state='success';const classroom=classes.find(c=>c.id===selected)?.name||'the selected classroom';notice.querySelector('p').textContent=values.status==='draft'?'Draft saved for '+classroom+'. Hidden from students.':kind==='assignment'&&values.assignmentType==='targeted-review'?'Personal review published for '+recipientCount+' student'+(recipientCount===1?'':'s')+' in '+classroom+'. Students can find it in My Class > Activities.':(kind==='announcement'?'Announcement':'Class goal')+' published to '+classroom+'. Students can see it in My Class.';}
 if(['announcements','assignments'].includes(routeName)){
     const kind=routeName==='announcements'?'announcement':'assignment',form=$(kind+'Form'),library=$(kind+'List').closest('.teacher-library-card'),noun=kind==='announcement'?'message':'activity';
-    const notice=node('section',null,null,'publication-save-notice');notice.id=kind+'SaveNotice';notice.hidden=true;node('p','',notice).setAttribute('role','status');button('Dismiss',notice,()=>{notice.hidden=true;}).setAttribute('aria-label','Dismiss save confirmation');library.querySelector('header').after(notice);
+    const notice=node('section',null,null,'publication-save-notice lp-status-panel');notice.id=kind+'SaveNotice';notice.hidden=true;node('p','',notice).setAttribute('role','status');button('Dismiss',notice,()=>{notice.hidden=true;}).setAttribute('aria-label','Dismiss save confirmation');library.querySelector('header').after(notice);
     const unsent=node('section',null,null,'publication-unsent');unsent.id=kind+'Unsent';unsent.hidden=true;node('p','You have unsaved '+noun+' changes on this page. Use Resume to continue.',unsent);notice.after(unsent);
     const state=node('p','',null,'publication-form-state');state.id=kind+'FormState';state.setAttribute('role','status');form.querySelector('.teacher-actions').before(state);
     const checkSave=button('Check save status',form.querySelector('.teacher-actions'),()=>checkPublicationSave(kind));checkSave.id=kind+'CheckSave';checkSave.hidden=true;
@@ -1629,15 +1887,45 @@ if(['announcements','assignments'].includes(routeName)){
 }
 
 async function finishPublicationSave(kind,attempt){
-    const form=$(kind+'Form'),className=classes.find(c=>c.id===attempt.classId)?.name||'your classroom';
+    const form=$(kind+'Form'),className=classes.find(c=>c.id===attempt.classId)?.name||'your classroom',generation=epoch;
     publicationWrites.delete(kind);form.reset();delete form.dataset.recordId;delete form.dataset.operationError;$(kind+'Cancel').hidden=true;rememberEdits([form.id]);
     const dialog=form.closest('dialog');if(dialog?.open)dialog.close();
     let refreshError=null;try{await refresh(attempt.classId);}catch(error){refreshError=error;}
-    if(kind==='announcement'){renderAnnouncementRecipients();renderAnnouncementPreview();announcementFilter.value=attempt.values.status;announcementPage=0;}else{renderAssignmentRecipients();renderAssignmentPreview();assignmentFilter.value=attempt.values.status;assignmentPage=0;}
+    if(generation!==epoch)return refreshError;
+    if (kind === 'announcement') {
+        renderAnnouncementRecipients();
+        renderAnnouncementPreview();
+        announcementFilter.value = attempt.values.status;
+        announcementPage = 0;
+    } else {
+        renderAssignmentRecipients();
+        renderAssignmentPreview();
+        assignmentFilter.value = attempt.values.status;
+        const purpose = attempt.values.assignmentType || 'class-goal';
+        if (assignmentPurposeFilter && assignmentPurposeFilter.value !== 'all') assignmentPurposeFilter.value = purpose;
+        assignmentPage = 0;
+    }
     const root=$(kind+'List');if(!refreshError&&detail?.classroom.id===attempt.classId)renderPublications(kind);else{root.replaceChildren();node('p','Your save was confirmed. This list could not refresh; refresh the saved list to view it.',root,'teacher-note');}
     rememberEdits([form.id]);showPublicationSuccess(kind,attempt.values,attempt.targets?.length||1);
-    const notice=$(kind+'SaveNotice');if(refreshError&&notice){notice.dataset.state='refresh-needed';notice.querySelector('p').textContent='Saved successfully for '+className+'. The list could not refresh. Do not submit again; refresh the saved list.';const retry=button('Refresh saved list',notice,async ()=>{if(!(await allowDiscard()))return;task(async()=>{await refresh(attempt.classId);notice.hidden=true;},'Saved list refreshed.');});retry.classList.add('publication-refresh');}
-    $(kind==='announcement'?'announcementNew':'assignmentNew')?.focus({preventScroll:true});return refreshError;
+    const notice=$(kind+'SaveNotice');
+    if(refreshError&&notice){
+        notice.dataset.state='refresh-needed';
+        notice.querySelector('p').textContent='Saved successfully for '+className+'. Refresh the saved list to see your changes. Do not submit again.';
+        const retry=button('Refresh saved list',notice,async ()=>{
+            if(!(await allowDiscard()))return;
+            await task(async()=>{
+                await refresh(attempt.classId);
+                notice.hidden=true;
+            },'Saved list refreshed.');
+            if(notice.hidden&&generation===epoch)$(kind==='announcement'?'announcementNew':'assignmentNew')?.focus();
+        });
+        retry.classList.add('publication-refresh');
+    }
+    if(kind==='assignment'){
+        const confirmation=notice?.querySelector('[role=status]');
+        if(confirmation){confirmation.tabIndex=-1;confirmation.focus();}
+    }else $('announcementNew')?.focus({preventScroll:true});
+    return refreshError;
 }
 function checkPublicationSave(kind){const attempt=publicationWrites.get(kind);if(!attempt||busy)return;task(async()=>{
     const loaded=await loadTeacherClass(attempt.classId),rows=kind==='announcement'?loaded.announcements:loaded.assignments,found=attempt.ids.filter(id=>rows.some(row=>row.id===id));
@@ -1651,22 +1939,119 @@ function checkPublicationSave(kind){const attempt=publicationWrites.get(kind);if
     else if(!found.length||(attempt.recordId&&found.length===1&&!matches)){attempt.uncertain=false;delete $(kind+'Form').dataset.operationError;if($(kind+'FormState'))$(kind+'FormState').textContent='Your changes were not confirmed in the saved record. Your text is kept; you may try saving again.';message('No saved record found. Your text is kept; you may try saving again.');}
     else throw Error('Some saved records were found. Do not submit again. Refresh the classroom to check these activities.');
 });}
+function showAssignmentResult(panel, student, assignment, focus=true) {
+    const record=student.record;
+    panel.replaceChildren();
+    panel.hidden=false;
+    panel.dataset.userId=student.userId;
+    const title=node('h4','Saved result for '+student.name,panel);
+    title.tabIndex=-1;
+    if(Number.isFinite(record?.latest)){
+        const outcome=record.latestPassed===true?' · Passed':record.latestPassed===false?' · Below the passing goal':'';
+        node('p','Latest quiz: '+record.latest+'%'+outcome,panel,'teacher-assignment-result-score');
+        if(record.latestAt)node('p','Saved '+date(record.latestAt)+' (Philippine time)',panel,'teacher-note');
+    }else node('p','A submission is recorded. A single latest score could not be verified.',panel);
+    node('p',record?.completed?'The student has met this assignment’s passing goal.':assignment.status==='published'?'The student can review the lesson and submit another attempt.':'The saved result stays in the activity history.',panel);
+    if(focus)title.focus();
+}
+async function openAssignmentFeedback(item, student, trigger) {
+    const classId=selected,generation=epoch,user=auth.currentUser;
+    if(busy||!classId||!user||detail?.classroom.status!=='active'||$('assignmentFeedbackForm'))return;
+    const dialog=node('dialog',null,$('teacher-main'),'teacher-assignment-feedback-dialog');
+    const title=node('h3','Feedback for '+student.name,dialog);title.id='assignmentFeedbackTitle';dialog.setAttribute('aria-labelledby',title.id);
+    node('p',item.title+' · '+detail.classroom.name,dialog,'teacher-note');
+    const status=node('p','Checking saved feedback…',dialog,'teacher-note');status.setAttribute('role','status');
+    const form=node('form',null,dialog);form.id='assignmentFeedbackForm';
+    const label=node('label','Your guidance',form),body=node('textarea',null,label);
+    body.name='body';body.maxLength=1500;body.required=true;body.rows=5;body.disabled=true;
+    const actions=node('div',null,form,'teacher-actions');
+    const submit=node('button','Send feedback',actions);submit.type='submit';submit.disabled=true;
+    let saving=false, revision=null, baseline='';
+    const current=()=>epoch===generation&&selected===classId&&auth.currentUser===user&&dialog.isConnected;
+    async function close(){
+        if(saving)return;
+        if(body.value!==baseline&&!(await appConfirm('Discard your unsent guidance?')))return;
+        dialog.close();
+    }
+    button('Close',actions,close);
+    dialog.addEventListener('cancel',event=>{event.preventDefault();void close();});
+    dialog.addEventListener('close',()=>{dialog.remove();formBaselines.delete(form.id);if(trigger.isConnected)trigger.focus();},{once:true});
+    form.addEventListener('submit',async event=>{
+        event.preventDefault();
+        if(saving||revision===null||!current())return;
+        if(!body.value.trim()){status.textContent='Write a short next step for this student.';body.focus();return;}
+        saving=true;submit.disabled=body.disabled=true;status.textContent='Saving feedback…';
+        try{
+            await sendTeacherFeedback(classId,student.userId,item.missionId,body.value,revision);
+            if(current()){
+                baseline=body.value;
+                rememberEdits([form.id]);
+                dialog.close();
+                message('Feedback saved for '+student.name+'. It appears in My Class under teacher guidance.',false,'success');
+            }
+        }catch(error){if(current())status.textContent=operationError(error);}
+        finally{saving=false;if(current()){submit.disabled=body.disabled=false;}}
+    });
+    rememberEdits([form.id]);
+    dialog.showModal();
+    try{
+        const previous=(await loadTeacherFeedback(classId,student.userId,item.missionId)).find(feedback=>feedback.missionId===item.missionId);
+        if(!current())return;
+        revision=previous?.revision||0;
+        body.value=baseline=previous?.body||'';
+        rememberEdits([form.id]);
+        submit.textContent=previous?'Update feedback':'Send feedback';
+        submit.disabled=body.disabled=false;
+        status.textContent=previous?'Updating this guidance replaces the earlier message for this mission.':'The student can read this guidance in My Class.';
+        body.focus();
+    }catch(error){if(current())status.textContent='Saved feedback could not be checked. Close this window and try again. '+operationError(error);}
+}
+
+let assignmentProgressFeed;
+function closeAssignmentProgress(){
+    if(!assignmentProgressFeed)return;
+    assignmentProgressFeed.stop?.();
+    clearTimeout(assignmentProgressFeed.timer);
+    assignmentProgressFeed.host.hidden=true;
+    assignmentProgressFeed=null;
+}
 function renderPublications(kind) {
+    if(kind==='assignment')closeAssignmentProgress();
     const root = $(kind + 'List'); root.replaceChildren();if(kind==='announcement')syncAnnouncementTabs();
     const rows = kind === 'announcement' ? detail.announcements : detail.assignments;
     if (kind === 'announcement') $('announcementSummary').textContent = `${rows.filter(item => item.status === 'published').length} published · ${rows.filter(item => item.status === 'draft').length} drafts. Only published messages appear in My Class.`;
-    if (kind === 'assignment') $('assignmentSummary').textContent = `${rows.filter(item => item.status === 'published').length} published · ${rows.filter(item => item.status === 'draft').length} drafts | ${rows.filter(item=>item.status==='closed').length} closed | ${rows.filter(item=>item.status==='withdrawn').length} withdrawn. Ended activities stay in student history.`;
-    if (!rows.length) node('p', kind === 'announcement' ? 'No messages yet. Write a welcome, a reminder, or a question to start a class discussion.' : 'No assigned missions yet.', root);
+    if (kind === 'assignment') $('assignmentSummary').textContent = ['published','draft','closed','withdrawn']
+        .map(status=>`${rows.filter(item=>item.status===status).length} ${status==='draft'?'drafts':status}`).join(' · ');
+    if (!rows.length) node('p', kind === 'announcement' ? 'No messages yet. Write a welcome, a reminder, or a question to start a class discussion.' : 'No activities yet. Select Plan an activity to get started.', root);
     const filteredRows = kind === 'assignment' ? rows.filter(item=>!assignmentPurposeFilter||assignmentPurposeFilter.value==='all'||(item.assignmentType||'class-goal')===assignmentPurposeFilter.value).filter(item => assignmentFilter.value === 'all' || assignmentFilter.value === item.status || (assignmentFilter.value === 'past-due' && item.status === 'published' && Number.isFinite(item.dueAt?.toMillis?.()) && item.dueAt.toMillis() < Date.now())) : rows.filter(item=>announcementFilter.value==='all'||item.status===announcementFilter.value);
+    if (kind==='assignment' && assignmentFilterStatus) {
+        const filtered=assignmentFilter.value!=='all'||assignmentPurposeFilter.value!=='all';
+        assignmentClearFilters.disabled=!filtered;
+        assignmentFilterStatus.textContent=filtered
+            ? `${filteredRows.length} of ${rows.length} saved activities match.`
+            : `${rows.length} saved ${rows.length===1?'activity':'activities'}.`;
+    }
     if (kind==='announcement'&&rows.length&&!filteredRows.length)node('p','No messages match this filter. Choose All messages to see everything saved for this class.',root,'teacher-note');
-    if (kind==='assignment'&&rows.length && !filteredRows.length) node('p','No assignments match this filter. Choose All saved assignments to see the full list.',root,'teacher-note');
+    if (kind === 'assignment' && rows.length && !filteredRows.length) {
+        const empty=node('div',null,root,'teacher-assignment-no-matches');
+        node('strong','No assignments match',empty);
+        node('p','Change the status or teaching purpose to see more activities.',empty,'teacher-note');
+        if (!assignmentClearFilters) button('Clear assignment filters', empty, clearAssignmentFilters);
+    }
     const sortedPublications=[...filteredRows].sort((a, b) => (b.updatedAt?.toMillis() || 0) - (a.updatedAt?.toMillis() || 0));
     if(kind==='assignment')assignmentPage=Math.min(assignmentPage,Math.max(0,Math.ceil(sortedPublications.length/6)-1));
     if(kind==='announcement')announcementPage=Math.min(announcementPage,Math.max(0,Math.ceil(sortedPublications.length/5)-1));
     (kind==='announcement'?sortedPublications.slice(announcementPage*5,announcementPage*5+5):sortedPublications.slice(assignmentPage*6,assignmentPage*6+6)).forEach(item => {
         const row = node('article', null, root, 'teacher-item');
         row.dataset.publicationId = item.id;row.dataset.publicationStatus=item.status;row.dataset.activityPurpose=item.assignmentType||'class-goal';
-        node('span',kind==='assignment'?(item.assignmentType==='targeted-review'?'PERSONAL REVIEW':'CLASS LEARNING GOAL'):item.status==='published'?'PUBLISHED':'PRIVATE DRAFT',row,'eyebrow');
+        if (kind === 'assignment') {
+            const meta = node('div', null, row, 'teacher-assignment-labels');
+            node('span', item.assignmentType === 'targeted-review' ? 'PERSONAL REVIEW' : 'CLASS LEARNING GOAL', meta, 'eyebrow');
+            const labels = {draft:'Private draft', published:'Published', closed:'Closed', withdrawn:'Withdrawn'};
+            if (labels[item.status]) node('span', labels[item.status], meta, 'teacher-assignment-status');
+        } else {
+            node('span', item.status === 'published' ? 'PUBLISHED' : 'PRIVATE DRAFT', row, 'eyebrow');
+        }
         if(item.assignmentType==='targeted-review')node('p','For '+(names.get(item.userId)||'student account '+item.userId.slice(-8)),row,'teacher-note');
         node('h3', item.title, row); node('p', item.status === 'published' ? (kind==='announcement'?'Published to this class':item.assignmentType==='targeted-review'?'Private review for this student':'Shared learning goal for this class') : kind==='assignment'&&item.status==='closed'?'Closed - finished; earlier results and messages remain readable':kind==='assignment'&&item.status==='withdrawn'?'Withdrawn - cancelled and no longer required':'Draft - visible only to you', row, 'teacher-note');
         if (kind === 'assignment') {
@@ -1674,7 +2059,9 @@ function renderPublications(kind) {
             node('p', mission?.chapterTitle || 'Chapter title unavailable (' + item.chapterId + ')', row, 'teacher-note');
             if (missionGoal(mission)) node('p', 'Learning goal: ' + missionGoal(mission), row);
             if (!mission) node('p', 'This mission is no longer in the available catalog. Choose an available mission when editing.', row, 'teacher-note');
-            node('p', item.dueAt?.toMillis?.() ? 'Due ' + date(item.dueAt) + ' (Philippine time)' + (item.status==='published'&&item.dueAt.toMillis() < Date.now() ? ' · Due date passed' : '') : 'No due date', row, 'teacher-deadline');
+            const assignmentMeta = node('div', null, row, 'teacher-assignment-meta');
+            node('span', detail.classroom.name || 'Selected class', assignmentMeta, 'teacher-assignment-class');
+            node('p', item.dueAt?.toMillis?.() ? 'Due ' + date(item.dueAt) + ' (Philippine time)' + (item.status==='published'&&item.dueAt.toMillis() < Date.now() ? ' · Due date passed' : '') : 'No due date', assignmentMeta, 'teacher-deadline');
         }
         if(kind==='announcement'||item.instructions)node('p',kind==='announcement'?item.body:item.instructions,row);
         if (item.publishedAt) node('p', date(item.publishedAt) + ' (Philippine time)', row, 'teacher-note');
@@ -1683,11 +2070,14 @@ function renderPublications(kind) {
             if (kind === 'assignment' && ['published','closed','withdrawn'].includes(item.status)) {
                 const progressHost = node('section', null, row, 'teacher-assignment-progress');progressHost.hidden=true;
                 progressHost.setAttribute('aria-label', 'Student progress for ' + item.title);
-                let page = 0;
+                let page = 0, progressRequest = 0;
                 const classId = selected;
-                const loadPage = () => task(async () => {
-                    const generation = epoch;progressHost.hidden=false;
-                    progressHost.replaceChildren(); node('p', 'Loading saved student completions...', progressHost);
+                const loadProgress = async (background=false) => {
+                    const generation = epoch, request=++progressRequest, feed=assignmentProgressFeed;
+                    progressHost.hidden=false;
+                    let previousFilter=progressHost.querySelector('.teacher-progress-filter select')?.value;
+                    let previousResult=progressHost.querySelector('.teacher-assignment-result:not([hidden])')?.dataset.userId;
+                    if(!background){progressHost.replaceChildren();node('p','Loading assignment submissions…',progressHost);}
                     const recipients=item.assignmentType==='targeted-review'?detail.members.filter(m=>m.userId===item.userId):detail.members;
                     const members = recipients.slice(page * 20, (page + 1) * 20);
                     try {
@@ -1695,43 +2085,168 @@ function renderPublications(kind) {
                             loadTeacherAssignmentProgress(classId, item, members.map(m => m.userId)),
                             loadTeacherRosterNames(classId, members.map(m => m.userId))
                         ]);
-                        if (generation !== epoch || selected !== classId || !progressHost.isConnected) return;
+                        if (generation !== epoch || selected !== classId || assignmentProgressFeed!==feed || request!==progressRequest || !progressHost.isConnected || progressHost.hidden) return;
+                        const activeControl=document.activeElement;
+                        const focused=background&&progressHost.contains(activeControl);
+                        const focusLabel=focused?activeControl.getAttribute('aria-label'):null;
+                        if(background){
+                            previousFilter=progressHost.querySelector('.teacher-progress-filter select')?.value;
+                            previousResult=progressHost.querySelector('.teacher-assignment-result:not([hidden])')?.dataset.userId;
+                        }
                         progressHost.replaceChildren();
-                        node('h4', 'Saved mission progress', progressHost);
+                        node('h4', 'Assignment submissions', progressHost);
                         node('p',item.assignmentType==='targeted-review'?'This review needs a new passing quiz result saved after publication. Historical mission completion does not finish it.':'Class goal: a fresh passing quiz opened from this class assignment is required. Personal completion stays separate. Students may need earlier lessons or chapter checks before they can start.',progressHost,'teacher-note');
                         node('p','Report scope: current active members in the loaded classroom roster. '+members.length+' shown of '+recipients.length+' eligible recipient(s). Former members are excluded; shared goals also include students who joined after publication. Unavailable results are not zero scores. Refresh the classroom to update membership.',progressHost,'teacher-note');
                         if (!members.length) { node('p', item.assignmentType==='targeted-review'?'The intended student is not a current active member. This review is preserved, but there is no eligible recipient in this report.':'No active members are in the loaded classroom roster. Invite students from My Classes.', progressHost); return; }
-                        const completed = results.filter(r => r.progress?.completed === true && r.progress.chapterId === item.chapterId).length;
-                        node('p', item.assignmentType==='targeted-review'?`${completed} of ${members.length} displayed students reached the practice passing goal. Explanation and teacher guidance are tracked separately.`:`${completed} of ${members.length} displayed students submitted a passing quiz for this class assignment. Personal completion is shown separately.`, progressHost);
                         const filterLabel = node('label', 'Show students', progressHost, 'teacher-progress-filter');
-                        const filter = node('select', null, filterLabel); filter.setAttribute('aria-label','Filter students by mission completion');
-                        for (const [value,label] of [['all','All students in this group'],['completed',item.assignmentType==='targeted-review'?'Practice passed':'Completed'],['incomplete',item.assignmentType==='targeted-review'?'No passing result yet':'Not yet completed'],['unavailable','Unavailable results']]) node('option',label,filter).value=value;
+                        const filter = node('select', null, filterLabel); filter.setAttribute('aria-label','Filter students by submission status');
+                        for (const [value,label] of [['all','All students in this group'],['submitted','Submitted'],['not-submitted',item.status==='published'?'Needs to submit':'No saved submission'],['completed',item.assignmentType==='targeted-review'?'Practice passed':'Passing goal reached'],['incomplete','Passing goal pending'],['unavailable','Unavailable results']]) node('option',label,filter).value=value;
                         const filtered = node('div',null,progressHost);
+                        const resultPanel=node('section',null,progressHost,'teacher-assignment-result');resultPanel.hidden=true;
                         const progressRows = results.map(result => {
                             const record = result.progress;
                             const state = assignmentProgressState(record,item,result.unavailable);
-                            const done = state.status === 'completed';
                             const name = roster.find(r => r.userId === result.userId)?.name || 'Name unavailable · Account ' + result.userId.slice(-8);
                             const evidence=record?.reviewEvidence,stages=record?.reviewStages||reviewLearningStages(evidence,null,{requested:!!item.reflectionQuestion,reflectionAvailable:false});
-                            return {state,values:[name,item.assignmentType==='targeted-review'?stages.practiceLabel:state.label,Number.isFinite(record?.bestScore)?record.bestScore+'%':'No result',state.timing,...(item.assignmentType!=='targeted-review'?[record?.priorSoloCompleted?'Completed personally':'No personal completion']:[]),...(item.assignmentType==='targeted-review'?[stages.explanationLabel,stages.guidanceLabel,evidence?.baseline!=null?evidence.baseline+'%':'No baseline',evidence?.change!=null?(evidence.change>0?'+':'')+evidence.change+' percentage points':'Not enough evidence']:[])]};
+                            const submission=state.status==='unavailable'?'unavailable':record?.attempted||state.status==='completed'?'submitted':'not-submitted';
+                            const label=submission==='unavailable'?'Unavailable':submission==='submitted'?(state.status==='completed'?'Submitted · passing goal reached':'Submitted · review suggested'):item.status==='published'?'Needs to submit':'No saved submission';
+                            return {state,submission,record,userId:result.userId,name,values:[name,label,Number.isFinite(record?.bestScore)?record.bestScore+'%':'No result',state.timing,...(item.assignmentType!=='targeted-review'?[record?.priorSoloCompleted?'Completed personally':'No personal completion']:[]),...(item.assignmentType==='targeted-review'?[stages.explanationLabel,stages.guidanceLabel,evidence?.baseline!=null?evidence.baseline+'%':'No baseline',evidence?.change!=null?(evidence.change>0?'+':'')+evidence.change+' percentage points':'Not enough evidence']:[])]};
                         });
+                        const counts=node('ul',null,null,'teacher-submission-counts');filterLabel.before(counts);
+                        const feedbackMission=missions.some(mission=>mission.id===item.missionId&&mission.chapterId===item.chapterId);
+                        for(const [kind,label] of [['submitted','Submitted'],['not-submitted',item.status==='published'?'Needs to submit':'No saved submission'],['unavailable','Unavailable']]){
+                            const item=node('li',null,counts);item.dataset.state=kind;
+                            node('strong',String(progressRows.filter(row=>row.submission===kind).length),item);node('span',label,item);
+                        }
                         const show = () => {
                             filtered.replaceChildren();
-                            const visible = progressRows.filter(row=>filter.value === 'all' || row.state.status === filter.value);
+                            resultPanel.hidden=true;resultPanel.replaceChildren();
+                            const visible = progressRows.filter(row=>filter.value === 'all' || row.state.status === filter.value || row.submission === filter.value);
                             node('p',`${visible.length} matching students in this loaded group. Filters apply to this group of ${members.length}, not the whole class.`,filtered,'teacher-note');
-                            if (visible.length) table(filtered, `Students ${page * 20 + 1}–${page * 20 + members.length} of ${recipients.length}`, ['Student',item.assignmentType==='targeted-review'?'Practice result':'Mission status',item.assignmentType==='targeted-review'?'Latest review score':'Best score','Deadline status',...(item.assignmentType!=='targeted-review'?['Personal journey']:[]),...(item.assignmentType==='targeted-review'?['Student explanation','Teacher guidance','Before review','Score change']:[])],visible.map(row=>row.values));
-                            else node('p','No students match this filter in the loaded group.',filtered);
+                            if (visible.length) {
+                                const isReview = item.assignmentType === 'targeted-review';
+                                const headings = isReview
+                                    ? ['Student', 'Submission', 'Latest review score', 'Deadline status', 'Student explanation', 'Teacher guidance', 'Before review', 'Score change']
+                                    : ['Student', 'Submission', 'Best score', 'Deadline status', 'Personal journey'];
+                                const progressTable = table(filtered, `Students ${page * 20 + 1}–${page * 20 + members.length} of ${recipients.length}`, headings, visible.map(row => row.values));
+                                progressTable.tabIndex = 0;
+                                progressTable.setAttribute('role', 'region');
+                                progressTable.setAttribute('aria-label', 'Student progress table');
+                                const hint = node('p', 'Scroll across the table to see all columns.', null, 'teacher-note teacher-progress-scroll-hint');
+                                progressTable.before(hint);
+                            } else node('p','No students match this filter in the loaded group.',filtered);
+                            if (visible.length && routeName === 'assignments' && detail?.classroom.status === 'active') {
+                                node('th', 'Follow-up', filtered.querySelector('thead tr')).scope = 'col';
+                                filtered.querySelectorAll('tbody tr').forEach((row, index) => {
+                                    const student = visible[index];
+                                    const submissionCell=row.cells[1];
+                                    const submissionText=submissionCell.textContent;
+                                    submissionCell.replaceChildren();
+                                    const submissionLabel=node('span',submissionText,submissionCell,'teacher-submission-label');submissionLabel.dataset.state=student.submission;
+                                    const cell = node('td', null, row);
+                                    if(student.submission==='submitted'){
+                                        const result=button('View result',cell,()=>showAssignmentResult(resultPanel,student,item));
+                                        result.setAttribute('aria-label','View saved result for '+student.name);
+                                    }
+                                    if((student.submission==='submitted'||item.status==='published')&&feedbackMission){
+                                        const feedback=button('Send feedback',cell,()=>openAssignmentFeedback(item,student,feedback));
+                                        feedback.setAttribute('aria-haspopup','dialog');
+                                        feedback.setAttribute('aria-label','Send feedback to '+student.name);
+                                    }
+                                    if(item.status!=='published'||item.assignmentType==='targeted-review')return;
+                                    const review = detail.assignments.filter(assignment =>
+                                        assignment.assignmentType === 'targeted-review' &&
+                                        assignment.status === 'published' && assignment.userId === student.userId &&
+                                        assignment.missionId === item.missionId && assignment.chapterId === item.chapterId)
+                                        .sort((a, b) => (b.assignedAt?.toMillis?.() || 0) - (a.assignedAt?.toMillis?.() || 0))[0];
+                                    if (review) {
+                                        const status = node('p', 'Review assigned', cell, 'teacher-note teacher-review-status');
+                                        status.setAttribute('role', 'status');
+                                        const check = button('Check review progress', cell, async () => {
+                                            check.disabled = true;
+                                            status.textContent = 'Checking saved review results…';
+                                            try {
+                                                const [result] = await loadTeacherAssignmentProgress(classId, review, [student.userId]);
+                                                if (generation !== epoch || selected !== classId || !cell.isConnected) return;
+                                                const evidence = result?.progress?.reviewEvidence;
+                                                status.textContent = !evidence || result.unavailable ? 'Review progress unavailable'
+                                                    : evidence.completed ? 'Passed after review'
+                                                    : evidence.attempted ? 'New review attempt saved'
+                                                    : 'Review assigned · awaiting a quiz attempt';
+                                            } catch {
+                                                if (cell.isConnected && generation === epoch) status.textContent = 'Could not check review progress. Try again.';
+                                            } finally {
+                                                if (cell.isConnected && generation === epoch) check.disabled = false;
+                                            }
+                                        });
+                                        check.classList.add('teacher-plan-review');
+                                        check.setAttribute('aria-label', 'Check review progress for ' + student.name);
+                                        return;
+                                    }
+                                    const action = button('Plan a review', cell, async () => {
+                                        try {
+                                            await prepareEvidenceReview(classId, student.userId, item.missionId);
+                                        } catch (error) {
+                                            if (generation === epoch && selected === classId) message(operationError(error), true);
+                                        }
+                                    });
+                                    action.setAttribute('aria-label', 'Plan a review for ' + student.name);
+                                    action.classList.add('teacher-plan-review');
+                                });
+                            }
                         };
+                        filter.value=previousFilter||'all';
                         filter.addEventListener('change',show); show();
-                        const navigation = node('div', null, progressHost, 'teacher-actions');button('Refresh Progress',navigation,loadPage);
+                        const previousStudent=progressRows.find(row=>row.userId===previousResult&&row.submission==='submitted');
+                        if(previousStudent)showAssignmentResult(resultPanel,previousStudent,item,false);
+                        const navigation = node('div', null, progressHost, 'teacher-actions');button('Refresh Progress',navigation,()=>loadPage());
                         if (page > 0) button('Previous Students', navigation, () => { page--; loadPage(); });
                         if ((page + 1) * 20 < recipients.length) button('Next Students', navigation, () => { page++; loadPage(); });
+                        const sync=node('p','New quiz submissions appear here automatically.',progressHost,'teacher-note teacher-progress-sync');
+                        sync.setAttribute('role','status');
+                        if(!background){
+                            feed.stop?.();
+                            clearTimeout(feed.timer);
+                            const current=()=>assignmentProgressFeed===feed&&generation===epoch&&selected===classId&&progressHost.isConnected&&!progressHost.hidden;
+                            const schedule=()=>{
+                                if(!current())return;
+                                clearTimeout(feed.timer);
+                                feed.timer=setTimeout(async function update(){
+                                    if(!current())return;
+                                    if(busy||feed.loading||document.querySelector('dialog[open]')){
+                                        feed.timer=setTimeout(update,350);return;
+                                    }
+                                    feed.loading=true;
+                                    try{await loadProgress(true);}finally{feed.loading=false;}
+                                },300);
+                            };
+                            feed.stop=watchTeacherAssignmentProgress(item,results,schedule,()=>{
+                                const status=progressHost.querySelector('.teacher-progress-sync');
+                                if(current()&&status)status.textContent='Live progress is unavailable. Use Refresh Progress to check saved submissions.';
+                            });
+                        }
+                        if(focused&&background){
+                            const control=[...progressHost.querySelectorAll('[aria-label]')].find(el=>focusLabel&&el.getAttribute('aria-label')===focusLabel);
+                            (control||filter).focus({preventScroll:true});
+                        }
                     } catch (error) {
+                        if(generation!==epoch||assignmentProgressFeed!==feed||request!==progressRequest)return;
+                        if(background){
+                            const sync=progressHost.querySelector('.teacher-progress-sync');
+                            if(sync)sync.textContent='The last loaded results are shown. Use Refresh Progress to try again.';
+                            return;
+                        }
                         if (generation === epoch && selected === classId) { progressHost.replaceChildren(); node('p', 'Progress could not be loaded. Refresh the class and try again.', progressHost); }
                         throw error;
                     }
-                });
-                button('View Student Progress', actions, () => { loadPage(); }, false).dataset.assignmentProgress = 'true';
+                };
+                const loadPage=()=>task(()=>loadProgress());
+                button('View Student Progress', actions, () => {
+                    if(busy)return;
+                    closeAssignmentProgress();
+                    assignmentProgressFeed={host:progressHost};
+                    loadPage();
+                }, false).dataset.assignmentProgress = 'true';
             }
             if(kind!=='assignment'||!['closed','withdrawn'].includes(item.status)){
             button('Edit', actions, async () => {
@@ -1814,6 +2329,9 @@ for (const kind of ['announcement','assignment']) $(kind + 'Cancel').addEventLis
     $(kind + 'Cancel').hidden = true; if (kind === 'assignment') {renderAssignmentRecipients();renderAssignmentPreview();} else {renderAnnouncementRecipients();renderAnnouncementPreview();} rememberEdits([kind+'Form']);if(kind==='announcement')closeAnnouncementComposer(false);if(kind==='assignment')closeAssignmentComposer();message('Editing cancelled.');
 });
 async function clearWorkspace() {
+    closeAssignmentProgress();
+    setStudentAccessClass?.(null);
+    $('assignmentFeedbackForm')?.closest('dialog')?.close();
     pendingClassroomChange=null;classroomRecovery.hidden=true;
     teacherAccountData=null;accountNameBaseline='';preferredName.value='';nameStatus.textContent='';accountHeroName.textContent='Your account';accountHeroTitle.textContent='Account settings';accountHeroBadge.textContent='Teacher account';avatarGrid.replaceChildren();accountAvatar.textContent='T';verificationDetails.replaceChildren();verificationStatus.textContent='Checking your application...';delete verificationStatus.dataset.state;avatarSelect.replaceChildren();avatarSave.disabled=avatarSelect.disabled=true;for(const key of ['name','email','role','verified'])$('teacherAccount'+key).textContent='Loading...';
     $('teacherFollowupContext')?.remove();publicationWrites.clear();if(announcementDialog?.open)announcementDialog.close();if(assignmentDialog?.open)assignmentDialog.close();for(const kind of ['announcement','assignment']){const notice=$(kind+'SaveNotice');if(notice)notice.hidden=true;}

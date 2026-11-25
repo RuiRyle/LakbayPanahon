@@ -15,7 +15,7 @@
     .student-auth-recovery h1 { font-size: 1.4rem; }
     .student-auth-recovery p { line-height: 1.6; }
     .student-auth-recovery button, .student-auth-recovery a { display: inline-block; min-height: 44px; padding: 12px; font: inherit; color: inherit; }
-    .student-auth-recovery button { background: #28445c; border: 1px solid #b99b60; border-radius: 8px; cursor: pointer; }
+    .student-auth-recovery button { background: #28445c; border: 1px solid #b99b60; border-radius: 8px; }
 </style>
     <meta charset="UTF-8">
 
@@ -24,7 +24,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Assigned Missions | LakbayPanahon</title>
+    <title>Learning Activities | LakbayPanahon</title>
     <link rel="stylesheet" href="../css/workspace-loading.css">
     <link rel="stylesheet" href="../css/navy-gold-theme.css">
     <link rel="stylesheet" href="../css/class-feedback.css?v=20261105-cycle-review">
@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="../css/interface-clarity.css">
 <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
+    <link rel="stylesheet" href="../css/workspace-ui.css">
 </head>
 
 <body data-role="teacher" data-teacher-page="assignments" class="lakbay-theme teacher-workspace workspace-loading">
@@ -50,7 +51,7 @@
         <header class="teacher-topbar topbar"><button id="teacherMenuToggle" type="button" class="secondary" aria-expanded="false" aria-controls="teacherSidebar" aria-label="Toggle classroom menu">☰</button><div class="student-page-title"><span class="student-page-title-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 3h13a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-2V3Zm0 14h16M8 7h8M8 11h6"/></svg></span><span class="student-page-title-copy"><small>TEACHING SPACE</small><strong id="teacherPageTitle">Teacher Dashboard</strong></span></div><button type="button" class="logout-button">Log Out</button></header>
         <main id="teacher-main" tabindex="-1">
             <div class="teacher-intro"><span class="eyebrow">TEACHER WORKSPACE</span><h1>Guide the next history discovery.</h1><p>Choose a class, check student learning, and share an existing mission.</p></div>
-            <p id="teacherStatus" class="teacher-status" role="status" aria-live="polite">Checking your classroom access...</p>
+            <p id="teacherStatus" class="teacher-status" role="status" aria-live="polite" aria-atomic="true">Checking your classroom access...</p>
             <div id="teacherContentLoading" class="teacher-inline-loading" aria-hidden="true" hidden><div class="student-loading-heading"></div><div class="student-loading-cards"><i></i><i></i><i></i></div><div class="student-loading-panel"></div></div>
             <div class="teacher-actions"><button id="refreshTeacher" type="button" class="secondary">Refresh Classes</button></div>
             <div class="teacher-layout">
@@ -76,7 +77,7 @@
                         <a href="teacher-classes.html" data-teacher-tab="classes" aria-pressed="false">My Classes</a>
                         <a href="teacher-students.html" data-teacher-tab="students" aria-pressed="false">Student Progress</a>
                         <a href="teacher-announcements.html" data-teacher-tab="announcements" aria-pressed="false">Announcements</a>
-                        <a href="teacher-assignments.html" data-teacher-tab="assignments" aria-pressed="true">Assigned Missions</a>
+                        <a href="teacher-assignments.html" data-teacher-tab="assignments" aria-pressed="true">Learning Activities</a>
                         <a href="teacher-settings.html" data-teacher-tab="settings" aria-pressed="false">Account Settings</a>
                     </nav>
                     <div id="teacher-overview">

@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Explore History | LakbayPanahon</title>
+    <title>Chapter Map | LakbayPanahon</title>
 
     <link
         rel="stylesheet"
@@ -31,11 +31,12 @@
 <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
 <link rel="stylesheet" href="../css/interface-icons.css">
+    <link rel="stylesheet" href="../css/adventure-pilot.css">
 </head>
 
 <body
-    class="auth-checking lakbay-theme atlas-explore-page"
-    data-role="student"
+    class="lp-craft-pilot lp-web-navigation auth-checking lakbay-theme atlas-explore-page"
+    data-role="student" data-visual-pilot="craft"
 >
     <div class="student-loading-shell" role="status" aria-live="polite">
         <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
@@ -112,7 +113,7 @@
                     class="nav-link active" aria-current="page"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
-                    <span>Explore Chapters</span>
+                    <span>Chapter Map</span>
                 </a>
 
 
@@ -145,7 +146,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
-                    <span>Achievements</span>
+                    <span>Discovery Museum</span>
                 </a>
                 <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
 
@@ -219,7 +220,7 @@
                      PAGE INTRODUCTION
                 ================================== -->
 
-                <section class="explore-header"><img class="atlas-hero-art" src="../assets/brand/expedition-atlas.svg" alt="" aria-hidden="true"><span class="expedition-label">LAKBAYPANAHON EXPEDITION</span><div class="explore-compass" aria-hidden="true">&#10022;</div>
+                <section class="explore-header"><img class="atlas-hero-art" src="../assets/atlas/philippine-archipelago.svg" alt="" aria-hidden="true"><span class="expedition-label">LAKBAYPANAHON EXPEDITION</span><div class="explore-compass" aria-hidden="true">&#10022;</div>
 
 
                     <span class="eyebrow">
@@ -228,13 +229,12 @@
 
 
                     <h1>
-                        Explore Philippine History
+                        Chapter Map
                     </h1>
 
 
                     <p>
-                        Choose an era, follow its chapter trail and continue your
-                        journey through the stories of the Philippines.
+                        Browse Philippine history by era and open a chapter to see its missions.
                     </p>
 
 
@@ -247,9 +247,9 @@
                 ================================== -->
 
                 <nav id="expeditionAtlas" aria-label="Historical destinations"></nav>
-                <div class="expedition-board-heading" aria-hidden="true"><span>&#10022;</span> YOUR EXPEDITION ATLAS <span>&#10022;</span></div><div class="explore-orientation"><div><span class="eyebrow">CHOOSE YOUR DESTINATION</span><h2>Choose your historical destination</h2></div><a href="my-journey.html" class="text-button">Continue My Journey &#8594;</a></div><p class="explore-guide">Open an era to discover its stories and follow its chapter trail. Complete each chapter challenge to unlock the next chapter in that era.</p><div
-                    id="eraLoading"
-                    class="learning-message"
+                <div class="expedition-board-heading" aria-hidden="true"><span>&#10022;</span> YOUR EXPEDITION ATLAS <span>&#10022;</span></div><div class="explore-orientation"><div><span class="eyebrow">CHOOSE YOUR DESTINATION</span><h2>Choose an era</h2></div><a href="my-journey.html" class="text-button">Continue My Journey &#8594;</a></div><p class="explore-guide">Choose an era, open a chapter, and finish its missions. Pass the Chapter Challenge to unlock the next chapter.</p><div
+                    id="eraLoading" role="status" aria-live="polite"
+                    class="learning-message lp-compass-loading"
                 >
                     Loading your journey...
                 </div>
@@ -261,7 +261,7 @@
                 ================================== -->
 
                 <div
-                    id="eraError"
+                    id="eraError" role="alert"
                     class="learning-message error-message"
                     hidden
                 >
@@ -318,8 +318,8 @@
 
 
                     <div
-                        id="chapterLoading"
-                        class="learning-message"
+                        id="chapterLoading" role="status" aria-live="polite"
+                        class="learning-message lp-compass-loading"
                         hidden
                     >
                         Loading chapters...
@@ -338,7 +338,7 @@
             </div>
 
 
-        <dialog id="atlasPreview" aria-labelledby="atlasPreviewTitle"><button id="closeAtlasPreview" type="button" class="text-button">Close preview</button><div id="atlasPreviewContent"></div></dialog>
+        <dialog id="atlasPreview" aria-labelledby="atlasPreviewTitle"><button id="closeAtlasPreview" type="button" class="lp-button lp-button-secondary text-button">Close preview</button><div id="atlasPreviewContent"></div></dialog>
 </main>
 
 

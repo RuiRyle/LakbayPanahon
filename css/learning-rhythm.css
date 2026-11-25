@@ -51,3 +51,35 @@ body.simple-lesson.lakbay-theme .story-reading-content :is(.quick-check-choice,.
     body.simple-lesson.lakbay-theme .story-reading-content :is(.lesson-example,.story-explore-result) {padding: 18px}
     body.lakbay-theme .chapter-challenge-page .challenge-option {padding: 14px;gap: 10px}
 }
+
+/* Story reading pilot: opt-in page scope retains the existing paper/ink pair. */
+body.simple-lesson.lakbay-theme.story-web-page .story-reading-card.lesson-reading #storyText{padding:clamp(20px,2.5vw,28px);font-size:1.0625rem;line-height:1.85;border-radius:var(--lp-radius-control)}
+body.simple-lesson.lakbay-theme.story-web-page #storyText p{max-width:64ch;margin-inline:auto;font-size:inherit;line-height:inherit}
+@media(max-width:600px){body.simple-lesson.lakbay-theme.story-web-page .story-reading-card.lesson-reading #storyText{padding:18px;font-size:1rem}}
+
+/* Existing web lesson controls and statuses; activity state remains in the renderer. */
+body.simple-lesson.lakbay-theme.story-web-page .story-reading-content :is(.lesson-goal strong,.lesson-goal-details summary,.lesson-step-count,.lesson-review summary,.mission-bayani p){font-size:var(--lp-type-label);line-height:1.65}
+body.simple-lesson.lakbay-theme.story-web-page .story-reading-content :is(.story-text,.lesson-explanation,.story-explore-result,.lesson-example){overflow-wrap:anywhere;min-width:0}
+body.simple-lesson.lakbay-theme.story-web-page .story-page :is(h1,h2,h3,h4,p,li,summary,label,button){overflow-wrap:anywhere}
+body.simple-lesson.lakbay-theme.story-web-page .story-reading-content :is(.story-explore-introduction,.story-decision-situation,.story-decision-question,.quick-check-question,.story-clue-hunt-instructions,.story-clue-hunt-lock){font-size:1rem;line-height:1.8}
+body.simple-lesson.lakbay-theme.story-web-page .story-reading-content :is(.story-explore-choice,.quick-check-choice,.story-decision-choice,.story-clue-hunt-choice){min-height:48px;font-size:1rem;line-height:1.65;border-radius:var(--lp-radius-control);white-space:normal;overflow-wrap:anywhere}
+body.simple-lesson.lakbay-theme.story-web-page .story-reading-content :is(.story-decision-feedback,.quick-check-feedback,.story-clue-hunt-feedback){font-size:1rem;line-height:1.75;margin-block:var(--lp-space-4)}
+body.simple-lesson.lakbay-theme.story-web-page .story-reading-content :is(.story-decision-feedback,.quick-check-feedback,.story-clue-hunt-feedback) p{font-size:1rem;line-height:1.75}
+body.simple-lesson.lakbay-theme.story-web-page .story-page :is(.lesson-options,.mascot-options,.lesson-journal-options)>summary{min-height:44px;box-sizing:border-box;padding-block:10px;font-size:var(--lp-type-label);line-height:1.65}
+body.simple-lesson.lakbay-theme.story-web-page .story-page .lesson-options{max-width:100%}
+body.simple-lesson.lakbay-theme.story-web-page .story-page .lesson-options :is(button,select){min-height:44px;max-width:100%;font-size:var(--lp-type-label);line-height:1.6;white-space:normal}
+body.simple-lesson.lakbay-theme.story-web-page .story-page .lesson-options input[type=range]{min-height:44px;max-width:100%}
+body.simple-lesson.lakbay-theme.story-web-page .story-page :is(.narrator-options,.lesson-sound-options) :is(label,p){font-size:var(--lp-type-label);line-height:1.65}
+body.simple-lesson.lakbay-theme.story-web-page .story-page .story-beat-toolbar>span{display:block;font-size:var(--lp-type-label);line-height:1.6}
+body.simple-lesson.lakbay-theme.story-web-page .story-page .story-beat-toolbar>button:not(.bayani-narration-button){font-size:var(--lp-type-label);min-height:44px}
+body.simple-lesson.lakbay-theme.story-web-page .story-page .lesson-flow{gap:var(--lp-space-3);flex-wrap:wrap;align-items:center}
+body.simple-lesson.lakbay-theme.story-web-page .story-page .lesson-flow button{min-height:48px;font:650 1rem/1.5 var(--lp-font-ui);padding:12px 18px;max-width:100%;border-radius:var(--lp-radius-control);white-space:normal}
+body.simple-lesson.lakbay-theme.story-web-page .story-page .lesson-flow button:disabled{cursor:var(--lakbay-cursor-arrow, default)}
+body.simple-lesson.lakbay-theme.story-web-page .story-page :is(button,a,summary,select,input):focus-visible{outline:3px solid var(--lp-focus);outline-offset:3px}
+body.simple-lesson.lakbay-theme.story-web-page .story-page :is(.lesson-options,.story-reading-content){scroll-margin-top:100px}
+body.simple-lesson.lakbay-theme.story-web-page .story-page .learning-message{padding:var(--lp-space-6);border:1px solid var(--lp-line);border-radius:var(--lp-radius-panel);font-size:1rem;line-height:1.75}
+body.simple-lesson.lakbay-theme.story-web-page .story-page :is(#retryStoryLoadButton,#retryLessonQuizInfo)[hidden]{display:none}
+body.simple-lesson.lakbay-theme.story-web-page.lakbay-reduce-motion .story-page *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+@media(prefers-reduced-motion:reduce){body.simple-lesson.lakbay-theme.story-web-page .story-page *{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+body.simple-lesson.lakbay-theme.story-web-page .lesson-options .story-progress-actions{min-width:0;gap:8px}

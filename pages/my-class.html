@@ -41,7 +41,7 @@
     class="auth-checking lakbay-theme classroom-refined-page"
     data-role="student"
 >
-    <div class="student-loading-shell" role="status" aria-live="polite">
+    <div class="student-loading-shell" role="status" aria-live="polite" aria-atomic="true">
         <div class="student-loading-sidebar" aria-hidden="true"><div class="student-loading-brand">LP <span>LakbayPanahon</span></div><i></i><i></i><i></i><i></i></div>
         <div class="student-loading-main"><div class="student-loading-topbar" aria-hidden="true"></div><div class="student-loading-body"><p>Loading your learning space...</p><div class="student-loading-heading" aria-hidden="true"></div><div class="student-loading-cards" aria-hidden="true"><i></i><i></i><i></i></div><div class="student-loading-panel" aria-hidden="true"></div></div></div>
     </div>
@@ -106,7 +106,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
-                    <span>Explore Chapters</span>
+                    <span>Chapter Map</span>
                 </a>
 
 
@@ -133,7 +133,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
-                    <span>Achievements</span>
+                    <span>Discovery Museum</span>
                 </a>
                 <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
 
@@ -230,9 +230,26 @@
             ====================================== -->
 
             <div class="my-class-content">
-                <header class="class-page-heading"><span class="adventure-emblem" aria-hidden="true">&#10022;</span><div><span class="eyebrow">LEARN TOGETHER</span><h1>My Class</h1><strong class="adventure-tagline">History is better together.</strong><p>Your class, your missions, your next discovery. Join your teacher and continue the adventure.</p></div><a href="my-journey.html" class="text-button">Continue independent learning &rarr;</a></header>
-                <section class="class-join-panel" aria-labelledby="joinClassTitle"><div><h2 id="joinClassTitle">Have a class code?</h2><p>Enter the code your teacher shared with you. Joining a class is optional.</p></div><form id="joinClassForm"><label for="classCode">Class code</label><div><input id="classCode" disabled name="classCode" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" placeholder="12-character code" required><button id="joinClassButton" disabled type="submit">Join Class</button></div></form><p id="joinClassStatus" role="status" aria-live="polite"></p></section>
-                <div class="class-load-bar"><p id="classPageStatus" role="status" aria-live="polite">Loading your classes...</p><button id="refreshClasses" class="text-button" type="button">Refresh Classes</button></div>
+                <header class="class-page-heading">
+                    <div class="class-hero-copy">
+                        <h1>My Class</h1>
+                        <p>Use your teacher’s class code to see assignments, announcements, and classmates.</p>
+                    </div>
+                    <figure class="class-hero-art">
+                        <img src="../assets/atlas/chapters/chapter-10.jpg" width="960" height="540" alt="A group gathers around an open book in a Philippine town">
+                        <figcaption>Learning together in a Spanish-era Philippine town · Lesson illustration</figcaption>
+                    </figure>
+                </header>
+                <section class="class-join-panel" aria-labelledby="joinClassTitle">
+                    <span class="class-join-emblem" aria-hidden="true"><span class="interface-icon interface-icon--key-round"></span></span>
+                    <div class="class-join-copy"><h2 id="joinClassTitle">Join your class</h2><p id="classCodeHelp">Enter the 12-character class code from your teacher. You’ll confirm the classroom before joining.</p></div>
+                    <form id="joinClassForm">
+                        <label for="classCode">Class code</label>
+                        <div><input id="classCode" disabled name="classCode" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" placeholder="12-character code" aria-describedby="classCodeHelp joinClassStatus" required><button id="joinClassButton" disabled type="submit">Join Class</button></div>
+                    </form>
+                    <p id="joinClassStatus" role="status" aria-live="polite" aria-atomic="true"></p>
+                </section>
+                <div class="class-load-bar"><p id="classPageStatus" role="status" aria-live="polite" aria-atomic="true">Loading your classes...</p><button id="refreshClasses" class="text-button lp-button lp-button-secondary" type="button">Refresh Classes</button></div>
                 <div id="studentClasses"></div>
             </div>
 

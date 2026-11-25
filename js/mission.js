@@ -1,4 +1,5 @@
 import { instructionalSnapshot } from "./instructional-content.js";
+import { navigatePage } from "./route-navigation.js";
 import { requireLearningAccess, LearningAccessError } from "./learning-access.js";
 import {
     auth,
@@ -57,6 +58,7 @@ const beginMissionButton =
 
 const missionPath =
     document.getElementById("missionPath");
+const missionArtwork = document.getElementById("selectedMissionArtwork");
 
 
 /* ==========================================
@@ -70,6 +72,8 @@ const params =
 
 const chapterId =
     params.get("chapter");
+let recentlyCompletedMission = params.get('completedMission');
+let finaleCleared = params.get('finaleCleared') === '1';
 
 
 /* ==========================================
@@ -97,6 +101,64 @@ let loadedChapterName = "";
 let isChapterChallengeUnlocked = false;
 
 let isChapterChallengeCompleted = false;
+let missionFeatureRequest = 0;
+
+function enhanceSelectedMission(mission) {
+    const request = ++missionFeatureRequest;
+    const uid = auth.currentUser?.uid;
+    const current = () => request === missionFeatureRequest && auth.currentUser?.uid === uid &&
+        selectedMissionId === mission.id;
+    const card = beginMissionButton.closest('.mission-introduction-card');
+    if (card) card.dataset.missionState = mission.isCompleted ? 'review' : 'next';
+    if (missionArtwork) {
+        missionArtwork.dataset.artwork = 'symbolic';
+        const image = missionArtwork.querySelector('img');
+        image.src = '../assets/atlas/navigation.svg';
+        const loadScenes = async () => {
+            try {
+                const snapshot = await instructionalSnapshot('dashboard-mission-art:'+mission.id,
+                    () => getDocs(query(collection(db,'storyScenes'),where('missionId','==',mission.id))));
+                if (!current()) return;
+                const scenes = snapshot.docs.map(row => row.data()).filter(scene =>
+                    scene.status === 'active' && (!scene.chapterId || scene.chapterId === chapterId) && scene.missionId === mission.id &&
+                    /^\.\.\/assets\/story\/[a-z0-9][a-z0-9_.-]*\.(svg|png|jpe?g|webp)$/i.test(scene.imageUrl || ''));
+                scenes.sort((first,second) => (Number(first.order)||0)-(Number(second.order)||0));
+                const next = scenes[0];
+                if (!next) return;
+                const preview = new Image();
+                preview.src = next.imageUrl;
+                await preview.decode();
+                if (!current()) return;
+                image.src = next.imageUrl;
+                missionArtwork.dataset.artwork = 'lesson';
+            } catch { /* The built-in compass remains visible. */ }
+        };
+        void loadScenes();
+    }
+    if (mission.isCompleted || !mission.isUnlocked || !uid || globalThis.__lakbayExplorationPreview === true) return;
+    const checkDraft = async () => {
+        try {
+            const snapshot = await getDoc(doc(db,'studentLearningDrafts',uid+'_quiz_'+mission.id));
+            if (!current() || !snapshot.exists() || snapshot.metadata?.fromCache || snapshot.metadata?.hasPendingWrites) return;
+            const draft = snapshot.data();
+            if (draft.userId !== uid || draft.kind !== 'quiz' || draft.chapterId !== chapterId ||
+                draft.missionId !== mission.id || draft.state?.started !== true ||
+                typeof draft.state.attemptId !== 'string' || !/^[\w-]+$/.test(draft.state.attemptId)) return;
+            const receipt = await getDoc(doc(db,'studentQuizAttempts',uid+'_'+draft.state.attemptId));
+            if (!current() || receipt.exists() || receipt.metadata?.fromCache || receipt.metadata?.hasPendingWrites) return;
+            beginMissionButton.textContent = 'Resume Quiz →';
+            beginMissionButton.setAttribute('aria-label','Resume quiz: '+(mission.title||'Mission'));
+            const pathStatus = missionPath.querySelector('.mission-path-item.current [data-mission-progress-label]');
+            if (pathStatus) pathStatus.textContent = 'Quiz in progress';
+            beginMissionButton.onclick = () => {
+                if (current() && !missionContent.hidden) {
+                    navigatePage('quiz.html?' + new URLSearchParams({chapter:chapterId,mission:mission.id}));
+                }
+            };
+        } catch { /* Keep Start Lesson if the draft cannot be verified. */ }
+    };
+    void checkDraft();
+}
 
 
 /* ==========================================
@@ -107,6 +169,7 @@ async function loadMissionPage() {
     missionGuideUser = null;
     emitMissionGuide();
     const generation = ++missionLoadGeneration;
+    missionFeatureRequest++;
     const loadingUser = auth.currentUser;
     const loadingUid = auth.currentUser?.uid;
     const isCurrent = () => generation === missionLoadGeneration && auth.currentUser?.uid === loadingUid;
@@ -114,6 +177,8 @@ async function loadMissionPage() {
     missionError.hidden = true;
     missionLoading.hidden = false;
     if (retryMissionLoadButton) retryMissionLoadButton.hidden = true;
+    const back = document.getElementById('missionRecoveryReturn');
+    if (back) back.hidden = true;
 
     if (!chapterId) {
 
@@ -215,7 +280,7 @@ if (!chapterAccessResult.allowed) {
 const eraBackLink = document.querySelector('.mission-back');
 if (eraBackLink && typeof chapter.eraId === 'string' && chapter.eraId) {
     eraBackLink.href = 'era.html?' + new URLSearchParams({era: chapter.eraId});
-    eraBackLink.textContent = 'Back to Chapters';
+    eraBackLink.textContent = '← Back to Era';
 }
 loadedChapterName =
     chapter.title ||
@@ -230,6 +295,7 @@ loadedChapterName =
         chapterDescription.textContent =
             chapter.description ||
             "";
+        document.querySelector('.mission-chapter-header').dataset.expeditionEra = chapter.eraId || '';
 
 
         /* ==================================
@@ -653,14 +719,10 @@ if (missionStatusLabel) {
             }
 
 
-            window.location.href =
-                `story.html?chapter=${encodeURIComponent(
-                    chapterId
-                )}&mission=${encodeURIComponent(
-                    mission.id
-                )}`;
+            navigatePage('story.html?' + new URLSearchParams({chapter:chapterId,mission:mission.id}));
 
         };
+    enhanceSelectedMission(mission);
 
 }
 
@@ -744,6 +806,13 @@ function displayMissionPath(
 
     missionPath.innerHTML =
         "";
+    const completedIndex = recentlyCompletedMission
+        ? missions.findIndex(mission => mission.id === recentlyCompletedMission && mission.isCompleted)
+        : -1;
+    const nextMission = completedIndex >= 0 ? missions[completedIndex + 1] : null;
+    const revealNext = nextMission?.isUnlocked && !nextMission.isCompleted;
+    const revealFinale = completedIndex === missions.length - 1 && completedIndex >= 0 &&
+        chapterChallengeUnlocked && !isChapterChallengeCompleted;
 
 
     /* ==================================
@@ -779,7 +848,7 @@ function displayMissionPath(
                 item.innerHTML = `
 
                     <div class="mission-path-node">
-                        ${isSelected ? "" : "✓"}
+                        <span aria-hidden="true">${isSelected ? "↺" : "✓"}</span>
                     </div>
 
                     <div class="mission-path-content">
@@ -799,7 +868,7 @@ function displayMissionPath(
                             ${
                                 isSelected
                                     ? "Selected for review"
-                                    : "Completed • Select to review"
+                                    : "Select to review"
                             }
                         </small>
 
@@ -812,8 +881,8 @@ function displayMissionPath(
                         >
                             ${
                                 isSelected
-                                    ? " Reviewing Mission"
-                                    : "✓ Completed"
+                                    ? "Reviewing now"
+                                    : "Completed"
                             }
                         </span>
 
@@ -863,7 +932,7 @@ function displayMissionPath(
                         </strong>
 
                         <small>
-                            Ready to begin • +${
+                            <span data-mission-progress-label>Ready to begin</span> • +${
                                 Number(
                                     mission.xpReward
                                 ) || 0
@@ -921,7 +990,7 @@ function displayMissionPath(
                         </strong>
 
                         <small>
-                            Select mission • +${
+                            Reward: +${
                                 Number(
                                     mission.xpReward
                                 ) || 0
@@ -931,7 +1000,7 @@ function displayMissionPath(
                         <span
                             class="mission-state-chip unlocked-chip"
                         >
-                             Unlocked
+                            Available <span class="mission-select-arrow" aria-hidden="true">→</span>
                         </span>
 
                     </div>
@@ -958,6 +1027,7 @@ function displayMissionPath(
 
 
                 const previousMissionTitle =
+                    missions.slice(0,index).find(item => !item.isCompleted)?.title ||
                     missions[index - 1]?.title ||
                     "the previous mission";
 
@@ -1000,6 +1070,8 @@ function displayMissionPath(
             }
 
 
+            if (index === completedIndex && (revealNext || revealFinale)) item.classList.add('trail-just-completed');
+            if (revealNext && mission === nextMission) item.classList.add('trail-next-stop');
             missionPath.appendChild(
                 item
             );
@@ -1065,10 +1137,6 @@ function displayMissionPath(
         `;
 
 
-        challengeItem.style.cursor =
-            "pointer";
-
-
         challengeItem.setAttribute(
             "role",
             "button"
@@ -1084,10 +1152,7 @@ function displayMissionPath(
         const openChallenge =
             () => {
 
-                window.location.href =
-                    `chapter-challenge.html?chapter=${encodeURIComponent(
-                        chapterId
-                    )}`;
+                navigatePage('chapter-challenge.html?' + new URLSearchParams({chapter:chapterId}));
 
             };
 
@@ -1120,6 +1185,7 @@ function displayMissionPath(
 
         challengeItem.className = "mission-path-item chapter-challenge locked";
         challengeItem.setAttribute("aria-disabled", "true");
+        const remaining = missions.filter(mission => !mission.isCompleted).length;
 
 
         challengeItem.innerHTML = `
@@ -1139,7 +1205,7 @@ function displayMissionPath(
                 </strong>
 
                 <small>
-                    Complete all missions to unlock
+                    ${remaining ? `Complete ${remaining} more ${remaining === 1 ? 'mission' : 'missions'} to unlock.` : 'Complete all chapter requirements to unlock.'}
                 </small>
 
                 <span
@@ -1158,6 +1224,32 @@ function displayMissionPath(
     missionPath.appendChild(
         challengeItem
     );
+    if (revealFinale) challengeItem.classList.add('trail-next-stop');
+    if (finaleCleared) {
+        finaleCleared = false;
+        const url = new URL(location.href);
+        url.searchParams.delete('finaleCleared');
+        history.replaceState(history.state, '', url);
+        if (isChapterChallengeCompleted) {
+            challengeItem.classList.add('trail-next-stop', 'trail-finale-cleared');
+            challengeItem.previousElementSibling?.classList.add('trail-just-completed');
+            challengeItem.scrollIntoView({block:'nearest', behavior:'instant'});
+        }
+    }
+    if (revealNext || revealFinale) {
+        requestAnimationFrame(() => {
+            const stop = missionPath.querySelector('.trail-next-stop');
+            if (!stop) return;
+            stop.focus({preventScroll:true});
+            stop.scrollIntoView({block:'nearest', behavior:'instant'});
+        });
+    }
+    if (recentlyCompletedMission) {
+        recentlyCompletedMission = null;
+        const url = new URL(location.href);
+        url.searchParams.delete('completedMission');
+        history.replaceState(history.state, '', url);
+    }
 
 }
 
@@ -1171,10 +1263,6 @@ function makeMissionSelectable(
     mission
 ) {
     item.setAttribute("aria-pressed",String(mission.id === selectedMissionId));
-
-    item.style.cursor =
-        "pointer";
-
 
     item.setAttribute(
         "role",
@@ -1245,6 +1333,8 @@ function showError(message) {
     missionGuideUser = null;
     emitMissionGuide();
     if (retryMissionLoadButton) retryMissionLoadButton.hidden = !auth.currentUser;
+    const back = document.getElementById('missionRecoveryReturn');
+    if (back) back.hidden = false;
 
     if (missionLoading) {
 
@@ -1309,6 +1399,7 @@ onAuthStateChanged(auth, user => {
     if (!user) {
         missionUserId = null;
         missionLoadGeneration++;
+        missionFeatureRequest++;
         loadedMissionStates = [];
         selectedMissionId = null;
         isChapterChallengeUnlocked = false;

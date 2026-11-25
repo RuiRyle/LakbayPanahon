@@ -1,11 +1,13 @@
+import {createChapterBadgeArtwork} from './chapter-artwork.js';
 import {auth,db} from './firebase-config.js';
 import {onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
 import {collection,getDocs,query,where} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 import {instructionalSnapshot} from './instructional-snapshot.js';
+import {createArtifactArtwork} from './museum-exhibits.js';
 
 const collectionPreviews = [
-    {host:'homeBadgePreview',catalog:'badges',owned:'studentBadges',key:'badgeId',fallback:'\u2726',label:'badge'},
-    {host:'homeArtifactPreview',catalog:'artifacts',owned:'studentArtifacts',key:'artifactId',fallback:'\u25c8',label:'artifact'}
+    {host:'homeBadgePreview',catalog:'badges',owned:'studentBadges',key:'badgeId',label:'badge'},
+    {host:'homeArtifactPreview',catalog:'artifacts',owned:'studentArtifacts',key:'artifactId',label:'artifact'}
 ];
 let collectionGeneration = 0, previewOwner = null;
 const previousOwnership = new Map();
@@ -18,14 +20,22 @@ export function renderDashboardCollection(host,catalog,ownership,userId,definiti
     const earned = rows.filter(row=>owned.has(row.id)).slice(0,3);
     const locked = rows.filter(row=>!owned.has(row.id)).slice(0,earned.length ? 1 : 3);
     for (const item of [...earned,...locked]) {
-        const unlocked=owned.has(item.id),tile=document.createElement('span');
+        const unlocked=owned.has(item.id),tile=document.createElement('div');
         tile.className='hq-collection-token';tile.dataset.state=unlocked?'earned':'locked';
         tile.title=(unlocked?'Earned: ':'Not earned yet: ')+(item.name||definition.label);
         if(unlocked&&previous&&!previous.has(item.id))tile.classList.add('hq-newly-earned');
-        const icon=document.createElement('span');icon.className='hq-token-icon';icon.setAttribute('aria-hidden','true');
-        icon.textContent=unlocked?(typeof item.icon==='string'?item.icon:definition.fallback):'\u25c7';
+        const icon=document.createElement('div');icon.className='hq-token-icon';icon.setAttribute('aria-hidden','true');
+        if(unlocked&&definition.catalog==='artifacts'){
+            icon.append(createArtifactArtwork(item,'hq-token-art'));
+        }else if(unlocked){
+            icon.append(createChapterBadgeArtwork(item.chapterId));
+        }else{
+            const symbol=document.createElement('span');
+            symbol.className='interface-icon interface-icon--lock';
+            icon.append(symbol);
+        }
         const name=document.createElement('span');name.className='hq-token-name';name.textContent=item.name||definition.label;
-        const state=document.createElement('small');state.textContent=unlocked?'Earned':'Locked';
+        const state=document.createElement('small');state.className='hq-token-status';state.textContent=unlocked?'Earned':'Locked';
         tile.append(icon,name,state);host.append(tile);
     }
     if(!earned.length){const note=document.createElement('span');note.className='hq-collection-note';note.textContent=owned.size?'Some earned items are unavailable here. Open Collections to check.':'Your earned '+definition.label+'s will appear here as you learn.';host.append(note);}

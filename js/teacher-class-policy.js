@@ -52,7 +52,7 @@ export function assignmentProgressState(record, assignment, unavailable = false,
         return {status:'completed',label:'Completed',timing:!due ? 'No due date' : !Number.isFinite(completed) ? 'Completion date unavailable' : completed <= deadline ? 'Completed by due date' : 'Completed after due date'};
     }
     if(['closed','withdrawn'].includes(assignment.status))return {status:'incomplete',label:'No verified completion before ending',timing:assignment.status==='closed'?'Activity closed':'Activity withdrawn'};
-    return {status:'incomplete',label:'Not yet completed',timing:due && deadline < now ? 'Past due · not yet completed' : due ? 'Due ' + assignmentDueInput(assignment.dueAt) : 'No due date'};
+    return {status:'incomplete',label:record?.attempted ? 'Quiz attempted · review suggested' : 'Not yet completed',timing:due && deadline < now ? 'Past due · not yet completed' : due ? 'Due ' + assignmentDueInput(assignment.dueAt) : 'No due date'};
 }
 // A review is based on newly saved evidence, never a historical completion flag.
 export function reviewEvidence(assignment,attempts,userId,now=Date.now()) {
@@ -73,7 +73,7 @@ export function reviewEvidence(assignment,attempts,userId,now=Date.now()) {
     const passed=after.filter(a=>a.passed===true).sort((a,b)=>a.completedAt.toMillis()-b.completedAt.toMillis()||String(a.id||'').localeCompare(String(b.id||'')))[0];
     const ambiguous=rows=>rows.length>1&&rows[0].completedAt.toMillis()===rows[1].completedAt.toMillis();
     const baseline=ambiguous(before)?null:before[0]||null,latest=ambiguous(after)?null:after[0]||null;
-    return {unavailable:relevant.length!==dated.length,completed:!!passed,passingAttemptId:passed?.id||null,completedAt:passed?.completedAt||null,bestScore:latest?.score??null,baseline:baseline?.score??null,baselineAt:baseline?.completedAt||null,latest:latest?.score??null,latestAt:latest?.completedAt||null,change:baseline&&latest?latest.score-baseline.score:null,attempted:after.length>0};
+    return {unavailable:relevant.length!==dated.length,completed:!!passed,passingAttemptId:passed?.id||null,completedAt:passed?.completedAt||null,bestScore:latest?.score??null,baseline:baseline?.score??null,baselineAt:baseline?.completedAt||null,latest:latest?.score??null,latestAt:latest?.completedAt||null,latestPassed:typeof latest?.passed==='boolean'?latest.passed:null,change:baseline&&latest?latest.score-baseline.score:null,attempted:after.length>0};
 }
 
 // Compare the server record with the version opened by an editor. No stored schema field is needed.

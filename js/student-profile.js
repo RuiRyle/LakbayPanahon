@@ -1,4 +1,5 @@
 import { auth, db } from "./firebase-config.js";
+import { saveStudentAppearance } from "./classmate-appearance.js";
 import { collection, getDocs, getDocsFromServer, getDocFromServer, doc, onSnapshot, updateDoc, serverTimestamp, query, where }
     from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
@@ -90,18 +91,13 @@ function renderProfileLearningStats(profile) {
     }
 }
 
-async function loadProfileLearningStats(uid) {
+async function loadProfileLearningStats(uid, isCurrent = () => auth.currentUser?.uid === uid) {
     const status = document.getElementById("profileStatsStatus");
     if (!document.getElementById("profileLearningStats")) return;
-    const [progressResult, policyResult] = await Promise.allSettled([
-        getDocs(query(collection(db, "studentProgress"), where("userId", "==", uid))),
-        getDocFromServer(doc(db, "learningSettings", "progression"))
+    const [progressResult] = await Promise.allSettled([
+        getDocs(query(collection(db, "studentProgress"), where("userId", "==", uid)))
     ]);
-    if (auth.currentUser?.uid !== uid) return;
-    if (policyResult.status === "fulfilled" && policyResult.value.exists()) {
-        const perLevel = policyResult.value.data().xpPerLevel;
-        profileXpPerLevel = Number.isSafeInteger(perLevel) && perLevel > 0 ? perLevel : null;
-    }
+    if (!isCurrent()) return;
     if (progressResult.status === "fulfilled") {
         const count = progressResult.value.docs.filter(item => item.data().completed === true).length;
         const missions = document.getElementById("profilePageMissions");
@@ -111,6 +107,37 @@ async function loadProfileLearningStats(uid) {
     if (status) status.textContent = progressResult.status === "fulfilled"
         ? "Your learning snapshot is up to date."
         : "Your profile is available, but mission progress could not load right now.";
+}
+
+function renderHeaderXpProgress(profile) {
+    const label = document.getElementById("topXpNext");
+    const meter = document.getElementById("topXpProgress");
+    if (!label || !meter) return;
+    const xp = Number(profile.xp);
+    const valid = Boolean(profileXpPerLevel && Number.isSafeInteger(xp) && xp >= 0);
+    label.hidden = meter.hidden = !valid;
+    if (!valid) return;
+    const insideLevel = xp % profileXpPerLevel;
+    const nextLevel = Math.floor(xp / profileXpPerLevel) + 2;
+    label.textContent = `${(profileXpPerLevel - insideLevel).toLocaleString()} XP to Lv. ${nextLevel.toLocaleString()}`;
+    meter.max = profileXpPerLevel;
+    meter.value = insideLevel;
+}
+
+async function loadStudentXpPolicy(isCurrent) {
+    try {
+        const snapshot = await getDocFromServer(doc(db, "learningSettings", "progression"));
+        if (!isCurrent() || !snapshot.exists()) return;
+        const perLevel = snapshot.data().xpPerLevel;
+        if (!Number.isSafeInteger(perLevel) || perLevel <= 0) return;
+        profileXpPerLevel = perLevel;
+        if (latestIdentity) {
+            renderHeaderXpProgress(latestIdentity);
+            renderProfileLearningStats(latestIdentity);
+        }
+    } catch {
+        // Total XP remains available when the level policy is unavailable.
+    }
 }
 
 function applyStudentIdentity(profile) {
@@ -131,6 +158,7 @@ function applyStudentIdentity(profile) {
     if (topXp && Number.isSafeInteger(xp) && xp >= 0) {
         topXp.textContent = `${xp.toLocaleString()} XP`;
     }
+    renderHeaderXpProgress(profile);
     const level = Number(profile.level);
     const topLevel = document.getElementById("topStudentLevel");
     if (topLevel && Number.isSafeInteger(level) && level > 0) {
@@ -141,13 +169,14 @@ function applyStudentIdentity(profile) {
     });
 }
 
-export async function renderStudentIdentity(profile) {
+export async function renderStudentIdentity(profile, isCurrent = () => true) {
+    if (!isCurrent()) return;
     latestIdentity = profile;
     const uid = auth.currentUser?.uid;
     applyStudentIdentity(profile);
     try {
         await loadAvatarCatalog();
-        if (auth.currentUser?.uid === uid) applyStudentIdentity(latestIdentity);
+        if (isCurrent() && auth.currentUser?.uid === uid) applyStudentIdentity(latestIdentity);
     } catch (error) { console.warn("Avatar catalog unavailable:", error.message); }
 }
 
@@ -156,19 +185,19 @@ export function needsProfileSetup(profile) {
 }
 
 const studentPageTitles = {
-    "student-dashboard.html": "Student Dashboard",
+    "student-dashboard.html": "Home",
     "my-journey.html": "My Journey",
-    "chapters.html": "Explore Chapters",
+    "chapters.html": "Chapter Map",
     "era.html": "Era Overview",
-    "mission.html": "Mission",
-    "story.html": "Story Mission",
-    "quiz.html": "Mission Trial",
+    "mission.html": "Mission Journey",
+    "story.html": "Lesson",
+    "quiz.html": "Mission Quiz",
     "practice.html": "Adaptive Practice",
     "chapter-challenge.html": "Chapter Challenge",
     "my-class.html": "My Class",
     "history-timeline.html": "Historical Timeline",
     "journey-finale.html": "Journey Finale",
-    "achievements.html": "Achievements",
+    "achievements.html": "Discovery Museum",
     "my-profile.html": "My Profile",
     "bayani-ai.html": "Bayani AI",
     "settings.html": "Settings"
@@ -225,12 +254,17 @@ function makeStudentXpPill() {
 
     const copy = document.createElement("span");
     copy.className = "student-xp-copy";
-    const label = document.createElement("small");
-    label.textContent = "TOTAL EXPERIENCE";
     const value = document.createElement("strong");
     value.id = "topXp";
     value.textContent = "0 XP";
-    copy.append(label, value);
+    const next = document.createElement("small");
+    next.id = "topXpNext";
+    next.hidden = true;
+    const meter = document.createElement("progress");
+    meter.id = "topXpProgress";
+    meter.hidden = true;
+    meter.setAttribute("aria-hidden", "true");
+    copy.append(value, next, meter);
     pill.append(icon, copy);
     return pill;
 }
@@ -269,7 +303,8 @@ function normalizeStudentTopbar(profile) {
         const icon = document.createElement("span");
         icon.className = "student-page-title-icon";
         icon.setAttribute("aria-hidden", "true");
-        icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5v16M8 7h8M8 11h7"/></svg>';
+        const atlasIcon = studentNavigationIcons[page] || studentNavigationIcons[studentNavigationTargets[page]];
+        renderStudentNavIcon(icon, atlasIcon || studentNavigationIcons["my-journey.html"]);
         const titleCopy = document.createElement("span");
         titleCopy.className = "student-page-title-copy";
         const kicker = document.createElement("small");
@@ -377,20 +412,41 @@ function normalizeStudentNavigation() {
         profileEntry.append(icon, label);
     }
 
-    const achievements = sidebar.querySelector('a[href="achievements.html"]');
-    const settings = sidebar.querySelector('a[href="settings.html"]');
-    if (achievements) achievements.after(profileEntry);
-    else if (settings) sidebar.insertBefore(profileEntry, settings);
-    else sidebar.append(profileEntry);
-
-    for(const page of ['student-dashboard.html','my-journey.html','chapters.html','history-timeline.html','bayani-ai.html','my-class.html','achievements.html','my-profile.html','settings.html']){
-        const link=sidebar.querySelector('a[href="'+page+'"]');if(link)sidebar.append(link);
-    }
-
     const currentPage = window.location.pathname.split("/").pop();
     const activeTarget = studentNavigationTargets[currentPage];
+    const firstLayout = !sidebar.classList.contains("atlas-navigation");
+    if (firstLayout) {
+        sidebar.append(profileEntry);
+        const groups = [
+            ["Explore History", ["student-dashboard.html", "chapters.html", "history-timeline.html", "my-journey.html"]],
+            ["Learning Support", ["bayani-ai.html", "my-class.html"]],
+            ["My Account", ["achievements.html", "my-profile.html", "settings.html"]]
+        ];
+        const sections = document.createDocumentFragment();
+        for (const [label, pages] of groups) {
+            const group = document.createElement("div");
+            group.className = "atlas-nav-group";
+            group.setAttribute("role", "group");
+            group.setAttribute("aria-label", label);
+            const heading = document.createElement("span");
+            heading.className = "atlas-nav-heading";
+            heading.textContent = label;
+            heading.setAttribute("aria-hidden", "true");
+            group.append(heading);
+            for (const page of pages) {
+                const link = sidebar.querySelector('a[href="' + page + '"]');
+                if (link) group.append(link);
+            }
+            if (group.childElementCount > 1) sections.append(group);
+        }
+        sidebar.prepend(sections);
+        sidebar.classList.add("atlas-navigation");
+    }
+
+    const linksByPage = new Map();
     for (const link of sidebar.querySelectorAll("a.nav-link[href]")) {
         const target = new URL(link.href, window.location.href).pathname.split("/").pop();
+        linksByPage.set(target, link);
         const isCurrent = target === activeTarget;
         renderStudentNavIcon(link.querySelector(".nav-icon"), studentNavigationIcons[target]);
         link.classList.toggle("active", isCurrent);
@@ -398,24 +454,69 @@ function normalizeStudentNavigation() {
         else link.removeAttribute("aria-current");
     }
     renderStudentNavIcon(sidebar.querySelector(".logout-button .nav-icon"), studentNavigationIcons.logout);
-
+    if (!firstLayout || !linksByPage.has(activeTarget)) return;
+    try {
+        const key = "lakbay.student.sidebar-page";
+        const previous = linksByPage.get(sessionStorage.getItem(key));
+        sessionStorage.setItem(key, activeTarget);
+        const active = linksByPage.get(activeTarget);
+        if (previous && previous !== active) {
+            const distance = previous.getBoundingClientRect().top - active.getBoundingClientRect().top;
+            if (distance) {
+                active.style.setProperty("--atlas-marker-origin", distance + "px");
+                active.classList.add("atlas-marker-arriving");
+            }
+        }
+    } catch {
+        // The active link still works when session storage is unavailable.
+    }
 }
 
-let mounted = false;
+let profileSession = null;
+// The access guard owns authentication. Invalidate here before it awaits a new account read.
+export function syncStudentProfileOwner(uid) {
+    if (!profileSession || profileSession.uid === uid) return;
+    const previous = profileSession;
+    profileSession = null;
+    previous.dispose();
+    latestIdentity = null;
+    profileXpPerLevel = null;
+    renderHeaderXpProgress({});
+    for (const id of ['profilePageName','profilePageFirstName','profilePageMiddleName','profilePageLastName','profilePageEmail','profilePageMemberSince','profilePageXp','profilePageLevel','profilePageStreak','profilePageMissions','profileLevelProgressLabel','profileStatsStatus','topStudentName','studentFirstName','topXp','topStudentLevel']) {
+        const element = document.getElementById(id);
+        if (element) element.textContent = '';
+    }
+    document.querySelectorAll('#profileAvatar,[data-student-avatar]').forEach(element => {
+        element.replaceChildren();
+        element.classList.remove('has-avatar-portrait');
+    });
+    const fill = document.getElementById('profileLevelProgressFill');
+    if (fill) { fill.style.width = '0%'; fill.parentElement?.removeAttribute('aria-valuenow'); }
+    const setup = document.getElementById('studentProfileSetup');
+    if (setup) setup.hidden = true;
+}
 export function mountStudentProfile(initialProfile) {
-    if (mounted || document.body.dataset.role !== "student" || !auth.currentUser) return;
-    mounted = true;
+    if (document.body.dataset.role !== "student" || !auth.currentUser) return;
     const uid = auth.currentUser.uid;
+    syncStudentProfileOwner(uid);
+    if (profileSession) return;
+    const session = {uid, dispose: () => {}};
+    profileSession = session;
+    const isCurrent = () => profileSession === session && auth.currentUser?.uid === uid;
+    const events = new AbortController();
+    const listen = (node, type, handler) => node?.addEventListener(type, handler, {signal:events.signal});
     let profile = initialProfile;
     normalizeStudentTopbar(profile);
     normalizeStudentNavigation();
-    if (document.getElementById("profileLearningStats")) loadProfileLearningStats(uid);
+    if (document.getElementById("topXpProgress") || document.getElementById("profileLearningStats")) loadStudentXpPolicy(isCurrent);
+    if (document.getElementById("profileLearningStats")) loadProfileLearningStats(uid, isCurrent);
     let saving = false;
     let dismissing = false;
     const setupPrompt = document.getElementById("studentProfileSetup");
     const setupStatus = document.getElementById("studentSetupStatus");
     const dismissSetup = document.getElementById("dismissStudentSetup");
     function refreshSetupPrompt() {
+        if (!isCurrent()) return;
         if (setupPrompt) setupPrompt.hidden = !needsProfileSetup(profile);
     }
     refreshSetupPrompt();
@@ -428,7 +529,10 @@ export function mountStudentProfile(initialProfile) {
                 <div><p class="eyebrow">YOUR LEARNING JOURNEY</p><h2 id="studentProfileTitle">My Profile</h2></div>
                 <button type="button" class="student-profile-close" aria-label="Close profile">&times;</button>
             </div>
-            <div class="student-profile-preview" data-student-avatar aria-hidden="true"></div>
+            <figure class="student-profile-preview-card">
+                <div class="student-profile-preview" data-student-avatar aria-hidden="true"></div>
+                <figcaption>Avatar preview · My Profile and student menu</figcaption>
+            </figure>
             <p class="student-profile-intro">Choose your explorer and tell us what to call you.</p>
             <fieldset class="student-profile-fields">
                 <legend class="student-profile-sr-only">Profile details</legend>
@@ -499,37 +603,39 @@ export function mountStudentProfile(initialProfile) {
         retryCatalog.hidden = true;
         try {
             await loadAvatarCatalog(retry);
-            if (auth.currentUser?.uid !== uid) return;
+            if (!isCurrent()) return;
             catalogReady = true;
             refreshAvatarChoices();
-            await renderStudentIdentity(profile);
+            await renderStudentIdentity(profile, isCurrent);
             if (dialog.open) updatePreview();
             catalogStatus.textContent = studentAvatars.some(avatar => avatar.status === "active")
                 ? "" : "No avatars are available. You can still update your name.";
         } catch (error) {
+            if (!isCurrent()) return;
             catalogStatus.textContent = "Avatars could not load. You can still update your name.";
             retryCatalog.hidden = false;
         }
     }
-    retryCatalog.addEventListener("click", () => refreshCatalog(true));
+    listen(retryCatalog, "click", () => refreshCatalog(true));
     refreshCatalog();
     function updatePreview() {
+        if (!isCurrent()) return;
         const avatar = studentAvatars.find(item => item.id === selectedAvatarId());
         renderAvatarPortrait(preview, avatar, Array.from(form.elements.firstName.value.trim() || "Student")[0].toUpperCase());
     }
     let profileOpener = null;
     let confirmingSave = false;
     function restoreProfileFocus() {
-        if (!dialog.open && auth.currentUser?.uid === uid && profileOpener?.isConnected) profileOpener.focus({preventScroll:true});
+        if (!dialog.open && isCurrent() && profileOpener?.isConnected) profileOpener.focus({preventScroll:true});
     }
-    dialog.addEventListener('close', () => { if (!confirmingSave) restoreProfileFocus(); });
-    savedDone.addEventListener("click", () => savedDialog.close());
-    savedDialog.addEventListener("close", () => {
+    listen(dialog, 'close', () => { if (!confirmingSave) restoreProfileFocus(); });
+    listen(savedDone, "click", () => savedDialog.close());
+    listen(savedDialog, "close", () => {
         confirmingSave = false;
         restoreProfileFocus();
     });
     function openProfile(event) {
-        if (dialog.open) return;
+        if (!isCurrent() || dialog.open) return;
         profileOpener = event?.currentTarget || document.activeElement;
         if (saving) { dialog.showModal(); return; }
         for (const name of ["firstName", "middleName", "lastName", "email"]) form.elements[name].value = profile[name] || "";
@@ -541,30 +647,31 @@ export function mountStudentProfile(initialProfile) {
         updatePreview();
         dialog.showModal();
     }
-    document.getElementById("openStudentSetup")?.addEventListener("click", openProfile);
-    document.querySelectorAll("[data-edit-profile]").forEach(button => button.addEventListener("click", openProfile));
-    dismissSetup?.addEventListener("click", async () => {
+    listen(document.getElementById("openStudentSetup"), "click", openProfile);
+    document.querySelectorAll("[data-edit-profile]").forEach(button => listen(button, "click", openProfile));
+    listen(dismissSetup, "click", async () => {
         if (dismissing || !needsProfileSetup(profile)) return;
-        if (auth.currentUser?.uid !== uid) { setupStatus.textContent = "Sign in again to save this choice."; return; }
+        if (!isCurrent()) { setupStatus.textContent = "Sign in again to save this choice."; return; }
         dismissing = true; dismissSetup.disabled = true;
         setupStatus.textContent = "Saving your choice...";
         try {
             const timestamp = serverTimestamp();
             await updateDoc(doc(db,"users",uid), {profileSetupDismissedAt:timestamp,updatedAt:timestamp});
+            if (!isCurrent()) return;
             profile = {...profile,profileSetupDismissedAt:timestamp};
             refreshSetupPrompt();
         } catch (error) {
-            setupStatus.textContent = "We could not save this choice. Try again, or keep learning below.";
-        } finally { dismissing = false; dismissSetup.disabled = false; }
+            if (!isCurrent()) return;
+            setupStatus.textContent = "We could not save this choice. Try again, or start your mission.";
+        } finally { dismissing = false; if (isCurrent()) dismissSetup.disabled = false; }
     });
-    form.addEventListener("input", updatePreview);
+    listen(form, "input", updatePreview);
     dialog.querySelectorAll(".student-profile-close, .student-profile-cancel").forEach(button => {
         button.addEventListener("click", () => { dialog.close(); restoreProfileFocus(); });
     });
-    form.addEventListener("submit", async event => {
+    listen(form, "submit", async event => {
         event.preventDefault();
-        if (saving || !form.reportValidity()) return;
-        if (auth.currentUser?.uid !== uid) { status.textContent = "Please sign in again before saving."; return; }
+        if (!isCurrent() || saving || !form.reportValidity()) return;
         let changes;
         try {
             changes = profileChanges(Object.fromEntries(new FormData(form)), profile);
@@ -576,18 +683,20 @@ export function mountStudentProfile(initialProfile) {
         try {
             const timestamp = serverTimestamp();
             const setup = profile.profileSetupCompletedAt ? {} : {profileSetupCompletedAt:timestamp};
-            await updateDoc(doc(db, "users", uid), { ...changes, ...setup, updatedAt: timestamp });
-            if (auth.currentUser?.uid !== uid) return;
+            const savedProfile = { ...changes, ...setup, updatedAt: timestamp };
+            if (changes.avatarId) await saveStudentAppearance(uid, "users", savedProfile);
+            else await updateDoc(doc(db, "users", uid), savedProfile);
+            if (!isCurrent()) return;
             profile = { ...profile, ...changes, ...setup };
             refreshSetupPrompt();
-            renderStudentIdentity(profile);
+            renderStudentIdentity(profile, isCurrent);
             status.textContent = "";
             confirmingSave = true;
             dialog.close();
             savedDialog.showModal();
             savedDone.focus({ preventScroll: true });
         } catch (error) {
-            if (auth.currentUser?.uid !== uid) return;
+            if (!isCurrent()) return;
             console.error("Unable to save student profile:", error);
             status.textContent = error.code === "permission-denied"
                 ? "Your profile could not be saved. Please ask for help and try again."
@@ -615,16 +724,35 @@ export function mountStudentProfile(initialProfile) {
     }
     profileButton.setAttribute("aria-haspopup", "dialog");
     profileButton.setAttribute("aria-label", "Edit my profile and avatar");
-    profileButton.addEventListener("click", openProfile);
-    document.getElementById("editProfileButton")?.addEventListener("click",openProfile);
-    renderStudentIdentity(profile);
+    listen(profileButton, "click", openProfile);
+    listen(document.getElementById("editProfileButton"), "click",openProfile);
+    let disposeNotifications=()=>{};
+    const route=location.pathname.split('/').pop();
+    if(profileButton.closest('.topbar')&&!['quiz.html','chapter-challenge.html'].includes(route)){
+        // Optional classroom updates must not delay profile or learning controls.
+        void import('./student-notifications.js').then(({mountStudentNotifications})=>{
+            if(isCurrent())disposeNotifications=mountStudentNotifications(profileButton,isCurrent);
+        }).catch(error=>{if(isCurrent())console.warn('Class notifications unavailable:',error.message);});
+    }
+    renderStudentIdentity(profile, isCurrent);
     const stop = onSnapshot(doc(db, "users", uid), snapshot => {
-        if (!snapshot.exists() || auth.currentUser?.uid !== uid) return;
+        if (!snapshot.exists() || !isCurrent()) return;
         profile = snapshot.data();
         refreshSetupPrompt();
         // Keep an open form's draft intact while refreshing saved identity.
-        renderStudentIdentity(profile);
+        renderStudentIdentity(profile, isCurrent);
         if (dialog.open) updatePreview();
-    }, error => { console.warn("Student profile refresh unavailable:", error); });
-    window.addEventListener("pagehide", event => { if (!event.persisted) stop(); });
+    }, error => { if (isCurrent()) console.warn("Student profile refresh unavailable:", error); });
+    session.dispose = () => {
+        events.abort();
+        stop();
+        disposeNotifications();
+        for (const modal of [dialog, savedDialog]) {
+            if (modal.open) modal.close();
+            modal.querySelector('form')?.reset();
+            modal.remove();
+        }
+        profile = {};
+        profileOpener = null;
+    };
 }

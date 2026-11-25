@@ -10,7 +10,10 @@
         shell.hidden=ready;
         if(ready){clearTimeout(timer);retry.hidden=true;}
     }
-    retry.addEventListener('click',()=>window.location.reload());
+    retry.addEventListener('click', () => {
+        if (window.LakbayPageTransition) window.LakbayPageTransition(window.location.href, { reload: true });
+        else window.location.reload();
+    });
     timer=window.setTimeout(()=>{
         if(shell.hidden)return;
         message.textContent='Opening this workspace is taking longer than expected. Check your connection and reload to try again.';

@@ -1,6 +1,19 @@
 ﻿import {auth,db} from './firebase-config.js';
-import {doc,getDocFromServer,getDocsFromServer,collection,query,where,runTransaction,serverTimestamp,deleteDoc,writeBatch} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
+import {doc,getDocFromServer,getDocsFromServer,collection,query,where,runTransaction,serverTimestamp,writeBatch} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 export function normalizeClassCode(value){const code=String(value||'').replace(/[\s-]/g,'').toUpperCase();if(!/^[A-Z0-9]{12}$/.test(code))throw Error('Enter the 12-character code your teacher provided.');return code;}
+function deliveryUncertain(error){
+    return ['unavailable','deadline-exceeded','unknown','internal'].includes(String(error?.code||'').replace(/^firestore\//,''));
+}
+async function confirmMembership(user,classId,joined,error){
+    if(!deliveryUncertain(error)||auth.currentUser!==user)throw error;
+    let memberships;
+    try{memberships=await getDocsFromServer(query(collection(db,'classMembers'),where('userId','==',user.uid)));}
+    catch{throw Object.assign(Error('The change could not be confirmed. Use Refresh Classes to check your membership.'),{code:'class/membership-unconfirmed'});}
+    if(auth.currentUser!==user)throw Error('Your session changed. Please sign in again.');
+    const member=memberships.docs.find(snapshot=>snapshot.data().userId===user.uid&&snapshot.data().classId===classId);
+    if(joined?member?.data().status==='active':!member)return;
+    throw Object.assign(Error('The change could not be confirmed. Use Refresh Classes to check your membership.'),{code:'class/membership-unconfirmed'});
+}
 export async function joinStudentClass(value, confirmClass) {
     const user=auth.currentUser;
     if(!user)throw Error('Sign in to join a class.');
@@ -51,8 +64,19 @@ export async function joinStudentClass(value, confirmClass) {
         tx.set(membership,{userId:user.uid,classId:data.classId,joinCode:code,status:'active',joinedAt:serverTimestamp()});
         tx.set(slot,{classId:data.classId});
         return {classId:data.classId,alreadyJoined:false};
+    }).catch(async error=>{
+        await confirmMembership(user,data.classId,true,error);
+        return {classId:data.classId,alreadyJoined:false};
     });
     current();
     return result;
 }
-export async function leaveStudentClass(classId){const user=auth.currentUser;if(!user)throw Error('Sign in to leave a class.');if(typeof classId!=='string'||!classId||classId.includes('/'))throw Error('Invalid class.');const batch=writeBatch(db);batch.delete(doc(db,'classes',classId,'classmates',user.uid));batch.delete(doc(db,'classMembers',user.uid+'_'+classId));await batch.commit();}
+export async function leaveStudentClass(classId){
+    const user=auth.currentUser;
+    if(!user)throw Error('Sign in to leave a class.');
+    if(typeof classId!=='string'||!classId||classId.includes('/'))throw Error('Invalid class.');
+    const batch=writeBatch(db);
+    batch.delete(doc(db,'classes',classId,'classmates',user.uid));
+    batch.delete(doc(db,'classMembers',user.uid+'_'+classId));
+    try{await batch.commit();}catch(error){await confirmMembership(user,classId,false,error);}
+}

@@ -42,7 +42,7 @@ const db = emulator ? initializeFirestore(app,{experimentalForceLongPolling:true
 const functions = getFunctions(app, 'asia-southeast1');
 if(emulator){
     connectAuthEmulator(auth,'http://127.0.0.1:9099');
-    connectFirestoreEmulator(db,'127.0.0.1',8180);
+    connectFirestoreEmulator(db,'127.0.0.1',firebaseEnvironment.firestorePort === 8181 ? 8181 : 8180);
     connectFunctionsEmulator(functions,'127.0.0.1',5001);
     const mark=()=>{const banner=document.createElement('div');banner.textContent='LOCAL EMULATOR — separate test accounts and data. AI functions are not running.';banner.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:100000;padding:6px;background:#e8c77e;color:#10243f;text-align:center;font:12px Arial;visibility:visible';document.body.append(banner);};
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mark,{once:true});else mark();

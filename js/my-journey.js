@@ -1,3 +1,4 @@
+import {chapterArtworkFor,createChapterBadgeArtwork} from './chapter-artwork.js';
 import {studentLoadMessage} from './student-status.js';
 ﻿import {auth,db} from './firebase-config.js';
 import {onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
@@ -16,7 +17,13 @@ function text(tag,value,className) {const node=document.createElement(tag);node.
 function pathLink(label,url) {const node=text('a',label,'text-button');node.href=url;return node;}
 function renderTopicStatuses(container,topics,chapterByMission){
     container.replaceChildren();
-    if(!topics.length){container.append(text('p','No topic needs extra review based on your saved quizzes and practice. Keep learning to build more evidence.'));return;}
+    if(!topics.length){
+        const empty=text('div','','journal-review-empty');
+        empty.append(text('strong','No topics to revisit right now'),
+            text('p','Keep exploring. New suggestions will appear as you complete quizzes and practice.'));
+        container.append(empty);
+        return;
+    }
     const labels={'review-needed':'Review the lesson','lesson-revisited':'Lesson revisited','practising':'Building understanding','practice-goal-reached':'Practice goal reached'};
     for(const topic of topics){
         const chapter=chapterByMission.get(topic.missionId);if(!chapter)continue;
@@ -31,13 +38,16 @@ function renderTopicStatuses(container,topics,chapterByMission){
         const action=topic.state==='review-needed'||topic.state==='practice-goal-reached'
             ? pathLink('Revisit Story','story.html?'+new URLSearchParams({chapter,mission:topic.missionId,reviewTopic:topic.topic}))
             : pathLink('Practise This Topic','practice.html?'+new URLSearchParams({chapter,mission:topic.missionId,topic:topic.topic,review:'1'}));
-        card.append(stage,heading,text('p',message),action,pathLink('Practise with Bayani','bayani-ai.html?'+new URLSearchParams({chapter,mission:topic.missionId,topic:topic.topic,label:topic.label||topic.topic}))); 
+        const actions=text('div','','journal-topic-actions');
+        action.classList.add('journal-topic-primary');
+        actions.append(action,pathLink('Practise with Bayani','bayani-ai.html?'+new URLSearchParams({chapter,mission:topic.missionId,topic:topic.topic,label:topic.label||topic.topic})));
+        card.append(stage,heading,text('p',message),actions);
         container.append(card);
     }
 }
 function renderPath(groups,state) {
     const path=document.getElementById('journeyPath');path.replaceChildren();
-    if(!groups.length){path.append(text('p','Your learning path is being prepared. Explore Chapters for available content.'));return;}
+    if(!groups.length){path.append(text('p','Your learning path is being prepared. Open the Chapter Map to see available lessons.'));return;}
     for(const era of groups) {
         const section=document.createElement('section');section.className='journey-era';
         const eraHeading=document.createElement('h3');eraHeading.append(text('span',era.title||era.name||'Historical era'));
@@ -64,10 +74,12 @@ function renderPath(groups,state) {
                 copy.append(text('span',mission.completed?'Completed':!mission.accessible?'Locked':current?'Current mission':'Available','journey-mission-status'));
                 item.append(copy);
                 if(mission.accessible)item.append(pathLink(mission.completed?'Review Lesson':'Open Lesson','story.html?'+new URLSearchParams({chapter:chapter.id,mission:mission.id})));
-                else item.append(text('span',chapter.accessible?'Complete the previous missions first.':'Chapter locked','journey-lock-note'));
                 list.append(item);
             }
             body.append(list);
+            if(chapter.ready&&chapter.accessible&&chapter.missions.some(mission=>!mission.accessible)){
+                body.append(text('p','Complete earlier missions in this chapter to unlock the remaining lessons.','journey-lock-note'));
+            }
             if(!chapter.missions.length&&chapter.ready)body.append(text('p','Missions for this chapter are being prepared.'));
             const challenge=document.createElement('div');challenge.className='journey-challenge';
             challenge.append(text('strong','Chapter Challenge'));
@@ -83,10 +95,29 @@ function decorateExplorerJournal(groups,state,user){
  const message=document.querySelector('.journey-page-heading .adventure-tagline');
  if(message)message.textContent=user.displayName?user.displayName.split(' ')[0]+', continue your discoveries.':'Your next adventure awaits.';
  const host=document.getElementById('journeyNextAction');
- const scenes={'chapter-1':'chapter-1-mission-1-scene-1.png','chapter-2':'chapter-2-mission-1-scene-1.png','chapter-3':'chapter3-mission1-scene1.png'};
- if(state.chapter){const image=document.createElement('img');image.className='journal-next-art';image.alt='';image.src=scenes[state.chapter.id]?'../assets/story/'+scenes[state.chapter.id]:'../assets/atlas/archive.svg';image.addEventListener('error',()=>{image.src='../assets/atlas/archive.svg';},{once:true});host.prepend(image);}
+
+ if(state.chapter){const image=document.createElement('img');image.className='journal-next-art';image.alt='';image.src=chapterArtworkFor(state.chapter.id)?.src || '../assets/atlas/archive.svg';image.addEventListener('error',()=>{image.src='../assets/atlas/archive.svg';},{once:true});host.prepend(image);}
+ const passport=document.getElementById('passportStamps');
+ const available=text('div','','passport-destinations');
+ const upcoming=text('div','','passport-destinations');
  for(const chapter of groups.flatMap(g=>g.chapters).filter(c=>!c.completed)){
-  const pending=text('article','','passport-pending');pending.append(text('span',chapter.accessible?'NEXT DESTINATION':'NOT YET STAMPED'),text('h3',chapter.title||'Historical chapter'),text('small',chapter.ready?(chapter.accessible?'Available in your learning path':'Complete earlier chapters first'):'Content being prepared'));document.getElementById('passportStamps').append(pending);
+  const isAvailable=chapter.ready&&chapter.accessible;
+  const pending=text('article','','passport-pending');
+  pending.dataset.state=isAvailable?'available':chapter.ready?'locked':'preparing';
+  pending.append(text('span',isAvailable?'AVAILABLE NOW':chapter.ready?'LOCKED':'PREPARING'),
+   text('h3',chapter.title||'Historical chapter'),
+   text('small',isAvailable?'Available in your learning path':chapter.ready?'Complete earlier chapters first':'Content being prepared'));
+  (isAvailable?available:upcoming).append(pending);
+ }
+ if(available.childElementCount){
+  const section=text('section','','passport-available');
+  section.append(text('h3','Available destinations'),available);
+  passport.append(section);
+ }
+ if(upcoming.childElementCount){
+  const details=text('details','','passport-upcoming');
+  details.append(text('summary','Upcoming chapters ('+upcoming.childElementCount+')'),upcoming);
+  passport.append(details);
  }
  const goal=document.querySelector('.journey-finale-entry');goal?.querySelector('.journal-goal-progress')?.remove();
  const chapters=groups.flatMap(g=>g.chapters).filter(c=>c.ready),done=chapters.filter(c=>c.completed).length;
@@ -124,7 +155,7 @@ async function loadJourneyPage() {
         const state=resolveStudentJourney({...data,reviewTopics:review});state.optionalGuidanceUnavailable=results.slice(7).some(r=>r.status==='rejected');
         renderStudentJourney(document.getElementById('journeyNextAction'),state,loadJourneyPage);
         renderPath(groups,state);
-        renderPassport(document.getElementById('passportStamps'),passportEntries(groups,chapterProgress,user.uid));
+        renderPassport(document.getElementById('passportStamps'),passportEntries(groups,chapterProgress,user.uid),createChapterBadgeArtwork);
         renderLearningCommunity(document.getElementById('learningCommunity'),learningCommunityState(groups,missionProgress,user.uid));
         decorateExplorerJournal(groups,state,user);
         document.getElementById('journeyMissionCount').textContent=missionRows.filter(m=>m.completed).length+' / '+missionRows.length;

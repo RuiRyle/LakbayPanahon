@@ -214,7 +214,7 @@
     font-size: 15px;
     font-weight: 700;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 
     transition:
         transform 0.2s ease,
@@ -236,7 +236,7 @@
 #beginChallengeButton:disabled {
     opacity: 0.5;
 
-    cursor: not-allowed;
+    cursor: var(--lakbay-cursor-blocked, not-allowed);
 }
 
 
@@ -257,7 +257,7 @@
 
     font-weight: 700;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 }
 
 
@@ -395,7 +395,7 @@
 
     text-align: left;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 
     transition:
         border-color 0.2s ease,
@@ -478,7 +478,7 @@
     font-size: 15px;
     font-weight: 700;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 
     transition:
         transform 0.2s ease,
@@ -500,7 +500,7 @@
 #submitChallengeAnswer:disabled {
     opacity: 0.45;
 
-    cursor: not-allowed;
+    cursor: var(--lakbay-cursor-blocked, not-allowed);
 }
 
 
@@ -1169,7 +1169,7 @@ div span {
     font: inherit;
     font-weight: 700;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 
     transition:
         transform 0.2s ease,
@@ -1266,7 +1266,7 @@ div span {
 }
 
 
-.chapter-badge-earned {
+.chapter-badge-earned[data-badge-reveal] {
     animation:
         badgeReveal
         0.45s ease 0.12s both;
@@ -1980,7 +1980,7 @@ div span {
     font-weight: 600;
     line-height: 1.5;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 
     transition:
         border-color 0.2s ease,
@@ -2163,7 +2163,7 @@ div span {
     font-size: 28px;
     font-weight: 700;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
     transition: background 0.2s ease;
 }
 
@@ -2173,7 +2173,7 @@ div span {
 
 .trade-quantity-button:disabled {
     opacity: 0.35;
-    cursor: not-allowed;
+    cursor: var(--lakbay-cursor-blocked, not-allowed);
 }
 
 .trade-quantity-value {
@@ -2223,3 +2223,526 @@ div span {
 .challenge-evidence-card p { line-height: 1.7; }
 .challenge-options > label { display: block; margin: 16px 0; }
 .evidence-clue-select, .evidence-conclusion-select { display: block; width: 100%; max-width: 100%; padding: 12px; margin-top: 8px; background: #fffdf6; color: #20364b; border: 1px solid #ad9670; border-radius: 10px; white-space: normal; }
+
+/* Opt-in web assessment presentation; production learning surface colors remain authoritative. */
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .challenge-option {
+    min-height: 52px;
+    padding: 14px 16px;
+    border-radius: var(--lp-radius-control);
+    font: 500 1rem/1.6 var(--lp-font-ui);
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+body.lakbay-theme.challenge-web-page[data-role=student] .chapter-challenge-intro #challengeQuestionText {
+    max-width: 64ch;
+    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+    line-height: 1.55;
+    text-align: left;
+}
+
+body.lakbay-theme.challenge-web-page .chapter-challenge-page {
+    width: 100%; max-width: 100%; min-width: 0; box-sizing: border-box;
+    padding: clamp(24px, 5vw, 64px) clamp(12px, 3vw, 40px);
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro {
+    width: 100%; max-width: 1000px; min-width: 0; box-sizing: border-box;
+    margin-inline: auto;
+}
+.chapter-countdown {
+    border-width: 3px;
+    border-style: double;
+    background: radial-gradient(ellipse at top, #3d4c46, #11283c 75%);
+}
+.challenge-web-page .challenge-progress-fill { transition: width .45s ease-out; }
+.challenge-web-page.lakbay-reduce-motion .challenge-progress-fill { transition: none; }
+@media (prefers-reduced-motion: reduce) {
+    .challenge-web-page .challenge-progress-fill { transition: none; }
+}
+body.lakbay-theme.challenge-web-page .chapter-finale-heading { gap: 24px; }
+body.lakbay-theme.challenge-web-page .chapter-finale-heading h1 {
+    font-size: clamp(1.65rem, 3vw, 2.5rem); line-height: 1.25; overflow-wrap: anywhere;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-info strong { font-size: 1.3rem; }
+body.lakbay-theme.challenge-web-page .chapter-challenge-info span {
+    font-size: .875rem; line-height: 1.5; letter-spacing: 0; text-transform: none;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-info > div { flex-direction: column; gap: 4px; }
+body.lakbay-theme.challenge-web-page .chapter-finale-actions { gap: 12px; flex-wrap: wrap; }
+body.lakbay-theme.challenge-web-page :is(#beginChallengeButton,#backToMissionsButton,#retryChapterLoadButton) {
+    font-size: 1rem; line-height: 1.5; min-height: 48px; white-space: normal;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro :is(#beginChallengeButton,#submitChallengeAnswer,#challengeResultPrimaryButton).lp-button {
+    background: var(--lp-action); color: var(--lp-action-ink); border-color: var(--lp-action);
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro :is(#beginChallengeButton,#submitChallengeAnswer,#challengeResultPrimaryButton).lp-button:hover:not(:disabled) {
+    background: var(--lp-gold-soft); color: var(--lp-action-ink); transform: none;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .chapter-challenge-quiz {
+    width: 100%; max-width: 960px; box-sizing: border-box; padding: clamp(16px, 3vw, 32px);
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .chapter-challenge-quiz::before {
+    content: 'CHAPTER CHALLENGE'; font-size: .875rem; letter-spacing: .08em; text-align: left;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .challenge-question-header { font-size: 1rem; }
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .challenge-question-card {
+    padding: clamp(14px, 2.5vw, 28px); text-align: left;
+}
+body.lakbay-theme.challenge-web-page .historical-decision-header {
+    padding: 16px; text-align: left; border-width: 1px; border-radius: var(--lp-radius-control);
+}
+body.lakbay-theme.challenge-web-page .historical-decision-icon { display: none; }
+body.lakbay-theme.challenge-web-page .historical-decision-header p { margin: 8px 0 0; max-width: 70ch; font-size: 1rem; line-height: 1.6; text-align: left; }
+body.lakbay-theme.challenge-web-page .historical-decision-header strong { font-size: .875rem; }
+body.lakbay-theme.challenge-web-page :is(.matching-instructions,.trade-instructions,.trade-remaining,.challenge-evidence-card p) {
+    font-size: 1rem; line-height: 1.65;
+}
+body.lakbay-theme.challenge-web-page :is(.matching-label,.challenge-options>label) { font-size: 1rem; line-height: 1.6; }
+body.lakbay-theme.challenge-web-page :is(.matching-select,.evidence-clue-select,.evidence-conclusion-select) {
+    min-height: 48px; min-width: 0; max-width: 100%; box-sizing: border-box;
+    font: 400 1rem/1.5 var(--lp-font-ui); padding: 12px; border-radius: var(--lp-radius-control);
+}
+body.lakbay-theme.challenge-web-page .matching-row { min-width: 0; gap: 12px; margin-bottom: 0; border-width: 1px; box-shadow: none; }
+body.lakbay-theme.challenge-web-page .matching-label { min-height: 0; padding: 0; border: 0; background: transparent; }
+body.lakbay-theme.challenge-web-page .matching-select { appearance: auto; background-image: none; }
+body.lakbay-theme.challenge-web-page :is(h1,h2,h3,h4,p,label,button,strong,span) { overflow-wrap: anywhere; }
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active #submitChallengeAnswer {
+    min-width: 0; width: auto; max-width: 100%; min-height: 48px; margin-top: 16px;
+    padding: 12px 24px; font-size: 1rem; line-height: 1.5;
+}
+body.lakbay-theme.challenge-web-page #challengeInteractionStatus { margin: 12px 0 0; color: var(--learn-muted); font-size: .9375rem; line-height: 1.6; }
+body.lakbay-theme.challenge-web-page #challengeInteractionStatus:empty { margin: 0; }
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active #challengeStatus:not(:empty) {
+    display: block; margin: 0 auto 16px; padding: 12px; font-size: 1rem;
+    color: var(--learn-muted); background: var(--learn-panel); border: 1px solid var(--learn-line); border-radius: var(--lp-radius-control);
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active > :is(p[role=status],.text-button):not([hidden]) {
+    font-size: .9375rem; line-height: 1.6;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active > .text-button:not([hidden]) { min-height: 44px; }
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro:has(#chapterChallengeResult) #chapterChallengeQuiz { display: none; }
+body.lakbay-theme.challenge-web-page #chapterChallengeResult { box-sizing: border-box; max-width: 100%; padding: clamp(18px, 4vw, 40px); }
+body.lakbay-theme.challenge-web-page #chapterChallengeResult :is(.challenge-score-label,.challenge-review-number,.challenge-review-status,.challenge-review-answer-label) {
+    font-size: .875rem; line-height: 1.5; letter-spacing: .02em;
+}
+body.lakbay-theme.challenge-web-page #chapterChallengeResult .challenge-score-label { color: var(--learn-muted); }
+body.lakbay-theme.challenge-web-page .card-label { color: var(--learn-gold); font-size: .875rem; }
+body.lakbay-theme.challenge-web-page .trade-goods-card strong { color: var(--learn-gold); font-size: .875rem; }
+body.lakbay-theme.challenge-web-page #chapterChallengeResult .challenge-learning-review-label { color: var(--learn-gold); font-size: .875rem; }
+body.lakbay-theme.challenge-web-page #chapterChallengeResult .challenge-review-status-icon { background: var(--learn-inset); color: var(--learn-ink); }
+body.lakbay-theme.challenge-web-page #chapterChallengeResult .challenge-fail-message :is(strong,span) { color: var(--learn-retry-ink); font-size: 1rem; line-height: 1.6; }
+body.lakbay-theme.challenge-web-page #chapterChallengeResult :is(p,.challenge-result-actions button) { font-size: 1rem; line-height: 1.65; }
+body.lakbay-theme.challenge-web-page #chapterChallengeResult .challenge-score { font-size: clamp(1.6rem, 5vw, 3.25rem); }
+body.lakbay-theme.challenge-web-page :is(button,select,a,[tabindex='-1']):focus-visible {
+    outline: 3px solid var(--lp-focus); outline-offset: 4px;
+}
+body.lakbay-theme.challenge-web-page :is(#challengeQuestionText,#challengeResultHeading):focus {
+    outline: 3px solid var(--lp-focus); outline-offset: 4px;
+}
+@media (min-width: 900px) {
+    body.lakbay-theme.challenge-web-page .chapter-finale-heading { grid-template-columns: 142px minmax(0,1fr); text-align: left; }
+    body.lakbay-theme.challenge-web-page .finale-title-group { text-align: left; }
+    body.lakbay-theme.challenge-web-page .chapter-finale-heading :is(.card-label,p) { margin-left: 0; }
+}
+@media (max-width: 600px) {
+    body.lakbay-theme.challenge-web-page .chapter-challenge-info { padding-inline: 0; }
+    body.lakbay-theme.challenge-web-page .chapter-challenge-info > div { padding: 12px 6px; }
+    body.lakbay-theme.challenge-web-page .chapter-challenge-info strong { font-size: 1.1rem; }
+    body.lakbay-theme.challenge-web-page .matching-row { grid-template-columns: minmax(0,1fr); }
+    body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active #submitChallengeAnswer { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+    body.lakbay-theme.challenge-web-page :is(button,.challenge-progress-fill,.chapter-challenge-quiz,.challenge-option) { animation: none; transition: none; }
+}
+@media (forced-colors: active) {
+    body.lakbay-theme.challenge-web-page .challenge-option[aria-pressed=true] { outline: 3px solid Highlight; outline-offset: -5px; }
+}
+
+/* Chapter finale: briefing, activity and debrief share the same atlas styling. */
+body.lakbay-theme.challenge-web-page .chapter-finale-heading {
+    padding:clamp(16px,3.5vw,36px); border:1px solid #748375; border-radius:4px 18px 4px 18px;
+    background:linear-gradient(90deg,#102838 12%,#102838ec 50%,#102838a8 100%),
+        var(--chapter-finale-art,none) center 48% / cover, #183d43;
+    border-block-start: 3px double #dfc082;
+}
+body.lakbay-theme.challenge-web-page .chapter-finale-heading h1 {
+    font-family: var(--lp-font-game, sans-serif);
+    text-wrap: balance;
+}
+body.lakbay-theme.challenge-web-page .finale-crest .chapter-challenge-icon {
+    display:grid; place-items:center; width:clamp(56px,8vw,96px); height:auto; aspect-ratio:1;
+    margin-inline:auto; color:#eed198; border:1px solid #c2a86d; border-radius:50%;
+    background:repeating-radial-gradient(circle,#d0b98123 0 1px,transparent 2px 9px),#132c3e;
+    box-shadow: 0 0 0 5px #c2a86d20, 0 0 0 6px #c2a86d73;
+}
+.chapter-challenge-icon .interface-icon { width:46%; height:46%; }
+body.lakbay-theme.challenge-web-page .chapter-challenge-info > div {
+    border:1px solid #56737c; border-inline-start:3px solid #b7a06d; border-radius:4px 12px 4px 12px;
+    background:#132e42; min-width:0; overflow-wrap:anywhere;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-info > div strong { color:#f0d7a4; }
+body.lakbay-theme.challenge-web-page .chapter-finale-instructions {
+    max-width:62ch; margin:12px auto; color:#d3e3e8; line-height:1.65;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro:is(.challenge-active,:has(#chapterChallengeResult)) > .chapter-finale-instructions { display:none; }
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .chapter-challenge-quiz {
+    border-color:#638077; border-radius:4px 18px 4px 18px;
+    background:radial-gradient(ellipse at top right,#234641,transparent 68%),#132c40;
+    border-block-start: 3px solid #d8b975;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .chapter-challenge-quiz::before { content:none; }
+body.lakbay-theme.challenge-web-page .challenge-activity-label {
+    margin:0 0 8px; color:#edd4a0; font-size:.875rem; font-weight:750;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .challenge-option {
+    border-radius:4px 12px 4px 12px; border-color:#5a7481; background:#142e43;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .challenge-option[aria-pressed=true] {
+    border-color:#e0c07e; background:#28413f;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-result {
+    border:1px solid #66817a; border-radius:4px 18px 4px 18px; background:#132e43;
+}
+body.lakbay-theme.challenge-web-page .challenge-review-disclosure {
+    margin-top:16px; padding:0 14px; border:1px solid #5a7580; border-radius:4px 12px 4px 12px;
+    background:#10283c; text-align:start;
+}
+body.lakbay-theme.challenge-web-page .challenge-review-disclosure > summary {
+    min-height:44px; align-content:center; color:#f1d7a0; font-weight:700; cursor:var(--lakbay-cursor-hand, pointer);
+}
+body.lakbay-theme.challenge-web-page .challenge-review-disclosure .challenge-learning-review { margin-top:4px; }
+
+/* Atlas debrief: the outcome and score share one panel on each result state. */
+.challenge-web-page .challenge-debrief {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(140px, 26%);
+    align-items: center;
+    gap: clamp(12px, 3vw, 26px);
+    padding: clamp(14px, 3vw, 28px);
+    border: 1px solid #698781;
+    border-radius: 4px 18px 4px 18px;
+    background: radial-gradient(ellipse at top left, #285052, transparent 80%), #102a40;
+    text-align: start;
+}
+.challenge-web-page .chapter-challenge-result.failed .challenge-debrief {
+    background: radial-gradient(ellipse at top left, #3c3e50, transparent 80%), #102a40;
+}
+.challenge-web-page .challenge-debrief .challenge-result-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 0 10px;
+    border: 3px double #e7c784;
+    border-radius: 50%;
+    background: #173448;
+    color: #ffe1a0;
+    animation: none;
+}
+.challenge-web-page .challenge-debrief .challenge-result-icon .interface-icon {
+    width: 24px;
+    height: 24px;
+}
+.challenge-web-page #chapterChallengeResult .challenge-debrief h2 {
+    color: #f5f8fa;
+    line-height: 1.25;
+}
+.challenge-web-page .challenge-debrief-score {
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid #708894;
+    border-radius: 12px;
+    background: radial-gradient(ellipse at top, #244451, #0c2136 85%);
+    text-align: center;
+}
+.challenge-web-page #chapterChallengeResult .challenge-debrief-score .challenge-score {
+    margin: 0 0 6px;
+    color: #ffe0a1;
+    font-variant-numeric: tabular-nums;
+    font-family: var(--lp-font-game, sans-serif);
+}
+.challenge-web-page .challenge-score-pending {
+    display: block;
+    font-size: 1.125rem;
+    line-height: 1.35;
+}
+.challenge-web-page #chapterChallengeResult .challenge-debrief :is(.challenge-result-summary,.challenge-result-chapter-name) {
+    margin: 6px 0 0 !important;
+}
+.challenge-web-page .challenge-progress-track {
+    border-radius: 999px;
+    overflow: hidden;
+}
+.challenge-web-page .challenge-progress-fill {
+    background: linear-gradient(90deg, #a98647, #ffe2a0);
+}
+
+body.lakbay-theme.challenge-web-page #challengeStatus:empty {
+    display: none;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-result.failed .challenge-debrief {
+    background: radial-gradient(ellipse at top left, #2b4b50, transparent 80%), #102a40;
+}
+body.lakbay-theme.challenge-web-page .challenge-receipt-label {
+    border-color: #71a693;
+    background: #173b3b;
+    color: #dbf7e9;
+}
+@media (max-width: 600px) {
+    body.lakbay-theme.challenge-web-page .chapter-finale-heading {
+        gap: .85rem;
+        padding: 1rem .8rem;
+    }
+    body.lakbay-theme.challenge-web-page .chapter-challenge-info {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .45rem;
+        padding-inline: .75rem;
+    }
+    body.lakbay-theme.challenge-web-page .chapter-challenge-info > div {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: .5rem;
+        gap: .2rem;
+    }
+    body.lakbay-theme.challenge-web-page .chapter-challenge-info > div:last-child {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        text-align: start;
+        gap: .25rem .65rem;
+        background: #1a3c45;
+    }
+    body.lakbay-theme.challenge-web-page .chapter-challenge-info > div:last-child > strong {
+        width: auto;
+        flex: 0 1 auto;
+    }
+    body.lakbay-theme.challenge-web-page .chapter-challenge-info > div:last-child > span {
+        width: auto;
+        flex: 0 1 auto;
+    }
+}
+.challenge-web-page .challenge-question-header {
+    display:grid; grid-template-columns:auto minmax(60px,1fr); gap:.75rem; align-items:center;
+    margin-block-end:.5rem;
+}
+.challenge-web-page .challenge-question-header .challenge-progress-track { height:7px; margin:0; }
+body.lakbay-theme.challenge-web-page :is(.matching-instructions,.trade-instructions) {
+    border-inline-start:2px solid #94b2a6; background:#102b3c; color:#dcebee;
+    border-radius:0 8px 8px 0; padding:.65rem .8rem; margin-block:0 .6rem;
+}
+.challenge-web-page .matching-row:has(option:checked:not([value=""])) .matching-select {
+    border-color:#dfc184; box-shadow:inset 3px 0 #dfc184; background-color:#183748; color:#fff1ca;
+}
+.challenge-web-page .trade-quantity-controls .trade-quantity-button:focus-visible,
+.challenge-web-page .matching-select:focus-visible { outline:3px solid var(--lp-focus,#f0d18d); outline-offset:2px; }
+.challenge-web-page .chapter-badge-earned[data-badge-reveal] {
+    border-color:#c7a568; background:radial-gradient(ellipse at 50% 0%,#4f5138,transparent 72%),#153140;
+}
+@media (max-width:360px) {
+    .challenge-web-page .challenge-question-header { grid-template-columns:minmax(0,1fr); gap:.3rem; }
+}
+.challenge-web-page .challenge-review-disclosure[open] > summary {
+    border-block-end: 1px solid #5a7580;
+}
+.challenge-web-page .chapter-challenge-intro.challenge-active .challenge-option[aria-pressed=true] {
+    box-shadow: inset 3px 0 #e0c07e;
+}
+@media (max-width: 560px) {
+    .challenge-web-page .challenge-debrief {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .challenge-web-page .challenge-debrief-score {
+        text-align: start;
+    }
+}
+
+.chapter-heart-strip:not([hidden]) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .45rem .8rem;
+    padding: .65rem;
+    margin-block: .65rem;
+    border: 1px solid #78938c;
+    border-radius: 10px;
+    background: #183745;
+    color: #ffe3a7;
+}
+.chapter-heart-tokens { display: flex; gap: .3rem; }
+.chapter-heart-tokens span {
+    display: grid;
+    place-items: center;
+    inline-size: 27px;
+    block-size: 27px;
+    border: 1px solid #c99b78;
+    border-radius: 50%;
+    background: #603c46;
+}
+.chapter-heart-tokens .spent { border-style: dashed; background: #122b3c; color: #a9bac2; }
+.chapter-heart-tokens .lost { animation: chapter-heart-drop .55s ease-out both; }
+@keyframes chapter-heart-drop {
+    40% { transform: translateY(12px) rotate(12deg); opacity: .2; }
+}
+.lakbay-reduce-motion .chapter-heart-tokens .lost { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+    .chapter-heart-tokens .lost { animation: none; }
+}
+#chapterHeartFeedback { flex-basis: 100%; margin: 0; color: #edf4f6; }
+#chapterHeartFeedback:empty { display: none; }
+
+.challenge-web-page #chapterChallengeResult.challenge-game-over .challenge-debrief {
+    border-color: #bd8375;
+    border-block-start: 3px double #ecc39a;
+    background: radial-gradient(ellipse at top left, #57383e, transparent 78%), #16293e;
+}
+.challenge-game-over .challenge-debrief .challenge-result-icon {
+    background: #3d2939;
+    color: #ffddba;
+    animation: chapter-result-arrival .35s ease-out both;
+}
+.challenge-web-page #chapterChallengeResult.challenge-game-over .challenge-debrief h2 {
+    font: 800 clamp(1.55rem, 4vw, 2.55rem)/1.2 var(--lp-font-game, sans-serif);
+}
+.challenge-game-over .challenge-debrief .card-label { color: #ffd4b7; }
+
+body.lakbay-theme.challenge-web-page #challengeActivityLabel {
+    display: block;
+    width: fit-content;
+    margin-block: .55rem;
+    padding: .25rem .65rem;
+    border: 1px solid #71958e;
+    border-radius: 999px;
+    background: #173b43;
+    color: #ddf2e7;
+    font-size: .875rem;
+    font-weight: 750;
+    overflow-wrap: anywhere;
+}
+body.lakbay-theme.challenge-web-page #challengeOptions[data-activity] {
+    padding-block-start: .85rem;
+    border-block-start: 1px solid #52717a;
+}
+body.lakbay-theme.challenge-web-page #chapterSaveRecoveryStatus:not(:empty) {
+    margin-block: 1rem;
+}
+body.lakbay-theme.challenge-web-page .challenge-receipt-label {
+    display: table;
+    margin-block: .55rem;
+    padding: .2rem .6rem;
+    border: 1px solid #759d8b;
+    border-radius: 999px;
+    background: #21463c;
+    color: #dff5e9;
+    font-size: .875rem;
+    font-weight: 750;
+}
+body.lakbay-theme.challenge-web-page #checkChapterSavedResult {
+    min-height: 44px;
+    border: 1px solid #e1c283;
+    background: #e1c283;
+    color: #132a3b;
+}
+.challenge-web-page #chapterChallengeResult.challenge-game-over #challengeResultPrimaryButton {
+    min-height: 48px;
+    border-color: #f2d098;
+    background: #ecc57e;
+    color: #182c3b;
+    font-weight: 800;
+}
+@keyframes chapter-result-arrival {
+    from { transform: translateY(-4px) scale(.94); }
+    to { transform: none; }
+}
+.lakbay-reduce-motion .challenge-game-over .challenge-debrief .challenge-result-icon { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+    .challenge-game-over .challenge-debrief .challenge-result-icon { animation: none; }
+}
+#chapterHeartFeedback[data-outcome="missed"]:not(:empty) {
+    border-inline-start: 3px solid #f5c482;
+    padding-inline-start: 10px;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body:not(.lakbay-reduce-motion) .chapter-finale-heading[data-finale-ready] {
+        animation: finale-reveal .4s ease-out both;
+    }
+    body:not(.lakbay-reduce-motion) .chapter-finale-heading[data-finale-ready] .finale-title-group {
+        animation: finale-reveal .38s .1s ease-out both;
+    }
+    body:not(.lakbay-reduce-motion) #chapterChallengeResult .challenge-debrief-score {
+        animation: finale-reveal .35s .06s ease-out both;
+    }
+}
+@keyframes finale-reveal {
+    from { opacity: .68; translate: 0 7px; }
+    to { opacity: 1; translate: 0 0; }
+}
+.expedition-paused .challenge-debrief { border-block-start: 3px solid #e4ae76; }
+
+/* Chapter review uses the same materials as the story and quiz screens. */
+body.lakbay-theme.challenge-web-page .chapter-finale-heading {
+    border-color: var(--student-brass-line);
+    border-block-start: 1px solid var(--student-brass-line);
+    border-radius: 16px;
+    background:
+        var(--student-woven-edge) top / 100% 3px no-repeat,
+        linear-gradient(90deg, #102733 6%, #102733ee 46%, #102733ae 100%),
+        radial-gradient(ellipse at right top, #d5ba7340, transparent 68%),
+        var(--chapter-finale-art, url("../assets/landing/journey-finale.webp")) center 48% / cover, #203d3e;
+    box-shadow: var(--student-illustrated-depth);
+}
+body.lakbay-theme.challenge-web-page .chapter-finale-heading h1 {
+    color: var(--student-ivory);
+    font-family: var(--student-editorial);
+    font-size: clamp(1.75rem, 3.8vw, 2.85rem);
+    font-weight: 500;
+    line-height: 1.12;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-info > div {
+    border-radius: 9px;
+    border-color: #b396667d;
+    border-inline-start-color: #c5a469;
+    background: linear-gradient(150deg, #23434a, #132c39 80%), #132c39;
+    box-shadow: inset 0 1px #ffe6b51c;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .chapter-challenge-quiz {
+    border-color: #a58b628f;
+    border-block-start-color: #dab679;
+    border-radius: 12px;
+    background: var(--student-woven-edge) top / 100% 3px no-repeat,
+        radial-gradient(ellipse at 93% 0%, #294a4b, transparent 68%), #122c39;
+    box-shadow: var(--student-panel-depth);
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .challenge-question-header {
+    padding: .65rem .75rem;
+    border: 1px solid #b398685c;
+    border-radius: 8px;
+    background: #122733;
+}
+.challenge-web-page #challengeQuestionText,
+.challenge-web-page #challengeResultHeading {
+    font-family: var(--student-editorial);
+    font-weight: 600;
+    letter-spacing: -.02em;
+}
+body.lakbay-theme.challenge-web-page .chapter-challenge-intro.challenge-active .challenge-option[aria-pressed=true] {
+    background: linear-gradient(125deg, #3b4e42, #213b46 82%), #263d42;
+    box-shadow: inset 3px 0 #efc986, 0 3px 0 #081c28;
+}
+.challenge-web-page .challenge-review-disclosure[open] { border-color: #bb9c66; }
+@media (prefers-reduced-motion: no-preference) {
+    body:not(.lakbay-reduce-motion) .expedition-paused .challenge-debrief-title {
+        animation: expedition-pause-focus .45s ease-out;
+    }
+}
+@keyframes expedition-pause-focus {
+    from { opacity: .6; filter: blur(2px); }
+    to { opacity: 1; filter: none; }
+}
+.chapter-badge-earned .chapter-badge-museum-link {
+    display: inline-flex;
+    justify-content: center;
+    min-height: 44px;
+    margin-block-start: .75rem;
+}

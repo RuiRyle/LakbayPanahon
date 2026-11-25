@@ -7,16 +7,23 @@ export function evidenceDecisionCorrect(question,answer){
         answer.conclusion===String(question.correctAnswer).trim().toUpperCase();
 }
 
-export function validateEvidenceTask(question){
+// Public assessment questions contain lesson references, never the private grading key.
+export function validateEvidenceDisplayTask(question){
     const task=question.evidenceTask;
     if(!task || typeof task.instructions!=='string' || !Array.isArray(task.cards) || task.cards.length<2 ||
         new Set(task.cards.map(c=>c.id)).size!==task.cards.length ||
-        !task.cards.every(c=>typeof c.id==='string'&&c.id&&typeof c.sceneId==='string'&&c.sceneId&&Number.isInteger(c.clueIndex)&&c.clueIndex>=0) ||
-        !task.cards.some(c=>c.id===task.correctEvidenceId))throw Error('The evidence task needs valid lesson references.');
+        !task.cards.every(c=>typeof c.id==='string'&&c.id&&typeof c.sceneId==='string'&&c.sceneId&&Number.isInteger(c.clueIndex)&&c.clueIndex>=0))throw Error('The evidence task needs valid lesson references.');
+    return task;
+}
+
+export function validateEvidenceTask(question){
+    const task=validateEvidenceDisplayTask(question);
+    if(!task.cards.some(c=>c.id===task.correctEvidenceId))throw Error('The evidence task needs valid lesson references.');
     return task;
 }
 
 export async function renderEvidenceDecision({question,host,submitButton,initialAnswer=null,onChange}){
+    const restoreFocus=host.contains(document.activeElement);
     const uid=auth.currentUser?.uid,token={};host.evidenceRequest=token;submitButton.disabled=true;
     const current=()=>host.evidenceRequest===token&&host.isConnected&&auth.currentUser?.uid===uid;
     host.replaceChildren();
@@ -24,7 +31,7 @@ export async function renderEvidenceDecision({question,host,submitButton,initial
     add('h3','Use a Clue to Support Your Answer');
     const status=add('p','Loading lesson evidence...');status.setAttribute('role','status');
     try{
-        const task=validateEvidenceTask(question);
+        const task=validateEvidenceDisplayTask(question);
         const ids=[...new Set(task.cards.map(c=>c.sceneId))];
         const scenes=await Promise.all(ids.map(id=>getDoc(doc(db,'storyScenes',id))));
         if(!current())return;
@@ -38,10 +45,11 @@ export async function renderEvidenceDecision({question,host,submitButton,initial
         const field=(title,className,options)=>{const label=document.createElement('label');label.textContent=title;const select=document.createElement('select');select.className=className;select.add(new Option('Choose an answer',''));for(const [id,text]of options)select.add(new Option(text,id));label.append(select);host.append(label);return select;};
         const evidence=field('1. Which clue supports your answer?','evidence-clue-select',task.cards.map(c=>[c.id,source.get(c.sceneId).exploreItems[c.clueIndex].title]));
         const conclusion=field('2. What does that clue help you conclude?','evidence-conclusion-select','ABCD'.split('').map(k=>[k,question['option'+k]]));
-        const changed=()=>{submitButton.disabled=!evidence.value||!conclusion.value;onChange({gameType:'evidenceDecision',evidenceId:evidence.value,conclusion:conclusion.value});};
+        const changed=()=>{submitButton.disabled=!evidence.value||!conclusion.value;status.textContent=submitButton.disabled?'Choose both a clue and a conclusion.':'Clue and conclusion selected. Ready to confirm.';onChange({gameType:'evidenceDecision',evidenceId:evidence.value,conclusion:conclusion.value});};
         evidence.addEventListener('change',changed);conclusion.addEventListener('change',changed);
         if(initialAnswer?.gameType==='evidenceDecision'){evidence.value=initialAnswer.evidenceId||'';conclusion.value=initialAnswer.conclusion||'';changed();}
-        status.textContent='Choose both a clue and a conclusion. Your final review will explain how they connect.';
+        status.textContent=submitButton.disabled?'Choose both a clue and a conclusion. Your final review will explain how they connect.':'Clue and conclusion selected. Ready to confirm.';
+        if(restoreFocus)evidence.focus();
         const journal=document.createElement('a');journal.href='my-journey.html#evidenceJournal';journal.target='_blank';journal.rel='noopener';journal.textContent='Consult My Evidence Journal (opens a new tab)';journal.className='text-button';host.append(journal);
         try{
             const saved=await getDocs(query(collection(db,'studentEvidenceJournal'),where('userId','==',uid)));
@@ -53,5 +61,6 @@ export async function renderEvidenceDecision({question,host,submitButton,initial
     }catch{
         if(!current())return;status.textContent='The lesson evidence could not load. Check your connection and try again; your challenge progress is kept.';
         const retry=add('button','Retry Evidence');retry.type='button';retry.className='text-button';retry.addEventListener('click',()=>renderEvidenceDecision({question,host,submitButton,initialAnswer,onChange}));
+        if(restoreFocus)retry.focus();
     }
 }

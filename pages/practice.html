@@ -32,7 +32,7 @@
 
 
 <body
-    class="auth-checking lakbay-theme"
+    class="auth-checking lakbay-theme practice-web-page lp-web-navigation"
     data-role="student"
 >
     <div class="student-loading-shell" role="status" aria-live="polite">
@@ -93,7 +93,7 @@
                 class="nav-link"
             >
                 <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
-                <span>Explore Chapters</span>
+                <span>Chapter Map</span>
             </a>
 
 
@@ -120,7 +120,7 @@
                 class="nav-link"
             >
                 <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
-                <span>Achievements</span>
+                <span>Discovery Museum</span>
             </a>
             <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
 
@@ -240,10 +240,10 @@
             <!-- LOADING -->
 
             <div
-                id="practiceLoading"
-                class="learning-message"
+                id="practiceLoading" role="status" aria-live="polite"
+                class="learning-message lp-status lp-compass-loading"
             >
-                Preparing your practice challenge...
+                Loading your practice round…
             </div>
 
 
@@ -251,23 +251,22 @@
                 <nav aria-label="Practice choices">
                     <a id="practiceLessonLink" class="text-button">Review Lesson</a>
                     <span aria-hidden="true">&middot;</span>
-                    <a id="practiceRetryLink" class="text-button">Retry Mission Quiz When Ready</a>
+                    <a id="practiceRetryLink" class="text-button">Back to Mission Quiz</a>
                 </nav>
-                <p>Practice builds understanding and does not award mission XP.</p>
             </div>
 
             <!-- ERROR -->
 
             <div
-                id="practiceError"
-                class="learning-message error-message"
+                id="practiceError" role="alert"
+                class="learning-message error-message lp-status" data-state="error"
                 hidden
             >
-                We could not load this practice challenge.
+                We couldn’t load your practice round.
             </div>
 
 
-            <button id="retryPracticeLoadButton" type="button" class="primary-button" hidden>Try Loading Again</button>
+            <div class="lp-recovery-actions" data-route-recovery><button id="retryPracticeLoadButton" type="button" class="primary-button lp-button lp-button-secondary" hidden>Try Again</button><a class="lp-button lp-button-secondary" href="my-journey.html">Back to Journey</a></div>
 
             <!-- =====================================
                  PRACTICE CONTENT
@@ -285,28 +284,10 @@
 
                 <!-- HEADER -->
 
-                <section class="practice-header">
-
-                    <span class="eyebrow">
-                        ADAPTIVE PRACTICE
-                    </span>
-
-
-                    <h1>
-                        Strengthen Your Knowledge
-                    </h1>
-
-
-                    <p>
-    Answer the practice question and learn from
-    the explanation before trying the mission quiz again.
-</p>
-
-                </section><ol class="review-flow-steps" aria-label="Learning recovery steps"><li><span aria-hidden="true">1</span>Review the lesson</li><li aria-current="step"><span aria-hidden="true">2</span>Apply in practice</li><li><span aria-hidden="true">3</span>Choose your next step</li></ol>                <details class="practice-review-panel practice-review-disclosure"><summary><span class="review-disclosure-icon" aria-hidden="true">&#9678;</span><span>Your personalized recommendations</span></summary><div class="review-disclosure-body">
-                    <h2 id="practiceReviewTitle">Your Practice Review</h2>
-                    <p id="practiceReviewMode" role="status"></p>
-                    <div id="practiceReviewTopics" class="practice-review-grid"></div>
-                </div></details>
+                <header class="practice-header">
+                    <h1>Practice</h1>
+                    <p>Choose an answer, check it, and use the feedback on your next question.</p>
+                </header>
 
 
                 <!-- =====================================
@@ -321,17 +302,19 @@
                     <div class="practice-card-top">
 
                         <span>
-                            Practice Question
+                            PRACTICE ROUND
                         </span>
 
 
-                        <span id="practiceProgress">
+                        <span id="practiceProgress" role="status" aria-live="polite">
                             1 of 1
                         </span>
 
                     </div>
 
 
+                    <progress id="practiceRoundMeter" class="practice-round-meter" aria-label="Position in practice round" max="1" value="0"></progress>
+                    <p id="practiceTopicContext" class="practice-topic-context" hidden></p>
                     <h2 id="practiceQuestion">
                         Practice Question
                     </h2>
@@ -341,16 +324,26 @@
      AI LEARNING HINT
 ====================================== -->
 
-<div class="practice-ai-assistance">
+<p id="practiceAnswerHelp" class="practice-answer-help">Choose an answer, then select Check Answer.</p>
+
+
+
+                    <div
+                        class="practice-options"
+                        id="practiceOptions" role="group" aria-labelledby="practiceQuestion" aria-describedby="practiceAnswerHelp"
+                    ></div>
+
+
+                    <div class="practice-ai-assistance">
 
     <button
         type="button"
-        id="practiceAiHintButton"
+        id="practiceAiHintButton" aria-controls="practiceAiHintResponse" aria-expanded="false"
         class="practice-ai-hint-button"
         disabled
     >
-        <span aria-hidden="true">&#x2728;</span>
-        <span>Bayani AI Hint</span>
+        <span class="interface-icon interface-icon--lightbulb" aria-hidden="true"></span>
+        <span>Get a hint from Bayani</span>
     </button>
 
     <div
@@ -362,14 +355,6 @@
     ></div>
 
 </div>
-
-
-
-                    <div
-                        class="practice-options"
-                        id="practiceOptions"
-                    ></div>
-
 
                     <!-- FEEDBACK / EXPLANATION -->
 
@@ -385,7 +370,7 @@
                         </strong>
 
 
-                        <p id="practiceExplanation"></p>
+                        <div id="practiceExplanation"></div>
 
                     </div>
 
@@ -406,6 +391,14 @@
 
                 </section>
 
+                <details class="practice-review-panel practice-review-disclosure">
+                    <summary>Browse recommended topics</summary>
+                    <div class="review-disclosure-body">
+                        <h2 id="practiceReviewTitle">Your Practice Review</h2>
+                        <p id="practiceReviewMode" role="status"></p>
+                        <div id="practiceReviewTopics" class="practice-review-grid"></div>
+                    </div>
+                </details>
 
                 <!-- =====================================
                      PRACTICE COMPLETE
@@ -413,45 +406,39 @@
 
                 <section
                     class="practice-complete-card"
-                    id="practiceComplete"
+                    id="practiceComplete" aria-labelledby="practiceCompleteTitle"
                     hidden
                 >
 
-                    <div class="practice-complete-icon">
-                        ✓
+                    <header class="practice-finish-header">
+                        <span class="practice-finish-medal" aria-hidden="true">&#10003;</span>
+                        <div>
+                            <h2 id="practiceCompleteTitle" tabindex="-1">Practice complete</h2>
+                            <p id="practiceFinishScore" class="practice-finish-score"></p>
+                        </div>
+                    </header>
+
+                    <div class="practice-finish-next">
+                        <h3>Choose your next step</h3>
+                        <p id="practiceFinishNextNote">Take the mission quiz when you’re ready, or return to My Journey.</p>
+                        <div class="practice-finish-save">
+                            <p id="practiceSaveStatus" class="lp-status-panel" role="status"></p>
+                            <button type="button" class="begin-mission-button"
+                                id="retryPracticeSaveButton" aria-describedby="practiceSaveStatus" hidden>Retry Saving Progress</button>
+                        </div>
+                        <div class="practice-finish-actions">
+                            <a id="practiceRecommendedAction" class="begin-mission-button" hidden></a>
+                            <button type="button" class="begin-mission-button"
+                                id="retryMissionQuizButton">Retry Mission Quiz</button>
+                            <a href="my-journey.html" class="text-button practice-continue-journey">Back to My Journey &rarr;</a>
+                        </div>
                     </div>
 
-
-                    <span class="eyebrow">
-                        REVIEW COMPLETE
-                    </span>
-
-
-                    <h2 id="practiceCompleteTitle">
-                        Practice Complete!
-                    </h2>
-
-                    <div id="practiceSessionSummary" aria-live="polite"></div>
-                    <div id="practiceNextSteps" aria-live="polite"></div><a href="my-journey.html" class="text-button practice-continue-journey">Continue My Journey &rarr;</a>
-                    <p id="practiceSaveStatus" role="status" aria-live="polite"></p>
-                    <button type="button" class="begin-mission-button"
-                        id="retryPracticeSaveButton" hidden>Retry Saving Progress</button>
-
-
-                    <p>
-                        You reviewed another important idea from
-                        this mission. Try the mission quiz again
-                        and apply what you learned.
-                    </p>
-
-
-                    <button
-                        type="button"
-                        class="begin-mission-button"
-                        id="retryMissionQuizButton"
-                    >
-                        Retry Mission Quiz →
-                    </button>
+                    <details class="practice-finish-review">
+                        <summary>What you practised</summary>
+                        <div id="practiceSessionSummary"></div>
+                    </details>
+                    <div id="practiceNextSteps" aria-live="polite"></div>
 
                 </section>
 

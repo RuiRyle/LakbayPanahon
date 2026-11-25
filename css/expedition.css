@@ -82,7 +82,7 @@ body.lakbay-theme .story-explore-choice-content .evidence-object-number { displa
 body.lakbay-theme .story-explore-choices .story-explore-result { margin: -4px 0 12px 18px; border: 1px solid #91cdbd50; border-left: 3px solid var(--exp-teal); background: #102d3d; border-radius: 0 12px 12px 12px; padding: 22px; }
 body.lakbay-theme .evidence-note-label { display: block; margin-bottom: 10px; color: var(--exp-teal); font-size: .65rem; letter-spacing: .14em; font-weight: 800; }
 body.lakbay-theme .evidence-reflection { margin-top: 16px; border-top: 1px solid #91cdbd35; }
-body.lakbay-theme .evidence-reflection summary { color: var(--lp-gold-soft); cursor: pointer; min-height: 44px; padding: 14px 0; font-size: .85rem; }
+body.lakbay-theme .evidence-reflection summary { color: var(--lp-gold-soft); cursor: var(--lakbay-cursor-hand, pointer); min-height: 44px; padding: 14px 0; font-size: .85rem; }
 body.lakbay-theme.paper-reading .story-explore-choices .story-explore-result { background: #173244; border-color: #45616e; }
 body.lakbay-theme.paper-reading .story-explore-result :is(p,strong,.evidence-note-label,summary) { color: var(--exp-ink); }
 body.lakbay-theme .discovery-wall { grid-column: 1 / -1; padding: clamp(20px,3vw,32px); margin: 28px 0; border: 1px solid #8ca49265; border-radius: 20px; background: repeating-linear-gradient(0deg,transparent 0 28px,#91cdbd04 29px 30px),#122d38; }
@@ -181,13 +181,13 @@ body.lakbay-theme .passport-stamp small { font-size: .75rem; }
 /* Museum cases and their existing, expandable learning labels. */
 body.lakbay-theme .achievement-artifact-card { background: linear-gradient(150deg,#1b3545,#10263e); border: 1px solid #d7b56855; border-radius: 16px; }
 body.lakbay-theme .achievement-artifact-icon { min-width: 82px; min-height: 100px; background: radial-gradient(ellipse at 50% 30%,#ecd9a62a,transparent 70%); border-bottom: 3px solid #d7b56866; border-radius: 6px; display: grid; place-items: center; }
-body.lakbay-theme .artifact-learning-details summary { padding: 12px 0; min-height: 44px; color: var(--exp-teal); cursor: pointer; }
+body.lakbay-theme .artifact-learning-details summary { padding: 12px 0; min-height: 44px; color: var(--exp-teal); cursor: var(--lakbay-cursor-hand, pointer); }
 body.lakbay-theme .artifact-learning-body { border-left: 2px solid #d7b56855; padding-left: 16px; }
 body.lakbay-theme .museum-introduction { color: var(--lp-muted); max-width: 62ch; }
 /* A field journal keeps long reading passages quiet and legible. */
 body.lakbay-theme .reading-tools { display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 12px 0; }
 body.lakbay-theme .reading-tools span { color: var(--lp-muted); font-size: .8rem; }
-body.lakbay-theme .reading-surface-toggle { color: var(--lp-text); background: var(--lp-panel); border: 1px solid var(--exp-outline); border-radius: 24px; padding: 10px 16px; min-height: 44px; cursor: pointer; }
+body.lakbay-theme .reading-surface-toggle { color: var(--lp-text); background: var(--lp-panel); border: 1px solid var(--exp-outline); border-radius: 24px; padding: 10px 16px; min-height: 44px; cursor: var(--lakbay-cursor-hand, pointer); }
 body.lakbay-theme .story-scene-context { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 10px 0 16px; font-size: .83rem; }
 body.lakbay-theme .story-scene-context:empty { display: none; }
 body.lakbay-theme .story-text { max-width: 68ch; line-height: 1.85; font-size: clamp(1rem,1.4vw,1.13rem); }
@@ -201,8 +201,8 @@ body.lakbay-theme.paper-reading .story-reading-content .story-text a { color: #9
 body.lakbay-theme .story-progress { position: sticky; top: 0; z-index: 5; }
 body.lakbay-theme .bayani-prompt-kit { padding: 16px 22px; border-top: 1px solid var(--lp-line); display: flex; gap: 8px; flex-wrap: wrap; }
 body.lakbay-theme .bayani-prompt-kit > span { flex-basis: 100%; color: var(--lp-muted); font-size: .75rem; }
-body.lakbay-theme .bayani-prompt { border: 1px solid #91cdbd55; border-radius: 20px; background: #91cdbd0a; color: var(--exp-teal); padding: 10px 13px; min-height: 44px; cursor: pointer; font-size: .8rem; }
-body.lakbay-theme .bayani-prompt:disabled { opacity: .5; cursor: default; }
+body.lakbay-theme .bayani-prompt { border: 1px solid #91cdbd55; border-radius: 20px; background: #91cdbd0a; color: var(--exp-teal); padding: 10px 13px; min-height: 44px; cursor: var(--lakbay-cursor-hand, pointer); font-size: .8rem; }
+body.lakbay-theme .bayani-prompt:disabled { opacity: .5; cursor: var(--lakbay-cursor-arrow, default); }
 body.lakbay-theme .bayani-emblem { background: url('../assets/brand/lakbay-sun.svg') center / 62% no-repeat,#d7b56812; }
 body.lakbay-theme .bayani-emblem span { visibility: hidden; }
 /* Teacher workspace: clear availability states instead of sample analytics. */
@@ -221,7 +221,7 @@ body.teacher-workspace { margin: 0; }
 .teacher-workspace .teacher-guide { margin-top: 24px; }
 .teacher-workspace .teacher-guide ol { color: var(--lp-muted); line-height: 1.8; padding-left: 24px; }
 .teacher-workspace .teacher-guide li { padding: 6px 0; }
-.teacher-workspace .logout-button { color: var(--lp-text); background: transparent; border: 1px solid #52657a; padding: 10px 18px; min-height: 44px; border-radius: 10px; cursor: pointer; }
+.teacher-workspace .logout-button { color: var(--lp-text); background: transparent; border: 1px solid #52657a; padding: 10px 18px; min-height: 44px; border-radius: 10px; cursor: var(--lakbay-cursor-hand, pointer); }
 @media (max-width: 700px) {
     body.lakbay-theme .chapter-keepsake-trail { grid-template-columns: 1fr; }
     body.lakbay-theme .chapter-keepsake-step { display: grid; grid-template-columns: 74px minmax(0,1fr); gap: 6px 12px; text-align: left; justify-items: start; }
@@ -262,3 +262,75 @@ body.teacher-workspace { margin: 0; }
     body.lakbay-theme .era-card:hover { box-shadow: 0 8px 28px #0003; }
     @keyframes passport-arrival { from { opacity: 0; transform: scale(1.04) rotate(-2deg); } to { opacity: 1; transform: none; } }
 }
+body.lakbay-theme .chapter-keepsake-step .chapter-badge-medallion {
+    inline-size: min(100%, 112px);
+    aspect-ratio: 1;
+    grid-row: 1 / 4;
+}
+.chapter-finale-scene {
+    display: block;
+    width: 100%;
+    height: clamp(140px, 25vw, 270px);
+    object-fit: cover;
+    border: 1px solid #91cdbd55;
+    border-radius: 16px;
+    margin-block-start: 18px;
+}
+/* The era accent follows the expedition without changing its reading surfaces. */
+[data-expedition-era="early-philippine-communities"] { --era-trim: #8bd2be; --era-wash: #347a7144; }
+[data-expedition-era="spanish-exploration-colonial-rule"] { --era-trim: #f0c381; --era-wash: #94622c44; }
+[data-expedition-era="colonial-economic-social-cultural-change"] { --era-trim: #eba994; --era-wash: #91504744; }
+[data-expedition-era="resistance-national-consciousness"] { --era-trim: #b2c7ff; --era-wash: #5f76aa44; }
+body.lakbay-theme :is(.era-card,.era-overview,.mission-chapter-header,.lesson-expedition,.chapter-keepsake)[data-expedition-era]:not([data-expedition-era=""]) {
+    border-block-start: 3px solid var(--era-trim, #e5c47d);
+    box-shadow: 0 10px 28px var(--era-wash, #0003);
+}
+body.lakbay-theme [data-expedition-era] :is(.era-period,.era-date-range,.mission-chapter-label,.chapter-keepsake-step .eyebrow) {
+    color: var(--era-trim, #e5c47d);
+}
+body.lakbay-theme [data-expedition-era] :is(.era-overview-art,.chapter-header-art,.story-visual) {
+    box-shadow: inset 0 -2px var(--era-trim, #e5c47d);
+}
+body.lakbay-theme .passport-stamp .chapter-badge-medallion {
+    inline-size: 66px;
+    block-size: 66px;
+    justify-self: center;
+    display: grid;
+    overflow: hidden;
+    border: 2px solid #dab978;
+    border-radius: 50%;
+}
+body.lakbay-theme .passport-stamp .chapter-badge-medallion img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body.lakbay-theme:not(.lakbay-reduce-motion) .chapter-keepsake[data-first="true"] .chapter-badge-medallion {
+        animation: chapter-seal-land .52s cubic-bezier(.22,.72,.24,1) both;
+    }
+}
+@keyframes chapter-seal-land {
+    0% { opacity: .25; transform: translateY(-12px) rotate(-12deg) scale(1.22); }
+    72% { opacity: 1; transform: translateY(2px) rotate(2deg) scale(.96); }
+    100% { opacity: 1; transform: none; }
+}
+body.lakbay-theme .chapter-keepsake.has-next-chapter .chapter-keepsake-step:last-child {
+    border-color: #d6b371;
+    position: relative;
+}
+body.lakbay-theme .chapter-keepsake.has-next-chapter .chapter-keepsake-step:last-child::before {
+    content: "";
+    position: absolute;
+    inset: -2px 8px auto;
+    height: 3px;
+    border-radius: 3px;
+    background: #f4d38a;
+    transform-origin: left;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body.lakbay-theme:not(.lakbay-reduce-motion) .chapter-keepsake[data-first="true"].has-next-chapter .chapter-keepsake-step:last-child::before {
+        animation: chapter-next-route .35s .52s ease-out both;
+    }
+}
+@keyframes chapter-next-route { from { transform: scaleX(0); } to { transform: scaleX(1); } }

@@ -679,7 +679,7 @@ body.daily-modal-open {
     font-size: 1.7rem;
     line-height: 1;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 
     transition:
         background 150ms ease,
@@ -748,7 +748,7 @@ body.daily-modal-open {
     font: inherit;
     text-align: left;
 
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 
     transition:
         border-color 150ms ease,
@@ -869,13 +869,13 @@ body.daily-modal-open {
 
 .daily-submit-button {
     border: 0;
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 }
 
 
 .daily-submit-button:disabled {
     opacity: 0.5;
-    cursor: not-allowed;
+    cursor: var(--lakbay-cursor-blocked, not-allowed);
 }
 
 
@@ -1525,7 +1525,7 @@ body.daily-modal-open {
    ========================================================= */
 
 .daily-challenge-option:disabled {
-    cursor: default;
+    cursor: var(--lakbay-cursor-arrow, default);
 }
 
 .daily-challenge-option:disabled:not(.correct):not(.incorrect) {
@@ -2227,12 +2227,12 @@ body.daily-modal-open {
 .student-setup-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
 .journey-details .journey-action-button { margin-right: .75rem; margin-top: .75rem; }
 
-.student-setup-actions #dismissStudentSetup { border: 1px solid var(--border); border-radius: 12px; padding: 10px 18px; background: white; color: var(--navy); cursor: pointer; }
+.student-setup-actions #dismissStudentSetup { border: 1px solid var(--border); border-radius: 12px; padding: 10px 18px; background: white; color: var(--navy); cursor: var(--lakbay-cursor-hand, pointer); }
 .journey-review-link { display: inline-block; margin-top: .75rem; margin-right: 1rem; }
 /* Flexible Home composition: cards grow with real content rather than fixed heights. */
 .welcome-section{padding:30px;border:1px solid #e2d9c4;border-radius:24px;background:linear-gradient(120deg,#fffdf7,#faf0d7);align-items:center;flex-wrap:wrap}.welcome-text{flex:1 1 360px;min-width:0}.welcome-text h1{letter-spacing:-.04em;overflow-wrap:anywhere}.player-progress-card{flex:1 1 280px;min-width:0;max-width:420px;background:#fffdf8;box-shadow:none;border-color:#dfd4b9}.stats-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:16px}.stat-card{min-width:0;border-radius:16px;border-color:#e4dfd3;box-shadow:0 4px 16px #18315304}.stat-card strong{overflow-wrap:anywhere}.dashboard-grid{grid-template-columns:minmax(0,1.75fr) minmax(270px,1fr);align-items:start;gap:24px}.dashboard-grid>.dashboard-card{min-width:0;height:auto;border-radius:22px}.journey-quest-card{padding:28px;border-color:#dfc68d;box-shadow:0 5px 20px #18315305}.journey-quest-header{gap:12px;flex-wrap:wrap}.journey-quest-header h2{font-size:1.4rem;line-height:1.4;letter-spacing:-.025em}.journey-details{min-width:0}.journey-details h3,.journey-details p{overflow-wrap:anywhere}.dashboard-grid .journey-content{flex-wrap:wrap}.dashboard-content .section-heading{gap:18px;flex-wrap:wrap}.dashboard-content .era-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}.dashboard-content .era-card{min-width:0}.dashboard-content .era-content{height:auto}.dashboard-content a:focus-visible,.dashboard-content button:focus-visible{outline:3px solid #b68b3e;outline-offset:4px}
 @media(max-width:1100px){.dashboard-grid{grid-template-columns:1fr}.player-progress-card{max-width:none}}@media(max-width:650px){.welcome-section{padding:24px;gap:22px}.welcome-text{flex-basis:100%}.journey-quest-card{padding:22px}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stat-card{padding:16px;gap:10px;flex-wrap:wrap}.stat-card strong{font-size:1.1rem}.journey-quest-header h2{font-size:1.2rem}}@media(max-width:360px){.stats-grid{grid-template-columns:1fr}}
-.home-side-quests{display:grid;gap:20px;min-width:0}.home-side-quests>.dashboard-card{height:auto;min-width:0;padding:25px;border-radius:22px;box-shadow:0 5px 20px #18315305}.home-quest-heading{display:flex;align-items:center;gap:12px;margin-bottom:18px}.home-quest-heading .card-label{margin:0;font-size:.62rem;line-height:1.6}.home-quest-icon{display:grid;place-items:center;width:40px;height:44px;flex-shrink:0;border-radius:13px;background:#f5e4b6;color:#896022;font-size:1.4rem}.home-daily-card{background:linear-gradient(145deg,#fffbef,#fff);border-color:#e4cf9e}.home-side-quests h2{color:#183153;font-size:1.35rem;letter-spacing:-.025em;margin:0 0 12px;line-height:1.4}.home-side-quests p{font-size:.85rem;color:#667085;line-height:1.75;margin-bottom:18px}.home-daily-card .challenge-reward{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;margin-bottom:14px;border-top:1px solid #eee2c8;border-bottom:1px solid #eee2c8;font-size:.78rem;color:#697586}.home-daily-card .challenge-reward strong{color:#896022}.home-daily-card .daily-challenge-start{display:flex;justify-content:center;width:100%;height:auto;white-space:normal;padding:13px 16px;font-size:.85rem;border-radius:11px;line-height:1.5}.home-daily-card .daily-challenge-card-completed{padding:14px;background:#edf6ee;border:1px solid #d7e9da;border-radius:12px;gap:12px}.home-daily-card .daily-challenge-card-completed p{font-size:.75rem;margin:4px 0 0}.home-bayani-card{background:radial-gradient(ellipse at 100% 0%,#e8eef7,transparent 70%),#fafdff;border-color:#d4e0e9}.home-bayani-mark{position:relative;display:grid;place-items:center;width:42px;height:44px;flex-shrink:0;border-radius:14px;background:#183953;color:#f1cd80;font-weight:800;font-size:1.35rem;box-shadow:0 3px 0 #b99b56}.home-bayani-mark span{position:absolute;right:-5px;top:-9px;font-size:1rem;color:#ad8232}.home-bayani-card .card-label{color:#506c87}.home-bayani-card .secondary-action-button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;height:auto;padding:13px 16px;border:1px solid #c4d3df;border-radius:11px;background:#fff;color:#183953;font-size:.83rem;font-weight:700;text-decoration:none;line-height:1.5}.home-bayani-card small{display:block;color:#758297;font-size:.7rem;line-height:1.6;margin-top:14px}.home-bayani-card a:hover{background:#f1f5f9}.daily-modal-backdrop{height:100dvh;padding:24px}.daily-modal{width:min(640px,100%);max-height:calc(100dvh - 48px);height:auto;border-radius:24px}.daily-modal-header{background:linear-gradient(120deg,#fff8e5,#fffdf8)}.daily-challenge-option{min-height:56px;height:auto;white-space:normal;overflow-wrap:anywhere;text-align:left}.daily-option-letter{flex-shrink:0}.daily-modal-footer{flex-wrap:wrap;gap:16px}.daily-challenge-feedback{overflow-wrap:anywhere}.daily-modal-content{padding:26px}.daily-modal-close:focus-visible{outline:3px solid #b68b3e;outline-offset:3px}
+.home-side-quests{display:grid;gap:20px;min-width:0}.home-side-quests>.dashboard-card{height:auto;min-width:0;padding:25px;border-radius:22px;box-shadow:0 5px 20px #18315305}.home-quest-heading{display:flex;align-items:center;gap:12px;margin-bottom:18px}.home-quest-heading .card-label{margin:0;font-size:.62rem;line-height:1.6}.home-quest-icon{display:grid;place-items:center;width:40px;height:44px;flex-shrink:0;border-radius:13px;background:#f5e4b6;color:#896022;font-size:1.4rem}.home-daily-card{background:linear-gradient(145deg,#fffbef,#fff);border-color:#e4cf9e}.home-side-quests h2{color:#183153;font-size:1.35rem;letter-spacing:-.025em;margin:0 0 12px;line-height:1.4}.home-side-quests p{font-size:.85rem;color:#667085;line-height:1.75;margin-bottom:18px}.home-daily-card .challenge-reward{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;margin-bottom:14px;border-top:1px solid #eee2c8;border-bottom:1px solid #eee2c8;font-size:.78rem;color:#697586}.home-daily-card .challenge-reward strong{color:#896022}.home-daily-card .daily-challenge-start{display:flex;justify-content:center;width:100%;height:auto;white-space:normal;padding:13px 16px;font-size:.85rem;border-radius:11px;line-height:1.5}.home-daily-card .daily-challenge-card-completed{padding:14px;background:#edf6ee;border:1px solid #d7e9da;border-radius:12px;gap:12px}.home-daily-card .daily-challenge-card-completed p{font-size:.75rem;margin:4px 0 0}.home-bayani-card{background:radial-gradient(ellipse at 100% 0%,#e8eef7,transparent 70%),#fafdff;border-color:#d4e0e9}.home-bayani-mark{position:relative;display:grid;place-items:center;width:42px;height:44px;flex-shrink:0;border-radius:14px;background:#183953;color:#f1cd80;font-weight:800;font-size:1.35rem;box-shadow:0 3px 0 #b99b56}.home-bayani-mark span{position:absolute;right:-5px;top:-9px;font-size:1rem;color:#ad8232}.home-bayani-card .card-label{color:#506c87}.home-bayani-card .secondary-action-button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;height:auto;padding:13px 16px;border:1px solid #c4d3df;border-radius:11px;background:#fff;color:#183953;font-size:.83rem;font-weight:700;text-decoration:none;line-height:1.5}.home-bayani-card small{display:block;color:#758297;font-size:.7rem;line-height:1.6;margin-top:14px}.home-bayani-card .secondary-action-button:hover{background:#f1f5f9}.daily-modal-backdrop{height:100dvh;padding:24px}.daily-modal{width:min(640px,100%);max-height:calc(100dvh - 48px);height:auto;border-radius:24px}.daily-modal-header{background:linear-gradient(120deg,#fff8e5,#fffdf8)}.daily-challenge-option{min-height:56px;height:auto;white-space:normal;overflow-wrap:anywhere;text-align:left}.daily-option-letter{flex-shrink:0}.daily-modal-footer{flex-wrap:wrap;gap:16px}.daily-challenge-feedback{overflow-wrap:anywhere}.daily-modal-content{padding:26px}.daily-modal-close:focus-visible{outline:3px solid #b68b3e;outline-offset:3px}
 @media(min-width:720px) and (max-width:1100px){.home-side-quests{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.home-side-quests>.dashboard-card{padding:22px}.daily-modal-backdrop{padding:12px}.daily-modal{max-height:calc(100dvh - 24px)}.daily-modal-content{padding:20px}.daily-modal-header{padding:20px}.daily-modal-footer{padding:18px 0 0}.daily-modal-title-group{gap:10px}.daily-modal-title-group h2{font-size:1.2rem}}
 @media(prefers-reduced-motion:reduce){.daily-modal,.daily-modal-backdrop{transition:none;animation:none}}
 .return-to-learn-panel{padding:clamp(1.25rem,3vw,2rem);border:1px solid #d7bd81;border-radius:1.4rem;background:linear-gradient(135deg,#fff9e9,#f1e4c4);box-shadow:0 12px 28px rgba(70,48,16,.08);margin-block:1.5rem}
@@ -2244,7 +2244,7 @@ body.daily-modal-open {
 .return-recall-check{display:grid;gap:.75rem;padding:1rem;border:1px solid #dfca9a;border-radius:1rem;background:rgba(255,255,255,.72)}
 .return-recall-prompt{font-weight:700;color:#382a18}
 .return-recall-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
-.return-recall-options button{padding:.8rem 1rem;text-align:left;border:1px solid #c9b78d;border-radius:.75rem;background:#fff;color:#362a19;cursor:pointer;font:inherit}
+.return-recall-options button{padding:.8rem 1rem;text-align:left;border:1px solid #c9b78d;border-radius:.75rem;background:#fff;color:#362a19;cursor:var(--lakbay-cursor-hand, pointer);font:inherit}
 .return-recall-options button:hover:not(:disabled),.return-recall-options button:focus-visible{border-color:#8e6120;outline:2px solid #ad7b29;outline-offset:2px}
 .return-recall-options button[data-result="correct"]{background:#e1f3e4;border-color:#39764b}
 .return-recall-options button[data-result="review"]{background:#fff1dc;border-color:#9f661f}

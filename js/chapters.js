@@ -1,4 +1,5 @@
 import { instructionalSnapshot } from "./instructional-content.js";
+import { navigatePage } from "./route-navigation.js";
 
 
  // ==========================================
@@ -64,7 +65,7 @@ import {
  // LOAD ERAS
  // ==========================================
 
- async function loadEras() {
+ export async function loadEras() {
      if (!currentUser) return;
      if (isEraOverviewPage) { resetEraOverview(); chapterSection.hidden = true; }
      eraLoading.hidden = false;
@@ -519,21 +520,9 @@ import {
                  let isUnlocked =
                      index === 0;
 
-                 let previousChapter =
-                     null;
-
-                 if (index > 0) {
-
-                     previousChapter =
-                         matchingChapters[
-                             index - 1
-                         ];
-
-                     isUnlocked = matchingChapters.slice(0, index)
-                         .filter(item => item.contentReady !== false && item.requiredForProgression !== false)
-                         .every(item => completedChapterIds.has(item.id));
-
-                 }
+                 const previousRequired = matchingChapters.slice(0, index).find(item =>
+                     item.contentReady !== false && item.requiredForProgression !== false && !completedChapterIds.has(item.id));
+                 if (index > 0) isUnlocked = !previousRequired;
 
 
                  isUnlocked = globalThis.__lakbayExplorationPreview===true || completedChapterIds.has(chapter.id) || (eraUnlocked && isUnlocked);
@@ -631,7 +620,10 @@ import {
                  }
 
 
-                 if (!eraUnlocked && !isCompleted && isContentReady) buttonText='Complete the previous era';
+                 const lockedReason = !isContentReady ? 'This chapter is being prepared.'
+                     : !eraUnlocked ? selectedEra.unlockMessage || 'Complete the required chapters in the previous era.'
+                     : previousRequired?.title ? 'Complete “'+previousRequired.title+'” to unlock.'
+                     : 'Complete the required earlier chapters.';
 
                  // ==================================
                  // CARD CONTENT
@@ -705,10 +697,7 @@ import {
                          "click",
                          () => {
 
-                             window.location.href =
-                                 `mission.html?chapter=${encodeURIComponent(
-                                     chapter.id
-                                 )}`;
+                             navigatePage(`mission.html?chapter=${encodeURIComponent(chapter.id)}`);
 
                          }
                      );
@@ -720,7 +709,13 @@ import {
                  // ADD CARD
                  // ==================================
 
-                 overviewDestinations.push({chapter, isUnlocked, isContentReady, isCompleted});
+                 if (!isEraOverviewPage && (!isUnlocked || !isContentReady)) {
+                     const reason = document.createElement('p');
+                     reason.className = 'era-chapter-requirement';
+                     reason.textContent = lockedReason;
+                     button.before(reason);
+                 }
+                 overviewDestinations.push({chapter, isUnlocked, isContentReady, isCompleted, lockedReason});
                  chapterList.appendChild(
                      card
                  );
@@ -855,6 +850,7 @@ function resetEraOverview() {
 function renderEraOverview(era) {
     const overview=document.getElementById('eraOverview');if(!overview)return;
     overview.hidden=false;
+    overview.dataset.expeditionEra=era.id;
     overview.dataset.theme=['sea','forest','sand'].includes(era.theme)?era.theme:'sea';
     document.title=String(era.title||'Era Overview')+' | LakbayPanahon';
     document.getElementById('eraOverviewTitle').textContent=era.title||'Historical Era';

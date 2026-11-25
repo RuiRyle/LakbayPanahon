@@ -1,0 +1,455 @@
+body.admin-workspace[data-admin-page="applications"] #admin-main .admin-workflow-purpose:not([hidden]) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px 24px;
+    align-items: start;
+    padding: clamp(16px, 2.7vw, 26px);
+    border-color: #587889;
+    border-inline-start: 3px solid var(--admin-gold);
+    background: radial-gradient(ellipse at 84% 130%, #315554, transparent 58%), linear-gradient(111deg, #142d43, #1d3e50);
+    box-shadow: var(--admin-panel-shadow);
+}
+
+.admin-application-intro p { margin: 6px 0 0; color: var(--admin-muted); line-height: 1.55; }
+
+.admin-review-guide {
+    min-width: 0;
+    border: 1px solid #5c788a;
+    border-radius: 9px;
+    background: #10283cef;
+}
+
+.admin-review-guide summary { min-height: 44px; padding: 10px 13px; color: var(--admin-accent); font-weight: 650; }
+.admin-review-guide[open] { border-color: #a99261; }
+.admin-review-guide .admin-review-flow { grid-template-columns: minmax(0, 1fr); gap: 9px; margin: 0 12px 13px 20px; }
+
+body.admin-workspace[data-admin-page="applications"] #admin-main:has(#adminAccountsView.has-selection) .admin-workflow-purpose,
+body.admin-workspace[data-admin-page="applications"] #admin-main #adminSelectionEmpty,
+body.admin-workspace[data-admin-page="applications"] #admin-main #adminAccountsView.has-selection #adminDirectory { display: none; }
+
+body.admin-workspace[data-admin-page="applications"][data-admin-view="applications"] #adminAccountsView[data-workspace] {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+}
+
+body.admin-workspace[data-admin-page="applications"] #admin-main #adminDirectory {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    position: static;
+    min-height: 0;
+    height: auto;
+    gap: 0;
+    border-color: var(--admin-line);
+    background: var(--admin-polished-panel);
+    box-shadow: var(--admin-panel-shadow);
+}
+
+.admin-application-toolbar {
+    display: grid;
+    grid-template-columns: minmax(155px, .85fr) minmax(180px, 1.6fr) auto;
+    align-items: end;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--admin-line);
+    border-radius: 12px;
+    background: #0b2031;
+    box-shadow: inset 0 1px 5px #020c164d;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory .admin-application-toolbar label {
+    display: grid;
+    gap: 6px;
+    min-width: 0;
+    margin: 0;
+    color: var(--admin-ink);
+    font-size: .86rem;
+    line-height: 1.45;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory .admin-application-toolbar :is(input, select) {
+    width: 100%;
+    min-height: 46px;
+    min-width: 0;
+    margin: 0;
+    border-color: #557489;
+    border-radius: 8px;
+    background: #142f43;
+    font-size: .92rem;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory .admin-application-toolbar :is(input, select):focus-visible {
+    border-color: var(--admin-gold);
+    background: #19384d;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory .admin-application-toolbar #adminRefreshApplications {
+    position: static;
+    inset: auto;
+    width: auto;
+    height: auto;
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 8px 14px;
+    margin: 0;
+    border-color: #557489;
+    border-radius: 8px;
+    font-size: .84rem;
+    white-space: nowrap;
+}
+
+.admin-application-toolbar #adminRefreshApplications svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory .admin-application-toolbar #adminRefreshApplications:hover:not(:disabled) {
+    border-color: var(--admin-gold);
+    background: #223c4e;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory .admin-list-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 5px 10px;
+    padding: 0;
+    border: 0;
+    margin: 20px 0 3px;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory .admin-list-heading h2 { grid-column: 1; grid-row: 1; margin: 0; padding: 0; font-size: 1.17rem; }
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #accountListContext { grid-column: 1 / -1; grid-row: 2; margin: 0; padding: 0; font-size: .87rem; line-height: 1.5; }
+
+.admin-application-count {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    margin: 0;
+    padding: 4px 9px;
+    border: 1px solid #726749;
+    border-radius: 99px;
+    background: #34403c;
+    color: #ffedbd;
+    font-size: .76rem;
+    white-space: nowrap;
+}
+
+.admin-application-count:empty,
+.admin-application-search-status:not(:has(button:not([hidden]), p:not(:empty))) { display: none; }
+
+.admin-application-search-status { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; }
+body.admin-workspace[data-admin-page="applications"] #adminDirectory :is(#adminSearchScope, #adminSearchStatus) { margin: 3px 0 0; font-size: .8rem; color: var(--admin-muted); }
+
+body.admin-workspace[data-admin-page="applications"] #admin-main #adminDirectory #adminAccounts {
+    contain: none;
+    overflow: visible;
+    max-height: none;
+    max-block-size: none;
+    min-height: 0;
+    margin: 12px 0 0;
+    gap: 8px;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts button[data-user-id] {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) minmax(115px, .44fr) auto;
+    grid-template-areas: "avatar name status open" "avatar contact status open";
+    gap: 4px 12px;
+    align-items: center;
+    min-height: 72px;
+    padding: 11px 13px;
+    border-color: #48667a;
+    border-radius: 12px;
+    background: linear-gradient(105deg, #18384d, #122a3e 70%);
+    text-align: start;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts button[data-user-id]::after { content: none; }
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts button[data-user-id]:is(:hover, :focus-visible) { border-color: #c8ad74; background: linear-gradient(105deg, #244657, #162f44); box-shadow: inset 3px 0 #d0ad64, 0 4px 12px #050f1a45; }
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-list-avatar { grid-area: avatar; position: static; width: 38px; height: 38px; margin: 0; border: 1px solid #648093; background: linear-gradient(140deg, #39566c, #213c51); }
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-applicant-name { grid-area: name; margin: 0; font-size: .95rem; }
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-applicant-contact { grid-area: contact; margin: 0; font-size: .82rem; color: var(--admin-muted); overflow-wrap: anywhere; }
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-status-label {
+    grid-area: status;
+    justify-self: start;
+    box-sizing: border-box;
+    padding: 4px 8px;
+    border: 1px solid #668194;
+    background: #23394b;
+    color: #deebf4;
+    font-size: .76rem;
+    line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-status-label[data-status="ready"] { border-color: #bd9b61; background: #4b3c2b; color: #ffe4ab; }
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-status-label[data-status="email"] { border-color: #6e99ba; background: #203f58; color: #d6ebfb; }
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-status-label[data-status="activation"] { border-color: #7eb4a3; background: #1d4944; color: #d1f1e3; }
+.admin-applicant-open { grid-area: open; display: flex; align-items: center; gap: 6px; justify-self: end; color: var(--admin-accent); font-size: .82rem; font-weight: 700; line-height: 1.35; text-align: end; }
+.admin-applicant-open::after { content: "\2192"; line-height: 1; }
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-applicant-list-state {
+    padding: 16px;
+    border: 1px dashed #506c80;
+    border-radius: 11px;
+    background: #0e2436;
+    font-size: .86rem;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccounts[aria-busy="true"] .admin-applicant-list-state { border-style: solid; border-inline-start-color: var(--admin-gold); }
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory .admin-applicant-pagination button {
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 44px;
+    padding: 6px 11px;
+    font-size: .8rem;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminDirectory .admin-applicant-pagination button::before,
+body.admin-workspace[data-admin-page="applications"] #adminDirectory .admin-applicant-pagination button::after { content: none; }
+
+body.admin-workspace[data-admin-page="applications"] #admin-main #adminAccountDetail {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    overflow: visible;
+    background: transparent;
+    box-shadow: none;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail :is(#teacherQualificationReview, .qualification-review) {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-applicant-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    margin: 0 0 16px;
+    padding: clamp(15px, 3vw, 26px);
+    border: 1px solid #567484;
+    border-inline-start: 3px solid var(--admin-gold);
+    border-radius: var(--admin-radius);
+    background: radial-gradient(ellipse at 89% 130%, #345957, transparent 58%), linear-gradient(112deg, #142e43, #1d4052);
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-applicant-avatar {
+    border-color: #a9905a;
+    background: linear-gradient(145deg, #685a3d, #303f44);
+    box-shadow: inset 0 1px #fff0c92e;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-applicant-avatar svg { fill: #ffe6ad; }
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-applicant-identity h1 { width: fit-content; max-width: 100%; margin: 0 0 6px; color: #fff2d4; font: 700 clamp(1.5rem, 3.3vw, 2.35rem) / 1.12 var(--workspace-serif, Georgia, serif); overflow-wrap: anywhere; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-applicant-identity p { color: var(--admin-muted); font-size: .89rem; }
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-approval-flow {
+    margin: 0 0 16px;
+    padding: clamp(14px, 2.6vw, 22px);
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius);
+    background: var(--admin-polished-panel);
+    box-shadow: var(--admin-panel-shadow);
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-outcome-title { color: var(--admin-gold); }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-approval-stages > div { border-radius: 10px; box-shadow: inset 0 1px #e7f6ff12; }
+
+.qualification-previous-reason { margin: 12px 0 0; color: var(--admin-muted); overflow-wrap: anywhere; }
+
+.qualification-optional-checks { margin: 10px 0; }
+.qualification-optional-checks > summary {
+    width: fit-content;
+    min-height: 44px;
+    padding: 10px 0;
+    color: var(--admin-accent, #ffe4a8);
+    cursor: pointer;
+}
+.qualification-optional-checks > fieldset { margin-top: 4px; }
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-review-form label[hidden] {
+    display: none;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-access-details[data-from-application="true"] {
+    display: block;
+    margin-block: 18px;
+    padding: clamp(14px, 2.5vw, 22px);
+    border: 1px solid #9f8b61;
+    border-radius: var(--admin-radius);
+    background: var(--admin-polished-panel);
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-access-details label[hidden] { display: none; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail #moderationForm {
+    max-width: 44rem;
+    gap: 14px;
+}
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail #moderationForm .admin-verification:not([hidden]) {
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 13px;
+    border-color: #668295;
+    background: #142d43;
+}
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail #moderationForm input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-height: 0;
+    margin: 0;
+    accent-color: #edcc86;
+}
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail #moderationForm button[type="submit"] { justify-self: start; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-access-details summary { padding-block: 8px; color: var(--admin-gold); }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-access-details input { scroll-margin-block-start: calc(var(--admin-bar-height) + 16px); }
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-approval-stages .qualification-review-badge {
+    width: fit-content;
+    max-width: 100%;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-review[data-application-status="submitted"] .qualification-review-badge {
+    border-color: #866f4c;
+    background: #423823;
+    color: #ffe4a8;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-approval-next .admin-application-access-link:not([data-access-action]) {
+    border-color: #58768c;
+    background: #19394e;
+    color: var(--admin-ink);
+    box-shadow: none;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-information-grid.admin-review-desk {
+    grid-template-columns: minmax(0, 1.7fr) minmax(210px, 1fr);
+    grid-template-areas: "dossier readiness";
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail :is(.admin-review-dossier, .admin-review-readiness) {
+    min-width: 0;
+    padding: clamp(13px, 2vw, 20px);
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius);
+    background: var(--admin-polished-panel);
+    box-shadow: var(--admin-panel-shadow);
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-review-tabs { gap: 4px; border-bottom: 1px solid var(--admin-line); }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-review-tabs button { position: relative; border-radius: 8px 8px 0 0; font-size: .89rem; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-review-tabs button[aria-selected="true"] { border-bottom-color: transparent; background: #e0bd7315; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-review-tabs button::after { content: ""; position: absolute; inset: auto 19% 0; height: 2px; border-radius: 2px; background: var(--admin-gold); opacity: 0; pointer-events: none; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-review-tabs button[aria-selected="true"]::after { opacity: 1; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-review-tab-content { min-height: 0; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-review-tab-content :is(h4, dt, dd, p, a) { font-size: .91rem; line-height: 1.55; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-review-readiness .qualification-summary-item { width: 100%; padding: 7px 9px; border-radius: 6px; background: #081b2a70; }
+.qualification-source-link { display: inline-block; margin-block-start: 6px; color: var(--admin-accent); }
+
+.qualification-decision-heading { margin: 22px 0 8px; color: var(--admin-ink); font-size: 1.18rem; scroll-margin-block-start: calc(var(--admin-bar-height) + 14px); }
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-review-form {
+    margin: 0;
+    padding: clamp(13px, 2vw, 20px);
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius);
+    background: var(--admin-polished-panel);
+    box-shadow: var(--admin-panel-shadow);
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-review-form > .qualification-decision-choices { padding: 0; margin: 0 0 5px; border: 0; }
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-decision-choices button[data-decision] {
+    flex: 1 1 130px;
+    min-height: 44px;
+    border: 1px solid #58778d;
+    border-radius: 10px;
+    background: #16364b;
+    color: var(--admin-ink);
+    font-size: .86rem;
+    box-shadow: none;
+}
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-decision-choices button[data-decision="approved"] { --decision-edge: #79bfa1; --decision-fill: #1c3e3e; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-decision-choices button[data-decision="needs_changes"] { --decision-edge: #dfbd76; --decision-fill: #443927; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-decision-choices button[data-decision="declined"] { --decision-edge: #d69995; --decision-fill: #472f38; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-decision-choices button[data-decision]:is(:hover, [aria-pressed="true"]):not(:disabled) {
+    border-color: var(--decision-edge);
+    background: var(--decision-fill);
+    color: var(--admin-ink);
+}
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-decision-choices button[data-decision][aria-pressed="true"] { box-shadow: inset 0 -2px var(--decision-edge); }
+
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-decision-choices button[data-decision]:focus-visible { outline: 2px solid var(--admin-accent); outline-offset: 3px; }
+body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-verification-details > summary { min-height: 44px; padding-block: 10px; font-size: .87rem; }
+
+@keyframes application-refresh-turn { to { rotate: 360deg; } }
+
+@media (prefers-reduced-motion: no-preference) {
+    body.admin-workspace[data-admin-page="applications"]:not(.lakbay-reduce-motion) #admin-main :is(#adminDirectory, #adminAccountDetail) { animation: none; }
+
+    body.admin-workspace[data-admin-page="applications"]:not(.lakbay-reduce-motion) #admin-main :is(.admin-workflow-purpose, .admin-application-toolbar, .qualification-applicant-card, .qualification-approval-flow, .admin-review-desk) {
+        animation: admin-panel-enter 260ms var(--admin-motion) backwards;
+    }
+
+    body.admin-workspace[data-admin-page="applications"]:not(.lakbay-reduce-motion) #adminDirectory #adminAccounts button[data-user-id] {
+        animation: admin-panel-enter 240ms var(--admin-motion) backwards;
+        animation-delay: var(--application-row-delay, 0ms);
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    body[data-admin-page="applications"] #adminAccounts button[data-user-id]:nth-child(2) { --application-row-delay: 30ms; }
+    body[data-admin-page="applications"] #adminAccounts button[data-user-id]:nth-child(3) { --application-row-delay: 60ms; }
+    body[data-admin-page="applications"] #adminAccounts button[data-user-id]:nth-child(4) { --application-row-delay: 90ms; }
+    body[data-admin-page="applications"] #adminAccounts button[data-user-id]:nth-child(n+5) { --application-row-delay: 120ms; }
+
+    body.admin-workspace[data-admin-page="applications"]:not(.lakbay-reduce-motion) #admin-main :is(.admin-application-toolbar :is(input, select, button), .qualification-decision-choices button[data-decision], .admin-review-tabs button) {
+        transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+    }
+
+    body.admin-workspace[data-admin-page="applications"]:not(.lakbay-reduce-motion) #adminAccountDetail :is(.admin-review-tab-content > [role="tabpanel"]:not([hidden]), .qualification-verification-details[open] > fieldset, .qualification-optional-checks[open] > fieldset) {
+        animation: admin-panel-enter 200ms var(--admin-motion) backwards;
+    }
+
+    body[data-admin-page="applications"]:not(.lakbay-reduce-motion) #adminAccountDetail .admin-review-tabs button::after { scale: .5 1; transition: scale 180ms var(--admin-motion), opacity 150ms ease; }
+    body[data-admin-page="applications"]:not(.lakbay-reduce-motion) #adminAccountDetail .admin-review-tabs button[aria-selected="true"]::after { scale: 1 1; }
+    body[data-admin-page="applications"]:not(.lakbay-reduce-motion) .admin-applicant-open::after { transition: translate 180ms var(--admin-motion); }
+    body[data-admin-page="applications"]:not(.lakbay-reduce-motion) button:is(:hover, :focus-visible) .admin-applicant-open::after { translate: 2px 0; }
+    body[data-admin-page="applications"]:not(.lakbay-reduce-motion) #adminDirectory:has(#adminAccounts[aria-busy="true"]) #adminRefreshApplications svg { animation: application-refresh-turn 600ms ease-in-out 2; }
+}
+
+@media (max-width: 780px) {
+    body.admin-workspace[data-admin-page="applications"] #admin-main .admin-workflow-purpose:not([hidden]) { grid-template-columns: minmax(0, 1fr); gap: 9px; }
+    .admin-review-guide { justify-self: start; max-width: 100%; }
+    .admin-application-toolbar { grid-template-columns: minmax(0, 1fr) auto; gap: 9px; padding: 11px; }
+    .admin-application-toolbar > label.admin-search { grid-column: 1 / -1; grid-row: 2; }
+    .admin-application-toolbar #adminRefreshApplications { grid-column: 2; grid-row: 1; }
+    body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-information-grid.admin-review-desk { grid-template-columns: minmax(0, 1fr); grid-template-areas: "dossier" "readiness"; }
+}
+
+@media (max-width: 480px) {
+    body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts button[data-user-id] { grid-template-columns: 30px minmax(0, 1fr) minmax(65px, .8fr); grid-template-areas: "avatar name name" "avatar contact contact" ". status open"; gap: 5px 8px; padding: 10px; }
+    body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-list-avatar { width: 30px; height: 30px; }
+    body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-applicant-name { font-size: .88rem; }
+    body.admin-workspace[data-admin-page="applications"] #adminDirectory #adminAccounts .admin-applicant-contact { font-size: .76rem; }
+    body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .admin-review-tabs button { font-size: .82rem; }
+}
+
+@media (max-width: 600px) {
+    body.admin-workspace[data-admin-page="applications"] #adminAccountDetail .qualification-decision-choices button[data-decision] { flex: 0 0 auto; width: 100%; }
+}

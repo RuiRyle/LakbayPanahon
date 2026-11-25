@@ -1,7 +1,9 @@
 import {appConfirm} from './app-dialog.js';
 import {reviewLearningStages} from './teacher-class-policy.js';
 import {auth,db} from './firebase-config.js';
-import {collection,doc,query,where,orderBy,documentId,startAfter,limit,getDocsFromServer,getDocFromServer,setDoc,deleteDoc,runTransaction,serverTimestamp} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
+import {loadAvatarCatalog,renderAvatarPortrait} from './student-profile.js';
+import {shareClassmateAppearance} from './classmate-appearance.js';
+import {collection,doc,query,where,orderBy,documentId,startAfter,limit,getDocsFromServer,getDocFromServer,deleteDoc,runTransaction,serverTimestamp} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
 
 function feedbackElement(tag,value,parent,className) {
     const element=document.createElement(tag);
@@ -9,7 +11,7 @@ function feedbackElement(tag,value,parent,className) {
     if(className)element.className=className;
     parent?.append(element);return element;
 }
-export async function renderStudentFeedback(parent,classroom,path,isCurrent) {
+export async function renderStudentFeedback(parent,classroom,path,isCurrent,targetId=null) {
     const user=auth.currentUser;if(!user)return;
     const section=feedbackElement('section',null,parent,'class-feedback');
     feedbackElement('h3','Feedback from your teacher',section);
@@ -17,16 +19,35 @@ export async function renderStudentFeedback(parent,classroom,path,isCurrent) {
     const content=feedbackElement('div',null,section);
     const current=()=>isCurrent()&&auth.currentUser===user&&section.isConnected;
     const load=async()=>{
+        section.dataset.loadState='loading';
         notice.textContent='Loading your feedback...';content.replaceChildren();
         try {
             const snapshot=await getDocsFromServer(query(collection(db,'classFeedback'),where('classId','==',classroom.id),where('userId','==',user.uid),orderBy(documentId()),limit(100)));
             if(!current())return;
-            const messages=snapshot.docs.map(d=>({...d.data(),id:d.id})).filter(item=>item.classId===classroom.id&&item.userId===user.uid).sort((a,b)=>(b.updatedAt?.toMillis?.()||0)-(a.updatedAt?.toMillis?.()||0));
+            const messages=snapshot.docs.map(d=>({...d.data(),id:d.id})).filter(item=>item.classId===classroom.id&&item.userId===user.uid);
+            const matchingId=typeof targetId==='string'&&targetId.length<=400&&
+                targetId.startsWith(classroom.id+'_'+user.uid+'_')&&!targetId.includes('/');
+            let targetUnavailable=false;
+            if(matchingId&&snapshot.docs.length===100&&!messages.some(message=>message.id===targetId)){
+                try{
+                    const target=await getDocFromServer(doc(db,'classFeedback',targetId));
+                    if(!current())return;
+                    if(target.exists()&&target.data().userId===user.uid&&target.data().classId===classroom.id){
+                        messages.push({...target.data(),id:targetId});
+                    }else targetUnavailable=true;
+                }catch{
+                    if(!current())return;
+                    targetUnavailable=true;
+                }
+            }
+            messages.sort((a,b)=>(b.updatedAt?.toMillis?.()||0)-(a.updatedAt?.toMillis?.()||0));
             notice.textContent=messages.length ? 'Your teacher’s latest guidance for each mission. Marking feedback as read does not complete the mission.' : 'No feedback yet. Your teacher’s guidance will appear here.';
-            section.dataset.unread=String(messages.filter(item=>!item.readAt).length);section.closest('.student-class-card')?.dispatchEvent(new CustomEvent('class-feedback-loaded'));
-            if(messages.length===100)feedbackElement('p','Showing up to 100 mission feedback records.',content,'class-feedback-status');
+            section.dataset.unread=String(messages.filter(item=>!item.readAt).length);
+            if(targetUnavailable)feedbackElement('p','This notification’s message could not open. You can refresh Class to try again.',content,'class-feedback-status');
+            if(snapshot.docs.length===100)feedbackElement('p','Showing a page of mission feedback and any message opened from notifications.',content,'class-feedback-status');
             for(const message of messages){
                 const article=feedbackElement('article',null,content,'class-feedback-message');
+                article.dataset.feedbackId=message.id;
                 const mission=path.find(m=>m.id===message.missionId&&m.chapterId===message.chapterId);
                 feedbackElement('h4',mission?.title||'Mission: '+message.missionId,article);
                 feedbackElement('p',message.body,article,'class-feedback-body');
@@ -47,15 +68,25 @@ export async function renderStudentFeedback(parent,classroom,path,isCurrent) {
                                 if(fresh.data().revision!==message.revision)throw Error('Your teacher updated this feedback. Refresh Classes to read the new message.');
                                 if(!fresh.data().readAt)tx.update(reference,{readAt:serverTimestamp()});
                             });
-                            if(current()){state.textContent='Marked as read';section.dataset.unread=String(Math.max(0,Number(section.dataset.unread||0)-1));section.closest('.student-class-card')?.dispatchEvent(new CustomEvent('class-feedback-loaded'));button.remove();}
+                            if(current()){
+                                state.textContent='Marked as read';
+                                section.dataset.unread=String(Math.max(0,Number(section.dataset.unread||0)-1));
+                                section.closest('.student-class-card')?.dispatchEvent(new CustomEvent('class-feedback-loaded'));
+                                window.dispatchEvent(new Event('lakbay:class-updates-changed'));
+                                button.remove();
+                            }
                         }catch(error){if(current()){state.textContent=error.message?.includes('updated this feedback')?error.message:'Could not mark this feedback as read. Refresh Classes and try again.';button.disabled=false;}}
                     });
                 }
             }
+            section.dataset.loadState='ready';
+            section.closest('.student-class-card')?.dispatchEvent(new CustomEvent('class-feedback-loaded'));
         }catch{
             if(!current())return;
             notice.textContent='Feedback could not load. Your lessons and assignments are still available.';
             const retry=feedbackElement('button','Retry Feedback',content,'text-button');retry.type='button';retry.addEventListener('click',load);
+            section.dataset.loadState='retry';
+            section.closest('.student-class-card')?.dispatchEvent(new CustomEvent('class-feedback-load-failed'));
         }
     };
     await load();
@@ -191,37 +222,285 @@ export function renderMissionHelp(parent,classroom,assignment,isCurrent){
  const send=node('button','Send help request',form,'text-button');send.type='submit';
  const retry=node('button','Refresh request',host,'text-button');retry.type='button';
  const reference=doc(db,'classHelpRequests',classroom.id+'_'+user.uid+'_'+assignment.id);
- let loaded=false,busy=false;
+ let loaded=false,busy=false,refreshBeforeSend=false;
  const current=()=>isCurrent()&&auth.currentUser===user&&host.isConnected;
- const load=async()=>{if(busy)return;busy=true;send.disabled=true;retry.disabled=true;state.textContent='Checking your request...';try{const snapshot=await getDocFromServer(reference);if(!current())return;history.replaceChildren();const request=snapshot.exists()?snapshot.data():null;loaded=true;form.hidden=ended||request?.status==='open';parent.dataset.waiting=String(request?.status==='open'||request?.understanding==='needs-help');parent.closest('.student-class-card')?.dispatchEvent(new CustomEvent('class-help-state'));if(request){node('strong',helpReasons[request.reason]||'Help requested',history);if(request.message)node('p',request.message,history,'class-feedback-body');if(request.status==='answered'){node('h5','Your teacher replied',history);node('p',request.response,history,'class-feedback-body');renderUnderstanding(history,reference,request,current,()=>load());state.textContent='Tell your teacher whether this explanation helped. Your response does not complete the mission.';send.textContent='Ask a follow-up question';}else state.textContent='Sent to your teacher. You do not need to send this again.';}else state.textContent=ended?'This activity has ended. New help requests are closed; your own learning stays available.':'Choose a reason and send your request.';}catch{if(current()){form.hidden=true;state.textContent='Your request could not load. Refresh the request to try again.';}}finally{busy=false;if(current()){send.disabled=false;retry.disabled=false;}}};
+ const load=async ({confirmedWrite=false}={})=>{
+  if(busy)return;
+  busy=true;send.disabled=true;retry.disabled=true;
+  state.textContent='Checking your request...';
+  try{
+   const snapshot=await getDocFromServer(reference);
+   if(!current())return;
+   const request=snapshot.exists()?snapshot.data():null;
+   history.replaceChildren();
+   loaded=true;
+   refreshBeforeSend=false;
+   form.hidden=ended||request?.status==='open';
+   parent.dataset.waiting=String(request?.status==='open'||request?.understanding==='needs-help');
+   parent.closest('.student-class-card')?.dispatchEvent(new CustomEvent('class-help-state'));
+   if(!request){
+    state.textContent=ended?'This activity has ended. New help requests are closed.':'Choose a reason and send your request.';
+    return;
+   }
+   node('strong',helpReasons[request.reason]||'Help requested',history);
+   if(request.message)node('p',request.message,history,'class-feedback-body');
+   if(request.status==='answered'){
+    node('h5','Your teacher replied',history);
+    node('p',request.response,history,'class-feedback-body');
+    renderUnderstanding(history,reference,request,current,()=>load());
+    state.textContent='Tell your teacher whether this explanation helped. Your response does not complete the mission.';
+    send.textContent='Ask a follow-up question';
+   }else{
+    state.textContent='Sent to your teacher. You do not need to send this again.';
+   }
+  }catch{
+   if(current()){
+    form.hidden=true;
+    state.textContent=confirmedWrite?'Your request was sent. Use Refresh request to view it.':'Your request could not load. Refresh the request to try again.';
+   }
+  }finally{
+   busy=false;
+   if(current()){send.disabled=refreshBeforeSend;retry.disabled=false;}
+  }
+ };
  host.addEventListener('toggle',()=>{if(host.open&&!loaded)load();});retry.addEventListener('click',load);
- form.addEventListener('submit',async event=>{event.preventDefault();if(ended||!current()||busy)return;busy=true;send.disabled=true;retry.disabled=true;const values={reason:reason.value,message:message.value.trim()};state.textContent='Sending...';try{await runTransaction(db,async tx=>{const snapshot=await tx.get(reference);if(!current())throw Error('Session changed');const old=snapshot.exists()?snapshot.data():null;if(old?.status==='open')throw Error('already-open');tx.set(reference,{classId:classroom.id,userId:user.uid,assignmentId:assignment.id,assignmentKind:assignment.assignmentType==='targeted-review'?'targeted-review':'class-goal',chapterId:assignment.chapterId,missionId:assignment.missionId,...values,status:'open',response:'',answeredAt:null,understanding:'',understandingAt:null,createdAt:old?.createdAt||serverTimestamp(),updatedAt:serverTimestamp(),revision:(old?.revision||0)+1});});if(current()){message.value='';busy=false;await load();}}catch(error){if(current())state.textContent=error.message==='already-open'?'A request is already waiting for your teacher. Select Refresh request.':'Your request could not be sent. Your text is still here; try again.';}finally{busy=false;if(current()){send.disabled=false;retry.disabled=false;}}});
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(ended||!current()||busy||form.hidden||refreshBeforeSend)return;
+  busy=true;send.disabled=true;retry.disabled=true;
+  message.readOnly=true;reason.disabled=true;
+  const values={reason:reason.value,message:message.value.trim()};
+  let intendedRevision, confirmed=false;
+  state.textContent='Sending...';
+  try{
+   await runTransaction(db,async tx=>{
+    intendedRevision=undefined;
+    const snapshot=await tx.get(reference);
+    if(!current())throw Error('Session changed');
+    const old=snapshot.exists()?snapshot.data():null;
+    if(old?.status==='open')throw Error('already-open');
+    intendedRevision=(old?.revision||0)+1;
+    tx.set(reference,{classId:classroom.id,userId:user.uid,assignmentId:assignment.id,
+     assignmentKind:assignment.assignmentType==='targeted-review'?'targeted-review':'class-goal',
+     chapterId:assignment.chapterId,missionId:assignment.missionId,...values,status:'open',response:'',
+     answeredAt:null,understanding:'',understandingAt:null,createdAt:old?.createdAt||serverTimestamp(),
+     updatedAt:serverTimestamp(),revision:intendedRevision});
+   });
+   confirmed=true;
+  }catch(error){
+   if(!current())return;
+   if(intendedRevision!==undefined){
+    const snapshot=await getDocFromServer(reference).catch(()=>null);
+    const saved=snapshot?.exists()?snapshot.data():null;
+    confirmed=saved?.revision===intendedRevision&&saved?.reason===values.reason&&saved?.message===values.message;
+   }
+   if(!current())return;
+   if(!confirmed){
+    refreshBeforeSend=true;
+    state.textContent=error.message==='already-open'
+     ? 'A request is already waiting for your teacher. Use Refresh request to see it.'
+     : 'We couldn’t confirm the request. Your text is still here. Use Refresh request before sending again.';
+   }
+  }finally{
+   busy=false;
+   if(current()){send.disabled=refreshBeforeSend;retry.disabled=false;message.readOnly=false;reason.disabled=false;}
+  }
+  if(confirmed&&current()){
+   message.value='';
+   parent.closest('.student-class-card')?.dispatchEvent(new Event('class-help-changed'));
+   await load({confirmedWrite:true});
+  }
+ });
 }
 
 export function renderTeacherHelp(parent,classroom,members,studentName,isCurrent){return renderTeacherFollowupInbox(parent,classroom,members,studentName,isCurrent,'help');}
 
-export function renderClassmates(parent,classroom,isCurrent){
- const user=auth.currentUser;if(!user)return;
- const section=node('section','',parent,'classmates-panel');
- node('h3','Meet your classmates',section);
- node('p','Learn alongside your class. Only classmates’ chosen display names appear here. Scores and teacher feedback stay private.',section);
- const open=node('button','Refresh classmates',section,'text-button');open.type='button';
- const content=node('div','',section);content.hidden=false;
- const status=node('p','',content,'classmates-status');status.setAttribute('role','status');
- const toolbar=node('div','',content,'classmates-roster-toolbar');node('strong',classroom.name||'Your class',toolbar);const count=node('span','',toolbar,'classmates-count');
- const wrap=node('div','',content,'classmates-table-wrap'),table=node('table','',wrap,'classmates-table');const caption=node('caption','Classmates in '+(classroom.name||'your class'),table);const head=node('thead','',table),headRow=node('tr','',head);for(const title of ['Classmate','Class','Membership']){const th=node('th',title,headRow);th.scope='col';}const list=node('tbody','',table);
- const pager=node('div','',content,'classmates-pager');const previous=node('button','Previous',pager,'text-button');previous.type='button';const pageLabel=node('span','',pager);const next=node('button','Next',pager,'text-button');next.type='button';
- const profile=node('details','',content,'classmates-name-settings');node('summary','Manage my classroom name',profile);const form=node('form','',profile,'classmates-profile');
- const label=node('label','Your classroom display name',form);const input=node('input','',label);input.maxLength=60;input.required=true;input.placeholder='For example, Ana M.';input.autocomplete='off';
- node('p','Optional: use a first name or nickname. Saving makes this name visible to members of this class.',form);
- const save=node('button','Share my display name',form,'text-button');save.type='submit';
- const remove=node('button','Hide my name',form,'text-button');remove.type='button';remove.hidden=true;
- let entries=[],page=0,loaded=false;
- const current=()=>isCurrent()&&auth.currentUser===user&&section.isConnected;
- const render=()=>{list.replaceChildren();const sorted=[...entries].sort((a,b)=>a.displayName.localeCompare(b.displayName)||a.id.localeCompare(b.id));const pages=Math.max(1,Math.ceil(sorted.length/20));page=Math.min(page,pages-1);count.textContent=entries.length+' shared names';for(const row of sorted.slice(page*20,(page+1)*20)){const item=node('tr','',list);if(row.id===user.uid)item.className='is-current-student';const name=node('td','',item),identity=node('div','',name,'classmate-identity');const avatar=node('span',row.displayName.slice(0,1).toLocaleUpperCase(),identity,'classmate-avatar');avatar.setAttribute('aria-hidden','true');node('strong',row.displayName,identity);node('td',classroom.name||'Your class',item);const membership=node('td','',item);node('span',row.id===user.uid?'You':'Classmate',membership,'classmate-membership');}if(!entries.length){const cell=node('td','No shared names yet. Open Manage my classroom name to add yours.',node('tr','',list));cell.colSpan=3;}previous.disabled=page===0;next.disabled=page>=pages-1;pageLabel.textContent='Page '+(page+1)+' of '+pages;pager.hidden=pages===1;};
- previous.addEventListener('click',()=>{page--;render();});next.addEventListener('click',()=>{page++;render();});
- const load=async()=>{open.disabled=true;status.textContent='Loading classmates…';try{const snapshot=await getDocsFromServer(query(collection(db,'classes',classroom.id,'classmates'),orderBy(documentId()),limit(100)));if(!current())return;loaded=true;entries=snapshot.docs.map(d=>({id:d.id,displayName:String(d.data().displayName||'Classmate')}));const own=entries.find(row=>row.id===user.uid);if(own)input.value=own.displayName;remove.hidden=!own;status.textContent=entries.length+' shared display name'+(entries.length===1?'':'s')+'.'+(snapshot.size===100?' Showing the first 100.':'')+' Members appear when they choose to share a name.';render();}catch{if(current())status.textContent='Classmates could not load. Select Refresh classmates to try again.';}finally{if(current()){open.disabled=false;open.textContent='Refresh classmates';}}};
- open.addEventListener('click',load);section.addEventListener('classmates:open',()=>{if(!loaded&&!open.disabled)load();});
- form.addEventListener('submit',async event=>{event.preventDefault();if(!current()||!input.value.trim())return;save.disabled=true;try{await setDoc(doc(db,'classes',classroom.id,'classmates',user.uid),{displayName:input.value.trim().slice(0,60)});if(current())await load();}catch{if(current())status.textContent='Your display name could not be saved. Try again.';}finally{if(current())save.disabled=false;}});
- remove.addEventListener('click',async()=>{if(!current())return;remove.disabled=true;try{await deleteDoc(doc(db,'classes',classroom.id,'classmates',user.uid));if(current()){input.value='';await load();}}catch{if(current())status.textContent='Your name could not be hidden. Try again.';}finally{if(current())remove.disabled=false;}});
+export function renderClassmates(parent, classroom, isCurrent) {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const section = node('section', '', parent, 'classmates-panel');
+    const header = node('header', '', section, 'classmates-intro');
+    const intro = node('div', '', header);
+    const title = node('h3', 'Class directory', intro);
+    title.id = 'class-directory-' + encodeURIComponent(classroom.id);
+    section.setAttribute('aria-labelledby', title.id);
+    node('p', 'Find the names, avatars, and frames that students choose to share with this class.', intro);
+    const headerActions = node('div', '', header, 'classmates-intro-actions');
+    const refresh = node('button', 'Refresh classmates', headerActions, 'text-button');
+    refresh.type = 'button';
+    const editProfile = node('button', 'My classroom profile', headerActions, 'text-button classmates-profile-shortcut');
+    editProfile.type = 'button';
+    editProfile.hidden = true;
+
+    const layout = node('div', '', section, 'classmates-layout');
+    const directory = node('div', '', layout, 'classmates-directory');
+    const status = node('p', '', directory, 'classmates-status');
+    status.setAttribute('role', 'status');
+    const toolbar = node('div', '', directory, 'classmates-roster-toolbar');
+    toolbar.hidden = true;
+    const count = node('p', '', toolbar, 'classmates-count');
+    const searchLabel = node('label', 'Find by name', toolbar, 'classmates-search');
+    const search = node('input', '', searchLabel);
+    search.type = 'search';
+    search.placeholder = 'Enter a name';
+    search.autocomplete = 'off';
+    const results = node('p', '', directory, 'classmates-results');
+    results.setAttribute('role', 'status');
+    const empty = node('div', '', directory, 'classmates-empty');
+    empty.hidden = true;
+    node('strong', 'No shared profiles yet', empty);
+    node('p', 'Names will appear here when students choose to share a classroom profile.', empty);
+    const list = node('ul', '', directory, 'classmates-list');
+    list.setAttribute('aria-label', 'Shared classroom profiles');
+    list.setAttribute('role', 'list');
+    const pager = node('div', '', directory, 'classmates-pager');
+    pager.hidden = true;
+    const previous = node('button', 'Previous', pager, 'text-button');
+    previous.type = 'button';
+    const pageLabel = node('span', '', pager);
+    pageLabel.setAttribute('role', 'status');
+    const next = node('button', 'Next', pager, 'text-button');
+    next.type = 'button';
+    const cap = node('p', '', directory, 'classmates-limit');
+
+    const sidebar = node('aside', '', layout, 'classmates-sharing');
+    node('h4', 'Your classroom profile', sidebar);
+    const sharingState = node('p', '', sidebar, 'classmates-sharing-state');
+    node('p', 'Share a first name or nickname and the look you use on My Profile. Your quiz scores and teacher feedback stay private.', sidebar);
+    const profile = node('details', '', sidebar, 'classmates-name-settings');
+    profile.hidden = true;
+    const profileSummary = node('summary', 'Set up my classroom profile', profile);
+    const form = node('form', '', profile, 'classmates-profile');
+    const label = node('label', 'Classroom name', form);
+    const input = node('input', '', label);
+    input.maxLength = 60;
+    input.required = true;
+    input.placeholder = 'For example, Ana M.';
+    input.autocomplete = 'off';
+    const save = node('button', 'Share with my class', form, 'text-button');
+    save.type = 'submit';
+    const remove = node('button', 'Hide my classroom profile', form, 'text-button');
+    remove.type = 'button';
+    remove.hidden = true;
+    const profileStatus = node('p', '', form, 'classmates-profile-status');
+    profileStatus.setAttribute('role', 'status');
+
+    const pageSize = 12, readLimit = 100;
+    let entries = [], avatars = new Map(), page = 0, loaded = false, busy = false;
+    const current = () => isCurrent() && auth.currentUser === user && section.isConnected;
+
+    function render() {
+        const term = search.value.trim().toLocaleLowerCase();
+        const visible = term ? entries.filter(row => row.displayName.toLocaleLowerCase().includes(term)) : entries;
+        const pages = Math.max(1, Math.ceil(visible.length / pageSize));
+        page = Math.min(page, pages - 1);
+        const start = page * pageSize;
+        count.textContent = entries.length + (entries.length === 1 ? ' shared profile' : ' shared profiles');
+        toolbar.hidden = entries.length === 0;
+        empty.hidden = entries.length > 0;
+        results.textContent = term ? (visible.length === 0 ? 'No names match your search.' :
+            visible.length + (visible.length === 1 ? ' matching profile' : ' matching profiles')) : '';
+
+        list.replaceChildren();
+        for (const row of visible.slice(start, start + pageSize)) {
+            const item = node('li', '', list);
+            const own = row.id === user.uid;
+            if (own) item.classList.add('is-current-student');
+            const avatar = node('span', '', item, 'classmate-avatar');
+            avatar.setAttribute('aria-hidden', 'true');
+            renderAvatarPortrait(avatar, avatars.get(row.avatarId), Array.from(row.displayName)[0].toLocaleUpperCase());
+            if (['none','bamboo','sunburst','guardian','compass','navigator'].includes(row.frameId)) {
+                avatar.dataset.levelFrame = row.frameId;
+            }
+            node('strong', row.displayName, item);
+            if (own) node('span', 'You', item, 'classmate-membership');
+        }
+        previous.disabled = page === 0;
+        next.disabled = page >= pages - 1;
+        pageLabel.textContent = 'Page ' + (page + 1) + ' of ' + pages;
+        pager.hidden = pages === 1;
+    }
+
+    async function load({ refreshCatalog = false, change } = {}) {
+        if (!current() || busy) return;
+        busy = true;
+        refresh.disabled = save.disabled = remove.disabled = input.disabled = true;
+        const notice = change ? profileStatus : status;
+        notice.textContent = change?.pending || 'Loading classmates…';
+        let changed = false;
+        try {
+            if (change) {
+                await change.write();
+                changed = true;
+                if (!current()) return;
+            }
+            const roster = collection(db, 'classes', classroom.id, 'classmates');
+            const {docs} = await getDocsFromServer(query(roster, orderBy(documentId()), limit(readLimit + 1)));
+            if (!current()) return;
+            const capped = docs.length > readLimit;
+            const readEntry = snapshot => {
+                const {displayName, avatarId, frameId} = snapshot.data();
+                return {id: snapshot.id, displayName: String(displayName || '').trim() || 'Classmate', avatarId, frameId};
+            };
+            const rows = docs.slice(0, readLimit).map(readEntry);
+            let own = rows.find(row => row.id === user.uid);
+            if (capped && !own) {
+                const ownEntry = await getDocFromServer(doc(db, 'classes', classroom.id, 'classmates', user.uid));
+                if (!current()) return;
+                if (ownEntry.exists()) own = {...readEntry(ownEntry), id: user.uid};
+            }
+            if (rows.some(row => row.avatarId)) {
+                const catalog = await loadAvatarCatalog(refreshCatalog).catch(() => []);
+                if (!current()) return;
+                avatars = new Map(catalog.map(avatar => [avatar.id, avatar]));
+            }
+
+            loaded = true;
+            entries = rows.sort((a, b) => a.displayName.localeCompare(b.displayName) || a.id.localeCompare(b.id));
+            if (!entries.length) search.value = '';
+            input.value = own?.displayName || '';
+            sharingState.textContent = own ? 'Visible to your class' : 'Profile hidden';
+            sharingState.dataset.shared = String(Boolean(own));
+            profileSummary.textContent = own ? 'Manage my classroom profile' : 'Set up my classroom profile';
+            save.textContent = own && own.avatarId !== undefined ? 'Save classroom profile' : 'Share with my class';
+            profile.hidden = false;
+            editProfile.hidden = false;
+            remove.hidden = !own;
+            cap.textContent = capped ? 'Search covers the 100 shared profiles shown here.' : '';
+            status.textContent = '';
+            notice.textContent = change?.success || '';
+            render();
+        } catch {
+            if (current()) notice.textContent = changed ? change.success + ' Refresh classmates to update the directory.' :
+                change?.failure || 'Classmates could not load. Select Refresh classmates to try again.';
+        } finally {
+            busy = false;
+            if (current()) refresh.disabled = save.disabled = remove.disabled = input.disabled = false;
+        }
+    }
+
+    search.addEventListener('input', () => { page = 0; render(); });
+    previous.addEventListener('click', () => { page--; render(); if (previous.disabled) next.focus(); });
+    next.addEventListener('click', () => { page++; render(); if (next.disabled) previous.focus(); });
+    refresh.addEventListener('click', () => load({refreshCatalog: true}));
+    editProfile.addEventListener('click', () => { profile.open = true; profileSummary.focus(); });
+    section.addEventListener('classmates:open', () => { if (!loaded) load(); });
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        const name = input.value.trim();
+        if (!name) { input.focus(); return; }
+        load({change: {
+            write: () => shareClassmateAppearance(classroom.id, user.uid, name.slice(0, 60)),
+            pending: 'Saving your classroom profile…',
+            success: 'Your classroom profile is shared.',
+            failure: 'Your classroom profile could not be saved. Try again.'
+        }});
+    });
+    remove.addEventListener('click', () => load({change: {
+        write: () => deleteDoc(doc(db, 'classes', classroom.id, 'classmates', user.uid)),
+        pending: 'Hiding your classroom profile…',
+        success: 'Your classroom profile is hidden.',
+        failure: 'Your classroom profile could not be hidden. Try again.'
+    }}));
 }

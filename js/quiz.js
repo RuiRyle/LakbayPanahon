@@ -1,13 +1,15 @@
 import {appConfirm,appAlert} from './app-dialog.js';
+import { navigatePage } from "./route-navigation.js";
 import { animateAssessmentArrival } from './assessment-motion.js';
-import { assessmentAction, assessmentState, forgetAssessment } from './student-assessment-client.js';
+import { artifactDisplayName, artifactExhibitHref, createArtifactArtwork } from './museum-exhibits.js';
+import { assessmentAction, assessmentState, checkAssessmentResult, forgetAssessment } from './student-assessment-client.js';
 let securedQuiz = false,
   assessmentBusy = false;
 let quizExpedition = null;
 const expeditionPanel = document.getElementById('quizExpedition');
 const lifelineButton = document.getElementById('quizLifeline');
 lifelineButton?.addEventListener('click', async () => {
-    if (!quizExpedition || assessmentBusy || lifelineButton.disabled) return;
+    if (!quizExpedition || assessmentBusy || quizRecoveryCode || lifelineButton.disabled) return;
     const question = questions[currentQuestionIndex];
     const generation = quizSessionGeneration;
     assessmentBusy = true;
@@ -25,11 +27,11 @@ lifelineButton?.addEventListener('click', async () => {
         feedback.textContent = 'Bayani crossed out one wrong choice.';
         animateAssessmentArrival(feedback);
     } catch (error) {
-        if (generation === quizSessionGeneration) await appAlert(error.message);
+        if (generation === quizSessionGeneration && !requireQuizRecovery(error)) await appAlert('Bayani’s hint could not load. Try again when connected.');
     } finally {
         if (generation === quizSessionGeneration) {
             assessmentBusy = false;
-            displayQuestion();
+            if (!quizRecoveryCode) displayQuestion();
             if (applied && questions[currentQuestionIndex]?.id === question.id) {
                 quizOptions.classList.add('bayani-lifeline-reveal');
                 questionText.focus();
@@ -44,11 +46,13 @@ const securedIdentity = () => ({
   quizId: currentQuiz.id
 });
 async function syncSecuredAnswer(question, answer) {
+  const generation = quizSessionGeneration;
   const state = await assessmentAction(securedIdentity(), {
     action: quizExpedition ? 'lockAnswer' : 'answer',
     questionId: question.id,
     answer
   });
+  if (generation !== quizSessionGeneration) throw new Error('The quiz session changed.');
   questions = state.questions;
   missionQuestionBank = state.questions;
   studentAnswers = {
@@ -86,7 +90,9 @@ async function startSecuredFollowup() {
   return true;
 }
 async function securedFollowupAction() {
-  if (assessmentBusy) return;
+  if (assessmentBusy || quizRecoveryCode) return;
+  const generation = quizSessionGeneration;
+  const current = () => generation === quizSessionGeneration;
   assessmentBusy = true;
   nextQuestionButton.disabled = true;
   try {
@@ -98,6 +104,7 @@ async function securedFollowupAction() {
         questionId: adaptiveCurrentQuestion.id,
         answer: adaptiveSelectedAnswer
       });
+      if (!current()) return;
       adaptiveAnswers = {
         ...state.followupAnswers
       };
@@ -108,6 +115,7 @@ async function securedFollowupAction() {
       state = await assessmentAction(securedIdentity(), {
         action: 'followupNext'
       });
+      if (!current()) return;
       adaptiveQuestionIds = state.followupQuestions.map(q => q.id);
       adaptiveQuestionIndex = adaptiveQuestionIds.length - 1;
       adaptiveCurrentQuestion = state.followupQuestions.at(-1);
@@ -120,20 +128,22 @@ async function securedFollowupAction() {
       await submitQuiz(true);
     }
   } catch (error) {
-    (await appAlert(error.message));
+    if (current() && !requireQuizRecovery(error)) await appAlert('This practice step could not save. Your choice is still here. Check your connection and try again.');
   } finally {
-    assessmentBusy = false;
-    if (!quizSubmitted) nextQuestionButton.disabled = false;
+    if (current()) {
+      assessmentBusy = false;
+      if (!quizSubmitted && !quizRecoveryCode) nextQuestionButton.disabled = false;
+    }
   }
 }
 import { quizDraftVersion } from "./quiz-draft-policy.js";
-import { mountLearningNavigation } from "./learning-navigation.js";
+import { classroomLearningContext, mountLearningNavigation } from "./learning-navigation.js";
 import { learningDraft, draftStatus, restartControl } from "./learning-draft.js";
 import { studentTabStorage } from "./student-session-storage.js";
 import { loadProgressionPolicy } from "./progression.js";
 import { progressionState } from "./progression-policy.js";
 import { startMissionQuiz } from "./mission-assessment-client.js";
-import { diagnoseMissionTopics, nextAdaptiveDifficulty, selectAdaptiveQuestion } from "./mission-assessment.js";
+import { diagnoseMissionTopics, minimumMissionCorrect, nextAdaptiveDifficulty, selectAdaptiveQuestion } from "./mission-assessment.js";
 import { requirePassingScore } from "./activity-policy.js";
 ﻿import { submitStudentActivity } from "./student-rewards-client.js";
 import { renderStudentIdentity } from "./student-profile.js";
@@ -378,18 +388,78 @@ const missionId =
 
 let currentUser = null;
 let quizSessionGeneration = 0;
+const quizCountdown = document.getElementById('quizCountdown');
 let quizDraft = null;
 let quizDraftReady = false;
 const quizDraftStatus = draftStatus(quizContent);
+const quizAnswerSaveStatus = document.getElementById('quizAnswerSaveStatus');
+function updateAnswerSaveStatus(state, message = '') {
+    quizAnswerSaveStatus.hidden = !message;
+    quizAnswerSaveStatus.dataset.state = state;
+    quizAnswerSaveStatus.textContent = message;
+    if (message) nextQuestionButton.setAttribute('aria-describedby', quizAnswerSaveStatus.id);
+    else if (nextQuestionButton.getAttribute('aria-describedby') === quizAnswerSaveStatus.id) {
+        nextQuestionButton.removeAttribute('aria-describedby');
+    }
+}
+const checkQuizSaveButton = document.getElementById('checkQuizSaveButton');
+const recoverQuizAttempt = document.getElementById('recoverQuizAttempt');
+let quizRecoveryCode = '';
+function requireQuizRecovery(error) {
+    if (!recoverQuizAttempt || !['assessment/reopen-required','assessment/restart-required','assessment/classroom-changed'].includes(error?.code)) return false;
+    quizRecoveryCode = error.code;
+    recoverQuizAttempt.hidden = false;
+    recoverQuizAttempt.textContent = quizRecoveryCode === 'assessment/classroom-changed' ? 'Open My Class' : 'Reopen quiz';
+    updateAnswerSaveStatus('retry', error.message);
+    nextQuestionButton.disabled = true;
+    if (checkQuizSaveButton) checkQuizSaveButton.hidden = true;
+    recoverQuizAttempt.focus();
+    return true;
+}
+recoverQuizAttempt?.addEventListener('click', () => {
+    if (!quizRecoveryCode || assessmentBusy || quizSubmitted) return;
+    if (quizRecoveryCode === 'assessment/classroom-changed') navigatePage('my-class.html');
+    else void loadQuiz();
+});
+checkQuizSaveButton?.addEventListener('click', async () => {
+    if (!securedQuiz || !currentUser || quizSubmitted || assessmentBusy || checkQuizSaveButton.disabled) return;
+    const generation = quizSessionGeneration, attemptId = currentAttemptId;
+    const current = () => generation === quizSessionGeneration && attemptId === currentAttemptId;
+    const notice = document.getElementById('quizSaveStatus');
+    checkQuizSaveButton.disabled = true;
+    const nextWasDisabled = nextQuestionButton.disabled;
+    nextQuestionButton.disabled = true;
+    notice.dataset.state = 'saving';
+    notice.textContent = 'Checking for your saved result…';
+    let found;
+    try {
+        found = await checkAssessmentResult(securedIdentity());
+        if (current() && !found) notice.textContent = 'A saved result is not available yet. Your answers are still here. You can check again or submit them.';
+    } catch (error) {
+        if (current() && !requireQuizRecovery(error)) notice.textContent = 'We could not check your result. Your answers are still here. Check your connection and try again.';
+    } finally {
+        if (current()) {
+            notice.dataset.state = 'retry';
+            checkQuizSaveButton.disabled = false;
+            nextQuestionButton.disabled = nextWasDisabled || Boolean(quizRecoveryCode);
+            if (!found && !quizRecoveryCode && document.activeElement === document.body) checkQuizSaveButton.focus();
+        }
+    }
+    if (!current()) return;
+    if (found) {
+        studentAnswers = {...found.answers};
+        await submitQuiz(true, found.result);
+    }
+});
 const restartQuizButton = restartControl(quizContent, "Start Quiz Over", async () => {
-    if (!currentUser || quizSubmitted || quizLoadPending) return;
+    if (!currentUser || quizSubmitted || quizLoadPending || assessmentBusy) return;
     const generation = quizSessionGeneration;
     const attemptKey = 'missionQuiz:' + currentUser.uid + ':' + currentQuiz.id;
     quizDraftReady = false;
     try {
         await quizDraft.clear();
-        if(securedQuiz)forgetAssessment(securedIdentity());
         if (generation !== quizSessionGeneration) return;
+        if(securedQuiz)forgetAssessment(securedIdentity());
         studentTabStorage.removeItem(attemptKey);
         studentTabStorage.removeItem('missionQuizSet:' + currentUser.uid + ':' + currentAttemptId);
         await loadQuiz();
@@ -443,6 +513,7 @@ let quizSubmitted = false;
 let currentAttemptId = null;
 
 let lastQuizPassed = false;
+let resultNextHref = null;
 
 let lastMissionReward = 0;
 
@@ -477,11 +548,24 @@ async function loadQuiz() {
 
 
     quizLoadPending = true;
+    assessmentBusy = false;
+    quizRecoveryCode = '';
+    if (recoverQuizAttempt) recoverQuizAttempt.hidden = true;
+    removeQuizResume();
+    updateAnswerSaveStatus('');
+    quizOptions.inert = false;
+    if (checkQuizSaveButton) {
+        checkQuizSaveButton.hidden = true;
+        checkQuizSaveButton.disabled = false;
+    }
     const previousSaveStatus = document.getElementById('quizSaveStatus');
     if (previousSaveStatus) {
         previousSaveStatus.hidden = true;
+        delete previousSaveStatus.dataset.state;
         previousSaveStatus.textContent = '';
+        nextQuestionButton.closest('.quiz-actions').before(previousSaveStatus);
     }
+    nextQuestionButton.removeAttribute('aria-describedby');
     quizContent.hidden = true;
     quizContent.classList.remove('quiz-result-handoff');
     quizError.hidden = true;
@@ -735,8 +819,9 @@ currentAttemptId = null;
         const savedDraft = await quizDraft.read();
         if (!isCurrent()) return;
         const attemptKey = 'missionQuiz:' + currentUser.uid + ':' + currentQuiz.id;
-        currentAttemptId = savedDraft?.quizId === currentQuiz.id && typeof savedDraft.attemptId === "string" ? savedDraft.attemptId : studentTabStorage.getItem(attemptKey) || crypto.randomUUID();
-        studentTabStorage.setItem(attemptKey, currentAttemptId);
+        const knownAttemptId = savedDraft?.quizId === currentQuiz.id && typeof savedDraft.attemptId === "string" ? savedDraft.attemptId : studentTabStorage.getItem(attemptKey);
+        currentAttemptId = knownAttemptId || (globalThis.__lakbayExplorationPreview === true ? crypto.randomUUID() : null);
+        if (currentAttemptId) studentTabStorage.setItem(attemptKey, currentAttemptId);
         if (savedDraft?.attemptId === currentAttemptId && Array.isArray(savedDraft.questionIds)) studentTabStorage.setItem("missionQuizSet:" + currentUser.uid + ":" + currentAttemptId, JSON.stringify(savedDraft.questionIds));
         const issued = await startMissionQuiz({ chapterId, missionId, quizId: currentQuiz.id, attemptId: currentAttemptId,
             questionIds: savedDraft?.quizId === currentQuiz.id && savedDraft?.attemptId === currentAttemptId && Array.isArray(savedDraft.questionIds) ? savedDraft.questionIds : null });
@@ -762,7 +847,7 @@ currentAttemptId = null;
         currentQuiz.practicePolicy = issued.practicePolicy || currentQuiz.practicePolicy || null;
         currentQuiz.passingScore = issued.passingScore;
         const passingRequirement = document.getElementById("quizPassingRequirement");
-        if (passingRequirement) passingRequirement.textContent = "Answer all " + questions.length + " questions. You need at least " + Math.ceil(questions.length * requirePassingScore(currentQuiz) / 100) + " correct (" + currentQuiz.passingScore + "%) to complete the mission.";
+        if (passingRequirement) passingRequirement.textContent = "Answer all " + questions.length + " questions. You need at least " + minimumMissionCorrect(questions.length, requirePassingScore(currentQuiz)) + " correct to meet the " + currentQuiz.passingScore + "% passing goal.";
         const notice = document.getElementById("quizSetNotice");
         if (notice) notice.textContent = questions.some(question=>seenMissionQuestionIds.includes(question.id))
             ? "You may recognize a question from an earlier attempt." : "";
@@ -772,6 +857,11 @@ currentAttemptId = null;
         ================================== */
 
         quizTitle.textContent = currentMission.title || currentQuiz.title || "Mission Quiz";
+        const focusMission = document.getElementById('quizFocusMission');
+        if (focusMission) {
+            focusMission.textContent = quizTitle.textContent;
+            focusMission.hidden = false;
+        }
 
 
         quizDescription.textContent =
@@ -816,9 +906,10 @@ currentAttemptId = null;
             (savedDraft.started === true || Object.keys(studentAnswers).length > 0);
         if(savedDraft&&savedDraft.attemptId!==currentAttemptId){const note=document.getElementById('quizSetNotice');if(note)note.textContent+=' Please restart this unfinished quiz with verified saving. Your completed missions and earned rewards are still saved.';}
         quizDraftReady = true;
-        restartQuizButton.hidden = !savedDraft;
+        restartQuizButton.hidden = !savedDraft && !(securedQuiz && quizStarted && !issued.result);
         displayQuestion();
         renderMissionBriefing();
+        if (quizStarted && !issued.result && !issued.followupStarted) renderQuizResume();
 
         quizLoading.hidden =
             true;
@@ -828,7 +919,7 @@ currentAttemptId = null;
 
         quizContent.hidden =
             false;
-        if(securedQuiz&&issued.result){adaptiveFollowupComplete=true;await submitQuiz(true);}
+        if(securedQuiz&&issued.result){adaptiveFollowupComplete=true;await submitQuiz(true,issued.result);}
         else if(securedQuiz&&issued.followupStarted){await submitQuiz();}
 
 
@@ -851,6 +942,43 @@ currentAttemptId = null;
 
 }
 
+function removeQuizResume() {
+    const resume = document.getElementById('quizResumePanel');
+    if (!resume) return;
+    quizContent.prepend(restartQuizButton);
+    resume.remove();
+}
+
+function renderQuizResume() {
+    const panel = document.createElement('section');
+    panel.id = 'quizResumePanel';
+    panel.className = 'quiz-resume-panel';
+    const heading = document.createElement('h2');
+    heading.id = 'quizResumeTitle';
+    heading.textContent = 'Pick up where you left off';
+    panel.setAttribute('aria-labelledby', heading.id);
+    const detail = document.createElement('p');
+    const place = questions.every(question => studentAnswers[question.id])
+        ? 'All ' + questions.length + ' questions answered'
+        : 'Question ' + (currentQuestionIndex + 1) + ' of ' + questions.length;
+    detail.textContent = quizTitle.textContent + ' · ' + place;
+    const actions = document.createElement('div');
+    actions.className = 'briefing-actions quiz-resume-actions';
+    const resume = document.createElement('button');
+    resume.type = 'button';
+    resume.className = 'begin-mission-button';
+    resume.textContent = 'Resume Quiz';
+    resume.addEventListener('click', () => {
+        removeQuizResume();
+        questionText.tabIndex = -1;
+        questionText.focus({preventScroll:true});
+        questionText.scrollIntoView({block:'start',behavior:'instant'});
+    });
+    actions.append(resume, restartQuizButton);
+    panel.append(heading, detail, actions);
+    quizContent.querySelector('.quiz-header').after(panel);
+}
+
 
 function renderMissionBriefing(){
  document.getElementById('quizMissionBriefing')?.remove();
@@ -858,6 +986,8 @@ function renderMissionBriefing(){
  if(progress)progress.hidden=!quizStarted;
  questionCard.hidden=!quizStarted;
  if(quizStarted)return;
+ const focusProgress=document.getElementById('quizFocusProgress');
+ if(focusProgress)focusProgress.textContent='Quiz briefing';
  const briefing=document.createElement('section');briefing.id='quizMissionBriefing';briefing.className='quiz-mission-briefing';briefing.setAttribute('aria-labelledby','quizBriefingTitle');
  const add=(tag,value,className)=>{const el=document.createElement(tag);el.textContent=value;if(className)el.className=className;briefing.append(el);return el;};
  const title=add('h2','Ready to begin?');title.id='quizBriefingTitle';
@@ -865,7 +995,7 @@ function renderMissionBriefing(){
  icon.className='interface-icon interface-icon--compass';
  icon.setAttribute('aria-hidden','true');
  title.prepend(icon);
- add('p',quizExpedition ? 'Start with three hearts. A wrong answer costs one heart. Use Bayani once to cross out a wrong choice. You can finish for your score even if you run out of hearts.' : 'Answer one question at a time. Review your answers before you submit.');
+ add('p',quizExpedition ? 'Start with three hearts. A wrong answer uses one heart while you have hearts left. Use Bayani once to cross out a wrong choice. Keep answering even at zero hearts. Your score determines whether you pass.' : 'Answer one question at a time. Review your answers before you submit.');
  const guide=document.createElement('details');guide.className='quiz-briefing-guide';
  const summary=document.createElement('summary');summary.textContent='How this quiz works';guide.append(summary);
  const objectives=Array.isArray(currentMission.learningObjectives)?currentMission.learningObjectives:[currentMission.learningObjective];
@@ -874,25 +1004,27 @@ function renderMissionBriefing(){
  const mechanics=document.createElement('p');mechanics.textContent='Your answers help select later questions. Changing an earlier answer clears the answers after it. Flags help you review before submitting. You’ll see your score after saving.';guide.append(mechanics);
  if(Number.isFinite(currentMission.xpReward)&&currentMission.xpReward>0){const reward=document.createElement('p');reward.className='briefing-reward-note';reward.textContent='Earn up to '+currentMission.xpReward+' XP the first time you complete this mission.';guide.append(reward);}
  const actions=document.createElement('div');actions.className='briefing-actions';const lesson=document.createElement('a');lesson.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId});lesson.textContent='Revisit Lesson';
- const begin=document.createElement('button');begin.type='button';begin.className='begin-mission-button';begin.textContent='Start Mission Quiz';begin.addEventListener('click',async()=>{
+ const begin=document.createElement('button');begin.type='button';begin.className='begin-mission-button';begin.textContent='Start Mission Quiz';begin.dataset.startCountdown='';begin.addEventListener('click',async()=>{
     if (!currentUser || quizSubmitted || begin.disabled) return;
     const generation = quizSessionGeneration;
-    const countdown = document.getElementById('quizCountdown');
     begin.disabled = true;
     try {
-        if (countdown?.showModal) {
-            const number = countdown.querySelector('strong');
+        if (quizCountdown?.showModal) {
+            const number = quizCountdown.querySelector('strong');
             number.textContent = '3';
-            delete countdown.dataset.finalBeat;
-            countdown.showModal();
+            quizCountdown.dataset.beat = '3';
+            delete quizCountdown.dataset.finalBeat;
+            quizCountdown.showModal();
             for (let count = 3; count > 0; count--) {
                 number.textContent = String(count);
-                if (count === 1) countdown.dataset.finalBeat = '';
-                else document.dispatchEvent(new CustomEvent('lakbay:countdown-tick'));
+                quizCountdown.dataset.beat = String(count);
+                if (count === 1) quizCountdown.dataset.finalBeat = '';
+                animateAssessmentArrival(number);
+                document.dispatchEvent(new CustomEvent('lakbay:countdown-tick'));
                 await new Promise(resolve => setTimeout(resolve, 1000));
-                if (!countdown.open || generation !== quizSessionGeneration || !currentUser) return;
+                if (!quizCountdown.open || generation !== quizSessionGeneration || !currentUser) return;
             }
-            countdown.close();
+            quizCountdown.close();
         }
         quizStarted=true;
         renderMissionBriefing();
@@ -901,7 +1033,7 @@ function renderMissionBriefing(){
         questionText.tabIndex=-1;
         questionText.focus();
     } finally {
-        if (countdown?.open) countdown.close();
+        if (quizCountdown?.open && generation === quizSessionGeneration) quizCountdown.close();
         begin.disabled = false;
         if (begin.isConnected && generation === quizSessionGeneration) begin.focus();
     }
@@ -1264,6 +1396,8 @@ function displayQuestion() {
 
     const questionPosition =
         currentQuestionIndex + 1;
+    removeQuizResume();
+    updateAnswerSaveStatus('');
     quizOptions.classList.remove('bayani-lifeline-reveal');
     animateAssessmentArrival(questionCard, `${quizSessionGeneration}:${currentQuestionIndex}:${question.id}`);
 
@@ -1448,6 +1582,7 @@ function displayQuestion() {
                             const saveStatus = document.getElementById('quizSaveStatus');
                             if (saveStatus) {
                                 saveStatus.hidden = false;
+                                delete saveStatus.dataset.state;
                                 saveStatus.textContent = 'Your answer changed, so later answers were cleared. The next questions will adapt to your updated response.';
                             }
                         }
@@ -1647,7 +1782,7 @@ nextQuestionButton.addEventListener(
     "click",
     async () => {
 
-        if (quizSubmitted || assessmentBusy) {
+        if (quizSubmitted || assessmentBusy || quizRecoveryCode) {
 
             return;
 
@@ -1665,6 +1800,7 @@ nextQuestionButton.addEventListener(
                 currentQuestionIndex
             ];
 
+        if (!currentQuestion) return;
 
         const selectedAnswer =
             studentAnswers[
@@ -1706,9 +1842,44 @@ nextQuestionButton.addEventListener(
             return;
         }
         const heartsBeforeAnswer = quizExpedition?.hearts;
-        if(securedQuiz){assessmentBusy=true;quizOptions.inert=true;nextQuestionButton.disabled=true;try{await syncSecuredAnswer(currentQuestion,selectedAnswer);}catch(error){(await appAlert(error.message));return;}finally{assessmentBusy=false;quizOptions.inert=false;nextQuestionButton.disabled=false;}}
+        if (securedQuiz) {
+            const generation = quizSessionGeneration;
+            const current = () => generation === quizSessionGeneration;
+            assessmentBusy = true;
+            quizOptions.inert = true;
+            nextQuestionButton.disabled = true;
+            const actionLabel = nextQuestionButton.textContent;
+            updateAnswerSaveStatus('saving', 'Saving your answer…');
+            const slowAnswer = window.setTimeout(() => {
+                if (current()) updateAnswerSaveStatus('saving', 'Still saving your answer. Keep this quiz open.');
+            }, 6000);
+            let saved = false;
+            try {
+                await syncSecuredAnswer(currentQuestion, selectedAnswer);
+                saved = true;
+            } catch (error) {
+                if (current() && !requireQuizRecovery(error)) {
+                    updateAnswerSaveStatus('retry', (error.message || 'Your answer could not be saved.') + ' Your choice is still selected.');
+                    nextQuestionButton.textContent = 'Retry Saving Answer';
+                }
+                return;
+            } finally {
+                window.clearTimeout(slowAnswer);
+                if (current()) {
+                    assessmentBusy = false;
+                    quizOptions.inert = false;
+                    nextQuestionButton.disabled = Boolean(quizRecoveryCode);
+                    if (saved) {
+                        updateAnswerSaveStatus('');
+                        nextQuestionButton.textContent = actionLabel;
+                    } else if (!quizRecoveryCode) {
+                        nextQuestionButton.focus({preventScroll:true});
+                    }
+                }
+            }
+        }
+        document.dispatchEvent(new CustomEvent('lakbay:answer-lock'));
         if (quizExpedition) {
-            document.dispatchEvent(new CustomEvent('lakbay:answer-lock'));
             const feedback = document.getElementById('quizExpeditionFeedback');
             const lostHeart = quizExpedition.hearts < heartsBeforeAnswer;
             expeditionPanel.querySelectorAll('.quiz-heart-tokens > span').forEach((token, index) => {
@@ -1717,7 +1888,7 @@ nextQuestionButton.addEventListener(
             feedback.dataset.outcome = quizExpedition.lastCorrect ? 'correct' : 'missed';
             feedback.textContent = quizExpedition.lastCorrect
                 ? 'Correct. Checkpoint cleared.'
-                : quizExpedition.hearts ? 'Incorrect. You lost a heart.' : 'No hearts left. You can finish for your quiz score.';
+                : quizExpedition.hearts ? 'Incorrect. You lost one heart.' : 'Incorrect. You have no hearts left. Keep going for your quiz score.';
             animateAssessmentArrival(feedback);
             if (isLastQuestion) {
                 // The last checkpoint stays visible while the student moves to review.
@@ -1804,14 +1975,15 @@ nextQuestionButton.addEventListener(
    SUBMIT QUIZ
 ========================================== */
 
-async function submitQuiz(flagsConfirmed=false) {
+async function submitQuiz(flagsConfirmed=false, savedResult=null) {
+    removeQuizResume();
     if(flagsConfirmed&&!questions.every(q=>['A','B','C','D'].includes(studentAnswers[q.id])))return;
     const generation = quizSessionGeneration;
     const submittingUid = currentUser?.uid;
     const isCurrent = () => generation === quizSessionGeneration && currentUser?.uid === submittingUid;
 
     if (
-        quizSubmitted ||
+        quizSubmitted || quizRecoveryCode || (checkQuizSaveButton?.disabled && !checkQuizSaveButton.hidden) ||
         !currentUser ||
         !currentQuiz ||
         !currentMission
@@ -1845,11 +2017,14 @@ async function submitQuiz(flagsConfirmed=false) {
     }
     quizSubmitted =
         true;
+    if (checkQuizSaveButton) checkQuizSaveButton.hidden = true;
     quizContent.classList.add('quiz-result-handoff');
 
+    nextQuestionButton.removeAttribute('aria-describedby');
     const saveStatus = document.getElementById('quizSaveStatus');
     if (saveStatus) {
         saveStatus.hidden = false;
+        saveStatus.dataset.state = 'saving';
         saveStatus.textContent = 'Saving your answers… Keep this page open until saving finishes.';
     }
 
@@ -1860,6 +2035,12 @@ async function submitQuiz(flagsConfirmed=false) {
     previousQuestionButton.disabled =
         true;
 
+    saveStatus?.focus();
+    const slowSaveNotice = window.setTimeout(() => {
+        if (isCurrent() && saveStatus?.dataset.state === 'saving') {
+            saveStatus.textContent = 'Still saving your answers. Keep this page open and wait for confirmation.';
+        }
+    }, 6000);
 
     try {
 
@@ -1870,7 +2051,7 @@ async function submitQuiz(flagsConfirmed=false) {
         /* ==================================
            CALCULATE SCORE
         ================================== */
-const completionResult = await submitStudentActivity({
+const completionResult = savedResult || await submitStudentActivity({
     kind: "mission",
     chapterId,
     missionId,
@@ -1885,7 +2066,10 @@ const completionResult = await submitStudentActivity({
 if (!isCurrent()) return;
 quizContent.classList.remove('quiz-result-handoff');
 quizDraftReady = false;
-if (saveStatus) saveStatus.textContent = completionResult.preview ? 'Preview result only. No score, completion or reward was saved.' : 'Your quiz result is saved.';
+if (saveStatus) {
+    saveStatus.dataset.state = completionResult.preview ? 'preview' : 'saved';
+    saveStatus.textContent = completionResult.preview ? 'Preview result only. No score, completion or reward was saved.' : 'Your quiz result is saved.';
+}
 restartQuizButton.hidden = true;
 // The official receipt is already committed. Draft cleanup must not delay it.
 void quizDraft?.clear().catch(() => {});
@@ -1906,6 +2090,11 @@ studentTabStorage.removeItem('missionQuizSet:' + currentUser.uid + ':' + current
 const correctAnswers = completionResult.correctAnswers;
 const percentage = completionResult.score;
 const passed = completionResult.passed === true;
+const receipt = {
+    preview: completionResult.preview === true,
+    classroom: securedQuiz ? assessmentState(securedIdentity())?.classroom : null,
+    isCurrent
+};
 
 lastQuizPassed = passed;
 
@@ -1949,7 +2138,9 @@ lastQuizPassed = passed;
             showResult(
                 percentage,
                 correctAnswers,
-                true
+                true,
+                !savedResult,
+                receipt
             );
 
 
@@ -1980,7 +2171,9 @@ lastQuizPassed = passed;
         showResult(
             percentage,
             correctAnswers,
-            false
+            false,
+            !savedResult,
+            receipt
         );
 
 
@@ -1997,19 +2190,33 @@ lastQuizPassed = passed;
         quizSubmitted =
             false;
 
+        if (requireQuizRecovery(error)) {
+            if (saveStatus) saveStatus.hidden = true;
+            return;
+        }
+
         nextQuestionButton.disabled =
             false;
 
-        if (adaptiveFollowupComplete) nextQuestionButton.textContent = 'Retry Save';
+        if (adaptiveFollowupComplete || quizExpedition) nextQuestionButton.textContent = 'Retry Save';
 
         previousQuestionButton.disabled =
             currentQuestionIndex === 0;
 
 
         if (saveStatus) {
-            saveStatus.textContent = 'We could not confirm that your result was saved. Your answers are still on this page. Check your connection, then submit again. Keep this page open.';
+            saveStatus.dataset.state = 'retry';
+            saveStatus.textContent = securedQuiz
+                ? 'We could not confirm that your result was saved. Your answers are still on this page. Use Check Saved Result after reconnecting, or submit again.'
+                : 'We could not confirm that your result was saved. Your answers are still on this page. Keep it open, check your connection, and try again.';
+            nextQuestionButton.setAttribute('aria-describedby', saveStatus.id);
         }
+        if (checkQuizSaveButton) checkQuizSaveButton.hidden = !securedQuiz;
+        const recoveryAction = securedQuiz && checkQuizSaveButton ? checkQuizSaveButton : nextQuestionButton;
+        recoveryAction.focus();
 
+    } finally {
+        window.clearTimeout(slowSaveNotice);
     }
 
 }
@@ -2053,6 +2260,9 @@ function displayAnswerReview({playCorrectCue=false}={}) {
 
 
     let correctCuePlayed=false;
+    let missedCount=0;
+    let firstCorrectReviewItem=null;
+    const savedCopy = value => typeof value === 'string' ? value.trim() : '';
     questions.forEach(
         (question, index) => {
 
@@ -2093,12 +2303,14 @@ function displayAnswerReview({playCorrectCue=false}={}) {
                 );
 
 
-            const answerExplanation = question.answerExplanations?.[studentAnswerKey];
-            const explanation =
-                String(
-                    (typeof answerExplanation === "string" && answerExplanation.trim() ? answerExplanation : question.explanation) ||
-                    ""
-                ).trim();
+            const generalExplanation = savedCopy(question.explanation);
+            const selectedExplanation = savedCopy(question.answerExplanations?.[studentAnswerKey]);
+            const learningPoint = savedCopy(question.learningPoint);
+            const selectedCopy = selectedExplanation.replace(/^Review the lesson clues\.\s*/i, '');
+            const correctExplanation = savedCopy(question.answerExplanations?.[correctAnswerKey]);
+            const choiceFeedback = !isCorrect && selectedCopy && ![generalExplanation, learningPoint, correctExplanation].includes(selectedCopy);
+            const explanation = choiceFeedback || (isCorrect && selectedCopy)
+                ? selectedCopy : generalExplanation || learningPoint || selectedCopy;
 
 
             const reviewItem =
@@ -2266,8 +2478,7 @@ function displayAnswerReview({playCorrectCue=false}={}) {
                 );
 
 
-            explanationLabel.textContent =
-                "Why?";
+            explanationLabel.textContent = choiceFeedback ? 'About your choice' : 'Key idea';
 
 
             const explanationText =
@@ -2280,8 +2491,8 @@ function displayAnswerReview({playCorrectCue=false}={}) {
                 explanation ||
                 (
                     isCorrect
-                        ? "Good work. Review the lesson idea connected to this question before continuing."
-                        : "Review this idea in the story and practice section before trying the quiz again."
+                        ? "You chose the correct answer."
+                        : "Revisit the lesson to see the evidence for the correct answer."
                 );
 
 
@@ -2295,25 +2506,20 @@ function displayAnswerReview({playCorrectCue=false}={}) {
             );
 
 
-            if (typeof question.learningPoint === "string" && question.learningPoint.trim()) {
+            if (learningPoint && learningPoint !== explanation) {
                 const point = document.createElement("p");
-                point.textContent = "Key idea: " + question.learningPoint.trim();
+                point.textContent = "Key idea: " + learningPoint;
                 explanationBox.appendChild(point);
             }
             if (!isCorrect) {
+                const reviewTopic = savedCopy(question.topic);
+                const params = new URLSearchParams({chapter: chapterId, mission: missionId});
+                if (reviewTopic) params.set('reviewTopic', reviewTopic);
                 const lesson = document.createElement("a");
-                lesson.className = "text-button";
-                lesson.textContent = "Review Mission Lesson";
-                lesson.href = "story.html?" + new URLSearchParams({chapter: chapterId, mission: missionId});
+                lesson.className = "text-button quiz-review-lesson-link";
+                lesson.textContent = reviewTopic ? 'Review this lesson topic' : 'Revisit the lesson';
+                lesson.href = learningNavigation.carry('story.html?' + params);
                 explanationBox.appendChild(lesson);
-                if (typeof question.topic === "string" && question.topic.trim()) {
-                    const practice = document.createElement("a");
-                    practice.className = "text-button";
-                    practice.textContent = "Practice This Topic";
-                    practice.href = "practice.html?" + new URLSearchParams({chapter: chapterId, mission: missionId, topic: question.topic.trim()});
-                    explanationBox.appendChild(document.createTextNode(" ? "));
-                    explanationBox.appendChild(practice);
-                }
             }
 
             /* ==================================
@@ -2340,6 +2546,8 @@ function displayAnswerReview({playCorrectCue=false}={}) {
             } else {
                 const comparison = document.createElement('details');
                 comparison.className = 'quiz-missed-comparison';
+                comparison.open = missedCount === 0;
+                missedCount += 1;
                 const summary = document.createElement('summary');
                 summary.textContent = 'Compare answers';
                 const content = document.createElement('div');
@@ -2350,14 +2558,19 @@ function displayAnswerReview({playCorrectCue=false}={}) {
             }
 
 
-            quizAnswerReviewList.appendChild(
-                reviewItem
-            );
+            if (isCorrect) {
+                firstCorrectReviewItem ??= reviewItem;
+                quizAnswerReviewList.append(reviewItem);
+            } else quizAnswerReviewList.insertBefore(reviewItem, firstCorrectReviewItem);
 
         }
     );
 
 
+    const reviewSummary = quizAnswerReview.querySelector('summary');
+    if (reviewSummary) reviewSummary.textContent = missedCount
+        ? `Review quiz answers (${missedCount} to revisit)`
+        : 'Review quiz answers';
     quizAnswerReview.hidden =
         false;
 
@@ -2476,20 +2689,49 @@ async function renderMissionLearningSummary(correctAnswers){
  const objectives=(Array.isArray(currentMission.learningObjectives)?currentMission.learningObjectives:[currentMission.learningObjective]).filter(v=>typeof v==='string'&&v.trim());
  if(objectives.length){const part=block('What this mission taught');const list=document.createElement('ul');for(const objective of objectives){const item=document.createElement('li');item.textContent=objective;list.append(item);}part.append(list);}
  const demonstrated=block('What your quiz shows');copy(demonstrated,correctAnswers+' of '+questions.length+' questions answered correctly. You met this mission passing requirement. This result does not prove every topic is fully understood.');
- const review=block('What you can revisit');if(lastQuizTopics.length){for(const topic of lastQuizTopics){const question=questions.find(q=>q.topic===topic);const link=document.createElement('a');link.textContent=question?.topicLabel||topic;link.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,reviewTopic:topic});review.append(link);}copy(review,'These recommendations come from this quiz. Saved practice can provide more evidence as you learn.');}else copy(review,'No missed topics were identified in this quiz. You can revisit the lesson whenever you want.');
- const artifact=lastArtifactResult?.artifact;if(artifact){const collection=block(lastArtifactResult.newlyEarned?'What you collected':'Your mission collectible');copy(collection,artifact.name||artifact.title||'Mission collectible');if(typeof artifact.learningDetails?.lessonConnection==='string')copy(collection,artifact.learningDetails.lessonConnection);else if(typeof artifact.description==='string')copy(collection,artifact.description);const link=document.createElement('a');link.href='achievements.html';link.textContent='Explore My Collections';collection.append(link);}
- document.querySelector('.quiz-result-actions').after(panel);
+ const discovery=questions.find(question=>question.topic&&question.explanation?.trim()&&
+     studentAnswers[question.id]&&studentAnswers[question.id]===question.correctAnswer);
+ if(discovery){
+  const evidence=block('One idea you got right');
+  copy(evidence,discovery.explanation);
+  const lesson=document.createElement('a');lesson.textContent='Revisit this idea in the lesson';lesson.href=learningNavigation.carry('story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,reviewTopic:discovery.topic}));evidence.append(lesson);
+ }
+ const review=block('What you can revisit');if(lastQuizTopics.length){for(const topic of lastQuizTopics){const link=document.createElement('a');link.textContent=quizReviewTopicLabel(topic);link.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,reviewTopic:topic});review.append(link);}copy(review,'These recommendations come from this quiz. Saved practice can provide more evidence as you learn.');}else copy(review,'No missed topics were identified in this quiz. You can revisit the lesson whenever you want.');
+ const artifact=lastArtifactResult?.artifact;if(artifact){const collection=block(lastArtifactResult.newlyEarned?'What you collected':'Your mission collectible');copy(collection,artifactDisplayName(artifact));if(typeof artifact.learningDetails?.lessonConnection==='string')copy(collection,artifact.learningDetails.lessonConnection);else if(typeof artifact.description==='string')copy(collection,artifact.description);const link=document.createElement('a');link.href=artifactExhibitHref(artifact.id);link.textContent=artifact.id?'View exhibit':'Open My Collections';collection.append(link);}
+ quizAnswerReview.before(panel);
+ if (learningNavigation.classroomReturn) {
+    pending.textContent = 'Open My Class to return to this assignment.';
+    return;
+ }
+ function setNextAction(href, label) {
+    resultNextHref = href;
+    continueResultButton.textContent = label;
+ }
  const uid=currentUser?.uid,generation=quizSessionGeneration,scopeMission=missionId;const current=()=>auth.currentUser?.uid===uid&&quizSessionGeneration===generation&&document.getElementById('missionLearningSummary')===panel&&!quizResult.hidden;
  try{const [missionSnapshot,progressSnapshot,challengeSnapshot]=await Promise.all([getDocs(query(collection(db,'missions'),where('chapterId','==',chapterId))),getDocs(query(collection(db,'studentProgress'),where('userId','==',uid))),getDocs(query(collection(db,'chapterChallenges'),where('chapterId','==',chapterId)))]);if(!current())return;
  const rows=snapshot=>snapshot.docs.map(d=>({...d.data(),id:d.id})),missions=rows(missionSnapshot).filter(m=>m.status==='active').sort((a,b)=>(Number(a.order)||0)-(Number(b.order)||0)||a.id.localeCompare(b.id));
  const completed=new Set(rows(progressSnapshot).filter(p=>p.userId===uid&&p.chapterId===chapterId&&p.completed===true).map(p=>p.missionId));
- if(!completed.has(scopeMission)){pending.textContent='Your result is saved. Open My Journey to refresh your next step.';return;}
+ if(!completed.has(scopeMission)){
+  pending.textContent='Your result is saved. Open My Journey to check what you can do next.';
+  setNextAction('my-journey.html','Open My Journey');
+  return;
+ }
  const nextMission=missions.find((mission,index)=>!completed.has(mission.id)&&missions.slice(0,index).every(prior=>completed.has(prior.id)));
- const action=document.createElement('a');action.className='learning-summary-next';
- if(nextMission){pending.textContent='Available next: '+(nextMission.title||'Next mission')+'.';action.textContent='Open Next Lesson';action.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:nextMission.id});}
- else if(missions.length&&missions.every(m=>completed.has(m.id))&&rows(challengeSnapshot).some(c=>c.status==='active')){pending.textContent='All missions in this chapter are complete. The chapter challenge is available; your chapter completion is checked there.';action.textContent='Open Chapter Challenge';action.href='chapter-challenge.html?'+new URLSearchParams({chapter:chapterId});}
- else{pending.textContent='Your mission is complete. My Journey shows your available learning steps.';action.textContent='Open My Journey';action.href='my-journey.html';}notes.before(action);
- }catch{if(current()){pending.textContent='Your mission result is saved, but the next step could not be checked. Open My Journey to try again.';const link=document.createElement('a');link.href='my-journey.html';link.textContent='Open My Journey';notes.before(link);}}
+ if(nextMission){pending.textContent='Available next: '+(nextMission.title||'Next mission')+'.';setNextAction('story.html?'+new URLSearchParams({chapter:chapterId,mission:nextMission.id}),'Open Next Lesson');}
+ else if(missions.length&&missions.every(m=>completed.has(m.id))&&rows(challengeSnapshot).some(c=>c.status==='active')){
+  const chapterProgress=await getDocs(query(collection(db,'studentChapterProgress'),where('userId','==',uid),where('chapterId','==',chapterId)));
+  if(!current())return;
+  const chapterComplete=rows(chapterProgress).some(row=>row.userId===uid&&row.chapterId===chapterId&&row.completed===true);
+  if(chapterComplete){
+   pending.textContent='You’ve already completed this chapter. My Journey shows where you can go next.';
+   setNextAction('my-journey.html','Open My Journey');
+  }else{
+   pending.textContent='All missions in this chapter are complete. The chapter challenge is available.';
+   setNextAction('chapter-challenge.html?'+new URLSearchParams({chapter:chapterId}),'Open Chapter Challenge');
+  }
+ }
+ else{pending.textContent='Your mission is complete. My Journey shows your available learning steps.';setNextAction('my-journey.html','Open My Journey');}
+ }catch{if(current()){pending.textContent='Your mission result is saved. Check My Journey for your next activity.';setNextAction('my-journey.html','Open My Journey');}}
 }
 
 async function showPreviousQuizScore(summary, score) {
@@ -2525,10 +2767,46 @@ async function showPreviousQuizScore(summary, score) {
     }
 }
 
+function quizReviewTopicLabel(topic) {
+    const question = questions.find(row => row.topic === topic && typeof row.topicLabel === 'string' && row.topicLabel.trim()) ||
+        adaptiveQuestionPool.find(row => row.topic === topic && typeof row.topicLabel === 'string' && row.topicLabel.trim());
+    if (question) return question.topicLabel.trim();
+    const label = String(topic || '').replace(/[-_]+/g, ' ').trim();
+    return label ? label.charAt(0).toLocaleUpperCase() + label.slice(1) : 'Lesson topic';
+}
+
+function renderQuizResultDestination(receipt) {
+    const destination = document.getElementById('quizResultDestination');
+    if (!destination) return;
+    destination.replaceChildren();
+    destination.hidden = !receipt || receipt.preview || globalThis.__lakbayExplorationPreview === true;
+    if (destination.hidden) return;
+
+    const classroom = receipt.classroom;
+    const context = classroomLearningContext(window.location.search);
+    if (!context || classroom?.classId !== context.classroom || classroom.assignmentId !== context.activity || !learningNavigation.classroomReturn) {
+        destination.textContent = learningNavigation.classroomReturn
+            ? 'Saved to your learning progress. The classroom destination could not be confirmed.'
+            : 'Saved to your learning progress in My Journey.';
+        return;
+    }
+    const classLink = document.createElement('a');
+    classLink.href = learningNavigation.classroomReturn;
+    classLink.textContent = 'My Class';
+    destination.append('Class submission saved to ', classLink, '. Your teacher can see this result.');
+    void getDoc(doc(db, 'classes', classroom.classId)).then(snapshot => {
+        if (!receipt.isCurrent() || quizResult.hidden || !destination.contains(classLink)) return;
+        const name = snapshot.data()?.name;
+        if (typeof name === 'string' && name.trim()) classLink.textContent = name;
+    }).catch(() => {});
+}
+
 function showResult(
     percentage,
     correctAnswers,
-    passed
+    passed,
+    freshResult,
+    receipt = null
 ) {
     if (document.fullscreenElement === document.documentElement) {
         void document.exitFullscreen().catch(() => {});
@@ -2540,13 +2818,33 @@ function showResult(
 
     quizResult.hidden =
         false;
-    animateAssessmentArrival(quizResult);
+    const saveStatus = document.getElementById('quizSaveStatus');
+    if (saveStatus && !saveStatus.hidden) quizResultMessage.after(saveStatus);
+    renderQuizResultDestination(receipt);
+    quizResult.toggleAttribute('data-fresh-result', freshResult && globalThis.__lakbayExplorationPreview !== true);
     quizResultTitle.tabIndex = -1;
-    queueMicrotask(() => { if (!quizResult.hidden && currentUser) quizResultTitle.focus({preventScroll:true}); });
+    queueMicrotask(() => {
+        if (quizResult.hidden || !currentUser) return;
+        quizResult.scrollIntoView({block:'start', behavior:'instant'});
+        quizResultTitle.focus({preventScroll:true});
+    });
 
 
     quizScore.textContent =
         `${percentage}%`;
+    const highlights = document.getElementById('quizResultHighlights');
+    if (highlights) {
+        const status = document.createElement('strong');
+        const preview = globalThis.__lakbayExplorationPreview === true;
+        status.textContent = preview ? 'Preview' : passed ? 'Passed' : 'Try again';
+        highlights.replaceChildren(status);
+        if (!preview && passed && lastMissionReward > 0) {
+            const earned = document.createElement('span');
+            earned.textContent = '+' + lastMissionReward + ' XP earned';
+            highlights.append(earned);
+        }
+        highlights.hidden = false;
+    }
 
 
     /* ======================================
@@ -2554,37 +2852,43 @@ function showResult(
     ====================================== */
 
     document.getElementById('missionLearningSummary')?.remove();
+    resultNextHref = null;
     quizResult.dataset.outcome=passed?'passed':'retry';
     if(quizAnswerReview)quizAnswerReview.open=false;
     document.getElementById('expeditionResultSummary')?.remove();
     const expeditionSummary=document.createElement('div');expeditionSummary.id='expeditionResultSummary';expeditionSummary.className='expedition-result-summary';
-    const total=document.createElement('strong');total.textContent=correctAnswers+' of '+questions.length+' correct';
-    const requirement=document.createElement('p');requirement.textContent='Passing goal: '+Math.ceil(questions.length*requirePassingScore(currentQuiz)/100)+' correct';
-    expeditionSummary.append(total,requirement);
+    const passingGoal=minimumMissionCorrect(questions.length,requirePassingScore(currentQuiz));
+    const goalLabel=document.getElementById('quizResultPassingGoal');
+    if(goalLabel)goalLabel.textContent=correctAnswers+' of '+questions.length+' correct · Passing goal: '+passingGoal+' correct';
     if (quizExpedition) {
         const trail = document.createElement('p');
         trail.className = 'quiz-result-trail';
-        trail.textContent = quizExpedition.hearts
-            ? 'Expedition cleared with ' + quizExpedition.hearts + (quizExpedition.hearts === 1 ? ' heart left.' : ' hearts left.')
-            : 'Expedition ended with zero hearts. Your quiz score is shown above.';
+        trail.textContent = 'Hearts remaining: ' + quizExpedition.hearts + ' of 3. Your score determines whether you pass.';
         expeditionSummary.append(trail);
     }
     if(lastAdaptiveFollowup){const adaptiveSummary=document.createElement('p');adaptiveSummary.className='adaptive-result-summary';adaptiveSummary.textContent='Extra practice: '+lastAdaptiveFollowup.correctAnswers+' of '+lastAdaptiveFollowup.totalQuestions+' correct. This does not change your mission score. '+(lastAdaptiveFollowup.preview?'This preview was not saved.':'Check the topics below to see what you can review.');expeditionSummary.append(adaptiveSummary);}
     const debrief = quizResultMessage.closest('.quiz-debrief-header');
-    debrief.querySelector('.quiz-debrief-score').append(expeditionSummary);
     void showPreviousQuizScore(expeditionSummary, percentage);
     const hasPassRewardCue=passed&&globalThis.__lakbayExplorationPreview!==true&&(
         lastCompletionResult?.firstCompletion===true||lastArtifactResult?.newlyEarned===true
     );
     displayAnswerReview({
-        playCorrectCue:passed&&!quizExpedition&&globalThis.__lakbayExplorationPreview!==true&&!hasPassRewardCue
+        playCorrectCue:freshResult&&passed&&!quizExpedition&&globalThis.__lakbayExplorationPreview!==true&&!hasPassRewardCue
     });
     const reinforcement = document.getElementById("quizReinforcementSummary");
     if (reinforcement) reinforcement.textContent = lastQuizTopics.length ? "Topics to revisit" : "";
     const reinforceLink = document.getElementById("reinforcePassedTopicsLink");
     if (reinforceLink) {
-        reinforceLink.hidden = !passed || !lastQuizTopics.length;
-        reinforceLink.href = "practice.html?" + new URLSearchParams({chapter:chapterId,mission:missionId});
+        const topic = lastQuizTopics[0];
+        reinforceLink.hidden = !passed || !topic;
+        if (!reinforceLink.hidden) {
+            reinforceLink.href = learningNavigation.carry('practice.html?' + new URLSearchParams({
+                chapter: chapterId, mission: missionId, topic, review: '1'
+            }));
+            reinforceLink.textContent = 'Practise ' + quizReviewTopicLabel(topic);
+        } else {
+            reinforceLink.removeAttribute('href');
+        }
     }
     const topicBox = document.getElementById("quizWeakTopics");
     if (topicBox) {
@@ -2592,18 +2896,18 @@ function showResult(
         let otherTopics;
         if(!passed&&lastQuizTopics.length>1){otherTopics=document.createElement('details');otherTopics.className='quiz-other-review-topics';const summary=document.createElement('summary');summary.textContent='Other topics to revisit ('+(lastQuizTopics.length-1)+')';otherTopics.append(summary);}
         for (const [topicIndex,topic] of lastQuizTopics.entries()) {
-            const item=document.createElement('article');item.className='result-topic-route';const question=questions.find(q=>q.topic===topic)||adaptiveQuestionPool.find(q=>q.topic===topic);const name=document.createElement('strong');name.textContent=question?.topicLabel||topic;const note=document.createElement('p');note.textContent=!passed&&topicIndex===0?'Start here. Review this lesson topic, practise it, then try the mission quiz again.':'Read this topic again, then try a few practice questions. Return to the mission quiz when you feel ready.';const link=document.createElement('a');link.textContent='1. Review the lesson';link.setAttribute('aria-label','Review the lesson: '+name.textContent);link.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,reviewTopic:topic});const practice=document.createElement('a');practice.textContent='2. Try practice';practice.setAttribute('aria-label','Try practice: '+name.textContent);practice.href='practice.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,topic,review:'1'});item.append(name,note,link,practice);(!passed&&topicIndex>0&&otherTopics?otherTopics:topicBox).append(item);
+            const item=document.createElement('article');item.className='result-topic-route';const name=document.createElement('strong');name.textContent=quizReviewTopicLabel(topic);const note=document.createElement('p');note.textContent=!passed&&topicIndex===0?'Start here. Review this lesson topic, practise it, then try the mission quiz again.':'Read this topic again, then try a few practice questions. Return to the mission quiz when you feel ready.';const link=document.createElement('a');link.textContent='1. Review the lesson';link.setAttribute('aria-label','Review the lesson: '+name.textContent);link.href='story.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,reviewTopic:topic});const practice=document.createElement('a');practice.textContent='2. Try practice';practice.setAttribute('aria-label','Try practice: '+name.textContent);practice.href='practice.html?'+new URLSearchParams({chapter:chapterId,mission:missionId,topic,review:'1'});item.append(name,note,link,practice);(!passed&&topicIndex>0&&otherTopics?otherTopics:topicBox).append(item);
         }
         if(otherTopics)topicBox.append(otherTopics);
     }
     retryQuizButton.textContent=passed?'Replay Quiz':'Retry Quiz';
     retryQuizButton.title=passed?'Replay this mission quiz.':'Optional shortcut. Reviewing the lesson and practising first is recommended.';
-    const generalReviewLink=document.getElementById('reviewLessonLink');if(generalReviewLink)generalReviewLink.hidden=!passed&&lastQuizTopics.length>0;
+    const generalReviewLink=document.getElementById('reviewLessonLink');if(generalReviewLink)generalReviewLink.hidden=!passed;
     const resultActions=continueResultButton.closest('.quiz-result-actions');
     resultActions?.prepend(continueResultButton);
-    if (resultActions) debrief.after(resultActions);
+    if (resultActions) debrief.after(resultActions, expeditionSummary);
     if (reinforcement && topicBox && resultActions) {
-        const reviewAnchor = passed && quizAnswerReview ? quizAnswerReview : resultActions;
+        const reviewAnchor = passed && quizAnswerReview ? quizAnswerReview : expeditionSummary;
         reviewAnchor.after(reinforcement, topicBox);
     }
 
@@ -2655,10 +2959,10 @@ quizResultTitle.textContent =
             lastArtifactResult
                 ?.artifact || null;
 
-        if (firstCompletion) {
+        if (freshResult && firstCompletion) {
             document.dispatchEvent(new CustomEvent("lakbay:mission-completed"));
         }
-        if (artifactNewlyEarned && earnedArtifact) {
+        if (freshResult && artifactNewlyEarned && earnedArtifact) {
             document.dispatchEvent(new CustomEvent("lakbay:artifact-found", {
                 detail: { delayMs: firstCompletion ? 420 : 0 }
             }));
@@ -2713,7 +3017,7 @@ quizResultMessage.textContent =
 
 
         continueResultButton.textContent =
-            learningNavigation.classroomReturn ? "Back to Class Activity" : "Continue Your Expedition →";
+            learningNavigation.classroomReturn ? "Back to Class Activity" : "Back to Mission Journey";
 
 
         return;
@@ -2788,10 +3092,10 @@ quizResultTitle.textContent =
 
 
     continueResultButton.textContent =
-        "Review This Topic \u2192";
-    if(lastQuizTopics.length){const firstTopic=questions.find(q=>q.topic===lastQuizTopics[0])||adaptiveQuestionPool.find(q=>q.topic===lastQuizTopics[0]);continueResultButton.textContent='Review '+(firstTopic?.topicLabel||lastQuizTopics[0])+' →';}
+        "Review the Lesson \u2192";
+    if (lastQuizTopics.length) continueResultButton.textContent = 'Review '+quizReviewTopicLabel(lastQuizTopics[0])+' →';
 
-    document.dispatchEvent(new CustomEvent("lakbay:needs-practice"));
+    if (freshResult) document.dispatchEvent(new CustomEvent("lakbay:needs-practice"));
 
 }
 
@@ -2922,32 +3226,16 @@ function displayMissionRewards() {
             const museumLink = document.getElementById('artifactMuseumLink');
             if (museumLink) {
                 museumLink.hidden = !artifact.id;
-                if (artifact.id) museumLink.href = 'achievements.html?' + new URLSearchParams({exhibit:artifact.id});
+                if (artifact.id) museumLink.href = artifactExhibitHref(artifact.id);
+                else museumLink.removeAttribute('href');
             }
 
-            if (artifactRewardIcon) {
-
-                artifactRewardIcon.textContent =
-                    artifact.icon ||
-                    "\u{1F3FA}";
-                if (artifact.id === 'prologue-mission1-map-keepsake' ||
-                    /^[a-z0-9][a-z0-9_-]*\.(?:svg|png)$/i.test(artifact.learningImage || '')) {
-                    const image = document.createElement('img');
-                    image.src = '../assets/story/' + (artifact.id === 'prologue-mission1-map-keepsake'
-                        ? 'prologue-island-map.svg' : artifact.learningImage);
-                    image.alt = '';
-                    artifactRewardIcon.replaceChildren(image);
-                }
-
-            }
+            artifactRewardIcon?.replaceChildren(createArtifactArtwork(artifact, 'quiz-artifact-art'));
 
 
             if (artifactRewardName) {
 
-                artifactRewardName.textContent =
-                    artifact.name ||
-                    artifact.title ||
-                    "Historical Artifact";
+                artifactRewardName.textContent = artifactDisplayName(artifact);
 
             }
 
@@ -3051,6 +3339,11 @@ retryQuizButton.addEventListener("click", async () => {
 continueResultButton.addEventListener(
     "click",
     () => {
+        if (quizResult.hidden || !currentUser) return;
+        if (resultNextHref) {
+            navigatePage(resultNextHref);
+            return;
+        }
 
         /*
          * Passed:
@@ -3064,15 +3357,14 @@ continueResultButton.addEventListener(
 
             const destination = new URLSearchParams({chapter: chapterId});
             if (lastCompletionResult?.firstCompletion && missionId) destination.set('completedMission', missionId);
-            window.location.href = learningNavigation.classroomReturn || ('mission.html?' + destination);
+            navigatePage(learningNavigation.classroomReturn || ('mission.html?' + destination));
 
             return;
 
         }
 
 
-        window.location.href =
-            learningNavigation.carry('story.html?' + new URLSearchParams({chapter: chapterId, mission: missionId, ...(lastQuizTopics[0] ? {reviewTopic: lastQuizTopics[0]} : {})}));
+        navigatePage(learningNavigation.carry('story.html?' + new URLSearchParams({chapter: chapterId, mission: missionId, ...(lastQuizTopics[0] ? {reviewTopic: lastQuizTopics[0]} : {})})));
 
     }
 );
@@ -3145,6 +3437,7 @@ onAuthStateChanged(
             quizDraft?.close();
             quizDraftReady = false;
             quizSessionGeneration++;
+            if (quizCountdown?.open) quizCountdown.close();
             quizLoadPending = false;
             questions = [];
             studentAnswers = {};
@@ -3173,8 +3466,7 @@ onAuthStateChanged(
                 null;
 
 
-            window.location.href =
-                "login.html";
+            navigatePage('login.html', { replace: true });
 
 
             return;
@@ -3188,6 +3480,7 @@ onAuthStateChanged(
 
         if (currentUser?.uid === user.uid) return;
         const generation = ++quizSessionGeneration;
+        if (quizCountdown?.open) quizCountdown.close();
         quizLoadPending = false;
         retryQuizButton.disabled = false;
         quizContent.hidden = true;

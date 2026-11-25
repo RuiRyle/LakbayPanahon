@@ -1,4 +1,5 @@
 import {appAlert} from './app-dialog.js';
+import { navigatePage } from './route-navigation.js';
 // ==========================================
 // LAKBAYPANAHON
 // LOGOUT
@@ -13,10 +14,11 @@ import {
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
 
-import { clearStudentSessionData } from "./student-session-storage.js";
+import { clearStudentSessionData, clearQuizRecovery } from "./student-session-storage.js";
 
 function clearDepartingSession(uid) {
     try { clearStudentSessionData(window.sessionStorage, uid); } catch {}
+    clearQuizRecovery(uid);
 }
 
 let previousUid = auth.currentUser?.uid || null;
@@ -58,24 +60,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     await signOut(auth);
                     clearDepartingSession(uid);
 
-                    console.log(
-                        "User logged out successfully."
-                    );
-
                     try { window.parent?.LakbayStudentAudio?.stop(); } catch {}
 
 
-                    // Dashboard pages are inside /pages/
-                    window.location.replace(
-                        "login.html"
-                    );
+                    navigatePage('login.html', { replace: true });
 
 
                 } catch (error) {
 
                     console.error(
                         "Logout error:",
-                        error
+                        error.code || "unknown"
                     );
 
 

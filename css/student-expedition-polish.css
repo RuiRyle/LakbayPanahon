@@ -1,0 +1,1136 @@
+/* Shared visual treatment for the existing chapter, lesson and quiz screens. */
+body.lakbay-theme[data-role="student"]:is(.era-detail-page, .chapter-overview-page, .story-web-page, .mission-quiz-web, .discovery-museum-page, .explorer-profile-page, .student-headquarters, .explorer-journal-page) {
+    --expedition-brass: #e8c681;
+    --expedition-edge: #6a8a8d;
+    --expedition-surface: #132b3b;
+    --expedition-depth: #071929;
+    --expedition-check: polygon(10% 51%, 23% 38%, 40% 55%, 77% 18%, 90% 31%, 40% 81%);
+    --expedition-contours: repeating-radial-gradient(ellipse at 100% 0%, #b9ddcd15 0 1px, transparent 2px 17px);
+    --expedition-spotlight: radial-gradient(ellipse at 50% 18%, #a4885359, transparent 68%),
+        linear-gradient(0deg, #203d40, #0d263c 74%), #132b3b;
+}
+
+/* Reserve the same gutter on the short briefing and the scrolling lesson. */
+html:has(> :is(body.story-web-page, body.mission-quiz-web).lakbay-theme[data-role="student"]) {
+    scrollbar-gutter: stable;
+}
+:is(body.story-web-page, body.mission-quiz-web).lakbay-theme[data-role="student"] {
+    --expedition-mission-width: 920px;
+    --expedition-mission-gutter: clamp(24px, 5vw, 48px);
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .main-content > .story-page,
+body.mission-quiz-web.lakbay-theme[data-role="student"] .main-content > .quiz-page {
+    box-sizing: border-box;
+    width: min(var(--expedition-mission-width), calc(100% - var(--expedition-mission-gutter)));
+    max-width: none;
+    padding-inline: 0;
+}
+
+body.chapter-overview-page.lakbay-theme[data-role="student"] :is(.mission-introduction-card, .mission-path-section),
+body.story-web-page.simple-lesson.lakbay-theme .story-reading-card,
+body.mission-quiz-web.lakbay-theme[data-role="student"] :is(.quiz-mission-briefing, .quiz-question-card, .quiz-result-card) {
+    border-color: var(--expedition-edge);
+    border-block-end-color: #33515e;
+    border-radius: 9px 22px 9px 22px;
+    background: var(--expedition-contours), radial-gradient(ellipse at 100% 0%, #244b4a, transparent 64%), var(--expedition-surface);
+    box-shadow: 0 4px 0 var(--expedition-depth), inset 0 1px #c0e0d01c;
+}
+
+/* The trail uses the mission states already set by the journey renderer. */
+body.chapter-overview-page.lakbay-theme[data-role="student"] .mission-path-item {
+    border-radius: 6px 14px 6px 14px;
+    box-shadow: 0 2px 0 var(--expedition-depth);
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] .mission-path-node {
+    border-radius: 6px 12px 6px 12px;
+    box-shadow: inset 0 1px #e3f5ec2e, 0 2px 0 #091c29;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] :is(.current, .trail-next-stop) .mission-path-node {
+    background: linear-gradient(145deg, #ffe9b7, #d6ac61), #edca83;
+    border-color: #ffe2a0;
+    color: #182b35;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] .mission-path-item.current {
+    background: var(--expedition-contours), linear-gradient(122deg, #3e4433, #163344 74%);
+    box-shadow: inset 3px 0 var(--expedition-brass), 0 3px 0 var(--expedition-depth);
+}
+
+/* The status, art, and actions retain their current layout and order. */
+body.story-web-page.simple-lesson.lakbay-theme .lesson-step-count {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 6px 11px;
+    border: 1px solid #668780;
+    border-radius: 6px 12px 6px 12px;
+    background: #173840;
+    color: #ffe4aa;
+    font-weight: 700;
+}
+body.story-web-page.simple-lesson.lakbay-theme .lesson-step-count[hidden] { display: none; }
+.story-web-page .lesson-step-count::before {
+    content: '';
+    flex: 0 0 1rem;
+    height: 1rem;
+    background: currentColor;
+    mask: url('../assets/icons/lucide/compass.svg') center / contain no-repeat;
+}
+body.story-web-page.lakbay-theme #storyCompleteSection .lesson-finish-heading,
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-header {
+    background: linear-gradient(90deg, #92764b, #f4d69c 44%, #786746) top / 100% 2px no-repeat,
+        var(--expedition-contours), linear-gradient(115deg, #254f47, #122c43 78%);
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-header #storyMissionTitle,
+body.mission-quiz-web.lakbay-theme[data-role="student"] :is(.quiz-header h1, .quiz-mission-briefing h2) {
+    font-family: var(--lp-font-game);
+    text-wrap: balance;
+}
+
+/* Keep selection, answered status, and correctness visually distinct. */
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-question-card {
+    background: linear-gradient(150deg, #17374a, var(--expedition-surface) 75%);
+}
+.mission-quiz-web .quiz-resume-panel {
+    margin-block: .75rem;
+    padding: clamp(14px, 2.8vw, 22px);
+    border: 1px solid #658b88;
+    border-inline-start: 3px solid #d6b877;
+    border-radius: 8px 14px 8px 14px;
+    background: #153542;
+    color: #e5f0f2;
+    overflow-wrap: anywhere;
+}
+.mission-quiz-web .quiz-resume-panel :is(h2,p) { margin: 0 0 .55rem; }
+.mission-quiz-web .quiz-resume-panel h2 { font: 700 1.15rem/1.35 var(--lp-font-game); }
+body.mission-quiz-web.lakbay-theme .quiz-resume-actions button.text-button:not(.begin-mission-button) {
+    background: #142c40;
+    border-color: #678691;
+    color: #e5eff3;
+    box-shadow: none;
+}
+.mission-quiz-web #questionText { scroll-margin-block-start: 8rem; }
+@media (orientation: landscape) and (max-height: 460px) {
+    body.lakbay-theme.mission-quiz-web:has(#quizContent:not([hidden])):not(:has(#quizResult:not([hidden]))) .quiz-focus-bar { position: static; }
+    .mission-quiz-web #questionText { scroll-margin-block-start: 1rem; }
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-progress-card {
+    border-color: #516b76;
+    background: #102739;
+    box-shadow: none;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] .mission-checkpoint-dot,
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-option-letter {
+    border-radius: 6px 10px 6px 10px;
+    box-shadow: inset 0 1px #e1f7ee24, 0 2px 0 var(--expedition-depth);
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] .mission-checkpoint.current .mission-checkpoint-dot {
+    background: linear-gradient(145deg, #ffeab7, #d6ab60), #edca83;
+    border-color: #ffe4a0;
+    color: #182a35;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-option:not(.correct, .incorrect, .quiz-option-eliminated) {
+    background: linear-gradient(150deg, #1a3448, #13283e 78%), #13283e;
+    box-shadow: inset 0 1px #d2e6ef16, 0 2px 0 #0b1c2b;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-option {
+    min-height: 48px;
+    gap: .65rem;
+    padding-inline: 10px 28px;
+}
+.mission-quiz-web .quiz-option.selected::after { inset-inline-end: 10px; }
+.mission-quiz-web .quiz-option.selected:is(.correct, .incorrect)::after { content: none; }
+.mission-quiz-web #quizExpeditionFeedback[data-outcome="correct"] {
+    background: #173a37;
+    color: #e4f7ed;
+}
+.mission-quiz-web #quizExpeditionFeedback[data-outcome="missed"] {
+    background: #3b2e34;
+    color: #fff0e8;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-option.selected:not(.correct, .incorrect, .quiz-option-eliminated) {
+    background: linear-gradient(135deg, #3c4235, #233a45 80%), #233a45;
+    border-color: var(--expedition-brass);
+    box-shadow: inset 3px 0 var(--expedition-brass), 0 2px 0 #0b1c2b;
+}
+
+body.chapter-overview-page.lakbay-theme #beginMissionButton:not(:disabled),
+body.story-web-page.lakbay-theme :is(.lesson-flow .begin-mission-button, #quizButton):not(:disabled),
+body.mission-quiz-web.lakbay-theme :is(.briefing-actions button.begin-mission-button, #nextQuestionButton, #quizResult #continueResultButton):not(:disabled) {
+    background: linear-gradient(165deg, #f8dfa0, #e4b96b), #edca83;
+    color: #142b37;
+    border-color: #f5d799;
+    box-shadow: inset 0 -3px #986a35b5, 0 3px 0 var(--expedition-depth);
+}
+
+/* Compact quiz status, using the existing count, hearts and lifeline. */
+.mission-quiz-web .quiz-status-line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .6rem 1rem;
+    margin-block-end: .55rem;
+}
+body.mission-quiz-web.lakbay-theme .quiz-status-line .quiz-progress-info {
+    flex: 1 0 auto;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    gap: .25rem .6rem;
+    margin: 0;
+    justify-content: space-between;
+}
+.mission-quiz-web .quiz-status-line .quiz-expedition-tools:not([hidden]) {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: .45rem .7rem;
+    margin: 0;
+    padding: .3rem .45rem;
+    background: #102739;
+    border-color: #58717b;
+}
+.mission-quiz-web .quiz-status-line .quiz-heart-tokens span {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 5px 8px 5px 8px;
+    font-size: .75rem;
+}
+.mission-quiz-web .quiz-heart-tokens span:not(.heart-lost) { animation: none; }
+.mission-quiz-web .quiz-status-line #quizLifeline {
+    margin: 0;
+    border-radius: 6px 10px 6px 10px;
+    max-width: 100%;
+    white-space: normal;
+}
+@media (max-width: 560px) {
+    .mission-quiz-web .quiz-status-line { align-items: stretch; }
+    body.mission-quiz-web.lakbay-theme .quiz-status-line .quiz-progress-info { flex: 1 1 100%; }
+    .mission-quiz-web .quiz-status-line .quiz-heart-meter { display: grid; gap: 3px; }
+    .mission-quiz-web .quiz-status-line .quiz-lifeline-control { flex: 1 1 116px; min-width: 0; }
+    .mission-quiz-web .quiz-status-line #quizLifeline { padding-inline: .45rem; text-align: start; }
+    .mission-quiz-web .quiz-status-line #quizLifeline img { width: 22px; height: auto; }
+    .mission-quiz-web .quiz-status-line #quizLifelineHelp { font-size: .75rem; }
+}
+
+/* Bring attention to the illustration and current scene. */
+body.story-web-page.simple-lesson.lakbay-theme .lesson-toolkit > details {
+    border-color: #38535f;
+    background: #102739;
+    box-shadow: none;
+}
+body.story-web-page.simple-lesson.lakbay-theme .lesson-toolkit > details > summary { color: #c9d9dd; }
+body.story-web-page.simple-lesson.lakbay-theme .story-visual {
+    border-color: var(--era-trim, #71877e);
+    box-shadow: 0 4px 0 var(--expedition-depth);
+}
+.story-web-page .story-visual[data-artwork-state="loading"] .story-visual-icon { display: none; }
+.story-web-page .story-visual[data-artwork-state="loading"] .story-visual-fallback::before {
+    content: '';
+    display: block;
+    width: 2.35rem;
+    height: 2.35rem;
+    margin-block-end: .25rem;
+    border: 1px solid #b99d68;
+    border-radius: 50%;
+    background: #e1c383 url('../assets/icons/lucide/compass.svg') center / 1.35rem no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .story-web-page:not(.lakbay-reduce-motion) .story-visual[data-artwork-state="loading"] .story-visual-fallback::before {
+        animation: lp-loading-compass 1.7s ease-in-out infinite;
+    }
+}
+body.lakbay-theme[data-role="student"] :is(#profileBanner, #journalCover, #journeyCover) { scroll-margin-block-start: 5.5rem; }
+body.story-web-page.simple-lesson.lakbay-theme .story-visual .story-visual-caption {
+    border-block-start: 1px solid var(--era-trim, #71877e);
+    background: #142e3c;
+    color: #cbdcdd;
+}
+body.story-web-page.simple-lesson.lakbay-theme .story-reading-card #sceneTitle {
+    font-family: var(--lp-font-game, inherit);
+    text-wrap: balance;
+    line-height: 1.22;
+}
+body.story-web-page.simple-lesson.lakbay-theme .mission-bayani {
+    padding: .65rem .8rem;
+    border: 1px solid #5e827a;
+    border-radius: 6px 14px 6px 14px;
+    background: linear-gradient(120deg, #1e4949, #142e41 80%), #142e41;
+}
+body.story-web-page.simple-lesson.lakbay-theme .mission-bayani > img {
+    border: 1px solid #78988c;
+    border-radius: 50%;
+    background: #142e41;
+    box-shadow: 0 2px 0 var(--expedition-depth);
+}
+body.story-web-page.simple-lesson.lakbay-theme .mission-bayani p { color: #e2eee8; }
+
+/* Era palettes reuse the accents already attached to the chapter and artwork. */
+body.lakbay-theme[data-role="student"] :is(#eraOverview, .mission-chapter-header, .story-reading-card)[data-expedition-era]:not([data-expedition-era=""]) {
+    border-block-start-color: var(--era-trim, var(--expedition-brass));
+    box-shadow: 0 3px 0 var(--expedition-depth), inset 0 2px var(--era-trim, var(--expedition-brass));
+}
+body.lakbay-theme[data-role="student"] [data-expedition-era] :is(.era-overview-copy, .chapter-header-copy) {
+    background: radial-gradient(ellipse at top left, var(--era-wash, transparent), transparent 78%);
+}
+
+/* Finish and reward treatment uses the current result and reward states. */
+.mission-quiz-web #quizResult .quiz-debrief-score {
+    border-color: #947c56;
+    border-radius: 8px 16px 8px 16px;
+    background: radial-gradient(ellipse at top, #3a503f, transparent 85%), #11283b;
+    box-shadow: inset 0 -3px #061b2a, inset 0 1px #f0d5a031;
+}
+.mission-quiz-web #quizResult[data-outcome="retry"] .quiz-debrief-score { background: #11283b; }
+.mission-quiz-web #quizResult .quiz-result-actions {
+    margin-block-start: .8rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+body.mission-quiz-web.lakbay-theme #quizResult #continueResultButton {
+    width: auto;
+    max-width: 100%;
+    padding-inline: clamp(18px, 4vw, 32px);
+}
+.mission-quiz-web #quizResult[data-outcome="passed"] .quiz-result-highlights > span {
+    color: #ffe8a8;
+    border-color: #af905f;
+    background: #3a3c2b;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult .mission-reward-card.new-expedition-reward {
+    border-color: var(--expedition-brass);
+    background: radial-gradient(ellipse at 15% 0%, #324939, transparent 70%), #142f45;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body.mission-quiz-web:not(.lakbay-reduce-motion) #quizResult[data-fresh-result]:not([hidden]) .quiz-debrief-header > :first-child {
+        animation: student-reveal .18s ease-out both;
+    }
+    body.mission-quiz-web:not(.lakbay-reduce-motion) #quizResult[data-fresh-result]:not([hidden]) .quiz-debrief-score {
+        animation: student-reveal .23s .09s ease-out both;
+    }
+    body.mission-quiz-web:not(.lakbay-reduce-motion) #quizResult[data-fresh-result]:not([hidden]) .new-expedition-reward {
+        animation: expedition-reward-reveal .42s .22s ease-out both;
+    }
+}
+body.mission-quiz-web #quizResult:not([data-fresh-result]) .new-expedition-reward,
+body.mission-quiz-web.lakbay-reduce-motion #quizResult .new-expedition-reward { animation: none; }
+
+@keyframes student-reveal { from { opacity: .8; } to { opacity: 1; } }
+
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-option:not(:disabled, .answer-locked):active {
+    box-shadow: inset 0 2px 0 #081927;
+}
+.mission-quiz-web #quizExpeditionFeedback:is([data-outcome="correct"], [data-outcome="missed"]):not(:empty) {
+    display: flex;
+    align-items: baseline;
+    gap: .55rem;
+}
+.mission-quiz-web #quizExpeditionFeedback[data-outcome]::before {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 1rem;
+    align-self: center;
+    background: currentColor;
+    clip-path: var(--quiz-outcome-shape);
+}
+.mission-quiz-web #quizExpeditionFeedback[data-outcome="correct"] { --quiz-outcome-shape: var(--expedition-check); }
+.mission-quiz-web #quizExpeditionFeedback[data-outcome="missed"] { --quiz-outcome-shape: polygon(20% 8%, 50% 38%, 80% 8%, 92% 20%, 62% 50%, 92% 80%, 80% 92%, 50% 62%, 20% 92%, 8% 80%, 38% 50%, 8% 20%); }
+
+/* Keep the same icon slot when an operation saves, finishes or needs a retry. */
+body.lakbay-theme[data-role="student"] :is(#quizSaveStatus, #quizAnswerSaveStatus, .scene-evidence-saver .lp-status-panel, .display-reward-feedback):is([data-state="saving"], [data-state="saved"], [data-state="retry"], [data-state="error"]):not(:empty, [hidden]) {
+    display: flex;
+    align-items: flex-start;
+    gap: .55rem;
+}
+body.lakbay-theme[data-role="student"] :is(#quizSaveStatus, #quizAnswerSaveStatus, .scene-evidence-saver .lp-status-panel, .display-reward-feedback):is([data-state="saving"], [data-state="saved"], [data-state="retry"], [data-state="error"])::before {
+    content: '';
+    flex: 0 0 1.25rem;
+    height: 1.25rem;
+    margin-block-start: .15em;
+    background: currentColor;
+}
+body.lakbay-theme[data-role="student"] :is(#quizSaveStatus, #quizAnswerSaveStatus, .scene-evidence-saver .lp-status-panel, .display-reward-feedback)[data-state="saving"]::before { mask: url('../assets/icons/lucide/compass.svg') center / contain no-repeat; }
+body.lakbay-theme[data-role="student"] :is(#quizSaveStatus, #quizAnswerSaveStatus, .scene-evidence-saver .lp-status-panel)[data-state="saved"]::before { clip-path: var(--expedition-check); }
+body.lakbay-theme[data-role="student"] :is(#quizSaveStatus, #quizAnswerSaveStatus, .scene-evidence-saver .lp-status-panel, .display-reward-feedback):is([data-state="retry"], [data-state="error"])::before {
+    background: linear-gradient(currentColor, currentColor) center 18% / 16% 46% no-repeat, radial-gradient(circle closest-side, currentColor 99%, transparent) center 80% / 18% 18% no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body.lakbay-theme:not(.lakbay-reduce-motion)[data-role="student"] :is(#quizSaveStatus, #quizAnswerSaveStatus, .scene-evidence-saver .lp-status-panel, .display-reward-feedback)[data-state="saving"]::before {
+        animation: lp-loading-compass 1.7s ease-in-out infinite;
+    }
+}
+
+/* Gallery lighting keeps a reserved frame around full, uncropped artwork. */
+body.discovery-museum-page.lakbay-theme[data-role="student"] :is(.achievement-artifact-icon, .museum-exhibit-visual),
+body.explorer-profile-page.lakbay-theme[data-role="student"] :is(.discovery-wall-card .discovery-wall-authored-icon, #featuredRewardArtifact .featured-artifact-image) {
+    background: var(--expedition-spotlight);
+    box-shadow: inset 0 0 0 1px #d8b87449, inset 0 -4px #0a202a;
+}
+body.discovery-museum-page.lakbay-theme[data-role="student"] .achievement-artifact-icon {
+    height: clamp(164px, 16vw, 214px);
+    min-height: clamp(164px, 16vw, 214px);
+}
+.discovery-museum-page .achievement-artifact-icon .artifact-card-illustration {
+    width: min(90%, 244px);
+    height: calc(100% - 25px);
+    max-height: 190px;
+}
+body.discovery-museum-page.lakbay-theme[data-role="student"] .artifact-card .achievement-badge-content h3 {
+    font-family: var(--lp-font-game);
+    text-wrap: balance;
+}
+body.discovery-museum-page.lakbay-theme[data-role="student"] .artifact-card .discovery-pin-button:not([aria-pressed="true"]) {
+    border-color: #64838a;
+    background: #152f3d;
+    color: #e3eef0;
+}
+.discovery-museum-page .museum-exhibit-visual .artifact-card-illustration { width: min(90%, 280px); max-height: calc(100% - 10px); }
+body.explorer-profile-page.lakbay-theme[data-role="student"] .discovery-wall-card .discovery-wall-authored-icon { height: clamp(98px, 12vw, 132px); }
+.explorer-profile-page #featuredRewardArtifact .featured-artifact-image {
+    width: clamp(72px, 10vw, 104px);
+    height: clamp(66px, 8vw, 88px);
+    max-width: 42%;
+}
+body.lakbay-theme[data-role="student"] :is(.artifact-card-actions, .museum-exhibit, .discovery-wall-card) .discovery-pin-button[aria-pressed="true"] {
+    border-color: #d6b877;
+    background: #364537;
+    color: #fff0c6;
+    box-shadow: inset 3px 0 #d6b877;
+}
+
+/* The next mission is the dashboard's strongest visual anchor. */
+body.student-headquarters.lakbay-theme[data-role="student"] .welcome-section {
+    min-height: 0;
+    padding: clamp(16px, 2vw, 24px);
+    gap: clamp(12px, 2vw, 22px);
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .welcome-section .player-progress-card { padding: .8rem; }
+body.student-headquarters.student-home-page.lakbay-theme[data-role="student"] .welcome-section .player-progress-card #studentLevel {
+    font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+    letter-spacing: -.025em;
+}
+.student-headquarters .player-progress-card .hq-xp-meter { margin-block-start: .55rem; }
+body.student-headquarters.lakbay-theme[data-role="student"] .dashboard-content .journey-quest-card {
+    border-color: #a08a5f;
+    background: var(--hq-woven-edge) top / 100% 3px no-repeat,
+        radial-gradient(ellipse at 88% 7%, #2b5455, transparent 64%), #122c3d;
+    box-shadow: 0 5px 0 var(--expedition-depth), 0 16px 28px #040f224d;
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .journey-quest-header h2 {
+    font: 750 clamp(1.35rem, 2vw, 1.85rem)/1.25 var(--lp-font-game);
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .journey-quest-header { text-align: start; }
+body.student-headquarters.lakbay-theme[data-role="student"] #newJourneyState .journey-action-button {
+    background: linear-gradient(165deg, #f8dfa0, #e4b96b), #edca83;
+    border-color: #f5d799;
+    color: #142b37;
+    box-shadow: inset 0 -3px #986a35a0, 0 3px 0 var(--expedition-depth);
+}
+.student-headquarters .hq-current-art {
+    padding: .45rem;
+    border-color: #789287;
+    background: var(--expedition-spotlight);
+    box-shadow: inset 0 0 0 1px #e0c3854d;
+}
+.student-headquarters .hq-current-art .hq-mission-illustration[src$=".svg"] {
+    aspect-ratio: 16 / 10;
+    object-fit: contain;
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .dashboard-content .stat-card[data-record] {
+    min-height: 0;
+    padding-block: .65rem;
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .home-side-quests .home-daily-card { padding: clamp(14px, 2vw, 18px); }
+@media (max-width: 650px) {
+    body.student-headquarters.lakbay-theme[data-role="student"] .welcome-section .welcome-text { padding-block-end: 0; }
+    body.student-headquarters.lakbay-theme[data-role="student"] .welcome-section .welcome-text p { font-size: .875rem; line-height: 1.6; }
+    body.student-headquarters.lakbay-theme[data-role="student"] .welcome-section .player-progress-heading { margin-block-end: 0; gap: .5rem; }
+    .student-headquarters .player-progress-heading .hq-level-crest { width: 32px; height: 32px; }
+    .student-headquarters .player-progress-heading .hq-level-crest .interface-icon { width: 19px; height: 19px; }
+}
+@media (min-width: 385px) and (max-width: 700px) {
+    body.student-headquarters.lakbay-theme[data-role="student"] .player-progress-card .player-progress-content {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: center;
+        gap: .5rem .75rem;
+    }
+    .student-headquarters .player-progress-card .hq-xp-meter { margin: 0; }
+    body.student-headquarters.lakbay-theme[data-role="student"] .player-progress-card .next-explorer-reward {
+        grid-column: 1 / -1;
+        margin-block-start: 0;
+    }
+}
+
+/* Daily question and result share the mission quiz's answer and reward treatments. */
+body.student-headquarters.lakbay-theme[data-role="student"] .daily-modal { border-color: #ac9360; }
+body.student-headquarters.lakbay-theme[data-role="student"] .daily-modal-header {
+    background: var(--expedition-contours), linear-gradient(120deg, #27494a, #132c43 75%), #132c43;
+    border-block-end-color: #827153;
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .daily-modal-icon .interface-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    color: #163044;
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .daily-modal .daily-question-number {
+    border: 1px solid #a88d5a;
+    background: #173346;
+    color: #ffe0a0;
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .daily-modal-content :is(.daily-challenge-question, .daily-challenge-option) { overflow-wrap: anywhere; }
+body.student-headquarters.lakbay-theme[data-role="student"] .daily-modal-content .daily-challenge-question { text-wrap: pretty; }
+body.student-headquarters.lakbay-theme[data-role="student"] .daily-modal-content .daily-option-letter {
+    border: 1px solid #8d794c;
+    border-radius: 6px 10px 6px 10px;
+    box-shadow: 0 2px 0 var(--expedition-depth);
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .daily-modal-content .daily-challenge-option.selected:not(:disabled, .correct, .incorrect) {
+    border-color: var(--expedition-brass);
+    box-shadow: inset 3px 0 var(--expedition-brass), 0 2px 0 var(--expedition-depth);
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .daily-modal :is(.daily-modal-reward, .daily-complete-rewards strong) {
+    border: 1px solid #947b50;
+    border-radius: 6px 12px 6px 12px;
+    background: #263c3b;
+}
+body.student-headquarters.lakbay-theme[data-role="student"] #dailyChallengeCompleted:not([hidden]) {
+    background: var(--expedition-contours), radial-gradient(ellipse at top, #2d544a, transparent 74%), #112c42;
+}
+
+/* Journal layouts keep their existing views and put the clue and lesson link first visually. */
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card {
+    border-inline-start: 3px solid #789b92;
+    box-shadow: 0 3px 0 var(--expedition-depth);
+}
+body.explorer-journal-page.lakbay-theme[data-role="student"] [data-view="cards"] .evidence-journal-card {
+    background: repeating-linear-gradient(0deg, transparent 0 24px, #bfd8c708 25px 26px),
+        linear-gradient(140deg, #1b3b47, #132d3f 82%), #132d3f;
+}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card h3 {
+    margin-block-start: 0;
+    color: #edf4f3;
+    font-family: var(--lp-font-game);
+    text-wrap: pretty;
+}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card .journal-clue-context { margin-block: 0 .6rem; }
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card .journal-clue-context small {
+    color: #bcd0d4;
+}
+body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-card > a.text-button {
+    min-height: 44px;
+    border-radius: 6px 10px 6px 10px;
+    background: #ebc987;
+    color: #142b37;
+    box-shadow: inset 0 -2px #a67f44;
+}
+@media (max-width: 600px) {
+    body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-controls {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .65rem;
+    }
+    body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-controls label:first-child { grid-column: 1 / -1; }
+    body.explorer-journal-page.lakbay-theme[data-role="student"] .evidence-journal-controls :is(input, select) { min-width: 0; min-height: 44px; }
+    body.explorer-journal-page.lakbay-theme[data-role="student"] .journal-results-bar .journal-view-switch {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 100%;
+    }
+    .explorer-journal-page .journal-view-switch button { min-width: 0; padding-inline: .3rem; overflow-wrap: anywhere; }
+}
+
+body.lakbay-theme .home-optional-setup:not([hidden]) {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .8rem;
+    margin: 1rem 0 1.25rem;
+    padding: .85rem 1rem;
+    border: 1px solid var(--lp-border, #456373);
+    border-radius: 14px;
+    background: rgb(165 201 210 / 6%);
+}
+.home-optional-setup .home-setup-icon {
+    flex: 0 0 auto;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--lp-gold, #efce83);
+}
+.home-optional-setup h3 { margin: 0; font-size: 1rem; }
+.home-optional-setup p { margin: .15rem 0 0; color: var(--lp-muted); }
+.home-optional-setup .student-setup-actions { margin: 0 0 0 auto; gap: .4rem; }
+@media (max-width: 480px) {
+    .home-optional-setup .student-setup-actions { margin-inline-start: 0; }
+}
+
+/* One visual language for the mission handoff, briefing and debrief. */
+body.lakbay-theme[data-role="student"] .mission-stage-markers {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .3rem .65rem;
+    list-style: none;
+    margin: .75rem 0 0;
+    padding: 0;
+    color: #c6dbe2;
+    text-align: start;
+    font-size: .8125rem;
+    line-height: 1.4;
+}
+body.lakbay-theme[data-role="student"] .mission-stage-markers li {
+    display: inline-flex;
+    align-items: center;
+    gap: .38rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.mission-stage-markers li::before {
+    content: '';
+    flex: 0 0 .38rem;
+    block-size: .38rem;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+}
+.mission-stage-markers li[aria-current="step"] {
+    padding: .2rem .5rem;
+    border: 1px solid #a58857;
+    border-radius: 6px;
+    color: #ffe4a4;
+    background: #192f3a;
+    font-weight: 750;
+}
+.mission-stage-markers li[aria-current="step"]::before { background: currentColor; }
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:not(:has(#quizMissionBriefing)) .mission-stage-markers--briefing {
+    display: none;
+}
+
+body.student-headquarters.lakbay-theme[data-role="student"] .journey-quest-card .hq-current-layout {
+    align-items: center;
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .journey-quest-card .hq-current-art:not(:empty) {
+    padding: clamp(.35rem, 1vw, .65rem);
+    border-color: #b09969;
+    border-radius: 8px 22px 8px 22px;
+    overflow: hidden;
+    background: var(--expedition-spotlight);
+    box-shadow: 0 5px 0 #091f2c, inset 0 0 0 2px #e5c48733;
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .hq-current-art .hq-chapter-illustration {
+    border-radius: 5px 16px 5px 16px;
+}
+body.student-headquarters.lakbay-theme[data-role="student"] .hq-current-art .hq-mission-illustration[src$=".svg"] {
+    padding: clamp(4px, 1vw, 12px);
+    box-sizing: border-box;
+}
+
+body.story-web-page.lakbay-theme[data-role="student"] #storyCompleteSection .lesson-finish-next {
+    border-block-start-color: #cfa969;
+}
+body.story-web-page.lakbay-theme[data-role="student"] #storyCompleteSection { scroll-margin-block-start: 5.5rem; }
+body.story-web-page.lakbay-theme[data-role="student"] #storyCompleteSection .lesson-quiz-briefing h3 {
+    margin-block: 0 .65rem;
+    text-align: start;
+}
+
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#quizMissionBriefing) .quiz-header {
+    margin-block-end: 0;
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+    box-shadow: none;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizMissionBriefing {
+    margin-block-start: 0;
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+    border-block-start: 1px solid #607f82;
+    background: linear-gradient(140deg,#1b3c46,#142f43 70%);
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizMissionBriefing .briefing-actions {
+    align-items: center;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult[data-outcome="passed"] .quiz-result-icon {
+    color: #ffe6ae;
+    background: linear-gradient(150deg, #61523b, #25433f 78%);
+    box-shadow: 0 0 0 4px #dcc4811f, 0 0 0 1px #d7b779 inset;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult[data-outcome="retry"] .quiz-result-icon {
+    color: #ffdfa1;
+    background: #364b49;
+    box-shadow: 0 0 0 1px #ad9369 inset;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult #quizSaveStatus[data-state="saved"] {
+    display: flex;
+    align-items: baseline;
+    gap: .45rem;
+    margin-block: .75rem 0;
+    padding: .48rem .7rem;
+    border: 1px solid #6a9b89;
+    border-radius: 8px;
+    color: #d5f2e4;
+    background: #173c3c;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult #quizSaveStatus[hidden] { display: none; }
+
+@media (max-width: 600px) {
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#quizMissionBriefing) .quiz-header,
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #quizMissionBriefing {
+        padding: clamp(12px, 4vw, 20px);
+    }
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#quizMissionBriefing) .mission-trial-note {
+        margin-block-start: .65rem;
+        padding: .6rem;
+        gap: .55rem;
+    }
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #quizMissionBriefing .briefing-actions {
+        align-items: stretch;
+    }
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult {
+        padding: 0;
+        border: 0;
+        background: none;
+        box-shadow: none;
+    }
+}
+@media (forced-colors: active) {
+    .mission-stage-markers li[aria-current="step"] { outline: 1px solid Highlight; }
+}
+
+/* Chapter trail. Selectable milestones and locked milestones read differently. */
+body.chapter-overview-page.lakbay-theme[data-role="student"] #missionPath {
+    gap: 9px;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] #missionPath .mission-path-item {
+    position: relative;
+    align-items: center;
+    min-height: 58px;
+    border-inline-start: 3px solid #4f6d7b;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] #missionPath .mission-path-item.completed {
+    border-inline-start-color: #86b69e;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] #missionPath .mission-path-item.current {
+    border-inline-start-color: #f0cc85;
+    box-shadow: 0 3px 0 #091d2b, inset 0 1px #f6deb638;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] #missionPath .mission-path-item[role="button"] {
+    padding-inline-end: 2rem;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] #missionPath .mission-path-item[role="button"]::after {
+    content: '';
+    position: absolute;
+    inset: 50% .9rem auto auto;
+    width: .45rem;
+    height: .45rem;
+    border: solid #b6cbd5;
+    border-width: 2px 2px 0 0;
+    transform: translateY(-50%) rotate(45deg);
+    pointer-events: none;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] #missionPath .mission-path-item.current::after {
+    border-color: #ffe3a5;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] #selectedMissionArtwork {
+    border-color: #a38e66;
+    box-shadow: inset 0 0 0 1px #e5c58726, 0 3px 0 #0b2231;
+}
+
+/* The guided lesson already has Back and Continue. Hide the fallback row once it loads. */
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-content .story-actions {
+    display: none;
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .lesson-step-count {
+    width: fit-content;
+    max-width: 100%;
+    padding: .3rem .65rem;
+    margin-block: .55rem;
+    border: 1px solid #6d8b86;
+    border-inline-start: 3px solid #d9bd7e;
+    border-radius: 6px 10px 6px 10px;
+    background: #183444;
+    color: #dfebe7;
+    scroll-margin-block-start: 5.5rem;
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card.lesson-reading #storyText {
+    border-inline-start: 3px solid #b58c53;
+    box-shadow: 0 3px 0 #091e2980;
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-page .lesson-flow {
+    margin-block-start: 1rem;
+    padding-block-start: .8rem;
+    border-block-start: 1px solid #52777c;
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-page .lesson-flow button:not(.begin-mission-button) {
+    color: #dae6e8;
+    background: #172f44;
+    border-color: #617e8c;
+}
+
+/* Active questions keep the lesson title and requirements in a short context panel. */
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#questionCard:not([hidden])):not(:has(#quizResumePanel)) .quiz-header {
+    padding: clamp(12px, 2.4vw, 20px);
+    margin-block-end: .75rem;
+    border-radius: 12px;
+    background: linear-gradient(120deg, #1d4147, #153047 78%);
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#questionCard:not([hidden])):not(:has(#quizResumePanel)) .quiz-header h1 {
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    line-height: 1.35;
+    margin-block: .2rem .4rem;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#questionCard:not([hidden])):not(:has(#quizResumePanel)) .mission-trial-note {
+    margin-block-start: .65rem;
+    padding: .55rem .75rem;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #questionCard .quiz-review-tools {
+    padding-block: .45rem;
+    border-block-end: 1px solid #4e7082;
+    margin-block-end: .7rem;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #questionCard .quiz-actions {
+    padding-block-start: .85rem;
+    border-block-start: 1px solid #4e7082;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizOptions .quiz-option-text {
+    text-align: start;
+    text-wrap: pretty;
+}
+@media (max-width: 600px) {
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#questionCard:not([hidden])):not(:has(#quizResumePanel)) .quiz-header {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        border: 0;
+        clip-path: inset(50%);
+    }
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #questionCard {
+        padding-inline: clamp(12px, 4vw, 20px);
+    }
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #questionCard .quiz-actions > button:not([hidden]) {
+        min-height: 44px;
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+}
+
+/* Let the existing scene artwork carry the chapter and reading surfaces. */
+body.chapter-overview-page.lakbay-theme[data-role="student"] .mission-chapter-header[data-expedition-era] {
+    background: linear-gradient(125deg, #204744, #10293d 70%);
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] .chapter-header-art img {
+    opacity: 1;
+    object-position: center 43%;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] .chapter-header-art::after {
+    background: linear-gradient(90deg, #10293d, transparent 26%);
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] .chapter-header-copy h1 {
+    text-wrap: balance;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] .chapter-expedition-progress progress {
+    height: 6px;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] .chapter-expedition-progress progress::-webkit-progress-value {
+    background: linear-gradient(90deg, #79a98e, #e6c687);
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] #selectedMissionArtwork[data-artwork="lesson"] {
+    box-shadow: 0 0 0 3px #173344, 0 0 0 4px #728d8050;
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] #selectedMissionArtwork[data-artwork="lesson"]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 -20px 24px -24px #061b2b;
+    pointer-events: none;
+}
+@media (min-width: 851px) {
+    body.chapter-overview-page.lakbay-theme[data-role="student"] .mission-chapter-header {
+        grid-template-columns: minmax(0, 1.2fr) minmax(240px, 1fr);
+    }
+}
+@media (max-width: 550px) {
+    body.chapter-overview-page.lakbay-theme[data-role="student"] .chapter-header-art::after {
+        background: linear-gradient(180deg, #10293d, transparent 48%);
+    }
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card .story-visual {
+    border-color: #8dad9b;
+    background: #102a3b;
+    box-shadow: 0 4px 0 #091d2b, 0 0 0 4px #8dad9b16;
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card .story-visual-caption {
+    padding: .85rem 1rem;
+    border-block-start: 2px solid var(--era-trim, #c7a872);
+    color: #e5edec;
+    background: #14313f;
+    text-align: start;
+}
+body.story-web-page.simple-lesson.lakbay-theme.paper-reading:not(.lakbay-high-contrast)[data-role="student"] .story-reading-card.lesson-reading #storyText {
+    border-color: #b89768;
+    background: radial-gradient(ellipse at top left, #fff1cc, transparent 80%), #ebd1a1;
+    box-shadow: 0 3px 0 #091d2b9c, inset 0 1px #fff3d1;
+}
+/* Use shape and contrast to separate selected answers from feedback states. */
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizOptions .quiz-option.selected:not(.correct, .incorrect, .quiz-option-eliminated) .quiz-option-letter {
+    color: #142a38 !important;
+    border-color: #ffe4a0;
+    background: linear-gradient(145deg, #ffe7a8, #e2b86c);
+    box-shadow: 0 2px 0 #112330;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #missionCheckpoints .mission-checkpoint.current {
+    background: linear-gradient(145deg, #4b503b, #233744 85%);
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizProgressFill {
+    background: linear-gradient(90deg, #84b29b, #e5c781);
+}
+@media (min-width: 1024px) {
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#questionCard:not([hidden])):not(:has(#quizResumePanel)) .quiz-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+        align-items: center;
+        column-gap: 1.25rem;
+    }
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#questionCard:not([hidden])):not(:has(#quizResumePanel)) .quiz-header .mission-trial-note {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+        align-self: stretch;
+        margin: 0;
+    }
+}
+@media (forced-colors: active) {
+    .mission-quiz-web #quizOptions .quiz-option.selected .quiz-option-letter { outline: 2px solid Highlight; }
+}
+
+body.chapter-overview-page.lakbay-theme[data-role="student"] .mission-briefing-heading:has(#selectedMissionArtwork[data-shared-artwork]) {
+    grid-template-columns: minmax(0, 1fr);
+}
+body.chapter-overview-page.lakbay-theme[data-role="student"] #selectedMissionArtwork[data-shared-artwork] {
+    display: none;
+}
+@media (max-width: 550px) {
+    body.chapter-overview-page.lakbay-theme[data-role="student"] .mission-chapter-header .chapter-header-art[data-scene="true"] {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        min-height: 0;
+        max-height: none;
+    }
+    body.chapter-overview-page.lakbay-theme[data-role="student"] .chapter-header-art[data-scene="true"]::after {
+        background: linear-gradient(0deg, #10293d 8%, #10293deb 43%, #10293d8c 100%),
+            linear-gradient(90deg, #10293dcc, transparent 95%);
+    }
+    body.chapter-overview-page.lakbay-theme[data-role="student"] .chapter-header-copy {
+        position: relative;
+        z-index: 1;
+        padding: .85rem 1rem;
+    }
+    body.chapter-overview-page.lakbay-theme[data-role="student"] .mission-chapter-header:has(.chapter-art-caption) .chapter-header-copy {
+        padding-block-end: 3.2rem;
+    }
+    body.chapter-overview-page.lakbay-theme[data-role="student"] .mission-chapter-header .chapter-expedition-progress progress {
+        background: #10293d;
+    }
+}
+
+/* Keep scene information and reading controls together above the artwork. */
+body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    align-items: start;
+    gap: .5rem;
+    margin-block: .6rem;
+    padding: .45rem;
+    border: 1px solid #496777;
+    border-radius: 12px;
+    background: #102b3c;
+}
+body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar .story-progress {
+    min-width: 0;
+    min-height: 44px;
+    align-content: center;
+    margin: 0;
+    padding: .4rem .55rem;
+    border: 0;
+    background: transparent;
+}
+body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar .lesson-toolkit {
+    margin: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .4rem;
+}
+body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar .lesson-toolkit summary {
+    min-height: 44px;
+    padding: .4rem .6rem;
+    overflow-wrap: anywhere;
+}
+body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar .lesson-toolkit:has(> details[open]) {
+    grid-column: 1 / -1;
+}
+body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar .lesson-toolkit > details[open] {
+    grid-column: 1 / -1;
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card.lesson-field-desk {
+    background: linear-gradient(112deg, #183b42, #132c3e 90%);
+}
+@media (max-width: 640px) {
+    body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar {
+        grid-template-columns: minmax(0, 1fr);
+        gap: .2rem;
+    }
+    body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar .story-progress {
+        min-height: 0;
+    }
+}
+
+/* Numbered checkpoints carry progress when the quiz has individual questions. */
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-progress-card:has(.mission-checkpoint) .quiz-progress-track {
+    display: none;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-progress-card:has(.mission-checkpoint) #missionCheckpoints {
+    margin-block-start: .5rem;
+    padding-block-start: .5rem;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] .quiz-status-line .quiz-expedition-tools:not([hidden]) {
+    border-color: transparent;
+    background: transparent;
+}
+
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult[data-outcome="passed"] .quiz-result-icon {
+    position: relative;
+    outline: 1px dashed #dfbf7e;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px #42594b, inset 0 0 0 1px #e6c582;
+    color: #fff0c4;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult[data-outcome="retry"] .quiz-debrief-header {
+    background: linear-gradient(135deg, #1d3f49, #142c40 75%);
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult[data-outcome="retry"] .result-topic-route {
+    border-inline-start: 3px solid #8fb7a5;
+    background: #15333f;
+}
+
+/* Story reading room and mission quiz share the student workspace finishes. */
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] #storyContent .story-header {
+    padding: clamp(16px, 3vw, 27px);
+    border: 1px solid var(--student-brass-line);
+    border-radius: 16px;
+    background:
+        var(--student-woven-edge) top / 100% 3px no-repeat,
+        linear-gradient(90deg, #102937 8%, #102937f0 47%, #10293772 100%),
+        url("../assets/landing/journey-finale.webp") center 46% / cover, #142c38;
+    box-shadow: var(--student-illustrated-depth);
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] #storyContent #storyMissionTitle {
+    color: var(--student-ivory);
+    font-family: var(--student-editorial);
+    font-size: clamp(1.7rem, 3.5vw, 2.65rem);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -.03em;
+}
+body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar {
+    border-color: #a68d617a;
+    background: linear-gradient(120deg, #203c49, #122b36 75%), #122b36;
+    box-shadow: inset 0 1px #ffedc216;
+}
+body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar details[open] {
+    border-color: #d9b779;
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card #sceneTitle {
+    font-family: var(--student-editorial);
+    font-weight: 600;
+    letter-spacing: -.02em;
+}
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card .story-visual {
+    border-color: #bd9e688f;
+    box-shadow: 0 5px 0 #091d2b, 0 0 0 3px #d9bb7e1a;
+}
+body.story-web-page.simple-lesson.lakbay-theme.paper-reading:not(.lakbay-high-contrast)[data-role="student"] .story-reading-card.lesson-reading #storyText {
+    background: radial-gradient(ellipse at 8% 0%, #fff9e9, transparent 78%), #f0e4cb;
+    border-inline-start-color: #ae814a;
+}
+
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent :is(.quiz-mission-briefing, #questionCard) {
+    border-color: #bd9e687d;
+    background-color: #132d3a;
+    background-image: radial-gradient(ellipse at 100% 0%, #254852, transparent 65%);
+    box-shadow: var(--student-panel-depth);
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#quizMissionBriefing) .quiz-header {
+    border-color: var(--student-brass-line);
+    background:
+        var(--student-woven-edge) top / 100% 3px no-repeat,
+        linear-gradient(90deg, #102937 7%, #102937ec 45%, #1029377d 100%),
+        url("../assets/landing/hero-coastal-dawn.webp") center 45% / cover, #142c38;
+    box-shadow: inset 0 0 0 4px #e3c18616;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#quizMissionBriefing) .quiz-header #quizTitle {
+    color: var(--student-ivory);
+    font-family: var(--student-editorial);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -.03em;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent #questionCard {
+    background:
+        var(--student-woven-edge) top / 100% 3px no-repeat,
+        radial-gradient(ellipse at 90% 0%, #254852, transparent 62%), #132d3a;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #questionCard #questionNumber {
+    width: fit-content;
+    max-width: 100%;
+    padding: .3rem .65rem;
+    border: 1px solid #d3ad7270;
+    border-radius: 6px;
+    background: #233d45;
+    color: #ffe5ad;
+    overflow-wrap: anywhere;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #questionCard #questionText {
+    font-family: var(--student-editorial);
+    font-weight: 600;
+    letter-spacing: -.015em;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizOptions .quiz-option:not(.correct, .incorrect, .quiz-option-eliminated) {
+    background-color: #142d3d;
+    background-image: linear-gradient(125deg, #1c3c47, #142d3d 76%);
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizOptions .quiz-option.selected:not(.correct, .incorrect, .quiz-option-eliminated) {
+    border-color: #f1cc87;
+    background-color: #263f43;
+    background-image: linear-gradient(125deg, #3b4a40, #213b44 80%);
+    box-shadow: inset 3px 0 #eac485, 0 3px 0 #091b28;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult .quiz-debrief-header {
+    border-block-start-color: #d4b87c;
+    box-shadow: inset 0 1px #ffe7b226;
+}
+body.mission-quiz-web.lakbay-theme[data-role="student"] #quizResult #quizResultTitle {
+    font-family: var(--student-editorial);
+    font-weight: 600;
+    letter-spacing: -.02em;
+}
+
+@media (max-width: 600px) {
+    body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] #storyContent .story-header {
+        background-image:
+            var(--student-woven-edge),
+            linear-gradient(90deg, #102937f7, #102937ce 70%, #102937ae),
+            url("../assets/landing/journey-finale.webp");
+    }
+    body.mission-quiz-web.lakbay-theme[data-role="student"] #quizContent:has(#quizMissionBriefing) .quiz-header {
+        background-image:
+            var(--student-woven-edge),
+            linear-gradient(90deg, #102937f7, #102937ce 70%, #102937ae),
+            url("../assets/landing/hero-coastal-dawn-mobile.webp");
+    }
+}

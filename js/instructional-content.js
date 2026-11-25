@@ -1,4 +1,5 @@
 import {refreshInstructionalContent} from "./instructional-snapshot.js";
+import { reloadPage } from './route-navigation.js';
 export {instructionalSnapshot,refreshInstructionalContent} from "./instructional-snapshot.js";
 // Teachers' edits appear after two minutes, or immediately after this refresh.
 
@@ -10,7 +11,7 @@ if (heading) {
     refresh.textContent = "Refresh Learning Content";
     refresh.addEventListener("click", () => {
         refreshInstructionalContent();
-        window.location.reload();
+        reloadPage();
     });
     heading.after(refresh);
 }

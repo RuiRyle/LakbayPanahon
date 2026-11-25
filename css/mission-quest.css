@@ -8,12 +8,12 @@
 .mission-bayani img { flex:none; width:100px; height:104px; object-fit:contain; }
 .mission-bayani strong { color:#f4ce83; font-size:1.1rem; }
 .mission-bayani p { margin:6px 0 0; line-height:1.6; }
-.mission-bayani button { margin-left:auto; flex:none; background:transparent; color:#c9ded5; border:1px solid #547c70; border-radius:12px; padding:10px; min-height:44px; cursor:pointer; }
+.mission-bayani button { margin-left:auto; flex:none; background:transparent; color:#c9ded5; border:1px solid #547c70; border-radius:12px; padding:10px; min-height:44px; cursor:var(--lakbay-cursor-hand, pointer); }
 .mission-bayani.is-ready { border-color:#acd474; }
 .mission-bayani.celebrate:not(.motion-paused) img { animation:quest-cheer .65s ease-in-out 2; }
 .mission-quest-steps { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
 .mission-quest-steps[hidden] { display:none; }
-.mission-quest-steps button { min-height:48px; padding:10px 18px; border:2px solid #3f6473; border-bottom-width:5px; border-radius:16px; background:#19374a; color:#e3ece7; font:inherit; font-weight:750; cursor:pointer; }
+.mission-quest-steps button { min-height:48px; padding:10px 18px; border:2px solid #3f6473; border-bottom-width:5px; border-radius:16px; background:#19374a; color:#e3ece7; font:inherit; font-weight:750; cursor:var(--lakbay-cursor-hand, pointer); }
 .mission-quest-steps button[aria-current] { background:#dfb464; border-color:#aa7939; color:#30251b; }
 .lakbay-theme .story-reading-card { border:2px solid #34566a; border-radius:26px; overflow:hidden; background:#112a3c; }
 .lakbay-theme .story-visual { max-height:300px; background:#173546; }
@@ -46,7 +46,7 @@ body.simple-lesson .story-progress { padding:12px 16px; margin-bottom:14px; }
 body.simple-lesson .story-scene-trail { display:none; }
 body.simple-lesson .story-progress-toolbar { justify-content:flex-end; }
 .lesson-options { font-size:.8rem; color:#b5c8cc; }
-.lesson-options summary,.mascot-options summary,.lesson-journal-options summary { cursor:pointer; padding:10px 0; min-height:44px; }
+.lesson-options summary,.mascot-options summary,.lesson-journal-options summary { cursor:var(--lakbay-cursor-hand, pointer); padding:10px 0; min-height:44px; }
 .lesson-options .story-progress-actions { margin:8px 0; flex-wrap:wrap; }
 body.simple-lesson .mission-bayani { border:0; background:transparent; padding:0; margin:12px 0; gap:12px; }
 body.simple-lesson .mission-bayani img { width:56px; height:60px; }
@@ -56,7 +56,7 @@ body.simple-lesson .mission-bayani p { font-size:.9rem; margin:0; }
 .mascot-options button { display:block; }
 .lesson-step-count { color:#afc9cf; font-size:.85rem; margin:12px 0; scroll-margin-top:20px; }
 body.simple-lesson .story-reading-card { border:1px solid #365369; border-radius:20px; }
-body.simple-lesson .story-reading-card:not(.lesson-reading) .story-visual { display:none; }
+body.simple-lesson .story-reading-card:not(.lesson-reading,.lesson-understanding) .story-visual { display:none; }
 body.simple-lesson .story-visual,body.simple-lesson .story-scene-image { max-height:210px; }
 body.simple-lesson .story-reading-card:not(.lesson-reading) :is(#sceneLabel,#sceneTitle,#storySceneContext) { display:none; }
 body.simple-lesson .story-reading-content { padding:clamp(18px,4vw,28px); }
@@ -85,3 +85,560 @@ body.simple-lesson.lakbay-theme .story-progress-toolbar { order:1; width:auto; m
 body.simple-lesson.lakbay-theme .story-progress-info { order:0; margin:0; align-self:center; gap:12px; }
 body.simple-lesson.lakbay-theme .story-progress-info>span { display:none; }
 body.simple-lesson.lakbay-theme .story-progress-track { order:2; flex-basis:100%; }
+
+/* Find Our Island Home pilot. The optional map does not mark lesson clues complete. */
+.lesson-island-pilot:not([hidden]) { margin:8px 0 16px; display:grid; gap:8px; }
+.lesson-island-question {
+    margin:0; padding:12px 14px; color:#ffdfa0; font-weight:750;
+    border-inline-start:3px solid #dbba76; border-radius:4px 12px 4px 12px; background:#102a3e;
+}
+.lesson-island-hint { border:1px solid #597d78; border-radius:4px 12px 4px 12px; background:#10283a; }
+.lesson-map-evidence > div {
+    display: grid;
+    gap: 10px;
+    padding: 0 clamp(12px, 3vw, 20px) 16px;
+}
+.lesson-map-evidence {
+    border-color: #78978d;
+    background: linear-gradient(145deg, #1c3e44, #10283a 70%);
+}
+.lesson-map-evidence > div { padding-block-start: 8px; }
+.lesson-map-evidence .lesson-map-briefing .lesson-island-question {
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+.lesson-map-briefing {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-block: 8px 12px;
+    border-block-end: 1px solid #658880;
+}
+.lesson-map-briefing img { flex: none; }
+.lesson-map-briefing h3 {
+    margin: 0;
+    color: #edf3f1;
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    line-height: 1.4;
+}
+.lesson-map-answers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+    gap: 8px;
+}
+.lesson-map-evidence .lesson-map-answers button {
+    min-height: 48px;
+    padding: 8px 12px;
+    border: 1px solid #829c9d;
+    border-radius: 8px;
+    background: #162f44;
+    color: #fff1cc;
+    font: inherit;
+    font-weight: 700;
+    cursor: var(--lakbay-cursor-hand, pointer);
+}
+.lesson-map-evidence .lesson-map-answers button[aria-pressed=true] {
+    background: #e7bf74;
+    color: #10283a;
+}
+.lesson-map-evidence .lesson-map-coaching:empty { margin: 0; padding: 0; }
+.lesson-map-evidence .lesson-map-coaching:not(:empty) {
+    margin: 0;
+    padding: 10px;
+    border-inline-start: 3px solid #e7bf74;
+    background: #183e43;
+    color: #edf3f1;
+}
+.lesson-island-pilot summary { cursor:var(--lakbay-cursor-hand, pointer); padding:10px 12px; min-height:44px; color:#f2d293; font-weight:700; }
+.lesson-island-hint p,.lesson-island-clue { margin:0; padding:8px 12px 12px; color:#d3e6e6; }
+.lesson-island-map-frame { display:contents; }
+body.simple-lesson .lesson-expedition .story-visual { max-height:none; }
+body.simple-lesson .lesson-expedition .story-scene-image { max-height:clamp(210px,45vw,360px); }
+body.simple-lesson .lesson-expedition .lesson-image-open {
+    position:static; display:block; margin:8px 12px 8px auto;
+}
+body.simple-lesson .lesson-expedition .lesson-image-open[hidden] { display:none; }
+.lesson-island-map-frame.is-interactive-map:has(img[src$="/prologue-island-map.svg"]:not([hidden])) {
+    display:block; position:relative; width:min(100%,550px); margin-inline:auto;
+}
+body.simple-lesson .lesson-expedition .is-interactive-map img[src$="/prologue-island-map.svg"]:not([hidden]) {
+    display:block; width:100%; height:auto; max-height:none;
+}
+.lesson-island-map-frame:not(:has(img[src$="/prologue-island-map.svg"]:not([hidden]))) button { display:none; }
+.lesson-island-map-frame button {
+    position:absolute; translate:-50% -50%; width:44px; height:44px; padding:0; border:0; border-radius:50%; background:transparent; cursor:var(--lakbay-cursor-hand, pointer);
+}
+.lesson-island-map-frame button::after {
+    content:''; display:block; width:15px; height:15px; margin:auto; border:2px solid #153a50;
+    border-radius:50%; background:#ffda8a; box-shadow:0 0 0 2px #fff4d5;
+}
+.lesson-island-map-frame button[aria-pressed=true]::after { background:#83d0bd; }
+.lesson-island-map-frame:is(.is-evidence-revealed, .is-evidence-hint):has(img[src$="/prologue-island-map.svg"]:not([hidden]))::after {
+    content: '';
+    position: absolute;
+    inset: 5% 5.6% auto auto;
+    width: 6%;
+    height: 12%;
+    border: 2px solid #5b4319;
+    border-radius: 8px;
+    box-shadow: 0 0 0 2px #ffda8a;
+    pointer-events: none;
+    animation: lesson-evidence-trace .42s ease-out both;
+}
+.lesson-island-map-frame.is-evidence-revealed button[aria-label="Luzon"]::after {
+    background: #83d0bd;
+    box-shadow: 0 0 0 3px #153a50, 0 0 0 6px #ffda8a;
+    animation: lesson-evidence-mark .32s .42s ease-out both;
+}
+.lesson-island-map-frame.is-evidence-revealed button:is([aria-label="Visayas"], [aria-label="Mindanao"])::after {
+    box-shadow: 0 0 0 2px #153a50, 0 0 0 4px #b5d4dc;
+    animation: lesson-evidence-mark .32s .58s ease-out both;
+}
+.lesson-island-map-frame.is-evidence-revealed button[aria-label="Mindanao"]::after { animation-delay: .72s; }
+@keyframes lesson-evidence-trace {
+    from { clip-path: inset(100% 0 0); }
+    to { clip-path: inset(0); }
+}
+@keyframes lesson-evidence-mark {
+    from { opacity: .3; transform: scale(.78); }
+    to { opacity: 1; transform: none; }
+}
+.lakbay-reduce-motion .is-evidence-revealed::after,
+.lakbay-reduce-motion .is-evidence-hint::after,
+.lakbay-reduce-motion .is-evidence-revealed button::after { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+    .lesson-island-map-frame.is-evidence-revealed::after,
+    .lesson-island-map-frame.is-evidence-hint::after,
+    .lesson-island-map-frame.is-evidence-revealed button::after { animation: none !important; }
+}
+.lesson-island-map-frame button:focus-visible { outline:3px solid #122b40; outline-offset:2px; }
+.lesson-island-choices { display:flex; flex-wrap:wrap; gap:8px; padding:10px 12px; }
+.lesson-island-choices button {
+    min-height:44px; padding:5px 12px; border:1px solid #658c86; border-radius:8px;
+    background:#173d49; color:#eff7f4; font:inherit; cursor:var(--lakbay-cursor-hand, pointer);
+}
+.lesson-island-choices button[aria-pressed=true] { background:#e6c982; color:#10283a; }
+.lesson-island-pilot :is(button,summary):focus-visible { outline:3px solid #f8c96e; outline-offset:2px; }
+body.simple-lesson .lesson-expedition .story-beat-toolbar > span { display:block; }
+.lesson-expedition .story-beat-toolbar > span::after {
+    content:''; display:block; width:min(100%,190px); height:5px; margin-top:6px; border-radius:6px;
+    background:linear-gradient(90deg,#e6c781 var(--lesson-part-progress,0%),#476677 var(--lesson-part-progress,0%));
+}
+body.lakbay-theme .lesson-expedition .story-beat-toolbar > button.bayani-narration-button {
+    min-height:48px; width:fit-content; max-width:100%; padding:6px 10px; gap:9px;
+}
+body.lakbay-theme .lesson-expedition .bayani-narration-portrait { flex-basis:36px; width:36px; height:38px; }
+body.lakbay-theme .lesson-expedition .bayani-narration-portrait img { width:100%; height:100%; }
+.lesson-expedition .bayani-narration-name { display:none; }
+.lesson-expedition .lesson-flow .begin-mission-button { text-wrap:balance; line-height:1.35; }
+@media(max-width:460px) {
+    .lesson-expedition .lesson-flow { display:grid; grid-template-columns:auto minmax(0,1fr); gap:8px; }
+    .lesson-expedition .lesson-flow .begin-mission-button { min-width:0; }
+    .lesson-island-map-frame button { width:26px; height:26px; }
+}
+
+.lesson-idea-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: 12px;
+    margin-block-end: 12px;
+}
+body.simple-lesson .lesson-expedition #lessonUnderstanding .lesson-explanation {
+    margin:0; min-width:0; padding:clamp(14px,2.5vw,23px);
+    border:1px solid #557770; border-inline-start:3px solid #a5ccbd; border-radius:4px 14px 4px 14px;
+    background:#142f40;
+}
+body.simple-lesson .lesson-expedition #lessonUnderstanding .lesson-example {
+    background:var(--learn-paper,#e1c391); border-color:#e6cb98; border-inline-start-color:#a68040;
+}
+.lesson-expedition .lesson-glossary {
+    padding: 12px clamp(14px, 2.5vw, 23px);
+    border-block: 1px solid #5c7b7e;
+    background: #122e3d;
+    overflow-wrap: anywhere;
+}
+.lesson-expedition .lesson-glossary h3 {
+    margin: 0;
+    color: #f2d293;
+    font-size: .9rem;
+}
+.lesson-expedition .lesson-glossary dl { margin: 6px 0 0; }
+.lesson-expedition .lesson-glossary dl > div + div {
+    margin-block-start: 8px;
+    padding-block-start: 8px;
+    border-block-start: 1px solid #5c7b7e;
+}
+.lesson-expedition .lesson-glossary dt { color: #fff0c9; font-weight: 750; }
+.lesson-expedition .lesson-glossary dd { margin: 0; color: #deebef; }
+.lesson-bayani-help {
+    border: 1px solid #75968d;
+    border-inline-start: 3px solid #dbbd7b;
+    border-radius: 4px 14px 4px 14px;
+    background: linear-gradient(130deg, #1b3d46, #10283a);
+}
+.lesson-expedition #lessonUnderstanding .lesson-bayani-help > summary {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    min-height: 54px;
+    padding: 6px 12px;
+    color: #ffe1a2;
+    font-weight: 750;
+    list-style: none;
+}
+.lesson-bayani-help > summary::-webkit-details-marker { display: none; }
+.lesson-bayani-help > summary img { flex: none; }
+.lesson-bayani-help > summary::after { content: '+'; margin-inline-start: auto; }
+.lesson-bayani-help[open] > summary::after { content: '−'; }
+.lesson-bayani-help > summary:focus-visible { outline: 3px solid #ffe1a2; outline-offset: 2px; }
+.lesson-bayani-clue { padding: 12px clamp(14px, 2.5vw, 23px); }
+.lesson-bayani-clue h3 { margin: 0 0 4px; color: #ffe1a2; font-size: .95rem; }
+.lesson-bayani-clue p { margin: 0; color: #e2edf2; }
+.lesson-expedition #lessonUnderstanding > details {
+    margin-block-start: 12px;
+}
+.lesson-expedition #lessonUnderstanding > details > summary {
+    min-height: 44px;
+    align-content: center;
+    cursor: var(--lakbay-cursor-hand, pointer);
+}
+body.simple-lesson .lesson-expedition #lessonUnderstanding .lesson-explanation h3 {
+    display:flex; align-items:center; gap:8px; margin:0 0 6px;
+}
+.lesson-expedition #lessonUnderstanding .lesson-explanation h3::before {
+    content:''; flex:none; width:20px; height:20px; background:currentColor;
+    mask:var(--lesson-note-icon) center / contain no-repeat;
+}
+.lesson-expedition .lesson-key-idea { --lesson-note-icon:url('../assets/icons/lucide/lightbulb.svg'); }
+.lesson-expedition .lesson-example { --lesson-note-icon:url('../assets/icons/lucide/compass.svg'); }
+
+.lesson-expedition .lesson-field-notes {
+    margin-block: 18px;
+    padding: 0;
+    border: 1px solid #718f89;
+    border-inline-start: 3px solid #dabb7c;
+    border-radius: 4px 16px 4px 16px;
+    background: linear-gradient(135deg, #1b3a43, #10283a 65%);
+}
+.lesson-expedition .lesson-field-notes > summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 8px clamp(12px, 3vw, 22px);
+    color: #ffe0a1;
+    cursor: var(--lakbay-cursor-hand, pointer);
+    font: 750 1rem/1.4 var(--lp-font-game);
+    list-style: none;
+}
+.lesson-field-notes > summary::-webkit-details-marker { display: none; }
+.lesson-field-notes > summary .interface-icon { flex: 0 0 20px; height: 20px; }
+.lesson-field-notes > summary::after {
+    content: '';
+    flex: 0 0 8px;
+    height: 8px;
+    margin-inline-start: auto;
+    border: solid currentColor;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.lesson-field-notes[open] > summary::after { transform: rotate(225deg); }
+.lesson-field-notes > summary:focus-visible { outline: 3px solid #ffe0a1; outline-offset: 3px; }
+.lesson-field-pages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: 10px;
+    padding: clamp(10px, 2vw, 16px);
+    border-block-start: 1px solid #718f89;
+}
+.lesson-expedition .lesson-field-pages .lesson-field-page {
+    margin: 0;
+    padding: clamp(12px, 2vw, 18px);
+    border: 1px solid #65837c;
+    border-radius: 4px 12px 4px 12px;
+    background: #193844;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.lesson-expedition .lesson-field-pages .lesson-field-story {
+    grid-column: 1 / -1;
+    border-inline-start: 3px solid #85b7aa;
+    background: #112c3d;
+}
+.lesson-expedition .exhibit-building-progress {
+    padding: 8px 12px;
+    border-inline-start: 3px solid #ddba74;
+    border-radius: 4px 10px 10px 4px;
+    background: #173646;
+    color: #ffe4ad;
+    font-weight: 750;
+}
+.lesson-field-notes .lesson-return-choice { display: none; }
+.lesson-expedition:has(#storyDecision:not(.lesson-shelved) #storyDecisionFeedback.incorrect:not([hidden])) .lesson-field-notes[open] .lesson-return-choice {
+    display: inline-flex;
+    min-height: 44px;
+    margin: 0 12px 12px;
+}
+.lesson-expedition .lesson-field-pages h3 {
+    margin: 0 0 8px;
+    color: #ffe0a1;
+    font: 750 1rem/1.4 var(--lp-font-game, sans-serif);
+}
+.lesson-expedition .lesson-field-pages p {
+    max-width: 66ch;
+    margin: 0;
+    color: #e2edf2;
+    line-height: 1.65;
+}
+.lesson-expedition .lesson-field-story p + p { margin-block-start: .85em; }
+.lesson-expedition .lesson-field-pages .lesson-field-example { background: #e9d4a9; border-color: #e9d4a9; }
+.lesson-expedition .lesson-field-pages .lesson-field-example :is(h3,p) { color: #302415; }
+
+body.simple-lesson.lakbay-theme .lesson-expedition #storyExplore {
+    padding:0; border:0; background:transparent;
+}
+body.simple-lesson.lakbay-theme .lesson-expedition .story-explore-choices {
+    display:grid; gap:8px; margin-top:12px;
+}
+body.simple-lesson.lakbay-theme .lesson-expedition .story-explore-choice {
+    display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:12px;
+    padding:12px; border:1px solid #607f80; border-radius:4px 14px 4px 14px;
+    background:linear-gradient(110deg,#24464a,#142f43 75%); color:#ebf4f1;
+}
+body.simple-lesson.lakbay-theme .lesson-expedition .story-explore-choice:is(:hover,[aria-expanded=true]) {
+    border-color:#d7b978; background:linear-gradient(110deg,#2b504b,#18374a 80%);
+}
+body.simple-lesson.lakbay-theme .lesson-expedition .story-explore-choice-icon {
+    display:grid; place-items:center; width:42px; height:42px; color:#f4d495;
+    background:#112b3d; border:1px solid #a58957; border-radius:50%;
+}
+.lesson-expedition .lesson-clue-state {
+    display:block; color:#f1d59a; font-size:.8rem; font-weight:700;
+}
+body.simple-lesson.lakbay-theme .lesson-expedition .story-explore-result {
+    margin:0 0 8px; border-inline-start:4px solid #a78346; border-radius:4px 12px 4px 12px;
+}
+@media(max-width:460px) {
+    body.simple-lesson.lakbay-theme .lesson-expedition .story-explore-choice { grid-template-columns:auto minmax(0,1fr); gap:4px 10px; }
+    .lesson-expedition .lesson-clue-state { grid-column:2; }
+}
+
+/* The island expedition decision reads as a field report. */
+body.simple-lesson.lakbay-theme .lesson-expedition #storyDecision {
+    padding:0; border:0; background:transparent;
+}
+body.simple-lesson.lakbay-theme .lesson-expedition #storyDecision .story-decision-situation {
+    padding:14px 16px; border:1px solid #64857e; border-inline-start:4px solid #dbba76;
+    border-radius:4px 14px 4px 14px; background:linear-gradient(115deg,#274a47,#10283b);
+}
+.lesson-expedition .story-decision-choices { counter-reset:island-option; }
+body.simple-lesson.lakbay-theme .lesson-expedition .story-decision-choice {
+    display:grid; grid-template-columns:32px minmax(0,1fr); align-items:center; gap:10px;
+    counter-increment:island-option; text-align:start; border:1px solid #587581;
+    border-radius:4px 12px 4px 12px; background:#142f43; color:#e3edf2;
+}
+.lesson-expedition .story-decision-choice::before {
+    content:counter(island-option,upper-alpha) / '';
+    display:grid; place-items:center; width:30px; height:30px; border:1px solid #a48c5c;
+    border-radius:50%; color:#f0d399; font-size:.8rem; background:#102639;
+}
+body.simple-lesson.lakbay-theme .lesson-expedition .story-decision-choice:disabled { opacity:1; color:#bdcfd8; }
+body.simple-lesson.lakbay-theme .lesson-expedition .story-decision-choice.correct { border-color:#89c5af; background:#193f3b; color:#e1f4e9; }
+body.simple-lesson.lakbay-theme .lesson-expedition .story-decision-choice.incorrect { border-color:#e5ae94; background:#473330; color:#f9e4de; }
+body.simple-lesson.lakbay-theme .lesson-expedition .story-decision-choice:not(:disabled):hover { border-color:#e2c180; }
+body.simple-lesson.lakbay-theme .lesson-expedition .story-decision-feedback {
+    border-radius:4px 14px 4px 14px; padding:14px 16px;
+}
+body.simple-lesson .lesson-expedition.lesson-field-desk > .story-visual {
+    display: block;
+}
+@media (min-width: 980px) {
+    body.simple-lesson .lesson-expedition.lesson-field-desk:not([hidden]) {
+        display: grid;
+        grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+        align-items: start;
+    }
+    body.simple-lesson .lesson-expedition.lesson-field-desk > .story-visual {
+        min-width: 0;
+        margin: 16px 0 16px 16px;
+        border: 1px solid var(--era-trim, #d9ba7a);
+        border-radius: 14px;
+        overflow: hidden;
+    }
+    body.simple-lesson .lesson-expedition.lesson-field-desk > .story-reading-content { min-width: 0; }
+}
+.lesson-expedition .story-explore-result:not([hidden]) > strong {
+    background-image: linear-gradient(#ba873e, #ba873e);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 100% 2px;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body:not(.lakbay-reduce-motion) .lesson-expedition .story-explore-result:not([hidden]) > strong {
+        animation: lesson-clue-underline .35s ease-out both;
+    }
+}
+@keyframes lesson-clue-underline { from { background-size: 0 2px; } }
+.lesson-resume-note {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 12px;
+    padding: 6px 12px;
+    border: 1px solid #d9b777;
+    border-radius: 8px;
+    background: #223747;
+    color: #ffe3a3;
+    font-weight: 700;
+    scroll-margin-block: 18px;
+}
+.lesson-resume-note:focus-visible { outline: 2px solid #ffe3a3; outline-offset: 3px; }
+body.simple-lesson .lesson-resumed .story-reading-content {
+    box-shadow: inset 3px 0 #e8c57f;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body.simple-lesson:not(.lakbay-reduce-motion) .lesson-resumed .story-reading-content {
+        animation: lesson-resume-highlight .9s ease-out;
+    }
+}
+@keyframes lesson-resume-highlight {
+    from { box-shadow: inset 0 0 0 3px #f7d998; }
+    to { box-shadow: inset 3px 0 #e8c57f; }
+}
+.journal-save-slip {
+    position: fixed;
+    z-index: 80;
+    width: 25px;
+    height: 32px;
+    border: 1px solid #816137;
+    border-radius: 4px;
+    background: repeating-linear-gradient(#f8e7bd 0 5px, #bd9c5c 6px, #f8e7bd 7px);
+    box-shadow: 0 4px 14px #0007;
+    pointer-events: none;
+}
+.scene-evidence-saver .journal-save-confirmed {
+    padding: 7px 12px;
+    border-inline-start: 3px solid #e9bd6d;
+    border-radius: 4px;
+    color: #ffe4a6;
+    background: #203c46;
+}
+@media (prefers-reduced-motion: reduce) { .journal-save-slip { display: none; } }
+.lakbay-reduce-motion .journal-save-slip { display: none; }
+.lesson-review-bookmark {
+    width: fit-content;
+    padding: 6px 12px 8px;
+    border-inline-start: 3px solid #efc875;
+    border-radius: 4px 8px 8px 4px;
+    background: #203849 linear-gradient(#efc875,#efc875) no-repeat left bottom / 100% 2px;
+    color: #ffe4a5;
+    font-weight: 700;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body:not(.lakbay-reduce-motion) .lesson-review-bookmark { animation: review-bookmark-trace .45s ease-out; }
+}
+@keyframes review-bookmark-trace { from { background-size: 0 2px; } }
+.lesson-toolkit {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 10px;
+    margin-block: 0 var(--lp-space-4, 16px);
+}
+.lesson-toolkit > details {
+    min-width: 0;
+    border: 1px solid #536e80;
+    border-radius: 12px;
+    background: #11293d;
+    color: #e1ebf2;
+}
+.lesson-toolkit > details[open] { border-color: #b49862; }
+.lesson-toolkit > details > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 48px;
+    padding: 10px 14px;
+    border-radius: 11px;
+    color: #f5d796;
+    font-weight: 700;
+    font-size: var(--lp-type-label, .9375rem);
+    list-style: none;
+    cursor: var(--lakbay-cursor-hand, pointer);
+}
+.lesson-toolkit > details > summary::-webkit-details-marker { display: none; }
+.lesson-toolkit > details > summary::after {
+    content: "";
+    flex: 0 0 7px;
+    height: 7px;
+    border: solid currentColor;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin-inline-end: 3px;
+}
+.lesson-toolkit > details[open] > summary::after { transform: rotate(225deg); }
+.lesson-toolkit > details > summary:hover,
+.lesson-toolkit > details[open] > summary { background: #1a3449; }
+.lesson-toolkit-panel {
+    display: grid;
+    gap: 12px;
+    padding: clamp(12px, 2vw, 18px);
+    border-block-start: 1px solid #536e80;
+    min-width: 0;
+}
+.lesson-volume-row:not([hidden]) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 2px 10px;
+    font-weight: 600;
+    color: #e6edf3;
+}
+.lesson-volume-row :is([data-volume-output],[data-quick-voice-level]) { color: #f4d99c; font-variant-numeric: tabular-nums; }
+.lesson-volume-row input {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    margin: 0;
+    accent-color: #e7c47e;
+}
+.lesson-toolkit-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.lesson-toolkit-panel :is(button,select) { min-height: 44px; max-width: 100%; white-space: normal; }
+.lesson-toolkit-panel :is(button.text-button,button.reading-surface-toggle) {
+    padding: 8px 12px;
+    border: 1px solid #688598;
+    border-radius: 8px;
+    background: #1c3a50;
+    color: #f7e0ad;
+    text-align: start;
+    text-decoration: none;
+}
+.lesson-toolkit-panel :is(button.text-button,button.reading-surface-toggle):not(:disabled):hover { background: #28495f; }
+.lesson-toolkit-panel :is([hidden],[data-quick-voice-status]:empty) { display: none !important; }
+.lesson-audio-settings { border-block-start: 1px solid #536e80; }
+.lesson-audio-settings > summary { min-height: 44px; padding: 11px 0; color: #f5d796; cursor: var(--lakbay-cursor-hand, pointer); }
+.lesson-audio-settings :is(.narrator-options,.lesson-sound-options) { margin: 0; padding-block: 10px; }
+.lesson-audio-settings label { min-height: 38px; }
+.lesson-option-group + .lesson-option-group { border-block-start: 1px solid #536e80; padding-block-start: 12px; }
+.lesson-option-group h3 { margin: 0 0 8px; color: #f2dfb7; font-size: 1rem; }
+.lesson-option-group .story-progress-actions { margin: 0; }
+@media (max-width: 640px) {
+    .lesson-toolkit { grid-template-columns: minmax(0, 1fr); }
+}
+@media (forced-colors: active) {
+    .lesson-toolkit > details[open] { border-color: Highlight; }
+}
+#storyText > .story-read-along {
+    outline: 2px solid #bf8d39;
+    outline-offset: 3px;
+    border-radius: 4px;
+    background: #ba8a3326;
+    scroll-margin-block: 20px;
+}
+@media (prefers-reduced-motion: no-preference) {
+    body:not(.lakbay-reduce-motion) #storyText > p {
+        transition: outline-color .18s ease, background-color .18s ease;
+    }
+}

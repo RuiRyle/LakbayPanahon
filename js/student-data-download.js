@@ -1,7 +1,7 @@
 import {auth, db} from './firebase-config.js';
 import {onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
 import {collection, doc, getDocFromServer, getDocsFromServer, query, where, orderBy, documentId, startAfter, limit} from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
-import {collectLearningData} from './student-data-export.js';
+import {collectLearningData, LearningDataExportError} from './student-data-export.js';
 
 const button = document.getElementById('downloadLearningData');
 const status = document.getElementById('learningDataDownloadStatus');
@@ -9,7 +9,9 @@ let generation = 0;
 let pendingDownload = null;
 const deadline = task => {
     let timer;
-    return Promise.race([task, new Promise((_, reject) => { timer = setTimeout(() => reject(Error('The download took too long. Check your connection and try again.')), 20000); })]).finally(() => clearTimeout(timer));
+    return Promise.race([task, new Promise((_, reject) => {
+        timer = setTimeout(() => reject(new LearningDataExportError('The download took too long. Check your connection and try again.')), 20000);
+    })]).finally(() => clearTimeout(timer));
 };
 onAuthStateChanged(auth, () => { generation++; pendingDownload=null; if (button) button.disabled = !auth.currentUser; if (status) status.textContent = ''; });
 window.addEventListener('pagehide', () => { generation++; pendingDownload=null; });
@@ -57,7 +59,12 @@ button?.addEventListener('click', async () => {
         try { link.click(); } finally { link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
         status.textContent = 'Your learning-data file is ready. Check your browser downloads.';
     } catch (error) {
-        if (generation === request && auth.currentUser === user) status.textContent = error?.code === 'permission-denied' ? 'Your account cannot read all required records. No file was downloaded. Sign in again or ask for help.' : 'Download unsuccessful. ' + (error?.message || 'Check your connection and try again.');
+        if (generation === request && auth.currentUser === user) {
+            const hint = error instanceof LearningDataExportError ? error.message
+                : error?.code === 'permission-denied' ? 'Sign in again with your student account. If it still fails, open account help.'
+                : 'Check your connection and try again.';
+            status.textContent = 'Download unsuccessful. No file was downloaded. ' + hint;
+        }
     } finally {
         if (pendingDownload?.request === request) pendingDownload = null;
         if (generation === request && auth.currentUser === user) button.disabled = false;

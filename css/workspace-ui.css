@@ -1,0 +1,612 @@
+.teacher-workspace.lakbay-theme {
+    --desk-ink: #f8eee0;
+    --desk-muted: #c0d3df;
+    --desk-line: #405d70;
+    --desk-night: #0c1e30;
+    --desk-panel: #132b40;
+    --desk-raised: #1c3850;
+    --desk-gold: #f8d894;
+    --desk-paper: #faf2e2;
+    --desk-paper-ink: #182e40;
+    --desk-paper-muted: #4e5c62;
+    --desk-radius: 18px;
+    --desk-shadow: 0 12px 30px #030c183f;
+    --desk-coast: url("../assets/landing/hero-coastal-dawn.webp");
+    --desk-map: url("../assets/atlas/philippine-archipelago.svg");
+    --desk-title: Georgia, "Times New Roman", serif;
+}
+
+/* Shared workspace navigation */
+body.teacher-workspace.lakbay-theme:is([data-role="teacher"][data-teacher-page], .admin-workspace[data-role="admin"]) .teacher-sidebar {
+    background: linear-gradient(180deg, #17334a 0%, #0b1d30 48%, #0b1d3059 83%, #0b1d30 100%),
+        var(--desk-map) center calc(100% - 56px) / 114% auto no-repeat, #0b1d30;
+    border-inline-end-color: #35536a;
+}
+
+.teacher-workspace.lakbay-theme[data-role] .teacher-sidebar .teacher-brand img {
+    background: radial-gradient(circle at 35% 25%, #847653, #263c4b 78%);
+    box-shadow: inset 0 1px #f4dd9054, 0 3px 12px #020f1e65;
+}
+
+.teacher-workspace.lakbay-theme[data-role] .teacher-sidebar .teacher-tabs {
+    gap: 4px;
+}
+
+.teacher-workspace.lakbay-theme[data-role] .teacher-sidebar .teacher-tabs [data-teacher-tab] {
+    min-height: 44px;
+    padding: 9px 12px;
+    border-radius: 9px;
+    color: #d6e4ee;
+    font-size: .9rem;
+    line-height: 1.35;
+}
+
+.teacher-workspace.lakbay-theme[data-role] .teacher-sidebar .teacher-tabs [data-teacher-tab][aria-current="page"] {
+    border-color: #cbaa72a3;
+    background: radial-gradient(ellipse at 0 0, #8b6b3d80, transparent 75%), linear-gradient(100deg, #4f4436, #20384a);
+    color: #ffe4ae;
+    box-shadow: inset 3px 0 var(--desk-gold), 0 4px 12px #06132455;
+}
+
+.teacher-workspace.lakbay-theme[data-role] .teacher-sidebar .teacher-tabs :is(.teacher-navigation-group, .admin-nav-group) {
+    margin: 15px 0 5px;
+    padding: 0 10px;
+    color: #a9c2d1;
+    font-size: .68rem;
+    font-weight: 750;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.teacher-workspace.lakbay-theme[data-role="teacher"] [data-teacher-tab="settings"] {
+    margin-block-start: 12px;
+}
+
+.teacher-workspace.lakbay-theme[data-role] .teacher-topbar .student-page-title-copy small {
+    color: #a9c2d1;
+    font-family: system-ui, sans-serif;
+    font-size: .72rem;
+    letter-spacing: .04em;
+    text-transform: none;
+}
+
+.teacher-workspace.lakbay-theme[data-role] .teacher-topbar .student-page-title-copy strong {
+    color: #f7f4ee;
+    font-family: system-ui, sans-serif;
+    font-weight: 740;
+}
+
+/* Dashboard introductions */
+body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-hero,
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-welcome {
+    position: relative;
+    display: block;
+    min-height: 0;
+    padding: clamp(24px, 2.6vw, 38px) clamp(24px, 4vw, 50px);
+    isolation: isolate;
+    border: 1px solid #977e56;
+    border-radius: var(--desk-radius);
+    background: linear-gradient(90deg, #10273bf7 0%, #12283ae9 46%, #16314415 100%),
+        linear-gradient(0deg, #0d2233c9, transparent 60%), var(--desk-coast) 66% 54% / cover;
+    box-shadow: var(--desk-shadow);
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-welcome {
+    --desk-coast: url("../assets/brand/administration-landscape.svg");
+}
+
+.admin-workspace[data-admin-page="overview"] .admin-welcome::before,
+.admin-workspace[data-admin-page="overview"] .admin-welcome > .admin-welcome-landscape,
+.teacher-overview-home .overview-hero::after {
+    display: none;
+}
+
+.teacher-workspace.lakbay-theme .workspace-hero-copy {
+    position: relative;
+    max-width: min(100%, 660px);
+}
+
+body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-hero h1,
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-welcome h1 {
+    max-width: 21ch;
+    margin: 0 0 10px;
+    color: var(--desk-ink);
+    font: 700 clamp(2rem, 4vw, 3.55rem) / 1.08 var(--desk-title);
+    letter-spacing: -.035em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+}
+
+body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-hero p,
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-welcome p {
+    max-width: 49ch;
+    color: #e0eaf1;
+    font-size: clamp(.89rem, 1.25vw, 1rem);
+    line-height: 1.6;
+}
+
+body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-hero .workspace-hero-date {
+    margin-block-end: 10px;
+    color: #ffdf9e;
+    font-size: .78rem;
+    font-weight: 700;
+}
+
+.teacher-workspace.lakbay-theme .workspace-hero-copy .workspace-hero-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 9px;
+    margin-block-start: 20px;
+}
+
+.teacher-workspace.lakbay-theme[data-role] .workspace-hero-copy .workspace-hero-actions a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 auto;
+    gap: 12px;
+    min-height: 44px;
+    max-width: 100%;
+    padding: 9px 14px;
+    border: 1px solid #f5d592;
+    border-radius: 9px;
+    background: #f8d894;
+    color: #182b3b;
+    font: 750 .85rem / 1.4 system-ui, sans-serif;
+    white-space: normal;
+    text-decoration: none;
+    box-shadow: 0 4px 12px #09172657;
+}
+
+.teacher-workspace.lakbay-theme[data-role] .workspace-hero-copy .workspace-hero-actions :is(.workspace-hero-secondary, .overview-button:not(.is-primary)) {
+    background: #10283eed;
+    border-color: #a3b4bc;
+    color: #f7ead3;
+}
+
+.teacher-workspace.lakbay-theme .workspace-hero-copy .workspace-hero-actions a:hover {
+    outline: 1px solid var(--desk-gold);
+    outline-offset: 2px;
+}
+
+/* Parchment summary cards, with darker text and status colors. */
+body.teacher-workspace.lakbay-theme[data-role="teacher"][data-teacher-page="overview"] .teacher-overview-home .overview-metric,
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card {
+    min-width: 0;
+    border: 1px solid #c9ba9f;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #fff8e9, var(--desk-paper));
+    color: var(--desk-paper-ink);
+    box-shadow: var(--desk-shadow);
+}
+
+body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-metric {
+    padding: clamp(12px, 1.9vw, 22px);
+}
+
+:is(.overview-metric[data-metric="students"], .admin-work-queue-card[data-work-category="email"]) {
+    --desk-stage: #345977;
+    --desk-stage-tint: #dfe9ef;
+}
+
+:is(.overview-metric[data-metric="goals"], .admin-work-queue-card[data-work-category="activation"]) {
+    --desk-stage: #2f6657;
+    --desk-stage-tint: #dcebe0;
+}
+
+.teacher-overview-home .overview-metric::before {
+    background: var(--desk-stage, #775129);
+    opacity: .78;
+}
+
+body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-metric-label {
+    color: var(--desk-paper-ink);
+    font-size: .84rem;
+    font-weight: 760;
+    line-height: 1.35;
+}
+
+body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-metric strong,
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-count {
+    color: var(--desk-stage, #775129);
+    font: 700 clamp(1.7rem, 3vw, 2.7rem) / 1 var(--desk-title);
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-metric small,
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-hint {
+    color: var(--desk-paper-muted);
+    font-size: .8rem;
+    line-height: 1.45;
+}
+
+body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-metric-icon,
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-arrow {
+    border: 1px solid #152e4040;
+    background: var(--desk-stage-tint, #ecddc2);
+    color: var(--desk-stage, #775129);
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card[data-has-items="true"] {
+    border-color: #f0cb83;
+    box-shadow: inset 0 3px var(--desk-stage, #775129), var(--desk-shadow);
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card[data-work-category="ready"][data-has-items="true"] {
+    background: linear-gradient(145deg, #fbe0a6, #faf0d9 74%);
+    border-color: #f0cb83;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card:hover {
+    background: #fffaed;
+    border-color: #8fb5cb;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card:focus-visible {
+    outline: 3px solid var(--desk-gold);
+    outline-offset: 3px;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-label {
+    font: 750 .91rem / 1.35 system-ui, sans-serif;
+}
+
+/* Dashboard feeds and working surfaces */
+.teacher-workspace.lakbay-theme #teacher-main .teacher-overview-home :is(.overview-attention, .overview-activity, .overview-classrooms),
+.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-overview-grid > :is(.admin-pending-panel, .admin-decision-preview) {
+    padding: clamp(16px, 2.3vw, 26px);
+    border: 1px solid var(--desk-line);
+    border-radius: var(--desk-radius);
+    background: linear-gradient(155deg, var(--desk-panel), var(--desk-night));
+    box-shadow: var(--desk-shadow);
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-overview-home .overview-attention {
+    border-block-start-color: #c4a874;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-overview-home :is(.overview-panel-heading, .pulse-heading, .overview-section-heading) h2,
+.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main :is(.admin-work-queue, .admin-pending-panel, .admin-decision-preview) h2 {
+    margin: 0;
+    color: var(--desk-ink);
+    font: 700 clamp(1.13rem, 1.7vw, 1.45rem) / 1.25 var(--desk-title);
+}
+
+.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-work-queue > h2 {
+    margin-block-end: 12px;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-overview-home :is(.overview-panel-heading, .pulse-heading) {
+    flex-wrap: wrap;
+    gap: 6px 10px;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-overview-home .attention-class-scope {
+    margin-block: 12px 0;
+    border-color: var(--desk-line);
+    background: #0d2235;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-overview-home :is(.overview-empty, .attention-full-inboxes),
+.admin-workspace.lakbay-theme #admin-main :is(.admin-queue-empty, .admin-activity-empty) {
+    border-color: var(--desk-line);
+    background: #122b42;
+    color: var(--desk-muted);
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-overview-home .attention-full-inboxes > summary {
+    min-height: 44px;
+    padding-block: 10px;
+}
+
+/* Reuse the atlas illustrations to give the workspace headers a distinct setting. */
+.teacher-workspace.lakbay-theme[data-teacher-page="classes"] { --desk-banner-art: url("../assets/landing/atlas-precolonial.webp"); }
+.teacher-workspace.lakbay-theme[data-teacher-page="assignments"] { --desk-banner-art: url("../assets/landing/atlas-encounters.webp"); }
+.teacher-workspace.lakbay-theme[data-teacher-page="announcements"] { --desk-banner-art: url("../assets/landing/atlas-colonial-life.webp"); }
+.teacher-workspace.lakbay-theme[data-teacher-page="students"] { --desk-banner-art: var(--desk-map); }
+.admin-workspace.lakbay-theme:is([data-admin-page="applications"], [data-admin-page="accounts"]) { --desk-banner-art: url("../assets/landing/atlas-colonial-life.webp"); }
+.admin-workspace.lakbay-theme[data-admin-page="records"] { --desk-banner-art: url("../assets/brand/expedition-archive.svg"); }
+
+.teacher-workspace.lakbay-theme {
+    --desk-banner-gradient: linear-gradient(100deg, #142e46 42%, #142e46de 54%, #142e4670 100%);
+    --desk-banner-position: center, right center;
+    --desk-banner-size: cover, min(60%, 38rem) auto;
+}
+
+.teacher-workspace.lakbay-theme[data-role="teacher"][data-teacher-page]:not([data-teacher-page="overview"]) #teacher-main .teacher-intro,
+.admin-workspace.lakbay-theme #admin-main :is(.admin-account-banner, .decision-banner, .administration-banner),
+body.admin-workspace.lakbay-theme[data-admin-page="applications"] #admin-main :is(.qualification-applicant-card, .admin-workflow-purpose:not([hidden])) {
+    background-color: #244254;
+    background-image: var(--desk-banner-gradient), var(--desk-banner-art, none);
+    background-position: var(--desk-banner-position);
+    background-repeat: no-repeat;
+    background-size: var(--desk-banner-size);
+    box-shadow: inset 0 1px #ffe9bf29, var(--desk-shadow);
+    border-color: #8a8171;
+}
+
+/* These layouts carry a priority background shorthand in the base stylesheet. */
+.teacher-workspace.lakbay-theme[data-role="teacher"]:is(.assignment-board-page, .classroom-detail-page, [data-teacher-page="students"]) #teacher-main .teacher-intro {
+    background-color: #244254 !important;
+    background-image: var(--desk-banner-gradient), var(--desk-banner-art) !important;
+    background-position: var(--desk-banner-position) !important;
+    background-repeat: no-repeat !important;
+    background-size: var(--desk-banner-size) !important;
+}
+
+.teacher-workspace.lakbay-theme[data-role="teacher"] #teacher-main .teacher-intro:after,
+.admin-workspace.lakbay-theme #admin-main :is(.admin-workflow-purpose, .qualification-applicant-card, .decision-banner)::before,
+.admin-workspace.lakbay-theme[data-admin-page="accounts"] #admin-main .admin-account-banner .admin-welcome-landscape {
+    display: none;
+}
+
+.teacher-workspace.lakbay-theme[data-role="teacher"] #teacher-main :is(.teacher-intro, .account-profile-header) > :is(h1, h2),
+.admin-workspace.lakbay-theme #admin-main :is(.admin-account-banner, .decision-banner, .administration-banner, .admin-workflow-purpose) h1 {
+    color: var(--desk-ink);
+    font-family: var(--desk-title);
+    letter-spacing: -.028em;
+    text-wrap: balance;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main :is(.teacher-class-card, .teacher-class-overview, .progress-class-choice, .teacher-editor-card, .teacher-library-card, .account-settings-card),
+.admin-workspace.lakbay-theme #admin-main :is(.admin-application-toolbar, .admin-account-toolbar, .admin-review-desk, .decision-list-panel, .admin-recovery-guide) {
+    border-color: var(--desk-line);
+    border-radius: var(--desk-radius);
+    background: linear-gradient(150deg, var(--desk-raised), var(--desk-panel) 66%);
+    box-shadow: var(--desk-shadow);
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .classroom-workspace-nav {
+    border-color: var(--desk-line);
+    background: var(--desk-panel);
+    gap: 8px 16px;
+    margin-block-end: 16px;
+    padding: 10px 15px;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .classroom-workspace-links a[aria-current="page"] {
+    border-color: #bd9e6b;
+    background-color: #4d4031;
+    color: #ffe6b5;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .classroom-workspace-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding-inline: 10px;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-lesson-catalog {
+    margin: 14px 0 0;
+    padding: 7px 14px;
+    border-color: var(--desk-line);
+    background: var(--desk-panel);
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-lesson-catalog > summary {
+    min-height: 44px;
+    padding-block: 10px;
+}
+
+/* Warm highlights and texture on the work itself. */
+.teacher-workspace.lakbay-theme #teacher-main :is(.teacher-library-card, .teacher-editor-card),
+.admin-workspace.lakbay-theme #admin-main :is(.decision-list-panel, .qualification-approval-flow, .admin-recovery-guide) {
+    background: radial-gradient(ellipse at 8% 0, #35505270, transparent 70%), linear-gradient(150deg, var(--desk-raised), var(--desk-panel) 78%);
+    box-shadow: inset 0 1px #b5d5e328, var(--desk-shadow);
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-library-card > :is(.assignment-board-heading, .announcement-panel-header) {
+    border-top: 2px solid #cdb27d;
+    border-radius: 10px 10px 0 0;
+    padding-inline: clamp(10px, 2vw, 22px);
+    padding-block-start: clamp(10px, 2vw, 20px);
+    background: linear-gradient(145deg, #39535080, transparent 90%);
+}
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-library-card > :is(.assignment-board-heading, .announcement-panel-header) h3 {
+    color: var(--desk-ink);
+    font-size: clamp(1.2rem, 2.1vw, 1.63rem);
+    line-height: 1.25;
+}
+
+body.teacher-workspace.lakbay-theme.classrooms-clean-layout.classroom-directory-page #teacher-classes #teacherClassPicker.classroom-collection-refined .teacher-class-card:not([data-archived="true"]) {
+    background: linear-gradient(90deg, #163447 12%, #173c47d9 48%, #173c474d),
+        var(--desk-map) 124% center / 81% auto no-repeat, #183647 !important;
+    border-color: #71918e;
+    box-shadow: inset 0 1px #fbe0a631, 0 8px 24px #06142356;
+}
+
+body.teacher-workspace.lakbay-theme.classroom-directory-page #teacher-classes .teacher-class-card .teacher-class-card-hint {
+    color: #ffe0a6;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main :is(#assignmentList, #announcementList) .teacher-item {
+    --desk-entry-accent: #a0b9cb;
+    border-inline-start: 3px solid var(--desk-entry-accent);
+    box-shadow: inset 0 1px #d7e8ee1f;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main :is(#assignmentList, #announcementList) .teacher-item[data-publication-status="draft"] { --desk-entry-accent: #e1be79; }
+.teacher-workspace.lakbay-theme #teacher-main :is(#assignmentList, #announcementList) .teacher-item[data-publication-status="published"] { --desk-entry-accent: #8abbaa; }
+
+.admin-workspace.lakbay-theme #admin-main .admin-applicant-open {
+    padding: 6px 9px;
+    border: 1px solid #7e7b68;
+    border-radius: 7px;
+    background: #293b45;
+}
+
+.admin-workspace.lakbay-theme #admin-main #adminAccounts button:has(.admin-status-label[data-status="ready"]) .admin-applicant-open {
+    border-color: #e2bb74;
+    background: linear-gradient(140deg, #ffe5ad, #e5bd73);
+    color: #1b3041;
+}
+
+.admin-workspace.lakbay-theme #admin-main #adminEnvironment .administration-tile {
+    border-block-start-color: var(--admin-tool-accent, var(--desk-gold));
+    background: radial-gradient(ellipse at 0 0, var(--admin-tool-fill, #3b443c), transparent 75%), var(--desk-panel);
+    box-shadow: inset 0 1px #ffffff1f, var(--desk-shadow);
+}
+
+.admin-workspace.lakbay-theme #admin-main #adminEnvironment .administration-tile-icon {
+    box-shadow: inset 0 1px #ffffff2f, 0 4px 12px #07132158;
+}
+
+.teacher-workspace.lakbay-theme[data-role] :is(#assignmentNew, #announcementNew, #directoryCreateClassroom, .workspace-hero-actions a.is-primary, .workspace-hero-actions .admin-hero-action) {
+    border-color: #efcd90;
+    background: linear-gradient(140deg, #ffe7b5, #e0b66e);
+    color: #192e3d;
+    box-shadow: inset 0 1px #fff1d3, 0 3px 0 #7c5b35, 0 8px 16px #0b1d3057;
+}
+
+body.teacher-workspace.lakbay-theme.student-report-focused[data-teacher-page="students"] #teacher-main .teacher-student-class-toolbar {
+    grid-template-columns: minmax(0, 19rem);
+    padding: 10px 15px;
+    margin-block-end: 14px;
+    border-color: var(--desk-line) !important;
+    background: var(--desk-night) !important;
+}
+
+.teacher-workspace.student-report-focused #teacher-main .teacher-student-class-toolbar > .teacher-roster-context {
+    display: none;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main #studentReport .teacher-report-snapshot > div {
+    border-color: #cbbaa0 !important;
+    background: var(--desk-paper) !important;
+}
+
+.teacher-workspace.lakbay-theme #teacher-main #studentReport .teacher-report-snapshot :is(strong, span) { color: var(--desk-paper-ink) !important; }
+
+.teacher-workspace.lakbay-theme #teacher-main .teacher-report-shortcuts button {
+    border: 1px solid #869ca9;
+    background: var(--desk-raised);
+    color: #f5e3bd;
+    box-shadow: none;
+}
+
+@media (max-width: 560px) {
+    body.teacher-workspace.lakbay-theme.assignment-board-page #teacher-main .teacher-intro {
+        gap: 10px;
+        margin-block-end: 14px;
+        padding: 18px 16px !important;
+    }
+
+    body.teacher-workspace.lakbay-theme.assignment-board-page #teacher-main .teacher-intro > :is(.eyebrow, h1, p) {
+        margin-block: 0;
+    }
+
+    body.teacher-workspace.lakbay-theme.assignment-board-page #teacher-main .teacher-intro > .eyebrow {
+        display: none;
+    }
+
+    body.teacher-workspace.lakbay-theme.assignment-board-page #teacher-main .classroom-workspace-context {
+        display: none;
+    }
+
+    .teacher-workspace.lakbay-theme #teacher-main .classroom-workspace-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+    }
+}
+
+.teacher-workspace.lakbay-theme :is(#teacher-main, #admin-main) :is(
+    #directoryCreateClassroom, #assignmentNew, #announcementNew, #saveAccountStatus, #adminRefreshApplications
+) {
+    border-radius: 9px;
+    font-family: system-ui, sans-serif;
+    min-height: 44px;
+}
+
+.teacher-workspace.lakbay-theme :is(#teacher-main, #admin-main) :is(.teacher-note, .overview-row-context, .admin-queue-identity small) {
+    color: var(--desk-muted);
+}
+
+.teacher-workspace.lakbay-theme :is(#teacher-main, #admin-main) :is(select, input:not([type="checkbox"], [type="radio"]), textarea) {
+    border-color: #688499;
+}
+
+.teacher-workspace.lakbay-theme :is(#teacher-main, #admin-main) :is(button, a, input, select, textarea, summary):focus-visible {
+    outline-color: var(--desk-gold);
+}
+
+.teacher-application-page.lakbay-theme :is(.application-hero, .application-steps) {
+    border-color: #927e5e;
+    box-shadow: var(--desk-shadow);
+}
+
+.teacher-application-page.lakbay-theme .application-steps li[aria-current="step"] {
+    background: linear-gradient(120deg, #594630, #26394b);
+}
+
+.teacher-application-page.lakbay-theme .application-steps [aria-current="step"] .application-step-number {
+    background: linear-gradient(145deg, #ffe9ba, #dcb573);
+    box-shadow: inset 0 1px #fff7e1, 0 3px 10px #06152565;
+}
+
+@media (max-width: 700px) {
+    .teacher-workspace.lakbay-theme {
+        --desk-banner-gradient: linear-gradient(95deg, #142e46 0%, #163348db 70%, #163348ab 100%);
+        --desk-banner-size: cover, cover;
+    }
+
+    .teacher-workspace.lakbay-theme[data-role="teacher"] { --desk-coast: url("../assets/landing/hero-coastal-dawn-mobile.webp"); }
+    body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-hero,
+    body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-welcome {
+        background-position: center, center, 68% 54%;
+        background-image: linear-gradient(90deg, #10273bfa, #12283ad6 65%, #16314481),
+            linear-gradient(0deg, #0d2233ce, transparent 75%), var(--desk-coast);
+    }
+
+    body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-metric-icon {
+        position: absolute;
+        inset: 12px 12px auto auto;
+        width: 26px;
+        height: 26px;
+    }
+
+    body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-metric-label {
+        min-height: 30px;
+        padding-inline-end: 28px;
+    }
+
+    body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overview-home .overview-metric strong {
+        margin: 5px 0 7px;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .teacher-workspace.lakbay-theme:not(.lakbay-reduce-motion) :is(.workspace-hero-actions a, .admin-work-queue-card) {
+        transition: background-color .17s ease, border-color .17s ease, box-shadow .17s ease, outline-color .17s ease;
+    }
+
+    .teacher-workspace.lakbay-theme.authenticated:not(.lakbay-reduce-motion) :is(.assignment-board-heading, .announcement-panel-header, .admin-applicant-open) {
+        animation: workspace-accent-in 260ms ease-out;
+    }
+
+    @media (hover: hover) {
+        .teacher-workspace.lakbay-theme:not(.lakbay-reduce-motion) :is(
+            .workspace-hero-actions a, #assignmentNew, #announcementNew, #directoryCreateClassroom,
+            .teacher-class-card-hint, .admin-applicant-open
+        ) { transition: translate .18s ease, box-shadow .18s ease, border-color .18s ease; }
+
+        .teacher-workspace.lakbay-theme:not(.lakbay-reduce-motion) :is(
+            .workspace-hero-actions a, #assignmentNew, #announcementNew, #directoryCreateClassroom
+        ):hover:not(:disabled) { translate: 0 -2px; }
+
+        .teacher-workspace.lakbay-theme:not(.lakbay-reduce-motion) :is(
+            button[data-user-id]:hover .admin-applicant-open, .teacher-class-card:hover .teacher-class-card-hint
+        ) { translate: 2px 0; }
+    }
+}
+
+@keyframes workspace-accent-in {
+    from { opacity: .8; }
+    to { opacity: 1; }
+}

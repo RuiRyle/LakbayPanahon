@@ -138,7 +138,7 @@
     border-radius: 999px;
     background: #0a1c31;
     color: var(--lp-muted);
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
     transition: border-color .18s ease, background .18s ease, color .18s ease, transform .18s ease;
 }
 
@@ -190,7 +190,7 @@ body.lakbay-theme .settings-volume-controls input[type="range"] {
     border-radius: 999px;
     appearance: none;
     background: linear-gradient(90deg, var(--lp-gold) var(--range-fill, 60%), #3a5067 var(--range-fill, 60%));
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
 }
 
 .settings-volume-controls input[type="range"]::-webkit-slider-thumb {
@@ -221,12 +221,12 @@ body.lakbay-theme .settings-volume-controls input[type="range"] {
     color: #dfe8f1;
     font-size: .76rem;
     font-weight: 750;
-    cursor: pointer;
+    cursor: var(--lakbay-cursor-hand, pointer);
     transition: border-color .18s ease, background .18s ease, transform .18s ease;
 }
 
 .settings-preview-button:hover { transform: translateY(-1px); border-color: var(--lp-gold); background: #1b3858; }
-.settings-preview-button:disabled { opacity: .78; cursor: default; transform: none; }
+.settings-preview-button:disabled { opacity: .78; cursor: var(--lakbay-cursor-arrow, default); transform: none; }
 .settings-music-status { margin: 9px 0 0; color: #9fb0c2; font-size: .74rem; line-height: 1.5; }
 
 .settings-saved-note {
@@ -242,7 +242,7 @@ body.lakbay-theme .settings-volume-controls input[type="range"] {
 
 .settings-actions { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-top: 14px; border-top: 1px solid #2a4059; }
 .settings-actions .settings-saved-note { margin: 0; padding: 0; border: 0; }
-.settings-reset-button { flex: 0 0 auto; padding: 8px 12px; border: 1px solid #49617c; border-radius: 10px; background: #142d48; color: #c7d2df; font-size: .75rem; font-weight: 750; cursor: pointer; transition: border-color .18s ease, background .18s ease, transform .18s ease; }
+.settings-reset-button { flex: 0 0 auto; padding: 8px 12px; border: 1px solid #49617c; border-radius: 10px; background: #142d48; color: #c7d2df; font-size: .75rem; font-weight: 750; cursor: var(--lakbay-cursor-hand, pointer); transition: border-color .18s ease, background .18s ease, transform .18s ease; }
 .settings-reset-button:hover { transform: translateY(-1px); border-color: var(--lp-gold); background: #1b3858; color: var(--lp-text); }
 .settings-action-status { min-height: 1em; margin: 7px 0 0; color: var(--lp-gold-soft); font-size: .75rem; text-align: right; }
 .settings-action-status:empty { display: none; }
@@ -329,7 +329,7 @@ body.lakbay-theme .settings-volume-controls input[type="range"] {
 .settings-data-guidance { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: start; gap: 28px; }
 .settings-data-questions > h3 { margin: 0 0 14px; color: var(--lp-text); font-size: 1rem; }
 .settings-data-questions details { border-bottom: 1px solid #304960; }
-.settings-data-questions summary { display: flex; justify-content: space-between; align-items: center; gap: 14px; min-height: 56px; padding: 15px 2px; color: #d5e0ec; font-size: .91rem; font-weight: 700; line-height: 1.5; cursor: pointer; list-style: none; }
+.settings-data-questions summary { display: flex; justify-content: space-between; align-items: center; gap: 14px; min-height: 56px; padding: 15px 2px; color: #d5e0ec; font-size: .91rem; font-weight: 700; line-height: 1.5; cursor: var(--lakbay-cursor-hand, pointer); list-style: none; }
 .settings-data-questions summary::-webkit-details-marker { display: none; }
 .settings-data-questions summary:hover { color: var(--lp-gold-soft); }
 .settings-disclosure-icon { display: grid; flex: 0 0 24px; width: 24px; height: 24px; place-items: center; border: 1px solid #49617c; border-radius: 7px; color: #c9dbeb; }
@@ -380,3 +380,9 @@ body.lakbay-theme .settings-volume-controls input[type="range"] {
     .settings-profile-link,
     .settings-reset-button { transition: none; }
 }
+.settings-student-recovery { margin-block: 14px; padding: 12px; border: 1px solid #526d80; border-radius: 10px; }
+.settings-student-recovery summary { min-height: 36px; color: #f0d497; font-weight: 600; }
+.settings-student-recovery p { margin-block: 8px; }
+.settings-student-recovery form { display: grid; gap: 8px; }
+.settings-student-recovery input[type="password"] { min-width: 0; min-height: 44px; padding: 8px; color: #f7f3e8; background: #11283a; border: 1px solid #617d8d; border-radius: 8px; }
+.settings-student-recovery code { color: #f0d497; overflow-wrap: anywhere; user-select: all; }

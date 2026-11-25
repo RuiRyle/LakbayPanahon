@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Account recovery | LakbayPanahon</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/navy-gold-theme.css">
+    <link rel="stylesheet" href="../css/password-field.css">
+    <link rel="stylesheet" href="../css/page-transition.css">
+</head>
+<body class="lakbay-theme">
+    <main class="auth-page auth-action-page">
+        <aside class="auth-showcase login-harbor" aria-label="LakbayPanahon">
+            <div class="login-harbor-art" aria-hidden="true"></div>
+            <a href="../index.html" class="auth-logo">
+                <span class="logo-icon" aria-hidden="true">LP</span>
+                <span class="logo-text"><span>LakbayPanahon</span><small>Philippine History</small></span>
+            </a>
+            <div class="showcase-content"><p class="auth-action-tagline">Your journey through Philippine history.</p></div>
+            <p class="login-harbor-caption"><span aria-hidden="true"></span> A young explorer studies a map &middot; Artist’s illustration</p>
+        </aside>
+        <section class="auth-form-section" aria-labelledby="authActionTitle">
+            <div class="auth-form-container">
+                <a href="login.html" class="back-home">← Back to log in</a>
+                <div class="form-heading reset-flow-heading">
+                    <div class="reset-flow-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                            <rect x="4" y="10" width="16" height="11" rx="3"/>
+                            <path d="M8 10V7a4 4 0 1 1 8 0v3m-4 4v3"/>
+                        </svg>
+                    </div>
+                    <h1 id="authActionTitle" tabindex="-1">Checking your link</h1>
+                    <p id="authActionDescription">This should only take a moment.</p>
+                </div>
+                <form id="choosePasswordForm" class="auth-form auth-action-form" method="post" hidden>
+                    <div class="form-group">
+                        <label for="newPassword">New password</label>
+                        <div class="input-wrapper password-field">
+                            <input id="newPassword" type="password" required minlength="15" autocomplete="new-password" aria-describedby="newPasswordHelp" disabled>
+                            <button type="button" class="password-toggle" aria-controls="newPassword" aria-label="Show new password" data-password-label="new password">
+                                <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/><path class="password-eye-slash" d="m4 4 16 16"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <small id="newPasswordHelp" class="input-help">Use at least 15 characters. A passphrase made of several words is easier to remember.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="repeatNewPassword">Confirm new password</label>
+                        <div class="input-wrapper password-field">
+                            <input id="repeatNewPassword" type="password" required minlength="15" autocomplete="new-password" disabled>
+                            <button type="button" class="password-toggle" aria-controls="repeatNewPassword" aria-label="Show password confirmation" data-password-label="password confirmation">
+                                <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/><path class="password-eye-slash" d="m4 4 16 16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="auth-button" type="submit" disabled>Save new password</button>
+                </form>
+                <div id="authActionMessage" class="form-message" role="status" aria-live="polite" tabindex="-1"></div>
+                <div class="auth-action-controls">
+                    <button id="authActionConfirm" class="auth-button" type="button" hidden>Restore previous email</button>
+                    <button id="authActionRetry" class="auth-button" type="button" hidden>Check link again</button>
+                    <a id="authActionContinue" class="secondary-button" href="login.html" hidden>Go to log in</a>
+                </div>
+                <noscript><p class="reset-preview-note">Enable JavaScript and open your email link again to continue.</p></noscript>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="../js/password-field.js"></script>
+    <script type="module" src="../js/auth-action.js"></script>
+</body>
+</html>

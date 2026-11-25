@@ -23,9 +23,9 @@
 .clean-learning-preview h3 {font-size:1rem;line-height:1.4;margin:0 0 10px}
 .clean-learning-preview p {margin:0 0 14px}
 .clean-learning-preview #labBrief {color:#cad7d2;line-height:1.75;margin-bottom:22px}
-.clean-learning-preview button {font:inherit;cursor:pointer;min-height:44px;border:1px solid #62827f;background:#274b51;color:#e2e9df;border-radius:10px;padding:10px 14px;line-height:1.45;transition:background .15s}
+.clean-learning-preview button {font:inherit;cursor:var(--lakbay-cursor-hand, pointer);min-height:44px;border:1px solid #62827f;background:#274b51;color:#e2e9df;border-radius:10px;padding:10px 14px;line-height:1.45;transition:background .15s}
 .clean-learning-preview button:hover:not(:disabled) {background:#355c5e}
-.clean-learning-preview button:disabled {opacity:.5;cursor:default}
+.clean-learning-preview button:disabled {opacity:.5;cursor:var(--lakbay-cursor-arrow, default)}
 .clean-learning-preview :is(button,a,select,summary):focus-visible {outline:3px solid #efd18b;outline-offset:4px}
 .clean-learning-preview .lab-audio {display:flex;gap:8px}
 .clean-learning-preview .lab-audio button {background:transparent;border-color:#4f6d70;padding:6px 12px;font-size:.8rem;min-height:40px}
@@ -80,7 +80,7 @@
 .lesson-review {border-top:1px solid #54726d;margin:20px 0;padding-top:4px}
 .lesson-review summary {color:#cfdbce;font-size:.86rem}
 .lesson-review p {font-size:.88rem;color:#c4d3c9;line-height:1.8}
-.clean-learning-preview summary {cursor:pointer;min-height:44px;padding:12px 0;font-size:.82rem;color:#becfc5}
+.clean-learning-preview summary {cursor:var(--lakbay-cursor-hand, pointer);min-height:44px;padding:12px 0;font-size:.82rem;color:#becfc5}
 .clean-learning-preview .lab-lesson-options {margin-top:22px}
 .clean-learning-preview .lab-lesson-options>details {border-bottom:1px solid #36545a}
 .clean-learning-preview #labBagCount {font-size:.7rem;margin-left:6px;color:#aebfb7}
@@ -107,12 +107,30 @@ body.simple-lesson.lakbay-theme #sceneTitle {font-size:clamp(1.4rem,3vw,1.85rem)
 body.simple-lesson.lakbay-theme #sceneLabel {display:none}
 body.simple-lesson.lakbay-theme .story-visual,body.simple-lesson.lakbay-theme .story-scene-image {max-height:160px}
 body.simple-lesson.lakbay-theme .story-visual {border-bottom:1px solid #53716e}
+/* The web lesson frame contains the full illustration and its authored caption. */
+body.simple-lesson.lakbay-theme.story-web-page .story-visual{min-height:0;max-height:none;justify-content:flex-start;background:var(--lp-surface)}
+body.simple-lesson.lakbay-theme.story-web-page .story-artwork-frame{position:relative;inline-size:100%;aspect-ratio:16/9;max-block-size:360px;background:var(--lp-surface)}
+body.simple-lesson.lakbay-theme.story-web-page .story-artwork-frame .lesson-island-map-frame,
+body.simple-lesson.lakbay-theme.story-web-page .story-artwork-frame :is(.story-scene-image,.story-visual-fallback){position:absolute;inset:0;inline-size:100%;block-size:100%;min-block-size:0;max-block-size:none;box-sizing:border-box}
+body.simple-lesson.lakbay-theme.story-web-page .story-artwork-frame .lesson-island-map-frame{display:block}
+body.simple-lesson.lakbay-theme.story-web-page .story-artwork-frame .story-scene-image{object-fit:contain;object-position:center;border-radius:0}
+body.story-web-page .story-artwork-frame:has(.is-interactive-map img[src$="/prologue-island-map.svg"]){aspect-ratio:20/13}
+body.simple-lesson.lakbay-theme.story-web-page .story-artwork-frame .is-interactive-map:has(img[src$="/prologue-island-map.svg"]){inset:50% auto auto 50%;translate:-50% -50%;margin:0;inline-size:min(100%,550px);block-size:auto;aspect-ratio:20/13}
+body.simple-lesson.lakbay-theme.story-web-page .story-visual .lesson-image-open:disabled{visibility:hidden}
+body.simple-lesson.lakbay-theme.story-web-page .story-visual-caption{flex:none;position:static;width:100%;max-height:none;box-sizing:border-box;padding:12px 20px;font-size:var(--lp-type-label);line-height:1.65;overflow-wrap:anywhere;text-align:left}
+body.simple-lesson.lakbay-theme.story-web-page .story-visual-fallback{padding:12px}
+body.simple-lesson.lakbay-theme.story-web-page .story-visual-fallback .story-visual-icon{font-size:clamp(1.75rem,7vw,4rem)}
+@media(max-width:600px){
+    body.simple-lesson.lakbay-theme.story-web-page .story-artwork-frame{max-block-size:240px}
+    body.simple-lesson.lakbay-theme.story-web-page .story-artwork-frame .is-interactive-map:has(img[src$="/prologue-island-map.svg"]){inline-size:min(100%,369px)}
+    body.simple-lesson.lakbay-theme.story-web-page .story-visual-caption{padding:12px 18px}
+}
 body.simple-lesson.lakbay-theme .story-reading-card.lesson-reading .story-text {font-size:1rem;padding:20px;line-height:1.85;background:#d3b781;border:0;border-radius:12px}
 body.simple-lesson.lakbay-theme :is(.story-learning-heading,.quick-check-heading) {display:none}
 body.simple-lesson.lakbay-theme .story-reading-content>.lesson-goal {margin:0 0 20px;padding:14px 16px;background:#25464b;border:0;border-left:3px solid #d6b475;border-radius:0 10px 10px 0}
 body.simple-lesson.lakbay-theme .lesson-goal strong {display:block;color:#e0c68f;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase}
 body.simple-lesson.lakbay-theme .lesson-goal p {margin:4px 0 0;line-height:1.75;color:#e1e8db;font-size:.95rem}
-.lesson-goal-details summary {cursor:pointer;font-size:.78rem;color:#bfcec0;min-height:44px;padding:10px 0}
+.lesson-goal-details summary {cursor:var(--lakbay-cursor-hand, pointer);font-size:.78rem;color:#bfcec0;min-height:44px;padding:10px 0}
 .lesson-goal-details ul {padding-left:20px;font-size:.9rem;line-height:1.8;margin:0 0 10px}
 body.simple-lesson.lakbay-theme #lessonUnderstanding {background:transparent;margin:0;padding:0}
 body.simple-lesson.lakbay-theme .lesson-explanation {margin:0 0 20px}
@@ -121,7 +139,7 @@ body.simple-lesson.lakbay-theme .lesson-explanation p {font-size:1rem;line-heigh
 body.simple-lesson.lakbay-theme .lesson-example {padding:20px;background:#d3b781;color:#382f22;border-radius:12px}
 body.simple-lesson.lakbay-theme .lesson-example :is(h3,p) {color:#443a2b}
 body.simple-lesson.lakbay-theme .lesson-review {border-top:1px solid #4b6969;padding-top:0;margin:20px 0 0}
-body.simple-lesson.lakbay-theme .lesson-review summary {padding:12px 0;min-height:44px;color:#bdcfc3;font-size:.82rem;cursor:pointer}
+body.simple-lesson.lakbay-theme .lesson-review summary {padding:12px 0;min-height:44px;color:#bdcfc3;font-size:.82rem;cursor:var(--lakbay-cursor-hand, pointer)}
 body.simple-lesson.lakbay-theme .lesson-review .lesson-explanation {margin:12px 0 20px}
 body.simple-lesson.lakbay-theme .lesson-review .lesson-explanation p {font-size:.9rem}
 body.simple-lesson.lakbay-theme .mission-bayani {border:0;border-top:1px solid #3e5d5e;border-radius:0;box-shadow:none;background:transparent;padding:16px 0 0;margin:20px 0 0;gap:12px}
@@ -141,14 +159,14 @@ body.simple-lesson.lakbay-theme .story-progress-info {width:auto;flex:1;min-widt
 body.simple-lesson.lakbay-theme .story-progress-toolbar {flex:none;width:auto}
 body.simple-lesson.lakbay-theme .story-progress-track {width:100%;height:5px}
 body.simple-lesson.lakbay-theme .story-visual-caption {font-size:.73rem;font-weight:400;line-height:1.6;padding:9px 16px;text-align:left;background:#102b35}
-.lesson-image-open {position:absolute;right:12px;top:12px;min-height:40px;padding:8px 12px;border:1px solid #8eaaa2;border-radius:8px;background:#14343ee8;color:#e3e8da;font:inherit;font-size:.78rem;cursor:pointer}
+.lesson-image-open {position:absolute;right:12px;top:12px;min-height:40px;padding:8px 12px;border:1px solid #8eaaa2;border-radius:8px;background:#14343ee8;color:#e3e8da;font:inherit;font-size:.78rem;cursor:var(--lakbay-cursor-hand, pointer)}
 .lesson-image-dialog {position:fixed;inset:auto;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;width:min(1000px,calc(100vw - 40px));max-width:none;max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow:auto;overscroll-behavior:contain;background:#14343d;color:#e4e9de;border:1px solid #7e9783;border-radius:20px;padding:20px;box-sizing:border-box;box-shadow:0 28px 100px #0008}
 .lesson-image-dialog[open] {display:flex;flex-direction:column;gap:16px}
 body.lakbay-theme dialog.lesson-image-dialog[open] {animation:none;transform:translate(-50%,-50%)}
 .lesson-image-dialog::backdrop {background:#04181de8;backdrop-filter:blur(5px)}
 .lesson-image-dialog-header {display:flex;align-items:center;justify-content:space-between;gap:16px;flex:none}
 .lesson-image-dialog-header strong {font-size:1rem;font-weight:700;color:#e5ce9b}
-.lesson-image-dialog button {display:block;margin:0;padding:10px 16px;min-height:44px;background:#dfbc79;color:#332d22;border:0;border-radius:9px;font:inherit;font-size:.85rem;cursor:pointer}
+.lesson-image-dialog button {display:block;margin:0;padding:10px 16px;min-height:44px;background:#dfbc79;color:#332d22;border:0;border-radius:9px;font:inherit;font-size:.85rem;cursor:var(--lakbay-cursor-hand, pointer)}
 .lesson-image-dialog button:focus-visible {outline:3px solid #efd18b;outline-offset:4px}
 .lesson-image-dialog img {display:block;width:100%;height:auto;max-height:65vh;min-height:0;object-fit:contain;border-radius:10px;background:#0b2630}
 .lesson-image-dialog p {font-size:.85rem;line-height:1.7;margin:0;color:#c3d3c8;flex:none}
@@ -181,5 +199,16 @@ body.lakbay-theme dialog.lesson-image-dialog[open] {animation:none;transform:tra
 .lesson-sound-options label,.narrator-options label {display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:8px 0;font-size:.85rem;color:#c9d9ce}
 .lesson-sound-options input[type=checkbox],.narrator-options input[type=checkbox] {width:18px;height:18px;accent-color:#dfbc79;flex:none}
 .lesson-sound-options input[type=range],.narrator-options input[type=range] {accent-color:#dfbc79;min-height:36px;width:160px;max-width:100%}
-.lesson-sound-options button {padding:9px 14px;min-height:44px;background:#274b51;color:#e2e9df;border:1px solid #62827f;border-radius:9px;font:inherit;font-size:.85rem;cursor:pointer}
+.lesson-sound-options button {padding:9px 14px;min-height:44px;background:#274b51;color:#e2e9df;border:1px solid #62827f;border-radius:9px;font:inherit;font-size:.85rem;cursor:var(--lakbay-cursor-hand, pointer)}
 .lesson-sound-options p {font-size:.8rem;color:#b5c7bf;line-height:1.7;margin:10px 0 0}
+
+/* Story web layout: opt-in, retaining the focused reading structure. */
+body.simple-lesson.lakbay-theme.story-web-page[data-role="student"] .main-content>.story-page{max-width:920px}
+body.simple-lesson.lakbay-theme.story-web-page[data-role="student"] .story-header #storyMissionTitle{font-family:Georgia,serif;font-size:clamp(1.5rem,2.5vw,2rem);line-height:1.3;max-width:none;color:var(--lp-text);overflow-wrap:anywhere}
+body.simple-lesson.lakbay-theme.story-web-page[data-role="student"] .story-header #storyChapterTitle{display:block;font-size:var(--lp-type-label);line-height:1.6;color:var(--lp-muted);margin:8px 0 0;overflow-wrap:anywhere}
+body.simple-lesson.lakbay-theme.story-web-page .story-return-row .story-back{font-size:var(--lp-type-label);gap:10px}
+body.simple-lesson.lakbay-theme.story-web-page .story-reading-card{border-radius:var(--lp-radius-panel)}
+body.story-web-page .lesson-image-open{min-height:44px;font-size:var(--lp-type-label);border-radius:var(--lp-radius-control)}
+body.story-web-page .lesson-image-dialog{border-radius:var(--lp-radius-panel);border-color:var(--lp-control-line)}
+body.story-web-page .lesson-image-dialog :is(button,p){font-size:var(--lp-type-label);overflow-wrap:anywhere}
+body.story-web-page .lesson-image-dialog button:focus-visible{outline-color:var(--lp-focus)}

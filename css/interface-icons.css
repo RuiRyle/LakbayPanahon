@@ -24,3 +24,27 @@ span.interface-icon{background-color:currentColor;mask-repeat:no-repeat;mask-pos
 .interface-icon--flame{mask-image:url("../assets/icons/lucide/flame.svg");-webkit-mask-image:url("../assets/icons/lucide/flame.svg");}
 .interface-icon--zap{mask-image:url("../assets/icons/lucide/zap.svg");-webkit-mask-image:url("../assets/icons/lucide/zap.svg");}
 .interface-icon--house{mask-image:url("../assets/icons/lucide/house.svg");-webkit-mask-image:url("../assets/icons/lucide/house.svg");}
+
+/* Chapter honors reuse their lesson art as the center of a struck medallion. */
+.chapter-badge-medallion {
+    display:grid; place-items:center; width:100%; max-width:78px; aspect-ratio:1;
+    box-sizing:border-box; padding:8%; border:1px solid #e4c992; border-radius:50%; overflow:hidden;
+    background:repeating-conic-gradient(#ba9453 0deg 9deg,#f0d89b 9deg 13deg,#816337 13deg 17deg);
+    box-shadow:0 2px 5px #091a27a0;
+}
+.chapter-badge-medallion img { display:block; width:100%; aspect-ratio:1; border-radius:50%; object-fit:cover; }
+.chapter-badge-medallion .chapter-badge-seal { background:#173244; object-fit:contain; padding:15%; box-sizing:border-box; }
+
+/* Artifact status text is separate from decorative icon sizing on every page. */
+.artifact-image-status {
+    display: block;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 4px;
+    font: 600 .75rem/1.25 system-ui, sans-serif;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+.artifact-image-status:is([hidden], :empty) { display: none; }

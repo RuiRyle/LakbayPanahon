@@ -33,11 +33,12 @@
 <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
 <link rel="stylesheet" href="../css/interface-icons.css">
+    <link rel="stylesheet" href="../css/student-expedition-polish.css">
 </head>
 
 
 <body
-    class="auth-checking lakbay-theme explorer-journal-page"
+    class="lp-web-navigation auth-checking lakbay-theme explorer-journal-page"
     data-role="student"
 >
     <div class="student-loading-shell" role="status" aria-live="polite">
@@ -105,7 +106,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
-                    <span>Explore Chapters</span>
+                    <span>Chapter Map</span>
                 </a>
 
 
@@ -132,7 +133,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
-                    <span>Achievements</span>
+                    <span>Discovery Museum</span>
                 </a>
                 <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
 
@@ -229,48 +230,93 @@
             ====================================== -->
 
             <div class="my-journey-content">
-                <header class="journey-page-heading"><span class="adventure-emblem" aria-hidden="true">&#10022;</span><div><span class="eyebrow">YOUR LEARNING PATH</span><h1>My Journey</h1><strong class="adventure-tagline">Your next adventure awaits.</strong><p>Every lesson is a step through history. Follow your path and discover what comes next.</p></div><a class="primary-button" href="chapters.html">Explore Chapters &rarr;</a></header>
-                <h2 class="journal-section-title">01 <span>My Expedition Overview</span></h2><div class="journey-load-status"><p id="journeyPageStatus" role="status" aria-live="polite">Loading your saved journey...</p><button id="refreshJourney" class="text-button" type="button">Refresh Progress</button></div>
-                    <section class="journey-next journey-panel" aria-labelledby="nextStepTitle"><h2 id="nextStepTitle">What should I do next?</h2><p>Follow the action below to continue your lesson, review a topic, or take your chapter challenge.</p><div id="journeyNextAction" aria-live="polite"><p>Finding your next activity from your saved progress...</p></div></section>
+                <header class="journey-page-heading">
+                    <div class="journal-hero-copy">
+                        <span class="journal-hero-kicker"><span class="interface-icon interface-icon--compass" aria-hidden="true"></span> YOUR LEARNING PATH</span>
+                        <h1>My Journey</h1>
+                        <p>See your progress across chapters and find your next lesson.</p>
+                        <nav class="student-section-shortcuts journey-page-shortcuts" aria-label="Journey shortcuts">
+                            <a class="student-quick-link" href="#nextStepTitle">Next step</a>
+                            <a class="student-quick-link" href="#evidenceJournal">Evidence Journal</a>
+                            <a class="student-quick-link" href="chapters.html">Chapter Map</a>
+                        </nav>
+                    </div>
+                    <figure id="journeyCover" class="journal-hero-art">
+                        <img src="../assets/atlas/butuan-boatbuilding.jpg" width="1024" height="341" alt="Boatbuilders fitting wooden planks beside a river">
+                        <figcaption>Illustration of boatbuilding in Butuan</figcaption>
+                    </figure>
+                </header>
+                <div class="journey-load-status journal-overview-bar">
+                    <div>
+                        <h2>My Expedition Overview</h2>
+                        <p id="journeyPageStatus" role="status" aria-live="polite" aria-atomic="true">Loading your saved journey...</p>
+                    </div>
+                    <button id="refreshJourney" class="text-button lp-button lp-button-secondary" type="button">Refresh Progress</button>
+                </div>
+                <section class="journey-next journey-panel" aria-labelledby="nextStepTitle"><h2 id="nextStepTitle">Your next step</h2><div id="journeyNextAction" aria-live="polite" aria-atomic="false"><p>Finding your next activity from your saved progress...</p></div></section>
+                <section id="evidenceJournal" tabindex="-1" class="journey-panel evidence-journal" aria-labelledby="evidenceJournalTitle">
+                    <div id="journalCover" class="evidence-journal-heading">
+                        <span class="journal-stat-emblem journal-notebook-emblem" aria-hidden="true"><span class="interface-icon interface-icon--book-open"></span></span>
+                        <div><h2 id="evidenceJournalTitle">Evidence Journal</h2><p>Revisit clues you saved from your lessons.</p><a class="journal-cover-link" href="my-profile.html#reward-level-2">Journal cover rewards</a></div>
+                        <button type="button" class="text-button lp-button lp-button-secondary" id="refreshEvidenceJournal">Refresh Journal</button>
+                        <figure class="journal-equipped-cover" hidden>
+                            <img alt="" width="960" height="540">
+                            <figcaption></figcaption>
+                        </figure>
+                    </div>
+                    <div id="journalBrowseTools" hidden>
+                        <div class="evidence-journal-controls">
+                            <label for="journalSearch"><span class="journal-search-label"><span class="interface-icon interface-icon--search" aria-hidden="true"></span> Find a saved clue</span><input id="journalSearch" type="search" placeholder="Search by topic or lesson"></label>
+                            <label for="journalChapterFilter">Chapter<select id="journalChapterFilter"><option value="">All chapters</option></select></label>
+                            <label for="evidenceJournalFilter">Mission<select id="evidenceJournalFilter"><option value="">All missions</option></select></label>
+                        </div>
+                        <div class="journal-results-bar">
+                            <div class="journal-result-count"><p id="journalFilterStatus" role="status" aria-atomic="true"></p><button type="button" id="clearJournalFilters" hidden>Clear filters</button></div>
+                            <div class="journal-view-switch" role="group" aria-label="Journal view"><button type="button" data-journal-view="cards" aria-pressed="true">Cards</button><button type="button" data-journal-view="notebook" aria-pressed="false">Notebook</button><button type="button" data-journal-view="timeline" aria-pressed="false">Timeline</button></div>
+                        </div>
+                    </div>
+                    <p id="evidenceJournalStatus" class="lp-status-panel" data-state="loading" role="status" aria-live="polite" aria-atomic="true">Loading your saved clues...</p>
+                    <div id="evidenceJournalEntries" class="evidence-journal-grid"></div>
+                </section>
                 <div id="journeyPageContent" hidden>
-                    <section class="journey-finale-entry" aria-label="Your journey finish line"><div><span class="eyebrow">YOUR FINISH LINE</span><h2>Every discovery leads somewhere</h2><p>Finish the required chapters to earn your Journey Complete badge and a personal keepsake.</p></div><a class="text-button" href="journey-finale.html">View My Journey Goal &rarr;</a></section>
-                    <h2 class="journal-section-title journal-discoveries-title">02 <span>My Historical Discoveries</span></h2><section class="lakbay-passport" aria-labelledby="passportTitle">
+                    <section class="journey-stats" aria-label="Your progress">
+                        <article class="journal-stat journal-stat--missions">
+                            <span class="journal-stat-emblem" aria-hidden="true"><span class="interface-icon interface-icon--compass"></span></span>
+                            <div><span class="journal-stat-label">Missions completed</span><strong id="journeyMissionCount">&mdash;</strong></div>
+                        </article>
+                        <article class="journal-stat journal-stat--chapters">
+                            <span class="journal-stat-emblem" aria-hidden="true"><span class="interface-icon interface-icon--book-open"></span></span>
+                            <div><span class="journal-stat-label">Chapters completed</span><strong id="journeyChapterCount">&mdash;</strong></div>
+                        </article>
+                        <article class="journal-stat journal-stat--review">
+                            <span class="journal-stat-emblem" aria-hidden="true"><span class="interface-icon interface-icon--search"></span></span>
+                            <div><span class="journal-stat-label">Topics to review</span><strong id="journeyReviewCount">&mdash;</strong></div>
+                        </article>
+                    </section>
+                    <section class="lakbay-passport" aria-labelledby="passportTitle">
                         <div class="passport-heading"><div><span class="passport-kicker">LAKBAYPANAHON · EXPLORER RECORD</span><h2 id="passportTitle">Your Lakbay Passport</h2><p>Your chapter progress, stamped one discovery at a time.</p></div><img class="passport-seal" src="../assets/brand/lakbay-sun.svg" alt="" width="56" height="56"></div>
                         <div id="passportStamps" class="passport-stamps"></div>
                     </section>
-                    <section class="journey-stats" aria-label="Your progress">
-                        <article><span>Missions completed</span><strong id="journeyMissionCount">&mdash;</strong></article>
-                        <article><span>Chapters completed</span><strong id="journeyChapterCount">&mdash;</strong></article>
-                        <article><span>Topics to review</span><strong id="journeyReviewCount">&mdash;</strong></article>
-                    </section>
 
                     <details class="discovery-panel" id="learningCommunityPanel"><summary>Build Your Learning Community</summary><p>Your completed missions reveal places to explore. Open this when you want to see your progress grow.</p><div id="learningCommunity"></div></details>
-                    <section id="evidenceJournal" class="journey-panel evidence-journal" aria-labelledby="evidenceJournalTitle">
-                        <div class="evidence-journal-heading">
-                            <span class="eyebrow">YOUR FIELD NOTES</span>
-                            <h2 id="evidenceJournalTitle">Evidence Journal</h2>
-                            <p>Your saved clues from each lesson, ready to revisit whenever you want to remember what they mean.</p>
-                        </div>
-                        <div class="journal-view-switch" role="group" aria-label="Journal view"><button type="button" data-journal-view="cards" aria-pressed="true">Cards</button><button type="button" data-journal-view="notebook" aria-pressed="false">Notebook</button><button type="button" data-journal-view="timeline" aria-pressed="false">Timeline</button></div><div class="evidence-journal-controls"><label for="journalSearch">Search discoveries<input id="journalSearch" type="search" placeholder="Topic, lesson or explanation"></label><label for="journalChapterFilter">Chapter<select id="journalChapterFilter"><option value="">All chapters</option></select></label>
-                            <label for="evidenceJournalFilter">Browse by mission
-                                <select id="evidenceJournalFilter"><option value="">All missions</option></select>
-                            </label>
-                            <button type="button" class="text-button" id="refreshEvidenceJournal">Refresh Journal</button>
-                        </div>
-                        <p id="evidenceJournalStatus" role="status" aria-live="polite">Loading your saved discoveries...</p>
-                        <div id="evidenceJournalEntries" class="evidence-journal-grid"></div>
-                    </section>
-                    <h2 class="journal-section-title journal-progress-title">03 <span>My Learning Progress</span></h2><div class="journey-body-grid">
-                        <section class="journey-panel" aria-labelledby="learningPathTitle"><div class="journey-section-heading"><span class="eyebrow">CHAPTER BY CHAPTER</span><h2 id="learningPathTitle">Your Learning Path</h2><p>Complete missions, then take the chapter challenge to unlock what comes next.</p></div><div id="journeyPath"></div></section>
-                        <section class="journey-panel journey-review" aria-labelledby="journeyReviewTitle">
+
+                    <div class="journey-body-grid">
+                        <section class="journey-panel journal-learning-path" aria-labelledby="learningPathTitle">
                             <div class="journey-section-heading">
-                                <span class="eyebrow">BUILD YOUR CONFIDENCE</span>
-                                <h2 id="journeyReviewTitle">Topics to Revisit</h2>
-                                <p>Use these saved learning hints to revisit a story or continue practice. They show your next step, not a final score.</p>
+                                <span class="journal-notebook-emblem" aria-hidden="true"><span class="interface-icon interface-icon--compass"></span></span>
+                                <div><h2 id="learningPathTitle">Your Learning Path</h2><p>Finish the missions in a chapter, then take its Chapter Challenge.</p></div>
+                            </div>
+                            <div id="journeyPath"></div>
+                        </section>
+                        <section class="journey-panel journey-review" aria-labelledby="journeyReviewTitle">
+                            <div class="journey-section-heading journal-review-heading">
+                                <span class="journal-notebook-emblem" aria-hidden="true"><span class="interface-icon interface-icon--search"></span></span>
+                                <div><h2 id="journeyReviewTitle">Topics to Revisit</h2><p>Use your saved quiz and practice results to pick what to review next.</p></div>
                             </div>
                             <div id="journeyReviewTopics" class="journey-topic-list"></div>
                         </section>
                     </div>
+                    <section class="journey-finale-entry" aria-label="Your journey finish line"><div><span class="eyebrow">YOUR FINISH LINE</span><h2>Every discovery leads somewhere</h2><p>Finish the required chapters to earn your Journey Complete badge and a personal keepsake.</p></div><a class="text-button" href="journey-finale.html">View My Journey Goal &rarr;</a></section>
                 </div>
             </div>
 

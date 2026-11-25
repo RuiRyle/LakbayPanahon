@@ -1,0 +1,1078 @@
+.admin-workspace.lakbay-theme {
+    --admin-sidebar-size: 248px;
+    --admin-bar-height: 72px;
+    --admin-canvas: #0a1727;
+    --admin-panel: #10263a;
+    --admin-panel-raised: #163149;
+    --admin-line: #3a546a;
+    --admin-muted: #bdcddd;
+    --admin-ink: #f1f5fa;
+    --admin-accent: #f1cd85;
+    --admin-radius: 16px;
+    --admin-gold: #f5d58d;
+    --admin-polished-panel: linear-gradient(150deg, #173246, #102536 65%);
+    --admin-panel-shadow: 0 12px 30px #06121e4a, inset 0 1px #e7f6ff0a;
+    --admin-motion: cubic-bezier(.2, .75, .25, 1);
+    --admin-sun-texture: url("../assets/brand/lakbay-sun.svg") 81% center / 48px 48px no-repeat,
+        repeating-radial-gradient(ellipse 112px 75px at 81% 50%, transparent 0 15px, #efd49b 16px, transparent 17px 31px);
+    background: radial-gradient(ellipse at 88% 0%, #18344b 0%, transparent 48rem), var(--admin-canvas);
+    color: var(--admin-ink);
+}
+
+body.admin-workspace.lakbay-theme .teacher-shell {
+    min-block-size: 100svh;
+}
+
+body.admin-workspace.lakbay-theme .teacher-topbar {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 20;
+    box-sizing: border-box;
+    height: auto;
+    min-height: var(--admin-bar-height);
+    padding: 10px clamp(16px, 3vw, 36px);
+    gap: 12px;
+    border-block-end: 1px solid var(--admin-line);
+    background: linear-gradient(100deg, #102539, #192f40);
+    box-shadow: 0 4px 16px #06121e55;
+}
+
+.admin-workspace.lakbay-theme .student-page-title-copy small {
+    color: var(--admin-muted);
+    font-size: .73rem;
+    letter-spacing: .025em;
+    text-transform: none;
+}
+
+.admin-workspace.lakbay-theme .student-page-title-copy strong {
+    font-size: clamp(.95rem, 1.5vw, 1.13rem);
+    line-height: 1.28;
+}
+
+.admin-workspace.lakbay-theme .student-page-title-icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    border-color: #7a735d;
+    border-radius: 11px;
+    background: linear-gradient(145deg, #333d44, #192f3f);
+    color: var(--admin-gold);
+}
+
+body.admin-workspace.lakbay-theme .admin-navigation {
+    box-sizing: border-box;
+    width: var(--admin-sidebar-size);
+    z-index: 22;
+    padding: 20px 15px 25px;
+    border-inline-end: 1px solid var(--admin-line);
+    background: radial-gradient(ellipse at 10% 0, #284a5133, transparent 47%), linear-gradient(160deg, #132c40 0%, #0c1d2d 62%);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.admin-workspace.lakbay-theme .admin-navigation .teacher-brand {
+    min-height: 60px;
+    margin: 0 0 16px;
+    padding: 0 7px 15px;
+    border-block-end-color: var(--admin-line);
+    letter-spacing: -.016em;
+}
+
+.admin-workspace .admin-navigation .teacher-brand small {
+    color: var(--admin-muted);
+    letter-spacing: .02em;
+}
+
+.admin-workspace.lakbay-theme .admin-navigation .teacher-tabs {
+    gap: 5px;
+}
+
+.admin-workspace .admin-nav-group {
+    margin: 8px 8px 4px;
+    color: #9fb5c8;
+    font-size: .69rem;
+    font-weight: 700;
+    letter-spacing: .095em;
+    text-transform: uppercase;
+}
+
+.admin-workspace .admin-nav-group:not(:first-child) { margin-block-start: 20px; }
+
+.admin-workspace.lakbay-theme .admin-navigation .teacher-tabs [data-teacher-tab] {
+    min-height: 47px;
+    box-sizing: border-box;
+    gap: 10px;
+    padding: 9px 11px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: .88rem;
+    color: #cedae6;
+    line-height: 1.35;
+}
+
+.admin-workspace.lakbay-theme .admin-navigation .teacher-tabs [data-teacher-tab]:hover {
+    background: #1b3548;
+    border-color: #526f83;
+    color: var(--admin-ink);
+}
+
+.admin-workspace.lakbay-theme .admin-navigation .teacher-tabs [data-teacher-tab][aria-current="page"] {
+    background: linear-gradient(100deg, #4b3e2b, #223745);
+    border-color: #9b835a;
+    color: #ffdf9f;
+    box-shadow: inset 3px 0 var(--admin-gold), 0 4px 14px #060f1c40;
+}
+
+.admin-workspace .admin-navigation .teacher-sidebar-note {
+    border-color: var(--admin-line);
+}
+
+.admin-workspace.lakbay-theme .admin-navigation .logout-button:hover {
+    background: #1b364d;
+    border-color: var(--admin-line);
+}
+
+.admin-workspace #adminMenuToggle svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+}
+
+.admin-workspace #adminMenuToggle[aria-expanded="true"] .admin-menu-icon,
+.admin-workspace #adminMenuToggle[aria-expanded="false"] .admin-menu-close-icon { display: none; }
+
+.admin-workspace #adminMenuDismiss { display: none; }
+
+.admin-workspace.lakbay-theme #admin-main {
+    box-sizing: border-box;
+    max-width: 1536px;
+    padding: clamp(16px, 3vw, 32px) clamp(14px, 3vw, 36px) 64px;
+    scroll-margin-block-start: var(--admin-bar-height);
+}
+
+.admin-workspace #admin-main :is([tabindex="-1"], section[id]) {
+    scroll-margin-block-start: calc(var(--admin-bar-height) + 12px);
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-welcome {
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(230px, 1fr);
+    align-items: center;
+    gap: clamp(16px, 3vw, 42px);
+    min-block-size: 212px;
+    margin-block-end: 15px;
+    padding: clamp(21px, 3vw, 38px);
+    border: 1px solid #687d85;
+    border-radius: var(--admin-radius);
+    background: radial-gradient(ellipse at 85% 95%, #b6996140, transparent 54%),
+        linear-gradient(112deg, #10283e 28%, #21475b 100%);
+    box-shadow: 0 12px 28px #050e1c66;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-hero-copy { min-width: 0; max-width: none; }
+
+.admin-workspace #adminHeroSnapshot {
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #56728a;
+    border-radius: 13px;
+    background: #0b1c2ce8;
+    box-shadow: inset 0 1px #cadced18, 0 9px 22px #070e1966;
+}
+
+.admin-workspace #adminHeroSnapshot .admin-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+}
+
+.admin-workspace.lakbay-theme #admin-main #adminHeroSnapshot .admin-metric {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto 1fr;
+    align-content: start;
+    min-height: 0;
+    padding: 8px 11px 6px;
+    gap: 6px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+.admin-workspace.lakbay-theme #admin-main #adminHeroSnapshot .admin-metric + .admin-metric {
+    border-inline-start: 1px solid var(--admin-line);
+}
+
+.admin-workspace #adminHeroSnapshot .admin-metric strong {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    color: var(--admin-ink);
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-variant-numeric: tabular-nums;
+}
+
+.admin-workspace #adminHeroSnapshot .admin-metric :is(span, small) {
+    grid-column: 1 / -1;
+    overflow-wrap: anywhere;
+}
+
+.admin-workspace #adminHeroSnapshot .admin-summary-icon {
+    grid-column: 2;
+    grid-row: 1;
+    width: 31px;
+    height: 31px;
+    padding: 7px;
+    border-radius: 9px;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-welcome-landscape {
+    z-index: -1;
+    width: min(63%, 760px);
+    opacity: .9;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-welcome h1 {
+    margin: 0;
+    color: #fff2d4;
+    font: 700 clamp(1.85rem, 3.3vw, 2.95rem) / 1.08 var(--workspace-serif, Georgia, serif);
+    letter-spacing: -.027em;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-welcome p {
+    margin: 10px 0 17px;
+    font-size: .95rem;
+    line-height: 1.55;
+}
+
+.admin-workspace .admin-hero-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 8px 14px;
+    border: 1px solid #f9dea2;
+    border-radius: 9px;
+    background: #edc784;
+    color: #1e2530;
+    text-decoration: none;
+    font-weight: 750;
+    font-size: .88rem;
+}
+
+.admin-workspace .admin-hero-action:hover { background: #ffe3a8; }
+
+.admin-workspace .admin-refresh-button {
+    border-color: #57748b;
+    border-radius: 10px;
+    background: #17354e;
+}
+
+.admin-workspace .admin-header-snapshot { color: var(--admin-muted); }
+.admin-workspace[data-admin-view="accounts"] .admin-header-snapshot { display: none; }
+.admin-workspace[data-admin-view="environment"] .admin-refresh-group { display: none; }
+.admin-workspace #adminQueueBadge[hidden] { display: none; }
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue {
+    padding: 0;
+    border: 0;
+    background: none;
+}
+
+.admin-workspace .admin-work-queue h2 {
+    margin-block-end: 13px;
+    color: var(--admin-ink);
+    font-size: 1.16rem;
+}
+
+.admin-workspace .admin-work-queue-cards { gap: 12px; }
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card {
+    position: relative;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto auto;
+    min-height: 116px;
+    padding: 14px 16px;
+    gap: 4px 10px;
+    border: 1px solid var(--admin-line);
+    border-radius: 13px;
+    background: linear-gradient(145deg, #1a374e, #11293e);
+    color: var(--admin-ink);
+    box-shadow: inset 0 1px #a0bad515;
+    transform: none;
+}
+
+.admin-workspace [data-work-category="ready"] { --work-stage-accent: #f2ce85; --work-stage-surface: #473925; }
+.admin-workspace [data-work-category="email"] { --work-stage-accent: #a0c8f0; --work-stage-surface: #1b3654; }
+.admin-workspace [data-work-category="activation"] { --work-stage-accent: #9bd8c3; --work-stage-surface: #193f3e; }
+.admin-workspace [data-work-category="awaiting"] { --work-stage-accent: #c4cedb; --work-stage-surface: #283944; }
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card {
+    border-block-start-color: var(--work-stage-accent, var(--admin-line));
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card[data-work-category="ready"][data-has-items="true"] {
+    background: linear-gradient(143deg, #483b2c, #203245);
+    border-color: #9d8054;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card:hover {
+    border-color: #d8bc89;
+    box-shadow: 0 8px 18px #06121e66;
+}
+
+.admin-workspace .admin-work-queue-count {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    color: #f5dba7;
+    font-size: clamp(1.7rem, 3vw, 2.23rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.admin-workspace [data-has-items="false"] .admin-work-queue-count { color: #c0d2e2; }
+
+.admin-workspace .admin-work-queue-label { grid-column: 1; grid-row: 2; font-size: .91rem; }
+.admin-workspace .admin-work-queue-hint { grid-column: 1 / -1; grid-row: 3; color: var(--admin-muted); }
+.admin-workspace .admin-work-queue-arrow {
+    display: grid;
+    place-items: center;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--work-stage-surface, #283944);
+    color: var(--work-stage-accent, #e5c58d);
+    font-size: 1rem;
+}
+
+.admin-workspace[data-admin-view="overview"] #admin-main .admin-queue-row .admin-queue-status {
+    max-inline-size: 100%;
+    border-color: var(--work-stage-accent, var(--admin-line));
+    background: var(--work-stage-surface, var(--admin-panel));
+    color: var(--work-stage-accent, var(--admin-ink));
+    white-space: normal;
+    text-align: center;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-overview-grid {
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    gap: clamp(15px, 2vw, 24px);
+    margin-block-start: 20px;
+}
+
+.admin-workspace .admin-overview-column { gap: 16px; }
+
+.admin-workspace .admin-overview-column .admin-metrics.teacher-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 0;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-overview-column .admin-metric {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto 1fr;
+    min-height: 114px;
+    padding: 12px;
+    border-color: var(--admin-line);
+    background: var(--admin-panel);
+    border-radius: 12px;
+    box-shadow: none;
+    gap: 5px;
+}
+
+.admin-workspace .admin-overview-column .admin-metric .admin-summary-icon { grid-column: 2; grid-row: 1; width: 28px; height: 28px; padding: 6px; }
+.admin-workspace .admin-overview-column .admin-metric :is(strong, span, small) { grid-column: 1 / -1; }
+.admin-workspace .admin-overview-column .admin-metric strong { grid-column: 1; grid-row: 1; }
+
+.admin-workspace.lakbay-theme #admin-main :is(
+    .admin-overview-column > section, #adminDirectory, #adminAccountDetail, .decision-list-panel,
+    .administration-tile, .administration-platform
+) {
+    border-color: var(--admin-line);
+    border-radius: var(--admin-radius);
+    background: var(--admin-panel);
+    box-shadow: 0 8px 22px #050f1d45;
+}
+
+.admin-workspace.lakbay-theme #admin-main :is(.admin-account-toolbar, .admin-workflow-purpose) {
+    border-color: #4a667c;
+    background: #142d44;
+    border-radius: 13px;
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-overview-column :is(.admin-pending-heading, .admin-activity-heading) {
+    border-block-end-color: var(--admin-line);
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-overview-column :is(.admin-pending-heading h2, .admin-activity-heading h2, .admin-quick-actions h2) {
+    font-family: inherit;
+    font-size: 1.06rem;
+    font-weight: 720;
+    line-height: 1.35;
+    color: var(--admin-ink);
+}
+
+.admin-workspace.lakbay-theme #admin-main :is(#adminAccounts button[data-user-id], .decision-row, .administration-tile):hover {
+    border-color: #b9a178;
+    background: var(--admin-panel-raised);
+}
+
+.admin-workspace.lakbay-theme #admin-main :is(.admin-application-tabs, .admin-account-role-tabs) button {
+    min-height: 44px;
+    border-radius: 9px;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #admin-main .admin-account-banner {
+    display: block;
+    isolation: isolate;
+    overflow: clip;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminDirectory .admin-applicant-pagination {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminDirectory .admin-applicant-pagination #accountPage {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminDirectory .admin-applicant-pagination .teacher-actions {
+    flex: 0 0 auto;
+    margin: 0 0 0 auto;
+    gap: 8px;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminDirectory .admin-applicant-pagination button {
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 44px;
+    padding: 8px 13px;
+    white-space: nowrap;
+}
+
+.admin-workspace .admin-account-back { display: none; }
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #admin-main .admin-account-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    gap: 13px;
+    padding: clamp(14px, 2vw, 20px);
+    margin-block-end: 16px;
+}
+
+.admin-workspace .admin-account-filter-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 14px;
+    padding-block-end: 12px;
+    border-block-end: 1px solid var(--admin-line);
+}
+
+.admin-workspace .admin-account-filter-heading h2 { margin: 0; font-size: 1.08rem; }
+.admin-workspace .admin-account-filter-heading .admin-account-role-tabs { gap: 5px; margin: 0; }
+.admin-workspace .admin-account-filter-heading .admin-account-role-tabs button { padding-inline: 13px; font-size: .82rem; }
+
+.admin-workspace .admin-account-filter-fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 13px;
+}
+
+.admin-workspace .admin-account-filter-fields .admin-search { min-width: 0; }
+.admin-workspace .admin-account-filter-fields #accountFilters label[hidden] { display: none; }
+.admin-workspace.lakbay-theme .admin-account-toolbar :is(#adminSearchScope, #adminSearchStatus) { margin: 0; line-height: 1.5; }
+.admin-workspace .admin-account-toolbar #adminSearchStatus:empty { display: none; }
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminAccountDetail :is(#adminAccessPanel, #adminHistoryPanel) > summary {
+    padding: 13px 15px;
+    min-height: 46px;
+    font-size: .92rem;
+    font-weight: 680;
+    line-height: 1.4;
+    color: var(--admin-ink);
+    background: #173249;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminAccountDetail #adminAccessPanel > summary { color: var(--admin-accent); }
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminAccountDetail :is(#adminAccessPanel, #adminHistoryPanel) > summary:hover { background: #24435a; }
+
+body.admin-workspace.lakbay-theme[data-admin-view="applications"] #admin-main .admin-workflow-purpose:not([hidden]) {
+    display: grid;
+    gap: 12px;
+    padding: clamp(15px, 2.5vw, 25px);
+}
+
+.admin-workspace .admin-workflow-purpose h1 {
+    margin: 0;
+    color: #fff2d4;
+    font: 700 clamp(1.45rem, 3vw, 2.2rem) / 1.15 var(--workspace-serif, Georgia, serif);
+}
+
+.admin-workspace .admin-review-flow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 28px;
+    margin: 0;
+    padding-inline-start: 20px;
+    list-style: decimal;
+}
+
+.admin-workspace .admin-review-flow li { padding-inline-start: 4px; line-height: 1.45; }
+.admin-workspace .admin-review-flow li::marker { color: var(--admin-accent); font-weight: 700; }
+.admin-workspace .admin-review-flow strong { display: block; color: var(--admin-ink); font-size: .91rem; }
+.admin-workspace .admin-review-flow span { color: var(--admin-muted); font-size: .84rem; }
+
+.admin-workspace.lakbay-theme #adminAccountDetail .qualification-approval-stages dt { line-height: 1.45; font-size: .87rem; }
+.admin-workspace.lakbay-theme #adminAccountDetail .qualification-next-step { line-height: 1.6; font-size: .89rem; }
+
+body.admin-workspace.lakbay-theme[data-admin-view="applications"] #adminDirectory .admin-application-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+    padding: 6px;
+    background: #0b2033;
+    border-color: var(--admin-line);
+}
+
+body.admin-workspace.lakbay-theme[data-admin-view="applications"] #adminDirectory .admin-application-tabs button {
+    justify-content: flex-start;
+    padding-inline: 9px;
+    text-align: start;
+    font-size: .77rem;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-view="applications"] #adminDirectory #accountListContext {
+    padding-inline-end: 49px;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-view="applications"] #adminAccountsView:not(.has-selection) #adminDirectory {
+    height: auto;
+    min-height: 0;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-view="applications"] #adminAccountsView:not(.has-selection) #adminAccounts {
+    flex: 0 1 auto;
+    contain: none;
+    max-block-size: min(42vh, 420px);
+}
+
+.admin-workspace.lakbay-theme #adminDirectory .admin-applicant-list-state {
+    border: 1px dashed var(--admin-line);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 0;
+    color: var(--admin-muted);
+}
+
+body.admin-workspace.lakbay-theme #admin-main #adminSelectionEmpty:not([hidden]) {
+    align-self: start;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 10px;
+    height: auto;
+    padding: clamp(18px, 4vw, 40px);
+    border: 1px dashed #537188;
+    border-radius: var(--admin-radius);
+    background: radial-gradient(ellipse at 50% 0%, #1c3b53, transparent 80%), var(--admin-panel);
+    text-align: center;
+}
+
+body.admin-workspace.lakbay-theme #adminSelectionEmpty .admin-selection-symbol {
+    display: grid;
+    width: 49px;
+    height: 49px;
+    border-radius: 12px;
+    background: #18364b;
+    border-color: #537188;
+    color: var(--admin-accent);
+    font-size: 1.25rem;
+}
+
+.admin-workspace #adminSelectionEmpty p { max-inline-size: 46ch; color: var(--admin-muted); }
+
+
+.admin-workspace #adminEnvironment .admin-tools-heading { margin: 0 0 12px; color: var(--admin-ink); font-size: 1.1rem; }
+
+.admin-workspace.lakbay-theme #adminDecisionRecords .decision-workspace button:disabled { opacity: .5; }
+
+
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile {
+    min-height: 132px;
+    grid-template-columns: 58px minmax(0, 1fr) 16px;
+    gap: 14px;
+    padding: 16px;
+}
+
+.admin-workspace #adminEnvironment .administration-tile::after { content: none; }
+
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile-icon {
+    align-self: start;
+    width: 55px;
+    height: 55px;
+    border: 1px solid #597386;
+    border-radius: 12px;
+    background: #19364c;
+    color: var(--admin-accent);
+}
+
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile-icon svg { width: 36px; height: 36px; }
+.admin-workspace #adminEnvironment .administration-tile-copy > strong { font-size: 1.05rem; }
+.admin-workspace #adminEnvironment .administration-tool-badge { padding: 0; border: 0; background: none; color: #f0d299; }
+.admin-workspace #adminEnvironment .administration-tile:hover .administration-tool-badge { text-decoration: underline; text-underline-offset: 4px; }
+
+.admin-workspace .admin-navigation [aria-current="page"] #adminQueueBadge { color: #152538; }
+
+@media (min-width: 901px) {
+    body.admin-workspace.lakbay-theme .teacher-shell {
+        width: calc(100% - var(--admin-sidebar-size));
+        margin-inline-start: var(--admin-sidebar-size);
+    }
+
+    body.admin-workspace.lakbay-theme[data-admin-view="applications"] .teacher-topbar > .admin-application-back {
+        position: static;
+        margin-inline-start: auto;
+    }
+
+    body.admin-workspace.lakbay-theme[data-admin-view="applications"] .teacher-topbar .admin-refresh-group { display: none; }
+}
+
+@media (max-width: 960px) {
+    .admin-workspace.lakbay-theme #admin-main .admin-overview-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 700px) {
+    .admin-workspace.lakbay-theme #admin-main .admin-welcome {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    body.admin-workspace.lakbay-theme[data-admin-page="accounts"]:has(#adminAccountsView.has-selection) .teacher-topbar .admin-refresh-group,
+    body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #admin-main:has(#adminAccountsView.has-selection) > :is(.admin-account-banner, .admin-account-role-tabs, .admin-account-toolbar, #adminSearchScope, #adminSearchStatus),
+    body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminAccountsView.has-selection #adminDirectory { display: none; }
+
+    body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminAccountsView.has-selection { grid-template-columns: minmax(0, 1fr); }
+    body.admin-workspace.lakbay-theme[data-admin-page="accounts"] .teacher-topbar > .admin-account-back {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        margin-inline-start: auto;
+        padding: 6px 10px;
+        white-space: nowrap;
+        font-size: .75rem;
+    }
+
+    .admin-workspace .admin-review-flow,
+    .admin-workspace .admin-account-filter-fields { grid-template-columns: minmax(0, 1fr); }
+    body.admin-workspace.lakbay-theme[data-admin-page="applications"] #admin-main:has(#adminAccountsView.has-selection) .admin-workflow-purpose { display: none; }
+}
+
+@media (max-width: 900px) {
+    body.admin-workspace.lakbay-theme .teacher-topbar { padding-inline: 12px; }
+    .admin-workspace.lakbay-theme #adminMenuToggle { display: grid; place-items: center; width: 44px; min-height: 44px; padding: 0; border-color: #55748d; border-radius: 10px; }
+    body.admin-workspace.lakbay-theme[data-admin-view="applications"] .teacher-topbar { grid-template-columns: 44px minmax(0, 1fr) auto; }
+    body.admin-workspace.lakbay-theme.admin-menu-open { overflow: hidden; }
+    body.admin-workspace.lakbay-theme.admin-menu-open .admin-navigation {
+        display: flex;
+        top: var(--admin-bar-height);
+        bottom: 0;
+        height: auto;
+        width: min(312px, calc(100vw - 54px));
+        max-width: none;
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+        box-shadow: 12px 0 40px #03090e99;
+    }
+
+    body.admin-workspace.lakbay-theme .admin-navigation .teacher-sidebar-note { margin-block-end: 30px; }
+    .admin-workspace.lakbay-theme #adminMenuDismiss:not([hidden]) {
+        display: block;
+        position: fixed;
+        z-index: 21;
+        inset: var(--admin-bar-height) 0 0;
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: #050d19b8;
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-workspace.lakbay-theme #admin-main .admin-welcome-landscape { opacity: .36; width: 82%; }
+    .admin-workspace .admin-work-queue-cards { grid-template-columns: 1fr; gap: 8px; }
+    .admin-workspace.lakbay-theme #admin-main .admin-work-queue-card { min-height: 76px; grid-template-columns: 45px minmax(0, 1fr) auto; grid-template-rows: auto auto; padding: 10px 12px; }
+    .admin-workspace .admin-work-queue-count { grid-column: 1; grid-row: 1 / 3; align-self: center; }
+    .admin-workspace .admin-work-queue-label { grid-column: 2; grid-row: 1; }
+    .admin-workspace .admin-work-queue-hint { grid-column: 2; grid-row: 2; }
+    .admin-workspace .admin-work-queue-arrow { grid-column: 3; grid-row: 1 / 3; align-self: center; }
+    .admin-workspace .admin-header-snapshot { display: none; }
+    .admin-workspace.lakbay-theme #adminEnvironment .administration-tile { grid-template-columns: 42px minmax(0, 1fr) 12px; gap: 10px; padding: 13px; }
+    .admin-workspace.lakbay-theme #adminEnvironment .administration-tile-icon { width: 42px; height: 42px; }
+    .admin-workspace.lakbay-theme #adminEnvironment .administration-tile-icon svg { width: 27px; height: 27px; }
+}
+
+@media (forced-colors: active) {
+    .admin-workspace.lakbay-theme .admin-navigation .teacher-tabs [aria-current="page"] { outline: 2px solid Highlight; outline-offset: -3px; }
+    .admin-workspace .admin-hero-action { border-color: LinkText; }
+}
+
+/* Shared surfaces for the administrator routes. */
+body.admin-workspace.lakbay-theme[data-role="admin"] {
+    --admin-banner: radial-gradient(ellipse at 87% 120%, #365653, transparent 58%), linear-gradient(112deg, #142e43, #1d4052);
+}
+
+.admin-workspace.lakbay-theme #admin-main :is(.admin-welcome, .admin-account-banner, .decision-banner, .administration-banner, .admin-workflow-purpose, .qualification-applicant-card) {
+    position: relative;
+    isolation: isolate;
+    box-shadow: var(--admin-panel-shadow);
+}
+
+.admin-workspace.lakbay-theme #admin-main :is(.admin-welcome, .decision-banner, .administration-banner) {
+    border-color: #587889;
+    border-inline-start: 3px solid var(--admin-gold);
+    background: var(--admin-banner);
+}
+
+.admin-workspace.lakbay-theme #admin-main :is(.admin-welcome, .admin-account-banner, .decision-banner, .administration-banner, .admin-workflow-purpose, .qualification-applicant-card)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--admin-sun-texture);
+    opacity: .14;
+    mask-image: linear-gradient(90deg, transparent 31%, #000 68%, #0009);
+    pointer-events: none;
+}
+
+.admin-workspace.lakbay-theme #admin-main :is(.admin-overview-column > section, .decision-list-panel, .administration-tile, .administration-platform, .administration-recovery-context .admin-tool-card) {
+    background: var(--admin-polished-panel);
+    box-shadow: var(--admin-panel-shadow);
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-account-toolbar {
+    background: #0b2031;
+    box-shadow: inset 0 1px 5px #020c164d;
+}
+
+.admin-workspace.lakbay-theme #admin-main :is(.admin-account-toolbar, .decision-filters) :is(input, select):focus-visible {
+    border-color: var(--admin-gold);
+    background-color: #19384d;
+}
+
+/* Dashboard */
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card {
+    background: linear-gradient(145deg, var(--work-stage-surface), #142c40 72%);
+    box-shadow: var(--admin-panel-shadow);
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card[data-work-category="ready"][data-has-items="true"] {
+    background: linear-gradient(145deg, #53432d, #173144 72%);
+}
+
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-card:is(:hover, :focus-visible) { border-color: var(--work-stage-accent); }
+.admin-workspace.lakbay-theme #admin-main .admin-work-queue-arrow { border: 1px solid color-mix(in srgb, var(--work-stage-accent) 45%, #1a3344); }
+.admin-workspace.lakbay-theme #admin-main .admin-pending-panel { background: radial-gradient(ellipse at 0 0, #c3a56d16, transparent 70%), var(--admin-polished-panel); }
+.admin-workspace.lakbay-theme #admin-main .admin-quick-action:is(:hover, :focus-visible) { border-color: #aa9166; background: #1c3b4d; }
+
+/* Accounts */
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #admin-main .teacher-intro.admin-account-banner {
+    box-shadow: inset 3px 0 var(--admin-gold), var(--admin-panel-shadow);
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #admin-main .admin-account-banner :is(h1, p) { padding-inline-start: 0; border-inline-start: 0; }
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #admin-main :is(#adminDirectory, #adminAccountDetail) {
+    background: var(--admin-polished-panel);
+    box-shadow: var(--admin-panel-shadow);
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminDirectory #adminAccounts button[data-user-id] {
+    background: linear-gradient(105deg, #18384d, #122a3e 72%);
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #adminDirectory #adminAccounts button[data-user-id]:is(:hover, :focus-visible, [aria-pressed="true"]) {
+    border-color: #b49a6d;
+    background: linear-gradient(105deg, #234457, #173449 72%);
+    box-shadow: inset 3px 0 var(--admin-gold);
+}
+
+/* Decision Records */
+.admin-workspace.lakbay-theme #adminDecisionRecords .decision-scope { color: var(--admin-muted); }
+.admin-workspace.lakbay-theme #adminDecisionRecords .decision-row:focus-visible { border-color: var(--admin-gold); }
+.admin-workspace #adminAccountDetail #accountHistory .admin-history-entry {
+    position: relative;
+    min-width: 0;
+    margin: 0;
+    padding: 13px 15px;
+    border: 1px solid var(--admin-line);
+    border-inline-start: 3px solid #b79b61;
+    border-radius: 10px;
+    background: #102c41;
+    scroll-margin-block-start: calc(var(--admin-bar-height, 70px) + 14px);
+}
+.admin-workspace #adminAccountDetail #accountHistory .admin-history-entry[data-tone="active"] { border-inline-start-color: #7eb896; }
+.admin-workspace #adminAccountDetail #accountHistory .admin-history-entry[data-tone="inactive"] { border-inline-start-color: #d08784; }
+.admin-workspace #adminAccountDetail #accountHistory .admin-history-entry[data-highlighted] {
+    border-color: var(--admin-gold);
+    background: #243b49;
+}
+.admin-history-entry:focus-visible { outline: 2px solid var(--admin-gold); outline-offset: 2px; }
+.admin-history-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; }
+.admin-history-heading h3 { margin: 0; font-size: .95rem; }
+.admin-history-heading time { font-size: .78rem; }
+.admin-history-reason { margin: 8px 0; color: #e0eaf3; line-height: 1.5; white-space: pre-wrap; }
+.admin-history-entry:not(:has(.admin-history-audit[open])) .admin-history-reason {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.admin-history-access { margin: 0; color: #b3c8d7; font-size: .83rem; }
+.admin-history-audit summary { min-block-size: 44px; padding-block: 11px; color: var(--admin-gold); font-size: .82rem; cursor: var(--lakbay-cursor-hand, pointer); }
+.admin-history-audit p { margin: 0 0 4px; }
+.qualification-history-reason { color: var(--admin-muted); }
+
+/* Administration */
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile[data-tool="security"] { --admin-tool-accent: #f1cf8a; --admin-tool-fill: #4a3c2b; }
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile[data-tool="status"] { --admin-tool-accent: #b3d5ef; --admin-tool-fill: #1c3951; }
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile[data-tool="logs"] { --admin-tool-accent: #c4bbec; --admin-tool-fill: #343449; }
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile[data-tool="recovery"] { --admin-tool-accent: #addccb; --admin-tool-fill: #203e40; }
+
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile {
+    border-inline-start-color: color-mix(in srgb, var(--admin-tool-accent, var(--admin-gold)) 62%, #1a3344);
+}
+
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile:is(:hover, :focus-visible) {
+    border-color: var(--admin-tool-accent, var(--admin-gold));
+    background: linear-gradient(145deg, #214155, #142c40 76%);
+}
+
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile-icon {
+    border-color: color-mix(in srgb, var(--admin-tool-accent, var(--admin-gold)) 48%, #1a3344);
+    background: var(--admin-tool-fill, #19364c);
+    color: var(--admin-tool-accent, var(--admin-gold));
+}
+
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile-arrow { color: var(--admin-tool-accent, var(--admin-gold)); }
+
+@keyframes admin-panel-enter {
+    from { opacity: .84; translate: 0 7px; }
+    to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes admin-drawer-enter {
+    from { opacity: .8; translate: -16px 0; }
+    to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes admin-scrim-enter { from { opacity: 0; } }
+
+/* Only animate the visible workspace and newly opened panels. */
+@media (prefers-reduced-motion: no-preference) {
+    body.admin-workspace.lakbay-theme[data-admin-page]:not(.lakbay-reduce-motion) #admin-main :is(
+        .admin-welcome, .admin-work-queue-card, .admin-overview-column > section, #adminHeroSnapshot .admin-metric,
+        .admin-account-banner, .admin-account-toolbar, #adminAccountsView[data-workspace="accounts"] #adminAccountDetail,
+        .decision-banner, .decision-list-panel, .decision-detail-panel > .decision-reason,
+        .administration-banner, .admin-recovery-guide, .administration-platform, .administration-recovery-context .admin-tool-card
+    ) {
+        animation: admin-panel-enter 260ms var(--admin-motion) backwards;
+        animation-delay: var(--admin-entrance-delay, 0ms);
+    }
+
+    .admin-workspace :is(.admin-work-queue-card, .administration-tile, #adminHeroSnapshot .admin-metric):nth-child(2) { --admin-entrance-delay: 35ms; }
+    .admin-workspace :is(.admin-work-queue-card, .administration-tile):nth-child(3) { --admin-entrance-delay: 70ms; }
+    .admin-workspace :is(.admin-work-queue-card, .administration-tile):nth-child(4) { --admin-entrance-delay: 105ms; }
+
+    body.admin-workspace.lakbay-theme[data-admin-page="accounts"]:not(.lakbay-reduce-motion) #adminAccounts button[data-user-id]:nth-child(-n+6) {
+        animation: admin-panel-enter 220ms var(--admin-motion) backwards;
+    }
+
+    body.admin-workspace.lakbay-theme:not(.lakbay-reduce-motion) :is(
+        .admin-navigation [data-teacher-tab], .admin-navigation .logout-button, .admin-work-queue-card, .admin-quick-action,
+        .admin-account-toolbar :is(input, select, button), .decision-filters :is(input, select), .decision-row, .administration-tile
+    ) { transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease; }
+
+    body.admin-workspace:not(.lakbay-reduce-motion) :is(.admin-work-queue-arrow, .admin-quick-arrow, .administration-tile-arrow, .decision-row-chevron, .admin-navigation [data-teacher-tab] svg) {
+        transition: translate 180ms var(--admin-motion);
+    }
+
+    body.admin-workspace:not(.lakbay-reduce-motion) :is(.admin-work-queue-card, .admin-quick-action, .administration-tile, .decision-row):focus-visible :is(.admin-work-queue-arrow, .admin-quick-arrow, .administration-tile-arrow, .decision-row-chevron) { translate: 3px 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+    body.admin-workspace:not(.lakbay-reduce-motion) :is(.admin-work-queue-card, .admin-quick-action, .administration-tile, .decision-row):hover :is(.admin-work-queue-arrow, .admin-quick-arrow, .administration-tile-arrow, .decision-row-chevron),
+    body.admin-workspace:not(.lakbay-reduce-motion) .admin-navigation [data-teacher-tab]:hover svg { translate: 3px 0; }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+    body.admin-workspace.admin-menu-open:not(.lakbay-reduce-motion) .admin-navigation { animation: admin-drawer-enter 220ms var(--admin-motion) backwards; }
+    body.admin-workspace.admin-menu-open:not(.lakbay-reduce-motion) #adminMenuDismiss:not([hidden]) { animation: admin-scrim-enter 200ms ease-out backwards; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .admin-workspace.lakbay-theme :is(.admin-navigation [data-teacher-tab], .admin-navigation [data-teacher-tab] svg, .logout-button, .teacher-topbar button) { transition: none; }
+}
+
+.admin-workspace.lakbay-theme.lakbay-reduce-motion :is(.admin-navigation [data-teacher-tab], .admin-navigation [data-teacher-tab] svg, .logout-button, .teacher-topbar button) { transition: none; }
+
+.admin-workspace .qualification-form-feedback:empty { display: none; }
+.admin-workspace .qualification-form-feedback:not(:empty) {
+    margin: 0 0 8px;
+    padding: 10px 13px;
+    border-inline-start: 3px solid #e3a6a2;
+    border-radius: 5px;
+    background: #422f38;
+    color: #ffdad4;
+    scroll-margin-block-start: calc(var(--admin-bar-height) + 16px);
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-welcome {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-block-size: 0;
+    gap: 15px 28px;
+    padding: clamp(18px, 3vw, 30px);
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-welcome h1 {
+    font-size: clamp(1.75rem, 3.3vw, 2.8rem);
+    margin-block-end: 6px;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-welcome p { max-inline-size: 55ch; }
+.admin-workspace[data-admin-page="overview"] .admin-welcome .admin-hero-action { align-self: center; margin: 0; }
+
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-overview-grid {
+    grid-template-columns: minmax(0, 1.28fr) minmax(0, 1fr);
+    align-items: start;
+    gap: clamp(12px, 2vw, 22px);
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-overview-grid > .admin-work-queue { grid-area: 1 / 1 / auto / -1; }
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-overview-grid > :is(.admin-pending-panel, .admin-decision-preview) {
+    grid-column: auto;
+    grid-row: auto;
+    min-width: 0;
+    margin: 0;
+    padding: clamp(13px, 2vw, 20px);
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius);
+    background: var(--admin-polished-panel);
+    box-shadow: var(--admin-panel-shadow);
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main :is(.admin-pending-heading, .admin-activity-heading) {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+}
+
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main :is(.admin-pending-heading, .admin-activity-heading) h2 { font: 720 1rem / 1.35 system-ui, sans-serif; }
+body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main :is(.admin-queue-view-all, .admin-activity-view-all) { min-height: 44px; text-align: start; }
+
+body.admin-workspace.lakbay-theme[data-admin-page="accounts"] #admin-main #adminSelectionEmpty:not([hidden]) { display: none; }
+
+.admin-workspace.lakbay-theme #adminEnvironment .administration-platform > summary {
+    min-height: 44px;
+    padding: 10px 14px;
+    color: var(--admin-gold);
+    font-weight: 650;
+    cursor: var(--lakbay-cursor-hand, pointer);
+}
+
+.admin-tools-content { display: grid; gap: 20px; }
+.admin-tools-content .administration-tool-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+    gap: 12px;
+    margin: 0;
+}
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile {
+    align-items: center;
+    min-height: 114px;
+    background: linear-gradient(135deg, #19364a, #102638 80%);
+}
+.admin-workspace.lakbay-theme #adminEnvironment .administration-tile-icon { align-self: center; }
+.administration-tile-description { margin-block: 6px 0; }
+.admin-workspace.lakbay-theme #adminEnvironment .admin-recovery-guide {
+    padding: clamp(17px, 3vw, 26px);
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius);
+    background: var(--admin-polished-panel);
+    box-shadow: var(--admin-panel-shadow);
+}
+.administration-guide-heading { display: flex; align-items: center; gap: 10px; }
+.administration-guide-icon {
+    width: 25px;
+    height: 25px;
+    flex: none;
+    fill: none;
+    stroke: var(--admin-gold, #f1cf8a);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.admin-workspace.lakbay-theme #adminEnvironment .admin-recovery-guide h2 { margin-block: 0 6px; font-size: clamp(1.18rem, 2vw, 1.45rem); }
+.admin-workspace.lakbay-theme #adminEnvironment .administration-guide-heading h2 { margin: 0; }
+.admin-workspace.lakbay-theme #adminEnvironment .admin-recovery-guide :is(p, ol) { color: var(--admin-muted); line-height: 1.6; }
+.admin-workspace.lakbay-theme #adminEnvironment .admin-recovery-guide ol { padding-inline-start: 1.45em; margin-block: 10px; }
+.admin-workspace.lakbay-theme #adminEnvironment .admin-recovery-guide li::marker { color: var(--admin-gold); }
+.administration-recovery-paths {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr));
+    gap: 10px;
+    align-items: start;
+}
+.administration-recovery-step {
+    min-width: 0;
+    border: 1px solid var(--admin-line, #3d5870);
+    border-radius: 10px;
+    background: #0d2639;
+}
+.administration-recovery-step > summary {
+    padding: 11px 14px;
+    cursor: var(--lakbay-cursor-hand, pointer);
+    font-weight: 650;
+    color: var(--admin-gold, #f1cf8a);
+}
+.administration-recovery-step[open] > summary { border-bottom: 1px solid var(--admin-line, #3d5870); }
+.administration-recovery-step > p { margin: 10px 14px 14px; }
+.admin-workspace.lakbay-theme #adminEnvironment .administration-recovery-step > ol { margin-inline: 14px; }
+.administration-recovery-step li + li { margin-top: 6px; }
+.administration-recovery-step > .administration-disclosure-link { margin: 0 14px 8px; }
+.admin-workspace.lakbay-theme #adminEnvironment .administration-platform { min-height: 0; padding: 0; }
+.admin-workspace.lakbay-theme #adminEnvironment .administration-platform dl { width: auto; margin: 0 14px 14px; }
+
+@media (max-width: 900px) {
+    body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-overview-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 600px) {
+    body.admin-workspace.lakbay-theme[data-admin-page="overview"] #admin-main .admin-welcome { grid-template-columns: minmax(0, 1fr); }
+    .admin-workspace[data-admin-page="overview"] .admin-welcome .admin-hero-action { justify-self: start; }
+    .admin-workspace.lakbay-theme #adminEnvironment .administration-platform dl > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+

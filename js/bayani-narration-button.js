@@ -13,7 +13,8 @@
   const action=button.querySelector('.bayani-narration-action');if(!action)return;
   const off=reason==='off',unavailable=reason==='unavailable';
   button.dataset.speaking=String(speaking);button.setAttribute('aria-pressed',String(speaking));
-  action.textContent=off?'Narration is off':unavailable?'Read along with Bayani':speaking?'Stop story':'Hear the story';
+  const expeditionLesson=button.closest('.lesson-expedition');
+  action.textContent=off?'Narration is off':unavailable?'Read along with Bayani':speaking?'Stop story':expeditionLesson?'Listen with Bayani':'Hear the story';
   button.querySelector('.bayani-narration-hint').textContent=off?'Turn on Narration in the lesson audio options.':unavailable?'Audio is unavailable. Read the story below.':speaking?'Bayani is speaking. Tap to stop.':'Tap Bayani to hear this '+(button.dataset.narrationScope||'part')+'.';
   button.setAttribute('aria-label',off?'Bayani narration is off':unavailable?'Bayani narration is unavailable':speaking?'Stop Bayani’s story narration':'Hear the story with Bayani');
   const reduce=document.body.classList.contains('lakbay-reduce-motion')||window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;

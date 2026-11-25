@@ -1,4 +1,4 @@
-import {beginAssessment,forgetAssessment} from './student-assessment-client.js';
+import {beginAssessment,checkAssessmentResult,forgetAssessment} from './student-assessment-client.js';
 import { learningDateKey, selectDailyChallenge, millisecondsUntilLearningMidnight } from "./daily-policy.js";
 import { progressionState } from "./progression-policy.js";
 import { submitStudentActivity } from "./student-rewards-client.js";
@@ -158,6 +158,8 @@ let selectedAnswer = null;
 let completedToday = false;
 
 let isSubmitting = false;
+let dailyRecovery = null;
+let dailyLoadFailed = false;
 let currentChallengeDate = null;
 let dailyLoad = null;
 let dailyLoadOwner = null;
@@ -172,6 +174,16 @@ let closeTimer = null;
 onAuthStateChanged(
     auth,
     async (user) => {
+        if (currentUser && currentUser.uid !== user?.uid) {
+            if (dailyModalActive) closeModal();
+            dailyRecovery = null;
+            currentChallenge = null;
+            currentChallengeDate = null;
+            completedToday = false;
+            resetSelection();
+            completedElement?.replaceChildren();
+            if (cardCompleted) cardCompleted.hidden = true;
+        }
 
         if (!user) {
             currentUser=null;currentChallenge=null;currentChallengeDate=null;completedToday=false;
@@ -258,6 +270,8 @@ async function loadDailyChallenge() {
     const uid = currentUser?.uid;
     if (!uid) return false;
     currentChallenge = null; currentChallengeDate = null; completedToday = false;
+    dailyRecovery = null;
+    dailyLoadFailed = false;
     resetSelection();
     if (cardReward) cardReward.textContent="";
     if (cardReward?.parentElement) cardReward.parentElement.hidden=true;
@@ -284,6 +298,7 @@ async function loadDailyChallenge() {
     } catch (error) {
         if (auth.currentUser?.uid!==uid) return false;
         console.warn("Daily challenge unavailable:",error);
+        dailyLoadFailed = true;
         currentChallenge=null; currentChallengeDate=null;
         if (startButton) { startButton.hidden=false; startButton.disabled=false; startButton.textContent="Retry Daily Challenge"; }
         return false;
@@ -356,7 +371,8 @@ async function checkTodayCompletion() {
     ) {
 
         completedToday = true;
-
+        const record = completionSnapshot.data();
+        updateCompletedModal(record.xpEarned, null);
         showCompletedCard();
 
         return;
@@ -489,6 +505,65 @@ function prepareChallengeUI() {
 // OPEN MODAL
 // ==========================================
 
+// Keep the existing backdrop and state renderer; isolate only its active modal branch.
+let dailyReturnFocus = null;
+let dailyBackground = [];
+let dailyModalActive = false;
+const dailyStatus = document.getElementById('dailyChallengeStatus');
+const dailyLoadRetry = document.getElementById('retryDailyLoad');
+dailyLoadRetry?.addEventListener('click', async () => {
+    if (dailyLoadRetry.disabled) return;
+    dailyLoadRetry.disabled = true;
+    showModalState('loading');
+    try {
+        await refreshDailyChallenge(true);
+        if (dailyModalActive) {
+            if (completedToday) showModalState('completed');
+            else if (currentChallenge) await openDailyQuestion();
+            else showModalState('empty');
+        }
+    } finally {
+        dailyLoadRetry.disabled = false;
+    }
+});
+function protectDailyBackground() {
+    dailyBackground = [];
+    let branch = modal;
+    while (branch?.parentElement) {
+        for (const sibling of branch.parentElement.children) {
+            if (sibling !== branch && sibling instanceof HTMLElement) {
+                dailyBackground.push([sibling, sibling.inert]);
+                sibling.inert = true;
+            }
+        }
+        branch = branch.parentElement;
+        if (branch === document.body) break;
+    }
+}
+function dailyFocusable() {
+    return [...modal.querySelectorAll('button,a[href],input,select,textarea,[tabindex]')]
+        .filter(el => !el.disabled && el.tabIndex >= 0 && !el.closest('[hidden],[inert]') && el.getClientRects().length);
+}
+document.addEventListener('focusin', event => {
+    if (dailyModalActive && !modal.contains(event.target)) closeButton?.focus({preventScroll:true});
+});
+modal?.addEventListener('keydown', event => {
+    if (!dailyModalActive || event.key !== 'Tab') return;
+    const targets = dailyFocusable();
+    const first = targets[0], last = targets.at(-1);
+    if (!first) { event.preventDefault(); return; }
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+});
+// Mirror button state even when an existing renderer resets or disables answers.
+if (modal) new MutationObserver(() => {
+    for (const button of optionButtons) {
+        const pressed = String(button.classList.contains('selected'));
+        if (button.getAttribute('aria-pressed') !== pressed) button.setAttribute('aria-pressed', pressed);
+    }
+    if (dailyModalActive && !dailyFocusable().includes(document.activeElement)) closeButton?.focus({preventScroll:true});
+}).observe(modal, {subtree:true, attributes:true, attributeFilter:['class','hidden','disabled']});
+
 async function openModal() {
     clearTimeout(closeTimer);
 
@@ -497,8 +572,14 @@ async function openModal() {
     }
 
 
-    modal.hidden =
-        false;
+    if (dailyModalActive) return;
+    dailyReturnFocus = document.activeElement;
+    dailyModalActive = true;
+    modal.hidden = false;
+    contentElement?.classList.remove('daily-dispatch-open');
+    protectDailyBackground();
+    modal.classList.add('open');
+    closeButton?.focus({preventScroll:true});
 
 
     document.body.classList.add(
@@ -509,9 +590,24 @@ async function openModal() {
 
     showModalState("loading");
     await refreshDailyChallenge();
+    if (!dailyModalActive) return;
+
+    if (isSubmitting && currentChallenge && !completedToday) {
+        showModalState('content');
+        return;
+    }
+    if (dailyRecovery && dailyScopeIsCurrent(dailyRecovery)) {
+        showModalState('content');
+        showDailyRecovery(dailyRecovery.reopen
+            ? 'This attempt changed or expired. Reopen today’s challenge to check the latest saved result.'
+            : 'The save could not be confirmed. Check today’s result before trying again.');
+        return;
+    }
 
     if (completedToday) {
-
+        completedElement?.removeAttribute('data-daily-fresh-result');
+        const heading = completedElement?.querySelector('h3');
+        if (heading) heading.textContent = 'Already completed today';
         showModalState(
             "completed"
         );
@@ -526,24 +622,34 @@ async function openModal() {
 
     } else {
 
-        try{const issued=await beginAssessment({kind:'daily',challengeId:currentChallenge.id});if(issued.questions?.[0])currentChallenge={...currentChallenge,...issued.questions[0]};}
-        catch(error){showModalState('content');feedbackElement.hidden=false;feedbackElement.textContent=error.message;submitButton.disabled=true;return;}
-        prepareChallengeUI();
-
-        showModalState(
-            "content"
-        );
+        await openDailyQuestion();
     }
 
 
     requestAnimationFrame(
         () => {
 
-            modal.classList.add(
-                "open"
-            );
+            if (dailyModalActive) modal.classList.add("open");
         }
     );
+}
+
+async function openDailyQuestion() {
+    const scope = {uid:currentUser?.uid,date:currentChallengeDate,id:currentChallenge?.id};
+    if (!scope.id) return;
+    try {
+        const issued = await beginAssessment({kind:'daily',challengeId:scope.id});
+        if (!dailyModalActive || !dailyScopeIsCurrent(scope)) return;
+        if (issued.questions?.[0]) currentChallenge = {...currentChallenge,...issued.questions[0]};
+        dailyLoadFailed = false;
+        prepareChallengeUI();
+        showModalState('content');
+    } catch {
+        if (!dailyModalActive || !dailyScopeIsCurrent(scope)) return;
+        dailyLoadFailed = true;
+        showModalState('empty');
+        dailyLoadRetry?.focus();
+    }
 }
 
 
@@ -569,17 +675,15 @@ function closeModal() {
     document.dispatchEvent(new CustomEvent("lakbay:daily-focus", { detail: { active: false } }));
 
 
-    closeTimer = setTimeout(
-        () => {
+    dailyModalActive = false;
+    modal.hidden = true;
+    for (const [element, wasInert] of dailyBackground) element.inert = wasInert;
+    dailyBackground = [];
+    const destination = dailyReturnFocus?.isConnected && !dailyReturnFocus.disabled && dailyReturnFocus.getClientRects().length
+        ? dailyReturnFocus : startButton;
+    if (destination && !destination.disabled && destination.getClientRects().length) destination.focus({preventScroll:true});
 
-            modal.hidden =
-                true;
-
-        },
-        180
-    );
 }
-
 
 // ==========================================
 // START BUTTON
@@ -642,9 +746,11 @@ document.addEventListener(
             !modal.hidden
         ) {
 
+            event.preventDefault();
+            event.stopImmediatePropagation();
             closeModal();
         }
-    }
+    }, true
 );
 
 
@@ -693,7 +799,7 @@ optionButtons.forEach(
                 }
 
 
-                hideFeedback();
+                if (!dailyRecovery) hideFeedback();
             }
         );
     }
@@ -715,7 +821,8 @@ if (submitButton) {
                 !currentChallenge ||
                 !selectedAnswer ||
                 completedToday ||
-                isSubmitting
+                isSubmitting ||
+                dailyRecovery?.reopen
             ) {
                 return;
             }
@@ -744,6 +851,34 @@ if (submitButton) {
 // COMPLETE DAILY CHALLENGE
 // ==========================================
 
+function showDailySubmission(result, answer, recovered = false) {
+    const review = result.reviewQuestions?.find(question => question.id === currentChallenge.id);
+    const picked = review?.answerExplanations?.[answer];
+    const feedback = typeof picked === 'string' && picked.trim() ? picked : review?.explanation || '';
+    if (!result.passed) {
+        forgetAssessment({kind:'daily',challengeId:currentChallenge.id});
+        selectedAnswer = answer;
+        showIncorrectFeedback(feedback);
+        submitButton.textContent = 'Submit Answer';
+        return;
+    }
+    currentChallenge = {...currentChallenge, correctAnswer:answer};
+    completedToday = true;
+    const completionState = result.firstCompletion === false
+        ? 'previous' : recovered || result.replayed === true ? 'recovered' : 'fresh';
+    if (completionState === 'fresh') document.dispatchEvent(new CustomEvent('lakbay:answer-correct'));
+    if (Number.isFinite(result.totalXp) && Number.isFinite(result.level)) {
+        updateDisplayedProgress(result.totalXp, result.level, result.learningStreak, result.progressionPolicy);
+    }
+    showCorrectFeedback(result.xpReward, result.learningStreak, feedback);
+    showCompletedCard();
+    updateCompletedModal(result.xpReward, result.learningStreak, review?.['option'+answer], feedback, completionState);
+    if (dailyModalActive) {
+        showModalState('completed');
+        completedElement?.querySelector('h3')?.focus();
+    }
+}
+
 async function completeDailyChallenge(
     studentAnswer
 ) {
@@ -756,160 +891,114 @@ async function completeDailyChallenge(
     }
 
 
-    const submissionUid=currentUser.uid, submissionDate=currentChallengeDate, submissionId=currentChallenge.id, submissionCard=currentChallenge;
+    const scope = {uid:currentUser.uid, date:currentChallengeDate, id:currentChallenge.id};
     isSubmitting = true;
-
-
-    if (submitButton) {
-
-        submitButton.disabled =
-            true;
-
-        submitButton.textContent =
-            "Saving...";
-    }
-
-
+    dailyRecovery = null;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Saving…';
+    if (dailyStatus) dailyStatus.textContent = 'Saving your answer…';
     try {
+        const result = await submitStudentActivity({kind:'daily', challengeId:scope.id, answer:studentAnswer});
+        if (dailyScopeIsCurrent(scope)) showDailySubmission(result, studentAnswer);
+    } catch (error) {
+        console.warn('Daily result could not be confirmed:', error);
+        if (dailyScopeIsCurrent(scope)) {
+            if (dailyNeedsReopen(error)) {
+                dailyRecovery = { ...scope, reopen: true };
+                showDailyRecovery('This attempt changed or expired. Reopen today’s challenge to check the latest saved result.');
+            } else {
+                dailyRecovery = scope;
+                showDailyRecovery('The save could not be confirmed. Check today’s result before trying again.');
+            }
+        }
+    } finally {
+        await finishDailyOperation(scope);
+    }
+}
 
-        const result = await submitStudentActivity({
-            kind: "daily", challengeId: currentChallenge.id, answer: studentAnswer
-        });
-        if (auth.currentUser?.uid!==submissionUid||currentUser?.uid!==submissionUid||currentChallengeDate!==submissionDate||getTodayDateKey()!==submissionDate||currentChallenge?.id!==submissionId||currentChallenge!==submissionCard) return;
-        const review=result.reviewQuestions?.find(q=>q.id===submissionId);
-        const picked=review?.answerExplanations?.[studentAnswer];
-        const receiptFeedback=typeof picked==='string'&&picked.trim()?picked:typeof review?.explanation==='string'?review.explanation:'';
-        if (!result.passed) {
-            forgetAssessment({kind:'daily',challengeId:currentChallenge.id});
-            showIncorrectFeedback(receiptFeedback);
-            submitButton.textContent='Submit Answer';
+function dailyNeedsReopen(error) {
+    return ['assessment/reopen-required','assessment/restart-required'].includes(error?.code);
+}
+
+function dailyScopeIsCurrent(scope) {
+    return auth.currentUser?.uid === scope.uid && currentUser?.uid === scope.uid &&
+        currentChallengeDate === scope.date && getTodayDateKey() === scope.date &&
+        currentChallenge?.id === scope.id;
+}
+
+async function finishDailyOperation(scope) {
+    isSubmitting = false;
+    if (dailyScopeIsCurrent(scope) && !completedToday) {
+        submitButton.disabled = !selectedAnswer || Boolean(dailyRecovery?.reopen);
+        submitButton.textContent = 'Submit Answer';
+        if (dailyStatus) dailyStatus.textContent = dailyRecovery ? 'Save unconfirmed.' : '';
+    }
+    if (currentUser && currentChallengeDate !== getTodayDateKey()) {
+        await refreshDailyChallenge(true);
+        if (dailyModalActive) showModalState(completedToday?'completed':currentChallenge?'content':'empty');
+    }
+}
+
+function showDailyRecovery(message) {
+    const scope = dailyRecovery;
+    if (!scope || !feedbackElement) return;
+    feedbackElement.hidden = false;
+    feedbackElement.className = 'daily-challenge-feedback lp-status-panel';
+    feedbackElement.dataset.state = 'unconfirmed';
+    const title = document.createElement('strong');
+    title.textContent = scope.reopen ? 'Reopen daily challenge' : 'Save unconfirmed';
+    const copy = document.createElement('span');
+    copy.textContent = message;
+    const check = document.createElement('button');
+    check.type = 'button';
+    check.id = 'checkDailySavedResult';
+    check.className = 'text-button';
+    check.textContent = scope.reopen ? 'Reopen Challenge' : 'Check Saved Result';
+    feedbackElement.replaceChildren(title, copy, check);
+    check.addEventListener('click', async () => {
+        if (isSubmitting || dailyRecovery !== scope || !dailyScopeIsCurrent(scope)) return;
+        if (scope.reopen) {
+            dailyRecovery = null;
+            check.disabled = submitButton.disabled = true;
+            showModalState('loading');
+            await refreshDailyChallenge(true);
+            if (!dailyModalActive) return;
+            if (completedToday) showModalState('completed');
+            else if (currentChallenge) await openDailyQuestion();
+            else showModalState('empty');
             return;
         }
-        // A confirmed passing daily result establishes this submitted choice.
-        // No answer key is required in the public card or pre-submit state.
-        currentChallenge={...currentChallenge,correctAnswer:studentAnswer};
-        document.dispatchEvent(new CustomEvent("lakbay:answer-correct"));
-        const xpAwarded = result.xpReward;
-        const updatedXp = result.totalXp;
-        const updatedLevel = result.level;
-        const updatedStreak = result.learningStreak;
-        completedToday =
-            true;
-
-
-        // ==================================
-        // UPDATE DASHBOARD IMMEDIATELY
-        // ==================================
-
-        if (
-            updatedXp !== null &&
-            updatedLevel !== null
-        ) {
-
-            updateDisplayedProgress(
-                updatedXp,
-                updatedLevel,
-                updatedStreak,
-                result.progressionPolicy
-            );
-        }
-
-
-        showCorrectFeedback(
-            xpAwarded,
-            updatedStreak, receiptFeedback
-        );
-
-
-        // Let student see the success result.
-
-        setTimeout(
-            () => {
-                if (auth.currentUser?.uid!==submissionUid || getTodayDateKey()!==submissionDate || currentChallengeDate!==submissionDate) return;
-                showCompletedCard();
-
-                updateCompletedModal(
-                    xpAwarded,
-                    updatedStreak
-                );
-
-
-                showModalState(
-                    "completed"
-                );
-
-            },
-            1400
-        );
-
-
-        console.log(
-            "Daily Challenge completed.",
-            {
-                challengeId:
-                    currentChallenge.id,
-
-                date:
-                    getTodayDateKey(),
-
-                xpAwarded:
-                    xpAwarded,
-
-                streak:
-                    updatedStreak
+        isSubmitting = true;
+        check.disabled = submitButton.disabled = true;
+        if (dailyStatus) dailyStatus.textContent = 'Checking for your saved result…';
+        copy.textContent = 'Looking for your saved result…';
+        try {
+            const found = await checkAssessmentResult({kind:'daily', challengeId:scope.id});
+            if (dailyRecovery !== scope || !dailyScopeIsCurrent(scope)) return;
+            if (found) {
+                dailyRecovery = null;
+                showDailySubmission(found.result, found.answers?.[scope.id], true);
+            } else {
+                copy.textContent = 'A saved result is not available yet. You can check again or submit your answer.';
             }
-        );
-
-
-    } catch (error) {
-
-        console.error(
-            "Unable to complete Daily Challenge:",
-            error
-        );
-
-
-        if (feedbackElement) {
-
-            feedbackElement.hidden =
-                false;
-
-
-            feedbackElement.className =
-                "daily-challenge-feedback incorrect";
-
-
-            feedbackElement.innerHTML = `
-                <strong>
-                    Something went wrong.
-                </strong>
-
-                <span>
-                    We could not save your challenge.
-                    Please try again.
-                </span>
-            `;
+        } catch (error) {
+            if (dailyRecovery === scope && dailyScopeIsCurrent(scope)) {
+                if (dailyNeedsReopen(error)) {
+                    dailyRecovery = { ...scope, reopen: true };
+                    showDailyRecovery('This attempt changed or expired. Reopen today’s challenge to check the latest saved result.');
+                } else {
+                    copy.textContent = 'Could not check the result. Check your connection and try again.';
+                }
+            }
+        } finally {
+            await finishDailyOperation(scope);
+            if (dailyRecovery === scope && dailyScopeIsCurrent(scope)) {
+                check.disabled = false;
+                if (dailyModalActive) check.focus();
+            }
         }
-
-
-        if (submitButton) {
-
-            submitButton.disabled =
-                false;
-
-            submitButton.textContent =
-                "Submit Answer";
-        }
-
-
-    } finally {
-
-        isSubmitting = false;
-        if (currentChallengeDate!==getTodayDateKey()) {
-            await refreshDailyChallenge(true);
-            if (modal&&!modal.hidden)showModalState(completedToday?"completed":currentChallenge?"content":"empty");
-        }
-    }
+    });
+    if (dailyModalActive) check.focus();
 }
 
 
@@ -1205,7 +1294,10 @@ function markCorrectOption() {
 
 function updateCompletedModal(
     xpAwarded,
-    streak
+    streak,
+    answerText,
+    explanation,
+    completionState = 'previous'
 ) {
 
     if (!completedElement) {
@@ -1213,26 +1305,15 @@ function updateCompletedModal(
     }
 
 
-    const reward =
-        Number(
-            currentChallenge?.xpReward
-        ) || 0;
-
-
-    const displayedReward =
-        xpAwarded > 0
-            ? xpAwarded
-            : reward;
-
-
-    const streakText =
-        streak
-            ? (
-                streak === 1
-                    ? " 1 Day Streak"
-                    : ` ${streak} Day Streak`
-            )
-            : "";
+    const headings = {
+        fresh: 'Correct! Your result is saved',
+        recovered: 'Your saved result was found',
+        previous: 'Already completed today'
+    };
+    completedElement.toggleAttribute('data-daily-fresh-result', completionState === 'fresh');
+    const reward = Number.isSafeInteger(xpAwarded) && xpAwarded > 0
+        ? '+' + xpAwarded + ' XP earned today' : 'No additional XP awarded';
+    const streakText = Number.isSafeInteger(streak) && streak > 0 ? streak + ' day streak' : '';
 
 
     completedElement.innerHTML = `
@@ -1244,18 +1325,13 @@ function updateCompletedModal(
             DAILY CHALLENGE COMPLETE
         </span>
 
-        <h3>
-            Another discovery, well earned!
-        </h3>
-
-        <p>
-            You completed today's history challenge. Keep that curiosity going, History Explorer!
-        </p>
+        <h3 tabindex="-1">${headings[completionState]}</h3>
+        <div class="daily-complete-answer" hidden></div>
 
         <div class="daily-complete-rewards">
 
             <strong>
-                 +${displayedReward} XP
+                 ${reward}
             </strong>
 
             ${
@@ -1269,9 +1345,28 @@ function updateCompletedModal(
             }
 
         </div>
-        <div class="daily-complete-return"><span aria-hidden="true">✦</span><div><strong>Your next discovery awaits</strong><p>Come back tomorrow for a new Daily Challenge. Explore a lesson while you wait!</p></div></div>
+        <div class="daily-complete-return"><span aria-hidden="true">✦</span><p>Next challenge at midnight, Philippine time.</p></div>
         <button type="button" class="daily-complete-dismiss primary-button">Keep exploring <span aria-hidden="true">→</span></button>
     `;
+    const answer = completedElement.querySelector('.daily-complete-answer');
+    const hasAnswer = typeof answerText === 'string' && answerText.trim();
+    const hasExplanation = typeof explanation === 'string' && explanation.trim();
+    if (hasAnswer || hasExplanation) {
+        const label = document.createElement('strong');
+        label.textContent = hasAnswer ? 'Correct answer' : 'Explanation';
+        answer.append(label);
+        if (hasAnswer) {
+            const value = document.createElement('p');
+            value.textContent = answerText;
+            answer.append(value);
+        }
+        if (hasExplanation) {
+            const note = document.createElement('p');
+            note.textContent = explanation;
+            answer.append(note);
+        }
+        answer.hidden = false;
+    }
     completedElement.querySelector('.daily-complete-dismiss')?.addEventListener('click', closeModal);
 }
 
@@ -1349,6 +1444,7 @@ function showModalState(
     state
 ) {
 
+    if (dailyStatus) dailyStatus.textContent = ({loading:'Loading the daily challenge...',content:'Choose one answer, then submit.',completed:'Daily challenge complete.',empty:dailyLoadFailed?'Unable to load today’s challenge.':'No challenge is available right now.'})[state] || '';
     if (loadingElement) {
 
         loadingElement.hidden =
@@ -1394,6 +1490,11 @@ function showModalState(
 
         contentElement.hidden =
             false;
+        if (!contentElement.classList.contains('daily-dispatch-open') && currentChallenge) {
+            contentElement.classList.add('daily-dispatch-open');
+            const label = contentElement.querySelector('.daily-question-number');
+            if (label && currentChallengeDate) label.textContent = 'Daily question · ' + currentChallengeDate;
+        }
     }
 
 
@@ -1414,6 +1515,11 @@ function showModalState(
 
         emptyElement.hidden =
             false;
+        const title = emptyElement.querySelector('strong');
+        const details = emptyElement.querySelector('p');
+        if (title) title.textContent = dailyLoadFailed ? 'Daily Challenge unavailable' : 'No challenge available';
+        if (details) details.textContent = dailyLoadFailed ? 'Check your connection and try again.' : 'Check back later for another Philippine History challenge.';
+        if (dailyLoadRetry) dailyLoadRetry.hidden = !dailyLoadFailed;
     }
 }
 

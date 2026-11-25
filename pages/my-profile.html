@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
 <link rel="stylesheet" href="../css/interface-icons.css">
+    <link rel="stylesheet" href="../css/student-expedition-polish.css">
 </head>
 
 
@@ -105,7 +106,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
-                    <span>Explore Chapters</span>
+                    <span>Chapter Map</span>
                 </a>
 
 
@@ -132,7 +133,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
-                    <span>Achievements</span>
+                    <span>Discovery Museum</span>
                 </a>
                 <a
                     href="my-profile.html"
@@ -237,32 +238,53 @@
             ====================================== -->
 
             <div class="profile-page-content">
-                <header class="profile-page-heading"><span class="eyebrow">YOUR EXPLORER IDENTITY</span><h1>My Profile</h1><p>Your account, learning progress, and next steps in one place.</p></header>
-                <section class="profile-identity-card" aria-labelledby="profilePageName">
-                    <div class="profile-identity-banner"><span>LAKBAYPANAHON EXPLORER</span><span class="profile-banner-star" aria-hidden="true">&#10022;</span></div>
+                <header class="profile-page-heading"><h1>My Profile</h1><a class="student-quick-link" href="#levelRewardsCollection">Go to level rewards</a><p>Manage your explorer identity and see what you’ve earned.</p></header>
+                <section id="profileBanner" class="profile-identity-card" aria-labelledby="profilePageName">
+                    <div class="profile-identity-banner"><img src="../assets/brand/lakbay-sun.svg" alt="" width="24" height="24"><span>LAKBAYPANAHON EXPLORER</span></div>
                     <div class="profile-identity-body">
                         <div class="profile-page-avatar" data-student-avatar aria-hidden="true"></div>
-                        <div class="profile-identity-copy"><span class="profile-role">STUDENT EXPLORER</span><h2 id="profilePageName">Loading your profile...</h2><p>Your identity across your learning journey.</p></div>
+                        <div class="profile-identity-copy"><span class="profile-role">STUDENT EXPLORER</span><h2 id="profilePageName">Loading your profile...</h2><p id="profileExplorerTitle" class="explorer-earned-title"></p><p id="profileEquippedFrame" class="profile-equipped-frame" tabindex="-1" hidden></p></div>
                         <div class="profile-identity-actions"><span class="profile-account-status"><i aria-hidden="true"></i> Active account</span><button id="editProfileButton" class="profile-edit-button" type="button">Edit Profile <span aria-hidden="true">&#8599;</span></button></div>
                     </div>
                 </section>
 
                 <section class="profile-learning-section" id="profileLearningStats" aria-labelledby="profileLearningTitle">
-                    <div class="profile-section-heading"><div><span class="eyebrow">YOUR PROGRESS</span><h2 id="profileLearningTitle">Learning snapshot</h2></div><p>A quick look at the progress you have built.</p></div>
+                    <div class="profile-section-heading"><div><h2 id="profileLearningTitle">Learning snapshot</h2></div></div>
                     <div class="profile-learning-stats">
-                        <article class="profile-learning-stat"><span class="profile-stat-icon" aria-hidden="true">&#10022;</span><div><span class="profile-stat-label">TOTAL EXPERIENCE</span><strong><span id="profilePageXp">0</span><small>XP</small></strong><p>Earned through learning</p></div></article>
-                        <article class="profile-learning-stat profile-level-stat"><span class="profile-stat-icon" aria-hidden="true">&#9733;</span><div><span class="profile-stat-label">CURRENT LEVEL</span><strong id="profilePageLevel">1</strong><p id="profileLevelProgressLabel">Keep learning to build your level.</p><div class="profile-level-track" role="progressbar" aria-label="Experience progress to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="profileLevelProgressFill"></span></div></div></article>
-                        <article class="profile-learning-stat"><span class="profile-stat-icon" aria-hidden="true">&#9832;</span><div><span class="profile-stat-label">LEARNING STREAK</span><strong><span id="profilePageStreak">0</span><small>days</small></strong><p>Keep your daily discovery going</p></div></article>
-                        <article class="profile-learning-stat"><span class="profile-stat-icon" aria-hidden="true">&#10003;</span><div><span class="profile-stat-label">MISSIONS COMPLETED</span><strong id="profilePageMissions">&mdash;</strong><p>Your completed learning missions</p></div></article>
+                        <article class="profile-learning-stat"><span class="profile-stat-icon profile-stat-icon--xp" aria-hidden="true"><span class="interface-icon interface-icon--zap"></span></span><div><span class="profile-stat-label">TOTAL EXPERIENCE</span><strong><span id="profilePageXp">0</span><small>XP</small></strong></div></article>
+                        <article class="profile-learning-stat profile-level-stat"><span class="profile-stat-icon profile-stat-icon--level" aria-hidden="true"><span class="interface-icon interface-icon--compass"></span></span><div><span class="profile-stat-label">CURRENT LEVEL</span><strong id="profilePageLevel">1</strong><p id="profileLevelProgressLabel">Keep learning to build your level.</p><div class="profile-level-track" role="progressbar" aria-label="Experience progress to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="profileLevelProgressFill"></span></div></div></article>
+                        <article class="profile-learning-stat"><span class="profile-stat-icon profile-stat-icon--streak" aria-hidden="true"><span class="interface-icon interface-icon--flame"></span></span><div><span class="profile-stat-label">LEARNING STREAK</span><strong><span id="profilePageStreak">0</span><small>days</small></strong></div></article>
+                        <article class="profile-learning-stat"><span class="profile-stat-icon profile-stat-icon--missions" aria-hidden="true"><span class="interface-icon interface-icon--book-open"></span></span><div><span class="profile-stat-label">MISSIONS COMPLETED</span><strong id="profilePageMissions">&mdash;</strong></div></article>
                     </div>
-                    <p class="profile-stats-status" id="profileStatsStatus" role="status" aria-live="polite">Loading your learning snapshot...</p>
+                    <p class="profile-stats-status" id="profileStatsStatus" role="status" aria-live="polite" aria-atomic="true">Loading your learning snapshot...</p>
                 </section>
 
-                <section id="discoveryWall" class="discovery-wall" aria-labelledby="discoveryWallTitle"><div class="discovery-wall-heading"><div><span class="eyebrow">A FEW THINGS WORTH KEEPING</span><h2 id="discoveryWallTitle">My Discovery Wall</h2><p>Choose up to three artifacts or journal discoveries to pin here. Your choices are saved on this browser.</p></div><button id="refreshDiscoveryWall" class="text-button" type="button">Refresh wall</button></div><p id="discoveryWallStatus" role="status" aria-live="polite">Opening your discovery wall...</p><div id="discoveryWallEntries" class="discovery-wall-grid"></div><div class="discovery-wall-links"><a class="text-button" href="achievements.html">Choose from my collections</a><a class="text-button" href="my-journey.html#evidenceJournal">Choose from my journal</a></div></section>
+                <section id="discoveryWall" class="discovery-wall" aria-labelledby="discoveryWallTitle"><div class="discovery-wall-heading"><div><span class="eyebrow">A FEW THINGS WORTH KEEPING</span><h2 id="discoveryWallTitle">My Discovery Wall</h2><p>Choose up to three artifacts or journal discoveries to pin here. Your choices are saved on this browser.</p></div><button id="refreshDiscoveryWall" class="text-button" type="button">Refresh wall</button></div><p id="discoveryWallStatus" role="status" aria-live="polite" aria-atomic="true">Opening your discovery wall...</p><p id="discoveryWallPinCount" class="profile-wall-pin-count" role="status" aria-atomic="true"></p><div id="discoveryWallEntries" class="discovery-wall-grid"></div><div class="discovery-wall-links"><a class="text-button" href="achievements.html">Choose from my collections</a><a class="text-button" href="my-journey.html#evidenceJournal">Choose from my journal</a></div></section>
+                <div id="displayRewardNotice" class="display-reward-notice" role="status" aria-atomic="true"></div>
                 <section id="levelRewardsCollection" class="level-rewards-collection" aria-label="Level rewards"></section>
-                <section class="profile-details-card" aria-labelledby="profileDetailsTitle"><div class="profile-section-heading"><div><span class="eyebrow">ACCOUNT DETAILS</span><h2 id="profileDetailsTitle">About you</h2></div><button class="profile-details-edit" type="button" data-edit-profile>Update details <span aria-hidden="true">&#8594;</span></button></div><dl><div><dt>First name</dt><dd id="profilePageFirstName">&mdash;</dd></div><div><dt>Middle name</dt><dd id="profilePageMiddleName">&mdash;</dd></div><div><dt>Last name</dt><dd id="profilePageLastName">&mdash;</dd></div><div><dt>Sign-in email</dt><dd id="profilePageEmail">&mdash;</dd></div><div><dt>Member since</dt><dd id="profilePageMemberSince">&mdash;</dd></div></dl><p class="profile-account-note"><span aria-hidden="true">&#9432;</span>Your email is used to sign in and cannot be changed here. Use Edit Profile to update your name and avatar.</p></section>
+                <section class="profile-details-card" aria-labelledby="profileDetailsTitle">
+                    <div class="profile-section-heading">
+                        <div><h2 id="profileDetailsTitle">Account Details</h2></div>
+                        <button class="profile-details-edit" type="button" data-edit-profile>Update details <span aria-hidden="true">&#8594;</span></button>
+                    </div>
+                    <div class="profile-details-groups">
+                        <section aria-labelledby="profileNameDetailsTitle">
+                            <h3 id="profileNameDetailsTitle">Your name</h3>
+                            <dl><div><dt>First name</dt><dd id="profilePageFirstName">&mdash;</dd></div><div><dt>Middle name</dt><dd id="profilePageMiddleName">&mdash;</dd></div><div><dt>Last name</dt><dd id="profilePageLastName">&mdash;</dd></div></dl>
+                        </section>
+                        <section aria-labelledby="profileSignInDetailsTitle">
+                            <h3 id="profileSignInDetailsTitle">Sign-in &amp; membership</h3>
+                            <dl><div><dt>Sign-in email</dt><dd id="profilePageEmail">&mdash;</dd></div><div><dt>Member since</dt><dd id="profilePageMemberSince">&mdash;</dd></div></dl>
+                            <p class="profile-account-note"><span class="interface-icon interface-icon--lock" aria-hidden="true"></span> Sign-in email can?t be edited here.</p>
+                        </section>
+                    </div>
+                </section>
 
-                <nav class="profile-page-links" aria-label="Continue exploring"><a href="my-journey.html"><span class="profile-link-mark" aria-hidden="true">01</span><span>YOUR NEXT CHAPTER</span><strong>Continue My Journey <b aria-hidden="true">&#8594;</b></strong><small>Pick up where your learning path leads.</small></a><a href="achievements.html"><span class="profile-link-mark" aria-hidden="true">02</span><span>YOUR DISCOVERIES</span><strong>View Achievements <b aria-hidden="true">&#8594;</b></strong><small>See the artifacts and badges you have earned.</small></a><a href="my-class.html"><span class="profile-link-mark" aria-hidden="true">03</span><span>LEARN TOGETHER</span><strong>Go to My Class <b aria-hidden="true">&#8594;</b></strong><small>Check your class and assigned missions.</small></a></nav>
+                <nav class="profile-page-links" aria-label="Continue exploring">
+                    <a class="profile-destination profile-destination--journey" href="my-journey.html"><span class="profile-link-mark" aria-hidden="true"><span class="interface-icon interface-icon--compass"></span></span><strong>Continue My Journey</strong><small>Pick up where you left off.</small><span class="profile-destination-arrow" aria-hidden="true">&#8594;</span></a>
+                    <a class="profile-destination profile-destination--museum" href="achievements.html"><span class="profile-link-mark" aria-hidden="true"><img src="../assets/artifacts/manunggul.png" alt="" width="44" height="48"></span><strong>View Achievements</strong><small>See your badges and artifacts.</small><span class="profile-destination-arrow" aria-hidden="true">&#8594;</span></a>
+                    <a class="profile-destination profile-destination--class" href="my-class.html"><span class="profile-link-mark" aria-hidden="true"><span class="interface-icon interface-icon--book-open"></span></span><strong>Go to My Class</strong><small>Check your assigned missions.</small><span class="profile-destination-arrow" aria-hidden="true">&#8594;</span></a>
+                </nav>
             </div>
 
         </main>

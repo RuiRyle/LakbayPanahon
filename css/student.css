@@ -19,7 +19,7 @@ body[data-role="student"] main[tabindex="-1"]:focus-visible { outline: 2px solid
 .student-auth-recovery::backdrop { background: #10243fe6; }
 .student-auth-recovery h1 { font-size: 1.4rem; margin-bottom: 16px; }
 .student-auth-recovery p { line-height: 1.6; margin-bottom: 20px; }
-.student-auth-recovery button { min-height: 44px; padding: 10px 18px; cursor: pointer; font: inherit; }
+.student-auth-recovery button { min-height: 44px; padding: 10px 18px; cursor: var(--lakbay-cursor-hand, pointer); font: inherit; }
 .student-auth-recovery a { display: inline-block; padding: 12px; color: inherit; }
 .practice-review-panel { background: var(--white); border: 1px solid var(--border); border-radius: 18px; padding: 24px; margin: 0 0 24px; }
 .practice-review-panel h2 { color: var(--navy); margin-bottom: 10px; }
@@ -28,7 +28,16 @@ body[data-role="student"] main[tabindex="-1"]:focus-visible { outline: 2px solid
 .practice-review-topic { min-width: 0; padding: 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--cream); overflow-wrap: anywhere; }
 .practice-review-topic h3 { color: var(--navy); font-size: 1rem; }
 .practice-review-topic p { color: var(--text-light); font-size: .9rem; line-height: 1.5; margin: 10px 0; }
-.practice-review-panel button { font: inherit; cursor: pointer; border: 0; background: transparent; }
+.practice-goal-list { display:grid; gap:0; margin:0; }
+.practice-goal-list > div {
+    display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.4rem .8rem; align-items:baseline;
+    padding:.45rem 0; border-block-end:1px solid #70898c70; overflow-wrap:anywhere;
+}
+.practice-goal-list dt { min-width:0; }
+.practice-goal-list dd { margin:0; font-weight:700; text-align:end; font-variant-numeric:tabular-nums; }
+body.lakbay-theme .practice-goal-list [data-met="true"] dd { color:#b0dfc4; }
+body.lakbay-theme .practice-goal-list [data-met="false"] dd { color:#ffe2a2; }
+.practice-review-panel button { font: inherit; cursor: var(--lakbay-cursor-hand, pointer); border: 0; background: transparent; }
 /* Student profile editor, shared by every protected student page. */
 .student-profile-dialog {
     width: min(620px, calc(100% - 28px));
@@ -46,7 +55,7 @@ body[data-role="student"] main[tabindex="-1"]:focus-visible { outline: 2px solid
 .student-profile-dialog::backdrop { background: #10243fb3; }
 .student-profile-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .student-profile-heading h2 { color: var(--navy); font-size: 1.6rem; margin-top: 8px; }
-.student-profile-close { border: 0; background: transparent; color: var(--navy); font-size: 2rem; cursor: pointer; padding: 0 8px; }
+.student-profile-close { border: 0; background: transparent; color: var(--navy); font-size: 2rem; cursor: var(--lakbay-cursor-hand, pointer); padding: 0 8px; }
 .student-profile-preview { width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; margin: 20px auto 12px; background: var(--cream); color: var(--navy); font-size: 2.3rem; }
 .student-profile-intro { text-align: center; line-height: 1.5; margin-bottom: 22px; color: var(--text-light); }
 .student-profile-fields { border: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; min-width: 0; }
@@ -58,17 +67,17 @@ body[data-role="student"] main[tabindex="-1"]:focus-visible { outline: 2px solid
 .student-avatar-picker { border: 0; padding: 0; margin-top: 22px; min-width: 0; }
 .student-avatar-picker legend { color: var(--navy); font-weight: 700; margin-bottom: 12px; }
 .student-avatar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.student-avatar-choice { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; border: 2px solid var(--border); border-radius: 12px; padding: 12px 8px; cursor: pointer; font-size: .8rem; }
+.student-avatar-choice { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; border: 2px solid var(--border); border-radius: 12px; padding: 12px 8px; cursor: var(--lakbay-cursor-hand, pointer); font-size: .8rem; }
 .student-avatar-symbol { font: 1.8rem Arial, "Segoe UI Emoji", "Apple Color Emoji", sans-serif; }
 .student-avatar-choice:has(input:checked) { border-color: var(--navy); background: var(--cream); }
 .student-avatar-choice:has(input:focus-visible) { outline: 3px solid var(--gold); outline-offset: 3px; }
 .student-avatar-choice input { position: absolute; left: 8px; top: 8px; accent-color: var(--navy); }
 .student-profile-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 16px; }
 .student-profile-actions button { min-height: 44px; font: inherit; font-weight: 700; }
-.student-profile-cancel { border: 1px solid var(--border); border-radius: 12px; padding: 10px 18px; background: white; color: var(--navy); cursor: pointer; }
+.student-profile-cancel { border: 1px solid var(--border); border-radius: 12px; padding: 10px 18px; background: white; color: var(--navy); cursor: var(--lakbay-cursor-hand, pointer); }
 .student-profile-status { min-height: 24px; margin-top: 18px; line-height: 1.5; color: var(--navy); }
 .student-profile-dialog button:disabled { opacity: .6; cursor: wait; }
-.student-profile-nav { width: 100%; border: 0; background: transparent; font: inherit; text-align: left; cursor: pointer; }
+.student-profile-nav { width: 100%; border: 0; background: transparent; font: inherit; text-align: left; cursor: var(--lakbay-cursor-hand, pointer); }
 .student-profile-entry { margin-left: auto; }
 .chapter-challenge-page > .student-profile-entry { margin-top: 20px; }
 .student-profile-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
@@ -280,7 +289,7 @@ body[data-role="student"] main[tabindex="-1"]:focus-visible { outline: 2px solid
 
         text-decoration: none;
 
-        cursor: pointer;
+        cursor: var(--lakbay-cursor-hand, pointer);
 
         transition:
             background 0.2s ease,
@@ -409,7 +418,7 @@ body[data-role="student"] main[tabindex="-1"]:focus-visible { outline: 2px solid
 
         background: transparent;
 
-        cursor: pointer;
+        cursor: var(--lakbay-cursor-hand, pointer);
 
         text-align: left;
     }
@@ -463,7 +472,7 @@ body[data-role="student"] main[tabindex="-1"]:focus-visible { outline: 2px solid
 
         font-size: 22px;
 
-        cursor: pointer;
+        cursor: var(--lakbay-cursor-hand, pointer);
     }
 
 
@@ -585,7 +594,7 @@ body[data-role="student"] main[tabindex="-1"]:focus-visible { outline: 2px solid
             font: inherit;
             font-weight: 800;
     
-            cursor: pointer;
+            cursor: var(--lakbay-cursor-hand, pointer);
     
             box-shadow:
                 0 8px 20px
@@ -635,7 +644,7 @@ body[data-role="student"] main[tabindex="-1"]:focus-visible { outline: 2px solid
 
         text-decoration: none;
 
-        cursor: pointer;
+        cursor: var(--lakbay-cursor-hand, pointer);
     }
 
 
@@ -664,7 +673,7 @@ body[data-role="student"] main[tabindex="-1"]:focus-visible { outline: 2px solid
     .era-button:disabled {
         opacity: 0.55;
 
-        cursor: not-allowed;
+        cursor: var(--lakbay-cursor-blocked, not-allowed);
     }
 
 
@@ -868,10 +877,10 @@ body.authenticated > .student-loading-shell { display:none; }
 @media(max-width:1000px) { .student-loading-shell { grid-template-columns:1fr; } .student-loading-sidebar { display:none; } }
 @media(prefers-reduced-motion:reduce) { body.authenticated.page-visible .main-content { animation:none; } }
 /* Explorer identity editor, shared across the student website. */
-.student-profile-dialog{padding:0;border:1px solid #d7dfe5;border-radius:26px;background:#fffdf8;width:min(660px,calc(100% - 28px));box-shadow:0 30px 100px #071b3759;scrollbar-width:thin}.student-profile-dialog::backdrop{background:#0a1d36b8;backdrop-filter:blur(5px)}.student-profile-heading{position:relative;overflow:hidden;padding:26px 30px 60px;background:radial-gradient(ellipse at 90% 0%,#355979,transparent 65%),linear-gradient(120deg,#10263e,#193b57);border-bottom:1px solid #b8954b}.student-profile-heading:after{content:'\2726';position:absolute;right:65px;top:-12px;color:#f2c76e18;font-size:130px;pointer-events:none}.student-profile-heading .eyebrow{color:#f1c773;font-size:.68rem;letter-spacing:.12em}.student-profile-heading h2{color:#fff;font-size:1.85rem;letter-spacing:-.035em;margin-top:8px}.student-profile-close{position:relative;z-index:1;display:grid;place-items:center;min-width:36px;height:36px;border:1px solid #ffffff40;border-radius:10px;background:#ffffff0c;color:#fff;font-size:1.6rem;padding:0;transition:background .18s}.student-profile-close:hover{background:#ffffff24}.student-profile-preview{position:relative;width:94px;height:94px;margin:-47px auto 14px;border:5px solid #fffdf8;outline:1px solid #d7b976;background:linear-gradient(145deg,#fff3d7,#edcf87);font-size:2.7rem;box-shadow:0 7px 18px #1c354e12;z-index:1}.student-profile-intro{font-size:.85rem;max-width:370px;margin:0 auto 24px;padding:0 20px;line-height:1.65;color:#667085}.student-profile-fields{margin:0 30px;padding:20px;border:1px solid #e6e2d7;border-radius:16px;background:#fff;gap:16px}.student-profile-fields label{font-size:.78rem;color:#374b63}.student-profile-fields input{background:#f9fafb;border-color:#dce2e8;border-radius:9px;padding:11px 12px;font-size:.88rem;transition:border-color .18s,box-shadow .18s}.student-profile-fields input:focus{border-color:#b89449;box-shadow:0 0 0 3px #d8b86415}.student-profile-fields input[readonly]{background:#f0f3f6;color:#6a7787}.student-profile-fields label small{font-size:.7rem}#profileEmailNote{font-size:.72rem;line-height:1.5}.student-avatar-picker{margin:24px 30px 0}.student-avatar-picker legend{font-size:.95rem;margin-bottom:14px}.student-avatar-grid{gap:12px}.student-avatar-choice{background:#fff;border:1px solid #dfe3e7;border-bottom:3px solid #dfe3e7;border-radius:14px;gap:9px;padding:19px 10px 14px;font-size:.75rem;font-weight:600;color:#526176;transition:transform .18s,border-color .18s,background .18s;overflow-wrap:anywhere;min-width:0;text-align:center}.student-avatar-symbol{display:grid;place-items:center;min-width:44px;height:44px;background:#f3f5f7;border-radius:13px;font-size:1.9rem}.student-avatar-choice:hover{transform:translateY(-2px);border-color:#c3ac76}.student-avatar-choice:has(input:checked){background:linear-gradient(145deg,#fff8e4,#fffdf7);border-color:#bb9440;color:#78591f;box-shadow:0 0 0 2px #e7d39a35}.student-avatar-choice:has(input:checked) .student-avatar-symbol{background:#f4e5bc}.student-avatar-choice input{left:9px;top:9px;width:13px;height:13px;accent-color:#9d782b}.student-profile-status{margin:16px 30px 0;font-size:.8rem;min-height:20px}.student-profile-actions{position:sticky;bottom:0;z-index:2;padding:18px 30px;margin-top:10px;border-top:1px solid #e7e2d6;background:#fffdf8f5;backdrop-filter:blur(8px);gap:10px}.student-profile-actions button{border-radius:11px;font-size:.85rem;min-height:44px}.student-profile-actions .begin-mission-button{background:#183953;color:#fff;border:1px solid #183953;padding:11px 22px;box-shadow:0 3px 0 #0c2035}.student-profile-cancel{border-color:#dce1e6;color:#58677a}.student-profile-actions .begin-mission-button:hover{background:#254b68}.student-profile-dialog #avatarCatalogStatus{font-size:.8rem;line-height:1.6;color:#667085;margin-top:12px}.student-profile-dialog #retryAvatarCatalog{border:1px solid #d6c69e;border-radius:9px;padding:9px 12px;background:#fff8e8;color:#78591f;font:inherit;font-size:.8rem;cursor:pointer}.student-profile-dialog[open]{animation:profile-arrive .22s ease-out}@keyframes profile-arrive{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+.student-profile-dialog{padding:0;border:1px solid #d7dfe5;border-radius:26px;background:#fffdf8;width:min(660px,calc(100% - 28px));box-shadow:0 30px 100px #071b3759;scrollbar-width:thin}.student-profile-dialog::backdrop{background:#0a1d36b8;backdrop-filter:blur(5px)}.student-profile-heading{position:relative;overflow:hidden;padding:26px 30px 60px;background:radial-gradient(ellipse at 90% 0%,#355979,transparent 65%),linear-gradient(120deg,#10263e,#193b57);border-bottom:1px solid #b8954b}.student-profile-heading:after{content:'\2726';position:absolute;right:65px;top:-12px;color:#f2c76e18;font-size:130px;pointer-events:none}.student-profile-heading .eyebrow{color:#f1c773;font-size:.68rem;letter-spacing:.12em}.student-profile-heading h2{color:#fff;font-size:1.85rem;letter-spacing:-.035em;margin-top:8px}.student-profile-close{position:relative;z-index:1;display:grid;place-items:center;min-width:36px;height:36px;border:1px solid #ffffff40;border-radius:10px;background:#ffffff0c;color:#fff;font-size:1.6rem;padding:0;transition:background .18s}.student-profile-close:hover{background:#ffffff24}.student-profile-preview{position:relative;width:94px;height:94px;margin:-47px auto 14px;border:5px solid #fffdf8;outline:1px solid #d7b976;background:linear-gradient(145deg,#fff3d7,#edcf87);font-size:2.7rem;box-shadow:0 7px 18px #1c354e12;z-index:1}.student-profile-intro{font-size:.85rem;max-width:370px;margin:0 auto 24px;padding:0 20px;line-height:1.65;color:#667085}.student-profile-fields{margin:0 30px;padding:20px;border:1px solid #e6e2d7;border-radius:16px;background:#fff;gap:16px}.student-profile-fields label{font-size:.78rem;color:#374b63}.student-profile-fields input{background:#f9fafb;border-color:#dce2e8;border-radius:9px;padding:11px 12px;font-size:.88rem;transition:border-color .18s,box-shadow .18s}.student-profile-fields input:focus{border-color:#b89449;box-shadow:0 0 0 3px #d8b86415}.student-profile-fields input[readonly]{background:#f0f3f6;color:#6a7787}.student-profile-fields label small{font-size:.7rem}#profileEmailNote{font-size:.72rem;line-height:1.5}.student-avatar-picker{margin:24px 30px 0}.student-avatar-picker legend{font-size:.95rem;margin-bottom:14px}.student-avatar-grid{gap:12px}.student-avatar-choice{background:#fff;border:1px solid #dfe3e7;border-bottom:3px solid #dfe3e7;border-radius:14px;gap:9px;padding:19px 10px 14px;font-size:.75rem;font-weight:600;color:#526176;transition:transform .18s,border-color .18s,background .18s;overflow-wrap:anywhere;min-width:0;text-align:center}.student-avatar-symbol{display:grid;place-items:center;min-width:44px;height:44px;background:#f3f5f7;border-radius:13px;font-size:1.9rem}.student-avatar-choice:hover{transform:translateY(-2px);border-color:#c3ac76}.student-avatar-choice:has(input:checked){background:linear-gradient(145deg,#fff8e4,#fffdf7);border-color:#bb9440;color:#78591f;box-shadow:0 0 0 2px #e7d39a35}.student-avatar-choice:has(input:checked) .student-avatar-symbol{background:#f4e5bc}.student-avatar-choice input{left:9px;top:9px;width:13px;height:13px;accent-color:#9d782b}.student-profile-status{margin:16px 30px 0;font-size:.8rem;min-height:20px}.student-profile-actions{position:sticky;bottom:0;z-index:2;padding:18px 30px;margin-top:10px;border-top:1px solid #e7e2d6;background:#fffdf8f5;backdrop-filter:blur(8px);gap:10px}.student-profile-actions button{border-radius:11px;font-size:.85rem;min-height:44px}.student-profile-actions .begin-mission-button{background:#183953;color:#fff;border:1px solid #183953;padding:11px 22px;box-shadow:0 3px 0 #0c2035}.student-profile-cancel{border-color:#dce1e6;color:#58677a}.student-profile-actions .begin-mission-button:hover{background:#254b68}.student-profile-dialog #avatarCatalogStatus{font-size:.8rem;line-height:1.6;color:#667085;margin-top:12px}.student-profile-dialog #retryAvatarCatalog{border:1px solid #d6c69e;border-radius:9px;padding:9px 12px;background:#fff8e8;color:#78591f;font:inherit;font-size:.8rem;cursor:var(--lakbay-cursor-hand, pointer)}.student-profile-dialog[open]{animation:profile-arrive .22s ease-out}@keyframes profile-arrive{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
 @media(max-width:480px){.student-profile-dialog{padding:0;border-radius:20px}.student-profile-heading{padding:22px 20px 58px}.student-profile-fields{margin:0 18px;padding:16px}.student-avatar-picker{margin:22px 18px 0}.student-avatar-grid{gap:8px}.student-avatar-choice{padding:19px 5px 12px;font-size:.7rem}.student-profile-status{margin-left:18px;margin-right:18px}.student-profile-actions{padding:16px 18px}.student-profile-heading h2{font-size:1.65rem}}
 @media(prefers-reduced-motion:reduce){.student-profile-dialog[open]{animation:none}.student-avatar-choice,.student-profile-fields input,.student-profile-close{transition:none}.student-avatar-choice:hover{transform:none}}
-.guided-practice-intro{padding:28px;background:linear-gradient(135deg,#fffdf7,#f5f3e9);border:1px solid #ded5bc;border-radius:20px;margin-bottom:24px}.guided-practice-intro h2{color:#20394e;font-size:1.5rem;margin:12px 0 18px;line-height:1.4}.guided-practice-intro h3{color:#466450;font-size:.9rem;margin-top:22px}.guided-practice-intro p{color:#637284;font-size:.9rem;line-height:1.8;margin:14px 0}.guided-practice-recap{padding:18px;border-left:3px solid #a1b7a6;background:#f0f5ef;border-radius:9px;white-space:pre-line}.guided-practice-actions{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:25px}.guided-practice-actions button{font:inherit;font-size:.85rem;cursor:pointer}.practice-review-source{display:block;color:#52705f;font-size:.66rem;font-weight:700;line-height:1.6;margin-bottom:10px}.guided-practice-intro a:focus-visible,.guided-practice-intro button:focus-visible{outline:3px solid #b68b3e;outline-offset:4px}
+.guided-practice-intro{padding:28px;background:linear-gradient(135deg,#fffdf7,#f5f3e9);border:1px solid #ded5bc;border-radius:20px;margin-bottom:24px}.guided-practice-intro h2{color:#20394e;font-size:1.5rem;margin:12px 0 18px;line-height:1.4}.guided-practice-intro h3{color:#466450;font-size:.9rem;margin-top:22px}.guided-practice-intro p{color:#637284;font-size:.9rem;line-height:1.8;margin:14px 0}.guided-practice-recap{padding:18px;border-left:3px solid #a1b7a6;background:#f0f5ef;border-radius:9px;white-space:pre-line}.guided-practice-actions{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:25px}.guided-practice-actions button{font:inherit;font-size:.85rem;cursor:var(--lakbay-cursor-hand, pointer)}.practice-review-source{display:block;color:#52705f;font-size:.66rem;font-weight:700;line-height:1.6;margin-bottom:10px}.guided-practice-intro a:focus-visible,.guided-practice-intro button:focus-visible{outline:3px solid #b68b3e;outline-offset:4px}
 .topic-review-notice{padding:24px;background:#f4f7f0;border:1px solid #d3decc;border-left:4px solid #8ea383;border-radius:16px;margin-bottom:24px}.topic-review-notice h2{color:#304c38;font-size:1.2rem;margin-bottom:14px;overflow-wrap:anywhere}.topic-review-notice p{color:#627266;font-size:.85rem;line-height:1.8;margin:12px 0}.topic-review-notice a{display:inline-block;margin:10px 20px 0 0;font-size:.8rem;color:#345d46}.topic-review-notice a:focus-visible{outline:3px solid #b68b3e;outline-offset:3px}
 /* Shared recovery path: orientation without invented mastery or progress. */
 .review-flow-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0;margin:0 0 26px;gap:14px}.review-flow-steps li{display:flex;align-items:center;gap:10px;color:#738092;font-size:.73rem;line-height:1.6;padding:12px;border-bottom:2px solid #e2e6e4;min-width:0}.review-flow-steps li>span{display:grid;place-items:center;flex-shrink:0;width:27px;height:27px;border:1px solid #d9dfde;border-radius:50%;font-size:.72rem;font-weight:700;background:#fff}.review-flow-steps li[aria-current=step]{color:#365543;border-color:#a6bca9;font-weight:700}.review-flow-steps li[aria-current=step]>span{color:#fff;background:#466b56;border-color:#466b56}.topic-review-notice{border:1px solid #d8e0d4;border-left:4px solid #93ac94;padding:26px 28px;background:linear-gradient(135deg,#fcfdf8,#f2f5ec);box-shadow:0 5px 18px #20394e04;border-radius:20px}.topic-review-notice .review-flow-steps{margin-bottom:22px}.topic-review-notice h2{font-size:1.35rem;letter-spacing:-.025em;line-height:1.5}.topic-review-notice p{max-width:82ch}.topic-review-notice p+p{font-size:.75rem;color:#718174}.topic-review-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}.topic-review-actions a{margin:0;padding:10px 14px;border:1px solid #cfdccd;background:#fffdf8;border-radius:9px;text-decoration:none}.topic-review-actions a+a{background:transparent;border-color:transparent;color:#637284}.guided-practice-intro{box-shadow:0 5px 18px #20394e04}.guided-practice-intro .eyebrow{color:#8a7145;font-size:.65rem}.guided-practice-actions button{background:#294b3b;border:1px solid #294b3b;border-radius:10px;padding:12px 18px;color:#fff}.practice-continue-journey{display:inline-flex;padding:11px 16px;border:1px solid #d7e0d9;border-radius:10px;margin:16px 0;color:#43664f;background:#f6f9f5;text-decoration:none;font-size:.85rem}
@@ -880,3 +889,7 @@ body.authenticated > .student-loading-shell { display:none; }
 .learning-navigation .learning-topic-return{margin-top:6px;font-size:.9rem;max-width:100%;overflow-wrap:anywhere}
 .learning-navigation .learning-classroom-return{display:inline-flex;margin-top:6px;margin-left:12px;font-size:.9rem;font-weight:700;max-width:100%;overflow-wrap:anywhere}@media(max-width:600px){.learning-navigation .learning-classroom-return{margin-left:0;display:flex}}
 .student-avatar-portrait{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit;pointer-events:none}.has-avatar-portrait{padding:0!important;background:#10233f!important}.student-avatar-symbol.has-avatar-portrait{width:72px;height:72px;border-radius:50%;box-shadow:0 0 0 2px #536b86,0 5px 14px #020c1b55}.student-avatar-choice:has(input:checked) .student-avatar-symbol{box-shadow:0 0 0 3px #edce7b,0 0 20px #e0b94d25}.student-avatar-choice:has(.has-avatar-portrait){gap:12px;padding-top:20px}.student-avatar-choice:focus-within{outline:2px solid #edce7b;outline-offset:3px}
+
+.student-profile-preview-card { margin: 0 auto .75rem; text-align: center; }
+.student-profile-preview-card figcaption { color: #53667b; font-size: .8rem; }
+body.lakbay-theme .student-profile-preview-card figcaption { color: var(--lp-muted, #c2d5de); }

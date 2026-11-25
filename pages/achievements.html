@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
 <link rel="stylesheet" href="../css/interface-icons.css">
+    <link rel="stylesheet" href="../css/student-expedition-polish.css">
 </head>
 
 
@@ -105,7 +106,7 @@
                     class="nav-link"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></svg></span>
-                    <span>Explore Chapters</span>
+                    <span>Chapter Map</span>
                 </a>
 
 
@@ -132,7 +133,7 @@
                     class="nav-link active"
                 >
                     <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0V3Zm0 2H4v4a4 4 0 0 0 4 4m8-8h4v4a4 4 0 0 1-4 4m-4 1v6m-4 1h8"/></svg></span>
-                    <span>Achievements</span>
+                    <span>Discovery Museum</span>
                 </a>
                 <a href="settings.html" class="nav-link settings-nav-link"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm0-5v2m0 14v2M3 12h2m14 0h2M6 6l1.5 1.5m9 9L18 18M6 18l1.5-1.5m9-9L18 6"/></svg></span><span>Settings</span></a>
 
@@ -231,21 +232,24 @@
             <div class="achievements-content">
                 <section class="achievements-hero" aria-labelledby="collectionsTitle">
                     <div>
-                        <span class="eyebrow">YOUR HISTORY JOURNEY</span>
-                        <h1 id="collectionsTitle">Your Discovery Museum</h1>
+                        <span class="eyebrow">YOUR COLLECTIONS</span>
+                        <h1 id="collectionsTitle">Your Discovery Museum</h1><nav class="student-section-shortcuts" aria-label="Museum sections"><a class="student-quick-link" href="#badgesTitle">Chapter honors</a><a class="student-quick-link" href="#artifactsTitle">Artifact gallery</a></nav>
                         <p>Your chapter milestones and the historical keepsakes collected along the way.</p>
                     </div>
-                    <div class="achievements-hero-icon" aria-hidden="true">&#127942;</div>
+                    <div class="museum-hero-display" aria-hidden="true">
+                        <img src="../assets/artifacts/balangay.png" class="museum-hero-boat" alt="" width="320" height="167">
+                        <img src="../assets/artifacts/manunggul.png" class="museum-hero-jar" alt="" width="132" height="142">
+                    </div>
                 </section>
 
 
                 <div class="achievement-summary-grid" role="group" aria-label="Choose a collection">
                     <button type="button" class="achievement-summary-card" id="toggleBadges" aria-controls="badges" aria-expanded="false">
-                        <div class="achievement-summary-icon" aria-hidden="true">&#127941;</div>
+                        <div class="achievement-summary-icon museum-badge-medallion" aria-hidden="true"><img src="../assets/brand/lakbay-sun.svg" alt="" width="42" height="42"></div>
                         <div><span>Badges Earned</span><strong id="earnedBadgeCount">&mdash;</strong><small>Chapter milestones <span aria-hidden="true">&rarr;</span></small></div>
                     </button>
                     <button type="button" class="achievement-summary-card" id="toggleArtifacts" aria-controls="artifacts" aria-expanded="false">
-                        <div class="achievement-summary-icon" aria-hidden="true">&#127994;</div>
+                        <div class="achievement-summary-icon museum-artifact-medallion" aria-hidden="true"><img src="../assets/artifacts/manunggul.png" alt="" width="52" height="56"></div>
                         <div><span>Artifacts Collected</span><strong id="artifactCount">&mdash;</strong><small>Mission keepsakes <span aria-hidden="true">&rarr;</span></small></div>
                     </button>
                 </div>
@@ -257,10 +261,10 @@
                         <h2 id="badgesTitle">Your Chapter Honors</h2>
                         <p>Complete chapter challenges to earn badges that celebrate your progress.</p>
                     </div></div>
-                    <div id="achievementLoading" class="learning-message">Loading your badges...</div>
+                    <div id="achievementLoading" class="lp-status-panel" data-state="loading" role="status" aria-atomic="true">Loading your badges...</div>
                     <div id="achievementEmpty" class="achievement-empty-state" hidden>
-                        <div class="achievement-empty-icon" aria-hidden="true">&#127941;</div>
-                        <div><strong>Your first badge is ahead</strong><p>Complete a chapter challenge to start this collection.</p><a href="chapters.html" class="text-button">Explore Chapters</a></div>
+                        <div class="achievement-empty-icon" aria-hidden="true"><span class="interface-icon interface-icon--trophy"></span></div>
+                        <div><strong>Earn your first chapter badge</strong><p>Finish the missions in a chapter, then pass its final challenge.</p><a href="chapters.html" class="lp-button lp-button-primary">Choose a chapter</a></div>
                     </div>
                     <div id="badgeCollection" class="badge-collection"></div>
                 </section>
@@ -269,13 +273,15 @@
                     <div class="section-heading"><div>
                         <span class="eyebrow">MISSION KEEPSAKES</span>
                         <h2 id="artifactsTitle">Your Artifact Gallery</h2>
-                        <p class="museum-introduction">Choose View Exhibit to explore the story behind a keepsake, or pin a favourite to your profile.</p>
-                        <a class="text-button museum-wall-link" href="my-profile.html#discoveryWall">View My Discovery Wall</a>
+                        <div class="museum-gallery-tools">
+                            <p class="museum-introduction">Choose View Exhibit to explore the story behind a keepsake, or pin a favourite to your profile.</p>
+                            <a class="text-button museum-wall-link" href="my-profile.html#discoveryWall">View My Discovery Wall</a>
+                        </div>
                     </div></div>
-                    <div id="artifactLoading" class="learning-message">Loading your artifacts...</div>
+                    <div id="artifactLoading" class="lp-status-panel" data-state="loading" role="status" aria-atomic="true">Loading your artifacts...</div>
                     <div id="artifactEmpty" class="achievement-empty-state" hidden>
-                        <div class="achievement-empty-icon" aria-hidden="true">&#127994;</div>
-                        <div><strong>Your discoveries belong here</strong><p>Complete missions to collect your first historical artifact.</p><a href="my-journey.html" class="text-button">Continue Your Journey</a></div>
+                        <figure class="museum-starter-preview"><img class="museum-starter-art" src="../assets/story/prologue-island-map.svg" alt="" width="144" height="90"><figcaption>Philippine Locator Map</figcaption></figure>
+                        <div><strong>Collect your first keepsake</strong><p>Pass the opening geography quiz to earn the map for your gallery.</p><a href="story.html?chapter=era1-prologue&amp;mission=prologue-mission1" class="lp-button lp-button-primary">Open the geography lesson</a></div>
                     </div>
                     <div id="artifactGrid" class="badge-collection artifact-grid"></div>
                 </section>

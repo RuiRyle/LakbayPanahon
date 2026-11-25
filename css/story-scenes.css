@@ -1,0 +1,329 @@
+/* Illustrated scene pages share the colors of the student journey. */
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .main-content > .story-page {
+    max-width: 1120px;
+    padding-inline: clamp(12px, 2.5vw, 32px);
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] #storyContent .story-header {
+    padding: clamp(13px, 2.2vw, 22px) clamp(16px, 3vw, 30px);
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] #storyContent #storyMissionTitle {
+    font-size: clamp(1.32rem, 2.5vw, 2rem);
+    margin-block: 4px;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card.lesson-expedition {
+    --scene-padding: clamp(15px, 2.5vw, 30px);
+    --scene-margin: clamp(12px, 2.4vw, 26px);
+    --scene-line: #9e865c;
+    --scene-gold: #ffe0a2;
+    --scene-ink: #fff2d7;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    border: 1px solid var(--scene-line);
+    border-radius: clamp(14px, 2vw, 24px);
+    scroll-margin-block-start: 5.5rem;
+    background: radial-gradient(ellipse at 10% 12%, #244951 0%, transparent 64%), #122c3c;
+    box-shadow: var(--student-panel-depth, 0 14px 32px #08182299);
+}
+
+.story-web-page .story-reading-card.lesson-expedition[hidden] { display: none !important; }
+
+.story-web-page .lesson-scene-header {
+    position: relative;
+    grid-column: 1 / -1;
+    padding: var(--scene-padding);
+    padding-block-start: calc(var(--scene-padding) + 3px);
+    border-block-end: 1px solid #8c78569e;
+    background: var(--student-woven-edge, linear-gradient(90deg,#d7b275,#6e9d89)) top / 100% 3px no-repeat,
+        linear-gradient(115deg, #112b38 28%, #21464a);
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-scene-header .story-scene-label {
+    display: inline-block;
+    margin: 0 0 5px;
+    color: var(--scene-gold);
+    font-size: .8rem;
+    font-weight: 750;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card .lesson-scene-header #sceneTitle {
+    display: block;
+    max-inline-size: 30ch;
+    margin: 0;
+    color: var(--scene-ink);
+    font: 500 clamp(1.75rem, 3.8vw, 3.2rem)/1.11 var(--student-editorial, Georgia, serif);
+    letter-spacing: -.035em;
+    overflow-wrap: anywhere;
+    scroll-margin-block-start: 5rem;
+    text-wrap: balance;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-scene-header #storySceneContext:not([hidden]) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 9px;
+    margin: 12px 0 0;
+}
+
+.story-web-page .lesson-scene-header #storySceneContext span {
+    max-width: 100%;
+    padding: 3px 8px;
+    border: 1px solid #698681;
+    border-radius: 5px;
+    background: #1a3946;
+    color: #e1eeeb;
+    overflow-wrap: anywhere;
+}
+
+.story-web-page .lesson-scene-step:not([hidden]) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px 14px;
+    padding-block-start: 12px;
+    margin-block-start: 14px;
+    border-block-start: 1px solid #78938b66;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .lesson-scene-step .lesson-step-count {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    color: #dfede5;
+    font-size: .88rem;
+    font-weight: 650;
+}
+
+.story-web-page .lesson-scene-step .lesson-step-count::before { content: none; }
+
+.lesson-scene-step-progress {
+    appearance: none;
+    flex: 0 1 110px;
+    inline-size: 110px;
+    block-size: 5px;
+    border: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #47666d;
+    color: #f6cc80;
+}
+.lesson-scene-step-progress::-webkit-progress-bar { background: #47666d; }
+.lesson-scene-step-progress::-webkit-progress-value { background: #f6cc80; border-radius: 6px; }
+.lesson-scene-step-progress::-moz-progress-bar { background: #f6cc80; border-radius: 6px; }
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card .story-visual {
+    width: auto;
+    min-width: 0;
+    margin: var(--scene-margin) var(--scene-margin) 0;
+    border: 1px solid #b4986a;
+    border-radius: 14px;
+    background: #102b3c;
+    overflow: hidden;
+    box-shadow: 0 5px 0 #091d2b, 0 0 0 3px #d9bb7e1a;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .story-artwork-frame {
+    background: radial-gradient(ellipse at 50% 24%, #284650, #0e2738 82%);
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .story-scene-image:not([hidden]) {
+    max-height: clamp(185px, 36vw, 395px);
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .is-interactive-map .story-scene-image:not([hidden]) {
+    max-height: none;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .story-visual[data-artwork-state="symbolic"] {
+    display: none;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .story-visual[data-artwork-state="unavailable"] .story-visual-fallback {
+    min-block-size: 78px;
+    padding: 12px;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card .story-visual-caption {
+    padding: .72rem .9rem;
+    border-block-start: 1px solid #b4986a;
+    background: #153643;
+    color: #e5efea;
+    font-size: .9rem;
+    line-height: 1.5;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .lesson-image-open {
+    min-height: 44px;
+    margin: 6px 10px 10px auto;
+    border-radius: 8px;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .story-reading-content {
+    min-width: 0;
+    padding: var(--scene-padding);
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .story-beat-toolbar {
+    gap: 7px 9px;
+    margin: 0 0 12px;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .story-beat-toolbar > span:empty { display: none; }
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .story-beat-toolbar .story-full-text-toggle:not([hidden]) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 auto;
+    color: #e5efe9;
+    background: #193947;
+    border-color: #79928a;
+    font-weight: 650;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card.lesson-reading #storyText {
+    min-height: unset;
+    padding: clamp(16px, 2.4vw, 25px);
+    font-size: clamp(1.05rem, 1.5vw, 1.16rem);
+    line-height: 1.75;
+    text-wrap: pretty;
+}
+
+.story-web-page .lesson-expedition #storyText > p:last-child { margin-block-end: 0; }
+
+body.story-web-page.simple-lesson.lakbay-theme.paper-reading:not(.lakbay-high-contrast)[data-role="student"] .story-reading-card.lesson-reading #storyText {
+    border: 1px solid #b38d54;
+    border-inline-start: 4px solid #997040;
+    border-radius: 6px 12px 12px 6px;
+    background: radial-gradient(ellipse at 10% 0%, #fff8e7, transparent 75%), #f1e1be;
+    box-shadow: 0 3px 0 #091e29a0;
+}
+
+.story-web-page .lesson-expedition :is(#storyText,#lessonUnderstanding,#storyExplore,#storyClueHunt,#storyDecision,#storyQuickCheck,#storyRouteActivity,#storyTradeActivity,#storyExhibitActivity) {
+    scroll-margin-block-start: 5.5rem;
+}
+
+.story-web-page .lesson-expedition .story-learning-heading h3 {
+    margin: .18rem 0 0;
+    color: var(--scene-ink);
+    font: 600 clamp(1.28rem, 2vw, 1.65rem)/1.23 var(--student-editorial, Georgia, serif);
+    letter-spacing: -.015em;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .story-learning-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-block-end: 10px;
+}
+
+.story-web-page .lesson-expedition .story-learning-heading .story-learning-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    border-radius: 8px;
+    background: #ddb778;
+    color: #102836;
+}
+
+.story-clue-progress {
+    width: fit-content;
+    margin: 0 0 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #274a51;
+    color: #f6e5bb;
+    font-size: .84rem;
+    font-weight: 750;
+}
+.story-clue-progress.is-complete { background: #255244; color: #dff8ea; }
+
+body.story-web-page.simple-lesson.lakbay-theme .lesson-expedition .story-explore-choice {
+    min-height: 63px;
+    border-radius: 10px;
+}
+
+.story-web-page .lesson-expedition .lesson-clue-state { color: var(--scene-gold); }
+
+body.story-web-page.simple-lesson .lesson-expedition .mission-bayani[hidden] { display: none; }
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .lesson-expedition .mission-bayani:not([hidden]) {
+    padding: 5px 10px;
+    border: 1px solid #6d887f;
+    border-radius: 10px;
+    background: #193945;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .lesson-expedition .mission-bayani img {
+    width: 39px;
+    height: 42px;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-page .lesson-flow {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 9px;
+    margin-block-start: 16px;
+    padding-block-start: 14px;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-page .lesson-flow[hidden] { display: none; }
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-page .lesson-flow button[hidden] { display: none; }
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .lesson-expedition .lesson-flow .begin-mission-button {
+    min-width: min(53%, 190px);
+    margin-inline-start: auto;
+}
+
+body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .lesson-expedition .lesson-flow .begin-mission-button:disabled {
+    opacity: 1;
+    color: #d4e3e8;
+    background: #214051;
+    border-color: #6c858d;
+}
+
+@media (min-width: 1040px) {
+    body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card.lesson-field-desk:has(> .story-visual:not([data-artwork-state="symbolic"])) {
+        grid-template-columns: minmax(0, 43fr) minmax(0, 57fr);
+    }
+    body.story-web-page.simple-lesson.lakbay-theme[data-role="student"] .story-reading-card.lesson-field-desk .story-visual {
+        margin: var(--scene-margin) 0 var(--scene-margin) var(--scene-margin);
+    }
+    @supports (overflow: clip) {
+        body.story-web-page.simple-lesson.lakbay-theme .story-reading-card.lesson-field-desk { overflow: clip; }
+        body.story-web-page.simple-lesson.lakbay-theme .story-reading-card.lesson-field-desk .story-visual {
+            position: sticky;
+            inset-block-start: calc(5.5rem + var(--scene-margin));
+        }
+    }
+}
+
+@media (min-width: 375px) and (max-width: 640px) {
+    body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar:not(:has(> .lesson-toolkit > details[open])) {
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+    }
+    body.story-web-page.lakbay-theme[data-role="student"] .lesson-toolbar .lesson-toolkit > details > summary {
+        font-size: .82rem;
+    }
+}
+
+@media (max-width: 470px) {
+    body.story-web-page.lakbay-theme[data-role="student"] .topbar .topbar-actions { gap: 6px; }
+    body.story-web-page.lakbay-theme[data-role="student"] .topbar .profile-button .profile-info { display: none; }
+    body.story-web-page.lakbay-theme[data-role="student"] .topbar .profile-button { padding-inline: 6px; }
+}
+
+@media (forced-colors: active) {
+    .lesson-scene-step-progress { appearance: auto; }
+}

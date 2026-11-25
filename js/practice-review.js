@@ -97,6 +97,7 @@ export function renderReviewTopics(container, topics, chaptersByMission, emptyMe
         if (!chapterId) continue;
         const card = document.createElement("article");
         card.className = "practice-review-topic";
+        card.dataset.topic = topic.topic;
         const heading = document.createElement("h3");
         heading.textContent = topic.label;
         const detail = document.createElement("p");
@@ -116,11 +117,39 @@ export function renderReviewTopics(container, topics, chaptersByMission, emptyMe
         retry.href='quiz.html?'+new URLSearchParams({chapter:chapterId,mission:topic.missionId});
         const source = document.createElement("span");source.className="practice-review-source";source.textContent=topic.source==="quiz"?"Recommended from your quiz":"Recommended from practice";
         const stage=document.createElement('span');stage.className='review-learning-state';stage.dataset.state=topic.state||'review-needed';stage.textContent=({'review-needed':'Review recommended','lesson-revisited':'Lesson revisited','practising':'Practice in progress','practice-goal-reached':'Practice goal reached'})[topic.state]||'Review recommended';
-        const evidence=document.createElement('p');evidence.className='review-evidence-progress';
-        if(topic.requiredQuestions&&topic.requiredSessions)evidence.textContent=topic.distinctCorrect+' / '+topic.requiredQuestions+' different questions answered correctly; '+topic.cleanSessions+' / '+topic.requiredSessions+' successful sessions. Include a more challenging practice question. These counts restart after a new mistake.';
-        else evidence.textContent='More practice evidence is needed before this recommendation can be cleared.';
-        if(topic.evidenceUncertain)evidence.textContent+=' Some saved evidence has missing, conflicting, or uncertain dates. This recommendation stays visible until the records can be checked; it is not a judgment of your ability.';
-        if(topic.lessonRevisited&&topic.state!=='lesson-revisited')evidence.textContent+=' Lesson revisited.';
+        const evidence = document.createElement('div');
+        evidence.className = 'review-evidence-progress';
+        const note = document.createElement('p');
+        if (topic.requiredQuestions && topic.requiredSessions) {
+            const goals = document.createElement('dl');
+            goals.className = 'practice-goal-list';
+            const addGoal = (label, met, value) => {
+                const row = document.createElement('div');
+                row.dataset.met = String(met);
+                const name = document.createElement('dt');
+                name.textContent = label;
+                const status = document.createElement('dd');
+                if (met) {
+                    const mark = document.createElement('span');
+                    mark.textContent = '✓';
+                    mark.setAttribute('aria-hidden', 'true');
+                    status.append(mark, ' Goal met');
+                } else status.textContent = value;
+                row.append(name, status);
+                goals.append(row);
+            };
+            addGoal('Different questions', topic.distinctCorrect >= topic.requiredQuestions, `${topic.distinctCorrect} of ${topic.requiredQuestions}`);
+            addGoal('Successful practice rounds', topic.cleanSessions >= topic.requiredSessions, `${topic.cleanSessions} of ${topic.requiredSessions}`);
+            if (topic.requiredDifficulty) {
+                const difficulty = topic.requiredDifficulty;
+                addGoal(`${difficulty.charAt(0).toUpperCase()}${difficulty.slice(1)} question`, topic.difficultyMet, 'Still needed');
+            }
+            evidence.append(goals);
+            note.textContent = 'First-try answers count. A new mistake restarts these goals.';
+        } else note.textContent = 'More saved practice is needed to check this goal.';
+        if (topic.evidenceUncertain) note.textContent += ' Some saved results have dates we could not verify. This topic stays in your recommendations while those records are uncertain.';
+        if (topic.lessonRevisited && topic.state !== 'lesson-revisited') note.textContent += ' Lesson revisited.';
+        evidence.append(note);
         const actions = document.createElement("div");
         actions.className = "practice-review-actions";
         actions.append(link, other, retry);
