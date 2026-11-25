@@ -182,8 +182,6 @@ function initializeStudentMenu() {
     window.addEventListener('resize',()=>{if(window.innerWidth>900)setOpen(false);});
     window.addEventListener('pagehide',()=>setOpen(false));
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initializeStudentMenu,{once:true});
-else initializeStudentMenu();
 
 // Optional, low-volume game feedback for animated student cards and controls.
 const UI_SOUND_PREFERENCE_KEY='lakbay-ui-sounds';
@@ -323,6 +321,9 @@ document.addEventListener('click',event=>{
         control.closest('[inert],[data-sound-preview],[data-lesson-sound-preview],[data-preference-switch],[data-clue],[data-start-countdown]'))return;
     playUiSound('activate');
 },true);
+// Register the sound handler before the menu's capture handler consumes the click.
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initializeStudentMenu,{once:true});
+else initializeStudentMenu();
 function playUiSound(kind,force=false){
     if(document.hidden||narrationFocusActive||window.LakbayLessonAudio?.narrating)return false;
     if(window.LakbayLessonAudio&&['correct','retry'].includes(kind))return false;
@@ -332,7 +333,7 @@ function playUiSound(kind,force=false){
     const context=getUiAudioContext();
     if(!context||(context.state!=='running'&&window.navigator?.userActivation?.isActive===false))return false;
     if(kind==='activate'){
-        playUiTone(context,470,390,.055,.035*uiSoundVolume,'triangle');
+        playUiTone(context,540,375,.06,.055*uiSoundVolume,'triangle');
     }else if(kind==='clue-saved'){
         playUiTone(context,587,587,.13,.048*uiSoundVolume,'sine');
         playUiTone(context,784,784,.18,.04*uiSoundVolume,'sine',.08);

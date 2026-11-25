@@ -321,7 +321,7 @@ function playSound(kind, volume = 1, force = false) {
     if (!audio || (audio.state !== "running" && window.navigator?.userActivation?.isActive === false)) return false;
     const level = Math.min(1, Math.max(0, Number(volume) || 0));
     if (kind === "activate") {
-        playTone(audio, 470, 390, .055, .035 * level, "triangle");
+        playTone(audio, 540, 375, .06, .055 * level, "triangle");
     } else if (kind === "clue-saved") {
         playTone(audio, 587, 587, .13, .048 * level, "sine");
         playTone(audio, 784, 784, .18, .04 * level, "sine", .08);
