@@ -1789,3 +1789,169 @@ body.teacher-workspace.lakbay-theme[data-teacher-page="overview"] .teacher-overv
 }
 .teacher-student-access-code p { margin-block: 5px; }
 .teacher-student-access-code code { font-size: 1.08rem; font-weight: 700; }
+
+body[data-teacher-page="announcements"] :is(#announcementList .teacher-item, .announcement-preview-toggle) {
+    overflow-wrap: anywhere;
+}
+body[data-teacher-page="announcements"] .announcement-preview-toggle > summary {
+    font-size: .875rem;
+    color: #f4e5bc;
+}
+.teacher-feedback-audience,
+.teacher-feedback-status {
+    margin-block: 8px 12px;
+    font-size: .875rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+.teacher-feedback-audience {
+    color: #f4e5bc;
+}
+.teacher-feedback-status {
+    padding: 10px 12px;
+    border: 1px solid #517586;
+    border-radius: 8px;
+    background: #183442;
+    color: #e8f3f7;
+}
+.teacher-feedback-status[data-state="error"] {
+    border-color: #cf8274;
+    background: #4a292b;
+    color: #ffe5df;
+}
+body.teacher-workspace .teacher-assignment-feedback-dialog {
+    box-sizing: border-box;
+    max-height: calc(100dvh - 24px);
+    overflow: auto;
+    overflow-wrap: anywhere;
+}
+.teacher-assignment-feedback-dialog textarea {
+    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1.55;
+}
+.teacher-feedback-history {
+    margin-block-start: 20px;
+    overflow-wrap: anywhere;
+}
+
+body[data-teacher-page="students"] .student-list-panel-heading {
+    background: radial-gradient(ellipse at 8% 0%, #62785755, transparent 60%),
+                linear-gradient(112deg, #244c43, #152f45);
+}
+.student-list-panel { scroll-margin-top: 112px; }
+.student-list-panel-heading h3 { font-size: clamp(1.25rem, 1rem + 1vw, 1.55rem); }
+.student-list-panel-heading p,
+.student-list-total { font-size: .875rem; }
+body[data-teacher-page="students"] .student-list-panel .teacher-roster-search > label {
+    color: #d2e2eb;
+    font-size: .875rem;
+    font-weight: 650;
+}
+.student-list-panel .teacher-roster-search input { font-size: 1rem; }
+.student-list-panel .teacher-roster-search button { font-size: .875rem !important; }
+body[data-teacher-page="students"] .student-list-panel .teacher-roster-table th {
+    color: #b5cedd;
+    font-size: .75rem;
+}
+body[data-teacher-page="students"] .student-list-panel .teacher-roster-identity strong,
+.roster-preview-student .teacher-roster-identity strong { font-size: 1rem; line-height: 1.45; }
+body[data-teacher-page="students"] .student-list-panel .teacher-roster-avatar {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+    font-size: .875rem;
+    background: #294c4d;
+    color: #f5e6bd;
+}
+body[data-teacher-page="students"] .student-list-panel .teacher-roster-table tbody tr:focus-within {
+    background: #1b3b4b;
+}
+body[data-teacher-page="students"] .student-list-panel .teacher-roster-table button[data-report-open] {
+    min-height: 44px;
+    font-size: .875rem;
+    background: #ebd39b;
+    color: #182f3c;
+    border-color: #ebd39b;
+}
+body[data-teacher-page="students"] .student-list-panel .teacher-roster-table button[data-report-open]:after {
+    content: '→';
+    color: inherit;
+}
+body[data-teacher-page="students"] .student-list-panel .teacher-roster-table button[data-report-open]:hover {
+    background: #f8e6b7 !important;
+    border-color: #f8e6b7 !important;
+}
+.student-list-panel .teacher-member-management > summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .75rem !important;
+    color: #c5d9e4 !important;
+}
+.student-list-panel .teacher-member-management > summary:focus-visible {
+    outline: 2px solid #ecd39a;
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+.student-list-panel .teacher-member-management[open] > summary { justify-content: start; }
+.roster-preview-student .teacher-roster-identity { gap: 12px; overflow-wrap: anywhere; }
+.roster-empty-state {
+    margin: 4px clamp(16px, 3vw, 28px) 24px;
+    padding: 24px;
+    border: 1px dashed #64838a;
+    border-radius: 12px;
+    background: #173548;
+    color: #e4edf0;
+}
+.roster-empty-state > h4 { margin: 0; color: #f4dfa9; }
+.roster-empty-state > p { margin-block: 8px 12px; }
+
+body[data-teacher-page="students"] #studentReport .learning-profile {
+    background: radial-gradient(ellipse at 10% 0%, #83a56a3d, transparent 66%),
+                linear-gradient(118deg, #254c42, #19394a);
+}
+#studentReport .learning-profile-identity h3 { font-size: clamp(1.35rem, 1.05rem + 1vw, 1.85rem); }
+#studentReport .learning-coverage span { font-size: .875rem; }
+body[data-teacher-page="students"] #studentReport .teacher-report-snapshot > [data-progress-metric="completed"] {
+    background: #20453e !important;
+    border-color: #70917e !important;
+}
+body[data-teacher-page="students"] #studentReport .teacher-report-snapshot > [data-progress-metric="attempts"] {
+    background: #1b3e53 !important;
+    border-color: #5f859b !important;
+}
+body[data-teacher-page="students"] #studentReport .teacher-report-snapshot > [data-progress-metric="review"] {
+    background: #403c30 !important;
+    border-color: #9a8963 !important;
+}
+body[data-teacher-page="students"] #studentReport .teacher-report-snapshot span {
+    color: #e3edf0 !important;
+}
+body[data-teacher-page="students"] #studentReport .teacher-report-shortcuts button {
+    margin: 0;
+    background: #19374b;
+    border: 1px solid #5e8292;
+    color: #ecf2f4;
+    box-shadow: none;
+}
+body[data-teacher-page="students"] #studentReport .teacher-report-shortcuts button:first-child {
+    background: #ebd39b;
+    border-color: #ebd39b;
+    color: #182f3c;
+}
+#studentReport .learning-journey-heading h4 { font-size: 1.3rem; }
+#studentReport .learning-state { font-size: .75rem; }
+#studentReport .learning-mission-card h5 { font-size: 1.1rem; }
+#studentReport .learning-mission-evidence { align-items: baseline; flex-wrap: wrap; }
+#studentReport .learning-mission-evidence span { font-size: .875rem; }
+
+@media (max-width: 520px) {
+    .student-list-panel-heading { flex-wrap: wrap; gap: 8px; }
+    body[data-teacher-page="students"] .student-list-panel .teacher-roster-table tbody tr {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 6px;
+    }
+    .student-list-panel .roster-row-actions { flex-direction: row; justify-content: flex-start; align-items: center; gap: 10px; }
+    .student-list-panel .teacher-member-management[open] { flex-basis: 100%; }
+}

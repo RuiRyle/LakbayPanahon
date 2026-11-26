@@ -93,7 +93,22 @@
                         </details></div>
                         <div class="teacher-actions"><button id="archiveClass" class="secondary" type="button">Archive Class</button></div>
                     </div>
-                    <div id="teacher-students" hidden><h3 id="rosterCount"></h3><p class="teacher-note">These students joined this class. Open a report to discuss completed missions and topics to revisit. Refresh to load new joins or results.</p><form id="rosterSearchForm" class="teacher-roster-search" role="search"><label for="rosterSearch">Find a student by name<input id="rosterSearch" type="search" maxlength="200" placeholder="Enter a student name" autocomplete="off"></label><div class="teacher-actions"><button type="submit">Search Class</button><button id="clearRosterSearch" type="button" class="secondary">Show All Students</button></div></form><p id="rosterSearchStatus" class="teacher-note" role="status"></p><div id="teacherRoster"></div><div id="studentReport" aria-live="polite"></div></div>
+                    <div id="teacher-students" hidden>
+                        <h3 id="rosterCount"></h3>
+                        <p class="teacher-note">These students joined this class. Open a report to discuss completed missions and topics to revisit. Refresh to load new joins or results.</p>
+                        <form id="rosterSearchForm" class="teacher-roster-search" role="search" aria-label="Search the student list">
+                            <label for="rosterSearch">Student name
+                                <input id="rosterSearch" type="search" maxlength="200" placeholder="Search by first or last name" autocomplete="off" aria-controls="teacherRoster">
+                            </label>
+                            <div class="teacher-actions">
+                                <button type="submit">Find students</button>
+                                <button id="clearRosterSearch" type="button" class="secondary">Clear search</button>
+                            </div>
+                        </form>
+                        <p id="rosterSearchStatus" class="teacher-note" role="status"></p>
+                        <div id="teacherRoster"></div>
+                        <div id="studentReport" aria-live="polite"></div>
+                    </div>
                     <div id="teacher-announcements" hidden><div class="teacher-publication-layout"><section class="teacher-editor-card"><span class="eyebrow">WRITE A MESSAGE</span><h3>New announcement</h3><p class="teacher-note">Share a reminder or a short learning prompt. Publish when it is ready for students.</p>
                         <form id="announcementForm"><label>Title<input name="title" required maxlength="120"></label><label>Message<textarea name="body" required maxlength="3000"></textarea></label><label>Visibility<select name="status"><option value="draft">Save as draft</option><option value="published">Publish to students</option></select></label><div class="teacher-actions"><button type="submit">Save Announcement</button><button id="announcementCancel" type="button" class="secondary" hidden>Cancel Edit</button></div></form>
                         </section><section class="teacher-library-card"><span class="eyebrow">YOUR CLASS MESSAGES</span><h3>Saved announcements</h3><p id="announcementSummary" class="teacher-note"></p><div id="announcementList"></div></section></div>

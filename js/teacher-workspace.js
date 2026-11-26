@@ -30,6 +30,11 @@ async function showTeacherStudentPortraits(classId, portraits) {
 
 const $ = id => document.getElementById(id);
 function clearStudentReport(){const report=$('studentReport');report.replaceChildren();document.body.classList.remove('student-report-focused');delete report.dataset.userId;for(const row of document.querySelectorAll('#teacherRoster tr[data-user-id]')){row.dataset.reportOpen='false';row.querySelector('button[data-report-open]')?.setAttribute('aria-expanded','false');}}
+function studentInitials(name) {
+    const parts = name?.trim().split(/\s+/).filter(Boolean) || [];
+    const initials = parts.length > 1 ? [parts[0], parts.at(-1)] : parts;
+    return initials.map(part => Array.from(part)[0]).join('').toLocaleUpperCase() || '–';
+}
 const teacherRoutes = {overview:'teacher-dashboard.html',classes:'teacher-classes.html',students:'teacher-students.html',announcements:'teacher-announcements.html',assignments:'teacher-assignments.html',settings:'teacher-settings.html'};
 const routeName = document.body.dataset.teacherPage || 'overview';
 const routeParameters = new URLSearchParams(location.search);
@@ -380,9 +385,14 @@ const rosterMetrics=node('div',null,studentClassToolbar,'progress-class-metrics'
 if(routeName==='students')document.querySelector('.teacher-intro').classList.add('student-progress-hero');
 const allClassRoster=node('section',null,null,'teacher-all-class-roster');allClassRoster.id='teacherAllClassRoster';
 $('teacher-students').prepend(studentClassToolbar,allClassRoster);
-const studentListPanel=node('section',null,null,'student-list-panel');studentListPanel.id='studentListPanel';studentListPanel.setAttribute('aria-label','Classroom student list');const studentListHeader=node('header',null,studentListPanel,'student-list-panel-heading');const studentListCopy=node('div',null,studentListHeader);node('span','CLASS ROSTER',studentListCopy,'eyebrow');node('h3','Your students',studentListCopy);node('p','Choose a student to review their learning and offer guidance.',studentListCopy,'teacher-note');const studentListTotal=node('span','',studentListHeader,'student-list-total');$('rosterSearchForm').before(studentListPanel);studentListPanel.append($('rosterSearchForm'),$('rosterSearchStatus'),$('teacherRoster'));
+const studentListPanel=node('section',null,null,'student-list-panel');studentListPanel.id='studentListPanel';studentListPanel.setAttribute('aria-label','Classroom student list');const studentListHeader=node('header',null,studentListPanel,'student-list-panel-heading');const studentListCopy=node('div',null,studentListHeader);node('h3','Student list',studentListCopy);node('p','Choose a student to review their learning and offer guidance.',studentListCopy,'teacher-note');const studentListTotal=node('span','',studentListHeader,'student-list-total');$('rosterSearchForm').before(studentListPanel);studentListPanel.append($('rosterSearchForm'),$('rosterSearchStatus'),$('teacherRoster'));
 const classReportPanel=node('section',null,studentListPanel,'classroom-report-tools');node('h4','Class learning snapshot',classReportPanel);node('p','Prepare an up-to-date summary for every current student. Records load only when you request the report.',classReportPanel,'teacher-note');
 const classReportStatus=node('p','',classReportPanel,'teacher-note');classReportStatus.setAttribute('role','status');const classReportResults=node('div',null,classReportPanel,'classroom-report-results');
+function clearClassReport() {
+    classReportResults.replaceChildren();
+    classReportResults.removeAttribute('aria-busy');
+    classReportStatus.textContent='';
+}
 const classReportPrepare=button('Prepare class report',classReportPanel,()=>{const classId=selected;if(!classId||busy)return;const generation=epoch;task(async()=>{
     classReportResults.setAttribute('aria-busy','true');classReportStatus.textContent='Checking current classroom membership...';
     try{
@@ -446,15 +456,15 @@ function renderAllClassRoster() {
                 else node('p',`Students ${page*20+1}-${page*20+group.length} of ${members.length} in this class.`,output,'teacher-note');
                 const portraits=[];
                 for(const member of group){
-                    const row=node('div',null,output,'teacher-dashboard-entry');
+                    const row=node('div',null,output,'teacher-dashboard-entry roster-preview-student');
                     const identity=identities.find(item=>item.userId===member.userId);
                     const name=identity?.name||'Name unavailable · Account '+member.userId.slice(-8);
                     const identityWrap=node('div',null,row,'teacher-roster-identity');
-                    const portrait=node('span',Array.from(identity?.name||'S')[0].toLocaleUpperCase(),identityWrap,'teacher-roster-avatar teacher-student-portrait');
+                    const portrait=node('span',studentInitials(identity?.name),identityWrap,'teacher-roster-avatar teacher-student-portrait');
                     portrait.setAttribute('aria-hidden','true');
                     portraits.push({userId:member.userId,element:portrait});
                     node('strong',name,identityWrap);
-                    const link=node('a','View Learning Report',row,'teacher-class-link');
+                    const link=node('a','View progress',row,'teacher-class-link');
                     const url=new URL(teacherRoutes.students,location.href);url.searchParams.set('class',classroom.id);url.searchParams.set('student',member.userId);link.href=url.href;
                     link.setAttribute('aria-label','View learning report for '+name+' in '+classroom.name);
                 }
@@ -1182,15 +1192,14 @@ function renderAnnouncementPreview() {
     syncAnnouncementTabs();
     announcementCount.textContent=form.elements.namedItem('body').value.length+' / 3000 characters';
     form.closest('.teacher-editor-card').querySelector('h3').textContent=editing?'Edit announcement':'New announcement';
-    form.querySelector('[type="submit"]').textContent = published ? editing ? 'Update Published Announcement' : 'Publish Announcement to Class' : 'Save Announcement Draft';
+    form.querySelector('[type="submit"]').textContent = published ? editing ? 'Save and publish update' : 'Publish to class' : 'Save draft';
     announcementPreview.replaceChildren();
-    node('span', 'STUDENT MESSAGE PREVIEW', announcementPreview, 'eyebrow');
     const recipient=classes.find(c=>c.id===announcementRecipient.value&&c.status==='active');
-    node('p',recipient?'For '+recipient.name:'Message not addressed yet. Choose a receiving class before saving or publishing.',announcementPreview,'teacher-note');
+    node('span', 'Student preview', announcementPreview, 'eyebrow');
+    node('p',recipient?'Class: '+recipient.name:'Choose an active class before saving.',announcementPreview,'teacher-note');
     node('h4', form.elements.namedItem('title').value.trim() || 'Your announcement title', announcementPreview);
     node('p', form.elements.namedItem('body').value.trim() || 'Write a message to preview it here. Line breaks are preserved.', announcementPreview);
     node('p', published ? editing ? 'Saving updates the message visible to active members in My Class.' : 'Publishing makes this message visible to active members in My Class.' : 'Draft: hidden from students until you publish it.', announcementPreview, 'teacher-visibility');
-    if (editing) node('p', 'Editing this saved announcement. Cancel Edit leaves the saved message unchanged.', announcementPreview, 'teacher-note');
 }
 $('announcementForm').elements.namedItem('title').placeholder='Give your message a clear title';$('announcementForm').elements.namedItem('body').placeholder='Share a reminder, learning prompt, or an update for your class.';
 $('announcementForm').addEventListener('input', renderAnnouncementPreview);
@@ -1351,7 +1360,7 @@ async function openClass(classId) {
     }
     rosterPage=Math.min(rosterPage,Math.max(0,Math.ceil(visibleMembers().length/20)-1));
     if (generation !== epoch) return;
-    renderRoster(); renderPublications('announcement'); renderPublications('assignment'); renderOverview();renderAssignmentRecipients(); renderAssignmentPreview(); renderAnnouncementRecipients();renderAnnouncementPreview();
+    clearClassReport();renderRoster(); renderPublications('announcement'); renderPublications('assignment'); renderOverview();renderAssignmentRecipients(); renderAssignmentPreview(); renderAnnouncementRecipients();renderAnnouncementPreview();
     document.querySelectorAll('#teacherClasses button').forEach(el => el.setAttribute('aria-pressed', String(el.dataset.classId === classId)));
     (await tab(activeTab)); applyArchiveState();
     rememberEdits(['editClassForm', 'announcementForm', 'assignmentForm']);
@@ -1373,7 +1382,7 @@ function visibleMembers() {
 }
 function renderRoster() {
     if(routeName==='students'&&selected){const url=new URL(location.href);if(rosterQuery)url.searchParams.set('search',rosterQuery);else url.searchParams.delete('search');if(rosterPage)url.searchParams.set('rosterPage',String(rosterPage));else url.searchParams.delete('rosterPage');history.replaceState(null,'',url.href);}
-    const root = $('teacherRoster'); root.replaceChildren();classReportResults.replaceChildren();classReportStatus.textContent='';classReportPanel.hidden=detail.classroom.status!=='active'||!detail.members.length;
+    const root = $('teacherRoster'); root.replaceChildren();classReportPanel.hidden=detail.classroom.status!=='active'||!detail.members.length;
     if(routeName==='students')studentListTotal.textContent=detail.members.length+' student'+(detail.members.length===1?'':'s');
     $('rosterSearchForm').hidden = detail.classroom.status !== 'active' || !detail.members.length;
     if (detail.classroom.status !== 'active') { $('rosterSearchStatus').textContent = ''; node('p', 'Restore this class to open student reports.', root);const settings=node('a','Open classroom settings',root,'progress-open-class');settings.href=classroomURL(selected);return; }
@@ -1386,15 +1395,20 @@ function renderRoster() {
         renderReviewOutcomes(followupArea);
     }
     if (!detail.members.length) {
-        node('h4', 'Your class is ready for its first student', root);
-        node('p', 'Share the invitation code. Students join from My Class, and their learning progress stays with their account.', root);
-        const invite=node('a','Invite students to this classroom',root,'progress-open-class');invite.href=classroomURL(selected);
+        const empty = node('div', null, root, 'roster-empty-state');
+        node('h4', 'Your class is ready for its first student', empty);
+        node('p', 'Share the invitation code so students can join from My Class.', empty);
+        const invite=node('a','Open class invitation',empty,'progress-open-class');invite.href=classroomURL(selected);
     }
     const members = visibleMembers();
     if (rosterQuery) {
         const unavailable = detail.members.filter(member => !names.has(member.userId)).length;
         $('rosterSearchStatus').textContent = `${members.length} matching ${members.length === 1 ? 'student' : 'students'}.` + (unavailable ? ` ${unavailable} names could not be loaded. Refresh and search again to retry.` : '');
-        if (!members.length) node('p', 'No loaded student names match. Try part of a name or choose Show All Students.', root);
+        if (!members.length) {
+            const empty = node('div', null, root, 'roster-empty-state');
+            node('h4', 'No matching students', empty);
+            node('p', 'Try part of a name or clear the search to return to the full list.', empty);
+        }
     }
     if (members.length > 20) {
         const navigation=node('nav',null,root,'progress-roster-pagination');navigation.setAttribute('aria-label','Student list pages');
@@ -1417,26 +1431,31 @@ function renderRoster() {
         row.dataset.userId=member.userId;row.dataset.reportOpen=String($('studentReport').dataset.userId===member.userId&&!!$('studentReport').children.length);
         const identity = node('td', null, row);
         const identityWrap=node('div',null,identity,'teacher-roster-identity');
-        const portrait=node('span',Array.from(names.get(member.userId)||'S')[0].toLocaleUpperCase(),identityWrap,'teacher-roster-avatar teacher-student-portrait');
+        const portrait=node('span',studentInitials(names.get(member.userId)),identityWrap,'teacher-roster-avatar teacher-student-portrait');
         portrait.setAttribute('aria-hidden','true');
         portrait.dataset.tone=String([...member.userId].reduce((n,c)=>n+c.charCodeAt(0),0)%3);
         portraits.push({userId:member.userId,element:portrait});
         const identityCopy=node('div',null,identityWrap);
         node('strong', names.get(member.userId) || `Name unavailable · Account ${member.userId.slice(-8)}`, identityCopy);
         if(!names.has(member.userId))node('p','Name unavailable. Refresh to try again.',identityCopy,'teacher-note');
-        const actionCell=node('td',null,row);const rowActions=node('div',null,actionCell,'roster-row-actions');const reportButton = button('View report', rowActions, () => task(async () => {
+        const actionCell=node('td',null,row);const rowActions=node('div',null,actionCell,'roster-row-actions');const reportButton = button('View progress', rowActions, () => task(async () => {
             if (!(await allowDiscard())) return;
             const generation = epoch; clearStudentReport();
-            const report = await loadTeacherStudent(selected, member.userId);
+            const originalLabel = reportButton.textContent;
+            reportButton.textContent = 'Opening…';
+            let report;
+            try { report = await loadTeacherStudent(selected, member.userId); }
+            finally { reportButton.textContent = originalLabel; }
             if (generation !== epoch) return;
-            const name = [report.profile?.firstName, report.profile?.lastName].filter(Boolean).join(' ') || 'Student';
-            names.set(member.userId, name); renderRoster(); (await renderReport(name, report));
-            $('studentReport').scrollIntoView({block: 'start', behavior: 'smooth'});
+            const name = [report.profile?.firstName, report.profile?.lastName].filter(Boolean).join(' ') || names.get(member.userId);
+            if (name) names.set(member.userId, name);
+            renderRoster(); (await renderReport(name || 'Student', report));
+            $('studentReport').scrollIntoView({block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches || document.body.classList.contains('lakbay-reduce-motion') ? 'instant' : 'smooth'});
         }));
         reportButton.setAttribute('aria-label', 'View learning report for ' + (names.get(member.userId) || 'account ' + member.userId.slice(-8)));
         reportButton.dataset.reportOpen=member.userId;reportButton.setAttribute('aria-controls','studentReport');reportButton.setAttribute('aria-expanded',row.dataset.reportOpen);
         const management=node('details',null,rowActions,'teacher-member-management');
-        const more=node('summary','More',management);more.setAttribute('aria-label','Membership actions for '+(names.get(member.userId)||'this student'));management.addEventListener('toggle',()=>{if(management.open)for(const other of root.querySelectorAll('.teacher-member-management[open]'))if(other!==management)other.open=false;});
+        const more=node('summary','Membership',management);more.setAttribute('aria-label','Membership actions for '+(names.get(member.userId)||'this student'));management.addEventListener('toggle',()=>{if(management.open)for(const other of root.querySelectorAll('.teacher-member-management[open]'))if(other!==management)other.open=false;});
         const remove=button('Remove from Class',management,async ()=>{
             if(busy||!(await allowDiscard()))return;
             const classId=selected,studentName=names.get(member.userId)||'this student';
@@ -1512,11 +1531,11 @@ function renderStudentLearningJourney(root,name,report,snapshot,support) {
     const reviewIds=new Set(signals.review.filter(a=>!signals.ambiguous.has(a.missionId)).map(a=>a.missionId));
     const completedIds=new Set(catalog.filter(m=>report.progress.some(p=>p.missionId===m.id&&p.chapterId===m.chapterId&&p.completed===true)).map(m=>m.id));
     const hero=node('header',null,null,'learning-profile');
-    const avatar=node('span',name.split(/\s+/).filter(Boolean).slice(0,2).map(part=>Array.from(part)[0]).join(''),hero,'learning-profile-avatar teacher-student-portrait');avatar.setAttribute('aria-hidden','true');
+    const avatar=node('span',studentInitials(name),hero,'learning-profile-avatar teacher-student-portrait');avatar.setAttribute('aria-hidden','true');
     const identity=node('div',null,hero,'learning-profile-identity');
     for(const element of [...root.children])if(element.matches('.eyebrow,h3,.progress-report-class'))identity.append(element);
     const validDates=[...report.progress.map(p=>p.completedAt),...report.attempts.map(a=>a.completedAt)].filter(t=>Number.isFinite(t?.toMillis?.())&&t.toMillis()>0&&t.toMillis()<=Date.now()).sort((a,b)=>b.toMillis()-a.toMillis());
-    node('p',validDates.length?'Latest saved learning: '+date(validDates[0]):'No dated learning activity saved yet',identity,'learning-profile-date');
+    node('p',validDates.length?'Last saved activity: '+date(validDates[0]):'No dated learning activity saved yet',identity,'learning-profile-date');
     if (/^LP-[A-F0-9]{12}$/.test(report.profile?.studentId || '')) {
         node('p', report.profile.username ? 'Username for classroom recovery: ' + report.profile.username
             : 'Existing Student ID for classroom recovery: ' + report.profile.studentId, identity, 'teacher-note');
@@ -1524,7 +1543,7 @@ function renderStudentLearningJourney(root,name,report,snapshot,support) {
     const coverage=node('div',null,hero,'learning-coverage');
     const percent=catalog.length?Math.round(completedIds.size/catalog.length*100):0;
     const ring=node('div',null,coverage,'learning-coverage-ring');ring.style.setProperty('--coverage',percent+'%');ring.setAttribute('role','img');ring.setAttribute('aria-label',completedIds.size+' of '+catalog.length+' current catalog missions completed');node('strong',catalog.length?percent+'%':'—',ring);
-    const coverageCopy=node('div',null,coverage);node('strong',completedIds.size+' / '+catalog.length+' missions',coverageCopy);node('span','Completed in the current catalog',coverageCopy);
+    const coverageCopy=node('div',null,coverage);node('strong','Mission completion',coverageCopy);node('span',catalog.length?completedIds.size+' of '+catalog.length+' current missions completed':'Mission catalog unavailable',coverageCopy);
     snapshot.before(hero);
     if(routeName==='students'&&report.userId)showTeacherStudentPortraits(selected,[{userId:report.userId,element:avatar}]);
     const evidenceGuide=node('details',null,null,'learning-evidence-guide');
@@ -1532,9 +1551,11 @@ function renderStudentLearningJourney(root,name,report,snapshot,support) {
     node('p','Use these signals together to plan support. This report does not calculate a mastery or learning-gain score.',evidenceGuide,'teacher-note');
     const definitions=node('dl',null,evidenceGuide);
     for(const entry of learningEvidenceGuide){node('dt',entry.label,definitions);node('dd',entry.meaning+' Next step: '+entry.next,definitions);}
-    hero.after(evidenceGuide);
+    snapshot.after(evidenceGuide);
     const journey=node('section',null,null,'learning-journey');
-    const heading=node('header',null,journey,'learning-journey-heading');node('span','THEIR HISTORY JOURNEY',heading,'eyebrow');node('h4','See the learning behind the numbers',heading);node('p','Explore each mission, compare saved attempts, and choose what to discuss next.',heading);
+    const heading=node('header',null,journey,'learning-journey-heading');
+    node('h4','Progress by mission',heading);
+    node('p','Open saved attempts to see quiz scores, or choose a mission to write feedback.',heading);
     const filters=node('div',null,journey,'learning-journey-filters');filters.setAttribute('role','group');filters.setAttribute('aria-label','Filter mission learning evidence');
     const summary=node('p','',journey,'learning-journey-summary');summary.setAttribute('role','status');
     const grid=node('div',null,journey,'learning-mission-grid'),paging=node('nav',null,journey,'learning-journey-paging');paging.setAttribute('aria-label','Mission evidence pages');
@@ -1545,7 +1566,7 @@ function renderStudentLearningJourney(root,name,report,snapshot,support) {
     const render=()=>{
         grid.replaceChildren();paging.replaceChildren();for(const [key,control]of controls)control.setAttribute('aria-pressed',String(key===filter));
         const visible=catalog.filter(m=>filter==='all'||filter==='completed'&&completedIds.has(m.id)||filter==='review'&&reviewIds.has(m.id)||filter==='evidence'&&evidenceIds.has(m.id));
-        summary.textContent=visible.length+' matching mission'+(visible.length===1?'':'s')+'. Saved evidence is a starting point for discussion.';
+        summary.textContent=visible.length?(`Showing ${page*6+1}–${Math.min((page+1)*6,visible.length)} of ${visible.length} ${visible.length===1?'mission':'missions'}`):'No matching missions';
         if(!visible.length)node('p',catalog.length?'No missions match this view. Choose All missions to explore the learning path.':'The mission catalog is unavailable. Saved learning history remains below.',grid,'learning-journey-empty');
         for(const mission of visible.slice(page*6,page*6+6)){
             const history=signals.attempts.filter(a=>a.missionId===mission.id&&a.chapterId===mission.chapterId),uncertain=signals.ambiguous.has(mission.id),latest=uncertain?null:history[0];
@@ -1563,12 +1584,12 @@ function renderStudentLearningJourney(root,name,report,snapshot,support) {
         if(visible.length>6){node('span','Page '+(page+1)+' of '+Math.ceil(visible.length/6),paging);if(page)button('Previous missions',paging,()=>{page--;render();});if((page+1)*6<visible.length)button('Next missions',paging,()=>{page++;render();});}
     };
     for(const [key,label]of [['evidence','With evidence'],['completed','Completed'],['review','Review signals'],['all','All missions']]){const control=button(label,filters,()=>{filter=key;page=0;render();});controls.set(key,control);}
-    snapshot.after(journey);const checkin=node('details',null,null,'learning-checkin');node('summary','Suggested teaching conversation',checkin);support.before(checkin);checkin.append(support);render();
+    evidenceGuide.after(journey);const checkin=node('details',null,null,'learning-checkin');node('summary','Suggested teaching conversation',checkin);support.before(checkin);checkin.append(support);render();
 }
 async function renderReport(name, report) {
     const root = $('studentReport');
     if (root.querySelector('#teacherFeedbackForm') && !(await allowDiscard())) return;
-    document.body.classList.add('student-report-focused');root.replaceChildren();node('span','INDIVIDUAL LEARNING REPORT',root,'eyebrow'); node('h3', `${name}'s learning`, root);
+    document.body.classList.add('student-report-focused');root.replaceChildren();node('h3', name, root);
     root.dataset.userId=report.userId||'';for(const row of document.querySelectorAll('#teacherRoster tr[data-user-id]')){const open=row.dataset.userId===report.userId;row.dataset.reportOpen=String(open);row.querySelector('button[data-report-open]')?.setAttribute('aria-expanded',String(open));}node('p',detail?.classroom.name||'Student learning records',root,'progress-report-class');
     if (report.userId && detail?.classroom.status==='active') {
         const actions=node('div',null,root,'teacher-actions teacher-report-exports');
@@ -1601,7 +1622,16 @@ async function renderReport(name, report) {
     const completed = report.progress.filter((p,index,rows) => p.completed === true && missions.some(m=>m.id===p.missionId&&m.chapterId===p.chapterId) && rows.findIndex(item=>item.completed===true&&item.missionId===p.missionId&&item.chapterId===p.chapterId)===index);
     const snapshot=node('section',null,root,'teacher-report-snapshot');snapshot.setAttribute('aria-label','Learning snapshot');
     const signals=quizReviewSignals(report.attempts);
-    for(const [value,label] of [[completed.length,'Completed missions'],[report.attempts.length,'Saved quiz attempts'],[signals.review.length,'Missions with review signals']]){const card=node('div',null,snapshot);node('strong',String(value),card);node('span',label,card);}
+    for (const [metric, value, label] of [
+        ['completed', completed.length, 'Missions completed'],
+        ['attempts', report.attempts.length, 'Quiz attempts saved'],
+        ['review', signals.review.length, 'Missions to revisit']
+    ]) {
+        const card=node('div',null,snapshot);
+        card.dataset.progressMetric=metric;
+        node('strong',String(value),card);
+        node('span',label,card);
+    }
     const recordCounts=node('p', `${completed.length} completed ${completed.length===1?'mission':'missions'} · ${report.attempts.length} saved quiz ${report.attempts.length===1?'attempt':'attempts'}`, root,'teacher-note');
     node('p', 'Use these saved learning records alongside classroom discussion and the explanations the student shares.', root, 'teacher-note');
     const title = id => missions.find(m => m.id === id)?.title || missions.find(m => m.id === id)?.name || id || 'Unknown mission';
@@ -1680,11 +1710,13 @@ async function renderReport(name, report) {
             const shortcuts=node('div',null,null,'teacher-report-shortcuts');
             shortcuts.setAttribute('role','group');
             shortcuts.setAttribute('aria-label','Go to report section');
-            for(const [label,section] of [['Topics to revisit',checkin],['Learning history',records]]){
+            const sections=[['Topics to revisit',checkin],['Learning history',records]];
+            if(feedbackPanel)sections.unshift(['Write feedback',feedbackPanel.closest('details')]);
+            for(const [label,section] of sections){
                 button(label,shortcuts,()=>{
                     section.open=true;
                     section.scrollIntoView({block:'start',behavior:'instant'});
-                    section.querySelector('summary')?.focus({preventScroll:true});
+                    (section.querySelector('#teacherFeedbackForm select')||section.querySelector('summary'))?.focus({preventScroll:true});
                 },false);
             }
             snapshot.after(shortcuts);
@@ -1787,8 +1819,9 @@ function renderTeacherFeedback(parent,userId,name) {
     const label=node('label','Your guidance',form),body=node('textarea',null,label);body.name='body';body.required=true;body.maxLength=1500;body.placeholder='Revisit the boat-building clue. How did boats help communities trade? Explain one connection in your own words.';
     const encouragement=node('details',null,form,'teacher-encouragement');node('summary','Write private encouragement',encouragement);node('p','Choose a starting point, then personalize it with something you observed. Messages do not change scores or rewards.',encouragement,'teacher-note');
     for(const [title,prompt] of [['Recognize effort','You kept working on this topic. Which clue helped you move forward?'],['Recognize improvement','Your new explanation shows progress. Keep connecting your ideas to historical clues.'],['Recognize reasoning','You supported your explanation with a clue. Tell me how that clue connects to your idea.']])button(title,encouragement,async ()=>{if(body.value.trim()&&!(await appConfirm('Replace your current unsent guidance with this starting point?')))return;body.value=prompt;body.dispatchEvent(new Event('input',{bubbles:true}));body.focus();});
-    const submit=node('button','Send Feedback',form);submit.type='submit';
-    const history=node('div',null,host);history.setAttribute('aria-live','polite');
+    node('p','Only '+name+' can read this guidance in My Class.',form,'teacher-feedback-audience');
+    const submit=node('button','Send private feedback',form);submit.type='submit';
+    const history=node('div',null,host,'teacher-feedback-history');history.setAttribute('aria-live','polite');
     const load=async()=>{
         history.replaceChildren();node('p','Loading sent feedback...',history,'teacher-note');
         try{
@@ -1960,12 +1993,13 @@ async function openAssignmentFeedback(item, student, trigger) {
     const dialog=node('dialog',null,$('teacher-main'),'teacher-assignment-feedback-dialog');
     const title=node('h3','Feedback for '+student.name,dialog);title.id='assignmentFeedbackTitle';dialog.setAttribute('aria-labelledby',title.id);
     node('p',item.title+' · '+detail.classroom.name,dialog,'teacher-note');
-    const status=node('p','Checking saved feedback…',dialog,'teacher-note');status.setAttribute('role','status');
+    node('p','Private to '+student.name+' in My Class.',dialog,'teacher-feedback-audience');
+    const status=node('p','Checking saved feedback…',dialog,'teacher-feedback-status');status.setAttribute('role','status');
     const form=node('form',null,dialog);form.id='assignmentFeedbackForm';
-    const label=node('label','Your guidance',form),body=node('textarea',null,label);
+    const label=node('label','Next step for the student',form),body=node('textarea',null,label);
     body.name='body';body.maxLength=1500;body.required=true;body.rows=5;body.disabled=true;
     const actions=node('div',null,form,'teacher-actions');
-    const submit=node('button','Send feedback',actions);submit.type='submit';submit.disabled=true;
+    const submit=node('button','Send private feedback',actions);submit.type='submit';submit.disabled=true;
     let saving=false, revision=null, baseline='';
     const current=()=>epoch===generation&&selected===classId&&auth.currentUser===user&&dialog.isConnected;
     async function close(){
@@ -1979,8 +2013,8 @@ async function openAssignmentFeedback(item, student, trigger) {
     form.addEventListener('submit',async event=>{
         event.preventDefault();
         if(saving||revision===null||!current())return;
-        if(!body.value.trim()){status.textContent='Write a short next step for this student.';body.focus();return;}
-        saving=true;submit.disabled=body.disabled=true;status.textContent='Saving feedback…';
+        if(!body.value.trim()){status.dataset.state='error';status.textContent='Write a short next step for this student.';body.focus();return;}
+        saving=true;submit.disabled=body.disabled=true;delete status.dataset.state;status.textContent='Saving feedback…';
         try{
             await sendTeacherFeedback(classId,student.userId,item.missionId,body.value,revision);
             if(current()){
@@ -1989,7 +2023,7 @@ async function openAssignmentFeedback(item, student, trigger) {
                 dialog.close();
                 message('Feedback saved for '+student.name+'. It appears in My Class under teacher guidance.',false,'success');
             }
-        }catch(error){if(current())status.textContent=operationError(error);}
+        }catch(error){if(current()){status.dataset.state='error';status.textContent=operationError(error)+' Your message is still here.';}}
         finally{saving=false;if(current()){submit.disabled=body.disabled=false;}}
     });
     rememberEdits([form.id]);
@@ -2000,11 +2034,11 @@ async function openAssignmentFeedback(item, student, trigger) {
         revision=previous?.revision||0;
         body.value=baseline=previous?.body||'';
         rememberEdits([form.id]);
-        submit.textContent=previous?'Update feedback':'Send feedback';
+        submit.textContent=previous?'Update private feedback':'Send private feedback';
         submit.disabled=body.disabled=false;
-        status.textContent=previous?'Updating this guidance replaces the earlier message for this mission.':'The student can read this guidance in My Class.';
+        status.textContent=previous?'Saving replaces the previous feedback for this mission.':'Suggest one action the student can take next.';
         body.focus();
-    }catch(error){if(current())status.textContent='Saved feedback could not be checked. Close this window and try again. '+operationError(error);}
+    }catch(error){if(current()){status.dataset.state='error';status.textContent='Saved feedback could not be loaded. Close this window and reopen it to try again.';}}
 }
 
 let assignmentProgressFeed;
@@ -2349,7 +2383,7 @@ async function clearWorkspace() {
     workspaceReady = false; activeTab = routeName;
     ++epoch; busy = false; selected = null; detail = null; classes = []; missions = []; names.clear(); rosterQuery = ''; rosterPage = 0;
     $('teacher-main').setAttribute('aria-busy', 'false');
-    $('rosterSearchForm').reset(); $('rosterSearchStatus').textContent = '';
+    $('rosterSearchForm').reset(); $('rosterSearchStatus').textContent = ''; clearClassReport();
     $('teacherClasses').replaceChildren(); $('teacherClassDetail').hidden = true; clearStudentReport();
     $('teacherWelcome').hidden = false; $('teacherClassSummary').replaceChildren(); $('teacherNextActions').replaceChildren(); $('teacherNextTitle').textContent = ''; $('teacherNextDescription').textContent = '';
     $('announcementList').replaceChildren(); $('assignmentList').replaceChildren(); $('assignmentMission').replaceChildren();
