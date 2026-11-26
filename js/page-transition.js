@@ -348,6 +348,10 @@ function playUiSound(kind,force=false){
         playUiTone(context,523,523,.17,.05*uiSoundVolume,'sine',.09);
     }else if(kind==='heart-lost'){
         playUiTone(context,370,220,.19,.052*uiSoundVolume,'sine',.045);
+    }else if(kind==='hearts-depleted'){
+        playUiTone(context,392,392,.19,.06*uiSoundVolume,'sine');
+        playUiTone(context,311,311,.24,.055*uiSoundVolume,'sine',.15);
+        playUiTone(context,196,174,.42,.05*uiSoundVolume,'sine',.33);
     }else if(kind==='countdown-tick'){
         playUiTone(context,790,495,.052,.055*uiSoundVolume,'triangle');
     }else if(kind==='compass-ready'){
@@ -393,6 +397,7 @@ if(document.body.dataset.role==='student'){
     document.addEventListener('lakbay:lesson-retry',()=>playUiSound('retry'));
     document.addEventListener('lakbay:clue-saved',()=>playUiSound('clue-saved'));
     document.addEventListener('lakbay:heart-lost',()=>playUiSound('heart-lost'));
+    document.addEventListener('lakbay:hearts-depleted',()=>playUiSound('hearts-depleted'));
     document.addEventListener('lakbay:chapter-challenge-started',()=>playUiSound('compass-ready'));
     document.addEventListener('lakbay:finale-arrival',()=>playUiSound('finale-arrival'));
     for(const cue of ['countdown-tick','compass-ready','answer-lock','seal-stamp']){

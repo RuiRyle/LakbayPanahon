@@ -256,6 +256,15 @@
                 <p id="quizCountdownDescription" class="quiz-countdown-description">The first question opens automatically.</p>
                 <div class="quiz-countdown-beats" aria-hidden="true"><span></span><span></span><span></span></div>
             </dialog>
+            <dialog id="quizHeartsDepleted" class="quiz-defeat-dialog" aria-labelledby="quizDefeatTitle" aria-describedby="quizDefeatDescription">
+                <div class="quiz-defeat-hearts" aria-hidden="true"><span>♡</span><span>♡</span><span>♡</span></div>
+                <h2 id="quizDefeatTitle" tabindex="-1" autofocus>You failed</h2>
+                <p id="quizDefeatDescription">You lost all three hearts. This attempt is over.</p>
+                <p id="quizDefeatStatus" class="quiz-defeat-status" role="status"></p>
+                <form method="dialog">
+                    <button type="submit">View quiz result</button>
+                </form>
+            </dialog>
 
 
             <!-- LOADING -->

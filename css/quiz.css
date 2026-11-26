@@ -2547,6 +2547,105 @@ body.lakbay-theme.mission-quiz-web #quizAnswerReview .quiz-review-lesson-link {
 
 #quizCountdown::backdrop { background: #071422e4; }
 #quizCountdown[data-beat="2"] { --quiz-countdown-turn: 240deg; }
+
+.quiz-defeat-dialog {
+    box-sizing: border-box;
+    width: min(28rem, calc(100% - 2rem));
+    max-height: calc(100% - 2rem);
+    margin: auto;
+    padding: clamp(1.25rem, 5vw, 2.5rem);
+    border: 1px solid #b88087;
+    border-radius: 1.5rem;
+    background: radial-gradient(ellipse at top, #4b273b, #1c2034 72%);
+    color: #fff3ee;
+    box-shadow: 0 1.25rem 4rem #08091599;
+    text-align: center;
+}
+
+.quiz-defeat-dialog::backdrop {
+    background: #090d1bcc;
+}
+
+.quiz-defeat-hearts {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    margin-bottom: 1rem;
+    color: #ffc0c8;
+    font: 700 2rem/1.2 system-ui, sans-serif;
+}
+
+.quiz-defeat-hearts span {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    aspect-ratio: 1;
+    border: 1px solid #b88087;
+    border-radius: .75rem;
+    background: #ffffff0d;
+}
+
+.quiz-defeat-dialog h2 {
+    margin: 0;
+    color: inherit;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    line-height: 1.15;
+}
+
+.quiz-defeat-dialog p {
+    margin: .75rem 0 0;
+    color: #f0dce2;
+    line-height: 1.55;
+}
+
+.quiz-defeat-dialog .quiz-defeat-status {
+    margin: .75rem 0 1.25rem;
+    font-size: .9rem;
+}
+
+.quiz-defeat-dialog button {
+    width: 100%;
+    min-height: 44px;
+    padding: .65rem 1rem;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    background: #ffc0c8;
+    color: #2b1524;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.quiz-defeat-dialog button:not(:disabled):hover { background: #ffdce0; }
+.quiz-defeat-dialog button:disabled {
+    background: #524252;
+    color: #f8e6eb;
+    cursor: wait;
+}
+.quiz-defeat-dialog button:focus-visible {
+    outline: 2px solid #fff3ee;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    body:not(.lakbay-reduce-motion) .quiz-defeat-dialog[open] {
+        animation: quiz-defeat-arrival 280ms ease-out both;
+    }
+    body:not(.lakbay-reduce-motion) .quiz-defeat-dialog[open]::backdrop {
+        animation: quiz-defeat-backdrop 220ms ease-out both;
+    }
+}
+
+@keyframes quiz-defeat-arrival {
+    from { opacity: 0; transform: translateY(.6rem) scale(.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes quiz-defeat-backdrop {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 #quizCountdown[data-beat="1"] { --quiz-countdown-turn: 120deg; }
 
 #quizCountdown .quiz-countdown-title {

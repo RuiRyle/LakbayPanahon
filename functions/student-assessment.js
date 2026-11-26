@@ -220,11 +220,26 @@ function createAssessmentService(store, {
   });
   // Receipts are private, server-owned results. Check their internal evidence
   // rather than re-reading a catalog that may have changed since commit.
-  function chapterMistakes(a) {
+  function mistakes(a) {
     return a.questions.filter(q => Object.hasOwn(a.answers, q.id) && !mark(q, a.answers[q.id])).length;
   }
+  function missionHeartsDepleted(a) {
+    return a.kind === 'mission' && !!a.expedition &&
+      (a.expedition.exhausted === true || (!a.result && mistakes(a) >= 3));
+  }
+  function endedEarly(a) {
+    return a.chapterLife?.exhausted === true || a.expedition?.exhausted === true;
+  }
+  function answeredQuestions(a) {
+    return a.questions.filter(q => Object.hasOwn(a.answers, q.id));
+  }
+  function missionReviewTopics(a, shared) {
+    return a.kind === 'mission'
+      ? shared.diagnoseMissionTopics(a.expedition?.exhausted ? answeredQuestions(a) : a.questions, a.answers)
+      : [];
+  }
   function reviewQuestions(a) {
-    return a.questions.filter(q => !a.chapterLife?.exhausted || Object.hasOwn(a.answers, q.id))
+    return (endedEarly(a) ? answeredQuestions(a) : a.questions)
       .map(q => publicQuestion(q, true));
   }
   function validateReceipt(a,shared) {
@@ -233,7 +248,9 @@ function createAssessmentService(store, {
        (a.kind==='mission'&&a.questions.length!==5)||!object(a.answers)||
        new Set(a.questions.map(q=>q.id)).size!==a.questions.length||
        a.questions.some(q=>!id(q.id))||
-       (a.chapterLife?.exhausted ? a.kind!=='chapter'||chapterMistakes(a)!==5||Object.keys(a.answers).length>a.questions.length||
+       (a.chapterLife?.exhausted && (a.kind!=='chapter'||mistakes(a)!==5))||
+       (a.expedition?.exhausted && (a.kind!=='mission'||mistakes(a)<3))||
+       (endedEarly(a) ? Object.keys(a.answers).length>a.questions.length||
          a.questions.some((q,i)=>Object.hasOwn(a.answers,q.id)!==(i<Object.keys(a.answers).length))
          : a.questions.some(q=>!Object.hasOwn(a.answers,q.id))||Object.keys(a.answers).length!==a.questions.length)||
        !Array.isArray(a.followups)||!object(a.followupAnswers)||
@@ -243,7 +260,7 @@ function createAssessmentService(store, {
        !Number.isFinite(a.submittedAt)||!object(r))fail('assessment/record-conflict');
     let correct;
     try{correct=a.questions.filter(q=>Object.hasOwn(a.answers,q.id)&&mark(q,a.answers[q.id])).length;}catch{fail('assessment/record-conflict');}
-    const score=Math.round(correct/a.questions.length*100),passed=!a.chapterLife?.exhausted&&score>=a.threshold;
+    const score=Math.round(correct/a.questions.length*100),passed=!endedEarly(a)&&score>=a.threshold;
     if(r.score!==score||r.correctAnswers!==correct||r.totalQuestions!==a.questions.length||r.passed!==passed||
        typeof r.firstCompletion!=='boolean'||!integer(r.xpReward)||!integer(r.totalXp)||r.totalXp<r.xpReward||
        (!r.firstCompletion&&r.xpReward!==0)||(!passed&&(r.firstCompletion||r.xpReward!==0))||
@@ -251,7 +268,7 @@ function createAssessmentService(store, {
        !integer(r.level,1)||!integer(r.learningStreak)||!Array.isArray(r.topicsForReview)||!Array.isArray(r.reviewQuestions)||
        digest(r.reviewQuestions)!==digest(reviewQuestions(a))||
        !object(r.artifactResult)||!object(r.badgeResult))fail('assessment/record-conflict');
-    const review=[...new Set([...a.followups.filter(q=>!mark(q,a.followupAnswers[q.id])).map(q=>q.topic),...(a.kind==='mission'?shared.diagnoseMissionTopics(a.questions,a.answers):[])])].slice(0,a.questions.length);
+    const review=[...new Set([...a.followups.filter(q=>!mark(q,a.followupAnswers[q.id])).map(q=>q.topic),...missionReviewTopics(a,shared)])].slice(0,a.questions.length);
     if(digest(r.topicsForReview)!==digest(review)||r.level!==shared.progressionState(r.totalXp,shared.requireProgressionPolicy(r.progressionPolicy)).level)fail('assessment/record-conflict');
     for(const [field,kind,catalogField,identityField]of [['artifactResult','mission','artifact','missionId'],['badgeResult','chapter','badge','chapterId']]){
       const value=r[field];
@@ -282,16 +299,17 @@ function createAssessmentService(store, {
       classroom: a.classroom || null,
       expiresAt: a.expiresAt,
       passingScore: a.threshold,
-      questions: a.questions.map(q => publicQuestion(q, !!a.result && (!a.chapterLife?.exhausted || Object.hasOwn(a.answers,q.id)))),
+      questions: a.questions.map(q => publicQuestion(q, !!a.result && (!endedEarly(a) || Object.hasOwn(a.answers,q.id)))),
       answers: a.answers,
       chapterHearts: a.kind === 'chapter' && (!Object.keys(a.answers).length || a.chapterLife) ? {
-        remaining: Math.max(0, 5 - chapterMistakes(a)),
+        remaining: Math.max(0, 5 - mistakes(a)),
         exhausted: a.chapterLife?.exhausted === true,
         lastCorrect: a.chapterLife?.lastCorrect ?? null
       } : null,
       expedition: a.kind === 'mission' &&
         (a.expedition || (!a.result && !a.followupStarted && !Object.keys(a.answers).length)) ? {
-          hearts: Math.max(0, 3 - a.questions.filter(q => a.answers[q.id] && !mark(q, a.answers[q.id])).length),
+          hearts: Math.max(0, 3 - mistakes(a)),
+          exhausted: missionHeartsDepleted(a),
           lifeline: a.expedition?.lifeline || null,
           lastCorrect: a.expedition?.lastCorrect ?? null
         } : null,
@@ -479,6 +497,7 @@ function createAssessmentService(store, {
           return view(a);
         }
         if (a.result || a.revision !== input.revision) fail('assessment/revision-conflict');
+        if (missionHeartsDepleted(a)) fail('assessment/unissued-question');
         if (Object.keys(a.actions).length >= 512) fail('assessment/restart-required');
         if (['lockAnswer','lifeline'].includes(input.action) && a.kind === 'mission') {
           const index = a.questions.findIndex(q => !Object.hasOwn(a.answers, q.id));
@@ -496,7 +515,8 @@ function createAssessmentService(store, {
                 a.expedition.lifeline.option === normalize(input.answer)) fail('assessment/invalid-request');
             a.expedition.lastCorrect = mark(question, input.answer);
             a.answers[question.id] = input.answer;
-            nextMain(a, ctx, shared, index);
+            if (missionHeartsDepleted(a)) a.expedition.exhausted = true;
+            else nextMain(a, ctx, shared, index);
           }
         } else if (input.action === 'answer' && a.kind === 'mission' && !a.expedition) {
           const index = a.questions.findIndex(q => q.id === input.questionId);
@@ -531,7 +551,7 @@ function createAssessmentService(store, {
               (!a.chapterLife && Object.keys(a.answers).length)) fail('assessment/unissued-question');
           a.chapterLife = {lastCorrect: mark(question, input.answer)};
           a.answers[question.id] = input.answer;
-          if (chapterMistakes(a) >= 5) a.chapterLife.exhausted = true;
+          if (mistakes(a) >= 5) a.chapterLife.exhausted = true;
         } else if (input.action === 'answers' && a.kind !== 'mission' && !a.chapterLife) {
           if (!object(input.answers) || Object.keys(input.answers).length !== a.questions.length || a.questions.some(q => !Object.hasOwn(input.answers, q.id))) fail('assessment/unissued-question');
           for (const q of a.questions) mark(q, input.answers[q.id]);
@@ -561,7 +581,8 @@ function createAssessmentService(store, {
           };
         }
         if (a.revision !== input.revision) fail('assessment/revision-conflict');
-        if (!a.chapterLife?.exhausted && a.questions.some(q => !Object.hasOwn(a.answers, q.id))) fail('assessment/incomplete');
+        if (missionHeartsDepleted(a)) a.expedition.exhausted = true;
+        if (!endedEarly(a) && a.questions.some(q => !Object.hasOwn(a.answers, q.id))) fail('assessment/incomplete');
         // An unfinished legacy attempt may contain partially answered practice.
         // Discard only that incomplete supplement at commit; keep the official
         // main answers, and preserve complete legacy practice/receipts unchanged.
@@ -573,8 +594,8 @@ function createAssessmentService(store, {
         }
         const correctAnswers = a.questions.filter(q => Object.hasOwn(a.answers,q.id) && mark(q, a.answers[q.id])).length,
           score = Math.round(correctAnswers / a.questions.length * 100),
-          passed = !a.chapterLife?.exhausted && score >= ctx.threshold,
-          core = a.kind === 'mission' ? shared.diagnoseMissionTopics(a.questions, a.answers) : [],
+          passed = !endedEarly(a) && score >= ctx.threshold,
+          core = missionReviewTopics(a, shared),
           review = [...new Set([...a.followups.filter(q => !mark(q, a.followupAnswers[q.id])).map(q => q.topic), ...core])].slice(0, a.questions.length);
         const recordId = a.kind === 'mission' ? a.missionId : a.kind === 'chapter' ? a.chapterId : shared.learningDateKey(new Date(clock()));
         if (a.kind === 'daily' && shared.learningDateKey(new Date(a.issuedAt)) !== recordId) fail('assessment/attempt-expired');
@@ -716,7 +737,7 @@ function createAssessmentService(store, {
             old = await tx.get(historyPath),
             mastery = structuredClone(old?.topicMastery || {});
           if (old && old.userId !== uid) fail('assessment/record-conflict');
-          for (const q of a.questions) {
+          for (const q of answeredQuestions(a)) {
             const state = mastery[q.topic] || {
               attempted: 0,
               correct: 0,

@@ -338,6 +338,10 @@ function playSound(kind, volume = 1, force = false) {
         playTone(audio, 523, 523, .17, .05 * level, "sine", .09);
     } else if (kind === "heart-lost") {
         playTone(audio, 370, 220, .19, .052 * level, "sine", .045);
+    } else if (kind === "hearts-depleted") {
+        playTone(audio, 392, 392, .19, .06 * level, "sine");
+        playTone(audio, 311, 311, .24, .055 * level, "sine", .15);
+        playTone(audio, 196, 174, .42, .05 * level, "sine", .33);
     } else if (kind === "countdown-tick") {
         playTone(audio, 790, 495, .052, .055 * level, "triangle");
     } else if (kind === "compass-ready") {
