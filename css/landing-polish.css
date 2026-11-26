@@ -331,7 +331,14 @@ body.landing-page.page-visible:not([data-role]) > main { animation: none; }
     outline-offset: 4px;
     border-radius: 6px;
 }
-.landing-preview-caption { min-height: 107px; padding: 14px 12px 6px; }
+.landing-preview-caption {
+    min-height: 107px;
+    margin-block-start: 10px;
+    padding: 14px clamp(12px, 2vw, 20px);
+    border: 1px solid #78908b52;
+    border-radius: 10px;
+    background: #142e3c;
+}
 .landing-page .landing-preview-caption h3 { color: var(--landing-gold); font-size: 1.45rem; font-weight: 500; line-height: 1.22; }
 .landing-page .landing-preview-caption p { max-width: 64ch; margin-top: 5px; color: var(--landing-muted); }
 .landing-page .landing-text-link {
@@ -898,20 +905,78 @@ body.landing-page.page-visible:not([data-role]) > main { animation: none; }
 .student-landing-page .landing-hero h1 { letter-spacing: -.05em; }
 .student-landing-page .landing-hero h1 em { text-shadow: 0 4px 28px #050c1460; }
 .student-landing-page .landing-hero .landing-actions .landing-button { padding-inline: clamp(12px, 2.2vw, 26px); }
-.landing-hero-support {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: clamp(12px, 2.3vw, 28px);
-    margin-block-start: .45rem;
+.student-landing-page .landing-intro :is(.landing-actions, .landing-hero-support) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 8px;
+    inline-size: min(100%, 410px);
 }
-.student-landing-page .landing-hero-support .landing-text-link {
-    color: #f9e1ab;
+.landing-hero-support {
+    margin-block-start: 10px;
+}
+.student-landing-page .landing-access-link {
+    display: inline-grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    max-inline-size: 100%;
+    padding: 5px 10px 5px 6px;
+    border: 1px solid #7e9292;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #233c48, #142832);
+    color: #edf5f0;
+    box-shadow: inset 0 1px #e1eacf18;
     font-size: .875rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+.student-landing-page .landing-access-link--teacher {
+    background: linear-gradient(135deg, #38534b, #1b363a 86%);
+    border-color: #d0b37b;
+    color: #ffe9b8;
+}
+.landing-access-icon {
+    display: grid;
+    place-items: center;
+    inline-size: 31px;
+    aspect-ratio: 1;
+    border: 1px solid #adbbac70;
+    border-radius: 8px;
+    background: #0c222e;
+    color: #e8efe3;
+}
+.landing-access-icon .interface-icon { inline-size: 16px; block-size: 16px; }
+.landing-access-link--teacher .landing-access-icon {
+    border-color: #d8b97e9c;
+    background: #24372e;
+    color: #f8d78f;
+}
+.landing-access-link::after {
+    inline-size: 6px;
+    block-size: 6px;
+    margin-inline: 2px 3px;
+    border-block-start: 1.5px solid currentColor;
+    border-inline-end: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    content: "";
+}
+.student-landing-page .landing-access-link:is(:hover, :focus-visible) {
+    border-color: var(--landing-gold-bright);
+    background: #294851;
+}
+.student-landing-page .landing-access-link--teacher:is(:hover, :focus-visible) {
+    background: #3b564a;
 }
 .student-landing-page .landing-hero .landing-music-control {
-    margin-block-start: .1rem;
-    margin-inline-start: -10px;
+    margin-block-start: 14px;
+    border-color: #77909270;
+    border-radius: 24px;
+    padding-inline: 13px;
+    background: #0d202be0;
+    color: #eedcb5;
 }
+.student-landing-page .landing-hero .landing-music-control:hover { border-color: #e7c689; background: #213a44; }
 
 .student-landing-page .landing-button {
     min-height: 48px;
@@ -948,6 +1013,12 @@ body.landing-page.page-visible:not([data-role]) > main { animation: none; }
 .student-landing-page .landing-button--outline:active { background: #112733; box-shadow: inset 0 2px 4px #06131d8c; }
 .student-landing-page .landing-button-icon { width: 1.13rem; height: 1.13rem; }
 .student-landing-page .landing-button--outline .landing-button-icon { color: var(--landing-gold); }
+.student-landing-page .landing-button--teacher {
+    border-color: #d0b37b;
+    background: linear-gradient(145deg, #375349, #1b363a);
+    color: #ffe9b8;
+}
+.student-landing-page .landing-button--teacher:hover { background: #3b564a; }
 .student-landing-page :is(.landing-desktop-login, .landing-mobile-login) {
     justify-content: center;
     padding-inline: 9px;
@@ -1264,7 +1335,12 @@ body.student-landing-page:has(.landing-topic-dialog[open]) { overflow: hidden; }
 }
 .student-landing-page .landing-workspace-art::before { border-color: #e6c89269; }
 .student-landing-page .landing-workspace-art { border-color: #86644575; }
-.student-landing-page .landing-workspace-actions .landing-text-link { text-decoration-color: #a4784c9c; }
+.student-landing-page .landing-button--paper {
+    border-color: #97734a;
+    background: #fff9eb;
+    color: #57381f;
+}
+.student-landing-page .landing-button--paper:hover { background: #f5e5c6; }
 
 .student-landing-page .landing-teachers {
     background: radial-gradient(ellipse at 81% 21%, #2c4848, transparent 58%), #122730;
@@ -1273,11 +1349,16 @@ body.student-landing-page:has(.landing-topic-dialog[open]) { overflow: hidden; }
     display: grid;
     gap: 8px;
     margin-top: 17px;
-    padding-inline-start: 1.45rem;
+    padding-inline-start: 0;
+    list-style: none;
 }
 .student-landing-page .landing-classroom-list li {
     margin: 0;
-    padding-inline-start: 3px;
+    padding: 9px 12px;
+    border: 1px solid #c1b58e54;
+    border-inline-start: 3px solid #ddc28a;
+    border-radius: 8px;
+    background: #18343dd9;
 }
 .student-landing-page .landing-teacher-example {
     padding: 12px 12px 0;
@@ -1314,8 +1395,18 @@ body.student-landing-page:has(.landing-topic-dialog[open]) { overflow: hidden; }
 .student-landing-page .landing-start-panel { border-radius: 16px; border-color: #d8af7680; }
 .student-landing-page .landing-footer { background: #07131c; }
 .student-landing-page .landing-footer-grid { padding-block: clamp(38px, 5vw, 63px) 30px; }
-.student-landing-page .landing-footer nav h2 { padding-bottom: 5px; border-bottom: 1px solid var(--landing-line); }
+.student-landing-page .landing-footer nav { justify-items: stretch; }
+.student-landing-page .landing-footer nav h2 { padding-bottom: 8px; border-bottom: 1px solid var(--landing-line); }
+.student-landing-page .landing-footer nav a { padding-inline: 8px; border-radius: 8px; }
+.student-landing-page .landing-footer nav a:hover { background: #17313c; }
 .student-landing-page .landing-footer-bottom { border-top-color: #dfc08b50; }
+.student-landing-page .landing-back-to-top {
+    gap: 7px;
+    padding-inline: 10px;
+    border: 1px solid var(--landing-frame);
+    border-radius: 10px;
+}
+.student-landing-page .landing-back-to-top span { color: var(--landing-gold); }
 
 @media (min-width: 761px) {
     .student-landing-page :is(.landing-history, .landing-museum-gallery) .landing-section-heading {
@@ -1341,19 +1432,24 @@ body.student-landing-page:has(.landing-topic-dialog[open]) { overflow: hidden; }
 }
 @media (max-width: 480px) {
     .student-landing-page .landing-start-actions { display: grid; }
-    .student-landing-page .landing-hero .landing-actions { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
     .student-landing-page .landing-hero .landing-actions .landing-button { gap: 7px; }
+    .student-landing-page .landing-access-link { gap: 6px; font-size: .8125rem; }
 }
 @media (max-width: 350px) {
     .landing-header .landing-brand { font-size: .96rem; }
     .landing-header .landing-brand img { width: 24px; height: 24px; }
     .student-landing-page .landing-mobile-login { padding-inline: 6px; }
-    .student-landing-page .landing-hero .landing-actions { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+    .student-landing-page .landing-intro :is(.landing-actions, .landing-hero-support) {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    }
     .student-landing-page .landing-hero .landing-actions .landing-button {
         gap: 6px;
         padding-inline: 8px;
         font-size: .875rem;
     }
+    .student-landing-page .landing-access-link { grid-template-columns: auto minmax(0, 1fr); }
+    .landing-access-link::after { display: none; }
+    .landing-access-icon { inline-size: 25px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1378,7 +1474,7 @@ body.student-landing-page:has(.landing-topic-dialog[open]) { overflow: hidden; }
     .student-landing-page:not(.lakbay-reduce-motion) [data-landing-exhibit]:not([hidden]) .landing-exhibit-copy {
         animation: student-landing-arrive 280ms ease-out both;
     }
-    .student-landing-page:not(.lakbay-reduce-motion) :is(.landing-button, .landing-guide-links a, .landing-guide-mark) {
+    .student-landing-page:not(.lakbay-reduce-motion) :is(.landing-button, .landing-access-link, .landing-guide-links a, .landing-guide-mark) {
         transition: translate 180ms ease, rotate 180ms ease, border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
     }
     .student-landing-page:not(.lakbay-reduce-motion)

@@ -6,6 +6,7 @@ import {withBayaniDeadline,BAYANI_REPLY_TIMEOUT_MS,BAYANI_CONNECT_TIMEOUT_MS} fr
 import {parseReviewQuestion,reviewPrompt} from './bayani-review-question.js';
 const panel=document.getElementById('bayaniReviewPanel'),status=document.getElementById('reviewQuestionStatus'),generate=document.getElementById('generateReviewQuestion'),card=document.getElementById('generatedReviewQuestion'),check=document.getElementById('checkReviewAnswer'),feedback=document.getElementById('reviewAnswerFeedback'),topic=document.getElementById('reviewTopicLabel');
 const params=new URLSearchParams(location.search),missionId=params.get('mission'),chapterId=params.get('chapter');
+const chatWorkspace = document.querySelector('.bayani-workspace');
 const retryLesson=document.getElementById('retryReviewLesson');
 let generation=0,question=null,selected='',answered=false,loading=false,ready=false,lesson='',connection=null;
 function clear(){question=null;selected='';answered=false;card.hidden=true;feedback.textContent='';check.disabled=true;document.getElementById('reviewQuestionOptions').replaceChildren();}
@@ -13,7 +14,7 @@ async function prepare(restoreFocus=false){
  const request=++generation,uid=auth.currentUser?.uid;clear();ready=false;loading=false;connection=null;generate.disabled=true;lesson='';document.getElementById('reviewSourceLesson').hidden=true;topic.textContent='Review a history topic';
  retryLesson.hidden=true;retryLesson.disabled=true;
  panel.hidden=!uid||!missionId||!chapterId;
- document.querySelector('.bayani-layout').hidden=!panel.hidden;
+ chatWorkspace.hidden=!panel.hidden;
  if(!uid){status.textContent='Sign in to use review questions.';return;}
  if(!missionId||!chapterId){status.textContent='Open a topic from My Journey to practise with a lesson-based AI question.';return;}
  status.textContent='Finding the lesson for your review topic...';

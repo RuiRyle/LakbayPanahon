@@ -2,6 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),{spawn}=require('node:child_process');
 const output=path.resolve('build/bayani-review-recovery-browser');fs.mkdirSync(output,{recursive:true});
 const original=fs.readFileSync('pages/bayani-ai.html','utf8');
+if (!original.includes('src="../js/bayani-review.js"')) throw Error('The Bayani page must load the review module');
 let html=original.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*>/gi,'');
 const source=fs.readFileSync('js/bayani-review.js','utf8').replace(/import[\s\S]*?from\s+['"][^'"]+['"];?/g,'');
 const css=[...original.matchAll(/<link\b[^>]*href="\.\.\/css\/([^"]+)"[^>]*>/g)].map(match=>fs.readFileSync('css/'+match[1],'utf8')).join('\n');
@@ -19,6 +20,7 @@ const verify=(ok,message)=>{if(!ok)throw Error(message);};
 (async()=>{
  document.body.classList.add('authenticated');document.body.classList.remove('auth-checking');
  await prepare();verify(!retryLesson.hidden&&!retryLesson.disabled&&generate.disabled,'Failure recovery missing');
+ verify(!panel.hidden&&document.querySelector('.bayani-workspace').hidden,'Review should take the place of general chat');
  retryLesson.focus();verify(document.activeElement===retryLesson,'Retry cannot receive keyboard focus');
  fails=false;let resolve;release={promise:new Promise(r=>resolve=r)};
  retryLesson.click();retryLesson.click();verify(reads===2&&generate.disabled,'Duplicate retry or premature generation');

@@ -65,6 +65,8 @@ body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-workspace {
     box-shadow: 0 14px 40px #030d1a56;
 }
 
+.bayani-workspace[hidden] { display: none; }
+
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-chat-heading {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;

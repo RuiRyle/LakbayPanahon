@@ -59,8 +59,14 @@
                         <a href="#try-a-clue" class="landing-button landing-button--outline"><span class="landing-button-icon interface-icon interface-icon--search" aria-hidden="true"></span>Try a clue</a>
                     </div>
                     <div class="landing-hero-support">
-                        <a href="pages/student-access.html?mode=setup" class="landing-text-link">Sign up without email</a>
-                        <a href="pages/teacher.html" class="landing-text-link">I’m a teacher</a>
+                        <a href="pages/student-access.html?mode=setup" class="landing-access-link">
+                            <span class="landing-access-icon" aria-hidden="true"><span class="interface-icon interface-icon--key-round"></span></span>
+                            <span>Sign up without email</span>
+                        </a>
+                        <a href="pages/teacher.html" class="landing-access-link landing-access-link--teacher">
+                            <span class="landing-access-icon" aria-hidden="true"><span class="interface-icon interface-icon--landmark"></span></span>
+                            <span>I’m a teacher</span>
+                        </a>
                     </div>
                     <button class="landing-music-control" type="button" data-landing-music hidden>
                         <svg class="interface-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l12-2v13M9 9l12-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="18" cy="16" rx="3" ry="2"/></svg>
@@ -97,7 +103,7 @@
                 <div class="landing-section-heading">
                     <h2 id="landingDemoTitle">Inside a history mission</h2>
                     <p>Read a story, use the evidence to answer a question, and connect what you learned to an artifact in the Discovery Museum.</p>
-                    <a href="#try-a-clue" class="landing-button landing-button--outline"><span class="landing-button-icon interface-icon interface-icon--search" aria-hidden="true"></span>Try a clue</a>
+                    <a href="pages/story-playground.html" class="landing-button landing-button--outline"><span class="landing-button-icon interface-icon interface-icon--book-open" aria-hidden="true"></span>Preview a lesson</a>
                 </div>
                 <div class="landing-preview">
                     <div class="landing-preview-controls" role="tablist" aria-label="Mission preview" hidden>
@@ -285,7 +291,7 @@
                     </div>
                     <div class="landing-workspace-actions">
                         <a href="pages/register.html" class="landing-button landing-button--gold">Create a student account</a>
-                        <a href="pages/login.html" class="landing-text-link">Return to your account</a>
+                        <a href="pages/login.html" class="landing-button landing-button--paper">Log in to your account</a>
                     </div>
                 </div>
                 <ul class="landing-tool-list landing-workspace-tools" role="list">
@@ -332,7 +338,7 @@
                         <li>Assign missions from the lesson catalog.</li>
                         <li>Review progress and saved quiz attempts.</li>
                     </ul>
-                    <a href="pages/teacher.html" class="landing-button landing-button--outline"><span class="landing-button-icon interface-icon interface-icon--landmark" aria-hidden="true"></span>Visit the teacher portal</a>
+                    <a href="pages/teacher.html" class="landing-button landing-button--outline landing-button--teacher"><span class="landing-button-icon interface-icon interface-icon--landmark" aria-hidden="true"></span>Visit the teacher portal</a>
                 </div>
                 <figure class="landing-teacher-example">
                     <img src="assets/landing/teacher-preview.webp" width="1016" height="414" loading="lazy" decoding="async" alt="A teacher’s dashboard shows a student’s mission completion, saved quiz attempts, and missions flagged for review.">
@@ -381,7 +387,7 @@
                         <p>Explore history with a student account or bring LakbayPanahon to your classroom.</p>
                         <div class="landing-start-actions">
                             <a href="pages/register.html" class="landing-button landing-button--gold"><span class="landing-button-icon interface-icon interface-icon--compass" aria-hidden="true"></span>Start learning</a>
-                            <a href="pages/teacher.html" class="landing-button landing-button--outline"><span class="landing-button-icon interface-icon interface-icon--landmark" aria-hidden="true"></span>I’m a teacher</a>
+                            <a href="pages/teacher.html" class="landing-button landing-button--outline landing-button--teacher"><span class="landing-button-icon interface-icon interface-icon--landmark" aria-hidden="true"></span>I’m a teacher</a>
                         </div>
                     </div>
                 </div>
@@ -415,7 +421,7 @@
         </div>
         <div class="landing-container landing-footer-bottom">
             <p>© 2026 LakbayPanahon</p>
-            <a href="#home">Back to top</a>
+            <a href="#home" class="landing-back-to-top"><span aria-hidden="true">↑</span> Back to top</a>
         </div>
     </footer>
 
