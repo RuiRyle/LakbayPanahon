@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In | LakbayPanahon</title>
     <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin>
@@ -19,552 +12,171 @@
     <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js" crossorigin>
     <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js" crossorigin>
     <link rel="modulepreload" href="https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js" crossorigin>
-
-    <link
-        rel="stylesheet"
-        href="../css/auth.css"
-    >
-
+    <link rel="stylesheet" href="../css/auth.css">
     <link rel="stylesheet" href="../css/navy-gold-theme.css">
     <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/brand/favicon.svg">
     <link rel="stylesheet" href="../css/page-transition.css">
     <link rel="stylesheet" href="../css/expedition.css">
     <link rel="stylesheet" href="../css/interface-clarity.css">
-<link rel="stylesheet" href="../css/app-dialog.css">
+    <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
-<link rel="stylesheet" href="../css/interface-icons.css">
+    <link rel="stylesheet" href="../css/interface-icons.css">
     <link rel="stylesheet" href="../css/password-field.css">
 </head>
-
-
-<body class="lakbay-theme">
-
+<body class="lakbay-theme login-page">
     <main class="auth-page auth-portal auth-sign-in">
-
-
-        <!-- ==================================
-             LEFT SIDE
-        =================================== -->
-
-        <section class="auth-showcase login-harbor">
-            <div class="login-harbor-art" aria-hidden="true"></div>
-
-
-            <!-- LOGO -->
-
-            <a
-                href="../index.html"
-                class="auth-logo"
-            >
-
-                <div class="logo-icon">
-                    LP
-                </div>
-
-
-                <div class="logo-text">
-
-                    <span>
-                        LakbayPanahon
-                    </span>
-
-                    <small>
-                        Learn • Explore • Discover
-                    </small>
-
-                </div>
-
+        <header class="login-site-header">
+            <a class="login-brand" href="../index.html">
+                <img src="../assets/brand/lakbay-sun.svg" alt="" width="38" height="38">
+                <span>LakbayPanahon</span>
             </a>
-
-
-
-            <!-- SHOWCASE CONTENT -->
-
-            <div class="showcase-content">
-
-
-                <span class="showcase-label">
-                    CONTINUE YOUR JOURNEY
-                </span>
-
-
-                <h1>
-
-                    History is waiting
-
-                    <span>
-                        to be discovered.
-                    </span>
-
-                </h1>
-
-
-                <p>
-                    Return to your learning journey and continue
-                    exploring the people, places, and events that
-                    shaped Philippine History.
-                </p>
-
-
-
-            </div>
-
-            <p class="login-harbor-caption"><span aria-hidden="true"></span> A young explorer studies a map &middot; Artist&rsquo;s illustration</p>
-
-
-        </section>
-
-
-
-        <!-- ==================================
-             RIGHT SIDE
-        =================================== -->
-
-        <section class="auth-form-section">
-
-
-            <div class="auth-form-container">
-
-
-                <!-- BACK HOME -->
-
-                <a
-                    href="../index.html"
-                    class="back-home"
-                >
-                    <span aria-hidden="true">←</span> Back to home
-                </a>
-
-
-
-                <!-- ==================================
-                     LOGIN CONTENT
-                =================================== -->
-
-                <div id="loginContent">
-
-
-                    <!-- HEADING -->
-
-                    <div class="form-heading">
-
-
-                        <h2>
-                            Log in
-                        </h2>
-
-
-                        <p>Use the sign-in details for your account.</p>
-
-
-                    </div>
-
-                    <!-- ==================================
-                         LOGIN FORM
-                    =================================== -->
-
-                    <form
-                        id="loginForm"
-                        class="auth-form"
-                        method="post"
-                    >
-                        <fieldset id="loginMethods" class="login-methods" disabled>
-                            <legend>Sign in with</legend>
-                            <div class="login-method-options">
-                                <label class="login-method">
-                                    <input id="loginEmailMethod" type="radio" name="login-method" value="email" checked>
-                                    <span class="interface-icon interface-icon--mail" aria-hidden="true"></span>
-                                    <span>Email</span>
-                                </label>
-                                <label class="login-method">
-                                    <input id="loginUsernameMethod" type="radio" name="login-method" value="username">
-                                    <span class="interface-icon interface-icon--key-round" aria-hidden="true"></span>
-                                    <span>Student username</span>
-                                </label>
-                            </div>
-                        </fieldset>
-
-                        <div class="form-group">
-
-
-                            <label id="loginIdentifierLabel" for="loginEmail">Email address</label>
-
-
-                            <div class="input-wrapper">
-
-
-                                <span class="input-icon" aria-hidden="true">
-                                    <span id="loginIdentifierIcon" class="interface-icon interface-icon--mail"></span>
-                                </span>
-
-
-                                <input
-                                    type="email"
-                                    id="loginEmail"
-                                    placeholder="Enter your email address"
-                                    autocomplete="email"
-                                    autocapitalize="none"
-                                    spellcheck="false"
-                                    required
-                                >
-
-
-                            </div>
-
-
-                        </div>
-
-
-
-                        <!-- PASSWORD -->
-
-                        <div class="form-group">
-
-
-                            <div class="label-row">
-
-
-                                <label for="loginPassword">
-                                    Password
-                                </label>
-
-
-                                <a
-                                    href="#account-help"
-                                    id="forgotPasswordButton"
-                                    class="forgot-link"
-                                >
-                                    Forgot password?
-                                </a>
-
-
-                            </div>
-
-
-
-                            <div class="input-wrapper password-field">
-
-
-                                <span class="input-icon">
-                                    <svg class="interface-icon" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-</svg>
-
-                                </span>
-
-
-                                <input
-                                    type="password"
-                                    id="loginPassword"
-                                    placeholder="Enter your password"
-                                    autocomplete="current-password"
-                                    required
-                                >
-
-
-                                <button
-                                    type="button"
-                                    class="password-toggle"
-                                    aria-controls="loginPassword"
-                                    aria-label="Show password"
-                                >
-                                    <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                                        <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/>
-                                        <circle cx="12" cy="12" r="2.5"/>
-                                        <path class="password-eye-slash" d="m4 4 16 16"/>
-                                    </svg>
-                                </button>
-
-
-                            </div>
-
-
-                        </div>
-
-
-
-                        <!-- REMEMBER ME -->
-
-                        <div class="remember-row">
-
-
-                            <label class="checkbox-container">
-
-
-                                <input
-                                    type="checkbox"
-                                    id="rememberMe"
-                                    aria-describedby="rememberMeHelp"
-                                >
-
-
-                                <span>
-                                    Remember me on this device
-                                </span>
-
-
-                            </label>
-                            <p id="rememberMeHelp" class="input-help">Leave this off on a device you share with others.</p>
-                        </div>
-
-                        <!-- LOGIN MESSAGE -->
-
-                        <div
-                            id="loginMessage"
-                            class="form-message"
-                            aria-live="polite"
-                        >Connecting to secure sign-in...</div>
-
-
-
-                        <!-- LOGIN BUTTON -->
-
-                        <button
-                            type="submit" disabled
-                            class="auth-button"
-                        >
-
-                            Log In
-
-                            <span aria-hidden="true">
-                                →
-                            </span>
-
-                        </button>
-
-
-                    </form>
-
-                    <section id="finishAccountSetup" class="reset-delivery-help" aria-labelledby="finishAccountSetupTitle" hidden>
-                        <h3 id="finishAccountSetupTitle">Finish your account setup</h3>
-                        <div class="reset-student-id-options">
-                            <a class="student-access-choice" href="register.html?mode=finish-setup">Finish Student Setup</a>
-                            <a class="student-access-choice" href="teacher-application.html">Finish Teacher Setup</a>
-                        </div>
-                    </section>
-
-
-
-                    <!-- ==================================
-                         NEW ACCOUNT
-                    =================================== -->
-
-                    <div class="auth-next-links">
-                        <a href="register.html">Create a student account <span aria-hidden="true">→</span></a>
-                        <a href="teacher-application.html">Apply for teacher access <span aria-hidden="true">→</span></a>
-                    </div>
-
+            <a class="back-home" href="../index.html"><span aria-hidden="true">←</span> Back to home</a>
+        </header>
+
+        <div class="login-panel">
+            <aside class="auth-showcase login-harbor" aria-labelledby="loginShowcaseTitle">
+                <div class="login-harbor-art" aria-hidden="true"></div>
+                <div class="login-showcase-copy">
+                    <h2 id="loginShowcaseTitle">Explore Philippine history.</h2>
+                    <p>Return to your stories, missions, and saved progress.</p>
                 </div>
+            </aside>
 
-
-
-                <!-- ==================================
-                     FORGOT PASSWORD CONTENT
-                =================================== -->
-
-                <div
-                    id="forgotPasswordSection"
-                    class="forgot-password-section"
-                    hidden
-                >
-
-
-                    <!-- RESET HEADING -->
-
-                    <div class="form-heading reset-flow-heading">
-                        <div class="reset-flow-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-                                <rect x="4" y="10" width="16" height="11" rx="3"/>
-                                <path d="M8 10V7a4 4 0 1 1 8 0v3m-4 4v3"/>
-                            </svg>
+            <section class="auth-form-section" aria-label="Account access">
+                <div class="auth-form-container">
+                    <div id="loginContent">
+                        <div class="form-heading">
+                            <h1>Log in</h1>
                         </div>
 
+                        <form id="loginForm" class="auth-form" method="post">
+                            <fieldset id="loginMethods" class="login-methods" disabled>
+                                <legend>Sign in with</legend>
+                                <div class="login-method-options">
+                                    <label class="login-method">
+                                        <input id="loginEmailMethod" type="radio" name="login-method" value="email" checked>
+                                        <span class="interface-icon interface-icon--mail" aria-hidden="true"></span>
+                                        <span>Email</span>
+                                    </label>
+                                    <label class="login-method">
+                                        <input id="loginUsernameMethod" type="radio" name="login-method" value="username">
+                                        <span class="interface-icon interface-icon--key-round" aria-hidden="true"></span>
+                                        <span>Student username</span>
+                                    </label>
+                                </div>
+                            </fieldset>
 
-                        <h2 id="resetPasswordTitle">
-                            Reset your password
-                        </h2>
-
-
-                        <p>
-                            Enter your sign-in email and we’ll send a link to choose a new password.
-                        </p>
-
-
-                    </div>
-
-                    <p class="reset-preview-note" id="resetPreviewNote" hidden>This local preview uses Firebase test accounts. Reset links appear in the emulator log instead of your inbox.</p>
-
-
-
-                    <!-- ==================================
-                         RESET FORM
-                    =================================== -->
-
-                    <form
-                        id="forgotPasswordForm"
-                        class="auth-form"
-                        method="post"
-                    >
-
-
-                        <!-- RESET EMAIL -->
-
-                        <div class="form-group">
-
-
-                            <label for="resetEmail">
-                                Email Address
-                            </label>
-
-
-                            <div class="input-wrapper">
-
-
-                                <span class="input-icon">
-                                    <svg class="interface-icon" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-  <rect x="2" y="4" width="20" height="16" rx="2" />
-</svg>
-
-                                </span>
-
-
-                                <input
-                                    type="email"
-                                    id="resetEmail"
-                                    placeholder="Enter your email address"
-                                    autocomplete="email"
-                                    required
-                                >
-
-
+                            <div class="form-group">
+                                <label id="loginIdentifierLabel" for="loginEmail">Email address</label>
+                                <div class="input-wrapper">
+                                    <span class="input-icon" aria-hidden="true">
+                                        <span id="loginIdentifierIcon" class="interface-icon interface-icon--mail"></span>
+                                    </span>
+                                    <input type="email" id="loginEmail" placeholder="Enter your email address" autocomplete="email"
+                                        autocapitalize="none" spellcheck="false" required>
+                                </div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="loginPassword">Password</label>
+                                <div class="input-wrapper password-field">
+                                    <span class="input-icon" aria-hidden="true"><span class="interface-icon interface-icon--lock"></span></span>
+                                    <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
+                                    <button type="button" class="password-toggle" aria-controls="loginPassword" aria-label="Show password">
+                                        <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                            <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/>
+                                            <circle cx="12" cy="12" r="2.5"/>
+                                            <path class="password-eye-slash" d="m4 4 16 16"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
 
-                        </div>
+                            <div class="login-preferences">
+                                <label class="checkbox-container" for="rememberMe">
+                                    <input type="checkbox" id="rememberMe" aria-describedby="rememberMeHelp">
+                                    <span>Remember me</span>
+                                </label>
+                                <a href="#account-help" id="forgotPasswordButton" class="forgot-link">Forgot password?</a>
+                                <p id="rememberMeHelp" class="input-help">Leave this off on a shared device.</p>
+                            </div>
 
+                            <div id="loginMessage" class="form-message" role="status">Connecting to secure sign-in…</div>
+                            <button type="submit" class="auth-button" disabled>Log in <span aria-hidden="true">→</span></button>
+                        </form>
 
-
-                        <!-- RESET MESSAGE -->
-
-                        <div
-                            id="resetPasswordMessage"
-                            class="form-message"
-                            aria-live="polite"
-                        ></div>
-
-
-
-                        <!-- SEND RESET BUTTON -->
-
-                        <button
-                            type="submit" disabled
-                            class="auth-button"
-                            aria-describedby="resetPasswordCooldown"
-                        >
-
-                            Send Reset Link
-
-                            <span>
-                                →
-                            </span>
-
-                        </button>
-
-                        <p id="resetPasswordCooldown" class="reset-cooldown" hidden></p>
-
-                        <section id="resetDeliveryHelp" class="reset-delivery-help" aria-labelledby="resetDeliveryTitle" hidden>
-                            <h3 id="resetDeliveryTitle">Email hasn’t arrived?</h3>
-                            <ul>
-                                <li>Check Spam or Junk. Search your inbox for “Reset your password” or “LakbayPanahon”.</li>
-                                <li>Check the address above. If you used a different email to sign up, enter that address and request a link.</li>
-                                <li>Use the latest reset email. If its link expired or was already used, request a fresh one.</li>
-                                <li>If you can no longer open that inbox, ask the school or adult who helped you register for guidance.</li>
-                            </ul>
+                        <section id="finishAccountSetup" class="reset-delivery-help" aria-labelledby="finishAccountSetupTitle" hidden>
+                            <h3 id="finishAccountSetupTitle">Finish your account setup</h3>
+                            <div class="reset-student-id-options">
+                                <a class="student-access-choice" href="register.html?mode=finish-setup">Finish student setup</a>
+                                <a class="student-access-choice" href="teacher-application.html">Finish teacher setup</a>
+                            </div>
                         </section>
 
-
-
-                        <!-- BACK TO LOGIN -->
-
-                        <button
-                            type="button"
-                            id="backToLoginButton"
-                            class="reset-back-button"
-                        >
-                            ← Back to Log In
-                        </button>
-
-
-                    </form>
-
-                </div>
-
-
-                <section id="account-help" class="login-account-help" aria-labelledby="loginAccountHelpTitle" tabindex="-1">
-                    <h2 id="loginAccountHelpTitle">Account help</h2>
-                    <p class="auth-email-help">For an email account, choose <strong>Forgot password?</strong> to request a reset link. Reload this page if the reset form hasn’t loaded.</p>
-                    <p>For a student username, use a backup key or a private reset code from your current teacher.</p>
-                    <div class="auth-help-links">
-                        <a href="student-access.html?mode=backup">Use a backup key</a>
-                        <a href="student-access.html?mode=reset">Use a teacher’s reset code</a>
+                        <nav class="auth-next-links" aria-label="New accounts">
+                            <a href="register.html">Create a student account <span aria-hidden="true">→</span></a>
+                            <a href="teacher-application.html">Apply for teacher access <span aria-hidden="true">→</span></a>
+                        </nav>
                     </div>
-                    <details>
-                        <summary>Already have a Student ID?</summary>
-                        <p>Choose <strong>Student username</strong> and enter your existing Student ID.</p>
-                        <p><a href="student-access.html?mode=teacher-setup">Finish setup with a teacher’s setup code</a></p>
-                    </details>
-                    <details>
-                        <summary>Help for students and guardians</summary>
-                        <p>For help getting in or requesting a copy, correction, or deletion of your data, ask a parent or guardian to speak with the school or adult who gave you access. LakbayPanahon has no public support inbox or request form yet.</p>
-                        <p>When signed in, go to <strong>Settings → Account help</strong> to download your learning data. Keep passwords, reset links, and downloaded files private.</p>
-                    </details>
-                </section>
-            </div>
 
+                    <section id="forgotPasswordSection" class="forgot-password-section" aria-labelledby="resetPasswordTitle" hidden>
+                        <div class="form-heading reset-flow-heading">
+                            <span class="reset-flow-icon" aria-hidden="true"><span class="interface-icon interface-icon--lock"></span></span>
+                            <h2 id="resetPasswordTitle">Reset your password</h2>
+                            <p>Enter your sign-in email and we’ll send you a password reset link.</p>
+                        </div>
+                        <p class="reset-preview-note" id="resetPreviewNote" hidden>This local preview uses Firebase test accounts. Reset links appear in the emulator log instead of your inbox.</p>
 
-        </section>
+                        <form id="forgotPasswordForm" class="auth-form" method="post">
+                            <div class="form-group">
+                                <label for="resetEmail">Email address</label>
+                                <div class="input-wrapper">
+                                    <span class="input-icon" aria-hidden="true"><span class="interface-icon interface-icon--mail"></span></span>
+                                    <input type="email" id="resetEmail" placeholder="Enter your email address" autocomplete="email" required>
+                                </div>
+                            </div>
+                            <div id="resetPasswordMessage" class="form-message" role="status"></div>
+                            <button type="submit" class="auth-button" aria-describedby="resetPasswordCooldown" disabled>Send reset link</button>
+                            <p id="resetPasswordCooldown" class="reset-cooldown" hidden></p>
+                            <section id="resetDeliveryHelp" class="reset-delivery-help" aria-labelledby="resetDeliveryTitle" hidden>
+                                <h3 id="resetDeliveryTitle">Email hasn’t arrived?</h3>
+                                <ul>
+                                    <li>Check Spam or Junk. Search your inbox for “Reset your password” or “LakbayPanahon”.</li>
+                                    <li>Check the address above. If you used a different email to sign up, enter that address and request a link.</li>
+                                    <li>Use the latest reset email. If its link expired or was already used, request a fresh one.</li>
+                                    <li>If you can no longer open that inbox, ask the school or adult who helped you register for guidance.</li>
+                                </ul>
+                            </section>
+                            <button type="button" id="backToLoginButton" class="reset-back-button">← Back to log in</button>
+                        </form>
+                    </section>
 
-
+                    <section id="account-help" class="login-account-help" aria-labelledby="loginAccountHelpTitle" tabindex="-1">
+                        <h2 id="loginAccountHelpTitle">Account help</h2>
+                        <p class="auth-email-help">For an email account, choose <strong>Forgot password?</strong> to request a reset link. Reload this page if the reset form hasn’t loaded.</p>
+                        <div class="auth-help-links">
+                            <a href="student-access.html?mode=backup">Use a backup key</a>
+                            <a href="student-access.html?mode=reset">Use a teacher’s reset code</a>
+                        </div>
+                        <details>
+                            <summary>Already have a Student ID?</summary>
+                            <p>Choose <strong>Student username</strong> and enter your existing Student ID.</p>
+                            <p><a href="student-access.html?mode=teacher-setup">Finish setup with a teacher’s setup code</a></p>
+                        </details>
+                        <details>
+                            <summary>Help for students and guardians</summary>
+                            <p>For help getting in or requesting a copy, correction, or deletion of your data, ask a parent or guardian to speak with the school or adult who gave you access. LakbayPanahon has no public support inbox or request form yet.</p>
+                            <p>When signed in, go to <strong>Settings → Account help</strong> to download your learning data. Keep passwords, reset links, and downloaded files private.</p>
+                        </details>
+                    </section>
+                </div>
+            </section>
+        </div>
     </main>
 
-
-
-    <!-- ==================================
-         JAVASCRIPT
-    =================================== -->
-
-    <script
-        type="module" async
-        src="../js/auth-ui.js"
-    ></script>
-
-
-
+    <script type="module" async src="../js/auth-ui.js"></script>
     <script type="module" src="../js/page-transition.js"></script>
     <script type="module" src="../js/password-field.js"></script>
     <script type="module" src="../js/expedition-ui.js"></script>
 </body>
-
 </html>
