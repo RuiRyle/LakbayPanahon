@@ -81,10 +81,14 @@ const clueExplanations = {
 landingClueForm?.addEventListener("submit", event => {
     event.preventDefault();
     const answer = new FormData(landingClueForm).get("clue");
-    landingClueFeedback.dataset.outcome = answer === "field-note" ? "correct" : "hint";
+    const outcome = answer === "field-note" ? "correct" : "hint";
+    landingClueForm.dataset.outcome = outcome;
+    landingClueFeedback.dataset.outcome = outcome;
     landingClueFeedback.textContent = clueExplanations[answer];
 });
 landingClueForm?.addEventListener("change", () => {
+    delete landingClueForm.dataset.outcome;
+    delete landingClueFeedback.dataset.outcome;
     landingClueFeedback.textContent = "";
 });
 if (landingClueForm) landingClueForm.hidden = false;

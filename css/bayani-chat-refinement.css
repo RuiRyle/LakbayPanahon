@@ -122,31 +122,45 @@ body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat {
 }
 body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat span { color: inherit; margin-inline-end: .2em; }
 
-.bayani-recent-chats {
-    padding-inline: var(--chat-edge);
-    border-block-end: 1px solid var(--chat-line);
+.bayani-chat-actions { display: flex; flex-wrap: wrap; justify-content: end; gap: 6px; }
+.bayani-chat-actions [hidden] { display: none; }
+
+#bayaniRecentChats {
+    position: fixed;
+    inset: 0 0 0 auto;
+    box-sizing: border-box;
+    inline-size: min(100%, 27rem);
+    max-inline-size: none;
+    block-size: 100%;
+    max-block-size: none;
+    margin: 0;
+    padding: clamp(14px, 3vw, 24px);
+    border: 1px solid var(--chat-line);
+    border-radius: 18px 0 0 18px;
     color: var(--chat-ink);
-    background: #102a3b;
+    background: radial-gradient(ellipse at 90% 0%, #254b4e, transparent 65%), #102a3b;
+    box-shadow: -12px 0 40px #030d1a70;
 }
-
-.bayani-recent-chats summary {
-    min-height: 44px;
-    align-content: center;
-    color: var(--chat-gold);
-    font-size: .875rem;
-    font-weight: 700;
-    cursor: var(--lakbay-cursor-hand, pointer);
+#bayaniRecentChats[open] { display: flex; flex-direction: column; gap: 12px; }
+#bayaniRecentChats::backdrop { background: #061423b3; backdrop-filter: blur(3px); }
+.bayani-history-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
-
-.bayani-recent-chats p { margin: .4rem 0 .8rem; font-size: .875rem; color: var(--chat-muted); }
+.bayani-history-heading h3 { margin: 0; font: 500 clamp(1.2rem, 5vw, 1.6rem)/1.2 var(--student-editorial, Georgia, serif); }
+.bayani-history-heading form { margin: 0; }
+.bayani-recent-chats p { margin: 0; font-size: .875rem; color: var(--chat-muted); }
 .bayani-recent-chats .bayani-history-status:empty { display: none; }
 .bayani-recent-chats ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 10px;
-    max-block-size: 300px;
+    min-block-size: 0;
     overflow-y: auto;
-    margin: 0 0 .85rem;
+    overscroll-behavior: contain;
+    margin: 0;
     padding: 3px;
     list-style: none;
 }
@@ -169,6 +183,12 @@ body.bayani-chat-page.lakbay-theme[data-role="student"] .bayani-new-chat span { 
     text-align: start;
     overflow-wrap: anywhere;
     cursor: var(--lakbay-cursor-hand, pointer);
+}
+.bayani-recent-chats .bayani-history-heading button {
+    padding: 7px 11px;
+    border: 1px solid #78918d;
+    background: #1c3c49;
+    color: var(--chat-gold);
 }
 .bayani-recent-chats .bayani-history-open {
     display: grid;

@@ -244,15 +244,21 @@
                                 <p id="bayaniStatus" role="status" aria-live="polite" aria-atomic="true">Connecting to Bayani AI...</p>
                             </div>
                         </div>
-                        <button id="newBayaniChat" class="bayani-new-chat" type="button"><span aria-hidden="true">+</span> New chat</button>
+                        <div class="bayani-chat-actions">
+                            <button id="openBayaniHistory" class="bayani-new-chat" type="button" aria-haspopup="dialog" aria-controls="bayaniRecentChats" hidden>History</button>
+                            <button id="newBayaniChat" class="bayani-new-chat" type="button"><span aria-hidden="true">+</span> New chat</button>
+                        </div>
                         <button id="retryBayani" class="text-button" type="button" hidden>Try connecting again</button>
                     </header>
-                    <details id="bayaniRecentChats" class="bayani-recent-chats" hidden>
-                        <summary>Conversation history</summary>
+                    <dialog id="bayaniRecentChats" class="bayani-recent-chats" aria-labelledby="bayaniHistoryTitle">
+                        <header class="bayani-history-heading">
+                            <h3 id="bayaniHistoryTitle">Conversation history</h3>
+                            <form method="dialog"><button type="submit" autofocus>Close</button></form>
+                        </header>
                         <p>Your last 10 conversations are saved in this browser for your account. Open or delete them here.</p>
                         <ul></ul>
                         <p class="bayani-history-status" role="status"></p>
-                    </details>
+                    </dialog>
                     <div class="bayani-chat" role="region" aria-label="Chat transcript" tabindex="0">
                         <div id="bayaniEmpty" class="bayani-empty">
                             <span class="bayani-discovery-mark" aria-hidden="true"><span class="interface-icon interface-icon--compass"></span></span>

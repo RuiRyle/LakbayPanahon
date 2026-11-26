@@ -7,6 +7,12 @@ const log=document.getElementById('bayaniMessages'),form=document.getElementById
 const transcript = log.closest('.bayani-chat');
 let generation=0,client=null,history=[],busy=false;
 const recentChats = document.getElementById('bayaniRecentChats');
+const openHistory = document.getElementById('openBayaniHistory');
+openHistory?.addEventListener('click', () => {
+ if (!auth.currentUser || recentChats.open) return;
+ openHistory.focus({preventScroll:true});
+ recentChats.showModal();
+});
 let activeChatId = null;
 
 function chatStorageKey(uid) {
@@ -23,16 +29,16 @@ function renderRecentChats() {
  const uid = auth.currentUser?.uid;
  const list = recentChats.querySelector('ul');
  const notice = recentChats.querySelector('[role=status]');
- recentChats.hidden = !uid;
+ openHistory.hidden = !uid;
  list.replaceChildren();
  notice.textContent = '';
  if (!uid) {
-  recentChats.open = false;
+  if (recentChats.open) recentChats.close();
   return;
  }
  try {
   const chats = readChats(uid);
-  if (!chats.length) notice.textContent = 'Your discoveries start here. Ask a question and your conversation will be saved for next time.';
+  if (!chats.length) notice.textContent = 'No saved chats yet. Your conversations will appear here after Bayani replies.';
   for (const chat of chats) {
    if (typeof chat?.title !== 'string' || !Array.isArray(chat.turns)) continue;
    const row = document.createElement('li');
@@ -71,9 +77,10 @@ function renderRecentChats() {
     }
     syncChatAppearance();
     transcript.scrollTop = 0;
-    recentChats.open = false;
+    if (recentChats.open) recentChats.close();
     renderRecentChats();
-    recentChats.querySelector('summary').focus();
+    if (!input.disabled) input.focus({preventScroll:true});
+    else openHistory.focus({preventScroll:true});
    };
    remove.onclick = async () => {
     const request = generation;
@@ -88,7 +95,7 @@ function renderRecentChats() {
       syncChatAppearance();
      }
      renderRecentChats();
-     recentChats.querySelector('summary').focus();
+     if (recentChats.open) (list.querySelector('.bayani-history-open') || recentChats.querySelector('form button')).focus();
     } catch {
      notice.textContent = 'Could not delete this chat. Try again.';
     }
@@ -167,7 +174,7 @@ function bubble(role,message,scroll=true){
  if (scroll) revealMessage(article);
  return article;
 }
-async function connect(){const request=++generation,uid=auth.currentUser?.uid;client=null;history=[];activeChatId=null;busy=false;log.replaceChildren();input.value='';input.disabled=send.disabled=true;retry.hidden=true;if(recentChats)recentChats.open=false;renderRecentChats();status.textContent=uid?'Connecting to Bayani...':'Sign in to chat with Bayani.';syncChatAppearance();if(!uid)return;
+async function connect(){const request=++generation,uid=auth.currentUser?.uid;client=null;history=[];activeChatId=null;busy=false;log.replaceChildren();input.value='';input.disabled=send.disabled=true;retry.hidden=true;if(recentChats?.open)recentChats.close();renderRecentChats();status.textContent=uid?'Connecting to Bayani...':'Sign in to chat with Bayani.';syncChatAppearance();if(!uid)return;
  try{const next=await withBayaniDeadline(connectBayani,BAYANI_CONNECT_TIMEOUT_MS);if(request!==generation||auth.currentUser?.uid!==uid)return;client=next;input.maxLength=next.settings.maxMessageCharacters;input.disabled=send.disabled=false;status.textContent='Ready to chat.';if(!activeChatId&&next.settings.welcomeMessage)bubble('assistant',next.settings.welcomeMessage);syncChatAppearance();}
  catch(error){if(request!==generation)return;status.textContent=chatFailure(error,true);retry.hidden=false;syncChatAppearance();}
 }
@@ -193,5 +200,5 @@ document.getElementById('newBayaniChat').addEventListener('click',async ()=>{
  syncChatAppearance();input.focus({preventScroll:true});
 });
 onAuthStateChanged(auth,connect);
-window.addEventListener('pagehide',()=>{generation++;client=null;history=[];busy=false;activeChatId=null;log.replaceChildren();input.value='';input.disabled=send.disabled=true;if(recentChats){recentChats.hidden=true;recentChats.open=false;recentChats.querySelector('ul').replaceChildren();}syncChatAppearance();});
+window.addEventListener('pagehide',()=>{generation++;client=null;history=[];busy=false;activeChatId=null;log.replaceChildren();input.value='';input.disabled=send.disabled=true;if(recentChats){if(recentChats.open)recentChats.close();openHistory.hidden=true;recentChats.querySelector('ul').replaceChildren();recentChats.querySelector('[role=status]').textContent='';}syncChatAppearance();});
 window.addEventListener('pageshow',event=>{if(event.persisted)connect();});

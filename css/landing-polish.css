@@ -866,10 +866,14 @@ body.landing-page.page-visible:not([data-role]) > main { animation: none; }
 }
 
 @media (max-width: 550px) {
-    .landing-page { --landing-header-height: 106px; }
-    .landing-header-inner { padding-block: 4px 7px; }
-    .landing-header .landing-brand { flex-basis: 100%; }
-    .landing-mobile-actions { margin-inline-end: auto; }
+    .landing-page { --landing-header-height: 64px; }
+    .landing-header-inner { padding-block: 4px; }
+    .landing-mobile-actions .landing-button { display: none; }
+    .landing-header[data-menu-ready] .landing-nav.active .landing-nav-actions {
+        display: grid;
+        padding-top: 6px;
+    }
+    .landing-header[data-menu-ready] .landing-nav.active .landing-desktop-login { display: none; }
 }
 
 @media (max-width: 480px) {
@@ -893,9 +897,21 @@ body.landing-page.page-visible:not([data-role]) > main { animation: none; }
 }
 .student-landing-page .landing-hero h1 { letter-spacing: -.05em; }
 .student-landing-page .landing-hero h1 em { text-shadow: 0 4px 28px #050c1460; }
-.student-landing-page .landing-hero .landing-actions .landing-button { padding-inline: clamp(18px, 2.2vw, 29px); }
-.student-landing-page .landing-student-id { margin: 4px 0 0; font-size: .9rem; }
-.student-landing-page .landing-student-id .landing-text-link { color: #f9e1ab; }
+.student-landing-page .landing-hero .landing-actions .landing-button { padding-inline: clamp(12px, 2.2vw, 26px); }
+.landing-hero-support {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: clamp(12px, 2.3vw, 28px);
+    margin-block-start: .45rem;
+}
+.student-landing-page .landing-hero-support .landing-text-link {
+    color: #f9e1ab;
+    font-size: .875rem;
+}
+.student-landing-page .landing-hero .landing-music-control {
+    margin-block-start: .1rem;
+    margin-inline-start: -10px;
+}
 
 .student-landing-page .landing-button {
     min-height: 48px;
@@ -967,74 +983,83 @@ body.landing-page.page-visible:not([data-role]) > main { animation: none; }
 
 @media (min-width: 761px) {
     .student-landing-page .landing-hero {
-        background: radial-gradient(ellipse at 67% 24%, #1a3440, transparent 67%), var(--landing-night);
+        background: #102733;
     }
-    .student-landing-page .landing-hero::after { content: none; }
+    .student-landing-page .landing-hero::after {
+        background:
+            linear-gradient(0deg, #0b1923 0%, #0b192366 22%, transparent 57%),
+            linear-gradient(90deg, #0b1923 7%, #0b1923f5 29%, #0b1923bb 51%, #0b19234a 69%, #0b19230d 91%);
+    }
     .student-landing-page .landing-hero-inner {
-        grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr);
-        gap: clamp(26px, 3.8vw, 60px);
-        min-height: 0;
-        padding-block: clamp(45px, 5vw, 78px);
+        min-height: clamp(470px, 42vw, 650px);
+        padding-block: clamp(42px, 6vw, 82px);
     }
+    .student-landing-page .landing-intro { max-inline-size: min(100%, 700px); }
     .student-landing-page .landing-hero h1 {
-        font-size: clamp(3rem, 5.15vw, 5.1rem);
-        line-height: 1.02;
+        font-size: clamp(3.5rem, 6.3vw, 6.3rem);
+        line-height: .99;
     }
-    .student-landing-page .landing-hero h1 em { font-size: .875em; }
-    .student-landing-page .landing-hero-copy { max-width: 36ch; }
+    .student-landing-page .landing-hero h1 em { font-size: .87em; }
+    .student-landing-page .landing-hero-copy { max-width: 43ch; }
     .student-landing-page .landing-hero-art {
-        position: relative;
-        inset: auto;
-        z-index: auto;
         display: block;
-        aspect-ratio: 1.39;
-        overflow: hidden;
-        border: 1px solid var(--landing-frame);
-        border-radius: 14px;
-        background: var(--landing-raised);
-        box-shadow: 0 22px 45px #020b1370;
+        inset-inline-start: 23%;
     }
-    .student-landing-page .landing-hero-art img { object-position: 78% center; }
-    .student-landing-page .landing-hero-art::after {
-        position: absolute;
-        inset: 8px;
-        border: 1px solid #f7e3b35c;
-        border-radius: 8px;
-        pointer-events: none;
-        content: "";
-    }
+    .student-landing-page .landing-hero-art img { object-position: 80% 55%; }
 }
 
-@media (min-width: 701px) and (max-width: 760px) {
-    .student-landing-page .landing-hero-inner { align-items: end; padding-block: 160px 60px; }
-    .student-landing-page .landing-hero::after {
-        background: linear-gradient(0deg,#0b1923 2%,#0b1923d9 39%,#0b192331 100%);
+@media (max-width: 760px) {
+    .student-landing-page .landing-hero-inner {
+        align-items: end;
+        min-height: 0;
+        padding-block: clamp(104px, 19vw, 144px) 28px;
     }
-    .student-landing-page .landing-hero h1 { font-size: clamp(3.3rem, 9vw, 4.5rem); }
+    .student-landing-page .landing-hero::after {
+        background: linear-gradient(0deg, #0b1923 1%, #0b1923f5 27%, #0b1923c7 64%, #0b192330 100%);
+    }
+    .student-landing-page .landing-hero h1 { font-size: clamp(2.85rem, 9.6vw, 4.75rem); }
+    .student-landing-page .landing-hero-art img { object-position: 66% 54%; }
+    .student-landing-page .landing-hero-copy { margin-block-start: 16px; font-size: 1rem; }
+    .student-landing-page .landing-actions { margin-block-start: 18px; }
 }
 .student-landing-page .landing-quick-guide {
-    background: linear-gradient(90deg, #11252f, #172f37 50%, #11252f);
+    background: radial-gradient(ellipse at 50% 0%, #1d3940, transparent 78%), #0e202a;
 }
-.student-landing-page .landing-guide-links { gap: 0; padding-block: 12px; }
+.student-landing-page .landing-guide-links { gap: 10px; padding-block: clamp(12px, 2vw, 22px); }
 .student-landing-page .landing-guide-links a {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    min-height: 70px;
-    padding: 10px clamp(12px, 1.6vw, 23px);
-    border-radius: 0;
+    min-height: 80px;
+    padding: 11px clamp(10px, 1.4vw, 20px);
+    border: 1px solid #657968;
+    border-radius: 14px;
+    background: linear-gradient(120deg, #1d3b43, #122c3b 82%);
+    box-shadow: 0 4px 12px #06141d66;
 }
-.student-landing-page .landing-guide-links a + a { border-inline-start-color: var(--landing-line); }
-.student-landing-page .landing-guide-links a:is(:hover, :focus-visible) { background: var(--landing-surface); }
+.student-landing-page .landing-guide-links a::after {
+    inline-size: 7px;
+    block-size: 7px;
+    border-top: 2px solid var(--landing-gold);
+    border-right: 2px solid var(--landing-gold);
+    transform: rotate(45deg);
+    content: "";
+}
+.student-landing-page .landing-guide-links a:is(:hover, :focus-visible) {
+    border-color: var(--landing-gold);
+    background: #203e46;
+}
 .landing-guide-mark {
     display: grid;
     place-items: center;
     flex: none;
     width: 42px;
     height: 42px;
-    border: 1px solid var(--landing-frame);
-    border-radius: 8px;
-    background: var(--landing-night);
+    border: 1px solid #cfb2768a;
+    border-radius: 11px;
+    background: radial-gradient(ellipse at 50% 8%, #526052, #142a36 75%);
 }
-.landing-guide-mark .landing-guide-icon { width: 1.35rem; height: 1.35rem; }
+.landing-guide-mark .landing-guide-icon { width: 1.35rem; height: 1.35rem; color: var(--landing-gold); }
 .student-landing-page :is(.landing-preview, .landing-clue, .landing-start-panel) {
     box-shadow: 0 20px 46px #060e1866, inset 0 0 0 1px #e8c88e17;
 }
@@ -1044,7 +1069,8 @@ body.landing-page.page-visible:not([data-role]) > main { animation: none; }
 }
 .student-landing-page .landing-preview {
     padding: clamp(9px, 1.3vw, 16px);
-    border-radius: 15px;
+    border-radius: 19px;
+    background: linear-gradient(150deg, #132d3a, #0d1e2b 70%);
 }
 .student-landing-page .landing-clue {
     border-color: #d6b4777d;
@@ -1054,6 +1080,15 @@ body.landing-page.page-visible:not([data-role]) > main { animation: none; }
     background:
         radial-gradient(ellipse at 55% 46%, #9b754e57, transparent 58%),
         linear-gradient(155deg, #233f41, #102633 85%);
+}
+.student-landing-page .landing-clue-form label { border-radius: 10px; }
+.student-landing-page .landing-clue-form[data-outcome="correct"] label:has(:checked) {
+    border-color: #8fc5ad;
+    background: #1d423e;
+}
+.student-landing-page .landing-clue-form[data-outcome="hint"] label:has(:checked) {
+    border-color: #d4b178;
+    background: #3d3831;
 }
 
 .student-landing-page :is(.landing-history, .landing-student-workspace, .landing-faq) {
@@ -1095,18 +1130,31 @@ body.landing-page.page-visible:not([data-role]) > main { animation: none; }
     display: inline-flex;
     align-items: center;
     min-height: 44px;
-    margin-top: 4px;
-    padding: 0;
-    border: 0;
-    background: transparent;
+    margin-top: 9px;
+    padding: 8px 12px;
+    border: 1px solid #b58e5e;
+    border-radius: 9px;
+    background: #f4e9d4;
     color: var(--landing-gold);
     font: 700 .9375rem/1.35 system-ui, sans-serif;
-    text-decoration: underline;
-    text-decoration-color: var(--landing-frame);
-    text-underline-offset: 4px;
+}
+.landing-topic-open span::after {
+    display: inline-block;
+    inline-size: 6px;
+    block-size: 6px;
+    margin-inline-start: 8px;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    vertical-align: .12em;
+    content: "";
 }
 .landing-topic-open::after { position: absolute; inset: 0; content: ""; }
-.landing-topics li:first-child .landing-topic-open { color: #ffe3a8; text-decoration-color: #edcd7b8a; }
+.landing-topics li:first-child .landing-topic-open {
+    border-color: #e2bf7e;
+    background: #193341;
+    color: #ffe3a8;
+}
 .landing-page .landing-topics .landing-topic-open:hover { text-decoration-color: currentColor; }
 .student-landing-page .landing-topics li:has(.landing-topic-open:is(:hover, :focus-visible)) { border-color: #90622c; }
 .student-landing-page .landing-topics li:has(.landing-topic-open:focus-visible) {
@@ -1183,7 +1231,8 @@ body.student-landing-page:has(.landing-topic-dialog[open]) { overflow: hidden; }
 }
 .student-landing-page .landing-museum .landing-exhibit-picker button {
     border-color: var(--landing-line);
-    background: #162d37;
+    border-radius: 13px;
+    background: linear-gradient(150deg, #1b3942, #142a36);
     color: var(--landing-muted);
 }
 .student-landing-page .landing-museum .landing-exhibit-picker button:hover { border-color: var(--landing-frame); }
@@ -1253,6 +1302,7 @@ body.student-landing-page:has(.landing-topic-dialog[open]) { overflow: hidden; }
 }
 .student-landing-page .landing-questions details[open] {
     border-color: var(--landing-frame);
+    background: #fff4df;
     box-shadow: 0 6px 16px #68461916;
 }
 .student-landing-page .landing-questions summary { min-height: 64px; }
@@ -1276,19 +1326,34 @@ body.student-landing-page:has(.landing-topic-dialog[open]) { overflow: hidden; }
     }
     .student-landing-page .landing-museum-gallery .landing-kicker { grid-column: 1 / -1; margin-bottom: 2px; }
     .student-landing-page :is(.landing-history, .landing-museum-gallery) .landing-section-heading p:not(.landing-kicker) { margin: 0; }
+    .student-landing-page .landing-museum .landing-exhibit-picker button {
+        justify-content: flex-start;
+        text-align: start;
+        padding-inline: clamp(12px, 2vw, 24px);
+    }
     .student-landing-page .landing-footer nav { border-inline-start: 1px solid var(--landing-line); padding-inline-start: 20px; }
 }
 .student-landing-page .landing-mission .landing-section-heading h2,
 .student-landing-page .landing-history .landing-section-heading h2 { max-width: 20ch; }
 
 @media (max-width: 700px) {
-    .student-landing-page .landing-hero h1 { font-size: clamp(2.88rem, 9.85vw, 5.05rem); }
-    .student-landing-page .landing-guide-links { padding-block: 5px; }
-    .student-landing-page .landing-guide-links a { min-height: 68px; }
-    .student-landing-page .landing-guide-links a + a { border-inline-start-color: transparent; }
+    .student-landing-page .landing-guide-links a { min-height: 64px; }
 }
 @media (max-width: 480px) {
     .student-landing-page .landing-start-actions { display: grid; }
+    .student-landing-page .landing-hero .landing-actions { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+    .student-landing-page .landing-hero .landing-actions .landing-button { gap: 7px; }
+}
+@media (max-width: 350px) {
+    .landing-header .landing-brand { font-size: .96rem; }
+    .landing-header .landing-brand img { width: 24px; height: 24px; }
+    .student-landing-page .landing-mobile-login { padding-inline: 6px; }
+    .student-landing-page .landing-hero .landing-actions { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+    .student-landing-page .landing-hero .landing-actions .landing-button {
+        gap: 6px;
+        padding-inline: 8px;
+        font-size: .875rem;
+    }
 }
 
 @media (prefers-reduced-motion: no-preference) {

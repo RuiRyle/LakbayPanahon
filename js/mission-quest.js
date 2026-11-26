@@ -9,13 +9,20 @@
     document.body.classList.add('simple-lesson');
     card.classList.add('lesson-expedition');
     oldNav.hidden = true;
-    const flow = document.createElement('div');
+    const flow = document.createElement('nav');
     flow.className = 'lesson-flow';
+    flow.setAttribute('aria-label', 'Scene navigation');
     const status = document.createElement('div');
     status.className = 'lesson-scene-step';
     const counter = document.createElement('p');
     counter.className = 'lesson-step-count';
     counter.setAttribute('role','status');
+    counter.setAttribute('aria-atomic','true');
+    const stepName = document.createElement('strong');
+    stepName.className = 'lesson-step-name';
+    const stepNumber = document.createElement('span');
+    stepNumber.className = 'lesson-step-number';
+    counter.append(stepName, ' ', stepNumber);
     const stepProgress = document.createElement('progress');
     stepProgress.className = 'lesson-scene-step-progress';
     stepProgress.setAttribute('aria-hidden', 'true');
@@ -198,7 +205,11 @@
     next.className = 'begin-mission-button';
     back.textContent = 'Back';
     flow.append(back,next);
-    card.querySelector('.story-reading-content').append(review,document.querySelector('.mission-bayani'),flow);
+    const footer = document.createElement('footer');
+    footer.className = 'lesson-scene-footer';
+    footer.append(tip.closest('.mission-bayani'), flow);
+    card.querySelector('.story-reading-content').append(review);
+    card.append(footer);
     const ids = ['storyText','lessonUnderstanding','storyExplore',
         'storyClueHunt','storyTradeActivity','storyRouteActivity','storyExhibitActivity','storyDecision','storyQuickCheck'];
     const labels = ['Read the story','Understand the idea','Explore the clues',
@@ -371,8 +382,9 @@
         if (status.hidden !== hideFlow) status.hidden = hideFlow;
         flow.hidden = hideFlow;
         const activityLabel=labels[ids.indexOf(activeId)]||'Learn';
-        const statusText = `${activityLabel} · Step ${index+1} of ${units.length}`;
-        if (counter.textContent !== statusText) counter.textContent = statusText;
+        const position = `Step ${index+1} of ${units.length}`;
+        if (stepName.textContent !== activityLabel) stepName.textContent = activityLabel;
+        if (stepNumber.textContent !== position) stepNumber.textContent = position;
         stepProgress.max = Math.max(1, units.length);
         stepProgress.value = index + 1;
         const pending = state.completed?.[activeId] === false;
