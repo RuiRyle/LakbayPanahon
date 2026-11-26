@@ -3,7 +3,7 @@ import { studentAccessAvailable } from './student-access-configuration.js';
 import { studentTabStorage } from './student-session-storage.js';
 
 const modes = {
-    setup: ['Create an account without email', 'Enter your name, then choose a username and passphrase. You can join a class later.', 'Create my account'],
+    setup: ['Create your account with a username', 'No email needed. Choose a username and passphrase, then save the backup key shown after signup.', 'Create my account'],
     'teacher-setup': ['Use an existing setup code', 'Enter the Student ID and private setup code you already received for this classroom.', 'Finish setup'],
     'sign-in': ['Sign in with a username', 'Enter the username and passphrase you chose.', 'Sign in'],
     reset: ['Reset your passphrase', 'Enter your username and the private reset code from your teacher.', 'Reset and sign in'],
@@ -30,6 +30,9 @@ const names = document.getElementById('studentAccessNames');
 names.hidden = names.disabled = !registering && action !== 'setup';
 const username = fields.username;
 if (registering) {
+    const back = document.getElementById('studentAccessBack');
+    back.href = 'register.html#choose-account';
+    back.textContent = 'Choose a different signup method';
     document.getElementById('studentAccessNameLabel').textContent = 'Choose a username';
     const hint = document.getElementById('studentAccessNameHint');
     hint.textContent = 'Use 3 to 20 characters, starting with a letter. You can use letters, numbers, hyphens, and underscores. Choose a nickname without your full name or birthday.';
@@ -46,7 +49,10 @@ if (action === 'backup') fields.code.autocomplete = 'off';
 fields.passphrase.autocomplete = action === 'sign-in' ? 'current-password' : 'new-password';
 fields.passphrase.minLength = action === 'sign-in' ? 1 : 15;
 document.getElementById('studentAccessPasswordHint').hidden = action === 'sign-in';
-document.querySelectorAll('[data-student-access-mode]').forEach(link => { link.hidden = link.dataset.studentAccessMode === mode; });
+document.querySelectorAll('[data-student-access-mode]').forEach(link => {
+    link.hidden = link.dataset.studentAccessMode === mode ||
+        (registering && link.dataset.studentAccessMode !== 'sign-in');
+});
 
 function message(text, error = false) {
     status.textContent = text;

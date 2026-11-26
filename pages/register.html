@@ -171,25 +171,37 @@
             </a>
 
 
+            <section id="choose-account" class="student-signup-chooser" aria-labelledby="studentSignupTitle" tabindex="-1">
+                <div class="form-heading">
+                    <h2 id="studentSignupTitle">Create your student account</h2>
+                    <p>Choose how you want to sign in.</p>
+                </div>
+                <div class="student-signup-options">
+                    <a href="#email-signup" class="student-signup-option">
+                        <span class="student-signup-icon interface-icon interface-icon--mail" aria-hidden="true"></span>
+                        <span><strong>Use email</strong><small>Sign in with an email address and password.</small></span>
+                    </a>
+                    <a href="student-access.html?mode=setup" class="student-signup-option" data-student-access-link>
+                        <span class="student-signup-icon interface-icon interface-icon--key-round" aria-hidden="true"></span>
+                        <span><strong>Use a username</strong><small>No email needed. Sign in with a username and passphrase.</small></span>
+                    </a>
+                </div>
+            </section>
+
+            <div id="email-signup" tabindex="-1">
             <div class="form-heading">
-
-                <span class="form-label">
-                    STUDENT REGISTRATION
-                </span>
-
                 <h2>
-                    Create your student account
+                    Create your account with email
                 </h2>
 
                 <p>
-                    Enter your information below to begin
-                    your LakbayPanahon learning journey.
+                    You’ll use this email address and password to sign in.
                 </p>
 
             </div>
 
 
-            <a class="student-access-choice" href="student-access.html?mode=setup" data-student-access-link>I don’t have an email</a>
+            <a class="student-signup-switch" href="#choose-account">Choose a different signup method</a>
 
             <form
                 id="studentRegisterForm"
@@ -494,6 +506,7 @@
 
             </form>
             <a id="studentRegistrationContinue" class="auth-button" href="student-dashboard.html" hidden>Start My Learning Journey</a>
+            </div>
 
 
             <div class="login-prompt">
