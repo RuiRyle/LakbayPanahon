@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Teacher Registration | LakbayPanahon</title>
+    <title>Teacher Application | LakbayPanahon</title>
     <link rel="stylesheet" href="../css/navy-gold-theme.css">
     <link rel="stylesheet" href="../css/expedition.css">
     <link rel="stylesheet" href="../css/teacher-workspace.css">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/interface-clarity.css">
     <link rel="stylesheet" href="../css/app-dialog.css">
     <link rel="stylesheet" href="../css/contrast-refinements.css">
+    <link rel="stylesheet" href="../css/interface-icons.css">
     <link rel="stylesheet" href="../css/password-field.css">
     <link rel="stylesheet" href="../css/workspace-ui.css">
 </head>
@@ -26,7 +27,6 @@
                 <span>LakbayPanahon<small>Philippine History</small></span>
             </a>
             <nav aria-label="Teacher application navigation">
-                <a class="application-back-link" href="teacher.html">For Teachers</a>
                 <a id="teacherSetupLogin" class="application-sign-in" href="login.html">Sign in</a>
                 <button id="teacherSetupLogout" type="button" class="logout-button" hidden>Log out</button>
             </nav>
@@ -35,7 +35,7 @@
         <main id="application-main" tabindex="-1">
             <header id="applicationStatusHeading" class="application-hero">
                 <div id="applicationHeadingContent" class="application-hero-copy">
-                    <p class="application-eyebrow">Teacher application</p>
+                    <a class="application-breadcrumb" href="teacher.html"><span aria-hidden="true">←</span> For Teachers</a>
                     <h1 id="teacherSetupTitle" tabindex="-1">Create your teacher account</h1>
                     <p id="teacherSetupDescription">Enter your account and teaching details to apply for classroom access.</p>
                 </div>
@@ -54,7 +54,7 @@
                     <span class="application-step-number" aria-hidden="true">2</span><span><strong>Confirm email</strong><small>Open your verification link</small><span class="application-step-complete" hidden>Completed</span></span>
                 </li>
                 <li data-application-step="review" data-state="pending">
-                    <span class="application-step-number" aria-hidden="true">3</span><span><strong>Administrator review</strong><small>Check your classroom access</small><span class="application-step-complete" hidden>Completed</span></span>
+                    <span class="application-step-number" aria-hidden="true">3</span><span><strong>Review</strong><small>Check your classroom access</small><span class="application-step-complete" hidden>Completed</span></span>
                 </li>
             </ol>
 
@@ -65,15 +65,14 @@
 
             <section id="applicationWorkspace" class="application-layout">
                 <aside class="application-sidebar" aria-label="Application guidance and status">
-                    <section class="teacher-panel application-guide">
-                        <div class="registration-guide-copy">
-                            <h2>What happens next</h2>
-                            <ol class="registration-next-steps">
-                                <li><div><strong>Confirm your email</strong><p>Open the link we send after you apply.</p></div></li>
-                                <li><div><strong>Check your application</strong><p>Sign in to see the decision or reviewer feedback.</p></div></li>
-                            </ol>
-                            <a class="application-resume-link" id="teacherResumeLink" href="login.html">Already applied? Sign in <span aria-hidden="true">→</span></a>
-                        </div>
+                    <section class="teacher-panel application-guide" aria-labelledby="applicationGuideTitle">
+                        <h2 id="applicationGuideTitle">Before you apply</h2>
+                        <ul class="application-checklist">
+                            <li><span class="interface-icon interface-icon--mail" aria-hidden="true"></span><span>Use an email address you can open to confirm your account.</span></li>
+                            <li><span class="interface-icon interface-icon--landmark" aria-hidden="true"></span><span>Have your school or organization name and your teaching role ready.</span></li>
+                            <li><span class="interface-icon interface-icon--book-open" aria-hidden="true"></span><span>If you apply as a licensed teacher, have your PRC registration number and expiry date handy.</span></li>
+                        </ul>
+                        <a class="application-resume-link" id="teacherResumeLink" href="login.html">Already applied? Sign in <span aria-hidden="true">→</span></a>
                     </section>
 
                     <section class="teacher-panel application-email-card">
@@ -111,17 +110,16 @@
                 <details id="teacherSetupDetails" class="application-form-card" data-editing="true" open>
                     <summary class="application-details-toggle">View submitted details</summary>
                     <header class="application-form-heading">
-                        <h2 id="teacherApplicationFormTitle">Application form</h2>
-                        <p>Complete both sections below. Supporting details are optional.</p>
+                        <h2 id="teacherApplicationFormTitle">Teacher application</h2>
                     </header>
                     <form id="teacherApplicationForm" method="post" aria-labelledby="teacherSetupTitle">
                         <fieldset id="teacherSetupAccount" class="application-fieldset">
-                            <legend>Account details</legend>
+                            <legend><span class="application-legend-icon interface-icon interface-icon--lock" aria-hidden="true"></span> Account details</legend>
                             <div class="application-columns registration-account-fields">
                                 <div class="teacher-name-fields">
                                     <label>First name <input id="teacherFirstName" maxlength="100" autocomplete="given-name" required></label>
-                                    <label><span>Middle name <span class="teacher-field-optional">(optional)</span></span><input id="teacherMiddleName" maxlength="100" autocomplete="additional-name"></label>
                                     <label>Last name <input id="teacherLastName" maxlength="100" autocomplete="family-name" required></label>
+                                    <label><span>Middle name <span class="teacher-field-optional">(optional)</span></span><input id="teacherMiddleName" maxlength="100" autocomplete="additional-name"></label>
                                 </div>
                                 <label class="registration-email-field">Email address <input id="teacherEmail" type="email" autocomplete="email" required></label>
                                 <div id="teacherPasswordField" class="teacher-password-fields">
@@ -135,7 +133,6 @@
                                                 </svg>
                                             </button>
                                         </div>
-                                        <small id="teacherPasswordHelp">At least 15 characters. Try several words together.</small>
                                     </div>
                                     <div>
                                         <label for="teacherConfirmPassword">Confirm password</label>
@@ -148,18 +145,13 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <small id="teacherPasswordHelp">Use at least 15 characters. A few words together are easier to remember.</small>
                                 </div>
                             </div>
                         </fieldset>
 
                         <fieldset class="application-fieldset">
-                            <legend>Teaching details</legend>
-                            <div class="application-columns">
-                                <label id="teacherApplicationName" hidden>Full name <input name="legalName" maxlength="100" autocomplete="name"></label>
-                                <label>School or organization <input name="institution" maxlength="150" required autocomplete="organization"></label>
-                                <label>Teaching role <input name="roleTitle" maxlength="100" required placeholder="e.g. Grade 5 history teacher"></label>
-                            </div>
-
+                            <legend><span class="application-legend-icon interface-icon interface-icon--landmark" aria-hidden="true"></span> Teaching details</legend>
                             <label for="applicantType" class="application-route-field">Teacher type
                                 <select name="applicantType" id="applicantType" aria-describedby="applicationRouteHelp">
                                     <option value="school_teacher">School teacher or staff</option>
@@ -169,6 +161,11 @@
                                 </select>
                             </label>
                             <p id="applicationRouteHelp" class="application-route-note">Use the school or organization and role your institution can confirm.</p>
+                            <div class="application-columns application-teaching-fields">
+                                <label id="teacherApplicationName" hidden>Full name <input name="legalName" maxlength="100" autocomplete="name"></label>
+                                <label>School or organization <input name="institution" maxlength="150" required autocomplete="organization"></label>
+                                <label>Teaching role <input name="roleTitle" maxlength="100" required placeholder="e.g. Grade 5 history teacher"></label>
+                            </div>
                             <div id="licensedTeacherFields" class="application-columns" hidden>
                                 <label>PRC registration number <input name="prcNumber" maxlength="12" inputmode="numeric" pattern="[0-9]{4,12}" title="Enter 4 to 12 digits"></label>
                                 <label>PRC license expiry date <input name="prcExpiry" type="date"></label>
@@ -181,7 +178,7 @@
 
                         <div class="application-fieldset application-optional-section">
                             <details class="application-optional-details">
-                                <summary><span>Add supporting details</span> <small>Optional</small></summary>
+                                <summary><span class="interface-icon interface-icon--book-open" aria-hidden="true"></span><span>Add supporting details</span><small>Optional</small></summary>
                                 <div class="application-optional-content">
                                     <div class="application-columns">
                                         <label>Work email <input name="workEmail" type="email" maxlength="150"></label>

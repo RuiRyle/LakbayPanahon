@@ -11,13 +11,15 @@ body.lakbay-theme dialog.private-evidence-dialog[open] { animation:none;transfor
 @media(max-width:650px){.application-columns{grid-template-columns:1fr;}}
 
 body.teacher-application-page {
-    --apply-ink: #172f40;
-    --apply-muted: #465e6b;
-    --apply-gold: #f5d390;
-    --apply-paper: #f9f5ec;
-    --apply-line: #d9d0bf;
-    --apply-inset: clamp(18px, 3.4vw, 40px);
-    --apply-shadow: 0 20px 50px #02091254;
+    --apply-ink: var(--lp-text);
+    --apply-muted: var(--lp-muted);
+    --apply-gold: var(--lp-gold-soft);
+    --apply-surface: #11283d;
+    --apply-field: #0d2034;
+    --apply-line: #46637a;
+    --apply-control-line: #71889d;
+    --apply-inset: clamp(17px, 2.8vw, 34px);
+    --apply-shadow: 0 14px 42px #0209124d;
     margin: 0;
     color: #edf4f7;
     background: #091a2b;
@@ -43,8 +45,7 @@ body.teacher-application-page .application-topbar {
     gap: 10px;
     min-width: 0;
     color: #f5f5ed;
-    font-weight: 750;
-    line-height: 1.12;
+    font: 750 1.19rem/1.12 var(--lp-font-game);
     text-decoration: none;
 }
 .application-topbar img { width: 38px; height: 38px; flex: none; }
@@ -69,21 +70,21 @@ body.teacher-application-page .application-topbar {
 .teacher-application-page #application-main {
     width: min(calc(100% - 36px), 1120px);
     margin: 0 auto;
-    padding: clamp(18px, 3.2vw, 42px) 0 clamp(36px, 5vw, 65px);
+    padding: clamp(18px, 2.4vw, 32px) 0 clamp(36px, 5vw, 65px);
 }
 .application-hero {
     position: relative;
     isolation: isolate;
     overflow: hidden;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 16px 24px;
-    min-height: clamp(225px, 22vw, 310px);
-    padding: clamp(22px, 4.8vw, 54px);
+    min-height: clamp(170px, 18vw, 225px);
+    padding: clamp(16px, 2.15vw, 26px) clamp(20px, 3.5vw, 38px);
     border: 1px solid #b799625e;
-    border-radius: 22px;
+    border-radius: 18px;
     background: #112b3d;
     box-shadow: var(--apply-shadow);
 }
@@ -102,22 +103,22 @@ body.teacher-application-page .application-topbar {
         linear-gradient(0deg, #0b2031ba, transparent 63%);
 }
 .application-hero-copy { width: min(100%, 37rem); min-width: 0; }
-.application-hero .application-eyebrow {
-    display: flex;
+.application-hero .application-breadcrumb {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-    margin: 0 0 13px;
+    gap: 7px;
+    min-height: 44px;
+    margin-block: -6px 3px;
     color: var(--apply-gold);
-    font-size: .74rem;
-    font-weight: 760;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+    font-size: .86rem;
+    font-weight: 700;
+    text-decoration: none;
 }
-.application-eyebrow::before { width: 22px; height: 1px; content: ""; background: currentColor; }
+.application-breadcrumb:hover { text-decoration: underline; text-underline-offset: 4px; }
 body.teacher-application-page .application-hero h1 {
     margin: 0 0 12px;
     color: #fff3d7;
-    font: 700 clamp(2.2rem, 4.6vw, 4.45rem) / 1.04 Georgia, serif;
+    font: 700 clamp(1.85rem, 3.4vw, 3.05rem) / 1.08 Georgia, serif;
     letter-spacing: -.042em;
     text-wrap: balance;
     overflow-wrap: anywhere;
@@ -152,25 +153,24 @@ body.teacher-application-page .application-hero h1 {
 .application-steps {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin: 16px 0 clamp(22px, 2.8vw, 34px);
+    gap: 8px;
+    margin: 14px 0 clamp(18px, 2.6vw, 26px);
     padding: 0;
-    overflow: hidden;
-    border: 1px solid #466071;
-    border-radius: 13px;
-    background: #102638;
     list-style: none;
 }
 .application-steps li {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     min-width: 0;
-    padding: 13px clamp(9px, 1.9vw, 21px);
+    padding: 11px clamp(8px, 1.6vw, 18px);
+    border: 1px solid var(--apply-line);
+    border-radius: 11px;
+    background: var(--apply-surface);
     color: #d3e2e9;
     font-size: .9rem;
     line-height: 1.32;
 }
-.application-steps li + li { border-inline-start: 1px solid #466071; }
 .application-steps strong, .application-steps small { display: block; }
 .application-steps small { margin-top: 3px; color: #b8ccd6; font-size: .77rem; line-height: 1.4; }
 .application-step-number {
@@ -184,7 +184,7 @@ body.teacher-application-page .application-hero h1 {
     font-size: .8rem;
     font-weight: 750;
 }
-.application-steps [data-state="current"] { color: #ffe5ae; background: linear-gradient(120deg, #785b362f, #172f3d); box-shadow: inset 0 -3px #e8bf78; }
+.application-steps [data-state="current"] { color: #ffe5ae; border-color: #b0925f; background: #213547; box-shadow: inset 0 -2px #e8bf78; }
 .application-steps [data-state="current"] .application-step-number { border-color: #f4d498; color: #122433; background: #f4d498; }
 .application-steps [data-state="complete"] .application-step-number { border-color: #81b0a6; color: transparent; background: #254e49; }
 .application-steps [data-state="complete"] .application-step-number::after { position: absolute; color: #e0f5e9; content: "\2713"; }
@@ -192,7 +192,7 @@ body.teacher-application-page .application-hero h1 {
 
 .application-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(255px, 310px);
+    grid-template-columns: minmax(0, 1fr) minmax(255px, 290px);
     grid-template-areas: "form sidebar";
     align-items: start;
     gap: clamp(16px, 2.5vw, 27px);
@@ -214,7 +214,25 @@ body.teacher-application-page .application-sidebar > .teacher-panel {
     color: #ffedc9;
     font: 700 clamp(1.4rem, 2.1vw, 1.8rem) / 1.18 Georgia, serif;
 }
-.application-sidebar > .application-guide { border-block-start: 3px solid #dcba79; }
+body.teacher-application-page .application-sidebar > .application-guide { border-block-start: 3px solid #dcba79; }
+.application-checklist {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.application-checklist li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+    color: var(--apply-muted);
+    font-size: .875rem;
+    line-height: 1.55;
+}
+.application-checklist li + li { padding-block-start: 12px; border-block-start: 1px solid var(--apply-line); }
+.application-checklist .interface-icon { margin-block-start: .2em; color: var(--apply-gold); }
 .application-resume-link {
     display: flex;
     align-items: center;
@@ -231,13 +249,7 @@ body.teacher-application-page .application-sidebar > .teacher-panel {
     text-decoration: none;
 }
 .application-resume-link:hover { background: #2b4c56; }
-.teacher-password-fields { display: grid; gap: 14px; align-content: start; }
-.registration-next-steps { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
-.registration-next-steps li { display: grid; grid-template-columns: 9px minmax(0, 1fr); gap: 10px; }
-.registration-next-steps li + li { padding-top: 14px; border-top: 1px solid #456273; }
-.registration-next-steps li::before { width: 7px; height: 7px; margin-top: .49rem; border-radius: 2px; transform: rotate(45deg); background: #e0bd7a; content: ""; }
-.registration-next-steps strong { color: #f2f5f4; font-size: .93rem; }
-.registration-next-steps p, .application-sidebar :is(.teacher-note, .application-email-status, .application-next-step p, .application-feedback p) {
+.application-sidebar :is(.teacher-note, .application-email-status, .application-next-step p, .application-feedback p) {
     margin: 4px 0 0;
     color: #cadce4;
     font-size: .89rem;
@@ -279,20 +291,20 @@ body.teacher-application-page .application-form-card {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border: 1px solid #e6d5b9;
+    border: 1px solid var(--apply-line);
     border-radius: 16px;
     color: var(--apply-ink);
-    background: var(--apply-paper);
+    background: var(--apply-surface);
     box-shadow: var(--apply-shadow);
-    color-scheme: light;
-    --lp-text: #172f40;
-    --lp-muted: #465e6b;
 }
 .teacher-application-page #teacherApplicationForm { display: block; max-width: none; margin: 0; }
-.application-form-heading { padding: 21px var(--apply-inset); border-bottom: 1px solid var(--apply-line); background: #f0e7d8; }
-body.teacher-application-page .application-form-heading h2 { margin: 0 0 5px; color: #183444; font: 700 clamp(1.42rem, 2.2vw, 1.82rem) / 1.2 Georgia, serif; }
-.application-form-heading p { margin: 0; color: var(--apply-muted); font-size: .87rem; line-height: 1.5; }
-.application-details-toggle { padding: 14px var(--apply-inset); color: #244653; font-weight: 750; cursor: var(--lakbay-cursor-hand, pointer); }
+.application-form-heading {
+    padding: 20px var(--apply-inset);
+    border-bottom: 1px solid var(--apply-line);
+    background: linear-gradient(115deg, #1d374c, #122a3f);
+}
+body.teacher-application-page .application-form-heading h2 { margin: 0; font: 700 clamp(1.4rem, 2.3vw, 1.85rem) / 1.2 Georgia, serif; }
+.application-details-toggle { padding: 14px var(--apply-inset); color: var(--apply-gold); font-weight: 750; cursor: var(--lakbay-cursor-hand, pointer); }
 .application-form-card[data-editing="true"] > .application-details-toggle,
 .application-form-card[data-editing="false"] :is(.application-submit-area, .application-form-heading) { display: none; }
 .application-form-card[data-editing="false"][open] .application-details-toggle { border-bottom: 1px solid var(--apply-line); }
@@ -300,21 +312,27 @@ body.teacher-application-page .application-form-heading h2 { margin: 0 0 5px; co
     display: flow-root;
     min-width: 0;
     margin: 0;
-    padding: 21px var(--apply-inset) 24px;
+    padding: 22px var(--apply-inset) 25px;
     border: 0;
     border-bottom: 1px solid var(--apply-line);
 }
 .teacher-application-page #teacherApplicationForm .application-fieldset > legend {
     float: left;
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     width: 100%;
-    margin: 0 0 14px;
+    margin: 0 0 17px;
     padding: 0;
     color: var(--apply-ink);
     font: 750 1.06rem / 1.35 system-ui, sans-serif;
 }
+.application-legend-icon { color: var(--apply-gold); }
 .application-fieldset .application-columns { clear: both; gap: 15px 16px; }
-.teacher-name-fields { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px 16px; }
+.teacher-name-fields { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px 16px; }
+.teacher-name-fields > :last-child, .registration-email-field, .teacher-password-fields { grid-column: 1 / -1; }
+.teacher-password-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; align-content: start; }
+#teacherPasswordHelp { grid-column: 1 / -1; margin: 0; }
 #teacherApplicationName { grid-column: 1 / -1; }
 .teacher-application-page #teacherApplicationForm label {
     display: grid;
@@ -334,23 +352,21 @@ body.teacher-application-page .application-form-heading h2 { margin: 0 0 5px; co
     min-height: 48px;
     margin: 0;
     padding: 10px 12px;
-    border: 1px solid #91a1a2;
-    border-radius: 8px;
+    border: 1px solid var(--apply-control-line);
+    border-radius: 10px;
     color: var(--apply-ink);
-    background: #fffdf8;
+    background: var(--apply-field);
     font: 400 1rem / 1.45 system-ui, sans-serif;
-    color-scheme: light;
     transition: border-color 140ms ease, box-shadow 140ms ease;
 }
-.teacher-application-page #teacherApplicationForm :is(input, textarea)::placeholder { color: #526973; }
+.teacher-application-page #teacherApplicationForm :is(input, textarea)::placeholder { color: var(--apply-muted); }
 .teacher-application-page #teacherApplicationForm textarea { resize: vertical; }
-.teacher-application-page #teacherApplicationForm :is(input, select, textarea):focus-visible { border-color: #287172; box-shadow: 0 0 0 3px #31787924; }
-.teacher-application-page #teacherApplicationForm [aria-invalid="true"] { border-color: #ab4837; }
-.teacher-application-page #teacherApplicationForm :is(input, textarea, select):disabled { opacity: 1; color: #4b6068; background: #ebe8df; }
+.teacher-application-page #teacherApplicationForm :is(input, select, textarea):focus-visible { border-color: var(--apply-gold); box-shadow: 0 0 0 3px #e8bf781f; }
+.teacher-application-page #teacherApplicationForm [aria-invalid="true"] { border-color: #e59587; }
+.teacher-application-page #teacherApplicationForm :is(input, textarea, select):disabled { opacity: 1; color: var(--apply-muted); background: #193044; }
 .teacher-application-page :is(button, a, input, textarea, select, summary, [tabindex="-1"]):focus-visible { outline: 2px solid #f6d38c; outline-offset: 3px; }
-.application-form-card :is(button, a, input, textarea, select, summary, [tabindex="-1"]):focus-visible { outline-color: #236268; }
 .teacher-application-page :is(input, textarea, select, [tabindex="-1"]) { scroll-margin-block-start: 86px; }
-.teacher-application-page .password-field { --password-toggle-color: #2a5c62; --password-toggle-hover: #e3eee7; --password-toggle-focus: #236268; margin-top: 6px; }
+.teacher-application-page .password-field { --password-toggle-color: var(--apply-gold); --password-toggle-hover: #27465e; margin-top: 6px; }
 body.teacher-application-page #teacherApplicationForm .password-field > input { padding-inline-end: 58px; }
 #teacherPasswordHelp, .application-route-note, .registration-submit-note {
     display: block;
@@ -359,55 +375,71 @@ body.teacher-application-page #teacherApplicationForm .password-field > input { 
     font-size: .82rem;
     line-height: 1.55;
 }
-.teacher-application-page #teacherApplicationForm .application-route-field { margin-top: 16px; }
-#licensedTeacherFields:not([hidden]), #endorsedTeacherFields:not([hidden]) { margin-top: 13px; padding: 14px; border: 1px solid #a9b8b1; border-radius: 8px; background: #edf0e8; }
+.teacher-application-page #teacherApplicationForm .application-route-field { clear: both; }
+.teacher-application-page #teacherApplicationForm .application-teaching-fields { margin-block-start: 16px; }
+#licensedTeacherFields:not([hidden]), #endorsedTeacherFields:not([hidden]) { margin-top: 14px; padding: 14px; border: 1px solid var(--apply-line); border-radius: 10px; background: #183247; }
 .application-optional-section { padding-block: 15px; }
-.application-optional-details, .application-privacy { border: 1px solid #abb4ab; border-radius: 9px; background: #f2efe6; }
+.application-optional-details, .application-privacy { border: 1px solid var(--apply-line); border-radius: 10px; background: #142e44; }
 .application-optional-details > summary, .application-privacy > summary {
     min-height: 44px;
     padding: 12px 14px;
-    color: #224853;
+    color: var(--apply-ink);
     font-size: .91rem;
     font-weight: 750;
     cursor: var(--lakbay-cursor-hand, pointer);
 }
-.application-optional-details > summary small { margin-inline-start: 6px; color: var(--apply-muted); font-weight: 500; }
-.application-optional-details[open] > summary, .application-privacy[open] > summary { border-bottom: 1px solid #b5bdb3; }
+.application-optional-details > summary {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+}
+.application-optional-details > summary::-webkit-details-marker { display: none; }
+.application-optional-details > summary::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-inline-end: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+    transform: rotate(45deg);
+    color: var(--apply-gold);
+}
+.application-optional-details[open] > summary::after { transform: rotate(225deg); }
+.application-optional-details > summary .interface-icon { color: var(--apply-gold); }
+.application-optional-details > summary small { color: var(--apply-muted); font-weight: 500; }
+.application-optional-details[open] > summary, .application-privacy[open] > summary { border-bottom: 1px solid var(--apply-line); }
 .application-optional-content { display: grid; gap: 14px; padding: 15px; }
-.application-upload { min-width: 0; padding: 12px; border: 1px dashed #8ea19b; border-radius: 8px; background: #edf1e8; }
+.application-upload { min-width: 0; padding: 12px; border: 1px dashed var(--apply-control-line); border-radius: 8px; background: #0f2539; }
 .application-upload p, .application-privacy p { color: var(--apply-muted); font-size: .86rem; line-height: 1.55; }
 .application-upload p { margin: 5px 0 9px; overflow-wrap: anywhere; }
 .application-privacy p { margin: 12px 14px; }
-.application-upload [type="file"]::file-selector-button { margin-inline-end: 8px; padding: 5px 8px; border: 1px solid #94aba4; border-radius: 5px; color: #234c52; background: #e0ece3; cursor: var(--lakbay-cursor-hand, pointer); }
+.application-upload [type="file"]::file-selector-button { margin-inline-end: 8px; padding: 5px 8px; border: 1px solid var(--apply-control-line); border-radius: 5px; color: var(--apply-gold); background: #1d3a50; cursor: var(--lakbay-cursor-hand, pointer); }
 .application-file-status p:empty { display: none; }
-.application-file-status p[data-error="true"] { color: #8d3027; }
+.application-file-status p[data-error="true"] { color: #ffb8ae; }
 .teacher-application-page #teacherApplicationForm .application-check { display: flex; align-items: flex-start; gap: 11px; font-weight: 550; }
-.teacher-application-page #teacherApplicationForm .application-check input { flex: 0 0 20px; width: 20px; height: 20px; min-height: 20px; margin: 0; accent-color: #245d61; }
-.application-submit-area { padding: 17px var(--apply-inset) 21px; background: #f0e7d8; }
+.teacher-application-page #teacherApplicationForm .application-check input { flex: 0 0 20px; width: 20px; height: 20px; min-height: 20px; margin: 0; accent-color: var(--lp-action); }
+.application-submit-area { padding: 19px var(--apply-inset) 22px; background: #0d2135; }
 .teacher-application-page #teacherApplicationForm .application-acknowledgement { margin-bottom: 15px; }
 .application-submit-area .application-submit-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; margin: 0; gap: 9px; }
 .application-submit-actions button, #applicationFormFeedback button { min-height: 45px; padding: 9px 16px; border-radius: 8px; font-size: .9rem; }
-body.teacher-application-page #teacherApplicationForm .secondary { border: 1px solid #819a93; color: #1e4e53; background: #fffcf3; box-shadow: none; }
-body.teacher-application-page #teacherApplicationForm .secondary:hover:not(:disabled) { background: #e5eee4; }
+body.teacher-application-page #teacherApplicationForm .secondary { border: 1px solid var(--apply-control-line); color: var(--apply-gold); background: #172f46; box-shadow: none; }
+body.teacher-application-page #teacherApplicationForm .secondary:hover:not(:disabled) { background: #23425a; }
 body.teacher-application-page :is(.application-primary, #openApprovedWorkspace, #refreshTeacherEmail) {
     display: inline-flex;
     min-height: 46px;
     align-items: center;
     justify-content: center;
-    border: 1px solid #f5d7a0;
+    border: 1px solid var(--lp-action);
     border-radius: 8px;
-    color: #152a37;
-    background: linear-gradient(125deg, #ffe6ae, #e8bd76);
-    box-shadow: 0 3px 0 #956b3e;
+    color: var(--lp-action-ink);
+    background: var(--lp-action);
+    box-shadow: 0 2px 0 #90692e;
     font-weight: 760;
     text-decoration: none;
 }
 body.teacher-application-page .application-primary {
     min-width: min(100%, 13rem);
-    color: #fff2d7;
-    border-color: #1b464a;
-    background: linear-gradient(130deg, #2b6264, #173b43);
-    box-shadow: 0 3px 0 #123237;
 }
 body.teacher-application-page :is(.application-primary, #openApprovedWorkspace, #refreshTeacherEmail):hover:not(:disabled) { filter: brightness(1.12); }
 .registration-submit-note { text-align: end; }
@@ -441,7 +473,6 @@ body.teacher-application-page :is(.application-primary, #openApprovedWorkspace, 
     line-height: 1.55;
 }
 .teacher-application-page :is(.application-message[data-error="true"], #teacherRegisterMessage.error) { color: #ffe2d7; border-color: #bd897b; background: #553737; }
-.teacher-application-page .application-submit-area :is(.application-message[data-error="true"], #teacherRegisterMessage.error) { border-color: #be8a7b; color: #782c23; background: #f9e6df; }
 .teacher-application-page :is(.application-message, #teacherRegisterMessage):empty { display: none; }
 #retryTeacherSetup, #applicationFormFeedback button { margin-bottom: 12px; }
 
@@ -471,14 +502,13 @@ body.teacher-application-page :is(.application-primary, #openApprovedWorkspace, 
     .application-topbar nav { gap: 4px; }
     .application-topbar img { width: 32px; height: 32px; }
     .application-topbar .teacher-brand { font-size: .94rem; }
-    .application-topbar nav .application-back-link { display: none; }
     .teacher-application-page #application-main { width: calc(100% - 24px); }
-    .application-hero { min-height: 207px; padding: 20px; border-radius: 15px; }
+    .application-hero { min-height: 0; padding: 16px 18px 19px; border-radius: 14px; }
     .application-steps { margin-top: 12px; }
     .application-steps li { flex-direction: column; justify-content: flex-start; align-items: center; gap: 5px; padding: 9px 5px; text-align: center; font-size: .75rem; }
     .application-step-number { width: 25px; height: 25px; flex-basis: 25px; font-size: .73rem; }
     .application-steps small { display: none; }
-    .teacher-name-fields, .teacher-application-page .application-columns { grid-template-columns: minmax(0, 1fr); }
+    .teacher-password-fields, .teacher-application-page .application-columns { grid-template-columns: minmax(0, 1fr); }
     .application-submit-area .application-submit-actions, .application-sidebar .application-side-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
     .application-submit-actions .application-primary { grid-row: 1; }
     .registration-submit-note { text-align: start; }
