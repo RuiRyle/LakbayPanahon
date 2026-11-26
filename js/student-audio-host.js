@@ -338,6 +338,9 @@ function playSound(kind, volume = 1, force = false) {
         playTone(audio, 523, 523, .17, .05 * level, "sine", .09);
     } else if (kind === "heart-lost") {
         playTone(audio, 370, 220, .19, .052 * level, "sine", .045);
+    } else if (kind === "quiz-heart-lost") {
+        playTone(audio, 330, 260, .12, .082 * level, "triangle");
+        playTone(audio, 220, 165, .21, .068 * level, "sine", .10);
     } else if (kind === "hearts-depleted") {
         playTone(audio, 392, 392, .19, .06 * level, "sine");
         playTone(audio, 311, 311, .24, .055 * level, "sine", .15);

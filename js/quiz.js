@@ -8,6 +8,23 @@ let securedQuiz = false,
 let quizExpedition = null;
 const expeditionPanel = document.getElementById('quizExpedition');
 const lifelineButton = document.getElementById('quizLifeline');
+const quizHeartLossNotice = document.getElementById('quizHeartLossNotice');
+
+function clearQuizHeartLoss() {
+    quizHeartLossNotice.replaceChildren();
+    expeditionPanel.querySelectorAll('.heart-lost').forEach(token => token.classList.remove('heart-lost'));
+}
+
+function showQuizHeartLoss() {
+    const title = document.createElement('strong');
+    title.textContent = 'Incorrect · −1 heart';
+    const remaining = document.createElement('span');
+    remaining.textContent = quizExpedition.hearts === 1
+        ? '1 heart left'
+        : quizExpedition.hearts + ' hearts left';
+    quizHeartLossNotice.replaceChildren(title, remaining);
+}
+
 lifelineButton?.addEventListener('click', async () => {
     if (!quizExpedition || assessmentBusy || quizRecoveryCode || lifelineButton.disabled) return;
     const question = questions[currentQuestionIndex];
@@ -854,8 +871,8 @@ currentAttemptId = null;
         if (expeditionFeedback) {
             expeditionFeedback.textContent = '';
             delete expeditionFeedback.dataset.outcome;
-            expeditionPanel.querySelectorAll('.heart-lost').forEach(token => token.classList.remove('heart-lost'));
         }
+        clearQuizHeartLoss();
         questions = issued.questions;
         missionQuestionBank = issued.questionBank || issued.questions;
         seenMissionQuestionIds = issued.seenQuestionIds || [];
@@ -1432,7 +1449,8 @@ function displayQuestion() {
     animateAssessmentArrival(questionCard, `${quizSessionGeneration}:${currentQuestionIndex}:${question.id}`);
 
 
-    const answerLocked = quizSubmitted;
+    const expeditionAnswerLocked = Boolean(quizExpedition && assessmentState(securedIdentity())?.answers?.[question.id]);
+    const answerLocked = quizSubmitted || expeditionAnswerLocked;
 
 
     /* ==================================
@@ -1520,6 +1538,9 @@ function displayQuestion() {
                 optionButton.classList.add(
                     "selected"
                 );
+                if (expeditionAnswerLocked && quizExpedition.lastCorrect === false) {
+                    optionButton.classList.add('heart-loss-answer');
+                }
 
             }
 
@@ -1710,21 +1731,21 @@ function displayQuestion() {
     if (expeditionPanel) {
         expeditionPanel.hidden = !quizExpedition;
         document.getElementById('quizAnswerHelp').textContent = quizExpedition
-            ? 'Choose one answer, then lock it in.'
+            ? (expeditionAnswerLocked ? 'Your answer is locked in.' : 'Choose one answer, then lock it in.')
             : 'Choose one answer. You can change it before saving.';
         if (quizExpedition) {
             const removed = quizExpedition.lifeline;
             document.getElementById('quizHearts').textContent = quizExpedition.hearts + ' of 3 hearts';
             expeditionPanel.querySelectorAll('.quiz-heart-tokens span').forEach((token, index) => {
-                token.classList.toggle('spent', index >= quizExpedition.hearts);
+                const spent = index >= quizExpedition.hearts;
+                token.classList.toggle('spent', spent);
+                token.textContent = spent ? '♡' : '♥';
             });
-            const locked = Boolean(assessmentState(securedIdentity())?.answers?.[question.id]);
-            lifelineButton.disabled = Boolean(removed) || locked;
+            lifelineButton.disabled = Boolean(removed) || expeditionAnswerLocked;
             lifelineButton.querySelector('span').textContent = removed ? 'Bayani lifeline used' : 'Use Bayani lifeline';
             previousQuestionButton.hidden = true;
             if (flagButton) flagButton.hidden = true;
             missionCheckpoints.querySelectorAll('button').forEach(button => button.disabled = true);
-            if (locked) quizOptions.querySelectorAll('button').forEach(button => button.disabled = true);
             if (removed?.questionId === question.id) {
                 const option = quizOptions.querySelector('[data-option="' + removed.option + '"]');
                 if (option) {
@@ -1771,7 +1792,7 @@ function displayQuestion() {
 
     nextQuestionButton.disabled = !hasSelectedAnswer || quizSubmitted;
     nextQuestionButton.textContent = quizExpedition
-        ? (assessmentState(securedIdentity())?.answers?.[question.id] ? 'See Results' : 'Lock In Answer')
+        ? (expeditionAnswerLocked ? (isLastQuestion ? 'See Results' : 'Next Question') : 'Lock In Answer')
         : isLastQuestion ? 'Review Answers' : 'Next Question';
 }
 
@@ -1807,6 +1828,16 @@ previousQuestionButton.addEventListener(
 /* ==========================================
    NEXT / SUBMIT
 ========================================== */
+
+function advanceQuizQuestion() {
+    currentQuestionIndex++;
+    displayQuestion();
+    questionText.tabIndex = -1;
+    questionText.focus({preventScroll:true});
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+        document.body.classList.contains('lakbay-reduce-motion');
+    questionCard.scrollIntoView({behavior: reduceMotion ? 'instant' : 'smooth', block:'start'});
+}
 
 nextQuestionButton.addEventListener(
     "click",
@@ -1873,7 +1904,12 @@ nextQuestionButton.addEventListener(
         ================================== */
 
         if (quizExpedition && assessmentState(securedIdentity())?.answers?.[currentQuestion.id]) {
-            await submitQuiz(true);
+            if (isLastQuestion) {
+                await submitQuiz(true);
+            } else {
+                clearQuizHeartLoss();
+                advanceQuizQuestion();
+            }
             return;
         }
         const heartsBeforeAnswer = quizExpedition?.hearts;
@@ -1913,10 +1949,7 @@ nextQuestionButton.addEventListener(
                 }
             }
         }
-        const ranOutOfHearts = heartsBeforeAnswer > 0 && quizExpedition?.hearts === 0;
-        if (ranOutOfHearts) {
-            document.dispatchEvent(new CustomEvent('lakbay:hearts-depleted'));
-        } else {
+        if (!quizExpedition) {
             document.dispatchEvent(new CustomEvent('lakbay:answer-lock'));
         }
         if (quizExpedition) {
@@ -1925,32 +1958,27 @@ nextQuestionButton.addEventListener(
             expeditionPanel.querySelectorAll('.quiz-heart-tokens > span').forEach((token, index) => {
                 token.classList.toggle('heart-lost', lostHeart && index === quizExpedition.hearts);
             });
-            feedback.dataset.outcome = quizExpedition.lastCorrect ? 'correct' : 'missed';
-            feedback.textContent = quizExpedition.lastCorrect
-                ? 'Correct. Checkpoint cleared.'
-                : quizExpedition.hearts ? 'Incorrect. You lost one heart.' : 'You lost your last heart. This attempt is over.';
-            animateAssessmentArrival(feedback);
+            feedback.textContent = '';
+            delete feedback.dataset.outcome;
+            if (lostHeart) {
+                document.dispatchEvent(new CustomEvent(quizExpedition.exhausted ? 'lakbay:hearts-depleted' : 'lakbay:quiz-heart-lost'));
+            } else if (quizExpedition.lastCorrect) {
+                feedback.dataset.outcome = 'correct';
+                feedback.textContent = isLastQuestion ? 'Correct. Checkpoint cleared.' : 'Previous answer correct.';
+                animateAssessmentArrival(feedback);
+                document.dispatchEvent(new CustomEvent('lakbay:answer-correct'));
+            }
             if (quizExpedition.exhausted) {
                 displayQuestion();
-                quizOptions.querySelector('.answer-locked.selected')?.classList.add('heart-loss-answer');
                 await submitQuiz(true);
                 return;
             }
-            if (isLastQuestion) {
-                // The last checkpoint stays visible while the student moves to review.
-                requestAnimationFrame(() => {
-                    if (questions[currentQuestionIndex]?.id === currentQuestion.id) {
-                        animateAssessmentArrival(quizOptions.querySelector('.answer-locked.selected'));
-                    }
-                });
-            }
-            if (quizExpedition.lastCorrect || (lostHeart && !ranOutOfHearts)) {
-                document.dispatchEvent(new CustomEvent(quizExpedition.lastCorrect ? 'lakbay:answer-correct' : 'lakbay:heart-lost'));
-            }
-            if (isLastQuestion) {
+            if (lostHeart || isLastQuestion) {
                 displayQuestion();
-                if (lostHeart) quizOptions.querySelector('.answer-locked.selected')?.classList.add('heart-loss-answer');
+                if (lostHeart) showQuizHeartLoss();
+                else animateAssessmentArrival(quizOptions.querySelector('.answer-locked.selected'));
                 nextQuestionButton.focus();
+                if (lostHeart) quizHeartLossNotice.scrollIntoView({block:'nearest'});
                 return;
             }
         }
@@ -1963,29 +1991,7 @@ nextQuestionButton.addEventListener(
                 if (nextMissionQuestion) placeNextMissionQuestion(currentQuestionIndex, nextMissionQuestion);
             }
 
-            currentQuestionIndex++;
-
-
-            displayQuestion();
-            questionText.tabIndex = -1;
-            questionText.focus({preventScroll:true});
-
-
-            if (questionCard) {
-
-                questionCard.scrollIntoView(
-                    {
-                        behavior:
-                            "smooth",
-
-                        block:
-                            "start"
-                    }
-                );
-
-            }
-
-
+            advanceQuizQuestion();
             return;
 
         }
