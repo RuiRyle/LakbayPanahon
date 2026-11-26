@@ -181,7 +181,7 @@
                         <span class="student-signup-icon interface-icon interface-icon--mail" aria-hidden="true"></span>
                         <span><strong>Use email</strong><small>Sign in with an email address and password.</small></span>
                     </a>
-                    <a href="student-access.html?mode=setup" class="student-signup-option" data-student-access-link>
+                    <a href="register.html?method=username#email-signup" class="student-signup-option" data-student-access-link>
                         <span class="student-signup-icon interface-icon interface-icon--key-round" aria-hidden="true"></span>
                         <span><strong>Use a username</strong><small>No email needed. Sign in with a username and passphrase.</small></span>
                     </a>
@@ -191,17 +191,34 @@
             <div id="email-signup" tabindex="-1">
             <div class="form-heading">
                 <h2>
-                    Create your account with email
+                    Create your student account
                 </h2>
 
-                <p>
+                <p id="studentSignupFormDescription">
                     You’ll use this email address and password to sign in.
                 </p>
 
             </div>
 
 
-            <a class="student-signup-switch" href="#choose-account">Choose a different signup method</a>
+            <nav class="student-signup-methods" aria-label="Signup method">
+                <a id="studentSignupEmailMethod" href="register.html#email-signup" aria-current="page">
+                    <span class="interface-icon interface-icon--mail" aria-hidden="true"></span>
+                    <span>Email</span>
+                </a>
+                <a id="studentSignupUsernameMethod" href="register.html?method=username#email-signup">
+                    <span class="interface-icon interface-icon--key-round" aria-hidden="true"></span>
+                    <span>Username</span>
+                </a>
+            </nav>
+
+            <div id="studentUsernameAvailability" class="student-signup-status" hidden>
+                <span class="student-signup-status-icon interface-icon interface-icon--key-round" aria-hidden="true"></span>
+                <div>
+                    <p id="studentUsernameStatus" role="status"></p>
+                    <button id="retryStudentUsernameSignup" class="secondary-button" type="button" hidden>Check again</button>
+                </div>
+            </div>
 
             <form
                 id="studentRegisterForm"
@@ -297,7 +314,7 @@
 
                 <!-- EMAIL -->
 
-                <div class="form-group">
+                <div class="form-group" id="studentSignupEmailGroup">
 
                     <label for="studentEmail">
                         Email Address
@@ -335,6 +352,20 @@
 
                 </div>
 
+
+                <div class="form-group" id="studentSignupUsernameGroup" hidden>
+                    <label for="studentSignupUsername">Username</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon" aria-hidden="true">
+                            <span class="interface-icon interface-icon--key-round"></span>
+                        </span>
+                        <input type="text" id="studentSignupUsername" placeholder="Choose a username"
+                            autocomplete="username" autocapitalize="none" spellcheck="false" minlength="3"
+                            maxlength="20" pattern="[A-Za-z][A-Za-z0-9_\-]{2,19}"
+                            aria-describedby="studentSignupUsernameHint" required disabled>
+                    </div>
+                    <small id="studentSignupUsernameHint" class="input-help">Use a nickname with 3–20 characters. Start with a letter. You can also use numbers, hyphens, and underscores.</small>
+                </div>
 
                 <!-- PASSWORD -->
 
@@ -459,7 +490,7 @@
 
                 <aside class="registration-notice" aria-labelledby="studentAccountNoticeTitle">
                     <h2 id="studentAccountNoticeTitle">Before you create an account</h2>
-                    <p>Your account saves your name, sign-in email and learning progress. Keep your password private. Ask a parent or guardian if you need help.</p>
+                    <p id="studentSignupNotice">Your account saves your name, sign-in email and learning progress. Keep your password private. Ask a parent or guardian if you need help.</p>
                     <p>Final privacy notices and a support contact are still being prepared. This notice is not a completed Privacy Policy or Terms of Use.</p>
                 </aside>
 
@@ -498,13 +529,20 @@
 
                     Create Student Account
 
-                    <span>
-                        →
-                    </span>
+                    <span aria-hidden="true">→</span>
 
                 </button>
 
             </form>
+            <section id="studentSignupBackup" class="student-access-help" hidden aria-labelledby="studentSignupBackupTitle">
+                <h2 id="studentSignupBackupTitle" tabindex="-1">Save your backup key</h2>
+                <p>Keep this key private. You’ll need it to reset your passphrase if you forget it.</p>
+                <dl class="student-access-key">
+                    <div><dt>Username</dt><dd id="studentSignupBackupUsername"></dd></div>
+                    <div><dt>Backup key</dt><dd><code id="studentSignupBackupKey"></code></dd></div>
+                </dl>
+                <a class="student-access-choice" id="studentSignupBackupContinue" href="student-shell.html">Continue to my dashboard</a>
+            </section>
             <a id="studentRegistrationContinue" class="auth-button" href="student-dashboard.html" hidden>Start My Learning Journey</a>
             </div>
 
@@ -542,6 +580,7 @@
 
 
 <script type="module" src="../js/auth-ui.js"></script>
+    <script type="module" src="../js/student-username-signup.js"></script>
 
     <script type="module" src="../js/page-transition.js"></script>
     <script type="module" src="../js/password-field.js"></script>

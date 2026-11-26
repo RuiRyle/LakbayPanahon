@@ -82,7 +82,7 @@ function initializeAuthUI() {
         );
 
 
-    if (studentForm) {
+    if (studentForm && window.location?.search !== "?method=username") {
         const finishSetup = window.location?.search === "?mode=finish-setup";
         let registrationBusy=false, registrationComplete=false;
         let createdStudent=null;

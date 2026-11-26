@@ -1328,6 +1328,65 @@ input {
 .student-signup-chooser { display: none; }
 .student-signup-chooser:target { display: block; }
 .student-signup-chooser:target + #email-signup { display: none; }
+#email-signup [hidden] { display: none; }
+#studentRegisterForm .input-wrapper { border-radius: 10px; }
+#studentRegisterForm[inert] { opacity: .65; }
+.student-signup-methods {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    margin-block: 16px;
+    padding: 4px;
+    border: 1px solid #526d80;
+    border-radius: 13px;
+    background: #10263f;
+}
+.student-signup-methods a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 44px;
+    padding: 6px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    color: #d1e1e5;
+    font-size: .875rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+.student-signup-methods a:hover { background: #234752; }
+.student-signup-methods a[aria-current="page"] {
+    border-color: #957c51;
+    background: #254452;
+    color: #ffdfa1;
+}
+.student-signup-methods a:focus-visible { outline: 2px solid #ffdfa1; outline-offset: 2px; }
+.student-signup-status {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 11px;
+    margin-block-end: 16px;
+    padding: 12px;
+    border: 1px solid #526d80;
+    border-radius: 12px;
+    background: #10283a;
+    color: #d1e1e5;
+    font-size: .875rem;
+    line-height: 1.55;
+}
+.student-signup-status[data-state="unavailable"] { border-color: #957c51; }
+.student-signup-status .student-signup-status-icon { margin-block-start: 3px; color: #f1d296; }
+.student-signup-status p { margin: 0; }
+.student-signup-status .secondary-button {
+    width: auto;
+    min-height: 44px;
+    margin-block-start: 9px;
+    padding-inline: 12px;
+}
+.student-signup-status .secondary-button[aria-disabled="true"] { cursor: wait; opacity: .7; }
 .student-signup-options { display: grid; gap: 12px; margin-block: 16px 22px; }
 body.lakbay-theme .student-signup-option {
     display: grid;
@@ -1354,14 +1413,6 @@ body.lakbay-theme .student-signup-option:hover { background: #234752; border-col
 .student-signup-option :is(strong, small) { display: block; line-height: 1.45; }
 .student-signup-option small { color: #d1e1e5; font-size: .875rem; margin-top: 3px; }
 .student-signup-option .student-signup-icon { width: 22px; height: 22px; color: #f1d296; }
-body.lakbay-theme .student-signup-switch {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    color: #f0d497;
-    font-size: .875rem;
-    text-underline-offset: 4px;
-}
 @media (max-width: 600px) {
     .auth-page:has(.student-signup-chooser:target) .auth-showcase { display: none; }
 }
