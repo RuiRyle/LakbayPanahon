@@ -16,13 +16,28 @@ function clearQuizHeartLoss() {
 }
 
 function showQuizHeartLoss() {
+    const emblem = document.createElement('span');
+    emblem.className = 'quiz-heart-loss-emblem';
+    emblem.setAttribute('aria-hidden', 'true');
+    emblem.textContent = '♡';
+
+    const details = document.createElement('div');
+    details.className = 'quiz-heart-loss-details';
+    const heading = document.createElement('div');
+    heading.className = 'quiz-heart-loss-heading';
     const title = document.createElement('strong');
-    title.textContent = 'Incorrect · −1 heart';
+    title.textContent = 'Incorrect';
+    const penalty = document.createElement('span');
+    penalty.className = 'quiz-heart-loss-penalty';
+    penalty.textContent = '−1 heart';
+    heading.append(title, ' ', penalty);
     const remaining = document.createElement('span');
+    remaining.className = 'quiz-heart-loss-remaining';
     remaining.textContent = quizExpedition.hearts === 1
         ? '1 heart left'
         : quizExpedition.hearts + ' hearts left';
-    quizHeartLossNotice.replaceChildren(title, remaining);
+    details.append(heading, remaining);
+    quizHeartLossNotice.replaceChildren(emblem, details);
 }
 
 lifelineButton?.addEventListener('click', async () => {

@@ -4,6 +4,7 @@ import {onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/12.4.0/fire
 import {connectBayani} from './bayani-client.js';
 import {BAYANI_CONNECT_TIMEOUT_MS,BAYANI_REPLY_TIMEOUT_MS,withBayaniDeadline,bayaniFailureMessage} from './bayani-request.js';
 const log=document.getElementById('bayaniMessages'),form=document.getElementById('bayaniForm'),input=document.getElementById('bayaniInput'),send=document.getElementById('sendBayani'),status=document.getElementById('bayaniStatus'),retry=document.getElementById('retryBayani');
+const transcript = log.closest('.bayani-chat');
 let generation=0,client=null,history=[],busy=false;
 const recentChats = document.getElementById('bayaniRecentChats');
 let activeChatId = null;
@@ -46,7 +47,7 @@ function renderRecentChats() {
    const meta = document.createElement('small');meta.className = 'bayani-history-meta';
    const messages = chat.turns.length;
    const date = new Date(chat.updatedAt);
-   meta.textContent = (chat.id === activeChatId ? 'Current chat ? ' : '') + messages + ' messages' + (Number.isFinite(date.getTime()) ? ' ? ' + date.toLocaleDateString(undefined,{month:'short',day:'numeric'}) : '');
+   meta.textContent = (chat.id === activeChatId ? 'Current chat · ' : '') + messages + ' messages' + (Number.isFinite(date.getTime()) ? ' · ' + date.toLocaleDateString(undefined,{month:'short',day:'numeric'}) : '');
    open.append(title,preview,meta);
    open.setAttribute('aria-label','Open chat: ' + chat.title);
    if (chat.id === activeChatId) open.setAttribute('aria-current', 'true');
@@ -69,6 +70,7 @@ function renderRecentChats() {
      }
     }
     syncChatAppearance();
+    transcript.scrollTop = 0;
     recentChats.open = false;
     renderRecentChats();
     recentChats.querySelector('summary').focus();
@@ -144,12 +146,26 @@ function renderAssistantMessage(target,message){
  }
  flushParagraph();
 }
+
+function revealMessage(article) {
+ const pane = transcript.getBoundingClientRect();
+ const message = article.getBoundingClientRect();
+ if (message.height > transcript.clientHeight || message.top < pane.top) {
+  transcript.scrollTop += message.top - pane.top;
+ } else if (message.bottom > pane.bottom) {
+  transcript.scrollTop += message.bottom - pane.bottom;
+ }
+}
+
 function bubble(role,message,scroll=true){
  const article=document.createElement('article');article.className='bayani-message '+role;
  const label=document.createElement('strong');label.textContent=role==='user'?'You':'Bayani';
  if(role==='user'){const body=document.createElement('p');body.textContent=message;article.append(label,body);}
  else{const body=document.createElement('div');body.className='bayani-message-content';renderAssistantMessage(body,message);article.append(label,body);}
- log.append(article);syncChatAppearance();if(scroll)article.scrollIntoView({block:'nearest',behavior:'instant'});return article;
+ log.append(article);
+ syncChatAppearance();
+ if (scroll) revealMessage(article);
+ return article;
 }
 async function connect(){const request=++generation,uid=auth.currentUser?.uid;client=null;history=[];activeChatId=null;busy=false;log.replaceChildren();input.value='';input.disabled=send.disabled=true;retry.hidden=true;if(recentChats)recentChats.open=false;renderRecentChats();status.textContent=uid?'Connecting to Bayani...':'Sign in to chat with Bayani.';syncChatAppearance();if(!uid)return;
  try{const next=await withBayaniDeadline(connectBayani,BAYANI_CONNECT_TIMEOUT_MS);if(request!==generation||auth.currentUser?.uid!==uid)return;client=next;input.maxLength=next.settings.maxMessageCharacters;input.disabled=send.disabled=false;status.textContent='Ready to chat.';if(!activeChatId&&next.settings.welcomeMessage)bubble('assistant',next.settings.welcomeMessage);syncChatAppearance();}

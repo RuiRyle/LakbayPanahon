@@ -183,8 +183,9 @@
     const supporting=['storyDiscovery','storyKeyTerm','historicalInsight'].map(id=>document.getElementById(id)).filter(Boolean);
     const sceneImage=document.getElementById('storySceneImage');
     const storyVisual=document.getElementById('storyVisual');
+    const artworkFrame = storyVisual.querySelector('.story-artwork-frame');
     const enlarge=document.createElement('button');enlarge.type='button';enlarge.className='lesson-image-open';enlarge.textContent='View larger';enlarge.hidden=true;
-    storyVisual.append(enlarge);
+    (artworkFrame || storyVisual).append(enlarge);
     const viewer=window.LakbayImageViewer?.create({getImage:()=>sceneImage,getCaption:()=>document.getElementById('storyVisualCaption').textContent});
     enlarge.setAttribute('aria-haspopup','dialog');
     enlarge.addEventListener('click',()=>viewer?.open(enlarge));
@@ -352,6 +353,8 @@
         card.classList.toggle('lesson-understanding',activeId==='lessonUnderstanding');
         const artworkState=storyVisual.dataset.artworkState;
         const hideEnlarge=!viewer||typeof viewer.dialog.showModal!=='function'||!['loading','ready','unavailable'].includes(artworkState);
+        const enlargeHost = mapFrame.classList.contains('is-interactive-map') ? storyVisual : artworkFrame || storyVisual;
+        if (enlarge.parentElement !== enlargeHost) enlargeHost.append(enlarge);
         if(enlarge.hidden!==hideEnlarge)enlarge.hidden=hideEnlarge;
         if(enlarge.disabled!==sceneImage.hidden)enlarge.disabled=sceneImage.hidden;
         card.querySelector('.story-beat-toolbar')?.classList.toggle('lesson-shelved',!isRead);

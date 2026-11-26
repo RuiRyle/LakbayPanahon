@@ -2195,11 +2195,11 @@ body.lakbay-theme.mission-quiz-web[data-role="student"] #quizResult #quizReinfor
 .quiz-heart-tokens span:nth-child(2) { animation-delay: 90ms; }
 .quiz-heart-tokens span:nth-child(3) { animation-delay: 180ms; }
 .quiz-heart-tokens span.heart-lost {
-    border-color: #f6a5af;
-    background: #402638;
-    color: #ffc8cc;
-    box-shadow: 0 0 0 2px #f6a5af35;
-    animation: quiz-heart-drop .52s ease-out both;
+    border: 1px solid #f3a5b4;
+    background: radial-gradient(circle at 50% 20%, #693a50, #30293d 72%);
+    color: #ffd2d9;
+    box-shadow: inset 0 0 0 2px #331e35, 0 0 0 2px #f3a5b440;
+    animation: quiz-heart-drop .5s ease-out both;
 }
 @keyframes quiz-heartbeat {
     0%, 22%, 100% { transform: scale(1); }
@@ -2207,9 +2207,9 @@ body.lakbay-theme.mission-quiz-web[data-role="student"] #quizResult #quizReinfor
     15% { transform: scale(1.05); }
 }
 @keyframes quiz-heart-drop {
-    0% { transform: scale(1.25); background: #79434a; color: #ffe0b2; }
-    55% { transform: translateY(3px) scale(.84); opacity: .82; }
-    100% { transform: none; opacity: 1; }
+    0% { transform: scale(1.22); box-shadow: 0 0 0 6px #f3a5b454; }
+    52% { transform: translateY(3px) scale(.88); }
+    100% { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
     .quiz-heart-tokens span { animation: none !important; }
@@ -2446,27 +2446,55 @@ body.lakbay-theme.mission-quiz-web .quiz-container {
     margin-inline: auto;
 }
 .quiz-heart-loss-notice:not(:empty) {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    justify-content: space-between;
-    gap: .35rem 1rem;
+    gap: clamp(.65rem, 3vw, 1rem);
     margin-block: 1rem;
-    padding: .75rem 1rem;
-    border: 1px solid #b77383;
-    border-inline-start-width: 4px;
-    border-radius: .75rem;
-    background: #392538;
-    color: #ffe5e8;
+    padding: .75rem clamp(.7rem, 3vw, 1rem);
+    border: 1px solid #b98592;
+    border-radius: 14px;
+    background: radial-gradient(ellipse at 0 10%, #6b394d 0%, transparent 75%), #28243a;
+    color: #ffeced;
+    box-shadow: inset 0 1px #f6bacb28, 0 4px 14px #070e2145;
     line-height: 1.4;
 }
 
-.quiz-heart-loss-notice strong {
-    color: #ffd3da;
-    font: 750 1rem/1.4 var(--lp-font-game, system-ui);
+.quiz-heart-loss-emblem {
+    display: grid;
+    place-items: center;
+    inline-size: clamp(2.65rem, 11vw, 3.2rem);
+    aspect-ratio: 1;
+    border: 1px solid #e8a4b2;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 18%, #87475d, #392237 76%);
+    color: #ffd5dc;
+    box-shadow: inset 0 0 0 3px #36203693, 0 0 0 3px #e6a4b223;
+    font: 700 1.7rem/1 "Segoe UI Symbol", system-ui, sans-serif;
 }
 
-.quiz-heart-loss-notice span { font-size: .875rem; }
+.quiz-heart-loss-details { display: grid; gap: 4px; }
+.quiz-heart-loss-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .25rem .6rem;
+}
+.quiz-heart-loss-heading strong {
+    color: #fff2f2;
+    font: 800 clamp(1.05rem, 3.5vw, 1.2rem)/1.22 var(--lp-font-game, system-ui);
+}
+.quiz-heart-loss-penalty {
+    padding: .12rem .48rem;
+    border: 1px solid #d894a4;
+    border-radius: 20px;
+    background: #39243a;
+    color: #ffced6;
+    font-size: .8125rem;
+    font-weight: 750;
+    white-space: nowrap;
+}
+.quiz-heart-loss-remaining { color: #f2dee4; font-size: .875rem; }
 
 body.lakbay-theme.mission-quiz-web[data-role="student"] .quiz-option.answer-locked.selected.heart-loss-answer {
     background: #392538;
@@ -2476,7 +2504,15 @@ body.lakbay-theme.mission-quiz-web[data-role="student"] .quiz-option.answer-lock
     outline-offset: -2px;
 }
 .quiz-option.selected.heart-loss-answer::after { content: none; }
-.quiz-heart-tokens span.heart-lost { animation-delay: 0s; }
+@media (prefers-reduced-motion: no-preference) {
+    body:not(.lakbay-reduce-motion) .quiz-heart-loss-notice:not(:empty) {
+        animation: quiz-heart-loss-arrival .25s ease-out both;
+    }
+}
+@keyframes quiz-heart-loss-arrival {
+    from { opacity: .65; transform: translateY(4px); }
+    to { opacity: 1; transform: none; }
+}
 #quizContent.quiz-result-handoff .mission-checkpoint.answered .mission-checkpoint-dot {
     border-color: #f1ce88;
     box-shadow: 0 0 0 2px #f1ce8844;

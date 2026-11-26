@@ -224,50 +224,67 @@
             </header>
 
 
-            <!-- =====================================
-                 ACHIEVEMENTS CONTENT
-            ====================================== -->
-
             <div class="bayani-content">
                 <header class="bayani-heading">
                     <div class="bayani-hero-copy">
-                        <span class="eyebrow">YOUR PHILIPPINE HISTORY COMPANION</span>
                         <h1>Ask <span>Bayani AI</span></h1>
-                        <p>Ask about a lesson, unpack a historical event, or connect ideas across eras.</p>
-                        <a class="bayani-back lp-button lp-button-secondary" href="my-journey.html"><span aria-hidden="true">&larr;</span> Back to My Journey</a>
+                        <p>Ask about Philippine history, get a hint, or understand a lesson.</p>
                     </div>
                     <div class="bayani-hero-portrait" aria-hidden="true">
                         <img src="../assets/brand/bayani-explorer-still.svg" alt="" width="120" height="125">
                     </div>
                 </header>
-                <section id="bayaniReviewPanel" class="bayani-review-panel" hidden aria-labelledby="reviewPanelTitle"><span class="eyebrow">ONE QUESTION AT A TIME</span><h2 id="reviewPanelTitle">Practise with Bayani</h2><p id="reviewTopicLabel">Review a history topic</p><p id="reviewQuestionStatus" role="status" aria-live="polite">Choose a review topic in My Journey.</p><button id="retryReviewLesson" class="text-button" type="button" hidden disabled>Retry lesson</button> <a href="my-journey.html" class="text-button">Choose a topic in My Journey</a> <a href="bayani-ai.html" class="text-button">Ask Bayani a Question</a> <a id="reviewSourceLesson" class="text-button" hidden>Revisit the source lesson</a><p><button id="generateReviewQuestion" type="button" disabled>Generate a Review Question</button></p><div id="generatedReviewQuestion" hidden><h3 id="reviewQuestionText" tabindex="-1"></h3><div id="reviewQuestionOptions" class="bayani-review-options" role="group" aria-label="Choose an answer"></div><button id="checkReviewAnswer" type="button" disabled>Check My Answer</button><p id="reviewAnswerFeedback" role="status" aria-live="polite"></p></div><p>Optional review practice awards no XP or mission completion.</p></section><div class="bayani-layout">
-                    <aside class="bayani-companion" aria-labelledby="companionTitle">
-                        <div class="bayani-guide-card">
-                            <h2 id="companionTitle">Meet Bayani</h2>
-                            <p>Ask for a hint, an explanation, or a connection to another lesson.</p>
+                <section id="bayaniReviewPanel" class="bayani-review-panel" hidden aria-labelledby="reviewPanelTitle"><span class="eyebrow">ONE QUESTION AT A TIME</span><h2 id="reviewPanelTitle">Practise with Bayani</h2><p id="reviewTopicLabel">Review a history topic</p><p id="reviewQuestionStatus" role="status" aria-live="polite">Choose a review topic in My Journey.</p><button id="retryReviewLesson" class="text-button" type="button" hidden disabled>Retry lesson</button> <a href="my-journey.html" class="text-button">Choose a topic in My Journey</a> <a href="bayani-ai.html" class="text-button">Ask Bayani a Question</a> <a id="reviewSourceLesson" class="text-button" hidden>Revisit the source lesson</a><p><button id="generateReviewQuestion" type="button" disabled>Generate a Review Question</button></p><div id="generatedReviewQuestion" hidden><h3 id="reviewQuestionText" tabindex="-1"></h3><div id="reviewQuestionOptions" class="bayani-review-options" role="group" aria-label="Choose an answer"></div><button id="checkReviewAnswer" type="button" disabled>Check My Answer</button><p id="reviewAnswerFeedback" role="status" aria-live="polite"></p></div><p>Optional review practice awards no XP or mission completion.</p></section>
+                <section class="bayani-workspace" aria-labelledby="chatTitle">
+                    <header class="bayani-chat-heading">
+                        <div class="bayani-chat-identity">
+                            <h2 id="chatTitle">Bayani chat</h2>
+                            <div class="bayani-connection" data-state="connecting">
+                                <span class="bayani-status-dot" aria-hidden="true"></span>
+                                <p id="bayaniStatus" role="status" aria-live="polite" aria-atomic="true">Connecting to Bayani AI...</p>
+                            </div>
                         </div>
-                        <nav class="bayani-guide-links" aria-labelledby="bayaniKitTitle">
-                            <h3 id="bayaniKitTitle">Exploration Kit</h3>
-                            <a href="my-journey.html"><span class="interface-icon interface-icon--book-open" aria-hidden="true"></span><strong>My learning path</strong><span aria-hidden="true">&rarr;</span></a>
-                            <a href="chapters.html"><span class="interface-icon interface-icon--compass" aria-hidden="true"></span><strong>Explore chapters</strong><span aria-hidden="true">&rarr;</span></a>
-                            <a href="achievements.html"><span class="interface-icon interface-icon--trophy" aria-hidden="true"></span><strong>My collections</strong><span aria-hidden="true">&rarr;</span></a>
-                        </nav>
-                    </aside>
-                    <section class="bayani-workspace" aria-labelledby="chatTitle">
-                        <header class="bayani-chat-heading"><div class="bayani-chat-identity"><span class="bayani-mini-emblem" aria-hidden="true"><img src="../assets/brand/bayani-explorer-still.svg" alt="" width="32" height="33"></span><div><h2 id="chatTitle">Discovery chat</h2></div></div><button id="newBayaniChat" class="bayani-new-chat" type="button"><span aria-hidden="true">+</span> New Chat</button></header>
-                        <details id="bayaniRecentChats" class="bayani-recent-chats" hidden>
-                            <summary><span>Conversation history</span><span class="bayani-history-hint">Revisit a discovery</span></summary>
-                            <p>Your last 10 conversations, saved on this browser for your account.</p>
-                            <ul></ul>
-                            <p class="bayani-history-status" role="status"></p>
-                        </details>
-                        <div class="bayani-connection" data-state="connecting"><span class="bayani-status-dot" aria-hidden="true"></span><p id="bayaniStatus" role="status" aria-live="polite" aria-atomic="true">Connecting to Bayani AI...</p><button id="retryBayani" class="text-button" type="button" hidden>Try Connecting Again</button></div>
-                        <div class="bayani-chat"><div id="bayaniEmpty" class="bayani-empty"><div class="bayani-discovery-mark" aria-hidden="true"><span class="interface-icon interface-icon--compass"></span></div><div><h3>What would you like to explore?</h3><p>Ask a history question or use a starter below.</p></div></div><section id="bayaniMessages" class="bayani-messages" role="log" aria-live="polite" aria-relevant="additions" aria-atomic="false" aria-label="Conversation with Bayani AI"></section></div>
-                        <div class="bayani-writing-area"><div class="bayani-prompt-kit" aria-label="Question starters"><span>Question starters</span><button type="button" class="bayani-prompt" disabled data-bayani-prompt="Help me understand this idea from my history lesson: ">Explain an idea</button><button type="button" class="bayani-prompt" disabled data-bayani-prompt="Give me a hint without revealing the answer. My question is: ">Give me a hint</button><button type="button" class="bayani-prompt" disabled data-bayani-prompt="Help me think about what this historical clue tells us: ">Explore a clue</button></div>
-                        <form id="bayaniForm" class="bayani-composer"><label for="bayaniInput">Your question</label><textarea id="bayaniInput" aria-describedby="bayaniPrivacyNote bayaniAccuracyNote" rows="2" placeholder="Ask a question about Philippine history" required disabled></textarea><div><span id="bayaniPrivacyNote"><span class="interface-icon interface-icon--lock" aria-hidden="true"></span> Keep personal details out of chat.</span><button id="sendBayani" type="submit" disabled>Send <span aria-hidden="true">&rarr;</span></button></div></form>
-                        <p id="bayaniAccuracyNote" class="bayani-note">Bayani AI generates explanations and can make mistakes. Check important facts against reliable sources and your lessons. Your last 10 chats are saved in this browser for your account. You can reopen or delete them in Conversation history.</p></div>
-                    </section>
-                </div>
+                        <button id="newBayaniChat" class="bayani-new-chat" type="button"><span aria-hidden="true">+</span> New chat</button>
+                        <button id="retryBayani" class="text-button" type="button" hidden>Try connecting again</button>
+                    </header>
+                    <details id="bayaniRecentChats" class="bayani-recent-chats" hidden>
+                        <summary>Conversation history</summary>
+                        <p>Your last 10 conversations are saved in this browser for your account. Open or delete them here.</p>
+                        <ul></ul>
+                        <p class="bayani-history-status" role="status"></p>
+                    </details>
+                    <div class="bayani-chat" role="region" aria-label="Chat transcript" tabindex="0">
+                        <div id="bayaniEmpty" class="bayani-empty">
+                            <span class="bayani-discovery-mark" aria-hidden="true"><span class="interface-icon interface-icon--compass"></span></span>
+                            <div>
+                                <h3>What would you like to explore?</h3>
+                                <p>Choose a starter or write your own question.</p>
+                            </div>
+                        </div>
+                        <section id="bayaniMessages" class="bayani-messages" role="log" aria-live="polite" aria-relevant="additions" aria-atomic="false" aria-label="Conversation with Bayani AI"></section>
+                    </div>
+                    <div class="bayani-writing-area">
+                        <div class="bayani-prompt-kit" role="group" aria-label="Question starters">
+                            <button type="button" class="bayani-prompt" disabled data-bayani-prompt="Help me understand this idea from my history lesson: "><span class="interface-icon interface-icon--book-open" aria-hidden="true"></span> Explain an idea</button>
+                            <button type="button" class="bayani-prompt" disabled data-bayani-prompt="Give me a hint without revealing the answer. My question is: "><span class="interface-icon interface-icon--lightbulb" aria-hidden="true"></span> Give me a hint</button>
+                            <button type="button" class="bayani-prompt" disabled data-bayani-prompt="Help me think about what this historical clue tells us: "><span class="interface-icon interface-icon--search" aria-hidden="true"></span> Explore a clue</button>
+                        </div>
+                        <form id="bayaniForm" class="bayani-composer">
+                            <label for="bayaniInput">Your question</label>
+                            <div class="bayani-compose-controls">
+                                <textarea id="bayaniInput" aria-describedby="bayaniPrivacyNote bayaniAccuracyNote" rows="2" placeholder="Ask about a person, event, or lesson..." required disabled></textarea>
+                                <button id="sendBayani" type="submit" disabled>Send <span aria-hidden="true">&rarr;</span></button>
+                            </div>
+                            <p id="bayaniPrivacyNote"><span class="interface-icon interface-icon--lock" aria-hidden="true"></span> Keep personal details out of chat.</p>
+                        </form>
+                        <p id="bayaniAccuracyNote" class="bayani-note">Bayani AI can make mistakes. Check important facts against your lessons and reliable sources.</p>
+                    </div>
+                </section>
+                <nav class="bayani-guide-links" aria-label="Explore LakbayPanahon">
+                    <a href="my-journey.html"><span class="interface-icon interface-icon--book-open" aria-hidden="true"></span> My Journey</a>
+                    <a href="chapters.html"><span class="interface-icon interface-icon--compass" aria-hidden="true"></span> Explore chapters</a>
+                    <a href="achievements.html"><span class="interface-icon interface-icon--trophy" aria-hidden="true"></span> My collections</a>
+                </nav>
             </div>
 
         </main>
