@@ -26,13 +26,14 @@
 
 <body class="lakbay-theme">
 
-<main class="auth-page">
+<main class="auth-page auth-portal">
 
     <!-- ======================================
          LEFT SIDE
     ======================================= -->
 
-    <section class="auth-showcase">
+    <section class="auth-showcase login-harbor" aria-label="LakbayPanahon">
+        <div class="login-harbor-art" aria-hidden="true"></div>
 
         <a href="../index.html" class="auth-logo">
 
@@ -61,87 +62,15 @@
 
 
             <h1>
-                Your journey through
-                <span>history starts here.</span>
+                Start your journey
+                <span>through history.</span>
             </h1>
 
 
             <p>
-                Create your student account and explore
-                Philippine History through interactive lessons,
-                story based missions, quizzes, achievements,
-                and AI assisted learning.
+                Follow Philippine history through stories, quizzes, and missions.
             </p>
 
-
-            <div class="register-benefits">
-
-                <div class="benefit">
-
-                    <div class="benefit-icon">
-                        ✓
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Explore History
-                        </strong>
-
-                        <span>
-                            Discover Philippine History through
-                            interactive learning experiences.
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="benefit">
-
-                    <div class="benefit-icon">
-                        ✓
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Complete Missions
-                        </strong>
-
-                        <span>
-                            Experience historical topics through
-                            missions and quizzes.
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="benefit">
-
-                    <div class="benefit-icon">
-                        ✓
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Earn Achievements
-                        </strong>
-
-                        <span>
-                            Earn XP, unlock badges, and collect
-                            historical artifacts.
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
 
         </div>
 
@@ -171,42 +100,18 @@
             </a>
 
 
-            <section id="choose-account" class="student-signup-chooser" aria-labelledby="studentSignupTitle" tabindex="-1">
-                <div class="form-heading">
-                    <h2 id="studentSignupTitle">Create your student account</h2>
-                    <p>Choose how you want to sign in.</p>
-                </div>
-                <div class="student-signup-options">
-                    <a href="#email-signup" class="student-signup-option">
-                        <span class="student-signup-icon interface-icon interface-icon--mail" aria-hidden="true"></span>
-                        <span><strong>Use email</strong><small>Sign in with an email address and password.</small></span>
-                    </a>
-                    <a href="register.html?method=username#email-signup" class="student-signup-option" data-student-access-link>
-                        <span class="student-signup-icon interface-icon interface-icon--key-round" aria-hidden="true"></span>
-                        <span><strong>Use a username</strong><small>No email needed. Sign in with a username and passphrase.</small></span>
-                    </a>
-                </div>
-            </section>
-
             <div id="email-signup" tabindex="-1">
-            <div class="form-heading">
-                <h2>
-                    Create your student account
-                </h2>
-
-                <p id="studentSignupFormDescription">
-                    You’ll use this email address and password to sign in.
-                </p>
-
+            <div id="choose-account" class="form-heading" tabindex="-1">
+                <h2 id="studentSignupFormTitle">Create your student account</h2>
+                <p id="studentSignupFormDescription">Use your email address and password to sign in.</p>
             </div>
 
-
-            <nav class="student-signup-methods" aria-label="Signup method">
-                <a id="studentSignupEmailMethod" href="register.html#email-signup" aria-current="page">
+            <nav id="studentSignupMethods" class="auth-methods" aria-label="Signup method">
+                <a id="studentSignupEmailMethod" href="register.html" aria-current="page">
                     <span class="interface-icon interface-icon--mail" aria-hidden="true"></span>
                     <span>Email</span>
                 </a>
-                <a id="studentSignupUsernameMethod" href="register.html?method=username#email-signup">
+                <a id="studentSignupUsernameMethod" href="register.html?method=username">
                     <span class="interface-icon interface-icon--key-round" aria-hidden="true"></span>
                     <span>Username</span>
                 </a>
@@ -517,6 +422,7 @@
                 <div
                     id="studentRegisterMessage"
                     class="form-message"
+                    role="status"
                 ></div>
 
 
@@ -541,9 +447,14 @@
                     <div><dt>Username</dt><dd id="studentSignupBackupUsername"></dd></div>
                     <div><dt>Backup key</dt><dd><code id="studentSignupBackupKey"></code></dd></div>
                 </dl>
-                <a class="student-access-choice" id="studentSignupBackupContinue" href="student-shell.html">Continue to my dashboard</a>
+                <a class="auth-button" id="studentSignupBackupContinue" href="student-shell.html">Continue to my dashboard</a>
             </section>
-            <a id="studentRegistrationContinue" class="auth-button" href="student-dashboard.html" hidden>Start My Learning Journey</a>
+            <section id="studentRegistrationSuccess" class="student-access-help auth-completion" hidden aria-labelledby="studentRegistrationSuccessTitle">
+                <span class="reset-flow-icon" aria-hidden="true">✓</span>
+                <h2 id="studentRegistrationSuccessTitle" tabindex="-1">Your student account is ready</h2>
+                <p>Your learning progress will be saved to this account.</p>
+                <a id="studentRegistrationContinue" class="auth-button" href="student-shell.html" hidden>Go to my dashboard</a>
+            </section>
             </div>
 
 
@@ -558,6 +469,7 @@
                 </a>
 
             </div>
+            <p class="auth-practice-link"><a href="story-playground.html">Try a lesson without an account</a></p>
 
 
             <div class="teacher-registration-link">

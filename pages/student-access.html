@@ -8,31 +8,71 @@
     <link rel="stylesheet" href="../css/auth.css">
     <link rel="stylesheet" href="../css/navy-gold-theme.css">
     <link rel="stylesheet" href="../css/page-transition.css">
+    <link rel="stylesheet" href="../css/interface-icons.css">
     <link rel="stylesheet" href="../css/password-field.css">
 </head>
 <body class="lakbay-theme">
-    <main class="auth-page student-access-page">
+    <main class="auth-page auth-portal auth-sign-in">
+        <aside class="auth-showcase login-harbor" aria-label="LakbayPanahon">
+            <div class="login-harbor-art" aria-hidden="true"></div>
+            <a href="../index.html" class="auth-logo">
+                <span class="logo-icon" aria-hidden="true">LP</span>
+                <span class="logo-text"><span>LakbayPanahon</span><small>Philippine History</small></span>
+            </a>
+            <div class="showcase-content"><p class="auth-action-tagline">Your journey through Philippine history.</p></div>
+        </aside>
         <section class="auth-form-section" aria-labelledby="studentAccessTitle">
             <div class="auth-form-container">
-                <a class="back-home" id="studentAccessBack" href="login.html">Back to email sign-in</a>
-                <h1 id="studentAccessTitle">Student sign-in</h1>
-                <p id="studentAccessDescription">Sign in with the username and passphrase you chose.</p>
-                <form id="studentAccessForm" class="auth-form" method="post">
-                    <fieldset id="studentAccessNames" disabled hidden>
-                        <legend>Your name</legend>
-                        <label>First name <input name="firstName" autocomplete="given-name" maxlength="100" required></label>
-                        <label>Middle name (optional) <input name="middleName" autocomplete="additional-name" maxlength="100"></label>
-                        <label>Last name <input name="lastName" autocomplete="family-name" maxlength="100" required></label>
-                    </fieldset>
-                    <label id="studentAccessId"><span id="studentAccessNameLabel">Username</span>
-                        <input name="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="24" aria-describedby="studentAccessNameHint" required>
-                        <small id="studentAccessNameHint" class="input-help" hidden></small>
-                    </label>
-                    <label id="studentAccessCode" hidden><span id="studentAccessCodeLabel">Setup code</span> <input name="code" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" maxlength="40" required disabled></label>
+                <a class="back-home" id="studentAccessBack" href="../index.html"><span aria-hidden="true">←</span> Back to home</a>
+                <div class="form-heading">
+                    <h1 id="studentAccessTitle">Sign in with a username</h1>
+                    <p id="studentAccessDescription">Enter your student username and passphrase.</p>
+                </div>
+                <nav id="studentAccessMethods" class="auth-methods" aria-label="Sign-in method">
+                    <a href="login.html"><span class="interface-icon interface-icon--mail" aria-hidden="true"></span> Email</a>
+                    <a href="student-access.html" aria-current="page"><span class="interface-icon interface-icon--key-round" aria-hidden="true"></span> Student username</a>
+                </nav>
+                <div id="studentAccessAvailability" class="student-signup-status">
+                    <span class="student-signup-status-icon interface-icon interface-icon--key-round" aria-hidden="true"></span>
                     <div>
-                        <label for="studentAccessPassphrase">Passphrase</label>
-                        <div class="password-field">
-                            <input id="studentAccessPassphrase" name="passphrase" type="password" autocomplete="current-password" maxlength="600" aria-describedby="studentAccessPasswordHint" required>
+                        <p id="studentAccessAvailabilityText" role="status">Checking username access…</p>
+                        <button class="secondary-button" id="studentAccessRetry" type="button" hidden>Check again</button>
+                    </div>
+                </div>
+                <form id="studentAccessForm" class="auth-form" method="post" inert>
+                    <fieldset id="studentAccessNames" class="auth-name-fields" disabled hidden>
+                        <legend>Your name</legend>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentAccessFirstName">First name</label>
+                                <div class="input-wrapper"><input id="studentAccessFirstName" name="firstName" autocomplete="given-name" maxlength="100" required></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentAccessLastName">Last name</label>
+                                <div class="input-wrapper"><input id="studentAccessLastName" name="lastName" autocomplete="family-name" maxlength="100" required></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentAccessMiddleName">Middle name (optional)</label>
+                            <div class="input-wrapper"><input id="studentAccessMiddleName" name="middleName" autocomplete="additional-name" maxlength="100"></div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group" id="studentAccessId">
+                        <label id="studentAccessNameLabel" for="studentAccessUsername">Username</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon" aria-hidden="true"><span class="interface-icon interface-icon--key-round"></span></span>
+                            <input id="studentAccessUsername" name="username" placeholder="Enter your username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="24" required>
+                        </div>
+                    </div>
+                    <div class="form-group" id="studentAccessCode" hidden>
+                        <label id="studentAccessCodeLabel" for="studentAccessCodeInput">Setup code</label>
+                        <div class="input-wrapper"><input id="studentAccessCodeInput" name="code" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" maxlength="40" required disabled></div>
+                    </div>
+                    <div class="form-group">
+                        <label id="studentAccessPassphraseLabel" for="studentAccessPassphrase">Passphrase</label>
+                        <div class="input-wrapper password-field">
+                            <span class="input-icon" aria-hidden="true"><span class="interface-icon interface-icon--lock"></span></span>
+                            <input id="studentAccessPassphrase" name="passphrase" type="password" placeholder="Enter your passphrase" autocomplete="current-password" maxlength="600" required>
                             <button class="password-toggle" type="button" aria-controls="studentAccessPassphrase" aria-label="Show passphrase" data-password-label="passphrase">
                                 <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                                     <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/>
@@ -41,12 +81,31 @@
                                 </svg>
                             </button>
                         </div>
+                        <small class="input-help" id="studentAccessPasswordHint" hidden>Use at least 15 characters. A few words you can remember work well.</small>
                     </div>
-                    <p class="input-help" id="studentAccessPasswordHint" hidden>Use at least 15 characters. A few words you can remember work well.</p>
-                    <button class="auth-button" type="submit" disabled>Continue</button>
-                    <button class="text-button" id="studentAccessRetry" type="button" hidden>Check availability again</button>
+                    <div class="form-group" id="studentAccessConfirm" hidden>
+                        <label for="studentAccessConfirmPassphrase">Confirm new passphrase</label>
+                        <div class="input-wrapper password-field">
+                            <span class="input-icon" aria-hidden="true"><span class="interface-icon interface-icon--lock"></span></span>
+                            <input id="studentAccessConfirmPassphrase" type="password" autocomplete="new-password" placeholder="Enter your new passphrase again" minlength="15" maxlength="600" required disabled>
+                            <button class="password-toggle" type="button" aria-controls="studentAccessConfirmPassphrase" aria-label="Show passphrase confirmation" data-password-label="passphrase confirmation">
+                                <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                    <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/><path class="password-eye-slash" d="m4 4 16 16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="studentAccessRemember" class="remember-row">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="studentAccessRememberMe" aria-describedby="studentAccessRememberHelp">
+                            <span>Remember me on this device</span>
+                        </label>
+                        <p id="studentAccessRememberHelp" class="input-help">Leave this off on a device you share with others.</p>
+                    </div>
+                    <p id="studentAccessStatus" class="form-message" role="status"></p>
+                    <button class="auth-button" type="submit" disabled>Log in</button>
                 </form>
-                <p id="studentAccessStatus" class="form-message" role="status" aria-live="polite">Checking student access…</p>
+                <noscript><p class="reset-preview-note">Enable JavaScript to use your student account.</p></noscript>
                 <section id="studentAccessReceipt" class="student-access-help" hidden aria-labelledby="studentAccessReceiptTitle">
                     <h2 id="studentAccessReceiptTitle" tabindex="-1">Save your backup key</h2>
                     <p>Keep the key somewhere private. It lets you reset your passphrase without email.</p>
@@ -54,26 +113,24 @@
                         <div><dt id="studentAccessReceiptLabel">Username</dt><dd><code id="studentAccessReceiptId"></code></dd></div>
                         <div><dt>Backup key</dt><dd><code id="studentAccessReceiptKey"></code></dd></div>
                     </dl>
-                    <p>If your old key was used to reset a passphrase, save this new one in its place. You can make a new key in Account settings while signed in.</p>
-                    <a class="student-access-choice" href="student-shell.html" id="studentAccessContinue">Continue to my dashboard</a>
+                    <p>Save this key in place of any previous one.</p>
+                    <a class="auth-button" href="student-shell.html" id="studentAccessContinue">Continue to my dashboard</a>
                 </section>
-                <nav class="student-access-options" aria-label="Student account options" id="studentAccessModes">
-                    <a data-student-access-mode="setup" href="student-access.html?mode=setup">Create an account without email</a>
-                    <a data-student-access-mode="sign-in" href="student-access.html">Sign in with a username</a>
-                    <a data-student-access-mode="reset" href="student-access.html?mode=reset">I have a teacher’s reset code</a>
-                    <a data-student-access-mode="backup" href="student-access.html?mode=backup">I have a backup key</a>
-                </nav>
-                <section class="student-access-help" id="studentAccessHelp" aria-labelledby="studentAccessHelpTitle">
-                    <h2 id="studentAccessHelpTitle">Need help getting in?</h2>
-                    <p><strong>Joining a classroom?</strong> Enter the shared class code in My Class after signing in.</p>
-                    <p><strong>Forgot your passphrase?</strong> Use your username and backup key. If you belong to a class, your teacher can also issue a reset code.</p>
-                    <p>If you lose your backup key, you can replace it while signed in. Keep a copy somewhere private before you need it.</p>
-                    <details><summary>Already have a Student ID?</summary>
-                        <p>Enter it in the username field to keep using your existing account.</p>
-                        <p><a href="student-access.html?mode=teacher-setup">Finish setup with an existing teacher code</a></p>
-                    </details>
-                    <p><a href="story-playground.html">Play a practice lesson without an account</a>.</p>
-                </section>
+                <div id="studentAccessHelp">
+                    <section class="login-account-help" aria-labelledby="studentAccessHelpTitle">
+                        <h2 id="studentAccessHelpTitle">Forgot your passphrase?</h2>
+                        <div class="auth-help-links" id="studentAccessModes">
+                            <a data-student-access-mode="backup" href="student-access.html?mode=backup">Use a backup key</a>
+                            <a data-student-access-mode="reset" href="student-access.html?mode=reset">Use a teacher’s reset code</a>
+                        </div>
+                        <details id="studentAccessLegacyHelp"><summary>Already have a Student ID?</summary>
+                            <p>Enter your existing Student ID in the username field.</p>
+                            <p><a data-student-access-mode="teacher-setup" href="student-access.html?mode=teacher-setup">Finish setup with a teacher’s setup code</a></p>
+                        </details>
+                    </section>
+                    <div class="auth-next-links" id="studentAccessSignup"><a href="register.html?method=username">Create a student account <span aria-hidden="true">→</span></a></div>
+                    <p class="auth-practice-link"><a href="story-playground.html">Try a lesson without an account</a></p>
+                </div>
             </div>
         </section>
     </main>

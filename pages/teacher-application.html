@@ -72,6 +72,7 @@
                                 <li><div><strong>Confirm your email</strong><p>Open the link we send after you apply.</p></div></li>
                                 <li><div><strong>Check your application</strong><p>Sign in to see the decision or reviewer feedback.</p></div></li>
                             </ol>
+                            <a class="application-resume-link" id="teacherResumeLink" href="login.html">Already applied? Sign in <span aria-hidden="true">→</span></a>
                         </div>
                     </section>
 
@@ -123,19 +124,30 @@
                                     <label>Last name <input id="teacherLastName" maxlength="100" autocomplete="family-name" required></label>
                                 </div>
                                 <label class="registration-email-field">Email address <input id="teacherEmail" type="email" autocomplete="email" required></label>
-                                <div id="teacherPasswordField">
-                                    <label for="teacherPassword">Password</label>
-                                    <div class="password-field">
-                                        <input id="teacherPassword" type="password" minlength="15" autocomplete="new-password" aria-describedby="teacherPasswordHelp" required>
-                                        <button class="password-toggle" type="button" aria-controls="teacherPassword" aria-label="Show password">
-                                            <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                                                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/>
-                                                <circle cx="12" cy="12" r="2.5"/>
-                                                <path class="password-eye-slash" d="m4 4 16 16"/>
-                                            </svg>
-                                        </button>
+                                <div id="teacherPasswordField" class="teacher-password-fields">
+                                    <div>
+                                        <label for="teacherPassword">Password</label>
+                                        <div class="password-field">
+                                            <input id="teacherPassword" type="password" minlength="15" autocomplete="new-password" aria-describedby="teacherPasswordHelp" required>
+                                            <button class="password-toggle" type="button" aria-controls="teacherPassword" aria-label="Show password">
+                                                <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                                    <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/><path class="password-eye-slash" d="m4 4 16 16"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <small id="teacherPasswordHelp">At least 15 characters. Try several words together.</small>
                                     </div>
-                                    <small id="teacherPasswordHelp">At least 15 characters. Try several words together.</small>
+                                    <div>
+                                        <label for="teacherConfirmPassword">Confirm password</label>
+                                        <div class="password-field">
+                                            <input id="teacherConfirmPassword" type="password" minlength="15" autocomplete="new-password" required>
+                                            <button class="password-toggle" type="button" aria-controls="teacherConfirmPassword" aria-label="Show password confirmation" data-password-label="password confirmation">
+                                                <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                                    <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/><path class="password-eye-slash" d="m4 4 16 16"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </fieldset>

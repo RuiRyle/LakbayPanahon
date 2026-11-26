@@ -215,6 +215,23 @@ body.teacher-application-page .application-sidebar > .teacher-panel {
     font: 700 clamp(1.4rem, 2.1vw, 1.8rem) / 1.18 Georgia, serif;
 }
 .application-sidebar > .application-guide { border-block-start: 3px solid #dcba79; }
+.application-resume-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 44px;
+    margin-block-start: 18px;
+    padding: 8px 12px;
+    border: 1px solid #ad9465;
+    border-radius: 8px;
+    color: #ffe7ae;
+    background: #1e3d4d;
+    font-weight: 700;
+    text-decoration: none;
+}
+.application-resume-link:hover { background: #2b4c56; }
+.teacher-password-fields { display: grid; gap: 14px; align-content: start; }
 .registration-next-steps { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
 .registration-next-steps li { display: grid; grid-template-columns: 9px minmax(0, 1fr); gap: 10px; }
 .registration-next-steps li + li { padding-top: 14px; border-top: 1px solid #456273; }

@@ -116,6 +116,7 @@ function controls(){
  renderApplicationJourney();renderNextStep();form.setAttribute('aria-busy',String(busy));
  $('teacherSetupLogout').hidden=!auth.currentUser;
  $('teacherSetupLogin').hidden=!!auth.currentUser;
+ $('teacherResumeLink').hidden=!!auth.currentUser;
  const email=auth.currentUser?.email||'';
  $('teacherSignedInAccount').hidden=registering||!email;
  $('teacherSignedInEmail').textContent=registering?'':email;
@@ -130,7 +131,7 @@ function controls(){
  form.elements.legalName.required=!registering;
  $('teacherEmail').readOnly=registering&&!!auth.currentUser;
  $('teacherPasswordField').hidden=registering&&!!auth.currentUser;
- $('teacherPassword').disabled=busy||!registering||!!auth.currentUser;
+ $('teacherPassword').disabled=$('teacherConfirmPassword').disabled=busy||!registering||!!auth.currentUser;
  $('saveTeacherDraft').hidden=registering;
  $('cancelTeacherEdit').hidden=!editing||(!applicationConflict&&!['submitted','approved'].includes(application?.status));
  checkLatestDecision.hidden=!applicationConflict||!editing;

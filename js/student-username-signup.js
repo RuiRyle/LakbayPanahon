@@ -1,7 +1,7 @@
 import { studentAccessAvailable } from './student-access-configuration.js';
 import { studentTabStorage } from './student-session-storage.js';
 
-if (window.location.search === '?method=username') initializeUsernameSignup();
+if (new URLSearchParams(window.location.search).get('method') === 'username') initializeUsernameSignup();
 
 function initializeUsernameSignup() {
     const element = id => document.getElementById(id);
@@ -49,7 +49,7 @@ function initializeUsernameSignup() {
         retry.setAttribute('aria-disabled', 'true');
         form.inert = true;
         submit.disabled = true;
-        availabilityMessage.textContent = 'Checking username signup…';
+        availabilityMessage.textContent = 'Checking username signup… This can take about a minute if the service is starting.';
         ready = await studentAccessAvailable({ signup: true });
         if (!active) return;
         form.inert = !ready;
@@ -64,6 +64,8 @@ function initializeUsernameSignup() {
 
     function showReceipt(account, signedIn) {
         form.hidden = true;
+        element('studentSignupMethods').hidden = true;
+        element('choose-account').hidden = true;
         element('studentSignupBackupUsername').textContent = account.username;
         receiptKey.textContent = account.recoveryCode;
         const continuation = element('studentSignupBackupContinue');

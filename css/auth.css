@@ -1325,13 +1325,9 @@ input {
 
 #studentRegistrationContinue[hidden] { display: none; }
 #studentRegistrationContinue { margin-top: 1rem; text-align: center; text-decoration: none; }
-.student-signup-chooser { display: none; }
-.student-signup-chooser:target { display: block; }
-.student-signup-chooser:target + #email-signup { display: none; }
-#email-signup [hidden] { display: none; }
-#studentRegisterForm .input-wrapper { border-radius: 10px; }
-#studentRegisterForm[inert] { opacity: .65; }
-.student-signup-methods {
+.auth-portal [hidden] { display: none !important; }
+.auth-portal .auth-form[inert] { opacity: .57; }
+.auth-methods {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 4px;
@@ -1341,7 +1337,7 @@ input {
     border-radius: 13px;
     background: #10263f;
 }
-.student-signup-methods a {
+.auth-methods a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1353,16 +1349,18 @@ input {
     color: #d1e1e5;
     font-size: .875rem;
     font-weight: 700;
+    text-align: center;
     text-decoration: none;
     transition: background-color .2s ease, border-color .2s ease;
 }
-.student-signup-methods a:hover { background: #234752; }
-.student-signup-methods a[aria-current="page"] {
+.auth-methods .interface-icon { color: #e5c783; }
+.auth-methods a:hover { background: #234752; }
+.auth-methods a[aria-current="page"] {
     border-color: #957c51;
     background: #254452;
     color: #ffdfa1;
 }
-.student-signup-methods a:focus-visible { outline: 2px solid #ffdfa1; outline-offset: 2px; }
+.auth-methods a:focus-visible { outline: 2px solid #ffdfa1; outline-offset: 2px; }
 .student-signup-status {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
@@ -1387,35 +1385,6 @@ input {
     padding-inline: 12px;
 }
 .student-signup-status .secondary-button[aria-disabled="true"] { cursor: wait; opacity: .7; }
-.student-signup-options { display: grid; gap: 12px; margin-block: 16px 22px; }
-body.lakbay-theme .student-signup-option {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 12px;
-    min-height: 68px;
-    padding: 12px 14px;
-    border: 1px solid #728e91;
-    border-radius: 14px;
-    background: linear-gradient(120deg, #183a48, #142c41);
-    color: #fff0cc;
-    text-decoration: none;
-}
-body.lakbay-theme .student-signup-option:hover { background: #234752; border-color: #ebcc8b; }
-.student-signup-option::after {
-    content: "";
-    width: 7px;
-    height: 7px;
-    border-block-start: 2px solid currentColor;
-    border-inline-end: 2px solid currentColor;
-    transform: rotate(45deg);
-}
-.student-signup-option :is(strong, small) { display: block; line-height: 1.45; }
-.student-signup-option small { color: #d1e1e5; font-size: .875rem; margin-top: 3px; }
-.student-signup-option .student-signup-icon { width: 22px; height: 22px; color: #f1d296; }
-@media (max-width: 600px) {
-    .auth-page:has(.student-signup-chooser:target) .auth-showcase { display: none; }
-}
 .student-access-choice:not([hidden]) {
     display: flex;
     justify-content: center;
@@ -1426,51 +1395,6 @@ body.lakbay-theme .student-signup-option:hover { background: #234752; border-col
     font-weight: 700;
     text-underline-offset: 4px;
 }
-body.lakbay-theme .student-username-login {
-    justify-content: start;
-    width: fit-content;
-    padding: 8px 12px;
-    margin-block: 0 14px;
-    border: 1px solid #789093;
-    border-radius: 9px;
-    background: #173544;
-    color: #ffdfa1;
-    text-decoration: none;
-}
-body.lakbay-theme .student-username-login:hover { background: #244752; border-color: #f0d497; }
-body.lakbay-theme .auth-page.student-access-page {
-    display: block;
-    min-height: 100dvh;
-    background: radial-gradient(ellipse at 50% 0%, #254a56, #0e2437 75%);
-}
-body.lakbay-theme .student-access-page .auth-form-section {
-    max-width: 520px;
-    margin-inline: auto;
-    background: transparent;
-}
-body.lakbay-theme .student-access-page .auth-form-container {
-    padding: clamp(17px, 4vw, 30px);
-    border: 1px solid #947b53;
-    border-radius: 16px;
-    background: #142f43;
-}
-.student-access-page .auth-form { display: grid; gap: 12px; }
-.student-access-page fieldset:not([hidden]) { display: grid; gap: 10px; padding: 12px; border: 1px solid #657d87; border-radius: 8px; }
-.student-access-page label:not([hidden]) { display: grid; gap: 4px; }
-body.lakbay-theme .student-access-page input {
-    width: 100%;
-    padding: 9px 10px;
-    border: 1px solid #617d8d;
-    border-radius: 8px;
-    min-height: 44px;
-    background: #11283a;
-    color: #f7f3e8;
-    font: inherit;
-}
-.student-access-page .student-access-options { display: flex; flex-wrap: wrap; gap: 8px 15px; margin-block-start: 14px; }
-.student-access-page a { color: #f0d497; }
-.student-access-page .student-access-options a:not([hidden]) { display: inline-flex; align-items: center; min-height: 44px; }
-.student-access-page [hidden] { display: none; }
 .student-access-help { margin-block-start: 20px; padding: 16px; border: 1px solid #526d80; border-radius: 12px; background: #10283a; }
 .student-access-help h2 { margin: 0 0 8px; color: #f0d497; font-size: 1.13rem; }
 .student-access-help p { margin-block: 8px; line-height: 1.6; }
@@ -1542,18 +1466,6 @@ body.lakbay-theme .auth-page .auth-form-container :is(h1,h2) { text-wrap: balanc
     .login-harbor-art {background-position:center 55%}
 }
 
-.login-help-link {
-    margin: 12px 0 0;
-    text-align: center;
-    font-size: .86rem;
-}
-.login-help-link a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    color: #f0d497;
-    text-underline-offset: 3px;
-}
 .login-account-help {
     margin-top: 16px;
     padding: 16px;
@@ -1573,7 +1485,7 @@ body.lakbay-theme .auth-page .auth-form-container :is(h1,h2) { text-wrap: balanc
     font-size: .86rem;
     line-height: 1.65;
 }
-.login-account-help:focus, .login-help-link a:focus-visible {
+.login-account-help:focus {
     outline: 2px solid #f0d497;
     outline-offset: 3px;
 }
@@ -1593,9 +1505,6 @@ body.lakbay-theme .auth-page .auth-form-container :is(h1,h2) { text-wrap: balanc
 .reset-delivery-help h3 { margin: 0 0 7px; color: #f7dea9; font-size: 1rem; }
 .reset-delivery-help ul { display: grid; gap: 5px; margin: 0; padding-inline-start: 19px; }
 .reset-cooldown { margin-block: 4px 0; color: #d3e0e8; font-size: .85rem; text-align: center; }
-.reset-student-id { margin-block-start: 16px; padding-block-start: 14px; border-block-start: 1px solid #526d80; }
-.reset-student-id h3 { margin: 0 0 6px; color: #f7dea9; font-size: 1rem; }
-.reset-student-id p { margin: 0; color: #d3e0e8; font-size: .9rem; line-height: 1.55; }
 .reset-student-id-options { display: flex; flex-wrap: wrap; align-items: start; column-gap: 12px; }
 
 .reset-flow-heading {
@@ -1620,10 +1529,9 @@ body.lakbay-theme .auth-page .auth-form-container :is(h1,h2) { text-wrap: balanc
 body.lakbay-theme .auth-action-page .reset-flow-heading h1 {
     margin: 0;
     color: var(--lp-text, #eef4fa);
-    font: 700 clamp(1.8rem, 4vw, 2.55rem)/1.16 Georgia, serif;
 }
-.auth-action-page .showcase-content .auth-action-tagline {
-    font: 700 clamp(1.7rem, 3.8vw, 3.05rem)/1.15 Georgia, serif;
+.auth-portal .showcase-content .auth-action-tagline {
+    font: 700 clamp(1.7rem, 3.8vw, 3.05rem)/1.15 var(--lp-font-game, sans-serif);
     text-wrap: balance;
 }
 .auth-action-page .auth-action-form input { padding-inline-start: 14px; }
@@ -1636,3 +1544,264 @@ body.lakbay-theme .auth-action-page .reset-flow-heading h1 {
     background: #244739;
 }
 .auth-action-page [hidden], #finishAccountSetup[hidden] { display: none !important; }
+
+body.lakbay-theme .auth-page.auth-portal .auth-form-section {
+    min-width: 0;
+    align-items: flex-start;
+    overflow: visible;
+    background: radial-gradient(ellipse at 89% 4%, #213d4b 0%, transparent 31rem), #091a2b;
+    padding: clamp(22px, 4.4vw, 64px) clamp(16px, 4.5vw, 68px) 44px;
+}
+body.lakbay-theme .auth-page.auth-portal .auth-form-container {
+    max-width: 33rem;
+    min-width: 0;
+    padding: clamp(17px, 3vw, 37px);
+    border: 1px solid #7f785d;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #183449, #10263c 39%, #0f2438);
+    box-shadow: 0 15px 55px #0006;
+}
+body.lakbay-theme .auth-page.auth-portal .register-container { max-width: 37rem; }
+.auth-portal .back-home { margin-block-end: 14px; }
+.auth-portal .form-heading :is(h1,h2) {
+    max-width: 19ch;
+    color: #f5f3e9;
+    font-size: clamp(1.75rem, 3vw, 2.38rem);
+    line-height: 1.15;
+}
+.auth-portal .form-heading p { font-size: .94rem; line-height: 1.6; }
+body.lakbay-theme .auth-page.auth-portal .auth-form { border-block-start-color: #4f6679; }
+.auth-portal .input-wrapper { border-radius: 10px; }
+.auth-portal .input-wrapper input { font-size: 1rem; }
+.auth-portal .input-icon { color: #f0ce90; }
+.auth-portal .remember-row .checkbox-container { align-items: center; }
+.auth-portal .remember-row .input-help { margin-block-start: 0; }
+.auth-portal .form-message:not(:empty) { display: block; }
+.auth-portal :is(.student-access-help, .login-account-help) {
+    background: #102b40;
+    border-color: #526d80;
+    padding: 16px;
+}
+.auth-portal .student-access-help .auth-button { margin-block-start: 14px; text-align: center; }
+.auth-portal .auth-completion .reset-flow-icon {
+    margin-block-end: 12px;
+    background: #244739;
+    border-color: #77a183;
+    color: #e2f2d8;
+    font-size: 1.5rem;
+}
+.auth-name-fields {
+    display: grid;
+    gap: 12px;
+    min-inline-size: 0;
+    padding: 14px;
+    border: 1px solid #526d80;
+    border-radius: 12px;
+}
+.auth-name-fields legend { padding-inline: 6px; color: #f4dcaa; font-weight: 700; }
+.auth-next-links { display: grid; gap: 7px; margin-block: 18px 0; }
+.auth-next-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 44px;
+    padding: 9px 13px;
+    border: 1px solid #526d80;
+    border-radius: 10px;
+    background: #152e45;
+    color: #f9e4b5;
+    font-size: .875rem;
+    font-weight: 700;
+}
+.auth-next-links a:hover { background: #234752; border-color: #b49b66; }
+.auth-help-links { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-block-start: 7px; }
+.auth-help-links a, .auth-practice-link a, .login-account-help details a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #f5d89e;
+    font-size: .86rem;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.auth-practice-link { margin-block-start: 6px; text-align: center; }
+.login-account-help summary { padding-block: 10px; color: #e0e9f1; font-size: .875rem; cursor: pointer; }
+.auth-portal:has(#forgotPasswordSection:not([hidden])) .auth-email-help { display: none; }
+.auth-portal :is(a, button, summary, input):focus-visible { outline: 2px solid #ffdfa1; outline-offset: 2px; }
+.auth-portal :is(#email-signup, #choose-account, #account-help) { scroll-margin-block-start: 24px; }
+
+@media (prefers-reduced-motion: no-preference) {
+    .auth-portal :is(#loginContent, #forgotPasswordSection, #studentRegistrationSuccess, #studentSignupBackup, #studentAccessReceipt):not([hidden]) {
+        animation: auth-view-enter 180ms ease-out both;
+    }
+    @keyframes auth-view-enter {
+        from { opacity: 0; translate: 0 5px; }
+        to { opacity: 1; translate: 0 0; }
+    }
+}
+
+@media (min-width: 901px) {
+    .auth-page.auth-portal { grid-template-columns: minmax(320px, .9fr) minmax(0, 1.1fr); }
+    .auth-portal .auth-showcase { position: sticky; top: 0; height: 100svh; min-height: 0; }
+}
+@media (max-width: 900px) {
+    body.lakbay-theme .auth-page.auth-portal .auth-showcase { padding: 15px max(17px, calc((100% - 35rem) / 2)); }
+    .auth-portal .auth-showcase :is(.showcase-content, .showcase-decoration, .showcase-footer) { display: none; }
+}
+@media (max-width: 420px) {
+    body.lakbay-theme .auth-page.auth-portal .auth-form-section { padding-inline: 10px; }
+    body.lakbay-theme .auth-page.auth-portal .auth-form-container { border-radius: 18px; }
+    .auth-methods a { gap: 5px; font-size: .82rem; }
+}
+@media (min-width: 370px) and (max-width: 600px) {
+    .auth-portal :is(#studentRegisterForm, .auth-name-fields) .form-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* A light sign-in surface against the existing navy illustration. */
+body.lakbay-theme .auth-page.auth-portal.auth-sign-in .auth-form-container {
+    --signin-ink: #172f42;
+    --signin-muted: #4e5d67;
+    --signin-line: #d5d0c6;
+    --signin-accent: #765425;
+    --signin-soft: #f2eee6;
+    --signin-focus: #976725;
+    --lp-text: var(--signin-ink);
+    --lp-muted: var(--signin-muted);
+    color-scheme: light;
+    color: var(--signin-ink);
+    background: #fcfaf6;
+    border: 1px solid #dfd5c1;
+    border-block-start: 4px solid #bc9558;
+    border-radius: 18px;
+    box-shadow: 0 20px 55px #01081252;
+}
+
+body.lakbay-theme .auth-sign-in .auth-showcase .showcase-content h1 {
+    max-width: 17ch;
+    font: 700 clamp(2.5rem, 4.1vw, 3.8rem)/1.07 Georgia, serif;
+}
+body.lakbay-theme .auth-sign-in .auth-form-container .form-heading :is(h1, h2) {
+    font: 700 clamp(2rem, 3.2vw, 2.75rem)/1.1 Georgia, serif;
+    letter-spacing: -.035em;
+}
+.auth-sign-in .form-heading p {
+    margin-block-start: 8px;
+    color: var(--signin-muted);
+}
+body.lakbay-theme .auth-sign-in .auth-form-container :is(.back-home, .forgot-link) {
+    gap: 8px;
+    color: var(--signin-accent);
+    text-underline-offset: 4px;
+}
+.auth-sign-in .auth-form-container :is(.back-home, .forgot-link):hover { text-decoration: underline; }
+
+.auth-sign-in .auth-methods {
+    gap: 5px;
+    margin-block: 20px 0;
+    border-color: var(--signin-line);
+    border-radius: 9px;
+    background: var(--signin-soft);
+}
+.auth-sign-in .auth-methods a {
+    border-radius: 6px;
+    color: var(--signin-muted);
+}
+.auth-sign-in .auth-methods a:hover { background: #e9e3d8; color: var(--signin-ink); }
+.auth-sign-in .auth-methods a[aria-current="page"] {
+    border-color: #c4b28d;
+    background: #fffdf8;
+    color: var(--signin-ink);
+    box-shadow: 0 1px 3px #42381c18;
+}
+.auth-sign-in .auth-methods .interface-icon { color: var(--signin-accent); }
+
+body.lakbay-theme .auth-page.auth-portal.auth-sign-in .auth-form {
+    gap: 16px;
+    margin-block-start: 20px;
+    padding-block-start: 0;
+    border: 0;
+}
+body.lakbay-theme .auth-sign-in .auth-form-container :is(label, .input-help) { color: var(--signin-ink); }
+body.lakbay-theme .auth-sign-in .auth-form-container .input-help { color: var(--signin-muted); }
+body.lakbay-theme .auth-sign-in .auth-form-container .input-wrapper { background: #fff; }
+body.lakbay-theme .auth-sign-in .auth-form-container .input-wrapper input {
+    min-height: 50px;
+    border-color: #a9b0b1;
+    border-radius: 8px;
+    color: var(--signin-ink);
+    background: transparent;
+}
+body.lakbay-theme .auth-sign-in .input-wrapper input::placeholder { color: #67747d; }
+.auth-sign-in .auth-form-container .input-icon { color: var(--signin-accent); }
+.auth-sign-in .password-field {
+    --password-toggle-color: #52636e;
+    --password-toggle-hover: #f2eee6;
+    --password-toggle-focus: var(--signin-focus);
+}
+.auth-sign-in .checkbox-container input { width: 16px; height: 16px; accent-color: var(--signin-ink); }
+.auth-sign-in .remember-row .input-help { margin-inline-start: 24px; }
+
+body.lakbay-theme .auth-sign-in :is(#loginForm, #studentAccessForm, #forgotPasswordForm) > .auth-button {
+    min-height: 50px;
+    border-color: #173247;
+    border-radius: 8px;
+    color: #fffdf8;
+    background: #173247;
+    box-shadow: 0 2px 5px #0d233326;
+}
+body.lakbay-theme .auth-sign-in :is(#loginForm, #studentAccessForm, #forgotPasswordForm) > .auth-button:not(:disabled):hover {
+    border-color: #25516a;
+    color: #fffdf8;
+    background: #25516a;
+    box-shadow: 0 3px 8px #0d233333;
+}
+body.lakbay-theme .auth-sign-in .auth-form-container :is(a, button, summary, input):focus-visible {
+    outline: 2px solid var(--signin-focus);
+    outline-offset: 3px;
+}
+
+.auth-sign-in .auth-next-links {
+    gap: 0;
+    padding-block-start: 6px;
+    border-block-start: 1px solid var(--signin-line);
+}
+.auth-sign-in .auth-next-links a {
+    padding-inline: 0;
+    border: 0;
+    border-radius: 0;
+    color: var(--signin-ink);
+    background: transparent;
+}
+.auth-sign-in .auth-next-links a:hover { color: var(--signin-accent); text-decoration: underline; }
+.auth-sign-in .auth-next-links a span { color: var(--signin-accent); }
+body.lakbay-theme .auth-sign-in .auth-form-container :is(.login-account-help, .student-signup-status, .reset-delivery-help, .reset-preview-note) {
+    border-color: var(--signin-line);
+    color: var(--signin-muted);
+    background: var(--signin-soft);
+}
+.auth-sign-in .auth-form-container :is(.login-account-help h2, .login-account-help summary, .reset-delivery-help h3, .reset-cooldown) { color: var(--signin-ink); }
+.auth-sign-in .auth-form-container :is(.auth-help-links a, .auth-practice-link a, .login-account-help details a, .student-access-choice, .reset-back-button, .student-signup-status-icon) { color: var(--signin-accent); }
+.auth-sign-in .student-signup-status { margin-block-start: 12px; }
+.auth-sign-in .auth-email-help { display: none; }
+.auth-sign-in:has(#forgotPasswordSection[hidden]) #account-help:target .auth-email-help { display: block; }
+body.lakbay-theme .auth-sign-in .auth-form-container .secondary-button {
+    border-color: #b6aa95;
+    background: #fffdf8;
+    color: var(--signin-ink);
+}
+.auth-sign-in .reset-flow-icon { color: var(--signin-accent); background: #f1e5cc; border-color: #cfb98a; box-shadow: none; }
+.auth-sign-in .reset-back-button {
+    min-height: 44px;
+    padding: 8px 12px;
+    border: 1px solid #b6aa95;
+    border-radius: 8px;
+    background: transparent;
+    font-size: .875rem;
+    font-weight: 700;
+}
+.auth-sign-in .reset-back-button:hover { background: var(--signin-soft); }
+
+@media (max-width: 420px) {
+    body.lakbay-theme .auth-page.auth-portal.auth-sign-in .auth-form-container { border-radius: 12px; }
+}

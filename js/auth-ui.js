@@ -82,8 +82,14 @@ function initializeAuthUI() {
         );
 
 
-    if (studentForm && window.location?.search !== "?method=username") {
-        const finishSetup = window.location?.search === "?mode=finish-setup";
+    const signupQuery = studentForm && window.location?.search ? new URLSearchParams(window.location.search) : null;
+    if (studentForm && signupQuery?.get('method') !== 'username') {
+        const finishSetup = signupQuery?.get('mode') === 'finish-setup';
+        if (finishSetup) {
+            document.getElementById('studentSignupMethods').hidden = true;
+            document.getElementById('studentSignupFormTitle').textContent = 'Finish your student account';
+            document.getElementById('studentSignupFormDescription').textContent = 'Add your name to complete your student profile.';
+        }
         let registrationBusy=false, registrationComplete=false;
         let createdStudent=null;
 
@@ -219,7 +225,7 @@ function initializeAuthUI() {
                         "The passwords you entered do not match.",
                         "error"
                     );
-
+                    document.getElementById('studentConfirmPassword')?.focus?.();
                     return;
                 }
 
@@ -283,6 +289,14 @@ function initializeAuthUI() {
                     registrationComplete=true;
                     const continueLink=document.getElementById("studentRegistrationContinue");
                     if (continueLink) continueLink.hidden=false;
+                    const completion = document.getElementById('studentRegistrationSuccess');
+                    if (completion) {
+                        studentForm.hidden = true;
+                        document.getElementById('studentSignupMethods').hidden = true;
+                        document.getElementById('choose-account').hidden = true;
+                        completion.hidden = false;
+                        document.getElementById('studentRegistrationSuccessTitle').focus();
+                    }
 
                     console.log(
                         "Student Firestore profile created."
@@ -344,6 +358,7 @@ function initializeAuthUI() {
                     readyButton.disabled = !user?.email;
                     if (!user?.email) {
                         email.value = "";
+                        email.readOnly = false;
                         showMessage(notice, "Sign in again before finishing your account setup.", "error");
                         return;
                     }
@@ -419,6 +434,7 @@ function initializeAuthUI() {
             }
             if (!canResume && confirmation && password !== confirmation.value) {
                 showMessage(message, "The passwords you entered do not match.", "error");
+                confirmation.focus?.();
                 return;
             }
 
@@ -623,6 +639,8 @@ function initializeAuthUI() {
         const openReset = () => {
             const signInAddress = signInEmail.value.trim();
             if (!pending && signInAddress) email.value = signInAddress;
+            const password = document.getElementById('loginPassword');
+            if (password) password.value = '';
             clearMessage(document.getElementById('loginMessage'));
             loginContent.hidden = true;
             resetSection.hidden = false;
@@ -664,23 +682,34 @@ function initializeAuthUI() {
             showRequestReceipt();
         }
 
-        previewNote.hidden = !emulator;
-        email.addEventListener('input', resetAddressChanged);
-        document.getElementById('forgotPasswordButton').addEventListener('click', event => {
-            if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-            event.preventDefault();
-            openReset();
-        });
-        document.getElementById('backToLoginButton').addEventListener('click', () => {
+        function closeReset() {
             if (email.validity.valid && email.value.trim() !== signInEmail.value.trim()) {
                 signInEmail.value = email.value.trim();
-                const signInPassword = document.getElementById('loginPassword');
-                if (signInPassword) signInPassword.value = '';
             }
             resetSection.hidden = true;
             loginContent.hidden = false;
             clearTimeout(timer);
             signInEmail.focus();
+        }
+
+        const resetRequested = () => window.location?.search && new URLSearchParams(window.location.search).get('view') === 'reset';
+        previewNote.hidden = !emulator;
+        email.addEventListener('input', resetAddressChanged);
+        document.getElementById('forgotPasswordButton').addEventListener('click', event => {
+            if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            if (!resetRequested()) window.history?.pushState({ authReset: true }, '', '?view=reset');
+            openReset();
+        });
+        document.getElementById('backToLoginButton').addEventListener('click', () => {
+            closeReset();
+            if (!resetRequested() || !window.history) return;
+            if (window.history.state?.authReset) window.history.back();
+            else window.history.replaceState(null, '', 'login.html');
+        });
+        window.addEventListener?.('popstate', () => {
+            if (resetRequested() && resetSection.hidden) openReset();
+            else if (!resetRequested() && !resetSection.hidden) closeReset();
         });
         resetForm.addEventListener('submit', async event => {
             event.preventDefault();
@@ -722,7 +751,7 @@ function initializeAuthUI() {
                 updateResetButton();
             }
         });
-        if (window.location?.search === '?view=reset') openReset();
+        if (resetRequested()) openReset();
         else updateResetButton();
     }
 
@@ -821,7 +850,7 @@ function initializeAuthUI() {
 
 
             button.innerHTML =
-                `${text} <span>→</span>`;
+                `${text} <span aria-hidden="true">→</span>`;
 
 
         }

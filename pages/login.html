@@ -39,7 +39,7 @@
 
 <body class="lakbay-theme">
 
-    <main class="auth-page">
+    <main class="auth-page auth-portal auth-sign-in">
 
 
         <!-- ==================================
@@ -132,7 +132,7 @@
                     href="../index.html"
                     class="back-home"
                 >
-                    ← Back to Home
+                    <span aria-hidden="true">←</span> Back to home
                 </a>
 
 
@@ -149,24 +149,20 @@
                     <div class="form-heading">
 
 
-                        <span class="form-label">
-                            WELCOME BACK
-                        </span>
-
-
                         <h2>
-                            Log in with email
+                            Log in
                         </h2>
 
 
-                        <p>
-                            Use the email address and password you signed up with.
-                        </p>
+                        <p>Use the email address and password for your account.</p>
 
 
                     </div>
 
-                    <a class="student-access-choice student-username-login" href="student-access.html" data-student-access-link>Use your username instead</a>
+                    <nav class="auth-methods" aria-label="Sign-in method">
+                        <a href="login.html" aria-current="page"><span class="interface-icon interface-icon--mail" aria-hidden="true"></span> Email</a>
+                        <a href="student-access.html" data-student-access-link><span class="interface-icon interface-icon--key-round" aria-hidden="true"></span> Student username</a>
+                    </nav>
 
 
                     <!-- ==================================
@@ -246,7 +242,7 @@
                                     id="forgotPasswordButton"
                                     class="forgot-link"
                                 >
-                                    Forgot Password?
+                                    Forgot password?
                                 </a>
 
 
@@ -327,13 +323,8 @@
 
 
                             </label>
-
-
+                            <p id="rememberMeHelp" class="input-help">Leave this off on a device you share with others.</p>
                         </div>
-
-
-
-                        <p id="rememberMeHelp" class="input-help">Leave this off on a shared computer. Your sign-in lasts for this tab; saved learning progress stays in your account.</p>
 
                         <!-- LOGIN MESSAGE -->
 
@@ -354,7 +345,7 @@
 
                             Log In
 
-                            <span>
+                            <span aria-hidden="true">
                                 →
                             </span>
 
@@ -377,47 +368,10 @@
                          NEW ACCOUNT
                     =================================== -->
 
-                    <div class="auth-divider">
-
-
-                        <span></span>
-
-
-                        <p>
-                            New to LakbayPanahon?
-                        </p>
-
-
-                        <span></span>
-
-
+                    <div class="auth-next-links">
+                        <a href="register.html">Create a student account <span aria-hidden="true">→</span></a>
+                        <a href="teacher-application.html">Apply for teacher access <span aria-hidden="true">→</span></a>
                     </div>
-
-
-
-                    <a
-                        href="register.html#choose-account"
-                        class="secondary-button"
-                    >
-                        Create Student Account
-                    </a>
-
-
-
-
-                    <!-- TEACHER REGISTRATION -->
-
-                    <p class="teacher-registration-link">
-
-                        Are you an Araling Panlipunan teacher?
-
-                        <a href="teacher-application.html">
-                            Register as Teacher
-                        </a>
-
-                    </p>
-
-                    <p class="login-help-link"><a href="#account-help">Account help for students and guardians</a></p>
 
                 </div>
 
@@ -443,11 +397,6 @@
                                 <path d="M8 10V7a4 4 0 1 1 8 0v3m-4 4v3"/>
                             </svg>
                         </div>
-
-
-                        <span class="form-label">
-                            PASSWORD RECOVERY
-                        </span>
 
 
                         <h2 id="resetPasswordTitle">
@@ -578,24 +527,22 @@
 
                     </form>
 
-                    <section class="reset-student-id" aria-labelledby="resetStudentIdTitle">
-                        <h3 id="resetStudentIdTitle">Sign in with a username?</h3>
-                        <p>Recover your account with your saved backup key or ask your current teacher for a private reset code.</p>
-                        <div class="reset-student-id-options">
-                            <a class="student-access-choice" href="student-access.html?mode=backup">Use my backup key</a>
-                            <a class="student-access-choice" href="student-access.html?mode=reset" data-student-access-link>Use a teacher’s reset code</a>
-                        </div>
-                    </section>
-
                 </div>
 
 
                 <section id="account-help" class="login-account-help" aria-labelledby="loginAccountHelpTitle" tabindex="-1">
-                    <h2 id="loginAccountHelpTitle">Student account help</h2>
-                    <p><strong>Forgot your password?</strong> Choose <strong>Forgot Password?</strong> on the login form and enter your sign-in email. Check your inbox and spam folder for the reset link.</p>
-                    <p><strong>Use a username?</strong> <a href="student-access.html?mode=backup">Recover with your backup key</a> or <a href="student-access.html?mode=reset">use a reset code from your current teacher</a>.</p>
-                    <p><strong>Need help getting in or requesting a copy, correction, or deletion?</strong> Ask a parent or guardian to help you speak with the school or adult who gave you access. LakbayPanahon has no public support inbox or request form yet.</p>
-                    <p>If you can sign in, go to <strong>Settings → Account help</strong> for your learning-data download and things you can change yourself. Keep passwords, reset links, and downloaded files private.</p>
+                    <h2 id="loginAccountHelpTitle">Account help</h2>
+                    <p class="auth-email-help">For an email account, choose <strong>Forgot password?</strong> to request a reset link. Reload this page if the reset form hasn’t loaded.</p>
+                    <p>For a student username, use a backup key or a private reset code from your current teacher.</p>
+                    <div class="auth-help-links">
+                        <a href="student-access.html?mode=backup">Use a backup key</a>
+                        <a href="student-access.html?mode=reset">Use a teacher’s reset code</a>
+                    </div>
+                    <details>
+                        <summary>Help for students and guardians</summary>
+                        <p>For help getting in or requesting a copy, correction, or deletion of your data, ask a parent or guardian to speak with the school or adult who gave you access. LakbayPanahon has no public support inbox or request form yet.</p>
+                        <p>When signed in, go to <strong>Settings → Account help</strong> to download your learning data. Keep passwords, reset links, and downloaded files private.</p>
+                    </details>
                 </section>
             </div>
 

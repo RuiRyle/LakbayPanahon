@@ -134,10 +134,12 @@ form.addEventListener("submit", async event => {
     if (busy || !code || form.hidden) return;
     if (Array.from(password.value).length < 15) {
         showFeedback("Use at least 15 characters for your new password.");
+        password.focus();
         return;
     }
     if (password.value !== repeat.value) {
         showFeedback("The passwords you entered don’t match.");
+        repeat.focus();
         return;
     }
     const chosenPassword = password.value;

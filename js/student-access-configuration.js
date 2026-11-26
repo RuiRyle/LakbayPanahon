@@ -5,7 +5,7 @@ let configuration;
 
 async function readConfiguration() {
     if (firebaseEnvironment?.mode === 'emulator') return { emulator: true, selfSignup: true };
-    const response = await fetch(studentAccessEndpoint + '/student-access-config', { signal: AbortSignal.timeout(9000) });
+    const response = await fetch(studentAccessEndpoint + '/student-access-config', { signal: AbortSignal.timeout(75000) });
     if (!response.ok) return null;
     const config = await response.json();
     return config.enabled === true && typeof config.siteKey === 'string' && config.siteKey
