@@ -70,7 +70,7 @@ function initializeUsernameSignup() {
         receiptKey.textContent = account.recoveryCode;
         const continuation = element('studentSignupBackupContinue');
         if (!signedIn) {
-            continuation.href = 'student-access.html';
+            continuation.href = 'login.html?method=username';
             continuation.textContent = 'Go to username sign-in';
         }
         receipt.hidden = false;

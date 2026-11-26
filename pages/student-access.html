@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Student Account | LakbayPanahon</title>
+    <title>Student Account Recovery | LakbayPanahon</title>
     <link rel="icon" href="../assets/brand/favicon.svg">
     <link rel="stylesheet" href="../css/auth.css">
     <link rel="stylesheet" href="../css/navy-gold-theme.css">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/password-field.css">
 </head>
 <body class="lakbay-theme">
-    <main class="auth-page auth-portal auth-sign-in">
+    <main class="auth-page auth-portal">
         <aside class="auth-showcase login-harbor" aria-label="LakbayPanahon">
             <div class="login-harbor-art" aria-hidden="true"></div>
             <a href="../index.html" class="auth-logo">
@@ -23,15 +23,11 @@
         </aside>
         <section class="auth-form-section" aria-labelledby="studentAccessTitle">
             <div class="auth-form-container">
-                <a class="back-home" id="studentAccessBack" href="../index.html"><span aria-hidden="true">←</span> Back to home</a>
+                <a class="back-home" href="login.html?method=username"><span aria-hidden="true">←</span> Back to username sign-in</a>
                 <div class="form-heading">
-                    <h1 id="studentAccessTitle">Sign in with a username</h1>
-                    <p id="studentAccessDescription">Enter your student username and passphrase.</p>
+                    <h1 id="studentAccessTitle">Student account recovery</h1>
+                    <p id="studentAccessDescription"></p>
                 </div>
-                <nav id="studentAccessMethods" class="auth-methods" aria-label="Sign-in method">
-                    <a href="login.html"><span class="interface-icon interface-icon--mail" aria-hidden="true"></span> Email</a>
-                    <a href="student-access.html" aria-current="page"><span class="interface-icon interface-icon--key-round" aria-hidden="true"></span> Student username</a>
-                </nav>
                 <div id="studentAccessAvailability" class="student-signup-status">
                     <span class="student-signup-status-icon interface-icon interface-icon--key-round" aria-hidden="true"></span>
                     <div>
@@ -64,16 +60,16 @@
                             <input id="studentAccessUsername" name="username" placeholder="Enter your username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="24" required>
                         </div>
                     </div>
-                    <div class="form-group" id="studentAccessCode" hidden>
+                    <div class="form-group">
                         <label id="studentAccessCodeLabel" for="studentAccessCodeInput">Setup code</label>
-                        <div class="input-wrapper"><input id="studentAccessCodeInput" name="code" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" maxlength="40" required disabled></div>
+                        <div class="input-wrapper"><input id="studentAccessCodeInput" name="code" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" maxlength="40" required></div>
                     </div>
                     <div class="form-group">
-                        <label id="studentAccessPassphraseLabel" for="studentAccessPassphrase">Passphrase</label>
+                        <label for="studentAccessPassphrase">New passphrase</label>
                         <div class="input-wrapper password-field">
                             <span class="input-icon" aria-hidden="true"><span class="interface-icon interface-icon--lock"></span></span>
-                            <input id="studentAccessPassphrase" name="passphrase" type="password" placeholder="Enter your passphrase" autocomplete="current-password" maxlength="600" required>
-                            <button class="password-toggle" type="button" aria-controls="studentAccessPassphrase" aria-label="Show passphrase" data-password-label="passphrase">
+                            <input id="studentAccessPassphrase" name="passphrase" type="password" placeholder="Choose a new passphrase" autocomplete="new-password" minlength="15" maxlength="600" aria-describedby="studentAccessPasswordHint" required>
+                            <button class="password-toggle" type="button" aria-controls="studentAccessPassphrase" aria-label="Show new passphrase" data-password-label="new passphrase">
                                 <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                                     <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/>
                                     <circle cx="12" cy="12" r="2.5"/>
@@ -81,13 +77,13 @@
                                 </svg>
                             </button>
                         </div>
-                        <small class="input-help" id="studentAccessPasswordHint" hidden>Use at least 15 characters. A few words you can remember work well.</small>
+                        <small class="input-help" id="studentAccessPasswordHint">Use at least 15 characters. A few words you can remember work well.</small>
                     </div>
-                    <div class="form-group" id="studentAccessConfirm" hidden>
+                    <div class="form-group">
                         <label for="studentAccessConfirmPassphrase">Confirm new passphrase</label>
                         <div class="input-wrapper password-field">
                             <span class="input-icon" aria-hidden="true"><span class="interface-icon interface-icon--lock"></span></span>
-                            <input id="studentAccessConfirmPassphrase" type="password" autocomplete="new-password" placeholder="Enter your new passphrase again" minlength="15" maxlength="600" required disabled>
+                            <input id="studentAccessConfirmPassphrase" type="password" autocomplete="new-password" placeholder="Enter your new passphrase again" minlength="15" maxlength="600" required>
                             <button class="password-toggle" type="button" aria-controls="studentAccessConfirmPassphrase" aria-label="Show passphrase confirmation" data-password-label="passphrase confirmation">
                                 <svg class="password-eye" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                                     <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/><path class="password-eye-slash" d="m4 4 16 16"/>
@@ -95,15 +91,8 @@
                             </button>
                         </div>
                     </div>
-                    <div id="studentAccessRemember" class="remember-row">
-                        <label class="checkbox-container">
-                            <input type="checkbox" id="studentAccessRememberMe" aria-describedby="studentAccessRememberHelp">
-                            <span>Remember me on this device</span>
-                        </label>
-                        <p id="studentAccessRememberHelp" class="input-help">Leave this off on a device you share with others.</p>
-                    </div>
                     <p id="studentAccessStatus" class="form-message" role="status"></p>
-                    <button class="auth-button" type="submit" disabled>Log in</button>
+                    <button class="auth-button" type="submit" disabled>Continue</button>
                 </form>
                 <noscript><p class="reset-preview-note">Enable JavaScript to use your student account.</p></noscript>
                 <section id="studentAccessReceipt" class="student-access-help" hidden aria-labelledby="studentAccessReceiptTitle">
@@ -118,17 +107,12 @@
                 </section>
                 <div id="studentAccessHelp">
                     <section class="login-account-help" aria-labelledby="studentAccessHelpTitle">
-                        <h2 id="studentAccessHelpTitle">Forgot your passphrase?</h2>
+                        <h2 id="studentAccessHelpTitle">Other ways to recover your account</h2>
                         <div class="auth-help-links" id="studentAccessModes">
                             <a data-student-access-mode="backup" href="student-access.html?mode=backup">Use a backup key</a>
                             <a data-student-access-mode="reset" href="student-access.html?mode=reset">Use a teacher’s reset code</a>
                         </div>
-                        <details id="studentAccessLegacyHelp"><summary>Already have a Student ID?</summary>
-                            <p>Enter your existing Student ID in the username field.</p>
-                            <p><a data-student-access-mode="teacher-setup" href="student-access.html?mode=teacher-setup">Finish setup with a teacher’s setup code</a></p>
-                        </details>
                     </section>
-                    <div class="auth-next-links" id="studentAccessSignup"><a href="register.html?method=username">Create a student account <span aria-hidden="true">→</span></a></div>
                     <p class="auth-practice-link"><a href="story-playground.html">Try a lesson without an account</a></p>
                 </div>
             </div>

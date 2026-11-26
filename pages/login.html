@@ -154,16 +154,10 @@
                         </h2>
 
 
-                        <p>Use the email address and password for your account.</p>
+                        <p>Use the sign-in details for your account.</p>
 
 
                     </div>
-
-                    <nav class="auth-methods" aria-label="Sign-in method">
-                        <a href="login.html" aria-current="page"><span class="interface-icon interface-icon--mail" aria-hidden="true"></span> Email</a>
-                        <a href="student-access.html" data-student-access-link><span class="interface-icon interface-icon--key-round" aria-hidden="true"></span> Student username</a>
-                    </nav>
-
 
                     <!-- ==================================
                          LOGIN FORM
@@ -174,37 +168,33 @@
                         class="auth-form"
                         method="post"
                     >
-
-
-                        <!-- EMAIL -->
+                        <fieldset id="loginMethods" class="login-methods" disabled>
+                            <legend>Sign in with</legend>
+                            <div class="login-method-options">
+                                <label class="login-method">
+                                    <input id="loginEmailMethod" type="radio" name="login-method" value="email" checked>
+                                    <span class="interface-icon interface-icon--mail" aria-hidden="true"></span>
+                                    <span>Email</span>
+                                </label>
+                                <label class="login-method">
+                                    <input id="loginUsernameMethod" type="radio" name="login-method" value="username">
+                                    <span class="interface-icon interface-icon--key-round" aria-hidden="true"></span>
+                                    <span>Student username</span>
+                                </label>
+                            </div>
+                        </fieldset>
 
                         <div class="form-group">
 
 
-                            <label for="loginEmail">
-                                Email Address
-                            </label>
+                            <label id="loginIdentifierLabel" for="loginEmail">Email address</label>
 
 
                             <div class="input-wrapper">
 
 
-                                <span class="input-icon">
-                                    <svg class="interface-icon" aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-  <rect x="2" y="4" width="20" height="16" rx="2" />
-</svg>
-
+                                <span class="input-icon" aria-hidden="true">
+                                    <span id="loginIdentifierIcon" class="interface-icon interface-icon--mail"></span>
                                 </span>
 
 
@@ -213,6 +203,8 @@
                                     id="loginEmail"
                                     placeholder="Enter your email address"
                                     autocomplete="email"
+                                    autocapitalize="none"
+                                    spellcheck="false"
                                     required
                                 >
 
@@ -538,6 +530,11 @@
                         <a href="student-access.html?mode=backup">Use a backup key</a>
                         <a href="student-access.html?mode=reset">Use a teacher’s reset code</a>
                     </div>
+                    <details>
+                        <summary>Already have a Student ID?</summary>
+                        <p>Choose <strong>Student username</strong> and enter your existing Student ID.</p>
+                        <p><a href="student-access.html?mode=teacher-setup">Finish setup with a teacher’s setup code</a></p>
+                    </details>
                     <details>
                         <summary>Help for students and guardians</summary>
                         <p>For help getting in or requesting a copy, correction, or deletion of your data, ask a parent or guardian to speak with the school or adult who gave you access. LakbayPanahon has no public support inbox or request form yet.</p>

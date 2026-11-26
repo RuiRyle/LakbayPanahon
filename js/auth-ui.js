@@ -21,6 +21,7 @@ import {
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    signInWithCustomToken,
     sendPasswordResetEmail,
     onAuthStateChanged,
     signOut,
@@ -514,30 +515,73 @@ function initializeAuthUI() {
     }
 
     const loginForm = document.getElementById("loginForm");
+    let usernameLogin = false;
+    let loginBusy = false;
     if (loginForm) {
         const submitButton = loginForm.querySelector('button[type="submit"]');
         const message = document.getElementById("loginMessage");
         const finishSetup = document.getElementById("finishAccountSetup");
-        let loginBusy = false, setupUser = null;
+        const identifier = document.getElementById("loginEmail");
+        const passwordInput = document.getElementById("loginPassword");
+        const methods = document.getElementById('loginMethods');
+        const emailMethod = document.getElementById('loginEmailMethod');
+        const usernameMethod = document.getElementById('loginUsernameMethod');
+        let setupUser = null;
+        const identifiers = { email: identifier.value, username: '' };
+
+        function selectLoginMethod(useUsername) {
+            emailMethod.checked = !useUsername;
+            usernameMethod.checked = useUsername;
+            if (usernameLogin === useUsername) return;
+            identifiers[usernameLogin ? 'username' : 'email'] = identifier.value;
+            usernameLogin = useUsername;
+            identifier.type = useUsername ? 'text' : 'email';
+            identifier.autocomplete = useUsername ? 'username' : 'email';
+            identifier.placeholder = useUsername ? 'Enter your username' : 'Enter your email address';
+            identifier.value = identifiers[useUsername ? 'username' : 'email'];
+            if (useUsername) identifier.maxLength = 24;
+            else identifier.removeAttribute('maxlength');
+            document.getElementById('loginIdentifierLabel').textContent = useUsername ? 'Username' : 'Email address';
+            document.getElementById('loginIdentifierIcon').classList.toggle('interface-icon--key-round', useUsername);
+            document.getElementById('loginIdentifierIcon').classList.toggle('interface-icon--mail', !useUsername);
+            passwordInput.value = '';
+            if (passwordInput.type === 'text') loginForm.querySelector('.password-toggle').click();
+            if (finishSetup) finishSetup.hidden = true;
+            clearMessage(message);
+        }
+
+        if (methods) {
+            const methodFromUrl = () => new URLSearchParams(window.location.search).get('method') === 'username';
+            selectLoginMethod(methodFromUrl());
+            methods.addEventListener('change', () => {
+                const useUsername = usernameMethod.checked;
+                selectLoginMethod(useUsername);
+                window.history.replaceState(window.history.state, '', useUsername ? '?method=username' : 'login.html');
+            });
+            window.addEventListener('popstate', () => selectLoginMethod(methodFromUrl()));
+            methods.disabled = false;
+        }
 
         loginForm.addEventListener("submit", async event => {
             event.preventDefault();
             if (loginBusy) return;
 
-            const email = document.getElementById("loginEmail").value.trim();
-            const passwordInput = document.getElementById("loginPassword");
+            const useUsername = usernameLogin;
+            const identity = identifier.value.trim();
             const password = passwordInput.value;
             clearMessage(message);
             setupUser = null;
             if (finishSetup) finishSetup.hidden = true;
-            if (!email || !password) {
-                showMessage(message, "Please enter your email address and password.", "error");
+            if (!identity || !password || (useUsername && identity.length > 24)) {
+                showMessage(message, useUsername ? 'Enter your student username and password.' : 'Please enter your email address and password.', 'error');
                 return;
             }
 
             loginBusy = true;
             setButtonLoading(submitButton, true, "Logging in...");
+            if (methods) methods.disabled = true;
             let session = null;
+            let usernameAuthenticated = false;
             const checkSession = () => {
                 if (!session || auth.currentUser !== session) {
                     throw Object.assign(Error("The sign-in session changed."), {code: "auth/session-changed"});
@@ -545,7 +589,15 @@ function initializeAuthUI() {
             };
             try {
                 await prepareAuthPersistence(document.getElementById("rememberMe")?.checked === true);
-                const {user} = await signInWithEmailAndPassword(auth, email, password);
+                let user;
+                if (useUsername) {
+                    const { studentAccessRequest } = await import('./student-access-client.js');
+                    const { token } = await studentAccessRequest({ action: 'sign-in', username: identity, passphrase: password });
+                    ({ user } = await signInWithCustomToken(auth, token));
+                    usernameAuthenticated = true;
+                } else {
+                    ({ user } = await signInWithEmailAndPassword(auth, identity, password));
+                }
                 if (passwordInput.value === password) passwordInput.value = "";
                 if (auth.currentUser?.uid === user.uid) session = auth.currentUser;
                 checkSession();
@@ -553,7 +605,7 @@ function initializeAuthUI() {
                 const profile = await getDocFromServer(doc(db, "users", user.uid));
                 checkSession();
                 if (!profile.exists()) {
-                    if (finishSetup) {
+                    if (finishSetup && !useUsername) {
                         setupUser = user.uid;
                         finishSetup.hidden = false;
                         showMessage(message, "You’re signed in. Choose the account you were setting up to finish your profile.", "success");
@@ -566,6 +618,9 @@ function initializeAuthUI() {
                 const {role, status, teacherVerifiedRevision} = profile.data();
                 if (status === "inactive") {
                     throw Object.assign(Error("Account is inactive."), {code: "auth/profile-inactive"});
+                }
+                if (useUsername && role !== 'student') {
+                    throw Object.assign(Error('Account access is unavailable.'), { code: 'auth/profile-access-denied' });
                 }
                 if (role === "teacher" && ["pending", "active"].includes(status)) {
                     if (status === "pending" || !teacherVerifiedRevision || user.emailVerified !== true) {
@@ -593,8 +648,14 @@ function initializeAuthUI() {
                 }
                 throw Object.assign(Error("Account access is unavailable."), {code: "auth/profile-access-denied"});
             } catch (error) {
-                if (credentialErrors.has(error.code) && passwordInput.value === password) passwordInput.value = "";
+                const badUsernameCredentials = useUsername && error.code === 'functions/permission-denied';
+                if ((credentialErrors.has(error.code) || badUsernameCredentials) && passwordInput.value === password) passwordInput.value = "";
                 let feedback = getLoginErrorMessage(error.code);
+                if (useUsername && !usernameAuthenticated) {
+                    if (badUsernameCredentials) feedback = 'Check your username and password. To reset it, select Forgot password? and use your backup key or a reset code from your teacher.';
+                    else if (['functions/resource-exhausted', 'functions/failed-precondition', 'app/verification-unavailable'].includes(error.code)) feedback = error.message;
+                    else if (error.code !== 'auth/session-persistence-unavailable') feedback = 'Username sign-in is temporarily unavailable. Try again in a moment.';
+                }
                 if (session && auth.currentUser === session) {
                     try {
                         await signOut(auth);
@@ -605,6 +666,7 @@ function initializeAuthUI() {
                 showMessage(message, feedback, "error");
             } finally {
                 loginBusy = false;
+                if (methods) methods.disabled = false;
                 setButtonLoading(submitButton, false, "Log In");
             }
         });
@@ -697,6 +759,14 @@ function initializeAuthUI() {
         email.addEventListener('input', resetAddressChanged);
         document.getElementById('forgotPasswordButton').addEventListener('click', event => {
             if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+            if (loginBusy) {
+                event.preventDefault();
+                return;
+            }
+            if (usernameLogin) {
+                document.getElementById('loginPassword').value = '';
+                return;
+            }
             event.preventDefault();
             if (!resetRequested()) window.history?.pushState({ authReset: true }, '', '?view=reset');
             openReset();

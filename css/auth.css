@@ -1696,25 +1696,48 @@ body.lakbay-theme .auth-sign-in .auth-form-container :is(.back-home, .forgot-lin
 }
 .auth-sign-in .auth-form-container :is(.back-home, .forgot-link):hover { text-decoration: underline; }
 
-.auth-sign-in .auth-methods {
-    gap: 5px;
-    margin-block: 20px 0;
-    border-color: var(--signin-line);
-    border-radius: 9px;
+.login-methods { min-inline-size: 0; border: 0; }
+.login-methods legend {
+    margin-block-end: 7px;
+    color: var(--signin-ink);
+    font-size: .875rem;
+    font-weight: 700;
+}
+.login-method-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--signin-line);
+    border-radius: 10px;
     background: var(--signin-soft);
 }
-.auth-sign-in .auth-methods a {
+.login-method {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 44px;
+    padding: 5px;
+    border: 1px solid transparent;
     border-radius: 6px;
-    color: var(--signin-muted);
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
 }
-.auth-sign-in .auth-methods a:hover { background: #e9e3d8; color: var(--signin-ink); }
-.auth-sign-in .auth-methods a[aria-current="page"] {
-    border-color: #c4b28d;
-    background: #fffdf8;
-    color: var(--signin-ink);
-    box-shadow: 0 1px 3px #42381c18;
+.login-method input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.login-method .interface-icon { color: var(--signin-accent); }
+.login-method > span:last-child { color: inherit; }
+.login-methods:not(:disabled) .login-method:hover:not(:has(:checked)) { background: #e9e3d8; }
+body.lakbay-theme .auth-sign-in .auth-form-container .login-method:has(:checked) {
+    border-color: #936d32;
+    color: #fffdf8;
+    background: var(--signin-ink);
 }
-.auth-sign-in .auth-methods .interface-icon { color: var(--signin-accent); }
+.login-method:has(:checked) .interface-icon { color: #ecd2a0; }
+.login-method:has(:focus-visible) { outline: 2px solid var(--signin-focus); outline-offset: 2px; }
+.login-methods:disabled .login-method { cursor: wait; }
 
 body.lakbay-theme .auth-page.auth-portal.auth-sign-in .auth-form {
     gap: 16px;
@@ -1722,7 +1745,7 @@ body.lakbay-theme .auth-page.auth-portal.auth-sign-in .auth-form {
     padding-block-start: 0;
     border: 0;
 }
-body.lakbay-theme .auth-sign-in .auth-form-container :is(label, .input-help) { color: var(--signin-ink); }
+body.lakbay-theme .auth-sign-in .auth-form-container label { color: var(--signin-ink); }
 body.lakbay-theme .auth-sign-in .auth-form-container .input-help { color: var(--signin-muted); }
 body.lakbay-theme .auth-sign-in .auth-form-container .input-wrapper { background: #fff; }
 body.lakbay-theme .auth-sign-in .auth-form-container .input-wrapper input {
@@ -1742,7 +1765,7 @@ body.lakbay-theme .auth-sign-in .input-wrapper input::placeholder { color: #6774
 .auth-sign-in .checkbox-container input { width: 16px; height: 16px; accent-color: var(--signin-ink); }
 .auth-sign-in .remember-row .input-help { margin-inline-start: 24px; }
 
-body.lakbay-theme .auth-sign-in :is(#loginForm, #studentAccessForm, #forgotPasswordForm) > .auth-button {
+body.lakbay-theme .auth-sign-in :is(#loginForm, #forgotPasswordForm) > .auth-button {
     min-height: 50px;
     border-color: #173247;
     border-radius: 8px;
@@ -1750,7 +1773,7 @@ body.lakbay-theme .auth-sign-in :is(#loginForm, #studentAccessForm, #forgotPassw
     background: #173247;
     box-shadow: 0 2px 5px #0d233326;
 }
-body.lakbay-theme .auth-sign-in :is(#loginForm, #studentAccessForm, #forgotPasswordForm) > .auth-button:not(:disabled):hover {
+body.lakbay-theme .auth-sign-in :is(#loginForm, #forgotPasswordForm) > .auth-button:not(:disabled):hover {
     border-color: #25516a;
     color: #fffdf8;
     background: #25516a;
@@ -1784,7 +1807,7 @@ body.lakbay-theme .auth-sign-in .auth-form-container :is(.login-account-help, .s
 .auth-sign-in .auth-form-container :is(.auth-help-links a, .auth-practice-link a, .login-account-help details a, .student-access-choice, .reset-back-button, .student-signup-status-icon) { color: var(--signin-accent); }
 .auth-sign-in .student-signup-status { margin-block-start: 12px; }
 .auth-sign-in .auth-email-help { display: none; }
-.auth-sign-in:has(#forgotPasswordSection[hidden]) #account-help:target .auth-email-help { display: block; }
+.auth-sign-in:has(#forgotPasswordSection[hidden]):not(:has(#loginUsernameMethod:checked)) #account-help:target .auth-email-help { display: block; }
 body.lakbay-theme .auth-sign-in .auth-form-container .secondary-button {
     border-color: #b6aa95;
     background: #fffdf8;
@@ -1804,4 +1827,5 @@ body.lakbay-theme .auth-sign-in .auth-form-container .secondary-button {
 
 @media (max-width: 420px) {
     body.lakbay-theme .auth-page.auth-portal.auth-sign-in .auth-form-container { border-radius: 12px; }
+    body.lakbay-theme .auth-sign-in .login-method { gap: 5px; font-size: .8125rem; }
 }
